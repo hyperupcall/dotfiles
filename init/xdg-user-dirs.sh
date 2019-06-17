@@ -33,6 +33,9 @@ xdg-user-dirs-update --set MUSIC $HOME/music
 xdg-user-dirs-update --set PICTURES $HOME/pics
 xdg-user-dirs-update --set VIDEOS $HOME/vids
 
+# blueman bluetooth servieces will complain since the 'downloads' directory changed
+gsettings set org.blueman.transfer shared-path '/home/edwin/dls'
+
 # creates and updates folders
 xdg-user-dirs-update
 
