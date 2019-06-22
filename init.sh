@@ -7,6 +7,7 @@
 stow bash
 
 # git
-git config user.name "eankeen"
-git config user.email "24364012+eankeen@users.noreply.github.com"
-git config core.editor vim
+git config --global user.name "eankeen"
+git config --global user.email "24364012+eankeen@users.noreply.github.com"
+git config --global core.editor vim
+
