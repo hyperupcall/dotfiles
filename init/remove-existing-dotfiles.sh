@@ -3,16 +3,26 @@
 # gnu stow does not remove preexisting files
 # this script removes files that could cause clashes
 
+echo "removing existing dotfiles"
+
+# remove the dotfile
 remove-existing-dotfile() {
-  if [[ -e $1 && ! -h $1 ]]
+  # test -f "$1" && echo rm "$1" || echo "skipping ${1}"
+  if test -f "$1"
   then
-    rm $1
+    echo "removing ${1}"
+    rm "$1"
   fi
 }
 
-declare -a files=("~/.bashrc" "~/.profile")
+declare -a files=(
+  ~/.bashrc
+  ~/.profile
+  ~/.vimrc
+)
 
-for file in ${files[@]}; do
-  remove-existing-dotfile $file
+for file in "${files[@]}"; do
+  remove-existing-dotfile "$file"
 done
 
+echo "done removing existing dotfiles"
