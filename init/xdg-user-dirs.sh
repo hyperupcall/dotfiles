@@ -1,8 +1,5 @@
 #!/bin/bash
 
-XDG_CONFIG_DIRS=/etc/xdg
-XDG_CONFIG_HOME=$HOME/.config
-
 # remove old folders
 rmdir $HOME/Desktop
 rmdir $HOME/Downloads
@@ -33,8 +30,8 @@ xdg-user-dirs-update --set MUSIC $HOME/music
 xdg-user-dirs-update --set PICTURES $HOME/pics
 xdg-user-dirs-update --set VIDEOS $HOME/vids
 
-# blueman bluetooth servieces will complain since the 'downloads' directory changed
-gsettings set org.blueman.transfer shared-path '/home/edwin/dls'
+# blueman bluetooth services will complain since the 'downloads' directory changed
+gsettings set org.blueman.transfer shared-path "$HOME/dls"
 
 # creates and updates folders
 xdg-user-dirs-update
