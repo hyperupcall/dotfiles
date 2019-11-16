@@ -1,1 +1,6 @@
-set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
+set tabstop=4
+set softtabstop=0
+set expandtab
+set shiftwidth=2
+set smarttab
+set nocp
