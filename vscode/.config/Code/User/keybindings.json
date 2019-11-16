@@ -178,6 +178,200 @@
     "key": "ctrl+shift+g shift+b",
     "command": "-gitlens.toggleCodeLens",
     "when": "editorTextFocus && gitlens:canToggleCodeLens && gitlens:enabled && config.gitlens.keymap == 'chorded'"
+  },
+  {
+    "key": "ctrl+shift+;",
+    "command": "-breadcrumbs.focus",
+    "when": "breadcrumbsPossible"
+  },
+  {
+    "key": "ctrl+right",
+    "command": "-breadcrumbs.focusNext",
+    "when": "breadcrumbsActive && breadcrumbsVisible"
+  },
+  {
+    "key": "right",
+    "command": "-breadcrumbs.focusNext",
+    "when": "breadcrumbsActive && breadcrumbsVisible"
+  },
+  {
+    "key": "ctrl+right",
+    "command": "-breadcrumbs.focusNextWithPicker",
+    "when": "breadcrumbsActive && breadcrumbsVisible && listFocus && !inputFocus"
+  },
+  {
+    "key": "ctrl+left",
+    "command": "-breadcrumbs.focusPrevious",
+    "when": "breadcrumbsActive && breadcrumbsVisible"
+  },
+  {
+    "key": "left",
+    "command": "-breadcrumbs.focusPrevious",
+    "when": "breadcrumbsActive && breadcrumbsVisible"
+  },
+  {
+    "key": "ctrl+left",
+    "command": "-breadcrumbs.focusPreviousWithPicker",
+    "when": "breadcrumbsActive && breadcrumbsVisible && listFocus && !inputFocus"
+  },
+  {
+    "key": "ctrl+enter",
+    "command": "-breadcrumbs.revealFocused",
+    "when": "breadcrumbsActive && breadcrumbsVisible"
+  },
+  {
+    "key": "space",
+    "command": "-breadcrumbs.revealFocused",
+    "when": "breadcrumbsActive && breadcrumbsVisible"
+  },
+  {
+    "key": "ctrl+enter",
+    "command": "-breadcrumbs.revealFocusedFromTreeAside",
+    "when": "breadcrumbsActive && breadcrumbsVisible && listFocus && !inputFocus"
+  },
+  {
+    "key": "escape",
+    "command": "-breadcrumbs.selectEditor",
+    "when": "breadcrumbsActive && breadcrumbsVisible"
+  },
+  {
+    "key": "down",
+    "command": "-breadcrumbs.selectFocused",
+    "when": "breadcrumbsActive && breadcrumbsVisible"
+  },
+  {
+    "key": "enter",
+    "command": "-breadcrumbs.selectFocused",
+    "when": "breadcrumbsActive && breadcrumbsVisible"
+  },
+  {
+    "key": "ctrl+shift+.",
+    "command": "-breadcrumbs.toggleToOn",
+    "when": "!config.breadcrumbs.enabled"
+  },
+  {
+    "key": "enter",
+    "command": "-breakpointWidget.action.acceptInput",
+    "when": "breakpointWidgetVisible && inBreakpointWidget"
+  },
+  {
+    "key": "alt+,",
+    "command": "-gitlens.key.alt+,",
+    "when": "gitlens:key:,"
+  },
+  {
+    "key": "alt+,",
+    "command": "-gitlens.key.alt+,",
+    "when": "gitlens:key:,"
+  },
+  {
+    "key": "alt+,",
+    "command": "-gitlens.key.alt+,",
+    "when": "gitlens:key:,"
+  },
+  {
+    "key": "alt+.",
+    "command": "-gitlens.key.alt+.",
+    "when": "gitlens:key:."
+  },
+  {
+    "key": "alt+left",
+    "command": "-gitlens.key.alt+left",
+    "when": "gitlens:key:alt+left"
+  },
+  {
+    "key": "alt+right",
+    "command": "-gitlens.key.alt+right",
+    "when": "gitlens:key:alt+right"
+  },
+  {
+    "key": "ctrl+left",
+    "command": "-gitlens.key.ctrl+left",
+    "when": "gitlens:key:ctrl+left"
+  },
+  {
+    "key": "ctrl+right",
+    "command": "-gitlens.key.ctrl+right",
+    "when": "gitlens:key:ctrl+right"
+  },
+  {
+    "key": "left",
+    "command": "-gitlens.key.left",
+    "when": "gitlens:key:left"
+  },
+  {
+    "key": "right",
+    "command": "-gitlens.key.right",
+    "when": "gitlens:key:right"
+  },
+  {
+    "key": "left",
+    "command": "-notification.collapse",
+    "when": "notificationFocus"
+  },
+  {
+    "key": "right",
+    "command": "-notification.expand",
+    "when": "notificationFocus"
+  },
+  {
+    "key": "right",
+    "command": "-notification.expand",
+    "when": "notificationFocus"
+  },
+  {
+    "key": "enter",
+    "command": "-notification.toggle",
+    "when": "notificationFocus"
+  },
+  {
+    "key": "space",
+    "command": "-notification.toggle",
+    "when": "notificationFocus"
+  },
+  {
+    "key": "home",
+    "command": "-notifications.focusFirstToast",
+    "when": "notificationFocus && notificationToastsVisible"
+  },
+  {
+    "key": "pageup",
+    "command": "-notifications.focusFirstToast",
+    "when": "notificationFocus && notificationToastsVisible"
+  },
+  {
+    "key": "pageup",
+    "command": "-notifications.focusFirstToast",
+    "when": "notificationFocus && notificationToastsVisible"
+  },
+  {
+    "key": "end",
+    "command": "-notifications.focusLastToast",
+    "when": "notificationFocus && notificationToastsVisible"
+  },
+  {
+    "key": "end",
+    "command": "-notifications.focusLastToast",
+    "when": "notificationFocus && notificationToastsVisible"
+  },
+  {
+    "key": "pagedown",
+    "command": "-notifications.focusLastToast",
+    "when": "notificationFocus && notificationToastsVisible"
+  },
+  {
+    "key": "down",
+    "command": "-notifications.focusNextToast",
+    "when": "notificationFocus && notificationToastsVisible"
+  },
+  {
+    "key": "up",
+    "command": "-notifications.focusPreviousToast",
+    "when": "notificationFocus && notificationToastsVisible"
+  },
+  {
+    "key": "delete",
+    "command": "-notification.clear",
+    "when": "notificationFocus"
   }
-
 ]
