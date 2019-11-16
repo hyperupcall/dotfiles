@@ -1,3 +1,6 @@
 dotfiles
 
 this repository contains all my dotfiles. maintained with gnu stow.
+
+todo
+- update vscode keyboard shortcuts such that i can c-k for kill all right line (now it's m-k)
