@@ -172,5 +172,18 @@
   "workbench.startupEditor": "newUntitledFile",
   "yaml.format.printWidth": 100,
   "yaml.format.singleQuote": true,
-  "zenMode.centerLayout": true
+  "zenMode.centerLayout": true,
+  "terraform.indexing": {
+    "enabled": false,
+    "liveIndexing": false,
+    "delay": 500,
+    "exclude": [
+      ".terraform/**/*",
+      "**/.terraform/**/*"
+    ]
+  },
+  "terraform.languageServer": {
+    "enabled": true,
+    "args": []
+  }
 }
