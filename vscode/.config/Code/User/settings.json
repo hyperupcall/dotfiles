@@ -79,18 +79,12 @@
   "files.exclude": {
     "**/.git": false,
     "**/.hg": false,
-    "**/.svn": false,
+    "**/.svn": false
   },
   "files.simpleDialog.enable": true,
   "files.watcherExclude": {
     "**/bower_components/**": true
   },
   "workbench.commandPalette.history": 5,
-  "workbench.enableExperiments": false,
-  "workbench.experimental.editorAssociations": [
-    {
-      "filenamePattern": "*",
-      "viewType": "default"
-    }
-  ]
+  "workbench.enableExperiments": false
 }
