@@ -1,22 +1,42 @@
+========
 dotfiles
+========
 
 this repository contains all my dotfiles. maintained with gnu stow.
 
+init.sh script
+==============
+
+stows the following
+ - bash
+ - git
+ - vscode
+ - vim
+
+does not stow the following
+  - init
+  - xfce-terminal
+
 vscode keybindings
-- ctrl + shift + alt
-  - nm,.     [panel]         move around (sometimes buggy?)
-  - p, /, c  [panel]         misc keybindings ('p' sometimes buggy?)
+==================
 
-  - hjkl     [editor]        move around
+- ctrl + shift + alt         modification
+  - yuio     [editor group]  move non-cursor element around
+  - hjkl     [editor]        move non-cursor element around
+  - nm,.     [panel]         move non-cursor element around (sometimes buggy?)
+  - p, /, c  [window]        create / delete / resize relative to whole window
 
-  - yuio     [editor group]  move around
+- ctrl + alt                 navigation
+  - yuio     [editor group]  move cursor highlight
+  - hjkl     [editor]        move cursor highlight
+  - nm,.     [panel]         move cursor highlight
 
+- alt + shift                dialogs 
+  - a        [window]        open file picker dialog
+  - s        [window]        open editor dialog
 
-  - nm,.     [panel]         switch tabs
+- ctrl + shift   
 
-  - hjkl     [editor]        switch tabs
-
-  - yuio     [editor group]  move around
-
-- alt + shift
-  - a, s (editor and file picker respectively)
+- alt                        manipulation within a context
+  - j        [context]       move down
+  - k        [context]       move up
