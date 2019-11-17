@@ -2,7 +2,7 @@
 dotfiles
 ========
 
-this repository contains all my dotfiles. maintained with gnu stow.
+this repository contains all my dotfiles. maintained with gnu stow
 
 init.sh script
 ==============
@@ -14,8 +14,8 @@ stows the following
  - vim
 
 does not stow the following
-  - init
-  - xfce-terminal
+ - scripts
+ - xfce-terminal
 
 vscode keybindings
 ==================

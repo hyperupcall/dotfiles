@@ -1554,6 +1554,14 @@
   {
     "key": "ctrl+shift+alt+f 4",
     "command": "workbench.action.editorLayoutTwoRows"
+  },
+  {
+    "key": "shift+alt+j",
+    "command": "editor.action.moveLinesDownAction"
+  },
+  {
+    "key": "shift+alt+k",
+    "command": "editor.action.moveLinesUpAction"
   }
 ]
 
