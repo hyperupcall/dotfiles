@@ -2,5 +2,21 @@ dotfiles
 
 this repository contains all my dotfiles. maintained with gnu stow.
 
-todo
-- update vscode keyboard shortcuts such that i can c-k for kill all right line (now it's m-k)
+vscode keybindings
+- ctrl + shift + alt
+  - nm,.     [panel]         move around (sometimes buggy?)
+  - p, /, c  [panel]         misc keybindings ('p' sometimes buggy?)
+
+  - hjkl     [editor]        move around
+
+  - yuio     [editor group]  move around
+
+
+  - nm,.     [panel]         switch tabs
+
+  - hjkl     [editor]        switch tabs
+
+  - yuio     [editor group]  move around
+
+- alt + shift
+  - a, s (editor and file picker respectively)

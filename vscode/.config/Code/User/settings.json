@@ -152,7 +152,7 @@
   "vetur.format.defaultFormatter.stylus": "none",
   "vetur.useWorkspaceDependencies": true,
   "vsdocker.imageUser": "docker.io/eankeen",
-  "window.menuBarVisibility": "toggle",
+  "window.menuBarVisibility": "visible",
   "window.newWindowDimensions": "maximized",
   "window.restoreWindows": "all",
   "window.title": "🦊 ${folderName} ${activeEditorLong}${separator}${remoteName}",
@@ -185,5 +185,26 @@
   "terraform.languageServer": {
     "enabled": true,
     "args": []
-  }
+  },
+  "window.enableMenuBarMnemonics": false,
+  "window.customMenuBarAltFocus": false,
+  "vim.enableNeovim": false,
+  "vim.handleKeys": {
+    "<C-s>": false,
+    "<C-o>": false,
+    "<C-n>": false,
+    "<C-k>": false,
+    "<C-r>": false,
+    "<C-,>": false,
+    "<C-w>": false,
+    "<C-f>": false,
+    "<C-z>": false,
+    "<C-x>": false,
+    "<C-c>": false,
+    "<C-v>": false,
+    "<C-->": false,
+    "<C-=>": false,
+    "<C-b>": false
+  },
+  "workbench.editor.showTabs": true
 }
