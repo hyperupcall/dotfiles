@@ -8,6 +8,7 @@ init.sh script
 ==============
 
 stows the following
+ - dirs
  - bash
  - git
  - vscode
