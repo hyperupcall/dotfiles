@@ -4,9 +4,13 @@
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
-# xdg (defaults)
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_DATA_HOME="$HOME/.local/share"
+# xdg
+export XDG_DATA_HOME="$HOME/.local/share" # default
+export XDG_CONFIG_HOME="$HOME/.config" # default
+export XDG_DATA_DIRS="/usr/local/share/:/usr/share" # default
+export XDG_CONFIG_DIRS="/etc/xdg" # default
+export XDG_CACHE_HOME="$HOME/.cache" # default
+export XDG_RUNTIME_DIR="$HOME/.runtime"
 
 # less
 export LESSHISTFILE="$HOME/.config/lesshst"
@@ -29,3 +33,5 @@ export N_PREFIX="$HOME/.local/"
 
 # yarn
 export YARN_CACHE_FOLDER="$HOME/.cache/yarn"
+
+
