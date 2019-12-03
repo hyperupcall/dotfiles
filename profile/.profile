@@ -5,7 +5,7 @@ export VISUAL="vim"
 export EDITOR="$VISUAL"
 
 # custom
-export CFGDIR="$HOME/.cfg"
+export CFGDIR="$HOME/.config"
 
 # xdg
 export XDG_DATA_HOME="$HOME/.local/share" # default
@@ -13,13 +13,10 @@ export XDG_CONFIG_HOME="$HOME/.config" # defualt
 export XDG_DATA_DIRS="/usr/local/share/:/usr/share" # default
 export XDG_CONFIG_DIRS="/etc/xdg" # default
 export XDG_CACHE_HOME="$HOME/.cache" # default
-#      XDG_RUNTIME_DIR
+#      XDG_RUNTIME_DIR # set by pam_systemd
 
 # vim (github.com/vim/vim)
 export VIMINIT="source "$CFGDIR/vim/vimrc""
-
-# git (github.com/git/git) [mirror]
-export GIT_CONFIG="$CFGDIR/git/gitconfig"
 
 # npm (github.com/npm/cli)
 export NPM_CONFIG_USERCONFIG="$CFGDIR/npmrc"

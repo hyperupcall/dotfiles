@@ -7,14 +7,7 @@ this repository contains all my dotfiles. maintained with gnu stow
 init.sh script
 ==============
 
-stows the following
- - dirs
- - bash
- - git
- - vscode
- - vim
-
-does not stow the following
+stows all but
  - scripts
  - xfce-terminal
 
@@ -41,3 +34,4 @@ vscode keybindings
 - alt                        manipulation within a context
   - j        [context]       move down
   - k        [context]       move up
+
