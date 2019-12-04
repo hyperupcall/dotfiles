@@ -34,3 +34,4 @@ export LESSHISTSIZE="250"
 # gnupg
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 
+setfont /usr/share/kbd/consolefonts/ter-132n.psf.gz
