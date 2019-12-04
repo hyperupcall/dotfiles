@@ -53,6 +53,9 @@ then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-# misc
-setfont /usr/share/kbd/consolefonts/ter-132n.psf.gz
-
+#tty -s
+#if test $? -eq 0
+#then
+#  echo test
+#setfont /usr/share/kbd/consolefonts/ter-132n.psf.gz
+#fi
