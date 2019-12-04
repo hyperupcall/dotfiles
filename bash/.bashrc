@@ -1,7 +1,3 @@
-#
-# ~/.bashrc
-#
-
 source ~/.profile
 
 [[ $- != *i* ]] && return
