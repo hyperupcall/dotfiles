@@ -31,7 +31,28 @@ export YARN_CACHE_FOLDER="$XDG_CACHE_HOME/yarn"
 export LESSHISTFILE="$XDG_DATA_HOME/lesshst"
 export LESSHISTSIZE="250"
 
-# gnupg
+# gnupg (git.gnupg.org/cgi-bin/gitweb.cgi)
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 
+# poetry (github.com/sdispater/poetry)
+export PATH="$HOME/.poetry/bin:$PATH"
+
+# rust (github.com/rust-lang/rust)
+export CARGO_HOME="$XDG_DATA_HOME/.cargo"
+export RUSTUP_HOME="$XDG_DATA_HOME/.rustup"
+
+export PATH="$HOME/.local/share/.cargo/bin:$PATH"
+
+# sccache (github.com/mozilla/sccache)
+export SCCACHE_CACHE_SIZE="20G"
+export SCCACHE_DIR="$XDG_CACHE_HOME/sccache"
+
+# path
+if test -d "$HOME/.local/bin"
+then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
+# misc
 setfont /usr/share/kbd/consolefonts/ter-132n.psf.gz
+
