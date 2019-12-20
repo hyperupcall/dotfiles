@@ -44,14 +44,13 @@
   },
   "emmet.showSuggestionsAsSnippets": true,
   "eslint.packageManager": "yarn",
-  "explorer.autoReveal": false,
   "explorer.incrementalNaming": "smart",
   "explorer.openEditors.visible": 4,
-  "explorer.sortOrder": "mixed",
   "extensions.ignoreRecommendations": true,
   "files.associations": {
     ".vuerc": "json",
-    "*.css": "postcss"
+    "*.css": "postcss",
+    "*.hbs": "html"
   },
   "files.autoSave": "onFocusChange",
   "files.eol": "\n",
@@ -157,7 +156,7 @@
   "window.restoreWindows": "all",
   "window.title": "🦊 ${folderName} ${activeEditorLong}${separator}${remoteName}",
   "window.titleBarStyle": "custom",
-  "window.zoomLevel": -1,
+  "window.zoomLevel": 2,
   "workbench.activityBar.visible": true,
   "workbench.colorTheme": "Nord",
   "workbench.commandPalette.history": 5,
@@ -206,5 +205,28 @@
     "<C-=>": false,
     "<C-b>": false
   },
-  "workbench.editor.showTabs": true
+  "workbench.editor.showTabs": true,
+  "explorer.sortOrder": "filesFirst",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "editor.codeLens": false,
+  "cSpell.userWords": [
+    "dirent",
+    "dirents",
+    "entrypoint",
+    "gulpfile",
+    "healthcheck",
+    "mongod",
+    "templating"
+  ],
+  "editor.minimap.enabled": false,
+  "explorer.autoReveal": false,
+  "explorer.compactFolders": false,
+  "editor.renderWhitespace": "none",
+  "vs-kubernetes.kubectl-path": "/snap/bin/microk8s.kubectl",
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

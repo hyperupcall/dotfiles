@@ -530,11 +530,6 @@
     "when": "!terminalFocus"
   },
   {
-    "key": "ctrl+shift+unknown",
-    "command": "workbench.action.terminal.moveToLineEnd",
-    "when": "terminalFocus"
-  },
-  {
     "key": "ctrl+shift+alt+n",
     "command": "workbench.action.terminal.resizePaneLeft"
   },
@@ -956,11 +951,6 @@
     "key": "ctrl+shift+f10",
     "command": "-editor.action.peekDefinition",
     "when": "editorHasDefinitionProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
-  },
-  {
-    "key": "ctrl+shift+o",
-    "command": "editor.action.peekImplementation",
-    "when": "editorHasImplementationProvider && editorTextFocus && !isInEmbeddedEditor"
   },
   {
     "key": "ctrl+shift+f12",
@@ -1562,6 +1552,71 @@
   {
     "key": "shift+alt+k",
     "command": "editor.action.moveLinesUpAction"
+  },
+  {
+    "key": "ctrl+shift+i",
+    "command": "editor.action.revealDefinition",
+    "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+  },
+  {
+    "key": "f12",
+    "command": "-editor.action.revealDefinition",
+    "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+  },
+  {
+    "key": "ctrl+tab ctrl+n",
+    "command": "references-view.next",
+    "when": "reference-list.hasResult"
+  },
+  {
+    "key": "f4",
+    "command": "-references-view.next",
+    "when": "reference-list.hasResult"
+  },
+  {
+    "key": "ctrl+tab ctrl+p",
+    "command": "references-view.prev",
+    "when": "reference-list.hasResult"
+  },
+  {
+    "key": "shift+f4",
+    "command": "-references-view.prev",
+    "when": "reference-list.hasResult"
+  },
+  {
+    "key": "alt+j",
+    "command": "goToNextReferenceFromEmbeddedEditor",
+    "when": "inReferenceSearchEditor"
+  },
+  {
+    "key": "f4",
+    "command": "-goToNextReferenceFromEmbeddedEditor",
+    "when": "inReferenceSearchEditor"
+  },
+  {
+    "key": "alt+k",
+    "command": "goToPreviousReferenceFromEmbeddedEditor",
+    "when": "inReferenceSearchEditor"
+  },
+  {
+    "key": "shift+f4",
+    "command": "-goToPreviousReferenceFromEmbeddedEditor",
+    "when": "inReferenceSearchEditor"
+  },
+  {
+    "key": "ctrl+shift+v",
+    "command": "-markdown.showPreview",
+    "when": "editorLangId == 'markdown'"
+  },
+  {
+    "key": "ctrl+shift+enter",
+    "command": "-editor.action.insertLineBefore",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+shift+]",
+    "command": "-editor.unfold",
+    "when": "editorTextFocus && foldingEnabled"
   }
 ]
 

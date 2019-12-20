@@ -1,5 +1,10 @@
 [user]
   name = eankeen
   email = 24364012+eankeen@users.noreply.github.com
+	signingkey = AA1CA20721763EDB
 [core]
 	editor = nvim
+[gpg]
+	program = gpg2
+[commit]
+	gpgSign = true
