@@ -661,17 +661,8 @@
     "command": "-workbench.action.closeWindow"
   },
   {
-    "key": "ctrl+shift+f",
-    "command": "-workbench.action.findInFiles"
-  },
-  {
     "key": "ctrl+shift+h",
     "command": "-workbench.action.replaceInFiles"
-  },
-  {
-    "key": "ctrl+shift+f",
-    "command": "-workbench.view.search",
-    "when": "!searchViewletVisible"
   },
   {
     "key": "ctrl+alt+right",
@@ -1386,16 +1377,6 @@
   {
     "key": "ctrl+shift+g",
     "command": "-workbench.view.scm"
-  },
-  {
-    "key": "ctrl+a",
-    "command": "-editor.action.webvieweditor.selectAll",
-    "when": "!editorFocus && !inputFocus && activeEditor == 'WebviewEditor'"
-  },
-  {
-    "key": "ctrl+a",
-    "command": "-editor.action.selectAll",
-    "when": "textInputFocus"
   },
   {
     "key": "alt+j",

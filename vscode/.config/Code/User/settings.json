@@ -49,10 +49,14 @@
   "extensions.ignoreRecommendations": true,
   "files.associations": {
     ".vuerc": "json",
+    ".stylelintrc": "json",
+    ".huskyrc": "json",
+    ".lintstagedrc": "json",
     "*.css": "postcss",
-    "*.hbs": "html"
+    "*.hbs": "html",
+    "Vagrantfile": "ruby"
   },
-  "files.autoSave": "onFocusChange",
+  "files.autoSave": "onWindowChange",
   "files.eol": "\n",
   "files.exclude": {
     "**/.git": false,
@@ -84,8 +88,16 @@
   "markdown.preview.doubleClickToSwitchToEditor": false,
   "material-icon-theme.files.associations": {
     ".babelignore": "babel",
-    "tflint": "terraform"
+    "tflint": "terraform",
+    "docker-compose.tflint.ym": "docker"
   },
+  "material-icon-theme.folders.associations": {
+
+  },
+  "material-icon-theme.languages.associations": {
+    
+  },
+  "material-icon-theme.saturation": 0.8,
   "material-icon-theme.hidesExplorerArrows": true,
   "material-icon-theme.showWelcomeMessage": false,
   "merge-conflict.autoNavigateNextConflict.enabled": true,
@@ -118,7 +130,6 @@
     "**/pnpm-lock.yaml": true,
     "**/yarn.lock": true
   },
-  "search.location": "panel",
   "search.showLineNumbers": true,
   "search.smartCase": true,
   "sortJSON.contextMenu": {
@@ -156,7 +167,7 @@
   "window.restoreWindows": "all",
   "window.title": "🦊 ${folderName} ${activeEditorLong}${separator}${remoteName}",
   "window.titleBarStyle": "custom",
-  "window.zoomLevel": 2,
+  "window.zoomLevel": -1,
   "workbench.activityBar.visible": true,
   "workbench.colorTheme": "Nord",
   "workbench.commandPalette.history": 5,
@@ -225,8 +236,23 @@
   "explorer.autoReveal": false,
   "explorer.compactFolders": false,
   "editor.renderWhitespace": "none",
-  "vs-kubernetes.kubectl-path": "/snap/bin/microk8s.kubectl",
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "octref.vetur"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "sqltools.connections": [
+    {
+      "database": "${workspaceFolder}/operator/db.sqlite",
+      "dialect": "SQLite",
+      "name": "tails-operator"
+    }
+  ],
+  "sqltools.useNodeRuntime": true,
+  "explorer.confirmDelete": false,
+  "shellcheck.disableVersionCheck": true
 }

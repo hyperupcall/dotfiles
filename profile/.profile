@@ -1,4 +1,3 @@
-
 #!/bin/sh
 
 # general
@@ -13,23 +12,13 @@ export XDG_CONFIG_HOME="$HOME/.config" # defualt
 export XDG_DATA_DIRS="/usr/local/share/:/usr/share" # default
 export XDG_CONFIG_DIRS="/etc/xdg" # default
 export XDG_CACHE_HOME="$HOME/.cache" # default
-#      XDG_RUNTIME_DIR # set by pam_systemd
-
-# vim (github.com/vim/vim)
-export VIMINIT="source "$XDG_CONFIG_HOME/vim/vimrc""
 
 # npm (github.com/npm/cli)
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npmrc"
 
 # n (github.com/tj/n)
-# will not install to $HOME/.local directly (actual install in ~/.local/n/n)
-export N_PREFIX="$HOME/.local/n"
+export N_PREFIX="$HOME/.local/opt/n"
 export PATH="$N_PREFIX/bin:$PATH"
-
-# nvm (github.com/nvm-sh/nvm)
-# export NVM_DIR="$HOME/.config/nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # loads nvm bash_completion
 
 # yarn (github.com/yarnpkg/yarn)
 export YARN_CACHE_FOLDER="$XDG_CACHE_HOME/yarn"
@@ -41,6 +30,7 @@ export LESSHISTSIZE="250"
 
 # gnupg (git.gnupg.org/cgi-bin/gitweb.cgi)
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export GPG_TTY=$(tty)
 
 # poetry (github.com/sdispater/poetry)
 export PATH="$HOME/.poetry/bin:$PATH"
@@ -48,7 +38,7 @@ export PATH="$HOME/.poetry/bin:$PATH"
 # rust (github.com/rust-lang/rust)
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
-export PATH="$HOME/.local/share/.cargo/bin:$PATH"
+export PATH="$HOME/.local/share/cargo/bin:$PATH"
 
 # sccache (github.com/mozilla/sccache)
 export SCCACHE_CACHE_SIZE="20G"
@@ -68,23 +58,28 @@ export TF_CLI_CONFIG_FILE="$XDG_CONFIG_HOME/terraformrc-custom"
 export NNN_FALLBACK_OPENER="xdg-open"
 export NNN_DE_FILE_MANAGER="nautilus"
 
-# microk8s (github.com/ubuntu/microk8s)
-alias kubectl="microk8s.kubectl"
+# go (github.com/golang/go)
+export GOROOT="$HOME/.local/go-root"
+export GOPATH="$HOME/.local/go-path"
+export PATH="$HOME/.local/go-path/bin:$PATH"
+
+# krew (github.com/kubernetes-sigs/krew
+export KREW_ROOT="$HOME/.local/opt/krew"
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+# flutter (github.com/flutter/flutter)
+export PATH="$HOME/.local/opt/flutter/bin:$PATH"
+
+# android
+export ANDROID_SDK_ROOT="$HOME/.local/opt/android/sdk"
+
+# buku (github.com/jarun/buku)
+alias b='buku --suggest'
+
+# google cloud sdk
+if [ -f "$HOME/.local/google-cloud-sdk/path.bash.inc" ]; then . "$HOME/.local/google-cloud-sdk/path.bash.inc"; fi
+if [ -f "$HOME/.local/google-cloud-sdk/completion.bash.inc" ]; then . "$HOME/.local/google-cloud-sdk/completion.bash.inc"; fi
 
 # path
 export PATH="$HOME/.local/bin:$PATH"
 
-#tty -s
-#if test $? -eq 0
-#then
-#  echo test
-#setfont /usr/share/kbd/consolefonts/ter-132n.psf.gz
-#fi
-export GPG_TTY=$(tty)
-alias b='buku --suggest'
-
-# the next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/edwin/.local/google-cloud-sdk/path.bash.inc' ]; then . '/home/edwin/.local/google-cloud-sdk/path.bash.inc'; fi
-
-# the next line enables shell command completion for gcloud.
-if [ -f '/home/edwin/.local/google-cloud-sdk/completion.bash.inc' ]; then . '/home/edwin/.local/google-cloud-sdk/completion.bash.inc'; fi

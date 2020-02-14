@@ -1,9 +1,9 @@
 [user]
-  name = eankeen
-  email = 24364012+eankeen@users.noreply.github.com
-	signingkey = AA1CA20721763EDB
+    name = eankeen
+    email = 24364012+eankeen@users.noreply.github.com
+	signingkey = 484EA8DEF2F467E6
 [core]
-	editor = nvim
+    editor = nvim
 [gpg]
 	program = gpg2
 [commit]
