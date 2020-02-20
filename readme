@@ -2,7 +2,7 @@
 dotfiles
 ========
 
-this repository contains all my dotfiles. maintained with gnu stow
+this repository contains all my dotfiles. maintained with chezmoi
 
 init.sh script
 ==============
