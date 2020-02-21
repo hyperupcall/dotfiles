@@ -123,7 +123,7 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export GITLIBS="$HOME/.local/opt/gitlibs"
 
 # boto (github.com/boto/boto)
-export BOTO_CONFIG"$XDG_CONFIG_HOME/boto"
+export BOTO_CONFIG="$XDG_CONFIG_HOME/boto"
 
 # path
 export PATH="$HOME/.local/bin:$PATH"
