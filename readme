@@ -2,14 +2,7 @@
 dotfiles
 ========
 
-this repository contains all my dotfiles. maintained with chezmoi
-
-init.sh script
-==============
-
-stows all but
- - scripts
- - xfce-terminal
+contains my dotfiles; maintained with chezmoi
 
 vscode keybindings
 ==================
