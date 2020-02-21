@@ -1,2 +1,3 @@
-test -f ~/.bashrc && source ~/.bashrc
-
+# for login
+test -r ~/.profile && source ~/.profile
+test -r ~/.bashrc && source ~/.bashrc

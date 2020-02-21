@@ -61,7 +61,7 @@ export NNN_DE_FILE_MANAGER="nautilus"
 # go (github.com/golang/go)
 export GOROOT="$HOME/.local/go-root"
 export GOPATH="$HOME/.local/go-path"
-export PATH="$HOME/.local/go-path/bin:$PATH"
+export PATH="$HOME/$GOPATH/bin:$PATH"
 
 # krew (github.com/kubernetes-sigs/krew
 export KREW_ROOT="$HOME/.local/opt/krew"
@@ -76,9 +76,9 @@ export ANDROID_SDK_ROOT="$HOME/.local/opt/android/sdk"
 # buku (github.com/jarun/buku)
 alias b='buku --suggest'
 
-# google cloud sdk
-if [ -f "$HOME/.local/google-cloud-sdk/path.bash.inc" ]; then . "$HOME/.local/google-cloud-sdk/path.bash.inc"; fi
-if [ -f "$HOME/.local/google-cloud-sdk/completion.bash.inc" ]; then . "$HOME/.local/google-cloud-sdk/completion.bash.inc"; fi
+# gcloud sdk
+test -f "$HOME/.local/google-cloud-sdk/path.bash.inc" && source "$HOME/.local/google-cloud-sdk/path.bash.inc"
+test -f "$HOME/.local/google-cloud-sdk/completion.bash.inc" && source "$HOME/.local/google-cloud-sdk/completion.bash.inc"
 
 # path
 export PATH="$HOME/.local/bin:$PATH"
