@@ -1,10 +1,11 @@
 #!/bin/sh
 
-# general
+## general ##
+# editor
 export VISUAL="nvim"
 export EDITOR="$VISUAL"
-export PAGER="less"
 export SUDO_EDITOR="$VISUAL"
+export PAGER="less"
 
 # xdg
 export XDG_DATA_HOME="$HOME/.local/share" # default
@@ -13,6 +14,72 @@ export XDG_DATA_DIRS="/usr/local/share/:/usr/share" # default
 export XDG_CONFIG_DIRS="/etc/xdg" # default
 export XDG_CACHE_HOME="$HOME/.cache" # default
 
+
+## programs ##
+# less
+export LESSHISTFILE="$XDG_DATA_HOME/lesshst"
+export LESSHISTSIZE="250"
+
+# gnupg (git.gnupg.org/cgi-bin/gitweb.cgi)
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export GPG_TTY=$(tty)
+
+# nnn (github.com/jarun/nnn)
+export NNN_FALLBACK_OPENER="xdg-open"
+export NNN_DE_FILE_MANAGER="nautilus"
+
+# buku (github.com/jarun/buku)
+alias b='buku --suggest'
+
+# irssi (github.com/irssi/irssi)
+alias irssi="irssi --config '$XDG_CONFIG_HOME/irssi'"
+
+# boto (github.com/boto/boto)
+export BOTO_CONFIG="$XDG_CONFIG_HOME/boto"
+
+# snap
+export PATH="/snap/bin:$PATH"
+
+
+## utilities ##
+# gitlib
+export GITLIBS="$HOME/.local/opt/gitlibs"
+
+# sccache (github.com/mozilla/sccache)
+export SCCACHE_CACHE_SIZE="20G"
+export SCCACHE_DIR="$XDG_CACHE_HOME/sccache"
+
+
+## programming programs ##
+# wolfram mathematica
+export MATHEMATICA_BASE="/usr/share/mathematica"
+export MATHEMATICA_USERBASE="$XDG_DATA_HOME/mathematica"
+
+# docker (github.com/moby/moby)
+export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
+
+# ansible (github.com/ansible/ansible)
+export ANSIBLE_CONFIG="$XDG_CONFIG_HOME/ansible.cfg"
+
+# kubernetes (github.com/kubernetes/kubernetes)
+export KUBECONFIG="$XDG_DATA_HOME/kube"
+
+# krew (github.com/kubernetes-sigs/krew
+export KREW_ROOT="$HOME/.local/opt/krew"
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+# terraform (github.com/hashicorp/terraform)
+export TF_CLI_CONFIG_FILE="$XDG_CONFIG_HOME/terraformrc-custom"
+
+# vagrant (github.com/hashicorp/vagrant)
+export VAGRANT_HOME="$HOME/.local/opt/vagrant.d"
+
+# packer (github.com/hashicorp/packer)
+export PACKER_CONFIG="$XDG_CONFIG_HOME/packerconfig"
+export PACKER_CONFIG_DIR="$XDG_CONFIG_HOME/packer.d"
+
+
+## programming ##
 # node
 export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
 
@@ -27,77 +94,31 @@ export PATH="$N_PREFIX/bin:$PATH"
 export YARN_CACHE_FOLDER="$XDG_CACHE_HOME/yarn"
 export PATH="$XDG_DATA_HOME/yarn/global/node_modules/.bin:$PATH"
 
-# less
-export LESSHISTFILE="$XDG_DATA_HOME/lesshst"
-export LESSHISTSIZE="250"
-
-# gnupg (git.gnupg.org/cgi-bin/gitweb.cgi)
-export GNUPGHOME="$XDG_DATA_HOME/gnupg"
-export GPG_TTY=$(tty)
-
-# poetry (github.com/sdispater/poetry)
-export PATH="$HOME/.poetry/bin:$PATH"
-
 # rust (github.com/rust-lang/rust)
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export PATH="$HOME/.local/share/cargo/bin:$PATH"
 
-# sccache (github.com/mozilla/sccache)
-export SCCACHE_CACHE_SIZE="20G"
-export SCCACHE_DIR="$XDG_CACHE_HOME/sccache"
-
-# snap
-export PATH="/snap/bin:$PATH"
-
-# wolfram mathematica
-export MATHEMATICA_BASE="/usr/share/mathematica"
-export MATHEMATICA_USERBASE="$XDG_DATA_HOME/mathematica"
-
-# ansible (github.com/ansible/ansible)
-export ANSIBLE_CONFIG="$XDG_CONFIG_HOME/ansible.cfg"
-
-# terraform (github.com/hashicorp/terraform)
-export TF_CLI_CONFIG_FILE="$XDG_CONFIG_HOME/terraformrc-custom"
-
-# vagrant (github.com/hashicorp/vagrant)
-export VAGRANT_HOME="$HOME/.local/opt/vagrant.d"
-
-# packer (github.com/hashicorp/packer)
-export PACKER_CONFIG="$XDG_CONFIG_HOME/packerconfig"
-export PACKER_CONFIG_DIR="$XDG_CONFIG_HOME/packer.d"
-
-# nnn (github.com/jarun/nnn)
-export NNN_FALLBACK_OPENER="xdg-open"
-export NNN_DE_FILE_MANAGER="nautilus"
+# python
+# poetry (github.com/sdispater/poetry)
+export PATH="$HOME/.poetry/bin:$PATH"
 
 # go (github.com/golang/go)
 export GOROOT="$HOME/.local/go-root"
 export GOPATH="$HOME/.local/go-path"
 export PATH="$HOME/$GOPATH/bin:$PATH"
 
+# dart (github.com/dart-lang/sdk)
+export PUB_CACHE="$XDG_CACHE_HOME/pub-cache"
+
 # flutter (github.com/flutter/flutter)
 export PATH="$HOME/.local/opt/flutter/bin:$PATH"
 
-# android
-export ANDROID_HOME="$HOME/.local/opt/android/sdk"
-export ANDROID_SDK_ROOT="$ANDROID_HOME"
-export ANDROID_SDK_HOME="$HOME/.local/opt/android/sdk-home"
-export ANDROID_EMULATOR_HOME="$ANDROID_SDK_HOME/dot-android"
-
-# buku (github.com/jarun/buku)
-alias b='buku --suggest'
-
-# irssi
-alias irssi="irssi --config '$XDG_CONFIG_HOME/irssi'"
-
-# gcloud sdk
-test -r "$HOME/.local/opt/google-cloud-sdk/path.bash.inc" && source "$HOME/.local/opt/google-cloud-sdk/path.bash.inc"
-test -r "$HOME/.local/opt/google-cloud-sdk/completion.bash.inc" && source "$HOME/.local/opt/google-cloud-sdk/completion.bash.inc"
-
+# java
 # gradle
 export GRADLE_USER_HOME="$HOME/.local/opt/gradle"
 
+# ruby
 # rvm (github.com/rvm/rvm)
 test -r "$HOME/.rvm/scripts/rvm" && source "$HOME/.rvm/scripts/rvm"
 export PATH="$HOME/.rvm/bin:$PATH"
@@ -105,26 +126,13 @@ export PATH="$HOME/.rvm/bin:$PATH"
 # bundle (github.com/rubygems/bundler)
 export BUNDLE_CACHE_PATH="$XDG_CACHE_HOME/bundle"
 
-# dart (github.com/dart-lang/sdk)
-#export DART_SDK
-export PUB_CACHE="$XDG_CACHE_HOME/pub-cache"
 
-# docker (github.com/moby/moby)
-export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
+## programming misc ##
+# gcloud sdk
+test -r "$HOME/.local/opt/google-cloud-sdk/path.bash.inc" && source "$HOME/.local/opt/google-cloud-sdk/path.bash.inc"
+test -r "$HOME/.local/opt/google-cloud-sdk/completion.bash.inc" && source "$HOME/.local/opt/google-cloud-sdk/completion.bash.inc"
 
-# kubernetes (github.com/kubernetes/kubernetes)
-export KUBECONFIG="$XDG_DATA_HOME/kube"
 
-# krew (github.com/kubernetes-sigs/krew
-export KREW_ROOT="$HOME/.local/opt/krew"
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-
-# gitlib
-export GITLIBS="$HOME/.local/opt/gitlibs"
-
-# boto (github.com/boto/boto)
-export BOTO_CONFIG="$XDG_CONFIG_HOME/boto"
-
+## misc ##
 # path
 export PATH="$HOME/.local/bin:$PATH"
-
