@@ -1,0 +1,4 @@
+# for login
+test -r ~/.zprofile && source ~/.zprofile
+test -r ~/.zshrc && source ~/.zshrc
+
