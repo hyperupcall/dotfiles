@@ -1,21 +1,21 @@
 # for interactive non-login shells
-test -f ~/.profile && source ~/.profile
+test -r ~/.profile || return && source ~/.profile
 
 # if not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# command completion
-test -r /usr/share/bash-completion/bash_completion && . /usr/share/bash-completion/bash_completion
+# source configs
+test -r ~/scripts/dots/aliases.sh && source ~/scripts/dots/aliases.sh
 
 ## variables ##
 CDPATH=":~:/usr/local"
 FCEDIT="$EDITOR" # default
 HISTCONTROL="ignorespace,ignoredups"
-HISTFILE="~/.local/share/bash_history"
+HISTFILE="$XDG_DATA_HOME/bash_history"
 HISTSIZE="5000"
 HISTIGNORE="?:ls:[bf]g:exit:pwd:clear"
 HISTTIMEFORMAT="%T %B %m %Y | "
-INPUTRC="~/.config/inputrc"
+INPUTRC="$XDG_CONFIG_HOME/inputrc"
 
 ## options ##
 shopt -s autocd
@@ -41,7 +41,7 @@ set -o physical # default
 ## colors ##
 command -v tput >/dev/null && nc="$(tput colors)"
 if test -n "$nc" && test "$nc" -ge 256 ; then
-    # export PS1="\[\033[38;5;88m\][\[$(tput sgr0)\]\[\033[38;5;23m\]\u\[$(tput sgr0)\]\[\033[38;5;166m\]@\[$(tput sgr0)\]\[\033[38;5;23m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[\033[38;5;166m\]\W\[$(tput sgr0)\]\[\033[38;5;88m\]]\[$(tput sgr0)\]\[\033[38;5;23m\]\\$\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
+    export PS1="\[\033[38;5;88m\][\[$(tput sgr0)\]\[\033[38;5;23m\]\u\[$(tput sgr0)\]\[\033[38;5;166m\]@\[$(tput sgr0)\]\[\033[38;5;23m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[\033[38;5;166m\]\W\[$(tput sgr0)\]\[\033[38;5;88m\]]\[$(tput sgr0)\]\[\033[38;5;23m\]\\$\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
 
     if command -v dircolors >/dev/null ; then
         if test -f ~/.dir_colors ; then
@@ -64,17 +64,10 @@ safe_term=${TERM//[^[:alnum:]]/?}
 xhost +local:root >/dev/null 2>&1
 
 
-## aliases ##
-alias cp="cp -i"
-
-# buku (github.com/jarun/buku)
-alias b='buku --suggest'
-
-# irssi (github.com/irssi/irssi)
-alias irssi="irssi --config '$XDG_CONFIG_HOME/irssi'"
-
-
 ## bash completions ##
+test -r /usr/share/bash-completion/bash_completion && . /usr/share/bash-completion/bash_completion
+
+# sudo
 complete -cf sudo
 
 # buildpacks

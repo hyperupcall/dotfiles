@@ -1,12 +1,16 @@
 # for interactive non-login shells
-# test -f ~/.zprofile && source ~/.zprofile
+test -r ~/.zprofile || return && source ~/.zprofile
 
 # if not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# source configs
+test -r ~/scripts/dots/aliases.sh && source ~/scripts/dots/aliases.sh
+
+
 ## variables ##
 FCEDIT="$EDITOR" # default
-HISTFILE="~/.config/zhistory"
+HISTFILE="$XDG_DATA_HOME/zhistory"
 HISTSIZE="2000"
 SAVEHIST="5000"
 CDPATH=":~:/usr/local"
@@ -75,11 +79,6 @@ bindkey '^[[D'  backward-char
 bindkey '^[[5~' history-beginning-search-backward
 bindkey '^[[6~' history-beginning-search-forward
 
-
-## aliases ##
-alias cp="cp -i"
-alias df="df -h"
-alias free="free -m"
 
 autoload -U compinit colors zcalc
 compinit -d
