@@ -35,7 +35,6 @@ shopt -s progcomp_alias # not working due to complete -D interference?
 shopt -u xpg_echo # match /bin/echo
 
 set -o notify # deafult
-set -o keyword # default
 set -o physical # default
 
 ## colors ##
