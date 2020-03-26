@@ -1,70 +1,89 @@
-## Options section
-setopt correct                                                  # Auto correct mistakes
-setopt extendedglob                                             # Extended globbing. Allows using regular expressions with *
-setopt nocaseglob                                               # Case insensitive globbing
-setopt rcexpandparam                                            # Array expension with parameters
-setopt nocheckjobs                                              # Don't warn about running processes when exiting
-setopt numericglobsort                                          # Sort filenames numerically when it makes sense
-setopt nobeep                                                   # No beep
-setopt appendhistory                                            # Immediately append history instead of overwriting
-setopt histignorealldups                                        # If a new command is a duplicate, remove the older one
-setopt autocd                                                   # if only directory path is entered, cd there.
+# for interactive non-login shells
+# test -f ~/.zprofile && source ~/.zprofile
 
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # Case insensitive tab completion
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"         # Colored completion (different colors for dirs/files/etc)
-zstyle ':completion:*' rehash true                              # automatically find new executables in path 
-# Speed up completions
+# if not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+## variables ##
+FCEDIT="$EDITOR" # default
+HISTFILE="~/.config/zhistory"
+HISTSIZE="2000"
+SAVEHIST="5000"
+CDPATH=":~:/usr/local"
+WORDCHARS=${WORDCHARS//\/[&.;]}
+
+## options ##
+# changing directories
+setopt autocd
+setopt auto_pushd
+setopt cdable_vars
+setopt cdsilent
+setopt chase_dots
+setopt chase_links # bash physical
+setopt posixcd
+setopt pushd_ignore_dups
+unsetopt pushd_to_home
+
+# expansion and globbing
+setopt bad_pattern
+unsetopt case_glob
+unsetopt case_match
+
+# history
+setopt append_history # default; bash histappend
+setopt extended_history
+unset hist_beep
+setopt hist_reduce_blanks
+setopt inc_append_history
+setopt inc_append_history_time
+
+# misc
+unsetopt global_export
+# setopt correct
+setopt extended_glob
+setopt numericglobsort
+setopt rc_expand_param=
+setopt prompt_subst
+unsetopt beep
+
+
+## styles ##
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+# speed up completions
 zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
-HISTFILE=~/.zhistory
-HISTSIZE=1000
-SAVEHIST=500
-#export EDITOR=/usr/bin/nano
-#export VISUAL=/usr/bin/nano
-WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider certain characters part of the word
 
 
-## Keybindings section
+## keybindings ##
 bindkey -e
-bindkey '^[[7~' beginning-of-line                               # Home key
-bindkey '^[[H' beginning-of-line                                # Home key
+bindkey '^[[7~' beginning-of-line
+bindkey '^[[H' beginning-of-line
 if [[ "${terminfo[khome]}" != "" ]]; then
-  bindkey "${terminfo[khome]}" beginning-of-line                # [Home] - Go to beginning of line
+  bindkey "${terminfo[khome]}" beginning-of-line
 fi
-bindkey '^[[8~' end-of-line                                     # End key
-bindkey '^[[F' end-of-line                                     # End key
+bindkey '^[[8~' end-of-line
+bindkey '^[[F' end-of-line
 if [[ "${terminfo[kend]}" != "" ]]; then
-  bindkey "${terminfo[kend]}" end-of-line                       # [End] - Go to end of line
+  bindkey "${terminfo[kend]}" end-of-line
 fi
-bindkey '^[[2~' overwrite-mode                                  # Insert key
-bindkey '^[[3~' delete-char                                     # Delete key
-bindkey '^[[C'  forward-char                                    # Right key
-bindkey '^[[D'  backward-char                                   # Left key
-bindkey '^[[5~' history-beginning-search-backward               # Page up key
-bindkey '^[[6~' history-beginning-search-forward                # Page down key
+bindkey '^[[2~' overwrite-mode
+bindkey '^[[3~' delete-char
+bindkey '^[[C'  forward-char
+bindkey '^[[D'  backward-char
+bindkey '^[[5~' history-beginning-search-backward
+bindkey '^[[6~' history-beginning-search-forward
 
-# Navigate words with ctrl+arrow keys
-bindkey '^[Oc' forward-word                                     #
-bindkey '^[Od' backward-word                                    #
-bindkey '^[[1;5D' backward-word                                 #
-bindkey '^[[1;5C' forward-word                                  #
-bindkey '^H' backward-kill-word                                 # delete previous word with ctrl+backspace
-bindkey '^[[Z' undo                                             # Shift+tab undo last action
 
-## Alias section 
-alias cp="cp -i"                                                # Confirm before overwriting something
-alias df='df -h'                                                # Human-readable sizes
-alias free='free -m'                                            # Show sizes in MB
-alias gitu='git add . && git commit && git push'
+## aliases ##
+alias cp="cp -i"
+alias df="df -h"
+alias free="free -m"
 
-# Theming section  
 autoload -U compinit colors zcalc
 compinit -d
 colors
-
-# enable substitution for prompt
-setopt prompt_subst
 
 # Prompt (on left side) similar to default bash prompt, or redhat zsh prompt with colors
  #PROMPT="%(!.%{$fg[red]%}[%n@%m %1~]%{$reset_color%}# .%{$fg[green]%}[%n@%m %1~]%{$reset_color%}$ "
@@ -77,7 +96,7 @@ echo $USER@$HOST  $(uname -srm) $(lsb_release -rcs)
 #  - shows exit status of previous command (if previous command finished with an error)
 #  - is invisible, if neither is the case
 
-# Modify the colors and symbols in these variables as desired.
+## git ##
 GIT_PROMPT_SYMBOL="%{$fg[blue]%}±"                              # plus/minus     - clean repo
 GIT_PROMPT_PREFIX="%{$fg[green]%}[%{$reset_color%}"
 GIT_PROMPT_SUFFIX="%{$fg[green]%}]%{$reset_color%}"
@@ -139,7 +158,7 @@ git_prompt_string() {
  #RPROMPT="%(?.%{$fg[green]%}✓ %{$reset_color%}.%{$fg[red]%}✗ %{$reset_color%})"
 
 
-# Color man pages
+# color man pages
 export LESS_TERMCAP_mb=$'\E[01;32m'
 export LESS_TERMCAP_md=$'\E[01;32m'
 export LESS_TERMCAP_me=$'\E[0m'
@@ -150,7 +169,7 @@ export LESS_TERMCAP_us=$'\E[01;36m'
 export LESS=-r
 
 
-## Plugins section: Enable fish style features
+## plugins section: Enable fish style features
 # Use syntax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Use history substring search

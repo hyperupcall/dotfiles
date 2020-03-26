@@ -9,13 +9,19 @@ export PAGER="less"
 
 # xdg
 export XDG_DATA_HOME="$HOME/.local/share" # default
-export XDG_CONFIG_HOME="$HOME/.config" # defualt
+export XDG_CONFIG_HOME="$HOME/.config" # default
 export XDG_DATA_DIRS="/usr/local/share/:/usr/share" # default
 export XDG_CONFIG_DIRS="/etc/xdg" # default
 export XDG_CACHE_HOME="$HOME/.cache" # default
 
+# path
+export PATH="$HOME/.local/bin:$PATH"
+
 
 ## programs ##
+# readline
+export INPUTRC="$XDG_CONFIG_HOME/inputrc"
+
 # less
 export LESSHISTFILE="$XDG_DATA_HOME/lesshst"
 export LESSHISTSIZE="250"
@@ -27,12 +33,6 @@ export GPG_TTY=$(tty)
 # nnn (github.com/jarun/nnn)
 export NNN_FALLBACK_OPENER="xdg-open"
 export NNN_DE_FILE_MANAGER="nautilus"
-
-# buku (github.com/jarun/buku)
-alias b='buku --suggest'
-
-# irssi (github.com/irssi/irssi)
-alias irssi="irssi --config '$XDG_CONFIG_HOME/irssi'"
 
 # boto (github.com/boto/boto)
 export BOTO_CONFIG="$XDG_CONFIG_HOME/boto"
@@ -131,8 +131,3 @@ export BUNDLE_CACHE_PATH="$XDG_CACHE_HOME/bundle"
 # gcloud sdk
 test -r "$HOME/.local/opt/google-cloud-sdk/path.bash.inc" && source "$HOME/.local/opt/google-cloud-sdk/path.bash.inc"
 test -r "$HOME/.local/opt/google-cloud-sdk/completion.bash.inc" && source "$HOME/.local/opt/google-cloud-sdk/completion.bash.inc"
-
-
-## misc ##
-# path
-export PATH="$HOME/.local/bin:$PATH"
