@@ -28,7 +28,7 @@ export LESSHISTSIZE="250"
 
 # gnupg (git.gnupg.org/cgi-bin/gitweb.cgi)
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
-export GPG_TTY=$(tty)
+tty="$(tty)" && export GPG_TTY="$tty"; unset tty
 
 # nnn (github.com/jarun/nnn)
 export NNN_FALLBACK_OPENER="xdg-open"
