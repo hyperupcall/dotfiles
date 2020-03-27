@@ -4,9 +4,6 @@ test -r ~/.profile || return && source ~/.profile
 # if not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# source configs
-test -r ~/scripts/dots/aliases.sh && source ~/scripts/dots/aliases.sh
-
 ## variables ##
 CDPATH=":~:/usr/local"
 FCEDIT="$EDITOR" # default
@@ -25,6 +22,8 @@ shopt -s checkjobs
 shopt -s checkwinsize # default
 shopt -s cmdhist # default
 shopt -s dirspell
+shopt -s failglob
+shopt -s globstar
 shopt -s gnu_errfmt
 shopt -s histappend
 shopt -u hostcomplete
@@ -32,7 +31,7 @@ shopt -s interactive_comments # default
 shopt -s nocaseglob
 shopt -s nocasematch
 shopt -s progcomp_alias # not working due to complete -D interference?
-shopt -u xpg_echo # match /bin/echo
+shopt -u xpg_echo # default
 
 set -o notify # deafult
 set -o physical # default
