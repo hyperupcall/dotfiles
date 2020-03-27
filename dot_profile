@@ -43,7 +43,6 @@ export LESSHISTFILE="$XDG_CONFIG_HOME/less/history"
 export LESSHISTSIZE="250"
 
 # code (github.com/microsoft/vscode) [code.visualstudio.com]
-alias code='code --user-data-dir "$XDG_DATA_HOME/vscode" --extensions-dir "$XDG_DATA_HOME/vscode/extensions"'
 
 # irssi (github.com/irssi/irssi) [irssi.org]
 alias irssi='irssi --config "$XDG_CONFIG_HOME/irssi"'
