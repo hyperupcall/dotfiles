@@ -37,7 +37,7 @@ export PGSERVICEFILE="$XDG_CONFIG_HOME/pg/pg_service.conf"
 export NVM_DIR="$XDG_DATA_HOME"/nvm
 
 # less [greenwoodsoftware.com/less]
-export LESS="--mouse -q"
+#export LESS="--mouse -q"
 export LESSKEY="$XDG_CONFIG_HOME/less/keys"
 export LESSHISTFILE="$XDG_CONFIG_HOME/less/history"
 export LESSHISTSIZE="250"
@@ -190,6 +190,7 @@ export GRADLE_USER_HOME="$HOME/.local/opt/gradle"
 alias mvn='mvn -gs "$XDG_CONFIG_HOME/maven/settings.xml"'
 
 # rvm (github.com/rvm/rvm) [rvm.io]
+# shellcheck source=/home/edwin/.rvm/scripts/rvm
 test -r "$HOME/.rvm/scripts/rvm" && . "$HOME/.rvm/scripts/rvm"
 export PATH="$HOME/.rvm/bin:$PATH"
 
@@ -209,6 +210,9 @@ export STACK_ROOT="$XDG_DATA_HOME/stack"
 
 # buku (github.com/jarun/buku)
 alias b="bukdu --suggest"
+
+# tails (github.com/eankeen/eankeen)
+alias t='node -r esm $HOME/repos/tails/tails-cli/src/index.js'
 
 ## aliases ##
 alias cp="cp -i"

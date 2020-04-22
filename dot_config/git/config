@@ -4,6 +4,7 @@
 	  signingkey = 484EA8DEF2F467E6
 [core]
     editor = nvim
+    pager = less -FX
 [gpg]
 	program = gpg2
 [commit]
