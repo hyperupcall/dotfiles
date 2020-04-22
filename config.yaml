@@ -1,0 +1,68 @@
+config:
+  backup: true
+  banner: true
+  dotpath: .
+  ignoreempty: false
+  keepdot: true
+  link_dotfile_default: link
+  link_on_import: link
+  create: false
+  longkey: true
+  workdir: ~/.config/dotdrop
+dotfiles:
+  f_profile:
+    src: .profile
+    dst: ~/.profile
+    link: link
+  f_bashrc:
+    src: .bashrc
+    dst: ~/.bashrc
+  f_zprofile:
+    src: .zprofile
+    dst: ~/.zprofile
+  f_zshrc:
+    src: .zshrc
+    dst: ~/.zshrc
+  f_config_chezmoi_chezmoi.toml:
+    src: .config/chezmoi/chezmoi.toml
+    dst: ~/.config/chezmoi/chezmoi.toml
+  f_config_git_config:
+    src: .config/git/config
+    dst: ~/.config/git/config
+  f_config_maven_settings.xml:
+    src: .config/maven/settings.xml
+    dst: ~/.config/maven/settings.xml
+  f_config_readline_inputrc:
+    src: .config/readline/inputrc
+    dst: ~/.config/readline/inputrc
+  f_config_user-dirs.dirs:
+    src: .config/user-dirs.dirs
+    dst: ~/.config/user-dirs.dirs
+  f_config_code_user_keybindings.json:
+    src: .config/Code/User/keybindings.json
+    dst: ~/.config/Code/User/keybindings.json
+  f_config_code_user_settings.json:
+    src: .config/Code/User/settings.json
+    dst: ~/.config/Code/User/settings.json
+  f_config_dir_colors:
+    src: .config/dir_colors
+    dst: ~/.config/dir_colors
+  f_config_nvim_init.vim:
+    src: .config/nvim/init.vim
+    dst: ~/.config/nvim/init.vim
+profiles:
+  surface:
+    dotfiles:
+    - f_profile
+    - f_bashrc
+    - f_zprofile
+    - f_zshrc
+    - f_config_chezmoi_chezmoi.toml
+    - f_config_git_config
+    - f_config_maven_settings.xml
+    - f_config_readline_inputrc
+    - f_config_user-dirs.dirs
+    - f_config_code_user_keybindings.json
+    - f_config_code_user_settings.json
+    - f_config_dir_colors
+    - f_config_nvim_init.vim

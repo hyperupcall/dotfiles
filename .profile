@@ -214,6 +214,9 @@ alias b="bukdu --suggest"
 # tails (github.com/eankeen/eankeen)
 alias t='node -r esm $HOME/repos/tails/tails-cli/src/index.js'
 
+# dotdrop (https://github.com/deadc0de6/dotdrop) [deadc0de.re/dotdrop]
+alias dotdrop='dotdrop --cfg=$HOME/.dots/config.yaml'
+
 ## aliases ##
 alias cp="cp -i"
 alias df="df -h"
