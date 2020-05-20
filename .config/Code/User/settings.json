@@ -169,7 +169,7 @@
   "window.titleBarStyle": "custom",
   "window.zoomLevel": -1,
   "workbench.activityBar.visible": true,
-  "workbench.colorTheme": "Nord",
+  "workbench.colorTheme": "Night Owl",
   "workbench.commandPalette.history": 5,
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.focusRecentEditorAfterClose": false,
@@ -254,5 +254,6 @@
   ],
   "sqltools.useNodeRuntime": true,
   "explorer.confirmDelete": false,
-  "shellcheck.disableVersionCheck": true
+  "shellcheck.disableVersionCheck": true,
+  "prettier.packageManager": "yarn"
 }

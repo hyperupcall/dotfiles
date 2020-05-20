@@ -217,7 +217,17 @@ alias t='node -r esm $HOME/repos/tails/tails-cli/src/index.js'
 # dotdrop (https://github.com/deadc0de6/dotdrop) [deadc0de.re/dotdrop]
 alias dotdrop='dotdrop --cfg=$HOME/.dots/config.yaml'
 
+# http-serve (node package)
+alias http-serve='http-serve -c-1'
+
 ## aliases ##
 alias cp="cp -i"
 alias df="df -h"
 alias free="free -m" 
+
+# deno
+export DENO_INSTALL="/home/edwin/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+export DENO_INSTALL_ROOT="$XDG_DATA_HOME/deno"
+export PATH="/home/edwin/.local/share/deno/bin:$PATH"
+alias dem='/home/edwin/.local/share/deno/bin/cmd'
