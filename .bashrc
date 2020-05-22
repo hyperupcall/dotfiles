@@ -36,6 +36,9 @@ shopt -u xpg_echo # default
 set -o notify # deafult
 set -o physical # default
 
+## stty ##
+
+
 ## colors ##
 command -v tput >/dev/null && nc="$(tput colors)"
 if test -n "$nc" && test "$nc" -ge 256 ; then
@@ -90,3 +93,5 @@ command -v poetry >/dev/null && eval "$(poetry completions bash)"
 # tabtab source for packages
 # uninstall by removing these lines
 [ -f ~/.config/tabtab/bash/__tabtab.bash ] && . ~/.config/tabtab/bash/__tabtab.bash || true
+
+export N_PREFIX="$HOME/.local/opt/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).

@@ -6,6 +6,6 @@
     editor = nvim
     pager = less -FX
 [gpg]
-	program = gpg2
+	program = gpg
 [commit]
 	gpgSign = true

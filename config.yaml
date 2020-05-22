@@ -66,3 +66,19 @@ profiles:
     - f_config_code_user_settings.json
     - f_config_dir_colors
     - f_config_nvim_init.vim
+  fox:
+    dotfiles:
+    - f_profile
+    - f_bashrc
+    - f_zprofile
+    - f_zshrc
+    - f_config_chezmoi_chezmoi.toml
+    - f_config_git_config
+    - f_config_maven_settings.xml
+    - f_config_readline_inputrc
+    - f_config_user-dirs.dirs
+    - f_config_code_user_keybindings.json
+    - f_config_code_user_settings.json
+    - f_config_dir_colors
+    - f_config_nvim_init.vim
+
