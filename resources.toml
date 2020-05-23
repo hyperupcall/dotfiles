@@ -5,12 +5,15 @@ site = 'apps.ankiweb.net'
 [ansible]
 source = 'github.com/ansible/ansible'
 site = 'ansible.com'
+docs = 'docs.ansible.com'
 
 [atom]
 source = 'github.com/atom/atom'
 site = 'atom.io'
+docs = 'atom.io/docs'
 
 [aws]
+docs = 'docs.aws.amazon.com'
 
 [bash-completion]
 
@@ -20,40 +23,51 @@ docs = 'docs.pythonboto.org'
 
 [buildpacks]
 site = 'buildpacks.io'
+docs = 'buildpacks.io/docs'
 
 [buku]
 source = 'github.com/jarun/buku'
+docs = 'buku.readthedocs.io/en/stable'
 
 [bundle]
 source = 'github.com/rubygems/bundler'
 site = 'bundler.io'
+docs = 'bundler.io/docs.html'
 
 [ccache]
 source = 'github.com/ccache/ccache'
 site = 'ccache.dev'
+docs = 'ccache.dev/documentation'
 
 [chezmoi]
 source = 'github.com/twpayne/chezmoi'
+site = 'chezmoi.io'
+docs = 'chezmoi.io/docs/reference'
 
 [code]
 source = 'github.com/microsoft/vscode'
 site = 'code.visualstudio.com'
+docs = 'code.visualstudio.com/api'
 
 [dart]
 source = 'github.com/dart-lang/sdk'
 site = 'dart.dev'
+docs = 'api.dart.dev'
 
 [deno]
 source = 'github.com/denoland/deno'
 site = 'deno.land'
+docs = 'https://doc.deno.land/https/github.com/denoland/deno/releases/latest/download/lib.deno.d.ts'
 
 [docker]
 source = 'github.com/moby/moby'
 site = 'docker.com'
+docs = 'docs.docker.com/reference'
 
 [dotdrop]
 source = 'https://github.com/deadc0de6/dotdrop'
 site = 'deadc0de.re/dotdrop'
+docs = 'https://github.com/deadc0de6/dotdrop/wiki'
 
 [elinks]
 source = 'elinks.cz/elinks.git'
@@ -62,6 +76,7 @@ site = 'elinks.or.cz'
 [flutter]
 source = 'github.com/flutter/flutter'
 site = 'flutter.dev'
+docs = 'flutter.dev/docs'
 
 [gcloud]
 site = 'cloud.google.com/sdk/gcloud'
@@ -76,6 +91,7 @@ source = 'github.com/jwiegley/gitlib'
 [gnupg]
 source = 'git.gnupg.org/cgi-bin/gitweb.cgi'
 site = 'gnupg.org'
+docs = 'gnupg.org/documentation'
 
 [g]
 source = 'https://github.com/stefanmaric/g'
@@ -83,10 +99,12 @@ source = 'https://github.com/stefanmaric/g'
 [go]
 source = 'github.com/golang/go'
 site = 'golang.org'
+docs = 'golang.org/doc'
 
 [gradle]
 source = 'github.com/gradle/gradle'
 site = 'gradle.org'
+docs = 'docs.gradle.org/current/userguide/userguide.html'
 
 [http-server]
 source = 'https://github.com/http-party/http-server'
@@ -96,20 +114,26 @@ source = 'https://github.com/http-party/http-server'
 [ipython]
 source = 'github.com/ipython/ipython'
 site = 'ipython.org'
+docs = 'ipython.readthedocs.io/en/stable'
 
 [irssi]
 source = 'github.com/irssi/irssi'
 site = 'irssi.org'
+docs = 'irssi.org/documentation'
 
 [jupyter]
 site = 'jupyter.org'
+docs = 'jupyter.org/documentation'
 
 [krew]
 source = 'github.com/kubernetes-sigs/krew'
 site = 'krew.sigs.k8s.io'
+docs = 'krew.sigs.k8s.io/docs'
 
 [kubernetes]
 source = 'github.com/kubernetes/kubernetes'
+site = 'kubernetes.io'
+docs = 'kubernetes.io/docs/home'
 
 [less]
 site = 'greenwoodsoftware.com/less'
@@ -117,6 +141,7 @@ site = 'greenwoodsoftware.com/less'
 [maven]
 source = 'github.com/apache/maven'
 site = 'maven.apache.org'
+docs = 'maven.apache.org/guides/index.html'
 
 [most]
 site = 'jedsoft.org/most'
@@ -127,6 +152,7 @@ site = 'mplayerhq.hu'
 [mysql]
 source = 'github.com/mysql/mysql-server'
 site = 'mysql.com'
+docs = 'dev.mysql.com/doc'
 
 [n]
 source = 'github.com/tj/n'
@@ -134,16 +160,19 @@ source = 'github.com/tj/n'
 [netbeams]
 source = 'github.com/apache/netbeans'
 site = 'netbeans.org'
+docs = 'netbeans.org/kb/index.html'
 
 [nnn]
 source = 'github.com/jarun/nnn'
 
 [node]
 site = 'nodejs.org'
+docs = 'nodejs.org/en/docs'
 
 [npm]
 site = 'github.com/npm/cli'
 source = 'npmjs.com'
+docs = 'docs.npmjs.com'
 
 [nvm]
 source = 'github.com/nvm-sh/nvm'
@@ -151,18 +180,24 @@ source = 'github.com/nvm-sh/nvm'
 [packer]
 source = 'github.com/hashicorp/packer'
 site = 'packer.io'
+docs = 'packer.io/docs/'
 
 [poetry]
 source = 'github.com/sdispater/poetry'
 site = 'python-poetry.org'
+docs = 'python-poetry.org/docs'
 
 [postgresql]
+source = 'postgresql.org/ftp'
+docs = 'postgresql.org/docs'
 
 [readline]
+site = 'https://www.gnu.org/software/readline'
 
 [rust]
 source = 'github.com/rust-lang/rust'
 site = 'rust-lang.org'
+docs = 'doc.rust-lang.org/std/index.html'
 
 [rvm]
 source = 'github.com/rvm/rvm'
@@ -170,6 +205,7 @@ site = 'rvm.io'
 
 [sccache]
 source = 'github.com/mozilla/sccache'
+docs = 'github.com/mozilla/sccache/tree/master/docs'
 
 [screen]
 source = 'git://git.savannah.gnu.org/screen.git'
@@ -192,23 +228,30 @@ site = 'sudo.ws'
 [terraform]
 source = 'github.com/hashicorp/terraform'
 site = 'terraform.io'
+docs = 'terraform.io/docs/index.html'
 
 [travis]
 site = 'travis-ci.org'
+docs = 'docs.travis-ci.com'
 
 [tmux]
 source = 'github.com/tmux/tmux'
+docs = 'github.com/tmux/tmux/wiki'
 
 [vagrant]
 source = 'github.com/hashicorp/vagrant'
 site = 'vagrantup.com'
+docs = 'vagrantup.com/docs/index.html'
 
 [wolfram mathematica]
 site = 'wolfram.com/mathematica'
+docs = 'reference.wolfram.com/language'
 
 [x]
 site = 'x.org'
+docs = 'x.org/wiki/Documentation'
 
 [yarn]
 source = 'github.com/yarnpkg/yarn'
 site = 'yarnpkg.com'
+docs = 'classic.yarnpkg.com/en/docs'
