@@ -1,10 +1,18 @@
-# for interactive non-login shells
+#
+# ~/.zshrc
+# interactive non-login shells
+#
+
+# if profile can be read; source it; else exit
 test -r ~/.zprofile || return && source ~/.zprofile
 
-# if not running interactively, don't do anything
+# if not running interactively, exit
 [[ $- != *i* ]] && return
 
-## variables ##
+# if terminal does not enable truecolor, exit
+test "$COLORTERM" = "truecolor" || return
+
+## shell variables ##
 FCEDIT="$EDITOR" # default
 HISTFILE="$XDG_DATA_HOME/zhistory"
 HISTSIZE="2000"
@@ -12,7 +20,7 @@ SAVEHIST="5000"
 CDPATH=":~:/usr/local"
 WORDCHARS=${WORDCHARS//\/[&.;]}
 
-## options ##
+## shell options ##
 # changing directories
 setopt autocd
 setopt auto_pushd

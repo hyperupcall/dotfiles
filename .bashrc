@@ -1,8 +1,7 @@
 #
 # ~/.bashrc
+# interactive, non-login shells
 # 
-
-# for interactive, non-login shells
 
 # if profile can be read, source it; else exit
 test -r ~/.profile || return && source ~/.profile
@@ -23,7 +22,8 @@ HISTIGNORE="?:ls:[bf]g:exit:pwd:clear"
 HISTTIMEFORMAT="%T %B %m %Y | "
 INPUTRC="$XDG_CONFIG_HOME/inputrc"
 
-## options ##
+## shell options ##
+# shopt
 shopt -s autocd
 shopt -s cdable_vars
 shopt -s cdspell
@@ -42,6 +42,7 @@ shopt -s nocasematch
 shopt -s progcomp_alias # not working due to complete -D interference?
 shopt -u xpg_echo # default
 
+# set
 set -o notify # deafult
 set -o physical # default
 
@@ -109,3 +110,5 @@ if command -v dircolors >/dev/null ; then
     fi
 fi
 unset nc
+
+export PS1="\[\033[38;5;88m\][\[$(tput sgr0)\]\[\033[38;5;23m\]\u\[$(tput sgr0)\]\[\033[38;5;166m\]@\[$(tput sgr0)\]\[\033[38;5;23m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[\033[38;5;166m\]\W\[$(tput sgr0)\]\[\033[38;5;88m\]]\[$(tput sgr0)\]\[\033[38;5;23m\]\\$\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"

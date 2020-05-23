@@ -70,7 +70,7 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
 
 # dotdrop
-alias dotdrop='dotdrop --cfg=$HOME/.dots/config.yaml'
+alias dotdrop='dotdrop --cfg=$HOME/.dots/dotdrop.yaml'
 
 # elinks
 export ELINKS_CONFDIR="$XDG_DATA_HOME/elinks"
