@@ -3,27 +3,3 @@ dotfiles
 ========
 
 contains my dotfiles; maintained with dotdrop
-
-vscode keybindings
-==================
-
-- ctrl + shift + alt         modification
-  - yuio     [editor group]  move non-cursor element around
-  - hjkl     [editor]        move non-cursor element around
-  - nm,.     [panel]         move non-cursor element around (sometimes buggy?)
-  - p, /, c  [window]        create / delete / resize relative to whole window
-
-- ctrl + alt                 navigation
-  - yuio     [editor group]  move cursor highlight
-  - hjkl     [editor]        move cursor highlight
-  - nm,.     [panel]         move cursor highlight
-
-- alt + shift                dialogs 
-  - a        [window]        open file picker dialog
-  - s        [window]        open editor dialog
-
-- ctrl + shift   
-
-- alt                        manipulation within a context
-  - j        [context]       move down
-  - k        [context]       move up

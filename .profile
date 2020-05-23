@@ -8,8 +8,8 @@ export VISUAL="nvim"
 export EDITOR="$VISUAL"
 export SUDO_EDITOR="$VISUAL"
 export DIFFPROG="nvim -d"
-export PAGER="less"
-export LANG=${LANG:-en_US.UTF-8}
+export PAGER="lessexport LANG=${LANG:-en_US.UTF-8}
+"
 
 # xdg [https://specifications.freedesktop.org/basedir-spec]
 export XDG_DATA_HOME="$HOME/.local/share" # default
