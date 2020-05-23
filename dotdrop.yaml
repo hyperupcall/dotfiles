@@ -6,7 +6,7 @@ config:
   keepdot: true
   link_dotfile_default: link
   link_on_import: link
-  create: false
+  create: true
   longkey: true
   workdir: ~/.config/dotdrop
 dotfiles:
