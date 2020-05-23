@@ -1,4 +1,6 @@
-#!/bin/sh
+#
+# ~/.profile
+#
 
 ## general ##
 # editor
@@ -167,8 +169,8 @@ export PATH="$CARGO_HOME/bin:$PATH"
 export PATH="$HOME/.poetry/bin:$PATH"
 
 # go (github.com/golang/go) [golang.org]
-export GOROOT="$HOME/.local/go-root"
-export GOPATH="$HOME/.local/go-path"
+export GOROOT="$HOME/.local/opt/go/root"
+export GOPATH="$HOME/.local/opt/go/path"
 export PATH="$HOME/$GOPATH/bin:$PATH"
 
 # dart (github.com/dart-lang/sdk) [dart.dev]

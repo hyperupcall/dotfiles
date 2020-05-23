@@ -1,3 +1,7 @@
+#
+# ~/.bashrc
+#
+
 # for interactive non-login shells
 test -r ~/.profile || return && source ~/.profile
 
@@ -96,3 +100,6 @@ command -v poetry >/dev/null && eval "$(poetry completions bash)"
 
 export N_PREFIX="$HOME/.local/opt/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
 eval $(keychain --eval --quiet)
+
+export GOPATH="$HOME/.local/opt/go/path"; export GOROOT="$HOME/.local/opt/go/root"; export PATH="$GOPATH/bin:$PATH"; # g-install: do NOT edit, see https://github.com/stefanmaric/g
+alias gg="$GOPATH/bin/g"; # g-install: do NOT edit, see https://github.com/stefanmaric/g
