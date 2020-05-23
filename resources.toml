@@ -1,0 +1,214 @@
+[anki]
+source = 'github.com/ankitects/anki'
+site = 'apps.ankiweb.net'
+
+[ansible]
+source = 'github.com/ansible/ansible'
+site = 'ansible.com'
+
+[atom]
+source = 'github.com/atom/atom'
+site = 'atom.io'
+
+[aws]
+
+[bash-completion]
+
+[boto]
+source = 'github.com/boto/boto'
+docs = 'docs.pythonboto.org'
+
+[buildpacks]
+site = 'buildpacks.io'
+
+[buku]
+source = 'github.com/jarun/buku'
+
+[bundle]
+source = 'github.com/rubygems/bundler'
+site = 'bundler.io'
+
+[ccache]
+source = 'github.com/ccache/ccache'
+site = 'ccache.dev'
+
+[chezmoi]
+source = 'github.com/twpayne/chezmoi'
+
+[code]
+source = 'github.com/microsoft/vscode'
+site = 'code.visualstudio.com'
+
+[dart]
+source = 'github.com/dart-lang/sdk'
+site = 'dart.dev'
+
+[deno]
+source = 'github.com/denoland/deno'
+site = 'deno.land'
+
+[docker]
+source = 'github.com/moby/moby'
+site = 'docker.com'
+
+[dotdrop]
+source = 'https://github.com/deadc0de6/dotdrop'
+site = 'deadc0de.re/dotdrop'
+
+[elinks]
+source = 'elinks.cz/elinks.git'
+site = 'elinks.or.cz'
+
+[flutter]
+source = 'github.com/flutter/flutter'
+site = 'flutter.dev'
+
+[gcloud]
+site = 'cloud.google.com/sdk/gcloud'
+
+[gem]
+source = 'github.com/rubygems/rubygems'
+site = 'rubygems.org'
+
+[gitlib]
+source = 'github.com/jwiegley/gitlib'
+
+[gnupg]
+source = 'git.gnupg.org/cgi-bin/gitweb.cgi'
+site = 'gnupg.org'
+
+[g]
+source = 'https://github.com/stefanmaric/g'
+
+[go]
+source = 'github.com/golang/go'
+site = 'golang.org'
+
+[gradle]
+source = 'github.com/gradle/gradle'
+site = 'gradle.org'
+
+[http-server]
+source = 'https://github.com/http-party/http-server'
+
+[ice authority]
+
+[ipython]
+source = 'github.com/ipython/ipython'
+site = 'ipython.org'
+
+[irssi]
+source = 'github.com/irssi/irssi'
+site = 'irssi.org'
+
+[jupyter]
+site = 'jupyter.org'
+
+[krew]
+source = 'github.com/kubernetes-sigs/krew'
+site = 'krew.sigs.k8s.io'
+
+[kubernetes]
+source = 'github.com/kubernetes/kubernetes'
+
+[less]
+site = 'greenwoodsoftware.com/less'
+
+[maven]
+source = 'github.com/apache/maven'
+site = 'maven.apache.org'
+
+[most]
+site = 'jedsoft.org/most'
+
+[mplayer]
+site = 'mplayerhq.hu'
+
+[mysql]
+source = 'github.com/mysql/mysql-server'
+site = 'mysql.com'
+
+[n]
+source = 'github.com/tj/n'
+
+[netbeams]
+source = 'github.com/apache/netbeans'
+site = 'netbeans.org'
+
+[nnn]
+source = 'github.com/jarun/nnn'
+
+[node]
+site = 'nodejs.org'
+
+[npm]
+site = 'github.com/npm/cli'
+source = 'npmjs.com'
+
+[nvm]
+source = 'github.com/nvm-sh/nvm'
+
+[packer]
+source = 'github.com/hashicorp/packer'
+site = 'packer.io'
+
+[poetry]
+source = 'github.com/sdispater/poetry'
+site = 'python-poetry.org'
+
+[postgresql]
+
+[readline]
+
+[rust]
+source = 'github.com/rust-lang/rust'
+site = 'rust-lang.org'
+
+[rvm]
+source = 'github.com/rvm/rvm'
+site = 'rvm.io'
+
+[sccache]
+source = 'github.com/mozilla/sccache'
+
+[screen]
+source = 'git://git.savannah.gnu.org/screen.git'
+site = 'gnu.org/software/screen'
+
+[snap]
+source = 'github.com/snapcore/snapd'
+snap = 'snapcraft.io'
+
+[stack]
+source = 'github.com/commercialhaskell/stack'
+site = 'haskellstack.org'
+
+[subversion]
+site = 'subversion.apache.org'
+
+[sudo]
+site = 'sudo.ws'
+
+[terraform]
+source = 'github.com/hashicorp/terraform'
+site = 'terraform.io'
+
+[travis]
+site = 'travis-ci.org'
+
+[tmux]
+source = 'github.com/tmux/tmux'
+
+[vagrant]
+source = 'github.com/hashicorp/vagrant'
+site = 'vagrantup.com'
+
+[wolfram mathematica]
+site = 'wolfram.com/mathematica'
+
+[x]
+site = 'x.org'
+
+[yarn]
+source = 'github.com/yarnpkg/yarn'
+site = 'yarnpkg.com'

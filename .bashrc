@@ -84,13 +84,13 @@ else
   complete -o default -o nospace -F __start_pack p
 fi
 
-# chezmoi (github.com/twpayne/chezmoi)
+# chezmoi
 command -v chezmoi > /dev/null && eval "$(chezmoi completion bash)"
 
 # travis
 test -f /home/edwin/.travis/travis.sh && source "$HOME/.travis/travis.sh"
 
-# poetry (github.com/python-poetry/poetry)
+# poetry
 command -v poetry >/dev/null && eval "$(poetry completions bash)"
 
 
@@ -101,5 +101,8 @@ command -v poetry >/dev/null && eval "$(poetry completions bash)"
 export N_PREFIX="$HOME/.local/opt/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
 eval $(keychain --eval --quiet)
 
-export GOPATH="$HOME/.local/opt/go/path"; export GOROOT="$HOME/.local/opt/go/root"; export PATH="$GOPATH/bin:$PATH"; # g-install: do NOT edit, see https://github.com/stefanmaric/g
-alias gg="$GOPATH/bin/g"; # g-install: do NOT edit, see https://github.com/stefanmaric/g
+# g
+export GOPATH="$HOME/.local/opt/go/path"
+export GOROOT="$HOME/.local/opt/go/root"
+export PATH="$GOPATH/bin:$PATH"
+alias gg="$GOPATH/bin/g"
