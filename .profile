@@ -7,7 +7,8 @@ export VISUAL="nvim"
 export EDITOR="$VISUAL"
 export SUDO_EDITOR="$VISUAL"
 export DIFFPROG="nvim -d"
-export PAGER="lessexport LANG=${LANG:-en_US.UTF-8}"
+export PAGER="less"
+export LANG="${LANG:-en_US.UTF-8}"
 export XDG_DATA_HOME="$HOME/.local/share" # default
 export XDG_CONFIG_HOME="$HOME/.config" # default
 export XDG_DATA_DIRS="/usr/local/share/:/usr/share" # default
@@ -16,7 +17,7 @@ export XDG_CACHE_HOME="$HOME/.cache" # default
 export PATH="$HOME/.local/bin:$PATH"
 
 
-## utils ##
+## core ##
 # cp
 alias cp="cp -i"
 
@@ -124,9 +125,17 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export KUBECONFIG="$XDG_DATA_HOME/kube"
 
 # less
+export LESS="-R"
 export LESSKEY="$XDG_CONFIG_HOME/less/keys"
 export LESSHISTFILE="$XDG_CONFIG_HOME/less/history"
 export LESSHISTSIZE="250"
+export LESS_TERMCAP_mb=$'\e[1;31m' # start blink
+export LESS_TERMCAP_md=$'\e[1;36m' # start bold
+export LESS_TERMCAP_me=$'\e[0m' # end all
+export LESS_TERMCAP_so=$'\e[01;44;33m' # start reverse video
+export LESS_TERMCAP_se=$'\e[0m' # end reverse video
+export LESS_TERMCAP_us=$'\e[1;32m' # start underline
+export LESS_TERMCAP_ue=$'\e[0m' # end underline
 
 # ltrace
 alias ltrace='ltrace -F "$XDG_CONFIG_HOME/ltrace/ltrace.conf"'

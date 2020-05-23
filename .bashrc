@@ -1,16 +1,21 @@
 #
 # ~/.bashrc
-#
+# 
 
-# for interactive non-login shells
+# for interactive, non-login shells
+
+# if profile can be read, source it; else exit
 test -r ~/.profile || return && source ~/.profile
 
-# if not running interactively, don't do anything
+# if not running interactively, exit
 [[ $- != *i* ]] && return
 
-## variables ##
+# if terminal does not enable truecolor, exit
+test "$COLORTERM" = "truecolor" || return
+
+## shell variables ##
 CDPATH=":~:/usr/local"
-FCEDIT="$EDITOR" # default
+FCEDIT="$EDITOR" # defaultK
 HISTCONTROL="ignorespace,ignoredups"
 HISTFILE="$XDG_DATA_HOME/bash_history"
 HISTSIZE="5000"
@@ -40,69 +45,67 @@ shopt -u xpg_echo # default
 set -o notify # deafult
 set -o physical # default
 
-## stty ##
+## core ##
+# diff
+alias diff='diff --color=auto'
+
+# egrep
+alias egrep='egrep --colour=auto'
+
+# fgrep
+alias fgrep='fgrep --colour=auto'
+
+# grep
+alias grep='grep --colour=auto'
+
+# ip
+alias ip='ip -color=auto'
+
+# ls
+alias ls='ls --color=auto'
+
+# sudo
+complete -cf sudo
 
 
-## colors ##
-command -v tput >/dev/null && nc="$(tput colors)"
-if test -n "$nc" && test "$nc" -ge 256 ; then
-    export PS1="\[\033[38;5;88m\][\[$(tput sgr0)\]\[\033[38;5;23m\]\u\[$(tput sgr0)\]\[\033[38;5;166m\]@\[$(tput sgr0)\]\[\033[38;5;23m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[\033[38;5;166m\]\W\[$(tput sgr0)\]\[\033[38;5;88m\]]\[$(tput sgr0)\]\[\033[38;5;23m\]\\$\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
+## programs
+## bash completions ##
+test -r /usr/share/bash-completion/bash_completion && . /usr/share/bash-completion/bash_completion
 
-    if command -v dircolors >/dev/null ; then
-        if test -f ~/.dir_colors ; then
-            eval "$(dircolors -b '$XDG_CONFIG_HOME/dir_colors')"
-        fi
-    fi
+# buildpacks
+command -v pack >/dev/null && source $(pack completion)
 
-    alias ls='ls --color=auto'
-    alias grep='grep --colour=auto'
-    alias egrep='egrep --colour=auto'
-    alias fgrep='fgrep --colour=auto'
-fi
-unset nc
+# chezmoi
+command -v chezmoi >/dev/null && eval "$(chezmoi completion bash)"
 
+# poetry
+command -v poetry >/dev/null && eval "$(poetry completions bash)"
 
-# sanitize term
-safe_term=${TERM//[^[:alnum:]]/?}
+# travis
+test -f /home/edwin/.travis/travis.sh && source "$HOME/.travis/travis.sh"
 
 # x11
 xhost +local:root >/dev/null 2>&1
 
 
-## bash completions ##
-test -r /usr/share/bash-completion/bash_completion && . /usr/share/bash-completion/bash_completion
-
-# sudo
-complete -cf sudo
-
-# buildpacks
-command -v pack > /dev/null && source $(pack completion)
-alias p="pack"
+## crap i still have to cleanup
 if [ $(type -t compopt) = "builtin" ]; then
   complete -o default -F __start_pack p
 else
   complete -o default -o nospace -F __start_pack p
 fi
 
-# chezmoi
-command -v chezmoi > /dev/null && eval "$(chezmoi completion bash)"
-
-# travis
-test -f /home/edwin/.travis/travis.sh && source "$HOME/.travis/travis.sh"
-
-# poetry
-command -v poetry >/dev/null && eval "$(poetry completions bash)"
-
-
 # tabtab source for packages
 # uninstall by removing these lines
 [ -f ~/.config/tabtab/bash/__tabtab.bash ] && . ~/.config/tabtab/bash/__tabtab.bash || true
 
-export N_PREFIX="$HOME/.local/opt/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
 eval $(keychain --eval --quiet)
 
-# g
-export GOPATH="$HOME/.local/opt/go/path"
-export GOROOT="$HOME/.local/opt/go/root"
-export PATH="$GOPATH/bin:$PATH"
-alias gg="$GOPATH/bin/g"
+## colors ##
+nc="$(tput colors)"
+if command -v dircolors >/dev/null ; then
+    if test -f ~/.dir_colors ; then
+        eval "$(dircolors -b '$XDG_CONFIG_HOME/dir_colors')"
+    fi
+fi
+unset nc
