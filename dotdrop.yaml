@@ -50,6 +50,9 @@ dotfiles:
   f_config_nvim_init.vim:
     src: .config/nvim/init.vim
     dst: ~/.config/nvim/init.vim
+  f_config_i3_config:
+    src: .config/i3/config
+    dst: ~/.config/i3/config
 profiles:
   surface:
     dotfiles:
@@ -82,3 +85,4 @@ profiles:
     - f_config_dir_colors
     - f_config_nvim_init.vim
 
+    - f_config_i3_config

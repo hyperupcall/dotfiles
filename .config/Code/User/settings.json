@@ -255,5 +255,8 @@
   "sqltools.useNodeRuntime": true,
   "explorer.confirmDelete": false,
   "shellcheck.disableVersionCheck": true,
-  "prettier.packageManager": "yarn"
+  "prettier.packageManager": "yarn",
+  "go.enableCodeLens": {
+    "references": true
+  }
 }

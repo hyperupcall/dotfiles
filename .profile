@@ -62,9 +62,10 @@ export CCACHE_CONFIGPATH="$XDG_CONFIG_HOME"/ccache.config
 export PUB_CACHE="$XDG_CACHE_HOME/pub-cache"
 
 # deno
-export DENO_INSTALL="$XDG_DATA_HOME/deno"
-export DENO_INSTALL_ROOT="$DENO_INSTALL/root"
-export PATH="$DENO_INSTALL/bin:$PATH"
+export DENO_DIR="$XDG_DATA_HOME/deno"
+export DENO_INSTALL_ROOT="$DENO_DIR/bin"
+export PATH="$DENO_INSTALL_ROOT:$PATH"
+export PATH="$DENO_INSTALL_ROOT/bin:$PATH"
 
 # docker
 export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
@@ -175,6 +176,9 @@ export NVM_DIR="$XDG_DATA_HOME"/nvm
 # packer
 export PACKER_CONFIG="$XDG_CONFIG_HOME/packerconfig"
 export PACKER_CONFIG_DIR="$XDG_CONFIG_HOME/packer.d"
+
+# pnpm
+export NPM_CONFIG_STORE_DIR="$XDG_CONFIG_HOME/pnpm-store"
 
 # poetry
 export PATH="$HOME/.poetry/bin:$PATH"
