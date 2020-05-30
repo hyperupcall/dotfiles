@@ -1,16 +1,27 @@
+# [dotdrop] config
+# https://github.com/deadc0de6/dotdrop/wiki/config
+
 config:
   backup: true
   banner: true
-  dotpath: local
   # cmpignore
   create: true
   #default_actions
   #diff_command
+  dotpath: local
+  #filter_file
+  #func_file
   ignoreempty: false
+  #import_actions
+  #import_configs
+  #import_variables
+  #instignore
   keepdot: true
   link_dotfile_default: link
   link_on_import: link
   longkey: true
+  #showdiff
+  #upignore
   workdir: ~/.config/dotdrop
 dotfiles:
   f_profile:
@@ -87,5 +98,4 @@ profiles:
     - f_config_code_user_settings.json
     - f_config_dir_colors
     - f_config_nvim_init.vim
-
     - f_config_i3_config
