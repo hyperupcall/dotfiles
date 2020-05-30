@@ -1,0 +1,19 @@
+config:
+  backup: true
+  banner: true
+  create: true
+  dotpath: global
+  ignoreempty: false
+  keepdot: true
+  link_dotfile_default: link
+  link_on_import: link
+  longkey: true
+  workdir: ~/.config/dotdrop
+dotfiles:
+  f_etc_x11_xinit_xinitrc:
+    src: etc/X11/xinit/xinitrc
+    dst: /etc/X11/xinit/xinitrc
+profiles:
+  fox:
+    dotfiles:
+    - f_etc_x11_xinit_xinitrc
