@@ -160,4 +160,4 @@ fi
 # uninstall by removing these lines
 [ -f ~/.config/tabtab/bash/__tabtab.bash ] && . ~/.config/tabtab/bash/__tabtab.bash || true
 
-eval $(keychain --eval --quiet)
+eval $(keychain --eval ~/.ssh/github --quiet)
