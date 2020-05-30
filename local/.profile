@@ -21,10 +21,6 @@ export PATH="$HOME/.local/bin:$PATH"
 # cp
 alias cp="cp -i"
 
-# dir_colors
-test -r "$XDG_CONFIG_HOME/dir_colors" \
-  && eval "$(dircolors $XDG_CONFIG_HOME/dir_colors)"
-
 # df
 alias df="df -h"
 
@@ -218,6 +214,7 @@ export SCREENRC="$XDG_CONFIG_HOME/screen/screenrc"
 
 # snap
 export PATH="/snap/bin:$PATH"
+export PATH="/var/lib/snapd/snap/bin:$PATH"
 
 # stack
 export STACK_ROOT="$XDG_DATA_HOME/stack"

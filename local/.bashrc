@@ -1,7 +1,10 @@
 #
 # ~/.bashrc
-# interactive, non-login shells
-# 
+#
+
+# for interactive, non-login shells. scp and rcp may still
+# read this despite assumed noninteractivity - so ensure
+# nothing gets printed to the tty
 
 # if profile can be read, source it; else exit
 test -r ~/.profile || return && source ~/.profile
@@ -9,8 +12,9 @@ test -r ~/.profile || return && source ~/.profile
 # if not running interactively, exit
 [[ $- != *i* ]] && return
 
-# if terminal does not enable truecolor, exit
-test "$COLORTERM" = "truecolor" || return
+# only enable colors for terminal emulators that support true color
+hasColor="$(test \"$COLORTERM\" = \"truecolor\"; echo $?)"
+
 
 ## shell variables ##
 CDPATH=":~:/usr/local"
@@ -22,6 +26,7 @@ HISTIGNORE="?:ls:[bf]g:exit:pwd:clear"
 HISTTIMEFORMAT="%T %B %m %Y | "
 INPUTRC="$XDG_CONFIG_HOME/inputrc"
 
+
 ## shell options ##
 # shopt
 shopt -s autocd
@@ -31,12 +36,14 @@ shopt -s checkjobs
 shopt -s checkwinsize # default
 shopt -s cmdhist # default
 shopt -s dirspell
+shopt -s dotglob
 shopt -s failglob
 shopt -s globstar
 shopt -s gnu_errfmt
 shopt -s histappend
 shopt -u hostcomplete
 shopt -s interactive_comments # default
+shopt -s no_empty_cmd_completion
 shopt -s nocaseglob
 shopt -s nocasematch
 shopt -s progcomp_alias # not working due to complete -D interference?
@@ -46,24 +53,47 @@ shopt -u xpg_echo # default
 set -o notify # deafult
 set -o physical # default
 
+
+## colors ##
+# dir_colors
+test -r "$XDG_CONFIG_HOME/dir_colors" \
+  && eval "$(dircolors -b $XDG_CONFIG_HOME/dir_colors)"
+
 ## core ##
+# bash
+# if the directory is not empty
+if (shopt -s nullglob dotglob; f=("/etc/bash/bashrc.d"); ((! ${#f[@]})))
+then
+  for sh in /etc/bash/bashrc.d/*
+  do
+    [ -r "${sh}" ] && source "${sh}"
+  done
+fi
+
+
 # diff
-alias diff='diff --color=auto'
+test "$hasColor" -eq 0 \
+  && alias diff='diff --color=auto'
 
 # egrep
-alias egrep='egrep --colour=auto'
+test "$hasColor" -eq 0 \
+  && alias egrep='egrep --colour=auto'
 
 # fgrep
-alias fgrep='fgrep --colour=auto'
+test "$hasColor" -eq 0 \
+  && alias fgrep='fgrep --colour=auto'
 
 # grep
-alias grep='grep --colour=auto'
+test "$hasColor" -eq 0 \
+  && alias grep='grep --colour=auto'
 
 # ip
-alias ip='ip -color=auto'
+test "$hasColor" -eq 0 \
+  && alias ip='ip -color=auto'
 
 # ls
-alias ls='ls --color=auto'
+test "$hasColor" -eq 0 \
+  && alias ls='ls --color=auto'
 
 # sudo
 complete -cf sudo
@@ -102,13 +132,7 @@ fi
 
 eval $(keychain --eval --quiet)
 
-## colors ##
-nc="$(tput colors)"
-if command -v dircolors >/dev/null ; then
-    if test -f ~/.dir_colors ; then
-        eval "$(dircolors -b '$XDG_CONFIG_HOME/dir_colors')"
-    fi
-fi
-unset nc
-
 export PS1="\[\033[38;5;88m\][\[$(tput sgr0)\]\[\033[38;5;23m\]\u\[$(tput sgr0)\]\[\033[38;5;166m\]@\[$(tput sgr0)\]\[\033[38;5;23m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[\033[38;5;166m\]\W\[$(tput sgr0)\]\[\033[38;5;88m\]]\[$(tput sgr0)\]\[\033[38;5;23m\]\\$\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
+
+## cleanup ##
+unset hasColor
