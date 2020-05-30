@@ -21,6 +21,10 @@ export PATH="$HOME/.local/bin:$PATH"
 # cp
 alias cp="cp -i"
 
+# dir_colors
+test -r "$XDG_CONFIG_HOME/dir_colors" \
+  && eval "$(dircolors $XDG_CONFIG_HOME/dir_colors)"
+
 # df
 alias df="df -h"
 
