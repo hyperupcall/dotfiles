@@ -6,8 +6,8 @@
 # read this despite assumed noninteractivity - so ensure
 # nothing gets printed to the tty
 
-# if profile can be read, source it; else exit
-test -r ~/.profile || return && source ~/.profile
+# if profile can be read, source it
+test -r ~/.profile && source ~/.profile
 
 # if not running interactively, exit
 [[ $- != *i* ]] && return
@@ -56,11 +56,15 @@ set -o physical # default
 
 ## colors ##
 # dir_colors
-test -r "$XDG_CONFIG_HOME/dir_colors" \
-  && eval "$(dircolors -b $XDG_CONFIG_HOME/dir_colors)"
+if test "$hasColor" -eq 0
+then
+  test -r "$XDG_CONFIG_HOME/dir_colors" \
+    && eval "$(dircolors -b $XDG_CONFIG_HOME/dir_colors)"
+else
+  unset LS_COLORS
+fi
 
-## core ##
-# bash
+## bash ##
 # if the directory is not empty
 if (shopt -s nullglob dotglob; f=("/etc/bash/bashrc.d"); ((! ${#f[@]})))
 then
@@ -70,7 +74,32 @@ then
   done
 fi
 
+# bash completions
+test -r /usr/share/bash-completion/bash_completion && . /usr/share/bash-completion/bash_completion
 
+
+## PS1
+if test "$hasColor" -eq 0
+then
+  # color
+  if test "$EUID" = 0
+  then
+    PS1="\[\e[31m\][\u@\h \w]\$\[\e[m\] "
+  else
+    PS1="\[\033[38;5;88m\][\[$(tput sgr0)\]\[\033[38;5;23m\]\u\[$(tput sgr0)\]\[\033[38;5;166m\]@\[$(tput sgr0)\]\[\033[38;5;23m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[\033[38;5;166m\]\W\[$(tput sgr0)\]\[\033[38;5;88m\]]\[$(tput sgr0)\]\[\033[38;5;23m\]\\$\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
+  fi
+else
+  # no color
+  if test "$EUID" = 0 
+  then
+    PS1="[\u@\h \w]\$ "
+  else
+    PS1="[\u@\h \W]\$ "
+  fi
+fi
+
+
+## core ##
 # diff
 test "$hasColor" -eq 0 \
   && alias diff='diff --color=auto'
@@ -99,10 +128,7 @@ test "$hasColor" -eq 0 \
 complete -cf sudo
 
 
-## programs
-## bash completions ##
-test -r /usr/share/bash-completion/bash_completion && . /usr/share/bash-completion/bash_completion
-
+## programs ##
 # buildpacks
 command -v pack >/dev/null && source $(pack completion)
 
@@ -119,7 +145,11 @@ test -f /home/edwin/.travis/travis.sh && source "$HOME/.travis/travis.sh"
 xhost +local:root >/dev/null 2>&1
 
 
-## crap i still have to cleanup
+## cleanup ##
+unset hasColor
+
+
+## todo: cleanup
 if [ $(type -t compopt) = "builtin" ]; then
   complete -o default -F __start_pack p
 else
@@ -131,8 +161,3 @@ fi
 [ -f ~/.config/tabtab/bash/__tabtab.bash ] && . ~/.config/tabtab/bash/__tabtab.bash || true
 
 eval $(keychain --eval --quiet)
-
-export PS1="\[\033[38;5;88m\][\[$(tput sgr0)\]\[\033[38;5;23m\]\u\[$(tput sgr0)\]\[\033[38;5;166m\]@\[$(tput sgr0)\]\[\033[38;5;23m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[\033[38;5;166m\]\W\[$(tput sgr0)\]\[\033[38;5;88m\]]\[$(tput sgr0)\]\[\033[38;5;23m\]\\$\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
-
-## cleanup ##
-unset hasColor
