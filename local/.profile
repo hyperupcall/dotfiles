@@ -85,8 +85,10 @@ export ELINKS_CONFDIR="$XDG_DATA_HOME/elinks"
 export PATH="$HOME/.local/opt/flutter/bin:$PATH"
 
 # gcloud
-test -r "$HOME/.local/opt/google-cloud-sdk/path.bash.inc" && . "$HOME/.local/opt/google-cloud-sdk/path.bash.inc"
-test -r "$HOME/.local/opt/google-cloud-sdk/completion.bash.inc" && . "$HOME/.local/opt/google-cloud-sdk/completion.bash.inc"
+test -r "$HOME/.local/opt/google-cloud-sdk/path.bash.inc" \
+  && . "$HOME/.local/opt/google-cloud-sdk/path.bash.inc"
+test -r "$HOME/.local/opt/google-cloud-sdk/completion.bash.inc" \
+  && . "$HOME/.local/opt/google-cloud-sdk/completion.bash.inc"
 
 # gem
 export GEM_HOME="$XDG_DATA_HOME"/gem
@@ -203,7 +205,8 @@ export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export PATH="$CARGO_HOME/bin:$PATH"
 
 # rvm
-test -r "$HOME/.rvm/scripts/rvm" && . "$HOME/.rvm/scripts/rvm"
+test -r "$HOME/.rvm/scripts/rvm" \
+  && . "$HOME/.rvm/scripts/rvm"
 export PATH="$HOME/.rvm/bin:$PATH"
 
 # sccache
