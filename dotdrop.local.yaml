@@ -1,12 +1,15 @@
 config:
   backup: true
   banner: true
-  dotpath: .
+  dotpath: local
+  # cmpignore
+  create: true
+  #default_actions
+  #diff_command
   ignoreempty: false
   keepdot: true
   link_dotfile_default: link
   link_on_import: link
-  create: true
   longkey: true
   workdir: ~/.config/dotdrop
 dotfiles:
