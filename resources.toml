@@ -109,6 +109,11 @@ docs = 'docs.gradle.org/current/userguide/userguide.html'
 [http-server]
 source = 'https://github.com/http-party/http-server'
 
+[i3]
+source = 'https://github.com/i3/i3'
+site = 'https://i3wm.org'
+docs = 'https://i3wm.org/docs'
+
 [ice authority]
 
 [ipython]

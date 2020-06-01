@@ -54,7 +54,8 @@
     ".lintstagedrc": "json",
     "*.css": "postcss",
     "*.hbs": "html",
-    "Vagrantfile": "ruby"
+    "Vagrantfile": "ruby",
+    "**/i3/config": "i3"
   },
   "files.autoSave": "onWindowChange",
   "files.eol": "\n",
@@ -178,7 +179,7 @@
   "workbench.editor.tabCloseButton": "off",
   "workbench.editor.tabSizing": "shrink",
   "workbench.enableExperiments": false,
-  "workbench.iconTheme": "material-icon-theme",
+  "workbench.iconTheme": "vscode-icons",
   "workbench.startupEditor": "newUntitledFile",
   "yaml.format.printWidth": 100,
   "yaml.format.singleQuote": true,
