@@ -168,9 +168,9 @@
   "window.restoreWindows": "all",
   "window.title": "🦊 ${folderName} ${activeEditorLong}${separator}${remoteName}",
   "window.titleBarStyle": "custom",
-  "window.zoomLevel": -1,
+  "window.zoomLevel": 0,
   "workbench.activityBar.visible": true,
-  "workbench.colorTheme": "Night Owl",
+  "workbench.colorTheme": "Monokai Classic",
   "workbench.commandPalette.history": 5,
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.focusRecentEditorAfterClose": false,
@@ -179,7 +179,7 @@
   "workbench.editor.tabCloseButton": "off",
   "workbench.editor.tabSizing": "shrink",
   "workbench.enableExperiments": false,
-  "workbench.iconTheme": "vscode-icons",
+  "workbench.iconTheme": "Monokai Classic Icons",
   "workbench.startupEditor": "newUntitledFile",
   "yaml.format.printWidth": 100,
   "yaml.format.singleQuote": true,
@@ -259,5 +259,9 @@
   "prettier.packageManager": "yarn",
   "go.enableCodeLens": {
     "references": true
-  }
+  },
+  "comment-divider.length": 60,
+  "tabnine.experimentalAutoImports": 0,
+  "go.formatTool": "goimports",
+  "go.useLanguageServer": true
 }
