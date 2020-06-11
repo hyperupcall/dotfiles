@@ -1,18 +1,17 @@
 # ensure it's read as version 4
 # i3 config file (v4)
 
-## set ##
 set $mod Mod4
-
-
-## font ##
-# font pango:DejaVu Sans Mono 8
-font pango:Terminus 11px
-
-
-## mouse ##
+# font pango:DejaVu Sans Mono 12
+font pango:Terminus 12px
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+focus_follows_mouse no
+mouse_warping none
+workspace_auto_back_and_forth yes
+floating_modifier $mod
+#gaps inner 10
+#gaps outer 5
 
 
 ## suspend ##
@@ -38,7 +37,7 @@ bindsym --release $mod+x exec --no-startup-id xfce4-screenshooter --region
 
 # dmenu wrapper that only displays applications
 bindsym $mod+o exec --no-startup-id i3-dmenu-desktop
-
+bindcode 107 exec --no-startup-id i3-dmenu-desktop
 
 ## navigation ##
 # change focus
@@ -81,12 +80,11 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
+# define names for default workspaces for which we configure key bindings later on.
+set $ws1 "1: tty"
+set $ws2 "2: code"
+set $ws3 "3: web"
+set $ws4 "4: knowledge"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
@@ -120,7 +118,6 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 
 
 ## meta
-# reloads i3 config
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
@@ -128,35 +125,70 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3 and end X session?' -B 'yah, exit!' 'i3-msg exit'"
 
 
-# resize window (you can also use the mouse for that)
+bindsym $mod+r mode "resize"
 mode "resize" {
-  # These bindings trigger as soon as you enter the resize mode
+  bindsym h resize shrink width 10 px or 10 ppt
+  bindsym j resize grow height 10 px or 10 ppt
+  bindsym k resize shrink height 10 px or 10 ppt
+  bindsym l resize grow width 10 px or 10 ppt
 
-  # Pressing left will shrink the window’s width.
-  # Pressing right will grow the window’s width.
-  # Pressing up will shrink the window’s height.
-  # Pressing down will grow the window’s height.
-  bindsym j resize shrink width 10 px or 10 ppt
-  bindsym k resize grow height 10 px or 10 ppt
-  bindsym l resize shrink height 10 px or 10 ppt
-  bindsym semicolon resize grow width 10 px or 10 ppt
-
-  # same bindings, but for the arrow keys
-  bindsym Left resize shrink width 10 px or 10 ppt
-  bindsym Down resize grow height 10 px or 10 ppt
-  bindsym Up resize shrink height 10 px or 10 ppt
-  bindsym Right resize grow width 10 px or 10 ppt
-
-  # back to normal: Enter or Escape or $mod+r
   bindsym Return mode "default"
   bindsym Escape mode "default"
   bindsym $mod+r mode "default"
 }
 
-bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
+#exec --no-startup-id start-pulseaudio-x11 &
+#exec --no-startup-id bash -c "$conf/scripts/random_wallpaper.sh" &
+#exec --no-startup-id kdeconnect-indicator &
+#exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+#exec --no-startup-id start-pulseaudio-x11 &
+#exec --no-startup-id xfce4-clipman -d &
+#exec --no-startup-id dropbox &
+#exec --no-startup-id insync start &
+#exec --no-startup-id pasystray &
+#exec --no-startup-id blueman-applet &
+
+bar {
+  output $disp1
+  position top
+  workspace_buttons no
+  tray_output none
+  i3bar_command i3bar -t
+  status_command i3blocks -c "$conf/settings/i3blocks.top.left.conf"
+  height 25
+  colors {
+    background #00000088
+    statusline #ffffffff
+  }
+}
+
+# start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
+  position bottom
+  mode hide
+  hidden_state hide
+  modifier $mod
   status_command i3status
+  font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+  font pango:Terminus 16px
+  separator_symbol " | "
+  workspace_buttons yes
+  workspace_min_width 20
+  binding_mode_indicator yes
+  colors {
+    separator #666666
+    background #222222
+    statusline #dddddd
+    focused_workspace #0088CC #0088CC #ffffff #ffffff
+    active_workspace #333333 #333333 #ffffff #ffffff
+    inactive_workspace #333333 #333333 #888888 #888888
+    urgent_workspace #2f343a #900000 #ffffff #ffffff
+  }
 }
+
+client.focused #0088CC #0088CC #ffffff #dddddd
+client.focused_inactive #333333 #333333 #888888 #292d2e
+client.unfocused #333333 #333333 #888888 #292d2e
+client.urgent #2f343a #900000 #ffffff #900000

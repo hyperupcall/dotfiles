@@ -107,12 +107,20 @@ site = 'gradle.org'
 docs = 'docs.gradle.org/current/userguide/userguide.html'
 
 [http-server]
-source = 'https://github.com/http-party/http-server'
+source = 'github.com/http-party/http-server'
 
 [i3]
 source = 'https://github.com/i3/i3'
-site = 'https://i3wm.org'
-docs = 'https://i3wm.org/docs'
+site = 'i3wm.org'
+docs = 'i3wm.org/docs'
+
+[i3-bindings]
+source = 'github.com/tupini07/i3-bindings'
+docs = 'github.com/tupini07/i3-bindings#i3-bindings'
+
+[i3-style]
+source = 'github.com/altdesktop/i3-style'
+docs = 'github.com/altdesktop/i3-style#i3-style'
 
 [ice authority]
 
@@ -197,7 +205,11 @@ source = 'postgresql.org/ftp'
 docs = 'postgresql.org/docs'
 
 [readline]
-site = 'https://www.gnu.org/software/readline'
+site = 'gnu.org/software/readline'
+
+[rofi]
+source = 'github.com/davatorium/rofi'
+docs = 'github.com/davatorium/rofi#a-window-switcher-application-launcher-and-dmenu-replacement'
 
 [rust]
 source = 'github.com/rust-lang/rust'

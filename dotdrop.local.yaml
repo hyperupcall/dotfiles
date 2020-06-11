@@ -1,27 +1,13 @@
-# [dotdrop] config
-# https://github.com/deadc0de6/dotdrop/wiki/config
-
 config:
   backup: true
   banner: true
-  # cmpignore
   create: true
-  #default_actions
-  #diff_command
   dotpath: local
-  #filter_file
-  #func_file
   ignoreempty: false
-  #import_actions
-  #import_configs
-  #import_variables
-  #instignore
   keepdot: true
   link_dotfile_default: link
   link_on_import: link
   longkey: true
-  #showdiff
-  #upignore
   workdir: ~/.config/dotdrop
 dotfiles:
   f_profile:
@@ -67,6 +53,18 @@ dotfiles:
   f_config_i3_config:
     src: .config/i3/config
     dst: ~/.config/i3/config
+  f_xresources:
+    src: .Xresources
+    dst: ~/.Xresources
+  f_xinitrc:
+    src: .xinitrc
+    dst: ~/.xinitrc
+  f_bash_profile:
+    src: .bash_profile
+    dst: ~/.bash_profile
+  f_bash_logout:
+    src: .bash_logout
+    dst: ~/.bash_logout
 profiles:
   surface:
     dotfiles:
@@ -99,3 +97,7 @@ profiles:
     - f_config_dir_colors
     - f_config_nvim_init.vim
     - f_config_i3_config
+    - f_xresources
+    - f_xinitrc
+    - f_bash_profile
+    - f_bash_logout

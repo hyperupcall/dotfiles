@@ -1,3 +1,5 @@
+///bin/true; exec /usr/bin/env go run "$0" "$@"
+
 package main
 
 import (
@@ -32,7 +34,7 @@ func isStartOfSection(line string) bool {
 }
 
 func main() {
-	file, err := os.Open("../.profile")
+	file, err := os.Open("../local/.profile")
 	if err != nil {
 		log.Fatal(err)
 	}

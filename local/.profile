@@ -15,6 +15,7 @@ export XDG_DATA_DIRS="/usr/local/share/:/usr/share" # default
 export XDG_CONFIG_DIRS="/etc/xdg" # default
 export XDG_CACHE_HOME="$HOME/.cache" # default
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.dots/scripts:$PATH"
 
 
 ## core ##
@@ -151,7 +152,7 @@ alias mvn='mvn -gs "$XDG_CONFIG_HOME/maven/settings.xml"'
 export MOST_INITFILE="$XDG_CONFIG_HOME/most/mostrc"
 
 # mplayer
-export MPLAYER_HOME=$XDG_CONFIG_HOME/mplayer
+export MPLAYER_HOME="$XDG_CONFIG_HOME/mplayer"
 
 # mysql
 export MYSQL_HISTFILE="$XDG_DATA_HOME/mysql_history"
@@ -170,8 +171,11 @@ export NNN_DE_FILE_MANAGER="nautilus"
 # node
 export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
 
-# npm
+# npm / pnpm
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npmrc"
+# unsure if this works
+export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
+export NPM_CONFIG_STORE_DIR="$XDG_DATA_HOME/pnpm-store"
 
 # nvm
 export NVM_DIR="$XDG_DATA_HOME"/nvm
@@ -179,9 +183,6 @@ export NVM_DIR="$XDG_DATA_HOME"/nvm
 # packer
 export PACKER_CONFIG="$XDG_CONFIG_HOME/packerconfig"
 export PACKER_CONFIG_DIR="$XDG_CONFIG_HOME/packer.d"
-
-# pnpm
-export NPM_CONFIG_STORE_DIR="$XDG_DATA_HOME/pnpm-store"
 
 # poetry
 export PATH="$HOME/.poetry/bin:$PATH"
