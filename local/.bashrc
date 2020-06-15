@@ -1,3 +1,4 @@
+# shellcheck disable=SC2148
 #
 # ~/.bashrc
 #
@@ -7,6 +8,7 @@
 # nothing gets printed to the tty
 
 # if profile can be read, source it
+# shellcheck source=$HOME/.profile
 test -r ~/.profile && source ~/.profile
 
 # if not running interactively, exit
@@ -29,7 +31,7 @@ INPUTRC="$XDG_CONFIG_HOME/inputrc"
 
 ## shell options ##
 # shopt
-shopt -s autocd
+shopt -u autocd
 shopt -s cdable_vars
 shopt -s cdspell
 shopt -s checkjobs

@@ -170,7 +170,7 @@
   "window.titleBarStyle": "custom",
   "window.zoomLevel": 0,
   "workbench.activityBar.visible": true,
-  "workbench.colorTheme": "Monokai Classic",
+  "workbench.colorTheme": "Dainty – Panda Theme (chroma 3, lightness 1)",
   "workbench.commandPalette.history": 5,
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.focusRecentEditorAfterClose": false,
@@ -179,7 +179,7 @@
   "workbench.editor.tabCloseButton": "off",
   "workbench.editor.tabSizing": "shrink",
   "workbench.enableExperiments": false,
-  "workbench.iconTheme": "Monokai Classic Icons",
+  "workbench.iconTheme": "Monokai Pro (Filter Octagon) Icons",
   "workbench.startupEditor": "newUntitledFile",
   "yaml.format.printWidth": 100,
   "yaml.format.singleQuote": true,
@@ -234,7 +234,6 @@
     "templating"
   ],
   "editor.minimap.enabled": false,
-  "explorer.autoReveal": false,
   "explorer.compactFolders": false,
   "editor.renderWhitespace": "none",
   "[json]": {
@@ -263,5 +262,15 @@
   "comment-divider.length": 60,
   "tabnine.experimentalAutoImports": 0,
   "go.formatTool": "goimports",
-  "go.useLanguageServer": true
+  "go.useLanguageServer": true,
+  "shellcheck.customArgs": [
+    "-x"
+  ],
+  "shellcheck.ignoreFileSchemes": [
+    "git",
+    "gitfs",
+    "hg"
+  ],
+  "shellcheck.useWorkspaceRootAsCwd": true,
+  "todo-tree.tree.showScanModeButton": false
 }

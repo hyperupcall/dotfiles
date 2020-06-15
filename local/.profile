@@ -119,6 +119,9 @@ export IPYTHONDIR="$XDG_CONFIG_HOME"/jupyter
 # irssi
 alias irssi='irssi --config "$XDG_CONFIG_HOME/irssi"'
 
+# junest
+export JUNEST_HOME="$HOME/.local/opt/junest"
+
 # jupyter
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
 
