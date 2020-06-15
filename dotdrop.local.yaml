@@ -65,6 +65,9 @@ dotfiles:
   f_bash_logout:
     src: .bash_logout
     dst: ~/.bash_logout
+  f_local_share_applications_obsidian.desktop:
+    src: .local/share/applications/obsidian.desktop
+    dst: ~/.local/share/applications/obsidian.desktop
 profiles:
   surface:
     dotfiles:
@@ -101,3 +104,4 @@ profiles:
     - f_xinitrc
     - f_bash_profile
     - f_bash_logout
+    - f_local_share_applications_obsidian.desktop
