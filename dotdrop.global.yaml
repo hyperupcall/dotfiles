@@ -10,14 +10,10 @@ config:
   longkey: true
   workdir: ~/.config/dotdrop
 dotfiles:
-  f_etc_x11_xinit_xinitrc:
-    src: etc/X11/xinit/xinitrc
-    dst: /etc/X11/xinit/xinitrc
   f_boot_efi_efi_refind_refind.conf:
     src: boot/efi/EFI/refind/refind.conf
     dst: /boot/efi/EFI/refind/refind.conf
 profiles:
   fox:
     dotfiles:
-    - f_etc_x11_xinit_xinitrc
     - f_boot_efi_efi_refind_refind.conf
