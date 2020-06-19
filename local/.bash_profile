@@ -1,7 +1,7 @@
+# shellcheck shell=bash
 #
 # ~/.bash_profile
 #
 
-[[ -f ~/.bashrc ]] && . ~/.bashrc
+test -f ~/.bashrc test && . ~/.bashrc
 
-export PATH="/home/edwin/.local/share/cargo/bin:$PATH"

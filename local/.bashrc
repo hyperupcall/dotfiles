@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # shellcheck disable=SC2148
 #
 # ~/.bashrc
@@ -163,5 +164,3 @@ fi
 [ -f ~/.config/tabtab/bash/__tabtab.bash ] && . ~/.config/tabtab/bash/__tabtab.bash || true
 
 eval $(keychain --eval ~/.ssh/github --quiet)
-
-[[ -s "/home/edwin/.gvm/scripts/gvm" ]] && source "/home/edwin/.gvm/scripts/gvm"

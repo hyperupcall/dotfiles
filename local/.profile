@@ -1,3 +1,4 @@
+# shellcheck shell=sh
 #
 # ~/.profile
 #
@@ -102,7 +103,7 @@ tty="$(tty)" && export GPG_TTY="$tty"; unset tty
 # go
 export GOROOT="$HOME/.local/opt/go/root"
 export GOPATH="$HOME/.local/opt/go/path"
-export PATH="$HOME/$GOPATH/bin:$PATH"
+export PATH="$GOPATH/bin:$PATH"
 
 # gradle
 export GRADLE_USER_HOME="$HOME/.local/opt/gradle"
@@ -245,4 +246,3 @@ export MATHEMATICA_USERBASE="$XDG_DATA_HOME/mathematica"
 export YARN_CACHE_FOLDER="$XDG_CACHE_HOME/yarn"
 export PATH="$XDG_DATA_HOME/yarn/global/node_modules/.bin:$PATH"
 
-export PATH="/home/edwin/.local/share/cargo/bin:$PATH"

@@ -78,6 +78,9 @@ source = 'github.com/flutter/flutter'
 site = 'flutter.dev'
 docs = 'flutter.dev/docs'
 
+[g]
+source = 'https://github.com/stefanmaric/g'
+
 [gcloud]
 site = 'cloud.google.com/sdk/gcloud'
 

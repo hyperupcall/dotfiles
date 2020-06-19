@@ -68,6 +68,9 @@ dotfiles:
   f_local_share_applications_obsidian.desktop:
     src: .local/share/applications/obsidian.desktop
     dst: ~/.local/share/applications/obsidian.desktop
+  f_local_share_applications_zettlr.desktop:
+    src: .local/share/applications/zettlr.desktop
+    dst: ~/.local/share/applications/zettlr.desktop
 profiles:
   surface:
     dotfiles:
@@ -105,3 +108,4 @@ profiles:
     - f_bash_profile
     - f_bash_logout
     - f_local_share_applications_obsidian.desktop
+    - f_local_share_applications_zettlr.desktop
