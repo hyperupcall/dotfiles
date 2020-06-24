@@ -1,9 +1,18 @@
+# managed by 'eankeen/globe'; don't edit!
+
 root = true
 
 [*]
 indent_style = tab
-indent_size = 4
+indent_size = unset
+tab_width = 2
 end_of_line = lf
 charset = utf-8
-trim_tailing_whitespace = true
+trim_trailing_whitespace = true
 insert_final_newline = true
+
+[{makefile,Makefile,*.mk}]
+indent_style = tab
+
+[*.{yaml,yml}]
+indent_style = space
