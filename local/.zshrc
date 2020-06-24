@@ -14,7 +14,7 @@ test "$COLORTERM" = "truecolor" || return
 
 ## shell variables ##
 FCEDIT="$EDITOR" # default
-HISTFILE="$XDG_DATA_HOME/zhistory"
+HISTFILE="$HOME/.history/zhistory"
 HISTSIZE="2000"
 SAVEHIST="5000"
 CDPATH=":~:/usr/local"

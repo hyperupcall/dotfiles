@@ -3,5 +3,5 @@
 # ~/.bash_profile
 #
 
-test -f ~/.bashrc test && . ~/.bashrc
+test -f ~/.bashrc && . ~/.bashrc
 

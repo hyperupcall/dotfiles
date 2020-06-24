@@ -71,6 +71,9 @@ dotfiles:
   f_local_share_applications_zettlr.desktop:
     src: .local/share/applications/zettlr.desktop
     dst: ~/.local/share/applications/zettlr.desktop
+  f_desktoprc:
+    src: .desktoprc
+    dst: ~/.desktoprc
 profiles:
   surface:
     dotfiles:
@@ -109,3 +112,4 @@ profiles:
     - f_bash_logout
     - f_local_share_applications_obsidian.desktop
     - f_local_share_applications_zettlr.desktop
+    - f_desktoprc

@@ -272,5 +272,6 @@
     "hg"
   ],
   "shellcheck.useWorkspaceRootAsCwd": true,
-  "todo-tree.tree.showScanModeButton": false
+  "todo-tree.tree.showScanModeButton": false,
+  "python.languageServer": "Microsoft"
 }

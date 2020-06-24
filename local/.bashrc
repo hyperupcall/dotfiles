@@ -1,5 +1,4 @@
 # shellcheck shell=bash
-# shellcheck disable=SC2148
 #
 # ~/.bashrc
 #
@@ -16,21 +15,25 @@ test -r ~/.profile && source ~/.profile
 [[ $- != *i* ]] && return
 
 # only enable colors for terminal emulators that support true color
-hasColor="$(test \"$COLORTERM\" = \"truecolor\"; echo $?)"
+hasColor="$(test "$COLORTERM" = "truecolor"; echo $?)"
+# TODO:
+# hasColor() {
+#  test "$COLORTERM" = "truecolor"
+#}
 
 
-## shell variables ##
+# -------------------- shell variables ------------------- #
 CDPATH=":~:/usr/local"
 FCEDIT="$EDITOR" # defaultK
 HISTCONTROL="ignorespace,ignoredups"
-HISTFILE="$XDG_DATA_HOME/bash_history"
+HISTFILE="$HOME/.history/bash_history"
 HISTSIZE="5000"
 HISTIGNORE="?:ls:[bf]g:exit:pwd:clear"
 HISTTIMEFORMAT="%T %B %m %Y | "
 INPUTRC="$XDG_CONFIG_HOME/inputrc"
 
 
-## shell options ##
+# --------------------- shell options -------------------- #
 # shopt
 shopt -u autocd
 shopt -s cdable_vars
@@ -57,7 +60,7 @@ set -o notify # deafult
 set -o physical # default
 
 
-## colors ##
+# ------------------------ colors ------------------------ #
 # dir_colors
 if test "$hasColor" -eq 0
 then
@@ -67,7 +70,7 @@ else
   unset LS_COLORS
 fi
 
-## bash ##
+# ------------------------- bash ------------------------- #
 # if the directory is not empty
 if (shopt -s nullglob dotglob; f=("/etc/bash/bashrc.d"); ((! ${#f[@]})))
 then
@@ -81,7 +84,7 @@ fi
 test -r /usr/share/bash-completion/bash_completion && . /usr/share/bash-completion/bash_completion
 
 
-## PS1
+# -------------------------- PS1 ------------------------- #
 if test "$hasColor" -eq 0
 then
   # color
@@ -102,7 +105,7 @@ else
 fi
 
 
-## core ##
+# ------------------------- core ------------------------- #
 # diff
 test "$hasColor" -eq 0 \
   && alias diff='diff --color=auto'
@@ -131,7 +134,7 @@ test "$hasColor" -eq 0 \
 complete -cf sudo
 
 
-## programs ##
+# ----------------------- programs ----------------------- #
 # buildpacks
 command -v pack >/dev/null && source $(pack completion)
 
@@ -148,7 +151,7 @@ test -f /home/edwin/.travis/travis.sh && source "$HOME/.travis/travis.sh"
 xhost +local:root >/dev/null 2>&1
 
 
-## cleanup ##
+# ------------------------ cleanup ----------------------- #
 unset hasColor
 
 

@@ -40,7 +40,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # etc
-bindcode --release 107 exec --no-startup-id xfce4-screenshooter --region
+bindcode --release 107 exec --no-startup-id xfce4-screenshooter --region --clipboard
 
 
 ## --------------------- navigation ---------------------
@@ -149,8 +149,13 @@ bar {
   status_command i3blocks -c "$conf/settings/i3blocks.top.left.conf"
   height 25
   colors {
-    background #00000088
-    statusline #ffffffff
+    background #333333
+    statusline #bbbbbb
+    separator #666666
+    focused_workspace #888888 #dddddd #222222 #00b0ef
+    active_workspace #333333 #555555 #bbbbbb #00b0ef
+    inactive_workspace #333333 #555555 #bbbbbb #7d7d7d
+    urgent_workspace #2f343a #900000 #ffffff #ff7066
   }
 }
 
@@ -170,16 +175,16 @@ bar {
   binding_mode_indicator yes
   colors {
     separator #666666
-    background #222222
-    statusline #dddddd
-    focused_workspace #0088CC #0088CC #ffffff #ffffff
-    active_workspace #333333 #333333 #ffffff #ffffff
-    inactive_workspace #333333 #333333 #888888 #888888
-    urgent_workspace #2f343a #900000 #ffffff #ffffff
+    background #333333
+    statusline #bbbbbb
+    focused_workspace #888888 #dddddd #222222 #00b0ef
+    active_workspace #333333 #555555 #bbbbbb #00b0ef
+    inactive_workspace #333333 #555555 #bbbbbb #7d7d7d
+    urgent_workspace #2f343a #900000 #ffffff #ff7066
   }
 }
 
-client.focused #0088CC #0088CC #ffffff #dddddd
-client.focused_inactive #333333 #333333 #888888 #292d2e
+client.focused #888888 #dddddd #222222 #2e9ef4
+client.focused_inactive #333333 #555555 #bbbbbb #484e50
 client.unfocused #333333 #333333 #888888 #292d2e
 client.urgent #2f343a #900000 #ffffff #900000

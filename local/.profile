@@ -18,8 +18,11 @@ export XDG_CACHE_HOME="$HOME/.cache" # default
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.dots/scripts:$PATH"
 
+# -------------------- shell variables ------------------- #
+HISTFILE="$HOME/.history/sh_history"
+HISTSIZE="5000"
 
-## core ##
+# ------------------------- core ------------------------- #
 # cp
 alias cp="cp -i"
 
@@ -30,7 +33,7 @@ alias df="df -h"
 alias free="free -m" 
 
 
-## programs ##
+# ----------------------- programs ----------------------- #
 # anki
 alias anki='anki -b "$XDG_DATA_HOME/anki"'
 
@@ -54,11 +57,17 @@ export BOTO_CONFIG="$XDG_CONFIG_HOME/boto"
 alias b="bukdu --suggest"
 
 # bundle
+export BUNDLE_USER_HOME="$HOME/.bundle"
 export BUNDLE_CACHE_PATH="$XDG_CACHE_HOME/bundle"
+export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle"
+export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/bundle"
 
 # ccache
 export CCACHE_DIR="$XDG_CACHE_HOME"/ccache
 export CCACHE_CONFIGPATH="$XDG_CONFIG_HOME"/ccache.config
+
+# cuda
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 
 # dart
 export PUB_CACHE="$XDG_CACHE_HOME/pub-cache"
@@ -108,11 +117,18 @@ export PATH="$GOPATH/bin:$PATH"
 # gradle
 export GRADLE_USER_HOME="$HOME/.local/opt/gradle"
 
+# gtk
+export GTK_RC_FILES="$XDG_CONFIG_HOME/gtk-1.0/gtkrc"
+export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
+
 # http-server
 alias http-serve='http-serve -c-1 -a 127.0.0.1'
 
 # ice authority
 export ICEAUTHORITY="$XDG_RUNTIME_DIR/iceauthority"
+
+# imap
+export IMAPFILTER_HOME="$XDG_CONFIG_HOME/imapfilter"
 
 # ipython
 export IPYTHONDIR="$XDG_CONFIG_HOME"/jupyter
@@ -126,6 +142,9 @@ export JUNEST_HOME="$HOME/.local/opt/junest"
 # jupyter
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
 
+# kde
+export KDEHOME="$XDG_CONFIG_HOME/kde"
+
 # krew
 export KREW_ROOT="$HOME/.local/opt/krew"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
@@ -136,7 +155,7 @@ export KUBECONFIG="$XDG_DATA_HOME/kube"
 # less
 export LESS="-R"
 export LESSKEY="$XDG_CONFIG_HOME/less/keys"
-export LESSHISTFILE="$XDG_CONFIG_HOME/less/history"
+export LESSHISTFILE="$HOME/.history/less_history"
 export LESSHISTSIZE="250"
 export LESS_TERMCAP_mb=$'\e[1;31m' # start blink
 export LESS_TERMCAP_md=$'\e[1;36m' # start bold
@@ -159,7 +178,7 @@ export MOST_INITFILE="$XDG_CONFIG_HOME/most/mostrc"
 export MPLAYER_HOME="$XDG_CONFIG_HOME/mplayer"
 
 # mysql
-export MYSQL_HISTFILE="$XDG_DATA_HOME/mysql_history"
+export MYSQL_HISTFILE="$HOME/.history/mysql_history"
 
 # n
 export N_PREFIX="$HOME/.local/opt/n"
@@ -173,7 +192,7 @@ export NNN_FALLBACK_OPENER="xdg-open"
 export NNN_DE_FILE_MANAGER="nautilus"
 
 # node
-export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
+export NODE_REPL_HISTORY="$HOME/.history/node_repl_history"
 
 # npm / pnpm
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npmrc"
@@ -193,7 +212,7 @@ export PATH="$HOME/.poetry/bin:$PATH"
 
 # postgresql
 export PSQLRC="$XDG_CONFIG_HOME/pg/psqlrc"
-export PSQL_HISTORY="$XDG_CACHE_HOME/pg/psql_history"
+export PSQL_HISTORY="$HOME/.history/psql_history"
 export PGPASSFILE="$XDG_CONFIG_HOME/pg/pgpass"
 export PGSERVICEFILE="$XDG_CONFIG_HOME/pg/pg_service.conf"
 
