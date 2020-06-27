@@ -16,3 +16,6 @@ indent_style = tab
 
 [*.{yaml,yml}]
 indent_style = space
+
+[*.{diff,md}]
+trim_trailing_whitespace = false
