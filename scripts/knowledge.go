@@ -1,5 +1,8 @@
 ///bin/true; exec /usr/bin/env go run "$0" "$@"
 
+// TODO: this script will eventually get bigger and will need
+// it's own repo
+
 package main
 
 import (
