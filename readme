@@ -4,7 +4,14 @@ dotfiles
 
 contains my dotfiles; maintained with dotdrop
 
-- global: dotfiles starting at /
-- local: dotfiles starting at ~
-- scripts: scripts available globally
-- scripts/globe: scripts hidden globally, but available via the `globe` cli
+also see `gh/eankeen/globe`
+
+File Structure
+--------------
+
+├─ global: 'dotfiles' at /
+├─ local: dotfiles at ~
+└─ scripts
+   └─ ./*: scripts added to the PATH
+   └─ dots: scripts just for this dotfiles repository
+   └─ globe: scripts hidden globally, but available via `run.sh`
