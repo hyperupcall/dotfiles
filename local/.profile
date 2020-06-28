@@ -19,9 +19,11 @@ export XDG_CACHE_HOME="$HOME/.cache" # default
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.dots/scripts:$PATH"
 
+
 # -------------------- shell variables ------------------- #
 HISTFILE="$HOME/.history/sh_history"
 HISTSIZE="5000"
+
 
 # ------------------------- core ------------------------- #
 # cp
@@ -31,7 +33,7 @@ alias cp="cp -i"
 alias df="df -h"
 
 # free
-alias free="free -m" 
+alias free="free -m"
 
 
 # ----------------------- programs ----------------------- #
@@ -248,7 +250,7 @@ export PATH="/var/lib/snapd/snap/bin:$PATH"
 export STACK_ROOT="$XDG_DATA_HOME/stack"
 
 # subversion
-export SUBVERSION_HOME=$XDG_CONFIG_HOME/subversion
+export SUBVERSION_HOME="$XDG_CONFIG_HOME/subversion"
 
 # terraform
 export TF_CLI_CONFIG_FILE="$XDG_CONFIG_HOME/terraformrc-custom"

@@ -77,6 +77,9 @@ dotfiles:
   f_config_info_infokey:
     src: .config/info/infokey
     dst: ~/.config/info/infokey
+  f_kshrc:
+    src: .kshrc
+    dst: ~/.kshrc
 profiles:
   surface:
     dotfiles:
@@ -117,3 +120,4 @@ profiles:
     - f_local_share_applications_zettlr.desktop
     - f_desktoprc
     - f_config_info_infokey
+    - f_kshrc
