@@ -131,6 +131,9 @@ export ICEAUTHORITY="$XDG_RUNTIME_DIR/iceauthority"
 # imap
 export IMAPFILTER_HOME="$XDG_CONFIG_HOME/imapfilter"
 
+# info
+alias info='info --init-file $XDG_CONFIG_HOME/info/infokey'
+
 # ipython
 export IPYTHONDIR="$XDG_CONFIG_HOME"/jupyter
 

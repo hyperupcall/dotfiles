@@ -74,6 +74,9 @@ dotfiles:
   f_desktoprc:
     src: .desktoprc
     dst: ~/.desktoprc
+  f_config_info_infokey:
+    src: .config/info/infokey
+    dst: ~/.config/info/infokey
 profiles:
   surface:
     dotfiles:
@@ -113,3 +116,4 @@ profiles:
     - f_local_share_applications_obsidian.desktop
     - f_local_share_applications_zettlr.desktop
     - f_desktoprc
+    - f_config_info_infokey
