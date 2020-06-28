@@ -3,3 +3,8 @@ dotfiles
 ========
 
 contains my dotfiles; maintained with dotdrop
+
+- global: dotfiles starting at /
+- local: dotfiles starting at ~
+- scripts: scripts available globally
+- scripts/globe: scripts hidden globally, but available via the `globe` cli

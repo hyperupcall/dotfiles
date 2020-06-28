@@ -1,5 +1,3 @@
-///bin/true; exec /usr/bin/env go run "$0" "$@"
-
 // goal: to read `user-dirs.dirs` and
 // generate parts of fstab for that
 
@@ -11,7 +9,6 @@ import (
 	"log"
 	"os"
 	"path"
-	"runtime"
 	"strings"
 )
 
@@ -44,15 +41,17 @@ func getXdgDirs(xdgDirs map[string]string, bytes []byte) map[string]string {
 }
 
 func main() {
+	defaultDirsContent := `XDG_DESKTOP_DIR="$HOME/Desktop"
+XDG_DOWNLOAD_DIR="$HOME/Downloads"
+XDG_TEMPLATES_DIR="$HOME/Templates"
+XDG_PUBLICSHARE_DIR="$HOME/Public"
+XDG_DOCUMENTS_DIR="$HOME/Documents"
+XDG_MUSIC_DIR="$HOME/Music"
+XDG_PICTURES_DIR="$HOME/Pictures"
+XDG_VIDEOS_DIR="$HOME/Videos"
+`
 	xdgDirs := make(map[string]string)
-	_, filename, _, ok := runtime.Caller(0)
-	if !ok {
-		log.Fatalln("could not recover information from stack frame 0")
-	}
-
-	defaultDirsPath := path.Join(path.Dir(filename), "mounts.env.txt")
-	defaultDirsContent, err := ioutil.ReadFile(defaultDirsPath)
-	xdgDirs = getXdgDirs(xdgDirs, defaultDirsContent)
+	xdgDirs = getXdgDirs(xdgDirs, []byte(defaultDirsContent))
 
 	homeDir := os.Getenv("HOME")
 	userDirsFile := path.Join(homeDir, ".config", "user-dirs.dirs")

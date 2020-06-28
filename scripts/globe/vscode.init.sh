@@ -1,17 +1,18 @@
 #!/bin/sh
 
 help() {
-  echo "batch install plugins for vscode"
-  echo
-  echo "vscode.init.sh 'list of extensions'"
-  echo
-  echo "flags"
-  echo "  --help              display this help menu"
-  echo "  --remove-versions    remove versions from extensions"
-  echo
-  echo "examples"
-  echo "  vscode.init.sh --remove-versions \"\$(ls ~/.vscode/extensions)\""
-  echo "  vscode.init.sh \"\$(code --list-extensions)\""
+	cat <<EOF
+vscode.init.sh:
+  batch install plugins for vscode
+
+Flags
+  --help              display this help menu
+  --remove-versions    remove versions from extensions
+
+Examples
+  vscode.init.sh --remove-versions "\$(ls ~/.vscode/extensions)"
+  vscode.init.sh "\$(code --list-extensions)"
+EOF
 }
 
 check_empty() {
@@ -22,6 +23,7 @@ check_empty() {
   fi
 }
 
+
 if [ "$#" -eq 0 ] || [ "$#" -ge 3 ]
 then
   help
@@ -31,7 +33,7 @@ fi
 if [ "$1" = "--help" ] || [ "$1" = "-h" ]
 then
   help
-  exit
+  exit 0
 fi
 
 if [ "$1" = "--remove-versions" ]
@@ -50,7 +52,7 @@ then
   for ext in $1
   do
     code --install-extension "${ext%-*}"
-  done  
+  done
   exit
 fi
 
@@ -58,4 +60,4 @@ check_empty "$1"
 for ext in $1
 do
   code --install-extension "$ext"
-done 
+done

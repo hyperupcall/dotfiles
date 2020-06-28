@@ -15,6 +15,7 @@ export XDG_CONFIG_HOME="$HOME/.config" # default
 export XDG_DATA_DIRS="/usr/local/share/:/usr/share" # default
 export XDG_CONFIG_DIRS="/etc/xdg" # default
 export XDG_CACHE_HOME="$HOME/.cache" # default
+#set +a && . "$XDG_CONFIG_HOME/user-dirs.dirs" && set -a
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.dots/scripts:$PATH"
 

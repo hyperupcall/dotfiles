@@ -21,11 +21,19 @@ gaps outer 5
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 
+## ------------------ specific windows ------------------
+## TODO: make this actually work
+bindsym $mod+p exec --no-startup-id termite --class "fzf-menu" --geometry 640x480
+for_window [class="^fzf-menu$"] floating enable
+for_window [class="^fzf-menu$"] resize set 625 400
+for_window [class="^fzf-menu$"] move scratchpad
+
+
 ## --------------------- keybindings --------------------
 # basic
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec uxterm
 bindsym $mod+Shift+q kill
-bindsym $mod+p exec --no-startup-id dmenu_run
+# bindsym $mod+p exec --no-startup-id dmenu_run
 bindsym $mod+o exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
