@@ -1,17 +1,17 @@
 #!/bin/sh
 
 help() {
-	cat <<EOF
-vscode.init.sh:
-  batch install plugins for vscode
+	cat 0<<-EOF
+    vscode.init.sh:
+      batch install plugins for vscode
 
-Flags
-  --help              display this help menu
-  --remove-versions    remove versions from extensions
+    Flags
+      --help              display this help menu
+      --remove-versions    remove versions from extensions
 
-Examples
-  vscode.init.sh --remove-versions "\$(ls ~/.vscode/extensions)"
-  vscode.init.sh "\$(code --list-extensions)"
+    Examples
+      vscode.init.sh --remove-versions "\$(ls ~/.vscode/extensions)"
+      vscode.init.sh "\$(code --list-extensions)"
 EOF
 }
 
