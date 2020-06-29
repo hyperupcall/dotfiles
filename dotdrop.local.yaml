@@ -80,6 +80,9 @@ dotfiles:
   f_kshrc:
     src: .kshrc
     dst: ~/.kshrc
+  f_xprofile:
+    src: .xprofile
+    dst: ~/.xprofile
 profiles:
   surface:
     dotfiles:
@@ -121,3 +124,4 @@ profiles:
     - f_desktoprc
     - f_config_info_infokey
     - f_kshrc
+    - f_xprofile

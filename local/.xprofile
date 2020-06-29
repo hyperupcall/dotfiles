@@ -1,0 +1,4 @@
+#!/bin/sh
+
+. ~/.dots/scripts/x.sh
+primary
