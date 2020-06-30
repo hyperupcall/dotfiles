@@ -1,9 +1,7 @@
-#!/bin/bash -eu
-
-shopt -s globstar
+#!/bin/sh -eu
 
 cd ~/.dots/scripts/run
-file="$(echo ./** | tr ' ' '\n' | dmenu)"
+file="$(echo ./* | tr ' ' '\n' | dmenu)"
 
 filePath="$PWD/$file"
 test -x "$filePath" && { "$filePath"; exit; }

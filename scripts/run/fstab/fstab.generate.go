@@ -37,14 +37,22 @@ func main() {
 		uuid := getUuidFromPath("/efi")
 		sb.WriteString("# Boot\n")
 		sb.WriteString("UUID=" + uuid + SEP + "/efi" + SEP + "vfat" + SEP)
-		sb.WriteString("rw,relatime,fmask=0022,dmask=0022,codepage=4")
-		sb.WriteString("=mixed,utf8,errors=remount-ro" + SEP + "0 2\n")
+		sb.WriteString("rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,")
+		sb.WriteString("shortname=mixed,utf8,errors=remount-ro" + SEP + "0 2\n")
 
 		// mounting parts of /efi to /boot and /boot/efi
 		sb.WriteString("/efi/EFI/arch" + SEP + "/boot" + SEP + "none" + SEP)
 		sb.WriteString("rw,bind" + SEP + "0 0\n")
 		sb.WriteString("/efi" + SEP + "/boot/efi" + SEP + "none" + SEP)
 		sb.WriteString("rw,bind,x-systemd.requires=/boot" + SEP + "0 0\n")
+		sb.WriteString("\n")
+	}
+
+	// DATA DIRECTORY
+	{
+		sb.WriteString("# Data\n")
+		sb.WriteString("/dev/main/data" + SEP + MOUNTPOINT + SEP + "ext4" + SEP)
+		sb.WriteString("rw,relatime,defaults" + SEP + "0 2\n")
 		sb.WriteString("\n")
 	}
 
