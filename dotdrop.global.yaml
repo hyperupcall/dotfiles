@@ -13,7 +13,15 @@ dotfiles:
   f_boot_efi_efi_refind_refind.conf:
     src: boot/efi/EFI/refind/refind.conf
     dst: /boot/efi/EFI/refind/refind.conf
+  d_efi_efi_refind_refind-theme-regular:
+    src: efi/EFI/refind/refind-theme-regular
+    dst: /efi/EFI/refind/refind-theme-regular
+  f_efi_efi_refind_refind.conf:
+    src: efi/EFI/refind/refind.conf
+    dst: /efi/EFI/refind/refind.conf
 profiles:
   fox:
     dotfiles:
     - f_boot_efi_efi_refind_refind.conf
+    - d_efi_efi_refind_refind-theme-regular
+    - f_efi_efi_refind_refind.conf
