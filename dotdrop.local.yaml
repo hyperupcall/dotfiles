@@ -83,6 +83,9 @@ dotfiles:
   f_xprofile:
     src: .xprofile
     dst: ~/.xprofile
+  f_config_fontconfig_fonts.conf:
+    src: .config/fontconfig/fonts.conf
+    dst: ~/.config/fontconfig/fonts.conf
 profiles:
   surface:
     dotfiles:
@@ -125,3 +128,4 @@ profiles:
     - f_config_info_infokey
     - f_kshrc
     - f_xprofile
+    - f_config_fontconfig_fonts.conf

@@ -31,7 +31,7 @@ for_window [class="^fzf-menu$"] move scratchpad
 
 ## --------------------- keybindings --------------------
 # basic
-bindsym $mod+Return exec uxterm
+bindsym $mod+Return exec kitty
 bindsym $mod+Shift+q kill
 # bindsym $mod+p exec --no-startup-id dmenu_run
 bindsym $mod+o exec --no-startup-id i3-dmenu-desktop

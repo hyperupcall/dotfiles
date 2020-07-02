@@ -51,7 +51,7 @@ func main() {
 	// DATA DIRECTORY
 	{
 		sb.WriteString("# Data\n")
-		sb.WriteString("/dev/main/data" + SEP + MOUNTPOINT + SEP + "ext4" + SEP)
+		sb.WriteString("/dev/main/data" + SEP + MOUNTPOINT + SEP + "xfs" + SEP)
 		sb.WriteString("rw,relatime,defaults" + SEP + "0 2\n")
 		sb.WriteString("\n")
 	}
