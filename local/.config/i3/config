@@ -157,13 +157,13 @@ bar {
   status_command i3blocks -c "$conf/settings/i3blocks.top.left.conf"
   height 25
   colors {
-    background #333333
-    statusline #bbbbbb
-    separator #666666
-    focused_workspace #888888 #dddddd #222222 #00b0ef
-    active_workspace #333333 #555555 #bbbbbb #00b0ef
-    inactive_workspace #333333 #555555 #bbbbbb #7d7d7d
-    urgent_workspace #2f343a #900000 #ffffff #ff7066
+    background #002b36
+    statusline #aea79f
+    separator #586e75
+    focused_workspace #586e75 #586e75 #ffffff #FFFFFF
+    active_workspace #073642 #073642 #ffffff #FFFFFF
+    inactive_workspace #002b36 #002b36 #aea79f #888888
+    urgent_workspace #77216f #77216f #ffffff #FFFFFF
   }
 }
 
@@ -182,17 +182,17 @@ bar {
   workspace_min_width 20
   binding_mode_indicator yes
   colors {
-    separator #666666
-    background #333333
-    statusline #bbbbbb
-    focused_workspace #888888 #dddddd #222222 #00b0ef
-    active_workspace #333333 #555555 #bbbbbb #00b0ef
-    inactive_workspace #333333 #555555 #bbbbbb #7d7d7d
-    urgent_workspace #2f343a #900000 #ffffff #ff7066
+    separator #586e75
+    background #002b36
+    statusline #aea79f
+    focused_workspace #586e75 #586e75 #ffffff #FFFFFF
+    active_workspace #073642 #073642 #ffffff #FFFFFF
+    inactive_workspace #002b36 #002b36 #aea79f #888888
+    urgent_workspace #77216f #77216f #ffffff #FFFFFF
   }
 }
 
-client.focused #888888 #dddddd #222222 #2e9ef4
-client.focused_inactive #333333 #555555 #bbbbbb #484e50
-client.unfocused #333333 #333333 #888888 #292d2e
-client.urgent #2f343a #900000 #ffffff #900000
+client.focused #586e75 #586e75 #fdf6e3 #268bd2
+client.focused_inactive #073642 #073642 #93a1a1 #002b36
+client.unfocused #002b36 #002b36 #586e75 #002b36
+client.urgent #dc322f #dc322f #fdf6e3 #dc322f

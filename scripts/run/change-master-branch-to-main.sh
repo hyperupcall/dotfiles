@@ -99,7 +99,7 @@ localMasterExists() {
 }
 
 hasColor() {
-	test -t 1 && command -v tput >/dev/null && \
+	test -t 1 && command -v tput >/dev/null &&
 		test -n "$(tput colors)" && test "$(tput colors)" -ge 8
 }
 
@@ -172,6 +172,6 @@ if remoteMasterExists; then
 	# to reset the default branch to 'main' on github
 	git push origin --delete $oldDefaultBranch
 
-	test ! $? && printInfo "this probably errored since '$oldDefaultBranch' is still the 'default branch' on github" \
-		&& printInfo "if you install \`gh\` and \`jq\` this will be done for you"
+	test ! $? && printInfo "this probably errored since '$oldDefaultBranch' is still the 'default branch' on github" &&
+		printInfo "if you install \`gh\` and \`jq\` this will be done for you"
 fi

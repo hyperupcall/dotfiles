@@ -2,7 +2,7 @@
 
 # ------------------- helper functions ------------------- #
 hasColor() {
-	test -t 1 && command -v tput >/dev/null && \
+	test -t 1 && command -v tput >/dev/null &&
 		test -n "$(tput colors)" && test "$(tput colors)" -ge 8
 }
 
@@ -31,7 +31,7 @@ printError() {
 }
 
 # ------------------- display functions ------------------ #
-function primary {
+function primary() {
 	xrandr \
 		--output DP-5 --auto \
 		--output DP-3 --below DP-3 --auto \
@@ -53,20 +53,22 @@ select station in "${stations[@]}"; do
 	break
 done
 
-test -z "$station" && { printError "Your choice was invalid. Please select a valid option.\n"; exit 1; }
+test -z "$station" && {
+	printError "Your choice was invalid. Please select a valid option.\n"
+	exit 1
+}
 
 printInfo "Processing for '%s'\n" "$chosenStation"
 case "$chosenStation" in
-	"primary")
-		primary
+"primary")
+	primary
 	;;
-	"secondary")
-		printError "secondary not supported\n"
-		exit 1
+"secondary")
+	printError "secondary not supported\n"
+	exit 1
 	;;
-	*)
-		printError "Your choice '$chosenStation' did not match any existing options.\n"
-		exit 1
+*)
+	printError "Your choice '$chosenStation' did not match any existing options.\n"
+	exit 1
 	;;
 esac
-
