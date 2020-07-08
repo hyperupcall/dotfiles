@@ -12,6 +12,15 @@ func flags() {
 
 }
 
+type FstabEntry struct {
+	FsSpec    string
+	FsFile    string
+	FsVfstype string
+	FsMntOps  string
+	FsFreq    string
+	FsPassno  string
+}
+
 func main() {
 	flags()
 
@@ -23,37 +32,74 @@ func main() {
 	var sb strings.Builder
 	// ROOT
 	{
-		// TODO: automatically set mount options, mount fs
-		// and have that be returned from getUuidFromPath()
-		uuid := getUuidFromPath("/")
+		fstabEntry := FstabEntry{
+			FsSpec:    "UUID=" + getUuidFromPath("/"),
+			FsFile:    "/",
+			FsVfstype: "ext4",
+			FsMntOps:  "rw,relatime",
+			FsFreq:    "0",
+			FsPassno:  "1",
+		}
+
 		sb.WriteString("# Root\n")
-		sb.WriteString("UUID=" + uuid + SEP + "/" + SEP + "ext4" + SEP)
-		sb.WriteString("rw,relatime" + SEP + "0 1\n")
-		sb.WriteString("\n")
+		str := writeEntry(fstabEntry, SEP)
+		sb.WriteString(str + "\n")
+
 	}
 
 	// BOOT RELATED
 	{
-		uuid := getUuidFromPath("/efi")
-		sb.WriteString("# Boot\n")
-		sb.WriteString("UUID=" + uuid + SEP + "/efi" + SEP + "vfat" + SEP)
-		sb.WriteString("rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,")
-		sb.WriteString("shortname=mixed,utf8,errors=remount-ro" + SEP + "0 2\n")
+		fstabEntry := FstabEntry{
+			FsSpec:    "UUID=" + getUuidFromPath("/efi"),
+			FsFile:    "/efi",
+			FsVfstype: "vfat",
+			FsMntOps:  "rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,utf8,errors=remount-ro",
+			FsFreq:    "0",
+			FsPassno:  "2",
+		}
+
+		sb.WriteString("# Boot \n")
+		str := writeEntry(fstabEntry, SEP)
+		sb.WriteString(str + "\n")
 
 		// mounting parts of /efi to /boot and /boot/efi
-		sb.WriteString("/efi/EFI/arch" + SEP + "/boot" + SEP + "none" + SEP)
-		sb.WriteString("rw,bind" + SEP + "0 0\n")
-		sb.WriteString("/efi" + SEP + "/boot/efi" + SEP + "none" + SEP)
-		sb.WriteString("rw,bind,x-systemd.requires=/boot" + SEP + "0 0\n")
-		sb.WriteString("\n")
+		fstabEntry1 := FstabEntry{
+			FsSpec:    "/efi/EFI/arch",
+			FsFile:    "/boot",
+			FsVfstype: "none",
+			FsMntOps:  "rw,bind",
+			FsFreq:    "0",
+			FsPassno:  "0",
+		}
+		fstabEntry2 := FstabEntry{
+			FsSpec:    "/efi",
+			FsFile:    "/boot/efi",
+			FsVfstype: "none",
+			FsMntOps:  "rw,bind,x-systemd.requires=/boot",
+			FsFreq:    "0",
+			FsPassno:  "0",
+		}
+
+		str1 := writeEntry(fstabEntry1, SEP)
+		sb.WriteString(str1)
+		str2 := writeEntry(fstabEntry2, SEP)
+		sb.WriteString(str2 + "\n")
 	}
 
 	// DATA DIRECTORY
 	{
+		fstabEntry := FstabEntry{
+			FsSpec:    "/dev/main/data",
+			FsFile:    MOUNTPOINT,
+			FsVfstype: "xfs",
+			FsMntOps:  "rw,relatime,defaults",
+			FsFreq:    "0",
+			FsPassno:  "2",
+		}
+
 		sb.WriteString("# Data\n")
-		sb.WriteString("/dev/main/data" + SEP + MOUNTPOINT + SEP + "xfs" + SEP)
-		sb.WriteString("rw,relatime,defaults" + SEP + "0 2\n")
-		sb.WriteString("\n")
+		str := writeEntry(fstabEntry, SEP)
+		sb.WriteString(str)
 	}
 
 	// XDG DESKTOP ENTRIES
@@ -77,9 +123,16 @@ func main() {
 			}
 			debug("ADD\n")
 
-			sb.WriteString(srcDir + SEP + destDir)
-			sb.WriteString(SEP + "none" + SEP + "x-systemd-requires=" + MOUNTPOINT)
-			sb.WriteString(",defaults,nofail,bind" + SEP + "0 0\n")
+			fstabEntry := FstabEntry{
+				FsSpec:    srcDir,
+				FsFile:    destDir,
+				FsVfstype: "none",
+				FsMntOps:  "x-systemd-requires=" + MOUNTPOINT + ",defaults,nofail,bind",
+				FsFreq:    "0",
+				FsPassno:  "0",
+			}
+			str := writeEntry(fstabEntry, SEP)
+			sb.WriteString(str)
 		}
 	}
 

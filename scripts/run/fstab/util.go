@@ -13,6 +13,19 @@ import (
 	"github.com/shirou/gopsutil/disk"
 )
 
+func writeEntry(entry FstabEntry, SEP string) string {
+	var sb strings.Builder
+
+	sb.WriteString(entry.FsSpec + SEP)
+	sb.WriteString(entry.FsFile + SEP)
+	sb.WriteString(entry.FsVfstype + SEP)
+	sb.WriteString(entry.FsMntOps + SEP)
+	sb.WriteString(entry.FsFreq + SEP)
+	sb.WriteString(entry.FsPassno + "\n")
+
+	return sb.String()
+}
+
 // name can be '/dev/dm-0', '/dev/sda7', etc.
 func getUuid(location string) string {
 	file, err := ioutil.ReadDir("/dev/disk/by-uuid")
@@ -34,11 +47,6 @@ func getUuid(location string) string {
 
 	return ""
 }
-
-// type Device {
-// 	disk.PartitionStat
-// 	Uuid string `json:"uuid`
-// }
 
 // mostly a function for debugging, since
 // getUuidFromPath calls disk.Partitions by itself
