@@ -36,7 +36,7 @@ func main() {
 			FsSpec:    "UUID=" + getUuidFromPath("/"),
 			FsFile:    "/",
 			FsVfstype: "ext4",
-			FsMntOps:  "rw,relatime",
+			FsMntOps:  "rw,suid,dev,exec,auto,nouser,async,relatime,errors=remount-ro",
 			FsFreq:    "0",
 			FsPassno:  "1",
 		}
@@ -53,21 +53,21 @@ func main() {
 			FsSpec:    "UUID=" + getUuidFromPath("/efi"),
 			FsFile:    "/efi",
 			FsVfstype: "vfat",
-			FsMntOps:  "rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,utf8,errors=remount-ro",
+			FsMntOps:  "rw,suid,dev,exec,auto,nouser,async,relatime,fmask=0033,dmask=0022,iocharset=utf8,utf8,X-mount.mkdir=0755,errors=remount-ro",
 			FsFreq:    "0",
 			FsPassno:  "2",
 		}
 
 		sb.WriteString("# Boot \n")
 		str := writeEntry(fstabEntry, SEP)
-		sb.WriteString(str + "\n")
+		sb.WriteString(str)
 
 		// mounting parts of /efi to /boot and /boot/efi
 		fstabEntry1 := FstabEntry{
 			FsSpec:    "/efi/EFI/arch",
 			FsFile:    "/boot",
 			FsVfstype: "none",
-			FsMntOps:  "rw,bind",
+			FsMntOps:  "rw,bind,x-systemd.after=/boot,X-mount.mkdir=0755",
 			FsFreq:    "0",
 			FsPassno:  "0",
 		}
@@ -75,7 +75,7 @@ func main() {
 			FsSpec:    "/efi",
 			FsFile:    "/boot/efi",
 			FsVfstype: "none",
-			FsMntOps:  "rw,bind,x-systemd.requires=/boot",
+			FsMntOps:  "rw,bind,x-systemd.after=/boot,X-mount.mkdir=0755",
 			FsFreq:    "0",
 			FsPassno:  "0",
 		}
@@ -92,14 +92,14 @@ func main() {
 			FsSpec:    "/dev/main/data",
 			FsFile:    MOUNTPOINT,
 			FsVfstype: "xfs",
-			FsMntOps:  "rw,relatime,defaults",
+			FsMntOps:  "rw,suid,dev,exec,auto,nouser,async,relatime,X-mount.mkdir=0755,errors=remount-ro",
 			FsFreq:    "0",
 			FsPassno:  "2",
 		}
 
 		sb.WriteString("# Data\n")
 		str := writeEntry(fstabEntry, SEP)
-		sb.WriteString(str)
+		sb.WriteString(str + "\n")
 	}
 
 	// XDG DESKTOP ENTRIES
@@ -127,7 +127,7 @@ func main() {
 				FsSpec:    srcDir,
 				FsFile:    destDir,
 				FsVfstype: "none",
-				FsMntOps:  "x-systemd-requires=" + MOUNTPOINT + ",defaults,nofail,bind",
+				FsMntOps:  "x-systemd.after=" + MOUNTPOINT + ",bind,nofail",
 				FsFreq:    "0",
 				FsPassno:  "0",
 			}
