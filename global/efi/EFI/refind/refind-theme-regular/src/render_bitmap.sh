@@ -1,8 +1,8 @@
 #!/bin/bash
 #
 
-INKSCAPE=$(which inkscape 2> /dev/null)
-OPTIPNG=$(which optipng 2> /dev/null)
+INKSCAPE=$(which inkscape 2>/dev/null)
+OPTIPNG=$(which optipng 2>/dev/null)
 
 OUT="bitmap"
 BIG_ICON_SRC_DIR="svg/big"
@@ -16,41 +16,39 @@ SRC_DIR=""
 OUT_DIR=""
 REG=''
 
-function render_bitmap()
-{
+function render_bitmap() {
 	for svgfile in $(ls $SRC_DIR | grep .svg); do
-		filename=$(      echo $svgfile | sed $REG)
-		if       [ -f "$OUT_DIR/$filename.png" ]; then
-			echo              "'$OUT_DIR/$filename.png' already exists"
+		filename=$(echo $svgfile | sed $REG)
+		if [ -f "$OUT_DIR/$filename.png" ]; then
+			echo "'$OUT_DIR/$filename.png' already exists"
 		else
-			echo              "Creating... $OUT_DIR/$filename.png"
-			$INKSCAPE           --export-area-page \
+			echo "Creating... $OUT_DIR/$filename.png"
+			$INKSCAPE --export-area-page \
 				--export-dpi=$(($SCALE * $DPI)) \
-				--export-png="$OUT_DIR/$filename.png"                       $SRC_DIR/$svgfile > /dev/null \
-				&&          if [[ -x $OPTIPNG ]]; then
-					$OPTIPNG                    -o7 --quiet "$OUT_DIR/$filename.png"
+				--export-png="$OUT_DIR/$filename.png" $SRC_DIR/$svgfile >/dev/null \
+				&& if [[ -x $OPTIPNG ]]; then
+					$OPTIPNG -o7 --quiet "$OUT_DIR/$filename.png"
 				fi
 
 		fi
 	done
 
-	if    [ -f $OUT_DIR/os_unknown.png ]; then
-		for f in           os_clover os_gummiboot os_hwtest os_refit os_network os_systemd-boot; do
-			echo                  "Copying... $OUT_DIR/$f.png"
-			cp                  -f "$OUT_DIR/os_unknown.png" "$OUT_DIR/$f.png"
+	if [ -f $OUT_DIR/os_unknown.png ]; then
+		for f in os_clover os_gummiboot os_hwtest os_refit os_network os_systemd-boot; do
+			echo "Copying... $OUT_DIR/$f.png"
+			cp -f "$OUT_DIR/os_unknown.png" "$OUT_DIR/$f.png"
 		done
 	fi
 
-	if    [ -f $OUT_DIR/tool_rescue.png ]; then
-		for f in           tool_apple_rescue tool_windows_rescue; do
-			echo                  "Copying... $OUT_DIR/$f.png"
-			cp                  -f "$OUT_DIR/tool_rescue.png" "$OUT_DIR/$f.png"
+	if [ -f $OUT_DIR/tool_rescue.png ]; then
+		for f in tool_apple_rescue tool_windows_rescue; do
+			echo "Copying... $OUT_DIR/$f.png"
+			cp -f "$OUT_DIR/tool_rescue.png" "$OUT_DIR/$f.png"
 		done
 
 	fi
 }
-function render_big_icon()
-{
+function render_big_icon() {
 	SCALE=$i
 	REG=$REG_BIG_ICON_FILENAME
 	SRC_DIR=$BIG_ICON_SRC_DIR
@@ -58,8 +56,7 @@ function render_big_icon()
 	mkdir -p $OUT_DIR
 	render_bitmap
 }
-function render_small_icon()
-{
+function render_small_icon() {
 	SCALE=$i
 	REG=$REG_SMALL_ICON_FILENAME
 	SRC_DIR=$SMALL_ICON_SRC_DIR

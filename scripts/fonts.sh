@@ -4,14 +4,12 @@
 . .env
 
 # ------------------- helper functions ------------------- #
-hasColor()
-{
-	test -t 1 && command -v tput > /dev/null 2>&1 \
+hasColor() {
+	test -t 1 && command -v tput >/dev/null 2>&1 \
 		&& test -n "$(tput colors)" && test "$(tput colors)" -ge 8
 }
 
-printInfo()
-{
+printInfo() {
 	if hasColor; then
 		printf "\033[0;94m"
 		# shellcheck disable=SC2059
@@ -23,8 +21,7 @@ printInfo()
 	fi
 }
 
-printError()
-{
+printError() {
 	if hasColor; then
 		printf "\033[0;91m"
 		# shellcheck disable=SC2059
@@ -38,7 +35,7 @@ printError()
 
 # ------------------------ checks ------------------------ #
 for dependency in xdotool sxiv convert fzf jq curl; do
-	command -v "$dependency" > /dev/null 2>&1 || {
+	command -v "$dependency" >/dev/null 2>&1 || {
 		printError "error: Must have $dependency installed. Exiting.\n"
 		exit 1
 	}
@@ -47,7 +44,7 @@ done
 test ! -z "$SECRET_GOOGLE_FONTS_API_KEY" \
 	|| (
 		printError "The secret key does not have a value. Exiting.\n"
-		exit    1
+		exit 1
 	)
 
 # ------------------------- main ------------------------- #
@@ -56,7 +53,7 @@ res="$(curl --silent -o- "https://www.googleapis.com/webfonts/v1/webfonts?key=$S
 test "$(echo "$res" | jq 'has("error")')" = "true" \
 	&& (
 		printError "Received error from Google Fonts API. Response:\n$res"
-		exit         1
+		exit 1
 	)
 
 # base64 beccause each object can have newlines
@@ -96,21 +93,19 @@ FG_COLOR="#000000"
 PREVIEW_TEXT="ABCDEFGHIJKLM\nNOPQRSTUVWXYZ\nabcdefghijklm\nnopqrstuvwxyz\n1234567890\n!@$\%(){}[]"
 
 sxiv -N "fontpreview" -b -g "$SIZE$POSITION" "$FONT_PREVIEW" &
-pre_exit()
-{
+pre_exit() {
 	# Get the proccess ID of this script and kill it.
 	# We are dumping the output of kill to /dev/null
 	# because if the user quits sxiv before they
 	# exit this script, an error will be shown
 	# from kill and we dont want that
-	kill -9 "$(cat "$PIDFILE" 2> /dev/null)" &> /dev/null
+	kill -9 "$(cat "$PIDFILE" 2>/dev/null)" &>/dev/null
 
 	# Delete tempfiles, so we don't leave useless files behind.
 	rm -rf "$FONTPREVIEW_DIR"
 }
 
-generate_preview()
-{
+generate_preview() {
 	# Credits: https://bit.ly/2UvLVhM
 	convert -size $SIZE xc:"$BG_COLOR" \
 		-gravity center \

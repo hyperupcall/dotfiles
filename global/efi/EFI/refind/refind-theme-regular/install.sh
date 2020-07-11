@@ -9,7 +9,7 @@ clear
 
 #Clone the theme
 echo -n "Downloading rEFInd theme Regular to $PWD"
-git clone https://github.com/bobafetthotmail/refind-theme-regular.git &> /dev/null
+git clone https://github.com/bobafetthotmail/refind-theme-regular.git &>/dev/null
 echo " - [DONE]"
 
 #Useful formatting tags
@@ -50,8 +50,8 @@ case "$size_select" in
 		size_small="192"
 		;;
 	*)
-		echo   "Incorrect choice. Exiting."
-		exit   1
+		echo "Incorrect choice. Exiting."
+		exit 1
 		;;
 esac
 echo
@@ -74,8 +74,8 @@ case "$theme_select" in
 		theme_path="_dark"
 		;;
 	*)
-		echo   "Incorrect choice. Exiting."
-		exit   1
+		echo "Incorrect choice. Exiting."
+		exit 1
 		;;
 esac
 echo
@@ -120,17 +120,17 @@ if test -z "$config_confirm"; then
 fi
 case "$config_confirm" in
 	y | Y)
-		read   -p "Enter the name of the config file to be preserved in full eg: manual.conf: " configname
+		read -p "Enter the name of the config file to be preserved in full eg: manual.conf: " configname
 		# Checking for enter key. If so it has the same effect having no files to preserve.
-		if   [[ $configname == "" ]]; then
+		if [[ $configname == "" ]]; then
 			configname='^#'
 		fi
 		#Excludes line with entered config file then ^\s*include matches lines starting with any nuber of spaces and then include.
-		sed   --in-place=".bak" "/$configname/! s/^\s*include/# (disabled) include/" "$location"refind.conf
+		sed --in-place=".bak" "/$configname/! s/^\s*include/# (disabled) include/" "$location"refind.conf
 		;;
 	n | N)
 		# ^\s*include matches lines starting with any nuber of spaces and then include.
-		sed   --in-place=".bak" 's/^\s*include/# (disabled) include/' "$location"refind.conf
+		sed --in-place=".bak" 's/^\s*include/# (disabled) include/' "$location"refind.conf
 		;;
 	*) ;;
 
@@ -141,7 +141,7 @@ echo " - [DONE]"
 echo -n "Updating refind.conf"
 echo "
 # Load rEFInd theme Regular
-include refind-theme-regular/theme.conf" | tee -a "$location"refind.conf &> /dev/null
+include refind-theme-regular/theme.conf" | tee -a "$location"refind.conf &>/dev/null
 echo " - [DONE]"
 
 #Clean up - remove download
@@ -151,9 +151,9 @@ if test -z "$del_confirm"; then
 fi
 case "$del_confirm" in
 	y | Y)
-		echo   -n "Deleting download"
-		rm   -r refind-theme-regular
-		echo   " - [DONE]"
+		echo -n "Deleting download"
+		rm -r refind-theme-regular
+		echo " - [DONE]"
 		;;
 	*) ;;
 

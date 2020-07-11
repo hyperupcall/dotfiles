@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ -d fonts ]; then
-	rm    -r fonts
+	rm -r fonts
 fi
 
 mkdir -p fonts
@@ -18,8 +18,8 @@ for font in  "Source-Code-Pro-ExtraLight" "Nimbus-Mono" "Ubuntu-Mono"; do
 			y_pos=0
 			;;
 	esac
-	for size in     14 16 18 28 30 32 42 44 46; do
-		./font2png.sh           -f $font -s $size -y $y_pos "fonts/${font,,}-$size.png"
+	for size in 14 16 18 28 30 32 42 44 46; do
+		./font2png.sh -f $font -s $size -y $y_pos "fonts/${font,,}-$size.png"
 	done
 done
 

@@ -1,0 +1,7 @@
+version: "2"
+
+tasks:
+   lint:
+      cmds:
+         # - shfmt -bn -ci -kp -l -w .
+         - docker run --rm -v "$PWD:/work" tmknom/prettier --write '**/*.{json,md,mdx,yaml,yml}'

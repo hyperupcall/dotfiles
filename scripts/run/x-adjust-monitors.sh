@@ -1,14 +1,12 @@
 #!/bin/bash -eu
 
 # ------------------- helper functions ------------------- #
-hasColor()
-{
-	test -t 1 && command -v tput > /dev/null \
+hasColor() {
+	test -t 1 && command -v tput >/dev/null \
 		&& test -n "$(tput colors)" && test "$(tput colors)" -ge 8
 }
 
-printInfo()
-{
+printInfo() {
 	if hasColor; then
 		printf "\033[0;94m"
 		# shellcheck disable=SC2059
@@ -20,8 +18,7 @@ printInfo()
 	fi
 }
 
-printError()
-{
+printError() {
 	if hasColor; then
 		printf "\033[0;31m"
 		# shellcheck disable=SC2059
@@ -34,8 +31,7 @@ printError()
 }
 
 # ------------------- display functions ------------------ #
-function primary()
-{
+function primary() {
 	xrandr \
 		--output DP-5 --auto \
 		--output DP-3 --below DP-3 --auto \

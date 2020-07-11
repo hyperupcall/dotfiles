@@ -2,9 +2,9 @@
 # managed by 'eankeen/globe'; don't edit!
 name: 💡 feature request
 about: suggest a feature or idea
-title: ''
-labels: 'enhancement'
-assignees: ''
+title: ""
+labels: "enhancement"
+assignees: ""
 ---
 
 **is your feature request related to a problem? please describe**

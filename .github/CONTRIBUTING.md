@@ -8,17 +8,17 @@
 
 before you make a pr
 
-1. *create an issue of what you plan to add*
-2. *do **not** commit to `dev` or `master` branch* directly
+1. _create an issue of what you plan to add_
+2. _do **not** commit to `dev` or `master` branch_ directly
 
 of course, if you're change is relatively small, this may not be needed.
 
 ## commit naming
 
-* keep commits short and meaningful
-* use the imperative, present tense ('change' rather than 'changed' or 'changes')
-* do not capitalize the first letter
-* do not add a period
+-  keep commits short and meaningful
+-  use the imperative, present tense ('change' rather than 'changed' or 'changes')
+-  do not capitalize the first letter
+-  do not add a period
 
 here are some high-quality examples. note that you don't need to match the formatting, just the guidelines stated above :ok_hand:
 
@@ -33,7 +33,7 @@ fix(renderer): inject css styles
 
 ## branch naming
 
-be sure to create a new branch when contributing. *do **not** commit to the `dev` or `master` branch* directly. use tokens to categorize branches. add blurb about branch, separated by token with forward slash. see [this](https://stackoverflow.com/a/6065944) for more information.
+be sure to create a new branch when contributing. _do **not** commit to the `dev` or `master` branch_ directly. use tokens to categorize branches. add blurb about branch, separated by token with forward slash. see [this](https://stackoverflow.com/a/6065944) for more information.
 
 ### tokens
 

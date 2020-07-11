@@ -6,12 +6,15 @@ contains my dotfiles; maintained with dotdrop
 
 also see `gh/eankeen/globe`
 
-File Structure
---------------
+## File Structure
+
+<!-- prettier-ignore-start -->
 
 ├─ global: 'dotfiles' at /
 ├─ local: dotfiles at ~
 └─ scripts
-   └─ ./*: scripts added to the PATH
-   └─ dots: scripts just for this dotfiles repository
-   └─ globe: scripts hidden globally, but available via `run.sh`
+  └─ ./\*: scripts added to the PATH
+  └─ dots: scripts just for this dotfiles repository
+  └─ globe: scripts hidden globally, but available via `run.sh`
+
+<!-- prettier-ignore-start -->

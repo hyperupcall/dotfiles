@@ -1,27 +1,27 @@
 config:
-  backup: true
-  banner: true
-  create: true
-  dotpath: global
-  ignoreempty: false
-  keepdot: true
-  link_dotfile_default: link
-  link_on_import: link
-  longkey: true
-  workdir: ~/.config/dotdrop
+   backup: true
+   banner: true
+   create: true
+   dotpath: global
+   ignoreempty: false
+   keepdot: true
+   link_dotfile_default: link
+   link_on_import: link
+   longkey: true
+   workdir: ~/.config/dotdrop
 dotfiles:
-  f_boot_efi_efi_refind_refind.conf:
-    src: boot/efi/EFI/refind/refind.conf
-    dst: /boot/efi/EFI/refind/refind.conf
-  d_efi_efi_refind_refind-theme-regular:
-    src: efi/EFI/refind/refind-theme-regular
-    dst: /efi/EFI/refind/refind-theme-regular
-  f_efi_efi_refind_refind.conf:
-    src: efi/EFI/refind/refind.conf
-    dst: /efi/EFI/refind/refind.conf
+   f_boot_efi_efi_refind_refind.conf:
+      src: boot/efi/EFI/refind/refind.conf
+      dst: /boot/efi/EFI/refind/refind.conf
+   d_efi_efi_refind_refind-theme-regular:
+      src: efi/EFI/refind/refind-theme-regular
+      dst: /efi/EFI/refind/refind-theme-regular
+   f_efi_efi_refind_refind.conf:
+      src: efi/EFI/refind/refind.conf
+      dst: /efi/EFI/refind/refind.conf
 profiles:
-  fox:
-    dotfiles:
-    - f_boot_efi_efi_refind_refind.conf
-    - d_efi_efi_refind_refind-theme-regular
-    - f_efi_efi_refind_refind.conf
+   fox:
+      dotfiles:
+         - f_boot_efi_efi_refind_refind.conf
+         - d_efi_efi_refind_refind-theme-regular
+         - f_efi_efi_refind_refind.conf

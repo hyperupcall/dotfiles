@@ -1,7 +1,6 @@
 #!/bin/sh -eu
 
-primary()
-{
+primary() {
 	xrandr \
 		--output DP-5 --above DP-3 --auto \
 		--output DP-3 --below DP-3 --auto \

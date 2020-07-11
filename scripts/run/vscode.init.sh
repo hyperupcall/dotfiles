@@ -1,8 +1,7 @@
 #!/bin/sh
 
-help()
-{
-	cat 0<<- EOF
+help() {
+	cat 0<<-EOF
 		    vscode.init.sh:
 		      batch install plugins for vscode
 
@@ -16,8 +15,7 @@ help()
 	EOF
 }
 
-check_empty()
-{
+check_empty() {
 	if [ -z "$1" ] || [ -z "$(echo "$1" | sed "s/ //g" | sed "s/\t//g")" ]; then
 		echo "list of extensions is blank. terminating."
 		exit 1
