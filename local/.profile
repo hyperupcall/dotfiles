@@ -19,11 +19,9 @@ export XDG_CACHE_HOME="$HOME/.cache" # default
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.dots/scripts:$PATH"
 
-
 # -------------------- shell variables ------------------- #
 HISTFILE="$HOME/.history/sh_history"
 HISTSIZE="5000"
-
 
 # ------------------------- core ------------------------- #
 # cp
@@ -34,7 +32,6 @@ alias df="df -h"
 
 # free
 alias free="free -m"
-
 
 # ----------------------- programs ----------------------- #
 # anki
@@ -96,9 +93,9 @@ export PATH="$HOME/.local/opt/flutter/bin:$PATH"
 
 # gcloud
 test -r "$HOME/.local/opt/google-cloud-sdk/path.bash.inc" \
-  && . "$HOME/.local/opt/google-cloud-sdk/path.bash.inc"
+	&& . "$HOME/.local/opt/google-cloud-sdk/path.bash.inc"
 test -r "$HOME/.local/opt/google-cloud-sdk/completion.bash.inc" \
-  && . "$HOME/.local/opt/google-cloud-sdk/completion.bash.inc"
+	&& . "$HOME/.local/opt/google-cloud-sdk/completion.bash.inc"
 
 # gem
 export GEM_HOME="$XDG_DATA_HOME"/gem
@@ -110,7 +107,8 @@ export GITLIBS="$HOME/.local/opt/gitlibs"
 # gnupg
 alias gpg2='gpg2 --homedir "$XDG_DATA_HOME/gnupg"'
 export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
-tty="$(tty)" && export GPG_TTY="$tty"; unset tty
+tty="$(tty)" && export GPG_TTY="$tty"
+unset                                        tty
 
 # go
 export GOROOT="$HOME/.local/opt/go/root"
@@ -232,7 +230,7 @@ export PATH="$CARGO_HOME/bin:$PATH"
 
 # rvm
 test -r "$HOME/.rvm/scripts/rvm" \
-  && . "$HOME/.rvm/scripts/rvm"
+	&& . "$HOME/.rvm/scripts/rvm"
 export PATH="$HOME/.rvm/bin:$PATH"
 
 # sccache
@@ -270,4 +268,3 @@ export MATHEMATICA_USERBASE="$XDG_DATA_HOME/mathematica"
 # yarn
 export YARN_CACHE_FOLDER="$XDG_CACHE_HOME/yarn"
 export PATH="$XDG_DATA_HOME/yarn/global/node_modules/.bin:$PATH"
-

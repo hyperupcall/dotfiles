@@ -13,7 +13,8 @@ user="${1:-""}"
 repo="${2:-""}"
 
 # ------------------- helper functions ------------------- #
-showHelp() {
+showHelp()
+{
 	echo "change-master-branch-to-main.sh"
 	echo
 	echo "Description:"
@@ -40,7 +41,8 @@ showHelp() {
 }
 
 # get the GitHub username, if it wasn't already specified
-askUser() {
+askUser()
+{
 	# return if user is already set (passed as arg)
 	test ! -z "$user" && return
 
@@ -65,7 +67,8 @@ askUser() {
 }
 
 # get the GitHub repository name, if it wasn't already specified
-askRepo() {
+askRepo()
+{
 	# return if repo is already set (passed as arg)
 	test ! -z "$repo" && return
 
@@ -82,32 +85,39 @@ askRepo() {
 	printInfo "input: $repo\n\n"
 }
 
-remoteMainExists() {
-	git show-branch "refs/remotes/origin/$newDefaultBranch" >/dev/null 2>&1
+remoteMainExists()
+{
+	git show-branch "refs/remotes/origin/$newDefaultBranch" > /dev/null 2>&1
 }
 
-remoteMasterExists() {
-	git show-branch "refs/remotes/origin/$oldDefaultBranch" >/dev/null 2>&1
+remoteMasterExists()
+{
+	git show-branch "refs/remotes/origin/$oldDefaultBranch" > /dev/null 2>&1
 }
 
-localMainExists() {
-	git rev-parse --verify --quiet "refs/heads/$newDefaultBranch" >/dev/null
+localMainExists()
+{
+	git rev-parse --verify --quiet "refs/heads/$newDefaultBranch" > /dev/null
 }
 
-localMasterExists() {
-	git rev-parse --verify --quiet "refs/heads/$oldDefaultBranch" >/dev/null
+localMasterExists()
+{
+	git rev-parse --verify --quiet "refs/heads/$oldDefaultBranch" > /dev/null
 }
 
-hasColor() {
-	test -t 1 && command -v tput >/dev/null &&
-		test -n "$(tput colors)" && test "$(tput colors)" -ge 8
+hasColor()
+{
+	test -t 1 && command -v tput > /dev/null \
+		&& test -n "$(tput colors)" && test "$(tput colors)" -ge 8
 }
 
-hasBinAndJq() {
-	command -v jq >/dev/null && command -v "$bin" >/dev/null
+hasBinAndJq()
+{
+	command -v jq > /dev/null && command -v "$bin" > /dev/null
 }
 
-printInfo() {
+printInfo()
+{
 	if hasColor; then
 		printf "\033[0;94m"
 		# shellcheck disable=SC2059
@@ -172,6 +182,6 @@ if remoteMasterExists; then
 	# to reset the default branch to 'main' on github
 	git push origin --delete $oldDefaultBranch
 
-	test ! $? && printInfo "this probably errored since '$oldDefaultBranch' is still the 'default branch' on github" &&
-		printInfo "if you install \`gh\` and \`jq\` this will be done for you"
+	test ! $? && printInfo "this probably errored since '$oldDefaultBranch' is still the 'default branch' on github" \
+		&& printInfo "if you install \`gh\` and \`jq\` this will be done for you"
 fi

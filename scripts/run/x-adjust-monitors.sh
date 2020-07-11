@@ -1,12 +1,14 @@
 #!/bin/bash -eu
 
 # ------------------- helper functions ------------------- #
-hasColor() {
-	test -t 1 && command -v tput >/dev/null &&
-		test -n "$(tput colors)" && test "$(tput colors)" -ge 8
+hasColor()
+{
+	test -t 1 && command -v tput > /dev/null \
+		&& test -n "$(tput colors)" && test "$(tput colors)" -ge 8
 }
 
-printInfo() {
+printInfo()
+{
 	if hasColor; then
 		printf "\033[0;94m"
 		# shellcheck disable=SC2059
@@ -18,7 +20,8 @@ printInfo() {
 	fi
 }
 
-printError() {
+printError()
+{
 	if hasColor; then
 		printf "\033[0;31m"
 		# shellcheck disable=SC2059
@@ -31,7 +34,8 @@ printError() {
 }
 
 # ------------------- display functions ------------------ #
-function primary() {
+function primary()
+{
 	xrandr \
 		--output DP-5 --auto \
 		--output DP-3 --below DP-3 --auto \
@@ -60,15 +64,15 @@ test -z "$station" && {
 
 printInfo "Processing for '%s'\n" "$chosenStation"
 case "$chosenStation" in
-"primary")
-	primary
-	;;
-"secondary")
-	printError "secondary not supported\n"
-	exit 1
-	;;
-*)
-	printError "Your choice '$chosenStation' did not match any existing options.\n"
-	exit 1
-	;;
+	"primary")
+		primary
+		;;
+	"secondary")
+		printError "secondary not supported\n"
+		exit 1
+		;;
+	*)
+		printError "Your choice '$chosenStation' did not match any existing options.\n"
+		exit 1
+		;;
 esac

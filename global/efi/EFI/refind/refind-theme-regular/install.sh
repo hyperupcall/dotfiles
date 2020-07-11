@@ -19,43 +19,40 @@ normal=$(tput sgr0)
 #Set install path
 echo "Enter rEFInd install location"
 read -e -p "Default - ${bold}/boot/efi/EFI/refind/${normal}: " location
-if test -z "$location";
-then
-    location="/boot/efi/EFI/refind/"
+if test -z "$location"; then
+	location="/boot/efi/EFI/refind/"
 fi
-if test "${location: -1}" != "/"
-then
-    location="$location/"
+if test "${location: -1}" != "/"; then
+	location="$location/"
 fi
 
 #Set icon size
 echo "Pick an icon size: (larger icons look better on bigger and denser displays)"
 read -p "${bold}1: small (128px-48px)${normal}, 2: medium (256px-96px), 3: large (384px-144px), 4: extra-large (512px-192px): " size_select
-if test -z "$size_select";
-then
-    size_select=1
+if test -z "$size_select"; then
+	size_select=1
 fi
 case "$size_select" in
-    1)
-        size_big="128"
-        size_small="48"
-        ;;
-    2)
-        size_big="256"
-        size_small="96"
-        ;;
-    3)
-        size_big="384"
-        size_small="144"
-        ;;
-    4)
-        size_big="512"
-        size_small="192"
-        ;;
-    *)
-        echo "Incorrect choice. Exiting."
-        exit 1
-        ;;
+	1)
+		size_big="128"
+		size_small="48"
+		;;
+	2)
+		size_big="256"
+		size_small="96"
+		;;
+	3)
+		size_big="384"
+		size_small="144"
+		;;
+	4)
+		size_big="512"
+		size_small="192"
+		;;
+	*)
+		echo   "Incorrect choice. Exiting."
+		exit   1
+		;;
 esac
 echo
 echo "Selected size - ${bold}big icons: $size_big px, small icons: $size_small px${normal}"
@@ -64,23 +61,22 @@ echo
 #Set theme color
 echo "Select a theme color"
 read -p "${bold}1: light${normal}, 2: dark: " theme_select
-if test -z "$theme_select";
-then
-    theme_select=1
+if test -z "$theme_select"; then
+	theme_select=1
 fi
 case "$theme_select" in
-    1)
-        theme_name="light"
-        theme_path=""
-        ;;
-    2)
-        theme_name="dark"
-        theme_path="_dark"
-        ;;
-    *)
-        echo "Incorrect choice. Exiting."
-        exit 1
-        ;;
+	1)
+		theme_name="light"
+		theme_path=""
+		;;
+	2)
+		theme_name="dark"
+		theme_path="_dark"
+		;;
+	*)
+		echo   "Incorrect choice. Exiting."
+		exit   1
+		;;
 esac
 echo
 echo "Selected theme - ${bold}$theme_name${normal}"
@@ -119,26 +115,25 @@ echo -n "Removing old themes from refind.conf"
 echo
 echo
 read -p "Do you have a secondary config file to preserve? Default: N (y/${bold}N${normal}): " config_confirm
-if test -z "$config_confirm";
-then
-    config_confirm="n"
+if test -z "$config_confirm"; then
+	config_confirm="n"
 fi
 case "$config_confirm" in
-    y|Y)
-        read -p "Enter the name of the config file to be preserved in full eg: manual.conf: " configname
-        # Checking for enter key. If so it has the same effect having no files to preserve.
-        if [[ $configname == "" ]]; then
-	configname='^#'
-	fi
-        #Excludes line with entered config file then ^\s*include matches lines starting with any nuber of spaces and then include.
-        sed --in-place=".bak" "/$configname/! s/^\s*include/# (disabled) include/" "$location"refind.conf
-        ;;
-    n|N)
-        # ^\s*include matches lines starting with any nuber of spaces and then include.
-        sed --in-place=".bak" 's/^\s*include/# (disabled) include/' "$location"refind.conf
-        ;;
-    *)
-        ;;
+	y | Y)
+		read   -p "Enter the name of the config file to be preserved in full eg: manual.conf: " configname
+		# Checking for enter key. If so it has the same effect having no files to preserve.
+		if   [[ $configname == "" ]]; then
+			configname='^#'
+		fi
+		#Excludes line with entered config file then ^\s*include matches lines starting with any nuber of spaces and then include.
+		sed   --in-place=".bak" "/$configname/! s/^\s*include/# (disabled) include/" "$location"refind.conf
+		;;
+	n | N)
+		# ^\s*include matches lines starting with any nuber of spaces and then include.
+		sed   --in-place=".bak" 's/^\s*include/# (disabled) include/' "$location"refind.conf
+		;;
+	*) ;;
+
 esac
 echo " - [DONE]"
 
@@ -151,18 +146,17 @@ echo " - [DONE]"
 
 #Clean up - remove download
 read -p "Delete download? (${bold}Y${normal}/n): " del_confirm
-if test -z "$del_confirm";
-then
-    del_confirm="y"
+if test -z "$del_confirm"; then
+	del_confirm="y"
 fi
 case "$del_confirm" in
-    y|Y)
-        echo -n "Deleting download"
-        rm -r refind-theme-regular
-        echo " - [DONE]"
-        ;;
-    *)
-        ;;
+	y | Y)
+		echo   -n "Deleting download"
+		rm   -r refind-theme-regular
+		echo   " - [DONE]"
+		;;
+	*) ;;
+
 esac
 
 echo "Thank you for installing rEFInd theme Regular."

@@ -15,12 +15,14 @@ test -r ~/.profile && source ~/.profile
 [[ $- != *i* ]] && return
 
 # only enable colors for terminal emulators that support true color
-hasColor="$(test "$COLORTERM" = "truecolor"; echo $?)"
+hasColor="$(
+	test "$COLORTERM" = "truecolor"
+	echo $?
+)"
 # TODO:
 # hasColor() {
 #  test "$COLORTERM" = "truecolor"
 #}
-
 
 # -------------------- shell variables ------------------- #
 CDPATH=":~:/usr/local"
@@ -31,7 +33,6 @@ HISTSIZE="5000"
 HISTIGNORE="?:ls:[bf]g:exit:pwd:clear"
 HISTTIMEFORMAT="%T %B %m %Y | "
 INPUTRC="$XDG_CONFIG_HOME/inputrc"
-
 
 # --------------------- shell options -------------------- #
 # shopt
@@ -59,80 +60,74 @@ shopt -u xpg_echo # default
 set -o notify # deafult
 set -o physical # default
 
-
 # ------------------------ colors ------------------------ #
 # dir_colors
-if test "$hasColor" -eq 0
-then
-  test -r "$XDG_CONFIG_HOME/dir_colors" \
-    && eval "$(dircolors -b $XDG_CONFIG_HOME/dir_colors)"
+if test "$hasColor" -eq 0; then
+	test -r "$XDG_CONFIG_HOME/dir_colors" \
+		&& eval "$(dircolors -b $XDG_CONFIG_HOME/dir_colors)"
 else
-  unset LS_COLORS
+	unset LS_COLORS
 fi
 
 # ------------------------- bash ------------------------- #
 # if the directory is not empty
-if (shopt -s nullglob dotglob; f=("/etc/bash/bashrc.d"); ((! ${#f[@]})))
-then
-  for sh in /etc/bash/bashrc.d/*
-  do
-    [ -r "${sh}" ] && source "${sh}"
-  done
+if (
+	shopt -s nullglob dotglob
+	f=("/etc/bash/bashrc.d")
+	((!${#f[@]}))
+); then
+	for sh in /etc/bash/bashrc.d/*; do
+		[ -r "${sh}" ] && source "${sh}"
+	done
 fi
 
 # bash completions
 test -r /usr/share/bash-completion/bash_completion && . /usr/share/bash-completion/bash_completion
 
-
 # -------------------------- PS1 ------------------------- #
-if test "$hasColor" -eq 0
-then
-  # color
-  if test "$EUID" = 0
-  then
-    PS1="\[\e[31m\][\u@\h \w]\$\[\e[m\] "
-  else
-    PS1="\[\033[38;5;88m\][\[$(tput sgr0)\]\[\033[38;5;23m\]\u\[$(tput sgr0)\]\[\033[38;5;166m\]@\[$(tput sgr0)\]\[\033[38;5;23m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[\033[38;5;166m\]\W\[$(tput sgr0)\]\[\033[38;5;88m\]]\[$(tput sgr0)\]\[\033[38;5;23m\]\\$\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
-  fi
+if test "$hasColor" -eq 0; then
+	# color
+	if test "$EUID" = 0; then
+		PS1="\[\e[31m\][\u@\h \w]\$\[\e[m\] "
+	else
+		PS1="\[\033[38;5;88m\][\[$(tput sgr0)\]\[\033[38;5;23m\]\u\[$(tput sgr0)\]\[\033[38;5;166m\]@\[$(tput sgr0)\]\[\033[38;5;23m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[\033[38;5;166m\]\W\[$(tput sgr0)\]\[\033[38;5;88m\]]\[$(tput sgr0)\]\[\033[38;5;23m\]\\$\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
+	fi
 else
-  # no color
-  if test "$EUID" = 0 
-  then
-    PS1="[\u@\h \w]\$ "
-  else
-    PS1="[\u@\h \W]\$ "
-  fi
+	# no color
+	if test "$EUID" = 0; then
+		PS1="[\u@\h \w]\$ "
+	else
+		PS1="[\u@\h \W]\$ "
+	fi
 fi
-
 
 # ------------------------- core ------------------------- #
 # diff
 test "$hasColor" -eq 0 \
-  && alias diff='diff --color=auto'
+	&& alias diff='diff --color=auto'
 
 # egrep
 test "$hasColor" -eq 0 \
-  && alias egrep='egrep --colour=auto'
+	&& alias egrep='egrep --colour=auto'
 
 # fgrep
 test "$hasColor" -eq 0 \
-  && alias fgrep='fgrep --colour=auto'
+	&& alias fgrep='fgrep --colour=auto'
 
 # grep
 test "$hasColor" -eq 0 \
-  && alias grep='grep --colour=auto'
+	&& alias grep='grep --colour=auto'
 
 # ip
 test "$hasColor" -eq 0 \
-  && alias ip='ip -color=auto'
+	&& alias ip='ip -color=auto'
 
 # ls
 test "$hasColor" -eq 0 \
-  && alias ls='ls --color=auto'
+	&& alias ls='ls --color=auto'
 
 # sudo
 complete -cf sudo
-
 
 # ----------------------- programs ----------------------- #
 # buildpacks
@@ -150,16 +145,14 @@ test -f /home/edwin/.travis/travis.sh && source "$HOME/.travis/travis.sh"
 # x11
 xhost +local:root >/dev/null 2>&1
 
-
 # ------------------------ cleanup ----------------------- #
 unset hasColor
 
-
 ## todo: cleanup
 if [ $(type -t compopt) = "builtin" ]; then
-  complete -o default -F __start_pack p
+	complete -o default -F __start_pack p
 else
-  complete -o default -o nospace -F __start_pack p
+	complete -o default -o nospace -F __start_pack p
 fi
 
 # tabtab source for packages
@@ -167,3 +160,11 @@ fi
 [ -f ~/.config/tabtab/bash/__tabtab.bash ] && . ~/.config/tabtab/bash/__tabtab.bash || true
 
 eval $(keychain --eval ~/.ssh/github --quiet)
+
+# Wasmer
+export WASMER_DIR="/home/edwin/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
+
+export WASMTIME_HOME="$HOME/.wasmtime"
+
+export PATH="$WASMTIME_HOME/bin:$PATH"
