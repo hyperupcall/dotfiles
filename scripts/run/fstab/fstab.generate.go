@@ -86,10 +86,10 @@ func main() {
 		sb.WriteString(str2 + "\n")
 	}
 
-	// DATA DIRECTORY
+	// XDG DESKTOP ENTRIES
 	{
 		fstabEntry := FstabEntry{
-			FsSpec:    "/dev/main/data",
+			FsSpec:    "/dev/fox/data",
 			FsFile:    MOUNTPOINT,
 			FsVfstype: "xfs",
 			FsMntOps:  "rw,suid,dev,exec,auto,nouser,async,relatime,X-mount.mkdir=0755,errors=remount-ro",
@@ -97,20 +97,15 @@ func main() {
 			FsPassno:  "2",
 		}
 
-		sb.WriteString("# Data\n")
+		sb.WriteString("# XDG Desktop Entries\n")
 		str := writeEntry(fstabEntry, SEP)
-		sb.WriteString(str + "\n")
-	}
+		sb.WriteString(str)
 
-	// XDG DESKTOP ENTRIES
-	{
 		xdgDirs := make(map[string]string)
 		// reads common default values (not from /etc/xdg/user-dirs.defaults)
 		xdgDirs = mergeAndOverwrite(xdgDirs, getDefaultDirsContent())
 		// reads ~/.config/user-dirs.dirs
 		xdgDirs = mergeAndOverwrite(xdgDirs, getUserDirsContent())
-
-		sb.WriteString("# XDG Desktop Entries\n")
 
 		// destDir is a place we want to mount our folder to (in /home/$user)
 		for _, destDir := range xdgDirs {
@@ -132,8 +127,23 @@ func main() {
 				FsPassno:  "0",
 			}
 			str := writeEntry(fstabEntry, SEP)
-			sb.WriteString(str)
+			sb.WriteString(str + "\n")
 		}
+	}
+
+	// STORAGE
+	{
+		fstabEntry := FstabEntry{
+			FsSpec:    "/dev/rodinia/vault",
+			FsFile:    "/data/storage",
+			FsVfstype: "ext4",
+			FsMntOps:  "rw,suid,dev,exec,auto,nouser,async,relatime,X-mount.mkdir=0755,errors=remount-ro",
+			FsFreq:    "0",
+			FsPassno:  "2",
+		}
+		sb.WriteString("# Storage\n")
+		str := writeEntry(fstabEntry, SEP)
+		sb.WriteString(str)
 	}
 
 	str := sb.String()
