@@ -16,6 +16,16 @@ indent_style = tab
 
 [*.{yaml,yml}]
 indent_style = space
+tab_width = 4
 
-[*.{diff,md}]
+[*.{diff,md,snap}]
 trim_trailing_whitespace = false
+
+# used by shfmt
+[*.sh]
+indent_style = space
+binary_next_line   = true
+switch_case_indent = true
+space_redirects    = true
+keep_padding = true
+function_next_line = true
