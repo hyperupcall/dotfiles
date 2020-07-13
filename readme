@@ -10,11 +10,14 @@ also see `gh/eankeen/globe`
 
 <!-- prettier-ignore-start -->
 
-├─ global: 'dotfiles' at /
-├─ local: dotfiles at ~
+├─ global    dotfiles at /
+├─ local     dotfiles at ~
+└─ project   dotfiles at .
 └─ scripts
   └─ ./\*: scripts added to the PATH
   └─ dots: scripts just for this dotfiles repository
   └─ globe: scripts hidden globally, but available via `run.sh`
 
 <!-- prettier-ignore-start -->
+
+dotfiles located in 'project' are managed by eankeen/globe

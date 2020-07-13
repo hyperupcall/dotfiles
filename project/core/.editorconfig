@@ -1,0 +1,29 @@
+# managed by 'eankeen/globe'; don't edit!
+
+root = true
+
+[*]
+indent_style = tab
+indent_size = unset
+tab_width = 3
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[{GNUmakefile,Makefile,makefile,*.mk}]
+indent_style = tab
+
+[*.{yaml,yml}]
+indent_style = space
+
+[*.{diff,md,snap}]
+trim_trailing_whitespace = false
+
+# used by shfmt
+[*.sh]
+binary_next_line   = true
+switch_case_indent = true
+space_redirects    = true
+keep_padding = true
+function_next_line = true
