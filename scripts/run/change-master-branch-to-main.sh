@@ -1,4 +1,4 @@
-#!/bin/sh -eu
+#!/bin/sh -eux
 
 # code licensed under BSD 2-Clause "Simplified" License
 
@@ -100,7 +100,7 @@ localMasterExists() {
 
 hasColor() {
 	test -t 1 && command -v tput >/dev/null \
-		&& test -n "$(tput colors)" && test "$(tput colors)" -ge 8
+		                           && test -n "$(tput colors)" && test "$(tput colors)" -ge 8
 }
 
 hasBinAndJq() {
@@ -121,10 +121,6 @@ printInfo() {
 
 # ------------------------- main ------------------------- #
 test "${1:-""}" = "--help" && showHelp && exit
-
-git fetch --all
-git checkout "$oldDefaultBranch"
-git push origin "$oldDefaultBranch"
 
 # ensure 'main' is the default locally
 if ! localMainExists; then
