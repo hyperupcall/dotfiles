@@ -5,7 +5,7 @@ files:
    - path: .gitattributes
      op: add
      for: all
-   - path: license
+   - path: LICENSE
      op: add
      for: all
    - path: .github/CODE_OF_CONDUCT.md
