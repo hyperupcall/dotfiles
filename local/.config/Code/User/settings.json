@@ -246,5 +246,8 @@
 	"editor.codeLens": false,
 	"workbench.panel.defaultLocation": "right",
 	"editor.formatOnSave": true,
-	"typescript.updateImportsOnFileMove.enabled": "always"
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	}
 }

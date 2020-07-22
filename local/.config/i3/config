@@ -23,7 +23,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 ## ------------------ specific windows ------------------
 ## TODO: make this actually work
-bindsym $mod+p exec --no-startup-id termite --class "fzf-menu" --geometry 640x480
+#bindsym $mod+p exec --no-startup-id termite --class "fzf-menu" --geometry 640x480
 for_window [class="^fzf-menu$"] floating enable
 for_window [class="^fzf-menu$"] resize set 625 400
 for_window [class="^fzf-menu$"] move scratchpad
@@ -33,12 +33,13 @@ for_window [class="^fzf-menu$"] move scratchpad
 # basic
 bindsym $mod+Return exec kitty
 bindsym $mod+Shift+q kill
-# bindsym $mod+p exec --no-startup-id dmenu_run
+bindsym $mod+p exec --no-startup-id dmenu_run
 bindsym $mod+o exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3 and end X session?' -B 'yah, exit!' 'i3-msg exit'"
+bindcode --release 107 exec --no-startup-id "maim -s | xclip -t image/png -selection clipboard"
 
 # audio
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -46,9 +47,6 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-
-# etc
-bindcode --release 107 exec --no-startup-id xfce4-screenshooter --region --clipboard
 
 
 ## --------------------- navigation ---------------------

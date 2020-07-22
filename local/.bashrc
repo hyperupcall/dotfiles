@@ -159,7 +159,7 @@ fi
 # uninstall by removing these lines
 [ -f ~/.config/tabtab/bash/__tabtab.bash ] && . ~/.config/tabtab/bash/__tabtab.bash || true
 
-eval $(keychain --eval ~/.ssh/github --quiet)
+eval $(keychain --eval --agents ssh --quiet)
 
 # Wasmer
 export WASMER_DIR="/home/edwin/.wasmer"
