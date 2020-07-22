@@ -5,6 +5,9 @@ files:
    - path: .gitattributes
      op: add
      for: all
+   - path: jsconfig.json
+     op: add
+     for: js
    - path: LICENSE
      op: add
      for: all
