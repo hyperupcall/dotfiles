@@ -217,6 +217,9 @@ alias pacman='pacman --color=auto'
 export PACKER_CONFIG="$XDG_CONFIG_HOME/packerconfig"
 export PACKER_CONFIG_DIR="$XDG_CONFIG_HOME/packer.d"
 
+# pacman
+alias pacman='pacman --color=auto'
+
 # poetry
 export PATH="$HOME/.poetry/bin:$PATH"
 
