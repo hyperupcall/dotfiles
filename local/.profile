@@ -210,6 +210,9 @@ export NPM_CONFIG_STORE_DIR="$XDG_DATA_HOME/pnpm-store"
 # nvm
 export NVM_DIR="$XDG_DATA_HOME"/nvm
 
+# pacman
+alias pacman='pacman --color=auto'
+
 # packer
 export PACKER_CONFIG="$XDG_CONFIG_HOME/packerconfig"
 export PACKER_CONFIG_DIR="$XDG_CONFIG_HOME/packer.d"
@@ -271,3 +274,6 @@ export MATHEMATICA_USERBASE="$XDG_DATA_HOME/mathematica"
 # yarn
 export YARN_CACHE_FOLDER="$XDG_CACHE_HOME/yarn"
 export PATH="$XDG_DATA_HOME/yarn/global/node_modules/.bin:$PATH"
+
+# yay
+alias yay='yay --color=auto'
