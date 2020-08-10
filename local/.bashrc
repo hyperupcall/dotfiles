@@ -14,7 +14,7 @@ test -r ~/.profile && source ~/.profile
 # if not running interactively, exit
 [[ $- != *i* ]] && return
 
-# only enable colors for terminal emulators that support true color
+# only enable colors for terminals that support true color
 hasColor="$(
 	test "$COLORTERM" = "truecolor"
 	echo $?
@@ -26,7 +26,7 @@ hasColor="$(
 
 # -------------------- shell variables ------------------- #
 CDPATH=":~:/usr/local"
-FCEDIT="$EDITOR" # defaultK
+FCEDIT="$EDITOR" # default
 HISTCONTROL="ignorespace,ignoredups"
 HISTFILE="$HOME/.history/bash_history"
 HISTSIZE="5000"
@@ -145,24 +145,12 @@ test -f /home/edwin/.travis/travis.sh && source "$HOME/.travis/travis.sh"
 # x11
 xhost +local:root >/dev/null 2>&1
 
-# ------------------------ cleanup ----------------------- #
-unset hasColor
-
-## todo: cleanup
+# ---------------------- completion ---------------------- #
 if [ $(type -t compopt) = "builtin" ]; then
 	complete -o default -F __start_pack p
 else
 	complete -o default -o nospace -F __start_pack p
 fi
 
-# tabtab source for packages
-# uninstall by removing these lines
-[ -f ~/.config/tabtab/bash/__tabtab.bash ] && . ~/.config/tabtab/bash/__tabtab.bash || true
-
-# Wasmer
-export WASMER_DIR="/home/edwin/.wasmer"
-[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
-
-export WASMTIME_HOME="$HOME/.wasmtime"
-
-export PATH="$WASMTIME_HOME/bin:$PATH"
+# ------------------------ cleanup ----------------------- #
+unset hasColor

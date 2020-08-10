@@ -4,7 +4,7 @@
 #
 
 ## general ##
-export VISUAL="nvim"
+export VISUAL="vim"
 export EDITOR="$VISUAL"
 export SUDO_EDITOR="$VISUAL"
 export DIFFPROG="nvim -d"
@@ -113,7 +113,7 @@ export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
 tty="$(tty)" && export GPG_TTY="$tty"
 unset                                        tty
 
-# go
+# g
 export GOROOT="$HOME/.local/opt/go/root"
 export GOPATH="$HOME/.local/opt/go/path"
 export PATH="$GOPATH/bin:$PATH"
@@ -269,6 +269,12 @@ export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 # vagrant
 export VAGRANT_HOME="$HOME/.local/opt/vagrant.d"
 export VAGRANT_ALIAS_FILE="$VAGRANT_HOME/aliases"
+
+# wasmer
+export WASMER_DIR="/home/edwin/.wasmer"
+test -s "$WASMER_DIR/wasmer.sh" && . "$WASMER_DIR/wasmer.sh"
+export WASMTIME_HOME="$HOME/.wasmtime"
+export PATH="$WASMTIME_HOME/bin:$PATH"
 
 # wolfram mathematica
 export MATHEMATICA_BASE="/usr/share/mathematica"
