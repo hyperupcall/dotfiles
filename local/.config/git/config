@@ -47,7 +47,6 @@
 [push]
 	default = simple ; default
 	followTags = true
-	gpgSign = true
 [rerere]
 	enabled = true
 [status]
