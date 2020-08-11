@@ -81,9 +81,6 @@ if (
 	done
 fi
 
-# bash completions
-test -r /usr/share/bash-completion/bash_completion && . /usr/share/bash-completion/bash_completion
-
 # -------------------------- PS1 ------------------------- #
 if test "$hasColor" -eq 0; then
 	# color
@@ -146,6 +143,10 @@ test -f /home/edwin/.travis/travis.sh && source "$HOME/.travis/travis.sh"
 xhost +local:root >/dev/null 2>&1
 
 # ---------------------- completion ---------------------- #
+# bash_completion
+test -r /usr/share/bash-completion/bash_completion && . /usr/share/bash-completion/bash_completion
+
+# pack
 if [ $(type -t compopt) = "builtin" ]; then
 	complete -o default -F __start_pack p
 else

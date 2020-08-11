@@ -1,131 +1,141 @@
 config:
-   backup: true
-   banner: true
-   create: true
-   dotpath: local
-   ignoreempty: false
-   keepdot: true
-   link_dotfile_default: link
-   link_on_import: link
-   longkey: true
-   workdir: ~/.config/dotdrop
+  backup: true
+  banner: true
+  create: true
+  dotpath: local
+  ignoreempty: false
+  keepdot: true
+  link_dotfile_default: link
+  link_on_import: link
+  longkey: true
+  workdir: ~/.config/dotdrop
 dotfiles:
-   f_profile:
-      src: .profile
-      dst: ~/.profile
-      link: link
-   f_bashrc:
-      src: .bashrc
-      dst: ~/.bashrc
-   f_zprofile:
-      src: .zprofile
-      dst: ~/.zprofile
-   f_zshrc:
-      src: .zshrc
-      dst: ~/.zshrc
-   f_config_chezmoi_chezmoi.toml:
-      src: .config/chezmoi/chezmoi.toml
-      dst: ~/.config/chezmoi/chezmoi.toml
-   f_config_git_config:
-      src: .config/git/config
-      dst: ~/.config/git/config
-   f_config_maven_settings.xml:
-      src: .config/maven/settings.xml
-      dst: ~/.config/maven/settings.xml
-   f_config_readline_inputrc:
-      src: .config/readline/inputrc
-      dst: ~/.config/readline/inputrc
-   f_config_user-dirs.dirs:
-      src: .config/user-dirs.dirs
-      dst: ~/.config/user-dirs.dirs
-   f_config_code_user_keybindings.json:
-      src: .config/Code/User/keybindings.json
-      dst: ~/.config/Code/User/keybindings.json
-   f_config_code_user_settings.json:
-      src: .config/Code/User/settings.json
-      dst: ~/.config/Code/User/settings.json
-   f_config_dir_colors:
-      src: .config/dir_colors
-      dst: ~/.config/dir_colors
-   f_config_nvim_init.vim:
-      src: .config/nvim/init.vim
-      dst: ~/.config/nvim/init.vim
-   f_config_i3_config:
-      src: .config/i3/config
-      dst: ~/.config/i3/config
-   f_xresources:
-      src: .Xresources
-      dst: ~/.Xresources
-   f_xinitrc:
-      src: .xinitrc
-      dst: ~/.xinitrc
-   f_bash_profile:
-      src: .bash_profile
-      dst: ~/.bash_profile
-   f_bash_logout:
-      src: .bash_logout
-      dst: ~/.bash_logout
-   f_local_share_applications_obsidian.desktop:
-      src: .local/share/applications/obsidian.desktop
-      dst: ~/.local/share/applications/obsidian.desktop
-   f_local_share_applications_zettlr.desktop:
-      src: .local/share/applications/zettlr.desktop
-      dst: ~/.local/share/applications/zettlr.desktop
-   f_desktoprc:
-      src: .desktoprc
-      dst: ~/.desktoprc
-   f_config_info_infokey:
-      src: .config/info/infokey
-      dst: ~/.config/info/infokey
-   f_kshrc:
-      src: .kshrc
-      dst: ~/.kshrc
-   f_xprofile:
-      src: .xprofile
-      dst: ~/.xprofile
-   f_config_fontconfig_fonts.conf:
-      src: .config/fontconfig/fonts.conf
-      dst: ~/.config/fontconfig/fonts.conf
+  f_profile:
+    src: .profile
+    dst: ~/.profile
+    link: link
+  f_bashrc:
+    src: .bashrc
+    dst: ~/.bashrc
+  f_zprofile:
+    src: .zprofile
+    dst: ~/.zprofile
+  f_zshrc:
+    src: .zshrc
+    dst: ~/.zshrc
+  f_config_chezmoi_chezmoi.toml:
+    src: .config/chezmoi/chezmoi.toml
+    dst: ~/.config/chezmoi/chezmoi.toml
+  f_config_git_config:
+    src: .config/git/config
+    dst: ~/.config/git/config
+  f_config_maven_settings.xml:
+    src: .config/maven/settings.xml
+    dst: ~/.config/maven/settings.xml
+  f_config_readline_inputrc:
+    src: .config/readline/inputrc
+    dst: ~/.config/readline/inputrc
+  f_config_user-dirs.dirs:
+    src: .config/user-dirs.dirs
+    dst: ~/.config/user-dirs.dirs
+  f_config_code_user_keybindings.json:
+    src: .config/Code/User/keybindings.json
+    dst: ~/.config/Code/User/keybindings.json
+  f_config_code_user_settings.json:
+    src: .config/Code/User/settings.json
+    dst: ~/.config/Code/User/settings.json
+  f_config_dir_colors:
+    src: .config/dir_colors
+    dst: ~/.config/dir_colors
+  f_config_nvim_init.vim:
+    src: .config/nvim/init.vim
+    dst: ~/.config/nvim/init.vim
+  f_config_i3_config:
+    src: .config/i3/config
+    dst: ~/.config/i3/config
+  f_xresources:
+    src: .Xresources
+    dst: ~/.Xresources
+  f_xinitrc:
+    src: .xinitrc
+    dst: ~/.xinitrc
+  f_bash_profile:
+    src: .bash_profile
+    dst: ~/.bash_profile
+  f_bash_logout:
+    src: .bash_logout
+    dst: ~/.bash_logout
+  f_local_share_applications_obsidian.desktop:
+    src: .local/share/applications/obsidian.desktop
+    dst: ~/.local/share/applications/obsidian.desktop
+  f_local_share_applications_zettlr.desktop:
+    src: .local/share/applications/zettlr.desktop
+    dst: ~/.local/share/applications/zettlr.desktop
+  f_desktoprc:
+    src: .desktoprc
+    dst: ~/.desktoprc
+  f_config_info_infokey:
+    src: .config/info/infokey
+    dst: ~/.config/info/infokey
+  f_kshrc:
+    src: .kshrc
+    dst: ~/.kshrc
+  f_xprofile:
+    src: .xprofile
+    dst: ~/.xprofile
+  f_config_fontconfig_fonts.conf:
+    src: .config/fontconfig/fonts.conf
+    dst: ~/.config/fontconfig/fonts.conf
+  f_config_git_attributes:
+    src: .config/git/attributes
+    dst: ~/.config/git/attributes
+  f_config_git_commit-template:
+    src: .config/git/commit-template
+    dst: ~/.config/git/commit-template
 profiles:
-   surface:
-      dotfiles:
-         - f_profile
-         - f_bashrc
-         - f_zprofile
-         - f_zshrc
-         - f_config_chezmoi_chezmoi.toml
-         - f_config_git_config
-         - f_config_maven_settings.xml
-         - f_config_readline_inputrc
-         - f_config_user-dirs.dirs
-         - f_config_code_user_keybindings.json
-         - f_config_code_user_settings.json
-         - f_config_dir_colors
-         - f_config_nvim_init.vim
-   fox:
-      dotfiles:
-         - f_profile
-         - f_bashrc
-         - f_zprofile
-         - f_zshrc
-         - f_config_chezmoi_chezmoi.toml
-         - f_config_git_config
-         - f_config_maven_settings.xml
-         - f_config_readline_inputrc
-         - f_config_user-dirs.dirs
-         - f_config_code_user_keybindings.json
-         - f_config_code_user_settings.json
-         - f_config_dir_colors
-         - f_config_nvim_init.vim
-         - f_config_i3_config
-         - f_xresources
-         - f_xinitrc
-         - f_bash_profile
-         - f_bash_logout
-         - f_local_share_applications_obsidian.desktop
-         - f_local_share_applications_zettlr.desktop
-         - f_desktoprc
-         - f_config_info_infokey
-         - f_kshrc
-         - f_xprofile
-         - f_config_fontconfig_fonts.conf
+  surface:
+    dotfiles:
+    - f_profile
+    - f_bashrc
+    - f_zprofile
+    - f_zshrc
+    - f_config_chezmoi_chezmoi.toml
+    - f_config_git_config
+    - f_config_maven_settings.xml
+    - f_config_readline_inputrc
+    - f_config_user-dirs.dirs
+    - f_config_code_user_keybindings.json
+    - f_config_code_user_settings.json
+    - f_config_dir_colors
+    - f_config_nvim_init.vim
+  fox:
+    dotfiles:
+    - f_profile
+    - f_bashrc
+    - f_zprofile
+    - f_zshrc
+    - f_config_chezmoi_chezmoi.toml
+    - f_config_git_config
+    - f_config_maven_settings.xml
+    - f_config_readline_inputrc
+    - f_config_user-dirs.dirs
+    - f_config_code_user_keybindings.json
+    - f_config_code_user_settings.json
+    - f_config_dir_colors
+    - f_config_nvim_init.vim
+    - f_config_i3_config
+    - f_xresources
+    - f_xinitrc
+    - f_bash_profile
+    - f_bash_logout
+    - f_local_share_applications_obsidian.desktop
+    - f_local_share_applications_zettlr.desktop
+    - f_desktoprc
+    - f_config_info_infokey
+    - f_kshrc
+    - f_xprofile
+    - f_config_fontconfig_fonts.conf
+  fox-two:
+    dotfiles:
+    - f_config_git_attributes
+    - f_config_git_commit-template

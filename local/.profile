@@ -7,6 +7,7 @@
 export VISUAL="vim"
 export EDITOR="$VISUAL"
 export SUDO_EDITOR="$VISUAL"
+export GIT_EDITOR="$VISUAL"
 export DIFFPROG="nvim -d"
 export PAGER="less"
 export LANG="${LANG:-en_US.UTF-8}"
@@ -111,12 +112,15 @@ alias globe='globe --store-dir=$HOME/.dots/project'
 alias gpg2='gpg2 --homedir "$XDG_DATA_HOME/gnupg"'
 export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
 tty="$(tty)" && export GPG_TTY="$tty"
-unset                                        tty
+unset ytty
 
 # g
 export GOROOT="$HOME/.local/opt/go/root"
 export GOPATH="$HOME/.local/opt/go/path"
 export PATH="$GOPATH/bin:$PATH"
+
+# git
+export GIT_CONFIG_NOSYSTEM=
 
 # gradle
 export GRADLE_USER_HOME="$HOME/.local/opt/gradle"

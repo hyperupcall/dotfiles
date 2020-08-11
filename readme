@@ -12,7 +12,7 @@ also see `gh/eankeen/globe`
 
 ├─ global    dotfiles at /
 ├─ local     dotfiles at ~
-└─ project   dotfiles at .
+├─ project   dotfiles at .
 └─ scripts
   └─ ./\*: scripts added to the PATH
   └─ dots: scripts just for this dotfiles repository
