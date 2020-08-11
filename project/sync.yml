@@ -1,40 +1,67 @@
 files:
    - path: .editorconfig
      op: add
-     for: all
+     for: [all]
    - path: .gitattributes
      op: add
-     for: all
+     for: [all]
+   - path: .prettierrc.json
+     op: add
+     for: ["javascript"]
+     endings:
+        [
+           "js",
+           "ts",
+           "jsx",
+           "tsx",
+           "json",
+           "vue",
+           "less",
+           "scss",
+           "sass",
+           "graphql",
+           "md",
+           "mdx",
+           "yaml",
+           "yml",
+           "elm",
+           "java",
+           "php",
+           "ruby",
+           "xml",
+        ]
    - path: jsconfig.json
      op: add
      for: js
+     endings: ["js", "jsx"]
    - path: LICENSE
      op: add
-     for: all
+     for: [all]
    - path: .github/CODE_OF_CONDUCT.md
      op: add
-     for: all
+     for: [all]
    - path: .github/COMMIT_CONVENTION.md
      op: add
-     for: all
+     for: [all]
    - path: .github/CONTRIBUTING.md
      op: add
-     for: all
+     for: [all]
    - path: .github/PULL_REQUEST_TEMPLATE.md
      op: add
-     for: all
+     for: [all]
    - path: .github/ISSUE_TEMPLATE/BUG_REPORT.md
      op: add
-     for: all
+     for: [all]
    - path: .github/ISSUE_TEMPLATE/config.yml
      op: add
-     for: all
+     for: [all]
    - path: .github/ISSUE_TEMPLATE/FEATURE_REQUEST.md
      op: add
-     for: all
+     for: [all]
    - path: .github/ISSUE_TEMPLATE/QUESTION.md
      op: add
-     for: all
+     for: [all]
    - path: scripts/globe/go.sh
      op: add
-     for: golang
+     for: [golang]
+     endings: ["go"]

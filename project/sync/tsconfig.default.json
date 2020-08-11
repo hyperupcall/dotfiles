@@ -1,0 +1,125 @@
+{
+	/* MISC */
+	"compileOnSave": true,
+	"ts-node": {
+		"pretty": true
+	},
+
+	/* FILE INCLUSION */
+	// "exclude": []
+	// "files": []
+	"include": ["src"],
+	// "references": []
+	// "typeAcquisition": {}
+
+	"compilerOptions": {
+		/* PROJECT OPTIONS */
+		"allowJs": true,
+		"checkJs": true,
+		// "composite": true,
+		"declaration": true,
+		"declarationMap": true,
+		"downlevelIteration": true,
+		// "importHelpers": false,
+		// "incremental": true,
+		// "isolatedModules": false,
+		// "jsx": "react",
+		"lib": ["DOM", "ESNext"],
+		"module": "CommonJS",
+		// "noEmit": false,
+		"outDir": "build",
+		// "outFile": "",
+		// "plugins": []
+		// "removeComments": false,
+		"rootDir": "src",
+		"sourceMap": true,
+		"target": "ES2017",
+		// "tsBuildInfoFile": ".tsbuildinfo",
+
+		/* STRICT CHECKS */
+		// "alwaysStrict": false,
+		// "noImplicitAny": false,
+		// "noImplicitThis": false,
+		"strict": true,
+		// "strictBindCallApply": false,
+		// "strictFunctionTypes": false,
+		// "strictNullChecks": false,
+		// "strictPropertyInitialization": false,
+
+		/* MODULE RESOLUTION */
+		// "allowSyntheticDefaultImports": false,
+		// "allowUmdGlobalAccess": false,
+		"baseUrl": ".",
+		"esModuleInterop": true,
+		"moduleResolution": "node",
+		// "paths": {
+		// "app/*": ["app/*"]
+		// },
+		// "preserveSymlinks": false,
+		// "rootDirs": [],
+		"typeRoots": ["@types", "node_modules/@types"],
+		// "types": [],
+
+		/* SOURCE MAPS */
+		// "inlineSourceMap": false,
+		// "inlineSources": false,
+		// "mapRoot": "",
+		// "sourceRoot": "",
+
+		/* LINTER CHECKS */
+		"noFallthroughCasesInSwitch": true,
+		"noImplicitReturns": true,
+		"noUnusedLocals": false,
+		"noUnusedParameters": false,
+
+		/* EXPERIMENTAL */
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": false,
+
+		/* ADVANCED */
+		// "allowUnreachableCode": "",
+		"allowUnusedLabels": false,
+		"assumeChangesOnlyAffectDirectDependencies": false,
+		// "declarationDir": "",
+		// "disableSizeLimit": false,
+		// "disableSolutionSearching": false,
+		"disableSourceOfProjectReferenceRedirect": false,
+		// "emitBOM": false,
+		// "emitDeclarationOnly": false,
+		// "extendedDiagnostics": false,
+		"forceConsistentCasingInFileNames": true,
+		// "importsNotUsedAsValues": "remove",
+		// "jsxFactory": "React.createElement",
+		// "jsxFragmentFactory": "React.Fragment",
+		// "listEmittedFiles": false,
+		// "listFiles": false,
+		// "maxNodeModuleJsDepth": 0,
+		"newLine": "lf",
+		// "noEmitHelpers": false,
+		// "noEmitOnError": false,
+		// "noImplicitUseStrict": false,
+		// "noLib": false,
+		// "noResolve": false,
+		// "noStrictGenericChecks": false,
+		"preserveConstEnums": true,
+		// "reactNamespace": "React",
+		"resolveJsonModule": true,
+		// "skipDefaultLibCheck": false,
+		// "skipLibCheck": false,
+		// "stripInternal": "",
+		// "suppressExcessPropertyErrors": false,
+		"suppressExcessPropertyErrors": false,
+		// "traceResolution": false,
+		"useDefineForClassFields": true
+
+		/* COMMAND LINE */
+		// "preserveWatchOutput": false,
+		// "pretty": true,
+
+		/* WATCH OPTIONS */
+		// "fallbackPolling": "",
+		// "watchDirectory": "useFsEvents",
+		// "watchFile": "useFsEvents",
+		// "watch": true,
+	}
+}
