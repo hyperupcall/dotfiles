@@ -27,7 +27,7 @@
 [color "push"]
 	error = magenta
 [color "transport"]
-	rejected = true
+	rejected = magenta
 [color]
 	ui = auto ; default
 [commit]
@@ -55,7 +55,7 @@
 	showUntrackedFiles = all
 [tag]
 	forceSignAnnotated = true
-	gpgSign = trueqq
+	gpgSign = true
 [user]
 	name = Edwin Kofler
 	email = 24364012+eankeen@users.noreply.github.com
