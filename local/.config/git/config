@@ -1,11 +1,62 @@
-[user]
-    name = eankeen
-    email = 24364012+eankeen@users.noreply.github.com
-	  signingkey = 484EA8DEF2F467E6
+# TODO: go over [color] option, diff
 [core]
+	warnAmbiguousRefs = true ; default
+	compression = 2
 	editor = vim
-    pager = less -FX
-[gpg]
-	program = gpg
+	# pager = less -+F -+R -S -+X
+	pager = less -FR
+	[init]
+	defaultBranch = main
+[add "interactive"]
+	useBuiltIn = true ; EXPERIMENTAL
+[alias]
+	s = status
+[blame]
+	coloring = highlightRecent
+	date = relative
+[branch]
+	autoSetupMerge = true
+[checkout]
+	defaultRemote = origin
+[clean]
+	requireForce = true ; default
+[color "blame"]
+	highlightRecent = magenta,2 year ago,red,12 month ago,yellow,6 month ago,green,1 month ago,cyan
+[color]
+	pager = true ; default
+[color "push"]
+	error = magenta
+[color "transport"]
+	rejected = true
+[color]
+	ui = auto ; default
 [commit]
 	gpgSign = true
+	template = ~/.config/git/commit-template
+[diff]
+	algorithm = myers ; default
+[gpg]
+	program = gpg ; default
+	format = openpgp ; default
+[help]
+	autoCorrect = 10
+[merge]
+	ff = true ; default
+[pull]
+	ff = true ; default
+[push]
+	default = simple ; default
+	followTags = true
+	gpgSign = true
+[rerere]
+	enabled = true
+[status]
+	showStash = true
+	showUntrackedFiles = all
+[tag]
+	forceSignAnnotated = true
+	gpgSign = trueqq
+[user]
+	name = Edwin Kofler
+	email = 24364012+eankeen@users.noreply.github.com
+	signingkey = 484EA8DEF2F467E6
