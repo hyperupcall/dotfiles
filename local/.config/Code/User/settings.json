@@ -157,13 +157,12 @@
 	"window.title": "🦊 ${folderName} ${activeEditorLong}${separator}${remoteName}",
 	"window.titleBarStyle": "custom",
 	"workbench.activityBar.visible": true,
-	"workbench.colorTheme": "Monokai Pro (Filter Machine)",
+	"workbench.colorTheme": "Monokai",
 	"workbench.editor.closeOnFileDelete": true,
 	"workbench.editor.highlightModifiedTabs": true,
 	"workbench.editor.tabCloseButton": "off",
 	"workbench.editor.tabSizing": "shrink",
 	"workbench.enableExperiments": false,
-	"workbench.iconTheme": "Monokai Pro (Filter Machine) Icons",
 	"yaml.format.printWidth": 100,
 	"yaml.format.singleQuote": true,
 	"zenMode.centerLayout": true,
@@ -249,5 +248,10 @@
 	"typescript.updateImportsOnFileMove.enabled": "always",
 	"[typescript]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	}
+	},
+	"explorer.confirmDelete": false,
+	"explorer.confirmDragAndDrop": false,
+	"workbench.iconTheme": "material-icon-theme",
+	"C_Cpp.updateChannel": "Insiders",
+	"d.servedPath": "/home/edwin/.local/share/code-d/bin/serve-d"
 }
