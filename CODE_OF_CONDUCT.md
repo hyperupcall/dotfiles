@@ -1,4 +1,4 @@
-<!-- managed by 'eankeen/globe'; don't edit! -->
+[//]: # "managed by eankeen/globe; don't edit!"
 
 # code of conduct
 
@@ -16,18 +16,18 @@ orientation.
 examples of behavior that contributes to creating a positive environment
 include:
 
--  using welcoming and inclusive language
--  being respectful of differing viewpoints and experiences
--  gracefully accepting constructive criticism
--  focusing on what is best for the community
--  showing empathy towards other community members
+- using welcoming and inclusive language
+- being respectful of differing viewpoints and experiences
+- gracefully accepting constructive criticism
+- focusing on what is best for the community
+- showing empathy towards other community members
 
 examples of unacceptable behavior by participants include:
 
--  the use of sexualized language or imagery and unwelcome sexual attention or
-   advances
--  trolling, insulting/derogatory comments, and personal or political attacks
--  public or private harassment
+- the use of sexualized language or imagery and unwelcome sexual attention or
+  advances
+- trolling, insulting/derogatory comments, and personal or political attacks
+- public or private harassment
 
 ## our responsibilities
 

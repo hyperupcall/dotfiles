@@ -35,6 +35,22 @@
 	template = ~/.config/git/commit-template
 [diff]
 	algorithm = myers ; default
+[diff "pandoc2md"]
+	textconv = pandoc --to=markdown
+[diff "pdfconf"]
+	textconv = pdftohtml -stdout
+[diff "wrap"]
+	textconv = fmt
+[diff "exif"]
+	textconv = exiftool
+[diff "mp3"]
+	textconv = mp3info -x
+[diff "xlsconf"]
+	textconv = xls2csv
+[diff "zipshow"]
+	textconv = unzip -c -a
+[diff "unzip -l"]
+	textconv = unzip -l
 [gpg]
 	program = gpg ; default
 	format = openpgp ; default
@@ -42,8 +58,16 @@
 	autoCorrect = 10
 [merge]
 	ff = true ; default
+# [pkg: npm-merge-driver] TODO
+[merge "npm-merge-driver"]
+	name = Merges npm lockfiles
+	driver = pnpx --no-install npm-merge-driver merge %A %O %B %P
+[merge "yarn-merge-driver"]
+	name = Merges Yarn lockfiles
+	driver = pnpx --no-install npm-merge-driver merge %A %O %B %P -c yarn
 [pull]
 	ff = true ; default
+	rebase = false
 [push]
 	default = simple ; default
 	followTags = true

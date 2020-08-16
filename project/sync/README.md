@@ -10,10 +10,16 @@
 
 ## USAGE
 
-## CONTRIBUTING
-
-## LICENSE
+## Acknowledgements
 
 ## Contact
 
-## Acknowledgements
+See [CONTACT.md](CONTACT.md)
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md)
+
+## License
+
+See [LICENSE](LICENSE)

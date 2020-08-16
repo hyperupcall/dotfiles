@@ -7,44 +7,28 @@ files:
      for: [all]
    - path: .prettierrc.json
      op: add
-     for: ["javascript"]
-     endings:
-        [
-           "js",
-           "ts",
-           "jsx",
-           "tsx",
-           "json",
-           "vue",
-           "less",
-           "scss",
-           "sass",
-           "graphql",
-           "md",
-           "mdx",
-           "yaml",
-           "yml",
-           "elm",
-           "java",
-           "php",
-           "ruby",
-           "xml",
-        ]
+     for: ['javascript']
+   - path: CODE_OF_CONDUCT.md
+     op: add
+     for: [all]
+   - path: CONTRIBUTING.md
+     op: add
+     for: [all]
    - path: jsconfig.json
      op: add
-     for: js
-     endings: ["js", "jsx"]
+     for: [js]
+     endings: ['js', 'jsx']
    - path: LICENSE
      op: add
      for: [all]
    - path: .github/CODE_OF_CONDUCT.md
-     op: add
+     op: remove
      for: [all]
    - path: .github/COMMIT_CONVENTION.md
      op: add
      for: [all]
    - path: .github/CONTRIBUTING.md
-     op: add
+     op: remove
      for: [all]
    - path: .github/PULL_REQUEST_TEMPLATE.md
      op: add
@@ -61,7 +45,10 @@ files:
    - path: .github/ISSUE_TEMPLATE/QUESTION.md
      op: add
      for: [all]
+   - path: .globe/globe.state
+     op: remove
+     for: [all]
    - path: scripts/globe/go.sh
      op: add
      for: [golang]
-     endings: ["go"]
+     endings: ['go']

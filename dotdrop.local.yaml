@@ -92,6 +92,9 @@ dotfiles:
   f_config_git_commit-template:
     src: .config/git/commit-template
     dst: ~/.config/git/commit-template
+  f_config_hg_hgrc:
+    src: .config/hg/hgrc
+    dst: ~/.config/hg/hgrc
 profiles:
   surface:
     dotfiles:
@@ -139,3 +142,4 @@ profiles:
     dotfiles:
     - f_config_git_attributes
     - f_config_git_commit-template
+    - f_config_hg_hgrc

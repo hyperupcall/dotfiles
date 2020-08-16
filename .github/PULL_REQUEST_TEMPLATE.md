@@ -1,4 +1,4 @@
-<!-- managed by 'eankeen/globe'; don't edit! -->
+[//]: # "managed by eankeen/globe; don't edit!"
 
 # pr template
 

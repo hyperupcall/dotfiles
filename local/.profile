@@ -74,7 +74,7 @@ export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export PUB_CACHE="$XDG_CACHE_HOME/pub-cache"
 
 # deno
-export DENO_DIR="$XDG_DATA_HOME/deno"
+export DENO_INSTALL="$XDG_DATA_HOME/deno"
 export DENO_INSTALL_ROOT="$DENO_DIR/bin"
 export PATH="$DENO_INSTALL_ROOT:$PATH"
 export PATH="$DENO_INSTALL_ROOT/bin:$PATH"

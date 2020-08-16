@@ -1,13 +1,13 @@
-<!-- managed by 'eankeen/globe'; don't edit! -->
+[//]: # "managed by eankeen/globe; don't edit!"
 
 # commit conventions
 
 ## commit naming
 
--  keep commits short and meaningful
--  use the imperative, present tense ('change' rather than 'changed' or 'changes')
--  do not capitalize the first letter
--  do not add a period
+* keep commits short and meaningful
+* use the imperative, present tense ('change' rather than 'changed' or 'changes')
+* do not capitalize the first letter
+* do not add a period
 
 here are some high-quality examples. note that you don't need to match the formatting, just the guidelines stated above :ok_hand:
 
@@ -22,7 +22,7 @@ fix(renderer): inject css styles
 
 ## branch naming
 
-be sure to create a new branch when contributing. _do **not** commit to the `dev` or `master` branch_. use tokens to categorize branches. add blurb about branch, separated by token with forward slash. see [this](https://stackoverflow.com/a/6065944) for more information.
+be sure to create a new branch when contributing. *do **not** commit to the `dev` or `master` branch*. use tokens to categorize branches. add blurb about branch, separated by token with forward slash. see [this](https://stackoverflow.com/a/6065944) for more information.
 
 ### tokens
 

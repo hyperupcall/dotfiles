@@ -2,9 +2,9 @@
 # managed by 'eankeen/globe'; don't edit!
 name: 🐛 bug report
 about: create a bug report
-title: ""
-labels: "bug"
-assignees: ""
+title: ''
+labels: 'bug'
+assignees: ''
 ---
 
 **describe the bug**
@@ -25,8 +25,8 @@ if applicable, add screenshots to help explain your problem
 **device information**
 device and browser configuration / environment
 
--  operating system
--  browser and version
+- operating system
+- browser and version
 
 **additional context**
 add any other context about the problem here
