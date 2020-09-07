@@ -1,0 +1,41 @@
+general {
+	colors = true
+	color_good = "#BBBBBB"
+	color_bad = "#CC1616"
+	color_degraded = "#55858E"
+	interval = 1
+}
+
+order += "volume master"
+order += "disk /"
+order += "cpu_usage"
+order += "memory"
+order += "tztime local"
+
+volume "master" {
+	format = "♪ %volume"
+	device = "default"
+	mixer = "Master"
+}
+
+disk "/" {
+	format = "%free (%percentage_avail)"
+	low_threshold = 10
+	threshold_type = gbytes_avail
+}
+
+cpu_usage {
+	format = "%cpu0 CPU"
+	max_threshold = 85
+}
+
+memory {
+	format = "%used MEM"
+	threshold_degraded = "10%"
+	format_degraded = "MEMORY: %free"
+}
+
+tztime local {
+	#format = "%Y-%m-%d (%b %d, %a) %H:%M:%S"
+	format = "%b (%m) %d, %A %H:%M:%S"
+}

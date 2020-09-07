@@ -95,8 +95,32 @@ dotfiles:
   f_config_hg_hgrc:
     src: .config/hg/hgrc
     dst: ~/.config/hg/hgrc
+  f_cliflix.json:
+    src: .cliflix.json
+    dst: ~/.cliflix.json
+  f_config_fish_fish_variables:
+    src: .config/fish/fish_variables
+    dst: ~/.config/fish/fish_variables
+  f_config_fish_config.fish:
+    src: .config/fish/config.fish
+    dst: ~/.config/fish/config.fish
+  f_config_fish_fishfile:
+    src: .config/fish/fishfile
+    dst: ~/.config/fish/fishfile
+  f_config_gh_config.yml:
+    src: .config/gh/config.yml
+    dst: ~/.config/gh/config.yml
+  f_config_gnupg_gpg-agnet.conf:
+    src: .config/gnupg/gpg-agnet.conf
+    dst: ~/.config/gnupg/gpg-agnet.conf
+  f_config_npm_npmrc:
+    src: .config/npm/npmrc
+    dst: ~/.config/npm/npmrc
+  f_config_i3status_config:
+    src: .config/i3status/config
+    dst: ~/.config/i3status/config
 profiles:
-  surface:
+  fox-two:
     dotfiles:
     - f_profile
     - f_bashrc
@@ -111,8 +135,6 @@ profiles:
     - f_config_code_user_settings.json
     - f_config_dir_colors
     - f_config_nvim_init.vim
-  fox:
-    dotfiles:
     - f_profile
     - f_bashrc
     - f_zprofile
@@ -138,8 +160,14 @@ profiles:
     - f_kshrc
     - f_xprofile
     - f_config_fontconfig_fonts.conf
-  fox-two:
-    dotfiles:
     - f_config_git_attributes
     - f_config_git_commit-template
     - f_config_hg_hgrc
+    - f_cliflix.json
+    - f_config_fish_fish_variables
+    - f_config_fish_config.fish
+    - f_config_fish_fishfile
+    - f_config_gh_config.yml
+    - f_config_gnupg_gpg-agnet.conf
+    - f_config_npm_npmrc
+    - f_config_i3status_config

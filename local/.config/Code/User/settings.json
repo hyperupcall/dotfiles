@@ -55,7 +55,6 @@
 		"Vagrantfile": "ruby",
 		"**/i3/config": "i3"
 	},
-	"files.autoSave": "onWindowChange",
 	"files.eol": "\n",
 	"files.exclude": {
 		"**/.git": false,
@@ -157,7 +156,7 @@
 	"window.title": "🦊 ${folderName} ${activeEditorLong}${separator}${remoteName}",
 	"window.titleBarStyle": "custom",
 	"workbench.activityBar.visible": true,
-	"workbench.colorTheme": "Monokai",
+	"workbench.colorTheme": "Night Owl",
 	"workbench.editor.closeOnFileDelete": true,
 	"workbench.editor.highlightModifiedTabs": true,
 	"workbench.editor.tabCloseButton": "off",
@@ -253,5 +252,6 @@
 	"explorer.confirmDragAndDrop": false,
 	"workbench.iconTheme": "material-icon-theme",
 	"C_Cpp.updateChannel": "Insiders",
-	"d.servedPath": "/home/edwin/.local/share/code-d/bin/serve-d"
+	"d.servedPath": "/home/edwin/.local/share/code-d/bin/serve-d",
+	"files.autoSave": "onWindowChange"
 }

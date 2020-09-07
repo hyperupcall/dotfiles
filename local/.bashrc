@@ -28,9 +28,10 @@ hasColor="$(
 CDPATH=":~:/usr/local"
 FCEDIT="$EDITOR" # default
 HISTCONTROL="ignorespace,ignoredups"
-HISTFILE="$HOME/.history/bash_history"
-HISTSIZE="5000"
-HISTIGNORE="?:ls:[bf]g:exit:pwd:clear"
+HISTFILE="$HOME/.config/bash/bash_history"
+HISTSIZE="32768"
+HISTFILESIZE=$HISTSIZE
+HISTIGNORE="?:ls:ls *:cd:cd -:[bf]g:exit:pwd:clear:exit:* --help:* -h"
 HISTTIMEFORMAT="%T %B %m %Y | "
 INPUTRC="$XDG_CONFIG_HOME/inputrc"
 
@@ -44,7 +45,7 @@ shopt -s checkwinsize # default
 shopt -s cmdhist # default
 shopt -s dirspell
 shopt -s dotglob
-shopt -s failglob
+shopt -u failglob
 shopt -s globstar
 shopt -s gnu_errfmt
 shopt -s histappend

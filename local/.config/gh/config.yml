@@ -1,0 +1,4 @@
+git_protocol: ssh
+editor:
+aliases:
+    co: pr checkout

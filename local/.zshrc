@@ -14,7 +14,7 @@ test "$COLORTERM" = "truecolor" || return
 
 ## shell variables ##
 FCEDIT="$EDITOR" # default
-HISTFILE="$HOME/.history/zhistory"
+HISTFILE="$HOME/zsh/zhistory"
 HISTSIZE="2000"
 SAVEHIST="5000"
 CDPATH=":~:/usr/local"
@@ -217,6 +217,11 @@ case $(basename "$(cat "/proc/$PPID/comm")") in
   		ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
     ;;
 esac
+
+# pip
+eval "`pip completion --zsh`"
+compctl -K _pip_completion pip3
+
 
 # tabtab source for packages
 # uninstall by removing these lines

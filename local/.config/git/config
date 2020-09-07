@@ -83,3 +83,5 @@
 	name = Edwin Kofler
 	email = 24364012+eankeen@users.noreply.github.com
 	signingkey = 484EA8DEF2F467E6
+[credential]
+	helper = /usr/lib/git-core/git-credential-libsecret

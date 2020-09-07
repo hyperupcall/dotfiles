@@ -39,7 +39,9 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3 and end X session?' -B 'yah, exit!' 'i3-msg exit'"
-bindcode --release 107 exec --no-startup-id "maim -s | xclip -t image/png -selection clipboard"
+bindcode --release 107 exec --no-startup-id "maim | xclip -t image/png -selection clipboard"
+bindsym Shift+Print exec --no-startup-id "maim -s | xclip -t image/png -selection clipboard"
+#bindcode --release 50 --release 107 exec --no-startup-id "maim | xclip -t image/png -selection clipboard"
 
 # audio
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -125,8 +127,8 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 bindsym $mod+r mode "resize"
 mode "resize" {
   bindsym h resize shrink width 10 px or 10 ppt
-  bindsym j resize grow height 10 px or 10 ppt
-  bindsym k resize shrink height 10 px or 10 ppt
+  bindsym j resize shrink height 10 px or 10 ppt
+  bindsym k resize grow height 10 px or 10 ppt
   bindsym l resize grow width 10 px or 10 ppt
 
   bindsym Return mode "default"

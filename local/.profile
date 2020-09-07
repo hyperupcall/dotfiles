@@ -10,6 +10,7 @@ export SUDO_EDITOR="$VISUAL"
 export GIT_EDITOR="$VISUAL"
 export DIFFPROG="nvim -d"
 export PAGER="less"
+export BROWSER="brave-beta"
 export LANG="${LANG:-en_US.UTF-8}"
 export XDG_DATA_HOME="$HOME/.local/share" # default
 export XDG_CONFIG_HOME="$HOME/.config" # default
@@ -25,14 +26,24 @@ HISTFILE="$HOME/.history/sh_history"
 HISTSIZE="5000"
 
 # ------------------------- core ------------------------- #
+# bat
+alias c="bat"
+
 # cp
 alias cp="cp -i"
 
 # df
 alias df="df -h"
 
+# du
+alias du="du -h"
+
 # free
 alias free="free -m"
+
+# ls
+alias la="exa -a"
+alias ll="exa -al"
 
 # ----------------------- programs ----------------------- #
 # anki
@@ -206,8 +217,7 @@ export NNN_DE_FILE_MANAGER="nautilus"
 export NODE_REPL_HISTORY="$HOME/.history/node_repl_history"
 
 # npm / pnpm
-export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npmrc"
-# unsure if this works
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
 export NPM_CONFIG_STORE_DIR="$XDG_DATA_HOME/pnpm-store"
 
@@ -232,6 +242,10 @@ export PSQLRC="$XDG_CONFIG_HOME/pg/psqlrc"
 export PSQL_HISTORY="$HOME/.history/psql_history"
 export PGPASSFILE="$XDG_CONFIG_HOME/pg/pgpass"
 export PGSERVICEFILE="$XDG_CONFIG_HOME/pg/pg_service.conf"
+
+# qt
+[ "$XDG_CURRENT_DESKTOP" = "KDE" ] || [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] \
+	|| export QT_QPA_PLATFORMTHEME="qt5ct"
 
 # readline
 export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
