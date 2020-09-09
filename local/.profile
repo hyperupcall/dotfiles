@@ -3,9 +3,17 @@
 # ~/.profile
 #
 
+export SSH_ASKPASS=/usr/lib/ssh/x11-ssh-askpass
+
+
+# -------------------- shell variables ------------------- #
+CDPATH=":~:/usr/local"
+VISUAL="vim"
+EDITOR="$VISUAL"
+PROMPT_COMMAND='history -a;history -n'
+
 ## general ##
-export VISUAL="vim"
-export EDITOR="$VISUAL"
+export VISUAL EDITOR
 export SUDO_EDITOR="$VISUAL"
 export GIT_EDITOR="$VISUAL"
 export DIFFPROG="nvim -d"
@@ -17,13 +25,8 @@ export XDG_CONFIG_HOME="$HOME/.config" # default
 export XDG_DATA_DIRS="/usr/local/share/:/usr/share" # default
 export XDG_CONFIG_DIRS="/etc/xdg" # default
 export XDG_CACHE_HOME="$HOME/.cache" # default
-#set -a && . "$XDG_CONFIG_HOME/user-dirs.dirs" && set +a
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.dots/scripts:$PATH"
-
-# -------------------- shell variables ------------------- #
-HISTFILE="$HOME/.history/sh_history"
-HISTSIZE="5000"
 
 # ------------------------- core ------------------------- #
 # bat

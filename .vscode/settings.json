@@ -2,6 +2,8 @@
 	"shellformat.flag": "-bn -ci -kp",
 	"shellcheck.ignorePatterns": {
 		"**/*.z*": true,
+		"**/.tcshrc": true,
+		"**/.cshrc": true,
 		"**/.git": true
 	}
 }

@@ -1,0 +1,5 @@
+#
+# ~/.cshrc
+#
+
+echo cshrc

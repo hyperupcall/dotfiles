@@ -15,23 +15,22 @@ test -r ~/.profile && source ~/.profile
 [[ $- != *i* ]] && return
 
 # only enable colors for terminals that support true color
+# hasColor() {
+# 	test "$COLORTERM" = "truecolor"
+# }
+
 hasColor="$(
 	test "$COLORTERM" = "truecolor"
 	echo $?
 )"
-# TODO:
-# hasColor() {
-#  test "$COLORTERM" = "truecolor"
-#}
 
 # -------------------- shell variables ------------------- #
-CDPATH=":~:/usr/local"
 FCEDIT="$EDITOR" # default
-HISTCONTROL="ignorespace,ignoredups"
-HISTFILE="$HOME/.config/bash/bash_history"
+HISTCONTROL="ignorespace:ignoredups"
+HISTFILE="$HOME/.history/bash_history"
 HISTSIZE="32768"
 HISTFILESIZE=$HISTSIZE
-HISTIGNORE="?:ls:ls *:cd:cd -:[bf]g:exit:pwd:clear:exit:* --help:* -h"
+HISTIGNORE="?:ls *:[bf]g:pwd:clear*:exit*:* --help:* -h"
 HISTTIMEFORMAT="%T %B %m %Y | "
 INPUTRC="$XDG_CONFIG_HOME/inputrc"
 
@@ -142,6 +141,8 @@ test -f /home/edwin/.travis/travis.sh && source "$HOME/.travis/travis.sh"
 
 # x11
 xhost +local:root >/dev/null 2>&1
+
+eval $(gnome-keyring-daemon -s)
 
 # ---------------------- completion ---------------------- #
 # bash_completion

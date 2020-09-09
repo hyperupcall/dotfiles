@@ -15,9 +15,8 @@ test "$COLORTERM" = "truecolor" || return
 ## shell variables ##
 FCEDIT="$EDITOR" # default
 HISTFILE="$HOME/zsh/zhistory"
-HISTSIZE="2000"
+HISTSIZE="32768"
 SAVEHIST="5000"
-CDPATH=":~:/usr/local"
 WORDCHARS=${WORDCHARS//\/[&.;]}
 
 ## shell options ##

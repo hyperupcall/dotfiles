@@ -1,4 +1,4 @@
-# shellcheck shell=sh
+# shellcheck shell=bash
 #
 # ~/.bash_logout
 #
