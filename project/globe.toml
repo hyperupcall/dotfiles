@@ -1,1 +1,4 @@
-[bootstrap]
+[project]
+tags = [
+	"core"
+]
