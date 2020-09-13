@@ -1,0 +1,2 @@
+#!/bin/sh
+feh --no-fehbg --bg-fill '/home/edwin/pics/border-collie-1149417.jpg' 

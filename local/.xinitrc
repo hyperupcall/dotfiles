@@ -29,4 +29,5 @@ fi
 
 [ -f ~/.xprofile ] && . ~/.xprofile
 
-exec i3
+#exec i3
+exec startxfce4

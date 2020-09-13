@@ -3,9 +3,6 @@
 # ~/.profile
 #
 
-export SSH_ASKPASS=/usr/lib/ssh/x11-ssh-askpass
-
-
 # -------------------- shell variables ------------------- #
 CDPATH=":~:/usr/local"
 VISUAL="vim"
@@ -26,60 +23,73 @@ export XDG_DATA_DIRS="/usr/local/share/:/usr/share" # default
 export XDG_CONFIG_DIRS="/etc/xdg" # default
 export XDG_CACHE_HOME="$HOME/.cache" # default
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.dots/scripts:$PATH"
+export PATH="$hidden/scripts:$PATH"
+
+hidden="$HOME/.hidden"
+
+up() {
+	mountpoint /mnt && { echo "unmounting"; sudo umount /mnt; }
+	sudo mount /dev/fox/arch /mnt
+	sudo arch-chroot /mnt /bin/bash -c "(sudo pacman -Syyu --noconfirm; exit)"
+	#sudo pacman -Syyu --sysroot /mnt
+	sudo umount /mnt
+}
 
 # ------------------------- core ------------------------- #
 # bat
-alias c="bat"
+alias c='bat'
+
+# chmod
+alias chmod='chmod --preserve-root'
+
+# chown
+alias chown='chown --preserve-root'
 
 # cp
-alias cp="cp -i"
+alias cp='cp -i'
 
 # df
-alias df="df -h"
+alias df='df -h'
 
 # du
-alias du="du -h"
+alias du='du -h'
 
 # free
-alias free="free -m"
+alias free='free -m'
 
 # ls
-alias la="exa -a"
-alias ll="exa -al"
+alias la='exa -a'
+alias ll='exa -al'
 
 # ----------------------- programs ----------------------- #
 # anki
-alias anki='anki -b "$XDG_DATA_HOME/anki"'
-
-# ansible
-export ANSIBLE_CONFIG="$XDG_CONFIG_HOME/ansible.cfg"
+alias anki='anki -b "$hidden/anki"'
 
 # atom
-export ATOM_HOME="$XDG_DATA_HOME/atom"
+export ATOM_HOME="$hidden/atom"
 
 # aws
-export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME/aws/credentials"
-export AWS_CONFIG_FILE="$XDG_CONFIG_HOME/aws/config"
+export AWS_SHARED_CREDENTIALS_FILE="$hidden/aws/credentials"
+export AWS_CONFIG_FILE="$hidden/aws/config"
 
 # bash-completeion
 export BASH_COMPLETION_USER_FILE="$XDG_CONFIG_HOME/bash-completion/bash_completion"
 
 # boto
-export BOTO_CONFIG="$XDG_CONFIG_HOME/boto"
+export BOTO_CONFIG="$hidden/boto"
 
 # buku
-alias b="bukdu --suggest"
+alias b='bukdu --suggest'
 
 # bundle
-export BUNDLE_USER_HOME="$HOME/.bundle"
+export BUNDLE_USER_HOME="$hidden/.bundle"
 export BUNDLE_CACHE_PATH="$XDG_CACHE_HOME/bundle"
 export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle"
 export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/bundle"
 
 # ccache
-export CCACHE_DIR="$XDG_CACHE_HOME"/ccache
-export CCACHE_CONFIGPATH="$XDG_CONFIG_HOME"/ccache.config
+export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
+export CCACHE_CONFIGPATH="$XDG_CONFIG_HOME/ccache/config"
 
 # cuda
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
@@ -88,8 +98,8 @@ export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export PUB_CACHE="$XDG_CACHE_HOME/pub-cache"
 
 # deno
-export DENO_INSTALL="$XDG_DATA_HOME/deno"
-export DENO_INSTALL_ROOT="$DENO_DIR/bin"
+export DENO_INSTALL="$hidden/deno"
+export DENO_INSTALL_ROOT="$DENO_INSTALL/bin"
 export PATH="$DENO_INSTALL_ROOT:$PATH"
 export PATH="$DENO_INSTALL_ROOT/bin:$PATH"
 
@@ -97,14 +107,11 @@ export PATH="$DENO_INSTALL_ROOT/bin:$PATH"
 export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
 
 # dotdrop
-alias ldotdrop='dotdrop --cfg=$HOME/.dots/dotdrop.local.yaml'
-alias gdotdrop='dotdrop --cfg=$HOME/.dots/dotdrop.global.yaml'
+alias ldotdrop='dotdrop --cfg=$hidden/dotdrop.local.yaml'
+alias gdotdrop='dotdrop --cfg=$hidden/dotdrop.global.yaml'
 
 # elinks
-export ELINKS_CONFDIR="$XDG_DATA_HOME/elinks"
-
-# flutter
-export PATH="$HOME/.local/opt/flutter/bin:$PATH"
+export ELINKS_CONFDIR="$hidden/elinks"
 
 # gcloud
 test -r "$HOME/.local/opt/google-cloud-sdk/path.bash.inc" \
@@ -113,8 +120,8 @@ test -r "$HOME/.local/opt/google-cloud-sdk/completion.bash.inc" \
 	&& . "$HOME/.local/opt/google-cloud-sdk/completion.bash.inc"
 
 # gem
-export GEM_HOME="$XDG_DATA_HOME"/gem
-export GEM_SPEC_CACHE="$XDG_CACHE_HOME"/gem
+export GEM_HOME="$XDG_DATA_HOME/gem"
+export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
 
 # gitlib
 export GITLIBS="$HOME/.local/opt/gitlibs"
@@ -153,7 +160,7 @@ export ICEAUTHORITY="$XDG_RUNTIME_DIR/iceauthority"
 export IMAPFILTER_HOME="$XDG_CONFIG_HOME/imapfilter"
 
 # info
-alias info='info --init-file $XDG_CONFIG_HOME/info/infokey'
+alias info='info --init-file $XDG_CONFIG_HOME/infokey'
 
 # ipython
 export IPYTHONDIR="$XDG_CONFIG_HOME"/jupyter
@@ -179,7 +186,7 @@ export KUBECONFIG="$XDG_DATA_HOME/kube"
 
 # less
 export LESS="-R"
-export LESSKEY="$XDG_CONFIG_HOME/less/keys"
+export LESSKEY="$XDG_CONFIG_HOME/less_keys"
 export LESSHISTFILE="$HOME/.history/less_history"
 export LESSHISTSIZE="250"
 export LESS_TERMCAP_mb=$'\e[1;31m' # start blink
@@ -191,16 +198,16 @@ export LESS_TERMCAP_us=$'\e[1;32m' # start underline
 export LESS_TERMCAP_ue=$'\e[0m' # end underline
 
 # ltrace
-alias ltrace='ltrace -F "$XDG_CONFIG_HOME/ltrace/ltrace.conf"'
+alias ltrace='ltrace -F "$XDG_CONFIG_HOME/ltrace.conf"'
 
 # maven
 alias mvn='mvn -gs "$XDG_CONFIG_HOME/maven/settings.xml"'
 
 # most
-export MOST_INITFILE="$XDG_CONFIG_HOME/most/mostrc"
+export MOST_INITFILE="$XDG_CONFIG_HOME/mostrc"
 
 # mplayer
-export MPLAYER_HOME="$XDG_CONFIG_HOME/mplayer"
+export MPLAYER_HOME="$hidden/mplayer"
 
 # mysql
 export MYSQL_HISTFILE="$HOME/.history/mysql_history"
@@ -231,8 +238,8 @@ export NVM_DIR="$XDG_DATA_HOME"/nvm
 alias pacman='pacman --color=auto'
 
 # packer
-export PACKER_CONFIG="$XDG_CONFIG_HOME/packerconfig"
-export PACKER_CONFIG_DIR="$XDG_CONFIG_HOME/packer.d"
+export PACKER_CONFIG="$hidden/packer/packerconfig"
+export PACKER_CONFIG_DIR="$hidden/packer/packer.d"
 
 # pacman
 alias pacman='pacman --color=auto'
@@ -241,21 +248,21 @@ alias pacman='pacman --color=auto'
 export PATH="$HOME/.poetry/bin:$PATH"
 
 # postgresql
-export PSQLRC="$XDG_CONFIG_HOME/pg/psqlrc"
+export PSQLRC="$hidden/pg/psqlrc"
 export PSQL_HISTORY="$HOME/.history/psql_history"
-export PGPASSFILE="$XDG_CONFIG_HOME/pg/pgpass"
-export PGSERVICEFILE="$XDG_CONFIG_HOME/pg/pg_service.conf"
+export PGPASSFILE="$hidden/pg/pgpass"
+export PGSERVICEFILE="$hidden/pg/pg_service.conf"
 
 # qt
 [ "$XDG_CURRENT_DESKTOP" = "KDE" ] || [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] \
 	|| export QT_QPA_PLATFORMTHEME="qt5ct"
 
 # readline
-export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
+export INPUTRC="$XDG_CONFIG_HOME/inputrc"
 
 # rust
-export CARGO_HOME="$XDG_DATA_HOME/cargo"
-export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+export CARGO_HOME="$hidden/cargo"
+export RUSTUP_HOME="$hidden/rustup"
 export PATH="$CARGO_HOME/bin:$PATH"
 
 # rvm
@@ -268,33 +275,35 @@ export SCCACHE_DIR="$XDG_CACHE_HOME/sccache"
 export SCCACHE_CACHE_SIZE="20G"
 
 # screen
-export SCREENRC="$XDG_CONFIG_HOME/screen/screenrc"
+export SCREENRC="$XDG_CONFIG_HOME/screenrc"
 
 # snap
 export PATH="/snap/bin:$PATH"
 export PATH="/var/lib/snapd/snap/bin:$PATH"
 
 # stack
-export STACK_ROOT="$XDG_DATA_HOME/stack"
+export STACK_ROOT="$hidden/stack"
 
 # subversion
 export SUBVERSION_HOME="$XDG_CONFIG_HOME/subversion"
 
 # terraform
-export TF_CLI_CONFIG_FILE="$XDG_CONFIG_HOME/terraformrc-custom"
+export TF_CLI_CONFIG_FILE="$hidden/terraform/terraformrc-custom"
 
 # tmux
 alias tmux='tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf"'
 export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 
 # vagrant
-export VAGRANT_HOME="$HOME/.local/opt/vagrant.d"
+export VAGRANT_HOME="$hidden/vagrant"
 export VAGRANT_ALIAS_FILE="$VAGRANT_HOME/aliases"
 
 # wasmer
-export WASMER_DIR="/home/edwin/.wasmer"
+export WASMER_DIR="$hidden/.wasmer"
 test -s "$WASMER_DIR/wasmer.sh" && . "$WASMER_DIR/wasmer.sh"
-export WASMTIME_HOME="$HOME/.wasmtime"
+
+# wasmtime
+export WASMTIME_HOME="$hidden/.wasmtime"
 export PATH="$WASMTIME_HOME/bin:$PATH"
 
 # wolfram mathematica

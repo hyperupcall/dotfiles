@@ -19,6 +19,7 @@ gaps outer 5
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 
 ## ------------------ specific windows ------------------
@@ -42,6 +43,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3 and end X session?' 
 bindcode --release 107 exec --no-startup-id "maim | xclip -t image/png -selection clipboard"
 bindsym Shift+Print exec --no-startup-id "maim -s | xclip -t image/png -selection clipboard"
 #bindcode --release 50 --release 107 exec --no-startup-id "maim | xclip -t image/png -selection clipboard"
+
 
 # audio
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -89,10 +91,10 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 ## --------------------- workspaces ---------------------
-set $ws1 "1: tty"
-set $ws2 "2: code"
-set $ws3 "3: web"
-set $ws4 "4: knowledge"
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
@@ -148,49 +150,29 @@ mode "resize" {
 #exec --no-startup-id pasystray &
 #exec --no-startup-id blueman-applet &
 
-bar {
-  output $disp1
-  position top
-  workspace_buttons no
-  tray_output none
-  i3bar_command i3bar -t
-  status_command i3blocks -c "$conf/settings/i3blocks.top.left.conf"
-  height 25
-  colors {
-    background #002b36
-    statusline #aea79f
-    separator #586e75
-    focused_workspace #586e75 #586e75 #ffffff #FFFFFF
-    active_workspace #073642 #073642 #ffffff #FFFFFF
-    inactive_workspace #002b36 #002b36 #aea79f #888888
-    urgent_workspace #77216f #77216f #ffffff #FFFFFF
-  }
-}
-
-# start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-  position bottom
-  # mode hide
+# start i3bar to display a workspace bar
+#bar {
+#  position bottom
+#  # mode hide
   # hidden_state hide
-  # modifier $mod
-  status_command i3status
-  font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-  font pango:Terminus 16px
-  separator_symbol " | "
-  workspace_buttons yes
-  workspace_min_width 20
-  binding_mode_indicator yes
-  colors {
-    separator #586e75
-    background #002b36
-    statusline #aea79f
-    focused_workspace #586e75 #586e75 #ffffff #FFFFFF
-    active_workspace #073642 #073642 #ffffff #FFFFFF
-    inactive_workspace #002b36 #002b36 #aea79f #888888
-    urgent_workspace #77216f #77216f #ffffff #FFFFFF
-  }
-}
+#  # modifier $mod
+#  status_command i3status
+#  font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+#  font pango:Terminus 16px
+#  separator_symbol " | "
+#  workspace_buttons yes
+#  workspace_min_width 20
+#  binding_mode_indicator yes
+#  colors {
+#    separator #586e75
+#    background #002b36
+#    statusline #aea79f
+#    focused_workspace #586e75 #586e75 #ffffff #FFFFFF
+#    active_workspace #073642 #073642 #ffffff #FFFFFF
+#    inactive_workspace #002b36 #002b36 #aea79f #888888
+#    urgent_workspace #77216f #77216f #ffffff #FFFFFF
+#  }
+#}
 
 client.focused #586e75 #586e75 #fdf6e3 #268bd2
 client.focused_inactive #073642 #073642 #93a1a1 #002b36

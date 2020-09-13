@@ -1,5 +1,5 @@
 [pager]
-pager = less -FRX
+	pager = less -FRX
 [user]
 	name = Edwin Kofler
 	email = 24364012+eankeen@users.noreply.github.com

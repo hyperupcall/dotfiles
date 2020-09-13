@@ -53,6 +53,7 @@ shopt -s interactive_comments # default
 shopt -s no_empty_cmd_completion
 shopt -s nocaseglob
 shopt -s nocasematch
+shopt -u progcomp
 shopt -s progcomp_alias # not working due to complete -D interference?
 shopt -u xpg_echo # default
 
