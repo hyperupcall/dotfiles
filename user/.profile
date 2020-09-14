@@ -126,8 +126,8 @@ export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
 # gitlib
 export GITLIBS="$HOME/.local/opt/gitlibs"
 
-# globe
-alias globe='globe --store-dir=$HOME/.dots/project'
+# dot
+alias globe='globe --store-dir=$HOME/.dots'
 
 # gnupg
 alias gpg2='gpg2 --homedir "$XDG_DATA_HOME/gnupg"'

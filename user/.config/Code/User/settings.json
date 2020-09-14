@@ -186,6 +186,8 @@
     "cmds",
     "dirent",
     "dirents",
+    "dotfile",
+    "dotfiles",
     "entrypoint",
     "godotenv",
     "gulpfile",

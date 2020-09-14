@@ -9,8 +9,8 @@ also see `gh/eankeen/globe`
 ## File Structure
 
 ├─ global    dotfiles at /
-├─ local     dotfiles at ~
-├─ project   dotfiles at .
+├─ user     dotfiles at ~
+├─ local   dotfiles at .
 └─ scripts
   └─ ./\*: scripts added to the PATH
   └─ dots: scripts just for this dotfiles repository
