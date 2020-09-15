@@ -1,2 +1,13 @@
 env/
 .env
+User/globalStorage/
+fish/functions/
+functions
+globalStorage
+GPUCache
+Session Storage
+Network Persistent State
+
+Code
+!.config/Code/settings.json
+!.config/Code/keybindings.json

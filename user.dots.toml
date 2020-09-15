@@ -1,8 +1,181 @@
+#
+# ~
+#
+
 [[files]]
 file = ".bash_logout"
 tags = [
 	"bash"
 ]
+
+[[files]]
+file = ".bash_profile"
+tags = [
+	"bash"
+]
+
+[[files]]
+file = ".bashrc"
+tags = [
+	"bash"
+]
+
+[[files]]
+file = ".cliflix.json"
+tags = [
+	"cliflix"
+]
+
+[[files]]
+file = ".cshrc"
+tags = [
+	"cshrc"
+]
+
+[[files]]
+file = ".fehbg"
+tags = [
+	"feh"
+]
+
+[[files]]
+file = ".kshrc"
+tags = [
+	"ksh"
+]
+
+[[files]]
+file = ".login"
+tags = [
+	"cshrc", "tcshrc"
+]
+
+[[files]]
+file = ".profile"
+tags = [
+	"shell"
+]
+
+[[files]]
+file = ".rcrc"
+tags = [
+	"rcm"
+]
+
+[[files]]
+file = ".tcshrc"
+tags = [
+	"tcshrc"
+]
+
+[[files]]
+file = ".xinitrc"
+tags = [
+	"X"
+]
+
+[[files]]
+file = ".xprofile"
+tags = [
+	"X"
+]
+
+[[files]]
+file = ".Xresources"
+tags = [
+	"X"
+]
+
+[[files]]
+file = ".zprofile"
+tags = [
+	"zsh"
+]
+
+[[files]]
+file = ".zshrc"
+tags = [
+	"zsh"
+]
+
+#
+# ~/.config
+#
+
+[[files]]
+file = "dir_colors"
+
+[[files]]
+file = "infokey"
+
+[[files]]
+file = "inputrc"
+
+[[files]]
+file = "user-dirs.dirs"
+
+[[files]]
+file = "chezmoi"
+type = "folder"
+
+[[files]]
+file = "cmus"
+type = "folder"
+
+[[files]]
+file = "Code/User/keybindings.json"
+
+[[files]]
+file = "Code/User/settings.json"
+
+[[files]]
+file = "/fish"
+type = "folder"
+
+[[files]]
+file = "fontconfig"
+type =  "folder"
+
+[[files]]
+file = "gh"
+type = "folder"
+
+[[files]]
+file = "git"
+type = "folder"
+
+[[files]]
+file = "gpg-agent.conf"
+
+[[files]]
+file = "hg"
+type = "folder"
+
+[[files]]
+file = "i3"
+type = "folder"
+tags = [
+	"i3"
+]
+
+[[files]]
+file = "i3status"
+type = "folder"
+tags = [
+	"i3status"
+]
+
+[[files]]
+file = "maven"
+type = "folder"
+
+[[files]]
+file = "npm"
+type = "folder"
+
+[[files]]
+file = "nvim"
+type = "folder"
 
 [[files]]
 file = "xfce4/terminal"
@@ -11,92 +184,18 @@ tags = [
 	"xfce4"
 ]
 
-# [[files]]
-# file = ".bash_profile"
-# tags = [
-# 	"bash"
-# ]
+#
+# ~/.local/share/applications
+#
 
-# [[files]]
-# file = ".bashrc"
-# tags = [
-# 	"bash"
-# ]
+[[files]]
+file = "obsidian.desktop"
+tags = [
+	"obsidian"
+]
 
-# [[files]]
-# file = ".cliflix.json"
-# tags = [
-# 	"cliflix"
-# ]
-
-# [[files]]
-# file = ".cshrc"
-# tags = [
-# 	"cshrc"
-# ]
-
-# [[files]]
-# file = ".fehbg"
-# tags = [
-# 	"feh"
-# ]
-
-# [[files]]
-# file = ".kshrc"
-# tags = [
-# 	"ksh"
-# ]
-
-# [[files]]
-# file = ".login"
-# tags = [
-# 	"cshrc", "tcshrc"
-# ]
-
-# [[files]]
-# file = ".profile"
-# tags = [
-# 	"shell"
-# ]
-
-# [[files]]
-# file = ".rcrc"
-# tags = [
-# 	"rcm"
-# ]
-
-# [[files]]
-# file = ".tcshrc"
-# tags = [
-# 	"tcshrc"
-# ]
-
-# [[files]]
-# file = ".xinitrc"
-# tags = [
-# 	"X"
-# ]
-
-# [[files]]
-# file = ".xprofile"
-# tags = [
-# 	"X"
-# ]
-
-# [[files]]
-# file = ".Xresources"
-# tags = [
-# 	"X"
-# ]
-
-# [[files]]
-# file = ".zprofile"
-# tags = [
-# 	"zsh"
-# ]
-
-# [[files]]
-# file = ".zshrc"
-# tags = [
-# 	"zsh"
-# ]
+[[files]]
+file = "zettlr.desktop"
+tags = [
+	"zettlr"
+]

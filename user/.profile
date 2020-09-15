@@ -127,7 +127,7 @@ export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
 export GITLIBS="$HOME/.local/opt/gitlibs"
 
 # dot
-alias globe='globe --store-dir=$HOME/.dots'
+alias globe='globe --dot-dir=$HOME/.dots'
 
 # gnupg
 alias gpg2='gpg2 --homedir "$XDG_DATA_HOME/gnupg"'
@@ -230,6 +230,9 @@ export NODE_REPL_HISTORY="$HOME/.history/node_repl_history"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
 export NPM_CONFIG_STORE_DIR="$XDG_DATA_HOME/pnpm-store"
+
+# nvidia
+#alias nvidia-settings='nvidia-settings --config $hidden/nvidia-settings'
 
 # nvm
 export NVM_DIR="$XDG_DATA_HOME"/nvm
