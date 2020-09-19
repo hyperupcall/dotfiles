@@ -9,6 +9,8 @@ VISUAL="vim"
 EDITOR="$VISUAL"
 PROMPT_COMMAND='history -a;history -n'
 
+hidden="$HOME/.hidden"
+
 ## general ##
 export VISUAL EDITOR
 export SUDO_EDITOR="$VISUAL"
@@ -25,7 +27,6 @@ export XDG_CACHE_HOME="$HOME/.cache" # default
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$hidden/scripts:$PATH"
 
-hidden="$HOME/.hidden"
 
 up() {
 	mountpoint /mnt && { echo "unmounting"; sudo umount /mnt; }
@@ -63,12 +64,25 @@ alias df='df -h'
 # du
 alias du='du -h'
 
+# egrep
+alias egrep='egrep --colour=auto'
+
+# fgrep
+alias fgrep='fgrep --colour=auto'
+
 # free
 alias free='free -m'
+
+# grep
+alias grep='grep --colour=auto'
+
+# ip
+alias ip='ip -color=auto'
 
 # ls
 alias la='exa -a'
 alias ll='exa -al'
+alias ls='ls --color=auto'
 
 # rm
 alias rm='rm --preserve-root=all'
@@ -232,7 +246,7 @@ export N_PREFIX="$HOME/.local/opt/n"
 export PATH="$N_PREFIX/bin:$PATH"
 
 # netbeams
-alias netbeams='netbeans --userdir "$XDG_CONFIG_HOME/netbeans"'
+# alias netbeams='netbeans --userdir "$XDG_CONFIG_HOME/netbeans"'
 
 # nnn
 export NNN_FALLBACK_OPENER="xdg-open"
@@ -251,9 +265,6 @@ export NPM_CONFIG_STORE_DIR="$XDG_DATA_HOME/pnpm-store"
 
 # nvm
 export NVM_DIR="$XDG_DATA_HOME"/nvm
-
-# pacman
-alias pacman='pacman --color=auto'
 
 # packer
 export PACKER_CONFIG="$hidden/packer/packerconfig"

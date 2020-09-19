@@ -8,21 +8,16 @@
 # nothing gets printed to the tty
 
 # if profile can be read, source it
-# shellcheck source=$HOME/.profile
+# shellcheck source=/dev/null
 test -r ~/.profile && source ~/.profile
 
 # if not running interactively, exit
 [[ $- != *i* ]] && return
 
 # only enable colors for terminals that support true color
-# hasColor() {
-# 	test "$COLORTERM" = "truecolor"
-# }
-
-hasColor="$(
+hasColor() {
 	test "$COLORTERM" = "truecolor"
-	echo $?
-)"
+}
 
 # -------------------- shell variables ------------------- #
 FCEDIT="$EDITOR" # default
@@ -63,9 +58,9 @@ set -o physical # default
 
 # ------------------------ colors ------------------------ #
 # dir_colors
-if test "$hasColor" -eq 0; then
+if hasColor; then
 	test -r "$XDG_CONFIG_HOME/dir_colors" \
-		&& eval "$(dircolors -b $XDG_CONFIG_HOME/dir_colors)"
+		&& eval "$(dircolors -b "$XDG_CONFIG_HOME/dir_colors")"
 else
 	unset LS_COLORS
 fi
@@ -83,7 +78,7 @@ if (
 fi
 
 # -------------------------- PS1 ------------------------- #
-if test "$hasColor" -eq 0; then
+if hasColor; then
 	# color
 	if test "$EUID" = 0; then
 		PS1="\[\e[31m\][\u@\h \w]\$\[\e[m\] "
@@ -99,37 +94,22 @@ else
 	fi
 fi
 
-# ------------------------- core ------------------------- #
-# diff
-test "$hasColor" -eq 0 \
-	&& alias diff='diff --color=auto'
 
-# egrep
-test "$hasColor" -eq 0 \
-	&& alias egrep='egrep --colour=auto'
+# ---------------------- completion ---------------------- #
+# bash_completion
+# shellcheck source=/usr/share/bash-completion/bash_completion
+test -r /usr/share/bash-completion/bash_completion && . /usr/share/bash-completion/bash_completion
 
-# fgrep
-test "$hasColor" -eq 0 \
-	&& alias fgrep='fgrep --colour=auto'
+# pack
+if [ "$(type -t compopt)" = "builtin" ]; then
+	complete -o default -F __start_pack p
+else
+	complete -o default -o nospace -F __start_pack p
+fi
 
-# grep
-test "$hasColor" -eq 0 \
-	&& alias grep='grep --colour=auto'
-
-# ip
-test "$hasColor" -eq 0 \
-	&& alias ip='ip -color=auto'
-
-# ls
-test "$hasColor" -eq 0 \
-	&& alias ls='ls --color=auto'
-
-# sudo
-complete -cf sudo
-
-# ----------------------- programs ----------------------- #
 # buildpacks
-command -v pack >/dev/null && source $(pack completion)
+# shellcheck source=/dev/null
+command -v pack >/dev/null && source "$(pack completion)"
 
 # chezmoi
 command -v chezmoi >/dev/null && eval "$(chezmoi completion bash)"
@@ -137,7 +117,14 @@ command -v chezmoi >/dev/null && eval "$(chezmoi completion bash)"
 # poetry
 command -v poetry >/dev/null && eval "$(poetry completions bash)"
 
+
+# ------------------------- etc ------------------------- #
+
+# sudo
+complete -cf sudo
+
 # travis
+# shellcheck source=/dev/null
 test -f /home/edwin/.travis/travis.sh && source "$HOME/.travis/travis.sh"
 
 # x11
@@ -145,16 +132,6 @@ xhost +local:root >/dev/null 2>&1
 
 eval $(gnome-keyring-daemon -s)
 
-# ---------------------- completion ---------------------- #
-# bash_completion
-test -r /usr/share/bash-completion/bash_completion && . /usr/share/bash-completion/bash_completion
-
-# pack
-if [ $(type -t compopt) = "builtin" ]; then
-	complete -o default -F __start_pack p
-else
-	complete -o default -o nospace -F __start_pack p
-fi
 
 # ------------------------ cleanup ----------------------- #
-unset hasColor
+unset -f hasColor
