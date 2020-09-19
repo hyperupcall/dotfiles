@@ -1,0 +1,35 @@
+[
+  {
+    "key": "ctrl+p",
+    "command": "workbench.action.quickOpen",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "-workbench.action.quickOpen"
+  },
+  {
+    "key": "ctrl+f",
+    "command": "-workbench.action.terminal.focusFind",
+    "when": "terminalFindFocused || terminalFocus"
+  },
+  {
+    "key": "ctrl+shift+d",
+    "command": "-extension.fabric8AnalyticsWidgetFullStack"
+  },
+  {
+    "key": "ctrl+shift+d",
+    "command": "-svgDevElementCommand",
+    "when": "svgDevActive && !svgDevHostInput"
+  },
+  {
+    "key": "ctrl+k shift+enter",
+    "command": "-workbench.action.pinEditor",
+    "when": "config.workbench.editor.showTabs && !editorSticky"
+  },
+  {
+    "key": "ctrl+k shift+enter",
+    "command": "-workbench.action.unpinEditor",
+    "when": "config.workbench.editor.showTabs && editorSticky"
+  }
+]

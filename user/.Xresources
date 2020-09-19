@@ -14,13 +14,6 @@ URxvt*font:     terminus-12
 URxvt*boldFont: terminus-12
 xURxvt*font:    ft:Terminus:style=Regular:size=10
 xURxvt*boldFont:    ft:Terminus:style=Regular:size=10
-!#define FONTSIZE 12
-!xterm*faceName: xft:PragmataPro:size=FONTSIZE:antialias=true:hinting=true:autohint=false:hintstyle=hintnone:dpi=96
-!URxvt*font:     xft:PragmataPro:size=FONTSIZE:antialias=true:hinting=true:autohint=false:hintstyle=hintnone:dpi=96
-!URxvt*boldFont: xft:PragmataPro:size=FONTSIZE:antialias=true:hinting=true:autohint=false:hintstyle=hintnone:dpi=96
-
-! Extra options for xft font spec - ~/.fonts.conf seems to override this
-!:antialias=false:hintstyle=hintfull
 
 #define WINDOWGEOMETRY 90x20
 ! xterm
@@ -57,22 +50,6 @@ URxvt*termName: xterm-256color
 URxvt.transparent: false
 URxvt.visualBell: false
 
-! URxvt.urgentOnBell: true
-! URxvt.urlLauncher: chrome
-! URxvt.internalBorder: 3
-! URxvt.depth: 24
-! URxvt.letterSpace: -1
-! URxvt.shading: 100
-
-! URxvt.perl-ext-common:  default,tabbed
-! ,clipboard
-! URxvt.tabbed.tabbar-fg: 4
-! URxvt.tabbed.tabbar-bg: 0
-! URxvt.tabbed.tab-fg:    9
-! URxvt.tabbed.tab-bg:    0
-! URxvt.keysym.M-c:   perl:clipboard:copy
-! URxvt.keysym.M-v:   perl:clipboard:paste
-
 ! do not scroll with output
 URxvt*scrollTtyOutput: false
 
@@ -82,67 +59,6 @@ URxvt*scrollWithBuffer: true
 ! scroll back to the bottom on keypress
 URxvt*scrollTtyKeypress: true
 
-! Colors
-
-*.boldMode: true
-*.colorBDMode: false
-!*.colorBD: cyan
-
-!! Base16 Flat
-!#define base00 #2C3E50
-!#define base01 #34495E
-!#define base02 #7F8C8D
-!#define base03 #95A5A6
-!#define base04 #BDC3C7
-!#define base05 #e0e0e0
-!#define base06 #f5f5f5
-!#define base07 #ECF0F1
-!#define base08 #E74C3C
-!#define base09 #E67E22
-!#define base0A #F1C40F
-!#define base0B #2ECC71
-!#define base0C #1ABC9C
-!#define base0D #3498DB
-!#define base0E #9B59B6
-!#define base0F #be643c
-
-! Base16 Eighties
-#define base00 #2d2d2d
-#define base01 #393939
-#define base02 #515151
-#define base03 #747369
-#define base04 #a09f93
-#define base05 #d3d0c8
-#define base06 #e8e6df
-#define base07 #f2f0ec
-#define base08 #f2777a
-#define base09 #f99157
-#define base0A #ffcc66
-#define base0B #99cc99
-#define base0C #66cccc
-#define base0D #6699cc
-#define base0E #cc99cc
-#define base0F #d27b53
-
-!! Base16 Atelier Dune
-!#define base00 #20201d
-!#define base01 #292824
-!#define base02 #6e6b5e
-!#define base03 #7d7a68
-!#define base04 #999580
-!#define base05 #a6a28c
-!#define base06 #e8e4cf
-!#define base07 #fefbec
-!#define base08 #d73737
-!#define base09 #b65611
-!#define base0A #cfb017
-!#define base0B #60ac39
-!#define base0C #1fad83
-!#define base0D #6684e1
-!#define base0E #b854d4
-!#define base0F #d43552
-
-
 ! Dark
 *.foreground:   base05
 *.background:   base00
@@ -151,34 +67,6 @@ URxvt*scrollTtyKeypress: true
 *.cursorUnderline: true
 *.cursorBlink: true
 
-! Light
-!*.foreground:   base02
-!*.background:   base07
-!*.cursorColor:  base02
-!*.cursorColor2:  base02
-
-*.color0:       base00
-*.color1:       base08
-*.color2:       base0B
-*.color3:       base0A
-*.color4:       base0D
-*.color5:       base0E
-*.color6:       base0C
-*.color7:       base05
-*.color8:       base03
-*.color9:       base08
-*.color10:      base0B
-*.color11:      base0A
-*.color12:      base0D
-*.color13:      base0E
-*.color14:      base0C
-*.color15:      base07
-*.color16:      base09
-*.color17:      base0F
-*.color18:      base01
-*.color19:      base02
-*.color20:      base04
-*.color21:      base06
 
 !! Solarized color scheme for the X Window System
 !! http://ethanschoonover.com/solarized
@@ -235,4 +123,40 @@ URxvt*scrollTtyKeypress: true
 !*color14:                 S_base1
 !*color15:                 S_base3
 
-!Xcursor.size: 32
+!
+! special
+*.foreground:   #6f798c
+*.background:   #fcfcfc
+*.cursorColor:  #6f798c
+
+! black
+*.color8:       #A7ACB3
+*.color0:       #fcfcfc
+
+! red
+*.color9:       #B86974
+*.color1:       #B86974
+
+! green
+*.color10:      #469E76
+*.color2:       #469E76
+
+! yellow
+*.color11:      #C7A775
+*.color3:       #C7A775
+
+! blue
+*.color12:      #5287AD
+*.color4:       #5287AD
+
+! magenta
+*.color13:      #CC6D8B
+*.color5:       #CC6D8B
+
+! cyan
+*.color14:      #3C97AD
+*.color6:       #3C97AD
+
+! white
+*.color15:      #6f798c
+*.color7:       #A7ACB3!

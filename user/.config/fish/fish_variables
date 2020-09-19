@@ -1,6 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR --export __ABBR_TIPS_KEYS:\x1d
+SETUVAR --export __ABBR_TIPS_KEYS:a__fish_prompt
 SETUVAR --export __ABBR_TIPS_VALUES:\x1d
 SETUVAR --export __abbr_tips_run_once:1
 SETUVAR __done_min_cmd_duration:10000

@@ -119,8 +119,8 @@ file = "chezmoi"
 type = "folder"
 
 [[files]]
-file = "cmus"
-type = "folder"
+file = "cmus/rc"
+type = "file"
 
 [[files]]
 file = "Code/User/keybindings.json"

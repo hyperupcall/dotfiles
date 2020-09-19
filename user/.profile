@@ -39,6 +39,9 @@ up() {
 # bat
 alias c='bat'
 
+# chgrp
+alias chgrp='chgrp --preserve-root'
+
 # chmod
 alias chmod='chmod --preserve-root'
 
@@ -47,6 +50,12 @@ alias chown='chown --preserve-root'
 
 # cp
 alias cp='cp -i'
+
+# diff
+alias diff='diff --color=auto'
+
+# dir
+alias dir='dir --color=auto'
 
 # df
 alias df='df -h'
@@ -60,6 +69,12 @@ alias free='free -m'
 # ls
 alias la='exa -a'
 alias ll='exa -al'
+
+# rm
+alias rm='rm --preserve-root=all'
+
+# vdir
+alias vdir='vdir --color=auto'
 
 # ----------------------- programs ----------------------- #
 # anki
