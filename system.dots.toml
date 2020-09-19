@@ -1,0 +1,12 @@
+[[files]]
+file = "system/efi/EFI/refind"
+tags = [
+	"refind"
+]
+
+[[files]]
+file = "system/efi/EFI/refind/refind-theme-regular"
+type = "folder"
+tags = [
+	"refind"
+]

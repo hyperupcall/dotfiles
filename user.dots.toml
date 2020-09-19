@@ -133,52 +133,52 @@ file = "/fish"
 type = "folder"
 
 [[files]]
-file = "fontconfig"
+file = "/fontconfig"
 type =  "folder"
 
 [[files]]
-file = "gh"
+file = "/gh"
 type = "folder"
 
 [[files]]
-file = "git"
+file = "/git"
 type = "folder"
 
 [[files]]
 file = "gpg-agent.conf"
 
 [[files]]
-file = "hg"
+file = "/hg"
 type = "folder"
 
 [[files]]
-file = "i3"
+file = "/i3"
 type = "folder"
 tags = [
 	"i3"
 ]
 
 [[files]]
-file = "i3status"
+file = "/i3status"
 type = "folder"
 tags = [
 	"i3status"
 ]
 
 [[files]]
-file = "maven"
+file = "/maven"
 type = "folder"
 
 [[files]]
-file = "npm"
+file = "/npm"
 type = "folder"
 
 [[files]]
-file = "nvim"
+file = "\nvim"
 type = "folder"
 
 [[files]]
-file = "xfce4/terminal"
+file = "/xfce4/terminal"
 type = "folder"
 tags = [
 	"xfce4"
