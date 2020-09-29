@@ -1,0 +1,21 @@
+scan_timeout = 25
+add_newline = false
+
+[character]
+symbol = "➤"
+vicmd_symbol = "⮜"
+
+[directory]
+style = "bold blue"
+
+[docker_context]
+disabled = false
+
+[kubernetes]
+disabled = false
+
+[hg_branch]
+disabled = false
+
+[time]
+disable = false

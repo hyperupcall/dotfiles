@@ -65,25 +65,13 @@ else
 	unset LS_COLORS
 fi
 
-# ------------------------- bash ------------------------- #
-# if the directory is not empty
-if (
-	shopt -s nullglob dotglob
-	f=("/etc/bash/bashrc.d")
-	((!${#f[@]}))
-); then
-	for sh in /etc/bash/bashrc.d/*; do
-		[ -r "${sh}" ] && source "${sh}"
-	done
-fi
-
 # -------------------------- PS1 ------------------------- #
 if hasColor; then
 	# color
 	if test "$EUID" = 0; then
 		PS1="\[\e[31m\][\u@\h \w]\$\[\e[m\] "
 	else
-		PS1="\[\033[38;5;88m\][\[$(tput sgr0)\]\[\033[38;5;23m\]\u\[$(tput sgr0)\]\[\033[38;5;166m\]@\[$(tput sgr0)\]\[\033[38;5;23m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[\033[38;5;166m\]\W\[$(tput sgr0)\]\[\033[38;5;88m\]]\[$(tput sgr0)\]\[\033[38;5;23m\]\\$\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
+		eval "$(starship init bash)"
 	fi
 else
 	# no color

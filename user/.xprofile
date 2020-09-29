@@ -1,4 +1,4 @@
 #!/bin/sh -eu
 
 . ~/.dots/scripts/x.sh
-secondary
+primary

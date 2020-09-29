@@ -4,7 +4,7 @@
 	editor = vim
 	# pager = less -+F -+R -S -+X
 	pager = less -FR
-	[init]
+[init]
 	defaultBranch = main
 [add "interactive"]
 	useBuiltIn = true ; EXPERIMENTAL
@@ -57,10 +57,9 @@
 	program = gpg ; default
 	format = openpgp ; default
 [help]
-	autoCorrect = 10
+	autoCorrect = 1
 [merge]
 	ff = true ; default
-# [pkg: npm-merge-driver] TODO
 [merge "npm-merge-driver"]
 	name = Merges npm lockfiles
 	driver = pnpx --no-install npm-merge-driver merge %A %O %B %P

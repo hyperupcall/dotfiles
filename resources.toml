@@ -96,9 +96,6 @@ source = 'git.gnupg.org/cgi-bin/gitweb.cgi'
 site = 'gnupg.org'
 docs = 'gnupg.org/documentation'
 
-[g]
-source = 'https://github.com/stefanmaric/g'
-
 [go]
 source = 'github.com/golang/go'
 site = 'golang.org'
@@ -125,7 +122,7 @@ docs = 'github.com/tupini07/i3-bindings#i3-bindings'
 source = 'github.com/altdesktop/i3-style'
 docs = 'github.com/altdesktop/i3-style#i3-style'
 
-[ice authority]
+["ice authority"]
 
 [ipython]
 source = 'github.com/ipython/ipython'
@@ -263,7 +260,7 @@ source = 'github.com/hashicorp/vagrant'
 site = 'vagrantup.com'
 docs = 'vagrantup.com/docs/index.html'
 
-[wolfram mathematica]
+["wolfram mathematica"]
 site = 'wolfram.com/mathematica'
 docs = 'reference.wolfram.com/language'
 

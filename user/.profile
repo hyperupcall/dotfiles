@@ -7,7 +7,6 @@
 CDPATH=":~:/usr/local"
 VISUAL="vim"
 EDITOR="$VISUAL"
-PROMPT_COMMAND='history -a;history -n'
 
 hidden="$HOME/.hidden"
 
@@ -307,7 +306,7 @@ export SCCACHE_CACHE_SIZE="20G"
 export SCREENRC="$XDG_CONFIG_HOME/screenrc"
 
 # snap
-export PATH="/snap/bin:$PATH"
+#export PATH="/snap/bin:$PATH"
 export PATH="/var/lib/snapd/snap/bin:$PATH"
 
 # stack
@@ -328,11 +327,11 @@ export VAGRANT_HOME="$hidden/vagrant"
 export VAGRANT_ALIAS_FILE="$VAGRANT_HOME/aliases"
 
 # wasmer
-export WASMER_DIR="$hidden/.wasmer"
+export WASMER_DIR="$hidden/wasmer"
 test -s "$WASMER_DIR/wasmer.sh" && . "$WASMER_DIR/wasmer.sh"
 
 # wasmtime
-export WASMTIME_HOME="$hidden/.wasmtime"
+export WASMTIME_HOME="$hidden/wasmtime"
 export PATH="$WASMTIME_HOME/bin:$PATH"
 
 # wolfram mathematica

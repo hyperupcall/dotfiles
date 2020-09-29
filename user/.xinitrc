@@ -29,5 +29,5 @@ fi
 
 [ -f ~/.xprofile ] && . ~/.xprofile
 
-#exec i3
-exec startxfce4
+exec i3
+#exec awesome

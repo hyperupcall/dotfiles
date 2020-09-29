@@ -1,0 +1,18 @@
+!
+! urxvt
+!
+URxvt*secondaryScreen: 1
+URxvt*secondaryScroll: 0
+URxvt*font: xft:DejaVu Sans Mono
+URxvt*boldFont: xft:DejaVu Sans Mono
+URxvt*italicFont: xft:DejaVu Sans Mono
+
+!
+! xterm
+!
+xterm*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
+XTerm*multiClickTime: 200
+xterm*savelines: 16384
+! highlight URLs
+xterm*utf8: true
+xterm*utf8Fonts: true

@@ -1,0 +1,396 @@
+version = "1"
+
+[[workspaces]]
+name = "JavaScript"
+description = "JavaScript / TypeScript Development Environment"
+use = [
+  "core", "theme", "productivity", "markdown", "html", "css", "javascript"
+]
+
+[[workspaces]]
+name = "Go"
+use = [
+  "core", "theme", "productivity", "go"
+]
+
+[[workspaces]]
+name = "Infrastructure"
+use = [
+  "core", "theme", "productivity", "go", "infrastructure"
+]
+
+[[workspaces]]
+name = "Fortran"
+use = [
+	"core", "themes", "fortran"
+]
+
+[[workspaces]]
+name = "C"
+use = [
+	"core", "themes", "cpp"
+]
+
+[[workspaces]]
+name = "Ruby"
+use = [
+	"core", "themes", "ruby"
+]
+
+[[workspaces]]
+name = "Ada"
+use = [
+	"core", "themes", "ada"
+]
+
+[[workspaces]]
+name = "Dots"
+use = [
+	"core", "themes", "fish", "git", "bash"
+]
+
+[[extensions]]
+  name = "2gua.rainbow-brackets"
+  tags = [
+	  "core"
+  ]
+
+[[extensions]]
+  name = "aaron-bond.better-comments"
+  tags = [
+	  "core"
+  ]
+
+[[extensions]]
+  name = "AdaCore.ada"
+  tags = [
+	  "ada"
+  ]
+
+[[extensions]]
+  name = "bierner.markdown-mermaid"
+  tags = [
+	  "markdown"
+  ]
+
+[[extensions]]
+  name = "bmalehorn.vscode-fish"
+  tags = [
+	  "fish"
+  ]
+
+[[extensions]]
+  name = "bpruitt-goddard.mermaid-markdown-syntax-highlighting"
+  tags = [
+	  "core"
+  ]
+
+[[extensions]]
+  name = "bungcip.better-toml"
+  tags = [
+	  "core"
+  ]
+
+[[extensions]]
+  name = "christian-kohler.npm-intellisense"
+  tags = [
+	  "javascript"
+  ]
+
+[[extensions]]
+  name = "christian-kohler.path-intellisense"
+  tags = [
+	  "core"
+  ]
+
+[[extensions]]
+  name = "DavidAnson.vscode-markdownlint"
+  tags = [
+	  "core"
+  ]
+
+[[extensions]]
+  name = "dbaeumer.vscode-eslint"
+  tags = [
+	  "javascript"
+  ]
+
+[[extensions]]
+  name = "eamodio.gitlens"
+  tags = [
+	  "git"
+  ]
+
+[[extensions]]
+  name = "EditorConfig.EditorConfig"
+  tags = [
+	  "core"
+  ]
+
+[[extensions]]
+  name = "eg2.vscode-npm-script"
+  tags = [
+	  "javascript"
+  ]
+
+[[extensions]]
+  name = "esbenp.prettier-vscode"
+  tags = [
+	  "core"
+  ]
+
+[[extensions]]
+  name = "ExodiusStudios.comment-anchors"
+  tags = [
+	  "productivity"
+  ]
+
+[[extensions]]
+  name = "fknop.vscode-npm"
+  tags = [
+	  "javascript"
+  ]
+
+[[extensions]]
+  name = "formulahendry.auto-close-tag"
+  tags = [
+	  "javascript", "html"
+  ]
+
+[[extensions]]
+  name = "golang.go"
+  tags = [
+	  "go"
+  ]
+
+[[extensions]]
+  name = "Gruntfuggly.todo-tree"
+  tags = [
+	  "productivity"
+  ]
+
+[[extensions]]
+  name = "inu1255.easy-snippet"
+  tags = [
+	  "productivity"
+  ]
+
+[[extensions]]
+  name = "ionutvmi.path-autocomplete"
+  tags = [
+	  "core"
+  ]
+
+[[extensions]]
+  name = "jasonnutter.search-node-modules"
+  tags = [
+	  "javascript"
+  ]
+
+[[extensions]]
+  name = "johnpapa.vscode-peacock"
+  tags = [
+	  "core"
+  ]
+
+[[extensions]]
+  name = "krvajalm.linter-gfortran"
+  tags = [
+	  "fortran"
+  ]
+
+[[extensions]]
+  name = "leizongmin.node-module-intellisense"
+  tags = [
+	  "javascript"
+  ]
+
+[[extensions]]
+  name = "mads-hartmann.bash-ide-vscode"
+  tags = [
+	  "bash"
+  ]
+
+[[extensions]]
+  name = "mgmcdermott.vscode-language-babel"
+  tags = [
+	  "javascript"
+  ]
+
+[[extensions]]
+  name = "mikestead.dotenv"
+  tags = [
+	  "core"
+  ]
+
+[[extensions]]
+  name = "mitaki28.vscode-clang"
+  tags = [
+	  "cpp"
+  ]
+
+[[extensions]]
+  name = "ms-azuretools.vscode-docker"
+  tags = [
+	  "infrastructure"
+  ]
+
+[[extensions]]
+  name = "ms-vscode.cpptools"
+  tags = [
+	  "cpp"
+  ]
+
+[[extensions]]
+  name = "ms-vscode.vscode-typescript-next"
+  tags = [
+	  "javascript"
+  ]
+
+[[extensions]]
+  name = "ms-vsliveshare.vsliveshare"
+  tags = [
+	  "core"
+  ]
+
+[[extensions]]
+  name = "ms-vsliveshare.vsliveshare-audio"
+  tags = [
+	  "core"
+  ]
+
+[[extensions]]
+  name = "PKief.markdown-checkbox"
+  tags = [
+	  "markdown"
+  ]
+
+[[extensions]]
+  name = "PKief.material-icon-theme"
+  tags = [
+	  "theme"
+  ]
+
+[[extensions]]
+  name = "pmneo.tsimporter"
+  tags = [
+	  "javascript"
+  ]
+
+[[extensions]]
+  name = "rebornix.ruby"
+  tags = [
+	  "ruby"
+  ]
+
+[[extensions]]
+  name = "redhat.vscode-yaml"
+  tags = [
+	  "core"
+  ]
+
+[[extensions]]
+  name = "rogalmic.bash-debug"
+  tags = [
+	  "bash"
+  ]
+
+[[extensions]]
+  name = "sdras.night-owl"
+  tags = [
+	  "theme"
+  ]
+
+[[extensions]]
+  name = "shd101wyy.markdown-preview-enhanced"
+  tags = [
+	  "markdown"
+  ]
+
+[[extensions]]
+  name = "silvenon.mdx"
+  tags = [
+	  "javascript"
+  ]
+
+[[extensions]]
+  name = "stackbreak.comment-divider"
+  tags = [
+	  "core"
+  ]
+
+[[extensions]]
+  name = "streetsidesoftware.code-spell-checker"
+  tags = [
+	  "core"
+  ]
+
+[[extensions]]
+  name = "stringham.move-ts"
+  tags = [
+	  "javascript"
+  ]
+
+[[extensions]]
+  name = "timonwong.shellcheck"
+  tags = [
+	  "bash", "shell"
+  ]
+
+[[extensions]]
+  name = "traBpUkciP.vscode-npm-scripts"
+  tags = [
+	  "javascript"
+  ]
+
+[[extensions]]
+  name = "VisualStudioExptTeam.vscodeintellicode"
+  tags = [
+	  "core"
+  ]
+
+[[extensions]]
+  name = "waderyan.gitblame"
+  tags = [
+	  "git"
+  ]
+
+[[extensions]]
+  name = "WallabyJs.quokka-vscode"
+  tags = [
+	  "core"
+  ]
+
+[[extensions]]
+  name = "wayou.vscode-todo-highlight"
+  tags = [
+	  "productivity"
+  ]
+
+[[extensions]]
+  name = "webfreak.code-d"
+  tags = [
+	  "d"
+  ]
+
+[[extensions]]
+  name = "wingrunr21.vscode-ruby"
+  tags = [
+	  "ruby"
+  ]
+
+[[extensions]]
+  name = "xyz.local-history"
+  tags = [
+
+  ]
+
+[[extensions]]
+  name = "yokoe.vscode-postfix-go"
+  tags = [
+	  "go"
+  ]
+
+[[extensions]]
+  name = "yzhang.markdown-all-in-one"
+  tags = ["markdown"]

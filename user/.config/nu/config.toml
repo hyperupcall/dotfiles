@@ -1,0 +1,4 @@
+completion_mode = "list"
+edit_mode = "emacs"
+prompt = "echo $(starship prompt)"
+skip_welcome_message = true

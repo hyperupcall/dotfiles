@@ -103,6 +103,14 @@ tags = [
 #
 
 [[files]]
+file = "/alacritty"
+type = "folder"
+
+[[files]]
+file = "/awesome"
+type = "folder"
+
+[[files]]
 file = "dir_colors"
 
 [[files]]
@@ -166,6 +174,13 @@ tags = [
 ]
 
 [[files]]
+file = "/ion"
+type = "folder"
+tags = [
+	"ion"
+]
+
+[[files]]
 file = "/maven"
 type = "folder"
 
@@ -174,8 +189,45 @@ file = "/npm"
 type = "folder"
 
 [[files]]
-file = "\nvim"
+file = "/nu"
 type = "folder"
+
+[[files]]
+file = "/nvim"
+type = "folder"
+
+[[files]]
+file = "/polybar"
+type = "folder"
+
+[[files]]
+file = "/readline"
+type = "folder"
+
+[[files]]
+file = "/sparta"
+type = "folder"
+
+[[files]]
+file = "/starship"
+type = "folder"
+tags = [
+	"starship"
+]
+
+[[files]]
+file = "/yay"
+type = "folder"
+tags = [
+	"yay"
+]
+
+[[files]]
+file = "/X11"
+type = "folder"
+tags = [
+	"X"
+]
 
 [[files]]
 file = "/xfce4/terminal"
