@@ -1,0 +1,24 @@
+set autoindent
+unset backup
+set breaklonglines
+unset casesensitive
+set historylog
+set locking
+set mouse
+set noconvert
+set positionlog
+unset preserve
+unset suspendable
+
+set tabsize 3
+
+# set not allowed in included file
+# include "/home/edwin/.config/nano/themes/default.theme.nanorc"
+set titlecolor bold,lightwhite,blue
+set statuscolor bold,lightwhite,green
+set errorcolor bold,lightwhite,red
+set selectedcolor lightwhite,magenta
+set stripecolor ,yellow
+set numbercolor cyan
+set keycolor cyan
+set functioncolor green

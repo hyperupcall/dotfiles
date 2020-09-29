@@ -3,5 +3,5 @@
 # ~/.bash_profile
 #
 
-# shellcheck source=local/.bashrc
+# shellcheck source=user/.bashrc
 test -f ~/.bashrc && . ~/.bashrc

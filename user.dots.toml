@@ -3,97 +3,97 @@
 #
 
 [[files]]
-file = ".bash_logout"
+file = "/.bash_logout"
 tags = [
 	"bash"
 ]
 
 [[files]]
-file = ".bash_profile"
+file = "/.bash_profile"
 tags = [
 	"bash"
 ]
 
 [[files]]
-file = ".bashrc"
+file = "/.bashrc"
 tags = [
 	"bash"
 ]
 
 [[files]]
-file = ".cliflix.json"
+file = "/.cliflix.json"
 tags = [
 	"cliflix"
 ]
 
 [[files]]
-file = ".cshrc"
+file = "/.cshrc"
 tags = [
 	"cshrc"
 ]
 
 [[files]]
-file = ".fehbg"
+file = "/.fehbg"
 tags = [
 	"feh"
 ]
 
 [[files]]
-file = ".kshrc"
+file = "/.kshrc"
 tags = [
 	"ksh"
 ]
 
 [[files]]
-file = ".login"
+file = "/.login"
 tags = [
 	"cshrc", "tcshrc"
 ]
 
 [[files]]
-file = ".profile"
+file = "/.profile"
 tags = [
 	"shell"
 ]
 
 [[files]]
-file = ".rcrc"
+file = "/.rcrc"
 tags = [
 	"rcm"
 ]
 
 [[files]]
-file = ".tcshrc"
+file = "/.tcshrc"
 tags = [
 	"tcshrc"
 ]
 
 [[files]]
-file = ".xinitrc"
+file = "/.xinitrc"
 tags = [
 	"X"
 ]
 
 [[files]]
-file = ".xprofile"
+file = "/.xprofile"
 tags = [
 	"X"
 ]
 
 [[files]]
-file = ".Xresources"
+file = "/.Xresources"
 tags = [
 	"X"
 ]
 
 [[files]]
-file = ".zprofile"
+file = "/.zprofile"
 tags = [
 	"zsh"
 ]
 
 [[files]]
-file = ".zshrc"
+file = "/.zshrc"
 tags = [
 	"zsh"
 ]
@@ -111,30 +111,30 @@ file = "/awesome"
 type = "folder"
 
 [[files]]
-file = "dir_colors"
+file = "/dir_colors"
 
 [[files]]
-file = "infokey"
+file = "/infokey"
 
 [[files]]
-file = "inputrc"
+file = "/inputrc"
 
 [[files]]
-file = "user-dirs.dirs"
+file = "/user-dirs.dirs"
 
 [[files]]
-file = "chezmoi"
+file = "/chezmoi"
 type = "folder"
 
 [[files]]
-file = "cmus/rc"
+file = "/cmus/rc"
 type = "file"
 
 [[files]]
-file = "Code/User/keybindings.json"
+file = "/Code/User/keybindings.json"
 
 [[files]]
-file = "Code/User/settings.json"
+file = "/Code/User/settings.json"
 
 [[files]]
 file = "/fish"
@@ -241,13 +241,21 @@ tags = [
 #
 
 [[files]]
-file = "obsidian.desktop"
+file = "/obsidian.desktop"
 tags = [
 	"obsidian"
 ]
 
 [[files]]
-file = "zettlr.desktop"
+file = "/zettlr.desktop"
 tags = [
 	"zettlr"
 ]
+
+#
+# ~/scripts
+#
+
+[[files]]
+file = "/scripts"
+type = "folder"

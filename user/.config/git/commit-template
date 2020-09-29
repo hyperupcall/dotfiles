@@ -1,2 +1,23 @@
 
-# (build|ci|docs|feat|fix|perf|refactor|style|test|chore|dx|workflow|types|wip)
+# Conventional Commits 1.0.0
+# https://www.conventionalcommits.org
+# https://semver.org
+#
+# ---
+# <type>[optional scope]: <description>
+#
+# [optional body]
+#
+# [optional footer(s)]
+# ---
+#
+# Types:
+# [fix] [feat] [BREAKING CHANGE]
+#
+# AngularJS Commit Convention
+# https://github.com/angular/angular/blob/master/CONTRIBUTING.md
+# Types:
+# [build] [ci] [docs] [feat] [fix] [perf] [refactor] [style] [test]
+#
+# Other
+# (chore|dx|workflow|types|wip)

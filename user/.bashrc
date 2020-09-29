@@ -25,8 +25,8 @@ HISTCONTROL="ignorespace:ignoredups"
 HISTFILE="$HOME/.history/bash_history"
 HISTSIZE="32768"
 HISTFILESIZE=$HISTSIZE
-HISTIGNORE="?:ls *:[bf]g:pwd:clear*:exit*:* --help:* -h"
-HISTTIMEFORMAT="%T %B %m %Y | "
+HISTIGNORE="?:ls:[bf]g:pwd:clear*:exit*:* --help:* -h"
+HISTTIMEFORMAT="%B %m %Y %T | "
 INPUTRC="$XDG_CONFIG_HOME/inputrc"
 
 # --------------------- shell options -------------------- #
@@ -43,6 +43,7 @@ shopt -u failglob
 shopt -s globstar
 shopt -s gnu_errfmt
 shopt -s histappend
+shopt -s histreedit
 shopt -u hostcomplete
 shopt -s interactive_comments # default
 shopt -s no_empty_cmd_completion
@@ -53,6 +54,7 @@ shopt -s progcomp_alias # not working due to complete -D interference?
 shopt -u xpg_echo # default
 
 # set
+set -o noclobber
 set -o notify # deafult
 set -o physical # default
 

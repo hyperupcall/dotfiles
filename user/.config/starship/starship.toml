@@ -1,5 +1,22 @@
 scan_timeout = 25
 add_newline = false
+prompt_order = [
+  "username",
+  "hostname",
+  "directory",
+  "git_branch",
+  "git_commit",
+  "git_state",
+  "git_status",
+  "cmd_duration",
+  "custom",
+  "line_break",
+  "jobs",
+  "battery",
+  "time",
+  "character",
+  "custom.shell"
+]
 
 [character]
 symbol = "➤"
@@ -14,8 +31,34 @@ disabled = false
 [kubernetes]
 disabled = false
 
+[git_status]
+conflicted = "⚔️ "
+ahead = "🏎️ 💨 "
+behind = "🐢 "
+diverged = "🔱 "
+untracked = "🛤️ "
+stashed = "📦 "
+modified = "📝 "
+staged = "🗃️ "
+renamed = "📛 "
+deleted = "🗑️ "
+
 [hg_branch]
 disabled = false
 
+[memory_usage]
+disabled = false
+show_percentage = true
+show_swap = true
+threshold = 30
+style = "bold dimmed green"
+
 [time]
 disable = false
+
+[zig]
+disable = true
+
+[custom.shell]
+command = "echo bar"
+shell = ["bash", "-c"]

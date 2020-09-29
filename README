@@ -17,3 +17,5 @@ also see `gh/eankeen/globe`
   └─ globe: scripts hidden globally, but available via `run.sh`
 
 dotfiles located in 'project' are managed by eankeen/globe
+
+todo: enable readline C-s

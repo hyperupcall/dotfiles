@@ -18,11 +18,13 @@ export DIFFPROG="nvim -d"
 export PAGER="less"
 export BROWSER="brave-beta"
 export LANG="${LANG:-en_US.UTF-8}"
+export SPELL="aspell -x -c"
 export XDG_DATA_HOME="$HOME/.local/share" # default
 export XDG_CONFIG_HOME="$HOME/.config" # default
 export XDG_DATA_DIRS="/usr/local/share/:/usr/share" # default
 export XDG_CONFIG_DIRS="/etc/xdg" # default
 export XDG_CACHE_HOME="$HOME/.cache" # default
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$hidden/scripts:$PATH"
 
@@ -48,8 +50,19 @@ alias chmod='chmod --preserve-root'
 # chown
 alias chown='chown --preserve-root'
 
+# cd
+alias ..='cd ../../'
+alias ...='cd ../../../'
+alias ....='cd ../../../../'
+
 # cp
 alias cp='cp -i'
+
+# curl
+alias curl='curl --config $XDG_CONFIG_HOME/curl/curlrc'
+
+# dd
+alias dd='dd --status=progress'
 
 # diff
 alias diff='diff --color=auto'
@@ -83,8 +96,14 @@ alias la='exa -a'
 alias ll='exa -al'
 alias ls='ls --color=auto'
 
+# ping
+alias ping='ping -c 5'
+
 # rm
 alias rm='rm --preserve-root=all'
+
+# sudo (sudo alises; see `info bash -n Aliases` for details)
+alias sudo='sudo '
 
 # vdir
 alias vdir='vdir --color=auto'
@@ -213,7 +232,9 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export KUBECONFIG="$XDG_DATA_HOME/kube"
 
 # less
-export LESS="-R"
+# adding X breaks mouse scrolling of pages
+export LESS="-FIR"
+# export LESS="-FIRX"
 export LESSKEY="$XDG_CONFIG_HOME/less_keys"
 export LESSHISTFILE="$HOME/.history/less_history"
 export LESSHISTSIZE="250"
