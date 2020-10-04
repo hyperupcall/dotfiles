@@ -1,24 +1,11 @@
-scrolling:
-   history: 10000
-font:
-   normal:
-      family: monospace
-      style: Regular
-   bold:
-      family: monospace
-      style: Bold
-   italic:
-      family: monospace
-      style: Italic
-   bold_italic:
-      family: monospace
-      style: Bold Italic
-   size: 12
 # Colors (Nord)
 colors:
+   # Default colors
    primary:
       background: '0x2E3440'
       foreground: '0xD8DEE9'
+
+   # Normal colors
    normal:
       black: '0x3B4252'
       red: '0xBF616A'
@@ -28,6 +15,8 @@ colors:
       magenta: '0xB48EAD'
       cyan: '0x88C0D0'
       white: '0xE5E9F0'
+
+   # Bright colors
    bright:
       black: '0x4C566A'
       red: '0xBF616A'

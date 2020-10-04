@@ -1,0 +1,6 @@
+[submodule "user/.config/bash/bash-it"]
+	path = user/.config/bash/bash-it
+	url = https://github.com/Bash-it/bash-it
+[submodule "user/.config/zsh/oh-my-zsh"]
+	path = user/.config/zsh/oh-my-zsh
+	url = https://github.com/ohmyzsh/ohmyzsh

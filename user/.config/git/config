@@ -10,6 +10,7 @@
 	useBuiltIn = true ; EXPERIMENTAL
 [alias]
 	s = status
+	lgs = log --oneline --decorate --no-merges --max-count=20
 [blame]
 	coloring = highlightRecent
 	date = relative
@@ -86,3 +87,14 @@
 	signingkey = 484EA8DEF2F467E6
 [credential]
 	helper = libsecret
+[url "git@github.com:"]
+	insteadOf = gh:
+	pushInsteadOf = gh:
+[url "git@bitbucket.org:"]
+	insteadOf = bb:
+	pushInsteadOf = bb:
+[url "git@gitlab.com:"]
+	insteadOf = gl:
+	pushInsteadOf = gl:
+[include]
+	path = relativepath.config

@@ -19,11 +19,3 @@ indent_style = space
 
 [*.{diff,md,snap}]
 trim_trailing_whitespace = false
-
-# used by shfmt
-[*.sh]
-binary_next_line   = true
-switch_case_indent = true
-space_redirects    = true
-keep_padding = true
-function_next_line = true

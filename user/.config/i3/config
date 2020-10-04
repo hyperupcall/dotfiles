@@ -3,8 +3,8 @@
 
 ## ------------------------ basic -----------------------
 set $mod Mod4
-# font pango:DejaVu Sans Mono 12
-font pango:Terminus 12px
+font pango:DejaVu Sans Mono 12
+
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 focus_follows_mouse no

@@ -3,57 +3,35 @@
 # ~/.profile
 #
 
-# -------------------- shell variables ------------------- #
-CDPATH=":~:/usr/local"
-VISUAL="vim"
-EDITOR="$VISUAL"
-
 hidden="$HOME/.hidden"
 
-## general ##
-export VISUAL EDITOR
-export SUDO_EDITOR="$VISUAL"
-export GIT_EDITOR="$VISUAL"
+# -------------------- shell variables ------------------- #
+CDPATH=":~:/usr/local"
+export VISUAL="vim"
+export EDITOR="$VISUAL"
 export DIFFPROG="nvim -d"
 export PAGER="less"
 export BROWSER="brave-beta"
 export LANG="${LANG:-en_US.UTF-8}"
 export SPELL="aspell -x -c"
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$hidden/scripts:$PATH"
+
+# -------------------------- xdg ------------------------- #
 export XDG_DATA_HOME="$HOME/.local/share" # default
 export XDG_CONFIG_HOME="$HOME/.config" # default
 export XDG_DATA_DIRS="/usr/local/share/:/usr/share" # default
 export XDG_CONFIG_DIRS="/etc/xdg" # default
 export XDG_CACHE_HOME="$HOME/.cache" # default
-export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$hidden/scripts:$PATH"
 
-
-up() {
-	mountpoint /mnt && { echo "unmounting"; sudo umount /mnt; }
-	sudo mount /dev/fox/arch /mnt
-	sudo arch-chroot /mnt /bin/bash -c "(sudo pacman -Syyu --noconfirm; exit)"
-	#sudo pacman -Syyu --sysroot /mnt
-	sudo umount /mnt
-}
-
-# ------------------------- core ------------------------- #
-# bat
-alias c='bat'
-
-# chgrp
-alias chgrp='chgrp --preserve-root'
+ZFS_COLOR=
 
 # chmod
 alias chmod='chmod --preserve-root'
 
 # chown
 alias chown='chown --preserve-root'
-
-# cd
-alias ..='cd ../../'
-alias ...='cd ../../../'
-alias ....='cd ../../../../'
 
 # cp
 alias cp='cp -i'
@@ -107,6 +85,9 @@ alias sudo='sudo '
 
 # vdir
 alias vdir='vdir --color=auto'
+
+# wget
+alias wget='wget --config=$XDG_CONFIG_HOME/wget/wgetrc'
 
 # ----------------------- programs ----------------------- #
 # anki
@@ -238,13 +219,20 @@ export LESS="-FIR"
 export LESSKEY="$XDG_CONFIG_HOME/less_keys"
 export LESSHISTFILE="$HOME/.history/less_history"
 export LESSHISTSIZE="250"
-export LESS_TERMCAP_mb=$'\e[1;31m' # start blink
-export LESS_TERMCAP_md=$'\e[1;36m' # start bold
-export LESS_TERMCAP_me=$'\e[0m' # end all
-export LESS_TERMCAP_so=$'\e[01;44;33m' # start reverse video
-export LESS_TERMCAP_se=$'\e[0m' # end reverse video
-export LESS_TERMCAP_us=$'\e[1;32m' # start underline
-export LESS_TERMCAP_ue=$'\e[0m' # end underline
+# shellcheck disable=SC2155
+export LESS_TERMCAP_mb="$(printf '\e[1;31m')" # start blink
+# shellcheck disable=SC2155
+export LESS_TERMCAP_md="$(printf '\e[1;36m')" # start bold
+# shellcheck disable=SC2155
+export LESS_TERMCAP_me="$(printf '\e[0m')" # end all
+# shellcheck disable=SC2155
+export LESS_TERMCAP_so="$(printf '\e[01;44;33m')" # start reverse video
+# shellcheck disable=SC2155
+export LESS_TERMCAP_se="$(printf '\e[0m')" # end reverse video
+# shellcheck disable=SC2155
+export LESS_TERMCAP_us="$(printf '\e[1;32m')" # start underline
+# shellcheck disable=SC2155
+export LESS_TERMCAP_ue="$(printf '\e[0m')" # end underline
 
 # ltrace
 alias ltrace='ltrace -F "$XDG_CONFIG_HOME/ltrace.conf"'

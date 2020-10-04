@@ -9,4 +9,4 @@ test -x "$filePath" && {
 	exit
 }
 echo "File '$filePath' not exist or not executable."
-exit                                                       1
+exit 1

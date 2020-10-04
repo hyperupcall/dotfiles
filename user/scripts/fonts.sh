@@ -1,7 +1,7 @@
 #!/bin/sh -eu
 
 # SECRET_GOOGLE_FONTS_API_KEY="..."
-. .env
+. .env.env
 
 # ------------------- helper functions ------------------- #
 hasColor() {

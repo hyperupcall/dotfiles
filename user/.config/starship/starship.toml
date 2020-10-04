@@ -1,26 +1,15 @@
 scan_timeout = 25
 add_newline = false
-prompt_order = [
-  "username",
-  "hostname",
-  "directory",
-  "git_branch",
-  "git_commit",
-  "git_state",
-  "git_status",
-  "cmd_duration",
-  "custom",
-  "line_break",
-  "jobs",
-  "battery",
-  "time",
-  "character",
-  "custom.shell"
-]
+
+format="""
+${custom.show_shell}\
+$all\
+"""
 
 [character]
-symbol = "➤"
-vicmd_symbol = "⮜"
+success_symbol = "[➤](bold green)"
+error_symbol = "[➤](bold red)"
+vicmd_symbol = "[⮜](bold green)"
 
 [directory]
 style = "bold blue"
@@ -28,22 +17,22 @@ style = "bold blue"
 [docker_context]
 disabled = false
 
-[kubernetes]
-disabled = false
-
 [git_status]
-conflicted = "⚔️ "
-ahead = "🏎️ 💨 "
-behind = "🐢 "
-diverged = "🔱 "
-untracked = "🛤️ "
-stashed = "📦 "
-modified = "📝 "
-staged = "🗃️ "
-renamed = "📛 "
-deleted = "🗑️ "
+#conflicted = "⚔️ "
+#ahead = "🏎️💨 "
+#behind = "🐢 "
+#diverged = "🔱 "
+#untracked = "🛤️ "
+#stashed = "📦 "
+#modified = "📝 "
+#staged = "🗃️ "
+#renamed = "📛 "
+#deleted = "🗑️ "
 
 [hg_branch]
+disabled = false
+
+[kubernetes]
 disabled = false
 
 [memory_usage]
@@ -53,12 +42,15 @@ show_swap = true
 threshold = 30
 style = "bold dimmed green"
 
+[shlvl]
+disabled = false
+
+[status]
+disabled = false
+
 [time]
 disable = false
 
-[zig]
-disable = true
-
-[custom.shell]
-command = "echo bar"
-shell = ["bash", "-c"]
+[custom.show_shell]
+command = "show_shell"
+when = "true"

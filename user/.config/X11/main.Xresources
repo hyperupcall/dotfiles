@@ -1,0 +1,53 @@
+!
+! urxvt
+!
+URxvt*secondaryScreen: 1
+URxvt*secondaryScroll: 0
+URxvt*font: xft:DejaVu Sans Mono
+URxvt*boldFont: xft:DejaVu Sans Mono
+URxvt*italicFont: xft:DejaVu Sans Mono
+URxvt.VT100.loginShell: false
+
+
+!
+! XTerm, UXTerm, KOI8RXTerm
+!
+XTerm.termName: xterm-256color
+XTerm.title: XTerm
+
+XTerm.VT100.altSendsEscape: true
+XTerm.VT100.backarrowKey: false
+XTerm.VT100.charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
+XTerm.VT100.cursorBlink: true
+XTerm.VT100.cursorOffTime: 750
+XTerm.VT100.cursorOnTime: 1000
+XTerm.VT100.dynamicColors: true
+XTerm.VT100.eightBitInput: false
+XTerm.VT100.faceName: xft:DejaVu Sans Mono
+XTerm.VT100.faceSize: 14
+XTerm.VT100.jumpScroll: true
+!*.VT100.logging: false
+!*.VT100.loginShell: false
+XTerm.VT100.metaSendsEscape: true
+XTerm.VT100.multiClickTime: 200
+XTerm.VT100.multiScroll: true
+XTerm.VT100.rightScrollBar: true
+XTerm.VT100.saveLines: 10000
+!*.VT100.selectToClipboard: false
+XTerm.VT100.scrollBar: true
+XTerm.VT100.scrollKey: true
+XTerm.VT100.scrollTtyOutput: false
+!*.VT100.toolBar: false
+XTerm.VT100.translations: #override \
+	Shift Ctrl <Key> minus: smaller-vt-font() \n\
+	Shift Ctrl <Key> equal: larger-vt-font() \n\
+	Shift Ctrl <Key> 0: set-vt-font(d) \n\
+	Shift Ctrl <Key> BackSpace: set-vt-font(d) \n\
+	Shift Ctrl <Key> C: copy-selection(CLIPBOARD) \n\
+	Shift Ctrl <Key> V: insert-selection(CLIPBOARD) \n\
+	Shift <Key>Home: scroll-forw(10000000000) \n\
+	Shift <Key>End: scroll-back(10000000000) \n
+XTerm.VT100.ttyModes: erase ^?
+XTerm.VT100.utf8: always
+XTerm.VT100.utf8Fonts: always
+XTerm.VT100.wideChars: true

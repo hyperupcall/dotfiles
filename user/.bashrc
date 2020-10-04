@@ -122,6 +122,8 @@ xhost +local:root >/dev/null 2>&1
 
 eval $(gnome-keyring-daemon -s)
 
+# bash-it
+source ~/.config/bash/bash-it.sh
 
 # ------------------------ cleanup ----------------------- #
 unset -f hasColor

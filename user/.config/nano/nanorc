@@ -8,12 +8,14 @@ set mouse
 set noconvert
 set positionlog
 unset preserve
+set smooth
 unset suspendable
-
 set tabsize 3
 
+# see https://github.com/scopatz/nanorc
+
 # set not allowed in included file
-# include "/home/edwin/.config/nano/themes/default.theme.nanorc"
+# include "~/.config/nano/themes/default.theme.nanorc"
 set titlecolor bold,lightwhite,blue
 set statuscolor bold,lightwhite,green
 set errorcolor bold,lightwhite,red

@@ -216,7 +216,7 @@
 	"todo-tree.tree.showScanModeButton": false,
 	"python.languageServer": "Microsoft",
 	"editor.tabSize": 8,
-	"editor.renderWhitespace": "none",
+	"editor.renderWhitespace": "all",
 	"editor.insertSpaces": false,
 	"editor.accessibilityPageSize": 1,
 	"editor.accessibilitySupport": "off",
