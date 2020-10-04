@@ -1,41 +1,39 @@
 [//]: # "managed by eankeen/globe; don't edit!"
 
-# contributing
+# Contributing
 
-👋 hey! thanks for thinking about contributing! make sure you read the following three sections before contributing.
+👋 Hey! Thankies for contributing! I would recommend reading the following as general guidelines :)
 
-## pull requests
+## Pull Requests
 
-before you make a pr
+Before you make a PR
 
-1. *create an issue of what you plan to add*
-2. *do **not** commit to `dev` or `master` branch* directly
+1. _create an issue of what you plan to add_
+2. _do **not** commit to `dev` or `master`/`main` branch_ directly
 
-of course, if you're change is relatively small, this may not be needed.
+Of course, if you're change is relatively small, this may not be needed.
 
-## commit naming
+## Commit Naming
 
-* keep commits short and meaningful
-* use the imperative, present tense ('change' rather than 'changed' or 'changes')
-* do not capitalize the first letter
-* do not add a period
+- Keep commits short and meaningful
+- Use the imperative, present tense
+- Do not capitalize the first letter
+- Do not add a period
 
-here are some high-quality examples. note that you don't need to match the formatting, just the guidelines stated above :ok_hand:
+Commits are generally based on the [AngularJS](https://github.com/angular/angular/blob/master/CONTRIBUTING.md) conventions, an extension of [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+
+### Examples
 
 ```md
-feat(ts): convert util/addtheme.js to ts
+refactor: use FactoryInjector in `util/addtheme.ts`
 fix(renderer): inject css styles
 ```
 
-### some handy keywords
+## Branch naming
 
-`(feat|fix|polish|docs|style|refactor|perf|test|workflow|ci|chore|types)`
+be sure to create a new branch when contributing. _do **not** commit to the `dev` or `master` branch_ directly. use tokens to categorize branches. add blurb about branch, separated by token with forward slash. see [this](https://stackoverflow.com/a/6065944) for more information.
 
-## branch naming
-
-be sure to create a new branch when contributing. *do **not** commit to the `dev` or `master` branch* directly. use tokens to categorize branches. add blurb about branch, separated by token with forward slash. see [this](https://stackoverflow.com/a/6065944) for more information.
-
-### tokens
+### Tokens
 
 ```sh
 fix  # bug fixes, hotfixes
@@ -44,7 +42,11 @@ wip  # new feature with unclear completion time
 feat # new feature with clear completion time
 ```
 
-### examples
+<!-- markdownlint-disable MD024 -->
+
+### Examples
+
+<!-- markdownlint-enable MD024 -->
 
 ```sh
 fix/webpack-fail-start

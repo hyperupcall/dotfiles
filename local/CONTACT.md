@@ -4,7 +4,7 @@
 
 ## General
 
-For general contact, open an issue, or on Twitter [@EdwinKofler](https://twitter.com/EdwinKofler) if that's not applicable
+For general contact, open an issue, or reach out over Twitter [@EdwinKofler](https://twitter.com/EdwinKofler)
 
 ## Security
 

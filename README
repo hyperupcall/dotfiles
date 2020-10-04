@@ -2,20 +2,16 @@
 dotfiles
 ========
 
-contains my dotfiles; maintained with baobab (a custom tool since neither dotdrop, chezmoi, GNU stow, nor rcm did exactly what i wanted)
+My dotfiles maintained with gh/eankeen/dotty
 
-also see `gh/eankeen/globe`
+dotfiles
+========
 
-## File Structure
+├─ system dotfiles at /
+├─ user dotfiles at ~
+├─ local dotfiles at .
 
-├─ global    dotfiles at /
-├─ user     dotfiles at ~
-├─ local   dotfiles at .
-└─ scripts
-  └─ ./\*: scripts added to the PATH
-  └─ dots: scripts just for this dotfiles repository
-  └─ globe: scripts hidden globally, but available via `run.sh`
+todo
+====
 
-dotfiles located in 'project' are managed by eankeen/globe
-
-todo: enable readline C-s
+- enable readline C-s
