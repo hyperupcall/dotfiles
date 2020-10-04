@@ -103,6 +103,9 @@ tags = [
 #
 
 [[files]]
+file = "/user-dirs.dirs"
+
+[[files]]
 file = "/alacritty"
 type = "folder"
 
@@ -111,16 +114,16 @@ file = "/awesome"
 type = "folder"
 
 [[files]]
-file = "/dir_colors"
+file = "/bash"
+type = "folder"
 
 [[files]]
-file = "/infokey"
+file = "/calcurse"
+type = "folder"
 
 [[files]]
-file = "/inputrc"
-
-[[files]]
-file = "/user-dirs.dirs"
+file = "/cava"
+type = "folder"
 
 [[files]]
 file = "/chezmoi"
@@ -135,6 +138,14 @@ file = "/Code/User/keybindings.json"
 
 [[files]]
 file = "/Code/User/settings.json"
+
+[[files]]
+file = "/curl"
+type = "folder"
+
+[[files]]
+file = "/dircolors"
+type = "folder"
 
 [[files]]
 file = "/fish"
@@ -153,7 +164,7 @@ file = "/git"
 type = "folder"
 
 [[files]]
-file = "gpg-agent.conf"
+file = "/gnupg/gpg-agent.conf"
 
 [[files]]
 file = "/hg"
@@ -174,6 +185,10 @@ tags = [
 ]
 
 [[files]]
+file = "/info"
+type = "folder"
+
+[[files]]
 file = "/ion"
 type = "folder"
 tags = [
@@ -181,7 +196,37 @@ tags = [
 ]
 
 [[files]]
+file = "/kitty"
+type = "folder"
+
+[[files]]
 file = "/maven"
+type = "folder"
+
+[[files]]
+file = "/micro/bindings.json"
+tags = [
+	"micro"
+]
+
+[[files]]
+file = "/micro/settings.json"
+tags = [
+	"micro"
+]
+
+[[files]]
+file = "/mnemosyne/config.py"
+tags = [
+	"mnemosyne"
+]
+
+[[files]]
+file = "/nano"
+type = "folder"
+
+[[files]]
+file = "/neofetch"
 type = "folder"
 
 [[files]]
@@ -197,11 +242,42 @@ file = "/nvim"
 type = "folder"
 
 [[files]]
+file = "/picom"
+type = "folder"
+
+[[files]]
 file = "/polybar"
 type = "folder"
 
 [[files]]
+file = "/ranger"
+type = "folder"
+tags = [
+	"ranger"
+]
+
+[[files]]
 file = "/readline"
+type = "folder"
+tags = [
+	"bash", "redline"
+]
+
+[[files]]
+file = "/redshift"
+type = "folder"
+tags = [
+	"redshift"
+]
+
+[[files]]
+file = "ristretto/accels.scm"
+tags = [
+	"ristretto"
+]
+
+[[files]]
+file = "/sakura"
 type = "folder"
 
 [[files]]
@@ -216,11 +292,22 @@ tags = [
 ]
 
 [[files]]
-file = "/yay"
+file = "/termite"
+type = "folder"
+
+[[files]]
+file = "/tilda"
+type = "folder"
+
+[[files]]
+file = "/wget"
 type = "folder"
 tags = [
-	"yay"
+	"wget"
 ]
+
+[[files]]
+file = "/infokey"
 
 [[files]]
 file = "/X11"
@@ -235,6 +322,17 @@ type = "folder"
 tags = [
 	"xfce4"
 ]
+
+[[files]]
+file = "/yay"
+type = "folder"
+tags = [
+	"yay"
+]
+
+[[files]]
+file = "/xob"
+type = "folder"
 
 #
 # ~/.local/share/applications
