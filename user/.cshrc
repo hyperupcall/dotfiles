@@ -2,12 +2,5 @@
 # ~/.cshrc
 #
 
-switch ($TERM)
-    case "xterm*":
-        set host=`hostname`
-        alias cd 'cd \!*; echo -n "^[]0;${user}@${host}: ${cwd}^Gcsh% "'
-        breaksw
-    default:
-        set prompt='csh% '
-        breaksw
-endsw
+test -r "$XDG_CONFIG_HOME/dircolors/dir_colors" \
+	&& eval "$(dircolors --csh "$XDG_CONFIG_HOME/dircolors/dir_colors")"

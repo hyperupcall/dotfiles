@@ -2,4 +2,4 @@
 # ~/.zprofile
 #
 
-test -r ~/.profile && emulate sh -c ". ~/.profile"
+test -x ~/.profile && emulate sh -c ". ~/.profile"

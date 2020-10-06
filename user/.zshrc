@@ -4,7 +4,7 @@
 #
 
 # if profile can be read; source it; else exit
-test -r ~/.zprofile || return && source ~/.zprofile
+test -x ~/.zprofile || return && source ~/.zprofile
 
 # if not running interactively, exit
 [[ $- != *i* ]] && return
@@ -55,6 +55,7 @@ setopt rc_expand_param
 setopt prompt_subst
 unsetopt beep
 
+compinit -d <dumpfile>
 
 ## styles ##
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'

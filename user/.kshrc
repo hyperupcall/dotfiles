@@ -2,7 +2,7 @@
 # ~/.kshrc
 #
 
-test -r ~/.profile && . ~/.profile
+test -x ~/.profile && . ~/.profile
 
 HISTEDIT="$VISUAL"
 HISTFILE="$HOME/.history/ksh_history"

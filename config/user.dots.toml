@@ -106,32 +106,25 @@ tags = [
 file = "/user-dirs.dirs"
 
 [[files]]
-file = "/alacritty"
-type = "folder"
+file = "/alacritty/"
 
 [[files]]
-file = "/awesome"
-type = "folder"
+file = "/awesome/"
 
 [[files]]
-file = "/bash"
-type = "folder"
+file = "/bash/"
 
 [[files]]
-file = "/calcurse"
-type = "folder"
+file = "/calcurse/"
 
 [[files]]
-file = "/cava"
-type = "folder"
+file = "/cava/"
 
 [[files]]
-file = "/chezmoi"
-type = "folder"
+file = "/chezmoi/"
 
 [[files]]
 file = "/cmus/rc"
-type = "file"
 
 [[files]]
 file = "/Code/User/keybindings.json"
@@ -140,68 +133,55 @@ file = "/Code/User/keybindings.json"
 file = "/Code/User/settings.json"
 
 [[files]]
-file = "/curl"
-type = "folder"
+file = "/curl/"
 
 [[files]]
-file = "/dircolors"
-type = "folder"
+file = "/dircolors/"
 
 [[files]]
-file = "/fish"
-type = "folder"
+file = "/fish/"
 
 [[files]]
-file = "/fontconfig"
-type =  "folder"
+file = "/fontconfig/"
 
 [[files]]
-file = "/gh"
-type = "folder"
+file = "/gh/"
 
 [[files]]
-file = "/git"
-type = "folder"
+file = "/git/"
 
 [[files]]
 file = "/gnupg/gpg-agent.conf"
 
 [[files]]
-file = "/hg"
-type = "folder"
+file = "/hg/"
 
 [[files]]
-file = "/i3"
-type = "folder"
+file = "/i3/"
 tags = [
 	"i3"
 ]
 
 [[files]]
-file = "/i3status"
-type = "folder"
+file = "/i3status/"
 tags = [
 	"i3status"
 ]
 
 [[files]]
-file = "/info"
-type = "folder"
+file = "/info/"
 
 [[files]]
-file = "/ion"
-type = "folder"
+file = "/ion/"
 tags = [
 	"ion"
 ]
 
 [[files]]
-file = "/kitty"
-type = "folder"
+file = "/kitty/"
 
 [[files]]
-file = "/maven"
-type = "folder"
+file = "/maven/"
 
 [[files]]
 file = "/micro/bindings.json"
@@ -222,50 +202,40 @@ tags = [
 ]
 
 [[files]]
-file = "/nano"
-type = "folder"
+file = "/nano/"
 
 [[files]]
-file = "/neofetch"
-type = "folder"
+file = "/neofetch/"
 
 [[files]]
-file = "/npm"
-type = "folder"
+file = "/npm/"
 
 [[files]]
-file = "/nu"
-type = "folder"
+file = "/nu/"
 
 [[files]]
-file = "/nvim"
-type = "folder"
+file = "/nvim/"
 
 [[files]]
-file = "/picom"
-type = "folder"
+file = "/picom/"
 
 [[files]]
-file = "/polybar"
-type = "folder"
+file = "/polybar/"
 
 [[files]]
-file = "/ranger"
-type = "folder"
+file = "/ranger/"
 tags = [
 	"ranger"
 ]
 
 [[files]]
-file = "/readline"
-type = "folder"
+file = "/readline/"
 tags = [
 	"bash", "redline"
 ]
 
 [[files]]
-file = "/redshift"
-type = "folder"
+file = "/redshift/"
 tags = [
 	"redshift"
 ]
@@ -277,62 +247,55 @@ tags = [
 ]
 
 [[files]]
-file = "/sakura"
-type = "folder"
+file = "/sakura/"
 
 [[files]]
-file = "/sparta"
-type = "folder"
+file = "/sparta/"
 
 [[files]]
-file = "/starship"
-type = "folder"
+file = "/starship/"
 tags = [
 	"starship"
 ]
 
 [[files]]
-file = "/termite"
-type = "folder"
+file = "/termite/"
 
 [[files]]
-file = "/tilda"
-type = "folder"
+file = "/tilda/"
 
 [[files]]
-file = "/wget"
-type = "folder"
+file = "/wget/"
 tags = [
 	"wget"
 ]
 
 [[files]]
-file = "/infokey"
+file = "/infokey/"
 
 [[files]]
-file = "/X11"
-type = "folder"
+file = "/X11/"
 tags = [
 	"X"
 ]
 
 [[files]]
-file = "/xfce4/terminal"
-type = "folder"
+file = "/xfce4/terminal/"
 tags = [
 	"xfce4"
 ]
 
 [[files]]
-file = "/yay"
-type = "folder"
+file = "/yay/"
 tags = [
 	"yay"
 ]
 
 [[files]]
-file = "/xob"
-type = "folder"
+file = "/xob/"
+tags = [
+	"xob"
+]
 
 #
 # ~/.local/share/applications
@@ -354,6 +317,6 @@ tags = [
 # ~/scripts
 #
 
-[[files]]
-file = "/scripts"
-type = "folder"
+# bugged unless we add full directory ignores
+# [[files]]
+# file = "/scripts/"

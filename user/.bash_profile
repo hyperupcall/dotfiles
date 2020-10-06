@@ -4,4 +4,4 @@
 #
 
 # shellcheck source=user/.bashrc
-test -f ~/.bashrc && . ~/.bashrc
+test -x ~/.bashrc && . ~/.bashrc

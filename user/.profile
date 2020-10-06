@@ -25,70 +25,6 @@ export XDG_DATA_DIRS="/usr/local/share/:/usr/share" # default
 export XDG_CONFIG_DIRS="/etc/xdg" # default
 export XDG_CACHE_HOME="$HOME/.cache" # default
 
-ZFS_COLOR=
-
-# chmod
-alias chmod='chmod --preserve-root'
-
-# chown
-alias chown='chown --preserve-root'
-
-# cp
-alias cp='cp -i'
-
-# curl
-alias curl='curl --config $XDG_CONFIG_HOME/curl/curlrc'
-
-# dd
-alias dd='dd --status=progress'
-
-# diff
-alias diff='diff --color=auto'
-
-# dir
-alias dir='dir --color=auto'
-
-# df
-alias df='df -h'
-
-# du
-alias du='du -h'
-
-# egrep
-alias egrep='egrep --colour=auto'
-
-# fgrep
-alias fgrep='fgrep --colour=auto'
-
-# free
-alias free='free -m'
-
-# grep
-alias grep='grep --colour=auto'
-
-# ip
-alias ip='ip -color=auto'
-
-# ls
-alias la='exa -a'
-alias ll='exa -al'
-alias ls='ls --color=auto'
-
-# ping
-alias ping='ping -c 5'
-
-# rm
-alias rm='rm --preserve-root=all'
-
-# sudo (sudo alises; see `info bash -n Aliases` for details)
-alias sudo='sudo '
-
-# vdir
-alias vdir='vdir --color=auto'
-
-# wget
-alias wget='wget --config=$XDG_CONFIG_HOME/wget/wgetrc'
-
 # ----------------------- programs ----------------------- #
 # anki
 alias anki='anki -b "$hidden/anki"'
@@ -119,11 +55,26 @@ export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/bundle"
 export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
 export CCACHE_CONFIGPATH="$XDG_CONFIG_HOME/ccache/config"
 
+# chmod
+alias chmod='chmod --preserve-root'
+
+# chown
+alias chown='chown --preserve-root'
+
+# cp
+alias cp='cp -i'
+
 # cuda
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 
+# curl
+alias curl='curl --config $XDG_CONFIG_HOME/curl/curlrc'
+
 # dart
 export PUB_CACHE="$XDG_CACHE_HOME/pub-cache"
+
+# dd
+alias dd='dd --status=progress'
 
 # deno
 export DENO_INSTALL="$hidden/deno"
@@ -131,20 +82,52 @@ export DENO_INSTALL_ROOT="$DENO_INSTALL/bin"
 export PATH="$DENO_INSTALL_ROOT:$PATH"
 export PATH="$DENO_INSTALL_ROOT/bin:$PATH"
 
+# diff
+alias diff='diff --color=auto'
+
+# dir
+alias dir='dir --color=auto'
+
+# df
+alias df='df -h'
+
 # docker
 export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
+
+# du
+alias du='du -h'
 
 # dotdrop
 alias ldotdrop='dotdrop --cfg=$hidden/dotdrop.local.yaml'
 alias gdotdrop='dotdrop --cfg=$hidden/dotdrop.global.yaml'
 
+# dotty
+alias dotty='dotty --dot-dir=$HOME/.dots'
+
+# egrep
+alias egrep='egrep --colour=auto'
+
 # elinks
-export ELINKS_CONFDIR="$hidden/elinks"
+export ELINKS_CONFDIR="$XDG_CONFIG_HOME/elinks"
+
+# feh
+alias feh='feh --no-fehbg'
+
+# fgrep
+alias fgrep='fgrep --colour=auto'
+
+# free
+alias free='free -m'
+
+# g
+export GOROOT="$HOME/.local/opt/go/root"
+export GOPATH="$HOME/.local/opt/go/path"
+export PATH="$GOPATH/bin:$PATH"
 
 # gcloud
-test -r "$HOME/.local/opt/google-cloud-sdk/path.bash.inc" \
+test -x "$HOME/.local/opt/google-cloud-sdk/path.bash.inc" \
 	&& . "$HOME/.local/opt/google-cloud-sdk/path.bash.inc"
-test -r "$HOME/.local/opt/google-cloud-sdk/completion.bash.inc" \
+test -x "$HOME/.local/opt/google-cloud-sdk/completion.bash.inc" \
 	&& . "$HOME/.local/opt/google-cloud-sdk/completion.bash.inc"
 
 # gem
@@ -154,19 +137,14 @@ export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
 # gitlib
 export GITLIBS="$HOME/.local/opt/gitlibs"
 
-# dot
-alias globe='globe --dot-dir=$HOME/.dots'
-
 # gnupg
 alias gpg2='gpg2 --homedir "$XDG_DATA_HOME/gnupg"'
 export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
 tty="$(tty)" && export GPG_TTY="$tty"
-unset ytty
+unset -v tty
 
-# g
-export GOROOT="$HOME/.local/opt/go/root"
-export GOPATH="$HOME/.local/opt/go/path"
-export PATH="$GOPATH/bin:$PATH"
+# grep
+alias grep='grep --colour=auto'
 
 # git
 export GIT_CONFIG_NOSYSTEM=
@@ -187,8 +165,11 @@ export ICEAUTHORITY="$XDG_RUNTIME_DIR/iceauthority"
 # imap
 export IMAPFILTER_HOME="$XDG_CONFIG_HOME/imapfilter"
 
+# ip
+alias ip='ip -color=auto'
+
 # info
-alias info='info --init-file $XDG_CONFIG_HOME/infokey'
+alias info='info --init-file $XDG_CONFIG_HOME/info/infokey'
 
 # ipython
 export IPYTHONDIR="$XDG_CONFIG_HOME"/jupyter
@@ -214,25 +195,27 @@ export KUBECONFIG="$XDG_DATA_HOME/kube"
 
 # less
 # adding X breaks mouse scrolling of pages
-export LESS="-FIR"
+export LESS="-FIRQ"
 # export LESS="-FIRX"
 export LESSKEY="$XDG_CONFIG_HOME/less_keys"
 export LESSHISTFILE="$HOME/.history/less_history"
-export LESSHISTSIZE="250"
-# shellcheck disable=SC2155
-export LESS_TERMCAP_mb="$(printf '\e[1;31m')" # start blink
-# shellcheck disable=SC2155
-export LESS_TERMCAP_md="$(printf '\e[1;36m')" # start bold
-# shellcheck disable=SC2155
-export LESS_TERMCAP_me="$(printf '\e[0m')" # end all
-# shellcheck disable=SC2155
-export LESS_TERMCAP_so="$(printf '\e[01;44;33m')" # start reverse video
-# shellcheck disable=SC2155
-export LESS_TERMCAP_se="$(printf '\e[0m')" # end reverse video
-# shellcheck disable=SC2155
-export LESS_TERMCAP_us="$(printf '\e[1;32m')" # start underline
-# shellcheck disable=SC2155
-export LESS_TERMCAP_ue="$(printf '\e[0m')" # end underline
+export LESSHISTSIZE="32768"
+LESS_TERMCAP_mb="$(printf '\e[1;31m')" # start blink
+LESS_TERMCAP_md="$(printf '\e[1;36m')" # start bold
+LESS_TERMCAP_me="$(printf '\e[0m')" # end all
+LESS_TERMCAP_so="$(printf '\e[01;44;33m')" # start reverse video
+LESS_TERMCAP_se="$(printf '\e[0m')" # end reverse video
+LESS_TERMCAP_us="$(printf '\e[1;32m')" # start underline
+LESS_TERMCAP_ue="$(printf '\e[0m')" # end underline
+LESS_TERMCAP_us="$(printf '\e[1;32m')" # start underline
+export LESS_TERMCAP_mb LESS_TERMCAP_md LESS_TERMCAP_me \
+	LESS_TERMCAP_so LESS_TERMCAP_se LESS_TERMCAP_us \
+	LESS_TERMCAP_ue LESS_TERMCAP_us
+
+# ls
+alias la='exa -a'
+alias ll='exa -al'
+alias ls='ls --color=auto'
 
 # ltrace
 alias ltrace='ltrace -F "$XDG_CONFIG_HOME/ltrace.conf"'
@@ -240,8 +223,14 @@ alias ltrace='ltrace -F "$XDG_CONFIG_HOME/ltrace.conf"'
 # maven
 alias mvn='mvn -gs "$XDG_CONFIG_HOME/maven/settings.xml"'
 
+# mongo
+alias mongo='mongo --norc'
+
+# more
+export MORE="--silent"
+
 # most
-export MOST_INITFILE="$XDG_CONFIG_HOME/mostrc"
+export MOST_INITFILE="$XDG_CONFIG_HOME/most/mostrc"
 
 # mplayer
 export MPLAYER_HOME="$hidden/mplayer"
@@ -281,6 +270,9 @@ export PACKER_CONFIG_DIR="$hidden/packer/packer.d"
 # pacman
 alias pacman='pacman --color=auto'
 
+# ping
+alias ping='ping -c 5'
+
 # poetry
 export PATH="$HOME/.poetry/bin:$PATH"
 
@@ -290,12 +282,19 @@ export PSQL_HISTORY="$HOME/.history/psql_history"
 export PGPASSFILE="$hidden/pg/pgpass"
 export PGSERVICEFILE="$hidden/pg/pg_service.conf"
 
+# python
+# https://github.com/python/cpython/pull/13208
+export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc.py"
+
 # qt
 [ "$XDG_CURRENT_DESKTOP" = "KDE" ] || [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] \
 	|| export QT_QPA_PLATFORMTHEME="qt5ct"
 
 # readline
-export INPUTRC="$XDG_CONFIG_HOME/inputrc"
+export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
+
+# rm
+alias rm='rm --preserve-root=all'
 
 # rust
 export CARGO_HOME="$hidden/cargo"
@@ -303,7 +302,7 @@ export RUSTUP_HOME="$hidden/rustup"
 export PATH="$CARGO_HOME/bin:$PATH"
 
 # rvm
-test -r "$HOME/.rvm/scripts/rvm" \
+test -x "$HOME/.rvm/scripts/rvm" \
 	&& . "$HOME/.rvm/scripts/rvm"
 export PATH="$HOME/.rvm/bin:$PATH"
 
@@ -324,6 +323,12 @@ export STACK_ROOT="$hidden/stack"
 # subversion
 export SUBVERSION_HOME="$XDG_CONFIG_HOME/subversion"
 
+# sudo (sudo alises; see `info bash -n Aliases` for details)
+alias sudo='sudo '
+
+# task
+export TASKRC="$XDG_CONFIG_HOME/taskwarrior/taskrc"
+
 # terraform
 export TF_CLI_CONFIG_FILE="$hidden/terraform/terraformrc-custom"
 
@@ -331,17 +336,27 @@ export TF_CLI_CONFIG_FILE="$hidden/terraform/terraformrc-custom"
 alias tmux='tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf"'
 export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 
+# vdir
+alias vdir='vdir --color=auto'
+
 # vagrant
 export VAGRANT_HOME="$hidden/vagrant"
 export VAGRANT_ALIAS_FILE="$VAGRANT_HOME/aliases"
 
+# vim
+export VIMINIT="source $XDG_CONFIG_HOME/vim/vimrc"
+
 # wasmer
 export WASMER_DIR="$hidden/wasmer"
-test -s "$WASMER_DIR/wasmer.sh" && . "$WASMER_DIR/wasmer.sh"
+# # shellcheck source=~/.hidden/wasmer/wasmer.sh
+# test -x "$WASMER_DIR/wasmer.sh" && . "$WASMER_DIR/wasmer.sh"
 
 # wasmtime
 export WASMTIME_HOME="$hidden/wasmtime"
-export PATH="$WASMTIME_HOME/bin:$PATH"
+# export PATH="$WASMTIME_HOME/bin:$PATH"
+
+# wget
+alias wget='wget --config=$XDG_CONFIG_HOME/wget/wgetrc'
 
 # wolfram mathematica
 export MATHEMATICA_BASE="/usr/share/mathematica"
@@ -353,3 +368,6 @@ export PATH="$XDG_DATA_HOME/yarn/global/node_modules/.bin:$PATH"
 
 # yay
 alias yay='yay --color=auto'
+
+# zfs
+export ZFS_COLOR=

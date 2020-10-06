@@ -7,19 +7,16 @@
 # read this despite assumed noninteractivity - so ensure
 # nothing gets printed to the tty
 
-# if profile can be read, source it
 # shellcheck source=/dev/null
 test -r ~/.profile && source ~/.profile
 
-# if not running interactively, exit
 [[ $- != *i* ]] && return
 
-# only enable colors for terminals that support true color
 hasColor() {
 	test "$COLORTERM" = "truecolor"
 }
 
-# -------------------- shell variables ------------------- #
+# -------------------- Shell Variables ------------------- #
 FCEDIT="$EDITOR" # default
 HISTCONTROL="ignorespace:ignoredups"
 HISTFILE="$HOME/.history/bash_history"
@@ -27,9 +24,8 @@ HISTSIZE="32768"
 HISTFILESIZE=$HISTSIZE
 HISTIGNORE="?:ls:[bf]g:pwd:clear*:exit*:* --help:* -h"
 HISTTIMEFORMAT="%B %m %Y %T | "
-INPUTRC="$XDG_CONFIG_HOME/inputrc"
 
-# --------------------- shell options -------------------- #
+# --------------------- Shell Options -------------------- #
 # shopt
 shopt -u autocd
 shopt -s cdable_vars
@@ -58,15 +54,6 @@ set -o noclobber
 set -o notify # deafult
 set -o physical # default
 
-# ------------------------ colors ------------------------ #
-# dir_colors
-if hasColor; then
-	test -r "$XDG_CONFIG_HOME/dir_colors" \
-		&& eval "$(dircolors -b "$XDG_CONFIG_HOME/dir_colors")"
-else
-	unset LS_COLORS
-fi
-
 # -------------------------- PS1 ------------------------- #
 if hasColor; then
 	# color
@@ -84,46 +71,10 @@ else
 	fi
 fi
 
+# ------------------------- Misc ------------------------- #
+source "$XDG_CONFIG_HOME/bash/misc.sh"
+source "$XDG_CONFIG_HOME/bash/completion.sh"
+source "$XDG_CONFIG_HOME/bash/bash-it.sh"
 
-# ---------------------- completion ---------------------- #
-# bash_completion
-# shellcheck source=/usr/share/bash-completion/bash_completion
-test -r /usr/share/bash-completion/bash_completion && . /usr/share/bash-completion/bash_completion
-
-# pack
-if [ "$(type -t compopt)" = "builtin" ]; then
-	complete -o default -F __start_pack p
-else
-	complete -o default -o nospace -F __start_pack p
-fi
-
-# buildpacks
-# shellcheck source=/dev/null
-command -v pack >/dev/null && source "$(pack completion)"
-
-# chezmoi
-command -v chezmoi >/dev/null && eval "$(chezmoi completion bash)"
-
-# poetry
-command -v poetry >/dev/null && eval "$(poetry completions bash)"
-
-
-# ------------------------- etc ------------------------- #
-
-# sudo
-complete -cf sudo
-
-# travis
-# shellcheck source=/dev/null
-test -f /home/edwin/.travis/travis.sh && source "$HOME/.travis/travis.sh"
-
-# x11
-xhost +local:root >/dev/null 2>&1
-
-eval $(gnome-keyring-daemon -s)
-
-# bash-it
-source ~/.config/bash/bash-it.sh
-
-# ------------------------ cleanup ----------------------- #
+# ------------------------ Cleanup ----------------------- #
 unset -f hasColor
