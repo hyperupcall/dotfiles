@@ -1,4 +1,14 @@
 #
+# ignores
+#
+
+[[ignores]]
+file = "/bash-it/"
+
+[[ignores]]
+file = "/oh-my-zsh/"
+
+#
 # ~
 #
 
@@ -272,6 +282,9 @@ tags = [
 
 [[files]]
 file = "/infokey/"
+tags = [
+	"info"
+]
 
 [[files]]
 file = "/X11/"
@@ -317,6 +330,5 @@ tags = [
 # ~/scripts
 #
 
-# bugged unless we add full directory ignores
-# [[files]]
-# file = "/scripts/"
+[[files]]
+file = "/scripts/"

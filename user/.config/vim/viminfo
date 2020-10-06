@@ -11,6 +11,8 @@
 # hlsearch on (H) or off (h):
 ~h
 # Command Line History (newest to oldest):
+:wq
+|2,0,1601958050,,"wq"
 :q!
 |2,0,1601955052,,"q!"
 
@@ -25,16 +27,52 @@
 # Registers:
 
 # File marks:
-'0  4  0  ~/.profile
-|4,48,4,0,1601955052,"~/.profile"
+'0  1  48  ~/docs/programming/repos/go-logger/.git/COMMIT_EDITMSG
+|4,48,1,48,1601958050,"~/docs/programming/repos/go-logger/.git/COMMIT_EDITMSG"
+'1  1  21  ~/.dots/.git/COMMIT_EDITMSG
+|4,49,1,21,1601955225,"~/.dots/.git/COMMIT_EDITMSG"
+'2  4  0  ~/.profile
+|4,50,4,0,1601955052,"~/.profile"
 
 # Jumplist (newest first):
+-'  1  48  ~/docs/programming/repos/go-logger/.git/COMMIT_EDITMSG
+|4,39,1,48,1601958050,"~/docs/programming/repos/go-logger/.git/COMMIT_EDITMSG"
+-'  1  21  ~/.dots/.git/COMMIT_EDITMSG
+|4,39,1,21,1601955225,"~/.dots/.git/COMMIT_EDITMSG"
+-'  1  21  ~/.dots/.git/COMMIT_EDITMSG
+|4,39,1,21,1601955225,"~/.dots/.git/COMMIT_EDITMSG"
+-'  4  0  ~/.profile
+|4,39,4,0,1601955052,"~/.profile"
+-'  4  0  ~/.profile
+|4,39,4,0,1601955052,"~/.profile"
+-'  4  0  ~/.profile
+|4,39,4,0,1601955052,"~/.profile"
 -'  4  0  ~/.profile
 |4,39,4,0,1601955052,"~/.profile"
 -'  1  0  ~/.profile
 |4,39,1,0,1601955048,"~/.profile"
+-'  1  0  ~/.profile
+|4,39,1,0,1601955048,"~/.profile"
+-'  1  0  ~/.profile
+|4,39,1,0,1601955048,"~/.profile"
+-'  1  0  ~/.profile
+|4,39,1,0,1601955048,"~/.profile"
 
 # History of marks within files (newest to oldest):
+
+> ~/docs/programming/repos/go-logger/.git/COMMIT_EDITMSG
+	*	1601958050	0
+	"	1	48
+	^	1	49
+	.	1	48
+	+	1	48
+
+> ~/.dots/.git/COMMIT_EDITMSG
+	*	1601955224	0
+	"	1	21
+	^	1	22
+	.	1	21
+	+	1	21
 
 > ~/.profile
 	*	1601955050	0
