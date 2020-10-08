@@ -1,2 +1,2 @@
 
-set viminfo+=n~/.config/vim/viminfo
+set viminfo+=n~/.local/share/vim/viminfo

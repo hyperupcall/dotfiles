@@ -120,7 +120,7 @@ alias fgrep='fgrep --colour=auto'
 alias free='free -m'
 
 # g
-export GOROOT="$HOME/.local/opt/go/root"
+#export GOROOT="$HOME/.local/opt/go/root"
 export GOPATH="$HOME/.local/opt/go/path"
 export PATH="$GOPATH/bin:$PATH"
 
