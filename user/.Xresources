@@ -1,2 +1,0 @@
-#include ".config/X11/Xresources"
-#include ".config/X11/themes/solarized-dark.Xresources"

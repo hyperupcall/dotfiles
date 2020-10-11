@@ -1,0 +1,2 @@
+#include "terminal.xresources"
+#include "themes/nord.theme.xresources"

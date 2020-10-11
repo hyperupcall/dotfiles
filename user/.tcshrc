@@ -1,5 +1,0 @@
-#
-# ~/.tcshrc
-#
-
-test -r ~/.login && source ~/.login

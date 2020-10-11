@@ -17,7 +17,6 @@ hasColor() {
 }
 
 # -------------------- Shell Variables ------------------- #
-FCEDIT="$EDITOR" # default
 HISTCONTROL="ignorespace:ignoredups"
 HISTFILE="$HOME/.history/bash_history"
 HISTSIZE="32768"
@@ -56,14 +55,12 @@ set -o physical # default
 
 # -------------------------- PS1 ------------------------- #
 if hasColor; then
-	# color
 	if test "$EUID" = 0; then
 		PS1="\[\e[31m\][\u@\h \w]\$\[\e[m\] "
 	else
 		eval "$(starship init bash)"
 	fi
 else
-	# no color
 	if test "$EUID" = 0; then
 		PS1="[\u@\h \w]\$ "
 	else

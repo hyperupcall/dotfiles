@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 )
 
 // this ensures that ~/.profile is alphabetically ordered;
@@ -27,14 +28,14 @@ func isValidCommentLine(line string) bool {
 func isStartOfSection(line string) bool {
 	runes := []rune(line)
 	firstChars := string(runes[0:2])
-	if firstChars == "##" {
+	if firstChars == "##" || firstChars == "# -" {
 		return true
 	}
 	return false
 }
 
 func main() {
-	file, err := os.Open("../local/.profile")
+	file, err := os.Open("../../.profile")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -44,6 +45,10 @@ func main() {
 	previousLine := ""
 	for scanner.Scan() {
 		line := scanner.Text()
+
+		if strings.HasPrefix(line, "# shellcheck") {
+			continue
+		}
 
 		// reset lexigraphical ordering after
 		// end of section

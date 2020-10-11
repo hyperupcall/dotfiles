@@ -10,3 +10,7 @@ mkdir ~/.local/share/gnupg
 
 ln -s ~/docs/programming/repos/ ~/repos
 ln -s ~/docs/programming/projects ~/projects
+
+
+ls ~/.lesshst
+ls ~/.nv

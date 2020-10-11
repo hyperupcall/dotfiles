@@ -1,4 +1,9 @@
 #
+# setups
+#
+
+
+#
 # ignores
 #
 
@@ -37,45 +42,16 @@ tags = [
 ]
 
 [[files]]
-file = "/.cshrc"
-tags = [
-	"cshrc"
-]
-
-[[files]]
 file = "/.fehbg"
 tags = [
 	"feh"
 ]
 
-[[files]]
-file = "/.kshrc"
-tags = [
-	"ksh"
-]
-
-[[files]]
-file = "/.login"
-tags = [
-	"cshrc", "tcshrc"
-]
 
 [[files]]
 file = "/.profile"
 tags = [
 	"shell"
-]
-
-[[files]]
-file = "/.rcrc"
-tags = [
-	"rcm"
-]
-
-[[files]]
-file = "/.tcshrc"
-tags = [
-	"tcshrc"
 ]
 
 [[files]]
@@ -109,7 +85,7 @@ tags = [
 ]
 
 #
-# ~/.config
+# ~/config
 #
 
 [[files]]
@@ -117,54 +93,99 @@ file = "/user-dirs.dirs"
 
 [[files]]
 file = "/alacritty/"
+tags = [
+	"alacritty"
+]
 
 [[files]]
 file = "/awesome/"
+tags = [
+	"awesome"
+]
 
 [[files]]
 file = "/bash/"
+tags = [
+	"bash"
+]
 
 [[files]]
 file = "/calcurse/"
+tags = [
+	"calcurse"
+]
 
 [[files]]
 file = "/cava/"
+tags = [
+	"cava"
+]
 
 [[files]]
 file = "/chezmoi/"
+tags = [
+	"chezmoi"
+]
 
 [[files]]
 file = "/cmus/rc"
+tags = [
+	"cmus"
+]
 
 [[files]]
 file = "/Code/User/keybindings.json"
+tags = [
+	"vscode"
+]
 
 [[files]]
 file = "/Code/User/settings.json"
+tags = [
+	"vscode"
+]
 
 [[files]]
 file = "/curl/"
+tags =  [
+	"curl"
+]
 
 [[files]]
 file = "/dircolors/"
 
 [[files]]
 file = "/fish/"
+tags = [
+	"fish"
+]
 
 [[files]]
 file = "/fontconfig/"
 
 [[files]]
 file = "/gh/"
+tags = [
+	"gh"
+]
 
 [[files]]
 file = "/git/"
+tags = [
+	"git"
+]
 
 [[files]]
 file = "/gnupg/gpg-agent.conf"
+tags = [
+	"gnupg"
+]
 
 [[files]]
 file = "/hg/"
+tags = [
+	"mercurial"
+]
 
 [[files]]
 file = "/i3/"
@@ -213,24 +234,45 @@ tags = [
 
 [[files]]
 file = "/nano/"
+tags = [
+	"nano"
+]
 
 [[files]]
 file = "/neofetch/"
+tags = [
+	"neofetch"
+]
 
 [[files]]
 file = "/npm/"
+tags = [
+	"npm"
+]
 
 [[files]]
 file = "/nu/"
+tags = [
+	"nu"
+]
 
 [[files]]
 file = "/nvim/"
+tags = [
+	"nvim"
+]
 
 [[files]]
 file = "/picom/"
+tags = [
+	"picom"
+]
 
 [[files]]
 file = "/polybar/"
+tags = [
+	"polybar"
+]
 
 [[files]]
 file = "/ranger/"
@@ -258,9 +300,15 @@ tags = [
 
 [[files]]
 file = "/sakura/"
+tags = [
+	"sakura"
+]
 
 [[files]]
 file = "/sparta/"
+tags = [
+	"sparta"
+]
 
 [[files]]
 file = "/starship/"
@@ -270,9 +318,21 @@ tags = [
 
 [[files]]
 file = "/termite/"
+tags = [
+	"termite"
+]
 
 [[files]]
 file = "/tilda/"
+tags = [
+	"tilda"
+]
+
+[[files]]
+file = "/vim/"
+tags = [
+	"vim"
+]
 
 [[files]]
 file = "/wget/"
@@ -290,12 +350,6 @@ tags = [
 file = "/X11/"
 tags = [
 	"X"
-]
-
-[[files]]
-file = "/xfce4/terminal/"
-tags = [
-	"xfce4"
 ]
 
 [[files]]

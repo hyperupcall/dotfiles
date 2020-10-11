@@ -18,13 +18,6 @@ export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$hidden/scripts:$PATH"
 
-# -------------------------- xdg ------------------------- #
-export XDG_DATA_HOME="$HOME/.local/share" # default
-export XDG_CONFIG_HOME="$HOME/.config" # default
-export XDG_DATA_DIRS="/usr/local/share/:/usr/share" # default
-export XDG_CONFIG_DIRS="/etc/xdg" # default
-export XDG_CACHE_HOME="$HOME/.cache" # default
-
 # ----------------------- programs ----------------------- #
 # anki
 alias anki='anki -b "$hidden/anki"'
@@ -120,8 +113,7 @@ alias fgrep='fgrep --colour=auto'
 alias free='free -m'
 
 # g
-#export GOROOT="$HOME/.local/opt/go/root"
-export GOPATH="$HOME/.local/opt/go/path"
+export GOPATH="$HOME/opt/go-path"
 export PATH="$GOPATH/bin:$PATH"
 
 # gcloud

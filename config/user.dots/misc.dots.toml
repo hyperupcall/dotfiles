@@ -1,0 +1,35 @@
+[[files]]
+file = "/.cshrc"
+tags = [
+	"cshrc"
+]
+
+[[files]]
+file = ".hyper.js"
+tags = [
+	"hyper"
+]
+
+[[files]]
+file = "/.kshrc"
+tags = [
+	"ksh"
+]
+
+[[files]]
+file = "/.login"
+tags = [
+	"cshrc", "tcshrc"
+]
+
+[[files]]
+file = "/.rcrc"
+tags = [
+	"rcm"
+]
+
+[[files]]
+file = "/.tcshrc"
+tags = [
+	"tcshrc"
+]
