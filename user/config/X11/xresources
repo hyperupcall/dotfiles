@@ -1,2 +1,5 @@
-#include "terminal.xresources"
+#include "resources/xterm.xresources"
+#include "resources/urxvt.xresources"
+#include "resources/misc.xresources"
+
 #include "themes/nord.theme.xresources"

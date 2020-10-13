@@ -1,17 +1,7 @@
 !
-! urxvt
+! XTerm
 !
-URxvt*secondaryScreen: 1
-URxvt*secondaryScroll: 0
-URxvt*font: xft:DejaVu Sans Mono
-URxvt*boldFont: xft:DejaVu Sans Mono
-URxvt*italicFont: xft:DejaVu Sans Mono
-URxvt.VT100.loginShell: false
 
-
-!
-! XTerm, UXTerm, KOI8RXTerm
-!
 XTerm.termName: xterm-256color
 XTerm.title: XTerm
 

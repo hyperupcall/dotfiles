@@ -3,16 +3,16 @@
 # ~/.bashrc
 #
 
-# for interactive, non-login shells. scp and rcp may still
-# read this despite assumed noninteractivity - so ensure
-# nothing gets printed to the tty
-
-# shellcheck source=/dev/null
+# shellcheck source=user/.profile
 test -r ~/.profile && source ~/.profile
 
 [[ $- != *i* ]] && return
 
-hasColor() {
+8BitColor() {
+	:
+}
+
+24BitColor() {
 	test "$COLORTERM" = "truecolor"
 }
 
@@ -54,7 +54,7 @@ set -o notify # deafult
 set -o physical # default
 
 # -------------------------- PS1 ------------------------- #
-if hasColor; then
+if 24BitColor; then
 	if test "$EUID" = 0; then
 		PS1="\[\e[31m\][\u@\h \w]\$\[\e[m\] "
 	else
@@ -74,4 +74,5 @@ source "$XDG_CONFIG_HOME/bash/completion.sh"
 source "$XDG_CONFIG_HOME/bash/bash-it.sh"
 
 # ------------------------ Cleanup ----------------------- #
-unset -f hasColor
+unset -f 8BitColor
+unset -f 24BitColor

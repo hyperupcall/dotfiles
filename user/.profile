@@ -3,7 +3,7 @@
 # ~/.profile
 #
 
-hidden="$HOME/.hidden"
+umask 022
 
 # -------------------- shell variables ------------------- #
 CDPATH=":~:/usr/local"
@@ -12,34 +12,36 @@ export EDITOR="$VISUAL"
 export DIFFPROG="nvim -d"
 export PAGER="less"
 export BROWSER="brave-beta"
-export LANG="${LANG:-en_US.UTF-8}"
+export LANG="${LANG:-en_US.UTF-8}k"
 export SPELL="aspell -x -c"
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$hidden/scripts:$PATH"
+
+export XDG_DATA_HOME="$HOME/data"
+export XDG_CONFIG_HOME="$HOME/config"
+export XDG_CACHE_HOME="$HOME/.cache" # default
 
 # ----------------------- programs ----------------------- #
 # anki
-alias anki='anki -b "$hidden/anki"'
+alias anki='anki -b "$XDG_DATA_HOME/anki"'
 
 # atom
-export ATOM_HOME="$hidden/atom"
+export ATOM_HOME="$XDG_DATA_HOME/atom"
 
 # aws
-export AWS_SHARED_CREDENTIALS_FILE="$hidden/aws/credentials"
-export AWS_CONFIG_FILE="$hidden/aws/config"
+export AWS_SHARED_CREDENTIALS_FILE="$XDG_DATA_HOME/aws/credentials"
+export AWS_CONFIG_FILE="$XDG_DATA_HOME/aws/config"
 
 # bash-completeion
 export BASH_COMPLETION_USER_FILE="$XDG_CONFIG_HOME/bash-completion/bash_completion"
 
 # boto
-export BOTO_CONFIG="$hidden/boto"
+export BOTO_CONFIG="$XDG_DATA_HOME/boto"
 
 # buku
 alias b='bukdu --suggest'
 
 # bundle
-export BUNDLE_USER_HOME="$hidden/.bundle"
+export BUNDLE_USER_HOME="$XDG_DATA_HOME/bundle"
 export BUNDLE_CACHE_PATH="$XDG_CACHE_HOME/bundle"
 export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle"
 export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/bundle"
@@ -70,7 +72,7 @@ export PUB_CACHE="$XDG_CACHE_HOME/pub-cache"
 alias dd='dd --status=progress'
 
 # deno
-export DENO_INSTALL="$hidden/deno"
+export DENO_INSTALL="$XDG_DATA_HOME/deno"
 export DENO_INSTALL_ROOT="$DENO_INSTALL/bin"
 export PATH="$DENO_INSTALL_ROOT:$PATH"
 export PATH="$DENO_INSTALL_ROOT/bin:$PATH"
@@ -89,10 +91,6 @@ export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
 
 # du
 alias du='du -h'
-
-# dotdrop
-alias ldotdrop='dotdrop --cfg=$hidden/dotdrop.local.yaml'
-alias gdotdrop='dotdrop --cfg=$hidden/dotdrop.global.yaml'
 
 # dotty
 alias dotty='dotty --dot-dir=$HOME/.dots'
@@ -113,14 +111,8 @@ alias fgrep='fgrep --colour=auto'
 alias free='free -m'
 
 # g
-export GOPATH="$HOME/opt/go-path"
+export GOPATH="$XDG_DATA_HOME/go-path"
 export PATH="$GOPATH/bin:$PATH"
-
-# gcloud
-test -x "$HOME/.local/opt/google-cloud-sdk/path.bash.inc" \
-	&& . "$HOME/.local/opt/google-cloud-sdk/path.bash.inc"
-test -x "$HOME/.local/opt/google-cloud-sdk/completion.bash.inc" \
-	&& . "$HOME/.local/opt/google-cloud-sdk/completion.bash.inc"
 
 # gem
 export GEM_HOME="$XDG_DATA_HOME/gem"
@@ -130,8 +122,7 @@ export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
 export GITLIBS="$HOME/.local/opt/gitlibs"
 
 # gnupg
-alias gpg2='gpg2 --homedir "$XDG_DATA_HOME/gnupg"'
-export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 tty="$(tty)" && export GPG_TTY="$tty"
 unset -v tty
 
@@ -191,7 +182,7 @@ export LESS="-FIRQ"
 # export LESS="-FIRX"
 export LESSKEY="$XDG_CONFIG_HOME/less_keys"
 export LESSHISTFILE="$HOME/.history/less_history"
-export LESSHISTSIZE="32768"
+export LESSHISTSIZE="$common_histsize"
 LESS_TERMCAP_mb="$(printf '\e[1;31m')" # start blink
 LESS_TERMCAP_md="$(printf '\e[1;36m')" # start bold
 LESS_TERMCAP_me="$(printf '\e[0m')" # end all
@@ -204,16 +195,16 @@ export LESS_TERMCAP_mb LESS_TERMCAP_md LESS_TERMCAP_me \
 	LESS_TERMCAP_so LESS_TERMCAP_se LESS_TERMCAP_us \
 	LESS_TERMCAP_ue LESS_TERMCAP_us
 
+# loginctl
+alias lctl='loginctl terminate-session'
+
 # ls
 alias la='exa -a'
 alias ll='exa -al'
 alias ls='ls --color=auto'
 
 # ltrace
-alias ltrace='ltrace -F "$XDG_CONFIG_HOME/ltrace.conf"'
-
-# maven
-alias mvn='mvn -gs "$XDG_CONFIG_HOME/maven/settings.xml"'
+alias ltrace='ltrace -F "$XDG_CONFIG_HOME/ltrace/ltrace.conf"'
 
 # mongo
 alias mongo='mongo --norc'
@@ -225,13 +216,13 @@ export MORE="--silent"
 export MOST_INITFILE="$XDG_CONFIG_HOME/most/mostrc"
 
 # mplayer
-export MPLAYER_HOME="$hidden/mplayer"
+export MPLAYER_HOME="$XDG_DATA_HOME/mplayer"
 
 # mysql
 export MYSQL_HISTFILE="$HOME/.history/mysql_history"
 
 # n
-export N_PREFIX="$HOME/.local/opt/n"
+export N_PREFIX="$XDG_DATA_HOME/n"
 export PATH="$N_PREFIX/bin:$PATH"
 
 # netbeams
@@ -250,14 +241,14 @@ export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
 export NPM_CONFIG_STORE_DIR="$XDG_DATA_HOME/pnpm-store"
 
 # nvidia
-#alias nvidia-settings='nvidia-settings --config $hidden/nvidia-settings'
+#alias nvidia-settings='nvidia-settings --config $XDG_DATA_HOME/nvidia-settings'
 
 # nvm
 export NVM_DIR="$XDG_DATA_HOME"/nvm
 
 # packer
-export PACKER_CONFIG="$hidden/packer/packerconfig"
-export PACKER_CONFIG_DIR="$hidden/packer/packer.d"
+export PACKER_CONFIG="$XDG_DATA_HOME/packer/packerconfig"
+export PACKER_CONFIG_DIR="$XDG_DATA_HOME/packer/packer.d"
 
 # pacman
 alias pacman='pacman --color=auto'
@@ -269,10 +260,10 @@ alias ping='ping -c 5'
 export PATH="$HOME/.poetry/bin:$PATH"
 
 # postgresql
-export PSQLRC="$hidden/pg/psqlrc"
+export PSQLRC="$XDG_DATA_HOME/pg/psqlrc"
 export PSQL_HISTORY="$HOME/.history/psql_history"
-export PGPASSFILE="$hidden/pg/pgpass"
-export PGSERVICEFILE="$hidden/pg/pg_service.conf"
+export PGPASSFILE="$XDG_DATA_HOME/pg/pgpass"
+export PGSERVICEFILE="$XDG_DATA_HOME/pg/pg_service.conf"
 
 # python
 # https://github.com/python/cpython/pull/13208
@@ -289,8 +280,8 @@ export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
 alias rm='rm --preserve-root=all'
 
 # rust
-export CARGO_HOME="$hidden/cargo"
-export RUSTUP_HOME="$hidden/rustup"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export PATH="$CARGO_HOME/bin:$PATH"
 
 # rvm
@@ -310,7 +301,7 @@ export SCREENRC="$XDG_CONFIG_HOME/screenrc"
 export PATH="/var/lib/snapd/snap/bin:$PATH"
 
 # stack
-export STACK_ROOT="$hidden/stack"
+export STACK_ROOT="$XDG_DATA_HOME/stack"
 
 # subversion
 export SUBVERSION_HOME="$XDG_CONFIG_HOME/subversion"
@@ -322,7 +313,7 @@ alias sudo='sudo '
 export TASKRC="$XDG_CONFIG_HOME/taskwarrior/taskrc"
 
 # terraform
-export TF_CLI_CONFIG_FILE="$hidden/terraform/terraformrc-custom"
+export TF_CLI_CONFIG_FILE="$XDG_DATA_HOME/terraform/terraformrc-custom"
 
 # tmux
 alias tmux='tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf"'
@@ -332,19 +323,19 @@ export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 alias vdir='vdir --color=auto'
 
 # vagrant
-export VAGRANT_HOME="$hidden/vagrant"
+export VAGRANT_HOME="$XDG_DATA_HOME/vagrant"
 export VAGRANT_ALIAS_FILE="$VAGRANT_HOME/aliases"
 
 # vim
 export VIMINIT="source $XDG_CONFIG_HOME/vim/vimrc"
 
 # wasmer
-export WASMER_DIR="$hidden/wasmer"
-# # shellcheck source=~/.hidden/wasmer/wasmer.sh
+export WASMER_DIR="$XDG_DATA_HOME/wasmer"
+# # shellcheck source=~/$XDG_DATA_HOME/wasmer/wasmer.sh
 # test -x "$WASMER_DIR/wasmer.sh" && . "$WASMER_DIR/wasmer.sh"
 
 # wasmtime
-export WASMTIME_HOME="$hidden/wasmtime"
+export WASMTIME_HOME="$XDG_DATA_HOME/wasmtime"
 # export PATH="$WASMTIME_HOME/bin:$PATH"
 
 # wget
@@ -353,6 +344,10 @@ alias wget='wget --config=$XDG_CONFIG_HOME/wget/wgetrc'
 # wolfram mathematica
 export MATHEMATICA_BASE="/usr/share/mathematica"
 export MATHEMATICA_USERBASE="$XDG_DATA_HOME/mathematica"
+
+# X11
+export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
+export XAUTHORITY="$XDG_DATA_HOME/X11/xauthority"
 
 # yarn
 export YARN_CACHE_FOLDER="$XDG_CACHE_HOME/yarn"

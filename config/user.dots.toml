@@ -55,31 +55,13 @@ tags = [
 ]
 
 [[files]]
-file = "/.xinitrc"
-tags = [
-	"X"
-]
-
-[[files]]
-file = "/.xprofile"
-tags = [
-	"X"
-]
-
-[[files]]
-file = "/.Xresources"
-tags = [
-	"X"
-]
-
-[[files]]
-file = "/.zprofile"
+file = "/zprofile"
 tags = [
 	"zsh"
 ]
 
 [[files]]
-file = "/.zshrc"
+file = "/zshrc"
 tags = [
 	"zsh"
 ]
@@ -365,17 +347,29 @@ tags = [
 ]
 
 #
-# ~/.local/share/applications
+# ~/data
 #
 
 [[files]]
-file = "/obsidian.desktop"
+file = "/calcurse.desktop"
+tags = [
+	"calcurse"
+]
+
+[[files]]
+file = "/Nemo.desktop"
+tags = [
+	"nemo"
+]
+
+[[files]]
+file = "/Obsidian.desktop"
 tags = [
 	"obsidian"
 ]
 
 [[files]]
-file = "/zettlr.desktop"
+file = "/Zettlr.desktop"
 tags = [
 	"zettlr"
 ]

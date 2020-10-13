@@ -1,4 +1,4 @@
-#!/bin/sh -au
+#!/bin/sh -eu
 
 mount | grep -q binfmt_misc || {
 	# see https://www.kernel.org/doc/html/v4.14/admin-guide/binfmt-misc.html

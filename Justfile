@@ -9,5 +9,6 @@ reload:
 	i3-msg restart
 
 lint:
-   shfmt -bn -ci -kp -l -w .
+	shfmt -bn -ci -kp -l -w .
 	docker run --rm -v "$PWD:/work" tmknom/prettier --write '**/*.{json,md,mdx,yaml,yml}'
+	fish -n "$1"

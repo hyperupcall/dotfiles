@@ -35,7 +35,7 @@
 	ui = auto ; default
 [commit]
 	gpgSign = true
-	template = ~/.config/git/commit-template
+	template = ~/config/git/commit-template
 [diff]
 	algorithm = myers ; default
 [diff "pandoc2md"]

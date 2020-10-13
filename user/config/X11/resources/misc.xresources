@@ -1,0 +1,6 @@
+! Xorg
+*StringConversionWarnings: on
+
+Xcursor.theme: Breeze
+Xcursor.size: 4
+
