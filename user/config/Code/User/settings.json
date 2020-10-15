@@ -143,7 +143,7 @@
 	"terminal.integrated.copyOnSelection": true,
 	"terminal.integrated.cursorBlinking": true,
 	"terminal.integrated.enableBell": true,
-	"terminal.integrated.shell.linux": "/nix/store/3x42i2r0d1f1ni53spmp8vwx5gmqxbj3-system-path/bin/bash",
+	"terminal.integrated.shell.linux": "/bin/bash",
 	"terminal.integrated.splitCwd": "workspaceRoot",
 	"terraform.telemetry.enabled": false,
 	"typescript.implementationsCodeLens.enabled": true,
