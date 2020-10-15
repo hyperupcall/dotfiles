@@ -7,8 +7,10 @@ labels: 'question'
 assignees: ''
 ---
 
-**what is your question**
-a clear and concise description of the question
+**Question**
 
-**additional context**
-any additional context about the question here
+
+**More Information**
+
+- Screenshots, if applicable
+- Additional context, if applicable

@@ -1,8 +1,7 @@
 build:
-	cd scripts && \
+	cd user/scripts && \
 		clang -Wall -Wpedantic show_shell.c \
-			-o show_shell
-	install scripts/show_shell ~/.local/bin
+			-o ../bin/show_shell
 
 reload:
 	xrdb ~/.config/Xresources

@@ -45,6 +45,10 @@ bindsym Shift+Print exec --no-startup-id "maim -s | xclip -t image/png -selectio
 #bindcode --release 50 --release 107 exec --no-startup-id "maim | xclip -t image/png -selection clipboard"
 bindsym $mod+o exec "rofi -combi-modi window,drun,ssh -show combi -show-icons"
 
+bindsym F5 exec --no-startup-id "cmus-remote --prev"
+bindsym F6 exec --no-startup-id "cmus-remote --pause"
+bindsym F7 exec --no-startup-id "cmus-remote --next"
+
 # audio
 set $refresh_i3status killall -SIGUSR1 i3status
 

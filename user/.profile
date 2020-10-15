@@ -3,7 +3,21 @@
 # ~/.profile
 #
 
-umask 022
+# ----------------------------------- setup ---------------------------------- #
+
+path_add_pre() {
+	case ":$PATH:" in
+		*":$1:"*) :;;
+		*) export PATH="$1:$PATH" ;;
+	esac
+}
+
+path_add_post() {
+	case ":$PATH:" in
+		*":$1:"*) :;;
+		*) export PATH="$PATH:$1" ;;
+	esac
+}
 
 # -------------------- shell variables ------------------- #
 CDPATH=":~:/usr/local"
@@ -14,11 +28,14 @@ export PAGER="less"
 export BROWSER="brave-beta"
 export LANG="${LANG:-en_US.UTF-8}k"
 export SPELL="aspell -x -c"
-export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
+path_add_pre "$HOME/bin"
 
 export XDG_DATA_HOME="$HOME/data"
 export XDG_CONFIG_HOME="$HOME/config"
-export XDG_CACHE_HOME="$HOME/.cache" # default
+export XDG_CACHE_HOME="$HOME/.cache"
+
+
+umask 022
 
 # ----------------------- programs ----------------------- #
 # anki
@@ -74,8 +91,8 @@ alias dd='dd --status=progress'
 # deno
 export DENO_INSTALL="$XDG_DATA_HOME/deno"
 export DENO_INSTALL_ROOT="$DENO_INSTALL/bin"
-export PATH="$DENO_INSTALL_ROOT:$PATH"
-export PATH="$DENO_INSTALL_ROOT/bin:$PATH"
+path_add_pre "$DENO_INSTALL_ROOT"
+path_add_pre "$DENO_INSTALL_ROOT/bin"
 
 # diff
 alias diff='diff --color=auto'
@@ -112,14 +129,14 @@ alias free='free -m'
 
 # g
 export GOPATH="$XDG_DATA_HOME/go-path"
-export PATH="$GOPATH/bin:$PATH"
+path_add_pre "$GOPATH/bin"
 
 # gem
 export GEM_HOME="$XDG_DATA_HOME/gem"
 export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
 
 # gitlib
-export GITLIBS="$HOME/.local/opt/gitlibs"
+export GITLIBS="$XDG_DATA_HOME/gitlibs"
 
 # gnupg
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
@@ -133,7 +150,7 @@ alias grep='grep --colour=auto'
 export GIT_CONFIG_NOSYSTEM=
 
 # gradle
-export GRADLE_USER_HOME="$HOME/.local/opt/gradle"
+export GRADLE_USER_HOME="$XDG_DATA_HOME/gradle"
 
 # gtk
 export GTK_RC_FILES="$XDG_CONFIG_HOME/gtk-1.0/gtkrc"
@@ -161,7 +178,7 @@ export IPYTHONDIR="$XDG_CONFIG_HOME"/jupyter
 alias irssi='irssi --config "$XDG_CONFIG_HOME/irssi"'
 
 # junest
-export JUNEST_HOME="$HOME/.local/opt/junest"
+export JUNEST_HOME="$XDG_DATA_HOME/junest"
 
 # jupyter
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
@@ -170,8 +187,8 @@ export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
 export KDEHOME="$XDG_CONFIG_HOME/kde"
 
 # krew
-export KREW_ROOT="$HOME/.local/opt/krew"
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export KREW_ROOT="$XDG_DATA_HOME/krew"
+path_add_pre "$KREW_ROOT/bin"
 
 # kubernetes
 export KUBECONFIG="$XDG_DATA_HOME/kube"
@@ -223,7 +240,7 @@ export MYSQL_HISTFILE="$HOME/.history/mysql_history"
 
 # n
 export N_PREFIX="$XDG_DATA_HOME/n"
-export PATH="$N_PREFIX/bin:$PATH"
+path_add_pre "$N_PREFIX/bin"
 
 # netbeams
 # alias netbeams='netbeans --userdir "$XDG_CONFIG_HOME/netbeans"'
@@ -257,13 +274,17 @@ alias pacman='pacman --color=auto'
 alias ping='ping -c 5'
 
 # poetry
-export PATH="$HOME/.poetry/bin:$PATH"
+path_add_pre "$HOME/.poetry/bin"
 
 # postgresql
 export PSQLRC="$XDG_DATA_HOME/pg/psqlrc"
 export PSQL_HISTORY="$HOME/.history/psql_history"
 export PGPASSFILE="$XDG_DATA_HOME/pg/pgpass"
 export PGSERVICEFILE="$XDG_DATA_HOME/pg/pg_service.conf"
+
+# pyenv
+export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
+path_add_pre "$PYENV_ROOT/bin"
 
 # python
 # https://github.com/python/cpython/pull/13208
@@ -282,12 +303,13 @@ alias rm='rm --preserve-root=all'
 # rust
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
-export PATH="$CARGO_HOME/bin:$PATH"
+path_add_pre "$CARGO_HOME/bin"
 
 # rvm
-test -x "$HOME/.rvm/scripts/rvm" \
-	&& . "$HOME/.rvm/scripts/rvm"
-export PATH="$HOME/.rvm/bin:$PATH"
+test -x "$XDG_DATA_HOME/rvm/scripts/rvm" \
+	&& . "$XDG_DATA_HOME/rvm/scripts/rvm"
+path_add_pre "$XDG_DATA_HOME/rvm/bin"
+path_add_pre "$XDG_DATA_HOME/gem/bin"
 
 # sccache
 export SCCACHE_DIR="$XDG_CACHE_HOME/sccache"
@@ -298,10 +320,13 @@ export SCREENRC="$XDG_CONFIG_HOME/screenrc"
 
 # snap
 #export PATH="/snap/bin:$PATH"
-export PATH="/var/lib/snapd/snap/bin:$PATH"
+path_add_post "/var/lib/snapd/snap/bin"
 
 # stack
 export STACK_ROOT="$XDG_DATA_HOME/stack"
+
+# starship
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 
 # subversion
 export SUBVERSION_HOME="$XDG_CONFIG_HOME/subversion"
@@ -336,7 +361,7 @@ export WASMER_DIR="$XDG_DATA_HOME/wasmer"
 
 # wasmtime
 export WASMTIME_HOME="$XDG_DATA_HOME/wasmtime"
-# export PATH="$WASMTIME_HOME/bin:$PATH"
+path_add_pre "$WASMTIME_HOME/bin"
 
 # wget
 alias wget='wget --config=$XDG_CONFIG_HOME/wget/wgetrc'
@@ -351,10 +376,13 @@ export XAUTHORITY="$XDG_DATA_HOME/X11/xauthority"
 
 # yarn
 export YARN_CACHE_FOLDER="$XDG_CACHE_HOME/yarn"
-export PATH="$XDG_DATA_HOME/yarn/global/node_modules/.bin:$PATH"
 
 # yay
 alias yay='yay --color=auto'
 
 # zfs
 export ZFS_COLOR=
+
+# ---------------------------------- cleanup --------------------------------- #
+unset -f path_add_pre
+unset -f path_add_pre

@@ -24,3 +24,7 @@ rm ~/.dbshell
 
 ls ~/.bash_history
 xsetroot -xcf /usr/share/icons/whiteglass/cursors/left_ptr 32
+
+
+rm ~/yarn.lock
+rm ~/node_modules

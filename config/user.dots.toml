@@ -67,6 +67,13 @@ tags = [
 ]
 
 #
+# ~/bin
+#
+
+[[files]]
+file = "/bin/"
+
+#
 # ~/config
 #
 
@@ -227,6 +234,12 @@ tags = [
 ]
 
 [[files]]
+file = "/nimble/"
+tags = [
+	"nimble"
+]
+
+[[files]]
 file = "/npm/"
 tags = [
 	"npm"
@@ -275,6 +288,12 @@ tags = [
 ]
 
 [[files]]
+file = "/rofi/"
+tags = [
+	"rofi"
+]
+
+[[files]]
 file = "ristretto/accels.scm"
 tags = [
 	"ristretto"
@@ -311,6 +330,12 @@ tags = [
 ]
 
 [[files]]
+file = "/tmux/"
+tags = [
+	"tmux"
+]
+
+[[files]]
 file = "/vim/"
 tags = [
 	"vim"
@@ -335,15 +360,33 @@ tags = [
 ]
 
 [[files]]
+file = "/xob/"
+tags = [
+	"xob"
+]
+
+[[files]]
 file = "/yay/"
 tags = [
 	"yay"
 ]
 
 [[files]]
-file = "/xob/"
+file = "/zsh/"
 tags = [
-	"xob"
+	"zsh"
+]
+
+[[files]]
+file = "/pamix.conf"
+tags = [
+	"pamix"
+]
+
+[[files]]
+file = "/pulsemixer.cfg"
+tags = [
+	"pulsemixer"
 ]
 
 #

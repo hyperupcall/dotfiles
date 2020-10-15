@@ -17,18 +17,6 @@ style = "bold blue"
 [docker_context]
 disabled = false
 
-[git_status]
-#conflicted = "⚔️ "
-#ahead = "🏎️💨 "
-#behind = "🐢 "
-#diverged = "🔱 "
-#untracked = "🛤️ "
-#stashed = "📦 "
-#modified = "📝 "
-#staged = "🗃️ "
-#renamed = "📛 "
-#deleted = "🗑️ "
-
 [hg_branch]
 disabled = false
 
