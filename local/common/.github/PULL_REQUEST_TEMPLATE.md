@@ -1,14 +1,14 @@
 [//]: # "managed by eankeen/globe; don't edit!"
 
-# pr template
+# PR template
 
-## what kind of change does this pr introduce
+## What kind of change does this pr introduce
 
--  [ ] bugfix
--  [ ] feature
--  [ ] code style update
--  [ ] refactor
--  [ ] build-related changes
--  [ ] other, please describe
+-  [ ] Bugfix
+-  [ ] Feature
+-  [ ] Refactor
+-  [ ] Misc (describe below)
 
-## other information
+**More Information**
+
+- Additional context, if applicable

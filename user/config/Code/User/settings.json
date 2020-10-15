@@ -273,6 +273,5 @@
 	"explorer.confirmDragAndDrop": false,
 	"workbench.iconTheme": "material-icon-theme",
 	"C_Cpp.updateChannel": "Insiders",
-	"d.servedPath": "/home/edwin/.local/share/code-d/bin/serve-d",
 	"files.autoSave": "onWindowChange"
 }

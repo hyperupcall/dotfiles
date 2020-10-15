@@ -1,0 +1,5 @@
+configuration {
+    modi: "window,drun,ssh,combi";
+    theme: "~/config/rofi/themes/nord.theme.rasi";
+    combi-modi: "window,drun,ssh";
+}
