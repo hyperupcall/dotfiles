@@ -15,3 +15,4 @@ todo
 ====
 
 - enable readline C-s
+- better bootstrapping process (install packages) (nim, just, etc.)

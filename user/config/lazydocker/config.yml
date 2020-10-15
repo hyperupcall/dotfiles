@@ -1,0 +1,23 @@
+customCommands:
+  services:
+    # Run a single service in detached mode.
+    - name: up-detached
+      attach: false
+      command: "{{ .DockerCompose }} up --detach {{ .Service.Name }}"
+    # Stop, if required, and remove all containers and volumnes of a service.
+    - name: wipe
+      command: "{{ .DockerCompose }} rm --stop --force -v {{ .Service.Name }}"
+
+gui:
+  showAllContainers: true
+  returnImmediately: true
+  theme:
+    activeBorderColor:
+      - cyan
+    inactiveBorderColor:
+      - black
+      - bold
+    optionsTextColor:
+      - blue
+
+reporting: "off"

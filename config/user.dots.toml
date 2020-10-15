@@ -190,6 +190,9 @@ tags = [
 
 [[files]]
 file = "/info/"
+tags = [
+	"info"
+]
 
 [[files]]
 file = "/ion/"
@@ -345,12 +348,6 @@ tags = [
 file = "/wget/"
 tags = [
 	"wget"
-]
-
-[[files]]
-file = "/infokey/"
-tags = [
-	"info"
 ]
 
 [[files]]

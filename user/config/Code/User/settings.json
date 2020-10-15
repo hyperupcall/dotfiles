@@ -273,5 +273,6 @@
 	"explorer.confirmDragAndDrop": false,
 	"workbench.iconTheme": "material-icon-theme",
 	"C_Cpp.updateChannel": "Insiders",
-	"files.autoSave": "onWindowChange"
+	"files.autoSave": "onWindowChange",
+	"workbench.colorTheme": "Nord"
 }

@@ -77,6 +77,4 @@ source "$XDG_CONFIG_HOME/bash/bash-it.sh"
 unset -f 8BitColor
 unset -f 24BitColor
 
-export PATH="/home/edwin/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+source /home/edwin/config/broot/launcher/bash/br

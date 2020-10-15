@@ -245,6 +245,10 @@ path_add_pre "$N_PREFIX/bin"
 # netbeams
 # alias netbeams='netbeans --userdir "$XDG_CONFIG_HOME/netbeans"'
 
+# nimble
+#CHOOSENIM_CHOOSE_VERSION
+path_add_pre "$XDG_DATA_HOME/nimble/bin"
+
 # nnn
 export NNN_FALLBACK_OPENER="xdg-open"
 export NNN_DE_FILE_MANAGER="nautilus"
@@ -285,6 +289,8 @@ export PGSERVICEFILE="$XDG_DATA_HOME/pg/pg_service.conf"
 # pyenv
 export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
 path_add_pre "$PYENV_ROOT/bin"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 # python
 # https://github.com/python/cpython/pull/13208
