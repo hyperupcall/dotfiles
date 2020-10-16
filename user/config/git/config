@@ -86,7 +86,7 @@
 	email = 24364012+eankeen@users.noreply.github.com
 	signingkey = 484EA8DEF2F467E6
 [credential]
-	helper = libsecret
+	helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
 [url "git@github.com:"]
 	insteadOf = gh:
 	pushInsteadOf = gh:

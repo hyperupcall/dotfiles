@@ -1,3 +1,6 @@
+update:
+	plataea config/user.dots/plataea.toml
+
 build:
 	cd user/scripts && \
 		clang -Wall -Wpedantic show_shell.c \
