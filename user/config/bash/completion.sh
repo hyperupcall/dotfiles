@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # bash_completion
 # shellcheck source=/usr/share/bash-completion/bash_completion

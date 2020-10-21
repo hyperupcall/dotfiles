@@ -1,10 +1,3 @@
-# shellcheck shell=sh
-#
-# ~/.profile
-#
-
-# ----------------------------------- setup ---------------------------------- #
-
 path_add_pre() {
 	case ":$PATH:" in
 		*":$1:"*) :;;
@@ -18,6 +11,7 @@ path_add_post() {
 		*) export PATH="$PATH:$1" ;;
 	esac
 }
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 # -------------------- shell variables ------------------- #
 CDPATH=":~:/usr/local"
@@ -29,11 +23,14 @@ export BROWSER="brave-beta"
 export LANG="${LANG:-en_US.UTF-8}k"
 export SPELL="aspell -x -c"
 path_add_pre "$HOME/bin"
+path_add_pre "$HOME/.local/bin"
+path_add_pre "$HOME/bin"
 
 export XDG_DATA_HOME="$HOME/data"
 export XDG_CONFIG_HOME="$HOME/config"
 export XDG_CACHE_HOME="$HOME/.cache"
 
+alias j=just
 
 umask 022
 
@@ -86,7 +83,7 @@ alias curl='curl --config $XDG_CONFIG_HOME/curl/curlrc'
 export PUB_CACHE="$XDG_CACHE_HOME/pub-cache"
 
 # dd
-alias dd='dd --status=progress'
+alias dd='dd status=progress'
 
 # deno
 export DENO_INSTALL="$XDG_DATA_HOME/deno"
@@ -246,6 +243,7 @@ path_add_pre "$N_PREFIX/bin"
 # alias netbeams='netbeans --userdir "$XDG_CONFIG_HOME/netbeans"'
 
 # nimble
+export CHOOSENIM_NO_ANALYTICS="1"
 #CHOOSENIM_CHOOSE_VERSION
 path_add_pre "$XDG_DATA_HOME/nimble/bin"
 
@@ -289,8 +287,8 @@ export PGSERVICEFILE="$XDG_DATA_HOME/pg/pg_service.conf"
 # pyenv
 export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
 path_add_pre "$PYENV_ROOT/bin"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+#eval "$(pyenv init -)"
+#eval "$(pyenv virtualenv-init -)"
 
 # python
 # https://github.com/python/cpython/pull/13208
@@ -370,6 +368,7 @@ export WASMTIME_HOME="$XDG_DATA_HOME/wasmtime"
 path_add_pre "$WASMTIME_HOME/bin"
 
 # wget
+#WGETR=
 alias wget='wget --config=$XDG_CONFIG_HOME/wget/wgetrc'
 
 # wolfram mathematica
@@ -378,13 +377,17 @@ export MATHEMATICA_USERBASE="$XDG_DATA_HOME/mathematica"
 
 # X11
 export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
-export XAUTHORITY="$XDG_DATA_HOME/X11/xauthority"
+export XAUTHORITY="$XDG_RUNTIME_DIR/xauthority"
 
 # yarn
+path_add_pre "$XDG_DATA_HOME/yarn/bin"
 export YARN_CACHE_FOLDER="$XDG_CACHE_HOME/yarn"
 
 # yay
 alias yay='yay --color=auto'
+
+# z
+export _Z_DATA="$XDG_DATA_HOME/z"
 
 # zfs
 export ZFS_COLOR=

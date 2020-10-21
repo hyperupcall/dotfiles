@@ -1,1 +1,36 @@
+set nocompatible
 set viminfo+=n~/data/vim/viminfo
+set showcmd
+set showmatch
+set ignorecase
+set smartcase
+set incsearch
+set autowrite
+set hidden
+set mouse=a
+set mouse=r
+syntax on
+
+set history=50
+set ruler " show cursor position all the time
+set modeline
+set hidden
+"colorscheme darkblue
+set backspace=indent,eol,start
+"set background=dark
+
+" Suffixes that get lower priority when doing tab completion for filenames.
+" These are files we are not likely to want to edit or read.
+set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
+
+if &term =~ "xterm-debian"
+  set t_Co=16
+  set t_Sf=dm
+  set t_Sb=dm
+endif
+
+" vim load rules and plugins according to detected file type
+filetype plugin indent on
+
+"jump to the last position when reopening file
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif

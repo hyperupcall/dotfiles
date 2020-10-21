@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 export BASH_IT="$XDG_CONFIG_HOME/bash/bash-it"
 export BASH_IT_THEME="powerline-multiline"

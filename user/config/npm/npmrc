@@ -1,11 +1,12 @@
 access=public
 init-author-name=Edwin Kofler
 init-author-email=24364012+eankeen@users.noreply.github.com
-init-author-url=https://edwinkofler.com
+init-author-url=https://edwinkofler.com/
 init-license=MIT
 init-version=0.1.0
 git-tag-version=true
-message="release: v%s"
+message=release: v%s
 sign-git-commit=true
 sign-git-tag=true
-tag-version-prefix="v" # default
+tag-version-prefix=v
+//registry.npmjs.org/:_authToken=85db27d9-274d-4b0d-b321-6756939ffb30

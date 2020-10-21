@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # dir_colors
 test -r "$XDG_CONFIG_HOME/dircolors/dir_colors" \

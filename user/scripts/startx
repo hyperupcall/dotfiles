@@ -1,0 +1,63 @@
+#!/bin/sh
+
+# prevent several independent sessions by same user
+unset DBUS_SESSION_BUS_ADDRESS SESSION_MANAGER
+
+# determine an unused $DISPLAY
+display=0
+while true; do
+    [ -e "/tmp/.X$display-lock" -o -S "/tmp/.X11-unix/X$display" ] || break
+    display=$(($display + 1))
+done
+display=":$display"
+
+# start X on the current tty to avoid startx session being
+# seen as inactive: https://bugzilla.redhat.com/show_bug.cgi?id=806491
+tty="$(tty)"
+if expr "$tty" : '/dev/tty[0-9][0-9]*$' >/dev/null; then
+	tty_num="$(echo "$tty" | grep -oE '[0-9]+$')"
+	vtarg="vt$tty_num -keeptty"
+fi
+
+# get mcookie
+mcookie="$(/usr/bin/mcookie)"
+: ${mcookie:?"mcookie is empty"}
+
+
+# create a file with auth information for the server. ':0' is a dummy.
+dummy=0
+: ${XAUTHORITY:?"XAUTHORITY is empty"}
+echo "add :$dummy . $mcookie" | xauth -q -f "$XAUTHORITY"
+trap "rm -f '$XAUTHORITY'" HUP INT QUIT ILL TRAP KILL BUS TERM
+
+# now add the same credentials to the client authority file
+# if '$displayname' already exists do not overwrite it as another
+# server may need it. add them to the '$xserverauthfile' instead
+removelist=
+hostname="$(hostname)"
+xserverauthfile="$XDG_RUNTIME_DIR/xresources"
+for displayname in $display $hostname$display; do
+	authcookie="$(xauth list "$displayname" \
+		| sed -n "s/.*$displayname[[:space:]*].*[[:space:]*]//p")" 2>/dev/null;
+	if [ "$authcookie" = "" ]; then
+		echo "add $displayname . $mcookie" | xauth -q
+		removelist="$displayname $removelist"
+        else
+		dummy=$(($dummy+1));
+		echo "add :$dummy . $authcookie" | xauth -q -f "$xserverauthfile"
+        fi
+done
+
+: ${display:?"display is empty"}
+: ${vtarg:?"vtarg is empty"}
+: ${xserverauthfile:?"xserverauthfile is empty"}
+
+xinit -- /usr/bin/X "$display" "$vtarg" -auth "${xserverauthfile}"
+ret=$?
+
+# cleanup
+test "$removelist" != "" && xauth remove $removelist
+test "$xserverauthfile" != "" && rm -f "$xserverauthfile"
+deallocvt > /dev/null 2>&1
+
+exit $ret

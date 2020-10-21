@@ -1,5 +1,3 @@
-version = "1"
-
 [[workspaces]]
 name = "JavaScript"
 description = "JavaScript / TypeScript Development Environment"

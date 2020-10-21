@@ -7,7 +7,6 @@ mkdir ~/.hidden
 mkdir ~/.history
 mkdir -p ~/.local/opt/go/root
 mkdir -p ~/.local/opt/go/path
-
 mkdir ~/data/X11
 
 mkdir ~/data/gnupg
@@ -28,6 +27,7 @@ rm ~/.dbshell
 ls ~/.bash_history
 xsetroot -xcf /usr/share/icons/whiteglass/cursors/left_ptr 32
 
+yarn config set prefix "$XDG_DATA_HOME/yarn"
 
 rm ~/yarn.lock
 rm ~/node_modules
@@ -38,3 +38,4 @@ cargo install starship
 cargo install git-delta
 
 pnpm i -g diff-so-fancy
+mkdir ~/data/X11
