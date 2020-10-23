@@ -44,7 +44,7 @@ set -o physical # default
 
 # -------------------------- PS1 ------------------------- #
 8BitColor() {
-	test tput colors -eq 8
+	test "$(tput colors)" -eq 8
 }
 
 24BitColor() {

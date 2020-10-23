@@ -31,5 +31,10 @@
     "key": "ctrl+k shift+enter",
     "command": "-workbench.action.unpinEditor",
     "when": "config.workbench.editor.showTabs && editorSticky"
+  },
+  {
+    "key": "alt+r",
+    "command": "-workbench.action.terminal.toggleFindRegex",
+    "when": "terminalFindFocused && terminalProcessSupported || terminalFocus && terminalProcessSupported"
   }
 ]

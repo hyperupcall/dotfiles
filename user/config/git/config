@@ -1,3 +1,5 @@
+[advice]
+	addEmptyPathspec = false
 [core]
 	warnAmbiguousRefs = true ; default
 	compression = 2

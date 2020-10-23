@@ -52,7 +52,8 @@ done
 : ${vtarg:?"vtarg is empty"}
 : ${xserverauthfile:?"xserverauthfile is empty"}
 
-xinit -- /usr/bin/X "$display" "$vtarg" -auth "${xserverauthfile}"
+#echo xinit -- /usr/bin/X -nolisten tcp "$display" "$vtarg" -auth "${xserverauthfile}"
+xinit -- /usr/bin/X -nolisten tcp "$display" "$vtarg" -auth "${xserverauthfile}"
 ret=$?
 
 # cleanup
