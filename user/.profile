@@ -15,10 +15,13 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 # -------------------- shell variables ------------------- #
 CDPATH=":~:/usr/local"
+export LANG="en_US.UTF-8";
+export LC_ALL="en_US.UTF-8";
 export VISUAL="vim"
 export EDITOR="$VISUAL"
 export DIFFPROG="nvim -d"
 export PAGER="less"
+export MANPAGER="less -X";
 export BROWSER="brave-beta"
 export LANG="${LANG:-en_US.UTF-8}k"
 export SPELL="aspell -x -c"
@@ -286,9 +289,7 @@ export PGSERVICEFILE="$XDG_DATA_HOME/pg/pg_service.conf"
 
 # pyenv
 export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
-path_add_pre "$PYENV_ROOT/bin"
-#eval "$(pyenv init -)"
-#eval "$(pyenv virtualenv-init -)"
+path_add_pre "$PYENV_ROOT/shims"
 
 # python
 # https://github.com/python/cpython/pull/13208
@@ -374,10 +375,6 @@ alias wget='wget --config=$XDG_CONFIG_HOME/wget/wgetrc'
 # wolfram mathematica
 export MATHEMATICA_BASE="/usr/share/mathematica"
 export MATHEMATICA_USERBASE="$XDG_DATA_HOME/mathematica"
-
-# X11
-export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
-export XAUTHORITY="$XDG_RUNTIME_DIR/xauthority"
 
 # yarn
 path_add_pre "$XDG_DATA_HOME/yarn/bin"

@@ -1,4 +1,7 @@
 #!/bin/sh
+#
+# x11
+#
 
 # prevent several independent sessions by same user
 unset DBUS_SESSION_BUS_ADDRESS SESSION_MANAGER
@@ -15,28 +18,23 @@ display=":$display"
 # seen as inactive: https://bugzilla.redhat.com/show_bug.cgi?id=806491
 tty="$(tty)"
 if expr "$tty" : '/dev/tty[0-9][0-9]*$' >/dev/null; then
-	tty_num="$(echo "$tty" | grep -oE '[0-9]+$')"
-	vtarg="vt$tty_num -keeptty"
+	ttyNum="$(echo "$tty" | grep -oE '[0-9]+$')"
+	vtarg="vt$ttyNum"
+	unset ttyNum
 fi
 
-# get mcookie
-mcookie="$(/usr/bin/mcookie)"
-: ${mcookie:?"mcookie is empty"}
-
-
 # create a file with auth information for the server. ':0' is a dummy.
+xserverauthfile="$(mktemp --tmpdir serverauth.XXXXXXXXXX)"
+mcookie="$(/usr/bin/mcookie)"
 dummy=0
-: ${XAUTHORITY:?"XAUTHORITY is empty"}
-echo "add :$dummy . $mcookie" | xauth -q -f "$XAUTHORITY"
-trap "rm -f '$XAUTHORITY'" HUP INT QUIT ILL TRAP KILL BUS TERM
+echo "add :$dummy . $mcookie" | xauth -q -f "$xserverauthfile"
+trap "rm -f '$xserverauthfile'" HUP INT QUIT ILL TRAP KILL BUS TERM
 
 # now add the same credentials to the client authority file
 # if '$displayname' already exists do not overwrite it as another
-# server may need it. add them to the '$xserverauthfile' instead
+# server may need it.  add them to the '$xserverauthfile' instead
 removelist=
-hostname="$(hostname)"
-xserverauthfile="$XDG_RUNTIME_DIR/xresources"
-for displayname in $display $hostname$display; do
+for displayname in $display $(hostname)$display; do
 	authcookie="$(xauth list "$displayname" \
 		| sed -n "s/.*$displayname[[:space:]*].*[[:space:]*]//p")" 2>/dev/null;
 	if [ "$authcookie" = "" ]; then
@@ -48,17 +46,15 @@ for displayname in $display $hostname$display; do
         fi
 done
 
-: ${display:?"display is empty"}
+echo "$xserverauthfile"
 : ${vtarg:?"vtarg is empty"}
-: ${xserverauthfile:?"xserverauthfile is empty"}
 
-#echo xinit -- /usr/bin/X -nolisten tcp "$display" "$vtarg" -auth "${xserverauthfile}"
-xinit -- /usr/bin/X -nolisten tcp "$display" "$vtarg" -auth "${xserverauthfile}"
+xinit "$HOME/config/X11/min" -- /usr/bin/Xorg "$display" -nolisten tcp "$vtarg" -keeptty -auth "$xserverauthfile"
 ret=$?
 
 # cleanup
-test "$removelist" != "" && xauth remove $removelist
-test "$xserverauthfile" != "" && rm -f "$xserverauthfile"
-deallocvt > /dev/null 2>&1
+[ "$removelist" != "" ] && xauth remove "$removelist"
+[ "$xserverauthfile" != "" ] && rm -f "$xserverauthfile"
+command -v deallocvt && deallocvt > /dev/null 2>&1
 
 exit $ret

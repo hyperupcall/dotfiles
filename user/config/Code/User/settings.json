@@ -255,7 +255,7 @@
 	"workbench.tips.enabled": false,
 	"workbench.tree.indent": 12,
 	"screencastMode.onlyKeyboardShortcuts": true,
-	"window.zoomLevel": 0,
+	"window.zoomLevel": 1,
 	"search.searchOnTypeDebouncePeriod": 200,
 	"eslint.alwaysShowStatus": true,
 	"stylelint.packageManager": "pnpm",

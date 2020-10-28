@@ -1,27 +1,411 @@
 #!/bin/sh
 
-userresources="$HOME/.Xresources"
-sysresources="/etc/X11/xinit/.Xresources"
-sysmodmap="/etc/X11/xinit/.Xmodmap"
+xrdb -merge "$XDG_CONFIG_HOME/X11/xresources"
 
-if [ -f $sysresources ]; then
-	xrdb -merge $sysresources
+#. /etc/X11/Xsession
+
+set -e
+
+PROGNAME=Xsession
+
+message () {
+  # pretty-print messages of arbitrary length; use xmessage if it
+  # is available and $DISPLAY is set
+  MESSAGE="$PROGNAME: $*"
+  echo "$MESSAGE" | fold -s -w ${COLUMNS:-80} >&2
+  if [ -n "$DISPLAY" ] && which xmessage > /dev/null 2>&1; then
+    echo "$MESSAGE" | fold -s -w ${COLUMNS:-80} | xmessage -center -file -
+  fi
+}
+
+message_nonl () {
+  # pretty-print messages of arbitrary length (no trailing newline); use
+  # xmessage if it is available and $DISPLAY is set
+  MESSAGE="$PROGNAME: $*"
+  echo -n "$MESSAGE" | fold -s -w ${COLUMNS:-80} >&2;
+  if [ -n "$DISPLAY" ] && which xmessage > /dev/null 2>&1; then
+    echo -n "$MESSAGE" | fold -s -w ${COLUMNS:-80} | xmessage -center -file -
+  fi
+}
+
+errormsg () {
+  # exit script with error
+  message "$*"
+  exit 1
+}
+
+internal_errormsg () {
+  # exit script with error; essentially a "THIS SHOULD NEVER HAPPEN" message
+  # One big call to message() for the sake of xmessage; if we had two then
+  # the user would have dismissed the error we want reported before seeing the
+  # request to report it.
+  errormsg "$*" \
+           "Please report the installed version of the \"x11-common\"" \
+           "package and the complete text of this error message to" \
+           "<debian-x@lists.debian.org>."
+}
+
+# initialize variables for use by all session scripts
+
+OPTIONFILE=/etc/X11/Xsession.options
+
+SYSRESOURCES=/etc/X11/Xresources
+USRRESOURCES=$HOME/.Xresources
+
+SYSSESSIONDIR=/etc/X11/Xsession.d
+USERXSESSION=$HOME/.xsession
+USERXSESSIONRC=$HOME/.xsessionrc
+ALTUSERXSESSION=$HOME/.Xsession
+ERRFILE=$HOME/.xsession-errors
+
+OPTIONS="$(
+  if [ -r "$OPTIONFILE" ]; then
+    cat "$OPTIONFILE"
+  fi
+  if [ -d /etc/X11/Xsession.options.d ]; then
+    run-parts --list --regex '\.conf$' /etc/X11/Xsession.options.d
+  fi
+)"
+
+has_option() {
+  # Ensure that a later no-foo overrides an earlier foo
+  if [ "$(echo "$OPTIONS" | grep -Eo "^(no-)?$1\>" | tail -n 1)" = "$1" ]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+# attempt to create an error file; abort if we cannot
+if (umask 077 && touch "$ERRFILE") 2> /dev/null && [ -w "$ERRFILE" ] &&
+  [ ! -L "$ERRFILE" ]; then
+  chmod 600 "$ERRFILE"
+elif ERRFILE=$(tempfile 2> /dev/null); then
+  if ! ln -sf "$ERRFILE" "${TMPDIR:=/tmp}/xsession-$USER"; then
+    message "warning: unable to symlink \"$TMPDIR/xsession-$USER\" to" \
+             "\"$ERRFILE\"; look for session log/errors in" \
+             "\"$TMPDIR/xsession-$USER\"."
+  fi
+else
+  errormsg "unable to create X session log/error file; aborting."
 fi
 
-if [ -f $sysmodmap ]; then
-	xmodmap $sysmodmap
+exec >>"$ERRFILE" 2>&1
+
+echo "----- $PROGNAME: X session started for $LOGNAME at $(date) -----"
+
+# sanity check; is our session script directory present?
+if [ ! -d "$SYSSESSIONDIR" ]; then
+  errormsg "no \"$SYSSESSIONDIR\" directory found; aborting."
 fi
 
-if [ -f "$userresources" ]; then
-	xrdb -merge "$userresources"
+# Attempt to create a file of non-zero length in /tmp; a full filesystem can
+# cause mysterious X session failures.  We do not use touch, :, or test -w
+# because they won't actually create a file with contents.  We also let standard
+# error from tempfile and echo go to the error file to aid the user in
+# determining what went wrong.
+WRITE_TEST=$(tempfile)
+if ! echo "*" >>"$WRITE_TEST"; then
+  message "warning: unable to write to ${WRITE_TEST%/*}; X session may exit" \
+          "with an error"
+fi
+rm -f "$WRITE_TEST"
+
+
+
+if [ -z "$DBUS_SESSION_BUS_ADDRESS" ] && [ -n "$XDG_RUNTIME_DIR" ] && \
+    [ "$XDG_RUNTIME_DIR" = "/run/user/`id -u`" ] && \
+    [ -S "$XDG_RUNTIME_DIR/bus" ]; then
+  # We are under systemd-logind or something remarkably similar, and
+  # a user-session socket has already been set up.
+  #
+  # Be nice to non-libdbus, non-sd-bus implementations by using
+  # that as the session bus address in the environment. The check for
+  # XDG_RUNTIME_DIR = "/run/user/`id -u`" is because we know that
+  # form of the address, from systemd-logind, doesn't need escaping,
+  # whereas arbitrary addresses might.
+  DBUS_SESSION_BUS_ADDRESS="unix:path=$XDG_RUNTIME_DIR/bus"
+  export DBUS_SESSION_BUS_ADDRESS
 fi
 
-if [ -d /etc/X11/xinit/xinitrc.d ]; then
-	for f in /etc/X11/xinit/xinitrc.d/?*.sh; do
-		[ -x "$f" ] && . "$f"
-	done
-	unset f
+if [ -x "/usr/bin/dbus-update-activation-environment" ]; then
+  # tell dbus-daemon --session (and systemd --user, if running)
+  # to put a minimal subset of the Xsession's environment in activated
+  # services' environments
+  dbus-update-activation-environment --verbose --systemd \
+    DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 fi
+
+# $Id: 20x11-common_process-args 305 2005-07-03 18:51:43Z dnusinow $
+
+# This file is sourced by Xsession(5), not executed.
+
+# Determine how many arguments were provided.
+case $# in
+  0)
+    # No arguments given; use default behavior.
+    ;;
+  1)
+    # One argument given; see what it was.
+    case "$1" in
+      failsafe)
+        # Failsafe session was requested.
+        if has_option allow-failsafe; then
+          if [ -e /usr/bin/x-terminal-emulator ]; then
+            if [ -x /usr/bin/x-terminal-emulator ]; then
+              exec x-terminal-emulator -geometry +1+1
+            else
+              # fatal error
+              errormsg "unable to launch failsafe X session ---" \
+                       "x-terminal-emulator not executable; aborting."
+            fi
+          else
+            # fatal error
+            errormsg "unable to launch failsafe X session ---" \
+                     "x-terminal-emulator not found; aborting."
+          fi
+        fi
+        ;;
+      default)
+        # Default behavior was requested.
+        ;;
+      *)
+        # Specific program was requested.
+        STARTUP_FULL_PATH=$(/usr/bin/which "${1%% *}" || true)
+        if [ -n "$STARTUP_FULL_PATH" ] && [ -e "$STARTUP_FULL_PATH" ]; then
+          if [ -x "$STARTUP_FULL_PATH" ]; then
+            STARTUP="$1"
+          else
+            message "unable to launch \"$1\" X session ---" \
+                    "\"$1\" not executable; falling back to default session."
+          fi
+        else
+          message "unable to launch \"$1\" X session ---" \
+                  "\"$1\" not found; falling back to default session."
+        fi
+        ;;
+    esac
+    ;;
+  *)
+    # More than one argument given; we don't know what to do.
+    message "unsupported number of arguments ($#); falling back to default" \
+            "session."
+    ;;
+esac
+
+# vim:set ai et sts=2 sw=2 tw=80:
+
+
+
+
+# $Id: 30x11-common_xresources 305 2005-07-03 18:51:43Z dnusinow $
+
+# This file is sourced by Xsession(5), not executed.
+
+# If xrdb (from xbase-clients) is installed, merge system-wide X resources.
+# Then merge the user's X resources, if the options file is so configured.
+if [ -d "$SYSRESOURCES" ] && type xrdb >/dev/null 2>&1; then
+  RESOURCEFILES=$(run-parts --list $SYSRESOURCES)
+  if [ -n "$RESOURCEFILES" ]; then
+    for RESOURCEFILE in $RESOURCEFILES; do
+      xrdb -merge $RESOURCEFILE
+    done
+  fi
+fi
+
+if has_option allow-user-resources && [ -f "$USRRESOURCES" ]; then
+  if type xrdb >/dev/null 2>&1; then
+    xrdb -merge $USRRESOURCES
+  else
+    # Comment out this command if you desire a legacy-free X environment, and find
+    # the warning spurious.
+    message "warning: xrdb command not found; X resources not merged."
+  fi
+fi
+
+# vim:set ai et sts=2 sw=2 tw=80:
+
+# This file is sourced by Xsession(5), not executed.
+
+# If xhost (from x11-xserver-utils) is installed, use it to give access 
+# to the X server to any process from the same user on the local host.
+# Unlike other uses of xhost, this is safe since the kernel can check 
+# the actual owner of the calling process.
+
+if type xhost >/dev/null 2>&1; then
+  xhost +si:localuser:$(id -un) || :
+fi
+
+# This file is sourced by Xsession(5), not executed.
+
+#Source user defined xsessionrc (locales and other environment variables)
+if [ -r "$USERXSESSIONRC" ]; then
+  . "$USERXSESSIONRC"
+fi
+
+# $Id: 50x11-common_determine-startup 305 2005-07-03 18:51:43Z dnusinow $
+
+# This file is sourced by Xsession(5), not executed.
+
+# If no X session startup program was passed to the Xsession script as an
+# argument (e.g., by the display manager), or if that program was not
+# executable, fall back to looking for a user's custom X session script, if
+# allowed by the options file.
+if [ -z "$STARTUP" ]; then
+  if has_option allow-user-xsession; then
+    for STARTUPFILE in "$USERXSESSION" "$ALTUSERXSESSION"; do
+      if [ -e "$STARTUPFILE" ]; then
+        if [ -x "$STARTUPFILE" ]; then
+          STARTUP="$STARTUPFILE"
+        else
+          shell=${SHELL:-sh}
+          STARTUP="$shell $STARTUPFILE"
+        fi
+        break
+      fi
+    done
+  fi
+fi
+
+# If there is still nothing to use for a startup program, try the system
+# default session manager, window manager, and terminal emulator.
+if [ -z "$STARTUP" ]; then
+  if [ -x /usr/bin/x-session-manager ]; then
+    STARTUP=x-session-manager
+  elif [ -x /usr/bin/x-window-manager ]; then
+    STARTUP=x-window-manager
+  elif [ -x /usr/bin/x-terminal-emulator ]; then
+    STARTUP=x-terminal-emulator
+  fi
+fi
+
+# If we still have not found a startup program, give up.
+if [ -z "$STARTUP" ]; then
+  ERRMSG="unable to start X session ---"
+  if has_option allow-user-xsession; then
+    ERRMSG="$ERRMSG no \"$USERXSESSION\" file, no \"$ALTUSERXSESSION\" file,"
+  fi
+  errormsg "$ERRMSG no session managers, no window managers, and no terminal" \
+           "emulators found; aborting."
+fi
+
+# vim:set ai et sts=2 sw=2 tw=80:
+
+#!/bin/sh
+# vim: set sts=4 expandtab:
+# Copyright (C) 2012 Osamu Aoki <osamu@debian.org>
+# Copyright (C) 2012 Aron Xu <aron@debian.org>
+# GNU General Public License version 2 or later.
+#
+# Input Method launcher hook ... see im-launch(1).
+# The hook script for dbus-launch is in 75 which changes $STARTUP string.
+# This shuld be befor this dbus-launch hook to ensure the working dbus
+# for input method.  Thus moved from 80 to 70.
+
+IMLAUNCH=/usr/bin/im-launch
+
+if [ "$IM_CONFIG_PHASE" = 1 ]; then
+    IM_CONFIG_CHECK_ENV=1
+    export IM_CONFIG_CHECK_ENV
+fi
+
+# If already tweaked, keep hands off :-)
+# If im-config is removed but not purged, keep hands off :-)
+if [ -z "$XMODIFIERS" ] && \
+   [ -z "$GTK_IM_MODULE" ] && \
+   [ -z "$QT_IM_MODULE" ] && \
+   [ -z "$QT4_IM_MODULE" ] && \
+   [ -z "$CLUTTER_IM_MODULE" ] && \
+   [ -r /usr/share/im-config/xinputrc.common ]; then
+    IM_CONFIG_PHASE=1
+    export IM_CONFIG_PHASE
+    # initialize all im-config common functions and parameters
+    . /usr/share/im-config/xinputrc.common
+    unset TEXTDOMAIN
+    unset TEXTDOMAINDIR
+    # source the first found configuration file
+    if [ -r "$IM_CONFIG_XINPUTRC_USR" ]; then
+        . $IM_CONFIG_XINPUTRC_USR
+    elif [ -r "$IM_CONFIG_XINPUTRC_SYS" ]; then
+        . $IM_CONFIG_XINPUTRC_SYS
+    fi
+    # always export variables even for manual configuration.
+    export XMODIFIERS
+    export GTK_IM_MODULE
+    export QT_IM_MODULE
+    export QT4_IM_MODULE
+    export CLUTTER_IM_MODULE
+fi
+
+# Change $STARTUP string to im-launch while keeping the old $STARTUP string
+# as its arguments
+if [ -x "$IMLAUNCH" ]; then
+    STARTUP="$IMLAUNCH $STARTUP"
+fi
+
+
+
+
+
+
+# On systems with systemd running, we expect the agent to be launched
+# via systemd's user mode (see
+# /usr/lib/systemd/user/gpg-agent.{socket,service} and
+# systemd.unit(5)).  This allows systemd to clean up the agent
+# automatically at logout.
+
+# If systemd is absent from your system, or you do not permit it to
+# run in user mode, then you may need to manually launch gpg-agent
+# from your session initialization with something like "gpgconf
+# --launch gpg-agent"
+
+# Nonetheless, ssh and older versions of gpg require environment
+# variables to be set in order to find the agent, so we will set those
+# here.
+
+agent_sock=$(gpgconf --list-dirs agent-socket)
+export GPG_AGENT_INFO=${agent_sock}:0:1
+if [ -n "$(gpgconf --list-options gpg-agent | \
+      awk -F: '/^enable-ssh-support:/{ print $10 }')" ]; then
+    export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+fi
+
+
+
+QT_ACCESSIBILITY=1
+
+export QT_ACCESSIBILITY
+
+if [ -x "/usr/bin/dbus-update-activation-environment" ]; then
+        dbus-update-activation-environment --verbose --systemd QT_ACCESSIBILITY
+fi
+
+
+
+# $Id: 90x11-common_ssh-agent 305 2005-07-03 18:51:43Z dnusinow $
+
+# This file is sourced by Xsession(5), not executed.
+
+STARTSSH=
+SSHAGENT=/usr/bin/ssh-agent
+SSHAGENTARGS=
+
+if has_option use-ssh-agent; then
+  if [ -x "$SSHAGENT" ] && [ -z "$SSH_AUTH_SOCK" ] \
+     && [ -z "$SSH2_AUTH_SOCK" ]; then
+    STARTSSH=yes
+    if [ -f /usr/bin/ssh-add1 ] && cmp -s $SSHAGENT /usr/bin/ssh-agent2; then
+      # use ssh-agent2's ssh-agent1 compatibility mode
+      SSHAGENTARGS=-1
+    fi
+  fi
+fi
+
+if [ -n "$STARTSSH" ]; then
+  STARTUP="$SSHAGENT $SSHAGENTARGS ${TMPDIR:+env TMPDIR=$TMPDIR} $STARTUP"
+fi
+
+
 
 xsetroot -xcf /usr/share/icons/breeze_cursors/cursors/left_ptr 4
 xrdb $XDG_CONFIG_HOME/X11/xresources
@@ -39,12 +423,14 @@ fi
 echo "${gnupg_SSH_AUTH_SOCK_by:-0}"
 echo $$
 
-gpg-agent --daemon
+gpg-agent --daemon || true
 unset SSH_AGENT_PID
 if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
 	export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 fi
-~/config/polybar/launch.sh
 
-. /etc/X11/Xsession
+~/config/polybar/launch.sh || true
+
 exec i3
+
+exit 0
