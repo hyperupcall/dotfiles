@@ -1,0 +1,37 @@
+[module/filesystem]
+type = internal/fs
+
+; mountpoints to display
+mount-0 = /
+mount-1 = /storage/data
+mount-2 = /storage/edwin
+mount-3 = /storage/vault/rodinia
+
+; seconds to sleep between updates
+; default: 30
+interval = 10
+
+; display fixed precision values
+; default: false
+fixed-values = true
+
+; spacing between entries
+; default: 2
+spacing = 2
+
+; tags: <label-mounted>, <bar-free>, <bar-used>, <ramp-capacity>
+; default: <label-mounted>
+format-mounted = <label-mounted>
+
+; tags: <label-unmounted>
+; default: <label-unmounted>
+format-unmounted = <label-unmounted>
+
+; tokens: %mountpoint%, %type%, %fsname%, %percentage_free%, %percentage_used%, %total%, %free%, %used%
+; default: %mountpoint% %percentage_free%%
+label-mounted = %mountpoint%: %percentage_used%% of %total%
+
+; tokens: %mountpoint%
+; default: %mountpoint% is not mounted
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = #55

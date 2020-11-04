@@ -1,0 +1,30 @@
+[module/cmus]
+type = custom/script
+
+exec = $XDG_CONFIG_HOME/polybar/scripts/cmus.sh
+exec-if = pgrep -x cmus
+interval = 1
+
+click-left = cmus-remote --next
+click-right = cmus-remote --prev
+click-middle = cmus-remote --pause
+scroll-up = cmus-remote --volume +5%
+scroll-down = cmus-remote --volume -5%
+
+format = <label>
+format-underline = ${colors.foreground}
+label = %output%
+label-maxlen = 50
+
+[module/docker]
+type = custom/script
+exec = docker ps -q | wc -l
+interval = 1
+label =  %output%
+
+[module/services]
+type = custom/script
+exec = systemctl --type=service --state=running list-units --no-pager | grep running | wc -l
+interval = ${common.interval}
+label =  %output%
+click-left = $XDG_CONFIG_HOME/polybar/scripts/services.sh

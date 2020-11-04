@@ -1,0 +1,23 @@
+[module/date]
+type = internal/date
+interval = ${common.interval}
+
+; details: https://en.cppreference.com/w/cpp/io/manip/put_time
+; if you want to use syntax tags here you need to use %%{...}
+date = %Y-%m-%d%
+time = %H:%M
+
+; toggles format on click
+date-alt = %A, %d %B %Y
+time-alt = %H:%M:%S
+; tags: <label>
+; default: <label>
+format = 🕓 <label>
+; format-background = #55ff3399
+; format-foreground = #fff
+
+; tokens: %date%, %time%
+; default: %date%
+label = %date% %time%
+; label-font = 3
+; label-foreground = #9A32DB

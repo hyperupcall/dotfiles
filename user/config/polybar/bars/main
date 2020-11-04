@@ -1,0 +1,5 @@
+[bar/main]
+inherit = bar/base
+modules-left = filesystem
+; modules-right =
+modules-right = cmus cpu memory network pulseaudio date

@@ -1,0 +1,64 @@
+[module/network]
+type = internal/network
+interface = enp0s31f6
+interval = ${common.interval}
+
+
+; test connectivity every Nth update
+; A value of 0 disables the feature
+; note: Experimental (needs more testing)
+; default: 0
+;ping-interval = 3
+
+; accumulate values from all interfaces
+; when querying for up/downspeed rate
+; default: false
+accumulate-stats = true
+
+; consider an `UNKNOWN` interface state as up.
+; Some devices like USB network adapters have
+; an unknown state, even when they're running
+; default: false
+unknown-as-up = true
+
+; tags: <label-connected>, <ramp-signal>
+; default: <label-connected>
+format-connected = <ramp-signal> <label-connected>
+
+; tags: <label-disconnected>
+; default: <label-disconnected>
+format-disconnected = <label-disconnected>
+
+; tags: <label-connected>, <label-packetloss>, <animation-packetloss>
+; default: <label-connected>
+format-packetloss = <animation-packetloss> <label-connected>
+
+; tokens: %ifname% [wireless+wired], %local_ip%  [wireless+wired], %local_ip6% [wireless+wired], %essid% [wireless], %signal% [wireless], %upspeed%   [wireless+wired], %downspeed% [wireless+wired], %linkspeed% [wired]
+
+; default: %ifname% %local_ip%
+label-connected = %ifname% %local_ip% %downspeed:9%
+label-connected-foreground = ${colors.success}
+
+; default: (none)
+label-disconnected = not connected
+label-disconnected-foreground = ${colors.warning}
+
+; default: (none)
+;label-packetloss = %essid%
+;label-packetloss-foreground = ${colors.warning}
+
+; only applies if <ramp-signal> is used
+ramp-signal-0 = 😱
+ramp-signal-1 = 😠
+ramp-signal-2 = 😒
+ramp-signal-3 = 😊
+ramp-signal-4 = 😃
+ramp-signal-5 = 😈
+
+; only applies if <animation-packetloss> is used
+animation-packetloss-0 = ⚠
+animation-packetloss-0-foreground = #ffa64c
+animation-packetloss-1 = 📶
+animation-packetloss-1-foreground = #000000
+; framerate in milliseconds
+animation-packetloss-framerate = 500
