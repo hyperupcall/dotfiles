@@ -18,59 +18,42 @@ file = "/oh-my-zsh/"
 #
 
 [[files]]
+file = "/.alsoftrc"
+tags = [ "alsoftrc" ]
+
+[[files]]
 file = "/.bash_logout"
-tags = [
-	"bash"
-]
+tags = [ "bash" ]
 
 [[files]]
 file = "/.bash_profile"
-tags = [
-	"bash"
-]
+tags = [ "bash" ]
 
 [[files]]
 file = "/.bashrc"
-tags = [
-	"bash"
-]
+tags = [ "bash" ]
 
 [[files]]
 file = "/.cliflix.json"
-tags = [
-	"cliflix"
-]
+tags = [ "cliflix" ]
 
 [[files]]
 file = "/.fehbg"
-tags = [
-	"feh"
-]
-
+tags = [ "feh" ]
 
 [[files]]
 file = "/.profile"
-tags = [
-	"shell"
-]
-
-[[files]]
-file = "/zprofile"
-tags = [
-	"zsh"
-]
-
-[[files]]
-file = "/zshrc"
-tags = [
-	"zsh"
-]
+tags = [ "shell" ]
 
 [[files]]
 file = "/.yarnrc"
 tags = [
 	"yarn"
 ]
+
+[[files]]
+file = "/.ssh/environment"
+tags = [ "ssh" ]
 
 #
 # ~/bin
@@ -244,114 +227,79 @@ tags = [
 
 [[files]]
 file = "/maven/"
+tags = [ "maven" ]
 
 [[files]]
 file = "/micro/"
-tags = [
-	"micro"
-]
+tags = [ "micro" ]
 
 [[files]]
 file = "/mnemosyne/config.py"
-tags = [
-	"mnemosyne"
-]
+tags = [ "mnemosyne" ]
 
 [[files]]
 file = "/nano/"
-tags = [
-	"nano"
-]
+tags = [ "nano" ]
 
 [[files]]
 file = "/neofetch/"
-tags = [
-	"neofetch"
-]
+tags = [ "neofetch" ]
 
 [[files]]
 file = "/nimble/"
-tags = [
-	"nimble"
-]
+tags = [ "nimble" ]
 
 [[files]]
 file = "/nitrogen/"
-tags = [
-	"nitrogen"
-]
+tags = [ "nitrogen" ]
 
 [[files]]
 file = "/npm/"
-tags = [
-	"npm"
-]
+tags = [ "npm" ]
 
 [[files]]
 file = "/nu/"
-tags = [
-	"nu"
-]
+tags = [ "nu" ]
 
 [[files]]
 file = "/nvim/"
-tags = [
-	"nvim"
-]
+tags = [ "nvim" ]
 
 [[files]]
 file = "/picom/"
-tags = [
-	"picom"
-]
+tags = [ "picom" ]
 
 [[files]]
 file = "/polybar/"
-tags = [
-	"polybar"
-]
+tags = [ "polybar" ]
 
 [[files]]
 file = "/pulse/"
-tags = [
-	"pulse"
-]
+tags = [ "pulse" ]
 
 [[files]]
 file = "/python/"
-tags = [
-	"python"
-]
+tags = [ "python" ]
 
 [[files]]
 file = "/ranger/"
-tags = [
-	"ranger"
-]
+tags = [ "ranger" ]
 
 [[files]]
 file = "/readline/"
-tags = [
-	"bash", "redline"
-]
+tags = [ "bash", "redline" ]
 
 [[files]]
 file = "/redshift/"
-tags = [
-	"redshift"
-]
+tags = [ "redshift" ]
 
 [[files]]
 file = "/ripgrep/"
-tags = [
-	"ripgrep"
-]
+tags = [ "ripgrep" ]
 
 [[files]]
 file = "/rofi/"
-tags = [
-	"rofi"
-]
+tags = [ "rofi" ]
 
 [[files]]
 file = "/rtorrent"

@@ -8,5 +8,10 @@
 
 [[ $- != *i* ]] && [ ! -t 0 ] && return
 
+[ -z  "$XDG_CONFIG_HOME" ] && {
+	echo '$XDG_CONFIG_HOME must be set. Exiting'
+	exit 1
+}
+
 # shellcheck source=user/config/bash/bashrc.sh
-source "${XDG_CONFIG_HOME:-"$HOME/.config"}/bash/bashrc.sh"
+source "$XDG_CONFIG_HOME/bash/bashrc.sh"

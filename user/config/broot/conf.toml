@@ -1,25 +1,4 @@
-
-###############################################################
-# This configuration file lets you
-# - define new commands
-# - change the shortcut or triggering keys of built-in verbs
-# - change the colors
-# - set default values for flags
-# - set special behaviors on specific paths
-#
-# Configuration documentation is available at
-#     https://dystroy.org/broot
-###############################################################
-
-###############################################################
-# Default flags
-# You can set up flags you want broot to start with by
-# default, for example `default_flags="ihp"` if you usually want
-# to see hidden and gitignored files and the permissions (then
-# if you don't want the hidden files you can launch `br -H`)
-# A popular flag is the `g` one which displays git related info.
-#
-default_flags = ""
+default_flags = "ihp"
 
 ###############################################################
 # Special paths
@@ -61,14 +40,7 @@ default_flags = ""
 # 	"name",
 # ]
 
-###############################################################
-# True Colors
-# If this parameter isn't set, broot tries to automatically
-# determine whether true colors (24 bits) are available.
-# As this process is unreliable, you may uncomment this setting
-# and set it to false or true if you notice the colors in
-# previewed images are too off.
-# true_colors = false
+true_colors = true
 
 ###############################################################
 # Verbs and shortcuts

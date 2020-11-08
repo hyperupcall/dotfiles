@@ -165,39 +165,6 @@ dbs() {
 		/org/freedesktop/DBus org.freedesktop.DBus.ListNames
 }
 
-# Show all the names (CNs and SANs) listed in the SSL certificate
-# for a given domain
-getcertnames() {
-	[ -z "${1}" ] && {
-		echo "Error: No domain specified" \
-		return 1
-	}
-
-	local tmp
-	tmp=$(echo -e "GET / HTTP/1.0\\nEOT" \
-		| openssl s_client -connect "${1}:443" 2>&1)
-
-	if [[ "${tmp}" = *"-----BEGIN CERTIFICATE-----"* ]]; then
-		local certText
-		certText=$(echo "${tmp}" \
-			| openssl x509 -text -certopt "no_header, no_serial, no_version, \
-			no_signame, no_validity, no_issuer, no_pubkey, no_sigdump, no_aux")
-		echo "Common Name:"
-		echo
-		echo "${certText}" | grep "Subject:" | sed -e "s/^.*CN=//"
-		echo
-		echo "Subject Alternative Name(s):"
-		echo
-		echo "${certText}" | grep -A 1 "Subject Alternative Name:" \
-			| sed -e "2s/DNS://g" -e "s/ //g" | tr "," "\\n" | tail -n +2
-		return 0
-	else
-		echo "ERROR: Certificate not found."
-		return 1
-	fi
-}
-
-
 
 # ----------------- Program Configuration ---------------- #
 alias b='bukdu --suggest'
@@ -376,6 +343,10 @@ alias ls='ls --color=auto'
 # ltrace
 alias ltrace='ltrace -F "$XDG_CONFIG_HOME/ltrace/ltrace.conf"'
 
+# maven
+alias mvn='mvn -gs "$XDG_CONFIG_HOME/maven/settings.xml"'
+mkdir -p "$XDG_DATA_HOME/maven"
+
 # mongo
 alias mongo='mongo --norc'
 
@@ -400,7 +371,7 @@ path_add_pre "$N_PREFIX/bin"
 
 # nimble
 export CHOOSENIM_NO_ANALYTICS="1"
-#CHOOSENIM_CHOOSE_VERSION
+alias nimble='nimble --choosenimDir="$XDG_DATA_HOME/choosenim"'
 path_add_pre "$XDG_DATA_HOME/nimble/bin"
 
 # nnn
@@ -481,6 +452,10 @@ export SDKMAN_DIR="$XDG_DATA_HOME/sdkman"
 #export PATH="/snap/bin:$PATH"
 path_add_post "/var/lib/snapd/snap/bin"
 
+# sonarlint
+export SONARLINT_USER_HOME="$XDG_DATA_HOME/sonarlint"
+mkdir -p "$SONARLINT_USER_HOME"
+
 # stack
 export STACK_ROOT="$XDG_DATA_HOME/stack"
 
@@ -497,7 +472,7 @@ alias sudo='sudo '
 export TASKRC="$XDG_CONFIG_HOME/taskwarrior/taskrc"
 
 # terraform
-export TF_CLI_CONFIG_FILE="$XDG_DATA_HOME/terraform/terraformrc-custom"
+#export TF_CLI_CONFIG_FILE="$XDG_DATA_HOME/terraform/terraformrc-custom"
 
 # tmux
 alias tmux='tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf"'
