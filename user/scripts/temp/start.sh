@@ -39,3 +39,5 @@ cargo install git-delta
 
 pnpm i -g diff-so-fancy
 mkdir ~/data/X11
+
+lstopo

@@ -1,0 +1,71 @@
+[global]
+monitor = 0
+follow = mouse
+geometry = "300x5-30+20"
+indicate_hidden = yes
+shrink = false
+transparency = 0
+# notification_height
+# separator_height
+# padding
+# horizontal_padding
+# frame_width
+# frame_color (see theme below)
+# separator_color (see theme below)
+sort = true
+idle_threshold = 30s
+font = Iosevka Term 20
+# line_height
+markup = full
+format = "%a: %s %b"
+alignment = left
+vertical_alignment = center
+show_age_threshold = 1m
+word_wrap = true
+# ellipsize
+# ignore_newline
+# stack_duplicates
+# hide_duplicates_count
+# show_indicators
+# icon_position
+min_icon_size = 8
+max_icon_size = 64
+# icon_path
+# sticky_history
+history_length = 30
+# dmenu
+# browser
+# always_run_script
+# title
+# class
+# startup_notification
+# verbosity
+# force_xinerama
+corner_radius = 5
+# mouse_left
+# middle
+# right_click
+# ignore_dbusclose
+
+# [urgency_low]
+# [urgency_normal]
+# [urgency_critical]
+
+# ------------------------- theme ------------------------ #
+frame_color = "#E5E9F0"
+separator_color = "#E5E9F0"
+
+[base16_low]
+    msg_urgency = low
+    background = "#3B4252"
+    foreground = "#4C566A"
+
+[base16_normal]
+    msg_urgency = normal
+    background = "#434C5E"
+    foreground = "#E5E9F0"
+
+[base16_critical]
+    msg_urgency = critical
+    background = "#88C0D0"
+    foreground = "#ECEFF4"

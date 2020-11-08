@@ -1,0 +1,45 @@
+root = "../user"
+
+[[sources]]
+tags = ["vim"]
+file = "https://raw.githubusercontent.com/arcticicestudio/nord-vim/develop/colors/nord.vim"
+destFile = "config/vim/themes/nord.theme.vim"
+
+[[sources]]
+tags = ["tmux"]
+prefix = "https://raw.githubusercontent.com/arcticicestudio/nord-tmux/develop/src/"
+files = ["nord", "nord-status-content", "nord-status-content-no-patched-font"]
+postfix = ".conf"
+destPrefix = "config/dircolors/themes"
+destPostfix = ".conf"
+
+[[sources]]
+tags = ["alacritty"]
+file = "https://raw.githubusercontent.com/arcticicestudio/nord-alacritty/develop/src/nord.yml"
+destFile = "config/alacritty/themes/nord.theme.yml"
+
+[[sources]]
+tags = ["xresources"]
+file = "https://raw.githubusercontent.com/arcticicestudio/nord-xresources/develop/src/nord"
+destFile = "config/X11/themes/nord.theme.xresources"
+
+[[sources]]
+tags = ["dircolors"]
+file = "https://raw.githubusercontent.com/arcticicestudio/nord-dircolors/develop/src/dir_colors"
+destFile = "config/dircolors/themes/nord.theme.dir_colors"
+
+[[sources]]
+tags = ["termite"]
+file = "https://raw.githubusercontent.com/arcticicestudio/nord-termite/develop/src/config"
+destFile = "config/termite/themes/nord.theme.conf"
+
+
+[[sources]]
+tags = ["terminator"]
+file = "https://raw.githubusercontent.com/arcticicestudio/nord-terminator/develop/src/config"
+destFile = "config/terminator/themes/nord.theme.conf"
+
+[[sources]]
+tags = ["terminator"]
+file = "https://raw.githubusercontent.com/arcticicestudio/nord-terminator/develop/src/config"
+destFile = "config/terminator/themes/nord.theme.conf"

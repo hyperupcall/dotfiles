@@ -1,4 +1,11 @@
+#
+# ~/.profile
+#
+
+# ----------------------- Functions ---------------------- #
 path_add_pre() {
+	[ -d "$1" ] || return
+
 	case ":$PATH:" in
 		*":$1:"*) :;;
 		*) export PATH="$1:$PATH" ;;
@@ -6,38 +13,195 @@ path_add_pre() {
 }
 
 path_add_post() {
+	[ -d "$1" ] || return
+
 	case ":$PATH:" in
 		*":$1:"*) :;;
 		*) export PATH="$PATH:$1" ;;
 	esac
 }
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
-# -------------------- shell variables ------------------- #
-CDPATH=":~:/usr/local"
-export LANG="en_US.UTF-8";
-export LC_ALL="en_US.UTF-8";
-export VISUAL="vim"
-export EDITOR="$VISUAL"
-export DIFFPROG="nvim -d"
-export PAGER="less"
-export MANPAGER="less -X";
-export BROWSER="brave-beta"
-export LANG="${LANG:-en_US.UTF-8}k"
-export SPELL="aspell -x -c"
-path_add_pre "$HOME/bin"
-path_add_pre "$HOME/.local/bin"
-path_add_pre "$HOME/bin"
 
+# ------------------------ Common ------------------------ #
 export XDG_DATA_HOME="$HOME/data"
 export XDG_CONFIG_HOME="$HOME/config"
 export XDG_CACHE_HOME="$HOME/.cache"
 
-alias j=just
+export LANG="${LANG:-en_US.UTF-8}"
+export LANGUAGE="$LANG"
+export LC_ALL="${LC_ALL:-en_US.UTF-8}"
+export VISUAL="vim"
+export EDITOR="$VISUAL"
+export DIFFPROG="nvim -d"
+export PAGER="less"
+export MANPAGER="less -X"
+export BROWSER="brave-browser"
+export SPELL="aspell -x -c"
+export CMD_ENV="linux"
 
 umask 022
 
-# ----------------------- programs ----------------------- #
+
+# ------------------------ Custom ------------------------ #
+SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+export SSH_AUTH_SOCK
+
+path_add_pre "$HOME/.local/bin"
+path_add_pre "$HOME/bin"
+
+alias j=just
+alias la='exa -a'
+alias lctl='loginctl terminate-session'
+alias ll='exa -al'
+alias ping='ping -c 5'
+alias psa='ps xawf -eo pid,user,cgroup,args'
+
+serv() {
+	python3 -m http.server --directory "${1:-.}" "${2:-4000}"
+}
+
+v() {
+	if [ $# -eq 0 ]; then
+		vim .
+	else
+		vim "$@"
+	fi
+}
+
+o() {
+	if [ $# -eq 0 ]; then
+		xdg-open .
+	else
+		xdg-open "$@"
+	fi
+}
+
+oimg() {
+	local types='*.jpg *.JPG *.png *.PNG *.gif *.GIF *.jpeg *.JPEG'
+
+	cd "$(dirname "$1")" || exit
+	local file
+	file=$(basename "$1")
+
+	feh -q "$types" --auto-zoom \
+		--sort filename --borderless \
+		--scale-down --draw-filename \
+		--image-bg black \
+		--start-at "$file"
+}
+
+tre() {
+	tree -a \
+		-I '.git' -I '.svn' -I '.hg' \
+		--ignore-case --matchdirs --filelimit \
+		-h -F --dirsfirst -C "$@"
+}
+
+dg() {
+	dig +nocmd "$1" any +multiline +noall +answer
+}
+
+tmpd() {
+	[ $# -eq 0 ] && {
+		# || return for shellcheck
+		cd "$(mktemp -d)" || return
+		return
+	}
+
+	cd "$(mktemp -d -t "${1}.XXXXXXXXXX")" || return
+}
+
+mkd() {
+	mkdir -p "$@"
+	cd "$@" || exit
+}
+
+dataurl() {
+	mimeType=$(file -b --mime-type "$1")
+	case "$mimeType" in
+		text/*)
+			mimeType="${mimeType};charset=utf-8"
+		;;
+	esac
+
+	str="$(openssl base64 -in "$1" | tr -d '\n')"
+	printf "data:${mimeType};base64,%s\n" "$str"
+
+	unset -v mimeType
+	unset -v str
+}
+
+utf8encode() {
+	mapfile -t args < <(printf "%s" "$*" | xxd -p -c1 -u)
+	printf "\\\\x%s" "${args[@]}"
+
+	# print newline if we're not piping to another program
+	[ -t 1 ] && echo
+}
+
+utf8decode() {
+	perl -e "binmode(STDOUT, ':utf8'); print \"$*\""
+
+	# print newline if we're not piping to another program
+	[ -t 1 ] && echo
+}
+
+codepoint() {
+	perl -e "use utf8; print sprintf('U+%04X', ord(\"$*\"))"
+
+	# print newline if we're not piping to another program
+	[ -t 1 ] && echo
+}
+
+isup() {
+	curl -sS --head --X GET "$1" | grep "200 OK" >/dev/null
+}
+
+dbs() {
+	dbus-send --"${1:-session}" \
+		--dest=org.freedesktop.DBus \
+		--type=method_call \
+		--print-reply \
+		/org/freedesktop/DBus org.freedesktop.DBus.ListNames
+}
+
+# Show all the names (CNs and SANs) listed in the SSL certificate
+# for a given domain
+getcertnames() {
+	[ -z "${1}" ] && {
+		echo "Error: No domain specified" \
+		return 1
+	}
+
+	local tmp
+	tmp=$(echo -e "GET / HTTP/1.0\\nEOT" \
+		| openssl s_client -connect "${1}:443" 2>&1)
+
+	if [[ "${tmp}" = *"-----BEGIN CERTIFICATE-----"* ]]; then
+		local certText
+		certText=$(echo "${tmp}" \
+			| openssl x509 -text -certopt "no_header, no_serial, no_version, \
+			no_signame, no_validity, no_issuer, no_pubkey, no_sigdump, no_aux")
+		echo "Common Name:"
+		echo
+		echo "${certText}" | grep "Subject:" | sed -e "s/^.*CN=//"
+		echo
+		echo "Subject Alternative Name(s):"
+		echo
+		echo "${certText}" | grep -A 1 "Subject Alternative Name:" \
+			| sed -e "2s/DNS://g" -e "s/ //g" | tr "," "\\n" | tail -n +2
+		return 0
+	else
+		echo "ERROR: Certificate not found."
+		return 1
+	fi
+}
+
+
+
+# ----------------- Program Configuration ---------------- #
+alias b='bukdu --suggest'
+
 # anki
 alias anki='anki -b "$XDG_DATA_HOME/anki"'
 
@@ -53,9 +217,6 @@ export BASH_COMPLETION_USER_FILE="$XDG_CONFIG_HOME/bash-completion/bash_completi
 
 # boto
 export BOTO_CONFIG="$XDG_DATA_HOME/boto"
-
-# buku
-alias b='bukdu --suggest'
 
 # bundle
 export BUNDLE_USER_HOME="$XDG_DATA_HOME/bundle"
@@ -110,7 +271,7 @@ export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
 alias du='du -h'
 
 # dotty
-alias dotty='dotty --dot-dir=$HOME/.dots'
+alias dotty='dotty --dotfiles-dir=$HOME/.dots'
 
 # egrep
 alias egrep='egrep --colour=auto'
@@ -140,8 +301,8 @@ export GITLIBS="$XDG_DATA_HOME/gitlibs"
 
 # gnupg
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
-tty="$(tty)" && export GPG_TTY="$tty"
-unset -v tty
+GPG_TTY="$(tty)"
+export GPG_TTY
 
 # grep
 alias grep='grep --colour=auto'
@@ -155,9 +316,6 @@ export GRADLE_USER_HOME="$XDG_DATA_HOME/gradle"
 # gtk
 export GTK_RC_FILES="$XDG_CONFIG_HOME/gtk-1.0/gtkrc"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
-
-# http-server
-alias http-serve='http-serve -c-1 -a 127.0.0.1'
 
 # ice authority
 export ICEAUTHORITY="$XDG_RUNTIME_DIR/iceauthority"
@@ -199,7 +357,7 @@ export LESS="-FIRQ"
 # export LESS="-FIRX"
 export LESSKEY="$XDG_CONFIG_HOME/less_keys"
 export LESSHISTFILE="$HOME/.history/less_history"
-export LESSHISTSIZE="$common_histsize"
+export LESSHISTSIZE="32768"
 LESS_TERMCAP_mb="$(printf '\e[1;31m')" # start blink
 LESS_TERMCAP_md="$(printf '\e[1;36m')" # start bold
 LESS_TERMCAP_me="$(printf '\e[0m')" # end all
@@ -212,12 +370,7 @@ export LESS_TERMCAP_mb LESS_TERMCAP_md LESS_TERMCAP_me \
 	LESS_TERMCAP_so LESS_TERMCAP_se LESS_TERMCAP_us \
 	LESS_TERMCAP_ue LESS_TERMCAP_us
 
-# loginctl
-alias lctl='loginctl terminate-session'
-
 # ls
-alias la='exa -a'
-alias ll='exa -al'
 alias ls='ls --color=auto'
 
 # ltrace
@@ -256,6 +409,7 @@ export NNN_DE_FILE_MANAGER="nautilus"
 
 # node
 export NODE_REPL_HISTORY="$HOME/.history/node_repl_history"
+export TS_NODE_HISTORY="$HOME/.history/ts_node_repl_history"
 
 # npm / pnpm
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
@@ -274,9 +428,6 @@ export PACKER_CONFIG_DIR="$XDG_DATA_HOME/packer/packer.d"
 
 # pacman
 alias pacman='pacman --color=auto'
-
-# ping
-alias ping='ping -c 5'
 
 # poetry
 path_add_pre "$HOME/.poetry/bin"
@@ -322,6 +473,9 @@ export SCCACHE_CACHE_SIZE="20G"
 
 # screen
 export SCREENRC="$XDG_CONFIG_HOME/screenrc"
+
+# sdkman
+export SDKMAN_DIR="$XDG_DATA_HOME/sdkman"
 
 # snap
 #export PATH="/snap/bin:$PATH"
@@ -369,7 +523,7 @@ export WASMTIME_HOME="$XDG_DATA_HOME/wasmtime"
 path_add_pre "$WASMTIME_HOME/bin"
 
 # wget
-#WGETR=
+#WGETRC=
 alias wget='wget --config=$XDG_CONFIG_HOME/wget/wgetrc'
 
 # wolfram mathematica
@@ -389,6 +543,6 @@ export _Z_DATA="$XDG_DATA_HOME/z"
 # zfs
 export ZFS_COLOR=
 
-# ---------------------------------- cleanup --------------------------------- #
+# ---------------------------------- Cleanup --------------------------------- #
 unset -f path_add_pre
 unset -f path_add_pre

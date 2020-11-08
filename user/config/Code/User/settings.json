@@ -255,7 +255,7 @@
 	"workbench.tips.enabled": false,
 	"workbench.tree.indent": 12,
 	"screencastMode.onlyKeyboardShortcuts": true,
-	"window.zoomLevel": 1,
+	"window.zoomLevel": 0,
 	"search.searchOnTypeDebouncePeriod": 200,
 	"eslint.alwaysShowStatus": true,
 	"stylelint.packageManager": "pnpm",
@@ -273,5 +273,8 @@
 	"workbench.iconTheme": "material-icon-theme",
 	"C_Cpp.updateChannel": "Insiders",
 	"files.autoSave": "onWindowChange",
-	"workbench.colorTheme": "Nord"
+	"workbench.colorTheme": "Nord",
+	"stories.username": "C-3PO_Kriste",
+	"java.configuration.checkProjectSettingsExclusions": false,
+	"java.project.importOnFirstTimeStartup": "automatic"
 }

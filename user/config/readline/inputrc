@@ -7,8 +7,8 @@ set colored-completion-prefix on
 set colored-stats on
 set completion-ignore-case on
 set completion-map-case on
-set completion-prefix-display-length 4
-set completion-query-items 90
+set completion-prefix-display-length 12
+set completion-query-items 70
 
 # utf-8
 set convert-meta off

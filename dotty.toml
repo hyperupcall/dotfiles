@@ -1,0 +1,10 @@
+configDir = "cfg"
+
+# relative to root of project (containing dotty.toml)
+systemDirSrc = "system"
+systemDirDest = "/"
+
+userDirSrc = "user"
+userDirDest = "~"
+
+localDirSrc = "local"

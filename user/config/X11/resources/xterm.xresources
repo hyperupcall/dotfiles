@@ -12,7 +12,9 @@ XTerm.VT100.cursorBlink: true
 XTerm.VT100.cursorOffTime: 750
 XTerm.VT100.cursorOnTime: 1000
 XTerm.VT100.dynamicColors: true
+XTerm.VT100.eightBitControl: false
 XTerm.VT100.eightBitInput: false
+XTerm.VT100.eightBitOutput: true
 XTerm.VT100.faceName: xft:DejaVu Sans Mono
 XTerm.VT100.faceSize: 14
 XTerm.VT100.jumpScroll: true

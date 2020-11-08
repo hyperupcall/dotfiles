@@ -3,8 +3,10 @@
 # ~/.bashrc
 #
 
+# shellcheck source=user/.profile
 [ -r ~/.profile ] && source ~/.profile
 
-[[ $- != *i* ]] && return
+[[ $- != *i* ]] && [ ! -t 0 ] && return
 
-source "${XDG_CONFIG_HOME:-$HOME/.config}/bash/bashrc.sh"
+# shellcheck source=user/config/bash/bashrc.sh
+source "${XDG_CONFIG_HOME:-"$HOME/.config"}/bash/bashrc.sh"

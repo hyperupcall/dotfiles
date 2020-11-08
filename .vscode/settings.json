@@ -5,5 +5,9 @@
 		"**/.tcshrc": true,
 		"**/.cshrc": true,
 		"**/.git": true
-	}
+	},
+	"files.associations": {
+		"**/i3/**": "i3",
+		"**/polybar/**": "ini",
+	},
 }

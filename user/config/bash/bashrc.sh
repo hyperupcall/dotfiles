@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 
 # -------------------- Shell Variables ------------------- #
+CDPATH=":~:"
 HISTCONTROL="ignorespace:ignoredups"
 HISTFILE="$HOME/.history/bash_history"
 HISTSIZE="32768"
 HISTFILESIZE=$HISTSIZE
 HISTIGNORE="?:ls:[bf]g:pwd:clear*:exit*"
 HISTTIMEFORMAT="%B %m %Y %T | "
+
 
 # --------------------- Shell Options -------------------- #
 # shopt
@@ -70,12 +72,40 @@ fi
 unset -f 8BitColor
 unset -f 24BitColor
 
+# ---------------------- Completions --------------------- #
+isCmd() {
+	command -v "$1" >/dev/null 2>&1
+}
+
+[ -r /usr/share/bash-completion/bash_completion ] && source /usr/share/bash-completion/bash_completion
+
+isCmd just && eval "$(just --completions bash)"
+isCmd pack && source "$(pack completion)"
+isCmd chezmoi && eval "$(chezmoi completion bash)"
+isCmd poetry && eval "$(poetry completions bash)"
+
+
+# pack
+if [ "$(type -t compopt)" = "builtin" ]; then
+	complete -o default -F __start_pack p
+else
+	complete -o default -o nospace -F __start_pack p
+fi
+
+# sudo
+# uncomment to break autocomplete for sudo
+#complete -cf sudo
+
+unset -f isCmd
+
+
 # ------------------------- Misc ------------------------- #
 source "$XDG_CONFIG_HOME/bash/misc.sh"
-source "$XDG_CONFIG_HOME/bash/completion.sh"
 source "$XDG_CONFIG_HOME/bash/bash-it.sh"
 
 
-eval "$(just --completions bash)"
-source /home/edwin/config/broot/launcher/bash/br
-. ~/bin/z
+source "$XDG_CONFIG_HOME/broot/launcher/bash/br"
+source ~/bin/z
+
+export SDKMAN_DIR="/home/edwin/data/sdkman"
+[ -s "$XDG_DATA_HOME/sdkman/bin/sdkman-init.sh" ] && source "$XDG_DATA_HOME/sdkman/bin/sdkman-init.sh"
