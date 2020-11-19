@@ -276,5 +276,8 @@
 	"workbench.colorTheme": "Nord",
 	"stories.username": "C-3PO_Kriste",
 	"java.configuration.checkProjectSettingsExclusions": false,
-	"java.project.importOnFirstTimeStartup": "automatic"
+	"java.project.importOnFirstTimeStartup": "automatic",
+	"kite.showWelcomeNotificationOnStartup": false,
+	"sonarlint.disableTelemetry": true,
+	"editor.formatOnSave": true
 }

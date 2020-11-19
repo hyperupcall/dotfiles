@@ -46,6 +46,7 @@ umask 022
 SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 export SSH_AUTH_SOCK
 
+path_add_pre "$HOME/scripts/"
 path_add_pre "$HOME/.local/bin"
 path_add_pre "$HOME/bin"
 
@@ -55,8 +56,27 @@ alias lctl='loginctl terminate-session'
 alias ll='exa -al'
 alias ping='ping -c 5'
 alias psa='ps xawf -eo pid,user,cgroup,args'
+alias xz='xz -k'
+
+mc() {
+	mkdir -- "$@" && cd -- "$@"
+}
+
+sp() {
+	source ~/.profile
+}
+
+doBackup() {
+	restic --repo /storage/vault/rodinia/backups/ backup /storage/edwin/ --iexclude "node_modules" --iexclude "__pycache__"
+	
+}
+
+doBackup2() {
+	restic --repo /storage/vault/rodinia/backups-data/ backup /storage/data/ --iexclude "node_modules"
+}
 
 serv() {
+	[ -d "${1:-.}" ] || { echo "Error: dir '$1' doesn't exist"; return 1; }
 	python3 -m http.server --directory "${1:-.}" "${2:-4000}"
 }
 
@@ -256,7 +276,7 @@ alias fgrep='fgrep --colour=auto'
 alias free='free -m'
 
 # g
-export GOPATH="$XDG_DATA_HOME/go-path"
+#export GOPATH="$XDG_DATA_HOME/go-path"
 path_add_pre "$GOPATH/bin"
 
 # gem
@@ -283,6 +303,12 @@ export GRADLE_USER_HOME="$XDG_DATA_HOME/gradle"
 # gtk
 export GTK_RC_FILES="$XDG_CONFIG_HOME/gtk-1.0/gtkrc"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
+
+# gvm
+# TODO: fix
+export GVM_ROOT="$XDG_DATA_HOME/gvm"
+export GVM_DEST="$GVM_ROOT"
+. "$GVM_ROOT/scripts/gvm-default"
 
 # ice authority
 export ICEAUTHORITY="$XDG_RUNTIME_DIR/iceauthority"
@@ -400,6 +426,13 @@ export PACKER_CONFIG_DIR="$XDG_DATA_HOME/packer/packer.d"
 # pacman
 alias pacman='pacman --color=auto'
 
+# phpbrew
+path_add_pre "$XDG_DATA_HOME/phpenv/bin"
+
+# phpenv
+export PHPENV_ROOT="$XDG_DATA_HOME/phpenv"
+path_add_pre  "$PHPENV_ROOT/bin"
+
 # poetry
 path_add_pre "$HOME/.poetry/bin"
 
@@ -473,6 +506,9 @@ export TASKRC="$XDG_CONFIG_HOME/taskwarrior/taskrc"
 
 # terraform
 #export TF_CLI_CONFIG_FILE="$XDG_DATA_HOME/terraform/terraformrc-custom"
+
+# texmf
+export TEXMFHOME="$XDG_DATA_HOME/textmf"
 
 # tmux
 alias tmux='tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf"'

@@ -4,20 +4,87 @@ set showcmd
 set showmatch
 set ignorecase
 set smartcase
+set smarttab
 set incsearch
 set autowrite
+set hlsearch
+set incsearch
 set hidden
 set mouse=a
 set mouse=r
-syntax on
 
-set history=50
+" 1 tab = 8 spaces
+set shiftwidth=8
+set tabstop=8
+"syntax enable
+"set expandtab
+" dont redraw when execing macros
+
+set ai "auto indent
+set si "smart indent
+set wrap "wrap lines
+
+" Visual mode pressing * or # searches for the current selection
+" Super useful! From an idea by Michael Naumann
+vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
+vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
+
+" better way to move between windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+
+set lazyredraw
+" auto read when file changed from outside
+set autoread
+au FocusGained,BufEnter * checktime
+
+" turn magic on for regular expressions
+set magic
+
+"if $COLORTERM == 'gnome-terminal'
+    set t_Co=256
+"endif
+
+set showmatch
+" How many tenths of a second to blink when matching brackets
+set mat=2
+
+
+" No annoying sound on errors
+set noerrorbells
+set novisualbell
+set t_vb=
+set tm=500
+
+
+command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
+
+set wildmenu
+" ignore compiled files
+set wildignore=*.o,*~,*.pyc
+
+set cmdheight=1
+" buffer hidden when abandoned
+set hid
+
+
+set history=500
 set ruler " show cursor position all the time
 set modeline
 set hidden
 "colorscheme darkblue
 set backspace=indent,eol,start
-"set background=dark
+set background=dark
+
+
+set encoding=utf8
+
+" Use Unix as the standard file type
+set ffs=unix,dos,mac
+
 
 " Suffixes that get lower priority when doing tab completion for filenames.
 " These are files we are not likely to want to edit or read.
@@ -29,8 +96,44 @@ if &term =~ "xterm-debian"
   set t_Sb=dm
 endif
 
-" vim load rules and plugins according to detected file type
-filetype plugin indent on
+filetype plugin on
+filetype indent on
 
 "jump to the last position when reopening file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+
+
+" Delete trailing white space on save, useful for some filetypes ;)
+fun! CleanExtraSpaces()
+    let save_cursor = getpos(".")
+    let old_query = getreg('/')
+    silent! %s/\s\+$//e
+    call setpos('.', save_cursor)
+    call setreg('/', old_query)
+endfun
+
+"if has("autocmd")
+"    autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
+"endif
+
+
+set hlsearch
+set ignorecase
+set incsearch
+set smartcase
+"set complete-=i
+set scrolloff=1
+set sidescrolloff=5
+set wrap
+set laststatus=2
+set ruler
+set tabpagemax=50
+"set colorscheme
+set number
+set relativenumber
+set noerrorbells
+set title
+set autoread
+set confirm
+"set spell

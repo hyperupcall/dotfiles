@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
 # -------------------- Shell Variables ------------------- #
-CDPATH=":~:"
+#CDPATH=":~:"
 HISTCONTROL="ignorespace:ignoredups"
 HISTFILE="$HOME/.history/bash_history"
 HISTSIZE="32768"
 HISTFILESIZE=$HISTSIZE
-HISTIGNORE="?:ls:[bf]g:pwd:clear*:exit*"
+HISTIGNORE="ls:[bf]g:pwd:clear*:exit*"
 HISTTIMEFORMAT="%B %m %Y %T | "
 
 
@@ -164,6 +164,12 @@ getcertnames() {
 		return 1
 	fi
 }
+
+for file in "$XDG_CONFIG_HOME"/bash/completions/*; do
+	if [ -f "$file" ]; then
+		source "$file"
+	fi
+done
 
 # shellcheck source=~/config/broot/launcher/bash/br
 source "$XDG_CONFIG_HOME/broot/launcher/bash/br"

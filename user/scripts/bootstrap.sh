@@ -35,6 +35,12 @@ git clone https://github.com/bash-it/bash-it "$XDG_DATA_HOME/bash-it"
 
 curl -s "https://get.sdkman.io" | bash
 
-https://github.com/Bash-it/bash-it
+bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+
+
+#curl -sSL https://git.io/g-install | sh -s
+
+curl -L https://raw.githubusercontent.com/phpenv/phpenv-installer/master/bin/phpenv-installer \
+    | PHPENV_ROOT=$HOME/data/phpenv bash
 
 ( cd "$(mktemp -d)" && git clone https://github.com/charmbracelet/glow.git && cd glow && go build )
