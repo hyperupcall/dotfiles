@@ -1,12 +1,10 @@
-_xdg_mime_mimetype()
-{
+_xdg_mime_mimetype() {
 	COMPREPLY+=($(compgen -S / -W 'application audio font image message model
 											multipart text video' -- "$cur"))
 	[[ ${COMPREPLY-} == */ ]] && compopt -o nospace
 }
 
-_fox_default()
-{
+_fox_default() {
     local cur prev words cword
     _init_completion || return
 
@@ -60,5 +58,5 @@ _fox_default()
       #       fi
       #       ;;
     esac
-} &&
-	complete -F _fox_default fox-default
+} \
+    && complete -F _fox_default fox-default

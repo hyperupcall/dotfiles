@@ -57,8 +57,26 @@ alias ll='exa -al'
 alias ping='ping -c 5'
 alias psa='ps xawf -eo pid,user,cgroup,args'
 alias xz='xz -k'
+alias cliflix='cliflix -- --no-quit --vlc'
 
-mc() {
+lb() {
+	lsblk -o NAME,FSTYPE,LABEL,FSUSED,FSAVAIL,FSSIZE,FSUSE%,MOUNTPOINT
+}
+
+mkt() {
+	dir="$(mktemp -d)"
+
+	[ -n "$1" ] && {
+		mv "$1" "$dir"
+		cd "$dir"
+		return
+	}
+
+	cd "$dir"
+}
+
+
+mkc() {
 	mkdir -- "$@" && cd -- "$@"
 }
 
@@ -66,9 +84,19 @@ sp() {
 	source ~/.profile
 }
 
+chr() {
+	: ${1:?"Error: No mountpoint specified"}
+	[ -d "$1" ] || { echo "Error: Folder doesn't exist"; exit 1; }
+
+	sudo mount -o bind -t proc /proc/ "$1/proc"
+	sudo mount -o bind -t sysfs /sys "$1/sys"
+	sudo mount -o bind -t tmpfs /run "$1/run"
+	sudo mount -o bind -t devtmpfs /dev "$1/dev"
+}
+
 doBackup() {
 	restic --repo /storage/vault/rodinia/backups/ backup /storage/edwin/ --iexclude "node_modules" --iexclude "__pycache__"
-	
+
 }
 
 doBackup2() {
@@ -202,6 +230,10 @@ export AWS_CONFIG_FILE="$XDG_DATA_HOME/aws/config"
 # bash-completeion
 export BASH_COMPLETION_USER_FILE="$XDG_CONFIG_HOME/bash-completion/bash_completion"
 
+# bm
+alias bm='~/repos/bm/bm.sh'
+path_add_pre "$XDG_DATA_HOME/bm/bin"
+
 # boto
 export BOTO_CONFIG="$XDG_DATA_HOME/boto"
 
@@ -276,7 +308,7 @@ alias fgrep='fgrep --colour=auto'
 alias free='free -m'
 
 # g
-#export GOPATH="$XDG_DATA_HOME/go-path"
+export GOPATH="$XDG_DATA_HOME/go-path"
 path_add_pre "$GOPATH/bin"
 
 # gem
@@ -308,7 +340,7 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 # TODO: fix
 export GVM_ROOT="$XDG_DATA_HOME/gvm"
 export GVM_DEST="$GVM_ROOT"
-. "$GVM_ROOT/scripts/gvm-default"
+test -x "$GVM_ROOT/scripts/gvm-default" && . "$GVM_ROOT/scripts/gvm-default"
 
 # ice authority
 export ICEAUTHORITY="$XDG_RUNTIME_DIR/iceauthority"
@@ -557,3 +589,8 @@ export ZFS_COLOR=
 # ---------------------------------- Cleanup --------------------------------- #
 unset -f path_add_pre
 unset -f path_add_pre
+
+export PATH="/home/edwin/data/cargo/bin:$PATH"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/data/rvm/bin"

@@ -12,6 +12,7 @@ file="/proc/sys/fs/binfmt_misc/golang"
 	cat "$file"
 	exit
 }
+unset -v file
 
 # install gorun
 go get github.com/erning/gorun

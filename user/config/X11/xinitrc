@@ -2,27 +2,14 @@
 
 set -e
 
-xrdb -merge "$XDG_CONFIG_HOME/X11/xresources"
-
-# attempt to create an error file; abort if we cannot
-errorFile=$HOME/.xsession-errors
-if (umask 077 && touch "$errorFile") 2> /dev/null && [ -w "$errorFile" ] && [ ! -L "$errorFile" ]; then
-	chmod 600 "$errorFile"
-elif errorFile=$(tempfile 2> /dev/null); then
-	if ! ln -sf "$errorFile" "${tempDir:=/tmp}/xsession-$USER"; then
-		echo "Warning: unable to symlink '$tempDir/xsession-$USER' to '$errorFile'. Look for session log / errors in '$tempDir/xsession-$USER'"
-		exit 1
-	fi
-else
-	echo "Error: Unable to create X session log/error file"
-	exit 1
-fi
-
+# ensure an error file exists
+errorFile="$XDG_DATA_HOME/X11/xsession-errors"
+(umask 077 && touch "$errorFile") 2>/dev/null
+chmod 600 "$errorFile"
 exec >> "$errorFile" 2>&1
 
+# print
 echo "----- $Xsession: X session started for $LOGNAME at $(date) -----"
-
-
 
 # FILE
 if [ -z "$DBUS_SESSION_BUS_ADDRESS" ] && [ -n "$XDG_RUNTIME_DIR" ] && \
@@ -41,20 +28,15 @@ if [ -z "$DBUS_SESSION_BUS_ADDRESS" ] && [ -n "$XDG_RUNTIME_DIR" ] && \
 fi
 
 
+export QT_ACCESSIBILITY=1
 if [ -x "/usr/bin/dbus-update-activation-environment" ]; then
 	# tell dbus-daemon --session (and systemd --user, if running) to put a minimal
 	# subset of the Xsession's environment in activated services' environments
 
 	dbus-update-activation-environment --verbose --systemd \
 		DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
-fi
-
-
-export QT_ACCESSIBILITY=1
-if [ -x "/usr/bin/dbus-update-activation-environment" ]; then
 	dbus-update-activation-environment --verbose --systemd QT_ACCESSIBILITY
 fi
-
 
 # If xhost is installed, use it to give access to the X server for any process from
 # the same user on the local host. Unlike other uses of xhost, this is safe since the
@@ -64,23 +46,18 @@ if type xhost >/dev/null 2>&1; then
 fi
 
 
-xsetroot -xcf /usr/share/icons/breeze_cursors/cursors/left_ptr 4
-xrdb $XDG_CONFIG_HOME/X11/xresources
-
-xrandr \
-	--output DP-1 --above DP-5 --auto \
-	--output DP-3 --right-of DP-5 --auto \
-	--output HDMI-0 --above DP-3 --auto
+#xsetroot -xcf /usr/share/icons/breeze_cursors/cursors/left_ptr 4
+xrdb "$XDG_CONFIG_HOME/X11/xresources"
 
 nitrogen --restore
-
-#➤ SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)" git push
 
 #gpg-agent --daemon || true
 #unset SSH_AGENT_PID
 #if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
 #	export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 #fi
+
+~/config/X11/monitor.sh
 
 ~/config/polybar/launch.sh || true
 
@@ -90,6 +67,7 @@ nitrogen --restore
 # Sync clipboards (some bad decisions really stick around...)
 #autocutsel -fork
 #autocutsel -selection PRIMARY -fork
+sxhkd &
 
 exec i3
 

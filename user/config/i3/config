@@ -4,66 +4,21 @@
 ## ------------------------ basic -----------------------
 set $mod Mod4
 font pango:DejaVu Sans Mono 12
-
-# use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 focus_follows_mouse no
 mouse_warping none
 workspace_auto_back_and_forth yes
 floating_modifier $mod
-#gaps inner 5
-#gaps outer 5
-
-
-## ----------------------- startup ----------------------
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-
-
-## ------------------ specific windows ------------------
-## TODO: make this actually work
-#bindsym $mod+p exec --no-startup-id termite --class "fzf-menu" --geometry 640x480
-for_window [class="^fzf-menu$"] floating enable
-for_window [class="^fzf-menu$"] resize set 625 400
-for_window [class="^fzf-menu$"] move scratchpad
 
 
 ## --------------------- keybindings --------------------
-# basic
-bindsym $mod+Return exec kitty
 bindsym $mod+Shift+q kill
-bindsym $mod+p exec --no-startup-id dmenu_run
-#bindsym $mod+o exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3 and end X session?' -B 'yah, exit!' 'i3-msg exit'"
-bindcode --release 107 exec --no-startup-id "maim | xclip -t image/png -selection clipboard"
-bindsym Shift+Print exec --no-startup-id "maim -s | xclip -t image/png -selection clipboard"
-#bindcode --release 50 --release 107 exec --no-startup-id "maim | xclip -t image/png -selection clipboard"
-bindsym $mod+o exec "rofi -combi-modi window,drun,ssh -show combi -show-icons"
-
-bindsym F5 exec --no-startup-id "cmus-remote --prev"
-bindsym F6 exec --no-startup-id "cmus-remote --pause"
-bindsym F7 exec --no-startup-id "cmus-remote --next"
-
-# audio
-set $refresh_i3status killall -SIGUSR1 i3status
-
-#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle && $refresh_i3status
-#bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute 1 toggle && $refresh_i3status
-
-bindsym F9 exec --no-startup-id pactl set-sink-mute 1 toggle && $refresh_i3status
-bindsym F10 exec --no-startup-id pactl set-sink-volume 1 -10% && $refresh_i3status
-bindsym F11 exec --no-startup-id pactl set-sink-volume 1 +10% && $refresh_i3status
-bindsym F12 exec --no-startup-id pactl set-source-mute 1 toggle && $refresh_i3status
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3 and end X session?' -B 'Yah, exit!' 'i3-msg exit'"
 
 ## --------------------- navigation ---------------------
-# select / move windows
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
@@ -104,21 +59,26 @@ set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
 set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
 bindsym $mod+3 workspace number $ws3
 bindsym $mod+4 workspace number $ws4
-bindsym $mod+5 workspace number $ws5
-bindsym $mod+6 workspace number $ws6
 bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
 bindsym $mod+Shift+3 move container to workspace number $ws3
 bindsym $mod+Shift+4 move container to workspace number $ws4
-bindsym $mod+Shift+5 move container to workspace number $ws5
-bindsym $mod+Shift+6 move container to workspace number $ws6
 
+## ---------------------- launch mode -------------------
+bindsym $mod+. mode "launch"
+
+mode "launch" {
+  bindsym f exec firefox
+  bindsym t exec thunderbird
+
+  bindsym Escape mode "default"
+  bindsym Return mode "default"
+  bindsym $mod+r mode "default"
+}
 
 ## --------------------- resize mode --------------------
 bindsym $mod+r mode "resize"
@@ -128,42 +88,30 @@ mode "resize" {
   bindsym k resize grow height 10 px or 10 ppt
   bindsym l resize grow width 10 px or 10 ppt
 
-  bindsym Return mode "default"
   bindsym Escape mode "default"
+  bindsym Return mode "default"
   bindsym $mod+r mode "default"
 }
 
-#exec --no-startup-id kdeconnect-indicator &
-#exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-#exec --no-startup-id xfce4-clipman -d &
-#exec --no-startup-id dropbox &
-#exec --no-startup-id insync start &
-#exec --no-startup-id pasystray &
-#exec --no-startup-id blueman-applet &
-
-# start i3bar to display a workspace bar
-#bar {
-#  position bottom
-#  # mode hide
-  # hidden_state hide
-#  # modifier $mod
-#  status_command i3status
-#  font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-#  font pango:Terminus 16px
-#  separator_symbol " | "
-#  workspace_buttons yes
-#  workspace_min_width 20
-#  binding_mode_indicator yes
-#  colors {
-#    separator #586e75
-#    background #002b36
-#    statusline #aea79f
-#    focused_workspace #586e75 #586e75 #ffffff #FFFFFF
-#    active_workspace #073642 #073642 #ffffff #FFFFFF
-#    inactive_workspace #002b36 #002b36 #aea79f #888888
-#    urgent_workspace #77216f #77216f #ffffff #FFFFFF
-#  }
-#}
+## ------------------------- bar ------------------------
+bar {
+  position bottom
+  hidden_state show
+  modifier $mod
+  status_command i3status
+  separator_symbol " | "
+  workspace_buttons yes
+  binding_mode_indicator yes
+  colors {
+    separator #586e75
+    background #002b36
+    statusline #aea79f
+    focused_workspace #586e75 #586e75 #ffffff #FFFFFF
+    active_workspace #073642 #073642 #ffffff #FFFFFF
+    inactive_workspace #002b36 #002b36 #aea79f #888888
+    urgent_workspace #77216f #77216f #ffffff #FFFFFF
+  }
+}
 
 client.focused #586e75 #586e75 #fdf6e3 #268bd2
 client.focused_inactive #073642 #073642 #93a1a1 #002b36

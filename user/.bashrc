@@ -15,7 +15,3 @@
 
 # shellcheck source=user/config/bash/bashrc.sh
 source "$XDG_CONFIG_HOME/bash/bashrc.sh"
-
-export GOPATH="$HOME/data/go-path"; export GOROOT="$HOME/.go"; export PATH="$GOPATH/bin:$PATH"; # g-install: do NOT edit, see https://github.com/stefanmaric/g
-
-[[ -s "/home/edwin/.gvm/scripts/gvm" ]] && source "/home/edwin/.gvm/scripts/gvm"

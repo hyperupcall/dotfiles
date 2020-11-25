@@ -1,0 +1,35 @@
+super + t
+	notify-send alfa foo
+
+super + Return
+	kitty
+
+super + p
+	dmenu_run
+
+super + o
+	rofi -combi-modi window,drun,ssh -show combi -show-icons
+
+Print
+	maim | xclip -t image/png -selection clipboard
+
+shift + Print
+	maim -s | xclip -t image/png -selection clipboard
+
+XF86AudioPrev
+	cmus-remote --prev
+
+XF86AudioPause
+	cmus-remote --pause
+
+XF86AudioNext
+	cmus-remote --next
+
+XF86AudioMute
+	pactl set-sink-mute 1 toggle && killall -SIGUSR1 i3status
+
+XF86AudioLowerVolume
+	pactl set-sink-volume 1 -10% && killall -SIGUSR1 i3status
+
+XF86AudioRaiseVolume
+	pactl set-sink-volume 1 +10% && killall -SIGUSR1 i3status

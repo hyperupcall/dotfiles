@@ -13,7 +13,7 @@ HISTTIMEFORMAT="%B %m %Y %T | "
 # --------------------- Shell Options -------------------- #
 # shopt
 shopt -s autocd
-shopt -s cdable_vars
+shopt -u cdable_vars
 shopt -s cdspell
 shopt -s checkjobs
 shopt -s checkwinsize # default
@@ -172,10 +172,6 @@ for file in "$XDG_CONFIG_HOME"/bash/completions/*; do
 done
 
 # shellcheck source=~/config/broot/launcher/bash/br
-source "$XDG_CONFIG_HOME/broot/launcher/bash/br"
+# source "$XDG_CONFIG_HOME/broot/launcher/bash/br"
 # shellcheck source=~/bin/z
-source ~/bin/z
-
-export SDKMAN_DIR="$HOME/data/sdkman"
-# shellcheck source=~/data/sdkman/bin/sdkman-init.sh
-[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
+# source ~/XDG_CONFIG_HOME/bm/bin/z
