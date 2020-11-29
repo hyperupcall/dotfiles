@@ -50,14 +50,16 @@ path_add_pre "$HOME/scripts/"
 path_add_pre "$HOME/.local/bin"
 path_add_pre "$HOME/bin"
 
+alias cliflix='cliflix -- --no-quit --vlc'
+alias g='git'
 alias j=just
 alias la='exa -a'
-alias lctl='loginctl terminate-session'
 alias ll='exa -al'
+alias mkdir='mkdir -p'
 alias ping='ping -c 5'
 alias psa='ps xawf -eo pid,user,cgroup,args'
+alias r='trash-rm'
 alias xz='xz -k'
-alias cliflix='cliflix -- --no-quit --vlc'
 
 lb() {
 	lsblk -o NAME,FSTYPE,LABEL,FSUSED,FSAVAIL,FSSIZE,FSUSE%,MOUNTPOINT
@@ -95,12 +97,11 @@ chr() {
 }
 
 doBackup() {
-	restic --repo /storage/vault/rodinia/backups/ backup /storage/edwin/ --iexclude "node_modules" --iexclude "__pycache__"
-
+	restic --repo /storage/vault/rodinia/backups/ backup /storage/edwin/ --iexclude "node_modules" --iexclude "__pycache__" --iexclude "rootfs"
 }
 
 doBackup2() {
-	restic --repo /storage/vault/rodinia/backups-data/ backup /storage/data/ --iexclude "node_modules"
+	restic --repo /storage/vault/rodinia/backups-data/ backup /storage/data/ --iexclude "node_modules" --iexclude "__pycache__" --iexclude "rootfs"
 }
 
 serv() {

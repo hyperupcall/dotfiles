@@ -137,7 +137,7 @@ openimage() {
 
 # Show all the names (CNs and SANs) listed in the SSL certificate for a given domain
 getcertnames() {
-	[ -z "${1}" ] && {
+	[ -z "$1" ] && {
 		echo "Error: No domain specified" \
 		return 1
 	}
@@ -175,3 +175,9 @@ done
 # source "$XDG_CONFIG_HOME/broot/launcher/bash/br"
 # shellcheck source=~/bin/z
 # source ~/XDG_CONFIG_HOME/bm/bin/z
+
+# export PHPENV_ROOT="/home/edwin/data/phpenv"
+# if [ -d "${PHPENV_ROOT}" ]; then
+#   export PATH="${PHPENV_ROOT}/bin:${PATH}"
+#   eval "$(phpenv init -)"
+# fi

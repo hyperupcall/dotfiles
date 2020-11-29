@@ -1,18 +1,16 @@
 #!/usr/bin/env bash
-
 set -eou pipefail
 
-#youtube-dl, vlc, cmus
-# mkdir ~/data/X11
 
+## helper functions
 showHelp() {
 	cat <<-EOF
 		Usage:
-		    dot [command]
+		    dot.sh [command]
 
 		Commands:
-		    bootstrap
-		        Bootstraps dotfiles
+		    bootstrap [stage]
+		        Bootstraps dotfiles, optionally add a stage to skip some steps
 
 		    reconcile
 		        Reconciles state
@@ -23,7 +21,6 @@ showHelp() {
 }
 
 
-# ----------------------- bootstrap ---------------------- #
 req() {
     curl --proto '=https' --tlsv1.2 -sSLf "$@"
 }
@@ -32,26 +29,39 @@ show() {
     echo "INSTALLING: $@"
 }
 
-ensureDependencies() {
-	# pkg-config, libssl-dev starship
-	sudo apt install make gcc clang scrot xclip maim pkg-config libssl-dev
-}
 
-bootstrap() {
+## bootstrap
+do_bootstrap() {
 	read -rp "Are you sure you want to bootstrap? (y/n) "
 	[[ $REPLY =~ y ]] || {
 		echo "Will not execute bootstrap. Exiting"
 	}
 
-	# rust
+	[ -n "${1:-''}" ] && {
+		"$1"
+		return
+	}
+
+	i_rust
+}
+
+bootstrap_done() {
+	echo "Bootstrap done"
+}
+
+i_rust() {
 	show rustup
-	req https://sh.rustup.rs | sh -s -- --default-toolchain nightly -y
+	req https://sh.rustup.rs | sh -s -- --default-toolchain stable -y
 	cargo install broot
 	cargo install just
 	cargo install starship
 	cargo install git-delta
+	rustup default nightly
 
-	# node
+	i_node
+}
+
+i_node() {
 	show n
 	req https://raw.githubusercontent.com/mklement0/n-install/stable/bin/n-install | bash
 	npm i -g pnpm
@@ -60,77 +70,116 @@ bootstrap() {
 	pnpm i -g cliflix
 	yarn config set prefix "$XDG_DATA_HOME/yarn"
 
-	# dvm
+	i_dvm
+}
+
+i_dvm() {
 	req https://deno.land/x/dvm/install.sh | sh
 	dvm install
 
-	# ruby
+	i_ruby
+}
+
+i_ruby() {
 	show rvm
 	req https://get.rvm.io | bash -s -- --path "$XDG_DATA_HOME/rvm"
 
-	# python
+	i_python
+}
+
+i_python() {
 	show pyenv
 	req https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
 
-	# nim
+	i_nim
+}
+
+i_nim() {
 	show choosenim
 	req https://nim-lang.org/choosenim/init.sh -sSf | sh
 
-	# tmux
+	i_zsh
+}
+
+i_zsh() {
+	show zsh
+	git clone https://github.com/ohmyzsh/oh-my-zsh "$XDG_DATA_HOME/oh-my-zsh"
+
+	i_sdkman
+}
+
+i_sdkman() {
+	show sdkman
+	curl -s "https://get.sdkman.io" | bash
+
+	i_tmux
+}
+
+i_tmux() {
 	show tpm
 	git clone https://github.com/tmux-plugins/tpm "$XDG_DATA_HOME/tmux/plugins/tpm"
 
-	# zsh
-	show zsh
-	git clone https://github.com/ohmyzsh/ohomyzsh "$XDG_DATA_HOME/oh-my-zsh"
+	i_bash
+}
 
-	# bash
+
+i_bash() {
 	show bash-it
 	git clone https://github.com/bash-it/bash-it "$XDG_DATA_HOME/bash-it"
 	source "$XDG_DATA_HOME/bash-it/install.sh" --no-modify-config
 
-	# bash
-	show sdkman
-	curl -s "https://get.sdkman.io" | bash
-
-	# gvm
-	# bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
-
-	# go
-	show g
-	curl -sSL https://git.io/g-install | sh -s
-
-	# php
-	show phpenv
-	curl -L https://raw.githubusercontent.com/phpenv/phpenv-installer/master/bin/phpenv-installer \
-	| PHPENV_ROOT=$HOME/data/phpenv bash
-
-	# misc
-	show glow
-	( \
-		cd "$(mktemp -d)" \
-		&& git clone https://github.com/charmbracelet/glow.git \
-		&& cd glow \
-		&& go install \
-		)
-
-	reconcile
+	i_go
 }
 
 
-# ----------------------- reconcile ---------------------- #
-reconcile() {
-	ensureDependencies
+# todo: remove prompt
+i_go() {
+	show g
+	curl -sSL https://git.io/g-install | sh -s
 
-	ln -s ~/Docs/Programming/repos ~/repos
-	ln -s ~/Docs/Programming/projects ~/projects
-	ln -s ~/Docs/Programming/workspaces ~/workspaces
+	i_php
+}
 
+i_php() {
+	show phpenv
+	req https://raw.githubusercontent.com/phpenv/phpenv-installer/master/bin/phpenv-installer \
+		| PHPENV_ROOT=$HOME/data/phpenv bash
+
+	bootstrap_done
+}
+
+
+## ensure
+do_ensure() {
+	# ensure commands
+	commands="make clang scrot xclip maim pkg-config"
+	commands2="youtube-dl vlc cmus git zsh glow restic"
+
+	for command in $commands $commands2; do
+		type "$command" >/dev/null 2>&1 || {
+			echo "Error: Command '$command' not installed. Install it"
+		}
+	done
+
+	# ensure packages
+	# pkg-config, libssl-dev starship
+	sudo apt install make gcc clang scrot xclip maim pkg-config libssl-dev trash-cli
+}
+
+
+## reconcile
+do_reconcile() {
+	# symlink
+	ln -s ~/Docs/Programming/repos ~/repos ||:
+	ln -s ~/Docs/Programming/projects ~/projects ||:
+	ln -s ~/Docs/Programming/workspaces ~/workspaces ||:
+
+	# remove files
 	removeFiles=".lesshst .nv .dbshell .bash_history .yarn.lock node_modules .sonarlint .m2 Desktop Downloads Videos Documents Music Pictures"
 
 	for file in $removeFiles; do
 		# skip if doesn't already exist
-		[ -e "$file"] || return
+		[ -e "$file" ] || return
 
 		command -v trash-put >/dev/null 1>&2 && {
 			trash-put "$file"
@@ -146,44 +195,45 @@ reconcile() {
 		rm "$file"
 	done
 
-	createFolders="data/go-path"
-
+	# create files
+	createFolders="data/go-path $HOME/data/X11"
 	for file in $createFolders; do
 		mkdir "$file"
 	done
-
-
-	checkFiles=".swp"
 }
 
 
-# ------------------------- info ------------------------- #
-info() {
+## info
+do_info() {
 	lstopo
 }
 
 
-# ------------------------- start ------------------------ #
+## start
 [[ $@ =~ (--help) ]] && {
 	showHelp
 	exit 0
 }
 
-command="$1"
-shift
-
-case "$command" in
+case "${1:-''}" in
 bootstrap)
-	bootstrap "$@"
+	shift
+	do_bootstrap "$@"
+	;;
+ensure)
+	shift
+	do_ensure "$@"
 	;;
 reconcile)
-	reconcile "$@"
+	shift
+	do_reconcile "$@"
 	;;
 info)
-	info "$@"
+	shift
+	do_info "$@"
 	;;
 *)
-	echo "Error: No matching command found"
+	echo "Error: No matching subcommand found" 1>&2
 	exit 1
 	;;
 esac
