@@ -2,7 +2,9 @@
 #include "resources/urxvt.xresources"
 #include "resources/misc.xresources"
 
-#include "themes/nord.theme.xresources"
+! #include "themes/nord.theme.xresources"
+#include "themes/arcadia.theme.xresources"
+
 
 ! $Id$
 

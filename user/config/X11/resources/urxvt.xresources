@@ -8,3 +8,15 @@ URxvt*font: xft:DejaVu Sans Mono
 URxvt*boldFont: xft:DejaVu Sans Mono
 URxvt*italicFont: xft:DejaVu Sans Mono
 URxvt.VT100.loginShell: false
+! URxvt.perl-lib: /your/folder/
+URxvt.perl-ext-common: default,config-reload
+
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+URxvt.keysym.Control-Meta-c: builtin-string:
+URxvt.keysym.Control-Meta-v: builtin-string:
+URxvt.iso14755: false
+
+! URxvt.keysym.C-M-c: builtin-string:
+! https://superuser.com/a/992794
+URxvt*dynamicColors: on

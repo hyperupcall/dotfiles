@@ -1,0 +1,102 @@
+#!/usr/bin/env perl
+# use warnings;
+# use strict;
+
+use v5.20;
+use common::sense;
+use AnyEvent;
+use Linux::FD qw(signalfd);
+use Fcntl qw(F_SETFL O_NONBLOCK);
+use File::Basename qw(dirname);
+
+no strict "refs";
+
+$SIG{HUP} = sub{};
+my $sigfd = signalfd('HUP');
+fcntl $sigfd, F_SETFL, O_NONBLOCK or warn "fcntl: $!";
+our @terms = ();
+
+# based on: https://github.com/regnarg/urxvt-config-reload
+sub debug {
+	if(exists $ENV{DEBUG} && defined $ENV{DEBUG}) {
+		print("$_[0]\n");
+	}
+}
+
+sub ch {
+	my ($index, $value) = @_;
+	my $cmd = "\033]$index;$value\007";
+
+	for (@terms) {
+		$_->cmd_parse($cmd);
+	}
+}
+
+sub reload_all {
+	debug "Loaded";
+
+	my $libdir = dirname(__FILE__);
+	my @lines = `urxvt --perl-lib $libdir -pe config-print 2>&1`;
+	for (@lines) {
+		my $colonIndex = index($_, ":");
+		my $name = substr($_, 0, $colonIndex);
+		my $value = substr($_, $colonIndex + 2, length($_));
+		$value =~ s/[\r\n]+$//;
+
+		given($name) {
+			when("foreground") {
+				ch("10", $value);
+			}
+			when("background") {
+				ch("11", $value);
+				ch("708", $value);
+			}
+			when("cursorColor") {
+				ch("12", $value);
+			}
+			when("pointerColor2") {
+				ch("13", $value);
+			}
+			when("pointerColor") {
+				ch("14", $value);
+			}
+			when("highlight") {
+				ch("17", $value);
+			}
+			when("borderColor") {
+				ch("708", $value);
+			}
+		}
+
+	}
+
+	# warn "CMD: " . ($cmd =~ s/\e/\\e/gr =~ s/\a/\\a/gr);
+	# my $cmd = "\033]11;black\007";
+	# for (@terms) {
+	# 	$_->cmd_parse($cmd);
+	# }
+}
+
+our $watch = AnyEvent->io (
+	fh   => $sigfd, # which file handle to check
+	poll => "r",     # which event to wait for ("r"ead data)
+	cb   => sub {    # what callback to execute
+		sysread $sigfd, my $dummy, 4096;
+		reload_all;
+	}
+);
+
+sub on_start {
+	my ($ext) = @_;
+	# warn "START ext=$ext TERM=$TERM";
+	push @terms, $TERM;
+	();
+}
+
+sub on_destroy {
+	my ($ext) = @_;
+	# warn "END ext=$ext TERM=$TERM";
+	@terms = grep { $_ != $TERM } @terms;
+	if (!@terms) { undef $watch; }
+	();
+}

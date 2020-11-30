@@ -10,8 +10,3 @@ dotfiles
 ├─ system dotfiles at /
 ├─ user dotfiles at ~
 ├─ local dotfiles at .
-
-todo
-====
-
-- enable readline C-s

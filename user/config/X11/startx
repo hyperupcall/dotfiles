@@ -7,7 +7,7 @@ unset SESSION_MANAGER
 display=0
 while true; do
 	[ -e "/tmp/.X$display-lock" -o -S "/tmp/.X11-unix/X$display" ] || break
-	display=$(($display + 1))
+	display=$((display + 1))
 done
 display=":$display"
 
@@ -27,10 +27,10 @@ fi
 # check for GNU hostname
 if hostname --version > /dev/null 2>&1; then
 	if [ -z "$(hostname --version 2>&1 | grep GNU)" ]; then
-		hostname=`hostname -f`
+		hostname="$(hostname -f)"
 	fi
 fi
-[ -z "$hostname" ] && hostname=`hostname`
+[ -z "$hostname" ] && hostname="$(hostname)"
 
 
 authdisplay=${display:-:0}
@@ -43,7 +43,7 @@ mcookie="$(/usr/bin/mcookie)"
 # create a file with auth information for the server. ':0' is a dummy.
 dummy=0
 xserverauthfile="$(mktemp --tmpdir serverauth.XXXXXXXXXX)"
-trap "rm -f '$xserverauthfile'" HUP INT QUIT ILL TRAP KILL BUS TERM
+trap "rm -f '$xserverauthfile'" HUP INT QUIT ILL TRAP BUS TERM
 xauth -q -f "$xserverauthfile" <<- EOF
 	add :$dummy . $mcookie
 EOF
@@ -72,10 +72,11 @@ export XAUTHORITY="$HOME/.Xauthority"
 xinit "$XDG_CONFIG_HOME/X11/xinitrc" -- "/usr/bin/Xorg" "$display" -nolisten tcp "$vtarg" -keeptty -auth "$xserverauthfile"
 retval=$?
 
+# shellcheck disable=SC2086
 [ -n "$removelist" ] && xauth remove $removelist
 [ -n "$xserverauthfile" ] && rm -f "$xserverauthfile"
 
-command -v deallocvt >/dev/null 2>&1 && {
+type deallocvt >/dev/null 2>&1 && {
     deallocvt
 }
 

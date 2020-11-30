@@ -38,6 +38,8 @@ export MANPAGER="less -X"
 export BROWSER="brave-browser"
 export SPELL="aspell -x -c"
 export CMD_ENV="linux"
+export MAN_POSIXLY_CORRECT=
+#export TEXTINPUTS=
 
 umask 022
 
@@ -61,6 +63,10 @@ alias psa='ps xawf -eo pid,user,cgroup,args'
 alias r='trash-rm'
 alias xz='xz -k'
 
+systemctl --user import-environment XDG_CONFIG_HOME
+systemctl --user import-environment XDG_DATA_HOME
+systemctl --user import-environment XDG_RUNTIME_DIR
+
 lb() {
 	lsblk -o NAME,FSTYPE,LABEL,FSUSED,FSAVAIL,FSSIZE,FSUSE%,MOUNTPOINT
 }
@@ -83,11 +89,12 @@ mkc() {
 }
 
 sp() {
+	# shellcheck source=~/.profile
 	source ~/.profile
 }
 
 chr() {
-	: ${1:?"Error: No mountpoint specified"}
+	: "${1:?"Error: No mountpoint specified"}"
 	[ -d "$1" ] || { echo "Error: Folder doesn't exist"; exit 1; }
 
 	sudo mount -o bind -t proc /proc/ "$1/proc"
@@ -380,7 +387,7 @@ export KUBECONFIG="$XDG_DATA_HOME/kube"
 # less
 # adding X breaks mouse scrolling of pages
 export LESS="-FIRQ"
-# export LESS="-FIRX"
+# export LESS="-FIRX" LESS="-M -I -R"
 export LESSKEY="$XDG_CONFIG_HOME/less_keys"
 export LESSHISTFILE="$HOME/.history/less_history"
 export LESSHISTSIZE="32768"
@@ -410,7 +417,7 @@ mkdir -p "$XDG_DATA_HOME/maven"
 alias mongo='mongo --norc'
 
 # more
-export MORE="--silent"
+export MORE="-l"
 
 # most
 export MOST_INITFILE="$XDG_CONFIG_HOME/most/mostrc"
@@ -477,6 +484,7 @@ export PGSERVICEFILE="$XDG_DATA_HOME/pg/pg_service.conf"
 
 # pyenv
 export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
+path_add_pre "$PYENV_ROOT/bin"
 path_add_pre "$PYENV_ROOT/shims"
 
 # python
@@ -591,7 +599,8 @@ export ZFS_COLOR=
 unset -f path_add_pre
 unset -f path_add_pre
 
-export PATH="/home/edwin/data/cargo/bin:$PATH"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/data/rvm/bin"
+source "$HOME/.cargo/env"
+source "/home/edwin/data/cargo/env"

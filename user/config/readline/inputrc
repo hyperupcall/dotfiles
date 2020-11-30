@@ -9,22 +9,15 @@ set completion-ignore-case on
 set completion-map-case on
 set completion-prefix-display-length 12
 set completion-query-items 70
-
-# utf-8
 set convert-meta off
-
 set echo-control-characters off
-
-# utf-8
 set input-meta on
-
 set mark-symlinked-directories on
 set match-hidden-files off
 set show-all-if-ambiguous on
 set show-all-if-unmodified on
 set skip-completed-text on
-
-# utf-8
 set output-meta on
-
 set visible-stats on
+
+C-i: forward-search-history

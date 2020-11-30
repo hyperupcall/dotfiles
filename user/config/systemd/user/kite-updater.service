@@ -1,0 +1,7 @@
+[Unit]
+Description=Kite Updater
+
+[Service]
+Type=oneshot
+StandardOutput=null
+ExecStart=/home/edwin/.local/share/kite/current/kite-update "update" "silent"

@@ -19,48 +19,43 @@ file = "/oh-my-zsh/"
 
 [[files]]
 file = "/.alsoftrc"
-tags = [ "alsoftrc" ]
+tags = ["alsoftrc"]
 
 [[files]]
 file = "/.bash_logout"
-tags = [ "bash" ]
+tags = ["bash"]
 
 [[files]]
 file = "/.bash_profile"
-tags = [ "bash" ]
+tags = ["bash"]
 
 [[files]]
 file = "/.bashrc"
-tags = [ "bash" ]
+tags = ["bash"]
 
 [[files]]
 file = "/.cliflix.json"
-tags = [ "cliflix" ]
+tags = ["cliflix"]
 
 [[files]]
 file = "/.fehbg"
-tags = [ "feh" ]
+tags = ["feh"]
 
 [[files]]
 file = "/.profile"
-tags = [ "shell" ]
+tags = ["shell"]
+
+[[files]]
+file = "/.urxvt/"
+tags = ["urxvt"]
 
 [[files]]
 file = "/.yarnrc"
-tags = [
-	"yarn"
-]
+tags = ["yarn"]
 
 [[files]]
 file = "/.ssh/environment"
-tags = [ "ssh" ]
-
-#
-# ~/bin
-#
-
-[[files]]
-file = "/bin/"
+tags = ["ssh"]
 
 #
 # ~/config
@@ -71,321 +66,253 @@ file = "/user-dirs.dirs"
 
 [[files]]
 file = "/alacritty/"
-tags = [
-	"alacritty"
-]
+tags = ["alacritty"]
 
 [[files]]
 file = "/awesome/"
-tags = [
-	"awesome"
-]
+tags = ["awesome"]
 
 [[files]]
 file = "/bash/"
-tags = [
-	"bash"
-]
+tags = ["bash"]
 
 [[files]]
 file = "/bat/"
-tags = [
-	"bat"
-]
+tags = ["bat"]
 
 [[files]]
 file = "/broot/"
-tags = [
-	"broot"
-]
+tags = ["broot"]
 
 [[files]]
 file = "/calcurse/"
-tags = [
-	"calcurse"
-]
+tags = ["calcurse"]
 
 [[files]]
 file = "/cava/"
-tags = [
-	"cava"
-]
+tags = ["cava"]
 
 [[files]]
 file = "/chezmoi/"
-tags = [
-	"chezmoi"
-]
+tags = ["chezmoi"]
 
 [[files]]
 file = "/cmus/rc"
-tags = [
-	"cmus"
-]
+tags = ["cmus"]
 
 [[files]]
 file = "/Code/User/keybindings.json"
-tags = [
-	"vscode"
-]
+tags = ["vscode"]
 
 [[files]]
 file = "/Code/User/settings.json"
-tags = [
-	"vscode"
-]
+tags = ["vscode"]
 
 [[files]]
 file = "/curl/"
-tags =  [
-	"curl"
-]
+tags = ["curl"]
 
 [[files]]
 file = "/dircolors/"
 
 [[files]]
 file = "/fish/"
-tags = [
-	"fish"
-]
+tags = ["fish"]
 
 [[files]]
 file = "/dunst/"
-tags = [
-	"dunst"
-]
+tags = ["dunst"]
 
 [[files]]
 file = "/fish/"
-tags = [
-	"fish"
-]
+tags = ["fish"]
 
 [[files]]
 file = "/fontconfig/"
 
 [[files]]
 file = "/gh/"
-tags = [
-	"gh"
-]
+tags = ["gh"]
 
 [[files]]
 file = "/git/"
-tags = [
-	"git"
-]
+tags = ["git"]
 
 [[files]]
 file = "/hg/"
-tags = [
-	"mercurial"
-]
+tags = ["mercurial"]
 
 [[files]]
 file = "/htop/"
-tags = [
-	"htop"
-]
+tags = ["htop"]
 
 [[files]]
 file = "/i3/"
-tags = [
-	"i3"
-]
+tags = ["i3"]
 
 [[files]]
 file = "/i3status/"
-tags = [
-	"i3status"
-]
+tags = ["i3status"]
 
 [[files]]
 file = "/info/"
-tags = [
-	"info"
-]
+tags = ["info"]
 
 [[files]]
 file = "/ion/"
-tags = [
-	"ion"
-]
+tags = ["ion"]
 
 [[files]]
 file = "/kitty/"
-tags = [
-	"kitty"
-]
+tags = ["kitty"]
 
 [[files]]
 file = "/lazydocker/"
-tags = [
-	"docker"
-]
+tags = ["docker"]
 
 [[files]]
 file = "/maven/"
-tags = [ "maven" ]
+tags = ["maven"]
 
 [[files]]
 file = "/micro/"
-tags = [ "micro" ]
+tags = ["micro"]
 
 [[files]]
 file = "/mnemosyne/config.py"
-tags = [ "mnemosyne" ]
+tags = ["mnemosyne"]
 
 [[files]]
 file = "/nano/"
-tags = [ "nano" ]
+tags = ["nano"]
 
 [[files]]
 file = "/neofetch/"
-tags = [ "neofetch" ]
+tags = ["neofetch"]
 
 [[files]]
 file = "/nimble/"
-tags = [ "nimble" ]
+tags = ["nimble"]
 
 [[files]]
 file = "/nitrogen/"
-tags = [ "nitrogen" ]
+tags = ["nitrogen"]
 
 [[files]]
 file = "/npm/"
-tags = [ "npm" ]
+tags = ["npm"]
 
 [[files]]
 file = "/nu/"
-tags = [ "nu" ]
+tags = ["nu"]
 
 [[files]]
 file = "/nvim/"
-tags = [ "nvim" ]
+tags = ["nvim"]
 
 [[files]]
 file = "/picom/"
-tags = [ "picom" ]
+tags = ["picom"]
 
 [[files]]
 file = "/polybar/"
-tags = [ "polybar" ]
+tags = ["polybar"]
 
 [[files]]
 file = "/pulse/"
-tags = [ "pulse" ]
+tags = ["pulse"]
 
 [[files]]
 file = "/python/"
-tags = [ "python" ]
+tags = ["python"]
 
 [[files]]
 file = "/ranger/"
-tags = [ "ranger" ]
+tags = ["ranger"]
 
 [[files]]
 file = "/readline/"
-tags = [ "bash", "redline" ]
+tags = ["bash", "redline"]
 
 [[files]]
 file = "/redshift/"
-tags = [ "redshift" ]
+tags = ["redshift"]
 
 [[files]]
 file = "/ripgrep/"
-tags = [ "ripgrep" ]
+tags = ["ripgrep"]
 
 [[files]]
 file = "/rofi/"
-tags = [ "rofi" ]
+tags = ["rofi"]
 
 [[files]]
 file = "/rtorrent"
-tags = [ "rtorrent" ]
+tags = ["rtorrent"]
 
 [[files]]
 file = "/salamis/"
-tags = [ "salamis" ]
+tags = ["salamis"]
 
 [[files]]
 file = "/starship/"
-tags = [ "starship" ]
+tags = ["starship"]
 
 [[files]]
-file = "/systemd"
-tags = [ "systemd" ]
+file = "/sxhkd/"
+tags = ["sxhkd"]
+
+[[files]]
+file = "/systemd/"
+tags = ["systemd"]
 
 [[files]]
 file = "/terminator/"
-tags = [ "terminator" ]
+tags = ["terminator"]
 
 [[files]]
 file = "/termite/"
-tags = [
-	"termite"
-]
+tags = ["termite"]
 
 [[files]]
 file = "/tilda/"
-tags = [
-	"tilda"
-]
+tags = ["tilda"]
 
 [[files]]
 file = "/tmux/"
-tags = [
-	"tmux"
-]
+tags = ["tmux"]
 
 [[files]]
 file = "/vim/"
-tags = [
-	"vim"
-]
+tags = ["vim"]
 
 [[files]]
 file = "/wget/"
-tags = [
-	"wget"
-]
+tags = ["wget"]
 
 [[files]]
 file = "/X11/"
-tags = [
-	"X"
-]
+tags = ["X"]
 
 [[files]]
 file = "/xob/"
-tags = [
-	"xob"
-]
+tags = ["xob"]
 
 [[files]]
 file = "/yay/"
-tags = [
-	"yay"
-]
+tags = ["yay"]
 
 [[files]]
 file = "/zsh/"
-tags = [
-	"zsh"
-]
+tags = ["zsh"]
 
 [[files]]
 file = "/pamix.conf"
-tags = [
-	"pamix"
-]
+tags = ["pamix"]
 
 [[files]]
 file = "/pulsemixer.cfg"
-tags = [
-	"pulsemixer"
-]
+tags = ["pulsemixer"]
 
 #
 # ~/data
@@ -393,27 +320,23 @@ tags = [
 
 [[files]]
 file = "/calcurse.desktop"
-tags = [
-	"calcurse"
-]
+tags = ["calcurse"]
 
 [[files]]
 file = "/Nemo.desktop"
-tags = [
-	"nemo"
-]
+tags = ["nemo"]
 
 [[files]]
 file = "/Obsidian.desktop"
-tags = [
-	"obsidian"
-]
+tags = ["obsidian"]
 
 [[files]]
 file = "/Zettlr.desktop"
-tags = [
-	"zettlr"
-]
+tags = ["zettlr"]
+
+[[files]]
+file = "/gnupg/"
+tags = ["gpg"]
 
 #
 # ~/scripts

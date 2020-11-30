@@ -6,3 +6,6 @@ Requires=gpg-agent.socket
 [Service]
 ExecStart=/usr/bin/gpg-agent --supervised
 ExecReload=/usr/bin/gpgconf --reload gpg-agent
+
+[Install]
+WantedBy=graphical.target

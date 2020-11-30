@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-set -eou pipefail
 
+set -ou pipefail
 
 ## helper functions
 showHelp() {
@@ -17,9 +17,13 @@ showHelp() {
 
 		    info
 		        Prints info
+
+		Examples:
+		    dot.sh bootstrap i_rust
 	EOF
 }
 
+# bash -c "$(wget -q -O - https://linux.kite.com/dls/linux/current)"
 
 req() {
     curl --proto '=https' --tlsv1.2 -sSLf "$@"
@@ -37,8 +41,9 @@ do_bootstrap() {
 		echo "Will not execute bootstrap. Exiting"
 	}
 
-	[ -n "${1:-''}" ] && {
-		"$1"
+	fn="${1:-""}"
+	[ -n "$fn" ] && {
+		"$fn"
 		return
 	}
 
@@ -46,7 +51,7 @@ do_bootstrap() {
 }
 
 bootstrap_done() {
-	echo "Bootstrap done"
+	echo "Bootstrap done. Don't forget to remove extraneous lines from your ~/.bashrc"
 }
 
 i_rust() {
@@ -61,6 +66,7 @@ i_rust() {
 	i_node
 }
 
+# todo: remove prompt
 i_node() {
 	show n
 	req https://raw.githubusercontent.com/mklement0/n-install/stable/bin/n-install | bash
@@ -122,7 +128,6 @@ i_tmux() {
 	i_bash
 }
 
-
 i_bash() {
 	show bash-it
 	git clone https://github.com/bash-it/bash-it "$XDG_DATA_HOME/bash-it"
@@ -131,11 +136,11 @@ i_bash() {
 	i_go
 }
 
-
 # todo: remove prompt
 i_go() {
 	show g
 	curl -sSL https://git.io/g-install | sh -s
+	go get -v golang.org/x/tools/gopls
 
 	i_php
 }
@@ -145,25 +150,42 @@ i_php() {
 	req https://raw.githubusercontent.com/phpenv/phpenv-installer/master/bin/phpenv-installer \
 		| PHPENV_ROOT=$HOME/data/phpenv bash
 
+	i_perl
+}
+
+# todo: remove prompt (on unconfigured systems)
+i_perl() {
+	# https://github.com/regnarg/urxvt-config-reload
+	cpan AnyEvent Linux::FD common::sense
+
 	bootstrap_done
 }
 
-
 ## ensure
 do_ensure() {
-	# ensure commands
-	commands="make clang scrot xclip maim pkg-config"
-	commands2="youtube-dl vlc cmus git zsh glow restic"
-
-	for command in $commands $commands2; do
-		type "$command" >/dev/null 2>&1 || {
-			echo "Error: Command '$command' not installed. Install it"
-		}
-	done
-
 	# ensure packages
 	# pkg-config, libssl-dev starship
-	sudo apt install make gcc clang scrot xclip maim pkg-config libssl-dev trash-cli
+
+	type apt >/dev/null 2>&1 && {
+		sudo apt install -y libssl-dev
+		sudo apt install -y make gcc clang scrot xclip maim pkg-config libssl-dev trash-cli
+	}
+
+	type zypper >/dev/null 2>&1 && {
+		# zip required by sdkman
+		sudo zypper install -y openssl-devel zip
+		sudo zypper install -y make clang scrot xclip maim pkg-config youtube-dl vlc cmus zsh restic rofi trash-cli exa
+	}
+
+	# ensure commands
+	# commands="make clang scrot xclip maim pkg-config"
+	# commands2="youtube-dl vlc cmus git zsh glow restic"
+
+	# for command in $commands $commands2; do
+	# 	type "$command" >/dev/null 2>&1 || {
+	# 		echo "Error: Command '$command' not installed. Install it"
+	# 	}
+	# done
 }
 
 
@@ -233,7 +255,8 @@ info)
 	do_info "$@"
 	;;
 *)
-	echo "Error: No matching subcommand found" 1>&2
+	echo "Error: No matching subcommand found" >&2
+	showHelp >&2
 	exit 1
 	;;
 esac
