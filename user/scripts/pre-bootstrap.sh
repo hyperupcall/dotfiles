@@ -14,12 +14,17 @@ PATH="$GOPATH/bin:$PATH"
 
 must() {
     echo "Error: '$1' not installed. Exiting" >&2
-    exit 1
+    return 1
 }
 
 cleanup() {
     rm ~/.gitconfig
 }
+
+export GOPATH="$XDG_DATA_HOME/go-path"
+PATH="$GOPATH/bin:$PATH"
+curl -sSL https://git.io/g-install | sh -s
+hash -r
 
 ## start ##
 {
@@ -62,10 +67,10 @@ go install .
 
 type dotty || {
     echo "Error: Dotty not found" >&2
-    exit 1
+    return 1
 }
 
-git clone https://github.com/eankeen/dots ~/.dots
+#git clone https://github.com/eankeen/dots ~/.dots
 
 alias dotty='dotty --dotfiles-dir=$HOME/.dots'
 dotty user apply
@@ -73,7 +78,7 @@ dotty user apply
 # install code
 # install code plugins
 
-mkdir ~/.old
+mkdir ~/.old ||:
 for file in /etc/skel/* /etc/skel/.*; do
     file="$(echo "$file" | cut -c11- | awk 'length($0)>2')"
     [ -z "$file" ] && continue
@@ -82,6 +87,6 @@ for file in /etc/skel/* /etc/skel/.*; do
 done
 echo "Info: Old dotfiles at ~/.old"
 
-xrandr
+#xrandr
 
 cleanup

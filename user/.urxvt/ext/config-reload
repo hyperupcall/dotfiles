@@ -1,6 +1,7 @@
 #!/usr/bin/env perl
 # use warnings;
 # use strict;
+# no strict "refs";
 
 use v5.20;
 use common::sense;
@@ -9,11 +10,6 @@ use Linux::FD qw(signalfd);
 use Fcntl qw(F_SETFL O_NONBLOCK);
 use File::Basename qw(dirname);
 
-no strict "refs";
-
-$SIG{HUP} = sub{};
-my $sigfd = signalfd('HUP');
-fcntl $sigfd, F_SETFL, O_NONBLOCK or warn "fcntl: $!";
 our @terms = ();
 
 # based on: https://github.com/regnarg/urxvt-config-reload
@@ -69,18 +65,19 @@ sub reload_all {
 		}
 
 	}
-
-	# warn "CMD: " . ($cmd =~ s/\e/\\e/gr =~ s/\a/\\a/gr);
-	# my $cmd = "\033]11;black\007";
-	# for (@terms) {
-	# 	$_->cmd_parse($cmd);
-	# }
 }
 
+$SIG{HUP} = sub{};
+my $sigfd = signalfd('HUP');
+fcntl $sigfd, F_SETFL, O_NONBLOCK or warn "fcntl: $!";
+
 our $watch = AnyEvent->io (
-	fh   => $sigfd, # which file handle to check
-	poll => "r",     # which event to wait for ("r"ead data)
-	cb   => sub {    # what callback to execute
+	# which file handle to check
+	fh => $sigfd,
+	# which event to wait for ("r"ead data)
+	poll => "r",
+	# callback
+	cb => sub {
 		sysread $sigfd, my $dummy, 4096;
 		reload_all;
 	}

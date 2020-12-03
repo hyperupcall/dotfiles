@@ -48,7 +48,8 @@ umask 022
 SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 export SSH_AUTH_SOCK
 
-path_add_pre "$HOME/scripts/"
+path_add_pre "$HOME/scripts"
+path_add_pre "$HOME/data/bm/bin"
 path_add_pre "$HOME/.local/bin"
 path_add_pre "$HOME/bin"
 
@@ -57,11 +58,14 @@ alias g='git'
 alias j=just
 alias la='exa -a'
 alias ll='exa -al'
+alias ls='ls -h'
 alias mkdir='mkdir -p'
+alias p7zip='p7zip -k'
 alias ping='ping -c 5'
 alias psa='ps xawf -eo pid,user,cgroup,args'
 alias r='trash-rm'
 alias xz='xz -k'
+alias d='duf'
 
 systemctl --user import-environment XDG_CONFIG_HOME
 systemctl --user import-environment XDG_DATA_HOME
@@ -404,7 +408,7 @@ export LESS_TERMCAP_mb LESS_TERMCAP_md LESS_TERMCAP_me \
 	LESS_TERMCAP_ue LESS_TERMCAP_us
 
 # ls
-alias ls='ls --color=auto'
+alias ls='ls --color=auto -h'
 
 # ltrace
 alias ltrace='ltrace -F "$XDG_CONFIG_HOME/ltrace/ltrace.conf"'
@@ -462,6 +466,7 @@ export NVM_DIR="$XDG_DATA_HOME"/nvm
 # packer
 export PACKER_CONFIG="$XDG_DATA_HOME/packer/packerconfig"
 export PACKER_CONFIG_DIR="$XDG_DATA_HOME/packer/packer.d"
+export CHECKPOINT_DISABLE=1
 
 # pacman
 alias pacman='pacman --color=auto'
@@ -521,6 +526,7 @@ export SCREENRC="$XDG_CONFIG_HOME/screenrc"
 
 # sdkman
 export SDKMAN_DIR="$XDG_DATA_HOME/sdkman"
+source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
 # snap
 #export PATH="/snap/bin:$PATH"
@@ -604,3 +610,5 @@ unset -f path_add_pre
 export PATH="$PATH:$HOME/data/rvm/bin"
 source "$HOME/.cargo/env"
 source "/home/edwin/data/cargo/env"
+
+export PATH="$HOME/.poetry/bin:$PATH"

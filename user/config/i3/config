@@ -27,12 +27,6 @@ bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-# split windows
-bindsym $mod+u split h
-bindsym $mod+i split v
-bindsym $mod+f fullscreen toggle
-bindsym $mod+y fullscreen toggle global
-
 # switch between previous and currently focused workspace
 bindsym $mod+b workspace back_and_forth
 bindsym $mod+Shift+b move container to workspace back_and_forth
@@ -42,6 +36,12 @@ bindsym $mod+Shift+b move container to workspace back_and_forth
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout stacking
 bindsym $mod+s layout toggle split
+bindsym $mod+u split h
+bindsym $mod+i split v
+bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+f fullscreen toggle global
+
+for_window [title="Popup Terminal"] floating toggle resize set 700 400
 
 # floating
 bindsym $mod+Shift+space floating toggle
@@ -51,7 +51,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+d focus child
 
 ## --------------------- workspaces ---------------------
 set $ws1 "1"
@@ -68,11 +68,13 @@ bindsym $mod+Shift+3 move container to workspace number $ws3
 bindsym $mod+Shift+4 move container to workspace number $ws4
 
 ## ---------------------- launch mode -------------------
-bindsym $mod+. mode "launch"
+bindsym $mod+y mode "launch"
 
 mode "launch" {
   bindsym f exec firefox
-  bindsym t exec thunderbird
+  bindsym b exec brave-browser
+  bindsym c exec code
+  bindsym p exec 'vim ~/.profile'
 
   bindsym Escape mode "default"
   bindsym Return mode "default"

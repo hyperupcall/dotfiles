@@ -51,7 +51,10 @@ do_bootstrap() {
 }
 
 bootstrap_done() {
-	echo "Bootstrap done. Don't forget to remove extraneous lines from your ~/.bashrc"
+	echo "Bootstrap done
+	Checklist:
+	  - Remove extraneous lines from your ~/.bashrc
+	  - Compile at /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret"
 }
 
 i_rust() {
@@ -96,6 +99,13 @@ i_ruby() {
 i_python() {
 	show pyenv
 	req https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
+	
+	# ensure installation: libffi-devel
+	pyenv install 3.9.0
+	pyenv global 3.9.0
+
+	show poetry
+	req https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
 
 	i_nim
 }
@@ -174,7 +184,7 @@ do_ensure() {
 	type zypper >/dev/null 2>&1 && {
 		# zip required by sdkman
 		sudo zypper install -y openssl-devel zip
-		sudo zypper install -y make clang scrot xclip maim pkg-config youtube-dl vlc cmus zsh restic rofi trash-cli exa
+		sudo zypper install -y make clang scrot xclip maim pkg-config youtube-dl vlc cmus zsh restic rofi trash-cli exa bsdtar
 	}
 
 	# ensure commands
@@ -195,6 +205,9 @@ do_reconcile() {
 	ln -s ~/Docs/Programming/repos ~/repos ||:
 	ln -s ~/Docs/Programming/projects ~/projects ||:
 	ln -s ~/Docs/Programming/workspaces ~/workspaces ||:
+	mkdir ~/.history ||:
+
+	usermod -aG docker -aG libvirt -aG vboxusers edwin
 
 	# remove files
 	removeFiles=".lesshst .nv .dbshell .bash_history .yarn.lock node_modules .sonarlint .m2 Desktop Downloads Videos Documents Music Pictures"

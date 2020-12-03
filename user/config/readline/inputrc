@@ -20,4 +20,4 @@ set skip-completed-text on
 set output-meta on
 set visible-stats on
 
-C-i: forward-search-history
+#C-i: forward-search-history

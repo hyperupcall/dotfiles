@@ -7,6 +7,7 @@ Documentation=man:sxhkd(1)
 [Service]
 ExecStart=/usr/bin/sxhkd
 ExecReload=/usr/bin/kill -SIGUSR1 $MAINPID
+KillMode=process
 
 [Install]
-WantedBy=graphical.target
+WantedBy=default.target

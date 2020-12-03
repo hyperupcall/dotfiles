@@ -10,6 +10,10 @@ reload() {
 	echo "Info: '$1' not found"
 }
 
+xrdb -load ~/config/X11/xresources
+# systemctl --user reload sxhkd.service
+reload "xbineksy" "killall -HUP xbindkeys"
 reload "sxhkd" "pkill -USR1 sxhkd"
 reload "i3" "i3-msg reload"
 reload "urxvt" "pkill -HUP urxvt && pkill -HUP urxvt"
+kill -HUP $MAINPID # must move mouse after

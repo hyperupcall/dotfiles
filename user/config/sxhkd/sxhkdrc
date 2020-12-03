@@ -4,6 +4,9 @@ super + t
 super + Return
 	kitty
 
+super + n
+	kitty --title 'Popup Terminal'
+
 super + p
 	dmenu_run
 
@@ -15,6 +18,9 @@ Print
 
 shift + Print
 	maim -s | xclip -t image/png -selection clipboard
+
+#XF86Audio{Mute,RaiseVolume,LowerVolume}
+#    amixer -q set Master {toggle,5%+,5%-}
 
 XF86AudioPrev
 	cmus-remote --prev
