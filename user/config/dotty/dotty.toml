@@ -1,0 +1,3 @@
+[config]
+homeDir = "~"
+dotDir = "~/.dots/user"

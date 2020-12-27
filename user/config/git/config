@@ -93,7 +93,8 @@
 [user]
 	name = Edwin Kofler
 	email = 24364012+eankeen@users.noreply.github.com
-	signingkey = 484EA8DEF2F467E6
+	#signingkey = 484EA8DEF2F467E6
+	signingkey = 6C1C9B9464575027
 [credential]
 	helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
 	#helper = cache

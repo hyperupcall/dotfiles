@@ -1,5 +1,16 @@
-if [ "$(curl -LsSo- https://edwin.dev)" = "Hello World" ]; then
-	:
-else
-	echo "https://edwin.dev OPEN"
-fi
+#!/usr/bin/env sh
+
+check() {
+	bash -n "$script"
+
+	ansible-playbook --syntax-check
+	vagrant validate **/Vagrantfile
+}
+
+format() {
+	terraform fmt
+}
+
+lint() {
+
+}

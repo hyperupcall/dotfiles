@@ -1,1 +1,13 @@
-ExecStart=polybar
+[Unit]
+Description=Polybar
+Documentation=man:polybar(1)
+BindsTo=xorg.target
+After=xorg.target
+PartOf=xorg.target
+ConditionPathExists=/usr/bin/polybar
+
+[Service]
+ExecStart=/usr/bin/polybar
+
+[Install]
+WantedBy=xorg.target

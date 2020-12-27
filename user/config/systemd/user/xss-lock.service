@@ -1,0 +1,12 @@
+[Unit]
+Description=User xss-lock
+Documentation=man:xss-lock(1)
+BindsTo=xorg.target
+After=xorg.target
+PartOf=xorg.target
+
+[Service]
+ExecStart=/usr/bin/xss-lock i3lock
+
+[Install]
+WantedBy=xorg.target

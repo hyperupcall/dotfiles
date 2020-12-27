@@ -1,7 +1,7 @@
 scan_timeout = 25
 add_newline = false
 
-format="""
+format = """
 ${custom.show_shell}\
 $all\
 """

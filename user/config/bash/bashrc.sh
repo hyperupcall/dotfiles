@@ -4,11 +4,12 @@
 #CDPATH=":~:"
 HISTCONTROL="ignorespace:ignoredups"
 HISTFILE="$HOME/.history/bash_history"
-HISTSIZE="32768"
-HISTFILESIZE=$HISTSIZE
+HISTSIZE=32768
+HISTFILESIZE="$HISTSIZE"
 HISTIGNORE="ls:[bf]g:pwd:clear*:exit*"
 HISTTIMEFORMAT="%B %m %Y %T | "
-
+HISTTIMEFORMAT='%F %T ' # ISO 8601
+PROMPT_DIRTRIM=5
 
 # --------------------- Shell Options -------------------- #
 # shopt
@@ -32,7 +33,7 @@ shopt -u mailwarn
 shopt -s no_empty_cmd_completion
 shopt -s nocaseglob
 shopt -s nocasematch
-shopt -s nullglob
+shopt -u nullglob # setting obtains unexpected parameter expansion behavior
 shopt -s progcomp
 ((${BASH_VERSION%%.*} == 5)) && shopt -s progcomp_alias # not working due to complete -D
 shopt -s shift_verbose
@@ -53,11 +54,39 @@ set -o physical # default
 	test "$COLORTERM" = "truecolor" || test "$COLORTERM" = "24bit"
 }
 
+doCustomPrompt() {
+	case "$1:-starship" in
+	starship)
+		eval "$(starship init bash)"
+		;;
+	bash-git-prompt)
+		[ -r "$XDG_DATA_HOME/bash-git-prompt/gitprompt.sh" ] && {
+			GIT_PROMPT_THEME=Solarized
+			source "$XDG_DATA_HOME/bash-git-prompt/gitprompt.sh"
+		}
+		;;
+	liquid-prompt)
+		command -v >&/dev/null liquidprompt && {
+			source "$(type -p liquidprompt)"
+		}
+		;;
+	powerline)
+		:
+		;;
+	*)
+		PS1="[Error: \u@\h \w]\$ "
+		;;
+	esac
+
+	unset -f 8BitColor
+	unset -f 24BitColor
+}
+
 if 24BitColor; then
 	if test "$EUID" = 0; then
 		PS1="\e[38;2;201;42;42m[\u@\h \w]\e[0m\$ "
 	else
-		eval "$(starship init bash)"
+		doCustomPrompt liquid-prompt
 	fi
 elif 8BitColor; then
 	if test "$EUID" = 0; then
@@ -69,115 +98,41 @@ else
 	PS1="[\u@\h \w]\$ "
 fi
 
-unset -f 8BitColor
-unset -f 24BitColor
+
 
 # ---------------------- Completions --------------------- #
-isCmd() {
-	command -v "$1" >/dev/null 2>&1
-}
-
 [ -r /usr/share/bash-completion/bash_completion ] && source /usr/share/bash-completion/bash_completion
+for file in "$XDG_CONFIG_HOME"/bash/completions/*; do
+	if [ -r "$file" ]; then
+		source "$file"
+	fi
+done
 
-isCmd just && eval "$(just --completions bash)"
-isCmd pack && source "$(pack completion)"
-isCmd chezmoi && eval "$(chezmoi completion bash)"
-isCmd poetry && eval "$(poetry completions bash)"
+# isCmd just && eval "$(just --completions bash)"
+# isCmd pack && source "$(pack completion)"
+# isCmd chezmoi && eval "$(chezmoi completion bash)"
+# isCmd poetry && eval "$(poetry completions bash)"
 
-
-# pack
-if [ "$(type -t compopt)" = "builtin" ]; then
-	complete -o default -F __start_pack p
-else
-	complete -o default -o nospace -F __start_pack p
-fi
 
 # sudo
 # uncomment to break autocomplete for sudo
 #complete -cf sudo
 
-unset -f isCmd
 
+source "$XDG_CONFIG_HOME/bash/bash_prompt.sh"
+
+SDIRS="$XDG_DATA_HOME/bashmarks.sh.db"
+source ~/.local/bin/bashmarks.sh
 
 # ------------------------- Misc ------------------------- #
-export BASH_IT="$XDG_CONFIG_HOME/bash/bash-it"
+export BASH_IT="$XDG_DATA_HOME/bash-it"
 export BASH_IT_THEME="powerline-multiline"
 export GIT_HOSTING='git@github.com'
-# don't check mail when opening terminal.
 unset MAILCHECK
 export IRC_CLIENT='irssi'
-# enable VCS checking for use in the prompt
-export SCM_CHECK=false
-#source "$BASH_IT"/bash_it.sh
-
-# shellcheck source=user/config/bash/bash-it/bash_it.sh
-#source "$BASH_IT/bash_it.sh"
-
-# dir_colors
-test -r "$XDG_CONFIG_HOME/dircolors/dir_colors" \
-	&& eval "$(dircolors --sh "$XDG_CONFIG_HOME/dircolors/dir_colors")"
-
-# x11
-#xhost +local:root >/dev/null 2>&1
+export SCM_CHECK=true
+# shellcheck source=/dev/null
+#[ -r "$BASH_IT/bash_it.sh" ] && source "$BASH_IT/bash_it.sh"
 
 
-openimage() {
-	local types='*.jpg *.JPG *.png *.PNG *.gif *.GIF *.jpeg *.JPEG'
-
-	cd "$(dirname "$1")" || exit
-	local file
-	file=$(basename "$1")
-
-	feh -q "$types" --auto-zoom \
-		--sort filename --borderless \
-		--scale-down --draw-filename \
-		--image-bg black \
-		--start-at "$file"
-}
-
-# Show all the names (CNs and SANs) listed in the SSL certificate for a given domain
-getcertnames() {
-	[ -z "$1" ] && {
-		echo "Error: No domain specified" \
-		return 1
-	}
-
-	tmp=$(echo -e "GET / HTTP/1.0\\nEOT" \
-		| openssl s_client -connect "${1}:443" 2>&1)
-
-	if [[ "${tmp}" = *"-----BEGIN CERTIFICATE-----"* ]]; then
-		local certText
-		certText=$(echo "${tmp}" \
-			| openssl x509 -text -certopt "no_header, no_serial, no_version, \
-			no_signame, no_validity, no_issuer, no_pubkey, no_sigdump, no_aux")
-		echo "Common Name:"
-		echo
-		echo "${certText}" | grep "Subject:" | sed -e "s/^.*CN=//"
-		echo
-		echo "Subject Alternative Name(s):"
-		echo
-		echo "${certText}" | grep -A 1 "Subject Alternative Name:" \
-			| sed -e "2s/DNS://g" -e "s/ //g" | tr "," "\\n" | tail -n +2
-		return 0
-	else
-		echo "ERROR: Certificate not found."
-		return 1
-	fi
-}
-
-for file in "$XDG_CONFIG_HOME"/bash/completions/*; do
-	if [ -f "$file" ]; then
-		source "$file"
-	fi
-done
-
-# shellcheck source=~/config/broot/launcher/bash/br
-# source "$XDG_CONFIG_HOME/broot/launcher/bash/br"
-# shellcheck source=~/bin/z
-# source ~/XDG_CONFIG_HOME/bm/bin/z
-
-# export PHPENV_ROOT="/home/edwin/data/phpenv"
-# if [ -d "${PHPENV_ROOT}" ]; then
-#   export PATH="${PHPENV_ROOT}/bin:${PATH}"
-#   eval "$(phpenv init -)"
-# fi
+[ -r "$XDG_CONFIG_HOME/dircolors/dir_colors" ] && eval "$(dircolors --sh "$XDG_CONFIG_HOME/dircolors/dir_colors")"

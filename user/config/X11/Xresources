@@ -1,0 +1,23 @@
+*StringConversionWarnings: on
+
+Xcursor.theme: capitaine-cursors-light
+Xcursor.size: 4
+
+! load color-specific resources for clients that have them
+#ifdef COLOR
+*customization: -color
+#endif
+
+! application Xresouces
+#include "resources/xterm.Xresources"
+#include "resources/urxvt.Xresources"
+
+! #include "themes/arcadia.theme.Xresources"
+! #include "themes/badwolf.theme.Xresources"
+! #include "themes/base16-tomorrow-night.theme.Xresources"
+! #include "themes/dracula.theme.Xresources"
+! #include "themes/gruvbox-dark.theme.Xresources"
+! #include "themes/molokai.theme.Xresources"
+! #include "themes/night-owl.theme.Xresources"
+! #include "themes/nord.theme.Xresources"
+! #include "themes/one-dark.theme.Xresources"

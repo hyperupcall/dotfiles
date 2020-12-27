@@ -1,8 +1,10 @@
 [Unit]
-Description=Simple X Hotkey Daemon
+Description=User sxhkd
 Documentation=man:sxhkd(1)
-#BindsTo=display-manager.service
-#After=display-manager.service
+BindsTo=xorg.target
+After=xorg.target
+PartOf=xorg.target
+ConditionPathExists=/usr/bin/sxhkd
 
 [Service]
 ExecStart=/usr/bin/sxhkd
@@ -10,4 +12,4 @@ ExecReload=/usr/bin/kill -SIGUSR1 $MAINPID
 KillMode=process
 
 [Install]
-WantedBy=default.target
+WantedBy=xorg.target

@@ -8,10 +8,13 @@ super + n
 	kitty --title 'Popup Terminal'
 
 super + p
-	dmenu_run
+	rofi -show combi -combi-modi run -show-icons
 
 super + o
-	rofi -combi-modi window,drun,ssh -show combi -show-icons
+	rofi -show combi -combi-modi drun,run -show-icons
+
+super + i
+	rofi -show combi -combi-modi window -show-icons
 
 Print
 	maim | xclip -t image/png -selection clipboard

@@ -1,1 +1,14 @@
-ExecStart=nitrogen --restore
+[Unit]
+Description=User Nitrogen
+Documentation=man:nitrogen(1)
+BindsTo=xorg.target
+After=xorg.target
+PartOf=xorg.target
+AssertPathExists=/usr/bin/nitrogen
+
+[Service]
+ExecStart=/usr/bin/nitrogen --restore
+ExecReload=/usr/bin/nitrogen --restore
+
+[Install]
+WantedBy=xorg.target

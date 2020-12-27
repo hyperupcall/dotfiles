@@ -85,13 +85,27 @@ mode "launch" {
 bindsym $mod+r mode "resize"
 mode "resize" {
   bindsym h resize shrink width 10 px or 10 ppt
+  bindsym l resize grow width 10 px or 10 ppt
+
   bindsym j resize shrink height 10 px or 10 ppt
   bindsym k resize grow height 10 px or 10 ppt
-  bindsym l resize grow width 10 px or 10 ppt
+  #bindsym j [tiling] resize shrink height 10 px or 10 ppt
+  #bindsym k [tiling] resize grow height 10 px or 10 ppt
+  #bindsym j [floating] resize grow height 10 px or 10 ppt
+  #bindsym k [floating] resize shrink height 10 px or 10 ppt
 
   bindsym Escape mode "default"
   bindsym Return mode "default"
   bindsym $mod+r mode "default"
+}
+
+bindsym $mod+x mode "exit: [l]ogout, [r]eboot, [s]hutdown"
+mode "exit: [l]ogout, [r]eboot, [s]hutdown" {
+  bindsym l exec i3-msg exit
+  bindsym r exec systemctl reboot
+  bindsym s exec systemctl shutdown
+  bindsym Escape mode "default"
+  bindsym Return mode "default"
 }
 
 ## ------------------------- bar ------------------------

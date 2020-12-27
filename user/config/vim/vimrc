@@ -13,6 +13,14 @@ set hidden
 set mouse=a
 set mouse=r
 
+source ~/config/vim/autoload/plug.vim
+
+
+nmap <C-n> PlugInstall
+
+source ~/config/vim/plugins.vim
+
+
 " 1 tab = 8 spaces
 set shiftwidth=8
 set tabstop=8
@@ -137,3 +145,5 @@ set title
 set autoread
 set confirm
 "set spell
+
+syntax enable

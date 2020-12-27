@@ -1,9 +1,4 @@
-#
-# Virtual X server target
-#
-# Becomes active as soon as Xorg is ready to accept incoming connections.
-# Include 'After=xorg.target' for services that requires an X session.
-#
-
 [Unit]
-Description=The basic Xorg server
+Description=xorg Target
+Documentation=man:xorg(1)
+AllowIsolate=yes

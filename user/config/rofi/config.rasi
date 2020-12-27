@@ -1,5 +1,9 @@
 configuration {
-    modi: "window,drun,ssh,combi";
-    theme: "~/config/rofi/themes/nord.theme.rasi";
-    combi-modi: "window,drun,ssh";
+	modi: "combi";
+	case-sensitive: false;
+	cycle: true;
+	show-icons: true;
+	matching: "fuzzy";
+	theme: "~/config/rofi/themes/slate.theme.rasi";
+	terminal: "x-terminal-emulator";
 }

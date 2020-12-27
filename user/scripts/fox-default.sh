@@ -31,7 +31,10 @@ case "$@" in
 esac
 
 doSet() {
-	set -- ${1:-""}
+	set -- "${1:-''}"
+	set -- "${2:-''}"
+
+	: "${2:?"Mime not found"}"
 
 	case "$1" in
 	audio)
@@ -81,7 +84,7 @@ doSet() {
 }
 
 grabb() {
-	set -- ${1:-""}
+	set -- "${1:-""}"
 
 	case "$1" in
 	screen-locker)
@@ -93,6 +96,14 @@ grabb() {
 			case $application in
 			i3bar)
 				echo "i3bar"
+				return
+			;;
+			window-manager)
+				echo "i3"
+				return
+			;;
+			video-player)
+				echo "mpv"
 				return
 			;;
 			*)

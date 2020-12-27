@@ -7,3 +7,5 @@ set shiftwidth=2
 set expandtab
 
 au FileType python setl shiftwidth=2 tabstop=2
+
+" source ~/config/nvim/autoload/plug.vim

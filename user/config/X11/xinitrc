@@ -1,70 +1,25 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
-set -e
-
-# ensure an error file exists
+# ensure logs
 errorFile="$XDG_DATA_HOME/X11/xsession-errors"
-(umask 077 && touch "$errorFile") 2>/dev/null
-chmod 600 "$errorFile"
+[ -f "$errorFile" ] || {
+	touch "$errorFile"
+	chmod 600 "$errorFile"
+} 2>/dev/null 2>&1
 exec >> "$errorFile" 2>&1
+printf "\033[1m----- INFO: X session started for %s at %s -----\033[0m" "$(id -un)" "$(date)"
 
-# print
-echo "----- NOTE: X session started for $LOGNAME at $(date) -----"
+# source system
+[ -d /etc/X11/xinit/xinitrc.d ] && {
+	for f in /etc/X11/xinit/xinitrc.d/?*.sh; do
+		# shellcheck disable=SC1090
+		[ -x "$f" ] && . "$f"
+	done
+	unset f
+}
 
-if [ -z "$DBUS_SESSION_BUS_ADDRESS" ] && [ -n "$XDG_RUNTIME_DIR" ] && \
-		[ "$XDG_RUNTIME_DIR" = "/run/user/$(id -u)" ] && \
-		[ -S "$XDG_RUNTIME_DIR/bus" ]; then
-	# We are under systemd-logind or something remarkably similar, and
-	# a user-session socket has already been set up.
-	#
-	# Be nice to non-libdbus, non-sd-bus implementations by using
-	# that as the session bus address in the environment. The check for
-	# XDG_RUNTIME_DIR = "/run/user/`id -u`" is because we know that
-	# form of the address, from systemd-logind, doesn't need escaping,
-	# whereas arbitrary addresses might.
-	DBUS_SESSION_BUS_ADDRESS="unix:path=$XDG_RUNTIME_DIR/bus"
-	export DBUS_SESSION_BUS_ADDRESS
-fi
-
-export QT_ACCESSIBILITY=1
-if [ -x "/usr/bin/dbus-update-activation-environment" ]; then
-	# tell dbus-daemon --session (and systemd --user, if running) to put a minimal
-	# subset of the Xsession's environment in activated services' environments
-
-	dbus-update-activation-environment --verbose --systemd \
-		DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
-	dbus-update-activation-environment --verbose --systemd QT_ACCESSIBILITY
-fi
-
-# If xhost is installed, use it to give access to the X server for any process from
-# the same user on the local host. Unlike other uses of xhost, this is safe since the
-# kernel can check the actual owner of the calling process.
-if type xhost >/dev/null 2>&1; then
-	"xhost +si:localuser:$(id -un)" ||:
-fi
-
-
-xsetroot -xcf /usr/share/icons/breeze_cursors/cursors/left_ptr 4
-xrdb -load "$XDG_CONFIG_HOME/X11/xresources"
-xrdb -load ~/config/X11/xresources
-
-# export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
-
-~/config/X11/monitor.sh
-
-# ~/config/polybar/launch.sh || true
-
-# xss-lock i3lock --nofork &
-
-xset b off
-xset dpms off
-xset +fp "$XDG_DATA_HOME/fonts"
-xset fp rehash
-xset led off
-xset m 0 0
-#xset r rate 660 25 # openSUSE default
-xset r rate 500 40
+# apply settings and start apps
+"$XDG_CONFIG_HOME/X11/settings.sh"
+systemctl --user start xorg.target
 
 exec i3
-
-exit 0

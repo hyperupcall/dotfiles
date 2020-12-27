@@ -13,5 +13,9 @@
 	exit 1
 }
 
-# shellcheck source=/dev/null
+# shellcheck source=~/config/bash/bashrc.sh
 source "$XDG_CONFIG_HOME/bash/bashrc.sh"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/edwin/data/sdkman"
+[[ -s "/home/edwin/data/sdkman/bin/sdkman-init.sh" ]] && source "/home/edwin/data/sdkman/bin/sdkman-init.sh"

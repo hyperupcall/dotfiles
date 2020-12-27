@@ -182,7 +182,6 @@
 	},
 	"window.customMenuBarAltFocus": false,
 	"vim.enableNeovim": false,
-	"explorer.sortOrder": "filesFirst",
 	"[javascript]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
@@ -279,5 +278,6 @@
 	"java.project.importOnFirstTimeStartup": "automatic",
 	"kite.showWelcomeNotificationOnStartup": false,
 	"sonarlint.disableTelemetry": true,
-	"editor.formatOnSave": true
+	"editor.formatOnSave": true,
+	"python.showStartPage": false
 }

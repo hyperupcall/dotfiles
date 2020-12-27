@@ -27,7 +27,6 @@ general.firstdayofweek=monday
 general.multipledays=yes
 general.periodicsave=0
 general.systemevents=yes
-general.systemdialogs=yes
 notification.command=printf '\a'
 notification.notifyall=flagged-only
 notification.warning=300
