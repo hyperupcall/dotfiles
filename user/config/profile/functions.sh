@@ -74,13 +74,9 @@ lb() {
 	lsblk -o NAME,FSTYPE,LABEL,FSUSED,FSAVAIL,FSSIZE,FSUSE%,MOUNTPOINT
 }
 
-mkc() {
-	mkdir -- "$@" && cd -- "$@"
-}
-
-mkd() {
-	mkdir -p "$@"
-	cd "$@" || exit
+mkcd() {
+	mkdir -p -- "$@"
+	cd -- "$@" || return
 }
 
 mkt() {
@@ -89,19 +85,25 @@ mkt() {
 	[ -n "$1" ] && {
 		case "$1" in
 		https://github.com/*|git@github.com:*)
+			cd "$dir" || return
 			git clone "$1"
-			cd *
+			cd ./* || return
+			;;
+		https://*.tar*|https://*.zip)
+			cd "$dir" || return
+			cd ./* || return
+			curl -LO "$1"
 			;;
 		*)
 			mv "$1" "$dir"
-			cd "$dir"
+			cd "$dir" || return
 			;;
 		esac
 
 		return
 	}
 
-	cd "$dir"
+	cd "$dir" || return
 }
 
 o() {
@@ -112,33 +114,15 @@ o() {
 	fi
 }
 
-oimg() {
-	local types='*.jpg *.JPG *.png *.PNG *.gif *.GIF *.jpeg *.JPEG'
-
-	cd "$(dirname "$1")" || exit
-	local file
-	file=$(basename "$1")
-
-	feh -q "$types" --auto-zoom \
-		--sort filename --borderless \
-		--scale-down --draw-filename \
-		--image-bg black \
-		--start-at "$file"
-}
-
-openimage() {
-	cd "$(dirname "$1")" || {
-		echo "Error: Could not cd into $1"
-		return 1
+r() {
+	# shellcheck disable=SC2015
+	type trash-rm >/dev/null 2>&1 && {
+		trash-rm "$@"; true
+		true
+	} || {
+		echo "Info: trash-rm not found" >&2
+		rm --preserve-root=all "$@"
 	}
-
-	feh -q \
-		*.{jpg,JPG,png,PNG,gif,GIF,jpeg,JPEG}
-		--auto-zoom \
-		--sort filename --borderless \
-		--scale-down --draw-filename \
-		--image-bg black \
-		--start-at "$file"
 }
 
 serv() {
@@ -151,16 +135,6 @@ tre() {
 		-I '.git' -I '.svn' -I '.hg' \
 		--ignore-case --matchdirs --filelimit \
 		-h -F --dirsfirst -C "$@"
-}
-
-tmpd() {
-	[ $# -eq 0 ] && {
-		# || return for shellcheck
-		cd "$(mktemp -d)" || return
-		return
-	}
-
-	cd "$(mktemp -d -t "${1}.XXXXXXXXXX")" || return
 }
 
 unlink() {

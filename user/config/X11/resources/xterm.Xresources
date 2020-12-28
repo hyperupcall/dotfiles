@@ -11,6 +11,7 @@ XTerm.VT100.charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
 XTerm.VT100.cursorBlink: true
 XTerm.VT100.cursorOffTime: 750
 XTerm.VT100.cursorOnTime: 1000
+XTerm.VT100.disallowedWindowOps: 20,21,SetXprop # tmux set-clipboard
 XTerm.VT100.dynamicColors: true
 XTerm.VT100.eightBitControl: false
 XTerm.VT100.eightBitInput: false

@@ -36,5 +36,10 @@
     "key": "alt+r",
     "command": "-workbench.action.terminal.toggleFindRegex",
     "when": "terminalFindFocused && terminalProcessSupported || terminalFocus && terminalProcessSupported"
+  },
+  {
+    "key": "ctrl+f",
+    "command": "-workbench.action.terminal.focusFind",
+    "when": "terminalFindFocused && terminalProcessSupported || terminalFocus && terminalProcessSupported"
   }
 ]

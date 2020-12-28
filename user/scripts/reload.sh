@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
+mkdir -p "$XDG_DATA_HOME/maven"
 
 reload() {
 	type "$1" >/dev/null 2>&1 && {

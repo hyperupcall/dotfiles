@@ -47,3 +47,15 @@ category_calendar() {
 category_daemon_notification() {
 	echo "libnotify"
 }
+
+category_scm_viewer() {
+	echo "kallithea gitlab"
+}
+
+category_compression() {
+	echo "lzip"
+}
+
+category_terminal_multiplexer() {
+	echo "tmux screen"
+}

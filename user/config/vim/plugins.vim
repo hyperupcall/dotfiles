@@ -10,6 +10,6 @@ call plug#begin('~/data/vim/vim-plug-plugins')
 
 	" syntax
 	Plug 'plasticboy/vim-markdown'
-
+	Plug 'zah/nim.vim'
 
 call plug#end()

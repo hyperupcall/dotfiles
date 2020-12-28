@@ -4,7 +4,7 @@ check() {
 	bash -n "$script"
 
 	ansible-playbook --syntax-check
-	vagrant validate **/Vagrantfile
+	vagrant validate ./**/Vagrantfile
 }
 
 format() {
@@ -12,5 +12,5 @@ format() {
 }
 
 lint() {
-
+	:
 }

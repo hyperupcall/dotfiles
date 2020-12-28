@@ -86,3 +86,8 @@ dbus-update-activation-environment --systemd QT_ACCESSIBILITY
 # ---------------------------------- Cleanup --------------------------------- #
 unset -f path_add_pre
 unset -f path_add_post
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/data/rvm/bin"
+
+[[ -s "$HOME/data/rvm/scripts/rvm" ]] && source "$HOME/data/rvm/scripts/rvm" # Load RVM into a shell session *as a function*

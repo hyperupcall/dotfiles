@@ -3,5 +3,4 @@
 # ~/.bash_profile
 #
 
-# shellcheck source=user/.profile
-. ~/.profile
+source ~/.profile

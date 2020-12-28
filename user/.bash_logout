@@ -4,6 +4,7 @@
 #
 
 [ "$SHLVL" = 1 ] && {
+	clear
 	# E3 extension (see clear(1))
-	clear; printf '\033[3J'
+	printf '\033[3J'
 }

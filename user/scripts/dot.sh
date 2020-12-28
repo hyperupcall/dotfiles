@@ -106,7 +106,8 @@ function install_packages() {
 
 		sudo pacman -Sy --noconfirm $immediate_packages
 		sudo pacman -Sy --noconfirm $packages
-
+			
+		sudo pacman -Sy man-pages
 		sudo pacman -Sy inetutils bat i3 man-db lvm2 exa
 		sudo pacman -Sy linux-lts bash-completion linux-lts-docs linux-lts-headers nvidia-lts
 
@@ -315,7 +316,7 @@ do_pre-bootstrap() {
 }
 
 # ----------------------- bootstrap ---------------------- #
-do_pre-bootstrap() {
+do_bootstrap() {
 	## pre-checks
 	[[ $(id -un) = edwin ]] || {
 		log_error "Error: 'id -un' not 'edwin'. Exiting early"
@@ -366,6 +367,7 @@ i_rust() {
 	cargo install just
 	cargo install starship
 	cargo install git-delta
+	cargo install paru
 	rustup default nightly
 
 	i_node
@@ -505,12 +507,12 @@ do_info() {
 
 
 ## start
-[[ $@ =~ (--help) ]] && {
+[[ $* =~ (--help) ]] && {
 	show_help
 	exit 0
 }
 
-[[ ${BASH_SOURCE[0]} != $0 ]] && {
+[[ ${BASH_SOURCE[0]} != "$0" ]] && {
 	log_info "Info: Sourcing detected. Sourcing old profile and exiting"
 	source_profile
 
