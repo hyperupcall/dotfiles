@@ -279,5 +279,6 @@
 	"kite.showWelcomeNotificationOnStartup": false,
 	"sonarlint.disableTelemetry": true,
 	"editor.formatOnSave": true,
-	"python.showStartPage": false
+	"python.showStartPage": false,
+	"d.servedPath": "/home/edwin/.code-d/bin/serve-d"
 }

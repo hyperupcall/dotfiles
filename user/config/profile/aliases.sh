@@ -1,9 +1,12 @@
 # shellcheck shell=sh
 
-# temporary
+# overwrites
 alias lsblk='duf'
-
+alias du='dust'
 # general
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
 alias chmod='chmod --preserve-root'
 alias chown='chown --preserve-root'
 alias cp='cp -i'
@@ -20,10 +23,12 @@ alias g='git'
 alias grep='grep --colour=auto'
 alias ip='ip -color=auto'
 alias j='just'
+alias kssh='kitty +kitten ssh'
 alias la='exa -a'
 alias ll='exa -al --icons'
 alias ls='ls --color=auto -h'
 alias mkdir='mkdir -p'
+alias mr='trash-put'
 alias pacman='pacman --color=auto'
 alias p7zip='p7zip -k'
 alias ping='ping -c 5'
@@ -31,13 +36,14 @@ alias rm='rm --preserve-root=all'
 alias speedtest-cli='speedtest-cli --secure'
 alias sudo='sudo ' # sudo aliases `info bash -n Aliases`
 alias t='todo.sh'
+alias tp='trash-put'
 alias vdir='vdir --color=auto'
 alias xz='xz -k'
 alias yay='yay --color=auto'
 
 # general (changed functionality)
 alias b='bukdu --suggest'
-alias cbc='xclip -selection clipboard'
+alias copy='xclip -selection clipboard'
 alias cliflix='cliflix -- --no-quit --vlc'
 alias psa='ps xawf -eo pid,user,cgroup,args'
 alias ded='vim ~/config/dotty'

@@ -2,21 +2,41 @@
 ! urxvt
 !
 
-URxvt*secondaryScreen: 1
-URxvt*secondaryScroll: 0
-URxvt*font: xft:DejaVu Sans Mono
-URxvt*boldFont: xft:DejaVu Sans Mono
-URxvt*italicFont: xft:DejaVu Sans Mono
-URxvt.VT100.loginShell: false
-URxvt.perl-lib: ~/config/urxvt/ext
-URxvt.perl-ext-common: default,config-reload
+URxvt.depth: 24
+URxvt.scrollBar: false
+URxvt.scrollBar_right: true
+URxvt.scrollBar_floating: false
+URxvt.scrollstyle: plain
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
+URxvt.font: xft:DejaVu Sans Mono:pixelsize=16
+URxvt.boldFont: xft:DejaVu Sans Mono
+URxvt.italicFont: xft:DejaVu Sans Mono
+URxvt.perl-ext-common: default,config-reload,resize-font
+URxvt.iso14755: false
 
+URxvt.urlLauncher: chromium
+URxvt.underlineURLs: true
+URxvt.urlButton: 1
+URxvt.loginShell: false
+
+! keysyms
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 URxvt.keysym.Control-Meta-c: builtin-string:
 URxvt.keysym.Control-Meta-v: builtin-string:
-URxvt.iso14755: false
+URxvt.resize-font.step: 1
+URxvt.keysym.C-minus: resize-font:smaller
+URxvt.keysym.Control-plus: resize-font:bigger
+URxvt.keysym.Control-equal: resize-font:reset
+URxvt.keysym.Control-question: resize-font:show
+URxvt.keysym.Control-Shift-T: perl:tabbedex:new_tab
+URxvt.keysym.Control-Shift-R: perl:tabbedex:rename_tab
+URxvt.keysym.Control-Shift-W: perl:tabbedex:kill_tab
+URxvt.keysym.Control-Next: perl:tabbedex:next_tab
+URxvt.keysym.Control-Prior: perl:tabbedex:prev_tab
+URxvt.keysym.Control-Shift-Next:  perl:tabbedex:move_tab_right
+URxvt.keysym.Control-Shift-Prior: perl:tabbedex:move_tab_left
 
-! URxvt.keysym.C-M-c: builtin-string:
-! https://superuser.com/a/992794
+! misc
 URxvt*dynamicColors: on

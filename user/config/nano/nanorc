@@ -1,5 +1,6 @@
 set autoindent
-unset backup
+set backup
+set backupdir ~/data/nano/backups
 set breaklonglines
 unset casesensitive
 set historylog
@@ -9,8 +10,10 @@ set noconvert
 set positionlog
 unset preserve
 set smooth
+set softwrap
 unset suspendable
 set tabsize 3
+unset tabstospaces
 
 # see https://github.com/scopatz/nanorc
 

@@ -1,0 +1,13 @@
+[Unit]
+Description=Albert
+BindsTo=xorg.target
+After=xorg.target
+PartOf=xorg.target
+ConditionPathExists=/usr/bin/albert
+
+[Service]
+ExecStart=/usr/bin/albert
+ExecStop=/usr/bin/kill $MAINPID
+
+[Install]
+WantedBy=xorg.target

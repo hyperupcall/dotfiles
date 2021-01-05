@@ -27,11 +27,12 @@ let dotConfigFiles = [
   home & ".profile",
   home & ".yarnrc",
   cfg & "alacritty",
+  cfg & "appimagelauncher.cfg",
   cfg & "awesome",
   cfg & "bash",
   cfg & "bat",
   cfg & "broot",
-  cfg & "calcuse",
+  cfg & "calcurse",
   cfg & "cava",
   cfg & "chezmoi",
   cfg & "cliflix",
@@ -45,6 +46,7 @@ let dotConfigFiles = [
   cfg & "environment.d",
   cfg & "fish",
   cfg & "fontconfig",
+  cfg & "fox-default",
   cfg & "gh",
   cfg & "git",
   cfg & "hg",
@@ -90,6 +92,7 @@ let dotConfigFiles = [
   cfg & "todotxt",
   cfg & "urxvt",
   cfg & "user-dirs.dirs",
+  cfg & "viewnior",
   cfg & "vim",
   cfg & "wget",
   cfg & "X11",
@@ -101,7 +104,8 @@ let dotConfigFiles = [
   data & "applications/Calcurse.desktop",
   data & "applications/Nemo.desktop",
   data & "applications/Obsidian.desktop",
-  data & "applications/Zettlr.desktop"
+  data & "applications/Zettlr.desktop",
+  data & "sdkman/etc/config"
 ]
 
 for i, str in dotConfigFiles:

@@ -92,12 +92,14 @@
 	gpgSign = true
 [user]
 	name = Edwin Kofler
-	email = 24364012+eankeen@users.noreply.github.com
+	#email = 24364012+eankeen@users.noreply.github.com
+	email = edwin@kofler.dev
 	#signingkey = 484EA8DEF2F467E6
-	signingkey = 6C1C9B9464575027
+        #signingkey = 6C1C9B9464575027
+        signingkey = DA8EF6F306AD2CBA
 [credential]
-	helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
-	#helper = cache
+	#helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
+	helper = /usr/share/git/credential/libsecret/git-credential-libsecret
 [url "git@github.com:"]
 	insteadOf = gh:
 	pushInsteadOf = gh:

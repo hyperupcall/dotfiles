@@ -4,7 +4,7 @@
 
 let HISTFILE = "$HOME/.history/ion_history"
 let HISTFILE_SIZE = "32768"
-let HISTORY_IGNORE = [ whitespace '?' 'ls *' '[bf]g' pwd 'clear*' 'exit*' '* --help' '* -h' ]
+let HISTORY_IGNORE = [ whitespace '?' 'ls' '[bf]g' pwd 'clear*' 'exit*' ]
 let HISTORY_SIZE = "$HISTFILE_SIZE"
 let HISTORY_TIMESTAMP = 1
 

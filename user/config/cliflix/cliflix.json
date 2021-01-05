@@ -1,5 +1,13 @@
 {
 	"downloads": {
-		"path": "/home/edwin/Dls"
-	}
+		"path": "/home/edwin/Dls",
+                "save": true
+	},
+        "torrents": {
+                "available": [ "ThePireateBay" ]
+        },
+        "webtorrent": {
+                // do not keep seeding
+                "options": []
+        }
 }

@@ -13,35 +13,40 @@ remove() {
 shopt -s nullglob
 
 base=~/Docs/minecraft-common
-folders=(~/.minecraft "${XDG_DATA_HOME:-~/.local/share}"/multimc/instances/*/.minecraft)
+dataDir="${XDG_DATA_HOME:-~/.local/share}"
+folders=(~/.minecraft "$dataDir"/multimc/instances/*/.minecraft )
 
+# sync all options and servers list
 for mcFolder in "${folders[@]}"; do
 	files=(optionsLC.txt optionsof.txt optionsshaders.txt options.txt servers.dat servers.dat_old)
 	for file in "${files[@]}"; do
 		echo "File: $mcFolder/$file"
 
 		if [ ! -L "$mcFolder/$file" ]; then
+                        cp "$file" "$base/files/$file"
+                        echo "$file: COPY AND REMOVE ORIGINAL"
 			remove "$mcFolder/$file"
 			ln -s "$base/files/$file" "$mcFolder/$file"
 		fi
 	done
 done
 
+# sync common folders
 for mcFolder in "${folders[@]}"; do
-	declare -a l=(resourcepacks shaderpacks)
+	declare -a l=(resourcepacks shaderpacks saves)
 	for folder in "${l[@]}"; do
 		echo "Folder: $mcFolder"
-
+                mkdir -p "$base/$folder"
 		if [ -d "$mcFolder/$folder" ] && [ ! -L "$mcFolder/$folder" ]; then
+                        echo "Subfolder: $mcFolder/$folder"
 			for file in "$mcFolder/$folder"/*; do
+                                cp -r "$file" "$base/$folder"
+                                echo "$file: COPY AND REMOVE ORIGINAL"
 				remove "$file"
 			done
 			rmdir "$mcFolder/$folder"
-		elif [ -L "$mcFolder/$folder" ]; then
-			unlink "$mcFolder/$folder"
 		fi
 
-		echo "linking $folder"
 		ln -sf "$base/$folder" "$mcFolder"
 	done
 done

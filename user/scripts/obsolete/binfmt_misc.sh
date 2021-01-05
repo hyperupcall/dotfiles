@@ -1,4 +1,5 @@
 #!/bin/sh -eu
+# obsolete due to /etc/binfmt.d/
 
 checkFile() {
 	[ -e "$1" ] && {

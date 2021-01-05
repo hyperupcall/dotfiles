@@ -1,41 +1,65 @@
+source ~/config/vim/autoload/plug.vim
+source ~/config/vim/plugins.vim
 set nocompatible
-set viminfo+=n~/data/vim/viminfo
+
+set autoindent
+set autoread
+set autowrite
+set background=dark
+set backspace=indent,eol,start
+set backup
+set backupdir=~/data/vim/backup
+set belloff=all
+set nobomb
+set cmdheight=1
+set confirm
+set directory=~/data/vim/swap
+set encoding=utf8
+set noerrorbells
+set expandtab
+set fileformats=unix,dos,mac
+set hidden
+set history=10000
+set hlsearch
+set ignorecase
+set incsearch
+set laststatus=2
+set lazyredraw
+set magic
+set matchtime=2
+set modeline
+"set modifiable
+set mouse=a
+set number
+set relativenumber
+set ruler
+set scrolloff=1
+set shiftwidth=8
 set showcmd
 set showmatch
-set ignorecase
+set sidescrolloff=5
+set showmatch
 set smartcase
+set smartindent
 set smarttab
-set incsearch
-set autowrite
-set hlsearch
-set incsearch
-set hidden
-set mouse=a
-set mouse=r
-
-source ~/config/vim/autoload/plug.vim
-
-
-nmap <C-n> PlugInstall
-
-source ~/config/vim/plugins.vim
-
-
-" 1 tab = 8 spaces
-set shiftwidth=8
+set suffixes+=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
+set t_vb= "no sound on errors
+set tabpagemax=50
 set tabstop=8
-"syntax enable
-"set expandtab
-" dont redraw when execing macros
+set timeoutlen=500
+set title
+set ttyfast
+set undodir=~/data/vim/undo
+set viminfo+=n~/data/vim/viminfo
+set novisualbell
+set wildignore+=*.o,*~,*.pyc
+set wildmenu
+set wrap
 
-set ai "auto indent
-set si "smart indent
-set wrap "wrap lines
+filetype plugin on
+filetype indent on
 
-" Visual mode pressing * or # searches for the current selection
-" Super useful! From an idea by Michael Naumann
-vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
-vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
+syntax enable
 
 " better way to move between windows
 map <C-j> <C-W>j
@@ -43,107 +67,20 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-
-set lazyredraw
-" auto read when file changed from outside
-set autoread
-au FocusGained,BufEnter * checktime
-
-" turn magic on for regular expressions
-set magic
-
-"if $COLORTERM == 'gnome-terminal'
-    set t_Co=256
-"endif
-
-set showmatch
-" How many tenths of a second to blink when matching brackets
-set mat=2
-
-
-" No annoying sound on errors
-set noerrorbells
-set novisualbell
-set t_vb=
-set tm=500
-
+"nmap <C-n> PlugInstall
 
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 
-set wildmenu
-" ignore compiled files
-set wildignore=*.o,*~,*.pyc
 
-set cmdheight=1
-" buffer hidden when abandoned
-set hid
+" Visual mode pressing * or # searches for the current selection
+" Super useful! From an idea by Michael Naumann
+vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
+vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
 
-set history=500
-set ruler " show cursor position all the time
-set modeline
-set hidden
-"colorscheme darkblue
-set backspace=indent,eol,start
-set background=dark
+au FocusGained,BufEnter * checktime
 
-
-set encoding=utf8
-
-" Use Unix as the standard file type
-set ffs=unix,dos,mac
-
-
-" Suffixes that get lower priority when doing tab completion for filenames.
-" These are files we are not likely to want to edit or read.
-set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
-
-if &term =~ "xterm-debian"
-  set t_Co=16
-  set t_Sf=dm
-  set t_Sb=dm
-endif
-
-filetype plugin on
-filetype indent on
-
-"jump to the last position when reopening file
+"jump to last position when reopening file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 
-
-" Delete trailing white space on save, useful for some filetypes ;)
-fun! CleanExtraSpaces()
-    let save_cursor = getpos(".")
-    let old_query = getreg('/')
-    silent! %s/\s\+$//e
-    call setpos('.', save_cursor)
-    call setreg('/', old_query)
-endfun
-
-"if has("autocmd")
-"    autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
-"endif
-
-
-set hlsearch
-set ignorecase
-set incsearch
-set smartcase
-"set complete-=i
-set scrolloff=1
-set sidescrolloff=5
-set wrap
-set laststatus=2
-set ruler
-set tabpagemax=50
-"set colorscheme
-set number
-set relativenumber
-set noerrorbells
-set title
-set autoread
-set confirm
-"set spell
-
-syntax enable

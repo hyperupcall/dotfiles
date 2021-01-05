@@ -12,12 +12,4 @@ Xcursor.size: 4
 #include "resources/xterm.Xresources"
 #include "resources/urxvt.Xresources"
 
-! #include "themes/arcadia.theme.Xresources"
-! #include "themes/badwolf.theme.Xresources"
-! #include "themes/base16-tomorrow-night.theme.Xresources"
-! #include "themes/dracula.theme.Xresources"
-! #include "themes/gruvbox-dark.theme.Xresources"
-! #include "themes/molokai.theme.Xresources"
-! #include "themes/night-owl.theme.Xresources"
-! #include "themes/nord.theme.Xresources"
-! #include "themes/one-dark.theme.Xresources"
+#include "themes/_.theme.Xresources"

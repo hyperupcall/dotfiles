@@ -1,4 +1,5 @@
 {
+	"shellcheck.useWorkspaceRootAsCwd": true,
 	"shellformat.flag": "-bn -ci -kp",
 	"shellcheck.ignorePatterns": {
 		"**/*.z*": true,

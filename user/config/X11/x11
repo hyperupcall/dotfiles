@@ -8,10 +8,10 @@ export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 # automatically determine an unused $DISPLAY
 display=0
 while true; do
-	[ -e "/tmp/.X$display-lock" -o -S "/tmp/.X11-unix/X$display" ] || break
+	[ -e "/tmp/.X$display-lock" ] || [ -S "/tmp/.X11-unix/X$display" ] || break
 	display=$((display + 1))
 done
-display=":$display"
+display=:$display
 
 # when starting the default server, start X on current tty to avoid the startx
 # session being seen as inactive: https://bugzilla.redhat.com/show_bug.cgi?id=806491
@@ -28,13 +28,12 @@ fi
 
 # set up default Xauth info for this machine
 # check for GNU hostname
+hostname="$(hostname)"
 if hostname --version > /dev/null 2>&1; then
-	if [ -z "$(hostname --version 2>&1 | grep GNU)" ]; then
+	if ! hostname --version 2>&1 | grep -q GNU; then
 		hostname="$(hostname -f)"
 	fi
 fi
-[ -z "$hostname" ] && hostname="$(hostname)"
-
 
 authdisplay=${display:-:0}
 mcookie="$(/usr/bin/mcookie)"
@@ -46,7 +45,7 @@ mcookie="$(/usr/bin/mcookie)"
 # create a file with auth information for the server. ':0' is a dummy.
 dummy=0
 xserverauthfile="$(mktemp --tmpdir serverauth.XXXXXXXXXX)"
-trap "rm -f '$xserverauthfile'" HUP INT QUIT ILL TRAP BUS TERM
+trap 'rm -f "$xserverauthfile"' HUP INT QUIT ILL TRAP BUS TERM
 xauth -q -f "$xserverauthfile" <<- EOF
 	add :$dummy . $mcookie
 EOF
@@ -77,11 +76,6 @@ for displayname in $authdisplay $hostname$authdisplay; do
 	fi
 done
 
-<<<<<<< HEAD:user/config/X11/startx
-=======
-export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
-
->>>>>>> 8c4ef90 (update dotfiles):user/config/X11/x11
 xinit "$XDG_CONFIG_HOME/X11/xinitrc" -- "/usr/bin/Xorg" "$display" -nolisten tcp "$vtarg" -keeptty -auth "$xserverauthfile"
 retval=$?
 

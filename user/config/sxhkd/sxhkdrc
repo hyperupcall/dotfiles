@@ -1,6 +1,3 @@
-super + t
-	notify-send alfa foo
-
 super + Return
 	kitty
 

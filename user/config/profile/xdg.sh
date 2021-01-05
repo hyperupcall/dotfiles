@@ -141,6 +141,13 @@ export PACKER_CONFIG="$XDG_DATA_HOME/packer/packerconfig"
 export PACKER_CONFIG_DIR="$XDG_DATA_HOME/packer/packer.d"
 export CHECKPOINT_DISABLE=1
 
+# perl
+PATH="$HOME/perl5/bin${PATH:+:${PATH}}"
+export PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"
+export PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"
+export PERL_MB_OPT="--install_base \"$HOME/perl5\""
+export PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"
+
 # phpbrew
 path_add_pre "$XDG_DATA_HOME/phpenv/bin"
 
@@ -178,7 +185,7 @@ path_add_pre "$CARGO_HOME/bin"
 # rvm
 path_add_pre "$XDG_DATA_HOME/rvm/bin"
 path_add_pre "$XDG_DATA_HOME/gem/bin"
-[ -x "$XDG_DATA_HOME/rvm/scripts/rvm" ] && . "$XDG_DATA_HOME/rvm/scripts/rvm"
+[ -r "$XDG_DATA_HOME/rvm/scripts/rvm" ] && . "$XDG_DATA_HOME/rvm/scripts/rvm"
 
 # sccache
 export SCCACHE_DIR="$XDG_CACHE_HOME/sccache"
@@ -188,7 +195,7 @@ export SCREENRC="$XDG_CONFIG_HOME/screenrc"
 
 # sdkman
 export SDKMAN_DIR="$XDG_DATA_HOME/sdkman"
-[ -x "$SDKMAN_DIR/bin/sdkman-init.sh" ] && . "$SDKMAN_DIR/bin/sdkman-init.sh"
+[ -r "$SDKMAN_DIR/bin/sdkman-init.sh" ] && . "$SDKMAN_DIR/bin/sdkman-init.sh"
 
 # sonarlint
 export SONARLINT_USER_HOME="$XDG_DATA_HOME/sonarlint"
@@ -222,12 +229,15 @@ export VAGRANT_ALIAS_FILE="$VAGRANT_HOME/aliases"
 # vim
 export VIMINIT="source $XDG_CONFIG_HOME/vim/vimrc"
 
+# urxvt
+export URXVT_PERL_LIB="$XDG_CONFIG_HOME/urxvt/ext"
+
 # wakatime
 export WAKATIME_HOME="$XDG_DATA_HOME/wakatime"
 
 # wasmer
 export WASMER_DIR="$XDG_DATA_HOME/wasmer"
-# [ -x "$WASMER_DIR/wasmer.sh" ] && . "$WASMER_DIR/wasmer.sh"
+# [ -r "$WASMER_DIR/wasmer.sh" ] && . "$WASMER_DIR/wasmer.sh"
 
 # wasmtime
 export WASMTIME_HOME="$XDG_DATA_HOME/wasmtime"

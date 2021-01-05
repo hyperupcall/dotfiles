@@ -1,15 +1,46 @@
 # shellcheck shell=sh
 
-codepoint() {
-	perl -e "use utf8; print sprintf('U+%04X', ord(\"$*\"))"
+cl() {
+        case "$1" in
+        *.zip)
+                unzip -l "$1"
+                ;;
+        *)
+                echo "Error: No match found" >&2
+                ;;
+        esac
+}
 
-	# print newline if we're not piping to another program
-	[ -t 1 ] && echo
+cx() {
+        for arg; do
+        case "$arg" in
+        *.zip)
+                folder="$(echo "$1" | rev | cut -d'.' -f2- | rev)"
+                unzip -d "$folder" "$1"
+                [ -f "$folder" ] && return
+                cd "$folder" || exit
+                [  "$(find . -maxdepth 1 | cut -c 3- | wc -l)" = 1 ] && {
+                        subfolder="$(ls)"
+                        mv "./$subfolder"/* "./$subfolder"/.* .
+                        rmdir "$subfolder"
+                        cd ..
+                }
+                ;;
+        *)
+                echo "Error: No match found" >&2
+                ;;
+        esac
+        done
 }
 
 chr() {
 	: "${1:?"Error: No mountpoint specified"}"
 	[ -d "$1" ] || { echo "Error: Folder doesn't exist"; exit 1; }
+
+	type arch-chroot >/dev/null 2>&1 && {
+		arch-chroot "$1"
+		return
+	}
 
 	sudo mount -o bind -t proc /proc/ "$1/proc"
 	sudo mount -o bind -t sysfs /sys "$1/sys"
@@ -65,11 +96,6 @@ isup() {
 	curl -sS --head --X GET "$1" | grep "200 OK" >/dev/null
 }
 
-k() {
-	nb add "$@"
-	kb add "$@"
-}
-
 lb() {
 	lsblk -o NAME,FSTYPE,LABEL,FSUSED,FSAVAIL,FSSIZE,FSUSE%,MOUNTPOINT
 }
@@ -81,6 +107,7 @@ mkcd() {
 
 mkt() {
 	dir="$(mktemp -d)"
+        echo "$dir"
 
 	[ -n "$1" ] && {
 		case "$1" in
@@ -93,17 +120,31 @@ mkt() {
 			cd "$dir" || return
 			cd ./* || return
 			curl -LO "$1"
+                        tar xaf ./*
 			;;
+                *.tar*|*.zip)
+                        mv "$1" "$dir"
+                        cd "$dir" || return
+                        echo "mkt: Unarchiving $(basename "$1")"
+                        tar xaf ./*
+                        ;;
 		*)
-			mv "$1" "$dir"
-			cd "$dir" || return
+		        if [ -d "$1" ] || [ -f "$1" ]; then
+                                mv "$1" "$dir"
+			        cd "$dir" || return
+                        else
+                                mv "$dir" "$dir-$1"
+                                cd "$dir-$1" || return
+                        fi
 			;;
 		esac
 
+                unset -v dir
 		return
 	}
 
 	cd "$dir" || return
+        unset -v dir
 }
 
 o() {
@@ -114,15 +155,20 @@ o() {
 	fi
 }
 
-r() {
-	# shellcheck disable=SC2015
-	type trash-rm >/dev/null 2>&1 && {
-		trash-rm "$@"; true
-		true
-	} || {
-		echo "Info: trash-rm not found" >&2
-		rm --preserve-root=all "$@"
-	}
+put() {
+        case "$1" in
+        *.deb|*.rpm)
+                mv "$1" "$HOME/Docs/pkg/system-package/$(basename "$1")"
+                cd ~/Docs/pkg/systemd-package || return
+                ;;
+        *)
+                ;;
+        esac
+}
+
+qe() {
+	file="$(nim r --hints:off "$XDG_CONFIG_HOME/dotty/dotty.nim" | fzf)"
+	vim "$file"
 }
 
 serv() {
@@ -150,29 +196,10 @@ unlink() {
 	done
 }
 
-utf8decode() {
-	perl -e "binmode(STDOUT, ':utf8'); print \"$*\""
-
-	# print newline if we're not piping to another program
-	[ -t 1 ] && echo
-}
-
-utf8encode() {
-	mapfile -t args < <(printf "%s" "$*" | xxd -p -c1 -u)
-	printf "\\\\x%s" "${args[@]}"
-
-	# print newline if we're not piping to another program
-	[ -t 1 ] && echo
-}
-
 v() {
 	if [ $# -eq 0 ]; then
 		vim .
 	else
 		vim "$@"
 	fi
-}
-
-weather() {
-	curl wttr.in
 }

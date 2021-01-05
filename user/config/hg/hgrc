@@ -2,5 +2,5 @@
 pager = less -FX
 [user]
 name = Edwin Kofler
-email = 24364012+eankeen@users.noreply.github.com
+email = edwin@kofler.dev
 signingkey = 484EA8DEF2F467E6
