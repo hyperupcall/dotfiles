@@ -25,13 +25,15 @@ size_hints = true
 urgent_on_bell = true
 
 [colors]
-# THEMER-BEGIN
 cursor = #d8dee9
 cursor_foreground = #2e3440
+
 foreground = #d8dee9
 foreground_bold = #d8dee9
 background = #2e3440
+
 highlight = #4c566a
+
 color0 = #3b4252
 color1 = #bf616a
 color2 = #a3be8c
@@ -48,4 +50,3 @@ color12 = #81a1c1
 color13 = #b48ead
 color14 = #8fbcbb
 color15 = #eceff4
-# THEMER-END

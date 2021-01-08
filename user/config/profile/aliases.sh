@@ -44,7 +44,7 @@ alias yay='yay --color=auto'
 # general (changed functionality)
 alias b='bukdu --suggest'
 alias copy='xclip -selection clipboard'
-alias cliflix='cliflix -- --no-quit --vlc'
+alias cliflix='cliflix --activeOutputProgram=vlc --subtitles=true --autosubtitles=true -- --no-quit'
 alias psa='ps xawf -eo pid,user,cgroup,args'
 alias ded='vim ~/config/dotty'
 

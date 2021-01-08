@@ -1,5 +1,5 @@
 super + Return
-	kitty
+	~/repos/fox-default/fox-default.sh launch terminal-emulator
 
 super + n
 	kitty --title 'Popup Terminal'

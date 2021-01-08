@@ -71,64 +71,73 @@ bindsym $mod+Shift+4 move container to workspace number $ws4
 bindsym $mod+y mode "launch"
 
 mode "launch" {
-  bindsym f exec firefox
-  bindsym b exec brave-browser
-  bindsym c exec code
-  bindsym p exec 'vim ~/.profile'
+	bindsym f exec firefox
+	bindsym b exec brave-browser
+	bindsym c exec code
+	bindsym p exec 'vim ~/.profile'
 
-  bindsym Escape mode "default"
-  bindsym Return mode "default"
-  bindsym $mod+r mode "default"
+	bindsym Escape mode "default"
+	bindsym Return mode "default"
+	bindsym $mod+r mode "default"
 }
 
 ## --------------------- resize mode --------------------
 bindsym $mod+r mode "resize"
 mode "resize" {
-  bindsym h resize shrink width 10 px or 10 ppt
-  bindsym l resize grow width 10 px or 10 ppt
+	bindsym h resize shrink width 10 px or 10 ppt
+	bindsym l resize grow width 10 px or 10 ppt
 
-  bindsym j resize shrink height 10 px or 10 ppt
-  bindsym k resize grow height 10 px or 10 ppt
-  #bindsym j [tiling] resize shrink height 10 px or 10 ppt
-  #bindsym k [tiling] resize grow height 10 px or 10 ppt
-  #bindsym j [floating] resize grow height 10 px or 10 ppt
-  #bindsym k [floating] resize shrink height 10 px or 10 ppt
+	bindsym j resize shrink height 10 px or 10 ppt
+	bindsym k resize grow height 10 px or 10 ppt
+	#bindsym j [tiling] resize shrink height 10 px or 10 ppt
+	#bindsym k [tiling] resize grow height 10 px or 10 ppt
+	#bindsym j [floating] resize grow height 10 px or 10 ppt
+	#bindsym k [floating] resize shrink height 10 px or 10 ppt
 
-  bindsym Escape mode "default"
-  bindsym Return mode "default"
-  bindsym $mod+r mode "default"
+	bindsym Escape mode "default"
+	bindsym Return mode "default"
+	bindsym $mod+r mode "default"
 }
 
 bindsym $mod+x mode "exit: [l]ogout, [r]eboot, [s]hutdown"
 mode "exit: [l]ogout, [r]eboot, [s]hutdown" {
-  bindsym l exec i3-msg exit
-  bindsym r exec systemctl reboot
-  bindsym s exec systemctl shutdown
-  bindsym Escape mode "default"
-  bindsym Return mode "default"
+	bindsym l exec i3-msg exit
+	bindsym r exec systemctl reboot
+	bindsym s exec systemctl shutdown
+	bindsym Escape mode "default"
+	bindsym Return mode "default"
 }
 
 ## ------------------------- bar ------------------------
 bar {
-  position bottom
-  hidden_state show
-  modifier $mod
-  status_command i3status
-  separator_symbol " | "
-  workspace_buttons yes
-  binding_mode_indicator yes
-  colors {
-    separator #586e75
-    background #002b36
-    statusline #aea79f
-    focused_workspace #586e75 #586e75 #ffffff #FFFFFF
-    active_workspace #073642 #073642 #ffffff #FFFFFF
-    inactive_workspace #002b36 #002b36 #aea79f #888888
-    urgent_workspace #77216f #77216f #ffffff #FFFFFF
-  }
+	position bottom
+	hidden_state show
+	modifier $mod
+	status_command i3status
+	separator_symbol " | "
+	workspace_buttons yes
+	binding_mode_indicator yes
+	colors {
+# THEMER-BEGIN-1
+		background #282A36
+		statusline #F8F8F2
+		separator  #44475A
+
+		focused_workspace  #44475A #44475A #F8F8F2
+		active_workspace   #282A36 #44475A #F8F8F2
+		inactive_workspace #282A36 #282A36 #BFBFBF
+		urgent_workspace   #FF5555 #FF5555 #F8F8F2
+		binding_mode       #FF5555 #FF5555 #F8F8F2
+# THEMER-END-1
+	}
 }
 
-client.focused #586e75 #586e75 #fdf6e3 #268bd2
-client.focused_inactive #073642 #073642 #93a1a1 #002b36
-client.unfocused #002b36 #002b36 #586e75 #002b36
-client.urgent #dc322f #dc322f #fdf6e3 #dc322f
+# THEMER-BEGIN-2
+# Property Name         Border  BG      Text    Indicator Child Border
+client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+client.background       #F8F8F2
+# THEMER-END-2

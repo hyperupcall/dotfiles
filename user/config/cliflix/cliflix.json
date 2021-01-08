@@ -1,13 +1,15 @@
 {
-	"downloads": {
-		"path": "/home/edwin/Dls",
-                "save": true
-	},
+        "activeLanguage": "English",
+        "downloadSave": true,
+	"downloadPath": "/home/edwin/Dls",
         "torrents": {
-                "available": [ "ThePireateBay" ]
+                "seeders": true,
+                "leechers": true,
+                "size": true,
+                "time": true
         },
-        "webtorrent": {
-                // do not keep seeding
-                "options": []
+        "subtitles": {
+                "limit": 20,
+                "showDownloads": true
         }
 }
