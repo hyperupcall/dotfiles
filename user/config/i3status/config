@@ -6,22 +6,29 @@ general {
 	interval = 1
 }
 
-order += "volume master"
 order += "disk /"
+order += disk "/storage/vault"
+order += "volume master"
 order += "cpu_usage"
 order += "memory"
 order += "tztime local"
-
-volume "master" {
-	format = "♪ %volume"
-	device = "default"
-	mixer = "Master"
-}
 
 disk "/" {
 	format = "%free (%percentage_avail)"
 	low_threshold = 10
 	threshold_type = gbytes_avail
+}
+
+disk "/dev/sda" {
+	format = "%free (%percentage_avail)"
+	low_threshold = 10
+	threshold_type = gbytes_avail
+}
+
+volume "master" {
+	format = "♪ %volume"
+	device = "default"
+	mixer = "Master"
 }
 
 cpu_usage {

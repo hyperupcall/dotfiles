@@ -1,8 +1,9 @@
 # shellcheck shell=sh
 
-# overwrites
+# overwrides
 alias lsblk='duf'
 alias du='dust'
+
 # general
 alias ..="cd .."
 alias ...="cd ../.."

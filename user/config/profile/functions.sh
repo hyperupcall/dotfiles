@@ -1,5 +1,14 @@
 # shellcheck shell=sh
 
+cdls() {
+        cd "$1" || return
+        command -v >/dev/null 2>&1 && {
+                exa -al
+                return
+        }
+        ls -al
+}
+
 cl() {
         case "$1" in
         *.zip)

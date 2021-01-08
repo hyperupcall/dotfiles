@@ -36,9 +36,9 @@ proc getThemerDeclarations(fileContent: string): seq[string] =
 
   return declarations
 
-proc insertThemerDeclarations(file: string, declarations: seq[string]): string =
+proc insertThemerDeclarations(originalFileContent: string, declarations: seq[string]): string =
   const comment = "#"
-  var fileContent = readFile(file)
+  var fileContent = originalFileContent
 
   var n = 1
   while true:
@@ -61,91 +61,69 @@ proc insertThemerDeclarations(file: string, declarations: seq[string]): string =
 
 # update*
 proc updateXResources(themeName: string) =
+  echo "UPDATING XRESOURCES"
+  let cfgDir = getCfg()
+  let cfg = fmt"{cfgDir}/X11/Xresources"
+  let themeDest = fmt"{cfgDir}/X11/themes/_.theme.Xresources"
+  let themeSrc = fmt"{cfgDir}/X11/themes/{themeName}.theme.Xresources"
+
   # perm update
-  let cfg = getCfg()
-  let dest = fmt"{cfg}/X11/themes/_.theme.Xresources"
-  let src = fmt"{cfg}/X11/themes/{themeName}.theme.Xresources"
-  removeFile(dest)
-  createSymlink(src, dest)
+  removeFile(themeDest)
+  createSymlink(themeSrc, themeDest)
+  discard execCmd(fmt"xrdb -load {cfg}")
 
   # live update
-  discard execCmd("xrdb -load ~/config/X11/Xresources")
 
 proc updateTermite(themeName: string) =
-  proc getKeyValue(str: string, separator: char): array[2, string] =
-    let lr = split(str, separator)
-    return [ strip(lr[0]), strip(lr[1]) ]
+  echo "UPDATING TERMITE"
+  let cfgDir = getCfg()
+  let cfg = fmt"{cfgDir}/termite/config"
+  let themeDest = fmt"{cfgDir}/termite/themes/_.theme.conf"
+  let themeSrc = fmt"{cfgDir}/termite/themes/{themeName}.theme.conf"
 
-  let cfg = getCfg()
-  let dest = fmt"{cfg}/termite/themes/_.theme.conf"
-  let src = fmt"{cfg}/termite/themes/{themeName}.theme.conf"
-  removeFile(dest)
-  createSymlink(src, dest)
-
-  let declarations = getThemerDeclarations(readFile(fmt"{cfg}/termite/themes/_.theme.conf"))
-  let newFile = insertThemerDeclarations(fmt"{cfg}/termite/config", declarations)
-  writeFile(fmt"{cfg}/termite/config", newFile)
-  # let themeFrom = fmt"{cfg}/termite/themes/{themeName}.theme.conf"
-  # let themeTo = fmt"{cfg}/termite/config"
-
-  # var keyValueList: seq[string]
-  # for line in split(readFile(themeFrom), sep = '\n'):
-  #   if line == "": continue
-  #   if line.startsWith("#"): continue
-  #   if not line.contains('='): continue
-
-  #   let kv = getKeyValue(line, '=')
-  #   keyValueList.add(fmt"{kv[0]} = {kv[1]}")
-
-  # var newThemeToArr: seq[string]
-  # var mode = "add"
-
-  # for line in split(readFile(themeTo), sep = '\n'):
-  #   if mode == "add":
-  #     newThemeToArr.add(line)
-
-  #     if line == "# THEMER-BEGIN":
-  #       mode = "skip"
-  #       continue
-  #   elif mode == "insert":
-  #     for l in keyValueList:
-  #       newThemeToArr.add(l)
-  #     # must have newline so elif mode == "skip" changes to insert mode
-  #     # has a next line for insert mode to actually happen
-  #     newThemeToArr.add("# THEMER-END\n")
-  #     mode = "add"
-  #   elif mode == "skip":
-  #     if line == "# THEMER-END":
-  #       mode = "insert"
-
-  # writeFile(themeTo, join(newThemeToArr, "\n"))
+  # perm update
+  let declarations = getThemerDeclarations(readFile(themeDest))
+  writeFile(cfg, insertThemerDeclarations(readFile(cfg), declarations))
+  removeFile(themeDest)
+  createSymlink(themeSrc, themeDest)
 
   # live update
   discard execCmd("killall -USR1 termite")
 
 proc updateKitty(themeName: string) =
-  let cfg = getCfg()
-  removeFile(fmt"{cfg}/kitty/themes/_.theme.conf")
-  createSymlink(fmt"{cfg}/kitty/themes/{themeName}.theme.conf", fmt"{cfg}/kitty/themes/_.theme.conf")
+  echo "UPDATING KITTY"
+  let cfgDir = getCfg()
+  let themeDest = fmt"{cfgDir}/kitty/themes/_.theme.conf"
+  let themeSrc = fmt"{cfgDir}/kitty/themes/{themeName}.theme.conf"
 
+  # perm update
+  removeFile(themeDest)
+  createSymlink(themeSrc, themeDest)
+
+  # live update (requires launching via ~/scripts/kitty.sh)
   for kind, path in walkDir(joinPath(getRuntimeDir(), "kitty")):
     if count(path, "control-socket-") > 0:
-      discard execCmd(fmt"kitty @ --to=unix:{path} set-colors -a {cfg}/kitty/themes/_.theme.conf")
+      discard execCmd(fmt"kitty @ --to=unix:{path} set-colors -a {cfgDir}/kitty/themes/_.theme.conf")
 
 proc updatei3(themeName: string) =
-  let cfg = getCfg()
-  let themeFrom = fmt"{cfg}/i3/themes/{themeName}.theme.conf"
-  let themeTo = fmt"{cfg}/i3/config"
-  removeFile(fmt"{cfg}/i3/themes/_.theme.conf")
-  createSymlink(fmt"{cfg}/i3/themes/{themeName}.theme.conf", fmt"{cfg}/i3/themes/_.theme.conf")
+  echo "UPDATING i3"
+  let cfgDir = getCfg()
+  let themeSrc = fmt"{cfgDir}/i3/themes/{themeName}.theme.conf"
+  let themeDest = fmt"{cfgDir}/i3/themes/_.theme.conf"
+  let cfg = fmt"{cfgDir}/i3/config"
 
-  let declarations = getThemerDeclarations(readFile(fmt"{cfg}/i3/themes/_.theme.conf"))
-  let newDeclarations = insertThemerDeclarations(themeTo, declarations)
-  writeFile(themeTo, newDeclarations)
+  # perm update
+  let declarations = getThemerDeclarations(readFile(themeDest))
+  writeFile(cfg, insertThemerDeclarations(readFile(cfg), declarations))
+  removeFile(themeDest)
+  createSymlink(themeSrc, themeDest)
+
+  # live update
+  discard execCmd("i3 reload")
 
 
 const theme = "dracula"
-updateXResources(theme)
+updateXResources(theme) # broken
 updateTermite(theme)
 updateKitty(theme)
 updatei3(theme)

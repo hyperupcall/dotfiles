@@ -82,5 +82,3 @@ au FocusGained,BufEnter * checktime
 
 "jump to last position when reopening file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-
-

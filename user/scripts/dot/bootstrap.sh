@@ -145,6 +145,13 @@ i_go() {
 	go get -v golang.org/x/tools/gopls
 }
 
+i_asdf() {
+	log_info "Installing asdf"
+	git clone https://github.com/asdf-vm/asdf.git "$XDG_DATA_HOME/asdf"
+	cd "$XDG_DATA_HOME/asdf" || die "Could not cd to asdf data dir"
+	git switch -c "$(git describe --abbrev=0 --tags)"
+}
+
 i_php() {
 	log_info "Installing phpenv"
 	req https://raw.githubusercontent.com/phpenv/phpenv-installer/master/bin/phpenv-installer \
@@ -155,13 +162,13 @@ i_php() {
 i_perl() {
 	log_info "Installing perl"
 	# https://github.com/regnarg/urxvt-config-reload
-        pck="AnyEvent Linux::FD common::sense"
-        if command -v cpan >/dev/null >&2; then
-        cpan $pck
-        else
-        /usr/bin/core_perl $pkg
-        fi
-        unset -v pkg
+	pkg="AnyEvent Linux::FD common::sense"
+	if command -v cpan >/dev/null >&2; then
+		cpan $pkg
+	else
+		/usr/bin/core_perl/cpan $pkg
+	fi
+	unset -v pkg
 }
 
 bootstrap_done() {

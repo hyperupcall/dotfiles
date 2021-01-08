@@ -3,6 +3,12 @@
 # anki
 alias anki='anki -b "$XDG_DATA_HOME/anki"'
 
+# asdf
+export ASDF_DIR="$XDG_DATA_HOME/asdf"
+export ASDF_DATA_DIR="$XDG_DATA_HOME/asdf"
+path_add_pre "$ASDF_DIR/bin"
+path_add_pre "$ASDF_DATA_DIR/shims"
+
 # atom
 export ATOM_HOME="$XDG_DATA_HOME/atom"
 

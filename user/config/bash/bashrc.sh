@@ -118,6 +118,9 @@ done
 # uncomment to break autocomplete for sudo
 #complete -cf sudo
 
+# asdf
+. "$XDG_DATA_HOME/asdf/completions/asdf.bash"
+
 
 source "$XDG_CONFIG_HOME/bash/bash_prompt.sh"
 

@@ -8,7 +8,7 @@ mkdir -p "$XDG_RUNTIME_DIR/kitty"
 
 n=1
 while true; do
-	[ ! -S "$XDG_RUNTIME_DIR/kitty/control-socket-$n" ]&& break
+	[ ! -S "$XDG_RUNTIME_DIR/kitty/control-socket-$n" ] && break
 	n=$((n + 1))
 done
 

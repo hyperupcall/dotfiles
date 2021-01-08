@@ -17,14 +17,6 @@
 " Highlight the line on which the cursor lives.
 set nocursorline
 
-" Always show at least one line above/below the cursor.
-set scrolloff=1
-" Always show at least one line left/right of the cursor.
-set sidescrolloff=5
-
-" Relative line numbers
-set number relativenumber
-
 " Highlight matching pairs of brackets. Use the '%' character to jump between them.
 set matchpairs+=<:>
 
@@ -177,22 +169,21 @@ set autoindent
 set nocompatible
 filetype plugin indent on
 
+" Substitute live preview
+set inccommand=nosplit
+
+" If lightline/airline is enabled, don't show mode under it
+set noshowmode
+scriptencoding utf-8
+
+" Colorscheme
+colorscheme colors
+set fillchars=vert:▎
+
 " Write buffer through sudo (works on vim but not neovim)
 " cnoreabbrev w!! w !sudo -S tee % >/dev/null
 " Neovim: suda plugin
 cnoreabbrev w!! w suda://%
-
-" Allow switching between buffers without saving
-set hidden
-
-" Mouse support
-set mouse=a
-
-"Case insensitive searching
-set ignorecase
-
-"Will automatically switch to case sensitive if you use any capitals
-set smartcase
 
 " Auto toggle smart case of for ex commands
 " Assumes 'set ignorecase smartcase'
@@ -202,8 +193,6 @@ augroup dynamic_smartcase
     autocmd CmdLineLeave : set smartcase
 augroup END
 
-" Substitute live preview
-set inccommand=nosplit
 
 " Markdown Folding
 let g:markdown_fold_style = 'nested'
@@ -226,11 +215,6 @@ nmap <M-space> <Plug>VimwikiToggleListItem
 " Highlighted yank (-1 for persistent)
 let g:highlightedyank_highlight_duration = 400
 
-" If lightline/airline is enabled, don't show mode under it
-set noshowmode
-
-" Shell
-set shell=/bin/zsh
 
 " Ctrlp
 let g:ctrlp_switch_buffer = '0'
@@ -325,7 +309,7 @@ let g:lightline.separator = {
     \   'left': '', 'right': ''
     \}
 let g:lightline.subseparator = {
-    \   'left': '', 'right': '' 
+    \   'left': '', 'right': ''
     \}
 
 let g:lightline.tabline_separator = g:lightline.separator
@@ -348,18 +332,11 @@ if &t_Co == 8 && $TERM !~# '^linux\|^Eterm'
   set t_Co=16
 endif
 
-set wildmenu
 
-set encoding=utf8
-scriptencoding utf-8
-
-" Colorscheme
-colorscheme colors
-set fillchars=vert:▎
 
 " Restore last cursor position and marks on open
 au BufReadPost *
-         \ if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'commit' 
+         \ if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'commit'
          \ |   exe "normal! g`\""
          \ | endif
 
