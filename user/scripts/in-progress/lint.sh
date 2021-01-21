@@ -6,6 +6,7 @@ check() {
 
 	ansible-playbook --syntax-check
 	vagrant validate ./**/Vagrantfile
+	crystal tool format --check
 }
 
 format() {

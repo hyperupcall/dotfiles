@@ -7,7 +7,7 @@ general {
 }
 
 order += "disk /"
-order += disk "/storage/vault"
+order += "disk /storage/vault"
 order += "volume master"
 order += "cpu_usage"
 order += "memory"

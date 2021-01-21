@@ -1,0 +1,34 @@
+* {
+	bc: #2e343f;
+	background-color: #282c33;
+	border-color: @bc;
+	text-color: #8ca0aa;
+}
+
+inputbar {
+	border: 0 0 1px 0;
+	children: [prompt, entry];
+}
+
+prompt {
+	padding: 12px;
+	border: 0 1px 0 0;
+}
+
+entry {
+	padding: 12px;
+}
+
+element {
+	border: 0 0 -1px 0;
+	padding: 12px;
+}
+
+element selected {
+	background-color: @bc;
+}
+
+listview {
+	cycle: false;
+	margin: 0 0 -1px 0;
+}

@@ -141,7 +141,7 @@ i_bash() {
 # todo: remove prompt
 i_go() {
 	log_info "Installing g"
-	curl -sSL https://git.io/g-install | sh -s
+	req https://git.io/g-install | sh -s
 	go get -v golang.org/x/tools/gopls
 }
 
@@ -169,6 +169,11 @@ i_perl() {
 		/usr/bin/core_perl/cpan $pkg
 	fi
 	unset -v pkg
+}
+
+i_crystal() {
+	log_info "Installing crystal"
+	req https://raw.github.com/pine/crenv/master/install.sh | bash
 }
 
 bootstrap_done() {

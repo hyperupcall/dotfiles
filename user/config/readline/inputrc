@@ -14,6 +14,7 @@ set echo-control-characters off
 set input-meta on
 set mark-symlinked-directories on
 set match-hidden-files off
+set revert-all-at-newline on
 set show-all-if-ambiguous on
 set show-all-if-unmodified on
 set skip-completed-text on
@@ -26,6 +27,10 @@ set visible-stats on
 "\e[B": history-search-forward
 "\e[C": forward-char
 "\e[D": backward-char
+
+# Shift arrow
+"^[[1;2C": forward-word
+"^[[1;2D": backward-word
 
 $if Bash
 	Space: magic-space

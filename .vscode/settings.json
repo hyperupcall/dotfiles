@@ -11,4 +11,11 @@
 		"**/i3/**": "i3",
 		"**/polybar/**": "ini",
 	},
+	"css.validate": false,
+	"editor.codeActionsOnSave": {
+		"source.fixAll": true
+	},
+	"[css]": {
+		"editor.defaultFormatter": "stylelint.vscode-stylelint"
+	}
 }

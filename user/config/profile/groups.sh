@@ -6,7 +6,8 @@ alias bm='~/repos/bm/bm.sh'
 path_add_pre "$XDG_DATA_HOME/bm/bin"
 
 # fzf
-export FZF_DEFAULT_OPTS="--history $HOME/.history/fzf_history --history-size=10000"
+export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
+export FZF_DEFAULT_OPTS="--history \"$HOME/.history/fzf_history\" --history-size=10000"
 
 # git
 export GIT_CONFIG_NOSYSTEM=

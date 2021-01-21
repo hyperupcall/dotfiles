@@ -1,3 +1,4 @@
+# shellcheck shell=sh
 #
 # ~/.profile
 #
@@ -51,7 +52,6 @@ path_add_pre "$HOME/data/bm/bin"
 path_add_pre "$HOME/.local/bin"
 path_add_pre "$HOME/bin"
 path_add_pre "$HOME/Docs/pkg/app-image"
-
 
 
 if [ -z "$DBUS_SESSION_BUS_ADDRESS" ] && [ -n "$XDG_RUNTIME_DIR" ] && \

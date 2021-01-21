@@ -3,6 +3,12 @@ import os
 import osproc
 import strformat
 import strutils
+import terminal
+import rdstdin
+import parseopt
+
+
+const VERSION {.strdefine.} = ""
 
 proc getCfg(): string =
   if getEnv("XDG_CONFIG_HOME") != "":
@@ -74,6 +80,20 @@ proc updateXResources(themeName: string) =
 
   # live update
 
+proc updateAlacritty(themeName: string) =
+  echo "UPDATING ALACRITTY"
+  let cfgDir = getCfg()
+  let cfg = fmt"{cfgDir}/alacritty/alacritty.yml"
+  let themeDest = fmt"{cfgDir}/alacritty/themes/_.theme.yml"
+  let themeSrc = fmt"{cfgDir}/alacritty/themes/{themeName}.theme.yml"
+
+  # perm update
+  removeFile(themeDest)
+  createSymlink(themeSrc, themeDest)
+  let declarations = getThemerDeclarations(readFile(themeDest))
+  writeFile(cfg, insertThemerDeclarations(readFile(cfg), declarations))
+
+
 proc updateTermite(themeName: string) =
   echo "UPDATING TERMITE"
   let cfgDir = getCfg()
@@ -82,10 +102,10 @@ proc updateTermite(themeName: string) =
   let themeSrc = fmt"{cfgDir}/termite/themes/{themeName}.theme.conf"
 
   # perm update
-  let declarations = getThemerDeclarations(readFile(themeDest))
-  writeFile(cfg, insertThemerDeclarations(readFile(cfg), declarations))
   removeFile(themeDest)
   createSymlink(themeSrc, themeDest)
+  let declarations = getThemerDeclarations(readFile(themeDest))
+  writeFile(cfg, insertThemerDeclarations(readFile(cfg), declarations))
 
   # live update
   discard execCmd("killall -USR1 termite")
@@ -103,7 +123,26 @@ proc updateKitty(themeName: string) =
   # live update (requires launching via ~/scripts/kitty.sh)
   for kind, path in walkDir(joinPath(getRuntimeDir(), "kitty")):
     if count(path, "control-socket-") > 0:
-      discard execCmd(fmt"kitty @ --to=unix:{path} set-colors -a {cfgDir}/kitty/themes/_.theme.conf")
+      discard execCmd(fmt"kitty @ --to=unix:{path} set-colors -a {themeDest}")
+
+proc updateVscode(themeName: string) =
+  echo "UPDATING VSCODE"
+  let cfgDir = getCfg()
+  let cfg = fmt"{cfgDir}/Code/User/settings.json"
+
+  let realThemeName = case themeName:
+    of "nord":
+      "Nord"
+    of "dracula":
+      "Dracula"
+    else:
+      echo "INVALID THEME"
+      "Nord"
+
+  # const cmd = &"file=\"/home/edwin/config/Code/User/settings.json\" content=\"$(cat \"$file\" | jq --arg theme \"Nord\" '.[\"workbench.colorTheme\"] = $theme')\"; cat >| \"$file\" <<< \"$content\""
+  # discard execCmd(&"/bin/bash \"{cmd}\"")
+
+
 
 proc updatei3(themeName: string) =
   echo "UPDATING i3"
@@ -113,17 +152,84 @@ proc updatei3(themeName: string) =
   let cfg = fmt"{cfgDir}/i3/config"
 
   # perm update
-  let declarations = getThemerDeclarations(readFile(themeDest))
-  writeFile(cfg, insertThemerDeclarations(readFile(cfg), declarations))
   removeFile(themeDest)
   createSymlink(themeSrc, themeDest)
+  let declarations = getThemerDeclarations(readFile(themeDest))
+  writeFile(cfg, insertThemerDeclarations(readFile(cfg), declarations))
 
   # live update
   discard execCmd("i3 reload")
 
+proc updateRofi(themeName: string) =
+  echo "UPDATING ROFI"
+  let cfgDir = getCfg()
+  let themeSrc = fmt"{cfgDir}/rofi/themes/{themeName}.theme.rasi"
+  let themeDest = fmt"{cfgDir}/rofi/themes/_.theme.rasi"
+  let cfg = fmt"{cfgDir}/rofi/config.rasi"
 
-const theme = "dracula"
+  # perm update
+  removeFile(themeDest)
+  createSymlink(themeSrc, themeDest)
+
+proc writeHelp() =
+  echo "--theme, --program"
+
+proc writeVersion() =
+  echo VERSION
+
+proc doProgram(programName: string, theme: string) =
+  case programName:
+  of "xterm":
+    updateXResources(theme) # broken
+  of "alacritty":
+    updateTermite(theme)
+  of "kitty":
+    updateKitty(theme)
+  of "i3":
+    updatei3(theme)
+  of "rofi":
+    updateRofi(theme)
+
+proc readTheme(): string =
+  var theme = ""
+  if isatty(stdin):
+    theme = readLineFromStdin("New theme?: ")
+  else:
+    theme = readAll(stdin)
+  theme = theme.strip()
+  if theme == "":
+    echo "Theme not valid"
+    quit(QuitFailure)
+
+var theme = ""
+var program = ""
+var p = initOptParser(commandLineParams())
+while true:
+  p.next()
+  case p.kind:
+  of cmdEnd: break
+  of cmdShortOption, cmdLongOption:
+    case p.key
+      of "help", "h": writeHelp(); quit QuitSuccess
+      of "version", "v": writeVersion(); quit QuitSuccess
+      of "program":
+        program = p.val
+      of "theme":
+        theme = p.val
+  of cmdArgument:
+    echo "Argument: ", p.key
+
+if theme == "":
+  theme = readTheme()
+
+if program != "":
+  doProgram(program, theme)
+  quit QuitSuccess
+
 updateXResources(theme) # broken
+updateAlacritty(theme)
 updateTermite(theme)
 updateKitty(theme)
+# updateVscode(theme) # broken
 updatei3(theme)
+updateRofi(theme)

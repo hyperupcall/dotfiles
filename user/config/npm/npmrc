@@ -1,0 +1,12 @@
+access=public
+init-author-name=Edwin Kofler
+init-author-email=edwin@kofler.dev
+init-author-url=https://edwinkofler.com/
+init-license=MIT
+init-version=0.1.0
+git-tag-version=true
+message=release: v%s
+sign-git-commit=true
+sign-git-tag=true
+tag-version-prefix=v
+//registry.npmjs.org/:_authToken=f4860626-6ccb-41c9-aee5-eafd9bdf4359

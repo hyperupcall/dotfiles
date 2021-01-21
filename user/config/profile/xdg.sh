@@ -4,8 +4,10 @@
 alias anki='anki -b "$XDG_DATA_HOME/anki"'
 
 # asdf
-export ASDF_DIR="$XDG_DATA_HOME/asdf"
 export ASDF_DATA_DIR="$XDG_DATA_HOME/asdf"
+export ASDF_DIR="$XDG_DATA_HOME/asdf"
+export ASDF_CONFIG_FILE="$XDG_CONFIG_HOME/asdf/asdfrc"
+export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME="$XDG_CONFIG_HOME/asdf/tool-versions"
 path_add_pre "$ASDF_DIR/bin"
 path_add_pre "$ASDF_DATA_DIR/shims"
 
@@ -27,6 +29,11 @@ export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/bundle"
 # ccache
 export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
 export CCACHE_CONFIGPATH="$XDG_CONFIG_HOME/ccache/config"
+
+# crenv
+# export CRENV_ROOT="$XDG_DATA_HOME/crenv"
+# path_add_pre "$CRENV_ROOT/bin"
+# eval "$(crenv init -)"
 
 # cuda
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"

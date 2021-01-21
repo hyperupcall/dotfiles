@@ -57,13 +57,33 @@ chr() {
 	sudo mount -o bind -t devtmpfs /dev "$1/dev"
 
 	[ "$TERM" = xterm-kitty ] && {
-		TERM=xterm
+		TERM=xterm-256color
 		sudo chroot "$1"
 		TERM=xterm-kitty
 		return
 	}
 
 	sudo chroot "$1"
+}
+
+del() {
+	if command -v gio > /dev/null; then
+		for f; do
+			gio trash -f "$f"
+		done
+	elif command -v gvfs-trash > /dev/null; then
+		for f; do
+			gvfs-trash "$f"
+		done
+	elif [ -d "${XDG_DATA_HOME:-$HOME/.local/share}/Trash/files" ]; then
+		for f; do
+			mv "$f" "${XDG_DATA_HOME:-$HOME/.local/share}/Trash/files"
+		done
+	else
+		for f; do
+			'rm' "$f"
+		done
+	fi
 }
 
 dataurl() {
@@ -162,6 +182,10 @@ o() {
 	else
 		xdg-open "$@"
 	fi
+}
+
+pdfgrep() {
+    find . -name '*.pdf' -exec sh -c '/usr/bin/pdftotext "{}" - | grep --with-filename --label="{}" --color '"$1" \;
 }
 
 put() {

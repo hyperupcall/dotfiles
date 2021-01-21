@@ -1,0 +1,13 @@
+{
+	"rules": {
+		"string-quotes": "double"
+	},
+	"overrides": [
+		{
+			"files": ["*.rasi"],
+			"rules": {
+				"string-quotes": "double"
+			}
+		}
+	]
+}

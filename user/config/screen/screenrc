@@ -1,0 +1,2 @@
+bind '{' exec sh -c 'xclip -o>~/.screen_exchange'
+bind '}' exec sh -c 'xclip -i ~/.screen_exchange'
