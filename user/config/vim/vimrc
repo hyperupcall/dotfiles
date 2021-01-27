@@ -1,65 +1,165 @@
-source ~/config/vim/autoload/plug.vim
-source ~/config/vim/plugins.vim
 set nocompatible
 
-set autoindent
-set autoread
+source `=expand("$XDG_CONFIG_HOME/vim/autoload/plug.vim")`
+source `=expand("$XDG_CONFIG_HOME/vim/plugins.vim")`
+
+" "s represents sane defaults tim pop
+" "d represents vim defaults (and not present in "s)
+set autoindent "s
+set autoread "s
 set autowrite
 set background=dark
-set backspace=indent,eol,start
+set backspace=indent,eol,start "s
 set backup
-set backupdir=~/data/vim/backup
+let &backupdir=expand("$XDG_DATA_HOME/vim/backup")
 set belloff=all
 set nobomb
 set cmdheight=1
+set clipboard=unnamedplus
+set complete-=i "s
 set confirm
-set directory=~/data/vim/swap
-set encoding=utf8
+let &directory=expand("$XDG_DATA_HOME/vim/swap")
+set display+=lastline "s
+" set display=truncate "d
+" set encoding=utf-8 "s
+if &encoding ==# 'latin1' && has('gui_running')
+  set encoding=utf-8
+endif
 set noerrorbells
 set expandtab
 set fileformats=unix,dos,mac
 set hidden
-set history=10000
-set hlsearch
+set history=10000 "s
+set hlsearch "s
 set ignorecase
-set incsearch
-set laststatus=2
+set incsearch "s
+if has('reltime') "d
+  set incsearch
+endif
+set laststatus=2 "s
 set lazyredraw
 set magic
 set matchtime=2
 set modeline
 "set modifiable
 set mouse=a
+" In many terminal emulators the mouse works just fine.  By enabling it you
+" can position the cursor, Visually select and scroll with the mouse.
+" Only xterm can grab the mouse events when using the shift key, for other
+" terminals use ":", select text and press Esc.
+if has('mouse')
+  if &term =~ 'xterm'
+    set mouse=a
+  else
+    set mouse=nvi
+  endif
+endif
+set nrformats-=octal "s
 set number
 set relativenumber
-set ruler
-set scrolloff=1
+set ruler "s
+set sessionoptions-=options "s
+set scrolloff=1 "s
 set shiftwidth=8
-set showcmd
+set showcmd "d
 set showmatch
-set sidescrolloff=5
+set sidescrolloff=5 "s
 set showmatch
 set smartcase
 set smartindent
-set smarttab
+set smarttab "s
 set suffixes+=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
 set t_vb= "no sound on errors
-set tabpagemax=50
+set tabpagemax=50 "s
 set tabstop=8
+set notimeout
 set timeoutlen=500
+if !has('nvim') && &ttimeoutlen == -1
+  set ttimeout
+  set ttimeoutlen=100
+endif
 set title
 set ttyfast
-set undodir=~/data/vim/undo
-set viminfo+=n~/data/vim/viminfo
+let &undodir=expand("$XDG_DATA_HOME/vim/undo")
+set viewoptions-=options "s
+let &viminfo="%,<800,'10,/50,:100,h,f0,n" . expand("$XDG_DATA_HOME/vim/viminfo")
+"           | |    |   |   |    | |  + viminfo file path
+"           | |    |   |   |    | + file marks 0-9,A-Z 0=NOT stored
+"           | |    |   |   |    + disable 'hlsearch' loading viminfo
+"           | |    |   |   + command-line history saved
+"           | |    |   + search history saved
+"           | |    + files marks saved
+"           | + lines saved each register (old name for <, vi6.2)
+"           + save/restore buffer list
 set novisualbell
 set wildignore+=*.o,*~,*.pyc
-set wildmenu
+set wildmenu "s
 set wrap
 
-filetype plugin on
-filetype indent on
+" Fix indentation
+map <F7> gg=G<C-o><C-o>
+" Toggle auto change directory
+map <F8> :set autochdir! autochdir?<CR>
+" Beginning and end of line
+imap <C-a> <home>
+imap <C-e> <end>
+cmap <C-a> <home>
+cmap <C-e> <end>
+" Control-S Save
+nmap <C-S> :w<cr>
+vmap <C-S> <esc>:w<cr>
+imap <C-S> <esc>:w<cr>
+" Control-V Paste in insert and command mode
+imap <C-V> <esc>pa
+cmap <C-V> <C-r>0
 
-syntax enable
+" Control-C Copy in visual mode
+vmap <C-C> y
+
+
+if has('autocmd')
+	filetype plugin on
+	filetype indent on
+endif
+
+if has('syntax') && !exists('g:syntax_on')
+  syntax enable
+endif
+
+" Allow color schemes to do bright colors without forcing bold.
+if &t_Co == 8 && $TERM !~# '^Eterm'
+  set t_Co=16
+endif
+
+" Allow color schemes to do bright colors without forcing bold.
+if &t_Co == 8 && $TERM !~# '^linux\|^Eterm'
+  set t_Co=16
+endif
+
+" Use <C-L> to clear the highlighting of :set hlsearch.
+if maparg('<C-L>', 'n') ==# ''
+  nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+endif
+
+if &listchars ==# 'eol:$'
+  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+endif
+
+if v:version > 703 || v:version == 703 && has("patch541")
+  set formatoptions+=j " Delete comment character when joining commented lines
+endif
+
+if has('path_extra')
+  setglobal tags-=./tags tags-=./tags; tags^=./tags;
+endif
+
+if &shell =~# 'fish$' && (v:version < 704 || v:version == 704 && !has('patch276'))
+  set shell=/usr/bin/env\ bash
+endif
+
+" Don't use Ex mode, use Q for formatting.
+" Revert with ":unmap Q".
+map Q gq "d
 
 " better way to move between windows
 map <C-j> <C-W>j
@@ -67,9 +167,84 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+let NERDTreeShowHidden=1
+let g:NERDTreeDirArrowExpandable = ''
+let g:NERDTreeDirArrowCollapsible = ''
+map <C-n> :NERDTreeToggle<CR>
+
+" Resizing
+" nmap <C-M-H> 2<C-w><
+" nmap <C-M-L> 2<C-w>>
+" nmap <C-M-K> <C-w>-
+" nmap <C-M-J> <C-w>+
+" Insert mode movement
+" imap <M-h> <left>
+" imap <M-j> <down>
+" imap <M-k> <up>
+" imap <M-l> <right>
+" imap <M-f> <C-right>
+" imap <M-b> <C-left>
+
+" " Cycle windows
+" nmap <M-o> <C-W>w
+" vmap <M-o> <C-W>w
+" tmap <M-o> <esc><C-W>w
+" imap <M-o> <esc><C-W>w
+
+" " Command mode history
+" cmap <M-p> <up>
+" cmap <M-n> <down>
+" cmap <M-k> <up>
+" cmap <M-j> <down>
+
+
+
+hi Directory guifg=#FF0000 ctermfg=white
+
+" start "d
+" Switch syntax highlighting on when the terminal has colors or when using the
+" GUI (which always has colors).
+if &t_Co > 2 || has("gui_running")
+  " Revert with ":syntax off".
+  syntax on
+
+  " I like highlighting strings inside C comments.
+  " Revert with ":unlet c_comment_strings".
+  let c_comment_strings=1
+endif
+
+" Convenient command to see the difference between the current buffer and the
+" file it was loaded from, thus the changes you made.
+" Only define it when not defined already.
+" Revert with: ":delcommand DiffOrig".
+if !exists(":DiffOrig")
+  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
+		  \ | wincmd p | diffthis
+endif
+
+if has('langmap') && exists('+langremap')
+  " Prevent that the langmap option applies to characters that result from a
+  " mapping.  If set (default), this may break plugins (but it's backward
+  " compatible).
+  set nolangremap
+endif
+" end "d
+
+" Alt-m for creating a new line in insert mode
+imap <M-m> <esc>o
+
 "nmap <C-n> PlugInstall
 
+" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
+" so that you can undo CTRL-U after inserting a line break.
+" Revert with ":iunmap <C-U>".
+inoremap <C-U> <C-G>u<C-U>
+
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
+" Write buffer through sudo (works on vim but not neovim)
+" cnoreabbrev w!! w !sudo -S tee % >/dev/null
+" Neovim: suda plugin
+cnoreabbrev w!! w suda://%
 
 
 " Visual mode pressing * or # searches for the current selection
@@ -77,8 +252,20 @@ command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
-
 au FocusGained,BufEnter * checktime
 
 "jump to last position when reopening file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+" Substitute live preview
+"set inccommand=nosplit
+
+" If lightline/airline is enabled, don't show mode under it
+set noshowmode
+scriptencoding utf-8
+
+" Highlight the line on which the cursor lives.
+set nocursorline
+
+" Manually refresh file
+nmap <F5> :e!<cr>

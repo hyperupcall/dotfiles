@@ -1,13 +1,15 @@
 # shellcheck shell=sh
 
-# bm
-export BM_SRC="$HOME/Docs/Programming/repos/bm"
-alias bm='~/repos/bm/bm.sh'
-path_add_pre "$XDG_DATA_HOME/bm/bin"
+# shell_installer
+path_prepend "$XDG_DATA_HOME/shell-installer/bin"
+path_prepend MANPATH "$XDG_DATA_HOME/shell-installer/man"
 
 # fzf
 export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
 export FZF_DEFAULT_OPTS="--history \"$HOME/.history/fzf_history\" --history-size=10000"
+
+# gcc
+export GCC_COLORS="error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01"
 
 # git
 export GIT_CONFIG_NOSYSTEM=
@@ -16,6 +18,8 @@ export GIT_CONFIG_NOSYSTEM=
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 GPG_TTY="$(tty)"
 export GPG_TTY
+SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+export SSH_AUTH_SOCK
 
 # hstr
 export HSTR_CONFIG=hicolor
@@ -39,6 +43,9 @@ export LESS_TERMCAP_mb LESS_TERMCAP_md LESS_TERMCAP_me \
 	LESS_TERMCAP_so LESS_TERMCAP_se LESS_TERMCAP_us \
 	LESS_TERMCAP_ue LESS_TERMCAP_us
 
+# man
+export MAN_POSIXLY_CORRECT= # openSUSE
+
 # more
 export MORE="-l"
 
@@ -46,13 +53,18 @@ export MORE="-l"
 export NNN_FALLBACK_OPENER="xdg-open"
 export NNN_DE_FILE_MANAGER="nautilus"
 
+# ps
+export CMD_ENV="linux"
+
 # qt
 [ "$XDG_CURRENT_DESKTOP" = "KDE" ] || [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] \
 	|| export QT_QPA_PLATFORMTHEME="qt5ct"
 
 # snap
-#export PATH="/snap/bin:$PATH"
-path_add_post "/var/lib/snapd/snap/bin"
+path_append "/var/lib/snapd/snap/bin"
+
+# X11
+export XCURSOR_PATH="$XDG_CONFIG_HOME/icons:$XCURSOR_PATH"
 
 # zfs
 export ZFS_COLOR=

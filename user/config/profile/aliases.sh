@@ -72,3 +72,9 @@ alias sue='systemctl --user edit --full'
 # journalctl
 alias ju='journalctl --system -b -u'
 alias juu='journalctl --user -b -u'
+
+# git
+alias gclone='git clone'
+alias gpull='git pull --all'
+alias gpush='git push'
+

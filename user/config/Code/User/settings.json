@@ -272,13 +272,18 @@
   "explorer.confirmDragAndDrop": false,
   "workbench.iconTheme": "material-icon-theme",
   "C_Cpp.updateChannel": "Insiders",
-  "files.autoSave": "onWindowChange",
-  "workbench.colorTheme": "Nord",
+  "workbench.colorTheme": "GitHub Dark",
   "java.configuration.checkProjectSettingsExclusions": false,
   "java.project.importOnFirstTimeStartup": "automatic",
   "kite.showWelcomeNotificationOnStartup": false,
   "sonarlint.disableTelemetry": true,
-  "editor.formatOnSave": true,
   "python.showStartPage": false,
-  "d.servedPath": "/home/edwin/.code-d/bin/serve-d"
+  "d.servedPath": "/home/edwin/.code-d/bin/serve-d",
+  "java.imports.gradle.wrapper.checksums": [
+    {
+      "sha256": "29fcfbb6837bbebd5af604b74f07ef4635e211fc3639daa9fbda66405a221eea",
+      "allowed": true
+    }
+  ],
+  "files.autoSave": "afterDelay"
 }

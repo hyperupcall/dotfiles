@@ -8,8 +8,8 @@ export ASDF_DATA_DIR="$XDG_DATA_HOME/asdf"
 export ASDF_DIR="$XDG_DATA_HOME/asdf"
 export ASDF_CONFIG_FILE="$XDG_CONFIG_HOME/asdf/asdfrc"
 export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME="$XDG_CONFIG_HOME/asdf/tool-versions"
-path_add_pre "$ASDF_DIR/bin"
-path_add_pre "$ASDF_DATA_DIR/shims"
+path_prepend "$ASDF_DIR/bin"
+path_prepend "$ASDF_DATA_DIR/shims"
 
 # atom
 export ATOM_HOME="$XDG_DATA_HOME/atom"
@@ -30,9 +30,12 @@ export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/bundle"
 export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
 export CCACHE_CONFIGPATH="$XDG_CONFIG_HOME/ccache/config"
 
+# cookiecutter
+export COOKIECUTTER_CONFIG="$XDG_CONFIG_HOME/cookiecutter/cookiecutterrc"
+
 # crenv
 # export CRENV_ROOT="$XDG_DATA_HOME/crenv"
-# path_add_pre "$CRENV_ROOT/bin"
+# path_prepend "$CRENV_ROOT/bin"
 # eval "$(crenv init -)"
 
 # cuda
@@ -48,8 +51,8 @@ export PUB_CACHE="$XDG_CACHE_HOME/pub-cache"
 export DVM_DIR="$XDG_DATA_HOME/dvm"
 export DENO_INSTALL="$XDG_DATA_HOME/deno"
 export DENO_INSTALL_ROOT="$DENO_INSTALL/bin"
-path_add_pre "$DENO_INSTALL_ROOT"
-path_add_pre "$DENO_INSTALL_ROOT/bin"
+path_prepend "$DENO_INSTALL_ROOT"
+path_prepend "$DENO_INSTALL_ROOT/bin"
 
 # docker
 export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
@@ -59,7 +62,7 @@ export ELINKS_CONFDIR="$XDG_CONFIG_HOME/elinks"
 
 # g
 export GOPATH="$XDG_DATA_HOME/go-path"
-path_add_pre "$GOPATH/bin"
+path_prepend "$GOPATH/bin"
 
 # gem
 export GEM_HOME="$XDG_DATA_HOME/gem"
@@ -101,7 +104,7 @@ export KDEHOME="$XDG_CONFIG_HOME/kde"
 
 # krew
 export KREW_ROOT="$XDG_DATA_HOME/krew"
-path_add_pre "$KREW_ROOT/bin"
+path_prepend "$KREW_ROOT/bin"
 
 # ltrace
 alias ltrace='ltrace -F "$XDG_CONFIG_HOME/ltrace/ltrace.conf"'
@@ -123,7 +126,7 @@ export MYSQL_HISTFILE="$HOME/.history/mysql_history"
 
 # n
 export N_PREFIX="$XDG_DATA_HOME/n"
-path_add_pre "$N_PREFIX/bin"
+path_prepend "$N_PREFIX/bin"
 
 # nb
 export NB_DIR="$XDG_DATA_HOME/nb"
@@ -131,8 +134,8 @@ export NB_HIST="$HOME/.history/nb_history"
 
 # nimble
 export CHOOSENIM_NO_ANALYTICS="1"
-path_add_pre "$HOME/.nimble/bin"
-path_add_pre "$XDG_DATA_HOME/nimble/bin"
+path_prepend "$HOME/.nimble/bin"
+path_prepend "$XDG_DATA_HOME/nimble/bin"
 
 # node
 export NODE_REPL_HISTORY="$HOME/.history/node_repl_history"
@@ -162,15 +165,15 @@ export PERL_MB_OPT="--install_base \"$HOME/perl5\""
 export PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"
 
 # phpbrew
-path_add_pre "$XDG_DATA_HOME/phpenv/bin"
+path_prepend "$XDG_DATA_HOME/phpenv/bin"
 
 # phpenv
 export PHPENV_ROOT="$XDG_DATA_HOME/phpenv"
-path_add_pre  "$PHPENV_ROOT/bin"
+path_prepend  "$PHPENV_ROOT/bin"
 
 # poetry
 export POETRY_HOME="$XDG_DATA_HOME/poetry"
-path_add_pre "$POETRY_HOME/bin"
+path_prepend "$POETRY_HOME/bin"
 
 # postgresql
 export PSQLRC="$XDG_DATA_HOME/pg/psqlrc"
@@ -180,8 +183,8 @@ export PGSERVICEFILE="$XDG_DATA_HOME/pg/pg_service.conf"
 
 # pyenv
 export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
-path_add_pre "$PYENV_ROOT/bin"
-path_add_pre "$PYENV_ROOT/shims"
+path_prepend "$PYENV_ROOT/bin"
+path_prepend "$PYENV_ROOT/shims"
 
 # python
 # https://github.com/python/cpython/pull/13208
@@ -193,11 +196,11 @@ export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
 # rust
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
-path_add_pre "$CARGO_HOME/bin"
+path_prepend "$CARGO_HOME/bin"
 
 # rvm
-path_add_pre "$XDG_DATA_HOME/rvm/bin"
-path_add_pre "$XDG_DATA_HOME/gem/bin"
+path_prepend "$XDG_DATA_HOME/rvm/bin"
+path_prepend "$XDG_DATA_HOME/gem/bin"
 [ -r "$XDG_DATA_HOME/rvm/scripts/rvm" ] && . "$XDG_DATA_HOME/rvm/scripts/rvm"
 
 # sccache
@@ -254,7 +257,7 @@ export WASMER_DIR="$XDG_DATA_HOME/wasmer"
 
 # wasmtime
 export WASMTIME_HOME="$XDG_DATA_HOME/wasmtime"
-path_add_pre "$WASMTIME_HOME/bin"
+path_prepend "$WASMTIME_HOME/bin"
 
 # wget
 export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
@@ -270,7 +273,7 @@ export MATHEMATICA_USERBASE="$XDG_DATA_HOME/mathematica"
 export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 
 # yarn
-path_add_pre "$XDG_DATA_HOME/yarn/bin"
+path_prepend "$XDG_DATA_HOME/yarn/bin"
 export YARN_CACHE_FOLDER="$XDG_CACHE_HOME/yarn"
 
 # z

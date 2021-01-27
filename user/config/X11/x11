@@ -24,7 +24,7 @@ else
 	echo "Warning: Not running on a tty. Exiting"
 	exit 1
 fi
-
+unset -v tty
 
 # set up default Xauth info for this machine
 # check for GNU hostname
@@ -54,13 +54,12 @@ EOF
 # if '$displayname' already exists do not overwrite it as another
 # server may need it. Add them to the '$xserverauthfile' instead
 removelist=
+touch "$XAUTHORITY"
 for displayname in $authdisplay $hostname$authdisplay; do
-	#authcookie="$(xauth list "$displayname" \
-	#	| sed -n "s/.*$displayname[[:space:]*].*[[:space:]*]//p")" 2>/dev/null;
 	authcookie="$(xauth list "$displayname" \
 		| head -1 \
-		| sed -n "s/.*$displayname[[:space:]*].*[[:space:]*]//p")" 2>/dev/null;
-#	echo "$(xauth list "$displayname")"
+		| sed -n "s/.*${displayname}[[:space:]*].*[[:space:]*]//p")" 2>/dev/null;
+
 	if [ "$authcookie" = "" ]; then
 		xauth -q <<- EOF
 			add $displayname . $mcookie
@@ -68,8 +67,6 @@ for displayname in $authdisplay $hostname$authdisplay; do
 		removelist="$displayname $removelist"
 	else
 		dummy=$((dummy+1));
-#		echo "$xserverauthfile"
-#		echo "$authcookie"
 		xauth -q -f "$xserverauthfile" <<- EOF
 			add :$dummy . $authcookie
 		EOF

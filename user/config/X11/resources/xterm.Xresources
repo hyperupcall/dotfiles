@@ -20,7 +20,6 @@ XTerm.VT100.faceName: xft:DejaVu Sans Mono
 XTerm.VT100.faceSize: 14
 XTerm.VT100.jumpScroll: true
 !*.VT100.logging: false
-!*.VT100.loginShell: false
 XTerm.VT100.metaSendsEscape: true
 XTerm.VT100.multiClickTime: 200
 XTerm.VT100.multiScroll: true

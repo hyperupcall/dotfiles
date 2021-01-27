@@ -1,0 +1,6 @@
+default_context:
+        full_name: "Edwin Kofler"
+        email: "edwin@kofler.dev"
+        github_username: "eankeen"
+cookiecutters_dir: /home/edwin/data/cookiecutters/cookiecutters_dir
+replay_dir: /home/edwin/data/cookiecutters/replay_dir

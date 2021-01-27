@@ -14,4 +14,4 @@ done
 
 exec kitty \
 	-o allow_remote_control=yes \
-	--listen-on unix:"$XDG_RUNTIME_DIR/kitty/control-socket-$n"
+	--listen-on "unix:$XDG_RUNTIME_DIR/kitty/control-socket-$n"

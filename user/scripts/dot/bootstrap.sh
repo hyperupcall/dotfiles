@@ -75,6 +75,7 @@ i_node() {
 	pnpm i -g diff-so-fancy
 	pnpm i -g @eankeen/cliflix
         pnpm i -g npm-check-updates
+        pnpm i -g graphqurl
 	pnpm install -g nb.sh
 	yarn config set prefix "$XDG_DATA_HOME/yarn"
 }
@@ -128,14 +129,17 @@ i_tmux() {
 
 i_bash() {
 	log_info "Installing bash-it"
-	git clone https://github.com/bash-it/bash-it "$XDG_DATA_HOME/bash-it"
+	git clone "https://github.com/bash-it/bash-it" "$XDG_DATA_HOME/bash-it"
 	source "$XDG_DATA_HOME/bash-it/install.sh" --no-modify-config
 
+	log_info "Installing oh-my-bash"
+	git clone "https://github.com/ohmybash/oh-my-bash" "$XDG_DATA_HOME/oh-my-bash"
+
 	log_info "Installing bash-git-prompt"
-	git clone https://github.com/magicmonty/bash-git-prompt "$XDG_DATA_HOME/bash-git-prompt"
+	git clone "https://github.com/magicmonty/bash-git-prompt" "$XDG_DATA_HOME/bash-git-prompt"
 
 	log_info "Installing bookmarks.sh"
-	git clone https://github.com/huyng/bashmarks
+	git clone "https://github.com/huyng/bashmarks"
 }
 
 # todo: remove prompt
@@ -154,8 +158,7 @@ i_asdf() {
 
 i_php() {
 	log_info "Installing phpenv"
-	req https://raw.githubusercontent.com/phpenv/phpenv-installer/master/bin/phpenv-installer \
-		| PHPENV_ROOT=$HOME/data/phpenv bash
+	req https://raw.githubusercontent.com/phpenv/phpenv-installer/master/bin/phpenv-installer | bash
 }
 
 # todo: remove prompt (on unconfigured systems)

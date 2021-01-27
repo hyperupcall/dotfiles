@@ -1,45 +1,45 @@
 # shellcheck shell=sh
 
 cdls() {
-        cd "$1" || return
-        command -v >/dev/null 2>&1 && {
-                exa -al
-                return
-        }
-        ls -al
+	cd "$1" || return
+	command -v >/dev/null 2>&1 && {
+				exa -al
+				return
+	}
+	ls -al
 }
 
 cl() {
-        case "$1" in
-        *.zip)
-                unzip -l "$1"
-                ;;
-        *)
-                echo "Error: No match found" >&2
-                ;;
-        esac
+	case "$1" in
+	*.zip)
+				unzip -l "$1"
+				;;
+	*)
+				echo "Error: No match found" >&2
+				;;
+	esac
 }
 
 cx() {
-        for arg; do
-        case "$arg" in
-        *.zip)
-                folder="$(echo "$1" | rev | cut -d'.' -f2- | rev)"
-                unzip -d "$folder" "$1"
-                [ -f "$folder" ] && return
-                cd "$folder" || exit
-                [  "$(find . -maxdepth 1 | cut -c 3- | wc -l)" = 1 ] && {
-                        subfolder="$(ls)"
-                        mv "./$subfolder"/* "./$subfolder"/.* .
-                        rmdir "$subfolder"
-                        cd ..
-                }
-                ;;
-        *)
-                echo "Error: No match found" >&2
-                ;;
-        esac
-        done
+	for arg; do
+	case "$arg" in
+	*.zip)
+		folder="$(echo "$1" | rev | cut -d'.' -f2- | rev)"
+		unzip -d "$folder" "$1"
+		[ -f "$folder" ] && return
+		cd "$folder" || exit
+		[ "$(find . -maxdepth 1 | cut -c 3- | wc -l)" = 1 ] && {
+			subfolder="$(ls)"
+			mv "./$subfolder"/* "./$subfolder"/.* .
+			rmdir "$subfolder"
+			cd ..
+		}
+		;;
+	*)
+		echo "Error: No match found" >&2
+		;;
+	esac
+	done
 }
 
 chr() {
@@ -126,7 +126,7 @@ isup() {
 }
 
 lb() {
-	lsblk -o NAME,FSTYPE,LABEL,FSUSED,FSAVAIL,FSSIZE,FSUSE%,MOUNTPOINT
+		  lsblk -o NAME,FSTYPE,LABEL,FSUSED,FSAVAIL,FSSIZE,FSUSE%,MOUNTPOINT
 }
 
 mkcd() {
@@ -136,44 +136,76 @@ mkcd() {
 
 mkt() {
 	dir="$(mktemp -d)"
-        echo "$dir"
+	echo "$dir"
 
-	[ -n "$1" ] && {
-		case "$1" in
-		https://github.com/*|git@github.com:*)
-			cd "$dir" || return
-			git clone "$1"
-			cd ./* || return
-			;;
-		https://*.tar*|https://*.zip)
-			cd "$dir" || return
-			cd ./* || return
-			curl -LO "$1"
-                        tar xaf ./*
-			;;
-                *.tar*|*.zip)
-                        mv "$1" "$dir"
-                        cd "$dir" || return
-                        echo "mkt: Unarchiving $(basename "$1")"
-                        tar xaf ./*
-                        ;;
-		*)
-		        if [ -d "$1" ] || [ -f "$1" ]; then
-                                mv "$1" "$dir"
-			        cd "$dir" || return
-                        else
-                                mv "$dir" "$dir-$1"
-                                cd "$dir-$1" || return
-                        fi
-			;;
-		esac
-
-                unset -v dir
+	# nothing passed
+	[ -z "$1" ] && {
+		cd "$dir" || return
+		unset -v dir
 		return
 	}
 
-	cd "$dir" || return
-        unset -v dir
+	case "$1" in
+	# git repository
+	*.git|https://github.com/*|git@github.com:*)
+		cd "$dir" || return
+		git clone "$1"
+		cd ./* || return
+
+		type exa >/dev/null 2>&1 && exa -al && return
+		ls -al
+		;;
+	# remote files
+	https://*)
+		cd "$dir" || return
+		curl -LO "$1"
+
+		case "$(echo ./*)" in
+			*.tar) tar xaf ./* ;;
+			*.zip) unzip ./* ;;
+			*) "mkt: Unsure what to do file filetype"
+		esac
+
+		# if one directory, cd into it
+		[ "$(find . -mindepth 1 -maxdepth 1 -type d | wc -l)" -eq 1 ] && {
+			cd ./* || return
+		}
+
+		type exa >/dev/null 2>&1 && exa -al && return
+		ls -al
+		;;
+	# github repository shorthand
+	*/*)
+		! curl -sSLIo /dev/null "https://github.com/$1" && return
+
+		cd "$dir" || return
+		git clone "https://github.com/$1"
+		cd ./* || return
+
+		type exa >/dev/null 2>&1 && exa -al && return
+		ls -al
+		;;
+	*)
+		if [ -d "$1" ] || [ -f "$1" ]; then
+			case "$1" in
+			*.tar*|*.zip)
+				mv "$1" "$dir"
+				cd "$dir" || return
+				echo "mkt: Unarchiving $(basename "$1")"
+				tar xaf ./*
+				;;
+			*)
+				echo "mkt: Unsure what to do file filetype"
+			;;
+			esac
+		else
+			mv "$dir" "$dir-$1"
+			cd "$dir-$1" || return
+		fi
+		;;
+	esac
+
+	unset -v dir
 }
 
 o() {
@@ -185,18 +217,18 @@ o() {
 }
 
 pdfgrep() {
-    find . -name '*.pdf' -exec sh -c '/usr/bin/pdftotext "{}" - | grep --with-filename --label="{}" --color '"$1" \;
+	find . -name '*.pdf' -exec sh -c '/usr/bin/pdftotext "{}" - | grep --with-filename --label="{}" --color '"$1" \;
 }
 
 put() {
-        case "$1" in
-        *.deb|*.rpm)
-                mv "$1" "$HOME/Docs/pkg/system-package/$(basename "$1")"
-                cd ~/Docs/pkg/systemd-package || return
-                ;;
-        *)
-                ;;
-        esac
+	case "$1" in
+	*.deb|*.rpm)
+		mv "$1" "$HOME/Docs/pkg/system-package/$(basename "$1")"
+		cd ~/Docs/pkg/systemd-package || return
+		;;
+	*)
+		;;
+	esac
 }
 
 qe() {
@@ -217,10 +249,9 @@ tre() {
 }
 
 unlink() {
-	case "$@" in
+	case "$*" in
 	--help|--version)
 		command unlink "$@"
-		echo donee
 		;;
 	esac
 
