@@ -37,6 +37,7 @@ let dotConfigFiles = [
   cfg & "chezmoi",
   cfg & "cliflix",
   cfg & "cookiecutter",
+  cfg & "cabal/config",
   cfg & "cmus/rc",
   cfg & "Code/User/keybindings.json",
   cfg & "Code/User/settings.json",

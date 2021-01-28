@@ -26,6 +26,11 @@ export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME/bundle"
 export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle"
 export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/bundle"
 
+# cabal
+export CABAL_CONFIG="$XDG_CONFIG_HOME/cabal/config"
+export CABAL_DIR="$XDG_DATA_HOME/cabal"
+path_prepend "$CABAL_DIR/bin"
+
 # ccache
 export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
 export CCACHE_CONFIGPATH="$XDG_CONFIG_HOME/ccache/config"
@@ -67,6 +72,10 @@ path_prepend "$GOPATH/bin"
 # gem
 export GEM_HOME="$XDG_DATA_HOME/gem"
 export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
+
+# ghcup (haskell)
+export GHCUP_USE_XDG_DIRS=" "
+[ -f "$XDG_DATA_HOME/ghcup/env" ] && source "$XDG_DATA_HOME/ghcup/env"
 
 # gitlib
 export GITLIBS="$XDG_DATA_HOME/gitlibs"
@@ -224,6 +233,11 @@ export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 
 # subversion
 export SUBVERSION_HOME="$XDG_CONFIG_HOME/subversion"
+
+# swift
+export SWIFTENV_ROOT="$XDG_DATA_HOME/swiftenv"
+#path_prepend "$SWIFTENV_ROOT/bin"
+#eval "$(swiftenv init -)"
 
 # task
 export TASKRC="$XDG_CONFIG_HOME/taskwarrior/taskrc"

@@ -45,6 +45,8 @@ do_bootstrap() {
 		i_go
 		i_php
 		i_perl
+                i_crystal
+                i_haskell
 		bootstrap_done
 	fi
 }

@@ -18,3 +18,4 @@ PERL_MM_OPT="INSTALL_BASE=/home/edwin/perl5"; export PERL_MM_OPT;
 
 
 complete -C /home/edwin/data/bm/bin/terraform terraform
+[ -f "/home/edwin/data/ghcup/env" ] && source "/home/edwin/data/ghcup/env" # ghcup-env

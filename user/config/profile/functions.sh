@@ -147,7 +147,7 @@ mkt() {
 
 	case "$1" in
 	# git repository
-	*.git|https://github.com/*|git@github.com:*)
+	*.git|https://github.com/*|git@github.com:*|https://gitlab.com/*|git@gitlab.com:*)
 		cd "$dir" || return
 		git clone "$1"
 		cd ./* || return

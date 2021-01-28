@@ -179,6 +179,11 @@ i_crystal() {
 	req https://raw.github.com/pine/crenv/master/install.sh | bash
 }
 
+i_haskell() {
+        log_info "Installing haskell"
+        req https://get-ghcup.haskell.org | sh
+}
+
 bootstrap_done() {
 	cat <<-EOF
 	Things Taken Care of:

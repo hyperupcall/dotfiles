@@ -1,0 +1,45 @@
+[[files]]
+name = ".clang-format"
+type = "formatter"
+tags = ["c", "cpp"]
+
+[[files]]
+name = ".clang-something"
+type = "linter"
+tags = ["c", "cpp"]
+
+[[files]]
+name = ".editorconfig"
+type = "passive"
+tags = ["all"]
+filetypes = [ "*" ]
+
+[[files]]
+name = ".eslintrc.json"
+type = "linter"
+tags = ["js", "ts"]
+filetypes = [".ts", ".js"]
+
+[[files]]
+name = ".gitattributes"
+type = "passive"
+tags = ["git"]
+
+[[files]]
+name = ".gitignore"
+type = "passive"
+tags = ["git"]
+
+[[files]]
+name = ".gitmessage"
+
+[[files]]
+name = ".mergify.yml"
+type = "passive"
+tags = ".prettier.json"
+
+[[files]]
+name = ".prettierrc.json"
+type = "formatter"
+tags = ["js", "ts", "java", "php", "elm"]
+filetypes = [ ".jsx", ".ts", ".json", ".vue", ".ng", ".less", ".scss", ".sass", ".graphql", ".md", ".yaml", ".yml", ".elm", ".java", ".php", ".pql", ".ruby", ".swift", ".toml", ".xml"]

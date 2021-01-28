@@ -285,5 +285,13 @@
       "allowed": true
     }
   ],
-  "files.autoSave": "afterDelay"
+  "files.autoSave": "afterDelay",
+  "[python]": {
+
+    "gitlens.codeLens.symbolScopes": [
+      "!Module"
+    ],
+    "editor.wordBasedSuggestions": false,
+    "editor.defaultFormatter": "ms-python.python"
+  }
 }
