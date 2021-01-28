@@ -1,4 +1,4 @@
 * text=auto eol=lf
 
 .github/** export-ignore
-user/config/npm/npmrc filter=npmrc-smudge
+user/config/npm/npmrc filter=npmrc-clean

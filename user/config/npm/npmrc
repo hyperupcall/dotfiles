@@ -9,4 +9,3 @@ message=release: v%s
 sign-git-commit=true
 sign-git-tag=true
 tag-version-prefix=v
-//registry.npmjs.org/:_authToken=f4860626-6ccb-41c9-aee5-eafd9bdf4359
