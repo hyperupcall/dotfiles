@@ -18,6 +18,13 @@ themes
 Nord
 Arcadia
 
+usage
+-----
+
+git clone https://github.com/eankeen/dots
+cd dots
+git config --local filter.npmrc-clean.clean "$(pwd)/user/config/npm/npmrc-clean.sh"
+
 credit
 ------
 
