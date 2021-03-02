@@ -18,6 +18,10 @@ export ATOM_HOME="$XDG_DATA_HOME/atom"
 export AWS_SHARED_CREDENTIALS_FILE="$XDG_DATA_HOME/aws/credentials"
 export AWS_CONFIG_FILE="$XDG_DATA_HOME/aws/config"
 
+# bash-completion
+export BASH_COMPLETION_USER_DIR="$XDG_CONFIG_HOME/bash"
+export BASH_COMPLETION_USER_FILE="$XDG_CONFIG_HOME/bash/bash_completion.sh"
+
 # boto
 export BOTO_CONFIG="$XDG_DATA_HOME/boto"
 

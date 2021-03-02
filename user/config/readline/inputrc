@@ -21,13 +21,6 @@ set skip-completed-text on
 set output-meta on
 set visible-stats on
 
-#"\e[A": history-search-backward
-#"\e[B": history-search-forward
-#"\e[C": forward-char
-#"\e[D": backward-char
-#"^[[1;2C": forward-word
-#"^[[1;2D": backward-word
-
 "\C-xr": re-read-init-file
 "\C-xp": previous-screen-line
 "\C-xn": next-screen-line
@@ -37,5 +30,5 @@ set visible-stats on
 "\C-xp": print-last-kbd-macro
 
 $if Bash
-        Space: magic-space
+	Space: magic-space
 $endif

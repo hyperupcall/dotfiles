@@ -27,7 +27,6 @@ source bashrc.sh
 	READLINE_LINE='sudo ls'
 	result="$(_readline_util_get_cmd)"
 
-	echo "$result" >&3
 	[[ $result == 'ls' ]]
 }
 
@@ -37,6 +36,29 @@ source bashrc.sh
 	READLINE_LINE=' sudo  ls'
 	result="$(_readline_util_get_cmd)"
 
-	echo "$result" >&3
+	[[ $result == 'ls' ]]
+}
+
+@test "_readline_util_get_cmd with quotes" {
+	local result
+
+	# '
+	READLINE_LINE="'ls'"
+	result="$(_readline_util_get_cmd)"
+
+	[[ $result == 'ls' ]]
+
+	# "
+	READLINE_LINE='"ls"'
+	result="$(_readline_util_get_cmd)"
+
+	[[ $result == 'ls' ]]
+}
+
+@test "_readline_util_get_cmd with prefixed backslash" {
+	local result
+
+	READLINE_LINE='\ls'
+	result="$(_readline_util_get_cmd)"
 	[[ $result == 'ls' ]]
 }

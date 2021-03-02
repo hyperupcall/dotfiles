@@ -16,8 +16,9 @@ PROMPT_DIRTRIM=5
 
 
 # ---------------------- Frameworks ---------------------- #
-#source "$XDG_CONFIG_HOME/bash/oh-my-bash.sh"
-#source "$XDG_CONFIG_HOME/bash/bash-it.sh"
+#source "$XDG_CONFIG_HOME/bash/frameworks/oh-my-bash.sh"
+#source "$XDG_CONFIG_HOME/bash/frameworks/bash-it.sh"
+
 
 # --------------------- Shell Options -------------------- #
 # shopt
@@ -67,7 +68,7 @@ if 24BitColor; then
 	if test "$EUID" = 0; then
 		PS1="\[\e[38;2;201;42;42m\][\u@\h \w]\[\e[0m\]\$ "
 	else
-		source ~/repos/fox-default/fox-default.sh launch bash-prompt \
+		source "$(type -P fox-default)" launch bash-prompt \
 			|| PS1="[PS1 Error: \u@\h \w]\$ "
 	fi
 elif 8BitColor; then
@@ -84,23 +85,6 @@ unset -f 8BitColor
 unset -f 24BitColor
 
 
-# ---------------------- Completions --------------------- #
-# system
-[ -r /usr/share/bash-completion/bash_completion ] && source /usr/share/bash-completion/bash_completion
-
-# asdf
-source "$XDG_DATA_HOME/asdf/completions/asdf.bash"
-
-# dot.sh
-source "$HOME/scripts/dot/completion/dot.bash"
-
-# shell-installer
-for file in "$XDG_DATA_HOME/shell-installer/completions/"*.{sh,bash}; do
-	if [ -r "$file" ]; then
-		source "$file"
-	fi
-done
-
 # --------------------- Miscellaneous -------------------- #
 # dircolors
 [ -r "$XDG_CONFIG_HOME/dircolors/dir_colors" ] && eval "$(dircolors --sh "$XDG_CONFIG_HOME/dircolors/dir_colors")"
@@ -113,10 +97,9 @@ eval "$(direnv hook bash)"
 SDIRS="$XDG_DATA_HOME/bashmarks.sh.db"
 source ~/.local/bin/bashmarks.sh
 
-# nvidia-settings
-#if command -v nvidia-settings > /dev/null 2>&1; then
-#    nvidia-settings --load-config-only &
-#fi
+# system completion
+[ -r /usr/share/bash-completion/bash_completion ] && source /usr/share/bash-completion/bash_completion
+
 
 # ----------------------- Readline ----------------------- #
 _readline_util_get_cmd() {
@@ -132,10 +115,12 @@ _readline_util_get_cmd() {
 		cmd="${line/\ */}"
 	fi
 
-	# TODO: fix
-	cmd="${cmd/\/}"
+	cmd="${cmd/\\/}"
+	cmd="${cmd/\'/}"
 	cmd="${cmd/\'/}"
 	cmd="${cmd/\"/}"
+	cmd="${cmd/\"/}"
+
 	printf "%s" "$cmd"
 }
 

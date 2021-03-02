@@ -2,7 +2,7 @@
 
 killall -q polybar
 # while pgrep -x polybar >/dev/null; do sleep 1; done
-echo foo
+
 bar="main"
 if type "xrandr" >/dev/null 2>&1; then
 	for m in $(xrandr --query | grep ' connected ' | cut -d' ' -f1); do
