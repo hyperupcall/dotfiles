@@ -1,5 +1,6 @@
 [pager]
 pager = less -FX
+
 [user]
 name = Edwin Kofler
 email = edwin@kofler.dev

@@ -67,7 +67,10 @@
   },
   "files.simpleDialog.enable": true,
   "files.watcherExclude": {
-    "**/bower_components/**": true
+    "**/bower_components/**": true,
+    "**/.bloop": true,
+    "**/.metals": true,
+    "**/.ammonite": true
   },
   "git.alwaysShowStagedChangesResourceGroup": true,
   "git.defaultCloneDirectory": "$HOME/git",
@@ -255,7 +258,6 @@
   "workbench.tips.enabled": false,
   "workbench.tree.indent": 12,
   "screencastMode.onlyKeyboardShortcuts": true,
-  "window.zoomLevel": 0,
   "search.searchOnTypeDebouncePeriod": 200,
   "eslint.alwaysShowStatus": true,
   "stylelint.packageManager": "pnpm",
@@ -293,5 +295,7 @@
     ],
     "editor.wordBasedSuggestions": false,
     "editor.defaultFormatter": "ms-python.python"
-  }
+  },
+  "editor.formatOnSave": true,
+  "window.zoomLevel": 1
 }

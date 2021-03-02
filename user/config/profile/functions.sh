@@ -9,7 +9,7 @@ cdls() {
 	ls -al
 }
 
-cl() {
+archive-list() {
 	case "$1" in
 	*.zip)
 				unzip -l "$1"
@@ -20,7 +20,7 @@ cl() {
 	esac
 }
 
-cx() {
+archive-uncompress() {
 	for arg; do
 	case "$arg" in
 	*.zip)
@@ -121,6 +121,22 @@ dg() {
 	dig +nocmd "$1" any +multiline +noall +answer
 }
 
+fcliflix() (
+		  mkcd "$HOME/repos/fox-night/local/dl"
+		  if [ "$(ls . | wc -l)" -ne 0 ]; then
+					 echo "fcliflix: $HOME/repos/fox-night/local/dl not empty. Exiting"
+					 exit 1
+		  fi
+
+		  cliflix --torrentProvider 1337x --moviePlayer None --subtitleLanguage English --saveMedia --downloadDir "$HOME/repos/fox-night/local/dl" \
+					 || { echo "fcliflix: Exited early. Exiting"; exit 1; }
+		  mv **/*.{mp4,mkv} ../movie2.mp4
+		  ffmpeg -i **/*.srt ../captions2.vtt
+
+		  # todo: info.toml, no moviePlayera
+		  # ensure movie playable in browser (no dolby 5.1ss / mpeg4 encoding)
+)
+
 isup() {
 	curl -sS --head --X GET "$1" | grep "200 OK" >/dev/null
 }
@@ -134,9 +150,17 @@ mkcd() {
 	cd -- "$@" || return
 }
 
+# TODO: do
+_mkt_log() {
+	echo "$dir"
+	echo "$(date '+%b %d - %I:%M:%S') | $dir | $1" >> "$HOME/.history/mkt_history"
+}
+_mkt_ls() {
+	type exa >/dev/null 2>&1 && exa -al && return
+	ls -al
+}
 mkt() {
 	dir="$(mktemp -d)"
-	echo "$dir"
 
 	# nothing passed
 	[ -z "$1" ] && {
@@ -146,6 +170,25 @@ mkt() {
 	}
 
 	case "$1" in
+	# TODO: code duplication of 'remote files'
+	*.zip)
+		cd "$dir" || return
+		curl -LO "$1"
+
+		case "$(echo ./*)" in
+			*.tar) tar xaf ./* ;;
+			*.zip) unzip ./* ;;
+			*) "mkt: Unsure what to do file filetype"
+		esac
+
+		# if one directory, cd into it
+		[ "$(find . -mindepth 1 -maxdepth 1 -type d | wc -l)" -eq 1 ] && {
+			cd ./* || return
+		}
+
+		type exa >/dev/null 2>&1 && exa -al && return
+		ls -al
+		;;
 	# git repository
 	*.git|https://github.com/*|git@github.com:*|https://gitlab.com/*|git@gitlab.com:*)
 		cd "$dir" || return
@@ -187,16 +230,37 @@ mkt() {
 		;;
 	*)
 		if [ -d "$1" ] || [ -f "$1" ]; then
-			case "$1" in
-			*.tar*|*.zip)
+		  case "$1" in
+		*.tar*)
 				mv "$1" "$dir"
 				cd "$dir" || return
+
 				echo "mkt: Unarchiving $(basename "$1")"
 				tar xaf ./*
+				cd ./*/ || return
+
+
+				type exa >/dev/null 2>&1 && exa -al && return
+				ls -al
+				;;
+		  *.zip)
+				mv "$1" "$dir"
+				cd "$dir" || return
+
+				echo "mkt: Unarchiving $(basename "$1")"
+				unzip ./*
+				cd ./*/ || return
+
+				type exa >/dev/null 2>&1 && exa -al && return
+				ls -al
 				;;
 			*)
-				echo "mkt: Unsure what to do file filetype"
-			;;
+				cp "$1" "$dir"
+				cd "$dir" || return
+
+				type exa >/dev/null 2>&1 && exa -al && return
+				ls -al
+				;;
 			esac
 		else
 			mv "$dir" "$dir-$1"
@@ -237,8 +301,19 @@ qe() {
 }
 
 serv() {
-	[ -d "${1:-.}" ] || { echo "Error: dir '$1' doesn't exist"; return 1; }
+	[ -d "${1:-.}" ] || { echo "serv: Error: dir '$1' doesn't exist"; return 1; }
 	python3 -m http.server --directory "${1:-.}" "${2:-4000}"
+}
+
+t() {
+		  for file; do
+					 mkdir -p "$(dirname "$file")"
+					 touch "$file"
+		  done
+}
+
+vtraceroute() {
+  xdg-open "https://stefansundin.github.io/traceroute-mapper/?trace=$('traceroute' -q1 $* | sed ':a;N;$!ba;s/\n/%0A/g')"
 }
 
 tre() {
@@ -264,6 +339,7 @@ v() {
 	if [ $# -eq 0 ]; then
 		vim .
 	else
-		vim "$@"
+      mkdir -p "$(dirname $1)"
+		vim "$1"
 	fi
 }

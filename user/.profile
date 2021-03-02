@@ -5,7 +5,7 @@
 
 # ----------------------- Functions ---------------------- #
 path_prepend() {
-	[ -d "$1" ] || return
+	# [ -d "$1" ] || return
 
 	# generalized path_prepend
 	[ -n "$2" ] && {
@@ -23,7 +23,7 @@ path_prepend() {
 }
 
 path_append() {
-	[ -d "$1" ] || return
+	# [ -d "$1" ] || return
 
 	# generalized path_append
 	[ -n "$2" ] && {

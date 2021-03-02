@@ -13,11 +13,17 @@ super + o
 super + i
 	rofi -show combi -combi-modi window -show-icons
 
+super + u
+	themer --gui
+
 Print
 	maim | xclip -t image/png -selection clipboard
 
 shift + Print
 	maim -s | xclip -t image/png -selection clipboard
+
+shift + super + Print
+	maim -s ~/Pics/screenshot.png
 
 #XF86Audio{Mute,RaiseVolume,LowerVolume}
 #    amixer -q set Master {toggle,5%+,5%-}

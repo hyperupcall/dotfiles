@@ -1,15 +1,10 @@
 {
-        "activeLanguage": "English",
-        "downloadSave": true,
-	"downloadPath": "/home/edwin/Dls",
-        "torrents": {
-                "seeders": true,
-                "leechers": true,
-                "size": true,
-                "time": true
-        },
-        "subtitles": {
-                "limit": 20,
-                "showDownloads": true
-        }
+	"torrentProvider": "1337x",
+	"moviePlayer": "VLC",
+	"subtitleLanguage": "English",
+	"saveMedia": true,
+	"skipNoSubtitles": true,
+	"torrentListLength": 30,
+	"downloadDir": "~/Dls/movies",
+	"webtorrentOptions": ["--no-quit"]
 }

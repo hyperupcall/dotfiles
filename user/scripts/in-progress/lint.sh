@@ -3,13 +3,17 @@
 check() {
 	script='file'
 
+	eslint
 	editorconfig-checker
 	bash -n "$script"
+	fish -n  "$script"
+	zsh -n "$script"
 
 	ansible-playbook --syntax-check
 	vagrant validate ./**/Vagrantfile
 	crystal tool format --check
-        nimble check
+	nimble check
+	rustfmt
 }
 
 format() {

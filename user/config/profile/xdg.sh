@@ -22,9 +22,9 @@ export AWS_CONFIG_FILE="$XDG_DATA_HOME/aws/config"
 export BOTO_CONFIG="$XDG_DATA_HOME/boto"
 
 # bundle
-export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME/bundle"
-export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle"
-export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/bundle"
+# export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME/bundle"
+# export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle"
+# export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/bundle"
 
 # cabal
 export CABAL_CONFIG="$XDG_CONFIG_HOME/cabal/config"
@@ -70,12 +70,14 @@ export GOPATH="$XDG_DATA_HOME/go-path"
 path_prepend "$GOPATH/bin"
 
 # gem
-export GEM_HOME="$XDG_DATA_HOME/gem"
+export GEM_HOME="$XDG_DATA_HOME/gem" # conflicts with rvm
 export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
+path_prepend "$GEM_HOME/bin"
+path_prepend "$HOME/.gem/ruby/2.7.0/bin"
 
 # ghcup (haskell)
 export GHCUP_USE_XDG_DIRS=" "
-[ -f "$XDG_DATA_HOME/ghcup/env" ] && source "$XDG_DATA_HOME/ghcup/env"
+[ -f "$XDG_DATA_HOME/ghcup/env" ] && . "$XDG_DATA_HOME/ghcup/env"
 
 # gitlib
 export GITLIBS="$XDG_DATA_HOME/gitlibs"
@@ -97,7 +99,7 @@ export IMAPFILTER_HOME="$XDG_CONFIG_HOME/imapfilter"
 alias info='info --init-file $XDG_CONFIG_HOME/info/infokey'
 
 # ipython
-export IPYTHONDIR="$XDG_CONFIG_HOME"/jupyter
+export IPYTHONDIR="$XDG_CONFIG_HOME/jupyter"
 
 # irssi
 alias irssi='irssi --config "$XDG_CONFIG_HOME/irssi" --home "$XDG_CONFIG_HOME/irssi"'
@@ -167,11 +169,14 @@ export PACKER_CONFIG_DIR="$XDG_DATA_HOME/packer/packer.d"
 export CHECKPOINT_DISABLE=1
 
 # perl
-PATH="$HOME/perl5/bin${PATH:+:${PATH}}"
-export PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"
-export PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"
-export PERL_MB_OPT="--install_base \"$HOME/perl5\""
-export PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"
+export PERL_LOCAL_LIB_ROOT="$HOME/perl5"
+# path_prepend PERL_LOCAL_LIB_ROOT "$HOME/perl5"
+path_prepend "$PERL_LOCAL_LIB_ROOT/bin"
+path_prepend PERL5LIB "$PERL_LOCAL_LIB_ROOT/lib/perl5"
+# export PERL_MB_OPT="--install_base \"$HOME/perl5\""
+# export PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"
+export PERL_MB_OPT="--install_base \"$PERL_LOCAL_LIB_ROOT\""
+export PERL_MM_OPT="INSTALL_BASE=\"$PERL_LOCAL_LIB_ROOT\""
 
 # phpbrew
 path_prepend "$XDG_DATA_HOME/phpenv/bin"
@@ -209,10 +214,10 @@ path_prepend "$CARGO_HOME/bin"
 
 # rvm
 path_prepend "$XDG_DATA_HOME/rvm/bin"
-path_prepend "$XDG_DATA_HOME/gem/bin"
 [ -r "$XDG_DATA_HOME/rvm/scripts/rvm" ] && . "$XDG_DATA_HOME/rvm/scripts/rvm"
 
 # sccache
+export SCCACHE_CACHE_SIZE="100G"
 export SCCACHE_DIR="$XDG_CACHE_HOME/sccache"
 
 # screen
@@ -283,12 +288,12 @@ export WINEPREFIX="$XDG_DATA_HOME/wine"
 export MATHEMATICA_BASE="/usr/share/mathematica"
 export MATHEMATICA_USERBASE="$XDG_DATA_HOME/mathematica"
 
-# x11
+# X11
 export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 
 # yarn
-path_prepend "$XDG_DATA_HOME/yarn/bin"
 export YARN_CACHE_FOLDER="$XDG_CACHE_HOME/yarn"
+path_prepend "$XDG_DATA_HOME/yarn/bin"
 
 # z
 export _Z_DATA="$XDG_DATA_HOME/z"

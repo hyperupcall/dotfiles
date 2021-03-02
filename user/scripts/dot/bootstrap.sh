@@ -63,6 +63,7 @@ i_rust() {
 	cargo install starship
 	cargo install git-delta
 	cargo install paru
+        cargo install navi
 	rustup default nightly
 }
 
@@ -71,12 +72,12 @@ i_node() {
 	log_info "Installing n"
 	req https://raw.githubusercontent.com/mklement0/n-install/stable/bin/n-install | bash
 	npm i -g yarn
-	npm i -g pnpm
-	pnpm i -g diff-so-fancy
-	pnpm i -g @eankeen/cliflix
-        pnpm i -g npm-check-updates
-        pnpm i -g graphqurl
-	pnpm install -g nb.sh
+	yarn global add pnpm
+	yarn global add diff-so-fancy
+	yarn global add @eankeen/cliflix
+        yarn global add npm-check-updates
+        yarn global add graphqurl
+	yarn global add nb.sh
 	yarn config set prefix "$XDG_DATA_HOME/yarn"
 }
 
@@ -139,7 +140,7 @@ i_bash() {
 	git clone "https://github.com/magicmonty/bash-git-prompt" "$XDG_DATA_HOME/bash-git-prompt"
 
 	log_info "Installing bookmarks.sh"
-	git clone "https://github.com/huyng/bashmarks"
+	git clone "https://github.com/huyng/bashmarks" "$XDG_DATA_HOME/bashmarks"
 }
 
 # todo: remove prompt

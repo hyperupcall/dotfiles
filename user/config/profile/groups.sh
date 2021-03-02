@@ -56,6 +56,9 @@ export NNN_DE_FILE_MANAGER="nautilus"
 # ps
 export CMD_ENV="linux"
 
+# ranger
+export RANGER_LOAD_DEFAULT_RC="FALSE"
+
 # qt
 [ "$XDG_CURRENT_DESKTOP" = "KDE" ] || [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] \
 	|| export QT_QPA_PLATFORMTHEME="qt5ct"

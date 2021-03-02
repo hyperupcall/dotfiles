@@ -74,13 +74,13 @@ function pre-check() {
 	ensure zip # sdkman
 	ensure make # g
 	ensure pkg-config # starship
-        # todo: the following are packages not binaries. make binaries or do ensurePkg
-        ensure curl # ghcup
-        ensure g++ # ghcup
-        ensure gcc # ghcup
-        ensure gmp # ghcup
-        ensure make # ghcup
-        ensure ncurses # ghcup
-        ensure realpath # ghcup
-        ensure xz-utils # ghcup
+	# todo: the following are packages not binaries. make binaries or do ensurePkg
+	#ensure curl # ghcup
+	#ensure g++ # ghcup
+	ensure gcc # ghcup
+	#ensure gmp # ghcup
+	ensure make # ghcup
+	#ensure ncurses # ghcup
+	ensure realpath # ghcup
+	#ensure xz-utils # ghcup
 }

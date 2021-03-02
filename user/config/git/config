@@ -16,7 +16,20 @@
 	untracked = status -u .
 	untracked-at = status -u
 	assume-unchanged = update-index --assume-unchanged
+	a = add
+	b = branch
+	c = commit
+	d = diff
+	dc = diff --cached
+	co = checkout
+	cm = commit -m
+	f = fetch
+	h = help
+	p = pull
 	s = status
+	st = stash
+	stp = stash pop
+	sm = submodule
 	lgs = log --oneline --decorate --no-merges --max-count=20
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %C(dim white)(%an)%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 	lg2 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all

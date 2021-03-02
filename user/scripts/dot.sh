@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 
-set -uo pipefail
+set -Eo pipefail
 
 declare -r DIR="$HOME/.dots/user/scripts"
-
-
 
 # --------------------- pre-bootstrap -------------------- #
 do_pre-bootstrap() {
@@ -45,8 +43,8 @@ do_bootstrap() {
 		i_go
 		i_php
 		i_perl
-                i_crystal
-                i_haskell
+		i_crystal
+		i_haskell
 		bootstrap_done
 	fi
 }

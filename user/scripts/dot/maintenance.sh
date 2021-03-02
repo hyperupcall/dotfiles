@@ -5,14 +5,29 @@ if ! [ "$(curl -LsSo- https://edwin.dev)" = "Hello World" ]; then
 fi
 
 # shellcheck disable=SC2088
+dot_rm() {
+	rm ~/"$1" && echo "~/$1 removed"
+}
+
+dot_check() {
+	# shellcheck disable=SC2088
+	test -e ~/"$1" && echo "~/$1 exists?"
+}
+
+
 {
-	rm ~/.zlogin && echo '~/.zlogin removed'
-	rm ~/.zshrc && echo '~/.zshrc removed'
-	rm ~/.zprofile && echo '~/.zprofile removed'
-	rm ~/.mkshrc && echo '~/.mkshrc removed'
+	dot_rm .zlogin
+	dot_rm .zshrc
+	dot_rm .zprofile
+	dot_rm .mkshrc
+	dot_rm .bash_history
+
+	dot_check .gnupg
+	dot_check .pulse-cookie
+	dot_check .scala_history_jline3
 } 2>/dev/null
 
-# directories existance as a prerequisite for usage
+# directories existence as a prerequisite for usage
 (
 	m() {
 		[ -d "$1" ] || {
@@ -23,5 +38,6 @@ fi
 
 	m "$XDG_DATA_HOME/maven"
 	m "$XDG_DATA_HOME"/vim/{undo,swap,backup}
-        m "$XDG_DATA_HOME"/nano/backups
+	m "$XDG_DATA_HOME"/nano/backups
+	m "$XDG_DATA_HOME/zsh"
 )

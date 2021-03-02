@@ -6,12 +6,18 @@ HISTCONTROL="ignorespace:ignoredups"
 HISTFILE="$HOME/.history/bash_history"
 HISTSIZE=32768
 HISTFILESIZE="$HISTSIZE"
+# non-numeric means no truncation
+#HISTFILESIZE="_"
 HISTIGNORE="ls:[bf]g:pwd:clear*:exit*"
 HISTTIMEFORMAT="%B %m %Y %T | "
 HISTTIMEFORMAT='%F %T ' # ISO 8601
 unset MAILCHECK
 PROMPT_DIRTRIM=5
 
+
+# ---------------------- Frameworks ---------------------- #
+#source "$XDG_CONFIG_HOME/bash/oh-my-bash.sh"
+#source "$XDG_CONFIG_HOME/bash/bash-it.sh"
 
 # --------------------- Shell Options -------------------- #
 # shopt
@@ -85,33 +91,61 @@ unset -f 24BitColor
 # asdf
 source "$XDG_DATA_HOME/asdf/completions/asdf.bash"
 
+# dot.sh
+source "$HOME/scripts/dot/completion/dot.bash"
+
 # shell-installer
 for file in "$XDG_DATA_HOME/shell-installer/completions/"*.{sh,bash}; do
 	if [ -r "$file" ]; then
-	        source "$file"
-        fi
+		source "$file"
+	fi
 done
 
 # --------------------- Miscellaneous -------------------- #
-# bash-it
-export BASH_IT="$XDG_DATA_HOME/bash-it"
-export BASH_IT_THEME="powerline-multiline"
-export GIT_HOSTING='git@github.com'
-export IRC_CLIENT='irssi'
-export SCM_CHECK=true
-# shellcheck source=/dev/null
-false && [ -r "$BASH_IT/bash_it.sh" ] && source "$BASH_IT/bash_it.sh"
-
 # dircolors
 [ -r "$XDG_CONFIG_HOME/dircolors/dir_colors" ] && eval "$(dircolors --sh "$XDG_CONFIG_HOME/dircolors/dir_colors")"
+
+# direnv
+eval "$(direnv hook bash)"
 
 # bashmarks
 # shellcheck disable=SC2034
 SDIRS="$XDG_DATA_HOME/bashmarks.sh.db"
 source ~/.local/bin/bashmarks.sh
 
+# nvidia-settings
+#if command -v nvidia-settings > /dev/null 2>&1; then
+#    nvidia-settings --load-config-only &
+#fi
 
 # ----------------------- Readline ----------------------- #
+_readline_util_get_cmd() {
+	local line cmd
+
+	line="$READLINE_LINE"
+	line="$(_readline_util_trim_whitespace "$line")"
+	cmd="${line/\ */}"
+
+	if [[ $cmd == 'sudo' ]]; then
+		line="${line/sudo/}"
+		line="$(_readline_util_trim_whitespace "$line")"
+		cmd="${line/\ */}"
+	fi
+
+	# TODO: fix
+	cmd="${cmd/\/}"
+	cmd="${cmd/\'/}"
+	cmd="${cmd/\"/}"
+	printf "%s" "$cmd"
+}
+
+_readline_util_trim_whitespace() {
+	sed \
+		-e 's/^[[:space:]]*//' \
+		-e 's/[[:space:]]*$//' \
+		<<< "$1"
+}
+
 _readline-x-discard() {
 	echo -n "${READLINE_LINE:0:$READLINE_POINT}" | xclip -selection clipboard
 	READLINE_LINE="${READLINE_LINE:$READLINE_POINT}"
@@ -124,39 +158,69 @@ _readline-x-kill() {
 }
 
 _readline-x-yank() {
-	READLINE_LINE="${READLINE_LINE:0:$READLINE_POINT}$(xclip -o)${READLINE_LINE:$READLINE_POINT}"
+	READLINE_LINE="${READLINE_LINE:0:$READLINE_POINT}$(xclip -selection clipboard -o)${READLINE_LINE:$READLINE_POINT}"
 }
 
+_readline-x-paste() {
+	READLINE_LINE="$(printf "%s" "$(xclip -selection clipboard -o &>/dev/null)")"
+}
+
+
 _readline-show-help() {
-	_cmd="${READLINE_LINE/\ */}"
-	if [[ $(type -t "$_cmd") = 'builtin' ]]; then
-		help "$_cmd"
-	elif command -v "$_cmd" >/dev/null 2>&1; then
-		"$_cmd" --help || "$_cmd" -h
+	local cmd
+	cmd="$(_readline_util_get_cmd)"
+	if [[ $(type -t "$cmd") = 'builtin' ]]; then
+		help "$cmd"
+	elif command -v "$cmd" &>/dev/null; then
+		"$cmd" --help || "$cmd" -h
+	else
+		# TODO: sleep doesn't work as expected
+		# local -r old_readline_line="$READLINE_LINE"
+		# READLINE_LINE="Not found: '$cmd'"
+		# sleep 0.5
+		# READLINE_LINE="$old_readline_line"
+		:
 	fi
-	unset -v _cmd
 }
 
 _readline-show-man() {
-	_cmd="${READLINE_LINE/\ */}"
-	if command -v "$_cmd" >/dev/null 2>&1; then
-		man "$_cmd"
+	local cmd
+	cmd="$(_readline_util_get_cmd)"
+	if command -v "$cmd" &>/dev/null; then
+		man "$cmd"
+	else
+		# TODO: sleep doesn't work as expected
+		# local -r old_readline_line="$READLINE_LINE"
+		# READLINE_LINE="Not found: '$cmd'"
+		# sleep 0.5
+		# READLINE_LINE="$old_readline_line"
+		:
 	fi
-	unset -v _cmd
+}
+
+_readline-toggle-sudo() {
+	if [[ ${READLINE_LINE:0:4} == 'sudo' ]]; then
+		READLINE_LINE="${READLINE_LINE:5}"
+	elif [[ ${READLINE_LINE:0:5} == ' sudo' ]]; then
+		READLINE_LINE=" ${READLINE_LINE:6}"
+	elif [[ ${READLINE_LINE:0:1} == ' ' ]]; then
+		READLINE_LINE=" sudo$READLINE_LINE"
+	else
+		READLINE_LINE="sudo $READLINE_LINE"
+	fi
 }
 
 _readline-trim-whitespace() {
 	READLINE_LINE="$(
-		sed \
-			-e 's/^[[:space:]]*//' \
-			-e 's/[[:space:]]*$//' \
-			<<< "$READLINE_LINE"
+		_readline_util_trim_whitespace "$READLINE_LINE"
 	)"
 }
 
 bind -x '"\eu": _readline-x-discard'
 bind -x '"\ek": _readline-x-kill'
 bind -x '"\ey": _readline-x-yank'
+bind -x '"\eo": _readline-x-paste'
 bind -x '"\eh": _readline-show-help'
 bind -x '"\em": _readline-show-man'
+bind -x '"\es": _readline-toggle-sudo'
 bind -x '"\ei": _readline-trim-whitespace'
