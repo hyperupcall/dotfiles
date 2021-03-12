@@ -287,6 +287,11 @@ mkt() {
 	unset -v dir
 }
 
+np() {
+	mkdir -p "$HOME/repos/$1"
+	code "$1"
+}
+
 o() {
 	if [ $# -eq 0 ]; then
 		xdg-open .

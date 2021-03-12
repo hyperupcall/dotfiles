@@ -54,12 +54,13 @@
 	# show the last tag
 	lt = describe --tags --abbrev=0
 
+	conflict-ls = diff --name-only --diff-filter=U
 	## purpose
 	# list branches sorted by last modified
 	b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
 
 	# list aliases
-	la = "!git config -l | grep alias | cut -c 7-"
+	alias-ls = "!git config -l | grep alias | cut -c 7-"
 [blame]
 	coloring = highlightRecent
 	date = relative
