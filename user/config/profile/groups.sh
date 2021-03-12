@@ -24,7 +24,6 @@ export SSH_AUTH_SOCK
 # hstr
 export HSTR_CONFIG=hicolor
 
-<<<<<<< Updated upstream
 # less
 # adding X breaks mouse scrolling of pages
 export LESS="-FIRQ"
@@ -72,5 +71,3 @@ export XCURSOR_PATH="$XDG_CONFIG_HOME/icons:$XCURSOR_PATH"
 
 # zfs
 export ZFS_COLOR=
-=======
->>>>>>> Stashed changes
