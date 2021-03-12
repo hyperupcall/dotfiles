@@ -2,7 +2,7 @@
 dotfiles
 ========
 
-My dotfiles maintained with eankeen/dotty
+My dotfiles maintained with https://github.com/eankeen/dotty
 
 dotfiles
 ========
@@ -30,7 +30,7 @@ git config --local filter.npmrc-clean.clean "$(pwd)/user/config/npm/npmrc-clean.
 auxiliary utils
 -----
 
-https://github.com/eankeen/dot
+https://github.com/eankeen/dots-bootstrap
 https://github.com/eankeen/dotty
 https://github.com/eankeen/themer
 https://github.com/eankeen/fox-default

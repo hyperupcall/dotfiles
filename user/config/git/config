@@ -17,7 +17,8 @@
 	untracked-at = status -u
 	assume-unchanged = update-index --assume-unchanged
 	append-tracked = "!f() { git add . && git commit -a --amend --no-edit; }; f"
-	a = add
+	a = add -v
+	aa = add . -v
 	b = branch
 	c = commit --verbose
 	ca = commit -a --verbose
