@@ -42,6 +42,18 @@ let dotConfigFiles = [
   cfg & "cliflix",
   cfg & "conky",
   cfg & "cookiecutter",
+  cfg & "cabal/config",
+  home & ".cliflix.json",
+  home & ".profile",
+  home & ".yarnrc",
+  cfg & "alacritty",
+  cfg & "awesome",
+  cfg & "bash",
+  cfg & "bat",
+  cfg & "broot",
+  cfg & "calcuse",
+  cfg & "cava",
+  cfg & "chezmoi",
   cfg & "cmus/rc",
   cfg & "Code/User/keybindings.json",
   cfg & "Code/User/settings.json",
@@ -113,8 +125,8 @@ let dotConfigFiles = [
   data & "applications/Calcurse.desktop",
   data & "applications/Nemo.desktop",
   data & "applications/Obsidian.desktop",
-  data & "applications/Zettlr.desktop",
-  data & "sdkman/etc/config"
+  data & "sdkman/etc/config",
+  data & "applications/Zettlr.desktop"
 ]
 
 for i, str in dotConfigFiles:

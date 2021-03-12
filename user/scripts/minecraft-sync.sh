@@ -40,7 +40,10 @@ for mcFolder in "${folders[@]}"; do
 		mkdir -p "$base/$folder"
 
 		if [ -d "$mcFolder/$folder" ] && [ ! -L "$mcFolder/$folder" ]; then
+<<<<<<< Updated upstream
 			echo "Subfolder: $mcFolder/$folder"
+=======
+>>>>>>> Stashed changes
 			for file in "$mcFolder/$folder"/*; do
 				cp -r "$file" "$base/$folder"
 				echo "$file: COPY AND REMOVE ORIGINAL"

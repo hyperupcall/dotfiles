@@ -34,7 +34,7 @@
 	f = fetch
 	h = help
 	p = pull
-	s = status -s
+	s = status
 
 	# stash
 	st = stash
