@@ -1,10 +1,20 @@
 # shellcheck shell=sh
 
 # overwrides
+alias less='most'
 alias du='dust'
 alias lsblk='duf'
 alias ping='mtr'
 alias traceroute='mtr'
+alias man='tldr'
+alias httpie='curl'
+alias fd='find'
+alias ps='procs'
+#alias top='htop'
+alias top='ytop'
+alias sed='sd'
+#alias grep='rg'
+# tealdeer, tldr, bandwhich, grex, rmesg, zoxide, ytop, hyperfine, tokei
 
 # general
 alias cd-='cd -'
@@ -41,7 +51,6 @@ alias yay='yay --color=auto'
 alias b='bukdu --suggest'
 alias copy='xclip -selection clipboard'
 alias ded='vim ~/config/dotty'
-alias g='git'
 alias kssh='kitty +kitten ssh'
 alias la='exa -a'
 alias ll='exa -al --icons'
@@ -73,10 +82,13 @@ alias sue='systemctl --user edit --full'
 
 # journalctl
 alias ju='journalctl --system -b -u'
+alias ju2='journalctl --system -b -u -e -p err'
 alias juu='journalctl --user -b -u'
 
 # git
+alias g='git'
 alias gclone='git clone'
 alias gpull='git pull --all'
 alias gpush='git push'
 alias gstatus='git status'
+alias gcommit='git commit'

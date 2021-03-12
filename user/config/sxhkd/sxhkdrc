@@ -14,7 +14,7 @@ super + i
 	rofi -show combi -combi-modi window -show-icons
 
 super + u
-	themer --gui
+	/home/edwin/data/nimble/bin/themer --gui
 
 super + c
 	rofi -show calc -modi calc -no-show-match -no-sort

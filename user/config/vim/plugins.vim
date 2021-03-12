@@ -33,6 +33,7 @@ call plug#begin('~/data/vim/vim-plug-plugins')
 	let g:NERDTrimTrailingWhitespace = 0
 	let g:NERDToggleCheckAllLines = 1
 	Plug 'preservim/nerdcommenter'
+	map <C-_> :NERDCommenterToggle<CR>
 	Plug 'preservim/tagbar'
 
 	" VIM SENSIBLE

@@ -62,3 +62,11 @@ source bashrc.sh
 	result="$(_readline_util_get_cmd)"
 	[[ $result == 'ls' ]]
 }
+
+@test "_readline_util_get_cmd with hyphen fallback" {
+	local result
+
+	READLINE_LINE='qemu-system-x86_64 '
+	result="$(_readline_util_get_cmd)"
+	[[ $result == 'qemu' ]]
+}

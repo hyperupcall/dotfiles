@@ -16,23 +16,49 @@
 	untracked = status -u .
 	untracked-at = status -u
 	assume-unchanged = update-index --assume-unchanged
+	append-tracked = "!f() { git add . && git commit -a --amend --no-edit; }; f"
 	a = add
 	b = branch
-	c = commit
+	c = commit --verbose
+	ca = commit -a --verbose
+	cm = commit -m
+	cam = commit -a -m
+	cad = commit --amend --verbose
 	d = diff
+	ds = diff --stat
 	dc = diff --cached
 	co = checkout
+	cob = checkout -b
 	cm = commit -m
 	f = fetch
 	h = help
 	p = pull
-	s = status
+	s = status -s
+
+	# stash
 	st = stash
+	stl = stash list
+	sts = stash save
+	std = stash drop
 	stp = stash pop
+	sta = stash apply
+
 	sm = submodule
 	lgs = log --oneline --decorate --no-merges --max-count=20
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %C(dim white)(%an)%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 	lg2 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+	lg3 = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+
+	# TODO: cleanup
+	# show the last tag
+	lt = describe --tags --abbrev=0
+
+	## purpose
+	# list branches sorted by last modified
+	b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
+
+	# list aliases
+	la = "!git config -l | grep alias | cut -c 7-"
 [blame]
 	coloring = highlightRecent
 	date = relative

@@ -1,3 +1,7 @@
+[ui]
+#username = Edwin Kofler <edwin@kofler.dev>
+#style = compact
+
 [pager]
 pager = less -FX
 
@@ -5,3 +9,10 @@ pager = less -FX
 name = Edwin Kofler
 email = edwin@kofler.dev
 signingkey = 484EA8DEF2F467E6
+
+[alias]
+s = status
+c = commit
+ls = !hg log --template '{rev} {tags}{parents} {node|short} {desc|firstline|strip} [{author|user}]\n' $@ | less
+#reset = revert -a --no-backup
+#rh = revert -a --no-backup

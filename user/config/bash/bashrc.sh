@@ -8,7 +8,7 @@ HISTSIZE=32768
 HISTFILESIZE="$HISTSIZE"
 # non-numeric means no truncation
 #HISTFILESIZE="_"
-HISTIGNORE="ls:[bf]g:pwd:clear*:exit*"
+HISTIGNORE="ls:[bf]g:pwd:clear*:exit*:*sudo -S*:*sudo --stdin*"
 HISTTIMEFORMAT="%B %m %Y %T | "
 HISTTIMEFORMAT='%F %T ' # ISO 8601
 unset MAILCHECK
@@ -85,22 +85,6 @@ unset -f 8BitColor
 unset -f 24BitColor
 
 
-# --------------------- Miscellaneous -------------------- #
-# dircolors
-[ -r "$XDG_CONFIG_HOME/dircolors/dir_colors" ] && eval "$(dircolors --sh "$XDG_CONFIG_HOME/dircolors/dir_colors")"
-
-# direnv
-eval "$(direnv hook bash)"
-
-# bashmarks
-# shellcheck disable=SC2034
-SDIRS="$XDG_DATA_HOME/bashmarks.sh.db"
-source ~/.local/bin/bashmarks.sh
-
-# system completion
-[ -r /usr/share/bash-completion/bash_completion ] && source /usr/share/bash-completion/bash_completion
-
-
 # ----------------------- Readline ----------------------- #
 _readline_util_get_cmd() {
 	local line cmd
@@ -125,20 +109,20 @@ _readline_util_get_cmd() {
 }
 
 _readline_util_trim_whitespace() {
-	sed \
+	'sed' \
 		-e 's/^[[:space:]]*//' \
 		-e 's/[[:space:]]*$//' \
 		<<< "$1"
 }
 
 _readline-x-discard() {
-	echo -n "${READLINE_LINE:0:$READLINE_POINT}" | xclip -selection clipboard
+	printf "${READLINE_LINE:0:$READLINE_POINT}" | xclip -selection clipboard
 	READLINE_LINE="${READLINE_LINE:$READLINE_POINT}"
 	READLINE_POINT=0
 }
 
 _readline-x-kill() {
-	echo -n "${READLINE_LINE:$READLINE_POINT}" | xclip -selection clipboard
+	printf "${READLINE_LINE:$READLINE_POINT}" | xclip -selection clipboard
 	READLINE_LINE="${READLINE_LINE:0:$READLINE_POINT}"
 }
 
@@ -149,7 +133,6 @@ _readline-x-yank() {
 _readline-x-paste() {
 	READLINE_LINE="$(printf "%s" "$(xclip -selection clipboard -o &>/dev/null)")"
 }
-
 
 _readline-show-help() {
 	local cmd
@@ -171,16 +154,18 @@ _readline-show-help() {
 _readline-show-man() {
 	local cmd
 	cmd="$(_readline_util_get_cmd)"
-	if command -v "$cmd" &>/dev/null; then
-		man "$cmd"
-	else
-		# TODO: sleep doesn't work as expected
-		# local -r old_readline_line="$READLINE_LINE"
-		# READLINE_LINE="Not found: '$cmd'"
-		# sleep 0.5
-		# READLINE_LINE="$old_readline_line"
-		:
-	fi
+	#if command -v "$cmd" &>/dev/null; then
+		'man' "$cmd"
+		(($? == 16)) && [[ $cmd != ${cmd%%-*} ]] && 'man' "${cmd%%-*}"
+	#else
+		#local -r old_readline="$READLINE_LINE"
+		#READLINE_LINE="Info: '$cmd' man page not found"
+		#local i=0
+		#while ((i < 100000)); do
+		#	i=$((i+1))
+		#done
+		#READLINE_LINE="$old_readline"
+	#fi
 }
 
 _readline-toggle-sudo() {
@@ -193,6 +178,14 @@ _readline-toggle-sudo() {
 	else
 		READLINE_LINE="sudo $READLINE_LINE"
 	fi
+}
+
+_readline-toggle-backslash() {
+		  if [[ ${READLINE_LINE:0:1} == '\' ]]; then
+					 READLINE_LINE="${READLINE_LINE:1}"
+		  else
+					 READLINE_LINE="\\$READLINE_LINE"
+		  fi
 }
 
 _readline-trim-whitespace() {
@@ -208,4 +201,21 @@ bind -x '"\eo": _readline-x-paste'
 bind -x '"\eh": _readline-show-help'
 bind -x '"\em": _readline-show-man'
 bind -x '"\es": _readline-toggle-sudo'
+bind -x '"\e\\": _readline-toggle-backslash'
 bind -x '"\ei": _readline-trim-whitespace'
+
+
+# --------------------- Miscellaneous -------------------- #
+# dircolors
+[ -r "$XDG_CONFIG_HOME/dircolors/dir_colors" ] && eval "$(dircolors --sh "$XDG_CONFIG_HOME/dircolors/dir_colors")"
+
+# direnv
+eval "$(direnv hook bash)"
+
+# bashmarks
+# shellcheck disable=SC2034
+SDIRS="$XDG_DATA_HOME/bashmarks.sh.db"
+source ~/.local/bin/bashmarks.sh
+
+# bash-completion
+[ -r /usr/share/bash-completion/bash_completion ] && source /usr/share/bash-completion/bash_completion

@@ -1,5 +1,14 @@
 # shellcheck shell=sh
 
+_p_log_error() {
+	printf "\033[0;31m%s\033[0m\n" "ERROR: $*" >&2
+}
+
+_p_die() {
+	_p_log_error "$*"
+	return 1
+}
+
 cdls() {
 	cd "$1" || return
 	command -v >/dev/null 2>&1 && {
@@ -27,7 +36,7 @@ archive-uncompress() {
 		folder="$(echo "$1" | rev | cut -d'.' -f2- | rev)"
 		unzip -d "$folder" "$1"
 		[ -f "$folder" ] && return
-		cd "$folder" || exit
+		cd "$folder" || return
 		[ "$(find . -maxdepth 1 | cut -c 3- | wc -l)" = 1 ] && {
 			subfolder="$(ls)"
 			mv "./$subfolder"/* "./$subfolder"/.* .
@@ -115,6 +124,12 @@ doBackup() {
 
 doBackup2() {
 	restic --repo /storage/vault/rodinia/backups-data/ backup /storage/data/ --iexclude "node_modules" --iexclude "__pycache__" --iexclude "rootfs"
+}
+
+docker_nuke() {
+	docker ps -q | xargs docker stop
+	docker ps -aq | xargs docker rm
+	docker images | grep none | col 3 | xargs docker rmi -f
 }
 
 dg() {
@@ -300,20 +315,25 @@ qe() {
 	vim "$file"
 }
 
+quickedit() (
+	cd "$1" || _p_die "Could not cd to '$1'"
+	v .
+)
+
 serv() {
 	[ -d "${1:-.}" ] || { echo "serv: Error: dir '$1' doesn't exist"; return 1; }
 	python3 -m http.server --directory "${1:-.}" "${2:-4000}"
 }
 
 t() {
-		  for file; do
-					 mkdir -p "$(dirname "$file")"
-					 touch "$file"
-		  done
+	for file; do
+		mkdir -p "$(dirname "$file")"
+		touch "$file"
+	done
 }
 
 vtraceroute() {
-  xdg-open "https://stefansundin.github.io/traceroute-mapper/?trace=$('traceroute' -q1 $* | sed ':a;N;$!ba;s/\n/%0A/g')"
+	xdg-open "https://stefansundin.github.io/traceroute-mapper/?trace=$('traceroute' -q1 "$*" | sed ':a;N;$!ba;s/\n/%0A/g')"
 }
 
 tre() {
@@ -339,7 +359,7 @@ v() {
 	if [ $# -eq 0 ]; then
 		vim .
 	else
-      mkdir -p "$(dirname $1)"
+      mkdir -p "$(dirname "$1")"
 		vim "$1"
 	fi
 }

@@ -42,6 +42,7 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+Shift+f fullscreen toggle global
 
 for_window [title="Popup Terminal"] floating toggle resize set 700 400
+for_window [class="zoom"] floating enable
 
 # floating
 bindsym $mod+Shift+space floating toggle
@@ -119,25 +120,33 @@ bar {
 	binding_mode_indicator yes
 	colors {
 # THEMER-BEGIN-1
-		background #282A36
-		statusline #F8F8F2
-		separator  #44475A
+		set $nord0   #2E3440
+		set $nord1   #3B4252
+		set $nord2   #434C5E
+		set $nord3   #4C566A
+		set $nord4   #D8DEE9
+		set $nord5   #E5E9F0
+		set $nord6   #ECEFF4
+		set $nord7   #8FBCBB
+		set $nord8   #88C0D0
+		set $nord9   #81A1C1
+		set $nord10  #5E81AC
+		set $nord11  #BF616A
+		set $nord12  #D08770
+		set $nord13  #EBCB8B
+		set $nord14  #A3BE8C
+		set $nord15  #B48EAD
 
-		focused_workspace  #44475A #44475A #F8F8F2
-		active_workspace   #282A36 #44475A #F8F8F2
-		inactive_workspace #282A36 #282A36 #BFBFBF
-		urgent_workspace   #FF5555 #FF5555 #F8F8F2
-		binding_mode       #FF5555 #FF5555 #F8F8F2
+		background         $nord0
+		statusline         $nord8
+		focused_workspace  $nord3  $nord8
+		active_workspace   $nord3  $nord8
+		inactive_workspace $nord8  $nord3
+		urgent_workspace   $nord3 $nord15
 # THEMER-END-1
 	}
 }
 
 # THEMER-BEGIN-2
-# Property Name         Border  BG      Text    Indicator Child Border
-client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
-client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
-client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
-client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
-client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
-client.background       #F8F8F2
+
 # THEMER-END-2

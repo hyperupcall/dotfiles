@@ -30,6 +30,7 @@ git config --local filter.npmrc-clean.clean "$(pwd)/user/config/npm/npmrc-clean.
 auxiliary utils
 -----
 
+https://github.com/eankeen/dot
 https://github.com/eankeen/dotty
 https://github.com/eankeen/themer
 https://github.com/eankeen/fox-default
@@ -59,3 +60,6 @@ https://github.com/GiuseppeCesarano
 https://github.com/nathanbuchar/atom-one-dark-terminal
 https://github.com/charlesdaniels/dotfiles
 https://github.com/crivotz/dot_files
+https://gist.github.com/mwhite/6887990
+https://www.durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
+https://github.com/durdn/cfg

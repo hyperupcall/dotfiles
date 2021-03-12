@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 #
-# ~/.bash_profile
+# ~/.bash_login
 #
 
 source ~/.profile

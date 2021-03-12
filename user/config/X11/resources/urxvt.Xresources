@@ -3,6 +3,7 @@
 !
 
 URxvt.depth: 24
+URxvt.saveLines: 50000
 URxvt.scrollBar: false
 URxvt.scrollBar_right: true
 URxvt.scrollBar_floating: false
@@ -14,8 +15,7 @@ Urxvt.boldFont: xft:Hack Nerd Font Mono:style=Bold:size=12,xft:DejaVu Sans Mono
 Urxvt.italicFont: xft:Hack Nerd Font Mono:style=Bold:size=12,xft:DejaVu Sans Mono
 URxvt.perl-ext-common: default,config-reload,resize-font
 URxvt.iso14755: false
-
-URxvt.urlLauncher: chromium
+URxvt.urlLauncher: brave
 URxvt.underlineURLs: true
 URxvt.urlButton: 1
 URxvt.loginShell: false

@@ -3,9 +3,6 @@
 # asdf
 source "$XDG_DATA_HOME/asdf/completions/asdf.bash"
 
-# dot.sh
-source "$HOME/scripts/dot/completion/dot.bash"
-
 # shell-installer
 for file in "$XDG_DATA_HOME/shell-installer/completions/"*.{sh,bash}; do
 	if [ -r "$file" ]; then

@@ -45,3 +45,6 @@ compinit -d "$XDG_DATA_DIR/zsh/zcompdump"
 bindkey -e
 
 eval "$(starship init zsh)"
+bindkey -M menuselect '^M' .accept-line
+alias assumed="git ls-files -v | grep ^h | sed -e 's/^h\ //'"
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'

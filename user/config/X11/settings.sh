@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 
+# TODO
+# setxbmap us
+
 xbacklight -set 100
 
 # xhost gives X server access for same user processes on localhost.
@@ -27,3 +30,4 @@ xsetroot -default
 xsetroot -xcf /usr/share/icons/breeze_cursors/cursors/left_ptr 4
 xsetroot -mod 8 8
 xsetroot -solid '#212529'
+# xsetroot -name "$(date +"%F %R" )"

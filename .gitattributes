@@ -1,3 +1,3 @@
 * text=auto eol=lf
 user/config/npm/npmrc filter=npmrc-clean
-.github/** export-ignore
+/.github/ export-ignore
