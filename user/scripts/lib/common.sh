@@ -6,13 +6,13 @@ die() {
 }
 
 req() {
-	curl --proto '=https' --tlsv1.2 -sSLf "$@"
+	'curl' --proto '=https' --tlsv1.2 -sSLf "$@"
 }
 
 log_info() {
-	printf "\033[0;34m%s\033[0m\n" "INFO: $*"
+	'printf' "\033[0;34m%s\033[0m\n" "INFO: $*"
 }
 
 log_error() {
-	printf "\033[0;31m%s\033[0m\n" "ERROR: $*" >&2
+	'printf' "\033[0;31m%s\033[0m\n" "ERROR: $*" >&2
 }

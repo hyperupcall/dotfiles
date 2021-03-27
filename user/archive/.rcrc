@@ -1,2 +1,6 @@
+#
+# .rcrc
+#
+
 DOTFILES_DIRS=~/.dots/local
 SYMLINK_DIRS="refind-theme-regular"

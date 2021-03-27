@@ -10,9 +10,8 @@ URxvt.scrollBar_floating: false
 URxvt.scrollstyle: plain
 URxvt.secondaryScreen: 1
 URxvt.secondaryScroll: 0
-URxvt.font: xft:Hack Nerd Font Mono:style=Bold:size=12,xft:DejaVu Sans Mono
-Urxvt.boldFont: xft:Hack Nerd Font Mono:style=Bold:size=12,xft:DejaVu Sans Mono
-Urxvt.italicFont: xft:Hack Nerd Font Mono:style=Bold:size=12,xft:DejaVu Sans Mono
+!URxvt.font: xft:Roboto Nerd Font
+URxvt.font: xft:Inconsolata Nerd Font Mono:size=16
 URxvt.perl-ext-common: default,config-reload,resize-font
 URxvt.iso14755: false
 URxvt.urlLauncher: brave

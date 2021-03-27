@@ -1,5 +1,5 @@
 super + Return
-	~/repos/fox-default/fox-default.sh launch terminal-emulator
+	fox-default launch terminal-emulator
 
 super + n
 	kitty --title 'Popup Terminal'
@@ -15,6 +15,12 @@ super + i
 
 super + u
 	/home/edwin/data/nimble/bin/themer --gui
+
+super + alt + l
+	fox-default --gui launch
+
+super + alt + s
+	fox-default --gui set
 
 super + c
 	rofi -show calc -modi calc -no-show-match -no-sort

@@ -46,7 +46,7 @@ mcookie="$(/usr/bin/mcookie)"
 dummy=0
 xserverauthfile="$(mktemp --tmpdir serverauth.XXXXXXXXXX)"
 trap 'rm -f "$xserverauthfile"' HUP INT QUIT ILL TRAP BUS TERM
-xauth -q -f "$xserverauthfile" <<- EOF
+xauth -q -f "$xserverauthfile" <<-EOF
 	add :$dummy . $mcookie
 EOF
 
@@ -67,7 +67,7 @@ for displayname in $authdisplay $hostname$authdisplay; do
 		removelist="$displayname $removelist"
 	else
 		dummy=$((dummy+1));
-		xauth -q -f "$xserverauthfile" <<- EOF
+		xauth -q -f "$xserverauthfile" <<-EOF
 			add :$dummy . $authcookie
 		EOF
 	fi

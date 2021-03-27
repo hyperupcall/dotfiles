@@ -1,0 +1,10 @@
+[Unit]
+Description=Shutdown Reminder Timer
+Requires=shutdown-reminder.service
+
+[Timer]
+OnCalendar=*-*-* 22:30:*
+
+
+[Install]
+WantedBy=xorg.target

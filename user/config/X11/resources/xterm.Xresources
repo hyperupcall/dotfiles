@@ -16,7 +16,7 @@ XTerm.VT100.dynamicColors: true
 XTerm.VT100.eightBitControl: false
 XTerm.VT100.eightBitInput: false
 XTerm.VT100.eightBitOutput: true
-XTerm.VT100.faceName: xft:DejaVu Sans Mono
+XTerm.VT100.faceName: xft:RobotoMono Nerd Font
 XTerm.VT100.faceSize: 14
 XTerm.VT100.jumpScroll: true
 !*.VT100.logging: false
@@ -25,7 +25,7 @@ XTerm.VT100.multiClickTime: 200
 XTerm.VT100.multiScroll: true
 XTerm.VT100.rightScrollBar: true
 XTerm.VT100.saveLines: 10000
-!*.VT100.selectToClipboard: false
+XTerm.VT100.selectToClipboard: false
 XTerm.VT100.scrollBar: true
 XTerm.VT100.scrollKey: true
 XTerm.VT100.scrollTtyOutput: false

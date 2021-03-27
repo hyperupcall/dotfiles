@@ -1,0 +1,9 @@
+[Unit]
+Description=Shutdown Reminder Timer
+
+[Service]
+Type=oneshot
+ExecStart=notify-send "TIME TO SLEEP"
+
+[Install]
+WantedBy=xorg.target

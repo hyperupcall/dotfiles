@@ -25,7 +25,11 @@ let dotConfigFiles = [
 #  home & ".pam_environment",
   home & ".profile",
   home & ".yarnrc",
+  # symlink
   home & ".config/conky",
+  home & ".cpan/CPAN/MyConfig.pm",
+  cfg & "aerc/aerc.conf",
+  cfg & "aerc/binds.conf",
   cfg & "alacritty",
   cfg & "albert/albert.conf",
   cfg & "albert-sticker-searcher",
@@ -43,7 +47,6 @@ let dotConfigFiles = [
   cfg & "conky",
   cfg & "cookiecutter",
   cfg & "cabal/config",
-  home & ".cliflix.json",
   home & ".profile",
   home & ".yarnrc",
   cfg & "alacritty",
@@ -66,6 +69,7 @@ let dotConfigFiles = [
   cfg & "fontconfig",
   cfg & "fox-default",
   cfg & "gh",
+  cfg & "gdb",
   cfg & "git",
   cfg & "hg",
   cfg & "htop",
@@ -74,6 +78,7 @@ let dotConfigFiles = [
   cfg & "info",
   cfg & "ion",
   cfg & "irssi",
+  cfg & "kak",
   cfg & "kitty",
   cfg & "lazydocker",
   cfg & "liquidpromptrc",
@@ -95,6 +100,7 @@ let dotConfigFiles = [
   cfg & "pulse/client.conf",
   cfg & "pulsemixer.cfg",
   cfg & "python",
+  cfg & "quark",
   cfg & "ranger",
   cfg & "readline",
   cfg & "redshift",
@@ -110,6 +116,7 @@ let dotConfigFiles = [
   cfg & "tilda",
   cfg & "tmux",
   cfg & "todotxt",
+  cfg & "twmn",
   cfg & "urxvt",
   cfg & "user-dirs.dirs",
   cfg & "viewnior",
@@ -123,10 +130,7 @@ let dotConfigFiles = [
   data & "gnupg/gpg.conf",
   data & "gnupg/dirmngr.conf",
   data & "applications/Calcurse.desktop",
-  data & "applications/Nemo.desktop",
-  data & "applications/Obsidian.desktop",
-  data & "sdkman/etc/config",
-  data & "applications/Zettlr.desktop"
+  data & "sdkman/etc/config"
 ]
 
 for i, str in dotConfigFiles:

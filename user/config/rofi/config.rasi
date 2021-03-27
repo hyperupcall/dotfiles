@@ -5,7 +5,7 @@ configuration {
 	show-icons: true;
 	matching: "fuzzy";
 	theme: "~/config/rofi/themes/_.theme.rasi";
-	terminal: "~/repos/fox-default/fox-default.sh launch terminal-emulator";
+	terminal: "fox-default launch terminal-emulator";
 
 	/* hide-scrollbar: true;
 	disable-history: true;

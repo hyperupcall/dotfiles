@@ -1,13 +1,34 @@
-#!/usr/bin/env bash
+# shellcheck shell=bash
 
-# -------------------- Shell Variables ------------------- #
-#CDPATH=":~:"
+# ensure execution returns if bash is non-interactive
+[[ $- != *i* ]] && [ ! -t 0 ] && return
+
+# ensure /etc/profile is read for non-login shells
+# bash only reads /etc/profile on interactive, login shells
+! shopt -q login_shell && [ -r /etc/profile ] && source /etc/profile
+
+# ensure ~/.profile is read for non-login shells
+# bash only reads ~/.profile on login shells when invoked as sh
+[ -r ~/.profile ] && source ~/.profile
+
+
+#
+# ─── FRAMEWORKS ─────────────────────────────────────────────────────────────────
+#
+
+# source "$XDG_CONFIG_HOME/bash/frameworks/oh-my-bash.sh"
+# source "$XDG_CONFIG_HOME/bash/frameworks/bash-it.sh"
+
+
+#
+# ─── SHELL VARIABLES ────────────────────────────────────────────────────────────
+#
+
+# CDPATH=":~:"
 HISTCONTROL="ignorespace:ignoredups"
 HISTFILE="$HOME/.history/bash_history"
-HISTSIZE=32768
-HISTFILESIZE="$HISTSIZE"
-# non-numeric means no truncation
-#HISTFILESIZE="_"
+HISTSIZE="-1"
+HISTFILESIZE="-1"
 HISTIGNORE="ls:[bf]g:pwd:clear*:exit*:*sudo -S*:*sudo --stdin*"
 HISTTIMEFORMAT="%B %m %Y %T | "
 HISTTIMEFORMAT='%F %T ' # ISO 8601
@@ -15,15 +36,13 @@ unset MAILCHECK
 PROMPT_DIRTRIM=5
 
 
-# ---------------------- Frameworks ---------------------- #
-#source "$XDG_CONFIG_HOME/bash/frameworks/oh-my-bash.sh"
-#source "$XDG_CONFIG_HOME/bash/frameworks/bash-it.sh"
+#
+# ─── SHELL OPTIONS ──────────────────────────────────────────────────────────────
+#
 
-
-# --------------------- Shell Options -------------------- #
-# shopt
+# ------------------------- shopt ------------------------ #
 shopt -s autocd
-shopt -u cdable_vars
+shopt -s cdable_vars
 shopt -s cdspell
 shopt -s checkjobs
 shopt -s checkwinsize # default
@@ -44,34 +63,42 @@ shopt -s nocaseglob
 shopt -s nocasematch
 shopt -u nullglob # setting obtains unexpected parameter expansion behavior
 shopt -s progcomp
-((${BASH_VERSION%%.*} == 5)) && shopt -s progcomp_alias # not working due to complete -D
+((${BASH_VERSION%%.*} == 5)) && shopt -s progcomp_alias # not working due to complete _D
 shopt -s shift_verbose
 shopt -s sourcepath
 shopt -u xpg_echo # default
 
-# set
+# -------------------------- set ------------------------- #
 set -o noclobber
 set -o notify # deafult
 set -o physical # default
 
 
-# -------------------------- PS1 ------------------------- #
-8BitColor() {
+#
+# ─── PS1 ────────────────────────────────────────────────────────────────────────
+#
+
+8Colors() {
 	test "$(tput colors)" -eq 8
 }
 
-24BitColor() {
+256Colors() {
+	test "$(tput colors)" -eq 256
+}
+
+16MillionColors() {
 	test "$COLORTERM" = "truecolor" || test "$COLORTERM" = "24bit"
 }
 
-if 24BitColor; then
+if 16MillionColors; then
 	if test "$EUID" = 0; then
 		PS1="\[\e[38;2;201;42;42m\][\u@\h \w]\[\e[0m\]\$ "
 	else
-		source "$(type -P fox-default)" launch bash-prompt \
-			|| PS1="[PS1 Error: \u@\h \w]\$ "
+		source "$(type -P fox-default)" launch bash-prompt || {
+			PS1="[\[\e[0;31m\](PS1 Error)\[\e[0m\] \u@\h \w]\$ "
+		}
 	fi
-elif 8BitColor; then
+elif 8Colors || 256Colors; then
 	if test "$EUID" = 0; then
 		PS1="\[\e[0;31m\][\u@\h \w]\[\e[0m\]\$ "
 	else
@@ -81,141 +108,30 @@ else
 	PS1="[\u@\h \w]\$ "
 fi
 
-unset -f 8BitColor
-unset -f 24BitColor
+unset -f 8Colors 256Colors 16MillionColors
 
 
-# ----------------------- Readline ----------------------- #
-_readline_util_get_cmd() {
-	local line cmd
+#
+# ─── READLINE ───────────────────────────────────────────────────────────────────
+#
 
-	line="$READLINE_LINE"
-	line="$(_readline_util_trim_whitespace "$line")"
-	cmd="${line/\ */}"
-
-	if [[ $cmd == 'sudo' ]]; then
-		line="${line/sudo/}"
-		line="$(_readline_util_trim_whitespace "$line")"
-		cmd="${line/\ */}"
-	fi
-
-	cmd="${cmd/\\/}"
-	cmd="${cmd/\'/}"
-	cmd="${cmd/\'/}"
-	cmd="${cmd/\"/}"
-	cmd="${cmd/\"/}"
-
-	printf "%s" "$cmd"
-}
-
-_readline_util_trim_whitespace() {
-	'sed' \
-		-e 's/^[[:space:]]*//' \
-		-e 's/[[:space:]]*$//' \
-		<<< "$1"
-}
-
-_readline-x-discard() {
-	printf "${READLINE_LINE:0:$READLINE_POINT}" | xclip -selection clipboard
-	READLINE_LINE="${READLINE_LINE:$READLINE_POINT}"
-	READLINE_POINT=0
-}
-
-_readline-x-kill() {
-	printf "${READLINE_LINE:$READLINE_POINT}" | xclip -selection clipboard
-	READLINE_LINE="${READLINE_LINE:0:$READLINE_POINT}"
-}
-
-_readline-x-yank() {
-	READLINE_LINE="${READLINE_LINE:0:$READLINE_POINT}$(xclip -selection clipboard -o)${READLINE_LINE:$READLINE_POINT}"
-}
-
-_readline-x-paste() {
-	READLINE_LINE="$(printf "%s" "$(xclip -selection clipboard -o &>/dev/null)")"
-}
-
-_readline-show-help() {
-	local cmd
-	cmd="$(_readline_util_get_cmd)"
-	if [[ $(type -t "$cmd") = 'builtin' ]]; then
-		help "$cmd"
-	elif command -v "$cmd" &>/dev/null; then
-		"$cmd" --help || "$cmd" -h
-	else
-		# TODO: sleep doesn't work as expected
-		# local -r old_readline_line="$READLINE_LINE"
-		# READLINE_LINE="Not found: '$cmd'"
-		# sleep 0.5
-		# READLINE_LINE="$old_readline_line"
-		:
-	fi
-}
-
-_readline-show-man() {
-	local cmd
-	cmd="$(_readline_util_get_cmd)"
-	#if command -v "$cmd" &>/dev/null; then
-		'man' "$cmd"
-		(($? == 16)) && [[ $cmd != ${cmd%%-*} ]] && 'man' "${cmd%%-*}"
-	#else
-		#local -r old_readline="$READLINE_LINE"
-		#READLINE_LINE="Info: '$cmd' man page not found"
-		#local i=0
-		#while ((i < 100000)); do
-		#	i=$((i+1))
-		#done
-		#READLINE_LINE="$old_readline"
-	#fi
-}
-
-_readline-toggle-sudo() {
-	if [[ ${READLINE_LINE:0:4} == 'sudo' ]]; then
-		READLINE_LINE="${READLINE_LINE:5}"
-	elif [[ ${READLINE_LINE:0:5} == ' sudo' ]]; then
-		READLINE_LINE=" ${READLINE_LINE:6}"
-	elif [[ ${READLINE_LINE:0:1} == ' ' ]]; then
-		READLINE_LINE=" sudo$READLINE_LINE"
-	else
-		READLINE_LINE="sudo $READLINE_LINE"
-	fi
-}
-
-_readline-toggle-backslash() {
-		  if [[ ${READLINE_LINE:0:1} == '\' ]]; then
-					 READLINE_LINE="${READLINE_LINE:1}"
-		  else
-					 READLINE_LINE="\\$READLINE_LINE"
-		  fi
-}
-
-_readline-trim-whitespace() {
-	READLINE_LINE="$(
-		_readline_util_trim_whitespace "$READLINE_LINE"
-	)"
-}
-
-bind -x '"\eu": _readline-x-discard'
-bind -x '"\ek": _readline-x-kill'
-bind -x '"\ey": _readline-x-yank'
-bind -x '"\eo": _readline-x-paste'
-bind -x '"\eh": _readline-show-help'
-bind -x '"\em": _readline-show-man'
-bind -x '"\es": _readline-toggle-sudo'
-bind -x '"\e\\": _readline-toggle-backslash'
-bind -x '"\ei": _readline-trim-whitespace'
+source "$XDG_CONFIG_HOME/bash/readline.sh"
 
 
-# --------------------- Miscellaneous -------------------- #
+#
+# ─── MISCELLANEOUS ──────────────────────────────────────────────────────────────
+#
+
+# bash_completion (also sources $XDG_CONFIG_HOME/bash/bash_completions (as per env variable))
+# not needed as we `source /etc/profile` at beginnning of script
+# [ -r /usr/share/bash-completion/bash_completion ] && source /usr/share/bash-completion/bash_completion
+
+# bashmarks
+# SDIRS="$XDG_DATA_HOME/bashmarks.sh.db"
+# [ -r ~/.local/bin/bashmarks.sh ] && source ~/.local/bin/bashmarks.sh
+
 # dircolors
 [ -r "$XDG_CONFIG_HOME/dircolors/dir_colors" ] && eval "$(dircolors --sh "$XDG_CONFIG_HOME/dircolors/dir_colors")"
 
 # direnv
 eval "$(direnv hook bash)"
-
-# bashmarks
-# shellcheck disable=SC2034
-SDIRS="$XDG_DATA_HOME/bashmarks.sh.db"
-source ~/.local/bin/bashmarks.sh
-
-# bash-completion
-[ -r /usr/share/bash-completion/bash_completion ] && source /usr/share/bash-completion/bash_completion

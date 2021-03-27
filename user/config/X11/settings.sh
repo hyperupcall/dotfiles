@@ -8,13 +8,14 @@ xbacklight -set 100
 # xhost gives X server access for same user processes on localhost.
 # Safe since the kernel can check the actual owner of the calling process
 xhost +si:localuser:"$(id -un)"
-#xhost +local:root
+# xhost +local:root
 
 xmodmap "$XDG_CONFIG_HOME/X11/Xmodmap"
 
 xrandr \
-	--output DP-5 --left-of HDMI-0 \
-	--output DP-1 --above HDMI-0
+	--output DP-1 --left-of DP-5 \
+	--output DP-3 --above DP-5 \
+	--output HDMI-0 --right-of DP-5
 
 xrdb -load "$XDG_CONFIG_HOME/X11/Xresources"
 

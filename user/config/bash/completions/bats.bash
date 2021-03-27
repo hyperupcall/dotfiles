@@ -12,8 +12,7 @@ _bats() {
 		# if our current word starts with a '-', it is not a subcommand
 		-*) ;;
 		# we are completing a subcommand, set cmd
-		*)
-			cmd="$s"
+		*)			cmd="$s"
 			break
 			;;
 		esac
@@ -28,7 +27,7 @@ _bats() {
 		return
 	fi
 
-	# if we're not completing 'dotty', then we're completing a subcommand
+	# if we're not completing 'bats', then we're completing a subcommand
 	case "$cmd" in
 	*)
 		COMPREPLY=() ;;

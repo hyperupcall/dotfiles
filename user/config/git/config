@@ -3,64 +3,14 @@
 [core]
 	warnAmbiguousRefs = true ; default
 	compression = 2
-	editor = vim
 	# pager = less -+F -+R -S -+X
 	pager = diff-so-fancy | less --tabs=4 -RFX
 [init]
 	defaultBranch = main
 [add "interactive"]
 	useBuiltIn = true ; EXPERIMENTAL
-[alias]
-	update = add -u .
-	unstage = reset HEAD
-	untracked = status -u .
-	untracked-at = status -u
-	assume-unchanged = update-index --assume-unchanged
-	append-tracked = "!f() { git add . && git commit -a --amend --no-edit; }; f"
-	a = add -v
-	aa = add . -v
-	b = branch
-	c = commit --verbose
-	ca = commit -a --verbose
-	cm = commit -m
-	cam = commit -a -m
-	cad = commit --amend --verbose
-	d = diff
-	ds = diff --stat
-	dc = diff --cached
-	co = checkout
-	cob = checkout -b
-	cm = commit -m
-	f = fetch
-	h = help
-	p = pull
-	s = status
-
-	# stash
-	st = stash
-	stl = stash list
-	sts = stash save
-	std = stash drop
-	stp = stash pop
-	sta = stash apply
-
-	sm = submodule
-	lgs = log --oneline --decorate --no-merges --max-count=20
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %C(dim white)(%an)%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
-	lg2 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-	lg3 = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
-
-	# TODO: cleanup
-	# show the last tag
-	lt = describe --tags --abbrev=0
-
-	conflict-ls = diff --name-only --diff-filter=U
-	## purpose
-	# list branches sorted by last modified
-	b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
-
-	# list aliases
-	alias-ls = "!git config -l | grep alias | cut -c 7-"
+[include]
+	path = include/alias.conf
 [blame]
 	coloring = highlightRecent
 	date = relative
@@ -85,25 +35,9 @@
 	ui = true
 [commit]
 	gpgSign = true
-	template = ~/config/git/commit-template
-[diff]
-	algorithm = myers ; default
-[diff "pandoc2md"]
-	textconv = pandoc --to=markdown
-[diff "pdfconf"]
-	textconv = pdftohtml -stdout
-[diff "wrap"]
-	textconv = fmt
-[diff "exif"]
-	textconv = exiftool
-[diff "mp3"]
-	textconv = mp3info -x
-[diff "xlsconf"]
-	textconv = xls2csv
-[diff "zipshow"]
-	textconv = unzip -c -a
-[diff "unzip -l"]
-	textconv = unzip -l
+	template = ~/config/git/commit.template.txt
+[include]
+	path = include/diff.conf
 [gpg]
 	program = gpg ; default
 	format = openpgp ; default
@@ -135,9 +69,7 @@
 	name = Edwin Kofler
 	#email = 24364012+eankeen@users.noreply.github.com
 	email = edwin@kofler.dev
-	#signingkey = 484EA8DEF2F467E6
-        #signingkey = 6C1C9B9464575027
-        signingkey = DA8EF6F306AD2CBA
+	signingkey = DA8EF6F306AD2CBA
 [credential]
 	#helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
 	helper = /usr/share/git/credential/libsecret/git-credential-libsecret
@@ -165,12 +97,7 @@
 	new = green bold
 	whitespace = red reverse
 [interactive]
-    diffFilter = delta --color-only
-[delta]
-    features = side-by-side line-numbers decorations
-    whitespace-error-style = 22 reverse
-
-[delta "decorations"]
-    commit-decoration-style = bold yellow box ul
-    file-style = bold yellow ul
-    file-decoration-style = none
+	# git, diff-so-fancy, diff-highlight
+	diffFilter = delta --color-only
+[include]
+	path = include/delta.conf
