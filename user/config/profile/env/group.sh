@@ -31,7 +31,7 @@ export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
 export FZF_DEFAULT_OPTS="--history \"$HOME/.history/fzf_history\" --history-size=10000"
 
 # gcc
-export GCC_COLORS="error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01"
+# export GCC_COLORS="error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01"
 
 # git
 export GIT_CONFIG_NOSYSTEM=
@@ -89,6 +89,9 @@ export RANGER_LOAD_DEFAULT_RC="FALSE"
 
 # snap
 _path_append "/var/lib/snapd/snap/bin"
+
+# sxhkd
+export SXHKD_SHELL="$(command -v dash)"
 
 # X11
 export XCURSOR_PATH="$XDG_CONFIG_HOME/icons:$XCURSOR_PATH"

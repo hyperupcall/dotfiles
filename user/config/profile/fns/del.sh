@@ -1,5 +1,6 @@
 # shellcheck shell=sh
 
+# cloned in /root/.bashrc
 del() {
 	if command -v trash-put >/dev/null 2>&1; then
 		for f; do

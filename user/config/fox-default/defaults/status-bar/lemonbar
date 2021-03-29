@@ -1,0 +1,1 @@
+while true; do echo "%{c}$(date)%{S+}$(date)%{S+}$(date)%{S+}$(date)"; sleep 0.2; done | lemonbar -B '#212529' -F '#f8f9fa' -U '#339af0' -f 'Roboto'

@@ -1,22 +1,8 @@
---max-columns=150
+--follow
+--glob=!{.git,.svn,.tldr,.yarn,node_modules,Trash,vendor}
+--glob=!*.{lock}
+--glob=!{package-lock.json}
+--hidden
+--max-columns=15000
 --max-columns-preview
-
-# This is similar to `--ignore-case`, but disables itself if the pattern contains any uppercase letters.
 --smart-case
-
-# Use `nord9` with an underlined font style for the column number of the matched line.
-# It will be displayed next to the line number separated by a colon when the `--column` flag has been set.
---colors=column:none
---colors=column:fg:4
---colors=column:style:underline
-# Use `nord9` for the line number of the search pattern match.
---colors=line:none
---colors=line:fg:4
-# Use `nord1` as background and `nord8` as foreground color for the search pattern match.
---colors=match:none
---colors=match:bg:0
---colors=match:fg:6
-# Use `nord7` with an bold font style for the file path of the search pattern match.
---colors=path:none
---colors=path:fg:14
---colors=path:style:bold

@@ -43,6 +43,7 @@ bindsym $mod+Shift+f fullscreen toggle global
 
 for_window [title="Popup Terminal"] floating toggle resize set 700 400
 for_window [class="zoom"] floating enable
+for_window [title="Steam - News"] floating toggle
 
 # floating
 bindsym $mod+Shift+space floating toggle

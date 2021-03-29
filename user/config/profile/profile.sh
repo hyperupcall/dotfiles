@@ -13,6 +13,7 @@ _path_prepend "$HOME/scripts"
 _path_prepend "$HOME/.local/bin"
 _path_prepend "$HOME/Docs/pkg/app-image"
 
+# must be ran before fns-category/misc.sh due to sttyy
 . "$XDG_CONFIG_HOME/profile/misc.sh"
 
 # ----------------------- Sourcing ----------------------- #

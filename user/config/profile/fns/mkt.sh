@@ -14,12 +14,10 @@ mkt() {
 		return
 	}
 
-	dir="$(mktemp -d)"
 	case "$1" in
 	# git repository
-	*.git|https://github.com/*|git@github.com:*|https://gitlab.com/*|git@gitlab.com:*|https://git.sr.ht/*|git@git.sr.ht:*)
+	git@*|git://*|*.git|https://github.com/*|https://gitlab.com/*|https://git.sr.ht/*|https://*@bitbucket.org/*)
 		_mkt_id="$(echo "$1" | rev | cut -d/ -f1 | rev)"
-		## TODO: the call at the top of mkt creates 2 temp folders
 		dir="$(mktemp -d --suffix "-$_mkt_id")"
 		cd "$dir" || { _profile_util_die "mkt: Could not cd"; return; }
 		git clone "$1"
@@ -28,13 +26,17 @@ mkt() {
 		;;
 	# remote files
 	https://*)
-		cd "$dir" || return
+		dir="$(mktemp -d)"
+		cd "$dir" || { _profile_util_die "mkt: Could not cd"; return; }
 
-		'curl' -LO "$1"
+		'curl' -LO "$1" || {
+			_profile_util_die "mkt: cURL error"
+			return
+		}
 
 		# TODO: use cunzip
 		case "$(echo ./*)" in
-			*.tar) tar xaf ./* ;;
+			*.tar*) tar xaf ./* ;;
 			*.zip) unzip ./* ;;
 			*) "mkt: Unsure what to do file filetype"
 		esac
@@ -48,6 +50,7 @@ mkt() {
 		;;
 	# github repository shorthand
 	*/*)
+		dir="$(mktemp -d)"
 		! 'curl' -sSLIo /dev/null "https://github.com/$1" && return
 
 		cd "$dir" || { _profile_util_die "mkt: Could not cd"; return; }
@@ -57,36 +60,9 @@ mkt() {
 		_profile_util_ls
 		;;
 	*)
-		if [ -d "$1" ] || [ -f "$1" ]; then
-			case "$1" in
-			*.tar*)
-				mv "$1" "$dir"
-				cd "$dir" || { _profile_util_die "mkt: Could not cd"; return; }
-
-				echo "mkt: Unarchiving $(basename "$1")"
-				tar xaf ./*
-				cd ./*/ || { _profile_util_die "mkt: Could not cd"; return; }
-
-
-				_profile_util_ls
-				;;
-			*.zip)
-				mv "$1" "$dir"
-				cd "$dir" || { _profile_util_die "mkt: Could not cd"; return; }
-
-				echo "mkt: Unarchiving $(basename "$1")"
-				unzip ./*
-				cd ./*/ || { _profile_util_die "mkt: Could not cd"; return; }
-
-				_profile_util_ls
-				;;
-			*)
-				cp "$1" "$dir"
-				cd "$dir" || { _profile_util_die "mkt: Could not cd"; return; }
-
-				_profile_util_ls
-				;;
-			esac
+		dir="$(mktemp -d)"
+		if [ -e "$1" ]; then
+			_profile_util_log_info "mkt: Nothing implemented"
 		else
 			mv "$dir" "$dir-$1"
 			cd "$dir-$1" || { _profile_util_die "mkt: Could not cd"; return; }

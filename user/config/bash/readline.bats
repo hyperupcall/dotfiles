@@ -3,70 +3,75 @@
 set -o vi
 source readline.sh
 
-@test "_readline_util_get_cmd normal" {
-	local result
+@test "_readline_util_get_line" {
+	readonly -a gits=(
+		"git"
+		"'git'"
+		"\\git"
+	)
 
-	READLINE_LINE='ls'
-	result="$(_readline_util_get_cmd)"
+	for git in "${gits[@]}"; do
+		local -a lines=(
+			"$git status -s"
+			" $git status -s"
+			"sudo $git status -s"
+			" sudo $git status -s"
+		)
 
-	[[ $result == 'ls' ]]
+		for line in "${lines[@]}"; do
+			line="$(_readline_util_get_line "$line")"
+
+			# echo "line: '$line'" >&3
+
+			[[ $line == "git status -s" ]]
+		done
+	done
+
 }
 
-@test "_readline_util_get_cmd normal with space" {
+@test "_readline_util_get_cmd" {
 	local result
 
-	READLINE_LINE=' ls'
-	result="$(_readline_util_get_cmd)"
+	declare -A lineCmds=(
+		["git status"]="git"
+		["git"]="git"
+		["exa -ls"]="exa"
+	)
 
-	[[ $result == 'ls' ]]
+	for key in "${!lineCmds[@]}"; do
+		expectedCmd="${lineCmds["$key"]}"
+		actualCmd="$(_readline_util_get_cmd "$key")"
+
+		# echo "KEY: $key" >&3
+		# echo "EXPECTEDCMD: $expectedCmd" >&3
+		# echo "ACTUALCMD: $actualCmd" >&3
+		# echo >&3
+
+		[[ $expectedCmd == "$actualCmd" ]]
+	done
 }
 
-@test "_readline_util_get_cmd sudo" {
+
+@test "_readline_util_get_man" {
 	local result
 
-	READLINE_LINE='sudo ls'
-	result="$(_readline_util_get_cmd)"
+	declare -A lineCmds=(
+		["git status --short"]="git-status"
+		["zfs mount -a"]="zfs-mount"
+		["lsblk --fs"]="lsblk"
+		["lsblk -f"]="lsblk"
+		["qemu-system-x86_64"]="qemu"
+	)
 
-	[[ $result == 'ls' ]]
-}
+	for key in "${!lineCmds[@]}"; do
+		expectedCmd="${lineCmds["$key"]}"
+		actualCmd="$(_readline_util_get_man "$key")"
 
-@test "_readline_util_get_cmd sudo with space" {
-	local result
+		# echo "KEY: $key" >&3
+		# echo "EXPECTEDCMD: $expectedCmd" >&3
+		# echo "ACTUALCMD: $actualCmd" >&3
+		# echo >&3
 
-	READLINE_LINE=' sudo  ls'
-	result="$(_readline_util_get_cmd)"
-
-	[[ $result == 'ls' ]]
-}
-
-@test "_readline_util_get_cmd with quotes" {
-	local result
-
-	# '
-	READLINE_LINE="'ls'"
-	result="$(_readline_util_get_cmd)"
-
-	[[ $result == 'ls' ]]
-
-	# "
-	READLINE_LINE='"ls"'
-	result="$(_readline_util_get_cmd)"
-
-	[[ $result == 'ls' ]]
-}
-
-@test "_readline_util_get_cmd with prefixed backslash" {
-	local result
-
-	READLINE_LINE='\ls'
-	result="$(_readline_util_get_cmd)"
-	[[ $result == 'ls' ]]
-}
-
-@test "_readline_util_get_cmd with hyphen fallback" {
-	local result
-
-	READLINE_LINE='qemu-system-x86_64 '
-	result="$(_readline_util_get_cmd)"
-	[[ $result == 'qemu' ]]
+		[[ $expectedCmd == "$actualCmd" ]]
+	done
 }

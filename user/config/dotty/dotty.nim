@@ -126,6 +126,7 @@ let dotConfigFiles = [
   cfg & "X11",
   cfg & "xob",
   cfg & "yay",
+  cfg & "youtube-dl",
   cfg & "zsh",
   data & "gnupg/gpg.conf",
   data & "gnupg/dirmngr.conf",

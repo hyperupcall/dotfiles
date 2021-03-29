@@ -1,37 +1,59 @@
 # shellcheck shell=bash
 
-# TODO: -selection: primary, secondary, clipboard, buffer-cut
 _xclip() {
-	local i=1 cmd
+	COMPREPLY=()
+	global_readline_debug
+
+	local cmd
 
 	# iterate over COMP_WORDS (ending at currently completed word)
-	# this ensures we bm_get command completion even after passing flags
+	local i=1
 	while [[ "$i" -lt "$COMP_CWORD" ]]; do
-		local s="${COMP_WORDS[i]}"
-		case "$s" in
-		# if our current word starts with a '-', it is not a subcommand
-		-*) ;;
-		# we are completing a subcommand, set cmd
-		*)
-			cmd="$s"
+		local str="${COMP_WORDS[i]}"
+		case "$str" in
+		# special case for -selection
+		-selection)
+			cmd="$str"
 			break
 			;;
 		esac
 		(( i++ ))
 	done
 
-	# check if we're completing 'dotty'
-	if [[ "$i" -eq "$COMP_CWORD" ]]; then
-		local cur="${COMP_WORDS[COMP_CWORD]}"
-		# shellcheck disable=SC2207
-		COMPREPLY=($(compgen -o default -W "-i -in -o -out -l -loops -d -display -h -help -selection -noutf8 -target -rmlastnl -version -silent -quiet -verbose" -- "$cur"))
-		return
-	fi
-
-	# if we're not completing 'xclip', then we're completing a subcommand
 	case "$cmd" in
-	*)
-		COMPREPLY=() ;;
+	-selection)
+		local cur="${COMP_WORDS[COMP_CWORD]}"
+
+		for i in "${!COMP_WORDS[@]}"; do
+			local word="${COMP_WORDS[i]}"
+
+			if [[ $word == "-selection" ]]; then
+				local nextWord="${COMP_WORDS[i+1]}"
+
+				# test to see if the next word is blank (-selection has been completed,
+				# but we have not typed anything after that
+
+				# also test to see if we are currently completing -selection, by testing if
+				# two indexes after -selection is out of bounds of the completion array.
+				# if it is, it means we are currently completing -selection
+				# TODO (bug): if we have the command typed, but go back to -selection and change
+				# it, autocomplete will not work
+
+				if [[ -z $nextWord ]] || [[ $((i+2)) -ge ${#COMP_WORDS[@]} ]]; then
+					readarray -t COMPREPLY < <(compgen -o default -W "primary secondary clipboard buffer-cut" -- "$cur")
+					return
+				fi
+			fi
+		done
+		;;
 	esac
 
-} && complete -F _xclip xclip
+	# check if we're completion command name
+	if [[ "$i" -eq "$COMP_CWORD" ]]; then
+		local cur="${COMP_WORDS[COMP_CWORD]}"
+		readarray -t COMPREPLY < <(compgen -o default -W "-i -in -o -out -l -loops -d -display -h -help -selection -noutf8 -target -rmlastnl -version -silent -quiet -verbose" -- "$cur")
+		return
+	fi
+}
+
+complete -F _xclip xclip

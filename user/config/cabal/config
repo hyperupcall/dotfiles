@@ -1,12 +1,3 @@
--- This is the configuration file for the 'cabal' command line tool.
---
--- The available configuration options are listed below.
--- Some of them have default values listed.
---
--- Lines (like this one) beginning with '--' are comments.
--- Be careful with spaces and indentation because they are
--- used to indicate layout for nested sections.
---
 -- This config file was generated using the following versions
 -- of Cabal and cabal-install:
 -- Cabal library version: 3.2.0.0
@@ -36,8 +27,8 @@ remote-repo-cache: /home/edwin/data/cabal/packages
 -- cabal-file:
 -- with-compiler:
 -- with-hc-pkg:
--- program-prefix: 
--- program-suffix: 
+-- program-prefix:
+-- program-suffix:
 -- library-vanilla: True
 -- library-profiling:
 -- shared:

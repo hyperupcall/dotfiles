@@ -220,6 +220,9 @@ export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc.py"
 # readline
 export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
 
+# ripgrep
+export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/config"
+
 # rust
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"

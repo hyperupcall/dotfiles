@@ -8,6 +8,7 @@ o() {
 	fi
 }
 
+# cloned in /root/.bashrc
 r() {
 	for file; do
 		if [ -d "$file" ]; then
@@ -18,6 +19,7 @@ r() {
 	done
 }
 
+# cloned in /root/.bashrc
 t() {
 	[ $# -eq 0 ] && {
 		_profile_util_log_error 't: Missing file arguments'
@@ -39,6 +41,7 @@ t() {
 	done
 }
 
+# cloned in /root/.bashrc
 v() {
 	_v_editor="${EDITOR:-vi}"
 

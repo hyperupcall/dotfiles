@@ -11,6 +11,8 @@ done
 # aliases (https://github.com/cykerway/complete-alias)
 source "$XDG_DATA_HOME/shell-installer/dls/cykerway--complete-alias/complete_alias"
 
+complete -F _complete_alias g
+complete -F _complete_alias gi
 complete -F _complete_alias ginit
 complete -F _complete_alias gclone
 complete -F _complete_alias gpull
@@ -19,8 +21,12 @@ complete -F _complete_alias gstatus
 complete -F _complete_alias gcommit
 
 
-complete -F _complete_alias sctl
+# ----------------------- systemctl ---------------------- #
 
+complete -F _complete_alias sctl
+complete -F _complete_alias sctlu
+
+# unit commands
 complete -F _complete_alias sslu
 complete -F _complete_alias ssls
 complete -F _complete_alias sslt
@@ -34,10 +40,14 @@ complete -F _complete_alias ssld
 complete -F _complete_alias ssstart
 complete -F _complete_alias ssstop
 complete -F _complete_alias ssreload
-complete -F _complete_alias ssr
+
+# unit file commands
+complete -F _complete_alias ssluf
 complete -F _complete_alias ssn
+complete -F _complete_alias ssd
 complete -F _complete_alias sse
 
+# unit commands
 complete -F _complete_alias sulu
 complete -F _complete_alias suls
 complete -F _complete_alias sult
@@ -52,10 +62,15 @@ complete -F _complete_alias sustart
 complete -F _complete_alias sustop
 complete -F _complete_alias sureload
 complete -F _complete_alias sur
+
+# unit file commands
+complete -F _complete_alias suluf
 complete -F _complete_alias sun
-complete -F _complete_alias sue
+complete -F _complete_alias sud
 complete -F _complete_alias sue
 
+
+# ---------------------- journalctl ---------------------- #
 
 complete -F _complete_alias ju
 complete -F _complete_alias juu

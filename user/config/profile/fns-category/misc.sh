@@ -1,5 +1,16 @@
 # shellcheck shell=sh
 
+cls() {
+	clear
+	reset
+	tput reset
+	tput rs1
+	stty sane
+	printf "\033c"
+	printf '\033\143'
+	sttyy
+}
+
 dataurl() {
 	mimeType=$(file -b --mime-type "$1")
 	case "$mimeType" in
@@ -15,11 +26,8 @@ dataurl() {
 	unset -v str
 }
 
-doBackup() {
+do_backup() {
 	restic --repo /storage/vault/rodinia/backups/ backup /storage/edwin/ --iexclude "node_modules" --iexclude "__pycache__" --iexclude "rootfs"
-}
-
-doBackup2() {
 	restic --repo /storage/vault/rodinia/backups-data/ backup /storage/data/ --iexclude "node_modules" --iexclude "__pycache__" --iexclude "rootfs"
 }
 

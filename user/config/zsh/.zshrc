@@ -48,3 +48,16 @@ eval "$(starship init zsh)"
 bindkey -M menuselect '^M' .accept-line
 alias assumed="git ls-files -v | grep ^h | sed -e 's/^h\ //'"
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# Prompting.
+setopt PROMPT_CR
+setopt PROMPT_SP
+
+# History.
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+
+# Directory.
+setopt AUTO_PUSHD
+setopt PUSHD_IGNORE_DUPS
+setopt PUSHD_MINUS

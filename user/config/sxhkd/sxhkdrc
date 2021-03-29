@@ -1,5 +1,5 @@
 super + Return
-	fox-default launch terminal-emulator
+	"$XDG_DATA_HOME/shell-installer/bin/fox-default" launch terminal-emulator
 
 super + n
 	kitty --title 'Popup Terminal'
@@ -17,10 +17,10 @@ super + u
 	/home/edwin/data/nimble/bin/themer --gui
 
 super + alt + l
-	fox-default --gui launch
+	"$XDG_DATA_HOME/shell-installer/bin/fox-default" --gui launch
 
 super + alt + s
-	fox-default --gui set
+	"$XDG_DATA_HOME/shell-installer/bin/fox-default" --gui set
 
 super + c
 	rofi -show calc -modi calc -no-show-match -no-sort

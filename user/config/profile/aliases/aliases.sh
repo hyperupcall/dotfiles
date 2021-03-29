@@ -42,6 +42,7 @@ alias yay='yay --color=auto'
 # -------------------------- git ------------------------- #
 
 alias g='git'
+alias gi='git'
 alias ginit='git init'
 alias gclone='git clone'
 alias gpull='git pull'
@@ -53,7 +54,9 @@ alias gcommit='git commit'
 # ----------------------- systemctl ---------------------- #
 
 alias sctl='systemctl'
+alias sctlu='systemctl --user'
 
+# unit commands
 alias sslu='systemctl --system list-units'
 alias ssls='systemctl --system list-sockets'
 alias sslt='systemctl --system list-timers'
@@ -68,9 +71,14 @@ alias ssstart='systemctl --system start'
 alias ssstop='systemctl --system stop'
 alias ssreload='systemctl --system reload'
 alias ssr='systemctl --system restart'
+
+# unit file commands
+alias ssluf='systemctl --system list-unit-files'
 alias ssn='systemctl --system enable'
+alias ssd='systemctl --system disable'
 alias sse='systemctl --system edit --full'
 
+# unit commands
 alias sulu='systemctl --user list-units'
 alias suls='systemctl --user list-sockets'
 alias sult='systemctl --user list-timers'
@@ -85,15 +93,19 @@ alias sustart='systemctl --user start'
 alias sustop='systemctl --user stop'
 alias sureload='systemctl --user reload'
 alias sur='systemctl --user restart'
+
+# unit file commands
+alias suluf='systemctl --user list-unit-files'
 alias sun='systemctl --user enable'
+alias sud='systemctl --user disable'
 alias sue='systemctl --user edit --full'
 
 
 # ---------------------- journalctl ---------------------- #
+alias jctl='journalctl'
 
-alias ju='journalctl --system -b -u'
-alias ju2='journalctl --system -b -u -e -p err'
-alias juu='journalctl --user -b -u'
+alias ju='journalctl --user -b -eu'
+alias js='journalctl --system -b -eu'
 
 
 # ------------------------ shells ------------------------ #

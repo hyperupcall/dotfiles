@@ -1,0 +1,13 @@
+[Unit]
+Description=Picom compositor
+Documentation=man:picom(1)
+BindsTo=xorg.target
+After=xorg.target
+PartOf=xorg.target
+ConditionPathExists=/usr/bin/picom
+
+[Service]
+ExecStart=/usr/bin/picom
+
+[Install]
+WantedBy=xorg.target

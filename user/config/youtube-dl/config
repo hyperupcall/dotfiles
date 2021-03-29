@@ -1,0 +1,33 @@
+## General Options ##
+# --ignore-errors
+
+## Filesystem Options ##
+# -o "~/Documents/Music/%(creator)s/%(playlist_title)s/%(playlist_index)s - %(title)s.%(ext)s"
+-o "~/Dls"
+--no-mtime
+# --write-description
+# --write-info-json
+# --write-annotations
+
+## Thumbnail images ##
+# --write-thumbnail
+# --write-all-thumbnails
+
+## Verbosity / Simulation Options ##
+--no-call-home
+
+## Video Format Options ##
+--prefer-free-formats
+
+## Subtitle Options ##
+--write-sub
+--write-auto-sub
+--sub-lang en
+
+## Post-processing Options ##
+# --extract-audio
+--audio-quality 0
+# --recode-video mp4
+--embed-subs
+--embed-thumbnail
+--convert-subs srt
