@@ -3,7 +3,7 @@ Description=Shutdown Reminder Timer
 Requires=shutdown-reminder.service
 
 [Timer]
-OnCalendar=*-*-* 22:30:*
+OnCalendar=*-*-* 22:25:*
 
 
 [Install]

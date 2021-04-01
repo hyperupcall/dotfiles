@@ -3,8 +3,6 @@
 unset DBUS_SESSION_BUS_ADDRESS
 unset SESSION_MANAGER
 
-export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
-
 # automatically find an unused $DISPLAY
 display=0
 while true; do
