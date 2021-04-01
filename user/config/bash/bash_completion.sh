@@ -11,6 +11,8 @@ done
 # aliases (https://github.com/cykerway/complete-alias)
 source "$XDG_DATA_HOME/shell-installer/dls/cykerway--complete-alias/complete_alias"
 
+## TODO: autogen
+
 complete -F _complete_alias g
 complete -F _complete_alias gi
 complete -F _complete_alias ginit
@@ -43,6 +45,7 @@ complete -F _complete_alias ssreload
 
 # unit file commands
 complete -F _complete_alias ssluf
+complete -F _complete_alias ssdr
 complete -F _complete_alias ssn
 complete -F _complete_alias ssd
 complete -F _complete_alias sse
@@ -65,6 +68,7 @@ complete -F _complete_alias sur
 
 # unit file commands
 complete -F _complete_alias suluf
+complete -F _complete_alias sudr
 complete -F _complete_alias sun
 complete -F _complete_alias sud
 complete -F _complete_alias sue

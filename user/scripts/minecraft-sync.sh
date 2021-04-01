@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# use at your own risk!!!
+# create backups!!!
+
 remove() {
 	: "${1:?"Error: remove: Argument 1, file not found"}"
 

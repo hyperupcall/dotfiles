@@ -74,7 +74,9 @@ alias ssr='systemctl --system restart'
 
 # unit file commands
 alias ssluf='systemctl --system list-unit-files'
+alias ssdr='systemctl --system daemon-reload'
 alias ssn='systemctl --system enable'
+alias ssenable='systemctl --system enable'
 alias ssd='systemctl --system disable'
 alias sse='systemctl --system edit --full'
 
@@ -96,7 +98,9 @@ alias sur='systemctl --user restart'
 
 # unit file commands
 alias suluf='systemctl --user list-unit-files'
+alias sudr='systemctl --user daemon-reload'
 alias sun='systemctl --user enable'
+alias suenable='systemctl --user enable'
 alias sud='systemctl --user disable'
 alias sue='systemctl --user edit --full'
 

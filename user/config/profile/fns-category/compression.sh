@@ -16,7 +16,7 @@ cunzip() {
 		case "$arg" in
 		*.zip)
 			folder="$(echo "$1" | rev | cut -d'.' -f2- | rev)"
-			unzip -d "$folder" "$1"
+			unzip -kd "$folder" "$1"
 			[ -f "$folder" ] && return
 			cd "$folder" || return
 			[ "$(find . -maxdepth 1 | cut -c 3- | wc -l)" = 1 ] && {

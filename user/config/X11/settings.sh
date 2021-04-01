@@ -20,7 +20,9 @@ xrandr \
 xrdb -load "$XDG_CONFIG_HOME/X11/Xresources"
 
 xset b off
-xset -dpms
+# xset -dpms
+# 'force on' prevents 0.5s black screen before xrandr invocation modifications take effect
+xset dpms force on
 xset +fp "$XDG_DATA_HOME/fonts"
 xset fp rehash
 xset led off

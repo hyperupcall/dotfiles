@@ -5,7 +5,7 @@ unset SESSION_MANAGER
 
 export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 
-# automatically determine an unused $DISPLAY
+# automatically find an unused $DISPLAY
 display=0
 while true; do
 	[ -e "/tmp/.X$display-lock" ] || [ -S "/tmp/.X11-unix/X$display" ] || break
@@ -81,7 +81,7 @@ retval=$?
 [ -n "$xserverauthfile" ] && rm -f "$xserverauthfile"
 
 type deallocvt >/dev/null 2>&1 && {
-    deallocvt
+	deallocvt
 }
 
 exit $retval

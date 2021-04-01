@@ -123,8 +123,9 @@ source "$XDG_CONFIG_HOME/bash/readline.sh"
 #
 
 # bash_completion (also sources $XDG_CONFIG_HOME/bash/bash_completions (as per env variable))
-# not needed as we `source /etc/profile` at beginnning of script
-# [ -r /usr/share/bash-completion/bash_completion ] && source /usr/share/bash-completion/bash_completion
+# even though we `source /etc/profile` at beginnning of script, this is still needed since we now
+# only have BASH_COMPLETION_USER_DIR and BASH_COMPLETION_USER_FILE set
+[ -r /usr/share/bash-completion/bash_completion ] && source /usr/share/bash-completion/bash_completion
 
 # bashmarks
 # SDIRS="$XDG_DATA_HOME/bashmarks.sh.db"

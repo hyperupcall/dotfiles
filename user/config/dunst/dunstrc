@@ -32,7 +32,7 @@ indicate_hidden = yes
 
 # Alignment of message text.
 # Possible values are "left", "center" and "right".
-alignment = center
+alignment = right
 
 # The frequency with wich text that is longer than the notification
 # window allows bounces back and forth.
@@ -43,7 +43,7 @@ bounce_freq = 0
 # Show age of message if message is older than show_age_threshold
 # seconds.
 # Set to -1 to disable.
-show_age_threshold = -1
+show_age_threshold = 300
 
 # Split notifications into multiple lines if they don't fit into
 # geometry.
@@ -54,7 +54,7 @@ ignore_newline = no
 
 # Hide duplicate's count and stack them
 stack_duplicates = yes
-hide_duplicate_count = yes
+hide_duplicate_count = no
 
 
 # The geometry of the window:
@@ -70,7 +70,7 @@ hide_duplicate_count = yes
 # The width can be negative.  In this case the actual width is the
 # screen width minus the width defined in within the geometry option.
 #geometry = "250x50-40+40"
-geometry = "300x50-15+49"
+geometry = "350x50-15+15"
 
 # Shrink window if it's smaller than the width.  Will be ignored if
 # width is 0.
@@ -84,7 +84,7 @@ transparency = 5
 # Don't remove messages, if the user is idle (no mouse or keyboard input)
 # for longer than idle_threshold seconds.
 # Set to 0 to disable.
-idle_threshold = 0
+idle_threshold = 60
 
 # Which monitor should the notifications be displayed on.
 monitor = 0
@@ -100,7 +100,7 @@ monitor = 0
 #
 # If this option is set to mouse or keyboard, the monitor option
 # will be ignored.
-follow = none
+follow = keyboard
 
 # Should a notification popped up from history be sticky or timeout
 # as if it would normally do.

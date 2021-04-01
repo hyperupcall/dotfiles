@@ -26,7 +26,7 @@ del() {
 }
 
 cdls() {
-	cd "$1" || { _profile_util_die "cdls: cd failed"; return; }
+	cd -- "$1" || { _profile_util_die "cdls: cd failed"; return; }
 	_profile_util_ls
 }
 

@@ -34,8 +34,9 @@ shift + Print
 shift + super + Print
 	maim -s ~/Pics/screenshot.png
 
-#XF86Audio{Mute,RaiseVolume,LowerVolume}
-#    amixer -q set Master {toggle,5%+,5%-}
+# requires alsa-utils
+XF86Audio{Mute,RaiseVolume,LowerVolume}
+	amixer -q set Master {toggle,5%+,5%-}
 
 XF86AudioPrev
 	cmus-remote --prev

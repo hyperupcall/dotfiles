@@ -87,7 +87,7 @@ export RANGER_LOAD_DEFAULT_RC="FALSE"
 [ "$XDG_CURRENT_DESKTOP" = "KDE" ] || [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] \
 	|| export QT_QPA_PLATFORMTHEME="qt5ct"
 
-# snap
+# snapk
 _path_append "/var/lib/snapd/snap/bin"
 
 # sxhkd

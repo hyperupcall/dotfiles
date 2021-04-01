@@ -3,7 +3,7 @@ Description=Shutdown Reminder Timer
 
 [Service]
 Type=oneshot
-ExecStart=notify-send "TIME TO SLEEP"
+ExecStart=%h/scripts/shutdown-reminder.sh
 
 [Install]
 WantedBy=xorg.target

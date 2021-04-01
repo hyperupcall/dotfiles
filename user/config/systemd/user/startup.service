@@ -1,0 +1,13 @@
+[Unit]
+Description=Runs ~/scripts/startup.sh script
+BindsTo=xorg.target
+After=xorg.target
+PartOf=xorg.target
+ConditionPathExists=%h/scripts/startup.sh
+
+[Service]
+Type=oneshot
+ExecStart=%h/scripts/startup.sh
+
+[Install]
+WantedBy=xorg.target

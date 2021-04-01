@@ -243,6 +243,9 @@ export SCREENRC="$XDG_CONFIG_HOME/screenrc"
 export SDKMAN_DIR="$XDG_DATA_HOME/sdkman"
 [ -r "$SDKMAN_DIR/bin/sdkman-init.sh" ] && . "$SDKMAN_DIR/bin/sdkman-init.sh"
 
+# xsm
+export SM_SAVE_DIR="$XDG_DATA_HOME/xsm"
+
 # sonarlint
 export SONARLINT_USER_HOME="$XDG_DATA_HOME/sonarlint"
 

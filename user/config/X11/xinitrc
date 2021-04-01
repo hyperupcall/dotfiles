@@ -5,14 +5,13 @@ errorFile="$XDG_DATA_HOME/X11/xsession-errors"
 [ -f "$errorFile" ] || {
 	touch "$errorFile"
 	chmod 600 "$errorFile"
-} 2>/dev/null 2>&1
+} 2>/dev/null >&2
 exec >> "$errorFile" 2>&1
 printf "\033[1m----- INFO: X session started for %s at %s -----\033[0m\n" "$(id -un)" "$(date)"
 
 # source system
 [ -d /etc/X11/xinit/xinitrc.d ] && {
 	for f in /etc/X11/xinit/xinitrc.d/?*.sh; do
-		# shellcheck disable=SC1090
 		[ -x "$f" ] && . "$f"
 	done
 	unset f
@@ -22,4 +21,4 @@ printf "\033[1m----- INFO: X session started for %s at %s -----\033[0m\n" "$(id 
 "$XDG_CONFIG_HOME/X11/settings.sh"
 systemctl --user start xorg.target
 
-exec i3
+exec fox-default launch window-manager

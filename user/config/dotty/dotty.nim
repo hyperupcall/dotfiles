@@ -92,6 +92,7 @@ let dotConfigFiles = [
   cfg & "npm",
   cfg & "nu",
   cfg & "nvim",
+  cfg & "openbox",
   cfg & "pamix.conf",
   cfg & "picom",
   cfg & "pijul",
