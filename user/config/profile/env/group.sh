@@ -43,6 +43,9 @@ export GPG_TTY
 SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 export SSH_AUTH_SOCK
 
+# guile
+export GUILE_HISTORY="$HOME/.history/guile_history"
+
 # hstr
 export HSTR_CONFIG=hicolor
 
@@ -77,6 +80,9 @@ export MORE="-l"
 export NNN_FALLBACK_OPENER="xdg-open"
 export NNN_DE_FILE_MANAGER="nautilus"
 
+# pass
+export PASSWORD_STORE_ENABLE_EXTENSIONS=true
+
 # ps
 export CMD_ENV="linux"
 
@@ -87,11 +93,11 @@ export RANGER_LOAD_DEFAULT_RC="FALSE"
 [ "$XDG_CURRENT_DESKTOP" = "KDE" ] || [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] \
 	|| export QT_QPA_PLATFORMTHEME="qt5ct"
 
-# snapk
+# snapd
 _path_append "/var/lib/snapd/snap/bin"
 
 # sxhkd
-export SXHKD_SHELL="$(command -v dash)"
+export SXHKD_SHELL="$(command -v sh)"
 
 # X11
 export XCURSOR_PATH="$XDG_CONFIG_HOME/icons:$XCURSOR_PATH"

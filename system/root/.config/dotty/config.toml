@@ -1,0 +1,3 @@
+[config]
+dotDir = "/home/edwin/.dots/system"
+destDir = "/"

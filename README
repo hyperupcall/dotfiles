@@ -25,6 +25,7 @@ usage
 git clone https://github.com/eankeen/dots
 cd dots
 git config --local filter.npmrc-clean.clean "$(pwd)/user/config/npm/npmrc-clean.sh"
+git config --local filter.slack-term-config-clean.clean "$(pwd)/user/config/slack-term/slack-term-config-clean.sh"
 
 
 auxiliary utils
@@ -69,3 +70,5 @@ https://github.com/caarlos0/dotfiles.fish
 https://github.com/trapd00r/LS_COLORS
 https://github.com/replaceits/Simple-Lemonbar
 https://github.com/dikiaap/dotfiles
+https://github.com/Earnestly/dotfiles
+https://github.com/LukeSmithxyz/voidrice

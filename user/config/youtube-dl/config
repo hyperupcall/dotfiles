@@ -3,7 +3,7 @@
 
 ## Filesystem Options ##
 # -o "~/Documents/Music/%(creator)s/%(playlist_title)s/%(playlist_index)s - %(title)s.%(ext)s"
--o "~/Dls"
+-o "~/Dls/youtube-dl/%(creator)s-%(title)s"
 --no-mtime
 # --write-description
 # --write-info-json
@@ -17,7 +17,7 @@
 --no-call-home
 
 ## Video Format Options ##
---prefer-free-formats
+# --prefer-free-formats
 
 ## Subtitle Options ##
 --write-sub
@@ -29,5 +29,5 @@
 --audio-quality 0
 # --recode-video mp4
 --embed-subs
---embed-thumbnail
+# --embed-thumbnail
 --convert-subs srt

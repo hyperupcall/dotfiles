@@ -128,7 +128,6 @@ source "$XDG_CONFIG_HOME/bash/readline.sh"
 [ -r /usr/share/bash-completion/bash_completion ] && source /usr/share/bash-completion/bash_completion
 
 # bashmarks
-# SDIRS="$XDG_DATA_HOME/bashmarks.sh.db"
 # [ -r ~/.local/bin/bashmarks.sh ] && source ~/.local/bin/bashmarks.sh
 
 # dircolors
@@ -137,7 +136,7 @@ source "$XDG_CONFIG_HOME/bash/readline.sh"
 # direnv
 eval "$(direnv hook bash)"
 
-global_readline_debug() {
+_global_completion_debug() {
 	echo
 	echo "----- debug start -----"
 	echo "#COMP_WORDS=${#COMP_WORDS[@]}"

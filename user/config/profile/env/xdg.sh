@@ -24,6 +24,9 @@ export AWS_CONFIG_FILE="$XDG_DATA_HOME/aws/config"
 export BASH_COMPLETION_USER_DIR="$XDG_CONFIG_HOME/bash"
 export BASH_COMPLETION_USER_FILE="$XDG_CONFIG_HOME/bash/bash_completion.sh"
 
+# bashmarks
+SDIRS="$XDG_DATA_HOME/bashmarks.sh.db"
+
 # boto
 export BOTO_CONFIG="$XDG_DATA_HOME/boto"
 
@@ -62,11 +65,12 @@ export CURL_HOME="$XDG_CONFIG_HOME/curl"
 export PUB_CACHE="$XDG_CACHE_HOME/pub-cache"
 
 # deno
-export DVM_DIR="$XDG_DATA_HOME/dvm"
 export DENO_INSTALL="$XDG_DATA_HOME/deno"
 export DENO_INSTALL_ROOT="$DENO_INSTALL/bin"
+export DVM_DIR="$XDG_DATA_HOME/dvm"
 _path_prepend "$DENO_INSTALL_ROOT"
 _path_prepend "$DENO_INSTALL_ROOT/bin"
+_path_prepend "$DVM_DIR/bin"
 
 # docker
 export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
@@ -106,6 +110,9 @@ export IMAPFILTER_HOME="$XDG_CONFIG_HOME/imapfilter"
 
 # info
 alias info='info --init-file $XDG_CONFIG_HOME/info/infokey'
+
+# ipfs
+# export IPFS_PATH="$XDG_DATA_HOME/ipfs"
 
 # ipython
 export IPYTHONDIR="$XDG_CONFIG_HOME/jupyter"
@@ -149,6 +156,7 @@ export N_PREFIX="$XDG_DATA_HOME/n"
 _path_prepend "$N_PREFIX/bin"
 
 # nb
+export NBRC_PATH="$XDG_CONFIG_HOME/nb/nbrc"
 export NB_DIR="$XDG_DATA_HOME/nb"
 export NB_HIST="$HOME/.history/nb_history"
 
@@ -176,6 +184,9 @@ export NVM_DIR="$XDG_DATA_HOME/nvm"
 export PACKER_CONFIG="$XDG_DATA_HOME/packer/packerconfig"
 export PACKER_CONFIG_DIR="$XDG_DATA_HOME/packer/packer.d"
 export CHECKPOINT_DISABLE=1
+
+# pass
+export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
 
 # perl
 export PERL_LOCAL_LIB_ROOT="$XDG_DATA_HOME/perl5"

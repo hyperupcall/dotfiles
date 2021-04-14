@@ -51,7 +51,7 @@ _readline_util_get_man() {
 		(($? != 16)) && : # unhandled error
 	fi
 
-	# try lsblk, qemu-system-x86_64
+	# try git, lsblk, qemu-system-x86_64
 	manual="${line%% *}"
 	if 'man' "$manual" &>/dev/null; then
 		printf "%s" "$manual"

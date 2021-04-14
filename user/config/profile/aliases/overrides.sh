@@ -1,6 +1,5 @@
 # shellcheck shell=sh
 
-alias cmd='command'
 alias curl='curlie'
 alias du='dust'
 alias less='most'

@@ -251,8 +251,7 @@
     "liveIndexing": false
   },
   "terraform.languageServer": {
-    "args": [],
-    "enabled": true
+    "external": true
   },
   "terraform.telemetry.enabled": false,
   "todo-tree.tree.showScanModeButton": false,

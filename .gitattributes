@@ -1,3 +1,4 @@
 * text=auto eol=lf
 user/config/npm/npmrc filter=npmrc-clean
-/.github/ export-ignore
+user/config/slack-term/config filter=slack-term-config-clean
+

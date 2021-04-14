@@ -1,6 +1,6 @@
 {
 	"answerdiff": "None",
 	"answerclean": "None",
-	"noremovemake": false,
+	"removemake": "yes",
 	"sudoloop": true
 }

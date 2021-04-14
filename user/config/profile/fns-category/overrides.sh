@@ -1,22 +1,41 @@
 # shellcheck shell=sh
 
+bash() {
+	for arg; do
+		case "$arg" in
+			--norc|--noprofile)
+			HISTFILE="$HISTFILE" command bash "$@"
+			return
+		esac
+	done
+	unset -v arg
+
+	command bash "$@"
+}
+
 cp() {
 	if command -v rsync >/dev/null 2>&1; then
-		'rsync' -ah --progress "$@"
+		command rsync -ah --progress "$@"
 	else
 		_profile_util_log_warn "cp: Falling back to 'cp'"
 		command cp -i "$@"
 	fi
 }
 
+lsblk() {
+	if [ $# -eq 0 ]; then
+		command lsblk -o NAME,FSSIZE,FSUSED,FSAVAIL,FSUSE%,FSTYPE,MOUNTPOINT
+	else
+		command lsblk "$@"
+	fi
+}
+
 rm() {
 	_profile_util_die "rm: Use 'del' or 'r' instead"
-	return
 }
 
 rmdir() {
 	_profile_util_die "rmdir: Use 'r' instead"
-	return
 }
 
 _stty_saved_settings="$(stty -g)"
@@ -25,7 +44,7 @@ stty() {
 		# 'stty sane' resets our modifications to behaviors of tty device
 		# including the line discipline. this assumes tty was sane when initialized
 		stty "$_stty_saved_settings"
-		_stty_exit_code="$?"
+		_stty_exit_code=$?
 
 		# redirect log to error since this could be a scripted command used within a tty
 		_profile_util_log_info "stty: Restored stty settings to our default" 1>&2
@@ -38,7 +57,6 @@ stty() {
 
 touch() {
 	_profile_util_die "touch: Use 't' instead"
-	return
 }
 
 # cloned in /root/.bashrc
@@ -55,9 +73,10 @@ unlink() {
 	for file; do
 		command unlink "$file"
 	done
+
+	unset -v arg file
 }
 
 vim() {
-	_profile_util_log_error "vim: Use 'v' instead"
-	return
+	_profile_util_die "vim: Use 'v' instead"
 }

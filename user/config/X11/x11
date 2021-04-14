@@ -3,7 +3,7 @@
 unset DBUS_SESSION_BUS_ADDRESS
 unset SESSION_MANAGER
 
-# automatically find an unused $DISPLAY
+# automatically find unused $DISPLAY
 display=0
 while true; do
 	[ -e "/tmp/.X$display-lock" ] || [ -S "/tmp/.X11-unix/X$display" ] || break
@@ -14,26 +14,14 @@ display=:$display
 # when starting the default server, start X on current tty to avoid the startx
 # session being seen as inactive: https://bugzilla.redhat.com/show_bug.cgi?id=806491
 tty="$(tty)"
-if expr "$tty" : '/dev/tty[0-9][0-9]*$' >/dev/null; then
-	ttyNum="$(echo "$tty" | grep -oE '[0-9]+$')"
-	vtarg="vt$ttyNum"
-	unset -v ttyNum
+if expr "$tty" : '/dev/tty[0-9][0-9]*$' >/dev/null 2>&1; then
+	vtarg="vt$(echo "$tty" | grep -oE '[0-9]+$')"
 else
 	echo "Warning: Not running on a tty. Exiting"
 	exit 1
 fi
 unset -v tty
 
-# set up default Xauth info for this machine
-# check for GNU hostname
-hostname="$(hostname)"
-if hostname --version > /dev/null 2>&1; then
-	if ! hostname --version 2>&1 | grep -q GNU; then
-		hostname="$(hostname -f)"
-	fi
-fi
-
-authdisplay=${display:-:0}
 mcookie="$(/usr/bin/mcookie)"
 [ -z "$mcookie" ] && {
 	echo "Error: Couldn't create cookie"
@@ -44,30 +32,24 @@ mcookie="$(/usr/bin/mcookie)"
 dummy=0
 xserverauthfile="$(mktemp --tmpdir serverauth.XXXXXXXXXX)"
 trap 'rm -f "$xserverauthfile"' HUP INT QUIT ILL TRAP BUS TERM
-xauth -q -f "$xserverauthfile" <<-EOF
-	add :$dummy . $mcookie
-EOF
+xauth -q -f "$xserverauthfile" add ":$dummy" . "$mcookie"
 
 # now add the same credentials to the client authority file
 # if '$displayname' already exists do not overwrite it as another
 # server may need it. Add them to the '$xserverauthfile' instead
 removelist=
-touch "$XAUTHORITY"
-for displayname in $authdisplay $hostname$authdisplay; do
+
+for displayname in $display $(hostname)$display; do
 	authcookie="$(xauth list "$displayname" \
 		| head -1 \
 		| sed -n "s/.*${displayname}[[:space:]*].*[[:space:]*]//p")" 2>/dev/null;
 
 	if [ "$authcookie" = "" ]; then
-		xauth -q <<- EOF
-			add $displayname . $mcookie
-		EOF
+		xauth -q add "$displayname" . "$mcookie"
 		removelist="$displayname $removelist"
 	else
 		dummy=$((dummy+1));
-		xauth -q -f "$xserverauthfile" <<-EOF
-			add :$dummy . $authcookie
-		EOF
+		xauth -q -f "$xserverauthfile" add ":$dummy" . "$authcookie"
 	fi
 done
 

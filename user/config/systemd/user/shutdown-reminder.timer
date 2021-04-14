@@ -3,8 +3,8 @@ Description=Shutdown Reminder Timer
 Requires=shutdown-reminder.service
 
 [Timer]
-OnCalendar=*-*-* 22:25:*
-
+OnCalendar=*-*-* 22:25:00
+Persistent=false
 
 [Install]
 WantedBy=xorg.target

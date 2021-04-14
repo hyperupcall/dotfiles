@@ -17,7 +17,7 @@ xrandr \
 	--output DP-3 --above DP-5 \
 	--output HDMI-0 --right-of DP-5
 
-xrdb -load "$XDG_CONFIG_HOME/X11/Xresources"
+xrdb -load -all "$XDG_CONFIG_HOME/X11/Xresources"
 
 xset b off
 # xset -dpms

@@ -37,6 +37,7 @@ shift + super + Print
 # requires alsa-utils
 XF86Audio{Mute,RaiseVolume,LowerVolume}
 	amixer -q set Master {toggle,5%+,5%-}
+# pulseaudio-ctl {mute,up,down}
 
 XF86AudioPrev
 	cmus-remote --prev

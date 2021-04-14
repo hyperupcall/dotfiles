@@ -1,10 +1,10 @@
-
 --map-syntax ".dockerignore:Git Ignore"
 --map-syntax ".fdignore:Git Ignore"
 --map-syntax ".ignore:Git Ignore"
 --map-syntax ".rgignore:Git Ignore"
+--map-syntax "Justfile:Makefile"
 
 --theme="Nord"
 
 # Show Git modifications
---style="changes"
+--style="full"

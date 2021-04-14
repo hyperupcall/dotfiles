@@ -1,4 +1,4 @@
 git_protocol: ssh
-prompt: enabled
+prompt: disabled
 aliases:
    co: pr checkout

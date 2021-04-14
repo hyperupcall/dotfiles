@@ -5,6 +5,6 @@
 	"saveMedia": true,
 	"skipNoSubtitles": true,
 	"torrentListLength": 30,
-	"downloadDir": "~/Dls/movies",
+	"downloadDir": "~/Dls/cliflix",
 	"webtorrentOptions": ["--no-quit"]
 }
