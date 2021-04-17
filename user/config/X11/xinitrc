@@ -7,7 +7,7 @@ errorFile="$XDG_DATA_HOME/X11/xsession-errors"
 	chmod 600 "$errorFile"
 } 2>/dev/null >&2
 exec >> "$errorFile" 2>&1
-printf "\033[1m----- INFO: X session started for %s at %s -----\033[0m\n" "$(id -un)" "$(date)"
+printf "\033[1m------ INFO: X session started for %s at %s ------\033[0m\n" "$(id -un)" "$(date)"
 
 # source system
 [ -d /etc/X11/xinit/xinitrc.d ] && {

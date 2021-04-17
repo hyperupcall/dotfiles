@@ -19,16 +19,16 @@ repository hackage.haskell.org
 -- local-no-index-repo:
 remote-repo-cache: /home/edwin/data/cabal/packages
 -- local-repo:
--- logs-dir: /home/edwin/.cabal/logs
--- world-file: /home/edwin/data/cabal/world
+logs-dir: /home/edwin/data/cabal/logs
+world-file: /home/edwin/data/cabal/world
 -- store-dir:
 -- verbose: 1
 -- compiler: ghc
 -- cabal-file:
 -- with-compiler:
 -- with-hc-pkg:
--- program-prefix:
--- program-suffix:
+-- program-prefix: 
+-- program-suffix: 
 -- library-vanilla: True
 -- library-profiling:
 -- shared:
@@ -92,7 +92,7 @@ extra-prog-path: /home/edwin/data/cabal/bin
 -- index-state:
 -- root-cmd:
 -- symlink-bindir:
-build-summary: /home/edwin/.cabal/logs/build.log
+build-summary: /home/edwin/data/cabal/logs/build.log
 -- build-log:
 remote-build-reporting: anonymous
 -- report-planning-failure: False
@@ -108,7 +108,7 @@ jobs: $ncpus
 -- package-env:
 -- overwrite-policy:
 -- install-method:
-installdir: /home/edwin/.cabal/bin
+installdir: /home/edwin/data/cabal/bin
 -- username:
 -- password:
 -- password-command:

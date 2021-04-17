@@ -63,7 +63,7 @@ shopt -s nocaseglob
 shopt -s nocasematch
 shopt -u nullglob # setting obtains unexpected parameter expansion behavior
 shopt -s progcomp
-((${BASH_VERSION%%.*} == 5)) && shopt -s progcomp_alias # not working due to complete _D
+((${BASH_VERSION%%.*} == 5)) && shopt -s progcomp_alias # not working due to complete -D
 shopt -s shift_verbose
 shopt -s sourcepath
 shopt -u xpg_echo # default

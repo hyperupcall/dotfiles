@@ -60,5 +60,6 @@ _profile_util_ls() {
 		exa -al
 		return
 	}
+
 	ls -al
 }

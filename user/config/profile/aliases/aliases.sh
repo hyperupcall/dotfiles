@@ -78,6 +78,7 @@ alias ssstart='systemctl --system start'
 alias ssstop='systemctl --system stop'
 alias ssreload='systemctl --system reload'
 alias ssr='systemctl --system restart'
+alias ssrestart='systemctl --system restart'
 
 # unit file commands
 alias ssluf='systemctl --system list-unit-files'
@@ -102,6 +103,7 @@ alias sustart='systemctl --user start'
 alias sustop='systemctl --user stop'
 alias sureload='systemctl --user reload'
 alias sur='systemctl --user restart'
+alias surestart='systemctl --user restart'
 
 # unit file commands
 alias suluf='systemctl --user list-unit-files'

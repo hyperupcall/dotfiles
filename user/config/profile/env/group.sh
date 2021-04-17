@@ -17,7 +17,7 @@ if [ -z "$DBUS_SESSION_BUS_ADDRESS" ] && [ -n "$XDG_RUNTIME_DIR" ] && \
 fi
 # tell dbus-daemon --session (and systemd --user, if running) some environment variables
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY QT_ACCESSIBILITY XDG_CONFIG_HOME XDG_DATA_HOME XDG_RUNTIME_DIR
-dbus-update-activation-environment --systemd
+systemctl import-environment --user PASSWORD_STORE_DIR GNUPGHOME
 
 # bm
 _path_prepend "$XDG_DATA_HOME/bm/bin"
@@ -38,10 +38,8 @@ export GIT_CONFIG_NOSYSTEM=
 
 # gnupg
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
-GPG_TTY="$(tty)"
-export GPG_TTY
-SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
-export SSH_AUTH_SOCK
+export GPG_TTY="$(tty)"
+export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 
 # guile
 export GUILE_HISTORY="$HOME/.history/guile_history"
@@ -80,6 +78,9 @@ export MORE="-l"
 export NNN_FALLBACK_OPENER="xdg-open"
 export NNN_DE_FILE_MANAGER="nautilus"
 
+# packer
+export CHECKPOINT_DISABLE=1
+
 # pass
 export PASSWORD_STORE_ENABLE_EXTENSIONS=true
 
@@ -90,8 +91,9 @@ export CMD_ENV="linux"
 export RANGER_LOAD_DEFAULT_RC="FALSE"
 
 # qt
-[ "$XDG_CURRENT_DESKTOP" = "KDE" ] || [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] \
-	|| export QT_QPA_PLATFORMTHEME="qt5ct"
+[ "$XDG_CURRENT_DESKTOP" = "KDE" ] || [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] || {
+	export QT_QPA_PLATFORMTHEME="qt5ct"
+}
 
 # snapd
 _path_append "/var/lib/snapd/snap/bin"

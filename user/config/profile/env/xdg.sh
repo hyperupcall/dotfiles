@@ -183,7 +183,6 @@ export NVM_DIR="$XDG_DATA_HOME/nvm"
 # packer
 export PACKER_CONFIG="$XDG_DATA_HOME/packer/packerconfig"
 export PACKER_CONFIG_DIR="$XDG_DATA_HOME/packer/packer.d"
-export CHECKPOINT_DISABLE=1
 
 # pass
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"

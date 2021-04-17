@@ -21,3 +21,4 @@
 #
 # Other
 # (chore|dx|workflow|types|wip)
+# TODO: fix commit template

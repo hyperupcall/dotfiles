@@ -159,6 +159,8 @@ _readline_trim_whitespace() {
 	)"
 }
 
+bind '"\e;": redraw-current-line'
+
 bind -x '"\eu": _readline_x_discard'
 bind -x '"\ek": _readline_x_kill'
 bind -x '"\ey": _readline_x_yank'
@@ -170,4 +172,3 @@ bind -x '"\e\\": _readline_toggle_backslash'
 bind -x '"\e/": _readline_toggle_comment'
 bind -x '"\C-_": _readline_toggle_comment'
 bind -x '"\ei": _readline_trim_whitespace'
-bind '"\e;": redraw-current-line'

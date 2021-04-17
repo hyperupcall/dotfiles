@@ -4,7 +4,6 @@
 --map-syntax ".rgignore:Git Ignore"
 --map-syntax "Justfile:Makefile"
 
---theme="Nord"
-
-# Show Git modifications
 --style="full"
+
+--theme="Nord"

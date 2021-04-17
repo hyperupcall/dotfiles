@@ -40,5 +40,7 @@ $if mode=vi
 	set keymap vi-insert
 	"jj": vi-movement-mode
 	"\C-p": history-search-backward
-	"\C-l": clear-screen
+	Control-l: clear-screen
+	TAB: menu-complete
+	"\e[Z": menu-complete-backward
 $endif
