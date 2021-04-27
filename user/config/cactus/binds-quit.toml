@@ -1,0 +1,12 @@
+# TODO: fix cactus thing for this
+[Q]
+cmd = "i3-msg kill"
+
+[C]
+cmd = "i3-msg reload"
+
+[R]
+cmd = "i3-msg restart"
+
+[E]
+cmd = "i3-msg exit"

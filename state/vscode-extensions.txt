@@ -39,10 +39,8 @@ esbenp.prettier-vscode
 ExodiusStudios.comment-anchors
 fabiospampinato.vscode-open-in-node-modules
 FallenMax.mithril-emmet
-faustinoaq.crystal-lang
 foam.foam-vscode
 frhtylcn.pythonsnippets
-g3ortega.crystal
 gamunu.vscode-yarn
 ghmcadams.lintlens
 GitHub.github-vscode-theme
@@ -152,7 +150,6 @@ vscjava.vscode-java-debug
 vscjava.vscode-java-dependency
 vscjava.vscode-java-test
 vscjava.vscode-maven
-vscoss.vscode-ansible
 waderyan.gitblame
 WakaTime.vscode-wakatime
 wart.ariake-dark

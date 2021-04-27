@@ -1,8 +1,5 @@
 #!/usr/bin/env sh
 
-# TODO
-# setxbmap us
-
 xbacklight -set 100
 
 # xhost gives X server access for same user processes on localhost.
@@ -21,8 +18,7 @@ xrdb -load -all "$XDG_CONFIG_HOME/X11/Xresources"
 
 xset b off
 # xset -dpms
-# 'force on' prevents 0.5s black screen before xrandr invocation modifications take effect
-xset dpms force on
+xset dpms force on # prevents black screen flashes before xrandr invocations
 xset +fp "$XDG_DATA_HOME/fonts"
 xset fp rehash
 xset led off
@@ -33,4 +29,4 @@ xsetroot -default
 xsetroot -xcf /usr/share/icons/breeze_cursors/cursors/left_ptr 4
 xsetroot -mod 8 8
 xsetroot -solid '#212529'
-# xsetroot -name "$(date +"%F %R" )"
+xsetroot -name "Root Window"

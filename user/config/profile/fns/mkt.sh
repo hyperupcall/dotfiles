@@ -29,7 +29,7 @@ mkt() {
 		dir="$(mktemp -d)"
 		cd "$dir" || { _profile_util_die "mkt: Could not cd"; return; }
 
-		'curl' -LO "$1" || {
+		command curl -LO "$1" || {
 			_profile_util_die "mkt: cURL error"
 			return
 		}
@@ -51,7 +51,7 @@ mkt() {
 	# github repository shorthand
 	*/*)
 		dir="$(mktemp -d)"
-		! 'curl' -sSLIo /dev/null "https://github.com/$1" && return
+		! command curl -sSLIo /dev/null "https://github.com/$1" && return
 
 		cd "$dir" || { _profile_util_die "mkt: Could not cd"; return; }
 		git clone "https://github.com/$1"

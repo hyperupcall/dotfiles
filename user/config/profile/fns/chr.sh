@@ -4,8 +4,15 @@ chr() {
 	[ -z "$1" ] && { _profile_util_die "chr: No mountpoint specified"; return; }
 	[ -d "$1" ] || { _profile_util_die "chr: Folder doesn't exist"; return; }
 
+	# xterm-kitty cleaner
 	command -v arch-chroot >/dev/null 2>&1 && {
-		arch-chroot "$@"
+    		[ "$TERM" = xterm-kitty ] && {
+			TERM=xterm-256color
+			sudo arch-chroot "$@"
+			TERM=xterm-kitty
+	    	}
+
+		sudo arch-chroot "$@"
 		return
 	}
 

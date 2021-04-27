@@ -14,10 +14,12 @@ bash() {
 }
 
 cp() {
+    	# TODO: behavior of rsync here isn't exactly equivalent
 	if command -v rsync >/dev/null 2>&1; then
 		command rsync -ah --progress "$@"
 	else
 		_profile_util_log_warn "cp: Falling back to 'cp'"
+		# TODO: create last folder if it exists, ensure it is not an option
 		command cp -i "$@"
 	fi
 }

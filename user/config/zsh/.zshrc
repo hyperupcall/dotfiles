@@ -203,3 +203,6 @@ bindkey          '^T' history-incremental-pattern-search-backward
 bindkey -M isearch '^M' accept-search
 
 alias help='run-help'
+
+PS1='%(?.%(!.#.;).%F{6}%B;%b%f) '
+

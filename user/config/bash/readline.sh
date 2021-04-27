@@ -38,8 +38,20 @@ _readline_util_get_cmd() {
 # are due to not finding man pages (exit code 16)
 _readline_util_get_man() {
 	local line tempLine manual
-
+	# TODO: read aliases (for help as well)
+	# TODO: special case (ex. for systemctl --user import environment)
 	line="$(_readline_util_get_line "$1")"
+
+	# try docker-container-ls
+	tempLine="${line/ /-}"
+	tempLine="${tempLine/ /-}"
+	manual="${tempLine%% *}"
+	if 'man' "$manual" &>/dev/null; then
+		printf "%s" "$manual"
+		return
+	else
+		(($? != 16)) && : # unhandled error
+	fi
 
 	# try git-status, zfs-mount, 'qemu-system-x86_64--cdrom file.iso'
 	tempLine="${line/ /-}"

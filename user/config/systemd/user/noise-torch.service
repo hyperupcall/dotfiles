@@ -1,0 +1,13 @@
+[Unit]
+Description=User Noistorch
+BindsTo=xorg.target
+After=xorg.target
+PartOf=xorg.target
+AssertPathExists=/usr/bin/noisetorch
+
+[Service]
+ExecStart=/usr/bin/noisetorch -i
+ExecStop=/usr/bin/kill $MAINPID
+
+[Install]
+WantedBy=xorg.target

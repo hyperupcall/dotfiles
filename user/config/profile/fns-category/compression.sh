@@ -1,9 +1,32 @@
 # shellcheck shell=sh
 
-clist() {
+_compress_util_help() {
+	cat <<-EOF
+	clist
+		--normalize
+
+	cunzip
+	EOF
+}
+
+cls() {
+	_compress_normalize=no
+	for arg; do
+		case "$arg" in
+			--normalize) _compress_normalize=yes ;;
+			--help) _compress_util_help; return ;;
+		esac
+	done
+
 	case "$1" in
 	*.zip)
-		unzip -l "$1"
+		if [ "$_compress_normalize" = "no" ]; then
+			unzip -l -- "$1"
+		else
+			unzip -l -- "$1" | awk '{ if(NR != 2 && NR !=3 && length($4) > 0) { print "./" $4 } }'
+		fi
+		;;
+	*.tar)
 		;;
 	*)
 		echo "Error: No match found" >&2
@@ -18,7 +41,7 @@ cunzip() {
 			folder="$(echo "$1" | rev | cut -d'.' -f2- | rev)"
 			unzip -kd "$folder" "$1"
 			[ -f "$folder" ] && return
-			cd "$folder" || return
+			cd "$folder" || { _profile_util_die "mkt: Could not cd"; return; }
 			[ "$(find . -maxdepth 1 | cut -c 3- | wc -l)" = 1 ] && {
 				subfolder="$(ls)"
 				mv "./$subfolder"/* "./$subfolder"/.* .
@@ -26,6 +49,16 @@ cunzip() {
 				cd ..
 			}
 			;;
+		*.tar) tar xf "$1" ;;
+		*.tar.bz2) tar xjvf "$1" ;;
+		*.tar.gz) tar xzvf "$1" ;;
+		*.bz2) bunzip2 "$1" ;;
+		*.rar) rar x "$1" ;;
+		*.gz) gunzip "$1" ;;
+		*.tbz2) tar xjvf "$1" ;;
+		*.tgz) tar xzvf "$1" ;;
+		*.Z) uncompress "$1" ;;
+		*.7z) 7z x "$1" ;;
 		*)
 			echo "Error: No match found" >&2
 			;;

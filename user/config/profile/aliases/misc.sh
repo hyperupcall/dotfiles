@@ -9,4 +9,5 @@ alias la='exa -a'
 alias ll='exa -al --icons --git'
 alias pbat='bat -p'
 alias psa='ps xawf -eo pid,user,cgroup,args'
-alias run-help='help'
+alias run-help='help' # zsh
+alias ydl='youtube-dl'

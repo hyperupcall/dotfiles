@@ -40,6 +40,11 @@ dg() {
 	dig +nocmd "$1" any +multiline +noall +answer
 }
 
+eboot() {
+    	# TODO kak
+	cmd vim ~/repos/dots-bootstrap/lib/install_modules
+}
+
 edit() {
 	_edit_grep_result="$(grep -nR "^$1() {$" "$XDG_CONFIG_HOME/profile" | head -1)"
 	[ -z "$_edit_grep_result" ] && {
@@ -66,19 +71,37 @@ isup() {
 	command curl -sS --head --X GET "$1" | grep -q '200 OK'
 }
 
+kkexec() {
+	sudo kexec -l /efi/EFI/arch/vmlinuz-linux-lts --initrd /efi/EFI/arch/initramfs-linux-lts.img --reuse-cmdline
+	sudo systemctl kexec
+}
 np() {
-	mkdir -p "$HOME/repos/$1"
-	code "$HOME/repos/$1"
+	if [ "$(awk '{ print substr($1, 0, 1) }')" = "/" ]; then
+		mkdir -p "$1"
+		code "$1"
+	else
+		mkdir -p "$HOME/repos/$1"
+		code "$HOME/repos/$1"
+	fi
 }
 
 qe() {
-	cd "$XDG_CONFIG_HOME" || { _profile_util_die "qe: Could not cd"; return; }
+	filterList="BraveSoftware Code tetrio-desktop obsidian discord sublime-text Ryujinx unity3d hmcl hdlauncher TabNine zettlr Zettlr Google lunarclient libreoffice VirtualBox configstore pulse obs-studio eDEX-UI 1Password kde.org sublime-text-3 gdlauncher gdlauncher_next launcher-main gitify QtProject GIMP"
+
 	_qe_file="$(
-		find -L . -ignore_readdir_race -readable -writable -print \
-		| grep -Ev '(BraveSoftware|Code|tetrio-desktop|obsidian|Ryujinx|unity3d|Beaker Browser|hmcl|gdlauncher|Helios Launcher|TabNine|zettlr|lunarclient|libreoffice|VirtualBox|configstore|pulse|obs-studio|eDEX-UI)' \
-		| fzf
+		cd "$XDG_CONFIG_HOME" || { _profile_util_log_error "qe: Could not cd"; exit 1; }
+		filterArgs=
+		for file in $filterList; do
+			filterArgs="$filterArgs -o -name $file"
+		done
+
+		find -L . -ignore_readdir_race \( \
+			-name 'Beaker Browser' \
+			$filterArgs \
+			-o -name 'Helios Launcher' -o -path ./kak/plugins \
+			-o -path ./kak/autoload \
+		\) -prune -o -print | fzf
 	)"
-	cd - >/dev/null || { _p_die "Could not cd to '-'"; return; }
 
 	[ -z "$_qe_file" ] && { _profile_util_die "qe: Chosen file empty"; return; }
 
@@ -91,6 +114,11 @@ quickedit() (
 	cd "$1" || { _p_die "Could not cd to '$1'"; return; }
 	v .
 )
+
+# https://unix.stackexchange.com/a/123770
+see_old() {
+	sudo lsof +c 0 | grep 'DEL.*lib' | awk '1 { print $1 ": " $NF }' | sort -u
+}
 
 serv() {
 	[ -d "${1:-.}" ] || { _profile_util_die "serv: dir '$1' doesn't exist"; return; }

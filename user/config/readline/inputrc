@@ -8,7 +8,7 @@ set colored-stats on
 set completion-ignore-case on
 set completion-map-case on
 set completion-prefix-display-length 12
-set completion-query-items 70
+set completion-query-items 100
 set convert-meta off
 set echo-control-characters off
 set input-meta on

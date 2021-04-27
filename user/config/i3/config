@@ -71,18 +71,6 @@ bindsym $mod+Shift+2 move container to workspace number $ws2
 bindsym $mod+Shift+3 move container to workspace number $ws3
 bindsym $mod+Shift+4 move container to workspace number $ws4
 
-## ---------------------- launch mode -------------------
-bindsym $mod+y mode "launch"
-mode "launch" {
-	bindsym f exec firefox
-	bindsym b exec brave-browser
-	bindsym c exec code
-
-	bindsym Escape mode "default"
-	bindsym Return mode "default"
-	bindsym $mod+r mode "default"
-}
-
 ## --------------------- resize mode --------------------
 bindsym $mod+r mode "resize"
 mode "resize" {
@@ -91,6 +79,7 @@ mode "resize" {
 
 	bindsym j resize shrink height 10 px or 10 ppt
 	bindsym k resize grow height 10 px or 10 ppt
+	# TODO
 	#bindsym j [tiling] resize shrink height 10 px or 10 ppt
 	#bindsym k [tiling] resize grow height 10 px or 10 ppt
 	#bindsym j [floating] resize grow height 10 px or 10 ppt

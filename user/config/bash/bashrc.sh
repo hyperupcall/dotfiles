@@ -142,7 +142,7 @@ _global_completion_debug() {
 	echo "#COMP_WORDS=${#COMP_WORDS[@]}"
 	echo "COMP_WORDS=("
 	for x in "${COMP_WORDS[@]}"; do
-		echo "'$x'"
+		echo "  '$x'"
 	done
 	echo ")"
 	echo "COMP_CWORD=${COMP_CWORD}"

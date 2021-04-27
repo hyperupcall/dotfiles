@@ -2,8 +2,8 @@
 # --ignore-errors
 
 ## Filesystem Options ##
-# -o "~/Documents/Music/%(creator)s/%(playlist_title)s/%(playlist_index)s - %(title)s.%(ext)s"
--o "~/Dls/youtube-dl/%(creator)s-%(title)s"
+# -o "~/Documents/Music/%(channel)s/%(playlist_title)s/%(playlist_index)s - %(title)s.%(ext)s"
+-o "~/Dls/youtube-dl/%(channel)s-%(title)s"
 --no-mtime
 # --write-description
 # --write-info-json

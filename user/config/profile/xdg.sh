@@ -75,11 +75,15 @@ _path_prepend "$DVM_DIR/bin"
 # docker
 export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
 
+# duc
+export DUC_DATABASE="$XDG_DATA_HOME/duc.db"
+
 # elinks
 export ELINKS_CONFDIR="$XDG_CONFIG_HOME/elinks"
 
 # g
 export GOPATH="$XDG_DATA_HOME/go-path"
+export GOROOT="$XDG_DATA_HOME/go-root"
 _path_prepend "$GOPATH/bin"
 
 # gem
@@ -227,6 +231,12 @@ _path_prepend "$PYENV_ROOT/shims"
 # https://github.com/python/cpython/pull/13208
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc.py"
 
+# rbenv
+export RBENV_ROOT="$XDG_DATA_HOME/rbenv"
+_path_prepend "$RBENV_ROOT/bin"
+_path_prepend "$RBENV_ROOT/shims"
+eval "$(rbenv init - | sed -n '1d;p')"
+
 # readline
 export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
 
@@ -237,6 +247,9 @@ export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/config"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 _path_prepend "$CARGO_HOME/bin"
+
+# ruby-build
+export RUBY_BUILD_CACHE_PATH="$XDG_CACHE_HOME/ruby-build"
 
 # rvm
 _path_prepend "$XDG_DATA_HOME/rvm/bin"

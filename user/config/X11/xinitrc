@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+# Xsession
+
 # ensure logs
 errorFile="$XDG_DATA_HOME/X11/xsession-errors"
 [ -f "$errorFile" ] || {
@@ -11,6 +13,13 @@ printf "\033[1m------ INFO: X session started for %s at %s ------\033[0m\n" "$(i
 
 # source system
 [ -d /etc/X11/xinit/xinitrc.d ] && {
+	for f in /etc/X11/xinit/xinitrc.d/?*.sh; do
+		[ -x "$f" ] && . "$f"
+	done
+	unset f
+}
+
+[ -d /etc/X11/Xsession.d ] && {
 	for f in /etc/X11/xinit/xinitrc.d/?*.sh; do
 		[ -x "$f" ] && . "$f"
 	done

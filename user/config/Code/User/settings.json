@@ -61,7 +61,6 @@
   "diffEditor.maxComputationTime": 6000,
   "editor.acceptSuggestionOnCommitCharacter": false,
   "editor.acceptSuggestionOnEnter": "off",
-  "editor.accessibilityPageSize": 1,
   "editor.accessibilitySupport": "off",
   "editor.codeLens": false,
   "editor.cursorSmoothCaretAnimation": true,
@@ -113,7 +112,8 @@
     "*.rasi": "css",
     "**/i3/config": "i3",
     "Vagrantfile": "ruby",
-    "*.html": "html"
+    "*.html": "html",
+    "*.bbmodel": "json",
   },
   "files.autoSave": "afterDelay",
   "files.eol": "\n",

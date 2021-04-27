@@ -25,7 +25,7 @@ o() {
 r() {
 	for file; do
 		if [ -d "$file" ]; then
-			command rmdir "$file"
+			command rmdir -p "$file"
 		else
 			command rm "$file"
 		fi
@@ -70,6 +70,8 @@ t() {
 
 # cloned in /root/.bashrc
 v() {
+   	# TODO: test if dest file/folder is owned by root. if so, edit with sudo
+
 	_v_editor="${EDITOR:-vi}"
 
 	if [ $# -eq 0 ]; then

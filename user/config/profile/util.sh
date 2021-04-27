@@ -2,38 +2,36 @@
 
 # single-use
 _path_prepend() {
-	# [ -d "$1" ] || return
-
-	# generalized _path_prepend
 	[ -n "$2" ] && {
+		# [ -d "$2" ] || return
 		case ":$(eval "echo \$$1"):" in
 			*":$2:"*) :;;
-			*) eval "export $1=$2:$(eval "echo \$$1")" ;;
+			*) eval "export $1=$2$(eval "echo \${$1:+\":\$$1\"}")" ;;
 		esac
 		return
 	}
 
+	# [ -d "$1" ] || return
 	case ":$PATH:" in
 		*":$1:"*) :;;
-		*) export PATH="$1:$PATH" ;;
+		*) export PATH="$1${PATH:+":$PATH"}"
 	esac
 }
 
 _path_append() {
-	# [ -d "$1" ] || return
-
-	# generalized _path_append
 	[ -n "$2" ] && {
+		# [ -d "$2" ] || return
 		case ":$(eval "echo \$$1"):" in
 			*":$2:"*) :;;
-			*) eval "export $1=$(eval "echo \$$1"):$2" ;;
+			*) eval "export $1=$(eval "echo \${$1:+\"\$$1:\"}")$2" ;;
 		esac
 		return
 	}
 
+	# [ -d "$1" ] || return
 	case ":$PATH:" in
 		*":$1:"*) :;;
-		*) export PATH="$PATH:$1" ;;
+		*) export PATH="${PATH:+"$PATH:"}$1"
 	esac
 }
 

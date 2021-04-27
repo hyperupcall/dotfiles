@@ -1,30 +1,12 @@
 # shellcheck shell=sh
 
-#
-if [ -z "$DBUS_SESSION_BUS_ADDRESS" ] && [ -n "$XDG_RUNTIME_DIR" ] && \
-		[ "$XDG_RUNTIME_DIR" = "/run/user/$(id -u)" ] && \
-		[ -S "$XDG_RUNTIME_DIR/bus" ]; then
-	# We are under systemd-logind or something remarkably similar, and
-	# a user-session socket has already been set up.
-	#
-	# Be nice to non-libdbus, non-sd-bus implementations by using
-	# that as the session bus address in the environment. The check for
-	# XDG_RUNTIME_DIR = "/run/user/`id -u`" is because we know that
-	# form of the address, from systemd-logind, doesn't need escaping,
-	# whereas arbitrary addresses might.
-	DBUS_SESSION_BUS_ADDRESS="unix:path=$XDG_RUNTIME_DIR/bus"
-	export DBUS_SESSION_BUS_ADDRESS
-fi
-# tell dbus-daemon --session (and systemd --user, if running) some environment variables
-dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY QT_ACCESSIBILITY XDG_CONFIG_HOME XDG_DATA_HOME XDG_RUNTIME_DIR
-systemctl import-environment --user PASSWORD_STORE_DIR GNUPGHOME
-
 # bm
 _path_prepend "$XDG_DATA_HOME/bm/bin"
 
 # shell_installer
 _path_prepend "$XDG_DATA_HOME/shell-installer/bin"
-_path_prepend MANPATH "$XDG_DATA_HOME/shell-installer/man"
+# TODO
+# _path_prepend MANPATH "$XDG_DATA_HOME/shell-installer/man"
 
 # fzf
 export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
@@ -56,17 +38,14 @@ export LESSKEY="$XDG_CONFIG_HOME/less_keys"
 export LESSOPEN="|$(command -v lesspipe.sh) %s"
 export LESSHISTFILE="$HOME/.history/less_history"
 export LESSHISTSIZE="32768"
-LESS_TERMCAP_mb="$(printf '\e[1;31m')" # start blink
-LESS_TERMCAP_md="$(printf '\e[1;36m')" # start bold
-LESS_TERMCAP_me="$(printf '\e[0m')" # end all
-LESS_TERMCAP_so="$(printf '\e[01;44;33m')" # start reverse video
-LESS_TERMCAP_se="$(printf '\e[0m')" # end reverse video
-LESS_TERMCAP_us="$(printf '\e[1;32m')" # start underline
-LESS_TERMCAP_ue="$(printf '\e[0m')" # end underline
-LESS_TERMCAP_us="$(printf '\e[1;32m')" # start underline
-export LESS_TERMCAP_mb LESS_TERMCAP_md LESS_TERMCAP_me \
-	LESS_TERMCAP_so LESS_TERMCAP_se LESS_TERMCAP_us \
-	LESS_TERMCAP_ue LESS_TERMCAP_us
+export LESS_TERMCAP_mb="$(printf '\e[1;31m')" # start blink
+export LESS_TERMCAP_md="$(printf '\e[1;36m')" # start bold
+export LESS_TERMCAP_me="$(printf '\e[0m')" # end all
+export LESS_TERMCAP_so="$(printf '\e[01;44;33m')" # start reverse video
+export LESS_TERMCAP_se="$(printf '\e[0m')" # end reverse video
+export LESS_TERMCAP_us="$(printf '\e[1;32m')" # start underline
+export LESS_TERMCAP_ue="$(printf '\e[0m')" # end underline
+export LESS_TERMCAP_us="$(printf '\e[1;32m')" # start underline
 
 # man
 export MAN_POSIXLY_CORRECT= # openSUSE
@@ -83,6 +62,7 @@ export CHECKPOINT_DISABLE=1
 
 # pass
 export PASSWORD_STORE_ENABLE_EXTENSIONS=true
+export PASSWORD_STORE_CLIP_TIME="15"
 
 # ps
 export CMD_ENV="linux"

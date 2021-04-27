@@ -1,0 +1,51 @@
+# TODO: $XDG_DATA_HOME
+source "/home/edwin/data/kak/plugins/plug.kak/rc/plug.kak"
+
+# TODO don't shell out if able to
+set-option global plug_install_dir %sh{ echo "$XDG_DATA_HOME/kak/plugins" }
+
+plug "andreyorst/plug.kak" noload
+
+plug "kak-lsp/kak-lsp" do %{
+	cargo install --locked --force --path .
+}
+
+hook global WinSetOption filetype=(rust|python|go|javascript|typescript|c|cpp) %{
+	lsp-enable-window
+}
+
+map global normal D '<a-l>d' -docstring 'delete to end of line'
+map global normal Y '<a-l>y' -docstring 'yank to end of line'
+map global normal = :format<ret> -docstring 'format buffer'
+map global normal '#' :comment-line<ret> -docstring 'Comment line'
+map global normal '<a-#>' :comment-block<ret> -docstring 'comment block'
+map global goto m '<esc>m;' -docstring 'matching char'
+
+colorscheme tomorrow-night
+
+map global normal '<c-p>' :comment-line<ret> -docstring 'Comment line'
+#map global normal '<c-_>' :comment-line<ret> -docstring 'Comment line'
+
+hook global InsertChar k %{ try %{
+	exec -draft hH <a-k>jk<ret> d
+	exec <esc>
+}}
+
+set -add global autoinfo normal
+
+plug "andreyorst/powerline.kak" defer powerline %{
+	#Configure powerline.kak as desired
+	powerline-theme gruvbox
+} config %{
+	powerline-start
+}
+
+plug "andreyorst/kaktree" config %{
+        hook global WinSetOption filetype=kaktree %{
+                    remove-highlighter buffer/numbers
+                    remove-highlighter buffer/matching
+                    remove-highlighter buffer/wrap
+                    remove-highlighter buffer/show-whitespaces
+        }
+            kaktree-enable
+}

@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+# this file is not used, -nolisten tcp appended menually in x11
+exec /usr/bin/Xorg -nolisten tcp

@@ -1,6 +1,5 @@
 #!/usr/bin/env sh
 
-unset DBUS_SESSION_BUS_ADDRESS
 unset SESSION_MANAGER
 
 # automatically find unused $DISPLAY
@@ -60,7 +59,7 @@ retval=$?
 [ -n "$removelist" ] && xauth remove $removelist
 [ -n "$xserverauthfile" ] && rm -f "$xserverauthfile"
 
-type deallocvt >/dev/null 2>&1 && {
+command -v deallocvt >/dev/null 2>&1 && {
 	deallocvt
 }
 

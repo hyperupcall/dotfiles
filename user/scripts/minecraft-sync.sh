@@ -6,52 +6,67 @@
 remove() {
 	: "${1:?"Error: remove: Argument 1, file not found"}"
 
-	if [ -e "$1" ] && command -v trash-put &>/dev/null; then
+	if command -v trash-put &>/dev/null; then
 		trash-put "$1"
 	else
-		rm "$1"
+		mkdir -p "$base/trash-directory"
+		mv "$1" "$base/trash-directory/$1-$RANDOM"
 	fi
 }
 
-shopt -s nullglob
+shopt -s nullglob dotglob
 
 base=~/Docs/minecraft-common
 dataDir="${XDG_DATA_HOME:-~/.local/share}"
 configDir="${XDG_CONFIG_HOME:-~/.config}"
-folders=(~/.minecraft "$dataDir"/multimc/instances/*/.minecraft "$configDir"/hmcl/.minecraft)
+folders=(
+	~/.minecraft
+	"$dataDir"/multimc/instances/*/.minecraft
+	"$configDir"/hmcl/.minecraft
+)
 
 # sync common files
 for mcFolder in "${folders[@]}"; do
-	files=(optionsLC.txt optionsof.txt optionsshaders.txt options.txt servers.dat servers.dat_old)
+	echo "SYNCING COMMON FILES: $mcFolder"
+	# files=(optionsLC.txt optionsof.txt optionsshaders.txt options.txt servers.dat servers.dat_old)
+	files=(servers.dat)
+
 	for file in "${files[@]}"; do
-		echo "File: $mcFolder/$file"
+
+		# unlink "$mcFolder/$file"
 
 		if [ ! -L "$mcFolder/$file" ]; then
-			cp "$file" "$base/files/$file"
-			echo "$file: COPY AND REMOVE ORIGINAL"
-			remove "$mcFolder/$file"
-			ln -s "$base/files/$file" "$mcFolder/$file"
+			echo "     -> Linking '$mcFolder/$file'"
+
+			[ -e "$mcFolder/$file" ] && {
+				cp "$mcFolder/$file" "$base/files/$file"
+				remove "$mcFolder/$file"
+			}
+			
+			ln -sT "$base/files/$file" "$mcFolder/$file"
 		fi
 	done
 done
 
+echo ---
+
 # sync common folders
 for mcFolder in "${folders[@]}"; do
-	declare -a l=(resourcepacks shaderpacks saves screenshots)
-	for folder in "${l[@]}"; do
-		echo "Folder: $mcFolder"
-		mkdir -p "$base/$folder"
+	echo "SYNCING COMMON DIRS: $mcFolder"
+	declare -a subfolders=(resourcepacks shaderpacks saves screenshots)
 
-		if [ -d "$mcFolder/$folder" ] && [ ! -L "$mcFolder/$folder" ]; then
-			echo "Subfolder: $mcFolder/$folder"
-			for file in "$mcFolder/$folder"/*; do
-				cp -r "$file" "$base/$folder"
-				echo "$file: COPY AND REMOVE ORIGINAL"
+	for subfolder in "${subfolders[@]}"; do
+		mkdir -p "$base/$subfolder"
+		if [ -d "$mcFolder/$subfolder" ] && [ ! -L "$mcFolder/$subfolder" ]; then
+			echo "     -> Symlinking '$mcFolder/$subfolder'"
+
+			for file in "$mcFolder/$subfolder"/*; do
+				cp -r "$file" "$base/$subfolder"
 				remove "$file"
 			done
-			rmdir "$mcFolder/$folder"
+			rmdir "$mcFolder/$subfolder"
 		fi
 
-		ln -sf "$base/$folder" "$mcFolder"
+		ln -s "$base/$subfolder" "$mcFolder"
 	done
 done

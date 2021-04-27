@@ -14,6 +14,7 @@ check() {
 	crystal tool format --check
 	nimble check
 	rustfmt
+	json5 --validate
 }
 
 format() {

@@ -1,0 +1,18 @@
+[A]
+cmd = "pavucontrol"
+
+[O]
+cmd = "obs"
+
+[C]
+cmd = "code"
+
+[S]
+run = "dash"
+cmd = "cd ~/repos/sticker-selector && ./sticker-selector"
+
+[Alt-Q]
+# TODO: path, remove dash
+wait = true
+run = "dash"
+cmd = "/home/edwin/data/go-path/bin/cactus --binds /home/edwin/config/cactus/binds-quit.toml"

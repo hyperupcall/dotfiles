@@ -1,0 +1,15 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Target = servo-latest
+Target = servo-git
+Target = java-runtime-common
+
+[Action]
+Description = Tweak path modifications to ensure they are not repeated
+When = PostTransaction
+Exec = /home/edwin/scripts/arch-tweak-path.sh
+AbortOnFail
+

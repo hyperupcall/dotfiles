@@ -1,6 +1,6 @@
 # shellcheck shell=sh
 
-export VISUAL="vim"
+export VISUAL="kak"
 export EDITOR="$VISUAL"
 export PAGER="less"
 

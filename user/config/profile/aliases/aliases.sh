@@ -69,6 +69,7 @@ alias ssls='systemctl --system list-sockets'
 alias sslt='systemctl --system list-timers'
 alias ssia='systemctl --system is-active'
 alias ssif='systemctl --system is-failed'
+alias sss='systemctl --system status'
 alias ssstatus='systemctl --system status'
 alias ssshow='systemctl --system show'
 alias ssc='systemctl --system cat'
@@ -94,6 +95,7 @@ alias suls='systemctl --user list-sockets'
 alias sult='systemctl --user list-timers'
 alias suia='systemctl --user is-active'
 alias suif='systemctl --user is-failed'
+alias sus='systemctl --user status'
 alias sustatus='systemctl --user status'
 alias sushow='systemctl --user show'
 alias suc='systemctl --user cat'
@@ -119,6 +121,21 @@ alias jctl='journalctl'
 
 alias ju='journalctl --user -b -eu'
 alias js='journalctl --system -b -eu'
+
+
+# ------------------------- *ctl ------------------------- #
+alias bctl='busctl'
+alias btctl='bluetoothctl'
+alias cdctl='coredumpctl'
+alias hctl='hostnamectl'
+alias hnctl='hostnamectl'
+alias lcctl='localectl'
+alias lgctl='loginctl'
+alias lctl='loginctl'
+alias mctl='machinectl'
+alias pctl='portablectl'
+alias rctl='resolvectl'
+alias tdctl='timedatectl'
 
 
 # ------------------------ shells ------------------------ #
