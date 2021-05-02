@@ -5,8 +5,6 @@ _path_prepend "$XDG_DATA_HOME/bm/bin"
 
 # shell_installer
 _path_prepend "$XDG_DATA_HOME/shell-installer/bin"
-# TODO
-# _path_prepend MANPATH "$XDG_DATA_HOME/shell-installer/man"
 
 # fzf
 export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
@@ -66,6 +64,9 @@ export PASSWORD_STORE_CLIP_TIME="15"
 
 # ps
 export CMD_ENV="linux"
+
+# qt
+export QT_ACCESSIBILITY=1
 
 # ranger
 export RANGER_LOAD_DEFAULT_RC="FALSE"

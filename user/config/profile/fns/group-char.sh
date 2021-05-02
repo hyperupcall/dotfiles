@@ -1,9 +1,10 @@
 # shellcheck shell=sh
 
-# TODO fix
+# run an alias, but don't run if it's not an alias
 a() {
 	if alias "$1" >/dev/null 2>&1; then
 		_a_aliasValue="$(alias "$1" | awk -v FS="'" '{ print $2 }')"
+
 		# history -s "$_a_aliasValue"
 		# history -s "$1"
 		$_a_aliasValue
@@ -21,7 +22,7 @@ o() {
 	fi
 }
 
-# cloned in /root/.bashrc
+# root
 r() {
 	for file; do
 		if [ -d "$file" ]; then
@@ -33,18 +34,11 @@ r() {
 	unset -v file
 }
 
-# TODO
 s() {
 	BASH_ENV="/root/.bashrc" sudo -i --preserve-env=BASH_ENV "$@"
-	# BASH_ENV="/root/.bashrc" sudo -i --preserve-env=BASH_ENV "cd $(pwd) && $*"
-	# BASH_ENV="/root/.bashrc" sudo -i --preserve-env=BASH_ENV <<-EOF
-	# source  /root/.bashrc
-	# cd "$(pwd)"
-	# $@
-	# EOF
 }
 
-# cloned in /root/.bashrc
+# root
 t() {
 	[ $# -eq 0 ] && {
 		_profile_util_log_error 't: Missing file arguments'
@@ -68,18 +62,21 @@ t() {
 	unset -v file
 }
 
-# cloned in /root/.bashrc
+# root
 v() {
-   	# TODO: test if dest file/folder is owned by root. if so, edit with sudo
+	s=
+	if [ "$(stat -c "%G" "$1")" = "root" ]; then
+		s="sudo"
+	fi
 
 	_v_editor="${EDITOR:-vi}"
 
 	if [ $# -eq 0 ]; then
 		"$_v_editor" .
 	else
-		[ $# -eq 1 ] && mkdir -p "$(dirname "$1")"
+		[ $# -eq 1 ] && $s mkdir -p "$(dirname "$1")"
 
-		"$_v_editor" "$@"
+		$s "$_v_editor" "$@"
 	fi
 
 	unset -v _v_editor

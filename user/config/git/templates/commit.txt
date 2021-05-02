@@ -1,0 +1,11 @@
+
+# <type>[(optional scope)]: <description>
+#
+# type (Conventional Commits):
+#   [ fix, feat, BREAKING CHANGE ]
+#
+# type (AngularJS):
+#   [ build, ci, docs, feat, fix, perf, refactor, test ]
+#
+# type (VueJS):
+#   [ dx, style, workflow, chore, types, wip ]

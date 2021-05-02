@@ -1,7 +1,7 @@
-# ensure it's read as version 4
+# ensure file is read as version 4
 # i3 config file (v4)
 
-## ------------------------ basic -----------------------
+## ------------------------ Basic -----------------------
 set $mod Mod4
 font pango:DejaVu Sans Mono 12
 floating_modifier $mod
@@ -10,14 +10,14 @@ mouse_warping none
 workspace_auto_back_and_forth yes
 floating_modifier $mod
 
-## --------------------- keybindings --------------------
+## --------------------- Keybindings --------------------
 bindsym $mod+Shift+q kill
-bindsym $mod+Shift+c reload
-bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3 and end X session?' -B 'Yah, exit!' 'i3-msg exit'"
+bindsym $mod+Shift+Ctrl+q exec "i3-nagbar -t warning -m 'Exit i3 and end X session?' -B 'Yah, exit!' 'i3-msg exit'"
+bindsym $mod+a reload
+bindsym $mod+Shift+a restart
 bindsym $mod+Shift+Return exec i3-sensible-terminal
 
-## --------------------- navigation ---------------------
+## --------------------- Navigation ---------------------
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
@@ -27,79 +27,180 @@ bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-# switch between previous and currently focused workspace
 bindsym $mod+b workspace back_and_forth
 bindsym $mod+Shift+b move container to workspace back_and_forth
 
-
-## ------------------ container layout ------------------
-bindsym $mod+e layout tabbed
-bindsym $mod+w layout stacking
-bindsym $mod+s layout toggle split
-bindsym $mod+u split h
-bindsym $mod+i split v
 bindsym $mod+f fullscreen toggle
 bindsym $mod+Shift+f fullscreen toggle global
-
-for_window [title="Popup Terminal"] floating toggle resize set 700 400
-for_window [class="zoom"] floating enable
-for_window [title="Steam - News"] floating toggle
 
 # floating
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
-# focus the parent container
-bindsym $mod+a focus parent
+# focus the parent / child container
+bindsym $mod+i focus parent
+bindsym $mod+u focus child
 
-# focus the child container
-bindsym $mod+d focus child
+# specialized
+for_window [title="Popup Terminal"] floating toggle resize set 700 400
+for_window [class="zoom"] floating enable
+for_window [title="Steam - News"] floating toggle
 
-## --------------------- workspaces ---------------------
-set $ws1 "BR"
-set $ws2 "BL"
-set $ws3 "TOP"
-set $ws4 "B"
-set $ws5 "EXTRA"
+## --------------------- Workspaces ---------------------
+set $ws1 "Alfa"
+set $ws2 "Bravo"
+set $ws3 "Charlie"
+set $ws4 "Delta"
+set $ws5 "Echo"
+set $ws6 "Foxtrot"
+set $ws7 "Golf"
+set $ws8 "Hotel"
+
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
 bindsym $mod+3 workspace number $ws3
 bindsym $mod+4 workspace number $ws4
 bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
 bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
 bindsym $mod+Shift+3 move container to workspace number $ws3
 bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move jontainer to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
 
-## --------------------- resize mode --------------------
+bindsym $mod+e mode "layout"
+mode "layout" {
+	bindsym s layout stacking
+	bindsym d layout tabbed
+	bindsym t layout toggle split
+
+	bindsym h split h
+	bindsym v split v
+
+	bindsym f fullscreen toggle
+	bindsym Shift+f fullscreen toggle global
+
+	bindsym w mode "default"
+	bindsym Escape mode "default"
+	bindsym Return mode "default"
+}
+
+## --------------------- Resize Mode --------------------
 bindsym $mod+r mode "resize"
 mode "resize" {
-	bindsym h resize shrink width 10 px or 10 ppt
-	bindsym l resize grow width 10 px or 10 ppt
+	bindsym h resize shrink width 10 px
+	bindsym j resize shrink height 10 px
+	bindsym k resize grow height 10 px
+	bindsym l resize grow width 10 px
 
-	bindsym j resize shrink height 10 px or 10 ppt
-	bindsym k resize grow height 10 px or 10 ppt
-	# TODO
-	#bindsym j [tiling] resize shrink height 10 px or 10 ppt
-	#bindsym k [tiling] resize grow height 10 px or 10 ppt
-	#bindsym j [floating] resize grow height 10 px or 10 ppt
-	#bindsym k [floating] resize shrink height 10 px or 10 ppt
+	bindsym Shift+h resize shrink width 50 px
+	bindsym Shift+j resize shrink height 50 px
+	bindsym Shift+k resize grow height 50 px
+	bindsym Shift+l resize grow width 50 pxh
+
+	bindsym Shift+Ctrl+h resize shrink width 250 px
+	bindsym Shift+Ctrl+j resize shrink height 250 px
+	bindsym Shift+Ctrl+k resize grow height 250 px
+	bindsym Shift+Ctrl+l resize grow width 250 px
+
+	bindsym $mod+n mode "move"
+	bindsym n mode "move"
+	bindsym $mod+m mode "mouse"
+	bindsym m mode "mouse"
 
 	bindsym Escape mode "default"
 	bindsym Return mode "default"
-	bindsym $mod+r mode "default"
 }
 
-bindsym $mod+x mode "exit: [l]ogout, [r]eboot, [s]hutdown"
-mode "exit: [l]ogout, [r]eboot, [s]hutdown" {
-	bindsym l exec i3-msg exit
-	bindsym r exec systemctl reboot
-	bindsym s exec systemctl shutdown
+# ---------------------- Move Mode ---------------------
+bindsym $mod+n mode "move"
+mode "move" {
+	bindsym h move left 10 px
+	bindsym j move down 10 px
+	bindsym k move up 10 px
+	bindsym l move right 10 px
+
+	bindsym Shift+h move left 50 px
+	bindsym Shift+j move down 50 px
+	bindsym Shift+k move up 50 px
+	bindsym Shift+l move right 50 px
+
+	bindsym Shift+Ctrl+h move left 250 px
+	bindsym Shift+Ctrl+j move down 250 px
+	bindsym Shift+Ctrl+k move up 250 px
+	bindsym Shift+Ctrl+l move right 250 px
+
+	bindsym $mod+b mode "resize"
+	bindsym b mode "resize"
+	bindsym $mod+m mode "mouse"
+	bindsym m mode "mouse"
+
 	bindsym Escape mode "default"
 	bindsym Return mode "default"
 }
 
-## ------------------------- bar ------------------------
+# --------------------- Mouse Mode ---------------------
+bindsym $mod+m mode "mouse"
+mode "mouse" {
+	set $slow 1
+	set $medium 10
+	set $fast 50
+	set $rapid 250
+
+	# slow
+	bindsym h exec xdotool mousemove_relative -- -$slow 0
+	bindsym j exec xdotool mousemove_relative 0 $slow
+	bindsym k exec xdotool mousemove_relative -- 0 -$slow
+	bindsym l exec xdotool mousemove_relative $slow 0
+
+	# medium
+	bindsym Shift+h exec xdotool mousemove_relative -- -$medium 0
+	bindsym Shift+j exec xdotool mousemove_relative 0 $medium
+	bindsym Shift+k exec xdotool mousemove_relative -- 0 -$medium
+	bindsym Shift+l exec xdotool mousemove_relative $medium 0
+
+	# fast
+	bindsym Shift+Ctrl+h exec xdotool mousemove_relative -- -$fast 0
+	bindsym Shift+Ctrl+j exec xdotool mousemove_relative 0 $fast
+	bindsym Shift+Ctrl+k exec xdotool mousemove_relative -- 0 -$fast
+	bindsym Shift+Ctrl+l exec xdotool mousemove_relative $fast 0
+
+	# rapid
+	bindsym Shift+Ctrl+Alt+h exec xdotool mousemove_relative -- -$rapid 0
+	bindsym Shift+Ctrl+Alt+j exec xdotool mousemove_relative 0 $rapid
+	bindsym Shift+Ctrl+Alt+k exec xdotool mousemove_relative -- 0 -$rapid
+	bindsym Shift+Ctrl+Alt+l exec xdotool mousemove_relative $rapid 0
+
+	# Mouse click
+	bindsym f exec xdotool click 1
+	bindsym d exec xdotool click 2
+	bindsym s exec xdotool click 3
+
+	# Mouse click-and-drag
+	bindsym Shift+f exec xdotool mousedown 1
+	bindsym Shift+d exec xdotool mousedown 2
+	bindsym Shift+s exec xdotool mousedown 3
+
+	# Mouse release
+	bindsym Ctrl+f exec xdotool mouseup 1
+	bindsym Ctrl+d exec xdotool mouseup 2
+	bindsym Ctrl+s exec xdotool mouseup 3
+
+	bindsym $mod+b mode "resize"
+	bindsym b mode "resize"
+	bindsym $mod+n mode "move"
+	bindsym n mode "move"
+
+	bindsym Escape mode "default"
+	bindsym Return mode "default"
+}
+
+## ------------------------- Bar ------------------------
 bar {
 	position bottom
 	hidden_state show
@@ -110,33 +211,25 @@ bar {
 	binding_mode_indicator yes
 	colors {
 # THEMER-BEGIN-1
-		set $nord0   #2E3440
-		set $nord1   #3B4252
-		set $nord2   #434C5E
-		set $nord3   #4C566A
-		set $nord4   #D8DEE9
-		set $nord5   #E5E9F0
-		set $nord6   #ECEFF4
-		set $nord7   #8FBCBB
-		set $nord8   #88C0D0
-		set $nord9   #81A1C1
-		set $nord10  #5E81AC
-		set $nord11  #BF616A
-		set $nord12  #D08770
-		set $nord13  #EBCB8B
-		set $nord14  #A3BE8C
-		set $nord15  #B48EAD
+		background #282A36
+		statusline #F8F8F2
+		separator  #44475A
 
-		background         $nord0
-		statusline         $nord8
-		focused_workspace  $nord3  $nord8
-		active_workspace   $nord3  $nord8
-		inactive_workspace $nord8  $nord3
-		urgent_workspace   $nord3 $nord15
+		focused_workspace  #44475A #44475A #F8F8F2
+		active_workspace   #282A36 #44475A #F8F8F2
+		inactive_workspace #282A36 #282A36 #BFBFBF
+		urgent_workspace   #FF5555 #FF5555 #F8F8F2
+		binding_mode       #FF5555 #FF5555 #F8F8F2
 # THEMER-END-1
 	}
 }
 
 # THEMER-BEGIN-2
-
+# Property Name         Border  BG      Text    Indicator Child Border
+client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+client.background       #F8F8F2
 # THEMER-END-2

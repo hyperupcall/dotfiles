@@ -6,3 +6,4 @@
 --max-columns=15000
 --max-columns-preview
 --smart-case
+--type-add=got:*_test.go

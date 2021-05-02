@@ -8,6 +8,5 @@ Target = *
 [Action]
 Description = Switch pyenv environment to system
 When = PreTransaction
-# TODO /home/edwin
-Exec = /home/edwin/scripts/pyenv-switch.sh system
+Exec = ~/scripts/pyenv-switch.sh system
 #AbortOnFail

@@ -1,4 +1,4 @@
 git_protocol: ssh
 prompt: disabled
 aliases:
-  cr: repo create --public
+    cr: repo create --public

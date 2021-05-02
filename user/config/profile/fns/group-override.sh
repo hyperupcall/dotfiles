@@ -14,16 +14,51 @@ bash() {
 }
 
 cp() {
-    	# TODO: behavior of rsync here isn't exactly equivalent
-	if command -v rsync >/dev/null 2>&1; then
-		command rsync -ah --progress "$@"
+	if command -v rsync >/dev/null 2>&1 && {
+		[ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]
+	}; then
+		# TODO: is needed?
+		# for arg; do
+		# 	case "$arg" in
+		# 	-*)
+		# 		_profile_util_die "cp: Options not accepted. Please use the 'cp' binary if necessary"
+		# 		return
+		# 	esac
+		# done
+
+		# if [ $# -eq 2 ] && [ -d "$1" ]; then
+		# 	# When one of the arguments to 'cp' or 'rsync' is
+		# 	# a directory, behavior is different. 'cp' copies
+		# 	# the contents of the directory to dest. 'rsync'
+		# 	# copies the directory itself to dest. To fix this,
+		# 	# we change the arg so that the directory ends in
+		# 	# "/.", accounting for a user-placed slash suffix
+		# 	# By doing this, rsync knows to copy the files in
+		# 	# the directory, rather than the directory itself
+
+		# 	# shellcheck disable=SC3057
+		# 	if [ "${1: -1}" = "/" ]; then
+		# 		# shellcheck disable=SC3030,SC3024
+		# 		f="$1."
+		# 	else
+		# 		# shellcheck disable=SC3030,SC3024
+		# 		f="$1/."
+		# 	fi
+
+		# 	command rsync -ah --info flist2,name,progress,symsafe "$f" "$2"
+		# 	return
+		# fi
+
+		# shellcheck disable=SC3054
+		command rsync -ah --info flist2,name,progress,symsafe "$@"
 	else
+		echo "${!#}"
 		_profile_util_log_warn "cp: Falling back to 'cp'"
-		# TODO: create last folder if it exists, ensure it is not an option
 		command cp -i "$@"
 	fi
 }
 
+# root
 lsblk() {
 	if [ $# -eq 0 ]; then
 		command lsblk -o NAME,FSSIZE,FSUSED,FSAVAIL,FSUSE%,FSTYPE,MOUNTPOINT
@@ -61,7 +96,7 @@ touch() {
 	_profile_util_die "touch: Use 't' instead"
 }
 
-# cloned in /root/.bashrc
+# root
 unlink() {
 	for arg; do
 		case "$arg" in

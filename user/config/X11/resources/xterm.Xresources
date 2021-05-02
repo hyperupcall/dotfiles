@@ -2,7 +2,6 @@
 ! XTerm
 !
 
-XTerm.termName: xterm-256color
 XTerm.title: XTerm
 
 XTerm.VT100.altSendsEscape: true
@@ -27,7 +26,7 @@ XTerm.VT100.rightScrollBar: true
 XTerm.VT100.saveLines: 10000
 XTerm.VT100.selectToClipboard: false
 XTerm.VT100.scrollBar: true
-XTerm.VT100.scrollKey: true\
+XTerm.VT100.scrollKey: true
 XTerm.VT100.scrollTtyOutput: false
 !XTerm.VT100.toolBar: false
 XTerm.VT100.translations: #override \
@@ -42,4 +41,5 @@ XTerm.VT100.translations: #override \
 XTerm.VT100.ttyModes: erase ^?
 XTerm.VT100.utf8: always
 XTerm.VT100.utf8Fonts: always
+XTerm.VT100.visualbell: false
 XTerm.VT100.wideChars: true

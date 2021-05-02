@@ -1,4 +1,7 @@
 # shellcheck shell=bash
+#
+# ~/.bashrc
+#
 
 # ensure execution returns if bash is non-interactive
 [[ $- != *i* ]] && [ ! -t 0 ] && return
@@ -92,64 +95,26 @@ set -o physical # default
 
 if 16MillionColors; then
 	if test "$EUID" = 0; then
-		PS1="\[\e[38;2;201;42;42m\][\u@\h \w]\[\e[0m\]\$ "
+		PS1="$(_profile_util_print_colorhdr_root)"
 	else
 		source "$(type -P fox-default)" launch bash-prompt || {
-			PS1="[\[\e[0;31m\](PS1 Error)\[\e[0m\] \u@\h \w]\$ "
+			PS1="$(_profile_util_print_colorhdr_error)"
 		}
 	fi
 elif 8Colors || 256Colors; then
 	if test "$EUID" = 0; then
-		PS1="\[\e[0;31m\][\u@\h \w]\[\e[0m\]\$ "
+		PS1="$(_profile_util_print_color_root)"
 	else
-		PS1="\[\e[0;33m\][\u@\h \w]\[\e[0m\]\$ "
+		PS1="$(_profile_util_print_color_user)"
 	fi
 else
-	PS1="[\u@\h \w]\$ "
+	PS1="$(_profile_util_print_bw)"
 fi
 
-unset -f 8Colors 256Colors 16MillionColors
-
 
 #
-# ─── READLINE ───────────────────────────────────────────────────────────────────
+# ─── MODULES ────────────────────────────────────────────────────────────────────
 #
 
-source "$XDG_CONFIG_HOME/bash/readline.sh"
-
-
-#
-# ─── MISCELLANEOUS ──────────────────────────────────────────────────────────────
-#
-
-# bash_completion (also sources $XDG_CONFIG_HOME/bash/bash_completions (as per env variable))
-# even though we `source /etc/profile` at beginnning of script, this is still needed since we now
-# only have BASH_COMPLETION_USER_DIR and BASH_COMPLETION_USER_FILE set
-[ -r /usr/share/bash-completion/bash_completion ] && source /usr/share/bash-completion/bash_completion
-
-# bashmarks
-# [ -r ~/.local/bin/bashmarks.sh ] && source ~/.local/bin/bashmarks.sh
-
-# dircolors
-[ -r "$XDG_CONFIG_HOME/dircolors/dir_colors" ] && eval "$(dircolors --sh "$XDG_CONFIG_HOME/dircolors/dir_colors")"
-
-# direnv
-eval "$(direnv hook bash)"
-
-_global_completion_debug() {
-	echo
-	echo "----- debug start -----"
-	echo "#COMP_WORDS=${#COMP_WORDS[@]}"
-	echo "COMP_WORDS=("
-	for x in "${COMP_WORDS[@]}"; do
-		echo "  '$x'"
-	done
-	echo ")"
-	echo "COMP_CWORD=${COMP_CWORD}"
-	echo "COMP_LINE='${COMP_LINE}'"
-	echo "COMP_POINT=${COMP_POINT}"
-	echo "cur: '${COMP_WORDS[COMP_CWORD]}'"
-	echo "COMP_KEY=${COMP_KEY}"
-	echo "COMP_TYPE=${COMP_TYPE}"
-	echo "----- debug end -----"
-}
+source "$XDG_CONFIG_HOME/bash/modules/readline.sh"
+source "$XDG_CONFIG_HOME/bash/modules/miscellaneous.sh"

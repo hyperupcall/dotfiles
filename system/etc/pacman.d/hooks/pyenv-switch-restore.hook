@@ -8,5 +8,5 @@ Target = *
 [Action]
 Description = Switch pyenv environment to previous version
 When = PostTransaction
-Exec = /home/edwin/scripts/pyenv-switch.sh restore
+Exec = ~/scripts/pyenv-switch.sh restore
 #AbortOnFail

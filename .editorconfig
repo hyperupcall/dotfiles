@@ -1,5 +1,3 @@
-# managed by 'eankeen/globe'; don't edit!
-
 root = true
 
 [*]
@@ -22,4 +20,7 @@ trim_trailing_whitespace = false
 
 [*.nim]
 indent_style = space
+tab_width = 2
+
+[*.md]
 tab_width = 2

@@ -1,5 +1,6 @@
 # shellcheck shell=sh
 
+# root
 cls() {
 	clear
 	reset
@@ -36,16 +37,29 @@ docker_nuke() {
 	docker images | grep none | col 3 | xargs docker rmi -f
 }
 
+# root
 dg() {
 	dig +nocmd "$1" any +multiline +noall +answer
 }
 
 eboot() {
-    	# TODO kak
-	cmd vim ~/repos/dots-bootstrap/lib/install_modules
+	_eboot_dir="$HOME/repos/dots-bootstrap/lib/install_modules"
+	_eboot_file="$(
+		find "$_eboot_dir" -ignore_readdir_race -mindepth 1 -maxdepth 1 -printf "%f\0" | fzf --read0
+	)"
+
+	[ -z "$_eboot_file" ] && {
+		_profile_util_die "eboot: No file chosen"
+		return
+	}
+
+	v "$_eboot_dir/$_eboot_file"
+
+	unset -v _eboot_dir
 }
 
 edit() {
+	# TODO
 	_edit_grep_result="$(grep -nR "^$1() {$" "$XDG_CONFIG_HOME/profile" | head -1)"
 	[ -z "$_edit_grep_result" ] && {
 		_profile_util_die "edit: Function '$1' not found"
@@ -58,6 +72,7 @@ edit() {
 	unset -v _edit_grep_result _edit_file _edit_line
 }
 
+# root
 faketty() {
 	unbuffer -p "@"
 }
@@ -67,16 +82,23 @@ faketty() {
 # 	wget "https://download-directory.github.io/?url=$urlEncoded"
 # }
 
+# root
 isup() {
 	command curl -sS --head --X GET "$1" | grep -q '200 OK'
 }
 
+# root
 kkexec() {
 	sudo kexec -l /efi/EFI/arch/vmlinuz-linux-lts --initrd /efi/EFI/arch/initramfs-linux-lts.img --reuse-cmdline
 	sudo systemctl kexec
+	# sudo kexec -e
+}
+
+nh() {
+	nohup "$@" > /dev/null 2>&1 &
 }
 np() {
-	if [ "$(awk '{ print substr($1, 0, 1) }')" = "/" ]; then
+	if [ "$(echo "$1" | awk '{ print substr($1, 0, 1) }')" = "/" ]; then
 		mkdir -p "$1"
 		code "$1"
 	else
@@ -95,6 +117,7 @@ qe() {
 			filterArgs="$filterArgs -o -name $file"
 		done
 
+		# shellcheck disable=SC2086
 		find -L . -ignore_readdir_race \( \
 			-name 'Beaker Browser' \
 			$filterArgs \

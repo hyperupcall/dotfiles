@@ -25,9 +25,8 @@ super + alt + s
 super + c
 	rofi -show calc -modi calc -no-show-match -no-sort
 
-# TODO: fix
 super + y
-	/home/edwin/repos/cactus/cactus
+	cactus
 
 Print
 	maim | xclip -t image/png -selection clipboard

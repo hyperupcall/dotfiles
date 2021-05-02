@@ -36,6 +36,3 @@ URxvt.keysym.Control-Next: perl:tabbedex:next_tab
 URxvt.keysym.Control-Prior: perl:tabbedex:prev_tab
 URxvt.keysym.Control-Shift-Next:  perl:tabbedex:move_tab_right
 URxvt.keysym.Control-Shift-Prior: perl:tabbedex:move_tab_left
-
-! misc
-URxvt*dynamicColors: on

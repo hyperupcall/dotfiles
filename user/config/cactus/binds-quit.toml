@@ -1,4 +1,3 @@
-# TODO: fix cactus thing for this
 [Q]
 cmd = "i3-msg kill"
 

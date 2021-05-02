@@ -53,11 +53,32 @@ _profile_util_die() {
 	return 1
 }
 
-_profile_util_ls() {
-	command -v exa >/dev/null 2>&1 && {
-		exa -al
-		return
-	}
+_profile_util_print_colorhdr_root() {
+	printf "%s" "\[\e[38;2;201;42;42m\][\u@\h \w]\[\e[0m\]\$ "
+}
 
-	ls -al
+_profile_util_print_colorhdr_error() {
+	printf "%s" "[\[\e[0;31m\](PS1 Error)\[\e[0m\] \u@\h \w]\$ "
+}
+
+_profile_util_print_color_root() {
+	printf "%s" "\[\e[0;31m\][\u@\h \w]\[\e[0m\]\$ "
+}
+
+_profile_util_print_color_user() {
+	printf "%s" "\[\e[0;33m\][\u@\h \w]\[\e[0m\]\$ "
+}
+
+_profile_util_print_bw() {
+	printf "%s" "[\u@\h \w]\$ "
+}
+
+_profile_util_ls() {
+	if command -v exa >/dev/null 2>&1; then
+		exa -al
+	elif command -v lsd >/dev/null 2>&1; then
+		lsd -al
+	else
+		ls -al
+	fi
 }

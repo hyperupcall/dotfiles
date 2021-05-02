@@ -1,0 +1,11 @@
+[A]
+cmd = "kitty"
+args = ["pulsemixer"]
+
+[C]
+cmd = "kitty"
+args = ["calcurse"]
+
+[M]
+cmd = "kitty"
+args = ["aerc"]

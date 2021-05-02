@@ -32,51 +32,58 @@ _readline_util_get_cmd() {
 	printf "%s" "$cmd"
 }
 
-# get the man page for a particular line
-# that represents the readline buffer.
-# this assumes that any errors with 'man'
-# are due to not finding man pages (exit code 16)
-_readline_util_get_man() {
+# Get the man page for the currently-edited command on the
+# readline-buffer. It reads aliases and checks for docker, git
+# style man page patterns. This assumes that any errors with
+# 'man' are due to not finding man pages (exit code 16)
+_readline_util_show_man() {
 	local line tempLine manual
-	# TODO: read aliases (for help as well)
-	# TODO: special case (ex. for systemctl --user import environment)
+
 	line="$(_readline_util_get_line "$1")"
 
-	# try docker-container-ls
+	# Expand alias
+	if alias "${line%% *}" &>/dev/null; then
+		line="$(
+			alias "${line%% *}" | cut -d= -f2 | sed -e "s/^'*//" -e "s/'*$//"
+		) $(_readline_util_trim_whitespace "${line#* }")"
+	fi
+
+	# $ docker container ls -v           -> man docker-container-ls
+	# $ git status -v                    -> man git-status--v
+	# $ git -v -C path                   -> man git--v--C
+	# $ qemu-system-x86_64 -m 2048 -k en -> man qemu-system-x86_64--m-2048
 	tempLine="${line/ /-}"
 	tempLine="${tempLine/ /-}"
 	manual="${tempLine%% *}"
-	if 'man' "$manual" &>/dev/null; then
-		printf "%s" "$manual"
+	if command man "$manual" 2>/dev/null; then
 		return
 	else
 		(($? != 16)) && : # unhandled error
 	fi
 
-	# try git-status, zfs-mount, 'qemu-system-x86_64--cdrom file.iso'
+	# $ git status -v                    -> man git-status
+	# $ git -v -C path                   -> man git--v
+	# $ qemu-system-x86_64 -m 2048 -k en -> man qemu-system-x86_64--m
 	tempLine="${line/ /-}"
 	manual="${tempLine%% *}"
-	if 'man' "$manual" &>/dev/null; then
-		printf "%s" "$manual"
+	if command man "$manual" 2>/dev/null; then
 		return
 	else
 		(($? != 16)) && : # unhandled error
 	fi
 
-	# try git, lsblk, qemu-system-x86_64
+	# $ git -v -C path -> man git
+	# $ qemu-system-x86_64 -m 2048 -k en -> man qemu-system-x86_64
 	manual="${line%% *}"
-	if 'man' "$manual" &>/dev/null; then
-		printf "%s" "$manual"
+	if command man "$manual" 2>/dev/null; then
 		return
 	else
 		(($? != 16)) && : # unhandled error
 	fi
 
-	# try qemu
-	tempLine="${line%% *}"
-	manual="${tempLine%%-*}"
-	if 'man' "$manual" &>/dev/null; then
-		printf "%s" "$manual"
+	# $ qemu-system-x86_64 -m 2048 -k en -> man qemu
+	manual="${line%%-*}"
+	if command man "$manual" 2>/dev/null; then
 		return
 	else
 		(($? != 16)) && : # unhandled error
@@ -84,7 +91,7 @@ _readline_util_get_man() {
 }
 
 _readline_util_trim_whitespace() {
-	'sed' \
+	command sed \
 		-e 's/^[[:space:]]*//' \
 		-e 's/[[:space:]]*$//' \
 		<<< "$1"
@@ -125,8 +132,7 @@ _readline_show_help() {
 
 _readline_show_man() {
 	local manual
-	manual="$(_readline_util_get_man "$READLINE_LINE")"
-	'man' "$manual"
+	_readline_util_show_man "$READLINE_LINE"
 }
 
 _readline_toggle_sudo() {

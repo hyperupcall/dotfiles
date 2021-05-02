@@ -1,7 +1,5 @@
-# TODO: $XDG_DATA_HOME
-source "/home/edwin/data/kak/plugins/plug.kak/rc/plug.kak"
+source "%sh{ echo "$XDG_DATA_HOME" }/kak/plugins/plug.kak/rc/plug.kak"
 
-# TODO don't shell out if able to
 set-option global plug_install_dir %sh{ echo "$XDG_DATA_HOME/kak/plugins" }
 
 plug "andreyorst/plug.kak" noload
@@ -41,11 +39,11 @@ plug "andreyorst/powerline.kak" defer powerline %{
 }
 
 plug "andreyorst/kaktree" config %{
-        hook global WinSetOption filetype=kaktree %{
-                    remove-highlighter buffer/numbers
-                    remove-highlighter buffer/matching
-                    remove-highlighter buffer/wrap
-                    remove-highlighter buffer/show-whitespaces
-        }
-            kaktree-enable
+	hook global WinSetOption filetype=kaktree %{
+		remove-highlighter buffer/numbers
+		remove-highlighter buffer/matching
+		remove-highlighter buffer/wrap
+		remove-highlighter buffer/show-whitespaces
+	}
+	kaktree-enable
 }

@@ -2,15 +2,26 @@
 
 unset SESSION_MANAGER
 
-# automatically find unused $DISPLAY
-display=0
-while true; do
-	[ -e "/tmp/.X$display-lock" ] || [ -S "/tmp/.X11-unix/X$display" ] || break
-	display=$((display + 1))
-done
-display=:$display
+: "${TMPDIR:=/tmp}"
 
-# when starting the default server, start X on current tty to avoid the startx
+# Find first unused DISPLAY
+displayN=0
+while true; do
+	[ -e "$TMPDIR/.X$displayN-lock" ] || [ -S "$TMPDIR/.X11-unix/X$displayN" ] || break
+	displayN=$((displayN + 1))
+done
+display=:$displayN
+
+# Make a named pipe so we can pipe stdout of the rest of this script
+# to a log file. We cannot use a compound command because the return
+# value of Xorg will be hidden in the subshell
+pipe="$TMPDIR/.X11-unix/X$displayN-fifo"
+
+mkfifo "$pipe"
+tee "$TMPDIR/.X11-unix/X$displayN-log" < "$pipe" &
+exec > "$pipe" 2>&1
+
+# get current tty, and explicitly start X on it to avoid the startx
 # session being seen as inactive: https://bugzilla.redhat.com/show_bug.cgi?id=806491
 tty="$(tty)"
 if expr "$tty" : '/dev/tty[0-9][0-9]*$' >/dev/null 2>&1; then
@@ -21,46 +32,16 @@ else
 fi
 unset -v tty
 
-mcookie="$(/usr/bin/mcookie)"
-[ -z "$mcookie" ] && {
-	echo "Error: Couldn't create cookie"
-	exit 1
-}
+# xauth and start
+touch "$XAUTHORITY"
+xauth add "$display" . "$(mcookie)"
+xinit "$XDG_CONFIG_HOME/X11/xinitrc" -- "/usr/bin/Xorg" "$display" -nolisten tcp "$vtarg" -keeptty
+exitStatus=$?
 
-# create a file with auth information for the server. ':0' is a dummy.
-dummy=0
-xserverauthfile="$(mktemp --tmpdir serverauth.XXXXXXXXXX)"
-trap 'rm -f "$xserverauthfile"' HUP INT QUIT ILL TRAP BUS TERM
-xauth -q -f "$xserverauthfile" add ":$dummy" . "$mcookie"
-
-# now add the same credentials to the client authority file
-# if '$displayname' already exists do not overwrite it as another
-# server may need it. Add them to the '$xserverauthfile' instead
-removelist=
-
-for displayname in $display $(hostname)$display; do
-	authcookie="$(xauth list "$displayname" \
-		| head -1 \
-		| sed -n "s/.*${displayname}[[:space:]*].*[[:space:]*]//p")" 2>/dev/null;
-
-	if [ "$authcookie" = "" ]; then
-		xauth -q add "$displayname" . "$mcookie"
-		removelist="$displayname $removelist"
-	else
-		dummy=$((dummy+1));
-		xauth -q -f "$xserverauthfile" add ":$dummy" . "$authcookie"
-	fi
-done
-
-xinit "$XDG_CONFIG_HOME/X11/xinitrc" -- "/usr/bin/Xorg" "$display" -nolisten tcp "$vtarg" -keeptty -auth "$xserverauthfile"
-retval=$?
-
-# shellcheck disable=SC2086
-[ -n "$removelist" ] && xauth remove $removelist
-[ -n "$xserverauthfile" ] && rm -f "$xserverauthfile"
-
+# cleanup
+xauth remove "$display"
 command -v deallocvt >/dev/null 2>&1 && {
 	deallocvt
 }
 
-exit $retval
+exit $exitStatus

@@ -1,13 +1,3 @@
-*StringConversionWarnings: on
-! TODO: cleanup
-Xcursor.theme: capitaine-cursors-light
-Xcursor.size: 4
-
-! load color-specific resources for clients that have them
-#ifdef COLOR
-*customization: -color
-#endif
-
 ! application Xresouces
 #include "resources/xterm.Xresources"
 #include "resources/urxvt.Xresources"

@@ -1,11 +1,6 @@
 # shellcheck shell=sh
 
-# some of these may have corresponding entries
-# in $XDG_CONFIG_HOME/bash/bash_completion.sh
-
-
 # ------------------------ tweaks ------------------------ #
-
 alias cd-='cd -'
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -25,7 +20,7 @@ alias egrep='egrep --colour=auto'
 alias feh='feh --no-fehbg'
 alias fgrep='fgrep --colour=auto'
 alias free='free -m'
-alias gdb='gdb -nh'
+alias gdb='gdb -nh -x "$XDG_CONFIG_HOME/gdb/gdbinit"'
 alias grep='grep --colour=auto'
 alias gzip='gzip -k'
 alias ip='ip -color=auto'
@@ -46,7 +41,6 @@ alias yay='yay --color=auto'
 
 
 # -------------------------- git ------------------------- #
-
 alias g='git'
 alias gi='git'
 alias ginit='git init'
@@ -59,7 +53,6 @@ alias gcommit='git commit'
 
 
 # ----------------------- systemctl ---------------------- #
-
 alias sctl='systemctl'
 alias sctlu='systemctl --user'
 
@@ -139,7 +132,6 @@ alias tdctl='timedatectl'
 
 
 # ------------------------ shells ------------------------ #
-
 alias pso='. ~/.profile'
 alias ped='"$EDITOR" "$XDG_CONFIG_HOME/profile/profile.sh"'
 alias bso='. ~/.bashrc'

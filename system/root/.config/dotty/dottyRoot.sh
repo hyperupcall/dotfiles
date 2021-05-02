@@ -18,7 +18,7 @@ p "/etc/udev/rules.d/51-gc-adapter.rules"
 	p /etc/pacman.d/hooks/pyenv-switch-{restore,system}.hook
 }
 
-p "/root/.bashrc"
+p /root/.bashrc{,-generated-aliases,-generated-functions}
 p "/root/.nanorc"
 p "/root/.config/dotty"
 p "/root/.dir_colors"

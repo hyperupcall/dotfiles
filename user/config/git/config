@@ -4,7 +4,7 @@
 	warnAmbiguousRefs = true ; default
 	compression = 2
 	# pager = less -+F -+R -S -+X
-	pager = diff-so-fancy | less --tabs=4 -RFX
+	pager = diff-so-fancy | less --tabs=3 -RFX
 [init]
 	defaultBranch = main
 [add "interactive"]
@@ -35,7 +35,7 @@
 	ui = true
 [commit]
 	gpgSign = true
-	template = ~/config/git/commit.template.txt
+	template = ~/config/git/templates/commit
 [include]
 	path = include/diff.conf
 [gpg]
