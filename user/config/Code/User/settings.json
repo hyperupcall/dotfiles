@@ -295,5 +295,9 @@
   "yaml.format.singleQuote": true,
   "zenMode.centerLayout": true,
   "cmake.configureOnOpen": true,
-  "go.toolsManagement.autoUpdate": true
+  "go.toolsManagement.autoUpdate": true,
+  "terminal.integrated.commandsToSkipShell": [
+    "language-julia.interrupt"
+  ],
+  "debug.onTaskErrors": "abort"
 }

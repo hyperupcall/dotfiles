@@ -32,6 +32,18 @@ _readline_util_get_cmd() {
 	printf "%s" "$cmd"
 }
 
+_readline_util_expand_alias() {
+	line="$1"
+
+	if alias "${line%% *}" &>/dev/null; then
+		line="$(
+			alias "${line%% *}" | cut -d= -f2 | sed -e "s/^'*//" -e "s/'*$//"
+		) $(_readline_util_trim_whitespace "${line#* }")"
+	fi
+
+	printf "%s" "$line"
+}
+
 # Get the man page for the currently-edited command on the
 # readline-buffer. It reads aliases and checks for docker, git
 # style man page patterns. This assumes that any errors with
@@ -40,13 +52,7 @@ _readline_util_show_man() {
 	local line tempLine manual
 
 	line="$(_readline_util_get_line "$1")"
-
-	# Expand alias
-	if alias "${line%% *}" &>/dev/null; then
-		line="$(
-			alias "${line%% *}" | cut -d= -f2 | sed -e "s/^'*//" -e "s/'*$//"
-		) $(_readline_util_trim_whitespace "${line#* }")"
-	fi
+	line="$(_readline_util_expand_alias "$line")"
 
 	# $ docker container ls -v           -> man docker-container-ls
 	# $ git status -v                    -> man git-status--v
@@ -118,7 +124,10 @@ _readline_x_paste() {
 
 _readline_show_help() {
 	local cmd
-	cmd="$(_readline_util_get_cmd "$READLINE_LINE")"
+	line="$(_readline_util_expand_alias "$READLINE_LINE")"
+	cmd="$(_readline_util_get_cmd "$line")"
+	[[ -z $cmd ]] && return
+
 	if [[ $(type -t "$cmd") = 'builtin' ]]; then
 		help "$cmd"
 	elif command -v "$cmd" &>/dev/null; then
@@ -133,6 +142,15 @@ _readline_show_help() {
 _readline_show_man() {
 	local manual
 	_readline_util_show_man "$READLINE_LINE"
+}
+
+_readline_show_tldr() {
+	local cmd
+	line="$(_readline_util_expand_alias "$READLINE_LINE")"
+	cmd="$(_readline_util_get_cmd "$line")"
+	[[ -z $cmd ]] && return
+
+	tldr "$cmd"
 }
 
 _readline_toggle_sudo() {
@@ -184,6 +202,7 @@ bind -x '"\ek": _readline_x_kill'
 bind -x '"\ey": _readline_x_yank'
 bind -x '"\eo": _readline_x_paste'
 bind -x '"\eh": _readline_show_help'
+bind -x '"\en": _readline_show_tldr'
 bind -x '"\em": _readline_show_man'
 bind -x '"\es": _readline_toggle_sudo'
 bind -x '"\e\\": _readline_toggle_backslash'

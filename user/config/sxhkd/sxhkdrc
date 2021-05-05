@@ -1,9 +1,6 @@
 super + Return
 	"$XDG_DATA_HOME/shell-installer/bin/fox-default" launch terminal-emulator
 
-super + n
-	kitty --title 'Popup Terminal'
-
 super + p
 	rofi -show combi -combi-modi run -show-icons
 

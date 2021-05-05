@@ -2,7 +2,7 @@
 # <type>[(optional scope)]: <description>
 #
 # type (Conventional Commits):
-#   [ fix, feat, BREAKING CHANGE ]
+#   [ fix, feat, 'BREAKING CHANGE' ]
 #
 # type (AngularJS):
 #   [ build, ci, docs, feat, fix, perf, refactor, test ]

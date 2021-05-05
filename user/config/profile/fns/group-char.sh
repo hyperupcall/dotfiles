@@ -1,6 +1,7 @@
 # shellcheck shell=sh
 
-# run an alias, but don't run if it's not an alias
+# run alias only
+# clone(user, root)
 a() {
 	if alias "$1" >/dev/null 2>&1; then
 		_a_aliasValue="$(alias "$1" | awk -v FS="'" '{ print $2 }')"
@@ -22,7 +23,7 @@ o() {
 	fi
 }
 
-# root
+# clone(user, root)
 r() {
 	for file; do
 		if [ -d "$file" ]; then
@@ -34,11 +35,12 @@ r() {
 	unset -v file
 }
 
+# clone(user, root)
 s() {
 	BASH_ENV="/root/.bashrc" sudo -i --preserve-env=BASH_ENV "$@"
 }
 
-# root
+# clone(user, root)
 t() {
 	[ $# -eq 0 ] && {
 		_profile_util_log_error 't: Missing file arguments'
@@ -62,7 +64,7 @@ t() {
 	unset -v file
 }
 
-# root
+# clone(user, root)
 v() {
 	s=
 	if [ "$(stat -c "%G" "$1")" = "root" ]; then

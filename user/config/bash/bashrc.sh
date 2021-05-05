@@ -48,8 +48,8 @@ shopt -s autocd
 shopt -s cdable_vars
 shopt -s cdspell
 shopt -s checkjobs
-shopt -s checkwinsize # default
-shopt -s cmdhist # default
+shopt -s checkwinsize
+shopt -s cmdhist
 shopt -s direxpand
 shopt -s dirspell
 shopt -s dotglob
@@ -59,7 +59,7 @@ shopt -s histappend
 shopt -s histreedit
 shopt -s histverify
 shopt -u hostcomplete
-shopt -s interactive_comments # default
+shopt -s interactive_comments
 shopt -u mailwarn
 shopt -s no_empty_cmd_completion
 shopt -s nocaseglob
@@ -69,12 +69,12 @@ shopt -s progcomp
 ((${BASH_VERSION%%.*} == 5)) && shopt -s progcomp_alias # not working due to complete -D
 shopt -s shift_verbose
 shopt -s sourcepath
-shopt -u xpg_echo # default
+shopt -u xpg_echo
 
 # -------------------------- set ------------------------- #
 set -o noclobber
-set -o notify # deafult
-set -o physical # default
+set -o notify
+set -o physical
 
 
 #

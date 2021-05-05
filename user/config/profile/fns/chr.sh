@@ -1,6 +1,6 @@
 # shellcheck shell=sh
 
-# root
+# clone(user, root)
 chr() {
 	[ -z "$1" ] && { _profile_util_die "chr: No mountpoint specified"; return; }
 	[ -d "$1" ] || { _profile_util_die "chr: Folder doesn't exist"; return; }
@@ -30,4 +30,10 @@ chr() {
 	}
 
 	sudo chroot "$1"
+}
+
+# TODO: remove /run,/proc,sysfs, etc. mounts
+# clone(user, root)
+unchr() {
+	:
 }

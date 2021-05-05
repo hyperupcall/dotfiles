@@ -69,7 +69,7 @@ bindsym $mod+Shift+2 move container to workspace number $ws2
 bindsym $mod+Shift+3 move container to workspace number $ws3
 bindsym $mod+Shift+4 move container to workspace number $ws4
 bindsym $mod+Shift+5 move container to workspace number $ws5
-bindsym $mod+Shift+6 move jontainer to workspace number $ws6
+bindsym $mod+Shift+6 move container to workspace number $ws6
 bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 
@@ -85,7 +85,7 @@ mode "layout" {
 	bindsym f fullscreen toggle
 	bindsym Shift+f fullscreen toggle global
 
-	bindsym w mode "default"
+	bindsym e mode "default"
 	bindsym Escape mode "default"
 	bindsym Return mode "default"
 }
@@ -93,15 +93,15 @@ mode "layout" {
 ## --------------------- Resize Mode --------------------
 bindsym $mod+r mode "resize"
 mode "resize" {
-	bindsym h resize shrink width 10 px
-	bindsym j resize shrink height 10 px
-	bindsym k resize grow height 10 px
-	bindsym l resize grow width 10 px
+	bindsym h resize shrink width 50 px
+	bindsym j resize shrink height 50 px
+	bindsym k resize grow height 50 px
+	bindsym l resize grow width 50 px
 
-	bindsym Shift+h resize shrink width 50 px
-	bindsym Shift+j resize shrink height 50 px
-	bindsym Shift+k resize grow height 50 px
-	bindsym Shift+l resize grow width 50 pxh
+	bindsym Shift+h resize shrink width 100 px
+	bindsym Shift+j resize shrink height 100 px
+	bindsym Shift+k resize grow height 100 px
+	bindsym Shift+l resize grow width 100 px
 
 	bindsym Shift+Ctrl+h resize shrink width 250 px
 	bindsym Shift+Ctrl+j resize shrink height 250 px
@@ -120,23 +120,23 @@ mode "resize" {
 # ---------------------- Move Mode ---------------------
 bindsym $mod+n mode "move"
 mode "move" {
-	bindsym h move left 10 px
-	bindsym j move down 10 px
-	bindsym k move up 10 px
-	bindsym l move right 10 px
+	bindsym h move left 50 px
+	bindsym j move down 50 px
+	bindsym k move up 50 px
+	bindsym l move right 50 px
 
-	bindsym Shift+h move left 50 px
-	bindsym Shift+j move down 50 px
-	bindsym Shift+k move up 50 px
-	bindsym Shift+l move right 50 px
+	bindsym Shift+h move left 100 px
+	bindsym Shift+j move down 100 px
+	bindsym Shift+k move up 100 px
+	bindsym Shift+l move right 100 px
 
 	bindsym Shift+Ctrl+h move left 250 px
 	bindsym Shift+Ctrl+j move down 250 px
 	bindsym Shift+Ctrl+k move up 250 px
 	bindsym Shift+Ctrl+l move right 250 px
 
-	bindsym $mod+b mode "resize"
-	bindsym b mode "resize"
+	bindsym $mod+r mode "resize"
+	bindsym r mode "resize"
 	bindsym $mod+m mode "mouse"
 	bindsym m mode "mouse"
 
@@ -191,8 +191,8 @@ mode "mouse" {
 	bindsym Ctrl+d exec xdotool mouseup 2
 	bindsym Ctrl+s exec xdotool mouseup 3
 
-	bindsym $mod+b mode "resize"
-	bindsym b mode "resize"
+	bindsym $mod+r mode "resize"
+	bindsym r mode "resize"
 	bindsym $mod+n mode "move"
 	bindsym n mode "move"
 

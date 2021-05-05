@@ -1,3 +1,7 @@
+[C]
+as = "sh"
+cmd = "code"
+
 [O]
 cmd = "obs"
 
@@ -9,3 +13,6 @@ cmd = "cd ~/repos/sticker-selector && ./sticker-selector"
 cmd = "cactus"
 args = ["--binds", '{{ env "XDG_CONFIG_HOME" }}/cactus/binds-terminal-apps.toml']
 
+[N]
+cmd = "kitty"
+args = ["--title", "Popup Terminal"]

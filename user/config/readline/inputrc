@@ -1,8 +1,8 @@
 # $include /etc/inputrc
 
 set bell-style none
-set bind-tty-special-chars on # default
-set blink-matching-paren off # default
+set bind-tty-special-chars on
+set blink-matching-paren off
 set colored-completion-prefix on
 set colored-stats on
 set completion-ignore-case on
@@ -28,6 +28,10 @@ set visible-stats on
 "\C-xr": reverse-search-history
 "\C-xs": forward-search-history
 "\C-xp": print-last-kbd-macro
+
+#TODO
+"\C-l": menu-complete
+"\e[Z": menu-complete-backward
 
 $if Bash
 	Space: magic-space

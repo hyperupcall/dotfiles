@@ -6,6 +6,10 @@ args = ["pulsemixer"]
 cmd = "kitty"
 args = ["calcurse"]
 
+[R]
+cmd = "kitty"
+args = ["ranger", '{{ env "HOME" }}/Docs']
+
 [M]
 cmd = "kitty"
 args = ["aerc"]

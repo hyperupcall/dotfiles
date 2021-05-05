@@ -13,6 +13,19 @@ bash() {
 	command bash "$@"
 }
 
+cd() {
+	case "$1" in
+	mov)
+		cd /storage/vault/rodinia/Media-Movies || _p_die "Could not cd to '$1'"
+		return ;;
+	ser)
+		cd /storage/vault/rodinia/Media-Series || _p_die "Could not cd to '$1'"
+		return ;;
+	esac
+
+	command cd "$@" || _p_die "Could not cd to '$1'"
+}
+
 cp() {
 	if command -v rsync >/dev/null 2>&1 && {
 		[ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]
@@ -52,13 +65,21 @@ cp() {
 		# shellcheck disable=SC3054
 		command rsync -ah --info flist2,name,progress,symsafe "$@"
 	else
-		echo "${!#}"
 		_profile_util_log_warn "cp: Falling back to 'cp'"
-		command cp -i "$@"
+		command cp -iv "$@"
 	fi
 }
 
-# root
+# clone(user)
+curl() {
+	if command -v curlie >/dev/null 1>&2; then
+		curlie "$@"
+	else
+		curl "$@"
+	fi
+}
+
+# clone(user, root)
 lsblk() {
 	if [ $# -eq 0 ]; then
 		command lsblk -o NAME,FSSIZE,FSUSED,FSAVAIL,FSUSE%,FSTYPE,MOUNTPOINT
@@ -96,7 +117,7 @@ touch() {
 	_profile_util_die "touch: Use 't' instead"
 }
 
-# root
+# clone(user, root)
 unlink() {
 	for arg; do
 		case "$arg" in

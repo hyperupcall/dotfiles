@@ -1,7 +1,8 @@
 # shellcheck shell=sh
 
-# root
+# clone(user, root)
 cls() {
+	# TODO
 	clear
 	reset
 	tput reset
@@ -37,7 +38,7 @@ docker_nuke() {
 	docker images | grep none | col 3 | xargs docker rmi -f
 }
 
-# root
+# clone(user, root)
 dg() {
 	dig +nocmd "$1" any +multiline +noall +answer
 }
@@ -72,7 +73,7 @@ edit() {
 	unset -v _edit_grep_result _edit_file _edit_line
 }
 
-# root
+# clone(user, root)
 faketty() {
 	unbuffer -p "@"
 }
@@ -82,21 +83,23 @@ faketty() {
 # 	wget "https://download-directory.github.io/?url=$urlEncoded"
 # }
 
-# root
+# clone(user, root)
 isup() {
 	command curl -sS --head --X GET "$1" | grep -q '200 OK'
 }
 
-# root
+# clone(user, root)
 kkexec() {
 	sudo kexec -l /efi/EFI/arch/vmlinuz-linux-lts --initrd /efi/EFI/arch/initramfs-linux-lts.img --reuse-cmdline
 	sudo systemctl kexec
 	# sudo kexec -e
 }
 
+# clone(user, root)
 nh() {
 	nohup "$@" > /dev/null 2>&1 &
 }
+
 np() {
 	if [ "$(echo "$1" | awk '{ print substr($1, 0, 1) }')" = "/" ]; then
 		mkdir -p "$1"
@@ -139,10 +142,12 @@ quickedit() (
 )
 
 # https://unix.stackexchange.com/a/123770
+# clone(user, root)
 see_old() {
 	sudo lsof +c 0 | grep 'DEL.*lib' | awk '1 { print $1 ": " $NF }' | sort -u
 }
 
+# clone(user)
 serv() {
 	[ -d "${1:-.}" ] || { _profile_util_die "serv: dir '$1' doesn't exist"; return; }
 	command -v file_server >/dev/null 2>&1 && {

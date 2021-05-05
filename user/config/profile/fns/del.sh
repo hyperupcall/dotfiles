@@ -1,6 +1,6 @@
 # shellcheck shell=sh
 
-# root
+# clone(user, root)
 del() {
 	if command -v trash-put >/dev/null 2>&1; then
 		for f; do
@@ -17,7 +17,7 @@ del() {
 			}
 		done
 	else
-		_profile_util_log_die "del: Neither 'trash-cli' nor 'gio' installed"
-		return
+		_profile_util_log_error "del: Neither 'trash-cli' nor 'gio' installed. Falling back to 'rm'"
+		rm -rf "$@"
 	fi
 }

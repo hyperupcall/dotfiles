@@ -1,4 +1,8 @@
 *.env
+
+!user/config/bash/generated/.gitkeep
+user/config/bash/generated/*
+
 **/fish/completions/
 **/fish/conf.d/
 **/fish/functions/
