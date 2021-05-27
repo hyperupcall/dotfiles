@@ -19,6 +19,9 @@ export ANDROID_AVD_HOME="$XDG_DATA_HOME/Android/avd"
 # atom
 export ATOM_HOME="$XDG_DATA_HOME/atom"
 
+# autoenv
+export AUTOENV_AUTH_FILE="$XDG_DATA_HOME/autoenv/auth_file"
+
 # aws
 export AWS_SHARED_CREDENTIALS_FILE="$XDG_DATA_HOME/aws/credentials"
 export AWS_CONFIG_FILE="$XDG_DATA_HOME/aws/config"
@@ -30,6 +33,13 @@ export AZURE_CONFIG_DIR="$XDG_DATA_HOME/azure"
 export BASH_COMPLETION_USER_DIR="$XDG_CONFIG_HOME/bash"
 export BASH_COMPLETION_USER_FILE="$XDG_CONFIG_HOME/bash/bash_completion.sh"
 
+# basher
+export BASHER_ROOT="$XDG_DATA_HOME/basher"
+export BASHER_PREFIX="$BASHER_ROOT/cellar"
+export BASHER_PACKAGES_PATH="$BASHER_PREFIX/packages"
+_path_prepend "$XDG_DATA_HOME/basher/bin"
+_path_prepend "$BASHER_ROOT/cellar/bin"
+
 # bashmarks
 SDIRS="$XDG_DATA_HOME/bashmarks.sh.db"
 
@@ -37,9 +47,9 @@ SDIRS="$XDG_DATA_HOME/bashmarks.sh.db"
 export BOTO_CONFIG="$XDG_DATA_HOME/boto"
 
 # bundle
-# export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME/bundle"
-# export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle"
-# export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/bundle"
+export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME/bundle"
+export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle"
+export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/bundle"
 
 # cabal
 export CABAL_CONFIG="$XDG_CONFIG_HOME/cabal/config"
@@ -53,13 +63,16 @@ export CCACHE_CONFIGPATH="$XDG_CONFIG_HOME/ccache/config"
 # cinelerra
 export CIN_CONFIG="$XDG_CONFIG_HOME/bcast5"
 
+# conda
+export CONDA_ROOT="$XDG_CONFIG_HOME/conda"
+# _path_prepend "$XDG_DATA_HOME/miniconda3/bin"
+
 # cookiecutter
 export COOKIECUTTER_CONFIG="$XDG_CONFIG_HOME/cookiecutter/cookiecutterrc"
 
 # crenv
 # export CRENV_ROOT="$XDG_DATA_HOME/crenv"
 # _path_prepend "$CRENV_ROOT/bin"
-# eval "$(crenv init -)"
 
 # cpanm
 export PERL_CPANM_HOME="$XDG_DATA_HOME/cpanm"
@@ -119,7 +132,7 @@ export GDBHISTFILE="$HOME/.history/history"
 export GEM_HOME="$XDG_DATA_HOME/gem" # conflicts with rvm
 export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
 _path_prepend "$GEM_HOME/bin"
-_path_prepend "$HOME/.gem/ruby/2.7.0/bin"
+# _path_prepend "$HOME/.gem/ruby/2.7.0/bin"
 
 # get_iplayer
 export GETIPLAYERUSERPREFS="$XDG_DATA_HOME/get_iplayer"
@@ -164,7 +177,7 @@ export IMAPFILTER_HOME="$XDG_CONFIG_HOME/imapfilter"
 alias info='info --init-file $XDG_CONFIG_HOME/info/infokey'
 
 # ipfs
-# export IPFS_PATH="$XDG_DATA_HOME/ipfs"
+export IPFS_PATH="$XDG_DATA_HOME/ipfs"
 
 # ipython
 export IPYTHONDIR="$XDG_CONFIG_HOME/jupyter"
@@ -240,7 +253,6 @@ export NB_HIST="$HOME/.history/nb_history"
 
 # nimble
 export CHOOSENIM_NO_ANALYTICS="1"
-_path_prepend "$HOME/.nimble/bin"
 _path_prepend "$XDG_DATA_HOME/nimble/bin"
 
 # node
@@ -255,7 +267,7 @@ export NMBGIT="$XDG_DATA_HOME/notmuch/nmbug"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 
 # nuget
-export NUGET_PACKAGES="$XDG_CACHE_HOME/nuget/packages"
+export NUGET_PACKAGES="$XDG_DATA_HOME/nuget/packages"
 
 # nvidia
 # alias nvidia-settings='nvidia-settings --config $XDG_DATA_HOME/nvidia-settings'
@@ -316,8 +328,8 @@ export PULSE_COOKIE="$XDG_DATA_HOME/pulse/cookie"
 
 # pyenv
 export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
-_path_prepend "$PYENV_ROOT/bin"
-_path_prepend "$PYENV_ROOT/shims"
+# _path_prepend "$PYENV_ROOT/bin"
+# _path_prepend "$PYENV_ROOT/shims"
 
 # pylint
 export PYLINTHOME="$XDG_CACHE_HOME/pylint"
@@ -333,7 +345,6 @@ export PLTUSERHOME="$XDG_DATA_HOME/racket"
 export RBENV_ROOT="$XDG_DATA_HOME/rbenv"
 _path_prepend "$RBENV_ROOT/bin"
 _path_prepend "$RBENV_ROOT/shims"
-eval "$(rbenv init - | sed -n '1d;p')"
 
 # readline
 export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"

@@ -2,3 +2,4 @@
 
 user/config/npm/npmrc filter=npmrc-clean
 user/config/slack-term/config filter=slack-term-config-clean
+user/config/osc/oscrc filter=oscrc-clean.clean

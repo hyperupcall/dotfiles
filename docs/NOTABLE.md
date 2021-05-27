@@ -10,7 +10,7 @@ of the current dotfiles
 
 ## [`readline.sh`](../user/config/bash/modules/readline.sh)
 
-Special bash readline bindings that includes many convenience scripts that include:
+Special bash readline bindings that includes many convenient functionality that include:
 
 - Alt+M to bring up man page (of command/alias currently being edited)
   - very useful, as you can view a man page without having to switch readline editing buffers
@@ -22,7 +22,7 @@ Special bash readline bindings that includes many convenience scripts that inclu
 
 ## [`mkt.sh`](../user/config/profile/fns/mkt.sh)
 
-Quick command to automatically do something in a temporary space, file at . Based on the first argument, it will
+Quick command to automatically do something in a temporary space. Based on the first argument, it will
 
 - (blank) => cd to new random directory in tempfs (`cd "$(mktemp -d)"`)
 - (file/folder) => copy file/folder to new random directory in tempfs, and cd/ls to it
@@ -30,7 +30,7 @@ Quick command to automatically do something in a temporary space, file at . Base
 - (internet file) => wget file to new random directory in tempfs, and cd/ls to it
 
 It will log temporary directories to `~/.history/mkt_history` so you can view where something is if you're worked in that
-place for a prolonged period
+place for a prolonged period of time
 
 ## [`xdg.sh`](../user/config/profile/xdg.sh)
 
@@ -38,4 +38,4 @@ Contains environment variables and alises that make programs more XDG-compliant.
 
 ## [fox-default](../user/config/fox-default)
 
-A collection of aggregations of similar applications with a distinct, common, primary purpose, such as `image-viewer`. For now, you can list each aggregation and set/run an application participant of a particular aggregation with a command. The main scripts are located at https://github.com/eankeen/fox-default, and it won't be super usable until I release some sort of TUI
+A collection of aggregations of similar applications with a distinct, common, primary purpose, such as `image-viewer`. For now, you can list each aggregation and set/run an application participant of a particular aggregation with a command. The main scripts are located at https://github.com/eankeen/fox-default

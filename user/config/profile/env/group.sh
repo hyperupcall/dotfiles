@@ -33,7 +33,7 @@ export LESS="-FIRQ"
 # export LESS="-FIRX" LESS="-M -I -R"
 export LESS_ADVANCED_PREPROCESSOR=1 # lesspipe.sh
 export LESSKEY="$XDG_CONFIG_HOME/less_keys"
-export LESSOPEN="|$(command -v lesspipe.sh) %s"
+export LESSOPEN="|$(command -v lesspipe.sh) %s | $(command -v source-highlight-esc.sh)"
 export LESSHISTFILE="$HOME/.history/less_history"
 export LESSHISTSIZE="32768"
 export LESS_TERMCAP_mb="$(printf '\e[1;31m')" # start blink

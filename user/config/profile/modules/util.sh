@@ -1,6 +1,9 @@
 # shellcheck shell=sh
 
-# single-use
+# Common functions used in starup files for POSIX shell,
+# Bash, and ZSH
+
+# ---------------------- Persistent ---------------------- #
 _path_prepend() {
 	[ -n "$2" ] && {
 		# [ -d "$2" ] || return
@@ -35,45 +38,24 @@ _path_append() {
 	esac
 }
 
-# runtime
-_profile_util_log_error() {
+_shell_util_log_error() {
 	printf "\033[0;31m%s\033[0m\n" "Error: $*" >&2
 }
 
-_profile_util_log_warn() {
+_shell_util_log_warn() {
 	printf "\033[1;33m%s\033[0m\n" "Warn: $*" >&2
 }
 
-_profile_util_log_info() {
+_shell_util_log_info() {
 	printf "\033[0;34m%s\033[0m\n" "Info: $*"
 }
 
-_profile_util_die() {
-	_profile_util_log_error "$*"
+_shell_util_die() {
+	_shell_util_log_error "$*"
 	return 1
 }
 
-_profile_util_print_colorhdr_root() {
-	printf "%s" "\[\e[38;2;201;42;42m\][\u@\h \w]\[\e[0m\]\$ "
-}
-
-_profile_util_print_colorhdr_error() {
-	printf "%s" "[\[\e[0;31m\](PS1 Error)\[\e[0m\] \u@\h \w]\$ "
-}
-
-_profile_util_print_color_root() {
-	printf "%s" "\[\e[0;31m\][\u@\h \w]\[\e[0m\]\$ "
-}
-
-_profile_util_print_color_user() {
-	printf "%s" "\[\e[0;33m\][\u@\h \w]\[\e[0m\]\$ "
-}
-
-_profile_util_print_bw() {
-	printf "%s" "[\u@\h \w]\$ "
-}
-
-_profile_util_ls() {
+_shell_util_ls() {
 	if command -v exa >/dev/null 2>&1; then
 		exa -al
 	elif command -v lsd >/dev/null 2>&1; then

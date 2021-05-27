@@ -5,14 +5,12 @@
 # ensure execution returns if zsh is non-interactive
 [[ $- != *i* ]] && [ ! -t 0 ] && return
 
-# TODO:
-# ensure /etc/profile is read for non-login shells
-# bash only reads /etc/profile on interactive, login shells
+# ensure /etc/zprofile is read for non-login shells
+# zsh only reads /etc/zprofile on interactive, login shells
 # ! shopt -q login_shell && [ -r /etc/profile ] && source /etc/profile
 
-# TODO: check if needed for zsh
-# ensure ~/.profile is read for non-login shells
-# bash only reads ~/.profile on login shells when invoked as sh
+# ensure ~/.zprofile is read for non-login shells
+# zsh only reads ~/.zprofile on login shells
 [ -r "$XDG_CONFIG_HOME/zsh/.zprofile" ] && source "$XDG_CONFIG_HOME/zsh/.zprofile"
 
 
@@ -26,7 +24,7 @@
 #
 # ─── SHELL VARIABLES ────────────────────────────────────────────────────────────
 #
-HISTFILE="$HOME/.history/zsh_history"
+export HISTFILE="$HOME/.history/zsh_history"
 
 
 #
@@ -47,7 +45,7 @@ setopt auto_list
 setopt auto_name_dirs
 setopt auto_param_slash
 setopt auto_remove_slash
-unsetopt complete_aliases
+setopt complete_aliases
 unsetopt glob_complete
 setopt list_beep
 unsetopt list_packed
@@ -92,45 +90,48 @@ setopt posix_aliases
 
 unsetopt beep
 
-# -------------------------- set ------------------------- #
-
 
 #
 # ─── PS1 ────────────────────────────────────────────────────────────────────────
 #
 
-8Colors() {
-	test "$(tput colors)" -eq 8
+is8Colors() {
+	colors="$(tput colors 2>/dev/null)"
+
+	[ -n "$colors" ] && [ "$colors" -eq 8 ]
 }
 
-256Colors() {
-	test "$(tput colors)" -eq 256
+is256Colors() {
+	colors="$(tput colors 2>/dev/null)"
+
+	[ -n "$colors" ] && [ "$colors" -eq 256 ]
 }
 
-16MillionColors() {
-	test "$COLORTERM" = "truecolor" || test "$COLORTERM" = "24bit"
+is16MillionColors() {
+	[ "$COLORTERM" = "truecolor" ] || [ "$COLORTERM" = "24bit" ]
 }
 
-if 16MillionColors; then
-	if test "$EUID" = 0; then
-		PS1="$(_profile_util_print_colorhdr_root)"
+if is16MillionColors; then
+	if ((EUID == 0)); then
+		PS1="%F{#c92a2a}[%n@%M %~]$%f "
 	else
-		# TODO: fox-default
-		eval "$(starship init zsh)" || {
-			PS1="$(_profile_util_print_colorhdr_error)"
-		}
+		PS1="%{$fg[yellow]%}[%n@%M %~]$%{$reset_color%} "
+		# source "$(command -v choose)" launch prompt-zsh || {
+		# 	PS1="[\[\e[0;31m\](PS1 Error)\[\e[0m\] \u@\h \w]\$ "
+		# }
 	fi
-elif 8Colors || 256Colors; then
-	if test "$EUID" = 0; then
-		PS1="$(_profile_util_print_color_root)"
+elif is8Colors || is256Colors; then
+	if ((EUID == 0)); then
+		PS1="%{$fg[red]%}[%n@%M %~]$%{$reset_color%} "
 	else
-		PS1="$(_profile_util_print_color_user)"
+		PS1="%{$fg[yellow]%}[%n@%M %~]$%{$reset_color%} "
 	fi
 else
-	PS1="$(_profile_util_print_bw)"
+	PS1="[%n@%M %~]$ "
 fi
 
-unset -f 8Colors 256Colors 16MillionColors
+unset -f is8Colors is256Colors is16MillionColors
+
 
 #
 # ─── MODULES ────────────────────────────────────────────────────────────────────

@@ -27,14 +27,16 @@
 # ─── SHELL VARIABLES ────────────────────────────────────────────────────────────
 #
 
-# CDPATH=":~:"
-HISTCONTROL="ignorespace:ignoredups"
-HISTFILE="$HOME/.history/bash_history"
-HISTSIZE="-1"
-HISTFILESIZE="-1"
-HISTIGNORE="ls:[bf]g:pwd:clear*:exit*:*sudo -S*:*sudo --stdin*"
-HISTTIMEFORMAT="%B %m %Y %T | "
-HISTTIMEFORMAT='%F %T ' # ISO 8601
+# exported so virtual environments inherit the new values
+
+# export CDPATH=":~:"
+export HISTCONTROL="ignorespace:ignoredups"
+export HISTFILE="$HOME/.history/bash_history"
+export HISTSIZE="-1"
+export HISTFILESIZE="-1"
+export HISTIGNORE="ls:[bf]g:pwd:clear*:exit*:*sudo*-S*:*sudo*--stdin*"
+export HISTTIMEFORMAT="%B %m %Y %T | "
+export HISTTIMEFORMAT='%F %T ' # ISO 8601
 unset MAILCHECK
 PROMPT_DIRTRIM=5
 
@@ -81,35 +83,42 @@ set -o physical
 # ─── PS1 ────────────────────────────────────────────────────────────────────────
 #
 
-8Colors() {
-	test "$(tput colors)" -eq 8
+is8Colors() {
+	colors="$(tput colors 2>/dev/null)"
+
+	[ -n "$colors" ] && [ "$colors" -eq 8 ]
 }
 
-256Colors() {
-	test "$(tput colors)" -eq 256
+is256Colors() {
+	colors="$(tput colors 2>/dev/null)"
+
+	[ -n "$colors" ] && [ "$colors" -eq 256 ]
 }
 
-16MillionColors() {
-	test "$COLORTERM" = "truecolor" || test "$COLORTERM" = "24bit"
+is16MillionColors() {
+	[ "$COLORTERM" = "truecolor" ] || [ "$COLORTERM" = "24bit" ]
 }
 
-if 16MillionColors; then
-	if test "$EUID" = 0; then
-		PS1="$(_profile_util_print_colorhdr_root)"
+if is16MillionColors; then
+	if ((EUID == 0)); then
+		PS1="\[\e[38;2;201;42;42m\][\u@\h \w]\[\e[0m\]\$ "
 	else
-		source "$(type -P fox-default)" launch bash-prompt || {
-			PS1="$(_profile_util_print_colorhdr_error)"
+		# shellcheck disable=SC3046
+		source "$(command -v choose)" launch prompt-bash || {
+			PS1="[\[\e[0;31m\](PS1 Error)\[\e[0m\] \u@\h \w]\$ "
 		}
 	fi
-elif 8Colors || 256Colors; then
-	if test "$EUID" = 0; then
-		PS1="$(_profile_util_print_color_root)"
+elif is8Colors || is256Colors; then
+	if ((EUID == 0)); then
+		PS1="\[\e[0;31m\][\u@\h \w]\[\e[0m\]\$ "
 	else
-		PS1="$(_profile_util_print_color_user)"
+		PS1="\[\e[0;33m\][\u@\h \w]\[\e[0m\]\$ "
 	fi
 else
-	PS1="$(_profile_util_print_bw)"
+	PS1="[\u@\h \w]\$ "
 fi
+
+unset -f is8Colors is256Colors is16MillionColors
 
 
 #
@@ -118,3 +127,5 @@ fi
 
 source "$XDG_CONFIG_HOME/bash/modules/readline.sh"
 source "$XDG_CONFIG_HOME/bash/modules/miscellaneous.sh"
+
+# -----

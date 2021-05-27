@@ -5,40 +5,35 @@
 # only have BASH_COMPLETION_USER_DIR and BASH_COMPLETION_USER_FILE set
 [ -r /usr/share/bash-completion/bash_completion ] && source /usr/share/bash-completion/bash_completion
 
+# basher
+eval "$(basher init - bash | grep -v 'export PATH')"
+
 # bashmarks
 # [ -r ~/.local/bin/bashmarks.sh ] && source ~/.local/bin/bashmarks.sh
+
+# conda
+# eval "$("$XDG_DATA_HOME/miniconda3/bin/conda" shell.bash hook)"
+# _path_prepend "$XDG_DATA_HOME/miniconda3/bin"
 
 # dircolors
 [ -r "$XDG_CONFIG_HOME/dircolors/dir_colors" ] && eval "$(dircolors --sh "$XDG_CONFIG_HOME/dircolors/dir_colors")"
 
-# completion debugging
-_global_completion_debug() {
-	echo
-	echo "----- debug start -----"
-	echo "#COMP_WORDS=${#COMP_WORDS[@]}"
-	echo "COMP_WORDS=("
-	for x in "${COMP_WORDS[@]}"; do
-		echo "  '$x'"
-	done
-	echo ")"
-	echo "COMP_CWORD=${COMP_CWORD}"
-	echo "COMP_LINE='${COMP_LINE}'"
-	echo "COMP_POINT=${COMP_POINT}"
-	echo "cur: '${COMP_WORDS[COMP_CWORD]}'"
-	echo "COMP_KEY=${COMP_KEY}"
-	echo "COMP_TYPE=${COMP_TYPE}"
-	echo "----- debug end -----"
-}
-
 # direnv
 eval "$(direnv hook bash)"
 
-# TODO: put last executed command in title
-# preexec / precmd
+# bash-preexec
+source "$(basher package-path rcaloras/bash-preexec)/bash-preexec.sh"
+
 preexec() {
+	# after command is read, before command execution
 	:
 }
 
 precmd() {
-	:
+	# before each prompt
+
+	# for cdp()
+	# shellcheck disable=SC2034
+	_shell_cdp_dir="$PWD"
 }
+

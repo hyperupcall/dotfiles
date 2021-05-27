@@ -1,7 +1,7 @@
 # $include /etc/inputrc
 
 set bell-style none
-set bind-tty-special-chars on
+set bind-tty-special-chars off
 set blink-matching-paren off
 set colored-completion-prefix on
 set colored-stats on
@@ -21,30 +21,33 @@ set skip-completed-text on
 set output-meta on
 set visible-stats on
 
-"\C-xr": re-read-init-file
-"\C-xp": previous-screen-line
-"\C-xn": next-screen-line
-"\C-xw": redraw-current-line
-"\C-xr": reverse-search-history
-"\C-xs": forward-search-history
-"\C-xp": print-last-kbd-macro
+"\C- r": re-read-init-file
+"\C- p": previous-screen-line
+"\C- n": next-screen-line
+"\C- w": redraw-current-line
+"\C- r": reverse-search-history
+"\C- s": forward-search-history
+"\C- p": print-last-kbd-macro
 
-#TODO
-"\C-l": menu-complete
-"\e[Z": menu-complete-backward
+"C-w": backward-kill-word
 
-$if Bash
-	Space: magic-space
-$endif
+"\eq": menu-complete
+"\ew": menu-complete
+"\e;": redraw-current-line
+
+# Typing !!<space> will replace the !! with your last command
+Space: magic-space
 
 $if mode=vi
 	set keymap vi-command
 	"gg": beginning-of-history
 	"G": end-of-history
+
 	set keymap vi-insert
 	"jj": vi-movement-mode
 	"\C-p": history-search-backward
 	Control-l: clear-screen
+
 	TAB: menu-complete
 	"\e[Z": menu-complete-backward
 $endif

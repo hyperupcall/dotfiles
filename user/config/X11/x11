@@ -18,6 +18,7 @@ display=:$displayN
 pipe="$TMPDIR/.X11-unix/X$displayN-fifo"
 
 mkfifo "$pipe"
+trap 'rm -f "$pipe"' INT QUIT KILL
 tee "$TMPDIR/.X11-unix/X$displayN-log" < "$pipe" &
 exec > "$pipe" 2>&1
 

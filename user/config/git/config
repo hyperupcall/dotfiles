@@ -42,7 +42,7 @@
 	program = gpg ; default
 	format = openpgp ; default
 [help]
-	autoCorrect = 1
+	autoCorrect = 20
 [merge]
 	ff = true ; default
 [merge "npm-merge-driver"]

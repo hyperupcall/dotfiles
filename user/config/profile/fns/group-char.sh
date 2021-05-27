@@ -10,7 +10,7 @@ a() {
 		# history -s "$1"
 		$_a_aliasValue
 	else
-		_profile_util_die "a: Alias '$1' not found"
+		_shell_util_die "a: Alias '$1' not found"
 		return
 	fi
 }
@@ -27,7 +27,7 @@ o() {
 r() {
 	for file; do
 		if [ -d "$file" ]; then
-			command rmdir -p "$file"
+			command rmdir "$file"
 		else
 			command rm "$file"
 		fi
@@ -43,14 +43,14 @@ s() {
 # clone(user, root)
 t() {
 	[ $# -eq 0 ] && {
-		_profile_util_log_error 't: Missing file arguments'
+		_shell_util_log_error 't: Missing file arguments'
 		return
 	}
 
 	for arg; do
 		case "$arg" in
 		-a*|-c*|--no-create*|-d*|--date*|-f*|-h*|--no-dereference*|-m*|-r*|--reference*|-t*|--time*|--help*|--version*|--)
-			_profile_util_log_die "t: Args detected. Please use 'touch'"
+			_shell_util_log_die "t: Args detected. Please use 'touch'"
 			return
 			;;
 		esac
@@ -77,7 +77,6 @@ v() {
 		"$_v_editor" .
 	else
 		[ $# -eq 1 ] && $s mkdir -p "$(dirname "$1")"
-
 		$s "$_v_editor" "$@"
 	fi
 

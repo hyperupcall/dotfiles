@@ -2,14 +2,14 @@
 
 # clone(user, root)
 cdls() {
-	cd -- "$1" || { _profile_util_die "cdls: cd failed"; return; }
-	_profile_util_ls
+	cd -- "$1" || { _shell_util_die "cdls: cd failed"; return; }
+	_shell_util_ls
 }
 
 # clone(user, root)
 mkcd() {
 	command mkdir -p -- "$@"
-	cd -- "$@" || { _profile_util_die "mkcd: could not cd"; return; }
+	cd -- "$@" || { _shell_util_die "mkcd: could not cd"; return; }
 }
 
 # clone(user, root)

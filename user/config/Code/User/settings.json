@@ -70,7 +70,6 @@
   "editor.fontLigatures": true,
   "editor.fontSize": 16,
   "editor.formatOnPaste": true,
-  "editor.formatOnSave": true,
   "editor.hover.delay": 175,
   "editor.insertSpaces": false,
   "editor.maxTokenizationLineLength": 5000,
@@ -120,7 +119,8 @@
   "files.exclude": {
     "**/.git": false,
     "**/.hg": false,
-    "**/.svn": false
+    "**/.svn": false,
+    "**/CVS": false
   },
   "files.insertFinalNewline": true,
   "files.maxMemoryForLargeFilesMB": 2048,
@@ -196,6 +196,7 @@
   "search-node-modules.useLastFolder": true,
   "search.exclude": {
     "**/.git": true,
+    "**/.glue": true,
     "**/.hg": true,
     "**/.svn": true,
     "**/package-lock.json": true,
@@ -280,6 +281,10 @@
   "workbench.editor.tabSizing": "shrink",
   "workbench.editorAssociations": [
     {
+      "viewType": "luna.editor",
+      "filenamePattern": "*.png"
+    },
+    {
       "filenamePattern": "*.ipynb",
       "viewType": "jupyter.notebook.ipynb"
     }
@@ -299,5 +304,15 @@
   "terminal.integrated.commandsToSkipShell": [
     "language-julia.interrupt"
   ],
-  "debug.onTaskErrors": "abort"
+  "debug.onTaskErrors": "abort",
+  "todo-tree.general.tags": [
+    "BUG",
+    "HACK",
+    "FIXME",
+    "TODO",
+    "XXX",
+    "[ ]",
+    "[x]"
+  ],
+  "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)"
 }

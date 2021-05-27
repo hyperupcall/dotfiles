@@ -86,6 +86,7 @@ mode "layout" {
 	bindsym Shift+f fullscreen toggle global
 
 	bindsym e mode "default"
+	bindsym $mod mode "default"
 	bindsym Escape mode "default"
 	bindsym Return mode "default"
 }
@@ -113,6 +114,8 @@ mode "resize" {
 	bindsym $mod+m mode "mouse"
 	bindsym m mode "mouse"
 
+	bindsym r mode "default"
+	bindsym $mod mode "default"
 	bindsym Escape mode "default"
 	bindsym Return mode "default"
 }
@@ -140,6 +143,8 @@ mode "move" {
 	bindsym $mod+m mode "mouse"
 	bindsym m mode "mouse"
 
+	bindsym n mode "default"
+	bindsym $mod mode "default"
 	bindsym Escape mode "default"
 	bindsym Return mode "default"
 }
@@ -196,6 +201,8 @@ mode "mouse" {
 	bindsym $mod+n mode "move"
 	bindsym n mode "move"
 
+	bindsym m mode "default"
+	bindsym $mod mode "default" 
 	bindsym Escape mode "default"
 	bindsym Return mode "default"
 }
@@ -205,7 +212,8 @@ bar {
 	position bottom
 	hidden_state show
 	modifier $mod
-	status_command i3status
+	# status_command i3status
+	status_command i3status-rs
 	separator_symbol " | "
 	workspace_buttons yes
 	binding_mode_indicator yes

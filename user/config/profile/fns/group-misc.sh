@@ -2,15 +2,26 @@
 
 # clone(user, root)
 cls() {
-	# TODO
-	clear
-	reset
+	# assume hardware is not real (not 'reset')
 	tput reset
-	tput rs1
-	# uses our function
+
+	# this uses our 'stty' function
 	stty sane
-	printf "\033c"
-	printf '\033\143'
+}
+
+cdp() {
+	if [ -z "$_shell_cdp_dir" ]; then
+		_shell_util_log_error "Variable '_shell_cdp_dir' not set. Recommended is to set it in 'PROMPT_COMMAND' or precmd()"
+		return
+	fi
+
+	_shell_cdp_current_dir="$_shell_cdp_dir"
+	while [ ! -d "$_shell_cdp_current_dir" ] && [ "$PWD" != / ]; do
+			_shell_cdp_current_dir="$(dirname "$_shell_cdp_current_dir")"
+	done
+
+	# shellcheck disable=SC2164
+	cd "$_shell_cdp_current_dir"
 }
 
 dataurl() {
@@ -50,7 +61,7 @@ eboot() {
 	)"
 
 	[ -z "$_eboot_file" ] && {
-		_profile_util_die "eboot: No file chosen"
+		_shell_util_die "eboot: No file chosen"
 		return
 	}
 
@@ -60,16 +71,17 @@ eboot() {
 }
 
 edit() {
-	# TODO
 	_edit_grep_result="$(grep -nR "^$1() {$" "$XDG_CONFIG_HOME/profile" | head -1)"
 	[ -z "$_edit_grep_result" ] && {
-		_profile_util_die "edit: Function '$1' not found"
+		_shell_util_die "edit: Function '$1' not found"
 		return
 	}
 
 	_edit_file="$(echo "$_edit_grep_result" | awk -F ':' '{ print $1 }')"
 	_edit_line="$(echo "$_edit_grep_result" | awk -F ':' '{ print $2 }')"
-	v "+$_edit_line" "$_edit_file"
+
+	# TODO: use _v_editor and choose
+	kak "+$_edit_line" "$_edit_file"
 	unset -v _edit_grep_result _edit_file _edit_line
 }
 
@@ -111,10 +123,10 @@ np() {
 }
 
 qe() {
-	filterList="BraveSoftware Code tetrio-desktop obsidian discord sublime-text Ryujinx unity3d hmcl hdlauncher TabNine zettlr Zettlr Google lunarclient libreoffice VirtualBox configstore pulse obs-studio eDEX-UI 1Password kde.org sublime-text-3 gdlauncher gdlauncher_next launcher-main gitify QtProject GIMP"
+	filterList="BraveSoftware code tetrio-desktop obsidian discord sublime-text Ryujinx unity3d hmcl hdlauncher TabNine zettlr Zettlr Google lunarclient libreoffice VirtualBox configstore pulse obs-studio eDEX-UI 1Password kde.org sublime-text-3 gdlauncher gdlauncher_next launcher-main gitify QtProject GIMP r2modman r2modmanPlus-local Code plover"
 
 	_qe_file="$(
-		cd "$XDG_CONFIG_HOME" || { _profile_util_log_error "qe: Could not cd"; exit 1; }
+		cd "$XDG_CONFIG_HOME" || { _shell_util_log_error "qe: Could not cd"; exit 1; }
 		filterArgs=
 		for file in $filterList; do
 			filterArgs="$filterArgs -o -name $file"
@@ -129,11 +141,12 @@ qe() {
 		\) -prune -o -print | fzf
 	)"
 
-	[ -z "$_qe_file" ] && { _profile_util_die "qe: Chosen file empty"; return; }
+	[ -z "$_qe_file" ] && { _shell_util_die "qe: Chosen file empty"; return; }
 
 	_qe_file="$XDG_CONFIG_HOME/$(printf "%s" "$_qe_file" | cut -c3-)"
 	v "$_qe_file"
 	history -s "v \"$_qe_file\""
+	unset -v _qe_file
 }
 
 quickedit() (
@@ -149,14 +162,14 @@ see_old() {
 
 # clone(user)
 serv() {
-	[ -d "${1:-.}" ] || { _profile_util_die "serv: dir '$1' doesn't exist"; return; }
+	[ -d "${1:-.}" ] || { _shell_util_die "serv: dir '$1' doesn't exist"; return; }
 	command -v file_server >/dev/null 2>&1 && {
 		# deno file_server
 		file_server "${1:-.}" --host 127.0.0.1 -p "${2:-4000}"
 		return
 	}
 	command -v http-server >/dev/null 2>&1 && {
-		# node http server
+		# node http-server
 		http-server "${1:-.}" -c-1 -a 127.0.0.1 -p "${2:-4000}"
 		return
 	}
@@ -165,4 +178,21 @@ serv() {
 
 vtraceroute() {
 	xdg-open "https://stefansundin.github.io/traceroute-mapper/?trace=$('traceroute' -q1 "$*" | sed ':a;N;$!ba;s/\n/%0A/g')"
+}
+
+# clone(user)
+wa() {
+	watch -cn.3 "$@"
+}
+
+# watch fast
+# clone(user)
+waf() {
+	watch -cn.1 "$@"
+}
+
+# watch slow
+# clone(user)
+was() {
+	watch -cn1 "$@"
 }

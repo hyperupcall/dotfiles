@@ -1,28 +1,16 @@
 super + Return
-	"$XDG_DATA_HOME/shell-installer/bin/fox-default" launch terminal-emulator
-
-super + p
-	rofi -show combi -combi-modi run -show-icons
-
-super + o
-	rofi -show combi -combi-modi drun,run -show-icons
+	choose launch terminal-emulator
 
 super + i
 	rofi -show combi -combi-modi window -show-icons
 
+super + o
+	rofi -show combi -combi-modi drun,run -show-icons
+
+super + p
+	rofi -show combi -combi-modi run -show-icons
+
 super + u
-	/home/edwin/data/nimble/bin/themer --gui
-
-super + alt + l
-	"$XDG_DATA_HOME/shell-installer/bin/fox-default" --gui launch
-
-super + alt + s
-	"$XDG_DATA_HOME/shell-installer/bin/fox-default" --gui set
-
-super + c
-	rofi -show calc -modi calc -no-show-match -no-sort
-
-super + y
 	cactus
 
 Print
@@ -56,3 +44,4 @@ XF86AudioLowerVolume
 
 XF86AudioRaiseVolume
 	pactl set-sink-volume 1 +10% && killall -SIGUSR1 i3status
+

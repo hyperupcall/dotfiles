@@ -22,9 +22,9 @@ _mkt_util_cd_latest_dir() {
 _mkt_util_cd() {
 	# shellcheck disable=SC3044
 	if (builtin pushd . >/dev/null); then
-		pushd "$1" >/dev/null || { _profile_util_die "mkt: Could not pushd"; rmdir "$dir" 2>/dev/null; return; }
+		pushd "$1" >/dev/null || { _shell_util_die "mkt: Could not pushd"; rmdir "$dir" 2>/dev/null; return; }
 	else
-		cd "$1" || { _profile_util_die "mkt: Could not cd"; rmdir "$dir" 2>/dev/null; return; }
+		cd "$1" || { _shell_util_die "mkt: Could not cd"; rmdir "$dir" 2>/dev/null; return; }
 	fi
 }
 
@@ -34,7 +34,7 @@ _mkt_util_log() {
 
 _mkt_util_git_clone() {
 	if [ "$shallow" = "yes" ]; then
-		git clone -- "$1" || { _profile_util_die "mkt: Could not clone repository"; rmdir "$dir" >/dev/null 2>&1; return; }
+		git clone -- "$1" || { _shell_util_die "mkt: Could not clone repository"; rmdir "$dir" >/dev/null 2>&1; return; }
 	else
 		# _mkt_default_branch="$(
 		# 	git ls-remote --symref "$1" HEAD | awk '{ if(NR==1) print $2 }' | awk -F '/' '{ print $NF }'
@@ -56,12 +56,14 @@ mkt() {
 		    When git cloning a repository, only clone from HEAD ref
 
 		Examples:
-		  mkt eankeen/dots
+		  mkt https://github.com/eankeen/dots
+		  mkt eankeen/dots --normalize
 		  mkt https://releases.hashicorp.com/packer/1.7.2/packer_1.7.2_linux_amd64.zip
 		EOF
+		return
 		;;
 	-*)
-		_profile_util_die "mkt: Flags must be after the main parameter"
+		_shell_util_die "mkt: Flags must be after the main parameter"
 		return
 	esac
 
@@ -89,42 +91,42 @@ mkt() {
 	git@*|git://*|*.git|https://github.com/*|https://gitlab.com/*|https://git.sr.ht/*|https://*@bitbucket.org/*)
 		_mkt_id="$(echo "$1" | rev | cut -d/ -f1 | rev)" # id so we can see this folder in /tmp easier
 		dir="$(mktemp -d --suffix "-$_mkt_id")"
-		cd "$dir" || { _profile_util_die "mkt: Could not cd"; rmdir "$dir" 2>/dev/null; return; }
+		cd "$dir" || { _shell_util_die "mkt: Could not cd"; rmdir "$dir" 2>/dev/null; return; }
 		_mkt_util_log "$1"
 
 		_mkt_util_git_clone "$1" || return
 
 		_mkt_util_cd_latest_dir || return
-		_profile_util_ls
+		_shell_util_ls
 		unset -v _mkt_id
 		;;
 	# remote files
 	https://*)
 		dir="$(mktemp -d)"
-		cd "$dir" || { _profile_util_die "mkt: Could not cd"; rmdir "$dir" 2>/dev/null; return; }
+		cd "$dir" || { _shell_util_die "mkt: Could not cd"; rmdir "$dir" 2>/dev/null; return; }
 		_mkt_util_log "$1"
 
-		command curl -LO "$1" || { _profile_util_die "mkt: Could not fetch resource with cURL"; return; }
+		command curl -LO "$1" || { _shell_util_die "mkt: Could not fetch resource with cURL"; return; }
 		_mkt_latest_file="$(_mkt_util_get_latest_file)"
 		file "$_mkt_latest_file" | grep -Eq '(compressed|archive)' && {
 			aunpack "$_mkt_latest_file" # uncompress if compressed
 		}
 
 		_mkt_util_cd_latest_dir || return
-		_profile_util_ls
+		_shell_util_ls
 		unset -v _mkt_latest_file
 		;;
 	# github repository shorthand
 	*/*)
 		_mkt_id="$(echo "$1" | rev | cut -d/ -f1 | rev)" # id so we can see this folder in /tmp easier
 		dir="$(mktemp -d --suffix "-$_mkt_id")"
-		cd "$dir" || { _profile_util_die "mkt: Could not cd"; rmdir "$dir" 2>/dev/null; return; }
+		cd "$dir" || { _shell_util_die "mkt: Could not cd"; rmdir "$dir" 2>/dev/null; return; }
 		_mkt_util_log "$1"
 
 		_mkt_util_git_clone "https://github.com/$1" || return
 
 		_mkt_util_cd_latest_dir || return
-		_profile_util_ls
+		_shell_util_ls
 		unset -v _mkt_id
 		;;
 	*)

@@ -1,18 +1,22 @@
 [C]
-as = "sh"
-cmd = "code"
+as = 'sh'
+cmd = 'code'
 
 [O]
-cmd = "obs"
+cmd = 'obs'
+
+[B]
+cmd = 'rofi'
+args = ['-show', 'calc', '-modi', 'calc', '-no-show-match', '-no-sort']
 
 [S]
-as = "dash"
-cmd = "cd ~/repos/sticker-selector && ./sticker-selector"
+as = 'dash'
+cmd = 'cd ~/repos/sticker-selector && ./sticker-selector'
 
 [T]
-cmd = "cactus"
-args = ["--binds", '{{ env "XDG_CONFIG_HOME" }}/cactus/binds-terminal-apps.toml']
+cmd = 'cactus'
+args = ['--binds', '{{ env "XDG_CONFIG_HOME" }}/cactus/binds-terminal-apps.toml']
 
 [N]
-cmd = "kitty"
-args = ["--title", "Popup Terminal"]
+cmd = 'kitty'
+args = ['--title', 'Popup Terminal']

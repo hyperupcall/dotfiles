@@ -30,4 +30,4 @@ printf "\033[1m------ INFO: X session started for %s at %s ------\033[0m\n" "$(i
 "$XDG_CONFIG_HOME/X11/settings.sh"
 systemctl --user start xorg.target
 
-exec fox-default launch window-manager
+exec choose launch window-manager

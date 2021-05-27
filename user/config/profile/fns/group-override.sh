@@ -1,29 +1,17 @@
 # shellcheck shell=sh
 
-bash() {
-	for arg; do
-		case "$arg" in
-			--norc|--noprofile)
-			HISTFILE="$HISTFILE" command bash "$@"
-			return
-		esac
-	done
-	unset -v arg
-
-	command bash "$@"
-}
-
 cd() {
 	case "$1" in
 	mov)
-		cd /storage/vault/rodinia/Media-Movies || _p_die "Could not cd to '$1'"
+		cd /storage/vault/rodinia/Media-Movies || _shell_util_die "Could not cd to '$1'"
 		return ;;
 	ser)
-		cd /storage/vault/rodinia/Media-Series || _p_die "Could not cd to '$1'"
+		cd /storage/vault/rodinia/Media-Series || _shell_util_die "Could not cd to '$1'"
 		return ;;
 	esac
 
-	command cd "$@" || _p_die "Could not cd to '$1'"
+	autoenv_init
+	command cd "$@" || _shell_util_die "Could not cd to '$1'"
 }
 
 cp() {
@@ -34,7 +22,7 @@ cp() {
 		# for arg; do
 		# 	case "$arg" in
 		# 	-*)
-		# 		_profile_util_die "cp: Options not accepted. Please use the 'cp' binary if necessary"
+		# 		_shell_util_die "cp: Options not accepted. Please use the 'cp' binary if necessary"
 		# 		return
 		# 	esac
 		# done
@@ -65,14 +53,14 @@ cp() {
 		# shellcheck disable=SC3054
 		command rsync -ah --info flist2,name,progress,symsafe "$@"
 	else
-		_profile_util_log_warn "cp: Falling back to 'cp'"
+		_shell_util_log_warn "cp: Falling back to 'cp'"
 		command cp -iv "$@"
 	fi
 }
 
 # clone(user)
 curl() {
-	if command -v curlie >/dev/null 1>&2; then
+	if command -v curlie >/dev/null 2>&1; then
 		curlie "$@"
 	else
 		curl "$@"
@@ -88,13 +76,61 @@ lsblk() {
 	fi
 }
 
-rm() {
-	_profile_util_die "rm: Use 'del' or 'r' instead"
+make() {
+	if command -v >/dev/null 2>&1 colormake; then
+		colormake "$@"
+	else
+		_shell_util_log_warn "'colormake' not installed"
+		command make "$@"
+	fi
+}
+# see 'yay' comment
+# pacman() {
+# # shellcheck disable=SC2154
+# 	temp="$PATH"
+
+# 	# shellcheck disable=SC2154
+# 	PATH="$_path_original_saved"
+
+# 	pacman --color=auto "$@"
+
+# 	PATH="$temp"
+# }
+
+# # see 'yay' comment
+# paru() {
+# # shellcheck disable=SC2154
+# 	temp="$PATH"
+
+# 	# shellcheck disable=SC2154
+# 	PATH="$_path_original_saved"
+
+# 	paru --color=auto "$@"
+
+# 	PATH="$temp"
+# }
+
+ping() {
+	if command -v prettyping >/dev/null 2>&1; then
+		prettyping "$@"
+	else
+		command ping "$@"
+	fi
 }
 
-rmdir() {
-	_profile_util_die "rmdir: Use 'r' instead"
-}
+# rm() {
+#     	rm "$@"
+#     	return
+# 	_shell_util_log_warn "rm: Use 'del' or 'r' instead"
+# 	rm "$@"
+# }
+
+# rmdir() {
+#     	rmdir "$@"
+#     	return
+# 	_shell_util_log_warn "rmdir: Use 'r' instead"
+# 	rm "$@"
+# }
 
 _stty_saved_settings="$(stty -g)"
 stty() {
@@ -105,7 +141,7 @@ stty() {
 		_stty_exit_code=$?
 
 		# redirect log to error since this could be a scripted command used within a tty
-		_profile_util_log_info "stty: Restored stty settings to our default" 1>&2
+		_shell_util_log_info "stty: Restored stty settings to our defaults" 1>&2
 
 		return "$_stty_exit_code"
 	else
@@ -113,9 +149,12 @@ stty() {
 	fi
 }
 
-touch() {
-	_profile_util_die "touch: Use 't' instead"
-}
+# touch() {
+# 	touch "$@"
+# 	return
+# 	_shell_util_log_warn "touch: Use 't' instead"
+# 	rm "$@"
+# }
 
 # clone(user, root)
 unlink() {
@@ -135,6 +174,22 @@ unlink() {
 	unset -v arg file
 }
 
-vim() {
-	_profile_util_die "vim: Use 'v' instead"
-}
+# vim() {
+# 	_shell_util_log_warn "vim: Use 'v' instead"
+# 	rm "$@"
+# }
+
+# packages keep installing to /home/edwin/data/miniconda or /home/edwin/data/pyenv
+# switch out path to system python is used. pacman hook doesn't work with something
+# that's shell specific or isn't generic. TODO: see if there's a better workaround
+# yay() {
+# 	# shellcheck disable=SC2154
+# 	temp="$PATH"
+
+# 	# shellcheck disable=SC2154
+# 	PATH="$_path_original_saved"
+
+# 	yay --color=auto "$@"
+
+# 	PATH="$temp"
+# }

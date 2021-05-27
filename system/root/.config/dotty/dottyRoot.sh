@@ -15,7 +15,7 @@ p "/etc/udev/rules.d/51-gc-adapter.rules"
 	p "/etc/pacman.d/hooks/audit.hook"
 	p "/etc/pacman.d/hooks/dash-as-sh.hook"
 	p "/etc/pacman.d/hooks/tweak-path.hook"
-	p /etc/pacman.d/hooks/pyenv-switch-{restore,system}.hook
+#	p /etc/pacman.d/hooks/pyenv-switch-{restore,system}.hook
 }
 
 p /root/.bashrc{,-generated-aliases,-generated-functions}

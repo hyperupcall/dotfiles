@@ -7,8 +7,10 @@ export XDG_DATA_HOME="$HOME/data"
 export XDG_CONFIG_HOME="$HOME/config"
 export XDG_CACHE_HOME="$HOME/.cache"
 
-. "$XDG_CONFIG_HOME/profile/util.sh"
-. "$XDG_CONFIG_HOME/profile/xdg.sh"
+. "$XDG_CONFIG_HOME/profile/modules/util.sh"
+. "$XDG_CONFIG_HOME/profile/modules/xdg.sh"
+
+# _path_original_saved="/bin:/usr/bin:/usr/local/bin"
 
 _path_prepend "$HOME/scripts"
 _path_prepend "$HOME/.local/bin"
@@ -21,17 +23,21 @@ stty -ixoff # input settings
 stty -ixon
 
 # ----------------------- Sourcing ----------------------- #
-for d in aliases env fns fns-category; do
+for d in aliases env fns; do
 	for f in "$XDG_CONFIG_HOME/profile/$d"/?*.sh; do
 		[ -r "$f" ] && . "$f"
 	done
 done
 unset -v d f
 
+. "$XDG_CONFIG_HOME/profile/modules/miscellaneous.sh"
+
 # ---------------------- Environment --------------------- #
-dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
+. /usr/share/autoenv-git/activate.sh
 
 ({
+	dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
+
 	printenv -0 \
 	| awk '
 		BEGIN {

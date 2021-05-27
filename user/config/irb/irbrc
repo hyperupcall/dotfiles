@@ -2,4 +2,4 @@ require 'irb/ext/save-history'
 
 IRB.conf[:SAVE_HISTORY] = 100000
 IRB.conf[:HISTORY_FILE] = File.join(ENV["HOME"], ".history", "ruby_history")
-
+IRB.conf[:PROMPT_MODE] = :SIMPLE
