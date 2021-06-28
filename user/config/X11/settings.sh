@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+setxkbmap -option terminate:ctrl_alt_bksp
+
 xbacklight -set 100
 
 # xhost gives X server access for same user processes on localhost.

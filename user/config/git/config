@@ -14,6 +14,8 @@
 [blame]
 	coloring = highlightRecent
 	date = relative
+[apply]
+	whitespace = warn
 [branch]
 	autoSetupMerge = true
 [checkout]
@@ -59,15 +61,17 @@
 	followTags = true
 [rerere]
 	enabled = true
+[rebase]
+	stat = true
 [status]
 	showStash = true
 	showUntrackedFiles = all
+	submoduleSummary = true
 [tag]
 	forceSignAnnotated = true
 	gpgSign = true
 [user]
 	name = Edwin Kofler
-	#email = 24364012+eankeen@users.noreply.github.com
 	email = edwin@kofler.dev
 	signingkey = DA8EF6F306AD2CBA
 [credential]
@@ -82,8 +86,6 @@
 [url "git@gitlab.com:"]
 	insteadOf = gl:
 	pushInsteadOf = gl:
-[include]
-	path = relativepath.config
 [color "diff-highlight"]
 	oldNormal = red bold
 	oldHighlight = red bold 52
@@ -101,3 +103,10 @@
 	diffFilter = delta --color-only
 [include]
 	path = include/delta.conf
+[diff]
+	renames = copies
+	renameLimit = 0
+	compactionHeuristic = true
+[hub]
+	protocol = ssh
+	reportCrash = never

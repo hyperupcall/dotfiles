@@ -5,11 +5,14 @@ BindsTo=xorg.target
 After=xorg.target
 PartOf=xorg.target
 ConditionPathExists=/usr/bin/sxhkd
+ConditionUser=!root
 
 [Service]
 ExecStart=/usr/bin/sxhkd
 ExecReload=/usr/bin/kill -SIGUSR1 $MAINPID
 KillMode=process
+Restart=on-failure
+RestartSec=10
 
 [Install]
 WantedBy=xorg.target

@@ -76,6 +76,7 @@ lsblk() {
 	fi
 }
 
+# remake, mmake
 make() {
 	if command -v >/dev/null 2>&1 colormake; then
 		colormake "$@"
@@ -119,14 +120,14 @@ ping() {
 }
 
 # rm() {
-#     	rm "$@"
+#     	command rm -dI "$@"
 #     	return
 # 	_shell_util_log_warn "rm: Use 'del' or 'r' instead"
-# 	rm "$@"
+# 	rm -dI "$@"
 # }
 
 # rmdir() {
-#     	rmdir "$@"
+#     	command rmdir "$@"
 #     	return
 # 	_shell_util_log_warn "rmdir: Use 'r' instead"
 # 	rm "$@"
@@ -150,7 +151,7 @@ stty() {
 }
 
 # touch() {
-# 	touch "$@"
+# 	command touch "$@"
 # 	return
 # 	_shell_util_log_warn "touch: Use 't' instead"
 # 	rm "$@"

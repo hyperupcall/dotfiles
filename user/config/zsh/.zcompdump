@@ -1,9 +1,10 @@
-#files: 823	version: 5.8
+#files: 833	version: 5.8
 
 _comps=(
 '-' '_precommand'
 '-*-' '_bootctl'
 '.' '_source'
+'$PROG' '_nordvpn_auto_complete'
 '5g' '_go'
 '5l' '_go'
 '6g' '_go'
@@ -53,7 +54,11 @@ _comps=(
 'appletviewer' '_java'
 'apropos' '_man'
 'apvlv' '_pdf'
+'archbuild' '_devtools'
 'arch-chroot' '_archinstallscripts'
+'archco' '_devtools'
+'arch-nspawn' '_devtools'
+'archrelease' '_devtools'
 'arecord' '_alsa-utils'
 'arena' '_webbrowser'
 'arp' '_arp'
@@ -155,6 +160,7 @@ _comps=(
 'chattr' '_chattr'
 'chcon' '_chcon'
 'chdir' '_cd'
+'checkpkg' '_devtools'
 'chfn' '_users'
 'chg' '_hg'
 'chgrp' '_chown'
@@ -191,6 +197,11 @@ _comps=(
 '-command-' '_autocd'
 'command' '_command'
 '-command-line-' '_normal'
+'commitpkg' '_devtools'
+'communityco' '_devtools'
+'communitypkg' '_devtools'
+'community-stagingpkg' '_devtools'
+'community-testingpkg' '_devtools'
 'comp' '_mh'
 'compadd' '_compadd'
 'compdef' '_compdef'
@@ -204,6 +215,7 @@ _comps=(
 'configure' '_configure'
 'convert' '_imagemagick'
 'coredumpctl' '_coredumpctl'
+'corepkg' '_devtools'
 'cowsay' '_cowsay'
 'cowthink' '_cowsay'
 'cp' '_cp'
@@ -322,6 +334,8 @@ _comps=(
 'express' '_webbrowser'
 'extcheck' '_java'
 'extractres' '_psutils'
+'extrapkg' '_devtools'
+'extra-x86_64-build' '_devtools'
 'fakeroot' '_fakeroot'
 'false' '_nothing'
 'fc' '_fc'
@@ -337,6 +351,7 @@ _comps=(
 'filterdiff' '_patchutils'
 'find' '_find'
 'findaffix' '_ispell'
+'finddeps' '_devtools'
 'findmnt' '_findmnt'
 'finger' '_finger'
 'firefox' '_mozilla'
@@ -460,6 +475,7 @@ _comps=(
 'gnl' '_nl'
 'gnocchi' '_openstack'
 'gnome-gv' '_gnome-gv'
+'gnome-unstable-x86_64-build' '_devtools'
 'gnumfmt' '_numfmt'
 'gnupod_addsong' '_gnupod'
 'gnupod_addsong.pl' '_gnupod'
@@ -474,6 +490,8 @@ _comps=(
 'gnutls-serv' '_gnutls'
 'god' '_od'
 'gofmt' '_go'
+'_golangci-lint' '_golangci-lint'
+'golangci-lint' '_golangci-lint'
 'gpasswd' '_gpasswd'
 'gpaste' '_paste'
 'gpatch' '_patch'
@@ -643,7 +661,9 @@ _comps=(
 'join' '_join'
 'journalctl' '_journalctl'
 'jq' '_jq'
+'jupyter' '_jupyter'
 'kdeconnect-cli' '_kdeconnect'
+'kde-unstable-x86_64-build' '_devtools'
 'kernel-install' '_kernel-install'
 'keystone' '_openstack'
 'keytool' '_java'
@@ -730,8 +750,10 @@ _comps=(
 'Mail' '_mail'
 'mailx' '_mail'
 'make' '_make'
+'makechrootpkg' '_devtools'
 'makeinfo' '_texinfo'
 'makepkg' '_pacman'
+'makerepropkg' '_devtools'
 'man' '_man'
 'manage.py' '_django'
 'manila' '_openstack'
@@ -753,6 +775,7 @@ _comps=(
 'mencal' '_mencal'
 'mere' '_mere'
 'merge' '_rcs'
+'meson' '_meson'
 'metaflac' '_flac'
 'mformat' '_mtools'
 'mgv' '_pspdf'
@@ -766,6 +789,7 @@ _comps=(
 'mhstore' '_mh'
 'mii-tool' '_mii-tool'
 'mistral' '_openstack'
+'mkarchroot' '_devtools'
 'mkdir' '_mkdir'
 'mkfifo' '_mkfifo'
 'mkinitcpio' '_mkinitcpio'
@@ -809,6 +833,11 @@ _comps=(
 'mtoolstest' '_mtools'
 'mtr' '_mtr'
 'mtype' '_mtools'
+'multilib-build' '_devtools'
+'multilibpkg' '_devtools'
+'multilib-staging-build' '_devtools'
+'multilib-testing-build' '_devtools'
+'multilib-testingpkg' '_devtools'
 'munchlist' '_ispell'
 'mupdf' '_mupdf'
 'murano' '_openstack'
@@ -856,7 +885,6 @@ _comps=(
 'nocorrect' '_precommand'
 'noglob' '_precommand'
 'nohup' '_precommand'
-'nordvpn' '_nordvpn_auto_complete'
 'notmuch' '_notmuch'
 'nova' '_openstack'
 'npm' '_npm'
@@ -867,6 +895,7 @@ _comps=(
 'nvim' '_vim'
 'objdump' '_objdump'
 'od' '_od'
+'offload-build' '_devtools'
 'ogg123' '_vorbis'
 'oggdec' '_vorbis'
 'oggenc' '_vorbis'
@@ -877,12 +906,14 @@ _comps=(
 'opera' '_webbrowser'
 'opera-next' '_webbrowser'
 'opkg' '_opkg'
+'osc' '_osc'
 'p4' '_perforce'
 'p4d' '_perforce'
 'pacat' '_pulseaudio'
 'pack' '_pack'
 'packf' '_mh'
 'pacman' '_pacman'
+'pacman-conf' '_pacman'
 'pacman-key' '_pacman'
 'pacman.static' '_pacman'
 'pacmd' '_pulseaudio'
@@ -1024,6 +1055,7 @@ _comps=(
 'quilt' '_quilt'
 'r' '_fc'
 'r2' '_r2'
+'r2mod' '_r2mod'
 'rabin2' '_rabin2'
 'radiff2' '_radiff2'
 'rafind2' '_rafind2'
@@ -1044,6 +1076,7 @@ _comps=(
 'readelf' '_readelf'
 'readlink' '_readlink'
 'readonly' '_typeset'
+'rebuildpkgs' '_devtools'
 '-redirect-' '_redirect'
 '-redirect-,<,bunzip2' '_bzip2'
 '-redirect-,<,bzip2' '_bzip2'
@@ -1167,6 +1200,7 @@ _comps=(
 'smbstatus' '_samba'
 'soa' '_hosts'
 'socket' '_socket'
+'sogrep' '_devtools'
 'sort' '_sort'
 'sortm' '_mh'
 'source' '_source'
@@ -1186,6 +1220,8 @@ _comps=(
 'sshfs' '_sshfs'
 'ssh-keygen' '_ssh'
 'ssh-keyscan' '_ssh'
+'stagingpkg' '_devtools'
+'staging-x86_64-build' '_devtools'
 'star' '_tar'
 'start' '_initctl'
 'stat' '_stat'
@@ -1196,6 +1232,7 @@ _comps=(
 'stow' '_stow'
 'strace' '_strace'
 'strace64' '_strace'
+'stratis' '_stratis'
 'strftime' '_strftime'
 'strings' '_strings'
 'strip' '_strip'
@@ -1242,6 +1279,8 @@ _comps=(
 'talk' '_other_accounts'
 'tar' '_tar'
 'tardy' '_tardy'
+'task' '_go-task'
+'taskwarrior-tui' '_taskwarrior-tui'
 'tcpdump' '_tcpdump'
 'tcp_open' '_tcpsys'
 'tcptraceroute' '_tcptraceroute'
@@ -1252,6 +1291,8 @@ _comps=(
 'tdr' '_devtodo'
 'tee' '_tee'
 'telnet' '_telnet'
+'testingpkg' '_devtools'
+'testing-x86_64-build' '_devtools'
 'tex' '_tex'
 'texi2any' '_texinfo'
 'texi2dvi' '_texinfo'
@@ -1558,8 +1599,16 @@ _comps=(
 
 _services=(
 'bzcat' 'bunzip2'
+'communityco' 'archco'
+'communitypkg' 'commitpkg'
+'community-stagingpkg' 'commitpkg'
+'community-testingpkg' 'commitpkg'
+'corepkg' 'commitpkg'
+'extrapkg' 'commitpkg'
+'extra-x86_64-build' 'archbuild'
 'gchgrp' 'chgrp'
 'gchown' 'chown'
+'gnome-unstable-x86_64-build' 'archbuild'
 'gnupod_addsong.pl' 'gnupod_addsong'
 'gnupod_check.pl' 'gnupod_check'
 'gnupod_INIT.pl' 'gnupod_INIT'
@@ -1567,11 +1616,17 @@ _services=(
 'gpg2' 'gpg'
 'gzcat' 'gunzip'
 'iceweasel' 'firefox'
+'kde-unstable-x86_64-build' 'archbuild'
 'lzcat' 'unxz'
 'lzma' 'xz'
 'Mail' 'mail'
 'mailx' 'mail'
 'mktunes.pl' 'mktunes'
+'multilib-build' 'archbuild'
+'multilibpkg' 'commitpkg'
+'multilib-staging-build' 'archbuild'
+'multilib-testing-build' 'archbuild'
+'multilib-testingpkg' 'commitpkg'
 'nail' 'mail'
 'ncl' 'nc'
 'nedit-nc' 'nc'
@@ -1591,8 +1646,12 @@ _services=(
 '-redirect-,>,xz' 'unxz'
 'remsh' 'rsh'
 'slogin' 'ssh'
+'stagingpkg' 'commitpkg'
+'staging-x86_64-build' 'archbuild'
 'svnadmin-static' 'svnadmin'
 'svnlite' 'svn'
+'testingpkg' 'commitpkg'
+'testing-x86_64-build' 'archbuild'
 'tunes2pod.pl' 'tunes2pod'
 'unlzma' 'unxz'
 'xelatex' 'latex'
@@ -1669,19 +1728,21 @@ bindkey '^[~' _bash_complete-word
 
 autoload -Uz _alacritty _arch-audit _archinstallscripts _asp _bat \
             _bluetoothctl _bootctl _btm _busctl _cargo \
-            _cmus _coredumpctl _curl _docker _docker-compose \
-            _dog _email-notmuch _exa _fd _gh \
-            _hg _hostnamectl _journalctl _kernel-install _khal \
-            _kitty _libinput _localectl _loginctl _lsd \
-            _machinectl _mkinitcpio _mpv _networkctl _ninja \
-            _nnn _notmuch _pacman _paru _pass \
-            _pass-update _polybar _polybar_msg _ponymix _procs \
-            _pulseaudio _pulseaudio-ctl _qpdf _r2 _rabin2 \
-            _radiff2 _rafind2 _ragg2 _rahash2 _rasm2 \
-            _rax2 _resolvectl _restic _rg _sd_hosts_or_user_at_host \
-            _sd_machines _sd_outputmodes _sd_unit_files _systemctl _systemd \
-            _systemd-analyze _systemd-delta _systemd-inhibit _systemd-nspawn _systemd-path \
-            _systemd-run _systemd-tmpfiles _the_silver_searcher _timedatectl _tldr \
+            _cmus _coredumpctl _curl _devtools _docker \
+            _docker-compose _dog _email-notmuch _exa _fd \
+            _gh _golangci-lint _go-task _hg _hostnamectl \
+            _journalctl _jupyter _kernel-install _khal _kitty \
+            _libinput _localectl _loginctl _lsd _machinectl \
+            _meson _mkinitcpio _mpv _networkctl _ninja \
+            _nnn _notmuch _osc _pacman _paru \
+            _pass _pass-update _polybar _polybar_msg _ponymix \
+            _procs _pulseaudio _pulseaudio-ctl _qpdf _r2 \
+            _r2mod _rabin2 _radiff2 _rafind2 _ragg2 \
+            _rahash2 _rasm2 _rax2 _resolvectl _restic \
+            _rg _sd_hosts_or_user_at_host _sd_machines _sd_outputmodes _sd_unit_files \
+            _stratis _systemctl _systemd _systemd-analyze _systemd-delta \
+            _systemd-inhibit _systemd-nspawn _systemd-path _systemd-run _systemd-tmpfiles \
+            _task _taskwarrior-tui _the_silver_searcher _timedatectl _tldr \
             _udevadm _vifm _xss-lock _yay _youtube-dl \
             _zathura _cdr _all_labels _all_matches _alternative \
             _approximate _arg_compile _arguments _bash_completions _cache_invalid \

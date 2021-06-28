@@ -1,0 +1,10 @@
+[Please]
+Location = ~/data/please
+MOTD = UwU
+
+[Display]
+SystemStats = True
+
+[Build]
+# en_GB.UTF-8 default
+Lang = en_US.UTF-8

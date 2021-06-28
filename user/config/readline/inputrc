@@ -36,7 +36,7 @@ set visible-stats on
 "\e;": redraw-current-line
 
 # Typing !!<space> will replace the !! with your last command
-Space: magic-space
+# Space: magic-space
 
 $if mode=vi
 	set keymap vi-command

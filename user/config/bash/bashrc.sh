@@ -30,6 +30,12 @@
 # exported so virtual environments inherit the new values
 
 # export CDPATH=":~:"
+# export CHILD_MAX="256"
+unset EXECIGNORE
+export FCEDIT="$EDITOR"
+unset FIGNORE
+export FUNCNEST="0"
+unset GLOBIGNORE
 export HISTCONTROL="ignorespace:ignoredups"
 export HISTFILE="$HOME/.history/bash_history"
 export HISTSIZE="-1"
@@ -37,8 +43,11 @@ export HISTFILESIZE="-1"
 export HISTIGNORE="ls:[bf]g:pwd:clear*:exit*:*sudo*-S*:*sudo*--stdin*"
 export HISTTIMEFORMAT="%B %m %Y %T | "
 export HISTTIMEFORMAT='%F %T ' # ISO 8601
+export TIMEFORMAT=$'real    %3lR\nuser    %3lU\nsystem  %3lS\npercent %P'
+export PROMPT_DIRTRIM="6"
+unset MAIL
 unset MAILCHECK
-PROMPT_DIRTRIM=5
+unset MAILPATH
 
 
 #
@@ -125,7 +134,9 @@ unset -f is8Colors is256Colors is16MillionColors
 # ─── MODULES ────────────────────────────────────────────────────────────────────
 #
 
-source "$XDG_CONFIG_HOME/bash/modules/readline.sh"
-source "$XDG_CONFIG_HOME/bash/modules/miscellaneous.sh"
+for f in "$XDG_CONFIG_HOME"/bash/modules/?*.sh; do
+	source "$f"
+done
+unset -v f
 
 # -----

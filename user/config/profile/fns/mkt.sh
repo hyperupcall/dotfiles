@@ -87,21 +87,8 @@ mkt() {
 	}
 
 	case "$1" in
-	# git repository
-	git@*|git://*|*.git|https://github.com/*|https://gitlab.com/*|https://git.sr.ht/*|https://*@bitbucket.org/*)
-		_mkt_id="$(echo "$1" | rev | cut -d/ -f1 | rev)" # id so we can see this folder in /tmp easier
-		dir="$(mktemp -d --suffix "-$_mkt_id")"
-		cd "$dir" || { _shell_util_die "mkt: Could not cd"; rmdir "$dir" 2>/dev/null; return; }
-		_mkt_util_log "$1"
-
-		_mkt_util_git_clone "$1" || return
-
-		_mkt_util_cd_latest_dir || return
-		_shell_util_ls
-		unset -v _mkt_id
-		;;
 	# remote files
-	https://*)
+	https://*/*.*)
 		dir="$(mktemp -d)"
 		cd "$dir" || { _shell_util_die "mkt: Could not cd"; rmdir "$dir" 2>/dev/null; return; }
 		_mkt_util_log "$1"
@@ -115,6 +102,33 @@ mkt() {
 		_mkt_util_cd_latest_dir || return
 		_shell_util_ls
 		unset -v _mkt_latest_file
+		;;
+	# git repository
+	git@*|git://*|*.git|https://github.com/*|https://gitlab.com/*|https://git.sr.ht/*|https://*@bitbucket.org/*|https://invent.kde.org/*)
+		_mkt_id="$(echo "$1" | rev | cut -d/ -f1 | rev)" # id so we can see this folder in /tmp easier
+		dir="$(mktemp -d --suffix "-$_mkt_id")"
+		cd "$dir" || { _shell_util_die "mkt: Could not cd"; rmdir "$dir" 2>/dev/null; return; }
+		_mkt_util_log "$1"
+
+		_mkt_util_git_clone "$1" || return
+
+		_mkt_util_cd_latest_dir || return
+		_shell_util_ls
+		unset -v _mkt_id
+		;;
+	# file path
+	/*|./*)
+		_mkt_id="$(echo "$1" | rev | cut -d/ -f1 | rev)" # id so we can see this folder in /tmp easier
+		dir="$(mktemp -d --suffix "-$_mkt_id")"
+		cd "$dir" || { _shell_util_die "mkt: Could not cd"; rmdir "$dir" 2>/dev/null; return; }
+		_mkt_util_log "$1"
+
+		if [ -f "$1" ] || [ -d "$1" ]; then
+			command cp -r "$1" "$dir"
+			_mkt_util_cd "$dir"
+		else
+			_mkt_util_cd "$dir"
+		fi
 		;;
 	# github repository shorthand
 	*/*)
@@ -133,8 +147,7 @@ mkt() {
 		dir="$(mktemp -d --suffix "-$1")"
 
 		if [ -f "$1" ] || [ -d "$1" ]; then
-
-			command cp "$1" "$dir"
+			command cp -r "$1" "$dir"
 			_mkt_util_cd "$dir"
 		else
 			_mkt_util_cd "$dir"

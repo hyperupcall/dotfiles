@@ -1,0 +1,5 @@
+docker_repo: toast        # Docker repository
+read_local_cache: true    # Whether Toast should read from local cache
+write_local_cache: true   # Whether Toast should write to local cache
+read_remote_cache: false  # Whether Toast should read from remote cache
+write_remote_cache: false # Whether Toast should write to remote cache

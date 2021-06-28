@@ -29,7 +29,7 @@ export HSTR_CONFIG=hicolor
 
 # less
 # adding X breaks mouse scrolling of pages
-export LESS="-FIRQ"
+export LESS="-FRQ"
 # export LESS="-FIRX" LESS="-M -I -R"
 export LESS_ADVANCED_PREPROCESSOR=1 # lesspipe.sh
 export LESSKEY="$XDG_CONFIG_HOME/less_keys"

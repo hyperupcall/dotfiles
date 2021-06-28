@@ -67,7 +67,7 @@ t() {
 # clone(user, root)
 v() {
 	s=
-	if [ "$(stat -c "%G" "$1")" = "root" ]; then
+	if [ -e "$1" ] && [ "$(stat -c "%G" "$1")" = "root" ]; then
 		s="sudo"
 	fi
 

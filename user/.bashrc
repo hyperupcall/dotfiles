@@ -1,0 +1,1 @@
+/home/edwin/config/bash/bashrc.sh

@@ -9,7 +9,7 @@ _path_prepend() {
 		# [ -d "$2" ] || return
 		case ":$(eval "echo \$$1"):" in
 			*":$2:"*) :;;
-			*) eval "export $1=$2$(eval "echo \${$1:+\":\$$1\"}")" ;;
+			*) eval "export $1=$2\${$1:+\":\$$1\"}" ;;
 		esac
 		return
 	}
@@ -26,7 +26,7 @@ _path_append() {
 		# [ -d "$2" ] || return
 		case ":$(eval "echo \$$1"):" in
 			*":$2:"*) :;;
-			*) eval "export $1=$(eval "echo \${$1:+\"\$$1:\"}")$2" ;;
+			*) eval "export $1=\${$1:+\"\$$1:\"}$2" ;;
 		esac
 		return
 	}

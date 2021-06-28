@@ -37,3 +37,6 @@ precmd() {
 	_shell_cdp_dir="$PWD"
 }
 
+# sdkman
+export SDKMAN_DIR="$XDG_DATA_HOME/sdkman"
+[ -r "$SDKMAN_DIR/bin/sdkman-init.sh" ] && . "$SDKMAN_DIR/bin/sdkman-init.sh"

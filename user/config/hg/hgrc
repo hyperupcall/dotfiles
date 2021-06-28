@@ -11,8 +11,10 @@ email = edwin@kofler.dev
 signingkey = 484EA8DEF2F467E6
 
 [alias]
+l = log
 s = status
 c = commit
 ls = !hg log --template '{rev} {tags}{parents} {node|short} {desc|firstline|strip} [{author|user}]\n' $@ | less
+vlog = log --template '\033[0;33mcommit: {rev}:{node}\n\033[0mAuthor: {author}\nDate:   {date|rfc822date}\n\n\t{desc|strip|fill68|tabindent}\n\n'
 #reset = revert -a --no-backup
 #rh = revert -a --no-backup

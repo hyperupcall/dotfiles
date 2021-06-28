@@ -33,7 +33,7 @@ unset -v d f
 . "$XDG_CONFIG_HOME/profile/modules/miscellaneous.sh"
 
 # ---------------------- Environment --------------------- #
-. /usr/share/autoenv-git/activate.sh
+. "$(basher package-path eankeen/autoenv)/activate.sh"
 
 ({
 	dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
@@ -46,6 +46,7 @@ unset -v d f
 		}
 		{
 			if($1 ~ /^LESS_TERMCAP/) { next }
+			if($1 ~ /^TIMEFORMAT$/) { next }
 			if($1 ~ /^_$/) { next }
 
 			printf "%s\0", $1

@@ -279,16 +279,11 @@
   "workbench.editor.highlightModifiedTabs": true,
   "workbench.editor.tabCloseButton": "off",
   "workbench.editor.tabSizing": "shrink",
-  "workbench.editorAssociations": [
-    {
-      "viewType": "luna.editor",
-      "filenamePattern": "*.png"
-    },
-    {
-      "filenamePattern": "*.ipynb",
-      "viewType": "jupyter.notebook.ipynb"
-    }
-  ],
+  "workbench.editorAssociations": {
+    "*.jpg": "luna.editor",
+    "*.png": "luna.editor",
+    "*.ipynb": "jupyter.notebook.ipynb"
+  },
   "workbench.enableExperiments": false,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.panel.defaultLocation": "right",

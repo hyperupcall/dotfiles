@@ -67,6 +67,6 @@ for mcFolder in "${folders[@]}"; do
 			rmdir "$mcFolder/$subfolder"
 		fi
 
-		ln -s "$base/$subfolder" "$mcFolder"
+		ln -sT "$base/$subfolder" "$mcFolder/$subfolder"
 	done
 done

@@ -1,0 +1,10 @@
+[Unit]
+Description=Socket xob reads from
+ConditionUser=!root
+
+[Socket]
+ListenFIFO=%t/xob.sock
+SocketMode=0600
+
+[Install]
+WantedBy=xorg.target

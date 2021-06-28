@@ -22,26 +22,14 @@ shift + Print
 shift + super + Print
 	maim -s ~/Pics/screenshot.png
 
-# requires alsa-utils
-XF86Audio{Mute,RaiseVolume,LowerVolume}
-	amixer -q set Master {toggle,5%+,5%-}
-# pulseaudio-ctl {mute,up,down}
+XF86MonBrigheseeestness{Up,Down}
+	choose launch brightness-{increase,decrease}
 
-XF86AudioPrev
-	cmus-remote --prev
+F{3,4}
+	choose launch brightness-{reset,increase}
 
-XF86AudioPause
-	cmus-remote --pause
+XF86Audio{Prev,Pause,Next}
+	choose launch song-{previous,pause,next}
 
-XF86AudioNext
-	cmus-remote --next
-
-XF86AudioMute
-	pactl set-sink-mute 1 toggle && killall -SIGUSR1 i3status
-
-XF86AudioLowerVolume
-	pactl set-sink-volume 1 -10% && killall -SIGUSR1 i3status
-
-XF86AudioRaiseVolume
-	pactl set-sink-volume 1 +10% && killall -SIGUSR1 i3status
-
+XF86Audio{Mute,LowerVolume,RaiseVolume}
+	choose launch volume-{mute,lower,raise}

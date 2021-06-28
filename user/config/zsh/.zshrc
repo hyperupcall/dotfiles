@@ -137,4 +137,9 @@ unset -f is8Colors is256Colors is16MillionColors
 # ─── MODULES ────────────────────────────────────────────────────────────────────
 #
 
-source "$XDG_CONFIG_HOME/zsh/modules/miscellaneous.zsh"
+for f in "$XDG_CONFIG_HOME"/zsh/modules/?*.zsh; do
+	source "$f"
+done
+unset -v f
+
+# -----

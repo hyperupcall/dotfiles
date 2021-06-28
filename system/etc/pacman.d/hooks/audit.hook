@@ -2,7 +2,7 @@
 Type = Package
 Operation = Install
 Operation = Upgrade
-Target = *
+Target = ""
 
 [Action]
 Description = Audit installed packages against known CVEs

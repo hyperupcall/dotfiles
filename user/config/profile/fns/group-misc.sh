@@ -1,5 +1,17 @@
 # shellcheck shell=sh
 
+# clone(user)
+bash() {
+	if { [ "$1" = --noprofile ] && [ "$2" = --norc ]; } \
+		|| { [ "$1" = --norc ] && [ "$2" = --noprofile ]; }
+	then
+		_shell_util_log_info "Additionally resetting path to a sane default"
+		PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin" command bash "$@"
+	else
+		command bash "$@"
+	fi
+}
+
 # clone(user, root)
 cls() {
 	# assume hardware is not real (not 'reset')
@@ -9,6 +21,7 @@ cls() {
 	stty sane
 }
 
+# clone(user)
 cdp() {
 	if [ -z "$_shell_cdp_dir" ]; then
 		_shell_util_log_error "Variable '_shell_cdp_dir' not set. Recommended is to set it in 'PROMPT_COMMAND' or precmd()"
@@ -55,7 +68,7 @@ dg() {
 }
 
 eboot() {
-	_eboot_dir="$HOME/repos/dots-bootstrap/lib/install_modules"
+	_eboot_dir="$HOME/repos/dots-bootstrap/pkg/lib/install_modules"
 	_eboot_file="$(
 		find "$_eboot_dir" -ignore_readdir_race -mindepth 1 -maxdepth 1 -printf "%f\0" | fzf --read0
 	)"
@@ -67,7 +80,7 @@ eboot() {
 
 	v "$_eboot_dir/$_eboot_file"
 
-	unset -v _eboot_dir
+	unset -v _eboot_dir _eboot_file
 }
 
 edit() {
@@ -123,7 +136,7 @@ np() {
 }
 
 qe() {
-	filterList="BraveSoftware code tetrio-desktop obsidian discord sublime-text Ryujinx unity3d hmcl hdlauncher TabNine zettlr Zettlr Google lunarclient libreoffice VirtualBox configstore pulse obs-studio eDEX-UI 1Password kde.org sublime-text-3 gdlauncher gdlauncher_next launcher-main gitify QtProject GIMP r2modman r2modmanPlus-local Code plover"
+	filterList="BraveSoftware code tetrio-desktop obsidian discord sublime-text Ryujinx unity3d hmcl hdlauncher TabNine zettlr Zettlr Google lunarclient libreoffice VirtualBox configstore pulse obs-studio eDEX-UI 1Password kde.org sublime-text-3 gdlauncher gdlauncher_next launcher-main gitify QtProject GIMP r2modman r2modmanPlus-local Code plover GitKraken Electron"
 
 	_qe_file="$(
 		cd "$XDG_CONFIG_HOME" || { _shell_util_log_error "qe: Could not cd"; exit 1; }
@@ -136,8 +149,10 @@ qe() {
 		find -L . -ignore_readdir_race \( \
 			-name 'Beaker Browser' \
 			$filterArgs \
-			-o -name 'Helios Launcher' -o -path ./kak/plugins \
+			-o -name 'Helios Launcher' \
+			-o -path ./kak/plugins \
 			-o -path ./kak/autoload \
+			-o -path ./cookiecutter/cookiecutters \
 		\) -prune -o -print | fzf
 	)"
 

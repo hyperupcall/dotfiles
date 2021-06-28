@@ -29,14 +29,16 @@ export AWS_CONFIG_FILE="$XDG_DATA_HOME/aws/config"
 # azure
 export AZURE_CONFIG_DIR="$XDG_DATA_HOME/azure"
 
+# babel
+export BABEL_CACHE_PATH="$XDG_CACHE_HOME/babel.json"
+
 # bash-completion
 export BASH_COMPLETION_USER_DIR="$XDG_CONFIG_HOME/bash"
 export BASH_COMPLETION_USER_FILE="$XDG_CONFIG_HOME/bash/bash_completion.sh"
 
 # basher
+# TODO
 export BASHER_ROOT="$XDG_DATA_HOME/basher"
-export BASHER_PREFIX="$BASHER_ROOT/cellar"
-export BASHER_PACKAGES_PATH="$BASHER_PREFIX/packages"
 _path_prepend "$XDG_DATA_HOME/basher/bin"
 _path_prepend "$BASHER_ROOT/cellar/bin"
 
@@ -384,10 +386,6 @@ export SCCACHE_DIR="$XDG_CACHE_HOME/sccache"
 # screen
 export SCREENRC="$XDG_CONFIG_HOME/screenrc"
 
-# sdkman
-export SDKMAN_DIR="$XDG_DATA_HOME/sdkman"
-[ -r "$SDKMAN_DIR/bin/sdkman-init.sh" ] && . "$SDKMAN_DIR/bin/sdkman-init.sh"
-
 # spacemacs
 export SPACEMACSDIR="$XDG_CONFIG_HOME/spacemacs"
 
@@ -416,6 +414,7 @@ _path_prepend "$SWIFTENV_ROOT/bin"
 
 # task
 export TASKRC="$XDG_CONFIG_HOME/taskwarrior/taskrc"
+export TASKDATA="$XDG_DATA_HOME/taskwarrior"
 
 # terminfo
 # export TERMINFO="$XDG_DATA_HOME"/terminfo

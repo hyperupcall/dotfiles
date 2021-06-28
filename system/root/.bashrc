@@ -4,8 +4,8 @@ export VISUAL="kak"
 export EDITOR="$VISUAL"
 export PAGER="less"
 
-source ~/.bashrc-generated-aliases
-source ~/.bashrc-generated-functions
+[ -f ~/.bashrc-generated-aliases ] && source ~/.bashrc-generated-aliases
+[ -f ~/.bashrc-generated-functions ] && source ~/.bashrc-generated-functions
 
 #
 # ─── PS1 ────────────────────────────────────────────────────────────────────────
