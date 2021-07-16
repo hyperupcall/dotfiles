@@ -4,9 +4,9 @@ set -a fish_user_paths ~/.config/fish/functions
 set -U __done_min_cmd_duration 10000
 
 # oh-my-fish/plugin-foreign-env
-source ~/.config/fish/functions/fenv.fish
-fenv source ~/.profile
-direnv hook fish | source
+# source ~/.config/fish/functions/fenv.fish
+# fenv source ~/.profile
+# direnv hook fish | source
 
 # !! and !$ in fish
 function bind_bang

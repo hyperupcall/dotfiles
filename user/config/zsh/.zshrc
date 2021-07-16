@@ -2,6 +2,8 @@
 # ~/.zshrc
 #
 
+return
+
 # ensure execution returns if zsh is non-interactive
 [[ $- != *i* ]] && [ ! -t 0 ] && return
 

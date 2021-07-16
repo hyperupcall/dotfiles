@@ -11,3 +11,7 @@ yarn.lock merge=yarn-merge-driver
 *.jpeg diff=exif
 *.png diff=exif
 *.gif diff=exif
+*.png  diff=spaceman-diff
+*.jpg  diff=spaceman-diff
+*.jpeg diff=spaceman-diff
+*.gif  diff=spaceman-diff

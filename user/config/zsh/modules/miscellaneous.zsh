@@ -1,5 +1,5 @@
 # basher
-eval "$(basher init - zsh | grep -v 'export PATH')"
+eval "$(bpm init zsh)"
 
 # direnv
 eval "$(direnv hook zsh)"

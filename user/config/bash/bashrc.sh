@@ -14,7 +14,6 @@
 # bash only reads ~/.profile on login shells when invoked as sh
 [ -r ~/.profile ] && source ~/.profile
 
-
 #
 # ─── FRAMEWORKS ─────────────────────────────────────────────────────────────────
 #
@@ -34,7 +33,6 @@
 unset EXECIGNORE
 export FCEDIT="$EDITOR"
 unset FIGNORE
-export FUNCNEST="0"
 unset GLOBIGNORE
 export HISTCONTROL="ignorespace:ignoredups"
 export HISTFILE="$HOME/.history/bash_history"
@@ -48,7 +46,6 @@ export PROMPT_DIRTRIM="6"
 unset MAIL
 unset MAILCHECK
 unset MAILPATH
-
 
 #
 # ─── SHELL OPTIONS ──────────────────────────────────────────────────────────────
@@ -108,14 +105,15 @@ is16MillionColors() {
 	[ "$COLORTERM" = "truecolor" ] || [ "$COLORTERM" = "24bit" ]
 }
 
+
 if is16MillionColors; then
 	if ((EUID == 0)); then
 		PS1="\[\e[38;2;201;42;42m\][\u@\h \w]\[\e[0m\]\$ "
 	else
 		# shellcheck disable=SC3046
-		source "$(command -v choose)" launch prompt-bash || {
+		if ! source choose launch prompt-bash; then
 			PS1="[\[\e[0;31m\](PS1 Error)\[\e[0m\] \u@\h \w]\$ "
-		}
+		fi
 	fi
 elif is8Colors || is256Colors; then
 	if ((EUID == 0)); then
@@ -129,14 +127,34 @@ fi
 
 unset -f is8Colors is256Colors is16MillionColors
 
-
 #
-# ─── MODULES ────────────────────────────────────────────────────────────────────
+# ─── MISCELLANEOUS ──────────────────────────────────────────────────────────────
 #
 
-for f in "$XDG_CONFIG_HOME"/bash/modules/?*.sh; do
-	source "$f"
-done
-unset -v f
+# bash_completion (also sources $XDG_CONFIG_HOME/bash/bash_completions (as per env variable))
+# even though we `source /etc/profile` at beginnning of script, this is still needed since we now
+# only have BASH_COMPLETION_USER_DIR and BASH_COMPLETION_USER_FILE set
+[ -r /usr/share/bash-completion/bash_completion ] && source /usr/share/bash-completion/bash_completion
+
+# bash-preexec
+if commadn -v bpm &>/dev/null; then
+	source "$(bpm package-path rcaloras/bash-preexec)/bash-preexec.sh"
+
+	# after command is read, before command execution
+	preexec() {
+		:
+	}
+
+	# before each prompt
+	precmd() {
+		# for cdp()
+		# shellcheck disable=SC2034
+		_shell_cdp_dir="$PWD"
+	}
+fi
+
+source "$XDG_CONFIG_HOME/bash/modules/readline.sh"
+source "$XDG_CONFIG_HOME/bash/util/util.sh"
+
 
 # -----

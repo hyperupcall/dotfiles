@@ -103,7 +103,6 @@ zle -N zle-line-init
 zle -N zle-keymap-select
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
-# By default, Ctrl+d will not close your shell if the command line is filled, this fixes it:
 
 bindkey -M vicmd '^T' history-incremental-pattern-search-backward # Patterned history search with zsh expansion, globbing, etc.
 bindkey '^T' history-incremental-pattern-search-backward

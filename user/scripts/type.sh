@@ -2,7 +2,7 @@
 set +o history
 set -o noglob
 
-for c in $(echo "$CHARS" | sed -e 's/\(.\)/\1\n/g'); do
+for c in $(sed -e 's/\(.\)/\1\n/g' <<< "$1"); do
     	#echo "char: $c"
 
 	case "$c" in

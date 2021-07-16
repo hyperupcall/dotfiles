@@ -1,17 +1,19 @@
 # shellcheck shell=bash
 
-# asdf
-source "$XDG_DATA_HOME/asdf/completions/asdf.bash"
-
-# node
-eval "$(node --completion-bash)"
+if command -v node &>/dev/null; then
+	eval "$(node --completion-bash)"
+fi
 
 # aliases (https://github.com/cykerway/complete-alias)
-source "$XDG_DATA_HOME/basher/cellar/packages/cykerway/complete-alias/complete_alias"
+if [ -d "$XDG_DATA_HOME/bpm/cellar/packages/github.com/cykerway/complete-alias" ]; then
+	source "$XDG_DATA_HOME/bpm/cellar/packages/github.com/cykerway/complete-alias/complete_alias"
+fi
 
 for aliasName in $(alias -p | awk '{ FS="[ ,=]"; print $2 }'); do
 	complete -F _complete_alias "$aliasName"
 done
 
 # yarn
-source "$XDG_DATA_HOME/basher/cellar/packages/dsifford/yarn-completion/yarn-completion.bash"
+if [ -d "$XDG_DATA_HOME/bpm/cellar/packages/github.com/dsifford/yarn-completion" ]; then
+	source "$XDG_DATA_HOME/bpm/cellar/packages/github.com/dsifford/yarn-completion/yarn-completion.bash"
+fi
