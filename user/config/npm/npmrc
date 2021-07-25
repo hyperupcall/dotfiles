@@ -1,7 +1,5 @@
 access=public
 #cache=${XDG_CACHE_HOME}/npm
-# so symlinks work with pnpm
-cache=${HOME}/.hidden/npm-cache-dir
 git-tag-version=true
 init-author-name=Edwin Kofler
 init-author-email=edwin@kofler.dev
@@ -11,5 +9,5 @@ init-version=0.1.0
 message=release: v%s
 sign-git-commit=true
 sign-git-tag=true
-store-dir=${HOME}/.hidden/npm-package-store
+#store-dir=${XDG_DATA_HOME}/npm-package-store
 tag-version-prefix=v

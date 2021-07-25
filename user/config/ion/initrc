@@ -2,7 +2,7 @@
 # initrc
 #
 
-let HISTFILE = "$HOME/.history/ion_history"
+let HISTFILE = "$XDG_STATE_HOME/history/ion_history"
 let HISTFILE_SIZE = "32768"
 let HISTORY_IGNORE = [ whitespace '?' 'ls' '[bf]g' pwd 'clear*' 'exit*' ]
 let HISTORY_SIZE = "$HISTFILE_SIZE"

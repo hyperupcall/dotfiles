@@ -13,6 +13,10 @@ for aliasName in $(alias -p | awk '{ FS="[ ,=]"; print $2 }'); do
 	complete -F _complete_alias "$aliasName"
 done
 
+if [ -d "$XDG_DATA_HOME/bpm/cellar/packages/github.com/hedning/nix-bash-completions" ]; then
+	source "$XDG_DATA_HOME/bpm/cellar/packages/github.com/hedning/nix-bash-completions/_nix"
+fi
+
 # yarn
 if [ -d "$XDG_DATA_HOME/bpm/cellar/packages/github.com/dsifford/yarn-completion" ]; then
 	source "$XDG_DATA_HOME/bpm/cellar/packages/github.com/dsifford/yarn-completion/yarn-completion.bash"

@@ -7,7 +7,7 @@ export EMAIL="edwin@kofler.com"
 export LANG="${LANG:-en_US.UTF-8}"
 export LANGUAGE="${LANGUAGE:-"$LANG"}"
 export LC_ALL="${LC_ALL:-"$LANG"}"
-export VISUAL="kak"
+export VISUAL="nvim"
 export EDITOR="$VISUAL"
 export DIFFPROG="vim -d"
 export PAGER="less"
@@ -24,7 +24,7 @@ _path_prepend "$XDG_DATA_HOME/shell-installer/bin"
 
 # fzf
 export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
-export FZF_DEFAULT_OPTS="--history \"$HOME/.history/fzf_history\" --history-size=10000"
+export FZF_DEFAULT_OPTS="--history \"$XDG_STATE_HOME/history/fzf_history\" --history-size=10000"
 
 # gcc
 # export GCC_COLORS="error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01"
@@ -38,7 +38,7 @@ export GPG_TTY="$(tty)"
 export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 
 # guile
-export GUILE_HISTORY="$HOME/.history/guile_history"
+export GUILE_HISTORY="$XDG_STATE_HOME/history/guile_history"
 
 # hstr
 export HSTR_CONFIG=hicolor
@@ -50,7 +50,7 @@ export LESS="-FRQ"
 export LESS_ADVANCED_PREPROCESSOR=1 # lesspipe.sh
 export LESSKEY="$XDG_CONFIG_HOME/less_keys"
 export LESSOPEN="|$(command -v lesspipe.sh) %s | $(command -v source-highlight-esc.sh)"
-export LESSHISTFILE="$HOME/.history/less_history"
+export LESSHISTFILE="$XDG_STATE_HOME/history/less_history"
 export LESSHISTSIZE="32768"
 export LESS_TERMCAP_mb="$(printf '\e[1;31m')" # start blink
 export LESS_TERMCAP_md="$(printf '\e[1;36m')" # start bold

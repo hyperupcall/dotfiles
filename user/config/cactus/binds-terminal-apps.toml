@@ -1,15 +1,15 @@
 [A]
-cmd = "kitty"
-args = ["pulsemixer"]
+cmd = 'kitty'
+args = ['--title', 'Pulsemixer (floating)', 'pulsemixer']
 
 [C]
-cmd = "kitty"
-args = ["calcurse"]
+cmd = 'kitty'
+args = ['--title', 'Calcurse (floating)', 'calcurse']
 
 [R]
-cmd = "kitty"
-args = ["ranger", '{{ env "HOME" }}/Docs']
+cmd = 'kitty'
+args = ['--title', 'Ranger (floating)', 'ranger', '{{ env "HOME" }}/Docs']
 
 [M]
-cmd = "kitty"
-args = ["aerc"]
+cmd = 'kitty'
+args = ['--title', 'Aerc (floating)', 'aerc']

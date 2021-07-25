@@ -19,8 +19,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[vue]": {
-    // "editor.defaultFormatter": "octref.vetur"
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "octref.vetur"
   },
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -95,7 +94,7 @@
   },
   "emmet.showSuggestionsAsSnippets": true,
   "eslint.alwaysShowStatus": true,
-  "eslint.packageManager": "pnpm",
+  "eslint.packageManager": "yarn",
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "explorer.incrementalNaming": "smart",
@@ -261,9 +260,6 @@
   "typescript.referencesCodeLens.showOnAllFunctions": true,
   "typescript.tsserver.maxTsServerMemory": 1024,
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "vetur.format.defaultFormatter.html": "prettier",
-  "vetur.format.defaultFormatter.stylus": "none",
-  "vetur.useWorkspaceDependencies": true,
   "vim.enableNeovim": false,
   "vsdocker.imageUser": "docker.io/eankeen",
   "window.customMenuBarAltFocus": false,
@@ -273,7 +269,7 @@
   "window.title": "🦊 ${folderName} ${activeEditorLong}${separator}${remoteName}",
   "window.titleBarStyle": "custom",
   "workbench.activityBar.visible": true,
-  "workbench.colorTheme": "Tomorrow Night Blue",
+  "workbench.colorTheme": "Ariake Dark",
   "workbench.commandPalette.history": 100,
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.highlightModifiedTabs": true,
@@ -310,5 +306,9 @@
     "[x]"
   ],
   "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
-  "redhat.telemetry.enabled": false
+  "redhat.telemetry.enabled": false,
+  "eslint.format.enable": true,
+  "eslint.lintTask.enable": true,
+  "security.workspace.trust.untrustedFiles": "open",
+  "workbench.editor.showTabs": false
 }

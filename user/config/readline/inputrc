@@ -38,6 +38,15 @@ set visible-stats on
 # Typing !!<space> will replace the !! with your last command
 # Space: magic-space
 
+# mappings for Ctrl-left-arrow and Ctrl-right-arrow for word moving
+"\e[1;5C": forward-word
+"\e[1;5D": backward-word
+"\e[5C": forward-word
+"\e[5D": backward-word
+"\e\e[C": forward-word
+"\e\e[D": backward-word
+
+
 $if mode=vi
 	set keymap vi-command
 	"gg": beginning-of-history

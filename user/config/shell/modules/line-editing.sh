@@ -1,8 +1,13 @@
 # shellcheck shell=bash
 
+# @file line-editing.sh
+# @brief Common functions for both Bash-configured GNU Readline
+# and Zsh's Zle
+
 # gets line ($1), and removes
 # sudo, ', ", and extra whitespaces
 _readline_util_get_line() {
+	REPLY=
 	local line="$1"
 
 	_readline_util_trim_whitespace "$line"
@@ -21,7 +26,7 @@ _readline_util_get_line() {
 	line="${line/\"/}"
 	line="${line/\"/}"
 
-	printf "%s" "$line"
+	REPLY="$line"
 }
 
 _readline_util_expand_alias() {
@@ -36,24 +41,26 @@ _readline_util_expand_alias() {
 		) $line2"
 	fi
 
-	printf "%s" "$line"
+	REPLY="$line"
 }
 
 _readline_util_get_cmd() {
+	REPLY=
 	local line cmd
 
-	line="$(_readline_util_get_line "$1")"
+	_readline_util_get_line "$1"
 
-	cmd="${line%%\ *}"
+	cmd="${REPLY%%\ *}"
 
-	printf "%s" "$cmd"
+	REPLY="$cmd"
 }
 
 # shellcheck disable=SC2181
 _readline_util_try_show_help() {
 	local line cmd helpText
 	line="$1"
-	cmd="$(_readline_util_get_cmd "$line")"
+	_readline_util_get_cmd "$line"
+	cmd="$REPLY"
 
 	if ! helpText="$($line --help)"; then
 		if ! helpText="$($line -h)"; then
@@ -64,21 +71,30 @@ _readline_util_try_show_help() {
 	fi
 
 	printf '%s\n' "$helpText"
-	return 0
+	return
 }
 
 _readline_util_try_show_man() {
 	local manual="$1"
+	
+	if [[ -v "DEBUG_LINE_EDITING" ]]; then
+		if command man -w "$manual" &>/dev/null; then
+			printf "%s" "$manual"
+			return 0
+		else
+			return 1
+		fi
+	fi
 
 	if command man "$manual" 2>/dev/null; then
 		return
 	else
-		(($? != 16)) && {
+		if (($? != 16)); then
 			log_error "'man' invocation error"
 
 			# By returning success, no more man pages will be searched
 			return 0
-		}
+		fi
 	fi
 }
 
@@ -138,14 +154,19 @@ _readline_util_x_paste() {
 # help page systems. This assumes that any errors with 'man'
 # are due to not finding man pages (exit code 16)
 _readline_util_show_help() {
+	# TODO This can be improved by converting 'line' to
+	#  an array and operating on that rather than a string
 	local line cmd tempLine
 
-	line="$(_readline_util_get_line "$1")"
-	line="$(_readline_util_expand_alias "$line")"
+	_readline_util_get_line "$1"
+	_readline_util_expand_alias "$REPLY"
+	line="$REPLY"
 
 	# check if built in from the getgo
-	cmd="$(_readline_util_get_cmd "$line")"
-	if [[ $(type -t "$cmd") = 'builtin' ]]; then
+	_readline_util_get_cmd "$line"
+	cmd="$REPLY"
+
+	if [[ $(type -t "$cmd") == 'builtin' ]]; then
 		help "$cmd"
 		return
 	fi
@@ -174,10 +195,18 @@ _readline_util_show_help() {
 # style man page patterns. This assumes that any errors with
 # 'man' are due to not finding man pages (exit code 16)
 _readline_util_show_man() {
+	# TODO This can be improved by converting 'line' to
+	#  an array and operating on that rather than a string
 	local line tempLine manual
 
-	line="$(_readline_util_get_line "$1")"
-	line="$(_readline_util_expand_alias "$line")"
+	_readline_util_get_line "$1"
+	_readline_util_expand_alias "$REPLY"
+	line="$REPLY"
+	
+	# Remove some flags
+	line="${line/ -* / }"
+	line="${line/ -* / }"
+	line="${line/ -* / }"
 
 	# $ docker container ls -v           -> man docker-container-ls
 	# $ git status -v                    -> man git-status--v
@@ -208,9 +237,11 @@ _readline_util_show_man() {
 _readline_util_show_tldr() {
 	local line cmd
 
-	line="$(_readline_util_get_line "$1")"
-	line="$(_readline_util_expand_alias "$line")"
-	cmd="$(_readline_util_get_cmd "$line")"
+	_readline_util_get_line "$1"
+	_readline_util_expand_alias "$REPLY"
+	line="$REPLY"
+	_readline_util_get_cmd "$line"
+	cmd="$REPLY"
 	[[ -z $cmd ]] && return
 
 	tldr "$cmd"

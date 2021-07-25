@@ -55,18 +55,12 @@ _readline_toggle_comment() {
 }
 
 _readline_trim_whitespace() {
-	READLINE_LINE="$(
-		_readline_util_trim_whitespace "$READLINE_LINE"
-	)"
+	_readline_util_trim_whitespace "$READLINE_LINE"
+	READLINE_LINE="$REPLY"
 }
 
 _readline_ls() {
 	_shell_util_ls
-}
-
-# TODO
-_readline_exit() {
-	exit
 }
 
 bind -x '"\eu": _readline_x_discard'

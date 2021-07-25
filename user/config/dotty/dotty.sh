@@ -105,6 +105,7 @@ declare -ra dotFiles=(
 	"$cfg/pijul"
 	"$cfg/please"
 	"$cfg/polybar"
+	"$cfg/powerline"
 	"$cfg/pudb"
 	"$cfg/pulse/client.conf"
 	"$cfg/pulsemixer.cfg"

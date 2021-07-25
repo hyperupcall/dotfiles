@@ -16,11 +16,13 @@ main() {
 	local aggregatedBashFile="$prefix/generated/aggregated.bash"
 	local aggregateZshFile="$prefix/generated/aggregated.zsh"
 	local aggregatedFishFile="$prefix/generated/aggregated.fish"
+	local aggregatedShFile="$prefix/generated/aggregated.sh"
 
 	mkdir -p "$prefix/generated"
 	> "$aggregatedBashFile"
 	> "$aggregateZshFile"
 	> "$aggregatedFishFile"
+	> "$aggregatedShFile"
 
 	for dir in "$prefix"/programs/*/; do
 		for file in "$dir"/*; do
@@ -35,6 +37,9 @@ main() {
 				;;
 			*.fish)
 				local -n outputFile='aggregatedFishFile'
+				;;
+			*.sh)
+				local -n outputFile='aggregatedShFile'
 				;;
 			*)
 				warn "Skipping '$fileName'"

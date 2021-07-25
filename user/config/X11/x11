@@ -3,6 +3,8 @@
 unset SESSION_MANAGER
 
 : "${TMPDIR:=/tmp}"
+: "${XAUTHORITY:?}"
+: "${XDG_CONFIG_HOME:?}"
 
 # Find first unused DISPLAY
 displayN=0
@@ -12,37 +14,28 @@ while true; do
 done
 display=:$displayN
 
-# Make a named pipe so we can pipe stdout of the rest of this script
-# to a log file. We cannot use a compound command because the return
-# value of Xorg will be hidden in the subshell
-pipe="$TMPDIR/.X11-unix/X$displayN-fifo"
+# Create logfile and only use it if not debugging
+log="$TMPDIR/.X11-unix/X$displayN.log"
+>|"$log"
+[ -z "${DEBUG+x}" ] && exec >"$log" 2>&1
 
-mkfifo "$pipe"
-trap 'rm -f "$pipe"' INT QUIT KILL
-tee "$TMPDIR/.X11-unix/X$displayN-log" < "$pipe" &
-exec > "$pipe" 2>&1
-
-# get current tty, and explicitly start X on it to avoid the startx
+# Get current tty, and explicitly start X on it to avoid the startx
 # session being seen as inactive: https://bugzilla.redhat.com/show_bug.cgi?id=806491
 tty="$(tty)"
 if expr "$tty" : '/dev/tty[0-9][0-9]*$' >/dev/null 2>&1; then
-	vtarg="vt$(echo "$tty" | grep -oE '[0-9]+$')"
+	vtarg="vt$(printf "%s" "$tty" | grep -oE '[0-9]+$')"
 else
-	echo "Warning: Not running on a tty. Exiting"
+	printf "%s\n" "x11: Error: Not running on a tty. Exiting"
 	exit 1
 fi
-unset -v tty
 
-# xauth and start
+# Start
 touch "$XAUTHORITY"
 xauth add "$display" . "$(mcookie)"
 xinit "$XDG_CONFIG_HOME/X11/xinitrc" -- "/usr/bin/Xorg" "$display" -nolisten tcp "$vtarg" -keeptty
 exitStatus=$?
 
-# cleanup
+# Cleanup
 xauth remove "$display"
-command -v deallocvt >/dev/null 2>&1 && {
-	deallocvt
-}
-
+command -v deallocvt >/dev/null 2>&1 && deallocvt
 exit $exitStatus

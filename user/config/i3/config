@@ -15,7 +15,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+Shift+Ctrl+q exec "i3-nagbar -t warning -m 'Exit i3 and end X session?' -B 'Yah, exit!' 'i3-msg exit'"
 bindsym $mod+a reload
 bindsym $mod+Shift+a restart
-bindsym $mod+Shift+Return exec i3-sensible-terminal
+bindsym $mod+Shift+Return exec xterm
 
 ## --------------------- Navigation ---------------------
 bindsym $mod+h focus left
@@ -42,6 +42,7 @@ bindsym $mod+i focus parent
 bindsym $mod+u focus child
 
 # specialized
+for_window [title="(floating)"] floating toggle resize set 800 500
 for_window [title="Popup Terminal"] floating toggle resize set 700 400
 for_window [class="zoom"] floating enable
 for_window [title="Steam - News"] floating toggle
@@ -202,7 +203,7 @@ mode "mouse" {
 	bindsym n mode "move"
 
 	bindsym m mode "default"
-	bindsym $mod mode "default" 
+	bindsym $mod mode "default"
 	bindsym Escape mode "default"
 	bindsym Return mode "default"
 }

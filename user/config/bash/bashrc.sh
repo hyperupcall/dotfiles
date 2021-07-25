@@ -35,7 +35,7 @@ export FCEDIT="$EDITOR"
 unset FIGNORE
 unset GLOBIGNORE
 export HISTCONTROL="ignorespace:ignoredups"
-export HISTFILE="$HOME/.history/bash_history"
+export HISTFILE="$XDG_STATE_HOME/history/bash_history"
 export HISTSIZE="-1"
 export HISTFILESIZE="-1"
 export HISTIGNORE="ls:[bf]g:pwd:clear*:exit*:*sudo*-S*:*sudo*--stdin*"
@@ -111,7 +111,7 @@ if is16MillionColors; then
 		PS1="\[\e[38;2;201;42;42m\][\u@\h \w]\[\e[0m\]\$ "
 	else
 		# shellcheck disable=SC3046
-		if ! source choose launch prompt-bash; then
+		if ! eval "$(choose launch prompt-bash)"; then
 			PS1="[\[\e[0;31m\](PS1 Error)\[\e[0m\] \u@\h \w]\$ "
 		fi
 	fi
@@ -137,8 +137,8 @@ unset -f is8Colors is256Colors is16MillionColors
 [ -r /usr/share/bash-completion/bash_completion ] && source /usr/share/bash-completion/bash_completion
 
 # bash-preexec
-if commadn -v bpm &>/dev/null; then
-	source "$(bpm package-path rcaloras/bash-preexec)/bash-preexec.sh"
+if command -v bpm &>/dev/null; then
+	source "$(bpm -g package-path rcaloras/bash-preexec)/bash-preexec.sh"
 
 	# after command is read, before command execution
 	preexec() {
@@ -153,8 +153,10 @@ if commadn -v bpm &>/dev/null; then
 	}
 fi
 
+source "$XDG_CONFIG_HOME/shell/generated/aggregated.bash"
+source "$XDG_CONFIG_HOME/shell/modules/line-editing.sh"
 source "$XDG_CONFIG_HOME/bash/modules/readline.sh"
-source "$XDG_CONFIG_HOME/bash/util/util.sh"
+source "$XDG_CONFIG_HOME/bash/modules/util.sh"
 
 
 # -----

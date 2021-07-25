@@ -22,15 +22,19 @@ stty stop undef
 stty -ixoff # input settings
 stty -ixon
 
+# setterm
+
 # ----------------------- Sourcing ----------------------- #
-for d in aliases fns; do
-	for f in "$XDG_CONFIG_HOME/shell/$d"/?*.sh; do
+for d in aliases functions; do
+	for f in "$XDG_CONFIG_HOME/shell/modules/$d"/?*.sh; do
 		[ -r "$f" ] && . "$f"
 	done
 done
 unset -v d f
 
 # ---------------------- Environment --------------------- #
+. "$XDG_CONFIG_HOME/shell/generated/aggregated.sh"
+
 ({
 	dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 

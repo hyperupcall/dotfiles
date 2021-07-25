@@ -122,7 +122,7 @@ export GOROOT="$XDG_DATA_HOME/go-root"
 _path_prepend "$GOPATH/bin"
 
 # gdb
-export GDBHISTFILE="$HOME/.history/history"
+export GDBHISTFILE="$XDG_STATE_HOME/history/history"
 
 # gem
 export GEM_HOME="$XDG_DATA_HOME/gem" # conflicts with rvm
@@ -190,7 +190,7 @@ export JAVA_TOOL_OPTIONS="-Djava.util.prefs.userRoot=$XDG_DATA_HOME/java"
 
 # julia
 export JULIA_DEPOT_PATH="$XDG_DATA_HOME/julia:$JULIA_DEPOT_PATH"
-export JULIA_HISTORY="$HOME/.history/julia_history"
+export JULIA_HISTORY="$XDG_STATE_HOME/history/julia_history"
 
 # junest
 export JUNEST_HOME="$XDG_DATA_HOME/junest"
@@ -236,7 +236,7 @@ export MOST_INITFILE="$XDG_CONFIG_HOME/most/mostrc"
 export MPLAYER_HOME="$XDG_DATA_HOME/mplayer"
 
 # mysql
-export MYSQL_HISTFILE="$HOME/.history/mysql_history"
+export MYSQL_HISTFILE="$XDG_STATE_HOME/history/mysql_history"
 
 # n
 export N_PREFIX="$XDG_DATA_HOME/n"
@@ -245,15 +245,15 @@ _path_prepend "$N_PREFIX/bin"
 # nb
 export NBRC_PATH="$XDG_CONFIG_HOME/nb/nbrc"
 export NB_DIR="$XDG_DATA_HOME/nb"
-export NB_HIST="$HOME/.history/nb_history"
+export NB_HIST="$XDG_STATE_HOME/history/nb_history"
 
 # nimble
 export CHOOSENIM_NO_ANALYTICS="1"
 _path_prepend "$XDG_DATA_HOME/nimble/bin"
 
 # node
-export NODE_REPL_HISTORY="$HOME/.history/node_repl_history"
-export TS_NODE_HISTORY="$HOME/.history/ts_node_repl_history"
+export NODE_REPL_HISTORY="$XDG_STATE_HOME/history/node_repl_history"
+export TS_NODE_HISTORY="$XDG_STATE_HOME/history/ts_node_repl_history"
 
 # notmuch
 export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch/notmuchrc"
@@ -273,7 +273,7 @@ export NVM_DIR="$XDG_DATA_HOME/nvm"
 
 # octave
 export OCTAVE_SITE_INITFILE="$XDG_CONFIG_HOME/octave/octaverc"
-export OCTAVE_HISTFILE="$HOME/.history/octave-history"
+export OCTAVE_HISTFILE="$XDG_STATE_HOME/history/octave-history"
 
 # openssl
 # export RANDFILE="$XDG_DATA_HOME/openssl/rnd"
@@ -315,7 +315,7 @@ _path_prepend "$POETRY_HOME/bin"
 
 # postgresql
 export PSQLRC="$XDG_DATA_HOME/pg/psqlrc"
-export PSQL_HISTORY="$HOME/.history/psql_history"
+export PSQL_HISTORY="$XDG_STATE_HOME/history/psql_history"
 export PGPASSFILE="$XDG_DATA_HOME/pg/pgpass"
 export PGSERVICEFILE="$XDG_DATA_HOME/pg/pg_service.conf"
 
@@ -347,13 +347,13 @@ export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
 
 # redix
 export REDISCLI_RCFILE="$XDG_CONFIG_HOME/redis/redisclirc"
-export REDISCLI_HISTFILE="$XDG_DATA_HOME/.history/redis_history"
+export REDISCLI_HISTFILE="$XDG_STATE_HOME/history/redis_history"
 
 # ripgrep
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/config"
 
 # rlwrap
-export RLWRAP_HOME="$HOME/.history"
+export RLWRAP_HOME="$XDG_STATE_HOME/history"
 
 # rust
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
@@ -439,9 +439,6 @@ export UNISON="$XDG_DATA_HOME/unison"
 # vagrant
 export VAGRANT_HOME="$XDG_DATA_HOME/vagrant"
 export VAGRANT_ALIAS_FILE="$VAGRANT_HOME/aliases"
-
-# vim
-export VIMINIT="source $XDG_CONFIG_HOME/vim/vimrc"
 
 # vimperator
 export VIMPERATOR_INIT=":source $XDG_CONFIG_HOME/vimperator/vimperatorrc"

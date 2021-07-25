@@ -22,7 +22,7 @@ shift + Print
 shift + super + Print
 	maim -s ~/Pics/screenshot.png
 
-XF86MonBrigheseeestness{Up,Down}
+XF86MonBrightness{Up,Down}
 	choose launch brightness-{increase,decrease}
 
 F{3,4}

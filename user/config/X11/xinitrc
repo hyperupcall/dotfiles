@@ -1,17 +1,19 @@
 #!/usr/bin/env sh
 
-# Xsession
+: "${XDG_STATE_HOME:?}"
+: "${XDG_CONFIG_HOME:?}"
 
-# ensure logs
-errorFile="$XDG_DATA_HOME/X11/xsession-errors"
-[ -f "$errorFile" ] || {
-	touch "$errorFile"
-	chmod 600 "$errorFile"
+# Ensure logs
+logFile="$XDG_STATE_HOME/X11/xinitrc.log"
+[ -f "$logFile" ] || {
+	mkdir -p "$XDG_STATE_HOME/X11"
+	touch "$logFile"
+	chmod 600 "$logFile"
 } 2>/dev/null >&2
-exec >> "$errorFile" 2>&1
+exec >> "$logFile" 2>&1
 printf "\033[1m------ INFO: X session started for %s at %s ------\033[0m\n" "$(id -un)" "$(date)"
 
-# source system
+# Source system
 [ -d /etc/X11/xinit/xinitrc.d ] && {
 	for f in /etc/X11/xinit/xinitrc.d/?*.sh; do
 		[ -x "$f" ] && . "$f"
@@ -20,14 +22,14 @@ printf "\033[1m------ INFO: X session started for %s at %s ------\033[0m\n" "$(i
 }
 
 [ -d /etc/X11/Xsession.d ] && {
-	for f in /etc/X11/xinit/xinitrc.d/?*.sh; do
+	for f in /etc/X11/Xsession.d/?*.sh; do
 		[ -x "$f" ] && . "$f"
 	done
 	unset f
 }
 
-# apply settings and start apps
-"$XDG_CONFIG_HOME/X11/settings.sh"
+# Apply settings and start apps
+. "$XDG_CONFIG_HOME/X11/settings.sh"
 systemctl --user start xorg.target
 
 exec choose launch window-manager

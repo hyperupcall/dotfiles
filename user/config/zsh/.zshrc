@@ -26,7 +26,7 @@ return
 #
 # ─── SHELL VARIABLES ────────────────────────────────────────────────────────────
 #
-export HISTFILE="$HOME/.history/zsh_history"
+export HISTFILE="$XDG_STATE_HOME/history/zsh_history"
 
 
 #

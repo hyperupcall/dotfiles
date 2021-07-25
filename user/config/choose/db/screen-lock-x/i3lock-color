@@ -1,9 +1,0 @@
-#magick ~/Pics/animals/fox4.jpg -resize 1920x1080^ -gravity Center -extent 1920x1080 -filter Gaussian -resize 50% -define filter:sigma=2.5 -resize 200% ~/Pics/animals/fox4-monitor.jpg
-
-# note: ocGreen5 is really ocGreen7, etc.
-ocGreen5="37b24d"; ocBlue5="1c7ed6"; ocBlue7="1864ab"; ocRed5="f03e3e"; ocRed7="c92a2a"; ocGray5="495057"; ocGray7="212529"
-
-args="--clock --pass-media-keys --pass-screen-keys --pass-volume-keys --insidevercolor=$ocBlue5 --insidewrongcolor=$ocRed5 --insidecolor=$ocBlue5 --ringvercolor=$ocBlue7 --ringwrongcolor=$ocRed7 --ringcolor=$ocBlue7 --linecolor=$ocGray7 --keyhlcolor=$ocGreen5 --bshlcolor=$ocRed5 --verifcolor=$ocGray7 --wrongcolor=$ocGray5 --layoutcolor=$ocGray5 --timecolor=000000 --datecolor=000000 --veriftext='Verifying...' --wrongtext='Wrong!' --noinputtext='No Input' --locktext='Locking...' --lockfailedtext='Lock Failed!' --radius=100 --ring-width=10"
-
-#exec i3lock --image ~/Pics/animals/fox4-monitor.jpg --centered $args
-exec i3lock --blur=5 $args

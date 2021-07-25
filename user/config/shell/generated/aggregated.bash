@@ -1,3 +1,8 @@
+# autoenv.bash
+if command -v bpm &>/dev/null; then
+	source "$(bpm -g package-path inishchith/autoenv)/activate.sh"
+fi
+
 # bpm.bash
 if [ -d "${XDG_DATA_HOME:-$HOME/.local/share}/bpm/source/pkg/bin" ]; then
 	_path_prepend "${XDG_DATA_HOME:-$HOME/.local/share}/bpm/source/pkg/bin"
@@ -7,12 +12,12 @@ if [ -d "${XDG_DATA_HOME:-$HOME/.local/share}/bpm/source/pkg/bin" ]; then
 fi
 
 # conda.bash
-if [ -d "$XDG_DATA_HOME/miniconda3/bin" ]; then
-	_path_prepend "$XDG_DATA_HOME/miniconda3/bin"
-	if command -v conda &>/dev/null; then
-		eval "$(conda shell.bash hook)"
-	fi
-fi
+# if [ -d "$XDG_DATA_HOME/miniconda3/bin" ]; then
+# 	_path_prepend "$XDG_DATA_HOME/miniconda3/bin"
+# 	if command -v conda &>/dev/null; then
+# 		eval "$(conda shell.bash hook)"
+# 	fi
+# fi
 
 # crenv.bash
 # if command -v &>/dev/null; then
@@ -30,14 +35,9 @@ if command -v direnv &>/dev/null; then
 fi
 
 # mcfly.bash
-if command -v mcfly &>/dev/null; then
-	eval "$(mcfly init bash)"
-fi
-
-# nodejs.bash
-if command -v node &>/dev/null; then
-	eval "$(node --completion-bash)"
-fi
+# if command -v mcfly &>/dev/null; then
+# 	eval "$(mcfly init bash)"
+# fi
 
 # rbenv.bash
 if command -v rbenv &>/dev/null; then
@@ -46,3 +46,9 @@ fi
 
 # sdkman.bash
 [ -r "$SDKMAN_DIR/bin/sdkman-init.sh" ] && . "$SDKMAN_DIR/bin/sdkman-init.sh"
+
+# zoxide.bash
+if command -v zoxide &>/dev/null; then
+	eval "$(zoxide init bash)"
+fi
+
