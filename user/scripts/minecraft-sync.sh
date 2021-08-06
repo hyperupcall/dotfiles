@@ -16,7 +16,7 @@ remove() {
 
 shopt -s nullglob dotglob
 
-base=~/Docs/minecraft-common
+base="$HOME/Docs/Games/Minecraft/common-dot-minecraft"
 dataDir="${XDG_DATA_HOME:-~/.local/share}"
 configDir="${XDG_CONFIG_HOME:-~/.config}"
 folders=(

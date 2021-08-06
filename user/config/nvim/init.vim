@@ -3,6 +3,8 @@ let xdgDataHome = exists('$XDG_DATA_HOME') ? $XDG_DATA_HOME : $HOME.'.local/data
 let xdgStateHome = exists('$XDG_STATE_HOME') ? $XDG_STATE_HOME : $HOME.'.local/state'
 let xdgCacheHome = exists('$XDG_CACHE_HOME') ? $XDG_CACHE_HOME : $HOME.'.cache'
 
+lua require('plugins')
+
 execute 'source' xdgConfigHome.'/nvim/plugins.vim'
 execute 'source' xdgConfigHome.'/nvim/lsp.lua'
 
@@ -21,7 +23,24 @@ filetype plugin indent on
 let g:NERDCreateDefaultMappings = 1
 let g:NERDSpaceDelims = 1
 
+" Committia
+let g:committia_hooks = {}
+" if !exists("*g:committia_hooks.edit_open")
+" function! g:committia_hooks.edit_open(info)
+    " " Additional settings
+    " setlocal spell
 
+    " " If no commit message, start with insert mode
+    " if a:info.vcs ==# 'git' && getline(1) ==# ''
+	" startinsert
+    " endif
+
+    " " Scroll the diff window from insert mode
+    " " Map <C-n> and <C-p>
+    " imap <buffer><C-n> <Plug>(committia-scroll-diff-down-half)
+    " imap <buffer><C-p> <Plug>(committia-scroll-diff-up-half)
+" endfunction
+" endif
 
 " NerdTree
 let NERDTreeMinimalUI = 1
@@ -61,4 +80,3 @@ if !exists("*DoSov")
 	endfunction
 endif
 command Sov call DoSov()
-

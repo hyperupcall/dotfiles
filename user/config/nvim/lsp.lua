@@ -32,10 +32,7 @@ require'lspconfig'.codeqlls.setup{}
 require'lspconfig'.cmake.setup{}
 
 -- Crystal
-require'lspconfig'.crystalline.setup{}
-
--- Crystal
-require'lspconfig'.scry.setup{}
+-- require'lspconfig'.scry.setup{}
 
 -- CSS
 require'lspconfig'.cssls.setup{}
@@ -124,7 +121,7 @@ require'lspconfig'.kotlin_language_server.setup{}
 -- require'lspconfig'.leanls.setup{}
 
 -- Lua
-require'lspconfig'.sumneko_lua.setup{}
+-- require'lspconfig'.sumneko_lua.setup{}
 
 -- Nim
 require'lspconfig'.nimls.setup{}

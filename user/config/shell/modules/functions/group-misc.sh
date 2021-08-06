@@ -52,8 +52,8 @@ dataurl() {
 }
 
 do_backup() {
-	restic --repo /storage/vault/rodinia/backups/ backup /storage/edwin/ --iexclude "node_modules" --iexclude "__pycache__" --iexclude "rootfs" --iexclude "Dls/cliflix" --iexclude "Dls/youtube-dl"
-	restic --repo /storage/vault/rodinia/backups-data/ backup /storage/data/ --iexclude "node_modules" --iexclude "__pycache__" --iexclude "rootfs" --iexclude "Dls/cliflix" --iexclude "Dls/youtube-dl"
+	restic --repo /storage/vault/rodinia/Backups/edwin backup /storage/edwin/ --iexclude "node_modules" --iexclude "__pycache__" --iexclude "rootfs"
+	restic --repo /storage/vault/rodinia/Backups/data/ backup /storage/data/ --iexclude "node_modules" --iexclude "__pycache__" --iexclude "rootfs"
 }
 
 docker_nuke() {
@@ -97,7 +97,7 @@ edit() {
 	_edit_line="$(echo "$_edit_grep_result" | awk -F ':' '{ print $2 }')"
 
 	# TODO: use _v_editor and choose
-	kak "+$_edit_line" "$_edit_file"
+	nvim "+$_edit_line" "$_edit_file"
 	unset -v _edit_grep_result _edit_file _edit_line
 }
 

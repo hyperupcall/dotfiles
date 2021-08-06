@@ -161,10 +161,13 @@ export GTK_RC_FILES="$XDG_CONFIG_HOME/gtk-1.0/gtkrc"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 
 # hledger
-export LEDGER_FILE="$XDG_DATA_HOME/hledger.journal"
+export LEDGER_FILE="$XDG_STATE_HOME/hledger/hledger.journal"
 
 # ice authority
 # export ICEAUTHORITY="$XDG_RUNTIME_DIR/iceauthority" # XDG_RUNTIME_DIR bad
+
+# ida
+export IDAUSR="$XDG_STATE_HOME/idapro"
 
 # imap
 export IMAPFILTER_HOME="$XDG_CONFIG_HOME/imapfilter"
@@ -392,6 +395,9 @@ export SM_SAVE_DIR="$XDG_DATA_HOME/xsm"
 # sonarlint
 export SONARLINT_USER_HOME="$XDG_DATA_HOME/sonarlint"
 
+# sqlite
+export SQLITE_HISTORY="$XDG_STATE_HOME/history/sqlite_history"
+
 # stack
 export STACK_ROOT="$XDG_DATA_HOME/stack"
 
@@ -439,6 +445,9 @@ export UNISON="$XDG_DATA_HOME/unison"
 # vagrant
 export VAGRANT_HOME="$XDG_DATA_HOME/vagrant"
 export VAGRANT_ALIAS_FILE="$VAGRANT_HOME/aliases"
+
+# vim
+export VIMINIT="if has('nvim') | let \$MYVIMRC=\$XDG_CONFIG_HOME.\"/nvim/init.vim\" | else | let \$MYVIMRC=\$XDG_CONFIG_HOME.\"/vim/vimrc\" | endif | source \$MYVIMRC"
 
 # vimperator
 export VIMPERATOR_INIT=":source $XDG_CONFIG_HOME/vimperator/vimperatorrc"

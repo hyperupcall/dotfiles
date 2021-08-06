@@ -1,9 +1,4 @@
-" Download VimPlug if it doesn't exist
-let plugFile = xdgDataHome.'/nvim/site/autoload/plug.vim'
-if empty(plugFile)
-	silent execute '!curl -fLo '.plugFile.' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
+
 
 call plug#begin(xdgDataHome.'/nvim/vim-plug-plugins')
 " START SCREEN
@@ -28,6 +23,7 @@ Plug 'preservim/nerdtree'
 Plug 'neovim/nvim-lspconfig'
 Plug 'neoclide/coc.nvim', #{branch: 'release'}
 Plug 'hrsh7th/nvim-compe'
+Plug 'vim-crystal/vim-crystal'
 
 " BUFFER EDITING
 Plug 'AndrewRadev/splitjoin.vim'
@@ -35,7 +31,7 @@ Plug 'jiangmiao/auto-pairs'
 " Plug 'tpope/vim-commentary'
 Plug 'preservim/nerdcommenter'
 " Plug 'tpope/vim-surround'
-Plug 'Raimondi/delimitMate'
+" Plug 'Raimondi/delimitMate'
 
 
 " NEW BUFFERS
@@ -69,12 +65,31 @@ Plug 'airblade/vim-gitgutter'
 " Plug 'airblade/vim-rooter'
 " Plug 'tpope/vim-obsession'
 " Plug 'ycm-core/YouCompleteMe'
+" Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-sleuth'
+Plug 'iamcco/markdown-preview.nvim'
 Plug 'luochen1990/rainbow'
 Plug 'wincent/terminus'
+Plug 'tpope/vim-repeat'
+Plug 'junegunn/vim-slash'
+Plug 'pgdouyon/vim-evanesco'
+Plug 'junegunn/vader.vim'
+Plug 'vim-test/vim-test'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ryanoasis/vim-devicons'
+Plug 'rhysd/committia.vim'
 Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'lambdalisue/suda.vim'
+Plug 'mileszs/ack.vim'
+Plug 'keith/investigate.vim'
+Plug 'editorconfig/editorconfig-vim'
+" Plug 'vim-markdown'
+Plug 'jiangmiao/auto-pairs'
+Plug 'vimwiki/vimwiki'
+Plug 'zah/nim.vim'
+" Plug 'shougo/deoplete.nvim'
+" Plug 'airblade/vim-gitgutter'
+" Plug 'w0rp/ale'
+" Plug 'valloric/youcompleteme'
+" Plug 'mattn/emmet-vim'
 call plug#end()
-

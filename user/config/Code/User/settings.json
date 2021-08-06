@@ -269,7 +269,7 @@
   "window.title": "🦊 ${folderName} ${activeEditorLong}${separator}${remoteName}",
   "window.titleBarStyle": "custom",
   "workbench.activityBar.visible": true,
-  "workbench.colorTheme": "Ariake Dark",
+  "workbench.colorTheme": "Blueprint",
   "workbench.commandPalette.history": 100,
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.highlightModifiedTabs": true,
@@ -278,7 +278,7 @@
   "workbench.editorAssociations": {
     "*.jpg": "luna.editor",
     "*.png": "luna.editor",
-    "*.ipynb": "jupyter.notebook.ipynb"
+    "*.ipynb": "jupyter-notebook"
   },
   "workbench.enableExperiments": false,
   "workbench.iconTheme": "material-icon-theme",
@@ -310,5 +310,8 @@
   "eslint.format.enable": true,
   "eslint.lintTask.enable": true,
   "security.workspace.trust.untrustedFiles": "open",
-  "workbench.editor.showTabs": false
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  }
 }

@@ -36,26 +36,27 @@ util_extract_alias() {
 
 
 # ----------------------- Variables ---------------------- #
-generatedDir="$XDG_CONFIG_HOME/bash/generated"
-currentDir="$XDG_CONFIG_HOME/bash/scripts"
+: "${XDG_CONFIG_HOME:=$HOME/.config}"
+generatedDir="$XDG_CONFIG_HOME/shell/generated"
+currentDir="$XDG_CONFIG_HOME/shell/scripts"
 profileDir="$XDG_CONFIG_HOME/shell"
 
 # ------------------------- Main ------------------------- #
 # user Functions
 exec 6> "$generatedDir/.bashrc-user-functions.sh"
 util_print_autogen_info >&6
-find "$XDG_CONFIG_HOME/shell/fns/" -ignore_readdir_race -type f -name "*.sh" \
+find "$XDG_CONFIG_HOME/shell/modules/functions/" -ignore_readdir_race -type f -name "*.sh" \
 		-exec sh -c "\"$currentDir/extractFunctions.pl\" 'user' < \"\$0\"" {} \; >&6
-util_print_file "$profileDir/util.sh" >&6
+util_print_file "$profileDir/modules/util.sh" >&6
 exec 6<&-
 
 # user Aliases
 exec 6> "$generatedDir/.bashrc-user-aliases.sh"
 util_print_autogen_info >&6
-find "$XDG_CONFIG_HOME/shell/aliases/" -ignore_readdir_race -type f -name "*.sh" \
+find "$XDG_CONFIG_HOME/shell/modules/aliases/" -ignore_readdir_race -type f -name "*.sh" \
 		-exec sh -c 'cat < $0' {} \; \
 	| util_extract_alias 'user' >&6
-util_print_file "$profileDir/aliases/aliases.sh" >&6
+util_print_file "$profileDir/modules/aliases/aliases.sh" >&6
 exec 6<&-
 
 # user Readline
@@ -68,18 +69,18 @@ exec 6<&-
 # root Functions
 exec 6> "$generatedDir/.bashrc-root-functions.sh"
 util_print_autogen_info >&6
-find "$XDG_CONFIG_HOME/shell/fns/" -ignore_readdir_race -type f -name "*.sh" \
+find "$XDG_CONFIG_HOME/shell/modules/functions/" -ignore_readdir_race -type f -name "*.sh" \
 		-exec sh -c "\"$currentDir/extractFunctions.pl\" 'root' < \"\$0\"" {} \; >&6
-util_print_file "$profileDir/util.sh" >&6
+util_print_file "$profileDir/modules/util.sh" >&6
 exec 6<&-
 
 # root Aliases
 exec 6> "$generatedDir/.bashrc-root-aliases.sh"
 util_print_autogen_info >&6
-find "$XDG_CONFIG_HOME/shell/aliases/" -ignore_readdir_race -type f -name "*.sh" \
+find "$XDG_CONFIG_HOME/shell/modules/aliases/" -ignore_readdir_race -type f -name "*.sh" \
 		-exec sh -c 'cat < $0' {} \; \
 	| util_extract_alias 'root' >&6
-util_print_file "$profileDir/aliases/aliases.sh" >&6
+util_print_file "$profileDir/modules/aliases/aliases.sh" >&6
 exec 6<&-
 
 # root Readline
