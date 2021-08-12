@@ -269,7 +269,7 @@
   "window.title": "🦊 ${folderName} ${activeEditorLong}${separator}${remoteName}",
   "window.titleBarStyle": "custom",
   "workbench.activityBar.visible": true,
-  "workbench.colorTheme": "Blueprint",
+  "workbench.colorTheme": "Complete Dark",
   "workbench.commandPalette.history": 100,
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.highlightModifiedTabs": true,

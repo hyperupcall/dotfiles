@@ -138,7 +138,7 @@ unset -f is8Colors is256Colors is16MillionColors
 
 # bash-preexec
 if command -v bpm &>/dev/null; then
-	source "$(bpm -g package-path rcaloras/bash-preexec)/bash-preexec.sh"
+	bpm-load --global 'rcaloras/bash-preexec' 'bash-preexec.sh'
 
 	# after command is read, before command execution
 	preexec() {

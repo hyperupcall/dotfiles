@@ -1,14 +1,13 @@
 # autoenv.bash
 if command -v bpm &>/dev/null; then
-	source "$(bpm -g package-path inishchith/autoenv)/activate.sh"
+	bpm-load -g 'inishchith/autoenv' 'activate.sh'
 fi
 
 # bpm.bash
 if [ -d "${XDG_DATA_HOME:-$HOME/.local/share}/bpm/source/pkg/bin" ]; then
 	_path_prepend "${XDG_DATA_HOME:-$HOME/.local/share}/bpm/source/pkg/bin"
-	if command -v bpm &>/dev/null; then
-		eval "$(bpm init bash)"
-	fi
+	source 'bpm-load'
+	eval "$(bpm init bash)"
 fi
 
 # conda.bash

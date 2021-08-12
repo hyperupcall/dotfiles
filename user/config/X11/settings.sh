@@ -15,9 +15,9 @@ xhost +si:localuser:"$(id -un)"
 xmodmap "$XDG_CONFIG_HOME/X11/Xmodmap"
 
 xrandr \
-	--output DP-1 --left-of DP-5 \
-	--output DP-3 --above DP-5 \
-	--output HDMI-0 --right-of DP-5
+	--output DP-1 --left-of HDMI-0 \
+	--output DP-5 --right-of HDMI-0 \
+	--output DP-3 --above HDMI-0
 
 xrdb -load -all "$XDG_CONFIG_HOME/X11/Xresources"
 

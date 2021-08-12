@@ -20,6 +20,7 @@ _readline_util_get_line() {
 	_readline_util_trim_whitespace "$line"
 	line="$REPLY"
 
+	# Ex. 'grep', \grep
 	line="${line/\\/}"
 	line="${line/\'/}"
 	line="${line/\'/}"
@@ -32,13 +33,11 @@ _readline_util_get_line() {
 _readline_util_expand_alias() {
 	local line="$1"
 
-	_readline_util_trim_whitespace "${line#* }"
-	local line2="$REPLY"
-
-	if alias "${line%% *}" &>/dev/null; then
-		line="$(
-			alias "${line%% *}" | cut -d= -f2 | sed -e "s/^'*//" -e "s/'*$//"
-		) $line2"
+	local cmd="${line%% *}"
+	if alias "$cmd" &>/dev/null; then
+		line="$(alias "$cmd")"
+		line="${line#*=\'}"
+		line="${line%\'}"
 	fi
 
 	REPLY="$line"
@@ -46,7 +45,8 @@ _readline_util_expand_alias() {
 
 _readline_util_get_cmd() {
 	REPLY=
-	local line cmd
+	# shellcheck disable=SC1007
+	local line= cmd=
 
 	_readline_util_get_line "$1"
 
@@ -76,7 +76,7 @@ _readline_util_try_show_help() {
 
 _readline_util_try_show_man() {
 	local manual="$1"
-	
+
 	if [[ -v "DEBUG_LINE_EDITING" ]]; then
 		if command man -w "$manual" &>/dev/null; then
 			printf "%s" "$manual"
@@ -89,11 +89,15 @@ _readline_util_try_show_man() {
 	if command man "$manual" 2>/dev/null; then
 		return
 	else
-		if (($? != 16)); then
+		local exitStatus=$?
+
+		if ((exitStatus != 16)); then
 			log_error "'man' invocation error"
 
 			# By returning success, no more man pages will be searched
 			return 0
+		else
+			return $exitStatus
 		fi
 	fi
 }
@@ -154,40 +158,37 @@ _readline_util_x_paste() {
 # help page systems. This assumes that any errors with 'man'
 # are due to not finding man pages (exit code 16)
 _readline_util_show_help() {
-	# TODO This can be improved by converting 'line' to
-	#  an array and operating on that rather than a string
-	local line cmd tempLine
+	# shellcheck disable=SC1007
+	local line= cmd=
 
 	_readline_util_get_line "$1"
 	_readline_util_expand_alias "$REPLY"
 	line="$REPLY"
 
-	# check if built in from the getgo
+	# check if builtin from the getgo
 	_readline_util_get_cmd "$line"
 	cmd="$REPLY"
-
 	if [[ $(type -t "$cmd") == 'builtin' ]]; then
 		help "$cmd"
 		return
 	fi
 
-	# docker container ls -l   -> docker container ls --help
-	tempLine="${line/ /^}"
-	tempLine="${tempLine/ /^}"
-	tempLine="${tempLine%% *}"
-	tempLine="${tempLine/^/ }"
-	tempLine="${tempLine/^/ }"
-	_readline_util_try_show_help "$tempLine" && return
+	local -a argList=() flagList=()
+	for arg in $line; do
+		case "$arg" in
+			-*) flagList+=("$arg") ;;
+			*) argList+=("$arg") ;;
+		esac
+	done
 
-	# docker container         -> docker container --help
-	tempLine="${line/ /^}"
-	tempLine="${tempLine%% *}"
-	tempLine="${tempLine/^/ }"
-	_readline_util_try_show_help "$tempLine" && return
+	# For the command line (with flags removed), append help
+	# If a help menu was successfuly shown, return; if not, then
+	# chop off a subcommand and try again
+	for ((i=0; i<${#argList}; i++)); do
+		_readline_util_try_show_help "${argList[*]}" && return
 
-	# docker version           -> docker --help
-	tempLine="${line%% *}"
-	_readline_util_try_show_help "$tempLine" && return
+		unset 'argList[${#argList[@]}-1]'
+	done
 }
 
 # Get the man page for the currently-edited command on the
@@ -195,43 +196,43 @@ _readline_util_show_help() {
 # style man page patterns. This assumes that any errors with
 # 'man' are due to not finding man pages (exit code 16)
 _readline_util_show_man() {
-	# TODO This can be improved by converting 'line' to
-	#  an array and operating on that rather than a string
-	local line tempLine manual
+	# shellcheck disable=SC1007
+	local line= manual=
 
 	_readline_util_get_line "$1"
 	_readline_util_expand_alias "$REPLY"
 	line="$REPLY"
-	
-	# Remove some flags
-	line="${line/ -* / }"
-	line="${line/ -* / }"
-	line="${line/ -* / }"
 
-	# $ docker container ls -v           -> man docker-container-ls
-	# $ git status -v                    -> man git-status--v
-	# $ git -v -C path                   -> man git--v--C
-	# $ qemu-system-x86_64 -m 2048 -k en -> man qemu-system-x86_64--m-2048
-	tempLine="${line/ /-}"
-	tempLine="${tempLine/ /-}"
-	manual="${tempLine%% *}"
-	_readline_util_try_show_man "$manual" && return
+	local -a argList=() flagList=()
+	for arg in $line; do
+		case "$arg" in
+			-*) flagList+=("$arg") ;;
+			*) argList+=("$arg") ;;
+		esac
+	done
 
-	# $ git status -v                    -> man git-status
-	# $ git -v -C path                   -> man git--v
-	# $ qemu-system-x86_64 -m 2048 -k en -> man qemu-system-x86_64--m
-	tempLine="${line/ /-}"
-	manual="${tempLine%% *}"
-	_readline_util_try_show_man "$manual" && return
+	# For the command line (with flags removed and spaces converted to
+	# hyphens), invoke the command command. If a man page was successfully
+	# shown, return; if not, then chop off a subcommand and try again
+	local oldIFS="$IFS"
+	IFS='-'
+	for ((i=0; i<${#argList}; i++)); do
+		if _readline_util_try_show_man "${argList[*]}"; then
+			IFS="$oldIFS"
+			return
+		fi
 
-	# $ git -v -C path -> man git
-	# $ qemu-system-x86_64 -m 2048 -k en -> man qemu-system-x86_64
-	manual="${line%% *}"
-	_readline_util_try_show_man "$manual" && return
+		unset 'argList[${#argList[@]}-1]'
+	done
+	IFS="$oldIFS"
 
-	# $ qemu-system-x86_64 -m 2048 -k en -> man qemu
 	manual="${line%%-*}"
-	_readline_util_try_show_man "$manual" && return
+	echo v "$manual"
+	if _readline_util_try_show_man "$manual"; then
+		IFS="$oldIFS"
+		return
+	fi
+	IFS="$oldIFS"
 }
 
 _readline_util_show_tldr() {

@@ -1,3 +1,3 @@
 if type -p bpm
-	source (bpm init fish | psub)
+	bpm init fish | source
 end

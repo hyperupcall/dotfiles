@@ -1,6 +1,6 @@
 # autoenv.zsh
 if command -v bpm &>/dev/null; then
-	source "$(bpm -g package-path inishchith/autoenv)/activate.sh"
+	bpm-load -g 'inishchith/autoenv' 'activate.sh'
 fi
 
 # bpm.zsh
@@ -25,4 +25,3 @@ fi
 if command -v zoxide &>/dev/null; then
 	eval "$(zoxide init zsh)"
 fi
-
