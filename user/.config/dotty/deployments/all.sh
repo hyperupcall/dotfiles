@@ -1,19 +1,18 @@
 #!/usr/bin/env bash
+set -ETeo pipefail
 
-home="$HOME"
-cfg="${XDG_CONFIG_HOME:-$HOME/.config}"
-data="${XDG_DATA_HOME:-$HOME/.local/share}"
+source ./util/core.sh
 
-declare -ra dotFiles=(
+declare -ra dotfiles=(
 	"$home/.alsoftrc"
 	"$home/.bash_logout"
 	"$home/.bash_profile"
 	"$home/.bashrc"
-	"$home/.config/conky"
-	"$home/.config/wtf"
+	"$home/.config/conky" # TODO
+	"$home/.config/wtf" # TODO
 	"$home/.cpan/CPAN/MyConfig.pm"
 	"$home/.hushlogin"
-	# "$home/.pam_environment"
+	"$home/.pam_environment"
 	"$home/.profile"
 	"$home/.xinitrc"
 	"$home/.yarnrc"
@@ -158,6 +157,6 @@ declare -ra dotFiles=(
 	"$data/sdkman/etc/config"
 )
 
-for dotFile in "${dotFiles[@]}"; do
-	printf "%s\n" "$dotFile"
+for dotfile in "${dotfiles[@]}"; do
+	printf '%s\n' "$dotfile"
 done
