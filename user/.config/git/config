@@ -4,7 +4,7 @@
 	warnAmbiguousRefs = true ; default
 	compression = 2
 	# pager = less -+F -+R -S -+X
-	pager = diff-so-fancy | less --tabs=3 -RFX
+	# pager = diff-so-fancy | less --tabs=3 -RFX
 [init]
 	defaultBranch = main
 [add "interactive"]
@@ -37,7 +37,7 @@
 	ui = true
 [commit]
 	gpgSign = true
-	template = ~/config/git/templates/commit
+	template = ~/.config/git/templates/commit
 [include]
 	path = include/diff.conf
 [gpg]
@@ -73,10 +73,10 @@
 [user]
 	name = Edwin Kofler
 	email = edwin@kofler.dev
-	signingkey = DA8EF6F306AD2CBA
+	signingkey = 13794A3F72895C83
 [credential]
 	#helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
-	helper = /usr/share/git/credential/libsecret/git-credential-libsecret
+	#helper = /usr/share/git/credential/libsecret/git-credential-libsecret
 [url "git@github.com:"]
 	insteadOf = gh:
 	pushInsteadOf = gh:

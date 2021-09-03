@@ -1,4 +1,4 @@
-
+execute 'source' xdgConfigHome.'/nvim/plugin-manager/plug/bootstrap.vim'
 
 call plug#begin(xdgDataHome.'/nvim/vim-plug-plugins')
 " START SCREEN
@@ -20,9 +20,9 @@ Plug 'preservim/nerdtree'
 
 
 " LANGUAGES / INTELLISENSE
-Plug 'neovim/nvim-lspconfig'
-Plug 'neoclide/coc.nvim', #{branch: 'release'}
-Plug 'hrsh7th/nvim-compe'
+" Plug 'neovim/nvim-lspconfig'
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'hrsh7th/nvim-compe'
 Plug 'vim-crystal/vim-crystal'
 
 " BUFFER EDITING

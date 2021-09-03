@@ -1,14 +1,14 @@
 let xdgConfigHome = exists('$XDG_CONFIG_HOME') ? $XDG_CONFIG_HOME : $HOME.'/.config'
-let xdgDataHome = exists('$XDG_DATA_HOME') ? $XDG_DATA_HOME : $HOME.'.local/data'
-let xdgStateHome = exists('$XDG_STATE_HOME') ? $XDG_STATE_HOME : $HOME.'.local/state'
-let xdgCacheHome = exists('$XDG_CACHE_HOME') ? $XDG_CACHE_HOME : $HOME.'.cache'
+let xdgDataHome = exists('$XDG_DATA_HOME') ? $XDG_DATA_HOME : $HOME.'/.local/data'
+let xdgStateHome = exists('$XDG_STATE_HOME') ? $XDG_STATE_HOME : $HOME.'/.local/state'
+let xdgCacheHome = exists('$XDG_CACHE_HOME') ? $XDG_CACHE_HOME : $HOME.'/.cache'
 
-lua require('plugins')
+execute 'source' xdgConfigHome.'/nvim/plugin-manager/plug/plugins.vim'
+" execute 'source' xdgConfigHome.'/nvim/lsp.lua'
 
-execute 'source' xdgConfigHome.'/nvim/plugins.vim'
-execute 'source' xdgConfigHome.'/nvim/lsp.lua'
+" lua require('plugins')
 
-colorscheme gruvbox
+silent! colorscheme gruvbox
 set number
 
 " Required for NerdCommenter
@@ -74,9 +74,9 @@ endif
 " TagBar
 nmap <F8> :TagbarToggle<CR>
 
-if !exists("*DoSov")
-	function DoSov() abort
-		source $MYVIMRC
-	endfunction
-endif
-command Sov call DoSov()
+" if !exists("*DoSov")
+" 	function DoSov() abort
+" 		source $MYVIMRC
+" 	endfunction
+" endif
+" command Sov call DoSov()

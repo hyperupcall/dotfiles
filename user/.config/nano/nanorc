@@ -1,6 +1,6 @@
 set autoindent
 set backup
-set backupdir ~/data/nano/backups
+# set backupdir ~/data/nano/backups # TODO
 set breaklonglines
 unset casesensitive
 set historylog
@@ -11,7 +11,7 @@ set positionlog
 unset preserve
 set smooth
 set softwrap
-unset suspendable
+# unset suspendable
 set tabsize 3
 unset tabstospaces
 
@@ -19,11 +19,11 @@ unset tabstospaces
 
 # set not allowed in included file
 # include "~/.config/nano/themes/default.theme.nanorc"
-set titlecolor bold,lightwhite,blue
-set statuscolor bold,lightwhite,green
-set errorcolor bold,lightwhite,red
-set selectedcolor lightwhite,magenta
-set stripecolor ,yellow
-set numbercolor cyan
-set keycolor cyan
-set functioncolor green
+# set titlecolor bold,lightwhite,blue
+# set statuscolor bold,lightwhite,green
+# set errorcolor bold,lightwhite,red
+# set selectedcolor lightwhite,magenta
+# set stripecolor ,yellow
+# set numbercolor cyan
+# set keycolor cyan
+# set functioncolor green

@@ -23,6 +23,10 @@ stty -ixoff # input settings
 stty -ixon
 
 # setterm
+# TODO
+export GNUPGHOME="/storage/data/gnupg"
+export GPG_TTY="$(tty)"
+export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 
 # ----------------------- Sourcing ----------------------- #
 for d in aliases functions; do

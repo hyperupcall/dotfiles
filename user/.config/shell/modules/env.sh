@@ -32,11 +32,6 @@ export FZF_DEFAULT_OPTS="--history \"$XDG_STATE_HOME/history/fzf_history\" --his
 # git
 export GIT_CONFIG_NOSYSTEM=
 
-# gnupg
-export GNUPGHOME="$XDG_DATA_HOME/gnupg"
-export GPG_TTY="$(tty)"
-export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
-
 # guile
 export GUILE_HISTORY="$XDG_STATE_HOME/history/guile_history"
 

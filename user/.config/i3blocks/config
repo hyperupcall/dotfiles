@@ -1,0 +1,19 @@
+[click]
+full_text=Click me!
+command=echo "Got clicked with button $button"
+color=#F79494
+
+# Query my default IP address only on startup
+[ip]
+command=hostname -i | awk '{ print "IP:" $1 }'
+interval=once
+color=#91E78B
+
+[caps-lock]
+command=xset -q | grep Caps | awk '{ print $2, $3, $4 }'
+interval=1
+signal=10
+
+[time]
+command=date +"%b %d, %A %I:%M:%S"
+interval=1
