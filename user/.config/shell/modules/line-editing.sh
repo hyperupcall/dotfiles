@@ -10,10 +10,13 @@ _readline_util_get_line() {
 	REPLY=
 	local line="$1"
 
+	# trim environment variables
+	line="${line##*=* }"
+
 	_readline_util_trim_whitespace "$line"
 	line="$REPLY"
 
-	if [[ ${line:0:4} == "sudo" ]]; then
+	if [ "${line:0:4}" = "sudo" ]; then
 		line="${line:4}"
 	fi
 
@@ -76,15 +79,6 @@ _readline_util_try_show_help() {
 
 _readline_util_try_show_man() {
 	local manual="$1"
-
-	if [[ -v "DEBUG_LINE_EDITING" ]]; then
-		if command man -w "$manual" &>/dev/null; then
-			printf "%s" "$manual"
-			return 0
-		else
-			return 1
-		fi
-	fi
 
 	if command man "$manual" 2>/dev/null; then
 		return
@@ -168,7 +162,7 @@ _readline_util_show_help() {
 	# check if builtin from the getgo
 	_readline_util_get_cmd "$line"
 	cmd="$REPLY"
-	if [[ $(type -t "$cmd") == 'builtin' ]]; then
+	if [ "$(type -t "$cmd")" = 'builtin' ]; then
 		help "$cmd"
 		return
 	fi
@@ -191,6 +185,8 @@ _readline_util_show_help() {
 	done
 }
 
+# TODO: not POSIX (move this and others somewhere else or skip execution if not in Bash, Ksh, Zsh, etc.)
+
 # Get the man page for the currently-edited command on the
 # readline-buffer. It reads aliases and checks for docker, git
 # style man page patterns. This assumes that any errors with
@@ -203,10 +199,10 @@ _readline_util_show_man() {
 	_readline_util_expand_alias "$REPLY"
 	line="$REPLY"
 
-	local -a argList=() flagList=()
+	local -a argList=()
 	for arg in $line; do
 		case "$arg" in
-			-*) flagList+=("$arg") ;;
+			-*) ;;
 			*) argList+=("$arg") ;;
 		esac
 	done
@@ -227,7 +223,6 @@ _readline_util_show_man() {
 	IFS="$oldIFS"
 
 	manual="${line%%-*}"
-	echo v "$manual"
 	if _readline_util_try_show_man "$manual"; then
 		IFS="$oldIFS"
 		return
@@ -243,7 +238,7 @@ _readline_util_show_tldr() {
 	line="$REPLY"
 	_readline_util_get_cmd "$line"
 	cmd="$REPLY"
-	[[ -z $cmd ]] && return
+	[ -z "$cmd" ] && return
 
 	tldr "$cmd"
 }
@@ -252,18 +247,18 @@ _readline_util_toggle_sudo() {
 	local buf="$1"
 	local pos="$2"
 
-	if [[ ${buf:0:4} == 'sudo' ]]; then
+	if [ "${buf:0:4}" = 'sudo' ]; then
 		buf="${buf:5}"
-		pos="$((pos-5))"
-	elif [[ ${buf:0:5} == ' sudo' ]]; then
+		pos=$((pos-5))
+	elif [ "${buf:0:5}" = ' sudo' ]; then
 		buf=" ${buf:6}"
-		pos="$((pos-5))"
-	elif [[ ${buf:0:1} == ' ' ]]; then
+		pos=$((pos-5))
+	elif [ "${buf:0:1}" = ' ' ]; then
 		buf=" sudo$buf"
-		pos="$((pos+5))"
+		pos=$((pos+5))
 	else
 		buf="sudo $buf"
-		pos="$((pos+5))"
+		pos=$((pos+5))
 	fi
 
 	# shellcheck disable=SC2034
@@ -276,12 +271,12 @@ _readline_util_toggle_backslash() {
 	local buf="$1"
 	local pos="$2"
 
-	if [[ ${buf:0:1} == "\\" ]]; then
+	if [ "${buf:0:1}" = "\\" ]; then
 		buf="${buf:1}"
-		pos="$((pos-1))"
+		pos=$((pos-1))
 	else
 		buf="\\$buf"
-		pos="$((pos+1))"
+		pos=$((pos+1))
 	fi
 
 	# shellcheck disable=SC2034
@@ -294,12 +289,12 @@ _readline_util_toggle_comment() {
 	local buf="$1"
 	local pos="$2"
 
-	if [[ ${buf:0:1} == "#" ]]; then
+	if [ "${buf:0:1}" = "#" ]; then
 		buf="${buf:1}"
-		pos="$((pos-1))"
+		pos=$((pos-1))
 	else
 		buf="#$buf"
-		pos="$((pos+1))"
+		pos=$((pos+1))
 	fi
 
 	# shellcheck disable=SC2034

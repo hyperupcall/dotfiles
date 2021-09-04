@@ -6,3 +6,11 @@ user/config/bash/generated/*
 **/fish/completions/
 **/fish/conf.d/
 **/fish/functions/
+tests/data/
+tests/shared/
+tests/mnt/
+
+*.qcow2
+*.iso
+*.raw
+.mkosi*

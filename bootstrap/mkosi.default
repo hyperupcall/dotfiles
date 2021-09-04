@@ -1,0 +1,10 @@
+[Distribution]
+Distribution=arch
+
+[Output]
+Format=gpt_ext4
+OutputDirectory=tests/data/mkosi
+Hostname=dots-bootstrap-test
+Password=password
+Autologin=True
+Bootable=True

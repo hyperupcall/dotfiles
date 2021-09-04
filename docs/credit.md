@@ -1,0 +1,38 @@
+# Credit
+
+Some dotfiles created by other people have either been a source of inspiration or directly copied. The following list is a subset of said dotfile collections
+
+- https://github.com/ps1337/
+- https://github.com/bardisty/gruvbox-rofi
+- https://github.com/ohmyzsh/oh-my-zsh
+- https://github.com/huyng/bashmarks
+- https://github.com/regnarg/urxvt-config-reload
+- https://github.com/bobafetthotmail/refind-theme-regular
+- https://github.com/morhetz/gruvbox-generalized
+- https://github.com/arcticicestudio/nord-xresources
+- https://github.com/arcticicestudio/nord-terminator
+- https://github.com/arcticicestudio/nord-termite
+- https://github.com/dracula/termite
+- https://github.com/joshdick/onedark.vim
+- https://github.com/seebi/dircolors-solarized
+- https://github.com/morhetz/gruvbox
+- https://github.com/GiuseppeCesarano
+- https://github.com/nathanbuchar/atom-one-dark-terminal
+- https://github.com/charlesdaniels/dotfiles
+- https://github.com/crivotz/dot_files
+- https://gist.github.com/mwhite/6887990
+- https://www.durdn.com/blog/2012/11/22/- must-have-git-aliases-advanced-examples/
+- https://github.com/durdn/cfg
+- https://github.com/pipeseroni/pipes.sh
+- https://github.com/pipeseroni/pipesX.sh
+- https://github.com/caarlos0/dotfiles.fish
+- https://github.com/trapd00r/LS_COLORS
+- https://github.com/replaceits/Simple-Lemonbar
+- https://github.com/dikiaap/dotfiles
+- https://github.com/Earnestly/dotfiles
+- https://github.com/LukeSmithxyz/voidrice
+- https://github.com/mark64/dotfiles
+- https://github.com/sainathadapa/i3-wm-config/blob/master/config
+- https://github.com/mrzool/bash-sensible
+- https://github.com/orhun/dotfiles
+- https://github.com/BurntSushi/dotfiles

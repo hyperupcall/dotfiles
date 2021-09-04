@@ -25,8 +25,8 @@ disabled = false
 
 [memory_usage]
 disabled = false
-show_percentage = true
-show_swap = true
+# show_percentage = true TODO
+# show_swap = true TODO
 threshold = 30
 style = "bold dimmed green"
 
@@ -37,7 +37,7 @@ disabled = false
 disabled = false
 
 [time]
-disable = false
+disabled = false
 
 [custom.show_shell]
 command = "show_shell"

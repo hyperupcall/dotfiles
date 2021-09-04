@@ -34,7 +34,7 @@ cdp() {
 	done
 
 	# shellcheck disable=SC2164
-	cd "$_shell_cdp_current_dir"
+	cd -- "$_shell_cdp_current_dir"
 }
 
 dataurl() {
@@ -142,7 +142,7 @@ qe() {
 	filterList="BraveSoftware code tetrio-desktop obsidian discord sublime-text Ryujinx unity3d hmcl hdlauncher TabNine zettlr Zettlr Google lunarclient libreoffice VirtualBox configstore pulse obs-studio eDEX-UI 1Password kde.org sublime-text-3 gdlauncher gdlauncher_next launcher-main gitify QtProject GIMP r2modman r2modmanPlus-local Code plover GitKraken Electron"
 
 	_qe_file="$(
-		cd "$XDG_CONFIG_HOME" || { _shell_util_log_error "qe: Could not cd"; exit 1; }
+		cd -- "$XDG_CONFIG_HOME" || { _shell_util_log_error "qe: Could not cd"; exit 1; }
 		filterArgs=
 		for file in $filterList; do
 			filterArgs="$filterArgs -o -name $file"
@@ -168,7 +168,7 @@ qe() {
 }
 
 quickedit() (
-	cd "$1" || { _p_die "Could not cd to '$1'"; return; }
+	cd -- "$1" || { _p_die "Could not cd to '$1'"; return; }
 	v .
 )
 

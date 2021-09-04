@@ -4,16 +4,14 @@
 # Bash, and Zsh
 
 _path_prepend() {
-	[ -n "$2" ] && {
-		# [ -d "$2" ] || return
+	if [ -n "$2" ]; then
 		case ":$(eval "echo \$$1"):" in
 			*":$2:"*) :;;
 			*) eval "export $1=$2\${$1:+\":\$$1\"}" ;;
 		esac
 		return
-	}
+	fi
 
-	# [ -d "$1" ] || return
 	case ":$PATH:" in
 		*":$1:"*) :;;
 		*) export PATH="$1${PATH:+":$PATH"}"
@@ -21,16 +19,14 @@ _path_prepend() {
 }
 
 _path_append() {
-	[ -n "$2" ] && {
-		# [ -d "$2" ] || return
+	if [ -n "$2" ]; then
 		case ":$(eval "echo \$$1"):" in
 			*":$2:"*) :;;
 			*) eval "export $1=\${$1:+\"\$$1:\"}$2" ;;
 		esac
 		return
-	}
+	fi
 
-	# [ -d "$1" ] || return
 	case ":$PATH:" in
 		*":$1:"*) :;;
 		*) export PATH="${PATH:+"$PATH:"}$1"

@@ -226,6 +226,9 @@ alias mvn='mvn -gs "$XDG_CONFIG_HOME/maven/settings.xml"'
 # maxima
 export MAXIMA_USERDIR="$XDG_CONFIG_HOME/maxima"
 
+#
+export MBSYNC_CONFIG="$XDG_CONFIG_HOME/mbsync/config"
+
 # mednafen
 export MEDNAFEN_HOME="$XDG_CONFIG_HOME/mednafen"
 
@@ -332,6 +335,7 @@ export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
 
 # pylint
 export PYLINTHOME="$XDG_CACHE_HOME/pylint"
+export PYLINTRC="$XDG_CONFIG_HOME/pylint/config"
 
 # python
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc.py" # https://github.com/python/cpython/pull/13208
@@ -368,7 +372,8 @@ export RUBY_BUILD_CACHE_PATH="$XDG_CACHE_HOME/ruby-build"
 
 # rvm
 _path_prepend "$XDG_DATA_HOME/rvm/bin"
-[ -r "$XDG_DATA_HOME/rvm/scripts/rvm" ] && . "$XDG_DATA_HOME/rvm/scripts/rvm"
+# TODO
+[ -r "$XDG_DATA_HOME/rvm/scripts/rvm" ] && safe_source "$XDG_DATA_HOME/rvm/scripts/rvm"
 
 # sage
 export DOT_SAGE="$XDG_CONFIG_HOME/sage"
@@ -462,7 +467,7 @@ export WAKATIME_HOME="$XDG_DATA_HOME/wakatime"
 
 # wasmer
 export WASMER_DIR="$XDG_DATA_HOME/wasmer"
-# [ -r "$WASMER_DIR/wasmer.sh" ] && . "$WASMER_DIR/wasmer.sh"
+# [ -r "$WASMER_DIR/wasmer.sh" ] && source_safe "$WASMER_DIR/wasmer.sh"
 
 # wasmtime
 export WASMTIME_HOME="$XDG_DATA_HOME/wasmtime"
@@ -480,9 +485,9 @@ export MATHEMATICA_BASE="/usr/share/mathematica"
 export MATHEMATICA_USERBASE="$XDG_DATA_HOME/mathematica"
 
 # X11
-export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
-export XCOMPOSEFILE="$XDG_CONFIG_HOME/X11/Xcompose"
-export XCOMPOSECACHE="$XDG_CACHE_HOME/X11/Xcompose"
+#export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
+#export XCOMPOSEFILE="$XDG_CONFIG_HOME/X11/Xcompose"
+#export XCOMPOSECACHE="$XDG_CACHE_HOME/X11/Xcompose"
 
 # xsel
 alias xsel='xsel -l "$XDG_DATA_HOME/xsel/xsel.log'

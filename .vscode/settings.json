@@ -20,5 +20,6 @@
 	},
 	"files.watcherExclude": {
 		"**/target": true
-	}
+	},
+	"restructuredtext.confPath": ""
 }

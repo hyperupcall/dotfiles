@@ -2,7 +2,7 @@
 set -ETeo pipefail
 
 if [ -f ~/.dots/xdg.sh ]; then
-	source ~/.dots/xdg.sh
+	source ~/.dots/xdg.sh --export-vars
 else
 	printf '%s\n' "Error: ~/.dots/xdg.sh not found. Exiting"
 	exit 1
@@ -14,7 +14,6 @@ declare -ra dotfiles=(
 	home:".config/wtf" # TODO
 	home:".cpan/CPAN/MyConfig.pm"
 	home:".hushlogin"
-	home:".pam_environment"
 	home:".yarnrc"
 	cfg:"aerc/aerc.conf"
 	cfg:"aerc/binds.conf"
@@ -31,7 +30,6 @@ declare -ra dotfiles=(
 	cfg:"broot"
 	cfg:"cabal/config"
 	cfg:"cactus"
-	cfg:"calcurse"
 	cfg:"cargo"
 	cfg:"cava"
 	cfg:"ccache"
@@ -78,8 +76,10 @@ declare -ra dotfiles=(
 	cfg:"liquidprompt"
 	cfg:"llpp.conf"
 	cfg:"ly"
+	cfg:"maco"
 	cfg:"maven"
 	cfg:"micro"
+	cfg:"mimeapps.list"
 	cfg:"mnemosyne/config.py"
 	cfg:"most"
 	cfg:"mpd"
@@ -89,8 +89,10 @@ declare -ra dotfiles=(
 	cfg:"nb"
 	cfg:"ncpamixer.conf"
 	cfg:"neofetch"
+	# cfg:"neomutt"
 	cfg:"nimble"
 	cfg:"nitrogen"
+	cfg:"notmuch"
 	cfg:"npm"
 	cfg:"nu"
 	cfg:"nvchecker"
@@ -103,6 +105,7 @@ declare -ra dotfiles=(
 	cfg:"pamix.conf"
 	cfg:"paru"
 	cfg:"pavucontrol.ini"
+	cfg:"pgcli"
 	cfg:"picom"
 	cfg:"pijul"
 	cfg:"please"
@@ -111,12 +114,14 @@ declare -ra dotfiles=(
 	cfg:"pudb"
 	cfg:"pulse/client.conf"
 	cfg:"pulsemixer.cfg"
+	cfg:"pylint"
 	cfg:"pypoetry"
 	cfg:"python"
 	cfg:"quark"
 	cfg:"ranger"
 	cfg:"readline"
 	cfg:"redshift"
+	cfg:"repoctl"
 	cfg:"ripgrep"
 	cfg:"rofi"
 	cfg:"rtorrent"
@@ -127,6 +132,7 @@ declare -ra dotfiles=(
 	cfg:"sticker-selector"
 	cfg:"sx"
 	cfg:"sxhkd"
+	cfg:"swaylock"
 	cfg:"systemd"
 	cfg:"taffybar"
 	cfg:"taskwarrior"
@@ -138,6 +144,8 @@ declare -ra dotfiles=(
 	cfg:"toast"
 	cfg:"todotxt"
 	cfg:"twmn"
+	cfg:"udiskie"
+	cfg:"urlwatch"
 	cfg:"urxvt"
 	cfg:"user-dirs.dirs"
 	cfg:"viewnior"
@@ -146,14 +154,18 @@ declare -ra dotfiles=(
 	cfg:"wtf"
 	cfg:"xbindkeys"
 	cfg:"X11"
+	cfg:"xkb"
 	cfg:"xmobar"
 	cfg:"xob"
+	cfg:"xplr"
 	cfg:"yay"
 	cfg:"youtube-dl"
 	cfg:"zsh"
-	data:"gnupg/gpg.conf"
 	data:"gnupg/dirmngr.conf"
-	data:"applications/Calcurse.desktop"
+	data:"gnupg/gpg.conf"
+	data:"gnupg/gpg-agent.conf"
+	data:"applications/calcurse.desktop"
+	data:"applications/kakoune.desktop"
 	data:"sdkman/etc/config"
 )
 
@@ -162,11 +174,6 @@ src_home="$HOME/.dots/user"
 src_cfg="$HOME/.dots/user/.config"
 src_state="$HOME/.dota/user/.local/state"
 src_data="$HOME/.dots/user/.local/share"
-
-dest_home="$HOME"
-dest_cfg="$XDG_CONFIG_HOME"
-dest_state="$XDG_STATE_HOME"
-dest_data="$XDG_DATA_HOME"
 
 for dotfile in "${dotfiles[@]}"; do
 	prefix="${dotfile%%:*}"
@@ -178,13 +185,13 @@ for dotfile in "${dotfiles[@]}"; do
 	;; esac
 
 	if [ "$prefix" = home ]; then
-		printf '%s\n' "symlink:$src_home/$file:$dest_home/$file"
+		printf '%s\n' "symlink:$src_home/$file:$HOME/$file"
 	elif [ "$prefix" = cfg ]; then
-		printf '%s\n' "symlink:$src_cfg/$file:$dest_cfg/$file"
+		printf '%s\n' "symlink:$src_cfg/$file:$XDG_CONFIG_HOME/$file"
 	elif [ "$prefix" = state ]; then
-		printf '%s\n' "symlink:$src_state/$file:$dest_state/$file"
+		printf '%s\n' "symlink:$src_state/$file:$XDG_STATE_HOME/$file"
 	elif [ "$prefix" = data ]; then
-		printf '%s\n' "symlink:$src_data/$file:$dest_data/$file"
+		printf '%s\n' "symlink:$src_data/$file:$XDG_DATA_HOME/$file"
 	else
 		printf '%s\n' "Error: Prefix '$prefix' not supported (for file '$file'). Exiting"
 		exit 1
@@ -213,3 +220,24 @@ symlink:$storage_prefix/mozilla:$HOME/.mozilla
 symlink:$storage_prefix/password-store:$XDG_DATA_HOME/password-store
 symlink:$storage_prefix/ssh:$HOME/.ssh
 EOF
+
+# Custom
+source ~/.dots/xdg.sh --set-type
+if [ "$REPLY" = default ]; then
+	cat <<-EOF
+	symlink:$src_home/.pam_environment/xdg-default.conf:$HOME/.pam_environment
+	EOF
+elif [ "$REPLY" = custom ]; then
+	cat <<-EOF
+	symlink:$src_home/.pam_environment/xdg-custom.conf:$HOME/.pam_environment
+	EOF
+fi
+
+if [ -d ~/.gnupg ]; then
+	cat <<-EOF
+
+	symlink:$XDG_DATA_HOME/gnupg/dirmngr.conf:$HOME/.gnupg/dirmngr.conf
+	symlink:$XDG_DATA_HOME/gnupg/gpg.conf:$HOME/.gnupg/gpg.conf
+	symlink:$XDG_DATA_HOME/gnupg/gpg-agent.conf:$HOME/.gnupg/gpg-agent.conf
+	EOF
+fi

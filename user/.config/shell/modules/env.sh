@@ -44,7 +44,7 @@ export LESS="-FRQ"
 # export LESS="-FIRX" LESS="-M -I -R"
 export LESS_ADVANCED_PREPROCESSOR=1 # lesspipe.sh
 export LESSKEY="$XDG_CONFIG_HOME/less_keys"
-export LESSOPEN="|$(command -v lesspipe.sh) %s | $(command -v source-highlight-esc.sh)"
+export LESSOPEN="|$(command -v lesspipe.sh) %s | $(command -v source-highlight-esc.sh)" # TODO
 export LESSHISTFILE="$XDG_STATE_HOME/history/less_history"
 export LESSHISTSIZE="32768"
 export LESS_TERMCAP_mb="$(printf '\e[1;31m')" # start blink
@@ -57,7 +57,7 @@ export LESS_TERMCAP_ue="$(printf '\e[0m')" # end underline
 export LESS_TERMCAP_us="$(printf '\e[1;32m')" # start underline
 
 # man
-export MAN_POSIXLY_CORRECT= # openSUSE
+export MAN_POSIXLY_CORRECT= # openSUSE # TODO
 
 # more
 export MORE="-l"

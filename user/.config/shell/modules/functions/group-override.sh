@@ -119,7 +119,8 @@ ping() {
 	fi
 }
 
-_stty_saved_settings="$(stty -g)"
+# TODO
+#_stty_saved_settings="$(stty -g)"
 stty() {
 	if [ $# -eq 1 ] && [ "$1" = "sane" ]; then
 		# 'stty sane' resets our modifications to behaviors of tty device

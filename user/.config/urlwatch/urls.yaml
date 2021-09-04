@@ -1,0 +1,7 @@
+---
+name: "grub-btrfs"
+url: "https://github.com/Antynea/grub-btrfs/releases/latest"
+filter:
+  - css: ".release-header>div>div>a"
+  - html2text
+max_tries: 30

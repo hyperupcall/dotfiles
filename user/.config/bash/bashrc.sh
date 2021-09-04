@@ -18,15 +18,15 @@
 # ─── FRAMEWORKS ─────────────────────────────────────────────────────────────────
 #
 
-# source "$XDG_CONFIG_HOME/bash/frameworks/oh-my-bash.sh"
-# source "$XDG_CONFIG_HOME/bash/frameworks/bash-it.sh"
+# source_safe "$XDG_CONFIG_HOME/bash/frameworks/oh-my-bash.sh"
+# source_safe "$XDG_CONFIG_HOME/bash/frameworks/bash-it.sh"
 
 
 #
 # ─── SHELL VARIABLES ────────────────────────────────────────────────────────────
 #
 
-# exported so virtual environments inherit the new values
+# exported so nested shells, virtual environments, etc. inherit the new values
 
 # export CDPATH=":~:"
 # export CHILD_MAX="256"
@@ -74,7 +74,7 @@ shopt -s nocaseglob
 shopt -s nocasematch
 shopt -u nullglob # setting obtains unexpected parameter expansion behavior
 shopt -s progcomp
-((${BASH_VERSION%%.*} == 5)) && shopt -s progcomp_alias # not working due to complete -D
+((${BASH_VERSION[0]%%.*} == 5)) && shopt -s progcomp_alias # not working due to complete -D
 shopt -s shift_verbose
 shopt -s sourcepath
 shopt -u xpg_echo
@@ -105,13 +105,20 @@ is16MillionColors() {
 	[ "$COLORTERM" = "truecolor" ] || [ "$COLORTERM" = "24bit" ]
 }
 
+source_safe "$XDG_CONFIG_HOME/shell/generated/aggregated.bash"
 
 if is16MillionColors; then
 	if ((EUID == 0)); then
 		PS1="\[\e[38;2;201;42;42m\][\u@\h \w]\[\e[0m\]\$ "
 	else
 		# shellcheck disable=SC3046
-		if ! eval "$(choose launch prompt-bash)"; then
+		if ! eval "$(
+			if ! choose launch shell-prompt-bash; then
+				# Without this, the error doesn't propagate to
+				# the "if ! eval ..."
+				printf '%s\n' 'false'
+			fi
+		)"; then
 			PS1="[\[\e[0;31m\](PS1 Error)\[\e[0m\] \u@\h \w]\$ "
 		fi
 	fi
@@ -134,11 +141,11 @@ unset -f is8Colors is256Colors is16MillionColors
 # bash_completion (also sources $XDG_CONFIG_HOME/bash/bash_completions (as per env variable))
 # even though we `source /etc/profile` at beginnning of script, this is still needed since we now
 # only have BASH_COMPLETION_USER_DIR and BASH_COMPLETION_USER_FILE set
-[ -r /usr/share/bash-completion/bash_completion ] && source /usr/share/bash-completion/bash_completion
+[ -r /usr/share/bash-completion/bash_completion ] && source_safe /usr/share/bash-completion/bash_completion
 
 # bash-preexec
 if command -v bpm &>/dev/null; then
-	bpm-load --global 'rcaloras/bash-preexec' 'bash-preexec.sh'
+	bpm-load -g 'rcaloras/bash-preexec' 'bash-preexec.sh'
 
 	# after command is read, before command execution
 	preexec() {
@@ -153,10 +160,9 @@ if command -v bpm &>/dev/null; then
 	}
 fi
 
-source "$XDG_CONFIG_HOME/shell/generated/aggregated.bash"
-source "$XDG_CONFIG_HOME/shell/modules/line-editing.sh"
-source "$XDG_CONFIG_HOME/bash/modules/readline.sh"
-source "$XDG_CONFIG_HOME/bash/modules/util.sh"
+source_safe "$XDG_CONFIG_HOME/shell/modules/line-editing.sh"
+source_safe "$XDG_CONFIG_HOME/bash/modules/readline.sh"
+source_safe "$XDG_CONFIG_HOME/bash/modules/util.sh"
 
 
 # -----
