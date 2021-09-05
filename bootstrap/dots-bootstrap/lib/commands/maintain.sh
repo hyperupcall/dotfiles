@@ -134,22 +134,6 @@ must_dir "$XDG_DATA_HOME/sonarlint" # $SONARLINT_USER_HOME
 must_file "$XDG_CONFIG_HOME/yarn/config"
 must_file "$XDG_DATA_HOME/tig/history"
 
-# automatically set up links (not covered by dotty since it is a data file)
-must_link /storage/edwin/Dls ~/Dls
-must_link /storage/edwin/Docs ~/Docs
-must_link /storage/edwin/Music ~/Music
-must_link /storage/edwin/Pics ~/Pics
-must_link /storage/edwin/Vids ~/Vids
-must_link "$XDG_DATA_HOME/tig/history" "$XDG_STATE_HOME/history/tig_history" # TODO
-must_link ~/Docs/Programming/repos ~/repos
-must_link ~/Docs/Programming/projects ~/projects
-must_link ~/Docs/Programming/workspaces ~/workspaces
-must_link /storage/data/BraveSoftware "$XDG_CONFIG_HOME/BraveSoftware"
-must_link /storage/data/calcurse "$XDG_DATA_HOME/calcurse"
-must_link /storage/data/fonts "$XDG_DATA_HOME/fonts"
-must_link /storage/data/mozilla "$HOME/.mozilla"
-must_link /storage/data/ssh "$HOME/.ssh"
-must_link /storage/vault/rodinia/Steam "$XDG_DATA_HOME/Steam"
 
 # vscode save extensions
 exts="$(code --list-extensions)"

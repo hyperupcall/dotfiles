@@ -1,6 +1,6 @@
-# Credit
+# Attribution
 
-Some dotfiles created by other people have either been a source of inspiration or directly copied. The following list is a subset of said dotfile collections
+My dotfiles have used parts of or have been inspired by at least the following repositories / pages
 
 - https://github.com/ps1337/
 - https://github.com/bardisty/gruvbox-rofi

@@ -23,17 +23,6 @@ for file in ~/.bash_login ~/.bash_logout ~/.bash_profile ~/.bashrc ~/.profile; d
 	fi
 done
 
-# Install ~/.dots
-if [ ! -d ~/.dots ]; then
-	log_info 'Cloning gh:hyperupcall/dots'
-	ensure git clone --quiet https://github.com/hyperupcall/dots ~/.dots
-	ensure cd ~/.dots
-	ensure git config --local filter.npmrc-clean.clean "$(pwd)/user/config/npm/npmrc-clean.sh"
-	ensure git config --local filter.slack-term-config-clean.clean "$(pwd)/user/config/slack-term/slack-term-config-clean.sh"
-	ensure git config --local filter.oscrc-clean.clean "$(pwd)/user/config/osc/oscrc-clean.sh"
-	ensure cd ~
-fi
-
 # Download Nim (in case dotty doesn't work, it may need to be recompiled)
 if [ ! -d ~/.bootstrap/nim-all/nim ]; then
 	log_info 'Downloading Nim'
@@ -41,13 +30,13 @@ if [ ! -d ~/.bootstrap/nim-all/nim ]; then
 	ensure rm -rf ~/.bootstrap/nim-all/nim-1.4.8
 	ensure cd ~/.bootstrap/nim-all
 	ensure tar xf nim-1.4.8-linux_x64.tar.xz
-	ensure cd ~
+	ensure cd
 	ensure ln -sTf ~/.bootstrap/nim-all/nim-1.4.8 ~/.bootstrap/nim-all/nim
 fi
 
 if [ ! -d ~/.bootstrap/dotty ]; then
-	log_info 'Cloning gh:hyperupcall/dotty'
-	ensure git clone --quiet https://github.com/hyperupcall/dots ~/.bootstrap/dotty
+	log_info 'Cloning github.com/hyperupcall/dotty'
+	ensure git clone --quiet https://github.com/hyperupcall/dotty ~/.bootstrap/dotty
 fi
 
 # Download Dotty
@@ -76,8 +65,8 @@ if [ ! -d "$XDG_DATA_HOME/bpm/source" ]; then
 	ensure curl -LsSo bpm.tar.gz "$bpm_download_url"
 	ensure tar xf bpm.tar.gz
 	ensure mkdir -p "$XDG_DATA_HOME/bpm"
-	mv hyperupcall-bpm-* "$XDG_DATA_HOME/bpm/source"
-	cd ~
+	ensure mv hyperupcall-bpm-* "$XDG_DATA_HOME/bpm/source"
+	cd
 fi
 
 eval "$("$XDG_DATA_HOME/bpm/source/pkg/bin/bpm" init sh)"
@@ -91,8 +80,7 @@ EOF
 
 cat <<-"EOF"
 ---
-bootstrap.sh finished. Next steps
-
 source ~/.bootstrap/profile-bootstrap.sh
 dotty --config-dir="$HOME/.dots/user/.config/dotty" --deployment=all.sh reconcile
+---
 EOF

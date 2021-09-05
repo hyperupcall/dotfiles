@@ -12,6 +12,8 @@ ensure() {
 	fi
 }
 
+mkdir -p ~/.bootstrap
+
 if ! command -v sudo >/dev/null 2>&1; then
 	die "Sudo not installed"
 fi
@@ -52,10 +54,15 @@ if ! command -v nvim >/dev/null 2>&1; then
 	fi
 fi
 
-# Install ~/.dots-bootstrap (temporarily)
-ensure mkdir -p ~/.bootstrap
-if [ ! -d ~/.bootstrap/dots-bootstrap ]; then
-	ensure git clone --quiet https://github.com/hyperupcall/dots-bootstrap ~/.bootstrap/dots-bootstrap
+# Install ~/.dots
+ensure mkdir -p ~/.dots
+if [ ! -d ~/.dots ]; then
+	ensure git clone --quiet https://github.com/hyperupcall/dots ~/.dots
+	ensure cd ~/.dots
+	ensure git config --local filter.npmrc-clean.clean "$(pwd)/user/config/npm/npmrc-clean.sh"
+	ensure git config --local filter.slack-term-config-clean.clean "$(pwd)/user/config/slack-term/slack-term-config-clean.sh"
+	ensure git config --local filter.oscrc-clean.clean "$(pwd)/user/config/osc/oscrc-clean.sh"
+	ensure cd
 fi
 
 
@@ -85,7 +92,7 @@ export NAME="Edwin Kofler"
 export EMAIL="edwin@kofler.dev"
 export EDITOR="$EDITOR"
 export VISUAL="\$EDITOR"
-export PATH="\$HOME/.bootstrap/dots-bootstrap/pkg/bin:\$PATH"
+export PATH="\$HOME/.dots/bootstrap/dots-bootstrap/bin:\$PATH"
 
 if [ -f ~/.dots/xdg.sh ]; then
   . ~/.dots/xdg.sh
@@ -97,8 +104,7 @@ EOF
 
 cat <<-"EOF"
 ---
-pre-bootstrap.sh finished. Next steps:
-
 . ~/.bootstrap/profile-pre-bootstrap.sh
 dots-bootstrap bootstrap
+---
 EOF

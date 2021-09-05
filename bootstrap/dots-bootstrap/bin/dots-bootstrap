@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 set -eo pipefail
 
-source "$PROGRAM_LIB_DIR/util.sh"
+ROOT_DIR="$HOME/.dots/bootstrap/dots-bootstrap"
+
+source "$ROOT_DIR/lib/util.sh"
 
 trap sigint INT
 sigint() {
@@ -22,15 +24,15 @@ esac done
 case "$1" in
 bootstrap)
 	shift
-	source "$PROGRAM_LIB_DIR/commands/bootstrap.sh"
+	source "$ROOT_DIR/lib/commands/bootstrap.sh"
 	;;
 module)
 	shift
-	source "$PROGRAM_LIB_DIR/commands/module.sh"
+	source "$ROOT_DIR/lib/commands/module.sh"
 	;;
 maintain)
 	shift
-	source "$PROGRAM_LIB_DIR/commands/maintain.sh"
+	source "$ROOT_DIR/lib/commands/maintain.sh"
 	;;
 *)
 	log_error "No matching subcommand found"
