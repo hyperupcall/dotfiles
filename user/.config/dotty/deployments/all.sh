@@ -210,6 +210,7 @@ EOF
 
 # Perform symlinking to external storage
 storage_prefix="/storage/data"
+storage_bridge_prefix="/storage/ur"
 
 cat <<-EOF
 
@@ -217,7 +218,7 @@ symlink:$storage_prefix/BraveSoftware:$XDG_CONFIG_HOME/BraveSoftware
 symlink:$storage_prefix/calcurse:$XDG_CONFIG_HOME/calcurse
 symlink:$storage_prefix/fonts:$XDG_CONFIG_HOME/fonts
 symlink:$storage_prefix/mozilla:$HOME/.mozilla
-symlink:$storage_prefix/password-store:$XDG_DATA_HOME/password-store
+symlink:$storage_bridge_prefix/password-store:$XDG_DATA_HOME/password-store
 symlink:$storage_prefix/ssh:$HOME/.ssh
 EOF
 

@@ -23,7 +23,7 @@ for file in ~/.bash_login ~/.bash_logout ~/.bash_profile ~/.bashrc ~/.profile; d
 	fi
 done
 
-# Download Nim (in case dotty doesn't work, it may need to be recompiled)
+# Download Nim (in case dotfox doesn't work, it may need to be recompiled)
 if [ ! -d ~/.bootstrap/nim-all/nim ]; then
 	log_info 'Downloading Nim'
 	ensure curl -LSso ~/.bootstrap/nim-all/nim-1.4.8-linux_x64.tar.xz https://nim-lang.org/download/nim-1.4.8-linux_x64.tar.xz
@@ -34,39 +34,37 @@ if [ ! -d ~/.bootstrap/nim-all/nim ]; then
 	ensure ln -sTf ~/.bootstrap/nim-all/nim-1.4.8 ~/.bootstrap/nim-all/nim
 fi
 
-if [ ! -d ~/.bootstrap/dotty ]; then
-	log_info 'Cloning github.com/hyperupcall/dotty'
-	ensure git clone --quiet https://github.com/hyperupcall/dotty ~/.bootstrap/dotty
+if [ ! -d ~/.bootstrap/dotfox ]; then
+	log_info 'Cloning github.com/hyperupcall/dotfox'
+	ensure git clone --quiet https://github.com/hyperupcall/dotfox ~/.bootstrap/dotfox
 fi
 
-# Download Dotty
-if [ ! -f ~/.bootstrap/bin/dotty ]; then
-	log_info 'Downloading Dotty'
-	if ! dotty_download_url="$(
-		curl -LSs https://api.github.com/repos/hyperupcall/dotty/releases/latest \
+# Download Dotfox
+if [ ! -f ~/.bootstrap/bin/dotfox ]; then
+	log_info 'Downloading Dotfox'
+	if ! dotfox_download_url="$(
+		curl -LfSs https://api.github.com/repos/hyperupcall/dotfox/releases/latest \
 			| jq -r '.assets[0].browser_download_url'
 	)"; then
-		die "Could not fetch the dotty download URL"
+		die "Could not fetch the dotfox download URL"
 	fi
-	ensure curl -LsSo ~/.bootstrap/bin/dotty "$dotty_download_url"
-	ensure chmod +x ~/.bootstrap/bin/dotty
+	ensure curl -LsSo ~/.bootstrap/bin/dotfox "$dotfox_download_url"
+	ensure chmod +x ~/.bootstrap/bin/dotfox
+fi
+
+# Install Homebrew
+if [ "$OSTYPE" = Darwin ]; then
+	ensure curl -LsSo ~/.bootstrap/brew-install.sh https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+	ensure chmod +x ~/.bootstrap/brew-install.sh
+	~/.bootstrap/brew-install.sh
 fi
 
 # Download bpm
 if [ ! -d "$XDG_DATA_HOME/bpm/source" ]; then
 	log_info 'Downloading bpm'
-	if ! bpm_download_url="$(
-		curl -LSs https://api.github.com/repos/hyperupcall/bpm/releases/latest \
-			| jq -r '.tarball_url'
-	)"; then
-		die "Could not fetch the bpm download URL"
-	fi
-	cd ~/.bootstrap
-	ensure curl -LsSo bpm.tar.gz "$bpm_download_url"
-	ensure tar xf bpm.tar.gz
-	ensure mkdir -p "$XDG_DATA_HOME/bpm"
-	ensure mv hyperupcall-bpm-* "$XDG_DATA_HOME/bpm/source"
-	cd
+	ensure git clone --quiet https://github.com/hyperupcall/bpm "$XDG_DATA_HOME/bpm/source"
+	ensure git -C "$XDG_DATA_HOME/bpm/source" submodule init
+	ensure git -C "$XDG_DATA_HOME/bpm/source" submodule update
 fi
 
 eval "$("$XDG_DATA_HOME/bpm/source/pkg/bin/bpm" init sh)"
@@ -81,6 +79,6 @@ EOF
 cat <<-"EOF"
 ---
 source ~/.bootstrap/profile-bootstrap.sh
-dotty --config-dir="$HOME/.dots/user/.config/dotty" --deployment=all.sh reconcile
+dotty --config-dir="$HOME/.dots/user/.config/dotty" --deployment=all.sh deploy
 ---
 EOF

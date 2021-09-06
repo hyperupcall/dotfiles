@@ -42,6 +42,9 @@ SDIRS="$XDG_DATA_HOME/bashmarks.sh.db"
 # boto
 export BOTO_CONFIG="$XDG_DATA_HOME/boto"
 
+# brew
+export HOMEBREW_NO_ANALYTICS=1
+
 # bundle
 export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME/bundle"
 export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle"

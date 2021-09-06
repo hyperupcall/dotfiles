@@ -12,6 +12,8 @@ ensure() {
 	fi
 }
 
+# Ensure prerequisites
+
 mkdir -p ~/.bootstrap
 
 if ! command -v sudo >/dev/null 2>&1; then
