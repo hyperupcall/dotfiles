@@ -15,7 +15,7 @@
 /home/edwin/music/Alan Walker - Spectre.mp3
 /home/edwin/music/Apashe - Black Gold.mp3
 /home/edwin/music/Audiotricz - Inception.mp3
-/home/edwin/music/Coone & Jim Ferren - 150 BPM.mp3
+/home/edwin/music/Coone & Jim Ferren - 150 basalt.mp3
 /home/edwin/music/Darude - Sandstorm.mp3
 /home/edwin/music/Deaf Kev - Invincible (ncr).mp3
 /home/edwin/music/Desmeon - Hellcat (ncr).mp3

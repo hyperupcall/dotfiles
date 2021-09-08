@@ -28,7 +28,7 @@ SETUVAR fish_color_selection:white\x1e\x2d\x2dbold\x1e\x2d\x2dbackground\x3dbrbl
 SETUVAR fish_color_status:red
 SETUVAR fish_color_user:brgreen
 SETUVAR fish_color_valid_path:\x2d\x2dunderline
-SETUVAR fish_complete_path:/home/edwin/data/bpm/cellar/completions/fish\x1e/home/edwin/config/fish/completions\x1e/etc/fish/completions\x1e/usr/share/fish/vendor_completions\x2ed\x1e/usr/share/fish/completions\x1e/home/edwin/data/fish/generated_completions
+SETUVAR fish_complete_path:/home/edwin/data/basalt/cellar/completions/fish\x1e/home/edwin/config/fish/completions\x1e/etc/fish/completions\x1e/usr/share/fish/vendor_completions\x2ed\x1e/usr/share/fish/completions\x1e/home/edwin/data/fish/generated_completions
 SETUVAR fish_greeting:
 SETUVAR fish_key_bindings:fish_default_key_bindings
 SETUVAR fish_pager_color_completion:\x1d

@@ -8,6 +8,9 @@ else
 	exit 1
 fi
 
+# TODO:
+# mkdir:"$XDG_CONFIG_HOME/yarn"
+# touch:"$XDG_CONFIG_HOME/yyarn/config"
 declare -ra dotfiles=(
 	home:".alsoftrc"
 	home:".config/conky" # TODO

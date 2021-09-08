@@ -144,8 +144,8 @@ unset -f is8Colors is256Colors is16MillionColors
 [ -r /usr/share/bash-completion/bash_completion ] && source_safe /usr/share/bash-completion/bash_completion
 
 # bash-preexec
-if command -v bpm &>/dev/null; then
-	bpm-load -g 'rcaloras/bash-preexec' 'bash-preexec.sh'
+if command -v basalt &>/dev/null; then
+	basalt-load -g 'rcaloras/bash-preexec' 'bash-preexec.sh'
 
 	# after command is read, before command execution
 	preexec() {

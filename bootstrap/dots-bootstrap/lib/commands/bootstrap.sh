@@ -59,21 +59,21 @@ if [ "$OSTYPE" = Darwin ]; then
 	~/.bootstrap/brew-install.sh
 fi
 
-# Download bpm
-if [ ! -d "$XDG_DATA_HOME/bpm/source" ]; then
-	log_info 'Downloading bpm'
-	ensure git clone --quiet https://github.com/hyperupcall/bpm "$XDG_DATA_HOME/bpm/source"
-	ensure git -C "$XDG_DATA_HOME/bpm/source" submodule init
-	ensure git -C "$XDG_DATA_HOME/bpm/source" submodule update
+# Download basalt
+if [ ! -d "$XDG_DATA_HOME/basalt/source" ]; then
+	log_info 'Downloading basalt'
+	ensure git clone --quiet https://github.com/hyperupcall/basalt "$XDG_DATA_HOME/basalt/source"
+	ensure git -C "$XDG_DATA_HOME/basalt/source" submodule init
+	ensure git -C "$XDG_DATA_HOME/basalt/source" submodule update
 fi
 
-eval "$("$XDG_DATA_HOME/bpm/source/pkg/bin/bpm" init sh)"
-"$XDG_DATA_HOME/bpm/source/pkg/bin/bpm" --global add hyperupcall/dots-bootstrap
+eval "$("$XDG_DATA_HOME/basalt/source/pkg/bin/basalt" init sh)"
+"$XDG_DATA_HOME/basalt/source/pkg/bin/basalt" --global add hyperupcall/dots-bootstrap
 
 cat > ~/.bootstrap/profile-bootstrap.sh <<-"EOF"
 	. ~/.bootstrap/profile-pre-bootstrap.sh
-	export PATH="$HOME/.bootstrap/bin:$XDG_DATA_HOME/bpm/source/pkg/bin:$HOME/.bootstrap/nim-all/nim/bin:$PATH"
-	eval "$("$XDG_DATA_HOME/bpm/source/pkg/bin/bpm" init sh)"
+	export PATH="$HOME/.bootstrap/bin:$XDG_DATA_HOME/basalt/source/pkg/bin:$HOME/.bootstrap/nim-all/nim/bin:$PATH"
+	eval "$("$XDG_DATA_HOME/basalt/source/pkg/bin/basalt" init sh)"
 EOF
 
 cat <<-"EOF"

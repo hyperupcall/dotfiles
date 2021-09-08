@@ -1,13 +1,13 @@
-# bpm.bash
-if [ -d "${XDG_DATA_HOME:-$HOME/.local/share}/bpm/source/pkg/bin" ]; then
-	_path_prepend "${XDG_DATA_HOME:-$HOME/.local/share}/bpm/source/pkg/bin"
-	eval "$(bpm init bash)"
+# basalt.bash
+if [ -d "${XDG_DATA_HOME:-$HOME/.local/share}/basalt/source/pkg/bin" ]; then
+	_path_prepend "${XDG_DATA_HOME:-$HOME/.local/share}/basalt/source/pkg/bin"
+	eval "$(basalt global init bash)"
 fi
 
 # TODO
 # autoenv.bash
-if command -v bpm &>/dev/null; then
-	bpm-load -g 'hyperupcall/autoenv' 'activate.sh'
+if command -v basalt &>/dev/null; then
+	basalt-load -g 'hyperupcall/autoenv' 'activate.sh'
 fi
 
 # conda.bash

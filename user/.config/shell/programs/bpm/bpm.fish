@@ -1,3 +1,3 @@
-if type -p bpm
-	bpm init fish | source
+if type -p basalt
+	basalt init fish | source
 end

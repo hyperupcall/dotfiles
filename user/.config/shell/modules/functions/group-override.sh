@@ -63,7 +63,7 @@ curl() {
 	if command -v curlie >/dev/null 2>&1; then
 		curlie "$@"
 	else
-		curl "$@"
+		command curl "$@"
 	fi
 }
 

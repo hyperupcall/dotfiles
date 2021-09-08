@@ -1,3 +1,3 @@
-if command -v bpm &>/dev/null; then
-	bpm-load -g 'hyperupcall/autoenv' 'activate.sh'
+if command -v basalt &>/dev/null; then
+	basalt-load -g 'hyperupcall/autoenv' 'activate.sh'
 fi

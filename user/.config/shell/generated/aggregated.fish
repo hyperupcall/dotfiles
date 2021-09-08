@@ -1,6 +1,6 @@
-# bpm.fish
-if type -p bpm
-	bpm init fish | source
+# basalt.fish
+if type -p basalt
+	basalt init fish | source
 end
 
 # direnv.fish
@@ -12,4 +12,3 @@ end
 if type -p zoxide
 	zoxide init fish | source
 end
-

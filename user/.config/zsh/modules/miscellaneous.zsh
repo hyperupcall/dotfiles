@@ -1,5 +1,5 @@
 # basher
-eval "$(bpm init zsh)"
+eval "$(basalt init zsh)"
 
 # direnv
 eval "$(direnv hook zsh)"
