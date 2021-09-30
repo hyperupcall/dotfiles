@@ -171,12 +171,13 @@ declare -ra dotfiles=(
 	data:"applications/calcurse.desktop"
 	data:"applications/kakoune.desktop"
 	data:"sdkman/etc/config"
+	state:"dotshellgen"
 )
 
 # Print actual dotfiles
 src_home="$HOME/.dots/user"
 src_cfg="$HOME/.dots/user/.config"
-src_state="$HOME/.dota/user/.local/state"
+src_state="$HOME/.dots/user/.local/state"
 src_data="$HOME/.dots/user/.local/share"
 
 for dotfile in "${dotfiles[@]}"; do
