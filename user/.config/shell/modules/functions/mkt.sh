@@ -37,7 +37,6 @@ _mkt_util_ensure_cd() {
 }
 
 _mkt_util_log() {
-	echo donee
 	printf "%s\n" "$(date '+%b %d - %I:%M:%S') | $dir | $1" >> "$XDG_STATE_HOME/history/mkt_history"
 }
 

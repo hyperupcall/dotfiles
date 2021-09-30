@@ -1,16 +1,5 @@
 # shellcheck shell=sh
 
-# TODO
-source_safe() {
-	if [ -f "$1" ]; then
-		  if ! . "$1"; then
-					 printf '%s\n' "Error: source_safe: Could not source file '$1' successfully"
-		  fi
-	else
-		printf '%s\n' "Error: source_safe: File '$1' not found"
-	fi
-}
-
 # ------------------------- Basic ------------------------ #
 umask 022
 
@@ -22,9 +11,9 @@ if [ -z "$XDG_CONFIG_HOME" ] || [ -z "$XDG_DATA_HOME" ] || [ -z "$XDG_STATE_HOME
 	printf '%s\n' "Error: XDG Base Directory variables are not set. They should have been set by PAM"
 fi
 
-source_safe "$XDG_CONFIG_HOME/shell/modules/util.sh"
-source_safe "$XDG_CONFIG_HOME/shell/modules/env.sh"
-source_safe "$XDG_CONFIG_HOME/shell/modules/xdg.sh"
+. "$XDG_CONFIG_HOME/shell/modules/util.sh"
+. "$XDG_CONFIG_HOME/shell/modules/env.sh"
+. "$XDG_CONFIG_HOME/shell/modules/xdg.sh"
 
 _path_prepend "$HOME/scripts"
 _path_prepend "$HOME/.local/bin"
@@ -42,13 +31,13 @@ _path_prepend "$HOME/Docs/pkg/app-image"
 # ----------------------- Sourcing ----------------------- #
 for d in aliases functions; do
 	for f in "$XDG_CONFIG_HOME/shell/modules/$d"/?*.sh; do
-		[ -r "$f" ] && source_safe "$f"
+		[ -r "$f" ] && . "$f"
 	done
 done
 unset -v d f
 
 # ---------------------- Environment --------------------- #
-#. "$XDG_CONFIG_HOME/shell/generated/aggregated.sh"
+#. "$XDG_CONFIG_HOME/shell/generated/aggregated.sh" # TODO
 
 ({
 	dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
@@ -68,3 +57,5 @@ unset -v d f
 		}' \
 	| xargs -0 systemctl --user import-environment
 } &)
+
+# ---

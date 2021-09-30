@@ -77,7 +77,7 @@
   "editor.minimap.showSlider": "always",
   "editor.minimap.side": "left",
   "editor.quickSuggestionsDelay": 0,
-  "editor.renderWhitespace": "all",
+  "editor.renderWhitespace": "none",
   "editor.smoothScrolling": true,
   "editor.suggestSelection": "recentlyUsedByPrefix",
   "editor.tabSize": 8,
@@ -269,7 +269,7 @@
   "window.title": "🦊 ${folderName} ${activeEditorLong}${separator}${remoteName}",
   "window.titleBarStyle": "custom",
   "workbench.activityBar.visible": true,
-  "workbench.colorTheme": "Complete Dark",
+  "workbench.colorTheme": "Shades of Purple",
   "workbench.commandPalette.history": 100,
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.highlightModifiedTabs": true,
@@ -281,7 +281,7 @@
     "*.ipynb": "jupyter-notebook"
   },
   "workbench.enableExperiments": false,
-  "workbench.iconTheme": "material-icon-theme",
+  "workbench.iconTheme": "Monokai Pro (Filter Octagon) Icons",
   "workbench.panel.defaultLocation": "right",
   "workbench.quickOpen.closeOnFocusLost": false,
   "workbench.startupEditor": "newUntitledFile",
@@ -313,5 +313,6 @@
   "notebook.cellToolbarLocation": {
     "default": "right",
     "jupyter-notebook": "left"
-  }
+  },
+  "kite.showWelcomeNotificationOnStartup": false
 }

@@ -1,4 +1,5 @@
 ! application Xresouces
+#include "resources/misc.Xresources"
 #include "resources/xterm.Xresources"
 #include "resources/urxvt.Xresources"
 

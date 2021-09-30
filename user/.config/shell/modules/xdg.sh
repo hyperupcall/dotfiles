@@ -470,7 +470,7 @@ export WAKATIME_HOME="$XDG_DATA_HOME/wakatime"
 
 # wasmer
 export WASMER_DIR="$XDG_DATA_HOME/wasmer"
-# [ -r "$WASMER_DIR/wasmer.sh" ] && source_safe "$WASMER_DIR/wasmer.sh"
+# [ -r "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
 
 # wasmtime
 export WASMTIME_HOME="$XDG_DATA_HOME/wasmtime"

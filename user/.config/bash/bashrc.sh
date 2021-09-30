@@ -18,8 +18,8 @@
 # ─── FRAMEWORKS ─────────────────────────────────────────────────────────────────
 #
 
-# source_safe "$XDG_CONFIG_HOME/bash/frameworks/oh-my-bash.sh"
-# source_safe "$XDG_CONFIG_HOME/bash/frameworks/bash-it.sh"
+# source "$XDG_CONFIG_HOME/bash/frameworks/oh-my-bash.sh"
+# source "$XDG_CONFIG_HOME/bash/frameworks/bash-it.sh"
 
 
 #
@@ -38,7 +38,7 @@ export HISTCONTROL="ignorespace:ignoredups"
 export HISTFILE="$XDG_STATE_HOME/history/bash_history"
 export HISTSIZE="-1"
 export HISTFILESIZE="-1"
-export HISTIGNORE="ls:[bf]g:pwd:clear*:exit*:*sudo*-S*:*sudo*--stdin*"
+export HISTIGNORE="ls:[bf]g:pwd:clear*:exit*:*sudo*-S*:*sudo*--stdin*" # TODO
 export HISTTIMEFORMAT="%B %m %Y %T | "
 export HISTTIMEFORMAT='%F %T ' # ISO 8601
 export TIMEFORMAT=$'real    %3lR\nuser    %3lU\nsystem  %3lS\npercent %P'
@@ -105,7 +105,7 @@ is16MillionColors() {
 	[ "$COLORTERM" = "truecolor" ] || [ "$COLORTERM" = "24bit" ]
 }
 
-source_safe "$XDG_CONFIG_HOME/shell/generated/aggregated.bash"
+source "$XDG_STATE_HOME/dotshellgen/concatenated.bash"
 
 if is16MillionColors; then
 	if ((EUID == 0)); then
@@ -114,8 +114,7 @@ if is16MillionColors; then
 		# shellcheck disable=SC3046
 		if ! eval "$(
 			if ! choose launch shell-prompt-bash; then
-				# Without this, the error doesn't propagate to
-				# the "if ! eval ..."
+				# Without this, the error doesn't propagate to the "if ! eval ..."
 				printf '%s\n' 'false'
 			fi
 		)"; then
@@ -141,11 +140,11 @@ unset -f is8Colors is256Colors is16MillionColors
 # bash_completion (also sources $XDG_CONFIG_HOME/bash/bash_completions (as per env variable))
 # even though we `source /etc/profile` at beginnning of script, this is still needed since we now
 # only have BASH_COMPLETION_USER_DIR and BASH_COMPLETION_USER_FILE set
-[ -r /usr/share/bash-completion/bash_completion ] && source_safe /usr/share/bash-completion/bash_completion
+[ -r /usr/share/bash-completion/bash_completion ] && source /usr/share/bash-completion/bash_completion
 
 # bash-preexec
 if command -v basalt &>/dev/null; then
-	basalt-load -g 'rcaloras/bash-preexec' 'bash-preexec.sh'
+	basalt.load --global 'github.com/rcaloras/bash-preexec' 'bash-preexec.sh'
 
 	# after command is read, before command execution
 	preexec() {
@@ -160,9 +159,14 @@ if command -v basalt &>/dev/null; then
 	}
 fi
 
-source_safe "$XDG_CONFIG_HOME/shell/modules/line-editing.sh"
-source_safe "$XDG_CONFIG_HOME/bash/modules/readline.sh"
-source_safe "$XDG_CONFIG_HOME/bash/modules/util.sh"
+source "$XDG_CONFIG_HOME/shell/modules/line-editing.sh"
+source "$XDG_CONFIG_HOME/bash/modules/readline.sh"
+source "$XDG_CONFIG_HOME/bash/modules/util.sh"
 
 
 # -----
+
+# export PATH="$HOME/.local/share/poetry/bin:$PATH"
+# . "/home/edwin/.local/share/cargo/env"
+
+# export PATH="$HOME/.local/share/poetry/bin:$PATH"

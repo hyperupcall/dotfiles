@@ -79,7 +79,10 @@
 	#helper = /usr/share/git/credential/libsecret/git-credential-libsecret
 [url "git@github.com:"]
 	insteadOf = gh:
-	pushInsteadOf = gh:
+   pushInsteadOf = gh:
+[url "https://github.com/"]
+   insteadOf = gh::
+   pushInsteadOf = ghh::
 [url "git@bitbucket.org:"]
 	insteadOf = bb:
 	pushInsteadOf = bb:
