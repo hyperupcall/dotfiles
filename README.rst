@@ -2,7 +2,7 @@
 dots
 ========
 
-My dots maintained with https://github.com/eankeen/dotty
+My dots maintained with https://github.com/hyperupcall/dotty
 
 Dotfiles
 ========
