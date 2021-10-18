@@ -2,7 +2,7 @@
 dots
 ========
 
-My dots maintained with https://github.com/hyperupcall/dotty
+My dots maintained with https://github.com/hyperupcall/dotfox
 
 Dotfiles
 ========
@@ -23,6 +23,6 @@ See `Installation <./docs/installation.md` and `Getting Started <./docs/getting-
 auxiliary utils
 -----
 
-https://github.com/hyperupcall/dotty
-https://github.com/hyperupcall/themer
-https://github.com/hyperupcall/choose
+- https://github.com/hyperupcall/dotfox
+- https://github.com/hyperupcall/themer
+- https://github.com/hyperupcall/choose
