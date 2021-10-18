@@ -36,3 +36,4 @@ My dotfiles have used parts of or have been inspired by at least the following r
 - https://github.com/mrzool/bash-sensible
 - https://github.com/orhun/dotfiles
 - https://github.com/BurntSushi/dotfiles
+- https://github.com/vikaskyadav/awesome-bash-alias

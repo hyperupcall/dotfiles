@@ -6,7 +6,7 @@
 
 _xdg_main() {
 	if [ -f /etc/os-release ]; then
-		while IFS='='  read -r key value; do
+		while IFS='=' read -r key value; do
 			if [ "$key" = ID ]; then
 				value="${value#\"}"
 				value="${value%\"}"
@@ -18,6 +18,7 @@ _xdg_main() {
 		return 1
 	fi
 
+	_xdg_flag_value='export-vars'
 	for arg; do case "$arg" in
 		--export-vars)
 			_xdg_flag_value='export-vars'
@@ -35,7 +36,7 @@ _xdg_main() {
 	esac done
 
 	case "$_xdg_flag_value" in
-		export-vars|'')
+		export-vars)
 			_xdg_action_default() {
 				export XDG_CONFIG_HOME="$HOME/.config"
 				export XDG_STATE_HOME="$HOME/.local/state"

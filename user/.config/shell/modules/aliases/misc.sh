@@ -1,6 +1,6 @@
 # shellcheck shell=sh
 
-alias aria2c='aria2c -d "$HOME/Dls/aria2c"'
+alias aria2c='aria2c -d "$HOME/Docs/App/aria2c"'
 alias b='bukdu --suggest'
 alias but='btrfs'
 alias cat='cat -v' # clone(user, root)
@@ -32,3 +32,6 @@ alias new-venv='python -m venv .venv && source .venv/bin/activate && pip install
 alias ta='type -a' # clone(user, root)
 alias utc='TZ=UTC date'
 alias ydl='youtube-dl' # clone(user)
+alias partusage='df -hlT --exclude-type=tmpfs --exclude-type=devtmpfs'
+alias totalusage='df -hl --total | grep total'
+alias totalusage='df -hl --total | grep total'

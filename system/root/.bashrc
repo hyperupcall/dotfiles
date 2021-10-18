@@ -1,4 +1,4 @@
-# shellcheck shell=sh
+# shellcheck shell=bash
 
 export VISUAL="kak"
 export EDITOR="$VISUAL"

@@ -69,8 +69,8 @@ curl() {
 
 # clone(user, root)
 lsblk() {
-	if [ $# -eq 0 ]; then
-		command lsblk -o NAME,FSSIZE,FSUSED,FSAVAIL,FSUSE%,FSTYPE,MOUNTPOINT
+	if [ $# -eq 1 ] && [ "$1" = "-f" ]; then
+		command lsblk -o NAME,FSUSED,FSAVAIL,FSSIZE,FSUSE%,FSTYPE,MOUNTPOINT
 	else
 		command lsblk "$@"
 	fi

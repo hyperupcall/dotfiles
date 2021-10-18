@@ -30,7 +30,6 @@
   "C_Cpp.updateChannel": "Insiders",
   "comment-divider.length": 60,
   "cSpell.userWords": [
-    "Roadmap",
     "cmds",
     "dirent",
     "dirents",
@@ -38,12 +37,19 @@
     "dotfiles",
     "editorconfig",
     "entrypoint",
+    "entrypoints",
+    "eval",
     "gitattributes",
     "godotenv",
     "gulpfile",
     "healthcheck",
+    "kbuild",
+    "Kofler",
     "mongod",
     "prettierrc",
+    "printk",
+    "Roadmap",
+    "subdependencies",
     "templating",
     "wasm",
     "wasmtime"
@@ -54,7 +60,7 @@
   "css.lint.ieHack": "warning",
   "css.lint.vendorPrefix": "ignore",
   "css.lint.zeroUnits": "warning",
-  "d.servedPath": "/home/edwin/.code-d/bin/serve-d",
+  "d.servedPath": "/home/edwin/.local/share/code-d/bin/serve-d",
   "debug.node.autoAttach": "on",
   "diffEditor.ignoreTrimWhitespace": false,
   "diffEditor.maxComputationTime": 6000,
@@ -80,7 +86,7 @@
   "editor.renderWhitespace": "none",
   "editor.smoothScrolling": true,
   "editor.suggestSelection": "recentlyUsedByPrefix",
-  "editor.tabSize": 8,
+  "editor.tabSize": 3,
   "editor.unfoldOnClickAfterEndOfLine": true,
   "editor.wordWrap": "on",
   "editor.wordWrapColumn": 100,
@@ -143,7 +149,6 @@
     "references": true
   },
   "go.formatTool": "goimports",
-  "go.useLanguageServer": true,
   "html-css-class-completion.includeGlobPattern": "**/*.{css,html,vue}",
   "html.autoClosingTags": false,
   "html.format.enable": false,
@@ -269,7 +274,7 @@
   "window.title": "🦊 ${folderName} ${activeEditorLong}${separator}${remoteName}",
   "window.titleBarStyle": "custom",
   "workbench.activityBar.visible": true,
-  "workbench.colorTheme": "Shades of Purple",
+  "workbench.colorTheme": "One Dark Pro Darker",
   "workbench.commandPalette.history": 100,
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.highlightModifiedTabs": true,
@@ -278,13 +283,13 @@
   "workbench.editorAssociations": {
     "*.jpg": "luna.editor",
     "*.png": "luna.editor",
-    "*.ipynb": "jupyter-notebook"
+    "*.ipynb": "jupyter-notebook",
+    "*.ico": "luna.editor"
   },
   "workbench.enableExperiments": false,
-  "workbench.iconTheme": "Monokai Pro (Filter Octagon) Icons",
-  "workbench.panel.defaultLocation": "right",
+  "workbench.iconTheme": "file-icons",
   "workbench.quickOpen.closeOnFocusLost": false,
-  "workbench.startupEditor": "newUntitledFile",
+  "workbench.startupEditor": "none",
   "workbench.tips.enabled": false,
   "workbench.tree.indent": 12,
   "yaml.format.printWidth": 100,
@@ -314,5 +319,12 @@
     "default": "right",
     "jupyter-notebook": "left"
   },
-  "kite.showWelcomeNotificationOnStartup": false
+  "kite.showWelcomeNotificationOnStartup": false,
+  "julia.symbolCacheDownload": true,
+  "julia.enableTelemetry": false,
+  "gitlens.showWelcomeOnInstall": false,
+  "[c]": {
+    "editor.defaultFormatter": "xaver.clang-format"
+  },
+  "metals.javaHome": "/home/edwin/.jabba/jdk/adopt@1.11.0-11"
 }

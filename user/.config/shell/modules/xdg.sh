@@ -455,7 +455,7 @@ export VAGRANT_HOME="$XDG_DATA_HOME/vagrant"
 export VAGRANT_ALIAS_FILE="$VAGRANT_HOME/aliases"
 
 # vim
-export VIMINIT="if has('nvim') | let \$MYVIMRC=\$XDG_CONFIG_HOME.\"/nvim/init.vim\" | else | let \$MYVIMRC=\$XDG_CONFIG_HOME.\"/vim/vimrc\" | endif | source \$MYVIMRC"
+#export VIMINIT="if has('nvim') | let \$MYVIMRC=\$XDG_CONFIG_HOME.\"/nvim/init.vim\" | else | let \$MYVIMRC=\$XDG_CONFIG_HOME.\"/vim/vimrc\" | endif | source \$MYVIMRC"
 
 # vimperator
 export VIMPERATOR_INIT=":source $XDG_CONFIG_HOME/vimperator/vimperatorrc"

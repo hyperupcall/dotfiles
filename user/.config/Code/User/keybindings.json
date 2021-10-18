@@ -50,5 +50,10 @@
   {
     "key": "ctrl+e",
     "command": "-workbench.action.quickOpen"
+  },
+  {
+    "key": "shift+backspace",
+    "command": "-deleteAllLeft",
+    "when": "editorTextFocus && !editorReadonly"
   }
 ]

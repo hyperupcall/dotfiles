@@ -52,10 +52,10 @@ _shell_util_die() {
 
 _shell_util_ls() {
 	if command -v exa >/dev/null 2>&1; then
-		exa -al
+		exa -al "$@"
 	elif command -v lsd >/dev/null 2>&1; then
-		lsd -al
+		lsd -al "$@"
 	else
-		ls -al
+		ls -al "$@"
 	fi
 }

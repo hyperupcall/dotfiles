@@ -53,7 +53,8 @@ dataurl() {
 
 do_backup() {
 	restic --repo /storage/vault/rodinia/Backups/edwin backup /storage/edwin/ --iexclude "node_modules" --iexclude "__pycache__" --iexclude "rootfs"
-	restic --repo /storage/vault/rodinia/Backups/data/ backup /storage/data/ --iexclude "node_modules" --iexclude "__pycache__" --iexclude "rootfs"
+	restic --repo /storage/vault/rodinia/Backups/data backup /storage/data/ --iexclude "node_modules" --iexclude "__pycache__" --iexclude "rootfs"
+	restic --repo /storage/vault/rodinia/Backups/bridge backup /storage/ur/bridge
 }
 
 docker_nuke() {
@@ -121,6 +122,19 @@ kkexec() {
 	sudo kexec -l /efi/EFI/arch/vmlinuz-linux-lts --initrd /efi/EFI/arch/initramfs-linux-lts.img --reuse-cmdline
 	sudo systemctl kexec
 	# sudo kexec -e
+}
+
+lam() {
+	if [ $# -eq 0 ]; then
+		ls "$HOME/Docs/Downloaded/AppImage"
+		return
+	fi
+
+	if [ -f "$HOME/Docs/Downloaded/AppImage/""$1".AppImage ]; then
+		exec "$HOME/Docs/Downloaded/AppImage/""$1".AppImage
+	else
+		printf '%s\n' "Error: '$1' not an AppImage"
+	fi
 }
 
 # clone(user, root)
