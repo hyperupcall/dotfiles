@@ -124,14 +124,21 @@ ping() {
 stty() {
 	if [ $# -eq 1 ] && [ "$1" = "sane" ]; then
 		# 'stty sane' resets our modifications to behaviors of tty device
-		# including the line discipline. this assumes tty was sane when initialized
-		stty "$_stty_saved_settings"
-		_stty_exit_code=$?
+		# including the line discipline. This assumes tty was sane when initialized
+		if [ -n "$_stty_saved_settings" ]; then
+			stty "$_stty_saved_settings"
+			_stty_exit_code=$?
 
-		# redirect log to error since this could be a scripted command used within a tty
-		_shell_util_log_info "stty: Restored stty settings to our defaults" 1>&2
+			# redirect log to error since this could be a scripted command used within a tty
+			_shell_util_log_info "stty: Restored stty settings to our defaults" >&2
+		else
+			stty sane
+			_stty_exit_code=$?
 
-		return "$_stty_exit_code"
+			_shell_util_log_warn "stty: Variable \$_stty_saved_settings empty. Falling back to 'stty sane'" >&2
+		fi
+
+	return "$_stty_exit_code"
 	else
 		command stty "$@"
 	fi

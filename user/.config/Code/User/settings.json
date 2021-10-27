@@ -108,6 +108,20 @@
   "extensions.ignoreRecommendations": true,
   "extensions.showRecommendationsOnlyOnDemand": true,
   "files.associations": {
+    "*.COBOL*": "cobol",
+    "*.COB*": "cobol",
+    "*.COBCOPY*": "cobol",
+    "*.COPYBOOK*": "cobol",
+    "*.COPY*": "cobol",
+    "*.PL1*": "pl1",
+    "*.PLI*": "pl1",
+    "*.INC*": "pl1",
+    "*.INCLUDE*": "pl1",
+    "*.JCL*": "jcl",
+    "*.ASM*": "hlasm",
+    "*.ASSEMBLE*": "hlasm",
+    "*.HLASM*": "hlasm",
+    "*.HLA*": "hlasm",
     ".huskyrc": "json",
     ".lintstagedrc": "json",
     ".stylelintrc": "json",
@@ -117,9 +131,8 @@
     "**/i3/config": "i3",
     "Vagrantfile": "ruby",
     "*.html": "html",
-    "*.bbmodel": "json",
+    "*.bbmodel": "json"
   },
-  "files.autoSave": "afterDelay",
   "files.eol": "\n",
   "files.exclude": {
     "**/.git": false,
@@ -326,5 +339,49 @@
   "[c]": {
     "editor.defaultFormatter": "xaver.clang-format"
   },
-  "metals.javaHome": "/home/edwin/.jabba/jdk/adopt@1.11.0-11"
+  "metals.javaHome": "/home/edwin/.jabba/jdk/adopt@1.11.0-11",
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 100,
+  "task.problemMatchers.neverPrompt": {
+    "shell": true
+  },
+  "editor.inlineSuggest.enabled": true,
+  "Zowe-DS-Persistent": {
+    "persistence": true,
+    "favorites": [],
+    "history": [],
+    "sessions": [],
+    "fileHistory": [],
+    "searchHistory": []
+  },
+  "Zowe-USS-Persistent": {
+    "persistence": true,
+    "favorites": [],
+    "history": [],
+    "sessions": [],
+    "fileHistory": [],
+    "searchHistory": []
+  },
+  "Zowe-Jobs-Persistent": {
+    "persistence": true,
+    "favorites": [],
+    "history": [],
+    "sessions": [],
+    "fileHistory": [],
+    "searchHistory": []
+  },
+  "json.schemas": [
+    {
+      "fileMatch": [
+        "/zapp.json"
+      ],
+      "url": "file:///home/edwin/.vscode/extensions/ibm.zopeneditor-1.2.7/resources/zapp-schema-0.0.2.json"
+    }
+  ],
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": false,
+    "plaintext": true,
+    "markdown": true
+  }
 }

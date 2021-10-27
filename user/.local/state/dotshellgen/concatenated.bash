@@ -24,6 +24,11 @@ if [ -n "$SDKMAN_DIR" ] && [ -f "$SDKMAN_DIR/bin/sdkman-init.sh" ]; then
 	source "$SDKMAN_DIR/bin/sdkman-init.sh"
 fi
 
+# woof.bash
+if command -v woof >/dev/null 2>&1; then
+  woof init bash
+fi
+
 # zoxide.bash
 if command -v zoxide &>/dev/null; then
 	eval "$(zoxide init bash)"
