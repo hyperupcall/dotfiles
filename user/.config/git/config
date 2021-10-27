@@ -45,7 +45,7 @@
 	format = openpgp ; default
 [help]
 	autoCorrect = 20
-[merge]
+[merge] ; TODO: make this false
 	ff = true ; default
 [merge "npm-merge-driver"]
 	name = Merges npm lockfiles
