@@ -1,10 +1,4 @@
-Set-StrictMode -Version Latest
-
-# if (Test-path -Path "$HOME/.bootstrap") {
-#     Write-Error "Error: File or directory '$HOME/.bootstrap' already exists"
-#     exit 1
-# }
-# New-Item -Type Directory ~/.bootstrap >$null
+#Requires -Version 5.1
 
 if (!(Get-Command scoop -ErrorAction SilentlyContinue)) {
     Write-Output 'Installing scoop'
@@ -13,22 +7,27 @@ if (!(Get-Command scoop -ErrorAction SilentlyContinue)) {
     Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
 }
 
+# Scoop does not like strict mode
+Set-StrictMode -Version Latest
+$ErrorActionPreference = 'Stop'
 
 if (!(Get-Command git -ErrorAction SilentlyContinue)) {
-    Write-Output 'Installing git'
-
    scoop install git
 }
 
-if (Test-Path -Path "$HOME/.dots") {
-    Write-Error "Error: Path '$HOME/.dots' exists"
-    exit 1
-} else {
-    git clone 'https://github.com/hyperupcall/.dots' "$HOME/.dots"
+if (!(Test-Path -Path "$HOME/.dots")) {
+    git clone 'https://github.com/hyperupcall/dots' "$HOME/.dots"
 }
 
+if (!(Test-Path -Path "$HOME/.bootstrap")) {
+    New-Item -ItemType Directory "$HOME/.bootstrap" >$null
+}
+
+'$env:Path = "$HOME/.dots/windows/bootstrap/dots-bootstrap;$env:Path"' | Out-File -FilePath "$HOME/.bootstrap/init.ps1"
 
 Write-Host @"
-Done. Now:
-"$$HOME/.dots/windows/deploy.ps1"
+---
+. "`$HOME/.bootstrap/init.ps1"
+dotfox.ps1
+---
 "@

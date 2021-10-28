@@ -13,7 +13,7 @@
     diffFilter = delta --color-only --features=interactive
 [commit]
 	gpgSign = true
-	template = ~/config/git/templates/commit
+	template = ~/.config/git/templates/commit
 [gpg]
 	program = gpg ; default
 	format = openpgp ; default

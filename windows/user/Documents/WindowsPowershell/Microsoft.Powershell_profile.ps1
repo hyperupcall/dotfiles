@@ -26,3 +26,6 @@ if (Get-Alias -Name g) {
 } else {
     New-Alias g git
 }
+
+# "C:\Users\Edwin\scoop\apps\python\current\install-pep-514.reg"
+# $ENV:PATH="$HOME\scoop\apps\python\current\Scripts:$ENV:PATH"
