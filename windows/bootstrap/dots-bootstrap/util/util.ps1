@@ -116,12 +116,22 @@ function Symlink-Relative-Path {
         [Parameter(Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
         [string]
-        $RelativePath
+        $RelativePath,
+
+        [Parameter()]
+        [switch]
+        $Dry = $false
     )
 
     $symlinkFile = Join-Path -Path "$HOME" -ChildPath "$relativePath"
     $targetFile = Join-Path -Path "$HOME/.dots/windows/user" -ChildPath "$relativePath"
-    
+
+    # if (Test-Path variable:Dry) {
+    #     # "{0} -> {1}" -f "$symlinkFile", "$targetFile" | Out-Host
+    #     "$symlinkFile -> $targetFile"
+    #     return
+    # }
+
     # Symlink file must either be a symlink or not exist
     if (Test-Path -Path "$symlinkFile") {
         # If the path already exists, it must be a symbolic link
@@ -146,6 +156,7 @@ function Symlink-Relative-Path {
     }
     
     # Create symlink
+    Write-Host "Symlinking '$symlinkFile' -> '$targetFile'"
     New-Item -ItemType SymbolicLink -Path (Split-Path $symlinkFile -Parent) -Name (Split-Path $symlinkFile -Leaf) -Target $targetFile
     
     return 0

@@ -1,3 +1,4 @@
+$__dirname = Split-Path -Parent "$PSCommandPath"
 
 # Write-Output 'Installing a newer PowerShellGet'
 # sudo Install-PackageProvider -Name NuGet -Force
@@ -5,10 +6,32 @@
 # Install-Module -Name PowerShellGet -Force
 
 # Install-Module PSReadLine -AllowPrerelease -Force
-Symlink-Relative-Path -RelativePath '.config/git/config'
-Symlink-Relative-Path -RelativePath '.config/git/ignore'
-Symlink-Relative-Path -RelativePath '.config/git/templates/commit'
-Symlink-Relative-Path -RelativePath 'Documents/WindowsPowershell/Microsoft.Powershell_profile.ps1'
+
+foreach($relativePath in @(
+    '.config/git/attributes'
+    '.config/git/ignore'
+    '.config/git/templates/commit'
+    '.config/git/include/alias.conf'
+    '.config/git/include/url.conf'
+
+)) {
+    $src = "$HOME/.dots/user/$relativePath"
+    $dest = "$HOME/.dots/windows/user/$relativePath"
+
+    Copy-Item -Path "$src" -Destination "$dest"
+}
+
+foreach($relativePath in @(
+    '.config/git/config',
+    '.config/git/ignore',
+    '.config/git/templates/commit',
+    '.config/git/include/alias.conf'
+    '.config/git/include/url.conf'
+    'Documents/PowerShell/Microsoft.PowerShell_profile.ps1',
+    'Documents/WindowsPowershell/Microsoft.PowerShell_profile.ps1'
+)) {
+    [void](Symlink-Relative-Path -RelativePath "$relativePath")
+}
 
 exit
 
@@ -22,7 +45,8 @@ Ensure-ScoopBucket -Name extras
 Ensure-ScoopBucket -Name nerd-fonts
 
 # nim
-$collection = @('sudo', 'git', 'delta', 'neovim', 'less', 'curl', 'grep', 'sed', 'touch', 'aria2')
+# from gow:  'grep' 'less' 'curl'
+$collection = @('sudo', 'git', 'delta', 'neovim', 'sed', 'touch', 'aria2', 'gopass', 'starship', 'gow')
 foreach ($item in $collection) {
     Ensure-ScoopPackage -Name "$item"
 }
@@ -34,10 +58,15 @@ foreach ($language in $languages) {
 
 # powertoys, gpg4win-portable, autohotkey
 # delta requires recent version of 'less'
-$apps = @('vscodium', 'alacritty', 'kitty')
+$apps = @('vscodium', 'alacritty', 'kitty', 'discord', 'notepadplusplus', 'sublime-text')
 foreach ($app in $apps) {
     Ensure-ScoopPackage -Name "$app"
 }
+# $ENV:PATH="$HOME\scoop\apps\python\current\Scripts:$ENV:PATH"
+
+# sudo New-Item -Type SymbolicLink -Path ~ -Name .ssh -Value G:\storage_other\ssh\
+# 'C:\Users\Edwin\scoop\apps\sublime-text\current\install-context.reg'"
+# "C:\Users\Edwin\scoop\apps\python\current\install-pep-514.reg"
 
 Write-Host 'nim, powertoys, gpg4win-portable, autohotkey dont really work'
 

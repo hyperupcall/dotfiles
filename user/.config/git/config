@@ -11,6 +11,7 @@
 	useBuiltIn = true ; EXPERIMENTAL
 [include]
 	path = include/alias.conf
+	path = include/url.conf
 [blame]
 	coloring = highlightRecent
 	date = relative
@@ -77,24 +78,6 @@
 [credential]
 	#helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
 	#helper = /usr/share/git/credential/libsecret/git-credential-libsecret
-[url "git@github.com:"]
-	insteadOf = gh:
-	pushInsteadOf = gh:
-[url "git@github.com:hyperupcall/"]
-	insteadOf = ghhy:
-	pushInsteadOf = ghhy:
-[url "https://github.com/"]
-	insteadOf = gh::
-	pushInsteadOf = gh::
-[url "https://github.com/hyperupcall"]
-	insteadOf = ghhy::
-	pushInsteadOf = ghhy::
-[url "git@gitlab.com:"]
-	insteadOf = gl:
-	pushInsteadOf = gl:
-[url "https://gitlab.com/"]
-	insteadOf = gl::
-	pushInsteadOf = gl::
 [color "diff-highlight"]
 	oldNormal = red bold
 	oldHighlight = red bold 52
