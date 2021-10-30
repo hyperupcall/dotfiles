@@ -85,31 +85,6 @@ make() {
 		command make "$@"
 	fi
 }
-# see 'yay' comment
-# pacman() {
-# # shellcheck disable=SC2154
-# 	temp="$PATH"
-
-# 	# shellcheck disable=SC2154
-# 	PATH="$_path_original_saved"
-
-# 	pacman --color=auto "$@"
-
-# 	PATH="$temp"
-# }
-
-# # see 'yay' comment
-# paru() {
-# # shellcheck disable=SC2154
-# 	temp="$PATH"
-
-# 	# shellcheck disable=SC2154
-# 	PATH="$_path_original_saved"
-
-# 	paru --color=auto "$@"
-
-# 	PATH="$temp"
-# }
 
 ping() {
 	if command -v prettyping >/dev/null 2>&1; then
@@ -119,8 +94,7 @@ ping() {
 	fi
 }
 
-# TODO
-#_stty_saved_settings="$(stty -g)"
+_stty_saved_settings="$(stty -g)"
 stty() {
 	if [ $# -eq 1 ] && [ "$1" = "sane" ]; then
 		# 'stty sane' resets our modifications to behaviors of tty device
@@ -132,13 +106,13 @@ stty() {
 			# redirect log to error since this could be a scripted command used within a tty
 			_shell_util_log_info "stty: Restored stty settings to our defaults" >&2
 		else
-			stty sane
+			command stty sane
 			_stty_exit_code=$?
 
 			_shell_util_log_warn "stty: Variable \$_stty_saved_settings empty. Falling back to 'stty sane'" >&2
 		fi
 
-	return "$_stty_exit_code"
+		return "$_stty_exit_code"
 	else
 		command stty "$@"
 	fi
@@ -161,18 +135,3 @@ unlink() {
 
 	unset -v arg file
 }
-
-# packages keep installing to /home/edwin/data/miniconda or /home/edwin/data/pyenv
-# switch out path to system python is used. pacman hook doesn't work with something
-# that's shell specific or isn't generic. TODO: see if there's a better workaround
-# yay() {
-# 	# shellcheck disable=SC2154
-# 	temp="$PATH"
-
-# 	# shellcheck disable=SC2154
-# 	PATH="$_path_original_saved"
-
-# 	yay --color=auto "$@"
-
-# 	PATH="$temp"
-# }
