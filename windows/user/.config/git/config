@@ -1,39 +1,11 @@
-[init]
-	defaultBranch = main
-[hub]
-	protocol = ssh
-	reportCrash = never
-[pager]
-    diff = delta
-    log = delta
-    reflog = delta
-    show = delta
-
-[interactive]
-    diffFilter = delta --color-only --features=interactive
-[commit]
-	gpgSign = true
-	template = ~/.config/git/templates/commit
-[gpg]
-	program = gpg ; default
-	format = openpgp ; default
-[help]
-	autoCorrect = 20
-[rerere]
-	enabled = true
-[rebase]
-	stat = true
-[status]
-	showStash = true
-	showUntrackedFiles = all
-	# submoduleSummary = true # Performance issues on Windows
-[user]
-	name = Edwin Kofler
-	email = edwin@kofler.dev
-	signingkey = 13794A3F72895C83
 [include]
-	path = include/alias.conf
-	path = include/url.conf
+	path = ~/.dots/user/.config/git/include/alias.conf
+	path = ~/.dots/user/.config/git/include/diff.conf
+	path = ~/.dots/user/.config/git/include/external.conf
+	path = ~/.dots/user/.config/git/include/main.conf
+	path = ~/.dots/user/.config/git/include/url.conf
+[commit]
+	template = ~/.dots/user/.config/git/templates/commit
 [credential "helperselector"]
 	selected = manager-core
 [filter "lfs"]
@@ -41,3 +13,7 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[status]
+	submoduleSummary = true
+[gpg]
+	program = C:/Program Files (x86)/GnuPG/bin/gpg.exe

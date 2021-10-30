@@ -128,6 +128,7 @@ Set-Alias psadmin Relaunch-Admin
 
 Set-Alias -Name geth -Value Get-Help
 
+Set-Alias -Name reboot -Value Restart-Computer
 # With-Env GIT_TRACE=1 git commit -vv --allow-empty --message 'four'
 function With-Env {
     $ori = @{}

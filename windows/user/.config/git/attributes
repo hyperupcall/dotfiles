@@ -1,9 +1,5 @@
 * text=auto eol=lf
 
-package-lock.json merge=npm-merge-driver
-npm-shrinkwrap.json merge=npm-merge-driver
-yarn.lock merge=yarn-merge-driver
-
 *.docx diff=pandoc2md
 *.pdf diff=pdfconv
 *.md diff=wrap

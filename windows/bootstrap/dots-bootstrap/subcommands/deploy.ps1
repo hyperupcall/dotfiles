@@ -7,31 +7,29 @@ $__dirname = Split-Path -Parent "$PSCommandPath"
 
 # Install-Module PSReadLine -AllowPrerelease -Force
 
+# foreach($relativePath in @(
+#     '.config/git/attributes'
+#     '.config/git/ignore'
+#     '.config/git/templates/commit'
+#     '.config/git/include/alias.conf'
+#     '.config/git/include/url.conf'
+
+# )) {
+#     $src = "$HOME/.dots/user/$relativePath"
+#     $dest = "$HOME/.dots/windows/user/$relativePath"
+
+#     Copy-Item -Path "$src" -Destination "$dest"
+# }
+
 foreach($relativePath in @(
-    '.config/git/attributes'
-    '.config/git/ignore'
-    '.config/git/templates/commit'
-    '.config/git/include/alias.conf'
-    '.config/git/include/url.conf'
-
-)) {
-    $src = "$HOME/.dots/user/$relativePath"
-    $dest = "$HOME/.dots/windows/user/$relativePath"
-
-    Copy-Item -Path "$src" -Destination "$dest"
-}
-
-foreach($relativePath in @(
+    '.config/git/attributes',
     '.config/git/config',
-    '.config/git/ignore',
-    '.config/git/templates/commit',
-    '.config/git/include/alias.conf'
-    '.config/git/include/url.conf'
     'Documents/PowerShell/Microsoft.PowerShell_profile.ps1',
     'Documents/WindowsPowershell/Microsoft.PowerShell_profile.ps1'
 )) {
     [void](Symlink-Relative-Path -RelativePath "$relativePath")
 }
+
 
 exit
 

@@ -162,6 +162,63 @@ function Symlink-Relative-Path {
     return 0
 }
 
+function Symlink-Relative-Path2 {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [string]
+        $RelativeSymlinkFile,
+
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [string]
+        $relativeTargetFile,
+
+        [Parameter()]
+        [switch]
+        $Dry = $false
+    )
+
+    $symlinkFile = Join-Path -Path "$HOME" -ChildPath "$RelativeSymlinkFile"
+    $targetFile = Join-Path -Path "$HOME" -ChildPath "$relativeTargetFile"
+
+    # if (Test-Path variable:Dry) {
+    #     # "{0} -> {1}" -f "$symlinkFile", "$targetFile" | Out-Host
+    #     "$symlinkFile -> $targetFile"
+    #     return
+    # }
+
+    # Symlink file must either be a symlink or not exist
+    if (Test-Path -Path "$symlinkFile") {
+        # If the path already exists, it must be a symbolic link
+        if ((Get-Item "$symlinkFile").LinkType -eq 'SymbolicLink') {
+            return 0
+        } else {
+            Write-Error "Path '$symlinkFile' already exists and it is not a symlink"
+            exit 1
+        }
+    }
+    
+    # Target file must exist
+    if (!(Test-Path -Path "$targetFile")) {
+        Write-Error "Path '$targetFile' does not exist, but it is expected to"
+        exit 1
+    }
+    
+    # Create parent directory of symlink
+    $symlinkFileParent = Split-Path -Path $symlinkFile -Parent
+    if (!(Test-Path -Path "$symlinkFileParent")) {
+        New-Item -Type Directory "$symlinkFileParent" >$null
+    }
+    
+    # Create symlink
+    Write-Host "Symlinking '$symlinkFile' -> '$targetFile'"
+    New-Item -ItemType SymbolicLink -Path (Split-Path $symlinkFile -Parent) -Name (Split-Path $symlinkFile -Leaf) -Target $targetFile
+    
+    return 0
+}
+
 function Test-RegistryKeyValue {
     <#
     .SYNOPSIS
