@@ -6,6 +6,8 @@
 	path = ~/.dots/user/.config/git/include/url.conf
 [commit]
 	template = ~/.dots/user/.config/git/templates/commit
+[credential]
+	helper = manager-core
 [credential "helperselector"]
 	selected = manager-core
 [filter "lfs"]

@@ -1,5 +1,11 @@
 $env:Path += ";$HOME\.dots\windows\bootstrap\dots-bootstrap"
 
+# Chocolatey profile
+$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+if (Test-Path($ChocolateyProfile)) {
+  Import-Module "$ChocolateyProfile"
+}
+
 $PSReadLineOptions = @{
     CompletionQueryItems = 250
     EditMode = 'Emacs'
