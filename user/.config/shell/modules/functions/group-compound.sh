@@ -14,7 +14,7 @@ mkcd() {
 
 # clone(user, root)
 mkmv() {
-	for lastArg; do true; done
+	for lastArg; do :; done
 	mkdir -p "$lastArg"
 
 	mv "$@"

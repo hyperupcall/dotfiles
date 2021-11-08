@@ -68,22 +68,6 @@ dg() {
 	dig +nocmd "$1" any +multiline +noall +answer
 }
 
-eboot() {
-	_eboot_dir="$HOME/repos/dots-bootstrap/pkg/lib/install_modules"
-	_eboot_file="$(
-		find "$_eboot_dir" -ignore_readdir_race -mindepth 1 -maxdepth 1 -printf "%f\0" | fzf --read0
-	)"
-
-	[ -z "$_eboot_file" ] && {
-		_shell_util_die "eboot: No file chosen"
-		return
-	}
-
-	v "$_eboot_dir/$_eboot_file"
-
-	unset -v _eboot_dir _eboot_file
-}
-
 edit() {
 	_edit_grep_result="$(grep -nR "^$1() {$" "$XDG_CONFIG_HOME"/shell | head -1)"
 	if [ -z "$_edit_grep_result" ]; then

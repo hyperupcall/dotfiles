@@ -3,6 +3,6 @@
 # ~/.bash_logout
 #
 
-[ "$SHLVL" = 1 ] && {
+if [ "$SHLVL" = 1 ]; then
 	clear
-}
+fi
