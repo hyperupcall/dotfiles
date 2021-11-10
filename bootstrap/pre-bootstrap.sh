@@ -57,7 +57,6 @@ if ! command -v nvim >/dev/null 2>&1; then
 fi
 
 # Install ~/.dots
-ensure mkdir -p ~/.dots
 if [ ! -d ~/.dots ]; then
 	ensure git clone --quiet https://github.com/hyperupcall/dots ~/.dots
 	ensure cd ~/.dots

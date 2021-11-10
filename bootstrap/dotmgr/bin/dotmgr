@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -eo pipefail
 
-ROOT_DIR="$HOME/.dots/bootstrap/dots-bootstrap"
+ROOT_DIR="$HOME/.dots/bootstrap/dotmgr"
 
 source "$ROOT_DIR/lib/util.sh"
 
@@ -30,9 +30,17 @@ module)
 	shift
 	source "$ROOT_DIR/lib/commands/module.sh"
 	;;
+module-show)
+	shift
+	source "$ROOT_DIR/lib/commands/module-show.sh"
+	;;
 maintain)
 	shift
 	source "$ROOT_DIR/lib/commands/maintain.sh"
+	;;
+import-gpgkey)
+	shift
+	source "$ROOT_DIR/lib/commands/import-gpgkey.sh"
 	;;
 *)
 	log_error "No matching subcommand found"

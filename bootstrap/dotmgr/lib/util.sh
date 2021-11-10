@@ -50,14 +50,20 @@ util.show_help() {
 		    dots-bootstrap [command]
 
 		Commands:
-		    bootstrap
-		        Bootstraps the current user
+		  bootstrap
+		    Bootstraps the current user
 
-		    module [stage]
-		        Bootstraps dotfiles, only for a particular language
+		  module <stage>
+		    Bootstraps dotfiles, only for a particular language
 
-		    maintain
-		        Performs cleanup and ensures various files and symlinks exist
+		  module-show <stage>
+		    Print the contents of a module stage, to show what would be executed
+
+		  maintain
+		    Performs cleanup and ensures various files and symlinks exist
+
+		  import-gpgkey [dir]
+		    Imports gpgkey
 
 		Examples:
 		    dots-bootstrap bootstrap

@@ -67,18 +67,21 @@ if [ ! -d "$XDG_DATA_HOME/basalt/source" ]; then
 	ensure git -C "$XDG_DATA_HOME/basalt/source" submodule update
 fi
 
-eval "$("$XDG_DATA_HOME/basalt/source/pkg/bin/basalt" init sh)"
-"$XDG_DATA_HOME/basalt/source/pkg/bin/basalt" --global add hyperupcall/dots-bootstrap
+eval "$("$XDG_DATA_HOME/basalt/source/pkg/bin/basalt" global init sh)"
+log_info 'Downloading Basalt'
+if ! "$XDG_DATA_HOME/basalt/source/pkg/bin/basalt" global add hyperupcall/dots-bootstrap &>/dev/null; then
+	die "Could not download hyperupcall/dots-bootstrap repository"
+fi
 
 cat > ~/.bootstrap/profile-bootstrap.sh <<-"EOF"
 	. ~/.bootstrap/profile-pre-bootstrap.sh
 	export PATH="$HOME/.bootstrap/bin:$XDG_DATA_HOME/basalt/source/pkg/bin:$HOME/.bootstrap/nim-all/nim/bin:$PATH"
-	eval "$("$XDG_DATA_HOME/basalt/source/pkg/bin/basalt" init sh)"
+	eval "$("$XDG_DATA_HOME/basalt/source/pkg/bin/basalt" global init sh)"
 EOF
 
 cat <<-"EOF"
 ---
 source ~/.bootstrap/profile-bootstrap.sh
-dotty --config-dir="$HOME/.dots/user/.config/dotty" --deployment=all.sh deploy
+dotfox --config-dir="$HOME/.dots/user/.config/dotfox" --deployment=all.sh deploy
 ---
 EOF
