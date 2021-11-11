@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 set -e
 
 die() {
@@ -12,8 +12,12 @@ ensure() {
 	fi
 }
 
-# Ensure prerequisites
+if [ "${BASH_SOURCE[0]}" = "$0" ]; then
+	printf '%s\n' "Error: File 'stage-0.sh' should not be sourced"
+	exit 1
+fi
 
+# Ensure prerequisites
 mkdir -p ~/.bootstrap
 
 if ! command -v sudo >/dev/null 2>&1; then
@@ -88,12 +92,14 @@ if [ ! -f ~/.dots/xdg.sh ]; then
 fi
 
 # Export variables for 'bootstrap.sh'
-cat > ~/.bootstrap/profile-pre-bootstrap.sh <<-EOF
+cat > ~/.bootstrap/stage-1.sh <<-EOF
+# shellcheck shell=sh
+
 export NAME="Edwin Kofler"
 export EMAIL="edwin@kofler.dev"
 export EDITOR="$EDITOR"
 export VISUAL="\$EDITOR"
-export PATH="\$HOME/.dots/bootstrap/dots-bootstrap/bin:\$PATH"
+export PATH="\$HOME/.dots/bootstrap/dotmgr/bin:\$PATH"
 
 if [ -f ~/.dots/xdg.sh ]; then
   . ~/.dots/xdg.sh
@@ -105,7 +111,7 @@ EOF
 
 cat <<-"EOF"
 ---
-. ~/.bootstrap/profile-pre-bootstrap.sh
-dots-bootstrap bootstrap
+. ~/.bootstrap/stage-1.sh
+dotmgr bootstrap
 ---
 EOF

@@ -21,20 +21,20 @@ systemctl enable --now systemd-{network,resolve}d
 
 ## With bootstrap
 
-To begin the bootstrap process, the `pre-bootstrap.sh` script must be downloaded and executed
+To begin the bootstrap process, the `stage-0.sh` script must be downloaded and executed
 
 ```sh
 mkdir -p ~/.bootstrap
-curl -LsSo ~/.bootstrap/pre-bootstrap.sh https://raw.githubusercontent.com/hyperupcall/dots/main/bootstrap/pre-bootstrap.sh
-chmod +x ~/.bootstrap/pre-bootstrap.sh
-~/.bootstrap/pre-bootstrap.sh
+curl -LsSo ~/.bootstrap/stage-0.sh https://raw.githubusercontent.com/hyperupcall/dots/main/bootstrap/stage-0.sh
+chmod +x ~/.bootstrap/stage-0.sh
+~/.bootstrap/stage-0.sh
 ```
 
-Once you do this, then execute the real `dots-bootstrap` script
+The stage 0 bootstrap script clones this repository, and creates a `stage-1.sh` file. Sourcing this sets basic environment variables necessary for a minimal working environment 
 
 ```sh
-. ~/.bootstrap/profile-pre-bootstrap.sh
-dots-bootstrap bootstrap
+. ~/.bootstrap/stage-1.sh
+dotmgr bootstrap
 ```
 
 ## Without bootstrap

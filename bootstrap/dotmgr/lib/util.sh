@@ -41,9 +41,6 @@ check_dot() {
 	fi
 }
 
-
-# ------------------- helper functions ------------------- #
-
 util.show_help() {
 	cat <<-EOF
 		Usage:
