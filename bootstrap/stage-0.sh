@@ -18,7 +18,7 @@ if [ -n "$BASH" ] && [ "${BASH_SOURCE[0]}" != "$0" ]; then
 fi
 
 # Ensure prerequisites
-mkdir ~/.bootstrap
+mkdir -p ~/.bootstrap
 
 if ! command -v sudo >/dev/null 2>&1; then
 	die "Sudo not installed"
@@ -80,6 +80,8 @@ fi
 
 # Install ~/.dots
 if [ ! -d ~/.dots ]; then
+	printf '%s\n' 'Cloning github.com/hyperupcall/dots'
+
 	ensure git clone --quiet https://github.com/hyperupcall/dots ~/.dots
 	ensure cd ~/.dots
 	ensure git config --local filter.npmrc-clean.clean "$(pwd)/user/config/npm/npmrc-clean.sh"
@@ -130,6 +132,6 @@ EOF
 cat <<-"EOF"
 ---
 . ~/.bootstrap/stage-1.sh
-dotmgr bootstrap
+dotmgr bootstrap-stage1
 ---
 EOF

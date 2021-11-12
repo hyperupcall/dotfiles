@@ -10,22 +10,19 @@ die() {
 }
 
 ensure() {
-	"$@" || die "'$*' failed"
+	"$@" || die "'$1' failed"
 }
 
 log_info() {
-	printf '%s\n' "$*"
-	# printf "\033[0;34m%s\033[0m\n" "INFO: $*"
+	printf '%s\n' "$1"
 }
 
 log_warn() {
-	printf '%s\n' "Warn: $*"
-	# printf "\033[1;33m%s\033[0m\n" "WARN: $*" >&2
+	printf '%s\n' "Warn: $1"
 }
 
 log_error() {
-	# printf '%s\n' "Error: $*"
-	printf "\033[0;31m%s\033[0m\n" "Error: $*" >&2
+	printf '%s\n' "Error: $1"
 }
 
 check_bin() {
@@ -35,8 +32,7 @@ check_bin() {
 }
 
 check_dot() {
-	# shellcheck disable=SC2088
-	if [ -e ~/"$1" ]; then
+	if [ -e "$HOME/$1" ]; then
 		log_warn "File '$1' EXISTS"
 	fi
 }
@@ -47,14 +43,14 @@ util.show_help() {
 		    dots-bootstrap [command]
 
 		Commands:
-		  bootstrap
-		    Bootstraps the current user
+		  bootstrap-stage1
+		    Bootstrap operations that ocur before dotfiles have been deployed
 
-		  module <stage>
+		  bootstrap-stage2
+		    Bootstrap operations that occur after dotfiles have been deployed
+
+		  module [--list] [--show] <stage>
 		    Bootstraps dotfiles, only for a particular language
-
-		  module-show <stage>
-		    Print the contents of a module stage, to show what would be executed
 
 		  maintain
 		    Performs cleanup and ensures various files and symlinks exist

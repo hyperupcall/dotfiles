@@ -59,9 +59,9 @@ if [ "$OSTYPE" = Darwin ]; then
 	~/.bootstrap/brew-install.sh
 fi
 
-# Download basalt
+# Download Basalt
 if [ ! -d "$XDG_DATA_HOME/basalt/source" ]; then
-	log_info 'Downloading basalt'
+	log_info 'Downloading Basalt'
 	ensure git clone --quiet https://github.com/hyperupcall/basalt "$XDG_DATA_HOME/basalt/source"
 	ensure git -C "$XDG_DATA_HOME/basalt/source" submodule init
 	ensure git -C "$XDG_DATA_HOME/basalt/source" submodule update
@@ -75,7 +75,7 @@ fi
 
 cat > ~/.bootstrap/stage-2.sh <<-"EOF"
 	. ~/.bootstrap/stage-1.sh
-	export PATH="$HOME/.bootstrap/bin:$XDG_DATA_HOME/basalt/source/pkg/bin:$HOME/.bootstrap/nim-all/nim/bin:$PATH"
+	export PATH="$HOME/.bootstrap/dotfox:$HOME/.bootstrap/bin:$XDG_DATA_HOME/basalt/source/pkg/bin:$HOME/.bootstrap/nim-all/nim/bin:$PATH"
 	
 	if basalt_output="$("$XDG_DATA_HOME/basalt/source/pkg/bin/basalt" global init sh)"; then
 	    eval "$basalt_output"
@@ -86,7 +86,7 @@ EOF
 
 cat <<-"EOF"
 ---
-source ~/.bootstrap/stage-2.sh
+. ~/.bootstrap/stage-2.sh
 dotfox --config-dir="$HOME/.dots/user/.config/dotfox" --deployment=all.sh deploy
 ---
 EOF

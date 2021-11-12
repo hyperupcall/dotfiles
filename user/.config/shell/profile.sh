@@ -14,18 +14,19 @@ fi
 . "$XDG_CONFIG_HOME/shell/modules/env.sh"
 . "$XDG_CONFIG_HOME/shell/modules/xdg.sh"
 
+_path_prepend "$HOME/.dots/bootstrap/dotmgr/bin"
 _path_prepend "$HOME/scripts"
 _path_prepend "$HOME/.local/bin"
 _path_prepend "$HOME/Docs/pkg/app-image"
 
-# TODO
-#stty discard undef # special characters
-#stty start undef
-#stty stop undef
-#stty -ixoff # input settings
-#stty -ixon
 
-# TODO: setterm
+if [ -t 0 ]; then
+	stty discard undef # special characters
+	stty start undef
+	stty stop undef
+	stty -ixoff # input settings
+	stty -ixon
+fi
 
 # ----------------------- Sourcing ----------------------- #
 for d in aliases functions; do
@@ -36,11 +37,17 @@ done
 unset -v d f
 
 # ---------------------- Environment --------------------- #
-#. "$XDG_CONFIG_HOME/shell/generated/aggregated.sh" # TODO
+# . "$XDG_CONFIG_HOME/shell/generated/aggregated.sh" # TODO
 
 ({
+	if [ -z "$XDG_RUNTIME_DIR" ]; then
+		# If 'XDG_RUNTIME_DIR' is not set, then most likely dbus has not started, which means
+		# the following commands will not work. This can occur in WSL environments, for example
+		exit
+	fi
+	
 	dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
-
+	
 	printenv -0 \
 	| awk '
 		BEGIN {
@@ -59,3 +66,4 @@ unset -v d f
 
 # ---
 . "/home/edwin/.local/share/cargo/env"
+. "$HOME/.cargo/env"
