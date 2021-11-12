@@ -12,7 +12,7 @@ ensure() {
 	fi
 }
 
-if [ -n "$BASH" ] && [ "${BASH_SOURCE[0]}" = "$0" ]; then
+if [ -n "$BASH" ] && [ "${BASH_SOURCE[0]}" != "$0" ]; then
 	printf '%s\n' "Error: File 'stage-0.sh' should not be sourced"
 	exit 1
 fi
