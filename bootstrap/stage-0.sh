@@ -12,13 +12,13 @@ ensure() {
 	fi
 }
 
-if [ "${BASH_SOURCE[0]}" = "$0" ]; then
+if [ -n "$BASH" ] && [ "${BASH_SOURCE[0]}" = "$0" ]; then
 	printf '%s\n' "Error: File 'stage-0.sh' should not be sourced"
 	exit 1
 fi
 
 # Ensure prerequisites
-mkdir -p ~/.bootstrap
+mkdir ~/.bootstrap
 
 if ! command -v sudo >/dev/null 2>&1; then
 	die "Sudo not installed"
@@ -57,6 +57,24 @@ if ! command -v nvim >/dev/null 2>&1; then
 
 	if ! command -v nvim >/dev/null 2>&1; then
 		die 'Automatic installation of neovim failed'
+	fi
+fi
+
+if ! command -v jq >/dev/null 2>&1; then
+	printf '%s\n' 'Installing jq'
+
+	if command -v pacman >/dev/null 2>&1; then
+		ensure sudo pacman -S --noconfirm jq >/dev/null 2>&1
+	elif command -v apt-get >/dev/null 2>&1; then
+		ensure sudo apt-get -y install jq >/dev/null 2>&1
+	elif command -v dnf >/dev/null 2>&1; then
+		ensure sudo dnf -y install jq >/dev/null 2>&1
+	elif command -v zypper >/dev/null 2>&1; then
+		ensure sudo zypper -y install jq >/dev/null 2>&1
+	fi
+
+	if ! command -v jq >/dev/null 2>&1; then
+		die 'Automatic installation of jq failed'
 	fi
 fi
 

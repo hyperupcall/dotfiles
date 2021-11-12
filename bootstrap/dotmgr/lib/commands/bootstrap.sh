@@ -67,21 +67,26 @@ if [ ! -d "$XDG_DATA_HOME/basalt/source" ]; then
 	ensure git -C "$XDG_DATA_HOME/basalt/source" submodule update
 fi
 
-eval "$("$XDG_DATA_HOME/basalt/source/pkg/bin/basalt" global init sh)"
-log_info 'Downloading Basalt'
-if ! "$XDG_DATA_HOME/basalt/source/pkg/bin/basalt" global add hyperupcall/dots-bootstrap &>/dev/null; then
-	die "Could not download hyperupcall/dots-bootstrap repository"
+if basalt_output="$("$XDG_DATA_HOME/basalt/source/pkg/bin/basalt" global init sh)"; then
+	eval "$basalt_output"
+else
+	die "Could not run 'basalt global init sh'"
 fi
 
-cat > ~/.bootstrap/profile-bootstrap.sh <<-"EOF"
-	. ~/.bootstrap/profile-pre-bootstrap.sh
+cat > ~/.bootstrap/stage-2.sh <<-"EOF"
+	. ~/.bootstrap/stage-1.sh
 	export PATH="$HOME/.bootstrap/bin:$XDG_DATA_HOME/basalt/source/pkg/bin:$HOME/.bootstrap/nim-all/nim/bin:$PATH"
-	eval "$("$XDG_DATA_HOME/basalt/source/pkg/bin/basalt" global init sh)"
+	
+	if basalt_output="$("$XDG_DATA_HOME/basalt/source/pkg/bin/basalt" global init sh)"; then
+	    eval "$basalt_output"
+	else
+	    printf '%s\n' "Could not run 'basalt global init sh'"
+	fi
 EOF
 
 cat <<-"EOF"
 ---
-source ~/.bootstrap/profile-bootstrap.sh
+source ~/.bootstrap/stage-2.sh
 dotfox --config-dir="$HOME/.dots/user/.config/dotfox" --deployment=all.sh deploy
 ---
 EOF
