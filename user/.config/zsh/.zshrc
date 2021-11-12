@@ -144,4 +144,4 @@ for f in "$XDG_CONFIG_HOME"/zsh/modules/?*.zsh; do
 done
 unset -v f
 
-# -----
+# ---

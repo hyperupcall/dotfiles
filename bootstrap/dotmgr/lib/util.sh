@@ -49,7 +49,10 @@ util.show_help() {
 		  bootstrap-stage2
 		    Bootstrap operations that occur after dotfiles have been deployed
 
-		  module [--list] [--show] <stage>
+		  refresh
+		    Refresh dotfiles, removing any stuff that might have automatically been appended by installation scripts
+
+		  module [--list] [--show <stage>] [stage]
 		    Bootstraps dotfiles, only for a particular language
 
 		  maintain

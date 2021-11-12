@@ -45,9 +45,9 @@ unset -v d f
 		# the following commands will not work. This can occur in WSL environments, for example
 		exit
 	fi
-	
+
 	dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
-	
+
 	printenv -0 \
 	| awk '
 		BEGIN {
@@ -65,5 +65,3 @@ unset -v d f
 } &)
 
 # ---
-. "/home/edwin/.local/share/cargo/env"
-. "$HOME/.cargo/env"

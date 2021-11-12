@@ -454,9 +454,6 @@ export UNISON="$XDG_DATA_HOME/unison"
 export VAGRANT_HOME="$XDG_DATA_HOME/vagrant"
 export VAGRANT_ALIAS_FILE="$VAGRANT_HOME/aliases"
 
-# vim
-#export VIMINIT="if has('nvim') | let \$MYVIMRC=\$XDG_CONFIG_HOME.\"/nvim/init.vim\" | else | let \$MYVIMRC=\$XDG_CONFIG_HOME.\"/vim/vimrc\" | endif | source \$MYVIMRC"
-
 # vimperator
 export VIMPERATOR_INIT=":source $XDG_CONFIG_HOME/vimperator/vimperatorrc"
 export VIMPERATOR_RUNTIME="$XDG_CONFIG_HOME/vimperator"
@@ -481,16 +478,16 @@ export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
 
 # wine
 export WINEPREFIX="$XDG_DATA_HOME/wine"
-# wine winecfg
+# wine winecfg # TODO
 
 # wolfram mathematica
 export MATHEMATICA_BASE="/usr/share/mathematica"
 export MATHEMATICA_USERBASE="$XDG_DATA_HOME/mathematica"
 
 # X11
-#export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
-#export XCOMPOSEFILE="$XDG_CONFIG_HOME/X11/Xcompose"
-#export XCOMPOSECACHE="$XDG_CACHE_HOME/X11/Xcompose"
+# export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
+# export XCOMPOSEFILE="$XDG_CONFIG_HOME/X11/Xcompose"
+# export XCOMPOSECACHE="$XDG_CACHE_HOME/X11/Xcompose"
 
 # xsel
 alias xsel='xsel -l "$XDG_DATA_HOME/xsel/xsel.log'

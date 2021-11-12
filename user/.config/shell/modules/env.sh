@@ -96,5 +96,8 @@ export SXHKD_SHELL="$(command -v sh)"
 # X11
 export XCURSOR_PATH="$XDG_CONFIG_HOME/icons:$XCURSOR_PATH"
 
+# zsh
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+
 # zfs
 export ZFS_COLOR=

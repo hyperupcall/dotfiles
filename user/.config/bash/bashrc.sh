@@ -172,3 +172,7 @@ source "$XDG_CONFIG_HOME/bash/modules/util.sh"
 
 # export PATH="$HOME/.local/share/poetry/bin:$PATH"
 . "$HOME/.cargo/env"
+
+
+
+
