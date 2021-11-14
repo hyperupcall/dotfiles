@@ -164,15 +164,4 @@ source "$XDG_CONFIG_HOME/shell/modules/line-editing.sh"
 source "$XDG_CONFIG_HOME/bash/modules/readline.sh"
 source "$XDG_CONFIG_HOME/bash/modules/util.sh"
 
-
-# -----
-
-# export PATH="$HOME/.local/share/poetry/bin:$PATH"
-# . "/home/edwin/.local/share/cargo/env"
-
-# export PATH="$HOME/.local/share/poetry/bin:$PATH"
-. "$HOME/.cargo/env"
-
-
-
-
+# ---

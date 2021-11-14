@@ -495,7 +495,7 @@ alias xsel='xsel -l "$XDG_DATA_HOME/xsel/xsel.log'
 # yarn
 export YARN_CACHE_FOLDER="$XDG_CACHE_HOME/yarn"
 _path_prepend "$XDG_DATA_HOME/yarn/bin"
-alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
+#alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 
 # z
 export _Z_DATA="$XDG_DATA_HOME/z"

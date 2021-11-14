@@ -30,18 +30,19 @@ chmod +x ~/.bootstrap/stage-0.sh
 ~/.bootstrap/stage-0.sh
 ```
 
-The `stage-0.sh` script clones this repository, and creates a `stage-1.sh` file, among other things
+The `stage-0.sh` script clones this repository, and creates a `stage-1.sh` file, among other things. Sourcing the `stage-1.sh` adds the directory containing `dotmgr` to the PATH, and set basic environment variables like `NAME`, `EDITOR`, and XDG Base Directory Environment Variables
 
 ```sh
-. ~/.bootstrap/stage1.sh
+. ~/.bootstrap/stage-1.sh
 dotmgr bootstrap-stage1
 ```
 
-Running `dotmgr bootstrap` installs [dotfox](https://github.com/hyperupcall/dotfox), [Basalt](https://github.com/hyperupcall/basalt), and creates a `stage-2.sh` file, among other things
+Running `dotmgr bootstrap` installs [dotfox](https://github.com/hyperupcall/dotfox), [Basalt](https://github.com/hyperupcall/basalt), [Nim](https://nim-lang.org), and creates a `stage-2.sh` file, among other things. Sourcing `stage2.sh` adds the directories containing these programs to the PATH
 
 ```sh
 . ~/.bootstrap/stage2.sh
 dotfox --config-dir="$HOME/.dots/user/.config/dotfox" --deployment=all.sh deploy
+dotmgr maintain
 . ~/.bashrc
 dotmgr bootstrap-stage2
 ```

@@ -1,16 +1,13 @@
 #!/usr/bin/env bash
-set -ETeo pipefail
+set -eo pipefail
 
 if [ -f ~/.dots/xdg.sh ]; then
 	source ~/.dots/xdg.sh --export-vars
 else
-	printf '%s\n' "Error: ~/.dots/xdg.sh not found. Exiting"
+	printf '%s\n' "Error: ~/.dots/xdg.sh not found. Exiting" >&2
 	exit 1
 fi
 
-# TODO:
-# mkdir:"$XDG_CONFIG_HOME/yarn"
-# touch:"$XDG_CONFIG_HOME/yarn/config"
 declare -ra dotfiles=(
 	home:'.alsoftrc'
 	home:'.config/conky' # TODO
@@ -180,6 +177,11 @@ declare -ra dotfiles=(
 	state:'dotshellgen'
 )
 
+if ! [[ -v 'XDG_CONFIG_HOME' && -v 'XDG_STATE_HOME' && -v 'XDG_DATA_HOME' ]]; then
+	printf '%s\n' "Error: XDG Variables cannot be empty" >&2
+	exit 1
+fi
+
 # Print actual dotfiles
 src_home="$HOME/.dots/user"
 src_cfg="$HOME/.dots/user/.config"
@@ -191,7 +193,7 @@ for dotfile in "${dotfiles[@]}"; do
 	file="${dotfile#*:}"
 
 	case "$file" in *:*)
-		printf '%s\n' "Error: Files must not have colons, but file '$file' does. Exiting"
+		printf '%s\n' "Error: Files must not have colons, but file '$file' does. Exiting" >&2
 		exit 1
 	;; esac
 
@@ -204,38 +206,21 @@ for dotfile in "${dotfiles[@]}"; do
 	elif [ "$prefix" = data ]; then
 		printf '%s\n' "symlink:$src_data/$file:$XDG_DATA_HOME/$file"
 	else
-		printf '%s\n' "Error: Prefix '$prefix' not supported (for file '$file'). Exiting"
+		printf '%s\n' "Error: Prefix '$prefix' not supported (for file '$file'). Exiting" >&2
 		exit 1
 	fi
 done
 
-storage_home="/storage/ur/storage_home"
-storage_other="/storage/ur/storage_other"
-storage_bridge="/storage/ur/bridge"
-
 cat <<-EOF
 
-# to dotfile
+# manual symlinks
 symlink:$XDG_CONFIG_HOME/X11/xinitrc:$HOME/.xinitrc
 symlink:$XDG_CONFIG_HOME/bash/bash_profile.sh:$HOME/.bash_profile
 symlink:$XDG_CONFIG_HOME/bash/bash_logout.sh:$HOME/.bash_logout
 symlink:$XDG_CONFIG_HOME/bash/bashrc.sh:$HOME/.bashrc
 symlink:$XDG_CONFIG_HOME/shell/profile.sh:$HOME/.profile
 
-# to storage
-symlink:$storage_home/Dls:$HOME/Dls
-symlink:$storage_home/Docs:$HOME/Docs
-symlink:$storage_home/Music:$HOME/Music
-symlink:$storage_home/Pics:$HOME/Pics
-symlink:$storage_home/Vids:$HOME/Vids
-symlink:$storage_other/BraveSoftware:$XDG_CONFIG_HOME/BraveSoftware
-symlink:$storage_other/calcurse:$XDG_CONFIG_HOME/calcurse
-symlink:$storage_other/fonts:$XDG_CONFIG_HOME/fonts
-symlink:$storage_other/mozilla:$HOME/.mozilla
-symlink:$storage_other/ssh:$HOME/.ssh
-symlink:$storage_bridge/password-store:$XDG_DATA_HOME/password-store
-
-# to other
+# other (environment dependent)
 EOF
 
 # Custom
@@ -247,14 +232,5 @@ if [ "$REPLY" = default ]; then
 elif [ "$REPLY" = custom ]; then
 	cat <<-EOF
 	symlink:$src_home/.pam_environment/xdg-custom.conf:$HOME/.pam_environment
-	EOF
-fi
-
-if [ -d ~/.gnupg ]; then
-	cat <<-EOF
-
-	symlink:$XDG_DATA_HOME/gnupg/dirmngr.conf:$HOME/.gnupg/dirmngr.conf
-	symlink:$XDG_DATA_HOME/gnupg/gpg.conf:$HOME/.gnupg/gpg.conf
-	symlink:$XDG_DATA_HOME/gnupg/gpg-agent.conf:$HOME/.gnupg/gpg-agent.conf
 	EOF
 fi

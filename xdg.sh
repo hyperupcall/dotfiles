@@ -1,8 +1,8 @@
 # shellcheck shell=sh
 
-# @description I set my XDG Base Directory variables dependent on
-# operating system. This file facilitiates that and is used during
-# the bootstrap process and by ~/.dots/user/.config/dotty/deployments.all
+# @description My XDG Base Directory variables are set differently depending on
+# the operating system. This file is used during my dotfile bootstrap process
+# and by my 'dotfox' configuration
 
 _xdg_main() {
 	if [ -f /etc/os-release ]; then

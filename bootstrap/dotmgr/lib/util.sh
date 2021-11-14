@@ -33,14 +33,14 @@ check_bin() {
 
 check_dot() {
 	if [ -e "$HOME/$1" ]; then
-		log_warn "File '$1' EXISTS"
+		log_warn "File or directory '$1' EXISTS"
 	fi
 }
 
 util.show_help() {
 	cat <<-EOF
 		Usage:
-		    dots-bootstrap [command]
+		  dotmgr [command]
 
 		Commands:
 		  bootstrap-stage1
@@ -49,20 +49,22 @@ util.show_help() {
 		  bootstrap-stage2
 		    Bootstrap operations that occur after dotfiles have been deployed
 
-		  refresh
-		    Refresh dotfiles, removing any stuff that might have automatically been appended by installation scripts
-
 		  module [--list] [--show <stage>] [stage]
 		    Bootstraps dotfiles, only for a particular language
+
+		  refresh
+		    Refresh dotfiles, removing any stuff that might have automatically been
+		    appended by installation scripts
 
 		  maintain
 		    Performs cleanup and ensures various files and symlinks exist
 
-		  import-gpgkey [dir]
-		    Imports gpgkey
+		  save-state
+		    Saves current state, like current VSCode extensions, etc. to
+		    various files
 
 		Examples:
-		    dots-bootstrap bootstrap
-		    dots-bootstrap module rust
+		  dotmgr bootstrap-stage1
+		  dotmgr module rust
 	EOF
 }

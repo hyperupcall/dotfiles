@@ -383,5 +383,6 @@
     "yaml": false,
     "plaintext": true,
     "markdown": true
-  }
+  },
+  "editor.formatOnSave": true
 }

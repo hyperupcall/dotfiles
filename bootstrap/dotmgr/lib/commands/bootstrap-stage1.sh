@@ -76,7 +76,7 @@ fi
 cat > ~/.bootstrap/stage-2.sh <<-"EOF"
 	. ~/.bootstrap/stage-1.sh
 	export PATH="$HOME/.bootstrap/dotfox:$HOME/.bootstrap/bin:$XDG_DATA_HOME/basalt/source/pkg/bin:$HOME/.bootstrap/nim-all/nim/bin:$PATH"
-	
+
 	if basalt_output="$("$XDG_DATA_HOME/basalt/source/pkg/bin/basalt" global init sh)"; then
 	    eval "$basalt_output"
 	else
@@ -88,5 +88,8 @@ cat <<-"EOF"
 ---
 . ~/.bootstrap/stage-2.sh
 dotfox --config-dir="$HOME/.dots/user/.config/dotfox" --deployment=all.sh deploy
+dotmgr maintain
+. ~/.bashrc
+dotmgr bootstrap-stage2
 ---
 EOF

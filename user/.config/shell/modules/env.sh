@@ -11,17 +11,11 @@ export VISUAL="nvim"
 export EDITOR="$VISUAL"
 export DIFFPROG="vim -d"
 export PAGER="less"
-export BROWSER="brave"
+export BROWSER="brave-browser"
 export SPELL="aspell -x -c"
 
 
 # ------------------------ Program ----------------------- #
-# bm
-_path_prepend "$XDG_DATA_HOME/bm/bin"
-
-# shell_installer
-_path_prepend "$XDG_DATA_HOME/shell-installer/bin"
-
 # fzf
 export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
 export FZF_DEFAULT_OPTS="--history \"$XDG_STATE_HOME/history/fzf_history\" --history-size=10000"
@@ -39,12 +33,10 @@ export GUILE_HISTORY="$XDG_STATE_HOME/history/guile_history"
 export HSTR_CONFIG=hicolor
 
 # less
-# adding X breaks mouse scrolling of pages
-export LESS="-FRQ"
-# export LESS="-FIRX" LESS="-M -I -R"
+export LESS="-FRQ" # Common Flags: -F,-I,-M,-R,-Q
 export LESS_ADVANCED_PREPROCESSOR=1 # lesspipe.sh
 export LESSKEY="$XDG_CONFIG_HOME/less_keys"
-export LESSOPEN="|$(command -v lesspipe.sh) %s | $(command -v source-highlight-esc.sh)" # TODO
+export LESSOPEN="|source-highlight-esc.sh %s" # TODO (GNU)
 export LESSHISTFILE="$XDG_STATE_HOME/history/less_history"
 export LESSHISTSIZE="32768"
 export LESS_TERMCAP_mb="$(printf '\e[1;31m')" # start blink
