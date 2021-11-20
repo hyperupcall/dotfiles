@@ -6,5 +6,3 @@
 source ~/.bashrc
 
 # ---
-. "/home/edwin/.local/share/cargo/env"
-. "$HOME/.cargo/env"

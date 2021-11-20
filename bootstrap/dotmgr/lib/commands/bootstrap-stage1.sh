@@ -63,8 +63,6 @@ fi
 if [ ! -d "$XDG_DATA_HOME/basalt/source" ]; then
 	log_info 'Downloading Basalt'
 	ensure git clone --quiet https://github.com/hyperupcall/basalt "$XDG_DATA_HOME/basalt/source"
-	ensure git -C "$XDG_DATA_HOME/basalt/source" submodule init
-	ensure git -C "$XDG_DATA_HOME/basalt/source" submodule update
 fi
 
 if basalt_output="$("$XDG_DATA_HOME/basalt/source/pkg/bin/basalt" global init sh)"; then

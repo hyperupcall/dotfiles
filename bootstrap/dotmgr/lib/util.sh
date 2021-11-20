@@ -52,10 +52,6 @@ util.show_help() {
 		  module [--list] [--show <stage>] [stage]
 		    Bootstraps dotfiles, only for a particular language
 
-		  refresh
-		    Refresh dotfiles, removing any stuff that might have automatically been
-		    appended by installation scripts
-
 		  maintain
 		    Performs cleanup and ensures various files and symlinks exist
 

@@ -50,9 +50,12 @@ must_link() {
 
 	util_get_file "$2"
 	local link="$REPLY"
-
-	if ln -sfT "$src" "$link"; then
-		log_info "$src SYMLINKED to $link"
+	if [ -L "$link" ] && [ "$(readlink "$link")" = "$src" ]; then
+		log_warn "Skipping symink from '$src' to '$link'"
+	else
+		if ln -sfT "$src" "$link"; then
+			log_info "$src SYMLINKED to $link"
+		fi
 	fi
 }
 
@@ -62,6 +65,25 @@ if ! [[ -v 'XDG_CONFIG_HOME' && -v 'XDG_DATA_HOME' && -v 'XDG_STATE_HOME' ]]; th
 	exit 1
 fi
 
+# Remove appended items to dotfiles
+for file in ~/.profile ~/.bashrc ~/.bash_profile "${ZDOTDIR:-$HOME}/.zshrc" "${XDG_CONFIG_HOME:-$HOME/.config}/fish/config.fish"; do
+	if [ ! -f "$file" ]; then
+		continue
+	fi
+
+	printf '%s\n' "Cleaning '$file'"
+ 
+	file_string=
+	while IFS= read -r line; do
+		file_string+="$line"$'\n'
+
+		if [[ "$line" == '# ---' ]]; then
+			break
+		fi
+	done < "$file"; unset line
+
+	printf '%s' "$file_string" > "$file"
+done; unset file
 
 # Create symlinks
 declare storage_home='/storage/ur/storage_home'

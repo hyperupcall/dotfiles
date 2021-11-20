@@ -21,10 +21,18 @@ fi
 
 
 dotmgr module rust
-cargo install starship
+
+if ! command -v starship &>/dev/null; then
+	cargo install starship
+fi
+
+check_bin git-delta
+check_bin navi
 
 basalt global add hyperupcall/choose hyperupcall/autoenv hyperupcall/dotshellextract hyperupcall/dotshellgen
 basalt global add cykerway/complete-alias rcaloras/bash-preexec
+
+# TODO: WSL specific things
 
 # TODO
 # - ssh keys
@@ -36,7 +44,7 @@ declare dir="$1"
 # TODO
 : "${dir:=/storage/ur/storage_other/gnupg}"
 
-gpg --homedir "$dir" --armor --export-secret-key | gpg --import
+# gpg --homedir "$dir" --armor --export-secret-key | gpg --import
 
 # check to see if programs are automatically installed
 check_bin dash
@@ -46,6 +54,6 @@ check_bin exa
 check_bin rsync
 
 # misc
-if ! [ "$(curl -LsSo- https://edwin.dev)" = "Hello World" ]; then
-		printf '%s\n' "https://edwin.dev OPEN"
-fi
+# if ! [ "$(curl -LsSo- https://edwin.dev)" = "Hello World" ]; then
+# 		printf '%s\n' "https://edwin.dev OPEN"
+# fi
