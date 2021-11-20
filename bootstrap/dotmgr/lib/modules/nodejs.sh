@@ -6,8 +6,8 @@ check_bin pnpm
 
 # todo: remove prompt
 hash node &>/dev/null || {
-	log_info "Installing n"
-	req https://raw.githubusercontent.com/mklement0/n-install/stable/bin/n-install | bash
+	util.log_info "Installing n"
+	util.req https://raw.githubusercontent.com/mklement0/n-install/stable/bin/n-install | bash
 }
 
 npm i -g yarn

@@ -384,5 +384,6 @@
     "plaintext": true,
     "markdown": true
   },
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "window.zoomLevel": -1
 }

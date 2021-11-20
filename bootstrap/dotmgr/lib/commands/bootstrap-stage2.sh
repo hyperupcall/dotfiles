@@ -1,23 +1,24 @@
 # shellcheck shell=bash
 
-if command -v apt &>/dev/null; then
-	sudo apt -y update
-	sudo apt -y upgrade
+subcmd() {
+	if command -v apt &>/dev/null; then
+		sudo apt -y update
+		sudo apt -y upgrade
 
-	sudo apt -y install libssl-dev
-	sudo apt -y webext-browserpass
+		sudo apt -y install libssl-dev
+		sudo apt -y webext-browserpass
 
-	sudo apt -y install rsync xclip
-elif command -v dnf &>/dev/null; then
-	sudo dnf -y update
-	sudo dnf -y upgrade
+		sudo apt -y install rsync xclip
+	elif command -v dnf &>/dev/null; then
+		sudo dnf -y update
+		sudo dnf -y upgrade
 
-	sudo dnf -y install openssl-devel
-	# sudo dnf -y install browserpass
+		sudo dnf -y install openssl-devel
+		# sudo dnf -y install browserpass
 
-	sudo dnf -y install rsync xclip
+		sudo dnf -y install rsync xclip
 
-fi
+	fi
 
 
 dotmgr module rust
@@ -29,31 +30,30 @@ fi
 check_bin git-delta
 check_bin navi
 
-basalt global add hyperupcall/choose hyperupcall/autoenv hyperupcall/dotshellextract hyperupcall/dotshellgen
-basalt global add cykerway/complete-alias rcaloras/bash-preexec
+	basalt global add hyperupcall/choose hyperupcall/autoenv hyperupcall/dotshellextract hyperupcall/dotshellgen
+	basalt global add cykerway/complete-alias rcaloras/bash-preexec
 
-# TODO: WSL specific things
+	# TODO
+	# - ssh keys
+	# - gpg keys
+	# - symlinking, /storage/ur mounting, if applicable
+	# --- in ~/.bashrc, etc.
+	declare dir="$1"
 
-# TODO
-# - ssh keys
-# - gpg keys
-# - symlinking, /storage/ur mounting, if applicable
-# --- in ~/.bashrc, etc.
-declare dir="$1"
+	# TODO
+	: "${dir:=/storage/ur/storage_other/gnupg}"
 
-# TODO
-: "${dir:=/storage/ur/storage_other/gnupg}"
+	gpg --homedir "$dir" --armor --export-secret-key | gpg --import
 
-# gpg --homedir "$dir" --armor --export-secret-key | gpg --import
+	# check to see if programs are automatically installed
+	check_bin dash
+	# check_bin lesspipe.sh
+	check_bin xclip
+	check_bin exa
+	check_bin rsync
 
-# check to see if programs are automatically installed
-check_bin dash
-# check_bin lesspipe.sh
-check_bin xclip
-check_bin exa
-check_bin rsync
-
-# misc
-# if ! [ "$(curl -LsSo- https://edwin.dev)" = "Hello World" ]; then
-# 		printf '%s\n' "https://edwin.dev OPEN"
-# fi
+	# misc
+	if ! [ "$(curl -LsSo- https://edwin.dev)" = "Hello World" ]; then
+			printf '%s\n' "https://edwin.dev OPEN"
+	fi
+}

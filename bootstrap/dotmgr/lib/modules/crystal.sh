@@ -3,6 +3,6 @@
 check_bin crystal
 
 hash crystal &>/dev/null || {
-	log_info "Installing crystal"
-	req https://raw.github.com/pine/crenv/master/install.sh | bash
+	util.log_info "Installing crystal"
+	util.req https://raw.github.com/pine/crenv/master/install.sh | bash
 }

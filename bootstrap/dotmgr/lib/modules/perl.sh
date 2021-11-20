@@ -4,7 +4,7 @@ check_bin perl
 
 # todo: remove prompt (on unconfigured systems)
 # todo: cleanup
-log_info "Installing perl"
+util.log_info "Installing perl"
 
 git clone https://github.com/tokuhirom/plenv "${XDG_DATA_HOME:-${HOME}/.local/share}/plenv"
 git clone git://github.com/tokuhirom/Perl-Build.git "$(plenv root)/plugins/perl-build"

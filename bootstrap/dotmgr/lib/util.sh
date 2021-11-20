@@ -1,39 +1,63 @@
 # shellcheck shell=bash
 
-req() {
+util.req() {
 	curl --proto '=https' --tlsv1.2 -sSLf "$@"
 }
 
-die() {
-	log_error "$1. Exiting"
-	exit 1
-}
-
-ensure() {
-	"$@" || die "'$1' failed"
-}
-
-log_info() {
-	printf '%s\n' "$1"
-}
-
-log_warn() {
-	printf '%s\n' "Warn: $1"
-}
-
-log_error() {
-	printf '%s\n' "Error: $1"
-}
-
-check_bin() {
-	if command -v "$1" &>/dev/null; then
-		log_warn "Command '$1' NOT installed"
+util.run() {
+	util.log_info "Executing '$*'"
+	if "$@"; then
+		return $?
+	else
+		return $?
 	fi
 }
 
-check_dot() {
-	if [ -e "$HOME/$1" ]; then
-		log_warn "File or directory '$1' EXISTS"
+util.die() {
+	util.log_error "$1. Exiting"
+	exit 1
+}
+
+util.log_error() {
+	if [ -n "${NO_COLOR+x}" ] || [ "$TERM" = dumb ]; then
+		printf "%s: %s\n" "Error" "$1"
+	else
+		printf "\033[0;31m%s\033[0m %s\n" 'Error' "$1"
+	fi
+}
+
+util.log_warn() {
+	if [ -n "${NO_COLOR+x}" ] || [ "$TERM" = dumb ]; then
+		printf "%s: %s\n" 'Warning' "$1" >&2
+	else
+		printf "\033[0;33m%s\033[0m %s\n" 'Warning' "$1" >&2
+	fi
+}
+
+util.log_info() {
+	if [ -n "${NO_COLOR+x}" ] || [ "$TERM" = dumb ]; then
+		printf "%s: %s\n" 'Info' "$1" >&2
+	else
+		printf "\033[0;32m%s\033[0m %s\n" 'Info' "$1" >&2
+	fi
+}
+
+util.ensure() {
+	if "$@"; then :; else
+		util.die "'$*' failed (zcode $?)"
+	fi
+}
+
+util.ensure_bin() {
+	if ! command -v "$1" &>/dev/null; then
+		util.die "Command '$1' does not exist"
+	fi
+}
+
+# TODO: deprecate
+check_bin() {
+	if command -v "$1" &>/dev/null; then
+		util.log_warn "Command '$1' does not exist"
 	fi
 }
 
@@ -54,6 +78,9 @@ util.show_help() {
 
 		  maintain
 		    Performs cleanup and ensures various files and symlinks exist
+
+		  transfer
+		    Transfers ssh and gpg keys to and from a USB
 
 		  save-state
 		    Saves current state, like current VSCode extensions, etc. to
