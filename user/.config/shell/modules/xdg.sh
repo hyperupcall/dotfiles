@@ -120,8 +120,7 @@ export EM_CACHE="$XDG_CACHE_HOME/emscripten/cache"
 export EM_PORTS="$XDG_DATA_HOME/emscripten/cache"
 
 # g
-export GOPATH="$XDG_DATA_HOME/go-path"
-export GOROOT="$XDG_DATA_HOME/go-root"
+export GOPATH="$XDG_DATA_HOME/gopath"
 _path_prepend "$GOPATH/bin"
 
 # gdb

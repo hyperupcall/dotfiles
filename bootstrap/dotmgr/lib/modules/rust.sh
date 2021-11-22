@@ -10,8 +10,8 @@ check_bin git-delta
 check_bin navi
 
 hash rustup &>/dev/null || {
-	log_info "Installing rustup"
-	req https://sh.rustup.rs | sh -s -- --default-toolchain stable -y
+	util.log_info "Installing rustup"
+	util.req https://sh.rustup.rs | sh -s -- --default-toolchain stable -y
 }
 
 rustup default nightly

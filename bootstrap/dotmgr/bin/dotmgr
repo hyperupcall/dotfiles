@@ -6,13 +6,8 @@ DOTMGR_ROOT_DIR="${0%/*}"; DOTMGR_ROOT_DIR="${DOTMGR_ROOT_DIR%/*}"
 source "$DOTMGR_ROOT_DIR/lib/util.sh"
 
 main() {
-	trap sigint INT
-	sigint() {
-		die 'Received SIGINT'
-	}
-
 	if ((EUID == 0)); then
-		die "Cannot run as root"
+		util.die "Cannot run as root"
 	fi
 
 	for arg; do case "$arg" in
@@ -26,8 +21,9 @@ main() {
 	if [ -f "$DOTMGR_ROOT_DIR/lib/commands/$subcommand.sh" ]; then
 		shift
 		source "$DOTMGR_ROOT_DIR/lib/commands/$subcommand.sh" "$@"
+		subcmd
 	else
-		log_error "No matching subcommand found"
+		util.log_error "No matching subcommand found"
 		util.show_help
 		exit 1
 	fi

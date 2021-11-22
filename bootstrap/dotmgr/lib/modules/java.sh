@@ -6,7 +6,7 @@ check_bin mvn
 check_bin gradle
 
 hash sdk &>/dev/null || {
-	log_info "Installing sdkman"
+	util.log_info "Installing sdkman"
 	curl -s "https://get.sdkman.io?sdkman_auto_answer=true" | bash
 }
 
