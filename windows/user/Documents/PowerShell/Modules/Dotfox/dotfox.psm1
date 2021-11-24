@@ -39,6 +39,7 @@ function command-symlink() {
 		'Documents/PowerShell/Modules/Dotmgr',
 		'Documents/PowerShell/Modules/Dots',
 		'Documents/WindowsPowershell/Microsoft.PowerShell_profile.ps1'
+		'AppData/Roaming/gnupg/gpg-agent.conf'
 	)) {
 		[void](Symlink-RelativePath -RelativePath "$relativePath")
 	}

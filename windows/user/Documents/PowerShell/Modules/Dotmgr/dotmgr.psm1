@@ -33,6 +33,12 @@ function Dotmgr() {
 function command-bootstrap() {
 	$__dirname = Split-Path -Parent "$PSCommandPath"
 
+	winget install --id GNUPG.Gpg4win --source winget
+	winget install --id PuTTY.PuTTY --source winget
+	winget install --id Microsoft.PowerToys --source winget
+
+	Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+	
 	Ensure-ScoopBucket -Name extras
 	Ensure-ScoopBucket -Name versions
 	Ensure-ScoopBucket -Name php

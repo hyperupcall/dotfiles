@@ -1,59 +1,64 @@
 # shellcheck shell=bash
 
 subcmd() {
-	if command -v apt &>/dev/null; then
+	if util.is_cmd apt; then
 		sudo apt -y update
 		sudo apt -y upgrade
 
-		sudo apt -y install libssl-dev
-		sudo apt -y webext-browserpass
+		sudo apt -y install libssl-dev # for starship
+		sudo apt -y install webext-browserpass
 
 		sudo apt -y install rsync xclip
-	elif command -v dnf &>/dev/null; then
+	elif util.is_cmd dnf; then
 		sudo dnf -y update
 		sudo dnf -y upgrade
 
-		sudo dnf -y install openssl-devel
+		sudo dnf -y install openssl-devel # for starship
 		# sudo dnf -y install browserpass
 
 		sudo dnf -y install rsync xclip
-
 	fi
 
+	dotmgr module rust
 
-dotmgr module rust
+	if ! util.is_cmd starship; then
+		cargo install starship
+	fi
 
-if ! command -v starship &>/dev/null; then
-	cargo install starship
-fi
+	# basalt global add hyperupcall/choose hyperupcall/autoenv hyperupcall/dotshellextract hyperupcall/dotshellgen
+	# basalt global add cykerway/complete-alias rcaloras/bash-preexec
 
-check_bin git-delta
-check_bin navi
+	if [[ "$(</proc/sys/kernel/osrelease)" =~ 'WSL2' ]]; then
+		util.log_info "Detected WSL"
 
-	basalt global add hyperupcall/choose hyperupcall/autoenv hyperupcall/dotshellextract hyperupcall/dotshellgen
-	basalt global add cykerway/complete-alias rcaloras/bash-preexec
+		if util.is_cmd apt; then
+			sudo apt -y install socat
+		elif util.is_cmd dnf; then
+			sudo dnf -y install socat
+		fi
 
-	# TODO
-	# - ssh keys
-	# - gpg keys
-	# - symlinking, /storage/ur mounting, if applicable
-	# --- in ~/.bashrc, etc.
-	declare dir="$1"
+		local name='Edwin'
+		for file in "/mnt/c/Users/$name/.ssh"/*; do
+			if [ "${file##*/}" = 'config' ] || [ "${file##*/}" = 'environment' ]; then
+				continue
+			fi
 
-	# TODO
-	: "${dir:=/storage/ur/storage_other/gnupg}"
+			mkdir -vp ~/.ssh
+			cp -v "$file" ~/.ssh
+		done; unset file
 
-	gpg --homedir "$dir" --armor --export-secret-key | gpg --import
-
-	# check to see if programs are automatically installed
-	check_bin dash
-	# check_bin lesspipe.sh
-	check_bin xclip
-	check_bin exa
-	check_bin rsync
-
-	# misc
-	if ! [ "$(curl -LsSo- https://edwin.dev)" = "Hello World" ]; then
-			printf '%s\n' "https://edwin.dev OPEN"
+		gpgDir="/mnt/c/Users/$name/.gnupg"
+		if [ -d "$gpgDir" ]; then
+			gpg --homedir "$gpgDir" --armor --export-secret-key | gpg --import
+		else
+			util.log_warn "Skipping importing GPG keys as directory does not exist"
+		fi
+	else
+		gpgDir='/storage/ur/storage_other/gnupg'
+		if [ -d "$gpgDir" ]; then
+			gpg --homedir "$gpgDir" --armor --export-secret-key | gpg --import
+		else
+			util.log_warn "Skipping importing GPG keys as directory does not exist"
+		fi
 	fi
 }

@@ -21,7 +21,7 @@ main() {
 	if [ -f "$DOTMGR_ROOT_DIR/lib/commands/$subcommand.sh" ]; then
 		shift
 		source "$DOTMGR_ROOT_DIR/lib/commands/$subcommand.sh" "$@"
-		subcmd
+		subcmd "$@"
 	else
 		util.log_error "No matching subcommand found"
 		util.show_help

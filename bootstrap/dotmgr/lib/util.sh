@@ -48,6 +48,14 @@ util.ensure() {
 	fi
 }
 
+util.is_cmd() {
+	if command -v "$1" &>/dev/null; then
+		return $?
+	else
+		return $?
+	fi
+}
+
 util.ensure_bin() {
 	if ! command -v "$1" &>/dev/null; then
 		util.die "Command '$1' does not exist"
