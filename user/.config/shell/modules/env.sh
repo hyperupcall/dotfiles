@@ -11,8 +11,8 @@ export VISUAL="nvim"
 export EDITOR="$VISUAL"
 export DIFFPROG="vim -d"
 export PAGER="less"
-export BROWSER="brave-browser"
-export SPELL="aspell -x -c"
+# export BROWSER="brave-browser"
+# export SPELL="aspell -x -c"
 
 
 # ------------------------ Program ----------------------- #
@@ -20,20 +20,17 @@ export SPELL="aspell -x -c"
 export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
 export FZF_DEFAULT_OPTS="--history \"$XDG_STATE_HOME/history/fzf_history\" --history-size=10000"
 
-# gcc
-# export GCC_COLORS="error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01"
-
-# git
-export GIT_CONFIG_NOSYSTEM=
+# gnupg
+export GPG_TTY=$(tty)
 
 # guile
 export GUILE_HISTORY="$XDG_STATE_HOME/history/guile_history"
 
 # hstr
-export HSTR_CONFIG=hicolor
+export HSTR_CONFIG='hicolor'
 
 # less
-export LESS="-FRQ" # Common Flags: -F,-I,-M,-R,-Q
+export LESS='-FRQ' # Common Flags: -F,-I,-M,-R,-Q
 export LESS_ADVANCED_PREPROCESSOR=1 # lesspipe.sh
 export LESSKEY="$XDG_CONFIG_HOME/less_keys"
 export LESSOPEN="|source-highlight-esc.sh %s" # TODO (GNU)
@@ -52,38 +49,38 @@ export LESS_TERMCAP_us="$(printf '\e[1;32m')" # start underline
 export MAN_POSIXLY_CORRECT= # openSUSE # TODO
 
 # more
-export MORE="-l"
+export MORE='-l'
 
 # nnn
-export NNN_FALLBACK_OPENER="xdg-open"
-export NNN_DE_FILE_MANAGER="nautilus"
+export NNN_FALLBACK_OPENER='xdg-open'
+export NNN_DE_FILE_MANAGER='nautilus'
 
 # packer
-export CHECKPOINT_DISABLE=1
+export CHECKPOINT_DISABLE='1'
 
 # pass
 export PASSWORD_STORE_ENABLE_EXTENSIONS=true
-export PASSWORD_STORE_CLIP_TIME="15"
+export PASSWORD_STORE_CLIP_TIME='15'
 
 # ps
-export CMD_ENV="linux"
+export CMD_ENV='linux'
 
 # qt
-export QT_ACCESSIBILITY=1
+export QT_ACCESSIBILITY='1'
 
 # ranger
-export RANGER_LOAD_DEFAULT_RC="FALSE"
+export RANGER_LOAD_DEFAULT_RC='FALSE'
 
 # qt
-[ "$XDG_CURRENT_DESKTOP" = "KDE" ] || [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] || {
-	export QT_QPA_PLATFORMTHEME="qt5ct"
-}
+# [ "$XDG_CURRENT_DESKTOP" = "KDE" ] || [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] || {
+# 	export QT_QPA_PLATFORMTHEME="qt5ct"
+# }
 
 # snapd
-_path_append "/var/lib/snapd/snap/bin"
+_path_append '/var/lib/snapd/snap/bin'
 
 # sxhkd
-export SXHKD_SHELL="$(command -v sh)"
+export SXHKD_SHELL='/bin/sh'
 
 # X11
 export XCURSOR_PATH="$XDG_CONFIG_HOME/icons:$XCURSOR_PATH"

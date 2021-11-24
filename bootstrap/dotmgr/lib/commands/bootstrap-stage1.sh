@@ -10,7 +10,7 @@ subcmd() {
 	fi
 
 	# Ensure prerequisites
-	mkdir -p ~/.bootstrap/{bin,nim-all,old-dots} "$XDG_CONFIG_HOME"
+	mkdir -p ~/.bootstrap/{bin,nim-all,old-homedots} "$XDG_CONFIG_HOME"
 	for cmd in git curl; do
 		if ! command -v "$cmd" >/dev/null 2>&1; then
 			util.die "$cmd not installed"
@@ -20,7 +20,7 @@ subcmd() {
 	# Remove distribution specific dotfiles, including
 	for file in ~/.bash_login ~/.bash_logout ~/.bash_profile ~/.bashrc ~/.profile; do
 		if [ -f "$file" ]; then
-			util.ensure mv "$file" ~/.bootstrap/old-dots
+			util.ensure mv "$file" ~/.bootstrap/old-homedots
 		fi
 	done
 
@@ -35,17 +35,12 @@ subcmd() {
 		util.ensure ln -sTf ~/.bootstrap/nim-all/nim-1.4.8 ~/.bootstrap/nim-all/nim
 	fi
 
+	# Clone dotfox
 	if [ ! -d ~/.bootstrap/dotfox ]; then
 		util.log_info 'Cloning github.com/hyperupcall/dotfox'
 		util.ensure git clone --quiet https://github.com/hyperupcall/dotfox ~/.bootstrap/dotfox
 	fi
 
-	# Download Basalt
-	if [ ! -d "$XDG_DATA_HOME/basalt/source" ]; then
-		log_info 'Downloading Basalt'
-		ensure git clone --quiet https://github.com/hyperupcall/basalt "$XDG_DATA_HOME/basalt/source"
-	fi
-	
 	# Download Dotfox
 	if [ ! -f ~/.bootstrap/bin/dotfox ]; then
 		util.log_info 'Downloading Dotfox'
@@ -57,6 +52,12 @@ subcmd() {
 		fi
 		util.ensure curl -LsSo ~/.bootstrap/bin/dotfox "$dotfox_download_url"
 		util.ensure chmod +x ~/.bootstrap/bin/dotfox
+	fi
+
+	# Download Basalt
+	if [ ! -d "$XDG_DATA_HOME/basalt/source" ]; then
+		log_info 'Downloading Basalt'
+		ensure git clone --quiet https://github.com/hyperupcall/basalt "$XDG_DATA_HOME/basalt/source"
 	fi
 
 	# Install Homebrew

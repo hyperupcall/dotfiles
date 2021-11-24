@@ -2,6 +2,7 @@
 
 subcmd() {
 	if util.is_cmd apt; then
+		util.log_info 'Updating, upgrading, and installing packages'
 		sudo apt -y update
 		sudo apt -y upgrade
 
@@ -10,6 +11,7 @@ subcmd() {
 
 		sudo apt -y install rsync xclip
 	elif util.is_cmd dnf; then
+		util.log_info 'Updating, upgrading, and installing packages'
 		sudo dnf -y update
 		sudo dnf -y upgrade
 
@@ -20,26 +22,24 @@ subcmd() {
 	fi
 
 	dotmgr module rust
-
 	if ! util.is_cmd starship; then
+		util.log_info 'Installing starship'
 		cargo install starship
 	fi
 
-	# basalt global add hyperupcall/choose hyperupcall/autoenv hyperupcall/dotshellextract hyperupcall/dotshellgen
-	# basalt global add cykerway/complete-alias rcaloras/bash-preexec
+	util.log_info 'Installing Basalt packages globally'
+	basalt global add hyperupcall/choose hyperupcall/autoenv hyperupcall/dotshellextract hyperupcall/dotshellgen
+	basalt global add cykerway/complete-alias rcaloras/bash-preexec
 
 	if [[ "$(</proc/sys/kernel/osrelease)" =~ 'WSL2' ]]; then
-		util.log_info "Detected WSL"
-
-		if util.is_cmd apt; then
-			sudo apt -y install socat
-		elif util.is_cmd dnf; then
-			sudo dnf -y install socat
-		fi
-
+		util.log_info "Copying SSH keys from windows side"
 		local name='Edwin'
 		for file in "/mnt/c/Users/$name/.ssh"/*; do
-			if [ "${file##*/}" = 'config' ] || [ "${file##*/}" = 'environment' ]; then
+			if [ ! -f "$file" ]; then
+				continue
+			fi
+
+			if [[ "${file##*/}" = @(config|environment|known_hosts) ]]; then
 				continue
 			fi
 
@@ -47,14 +47,14 @@ subcmd() {
 			cp -v "$file" ~/.ssh
 		done; unset file
 
-		gpgDir="/mnt/c/Users/$name/.gnupg"
+		local gpgDir="/mnt/c/Users/$name/AppData/Roaming/gnupg"
 		if [ -d "$gpgDir" ]; then
 			gpg --homedir "$gpgDir" --armor --export-secret-key | gpg --import
 		else
 			util.log_warn "Skipping importing GPG keys as directory does not exist"
 		fi
 	else
-		gpgDir='/storage/ur/storage_other/gnupg'
+		local gpgDir='/storage/ur/storage_other/gnupg'
 		if [ -d "$gpgDir" ]; then
 			gpg --homedir "$gpgDir" --armor --export-secret-key | gpg --import
 		else
