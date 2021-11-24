@@ -31,19 +31,31 @@ export HSTR_CONFIG='hicolor'
 
 # less
 export LESS='-FRQ' # Common Flags: -F,-I,-M,-R,-Q
-export LESS_ADVANCED_PREPROCESSOR=1 # lesspipe.sh
-export LESSKEY="$XDG_CONFIG_HOME/less_keys"
-export LESSOPEN="|source-highlight-esc.sh %s" # TODO (GNU)
+# export LESS_ADVANCED_PREPROCESSOR=1 # lesspipe.sh
+export LESSKEY="$XDG_CONFIG_HOME/less/less_keys"
+# export LESSOPEN="|source-highlight-esc.sh %s"
 export LESSHISTFILE="$XDG_STATE_HOME/history/less_history"
-export LESSHISTSIZE="32768"
-export LESS_TERMCAP_mb="$(printf '\e[1;31m')" # start blink
-export LESS_TERMCAP_md="$(printf '\e[1;36m')" # start bold
-export LESS_TERMCAP_me="$(printf '\e[0m')" # end all
-export LESS_TERMCAP_so="$(printf '\e[01;44;33m')" # start reverse video
-export LESS_TERMCAP_se="$(printf '\e[0m')" # end reverse video
-export LESS_TERMCAP_us="$(printf '\e[1;32m')" # start underline
-export LESS_TERMCAP_ue="$(printf '\e[0m')" # end underline
-export LESS_TERMCAP_us="$(printf '\e[1;32m')" # start underline
+export LESSHISTSIZE='32768'
+if [ -n "$BASH" ] || [ -n "$ZSH" ]; then
+	export LESS_TERMCAP_mb=$'\e[1;31m' # start blink
+	export LESS_TERMCAP_md=$'\e[1;36m' # start bold
+	export LESS_TERMCAP_me=$'\e[0m' # end all
+	export LESS_TERMCAP_so=$'\e[01;44;33m' # start reverse video
+	export LESS_TERMCAP_se=$'\e[0m' # end reverse video
+	export LESS_TERMCAP_us=$'\e[1;32m' # start underline
+	export LESS_TERMCAP_ue=$'\e[0m' # end underline
+	export LESS_TERMCAP_us=$'\e[1;32m' # start underline
+else
+	export LESS_TERMCAP_mb="$(printf '\e[1;31m')" # start blink
+	export LESS_TERMCAP_md="$(printf '\e[1;36m')" # start bold
+	export LESS_TERMCAP_me="$(printf '\e[0m')" # end all
+	export LESS_TERMCAP_so="$(printf '\e[01;44;33m')" # start reverse video
+	export LESS_TERMCAP_se="$(printf '\e[0m')" # end reverse video
+	export LESS_TERMCAP_us="$(printf '\e[1;32m')" # start underline
+	export LESS_TERMCAP_ue="$(printf '\e[0m')" # end underline
+	export LESS_TERMCAP_us="$(printf '\e[1;32m')" # start underline
+fi
+
 
 # man
 export MAN_POSIXLY_CORRECT= # openSUSE # TODO

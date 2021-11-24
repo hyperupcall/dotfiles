@@ -76,6 +76,7 @@ declare -ra dotfiles=(
 	cfg:'kermit'
 	cfg:'kitty'
 	cfg:'lazydocker'
+	cfg:'less'
 	cfg:'libfsguest'
 	cfg:'liquidprompt'
 	cfg:'llpp.conf'

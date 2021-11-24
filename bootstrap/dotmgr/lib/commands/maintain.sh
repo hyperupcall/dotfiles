@@ -133,6 +133,7 @@ subcmd() {
 	must_dir "$XDG_DATA_HOME/xsel"
 	must_dir "$XDG_DATA_HOME/tig"
 	must_dir "$XDG_CONFIG_HOME/sage" # $DOT_SAGE
+	must_dir "$XDG_CONFIG_HOME/less" # $LESSKEY
 	must_dir "$XDG_DATA_HOME/gq/gq-state" # $GQ_STATE
 	must_dir "$XDG_DATA_HOME/sonarlint" # $SONARLINT_USER_HOME
 	must_file "$XDG_CONFIG_HOME/yarn/config"

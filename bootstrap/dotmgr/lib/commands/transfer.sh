@@ -1,38 +1,5 @@
 # shellcheck shell=bash
 
-send_password() (
-		local programTty="$1"
-		local programPassword="$2"
-
-		sleep 1
-
-		expect -c "spawn "
-
-# 		programContents="
-# #include <sys/types.h>
-# #include <sys/stat.h>
-# #include <fcntl.h>
-# #include <sys/ioctl.h>
-# #include <unistd.h>
-# #include <stdio.h>
-
-# int main(void) {
-# 	int hTTY = open(\"$programTty\", O_WRONLY|O_NONBLOCK);
-# 	ioctl(hTTY, TIOCSTI, \"\n\");
-# 	close(hTTY);
-
-# 	return 0;
-# }"
-
-# 	local bin="${TMPDIR:-/tmp}/dotmgr-$RANDOM-$RANDOM-$RANDOM-$RANDOM"
-# 	if ! printf '%s' "$programContents" | cc -x c -o "$bin" -; then
-# 	# if ! printf '%s' "$programContents" > "$bin" -; then
-# 		util.die "Could not execute 'cc'"
-# 	fi
-# 	chmod +x "$bin"
-# 	sudo sh -c "$bin"
-)
-
 subcmd() {
 	# util.ensure_bin cc
 	util.ensure_bin expect
@@ -60,22 +27,6 @@ subcmd() {
 		if mountpoint -q /mnt; then
 			util.die "Directory '/mnt' must not already be a mountpoint"
 		fi
-
-		# local fsType=
-		# if ! fsType="$(lsblk "$blockDev" -no FSTYPE)"; then
-		# 	util.die "Failed to get FSTYPE of '$blockDev'"
-		# fi
-		# if [ "$fsType" = 'crypto_LUKS' ]; then
-		# 	# If the file system is encrypted, we have to decrypt it first,
-		# 	# and use the resulting file representing the block device
-		# 	local str="dotmgr-transfer-name-$RANDOM"
-		# 	util.run sudo cryptsetup open "$blockDev" "$str"
-		# 	util.run sudo mount "/dev/mapper/$str" /mnt
-		# 	unset str
-		# else
-		# 	util.run sudo mount "$blockDev" /mnt
-		# fi
-		# unset fsType
 
 		util.run sudo mount "$blockDev" /mnt
 
