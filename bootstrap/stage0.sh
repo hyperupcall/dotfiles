@@ -13,7 +13,7 @@ ensure() {
 }
 
 if [ -n "$BASH" ] && [ "${BASH_SOURCE[0]}" != "$0" ]; then
-	printf '%s\n' "Error: File 'stage-0.sh' should not be sourced"
+	printf '%s\n' "Error: File 'stage0.sh' should not be sourced"
 	exit 1
 fi
 
@@ -112,7 +112,7 @@ if [ ! -f ~/.dots/xdg.sh ]; then
 fi
 
 # Export variables for 'bootstrap.sh'
-cat > ~/.bootstrap/stage-1.sh <<-EOF
+cat > ~/.bootstrap/stage1.sh <<-EOF
 # shellcheck shell=sh
 
 export NAME="Edwin Kofler"
@@ -131,7 +131,7 @@ EOF
 
 cat <<-"EOF"
 ---
-. ~/.bootstrap/stage-1.sh
+. ~/.bootstrap/stage1.sh
 dotmgr bootstrap-stage1
 ---
 EOF

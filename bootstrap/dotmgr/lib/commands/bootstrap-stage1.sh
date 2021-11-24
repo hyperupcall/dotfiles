@@ -80,8 +80,8 @@ subcmd() {
 		util.die "Could not run 'basalt global init sh'"
 	fi
 
-	cat > ~/.bootstrap/stage-2.sh <<-"EOF"
-		. ~/.bootstrap/stage-1.sh
+	cat > ~/.bootstrap/stage2.sh <<-"EOF"
+		. ~/.bootstrap/stage1.sh
 		export PATH="$HOME/.bootstrap/dotfox:$HOME/.bootstrap/bin:$XDG_DATA_HOME/basalt/source/pkg/bin:$HOME/.bootstrap/nim-all/nim/bin:$PATH"
 
 		if basalt_output="$("$XDG_DATA_HOME/basalt/source/pkg/bin/basalt" global init sh)"; then
@@ -93,7 +93,7 @@ subcmd() {
 
 	cat <<-"EOF"
 	---
-	. ~/.bootstrap/stage-2.sh
+	. ~/.bootstrap/stage2.sh
 	dotfox --config-dir="$HOME/.dots/user/.config/dotfox" --deployment=all.sh deploy
 	dotmgr maintain
 	. ~/.bashrc
