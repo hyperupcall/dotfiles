@@ -36,7 +36,7 @@ export LESSKEY="$XDG_CONFIG_HOME/less/less_keys"
 # export LESSOPEN="|source-highlight-esc.sh %s"
 export LESSHISTFILE="$XDG_STATE_HOME/history/less_history"
 export LESSHISTSIZE='32768'
-if [ -n "$BASH" ] || [ -n "$ZSH" ]; then
+if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ] || [ -n "$KSH_VERSION" ]; then
 	export LESS_TERMCAP_mb=$'\e[1;31m' # start blink
 	export LESS_TERMCAP_md=$'\e[1;36m' # start bold
 	export LESS_TERMCAP_me=$'\e[0m' # end all
@@ -55,7 +55,6 @@ else
 	export LESS_TERMCAP_ue="$(printf '\e[0m')" # end underline
 	export LESS_TERMCAP_us="$(printf '\e[1;32m')" # start underline
 fi
-
 
 # man
 export MAN_POSIXLY_CORRECT= # openSUSE # TODO
@@ -90,6 +89,13 @@ export RANGER_LOAD_DEFAULT_RC='FALSE'
 
 # snapd
 _path_append '/var/lib/snapd/snap/bin'
+
+# ssh
+unset SSH_AGENT_PID
+if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+  export SSH_AUTH_SOCK=
+  SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+fi
 
 # sxhkd
 export SXHKD_SHELL='/bin/sh'

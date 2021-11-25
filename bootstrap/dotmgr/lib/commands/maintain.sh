@@ -172,4 +172,10 @@ subcmd() {
 	check_dot .npm
 	check_dot .scala_history_jline3
 	check_dot .bootstrap
+
+	for file in "$HOME"/*; do
+		if [ -L "$file" ] && [ ! -e "$file" ]; then
+			unlink "$file"
+		fi
+	done; unset file
 }

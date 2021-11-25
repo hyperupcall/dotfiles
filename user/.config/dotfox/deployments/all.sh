@@ -8,6 +8,11 @@ else
 	exit 1
 fi
 
+if ! [[ -v 'XDG_CONFIG_HOME' && -v 'XDG_STATE_HOME' && -v 'XDG_DATA_HOME' ]]; then
+	printf '%s\n' "Error: XDG Variables cannot be empty" >&2
+	exit 1
+fi
+
 declare -ra dotfiles=(
 	home:'.alsoftrc'
 	home:'.config/conky' # TODO
@@ -17,7 +22,7 @@ declare -ra dotfiles=(
 	home:'.gnupg/gpg.conf'
 	home:'.gnupg/gpg-agent.conf'
 	home:'.hushlogin'
-	home:'.yarnrc'
+	# home:'.yarnrc'
 	cfg:'aerc/aerc.conf'
 	cfg:'aerc/binds.conf'
 	cfg:'alacritty'
@@ -177,17 +182,11 @@ declare -ra dotfiles=(
 	state:'dotshellgen'
 )
 
-if ! [[ -v 'XDG_CONFIG_HOME' && -v 'XDG_STATE_HOME' && -v 'XDG_DATA_HOME' ]]; then
-	printf '%s\n' "Error: XDG Variables cannot be empty" >&2
-	exit 1
-fi
-
 # Print actual dotfiles
 src_home="$HOME/.dots/user"
 src_cfg="$HOME/.dots/user/.config"
 src_state="$HOME/.dots/user/.local/state"
 src_data="$HOME/.dots/user/.local/share"
-
 for dotfile in "${dotfiles[@]}"; do
 	prefix="${dotfile%%:*}"
 	file="${dotfile#*:}"
@@ -211,26 +210,19 @@ for dotfile in "${dotfiles[@]}"; do
 	fi
 done
 
-cat <<-EOF
 
-# manual symlinks
-symlink:$XDG_CONFIG_HOME/X11/xinitrc:$HOME/.xinitrc
-symlink:$XDG_CONFIG_HOME/bash/bash_profile.sh:$HOME/.bash_profile
-symlink:$XDG_CONFIG_HOME/bash/bash_logout.sh:$HOME/.bash_logout
-symlink:$XDG_CONFIG_HOME/bash/bashrc.sh:$HOME/.bashrc
-symlink:$XDG_CONFIG_HOME/shell/profile.sh:$HOME/.profile
+# Print dotfiles that do not share a common prefix
+printf '%s\n' "symlink:$XDG_CONFIG_HOME/X11/xinitrc:$HOME/.xinitrc"
+printf '%s\n' "symlink:$XDG_CONFIG_HOME/bash/bash_profile.sh:$HOME/.bash_profile"
+printf '%s\n' "symlink:$XDG_CONFIG_HOME/bash/bash_logout.sh:$HOME/.bash_logout"
+printf '%s\n' "symlink:$XDG_CONFIG_HOME/bash/bashrc.sh:$HOME/.bashrc"
+printf '%s\n' "symlink:$XDG_CONFIG_HOME/shell/profile.sh:$HOME/.profile"
 
-# other (environment dependent)
-EOF
 
-# Custom
+# Print dotfiles programatically
 source ~/.dots/xdg.sh --set-type
 if [ "$REPLY" = default ]; then
-	cat <<-EOF
-	symlink:$src_home/.pam_environment/xdg-default.conf:$HOME/.pam_environment
-	EOF
+	printf '%s\n' "symlink:$src_home/.pam_environment/xdg-default.conf:$HOME/.pam_environment"
 elif [ "$REPLY" = custom ]; then
-	cat <<-EOF
-	symlink:$src_home/.pam_environment/xdg-custom.conf:$HOME/.pam_environment
-	EOF
+	printf '%s\n' "symlink:$src_home/.pam_environment/xdg-custom.conf:$HOME/.pam_environment"
 fi
