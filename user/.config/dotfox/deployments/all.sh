@@ -13,6 +13,9 @@ declare -ra dotfiles=(
 	home:'.config/conky' # TODO
 	home:'.config/wtf' # TODO
 	home:'.cpan/CPAN/MyConfig.pm'
+	home:'.gnupg/dirmngr.conf'
+	home:'.gnupg/gpg.conf'
+	home:'.gnupg/gpg-agent.conf'
 	home:'.hushlogin'
 	home:'.yarnrc'
 	cfg:'aerc/aerc.conf'
@@ -81,7 +84,6 @@ declare -ra dotfiles=(
 	cfg:'liquidprompt'
 	cfg:'llpp.conf'
 	cfg:'ly'
-	cfg:'maco'
 	cfg:'maven'
 	cfg:'micro'
 	cfg:'mimeapps.list'
@@ -168,9 +170,6 @@ declare -ra dotfiles=(
 	cfg:'youtube-dl'
 	cfg:'zathura'
 	cfg:'zsh'
-	data:'gnupg/dirmngr.conf'
-	data:'gnupg/gpg.conf'
-	data:'gnupg/gpg-agent.conf'
 	data:'applications/calcurse.desktop'
 	data:'applications/kakoune.desktop'
 	data:'applications/FoxBlender.desktop'
