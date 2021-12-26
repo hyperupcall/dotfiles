@@ -87,7 +87,7 @@ subcmd() {
 		fi
 
 		printf '%s\n' "Cleaning '$file'"
-	
+
 		local file_string=
 		while IFS= read -r line; do
 			file_string+="$line"$'\n'
