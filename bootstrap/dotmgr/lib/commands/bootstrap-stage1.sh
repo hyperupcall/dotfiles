@@ -56,8 +56,8 @@ subcmd() {
 
 	# Download Basalt
 	if [ ! -d "$XDG_DATA_HOME/basalt/source" ]; then
-		log_info 'Downloading Basalt'
-		ensure git clone --quiet https://github.com/hyperupcall/basalt "$XDG_DATA_HOME/basalt/source"
+		util.log_info 'Downloading Basalt'
+		util.ensure git clone --quiet https://github.com/hyperupcall/basalt "$XDG_DATA_HOME/basalt/source"
 	fi
 
 	# Install Homebrew
