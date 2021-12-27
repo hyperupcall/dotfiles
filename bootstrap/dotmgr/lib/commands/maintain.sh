@@ -1,74 +1,284 @@
 # shellcheck shell=bash
 
-util_get_file() {
-	if [[ ${1::1} == / ]]; then
-		REPLY="$1"
-	else
-		REPLY="$HOME/$1"
-	fi
-}
-
-must_rm() {
-	util_get_file "$1"
-	local file="$REPLY"
-
-	if [ -f "$file" ] && rm -f "$file"; then
-		util.log_info "$file REMOVED"
-	fi
-}
-
-must_rmdir() {
-	util_get_file "$1"
-	local dir="$REPLY"
-
-	if [ -d "$dir" ] && rmdir "$dir"; then
-		util.log_info "$dir REMOVED"
-	fi
-}
-
-must_dir() {
-	util_get_file "$1"
-	local dir="$REPLY"
-
-	if [ ! -d "$dir" ] && mkdir -p "$dir"; then
-		util.log_info "$dir CREATED"
-	fi
-}
-
-must_file() {
-	util_get_file "$1"
-	local file="$REPLY"
-
-	if [ ! -f "$file" ] && mkdir -p "${file%/*}" && touch "$file"; then
-		util.log_info "$file CREATED"
-	fi
-}
-
-must_link() {
-	util_get_file "$1"
-	local src="$REPLY"
-
-	util_get_file "$2"
-	local link="$REPLY"
-
-	# TODO
-	# if [ -L "$link" ] && [ "$(readlink "$link")" = "$src" ]; then
-	# if []
-		# util.log_warn "Skipping symink from '$src' to '$link'"
-	# else
-		if ln -sfT "$src" "$link"; then
-			util.log_info "$src SYMLINKED to $link"
-		fi
-	# fi
-}
-
-check_dot() {
-	if [ -e "$HOME/$1" ]; then
-		util.log_warn "File or directory '$1' EXISTS"
-	fi
-}
-
 subcmd() {
+	util.ensure_bin expect
+	util.ensure_bin age
+	util.ensure_bin age-keygen
+
+	while :; do
+		printf '%s' "What would you like to do?
+(0): Quit
+(1): Encrypt secrets
+       This exports gpg keys, ssh keys, and the pass database to your 'secrets' USB. Everything is
+       encrypted with a passphrase. This script Just Works, whether or not the USB is already mounted
+(2): Import secrets
+       This imports your GPG keys. It imports it from your shared drive mounted
+       under /storage
+(3): Prune and symlinks
+       Prunes the homefolder for improper dotfiles like '~/.bash_history'. It also makes directories
+       required for things to work properly like '~/.config/yarn/config'. Lastly, it also symlinks
+       directories that are out of the scope of dotfox. More specifically, this symlinks the XDG user
+       directories, ~/.ssh, ~/.config/BraveSoftware, etc. to the shared drive mounted under /storage
+(4): Save VSCode extensions
+> "
+		if ! IFS= read -rN1; then
+			die "Failed to get input"
+		fi
+		printf '\n'
+
+		case "$REPLY" in
+			$'\x04'|0|q) exit 0 ;;
+			1) do_export_secrets ;;
+			2) do_import_secrets ;;
+			3) do_prune_and_symlink ;;
+			4) do_extensions ;;
+			*) printf '%s\n' "Invalid option. Try again"
+		esac
+	done
+}
+
+do_export_secrets() {
+	sudo -v
+
+	local usb_partition_uuid='6044-5CC1'
+
+	local blockDev="/dev/disk/by-uuid/$usb_partition_uuid"
+	if [ ! -e "$blockDev" ]; then
+		util.die "USB Not plugged in"
+	fi
+
+	local blockDevTarget=
+	if ! blockDevTarget="$(findmnt -no TARGET "$blockDev")"; then
+		# 'findmnt' exits failure if cannot find block device. We account
+		# for that case with '[ -z "$blockDevTarget" ]' below
+		:
+	fi
+
+	# If the USB is not already mounted
+	if [ -z "$blockDevTarget" ]; then
+		if mountpoint -q /mnt; then
+			util.die "Directory '/mnt' must not already be a mountpoint"
+		fi
+
+		util.run sudo mount "$blockDev" /mnt
+
+		if ! blockDevTarget="$(findmnt -no TARGET "$blockDev")"; then
+			util.die "Automount failed"
+		fi
+	fi
+
+	# Now, file system is mounted at "$blockDevTarget"
+
+	local password=
+	password="$(LC_ALL=C tr -dc '[:alnum:][:digit:]' </dev/urandom | head -c 12; printf '\n')"
+	util.log_info "Password: $password"
+
+	# Copy over ssh keys
+	local -r sshDir="$HOME/.ssh"
+	local -a sshKeys=(environment config github github.pub)
+	if [ -d "$sshDir" ]; then
+		exec 4> >(sudo tee "$blockDevTarget/ssh-keys.tar.age" >/dev/null)
+		if expect -f <(cat <<-EOF
+			set bashFd [lindex \$argv 0]
+			spawn bash \$bashFd
+
+			expect -- "Enter passphrase*"
+			send -- "$password\n"
+			expect -- "Confirm passphrase*"
+			send -- "$password\n"
+			expect eof
+
+			set result [wait]
+			if {[lindex \$result 2] == 0} {
+				exit [lindex \$result 3]
+			} else {
+				error "An operating system error occurred, errno=[lindex \$result 3]"
+			}
+		EOF
+		) <(cat <<-EOF
+			set -eo pipefail
+
+			cd "$sshDir"
+			tar -c ${sshKeys[*]} | age --encrypt --passphrase --armor >&4
+		EOF
+		); then :; else
+			util.die "Command 'expect' failed (code $?)"
+		fi
+		exec 4<&-
+	else
+		util.log_warn "Skipping copying ssh keys"
+	fi
+
+	# Copy over gpg keys
+	local -r fingerprints=('6EF89C3EB889D61708E5243DDA8EF6F306AD2CBA' '4C452EC68725DAFD09EC57BAB2D007E5878C6803')
+	local gpgDir="$HOME/.gnupg"
+	if [ -d "$gpgDir" ]; then
+		exec 4> >(sudo tee "$blockDevTarget/gpg-keys.tar.age" >/dev/null)
+		if expect -f <(cat <<-EOF
+			set bashFd [lindex \$argv 0]
+			spawn bash \$bashFd
+
+			expect -- "Enter passphrase*"
+			send -- "$password\n"
+			expect -- "Confirm passphrase*"
+			send -- "$password\n"
+			expect eof
+
+			set result [wait]
+			if {[lindex \$result 2] == 0} {
+				exit [lindex \$result 3]
+			} else {
+				error "An operating system error occurred, errno=[lindex \$result 3]"
+			}
+		EOF
+		) <(cat <<-EOF
+			set -eo pipefail
+
+			gpg --export-secret-keys --armor ${fingerprints[*]} | age --encrypt --passphrase --armor >&4
+		EOF
+		); then :; else
+			util.die "Command 'expect' failed (code $?)"
+		fi
+		exec 4<&-
+	else
+		util.log_warn "Skipping copying gpg keys"
+	fi
+}
+
+do_import_secrets() {
+	local gpgDir="/storage/ur/storage_other/gnupg"
+
+	local -r fingerprints=('6EF89C3EB889D61708E5243DDA8EF6F306AD2CBA' '4C452EC68725DAFD09EC57BAB2D007E5878C6803')
+
+	gpg --homedir "$gpgDir" --export-secret-keys --armor "${fingerprints[@]}" \
+		| gpg --import
+
+	if [ ! -e '/proc/sys/kernel/osrelease' ]; then
+		util.die "File '/proc/sys/kernel/osrelease' not found"
+	fi
+	if [[ "$(</proc/sys/kernel/osrelease)" =~ 'WSL2' ]]; then
+		util.log_info "Copying SSH keys from windows side"
+		local name='Edwin'
+		for file in "/mnt/c/Users/$name/.ssh"/*; do
+			if [ ! -f "$file" ]; then
+				continue
+			fi
+
+			if [[ "${file##*/}" = @(config|environment|known_hosts) ]]; then
+				continue
+			fi
+
+			mkdir -vp ~/.ssh
+			cp -v "$file" ~/.ssh
+		done; unset file
+
+		local gpgDir="/mnt/c/Users/$name/AppData/Roaming/gnupg"
+		if [ -d "$gpgDir" ]; then
+			gpg --homedir "$gpgDir" --armor --export-secret-key | gpg --import
+		else
+			util.log_warn "Skipping importing GPG keys as directory does not exist"
+		fi
+	else
+		local gpgDir='/storage/ur/storage_other/gnupg'
+		if [ -d "$gpgDir" ]; then
+			gpg --homedir "$gpgDir" --armor --export-secret-key | gpg --import
+		else
+			util.log_warn "Skipping importing GPG keys as directory does not exist"
+		fi
+	fi
+}
+
+do_prune_and_symlink() {
+	util_get_file() {
+		if [[ ${1::1} == / ]]; then
+			REPLY="$1"
+		else
+			REPLY="$HOME/$1"
+		fi
+	}
+
+	must_rm() {
+		util_get_file "$1"
+		local file="$REPLY"
+
+		if [ -f "$file" ]; then
+			if rm -f "$file"; then
+				util.log_info "Removed file '$file'"
+			else
+				util.log_warn "Failed to remove file '$file'"
+			fi
+		fi
+	}
+
+	must_rmdir() {
+		util_get_file "$1"
+		local dir="$REPLY"
+
+		if [ -d "$dir" ]; then
+			if rmdir "$dir"; then
+				util.log_info "Removed directory '$dir'"
+			else
+				util.log_warn "Failed to remove directory '$dir'"
+			fi
+		fi
+	}
+
+	must_dir() {
+		util_get_file "$1"
+		local dir="$REPLY"
+
+		if [ ! -d "$dir" ]; then
+			if mkdir -p "$dir"; then
+				util.log_info "Created directory '$dir'"
+			else
+				util.log_warn "Failed to create directory '$dir'"
+			fi
+		fi
+	}
+
+	must_file() {
+		util_get_file "$1"
+		local file="$REPLY"
+
+		if [ ! -f "$file" ]; then
+			if mkdir -p "${file%/*}" && touch "$file"; then
+				util.log_info "Created file '$file'"
+			else
+				util.log_warn "Failed to create file '$file'"
+			fi
+		fi
+	}
+
+	must_link() {
+		util_get_file "$1"
+		local src="$REPLY"
+
+		util_get_file "$2"
+		local link="$REPLY"
+
+		if [ -d "$link" ] && [ ! -L "$link" ]; then
+			local children=("$link"/*)
+			if (( ${#children[@]} == 0)); then
+				rmdir "$link"
+			else
+				util.log_warn "Skipping symlink from '$src' to '$link'"
+				return
+			fi
+		fi
+
+		if ln -sfT "$src" "$link"; then
+			util.log_info "Symlinking '$src' to $link"
+		else
+			util.log_warn "Failed to symlink '$src' to '$link'"
+		fi
+	}
+
+	check_dot() {
+		if [ -e "$HOME/$1" ]; then
+			util.log_warn "File or directory '$1' exists"
+		fi
+	}
+
 	if ! [[ -v 'XDG_CONFIG_HOME' && -v 'XDG_DATA_HOME' && -v 'XDG_STATE_HOME' ]]; then
 		printf '%s\n' "Error: XDG Variables must be set"
 		exit 1
@@ -86,7 +296,7 @@ subcmd() {
 			continue
 		fi
 
-		printf '%s\n' "Cleaning '$file'"
+		util.log_info "Cleaning '$file'"
 
 		local file_string=
 		while IFS= read -r line; do
@@ -178,4 +388,11 @@ subcmd() {
 			unlink "$file"
 		fi
 	done; unset file
+}
+
+do_extensions() {
+	exts="$(code --list-extensions)"
+	if [[ $(wc -l <<< "$exts") -gt 10 ]]; then
+		cat <<< "$exts" > ~/.dots/state/vscode-extensions.txt
+	fi
 }

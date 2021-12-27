@@ -1,12 +1,12 @@
 # shellcheck shell=bash
 
 subcmd() {
-	declare flag_{list,show}='no'
+	local flag_{list,show}='no'
 	for arg; do case "$arg" in
 		--list) shift; flag_list='yes' ;;
 		--show) shift; flag_show='yes' ;;
 	esac done
-	declare module="$1"
+	local module="$1"
 
 	if [ "$flag_list" = 'yes' ]; then
 		for file in "$DOTMGR_ROOT_DIR/lib/modules/"*; do
@@ -17,6 +17,10 @@ subcmd() {
 
 		printf '\n'
 		return
+	fi
+
+	if [ -z "$module" ]; then
+		util.die 'Name of module stage cannot be empty'
 	fi
 
 	if [ -f "$DOTMGR_ROOT_DIR/lib/modules/$module.sh" ]; then

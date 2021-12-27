@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -eo pipefail
-shopt -s nullglob
+shopt -s dotglob nullglob shift_verbose
 
 DOTMGR_ROOT_DIR="${0%/*}"; DOTMGR_ROOT_DIR="${DOTMGR_ROOT_DIR%/*}"
 source "$DOTMGR_ROOT_DIR/lib/util.sh"
@@ -23,8 +23,8 @@ main() {
 		source "$DOTMGR_ROOT_DIR/lib/commands/$subcommand.sh" "$@"
 		subcmd "$@"
 	else
-		util.log_error "No matching subcommand found"
 		util.show_help
+		util.log_error "No matching subcommand found"
 		exit 1
 	fi
 }

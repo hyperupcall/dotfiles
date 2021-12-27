@@ -59,7 +59,7 @@ subcmd() {
 
 	# Remove distribution specific dotfiles, including
 	for file in ~/.bash_login ~/.bash_logout ~/.bash_profile ~/.bashrc ~/.profile; do
-		if [ -f "$file" ]; then
+		if [[ ! -L "$file" && -f "$file" ]]; then
 			util.ensure mv "$file" ~/.bootstrap/old-homedots
 		fi
 	done
@@ -123,52 +123,7 @@ subcmd() {
 
 	# ----------------------------------------------------------------------------------------------------------
 
-	if util.is_cmd pacman; then
-		util.log_info 'Updating, upgrading, and installing packages'
-		sudo pacman -Syyu --noconfirm
 
-		sudo pacman -Syu --noconfirm base-devel
-		sudo pacman -Syu --noconfirm lvm2
-		# sudo pacman -Syu --noconfirm pkg-config openssl
-		# sudo pacman -Syu --noconfirm browserpass-chrome
-
-		sudo pacman -Syu --noconfirm rsync xclip
-	elif util.is_cmd apt-get; then
-		util.log_info 'Updating, upgrading, and installing packages'
-		sudo apt-get -y update
-		sudo apt-get -y upgrade
-
-		sudo apt-get -y install build-essential
-		sudo apt-get -y install lvm2
-		sudo apt-get -y install pkg-config libssl-dev # for starship
-		sudo apt-get -y install webext-browserpass
-
-		sudo apt-get -y install rsync xclip
-	elif util.is_cmd dnf; then
-		util.log_info 'Updating, upgrading, and installing packages'
-		sudo dnf -y update
-		sudo dnf -y upgrade
-
-		sudo dnf -y install lvm2
-		sudo dnf -y install pkg-config openssl-devel # for starship
-		# sudo dnf -y install browserpass
-
-		sudo dnf -y install rsync xclip
-	fi
-
-	dotmgr module rust
-	if ! util.is_cmd starship; then
-		util.log_info 'Installing starship'
-		cargo install starship
-	fi
-
-	util.log_info 'Installing Basalt packages globally'
-	basalt global add hyperupcall/choose hyperupcall/autoenv hyperupcall/dotshellextract hyperupcall/dotshellgen
-	basalt global add cykerway/complete-alias rcaloras/bash-preexec
-	basalt global add hedning/nix-bash-completions dsifford/yarn-completion
-
-	# TODO
-	# sudo lvchange -ay /dev/fox
 
 	cat > ~/.bootstrap/stage2.sh <<-"EOF"
 		. ~/.bootstrap/stage1.sh
@@ -184,10 +139,10 @@ subcmd() {
 	cat <<-"EOF"
 	---
 	. ~/.bootstrap/stage2.sh
-	dotfox --config-dir="$HOME/.dots/user/.config/dotfox" --deployment=all.sh deploy
-	dotmgr maintain
-	. ~/.bashrc
 	dotmgr bootstrap-stage2
+
+	. ~/.bashrc
+	dotmgr maintain
 	---
 	EOF
 }
