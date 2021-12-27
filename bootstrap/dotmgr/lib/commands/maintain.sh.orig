@@ -46,7 +46,6 @@ do_export_secrets() {
 	if [ ! -e "$blockDev" ]; then
 		util.die "USB Not plugged in"
 	fi
-}
 
 	local blockDevTarget=
 	if ! blockDevTarget="$(findmnt -no TARGET "$blockDev")"; then
@@ -67,7 +66,6 @@ do_export_secrets() {
 			util.die "Automount failed"
 		fi
 	fi
-}
 
 	# Now, file system is mounted at "$blockDevTarget"
 
@@ -281,7 +279,6 @@ do_prune_and_symlink() {
 		fi
 	}
 
-subcmd() {
 	if ! [[ -v 'XDG_CONFIG_HOME' && -v 'XDG_DATA_HOME' && -v 'XDG_STATE_HOME' ]]; then
 		printf '%s\n' "Error: XDG Variables must be set"
 		exit 1
@@ -349,6 +346,7 @@ subcmd() {
 	must_dir "$XDG_CONFIG_HOME/less" # $LESSKEY
 	must_dir "$XDG_DATA_HOME/gq/gq-state" # $GQ_STATE
 	must_dir "$XDG_DATA_HOME/sonarlint" # $SONARLINT_USER_HOME
+	must_dir "$XDG_DATA_HOME/nvm"
 	must_file "$XDG_CONFIG_HOME/yarn/config"
 	must_file "$XDG_DATA_HOME/tig/history"
 
@@ -363,7 +361,6 @@ subcmd() {
 	must_rm .lesshst
 	must_rm .mkshrc
 	must_rm .pulse-cookie
-	must_rm .pam_environment
 	must_rm .pythonhist
 	must_rm .sqlite_history
 	must_rm .viminfo
@@ -392,6 +389,8 @@ subcmd() {
 		fi
 	done; unset file
 }
+<<<<<<< HEAD
+=======
 
 do_extensions() {
 	exts="$(code --list-extensions)"
@@ -399,3 +398,4 @@ do_extensions() {
 		cat <<< "$exts" > ~/.dots/state/vscode-extensions.txt
 	fi
 }
+>>>>>>> 7835544b8c0c1f4d54baedb75c38fc8bdcc26c7e

@@ -1,5 +1,10 @@
 # shellcheck shell=bash
 
+# Assumptions:
+# sudo, git, nvim installed
+# hyperupcall/dots cloned
+# dotmgr in PATH
+
 subcmd() {
 	if [ -z "$XDG_CONFIG_HOME" ]; then
 		util.die '$XDG_CONFIG_HOME is empty. Did you source profile-pre-bootstrap.sh?'
@@ -11,15 +16,50 @@ subcmd() {
 
 	# Ensure prerequisites
 	mkdir -p ~/.bootstrap/{bin,nim-all,old-homedots} "$XDG_CONFIG_HOME"
-	for cmd in git curl; do
-		if ! command -v "$cmd" >/dev/null 2>&1; then
-			util.die "$cmd not installed"
+
+	if ! util.is_cmd jq; then
+		printf '%s\n' 'Installing jq'
+
+		if util.is_cmd pacman; then
+			ensure sudo pacman -S --noconfirm jq &>/dev/null
+		elif command -v apt-get &>/dev/null; then
+			ensure sudo apt-get -y install jq &>/dev/null
+		elif util.is_cmd dnf; then
+			ensure sudo dnf -y install jq &>/dev/null
+		elif util.is_cmd zypper; then
+			ensure sudo zypper -y install jq &>/dev/null
+		elif util.is_cmd eopkg; then
+			ensure sudo eopkg -y install jq &>/dev/null
 		fi
-	done
+
+		if ! util.is_cmd jq; then
+			die 'Automatic installation of jq failed'
+		fi
+	fi
+
+	if ! util.is_cmd curl; then
+		util.log_info 'Installing curl'
+
+		if util.is_cmd pacman; then
+			util.ensure sudo pacman -S --noconfirm curl &>/dev/null
+		elif util.is_cmd apt-get &>/dev/null; then
+			util.ensure sudo apt-get -y install curl &>/dev/null
+		elif util.is_cmd dnf; then
+			util.ensure sudo dnf -y install curl &>/dev/null
+		elif util.is_cmd zypper; then
+			util.ensure sudo zypper -y install curl &>/dev/null
+		elif util.is_cmd eopkg; then
+			util.ensure sudo eopkg -y install curl &>/dev/null
+		fi
+
+		if ! util.is_cmd curl; then
+			util.die 'Automatic installation of curl failed'
+		fi
+	fi
 
 	# Remove distribution specific dotfiles, including
 	for file in ~/.bash_login ~/.bash_logout ~/.bash_profile ~/.bashrc ~/.profile; do
-		if [ -f "$file" ]; then
+		if [[ ! -L "$file" && -f "$file" ]]; then
 			util.ensure mv "$file" ~/.bootstrap/old-homedots
 		fi
 	done
@@ -56,8 +96,8 @@ subcmd() {
 
 	# Download Basalt
 	if [ ! -d "$XDG_DATA_HOME/basalt/source" ]; then
-		log_info 'Downloading Basalt'
-		ensure git clone --quiet https://github.com/hyperupcall/basalt "$XDG_DATA_HOME/basalt/source"
+		util.log_info 'Downloading Basalt'
+		util.ensure git clone --quiet https://github.com/hyperupcall/basalt "$XDG_DATA_HOME/basalt/source"
 	fi
 
 	# Install Homebrew
@@ -81,6 +121,10 @@ subcmd() {
 		util.die "Could not run 'basalt global init sh'"
 	fi
 
+	# ----------------------------------------------------------------------------------------------------------
+
+
+
 	cat > ~/.bootstrap/stage2.sh <<-"EOF"
 		. ~/.bootstrap/stage1.sh
 		export PATH="$HOME/.bootstrap/dotfox:$HOME/.bootstrap/bin:$XDG_DATA_HOME/basalt/source/pkg/bin:$HOME/.bootstrap/nim-all/nim/bin:$PATH"
@@ -95,10 +139,10 @@ subcmd() {
 	cat <<-"EOF"
 	---
 	. ~/.bootstrap/stage2.sh
-	dotfox --config-dir="$HOME/.dots/user/.config/dotfox" --deployment=all.sh deploy
-	dotmgr maintain
-	. ~/.bashrc
 	dotmgr bootstrap-stage2
+
+	. ~/.bashrc
+	dotmgr maintain
 	---
 	EOF
 }

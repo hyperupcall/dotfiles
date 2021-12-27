@@ -309,7 +309,7 @@
 		"plaintext": true,
 		"markdown": true
 	},
-	"workbench.colorTheme": "Monokai Pro (Filter Spectrum)",
+	"workbench.colorTheme": "Monokai Pro",
 	"telemetry.telemetryLevel": "off",
 	"files.autoSave": "afterDelay",
 	"cSpell.diagnosticLevel": "Hint",

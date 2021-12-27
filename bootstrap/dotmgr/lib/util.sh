@@ -81,18 +81,11 @@ util.show_help() {
 		  bootstrap-stage2
 		    Bootstrap operations that occur after dotfiles have been deployed
 
-		  module [--list] [--show <stage>] [stage]
-		    Bootstraps dotfiles, only for a particular language
-
 		  maintain
-		    Performs cleanup and ensures various files and symlinks exist
+		    Execute a particular idempotent task
 
-		  transfer
-		    Transfers ssh and gpg keys to and from a USB
-
-		  save-state
-		    Saves current state, like current VSCode extensions, etc. to
-		    various files
+		  module [--list] [--show] [stage]
+		    Bootstraps dotfiles, only for a particular language
 
 		Examples:
 		  dotmgr bootstrap-stage1
