@@ -87,7 +87,7 @@ subcmd() {
 		fi
 
 		printf '%s\n' "Cleaning '$file'"
-	
+
 		local file_string=
 		while IFS= read -r line; do
 			file_string+="$line"$'\n'
@@ -136,6 +136,7 @@ subcmd() {
 	must_dir "$XDG_CONFIG_HOME/less" # $LESSKEY
 	must_dir "$XDG_DATA_HOME/gq/gq-state" # $GQ_STATE
 	must_dir "$XDG_DATA_HOME/sonarlint" # $SONARLINT_USER_HOME
+	must_dir "$XDG_DATA_HOME/nvm"
 	must_file "$XDG_CONFIG_HOME/yarn/config"
 	must_file "$XDG_DATA_HOME/tig/history"
 
@@ -150,7 +151,6 @@ subcmd() {
 	must_rm .lesshst
 	must_rm .mkshrc
 	must_rm .pulse-cookie
-	must_rm .pam_environment
 	must_rm .pythonhist
 	must_rm .sqlite_history
 	must_rm .viminfo

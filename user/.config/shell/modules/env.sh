@@ -16,6 +16,14 @@ export PAGER="less"
 
 
 # ------------------------ Program ----------------------- #
+# android
+export ANDROID_HOME="$HOME/Android/Sdk"
+_path_prepend "$ANDROID_HOME/emulator"
+_path_prepend "$ANDROID_HOME/tools"
+_path_prepend "$ANDROID_HOME/tools/bin"
+_path_prepend "$ANDROID_HOME/platform-tools"
+
+
 # fzf
 export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
 export FZF_DEFAULT_OPTS="--history \"$XDG_STATE_HOME/history/fzf_history\" --history-size=10000"

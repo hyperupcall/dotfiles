@@ -91,7 +91,7 @@ declare -ra dotfiles=(
 	cfg:'ly'
 	cfg:'maven'
 	cfg:'micro'
-	cfg:'mimeapps.list'
+	# cfg:'mimeapps.list'
 	cfg:'mnemosyne/config.py'
 	cfg:'most'
 	cfg:'mpd'

@@ -12,5 +12,5 @@ if command -v basalt &>/dev/null; then
 			printf '%s\n' "$line"
 		done ); do
 		complete -F _complete_alias "$alias_name"
-	done
+	done; unset alias_name
 fi

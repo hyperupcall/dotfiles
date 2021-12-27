@@ -1,13 +1,11 @@
 access=public
-#cache=${XDG_CACHE_HOME}/npm
 git-tag-version=true
 init-author-name=Edwin Kofler
 init-author-email=edwin@kofler.dev
 init-author-url=https://edwinkofler.com
-init-license=MIT
+init-license=BSD-3-Clause
 init-version=0.1.0
 message=release: v%s
 sign-git-commit=true
 sign-git-tag=true
-#store-dir=${XDG_DATA_HOME}/npm-package-store
 tag-version-prefix=v

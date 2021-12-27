@@ -76,16 +76,6 @@ lsblk() {
 	fi
 }
 
-# remake, mmake
-make() {
-	if command -v >/dev/null 2>&1 colormake; then
-		colormake "$@"
-	else
-		_shell_util_log_warn "'colormake' not installed"
-		command make "$@"
-	fi
-}
-
 ping() {
 	if command -v prettyping >/dev/null 2>&1; then
 		prettyping "$@"

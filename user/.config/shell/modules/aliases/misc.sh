@@ -2,6 +2,7 @@
 
 alias aria2c='aria2c -d "$HOME/Docs/App/aria2c"'
 alias b='bukdu --suggest'
+alias bake='$HOME/Docs/Programming/repos/bake/pkg/bin/bake'
 alias but='btrfs'
 alias cat='cat -v' # clone(user, root)
 alias cmd='command' # clone(user, root)
@@ -18,12 +19,15 @@ alias kssh='kitty +kitten ssh'
 alias l='exa -al --icons --git' # clone(user, root)
 alias la='exa -a' # clone(user, root)
 alias ll='exa -al --icons --git' # clone(user, root)
+alias m='make' # clone(user, root)
 alias mp='mountpoint' # clone(user, root)
 alias pbat='bat -p' # clone(user, root)
+alias piup='pip install --upgrade pip' # clone(user)
+alias pnpxni='pnpx --no-install'
+alias pnpxy='pnpm -y'
+alias psa='ps xawf -eo pid,user,cgroup,args'
 alias tbat='bat --pager "\"$PAGER\" +G"' # clone(user, root)
 alias rbat='tbat'
-alias piup='pip install --upgrade pip' # clone(user)
-alias psa='ps xawf -eo pid,user,cgroup,args'
 alias rm!='command rm -rf'
 alias rmrf='command rm -rf' # clone(user, root)
 alias rmrfv='command rm -rfv' # clone(user, root)

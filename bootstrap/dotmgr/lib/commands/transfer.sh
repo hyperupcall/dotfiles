@@ -1,11 +1,6 @@
 # shellcheck shell=bash
 
 subcmd() {
-	# util.ensure_bin cc
-	util.ensure_bin expect
-	util.ensure_bin age
-	util.ensure_bin age-keygen
-
 	sudo -v
 
 	local usb_partition_uuid='5886-60A0'
@@ -37,13 +32,21 @@ subcmd() {
 
 	# Now, file system is mounted at "$blockDevTarget"
 
+	# Copy (encrypted) password-store
+	util.log_info "Copying password-store"
+	cp -Lr "${PASSWORD_STORE_DIR:-$HOME/.password-store}" "$blockDevTarget"
+
+	util.ensure_bin expect
+	util.ensure_bin age
+	util.ensure_bin age-keygen
+
 	local password=
-	password="$(LC_ALL=C tr -dc '[:alnum:][:digit:]' </dev/urandom | head -c 12; printf '\n')"
+	password="$(LC_ALL=C tr -dc 'a-km-zA-KM-Z1-9!@#%^&*~`_+' </dev/urandom | head -c 12; printf '\n')"
 	util.log_info "Password: $password"
 
 	# Copy over ssh keys
 	local -r sshDir="$HOME/.ssh"
-	local -a sshKeys=(environment config github github.pub gitlab gitlab.pub)
+	local -a sshKeys=(github github.pub gitlab gitlab.pub)
 	if [ -d "$sshDir" ]; then
 		exec 4> >(sudo tee "$blockDevTarget/ssh-keys.tar.age" >/dev/null)
 		if expect -f <(cat <<-EOF

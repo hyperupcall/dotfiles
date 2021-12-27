@@ -11,11 +11,6 @@ export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME="$XDG_CONFIG_HOME/asdf/tool-versions"
 _path_prepend "$ASDF_DIR/bin"
 _path_prepend "$ASDF_DATA_DIR/shims"
 
-# android
-export ANDROID_SDK_ROOT="$XDG_DATA_HOME/Android/sdk"
-export ANDROID_EMULATOR_HOME="$XDG_DATA_HOME/Android/emulator"
-export ANDROID_AVD_HOME="$XDG_DATA_HOME/Android/avd"
-
 # atom
 export ATOM_HOME="$XDG_DATA_HOME/atom"
 
@@ -191,7 +186,8 @@ alias irssi='irssi --config "$XDG_CONFIG_HOME/irssi" --home "$XDG_CONFIG_HOME/ir
 
 # java
 # export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_DATA_HOME/java"
-export JAVA_TOOL_OPTIONS="-Djava.util.prefs.userRoot=$XDG_DATA_HOME/java"
+# export JAVA_TOOL_OPTIONS="-Djava.util.prefs.userRoot=$XDG_DATA_HOME/java"
+unset JAVA_TOOL_OPTIONS
 
 # julia
 export JULIA_DEPOT_PATH="$XDG_DATA_HOME/julia:$JULIA_DEPOT_PATH"
@@ -313,6 +309,10 @@ _path_prepend "$XDG_DATA_HOME/phpenv/bin"
 export PHPENV_ROOT="$XDG_DATA_HOME/phpenv"
 _path_prepend  "$PHPENV_ROOT/bin"
 
+# pipx
+export PIPX_HOME="$XDG_STATE_HOME/pipx/virtualenv"
+export PIPX_BIN_DIR="$XDG_STATE_HOME/pipx/bin"
+
 # plenv
 export PLENV_ROOT="$XDG_DATA_HOME/plenv"
 _path_prepend "$XDG_DATA_HOME/plenv/bin"
@@ -332,8 +332,9 @@ export PULSE_COOKIE="$XDG_DATA_HOME/pulse/cookie"
 
 # pyenv
 export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
-# _path_prepend "$PYENV_ROOT/bin"
-# _path_prepend "$PYENV_ROOT/shims"
+export PYENV_VIRTUALENV_INIT=1
+_path_prepend "$PYENV_ROOT/bin"
+_path_prepend "$PYENV_ROOT/shims"
 
 # pylint
 export PYLINTHOME="$XDG_CACHE_HOME/pylint"
@@ -453,6 +454,10 @@ export UNISON="$XDG_DATA_HOME/unison"
 export VAGRANT_HOME="$XDG_DATA_HOME/vagrant"
 export VAGRANT_ALIAS_FILE="$VAGRANT_HOME/aliases"
 
+# volta
+export VOLTA_HOME="$XDG_STATE_HOME/volta"
+_path_prepend "$XDG_STATE_HOME/volta/bin"
+
 # vimperator
 export VIMPERATOR_INIT=":source $XDG_CONFIG_HOME/vimperator/vimperatorrc"
 export VIMPERATOR_RUNTIME="$XDG_CONFIG_HOME/vimperator"
@@ -493,8 +498,9 @@ alias xsel='xsel -l "$XDG_DATA_HOME/xsel/xsel.log'
 
 # yarn
 export YARN_CACHE_FOLDER="$XDG_CACHE_HOME/yarn"
-_path_prepend "$XDG_DATA_HOME/yarn/bin"
-#alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
+_path_prepend "$HOME/.yarn/bin"
+# _path_prepend "$XDG_DATA_HOME/yarn/bin"
+# alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 
 # z
 export _Z_DATA="$XDG_DATA_HOME/z"

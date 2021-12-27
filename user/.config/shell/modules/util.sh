@@ -51,11 +51,12 @@ _shell_util_die() {
 }
 
 _shell_util_ls() {
+	# lsd
 	if command -v exa >/dev/null 2>&1; then
-		exa -al "$@"
-	elif command -v lsd >/dev/null 2>&1; then
-		lsd -al "$@"
+		exa -a --color=always
 	else
-		ls -al "$@"
+		printf '%s\n' '---'
+		ls -a --color=always
+		printf '%s\n' '---'
 	fi
 }
