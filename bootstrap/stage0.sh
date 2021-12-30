@@ -69,6 +69,7 @@ if [ ! -d ~/.dots ]; then
 	printf '%s\n' 'Cloning github.com/hyperupcall/dots'
 
 	ensure git clone --quiet https://github.com/hyperupcall/dots ~/.dots
+	ensure git remote set-url origin git@github.com:hyperupcall/dots
 	ensure cd ~/.dots
 	ensure git config --local filter.npmrc-clean.clean "$(pwd)/user/config/npm/npmrc-clean.sh"
 	ensure git config --local filter.slack-term-config-clean.clean "$(pwd)/user/config/slack-term/slack-term-config-clean.sh"

@@ -41,8 +41,8 @@ Running `dotmgr bootstrap` installs [dotfox](https://github.com/hyperupcall/dotf
 
 ```sh
 . ~/.bootstrap/stage2.sh
-dotmgr bootstrap-stage2
-
+dotmgr bootstrap-stage2 # option 1
 . ~/.bashrc
+dotmgr bootstrap-stage2 # option 2
 dotmgr maintain
 ```
