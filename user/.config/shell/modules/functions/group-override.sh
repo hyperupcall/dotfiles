@@ -70,7 +70,9 @@ curl() {
 # clone(user, root)
 lsblk() {
 	if [ $# -eq 1 ] && [ "$1" = "-f" ]; then
-		command lsblk -o NAME,FSUSED,FSAVAIL,FSSIZE,FSUSE%,FSTYPE,MOUNTPOINT
+		command lsblk -o NAME,FSUSED,FSAVAIL,FSSIZE,FSUSE%,FSTYPE,MOUNTPOINTS,UUID,MODEL
+	elif [ $# -eq 0 ]; then
+		command lsblk -o NAME,SIZE,TYPE,MOUNTPOINTS,PARTUUID,MODEL
 	else
 		command lsblk "$@"
 	fi

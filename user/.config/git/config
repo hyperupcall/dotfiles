@@ -4,3 +4,5 @@
 	path = include/external.conf
 	path = include/main.conf
 	path = include/url.conf
+[mergetool]
+	keepBackup = false

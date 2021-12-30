@@ -5,11 +5,13 @@ subcmd() {
 		printf '%s' "What would you like to do?
 (0): Quit
 (1): Deploy dotfox dotfiles
-       This simply executes dotfox with the right arguments. The command is shown
-       before it is ran
+       This mostly executes dotfox with the right arguments. The command is shown
+       before it is ran. Before executing, however, it removes ~/.config/user-dirs.dirs
 (2): Install packages
        Installs operating system, cargo, and Basalt packages. A lot of these are required
        since ~/.dots implicitly depends on things like starship, rsync, xclip, etc.
+(3): Setup mounts
+       Sets up the proper BTRFS mounts in fstab
 > "
 		if ! IFS= read -rN1; then
 			die "Failed to get input"
@@ -20,6 +22,7 @@ subcmd() {
 			$'\x04'|0|q) exit 0 ;;
 			1) do_dotfox ;;
 			2) do_install_packages ;;
+			3) do_setup_mounts ;;
 			*) printf '%s\n' "Invalid option. Try again"
 		esac
 	done
@@ -43,6 +46,7 @@ do_dotfox() {
 		fi
 	}
 
+	rm -f "${XDG_CONFIG_HOME:-"$HOME/.config"}/user-dirs.dirs"
 	prompt_run dotfox --config-dir="$HOME/.dots/user/.config/dotfox" --deployment=all.sh deploy
 }
 
@@ -90,4 +94,12 @@ do_install_packages() {
 	basalt global add hyperupcall/choose hyperupcall/autoenv hyperupcall/dotshellextract hyperupcall/dotshellgen
 	basalt global add cykerway/complete-alias rcaloras/bash-preexec
 	basalt global add hedning/nix-bash-completions dsifford/yarn-completion
+}
+
+do_setup_mounts() {
+	if ! grep -q /storage/ur /etc/fstab; then
+		sudo -v
+		printf "PARTUUID=c875b5ca-08a6-415e-bc11-fc37ec94ab8f  /storage/ur  btrfs  defaults,noatime,X-mount.mkdir  0 0" | sudo tee -a /etc/fstab >/dev/null
+		sudo mount -a
+	fi
 }

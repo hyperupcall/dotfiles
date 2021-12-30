@@ -121,10 +121,6 @@ subcmd() {
 		util.die "Could not run 'basalt global init sh'"
 	fi
 
-	# ----------------------------------------------------------------------------------------------------------
-
-
-
 	cat > ~/.bootstrap/stage2.sh <<-"EOF"
 		. ~/.bootstrap/stage1.sh
 		export PATH="$HOME/.bootstrap/dotfox:$HOME/.bootstrap/bin:$XDG_DATA_HOME/basalt/source/pkg/bin:$HOME/.bootstrap/nim-all/nim/bin:$PATH"
