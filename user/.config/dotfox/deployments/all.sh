@@ -152,7 +152,6 @@ declare -ra dotfiles=(
 	cfg:'terminator'
 	cfg:'termite'
 	cfg:'tig'
-	cfg:'tilda'
 	cfg:'tmux'
 	cfg:'toast'
 	cfg:'todotxt'

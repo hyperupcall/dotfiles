@@ -68,14 +68,33 @@ curl() {
 }
 
 # clone(user, root)
+__shell_lsblk_can_mountpoints=
+if [ -z "$__shell_lsblk_can_mountpoints" ]; then
+	regex="lsblk from util-linux ([[:digit:]]*?)\\.([[:digit:]]*?)"
+	if [[ "$(command lsblk --version)" =~ $regex ]]; then
+		if (( ${BASH_REMATCH[1]} >= 3 || (${BASH_REMATCH[1]} == 2 && ${BASH_REMATCH[2]} >= 37) )); then
+			shell_lsblk_can_mountpoints=yes
+		fi
+	fi
+	unset regex
+fi
 lsblk() {
+	__str=
+	if [ "$___shell_lsblk_can_mountpoints" = yes ]; then
+		__str='MOUNTPOINTS'
+	else
+		__str='MOUNTPOINT'
+	fi
+
 	if [ $# -eq 1 ] && [ "$1" = "-f" ]; then
-		command lsblk -o NAME,FSUSED,FSAVAIL,FSSIZE,FSUSE%,FSTYPE,MOUNTPOINTS,UUID,MODEL
+		command lsblk -o "NAME,FSUSED,FSAVAIL,FSSIZE,FSUSE%,FSTYPE,$__str,UUID,MODEL"
 	elif [ $# -eq 0 ]; then
-		command lsblk -o NAME,SIZE,TYPE,MOUNTPOINTS,PARTUUID,MODEL
+		command lsblk -o "NAME,SIZE,TYPE,$__str,PARTUUID,MODEL"
 	else
 		command lsblk "$@"
 	fi
+
+	__str=
 }
 
 ping() {

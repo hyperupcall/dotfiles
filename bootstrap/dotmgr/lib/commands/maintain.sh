@@ -1,10 +1,37 @@
 # shellcheck shell=bash
 
-subcmd() {
-	util.ensure_bin expect
-	util.ensure_bin age
-	util.ensure_bin age-keygen
+find_mnt_usb() {
+	local usb_partition_uuid=$1
 
+	local block_dev="/dev/disk/by-uuid/$usb_partition_uuid"
+	if [ ! -e "$block_dev" ]; then
+		util.die "USB Not plugged in"
+	fi
+
+	local block_dev_target=
+	if ! block_dev_target="$(findmnt -no TARGET "$block_dev")"; then
+		# 'findmnt' exits failure if cannot find block device. We account
+		# for that case with '[ -z "$block_dev_target" ]' below
+		:
+	fi
+
+	# If the USB is not already mounted
+	if [ -z "$block_dev_target" ]; then
+		if mountpoint -q /mnt; then
+			util.die "Directory '/mnt' must not already be a mountpoint"
+		fi
+
+		util.run sudo mount "$block_dev" /mnt
+
+		if ! block_dev_target="$(findmnt -no TARGET "$block_dev")"; then
+			util.die "Automount failed"
+		fi
+	fi
+
+	REPLY=$block_dev_target
+}
+
+subcmd() {
 	while :; do
 		printf '%s' "What would you like to do?
 (0): Quit
@@ -38,36 +65,16 @@ subcmd() {
 }
 
 do_export_secrets() {
+	util.ensure_bin expect
+	util.ensure_bin age
+	util.ensure_bin age-keygen
+
 	sudo -v
 
-	local usb_partition_uuid='6044-5CC1'
+	find_mnt_usb '6044-5CC1' # WET
+	local block_dev_target=$REPLY
 
-	local blockDev="/dev/disk/by-uuid/$usb_partition_uuid"
-	if [ ! -e "$blockDev" ]; then
-		util.die "USB Not plugged in"
-	fi
-
-	local blockDevTarget=
-	if ! blockDevTarget="$(findmnt -no TARGET "$blockDev")"; then
-		# 'findmnt' exits failure if cannot find block device. We account
-		# for that case with '[ -z "$blockDevTarget" ]' below
-		:
-	fi
-
-	# If the USB is not already mounted
-	if [ -z "$blockDevTarget" ]; then
-		if mountpoint -q /mnt; then
-			util.die "Directory '/mnt' must not already be a mountpoint"
-		fi
-
-		util.run sudo mount "$blockDev" /mnt
-
-		if ! blockDevTarget="$(findmnt -no TARGET "$blockDev")"; then
-			util.die "Automount failed"
-		fi
-	fi
-
-	# Now, file system is mounted at "$blockDevTarget"
+	# Now, file system is mounted at "$block_dev_target"
 
 	local password=
 	password="$(LC_ALL=C tr -dc '[:alnum:][:digit:]' </dev/urandom | head -c 12; printf '\n')"
@@ -77,7 +84,7 @@ do_export_secrets() {
 	local -r sshDir="$HOME/.ssh"
 	local -a sshKeys=(environment config github github.pub)
 	if [ -d "$sshDir" ]; then
-		exec 4> >(sudo tee "$blockDevTarget/ssh-keys.tar.age" >/dev/null)
+		exec 4> >(sudo tee "$block_dev_target/ssh-keys.tar.age" >/dev/null)
 		if expect -f <(cat <<-EOF
 			set bashFd [lindex \$argv 0]
 			spawn bash \$bashFd
@@ -113,7 +120,7 @@ do_export_secrets() {
 	local -r fingerprints=('6EF89C3EB889D61708E5243DDA8EF6F306AD2CBA' '4C452EC68725DAFD09EC57BAB2D007E5878C6803')
 	local gpgDir="$HOME/.gnupg"
 	if [ -d "$gpgDir" ]; then
-		exec 4> >(sudo tee "$blockDevTarget/gpg-keys.tar.age" >/dev/null)
+		exec 4> >(sudo tee "$block_dev_target/gpg-keys.tar.age" >/dev/null)
 		if expect -f <(cat <<-EOF
 			set bashFd [lindex \$argv 0]
 			spawn bash \$bashFd
@@ -146,17 +153,14 @@ do_export_secrets() {
 }
 
 do_import_secrets() {
-	local gpgDir="/storage/ur/storage_other/gnupg"
-
 	local -r fingerprints=('6EF89C3EB889D61708E5243DDA8EF6F306AD2CBA' '4C452EC68725DAFD09EC57BAB2D007E5878C6803')
-
-	gpg --homedir "$gpgDir" --export-secret-keys --armor "${fingerprints[@]}" \
-		| gpg --import
 
 	if [ ! -e '/proc/sys/kernel/osrelease' ]; then
 		util.die "File '/proc/sys/kernel/osrelease' not found"
 	fi
+
 	if [[ "$(</proc/sys/kernel/osrelease)" =~ 'WSL2' ]]; then
+		# WSL
 		util.log_info "Copying SSH keys from windows side"
 		local name='Edwin'
 		for file in "/mnt/c/Users/$name/.ssh"/*; do
@@ -174,16 +178,21 @@ do_import_secrets() {
 
 		local gpgDir="/mnt/c/Users/$name/AppData/Roaming/gnupg"
 		if [ -d "$gpgDir" ]; then
-			gpg --homedir "$gpgDir" --armor --export-secret-key | gpg --import
+			gpg --homedir "$gpgDir" --armor --export-secret-key "${fingerprints[@]}" | gpg --import
 		else
 			util.log_warn "Skipping importing GPG keys as directory does not exist"
 		fi
 	else
+		# Not WSL
 		local gpgDir='/storage/ur/storage_other/gnupg'
 		if [ -d "$gpgDir" ]; then
-			gpg --homedir "$gpgDir" --armor --export-secret-key | gpg --import
+			gpg --homedir "$gpgDir" --armor --export-secret-key "${fingerprints[@]}" | gpg --import
 		else
-			util.log_warn "Skipping importing GPG keys as directory does not exist"
+			util.log_warn "Skipping importing GPG keys from /storage/ur subdirectory"
+
+			find_mnt_usb '6044-5CC1' # WET
+			local block_dev_target=$REPLY
+
 		fi
 	fi
 }
@@ -264,6 +273,10 @@ do_prune_and_symlink() {
 				util.log_warn "Skipping symlink from '$src' to '$link'"
 				return
 			fi
+		fi
+		if [ ! -e "$src" ]; then
+			util.log_warn "Failed to symlink '$src' to $link"
+			return
 		fi
 
 		if ln -sfT "$src" "$link"; then
