@@ -24,6 +24,9 @@
 	"editor.wordWrap": "on",
 	"editor.wordWrapColumn": 100,
 	"editor.wrappingIndent": "indent",
+	"prettier.semi": false,
+	"prettier.singleQuote": true,
+	"prettier.useTabs": true,
 	"[javascript]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
@@ -124,9 +127,13 @@
 		"-readability-magic-numbers",
 		"-readability-braces-around-statements"
 	],
-	"prettier.semi": false,
-	"prettier.singleQuote": true,
-	"prettier.useTabs": true,
+	"[java]": {
+		"editor.defaultFormatter": "redhat.java"
+	},
+	"java.help.firstView": "none",
+	"java.help.showReleaseNotes": false,
+	"java.configuration.checkProjectSettingsExclusions": false,
+	"java.project.importOnFirstTimeStartup": "automatic",
 	"comment-divider.length": 60,
 	"cSpell.userWords": [
 		"cmds",
@@ -165,37 +172,24 @@
 	"explorer.incrementalNaming": "smart",
 	"explorer.openEditors.visible": 0,
 	"files.associations": {
-		"*.COBOL*": "cobol",
-		"*.COB*": "cobol",
-		"*.COBCOPY*": "cobol",
-		"*.COPYBOOK*": "cobol",
-		"*.COPY*": "cobol",
-		"*.PL1*": "pl1",
-		"*.PLI*": "pl1",
-		"*.INC*": "pl1",
-		"*.INCLUDE*": "pl1",
-		"*.JCL*": "jcl",
-		"*.ASM*": "hlasm",
-		"*.ASSEMBLE*": "hlasm",
-		"*.HLASM*": "hlasm",
-		"*.HLA*": "hlasm",
-		".huskyrc": "json",
-		".lintstagedrc": "json",
-		".stylelintrc": "json",
-		".vuerc": "json",
 		"*.hbs": "html",
 		"*.rasi": "css",
 		"**/i3/config": "i3",
 		"Vagrantfile": "ruby",
 		"*.html": "html",
-		"*.bbmodel": "json"
+		"*.bbmodel": "json",
+		"*.jscript": "java"
 	},
 	"files.eol": "\n",
 	"files.exclude": {
 		"**/.git": false,
 		"**/.hg": false,
 		"**/.svn": false,
-		"**/CVS": false
+		"**/CVS": false,
+		"**/.classpath": true,
+		"**/.project": true,
+		"**/.settings": true,
+		"**/.factorypath": true
 	},
 	"files.insertFinalNewline": true,
 	"files.maxMemoryForLargeFilesMB": 2048,
@@ -219,8 +213,6 @@
 	"html.autoClosingTags": false,
 	"html.format.enable": false,
 	"html.format.wrapLineLength": 0,
-	"java.configuration.checkProjectSettingsExclusions": false,
-	"java.project.importOnFirstTimeStartup": "automatic",
 	"javascript.referencesCodeLens.enabled": true,
 	"javascript.referencesCodeLens.showOnAllFunctions": true,
 	"javascript.updateImportsOnFileMove.enabled": "always",
@@ -287,7 +279,7 @@
 		"*.ico": "luna.editor"
 	},
 	"workbench.enableExperiments": false,
-	"workbench.iconTheme": "eq-material-theme-icons-light",
+	"workbench.iconTheme": "vscode-icons",
 	"workbench.quickOpen.closeOnFocusLost": false,
 	"workbench.startupEditor": "none",
 	"workbench.tips.enabled": false,
@@ -309,7 +301,6 @@
 		"plaintext": true,
 		"markdown": true
 	},
-	"workbench.colorTheme": "Monokai Pro",
 	"telemetry.telemetryLevel": "off",
 	"files.autoSave": "afterDelay",
 	"cSpell.diagnosticLevel": "Hint",
@@ -318,11 +309,9 @@
 		{
 			"name": "vscode-expo-manifest",
 			"url": "file:///home/edwin/.config/Code/User/globalStorage/bycedric.vscode-expo/manifest-44.0.0.json",
-			"fileMatch": [
-				"app.json",
-				"app.config.json"
-			]
+			"fileMatch": ["app.json", "app.config.json"]
 		}
 	],
-	"window.zoomLevel": -1
+	"workbench.colorTheme": "Monokai Pro",
+	"vsicons.dontShowNewVersionMessage": true
 }

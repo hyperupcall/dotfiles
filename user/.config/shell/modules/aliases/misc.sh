@@ -1,6 +1,6 @@
 # shellcheck shell=sh
 
-alias aria2c='aria2c -d "$HOME/Docs/App/aria2c"'
+alias aria2c='aria2c -d "$HOME/Dls/aria2c"'
 alias b='bukdu --suggest'
 alias bake='$HOME/Docs/Programming/repos/bake/pkg/bin/bake'
 alias but='btrfs'
