@@ -1,0 +1,46 @@
+! GENERATERD BY 'bake build'
+!
+! UXTerm
+!
+
+UXTerm.title: UXTerm
+
+UXTerm.VT100.altSendsEscape: true
+UXTerm.VT100.backarrowKey: false
+UXTerm.VT100.charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
+UXTerm.VT100.cursorBlink: true
+UXTerm.VT100.cursorOffTime: 750
+UXTerm.VT100.cursorOnTime: 1000
+UXTerm.VT100.disallowedWindowOps: 20,21,SetXprop # tmux set-clipboard
+UXTerm.VT100.dynamicColors: true
+UXTerm.VT100.eightBitControl: false
+UXTerm.VT100.eightBitInput: false
+UXTerm.VT100.eightBitOutput: true
+UXTerm.VT100.faceName: xft:RobotoMono Nerd Font
+UXTerm.VT100.faceSize: 14
+UXTerm.VT100.jumpScroll: true
+!UXTerm.VT100.logging: false
+UXTerm.VT100.metaSendsEscape: true
+UXTerm.VT100.multiClickTime: 200
+UXTerm.VT100.multiScroll: true
+UXTerm.VT100.rightScrollBar: true
+UXTerm.VT100.saveLines: 10000
+UXTerm.VT100.selectToClipboard: false
+UXTerm.VT100.scrollBar: true
+UXTerm.VT100.scrollKey: true
+UXTerm.VT100.scrollTtyOutput: false
+!UXTerm.VT100.toolBar: false
+UXTerm.VT100.translations: #override \
+	Shift Ctrl <Key> minus: smaller-vt-font() \n\
+	Shift Ctrl <Key> equal: larger-vt-font() \n\
+	Shift Ctrl <Key> 0: set-vt-font(d) \n\
+	Shift Ctrl <Key> BackSpace: set-vt-font(d) \n\
+	Shift Ctrl <Key> C: copy-selection(CLIPBOARD) \n\
+	Shift Ctrl <Key> V: insert-selection(CLIPBOARD) \n\
+	Shift <Key>Home: scroll-forw(10000000000) \n\
+	Shift <Key>End: scroll-back(10000000000) \n
+UXTerm.VT100.ttyModes: erase ^?
+UXTerm.VT100.utf8: always
+UXTerm.VT100.utf8Fonts: always
+UXTerm.VT100.visualbell: false
+UXTerm.VT100.wideChars: true

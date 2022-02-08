@@ -1,6 +1,7 @@
 # shellcheck shell=sh
 alias bake='"$HOME/Docs/Programming/repos/Groups/Bash/bake/pkg/bin/bake"'
 alias hookah='"$HOME/Docs/Programming/repos/Groups/Bash/hookah/pkg/bin/hookah"'
+alias foxomate='deno run --allow-read --allow-write "$HOME/repos/foxomate/src/main.ts"'
 alias glue='"$HOME/Docs/Programming/repos/Groups/Bash/glue/pkg/bin/glue"'
 alias rho='"$HOME/Docs/Programming/repos/Groups/Bash/rho/pkg/bin/rho"'
 alias shelldoc='"$HOME/Docs/Programming/repos/Groups/Bash/shelldoc/pkg/bin/shelldoc"'

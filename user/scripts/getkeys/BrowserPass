@@ -1,9 +1,0 @@
-# TODO
-Ctrl+Shift+L	OpenBrowserPass popup
-Ctrl+Shift+F	Fill the form with the best matching credentials
-Enter	Submit form with currently selected credentials
-Ctrl+C	Copy password to clipboard (clears in 60 seconds)
-Ctrl+Shift+C	Copy username to clipboard (clears in 60 seconds)
-Ctrl+G	Open URL in the current tab
-Ctrl+Shift+G	Open URL in the new tab
-Backspace	Search passwords in the entire password store

@@ -1,5 +1,8 @@
 # shellcheck shell=bash
 
+# Registers all VirtualBox virtual machine. Optionally
+# enables unregistering all virtual machines
+
 shopt -s nullglob
 
 register() {
@@ -19,7 +22,7 @@ main() {
     --help|-h) printf '%s\n' "Usage: $0 [-h|--help] [--unregister] (add is default)" ;;
     --unregister) flag_unregister='yes'
   esac done
-  
+
   if [ "$flag_unregister" = 'yes' ]; then
     while IFS= read -r line; do
       printf '%s\n' "Removing '${line}'"
@@ -31,8 +34,8 @@ main() {
   fi
 
   local virtualbox_dir="/storage/vault/rodinia/Virtual_Machines"
-  
-  # Add all 
+
+  # Add all
   for group_dir in "$virtualbox_dir"/*/; do
     register "$group_dir"
     local group_name="${group_dir%/}"; group_name=${group_name##*/}
@@ -43,4 +46,3 @@ main() {
 }
 
 main "$@"
-

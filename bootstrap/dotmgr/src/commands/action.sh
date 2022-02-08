@@ -221,7 +221,7 @@ find_mnt_usb() {
 	fi
 
 	local block_dev_target=
-	if ! block_dev_target="$(findmnt -no TARGET "$block_dev")"; then
+	if ! block_dev_target=$(findmnt -no TARGET "$block_dev"); then
 		# 'findmnt' exits failure if cannot find block device. We account
 		# for that case with '[ -z "$block_dev_target" ]' below
 		:
@@ -235,7 +235,7 @@ find_mnt_usb() {
 
 		util.run sudo mount "$block_dev" /mnt
 
-		if ! block_dev_target="$(findmnt -no TARGET "$block_dev")"; then
+		if ! block_dev_target=$(findmnt -no TARGET "$block_dev"); then
 			print.die "Automount failed"
 		fi
 	fi

@@ -153,7 +153,9 @@ action() {
 	must_link "$HOME/Docs/Programming/git" "$HOME/git"
 	must_link "$HOME/Docs/Programming/repos" "$HOME/repos"
 	must_link "$HOME/Docs/Programming/workspaces" "$HOME/workspaces"
+	must_link "$XDG_CONFIG_HOME/X11/Xcompose" "$HOME/.Xcompose"
 	must_link "$XDG_CONFIG_HOME/X11/Xmodmap" "$HOME/.Xmodmap"
+	must_link "$XDG_CONFIG_HOME/X11/Xresources" "$HOME/.Xresources"
 
 	# Create directories for programs that require a directory to exist to use it
 	must_dir "$XDG_STATE_HOME/history"

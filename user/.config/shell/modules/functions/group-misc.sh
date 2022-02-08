@@ -51,12 +51,6 @@ dataurl() {
 	unset -v mimeType str
 }
 
-do_backup() {
-	restic --repo /storage/vault/rodinia/Backups/edwin backup /storage/edwin/ --iexclude "node_modules" --iexclude "__pycache__" --iexclude "rootfs"
-	restic --repo /storage/vault/rodinia/Backups/data backup /storage/data/ --iexclude "node_modules" --iexclude "__pycache__" --iexclude "rootfs"
-	restic --repo /storage/vault/rodinia/Backups/bridge backup /storage/ur/bridge
-}
-
 docker_nuke() {
 	docker ps -q | xargs docker stop
 	docker ps -aq | xargs docker rm

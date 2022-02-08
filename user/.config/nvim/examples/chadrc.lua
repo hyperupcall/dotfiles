@@ -1,4 +1,4 @@
--- This is an example chadrc file , its supposed to be placed in /lua/custom/
+-- Just an example, supposed to be placed in /lua/custom/
 
 local M = {}
 
@@ -6,7 +6,7 @@ local M = {}
 -- example of changing theme:
 
 M.ui = {
-   theme = "onedark",
+   theme = "gruvchad",
 }
 
 return M
