@@ -154,6 +154,7 @@ action() {
 	must_link "$HOME/Docs/Programming/repos" "$HOME/repos"
 	must_link "$HOME/Docs/Programming/workspaces" "$HOME/workspaces"
 	must_link "$XDG_CONFIG_HOME/X11/Xcompose" "$HOME/.Xcompose"
+	must_link "$XDG_CONFIG_HOME/Code/User/settings.json" "$XDG_CONFIG_HOME/Code - OSS/User/settings.json"
 	must_link "$XDG_CONFIG_HOME/X11/Xmodmap" "$HOME/.Xmodmap"
 	must_link "$XDG_CONFIG_HOME/X11/Xresources" "$HOME/.Xresources"
 

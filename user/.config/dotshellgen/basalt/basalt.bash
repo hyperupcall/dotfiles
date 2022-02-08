@@ -1,4 +1,4 @@
-if [ -d "$HOME/repos/Groups/Bash/basalt/pkg/bin" ]; then
-	_path_prepend "$HOME/repos/Groups/Bash/basalt/pkg/bin"
+if [ -d "$XDG_DATA_HOME/basalt/source/pkg/bin" ]; then
+	_path_prepend "$XDG_DATA_HOME/basalt/source/pkg/bin"
 	eval "$(basalt global init bash)"
 fi

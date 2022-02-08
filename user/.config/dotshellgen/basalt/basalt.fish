@@ -1,3 +1,3 @@
-if test -d "$HOME/repos/Groups/Bash/basalt/pkg/bin"
+if test -d "$XDG_DATA_HOME/basalt/source/pkg/bin"
 	basalt global init fish | source
 end

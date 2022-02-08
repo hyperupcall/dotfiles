@@ -8,6 +8,7 @@ umask 022
 # XDG variables should have been read by PAM from ~/.pam_environment
 if [ -z "$XDG_CONFIG_HOME" ] || [ -z "$XDG_DATA_HOME" ] || [ -z "$XDG_STATE_HOME" ] || [ -z "$XDG_CACHE_HOME" ]; then
 	printf '%s\n' "Error: XDG Base Directory variables are not set. They should have been set by PAM" >&2
+	return 1
 fi
 
 . "$XDG_CONFIG_HOME/shell/modules/util.sh"
@@ -17,8 +18,6 @@ fi
 _path_prepend "$HOME/.dots/bootstrap/dotmgr/bin"
 _path_prepend "$HOME/scripts"
 _path_prepend "$HOME/.local/bin"
-_path_prepend "$HOME/Docs/pkg/app-image"
-
 
 if [ -t 0 ]; then # Required due to 'inappropriate ioctl for device' errors on some distros
 	stty discard undef # special characters

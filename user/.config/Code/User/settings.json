@@ -309,6 +309,10 @@
 	"sqltools.useNodeRuntime": true,
 	"task.quickOpen.history": 20,
 	"terminal.integrated.copyOnSelection": true,
+	"terminal.integrated.commandsToSkipShell": [
+		"-workbench.action.terminal.focusFind",
+		"-workbench.action.quickOpen"
+  ],
 	"vim.enableNeovim": true,
 	"vsdocker.imageUser": "docker.io/hyperupcall",
 	"yaml.format.printWidth": 100,
