@@ -17,6 +17,14 @@ info() {
 	printf '%s\n' "$1"
 }
 
+ensure_dirs() {
+	for dir; do
+		if [ ! -d "$dir" ]; then
+			die "Directory '$dir' does not exist"
+		fi
+	done
+}
+
 main() {
 	local flag_host=
 	for arg; do case $arg in
@@ -39,28 +47,30 @@ main() {
 		die "Must have 'rsync' installed"
 	fi
 
+	if [[ $flag_host != @(desktop|laptop) ]]; then
+		die "Value '$flag_host' not supported"
+	fi
+
 	# Trailing slashes required so rsync copies content of directories
+	find_mnt_usb '6af304fc-10e2-4229-ae8c-ae64f3f0ea18'
+	local mnt="$REPLY"
+
 	if [ "$flag_host" = 'desktop' ]; then
-		find_mnt_usb '6af304fc-10e2-4229-ae8c-ae64f3f0ea18'
-
-		local destDir="$REPLY/synced-copy"
-
+		local destDir="$mnt/desktop-stuff"
 		mkdir -p "$destDir"
 
 		local -a desktopDirs=(~/Docs/Knowledge2 ~/Docs/School)
-		for dir in "${desktopDirs[@]}"; do
-			if [ ! -d "$dir" ]; then
-				die "Directory '$dir' does not exist"
-			fi
-		done
+		ensure_dirs "${desktopDirs[@]}"
 
 		rsync -av --delete "${desktopDirs[@]}" "$destDir"
 	elif [ "$flag_host" = 'laptop' ]; then
-		find_mnt_usb '6af304fc-10e2-4229-ae8c-ae64f3f0ea18'
-		local dir="$REPLY"
+		local destDir="$mnt/laptop-stuff"
+		mkdir -p "$destDir"
 
-	else
-		die "Value '$flag_host' not supported"
+		local -a laptopDirs=(~/Documents)
+		ensure_dirs "${laptopDirs[@]}"
+
+		rsync -av --delete "${laptopDirs[@]}" "$destDir"
 	fi
 }
 
