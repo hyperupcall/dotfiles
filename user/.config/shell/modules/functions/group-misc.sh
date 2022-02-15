@@ -108,19 +108,6 @@ kkexec() {
 	# sudo kexec -e
 }
 
-lam() {
-	if [ $# -eq 0 ]; then
-		ls "$HOME/Docs/Downloaded/AppImage"
-		return
-	fi
-
-	if [ -f "$HOME/Docs/Downloaded/AppImage/""$1".AppImage ]; then
-		exec "$HOME/Docs/Downloaded/AppImage/""$1".AppImage
-	else
-		printf '%s\n' "Error: '$1' not an AppImage"
-	fi
-}
-
 # clone(user, root)
 nh() {
 	nohup "$@" > /dev/null 2>&1 &
@@ -139,7 +126,7 @@ np() {
 qe() {
 	filterList="BraveSoftware code tetrio-desktop obsidian discord sublime-text Ryujinx unity3d hmcl hdlauncher TabNine zettlr Zettlr Google lunarclient libreoffice VirtualBox configstore pulse obs-studio eDEX-UI 1Password kde.org sublime-text-3 gdlauncher gdlauncher_next launcher-main gitify QtProject GIMP r2modman r2modmanPlus-local Code plover GitKraken Electron"
 
-	_qe_file="$(
+	_qe_file=$(
 		cd -- "$XDG_CONFIG_HOME" || { _shell_util_log_error "qe: Could not cd"; exit 1; }
 		filterArgs=
 		for file in $filterList; do
@@ -155,7 +142,7 @@ qe() {
 			-o -path ./kak/autoload \
 			-o -path ./cookiecutter/cookiecutters \
 		\) -prune -o -print | fzf
-	)"
+	)
 
 	[ -z "$_qe_file" ] && { _shell_util_die "qe: Chosen file empty"; return; }
 

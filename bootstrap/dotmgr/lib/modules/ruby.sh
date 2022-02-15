@@ -1,8 +1,8 @@
 # shellcheck shell=bash
 
-check_bin ruby
-check_bin rbenv
-# check_bin rvm
+util.ensure_bin ruby
+util.ensure_bin rbenv
+# util.ensure_bin rvm
 
 hash rvm &>/dev/null || {
 	util.log_info "Installing rvm"

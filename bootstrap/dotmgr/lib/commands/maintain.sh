@@ -47,6 +47,8 @@ subcmd() {
        directories that are out of the scope of dotfox. More specifically, this symlinks the XDG user
        directories, ~/.ssh, ~/.config/BraveSoftware, etc. to the shared drive mounted under /storage
 (4): Save VSCode extensions
+(5): dotshellextract (TODO)
+(6): dotshellgen (TODO)
 > "
 		if ! IFS= read -rN1; then
 			die "Failed to get input"
@@ -338,13 +340,13 @@ do_prune_and_symlink() {
 	must_link "$storage_other/fonts" "$XDG_CONFIG_HOME/fonts"
 	must_link "$storage_other/password-store" "$XDG_DATA_HOME/password-store"
 
+	must_link "$HOME/.dots/user/scripts" "$HOME/scripts"
 	must_link "$HOME/Docs/Programming/challenges" "$HOME/challenges"
 	must_link "$HOME/Docs/Programming/experiments" "$HOME/experiments"
 	must_link "$HOME/Docs/Programming/git" "$HOME/git"
-	must_link "$HOME/Docs/Programming/projects" "$HOME/projects"
 	must_link "$HOME/Docs/Programming/repos" "$HOME/repos"
 	must_link "$HOME/Docs/Programming/workspaces" "$HOME/workspaces"
-
+	must_link "$XDG_CONFIG_HOME/X11/Xmodmap" "$HOME/.Xmodmap"
 
 	# Create directories for programs that require a directory to exist to use it
 	must_dir "$XDG_STATE_HOME/history"
@@ -394,8 +396,11 @@ do_prune_and_symlink() {
 	check_dot .ghc # Fixed in later releases
 	check_dot .npm
 	check_dot .scala_history_jline3
-	check_dot .bootstrap
 
+	# Miscellaneous
+	chmod 0700 ~/.gnupg
+
+	# Remove broken symlinks
 	for file in "$HOME"/*; do
 		if [ -L "$file" ] && [ ! -e "$file" ]; then
 			unlink "$file"

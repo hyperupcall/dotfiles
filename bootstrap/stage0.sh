@@ -2,13 +2,25 @@
 set -e
 
 die() {
-	printf '%s\n' "Error: $*. Exiting"
+	printf '%s\n' "ERROR: $1. Exiting" >&2
 	exit 1
 }
 
 ensure() {
-	if ! "$@"; then
-		die "'$*' failed"
+	if "$@"; then :; else
+		die "Command '$*' failed (code $?)"
+	fi
+}
+
+log() {
+	printf 'INFO: %s\n' "$1"
+}
+
+iscmd() {
+	if command -v "$1" &>/dev/null; then
+		return 0
+	else
+		return $?
 	fi
 }
 
@@ -20,57 +32,57 @@ fi
 # Ensure prerequisites
 mkdir -p ~/.bootstrap
 
-if ! command -v sudo &>/dev/null; then
+if ! iscmd sudo; then
 	die "Sudo not installed"
 fi
 
-if ! command -v git &>/dev/null; then
-	printf '%s\n' 'Installing git'
+if ! iscmd git; then
+	log 'Installing git'
 
-	if command -v pacman &>/dev/null; then
-		ensure sudo pacman -S --noconfirm git &>/dev/null
-	elif command -v apt-get &>/dev/null; then
-		ensure sudo apt-get -y install git &>/dev/null
-	elif command -v dnf &>/dev/null; then
-		ensure sudo dnf -y install git &>/dev/null
-	elif command -v zypper &>/dev/null; then
-		ensure sudo zypper -y install git &>/dev/null
-	elif command -v eopkg &>/dev/null; then
-		ensure sudo eopkg -y install git &>/dev/null
+	if iscmd pacman; then
+		ensure sudo pacman -S --noconfirm git
+	elif iscmd apt-get; then
+		ensure sudo apt-get -y install git
+	elif iscmd dnf; then
+		ensure sudo dnf -y install git
+	elif iscmd zypper; then
+		ensure sudo zypper -y install git
+	elif iscmd eopkg; then
+		ensure sudo eopkg -y install git
 	fi
 
-	if ! command -v git &>/dev/null; then
+	if ! iscmd git; then
 		die 'Automatic installation of sudo failed'
 	fi
 fi
 
-if ! command -v nvim &>/dev/null; then
-	printf '%s\n' 'Installing neovim'
+if ! iscmd nvim; then
+	log 'Installing neovim'
 
-	if command -v pacman &>/dev/null; then
-		ensure sudo pacman -S --noconfirm neovim &>/dev/null
-	elif command -v apt-get &>/dev/null; then
-		ensure sudo apt-get -y install neovim &>/dev/null
-	elif command -v dnf &>/dev/null; then
-		ensure sudo dnf -y install neovim &>/dev/null
-	elif command -v zypper &>/dev/null; then
-		ensure sudo zypper -y install neovim &>/dev/null
-	elif command -v eopkg &>/dev/null; then
-		ensure sudo eopkg -y install neovim &>/dev/null
+	if iscmd pacman; then
+		ensure sudo pacman -S --noconfirm neovim
+	elif iscmd apt-get; then
+		ensure sudo apt-get -y install neovim
+	elif iscmd dnf; then
+		ensure sudo dnf -y install neovim
+	elif iscmd zypper; then
+		ensure sudo zypper -y install neovim
+	elif iscmd eopkg; then
+		ensure sudo eopkg -y install neovim
 	fi
 
-	if ! command -v nvim &>/dev/null; then
+	if ! iscmd nvim; then
 		die 'Automatic installation of neovim failed'
 	fi
 fi
 
 # Install ~/.dots
 if [ ! -d ~/.dots ]; then
-	printf '%s\n' 'Cloning github.com/hyperupcall/dots'
+	log 'Cloning github.com/hyperupcall/dots'
 
 	ensure git clone --quiet https://github.com/hyperupcall/dots ~/.dots
-	ensure git remote set-url origin git@github.com:hyperupcall/dots
 	ensure cd ~/.dots
+	ensure git remote set-url origin git@github.com:hyperupcall/dots
 	ensure git config --local filter.npmrc-clean.clean "$(pwd)/user/config/npm/npmrc-clean.sh"
 	ensure git config --local filter.slack-term-config-clean.clean "$(pwd)/user/config/slack-term/slack-term-config-clean.sh"
 	ensure git config --local filter.oscrc-clean.clean "$(pwd)/user/config/osc/oscrc-clean.sh"
@@ -80,13 +92,13 @@ fi
 # Set EDITOR so editors like 'vi' or 'vim' that may not be installed
 # are never executed
 if [ -z "$EDITOR" ]; then
-	if command -v nvim &>/dev/null; then
+	if iscmd nvim; then
 		EDITOR='nvim'
-	elif command -v vim &>/dev/null; then
+	elif iscmd vim; then
 		EDITOR='vim'
-	elif command -v nano &>/dev/null; then
+	elif iscmd nano; then
 		EDITOR='nano'
-	elif command -v vi &>/dev/null; then
+	elif iscmd vi; then
 		EDITOR='vi'
 	else
 		die "Variable EDITOR cannot be set. Is nvim installed?"

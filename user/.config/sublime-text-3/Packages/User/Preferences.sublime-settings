@@ -1,0 +1,10 @@
+{
+	"theme": "Spacegray.sublime-theme",
+	"color_scheme": "Packages/Theme - Spacegray/base16-ocean.dark.tmTheme",
+	"draw_white_space": ["all"],
+	"shift_tab_unindent": true,
+	"tab_size": 3,
+	"ignored_packages": [
+		"Vintage",
+	],
+}

@@ -1,7 +1,7 @@
 # shellcheck shell=bash
-check_bin deno
-check_bin dvm
-check_bin vr
+util.ensure_bin deno
+util.ensure_bin dvm
+util.ensure_bin vr
 
 hash deno &>/dev/null || {
 	util.log_info "Installing dvm"

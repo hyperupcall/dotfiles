@@ -1,10 +1,11 @@
 # shellcheck shell=bash
 
 subcmd() {
-	local flag_{list,show}='no'
+	local flag_{list,show,edit}='no'
 	for arg; do case "$arg" in
 		--list) shift; flag_list='yes' ;;
 		--show) shift; flag_show='yes' ;;
+		--edit) shift; flag_edit='yes' ;;
 	esac done
 	local module="$1"
 
@@ -24,8 +25,10 @@ subcmd() {
 	fi
 
 	if [ -f "$DOTMGR_ROOT_DIR/lib/modules/$module.sh" ]; then
-		if [ "$flag_show"  = 'yes' ]; then
+		if [ "$flag_show" = 'yes' ]; then
 			printf '%s\n' "$(<"$DOTMGR_ROOT_DIR/lib/modules/$module.sh")"
+		elif [ "$flag_edit" = 'yes' ]; then
+			"$EDITOR" "$DOTMGR_ROOT_DIR/lib/modules/$module.sh"
 		else
 			source "$DOTMGR_ROOT_DIR/lib/modules/$module.sh" "$@"
 		fi

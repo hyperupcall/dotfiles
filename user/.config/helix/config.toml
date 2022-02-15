@@ -1,0 +1,4 @@
+theme = 'onedark'
+
+[editor.file-picker]
+hidden = false

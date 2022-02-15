@@ -1,0 +1,12 @@
+{
+	"bootstrapped": true,
+	"installed_packages":
+	[
+		"EditorConfig",
+		"Package Control",
+		"Theme - Spacegray",
+	],
+	"in_process_packages":
+	[
+	],
+}

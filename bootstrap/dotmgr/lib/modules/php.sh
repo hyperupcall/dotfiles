@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 
-check_bin php
+util.ensure_bin php
 
 hash phpenv &>/dev/null || {
 	util.log_info "Installing phpenv"

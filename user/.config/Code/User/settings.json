@@ -5,11 +5,12 @@
 	"editor.cursorSmoothCaretAnimation": true,
 	"editor.cursorSurroundingLinesStyle": "all",
 	"editor.find.addExtraSpaceOnTop": false,
-	"editor.fontFamily": "'Fira Sans Mono', 'monospace'",
+	"editor.fontFamily": "'Droid Sans Mono', 'Fira Sans Mono', 'monospace'",
 	"editor.fontLigatures": true,
 	"editor.fontSize": 16,
 	"editor.formatOnSave": true,
-	"editor.formatOnPaste": true,
+	"editor.formatOnPaste": false,
+	"editor.formatOnType": false,
 	"editor.insertSpaces": false,
 	"editor.maxTokenizationLineLength": 5000,
 	"editor.minimap.maxColumn": 35,
@@ -24,26 +25,35 @@
 	"editor.wordWrap": "on",
 	"editor.wordWrapColumn": 100,
 	"editor.wrappingIndent": "indent",
+	"files.autoSave": "afterDelay",
+	"files.autoSaveDelay": 5000,
+
 	"prettier.semi": false,
 	"prettier.singleQuote": true,
 	"prettier.useTabs": true,
 	"[javascript]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true
 	},
 	"[javascriptreact]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true
 	},
 	"[typescript]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true
 	},
 	"[typescriptreact]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true
 	},
 	"[json]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true
 	},
 	"[jsonc]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true
 	},
 	"[html]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -91,8 +101,16 @@
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
 	"[python]": {
-		"editor.defaultFormatter": "ms-python.python"
+		"editor.defaultFormatter": "ms-python.python",
+		"editor.codeActionsOnSave": {
+			"source.fixAll": true,
+			"source.organizeImports": true
+		}
 	},
+	"python.formatting.provider": "yapf",
+	"python.globalModuleInstallation": false,
+	"python.venvPath": "~/.cache/pypoetry/virtualenvs",
+	"python.languageServer": "Pylance",
 	"[c]": {
 		"editor.defaultFormatter": "ms-vscode.cpptools",
 		"editor.insertSpaces": true,
@@ -110,6 +128,7 @@
 		"cert-*",
 		"clang-analyzer-*",
 		"concurrency-*",
+		"-concurrency-mt-unsafe",
 		"cppcoreguidelines-*",
 		"-cppcoreguidelines-avoid-c-arrays",
 		"-cppcoreguidelines-avoid-magic-numbers",
@@ -130,6 +149,12 @@
 	"[java]": {
 		"editor.defaultFormatter": "redhat.java"
 	},
+	"[perl]": {
+		"editor.defaultFormatter": "richterger.perl"
+	},
+	"perl.disableCache": true, // TODO: BUGGED
+	"perl.cacheDir": "/home/edwin/.cache/vscode-perl-cache/",
+
 	"java.help.firstView": "none",
 	"java.help.showReleaseNotes": false,
 	"java.configuration.checkProjectSettingsExclusions": false,
@@ -152,6 +177,7 @@
 		"kbuild",
 		"Kofler",
 		"mongod",
+		"NOLINT",
 		"prettierrc",
 		"printk",
 		"Roadmap",
@@ -178,7 +204,8 @@
 		"Vagrantfile": "ruby",
 		"*.html": "html",
 		"*.bbmodel": "json",
-		"*.jscript": "java"
+		"*.jscript": "java",
+		"*.sublime-snippet": "xml"
 	},
 	"files.eol": "\n",
 	"files.exclude": {
@@ -230,9 +257,7 @@
 	"merge-conflict.autoNavigateNextConflict.enabled": true,
 	"merge-conflict.diffViewPosition": "Beside",
 	"php.validate.run": "onType",
-	"python.analysis.logLevel": "Warning",
-	"python.languageServer": "Pylance",
-	"python.showStartPage": false,
+
 	"screencastMode.onlyKeyboardShortcuts": true,
 	"search.exclude": {
 		"**/.git": true,
@@ -279,7 +304,7 @@
 		"*.ico": "luna.editor"
 	},
 	"workbench.enableExperiments": false,
-	"workbench.iconTheme": "vscode-icons",
+	"workbench.iconTheme": "Monokai Pro Icons",
 	"workbench.quickOpen.closeOnFocusLost": false,
 	"workbench.startupEditor": "none",
 	"workbench.tips.enabled": false,
@@ -289,7 +314,6 @@
 	"zenMode.centerLayout": true,
 	"go.toolsManagement.autoUpdate": true,
 	"terminal.integrated.commandsToSkipShell": ["language-julia.interrupt"],
-	"redhat.telemetry.enabled": false,
 	"security.workspace.trust.untrustedFiles": "open",
 	"kite.showWelcomeNotificationOnStartup": false,
 	"julia.enableTelemetry": false,
@@ -301,10 +325,12 @@
 		"plaintext": true,
 		"markdown": true
 	},
+	"redhat.telemetry.enabled": false,
+
 	"telemetry.telemetryLevel": "off",
-	"files.autoSave": "afterDelay",
+
 	"cSpell.diagnosticLevel": "Hint",
-	"python.venvPath": "~/.cache/pypoetry/virtualenvs",
+
 	"json.schemas": [
 		{
 			"name": "vscode-expo-manifest",
@@ -312,6 +338,13 @@
 			"fileMatch": ["app.json", "app.config.json"]
 		}
 	],
-	"workbench.colorTheme": "Monokai Pro",
-	"vsicons.dontShowNewVersionMessage": true
+	"workbench.colorTheme": "Noctis Uva",
+	"vsicons.dontShowNewVersionMessage": true,
+
+	"vs-kubernetes": {
+		"vscode-kubernetes.helm-path.linux": "/home/edwin/.vs-kubernetes/tools/helm/linux-amd64/helm",
+		"vscode-kubernetes.kubectl-path.linux": "/home/edwin/.vs-kubernetes/tools/kubectl/kubectl",
+		"vscode-kubernetes.minikube-path.linux": "/home/edwin/.vs-kubernetes/tools/minikube/linux-amd64/minikube"
+	},
+	"vsicons.presets.foldersAllDefaultIcon": true
 }

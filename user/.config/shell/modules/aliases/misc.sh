@@ -2,7 +2,7 @@
 
 alias aria2c='aria2c -d "$HOME/Dls/aria2c"'
 alias b='bukdu --suggest'
-alias bake='$HOME/Docs/Programming/repos/bake/pkg/bin/bake'
+alias bake='"$HOME/Docs/Programming/repos/Groups/Bash/bake/pkg/bin/bake"'
 alias but='btrfs'
 alias cat='cat -v' # clone(user, root)
 alias cmd='command' # clone(user, root)
@@ -37,5 +37,4 @@ alias ta='type -a' # clone(user, root)
 alias utc='TZ=UTC date'
 alias ydl='youtube-dl' # clone(user)
 alias partusage='df -hlT --exclude-type=tmpfs --exclude-type=devtmpfs'
-alias totalusage='df -hl --total | grep total'
 alias totalusage='df -hl --total | grep total'

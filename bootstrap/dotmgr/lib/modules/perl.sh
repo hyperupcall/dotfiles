@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 
-check_bin perl
+util.ensure_bin perl
 
 # todo: remove prompt (on unconfigured systems)
 # todo: cleanup

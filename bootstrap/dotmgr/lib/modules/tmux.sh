@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 
-check_bin tmux
+util.ensure_bin tmux
 
 [ ! -d "$XDG_DATA_HOME/tmux/plugins/tpm" ] && {
 	util.log_info "Installing tpm"

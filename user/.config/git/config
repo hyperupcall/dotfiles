@@ -6,3 +6,5 @@
 	path = include/url.conf
 [mergetool]
 	keepBackup = false
+[merge]
+	tool = sublime-merge

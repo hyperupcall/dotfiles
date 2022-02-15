@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 
-check_bin asf
+util.ensure_bin asf
 
 [ ! -d "$XDG_DATA_HOME/asdf" ] && {
 	util.log_info "Installing asdf"

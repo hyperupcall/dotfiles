@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 
-check_bin crystal
+util.ensure_bin crystal
 
 hash crystal &>/dev/null || {
 	util.log_info "Installing crystal"

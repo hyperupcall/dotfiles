@@ -1,9 +1,9 @@
 # shellcheck shell=bash
 
-check_bin bash
-check_bin dash
-check_bin bats
-check_bin basher
+util.ensure_bin bash
+util.ensure_bin dash
+util.ensure_bin bats
+util.ensure_bin basher
 
 [ ! -d "$XDG_DATA_HOME/bash-it" ] && {
 	util.log_info "Installing bash-it"

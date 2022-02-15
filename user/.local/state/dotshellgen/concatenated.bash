@@ -1,9 +1,6 @@
 # basalt.bash
-if [ -d "$HOME/repos/basalt/pkg/bin" ]; then
-	_path_prepend "$HOME/repos/basalt/pkg/bin"
-	eval "$(basalt global init bash)"
-elif [ -d "$XDG_DATA_HOME/basalt/source/pkg/bin" ]; then
-	_path_prepend "$XDG_DATA_HOME/basalt/source/pkg/bin"
+if [ -d "$HOME/repos/Groups/Bash/basalt/pkg/bin" ]; then
+	_path_prepend "$HOME/repos/Groups/Bash/basalt/pkg/bin"
 	eval "$(basalt global init bash)"
 fi
 
@@ -21,6 +18,9 @@ fi
 if command -v direnv &>/dev/null; then
 	eval "$(direnv hook bash)"
 fi
+
+# pipx.bash
+eval "$(register-python-argcomplete pipx)"
 
 # sdkman.bash
 if [ -n "$SDKMAN_DIR" ] && [ -f "$SDKMAN_DIR/bin/sdkman-init.sh" ]; then
@@ -52,6 +52,6 @@ if command -v basalt &>/dev/null; then
 			printf '%s\n' "$line"
 		done ); do
 		complete -F _complete_alias "$alias_name"
-	done
+	done; unset alias_name
 fi
 

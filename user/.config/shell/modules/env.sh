@@ -29,7 +29,7 @@ export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
 export FZF_DEFAULT_OPTS="--history \"$XDG_STATE_HOME/history/fzf_history\" --history-size=10000"
 
 # gnupg
-export GPG_TTY=$(tty)
+export GPG_TTY; GPG_TTY=$(tty)
 
 # guile
 export GUILE_HISTORY="$XDG_STATE_HOME/history/guile_history"
@@ -44,6 +44,7 @@ export LESSKEY="$XDG_CONFIG_HOME/less/less_keys"
 # export LESSOPEN="|source-highlight-esc.sh %s"
 export LESSHISTFILE="$XDG_STATE_HOME/history/less_history"
 export LESSHISTSIZE='32768'
+# shellcheck disable=SC3003,SC2155
 if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ] || [ -n "$KSH_VERSION" ]; then
 	export LESS_TERMCAP_mb=$'\e[1;31m' # start blink
 	export LESS_TERMCAP_md=$'\e[1;36m' # start bold
@@ -64,9 +65,6 @@ else
 	export LESS_TERMCAP_us="$(printf '\e[1;32m')" # start underline
 fi
 
-# man
-export MAN_POSIXLY_CORRECT= # openSUSE # TODO
-
 # more
 export MORE='-l'
 
@@ -86,24 +84,20 @@ export CMD_ENV='linux'
 
 # qt
 export QT_ACCESSIBILITY='1'
+export QT_QPA_PLATFORMTHEME="qt5ct"
 
 # ranger
-export RANGER_LOAD_DEFAULT_RC='FALSE'
-
-# qt
-# [ "$XDG_CURRENT_DESKTOP" = "KDE" ] || [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] || {
-# 	export QT_QPA_PLATFORMTHEME="qt5ct"
-# }
+# export RANGER_LOAD_DEFAULT_RC='FALSE'
 
 # snapd
 _path_append '/var/lib/snapd/snap/bin'
 
 # ssh
-unset SSH_AGENT_PID
-if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
-  export SSH_AUTH_SOCK=
-  SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
-fi
+# unset SSH_AGENT_PID
+# if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+#   export SSH_AUTH_SOCK=
+#   SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+# fi
 
 # sxhkd
 export SXHKD_SHELL='/bin/sh'

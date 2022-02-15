@@ -38,7 +38,7 @@ export HISTCONTROL="ignorespace:ignoredups"
 export HISTFILE="$XDG_STATE_HOME/history/bash_history"
 export HISTSIZE="-1"
 export HISTFILESIZE="-1"
-export HISTIGNORE="ls:[bf]g:pwd:clear*:exit*:*sudo*-S*:*sudo*--stdin*" # TODO
+export HISTIGNORE="ls:[bf]g:pwd:clear*:exit*:cd*|mkcd*|mkt*"
 export HISTTIMEFORMAT="%B %m %Y %T | "
 export HISTTIMEFORMAT='%F %T ' # ISO 8601
 export TIMEFORMAT=$'real    %3lR\nuser    %3lU\nsystem  %3lS\npercent %P'
@@ -165,3 +165,8 @@ source "$XDG_CONFIG_HOME/bash/modules/readline.sh"
 source "$XDG_CONFIG_HOME/bash/modules/util.sh"
 
 # ---
+
+
+# BEGIN_KITTY_SHELL_INTEGRATION
+if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
+# END_KITTY_SHELL_INTEGRATION

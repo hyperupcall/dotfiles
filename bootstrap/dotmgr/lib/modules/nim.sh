@@ -1,8 +1,8 @@
 # shellcheck shell=bash
 
-check_bin nim
-check_bin nimble
-check_bin nimcr
+util.ensure_bin nim
+util.ensure_bin nimble
+util.ensure_bin nimcr
 
 hash choosenim &>/dev/null || {
 	util.log_info "Installing choosenim"

@@ -1,6 +1,6 @@
 # basalt.zsh
-if [ -d "$HOME/repos/basalt/pkg/bin" ]; then
-	_path_prepend "$HOME/repos/basalt/pkg/bin"
+if [ -d "$HOME/repos/Groups/Bash/basalt/pkg/bin" ]; then
+	_path_prepend "$HOME/repos/Groups/Bash/basalt/pkg/bin"
 	eval "$(basalt global init zsh)"
 fi
 
@@ -13,6 +13,11 @@ fi
 if command -v &>/dev/null; then
 	eval "$(direnv hook zsh)"
 fi
+
+# pipx.zsh
+autoload -U bashcompinit
+bashcompinit # TODO
+eval "$(register-python-argcomplete pipx)"
 
 # zoxide.zsh
 if command -v zoxide &>/dev/null; then

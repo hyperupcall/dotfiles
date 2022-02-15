@@ -109,6 +109,19 @@ mkt() {
 		_mkt_util_cd "$_mkt_dir" || return
 		_mkt_util_log "$1"
 		;;
+	# git repository
+	*.git)
+		_mkt_id="$(printf '%s\n' "$1" | rev | cut -d/ -f1 | rev)" # id so we can see this folder in /tmp easier
+		_mkt_dir="$(mktemp -d --suffix "-$_mkt_id")"
+		_mkt_util_cd "$_mkt_dir" || return
+		_mkt_util_log "$1"
+		unset _mkt_id
+
+		_mkt_util_git_clone "$1" || return
+
+		_mkt_util_cd_latest_dir || return
+		_shell_util_ls
+		;;
 	# remote files
 	https://*/*.*)
 		_mkt_dir="$(mktemp -d)"

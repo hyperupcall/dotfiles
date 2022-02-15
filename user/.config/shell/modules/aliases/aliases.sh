@@ -33,13 +33,13 @@ alias locate='locate -i'
 alias ls='ls --color=auto -hF'
 alias mkdir='mkdir -p'
 # alias mv='mv -v'
-# alias pacman='pacman --color=auto'
-# alias paru='paru --color=auto'
+alias pacman='pacman --color=auto'
+alias paru='paru --color=auto'
 alias p7zip='p7zip -k'
 alias rm='rm -dI --preserve-root=all'
 alias rsync='rsync --verbose --archive --info=progress2 --human-readable --partial'
 alias speedtest-cli='speedtest-cli --secure'
-alias sudo='sudo -E ' # sudo aliases `info bash -n Aliases`
+alias sudo='sudo ' # sudo aliases `info bash -n Aliases`
 alias tree='tree -a --dirsfirst -h'
 alias vdir='vdir --color=auto'
 alias xz='xz -k'
@@ -48,7 +48,6 @@ alias xz='xz -k'
 
 # -------------------------- git ------------------------- #
 alias g='git'
-alias gi='git'
 alias ginit='git init'
 alias gclone='git clone'
 # gclonedir shell function

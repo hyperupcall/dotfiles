@@ -33,8 +33,13 @@ _path_append() {
 	esac
 }
 
+_shell_util_die() {
+	_shell_util_log_error "$*"
+	return 1
+}
+
 _shell_util_log_error() {
-	printf "\033[0;31m%s\033[0m %s\n" 'Error' "$1t" >&2
+	printf "\033[0;31m%s\033[0m %s\n" 'Error' "$1" >&2
 }
 
 _shell_util_log_warn() {
@@ -45,18 +50,12 @@ _shell_util_log_info() {
 	printf "\033[0;34m%s\033[0m %s\n" 'Info' "$1"
 }
 
-_shell_util_die() {
-	_shell_util_log_error "$*"
-	return 1
-}
-
 _shell_util_ls() {
-	# lsd
+	printf '%s\n' '---'
 	if command -v exa >/dev/null 2>&1; then
 		exa -a --color=always
 	else
-		printf '%s\n' '---'
-		ls -a --color=always
-		printf '%s\n' '---'
+		ls -A --color=always
 	fi
+	printf '%s\n' '---'
 }

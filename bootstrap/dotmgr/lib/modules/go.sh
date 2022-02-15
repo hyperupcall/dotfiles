@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 
-check_bin go
+util.ensure_bin go
 
 # todo: remove prompt
 hash g &>/dev/null || {

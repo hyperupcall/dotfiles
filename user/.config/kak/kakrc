@@ -1,49 +1,89 @@
-source "%sh{ echo "$XDG_DATA_HOME" }/kak/plugins/plug.kak/rc/plug.kak"
-
-set-option global plug_install_dir %sh{ echo "$XDG_DATA_HOME/kak/plugins" }
-
-plug "andreyorst/plug.kak" noload
-
-plug "kak-lsp/kak-lsp" do %{
-	cargo install --locked --force --path .
-}
-
-hook global WinSetOption filetype=(rust|python|go|javascript|typescript|c|cpp) %{
-	lsp-enable-window
-}
-
-map global normal D '<a-l>d' -docstring 'delete to end of line'
-map global normal Y '<a-l>y' -docstring 'yank to end of line'
-map global normal = :format<ret> -docstring 'format buffer'
-map global normal '#' :comment-line<ret> -docstring 'Comment line'
-map global normal '<a-#>' :comment-block<ret> -docstring 'comment block'
-map global goto m '<esc>m;' -docstring 'matching char'
-
 colorscheme tomorrow-night
 
-map global normal '<c-p>' :comment-line<ret> -docstring 'Comment line'
-#map global normal '<c-_>' :comment-line<ret> -docstring 'Comment line'
+# set-option global tabstop 3
+# set-option global indentwidth 3
+# set-option global scrollof 1,3
 
-hook global InsertChar k %{ try %{
-	exec -draft hH <a-k>jk<ret> d
-	exec <esc>
-}}
+# Width of a tab
+set-option global tabstop 4
 
-set -add global autoinfo normal
+# Indent with 4 spaces
+set-option global indentwidth 4
 
-plug "andreyorst/powerline.kak" defer powerline %{
-	#Configure powerline.kak as desired
-	powerline-theme gruvbox
-} config %{
-	powerline-start
-}
+# Always keep one line and three columns displayed around the cursor
+set-option global scrolloff 1,3
 
-plug "andreyorst/kaktree" config %{
-	hook global WinSetOption filetype=kaktree %{
-		remove-highlighter buffer/numbers
-		remove-highlighter buffer/matching
-		remove-highlighter buffer/wrap
-		remove-highlighter buffer/show-whitespaces
-	}
-	kaktree-enable
-}
+# Display the status bar on top
+set-option global ui_options ncurses_status_on_top=true
+
+# Display line numbers
+add-highlighter global/ number-lines -hlcursor
+
+# Highlight trailing whitespace
+add-highlighter global/ regex \h+$ 0:Error
+
+# Softwrap long lines
+add-highlighter global/ wrap -word -indent
+
+# Clipboard management mappings
+map -docstring "yank the selection into the clipboard" global user y "<a-|> xsel -i<ret>"
+map -docstring "paste the clipboard" global user p "<a-!> xsel<ret>"
+
+# Shortcut to quickly exit the editor
+define-command -docstring "save and quit" x "write-all; quit"
+
+
+#add-highlighter global/ number-lines -hlcursor
+
+# autocomplete: <C-n>
+
+
+# source "%sh{ echo "$XDG_DATA_HOME" }/kak/plugins/plug.kak/rc/plug.kak"
+
+# set-option global plug_install_dir %sh{ echo "$XDG_DATA_HOME/kak/plugins" }
+
+# # plug "andreyorst/plug.kak" noload
+
+# plug "kak-lsp/kak-lsp" do %{
+	# cargo install --locked --force --path .
+# }
+
+# hook global WinSetOption filetype=(rust|python|go|javascript|typescript|c|cpp) %{
+# 	lsp-enable-window
+# }
+
+# # map global normal D '<a-l>d' -docstring 'delete to end of line'
+# map global normal Y '<a-l>y' -docstring 'yank to end of line'
+# map global normal = :format<ret> -docstring 'format buffer'
+# map global normal '#' :comment-line<ret> -docstring 'Comment line'
+# map global normal '<a-#>' :comment-block<ret> -docstring 'comment block'
+# map global goto m '<esc>m;' -docstring 'matching char'
+
+# colorscheme tomorrow-night
+
+# map global normal '<c-p>' :comment-line<ret> -docstring 'Comment line'
+# #map global normal '<c-_>' :comment-line<ret> -docstring 'Comment line'
+
+# hook global InsertChar k %{ try %{
+# 	exec -draft hH <a-k>jk<ret> d
+# 	exec <esc>
+# }}
+
+# set -add global autoinfo normal
+
+# plug "andreyorst/powerline.kak" defer powerline %{
+# 	#Configure powerline.kak as desired
+# 	powerline-theme gruvbox
+# } config %{
+# 	powerline-start
+# }
+
+# plug "andreyorst/kaktree" config %{
+# 	hook global WinSetOption filetype=kaktree %{
+# 		remove-highlighter buffer/numbers
+# 		remove-highlighter buffer/matching
+# 		remove-highlighter buffer/wrap
+# 		remove-highlighter buffer/show-whitespaces
+# 	}
+# 	kaktree-enable
+# }

@@ -62,11 +62,11 @@ util.ensure_bin() {
 	fi
 }
 
-# TODO: deprecate
-check_bin() {
-	if command -v "$1" &>/dev/null; then
-		util.log_warn "Command '$1' does not exist"
-	fi
+util.print_stacktrace() {
+	for ((i=0; i<${#FUNCNAME[@]}-1; i++)); do
+		local bash_source=${BASH_SOURCE[$i]}; bash_source="${bash_source##*/}"
+		printf '%s\n' "  -> $bash_source:${BASH_LINENO[$i]} ${FUNCNAME[$i]}()"
+	done
 }
 
 util.show_help() {
@@ -84,7 +84,7 @@ util.show_help() {
 		  maintain
 		    Execute a particular idempotent task
 
-		  module [--list] [--show] [stage]
+		  module [--list] [--show] [--edit] [stage]
 		    Bootstraps dotfiles, only for a particular language
 
 		Examples:

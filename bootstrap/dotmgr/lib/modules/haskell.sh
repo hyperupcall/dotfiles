@@ -1,8 +1,8 @@
 # shellcheck shell=bash
 
-check_bin haskell
-check_bin ghcup
-check_bin stack
+util.ensure_bin haskell
+util.ensure_bin ghcup
+util.ensure_bin stack
 
 command -v haskell >/dev/null 2>&1 || {
 	util.log_info "Installing haskell"

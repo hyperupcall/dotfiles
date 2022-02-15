@@ -86,10 +86,8 @@ export PUB_CACHE="$XDG_CACHE_HOME/pub-cache"
 # deno
 export DENO_INSTALL="$XDG_DATA_HOME/deno"
 export DENO_INSTALL_ROOT="$DENO_INSTALL/bin"
-export DVM_DIR="$XDG_DATA_HOME/dvm"
 _path_prepend "$DENO_INSTALL_ROOT"
 _path_prepend "$DENO_INSTALL_ROOT/bin"
-_path_prepend "$DVM_DIR/bin"
 
 # docker
 export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
@@ -103,6 +101,10 @@ export DUC_DATABASE="$XDG_DATA_HOME/duc.db"
 # dvdcss
 export DVDCSS_CACHE="$XDG_CACHE_HOME"/dvdcss
 
+# dvm
+export DVM_DIR="$XDG_DATA_HOME/dvm"
+_path_prepend "$DVM_DIR/bin"
+
 # electrum
 export ELECTRUMDIR="$XDG_DATA_HOME/electrum"
 
@@ -110,9 +112,9 @@ export ELECTRUMDIR="$XDG_DATA_HOME/electrum"
 export ELINKS_CONFDIR="$XDG_CONFIG_HOME/elinks"
 
 # emscripten
-export EM_CONFIG="$XDG_CONFIG_HOME/emscripten/config"
-export EM_CACHE="$XDG_CACHE_HOME/emscripten/cache"
-export EM_PORTS="$XDG_DATA_HOME/emscripten/cache"
+# export EM_CONFIG="$XDG_CONFIG_HOME/emscripten/config"
+export EM_CACHE="$XDG_CACHE_HOME/emscripten"
+# export EM_PORTS="$XDG_DATA_HOME/emscripten/cache"
 
 # g
 export GOPATH="$XDG_DATA_HOME/gopath"
@@ -187,7 +189,6 @@ alias irssi='irssi --config "$XDG_CONFIG_HOME/irssi" --home "$XDG_CONFIG_HOME/ir
 # java
 # export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_DATA_HOME/java"
 # export JAVA_TOOL_OPTIONS="-Djava.util.prefs.userRoot=$XDG_DATA_HOME/java"
-unset JAVA_TOOL_OPTIONS
 
 # julia
 export JULIA_DEPOT_PATH="$XDG_DATA_HOME/julia:$JULIA_DEPOT_PATH"
@@ -206,14 +207,14 @@ export K9SCONFIG="$XDG_CONFIG_HOME/k9s"
 export KDEHOME="$XDG_CONFIG_HOME/kde"
 
 # krew
-export KREW_ROOT="$XDG_DATA_HOME/krew"
+export KREW_ROOT="$XDG_STATE_HOME/krew"
 _path_prepend "$KREW_ROOT/bin"
 
 # ldap
 # export LDAPRC="$XDG_CONFIG_HOME/ldap.conf"
 
 # leiningen
-export LEIN_HOME="$XDG_DATA_HOME/lein"
+export LEIN_HOME="$XDG_STATE_HOME/lein"
 
 # ltrace
 alias ltrace='ltrace -F "$XDG_CONFIG_HOME/ltrace/ltrace.conf"'
@@ -224,7 +225,7 @@ alias mvn='mvn -gs "$XDG_CONFIG_HOME/maven/settings.xml"'
 # maxima
 export MAXIMA_USERDIR="$XDG_CONFIG_HOME/maxima"
 
-#
+# mbsync
 export MBSYNC_CONFIG="$XDG_CONFIG_HOME/mbsync/config"
 
 # mednafen
@@ -237,7 +238,7 @@ alias mongo='mongo --norc'
 export MOST_INITFILE="$XDG_CONFIG_HOME/most/mostrc"
 
 # mplayer
-export MPLAYER_HOME="$XDG_DATA_HOME/mplayer"
+export MPLAYER_HOME="$XDG_STATE_HOME/mplayer"
 
 # mysql
 export MYSQL_HISTFILE="$XDG_STATE_HOME/history/mysql_history"
@@ -252,7 +253,7 @@ export NB_DIR="$XDG_DATA_HOME/nb"
 export NB_HIST="$XDG_STATE_HOME/history/nb_history"
 
 # nimble
-export CHOOSENIM_NO_ANALYTICS="1"
+export CHOOSENIM_NO_ANALYTICS='1'
 _path_prepend "$XDG_DATA_HOME/nimble/bin"
 
 # node
@@ -279,11 +280,8 @@ export NVM_DIR="$XDG_DATA_HOME/nvm"
 export OCTAVE_SITE_INITFILE="$XDG_CONFIG_HOME/octave/octaverc"
 export OCTAVE_HISTFILE="$XDG_STATE_HOME/history/octave-history"
 
-# openssl
-# export RANDFILE="$XDG_DATA_HOME/openssl/rnd"
-
 # opera
-export OPERA_PERSONALDIR="$XDG_DATA_HOME/opera"
+export OPERA_PERSONALDIR="$XDG_STATE_HOME/opera"
 
 # packer
 export PACKER_CONFIG="$XDG_DATA_HOME/packer/packerconfig"
@@ -328,7 +326,7 @@ export PGPASSFILE="$XDG_DATA_HOME/pg/pgpass"
 export PGSERVICEFILE="$XDG_DATA_HOME/pg/pg_service.conf"
 
 # pulse
-export PULSE_COOKIE="$XDG_DATA_HOME/pulse/cookie"
+# export PULSE_COOKIE="$XDG_STATE_HOME/pulse/cookie"
 
 # pyenv
 export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
@@ -348,7 +346,7 @@ export PYTHON_EGG_CACHE="$XDG_CACHE_HOME/python-eggs"
 export PLTUSERHOME="$XDG_DATA_HOME/racket"
 
 # rbenv
-export RBENV_ROOT="$XDG_DATA_HOME/rbenv"
+export RBENV_ROOT="$XDG_STATE_HOME/rbenv"
 _path_prepend "$RBENV_ROOT/bin"
 _path_prepend "$RBENV_ROOT/shims"
 
@@ -374,9 +372,7 @@ _path_prepend "$CARGO_HOME/bin"
 export RUBY_BUILD_CACHE_PATH="$XDG_CACHE_HOME/ruby-build"
 
 # rvm
-_path_prepend "$XDG_DATA_HOME/rvm/bin"
-# TODO
-[ -r "$XDG_DATA_HOME/rvm/scripts/rvm" ] && safe_source "$XDG_DATA_HOME/rvm/scripts/rvm"
+# _path_prepend "$XDG_DATA_HOME/rvm/bin"
 
 # sage
 export DOT_SAGE="$XDG_CONFIG_HOME/sage"

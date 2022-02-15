@@ -18,22 +18,22 @@ subcmd() {
 	mkdir -p ~/.bootstrap/{bin,nim-all,old-homedots} "$XDG_CONFIG_HOME"
 
 	if ! util.is_cmd jq; then
-		printf '%s\n' 'Installing jq'
+		util.log_info 'Installing jq'
 
 		if util.is_cmd pacman; then
-			ensure sudo pacman -S --noconfirm jq &>/dev/null
-		elif command -v apt-get &>/dev/null; then
-			ensure sudo apt-get -y install jq &>/dev/null
+			util.ensure sudo pacman -S --noconfirm jq
+		elif util.is_cmd apt-get; then
+			util.ensure sudo apt-get -y install jq
 		elif util.is_cmd dnf; then
-			ensure sudo dnf -y install jq &>/dev/null
+			util.ensure sudo dnf -y install jq
 		elif util.is_cmd zypper; then
-			ensure sudo zypper -y install jq &>/dev/null
+			util.ensure sudo zypper -y install jq
 		elif util.is_cmd eopkg; then
-			ensure sudo eopkg -y install jq &>/dev/null
+			util.ensure sudo eopkg -y install jq
 		fi
 
 		if ! util.is_cmd jq; then
-			die 'Automatic installation of jq failed'
+			util.die 'Automatic installation of jq failed'
 		fi
 	fi
 
@@ -41,15 +41,15 @@ subcmd() {
 		util.log_info 'Installing curl'
 
 		if util.is_cmd pacman; then
-			util.ensure sudo pacman -S --noconfirm curl &>/dev/null
-		elif util.is_cmd apt-get &>/dev/null; then
-			util.ensure sudo apt-get -y install curl &>/dev/null
+			util.ensure sudo pacman -S --noconfirm curl
+		elif util.is_cmd apt-get; then
+			util.ensure sudo apt-get -y install curl
 		elif util.is_cmd dnf; then
-			util.ensure sudo dnf -y install curl &>/dev/null
+			util.ensure sudo dnf -y install curl
 		elif util.is_cmd zypper; then
-			util.ensure sudo zypper -y install curl &>/dev/null
+			util.ensure sudo zypper -y install curl
 		elif util.is_cmd eopkg; then
-			util.ensure sudo eopkg -y install curl &>/dev/null
+			util.ensure sudo eopkg -y install curl
 		fi
 
 		if ! util.is_cmd curl; then
