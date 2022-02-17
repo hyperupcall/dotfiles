@@ -3,7 +3,7 @@ function Dotfox {
 	param (
 		# Subcommand to run
 		[Parameter(ParameterSetName='Symlink', Mandatory=$true, Position=0)]
-		[ValidateSet('symlink')]
+		[ValidateSet('deploy')]
 		[String]
 		$Subcommand,
 
@@ -30,7 +30,7 @@ function Dotfox {
 	& "command-$Subcommand"
 }
 
-function command-symlink() {
+function command-deploy() {
 	foreach($relativePath in @(
 		'.config/git/attributes',
 		'.config/git/config',

@@ -23,11 +23,13 @@ if (!(Test-Path -Path "$HOME/.bootstrap")) {
     New-Item -ItemType Directory "$HOME/.bootstrap" >$null
 }
 
-'$env:Path = "$HOME/.dots/windows/bootstrap/dots-bootstrap;$env:Path"' | Out-File -FilePath "$HOME/.bootstrap/init.ps1"
+@'
+Import-Module "$HOME/.dots/windows/user/Documents/Powershell/Modules/Dotfox"
+'@ | Out-File -FilePath "$HOME/.bootstrap/init.ps1"
 
 Write-Host @"
 ---
 . "`$HOME/.bootstrap/init.ps1"
-dotfox.ps1
+Dotfox -Subcommand deploy
 ---
 "@

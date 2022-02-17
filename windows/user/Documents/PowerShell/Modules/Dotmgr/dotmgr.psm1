@@ -3,7 +3,7 @@ function Dotmgr() {
 	param (
 		# Subcommand to run
 		[Parameter(ParameterSetName='Symlink', Mandatory=$true)]
-		[ValidateSet('bootstrap')]
+		[ValidateSet('bootstrap-stage1', 'bootstrap', 'transfer')]
 		[String]
 		$Subcommand,
 
@@ -28,6 +28,10 @@ function Dotmgr() {
 	}
 
 	& "command-$Subcommand"
+}
+
+function command-bootstrap-stage1() {
+	winget install --id Microsoft.Powershell --source winget
 }
 
 function command-bootstrap() {
@@ -123,6 +127,54 @@ function command-bootstrap() {
 	# Set-WindowsExplorerOptions ...
 }
 
+function command-transfer() {
+	$ErrorActionPreference = 'Stop' # TODO
+
+	$driveLetter = Read-Host -Prompt "Drive letter?"
+
+	$sshKeysFile = Join-Path -Path "${driveLetter}:\" -ChildPath "ssh-keys.tar.age"
+	$gpgKeysFile = Join-Path -Path "${driveLetter}:\" -ChildPath "gpg-keys.tar.age"
+
+	if (!(Test-Path "$sshKeysFile")) {
+		Write-Host "SSH keyfile not found"
+		return 1
+	}
+
+	if (!(Test-Path "$gpgKeysFile")) {
+		Write-Host "GPG keyfile not found"
+		return 1 # TODO: does not translate to exit code of whole program; prints '1' to console
+	}
+
+	# ssh keys
+	if ((Read-Host -Prompt "Copy ssh keys? (y/n)") -eq "y") {
+		$sshTmp = Join-Path -Path "$HOME" -ChildPath ".ssh/tmp-ssh"
+		age --decrypt --output "$sshTmp" "$sshKeysFile"
+		if (!$?) {
+			return 1
+		}
+		Set-Location -Path ~/.ssh
+		tar -xmf "$sshTmp"
+		if (!$?) {
+			return 1
+		}
+		# Remove-Item -Force "$sshTmp"
+	}
+
+	# gpg keys
+	if ((Read-Host -Prompt "Copy gpg keys? (y/n)") -eq "y") { 
+		$gpgTmp = Join-Path -Path "$HOME" -ChildPath ".ssh/tmp-gpg"
+		age --decrypt --output "$gpgTmp" "$gpgKeysFile"
+		if (!$?) {
+			return 1
+		}
+		gpg --import "$gpgTmp"
+		if (!$?) {
+			return 1
+		}
+		Remove-Item -Force "$gpgTmp"
+	}
+}
+
 function Ensure-ScoopBucket {
 	[CmdletBinding()]
 	Param (
@@ -150,24 +202,12 @@ function Ensure-ScoopPackage {
 
 	$appDir = Join-Path -Path "$HOME/scoop/apps" -ChildPath "$Name"
 	if (Test-Path "$appDir") {
-			scoop update "$Name"
+		scoop update "$Name"
 	} else {
-			scoop install "$Name"
+		scoop install "$Name"
 	}
 }
 
-<#
-.SYNOPSIS
-Tests if a registry value exists.
-
-.DESCRIPTION
-The usual ways for checking if a registry value exists don't handle when a value simply has an empty or null value.  This function actually checks if a key has a value with a given name.
-
-.EXAMPLE
-Test-RegistryKeyValue -Path 'hklm:\Software\Carbon\Test' -Name 'Title'
-
-Returns `True` if `hklm:\Software\Carbon\Test` contains a value named 'Title'.  `False` otherwise.
-#>
 function Test-RegistryKeyValue {
 
     [CmdletBinding()]
