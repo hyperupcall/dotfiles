@@ -1,0 +1,1 @@
+eval "$(rho shell-init)"

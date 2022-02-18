@@ -1,8 +1,13 @@
 # shellcheck shell=sh
+alias bake='"$HOME/Docs/Programming/repos/Groups/Bash/bake/pkg/bin/bake"'
+alias hookah='"$HOME/Docs/Programming/repos/Groups/Bash/hookah/pkg/bin/hookah"'
+alias glue='"$HOME/Docs/Programming/repos/Groups/Bash/glue/pkg/bin/glue"'
+alias rho='"$HOME/Docs/Programming/repos/Groups/Bash/rho/pkg/bin/rho"'
+alias shelldoc='"$HOME/Docs/Programming/repos/Groups/Bash/shelldoc/pkg/bin/shelldoc"'
+alias shelltest='"$HOME/Docs/Programming/repos/Groups/Bash/shelltest/pkg/bin/shelltest"'
 
 alias aria2c='aria2c -d "$HOME/Dls/aria2c"'
 alias b='bukdu --suggest'
-alias bake='"$HOME/Docs/Programming/repos/Groups/Bash/bake/pkg/bin/bake"'
 alias but='btrfs'
 alias cat='cat -v' # clone(user, root)
 alias cmd='command' # clone(user, root)
@@ -11,7 +16,6 @@ alias cmdV='command -V' # clone(user, root)
 alias copy='xclip -selection clipboard'
 alias ddad='dragon-drag-and-drop'
 alias gg='command g'
-alias gglue='"$HOME/repos/glue/pkg/bin/glue"'
 alias hexdump='od -A x -t x1z -v'
 alias ipa='command ip -c -br a'
 alias j='just' # clone(user, root)

@@ -47,6 +47,10 @@
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.formatOnSave": true
 	},
+	"typescript.implementationsCodeLens.enabled": true,
+	"typescript.referencesCodeLens.enabled": true,
+	"typescript.referencesCodeLens.showOnAllFunctions": true,
+	"typescript.updateImportsOnFileMove.enabled": "always",
 	"[json]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.formatOnSave": true
@@ -279,10 +283,6 @@
 	"task.quickOpen.history": 20,
 	"terminal.integrated.copyOnSelection": true,
 	"terraform.telemetry.enabled": false,
-	"typescript.implementationsCodeLens.enabled": true,
-	"typescript.referencesCodeLens.enabled": true,
-	"typescript.referencesCodeLens.showOnAllFunctions": true,
-	"typescript.updateImportsOnFileMove.enabled": "always",
 	"vim.enableNeovim": true,
 	"vsdocker.imageUser": "docker.io/hyperupcall",
 	"window.customMenuBarAltFocus": false,

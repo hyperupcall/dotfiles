@@ -22,6 +22,9 @@ fi
 # pipx.bash
 eval "$(register-python-argcomplete pipx)"
 
+# rho.bash
+eval "$(rho shell-init)"
+
 # sdkman.bash
 if [ -n "$SDKMAN_DIR" ] && [ -f "$SDKMAN_DIR/bin/sdkman-init.sh" ]; then
 	source "$SDKMAN_DIR/bin/sdkman-init.sh"
