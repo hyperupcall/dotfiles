@@ -2,11 +2,11 @@
 
 util.ensure_bin go
 
-# todo: remove prompt
-hash g &>/dev/null || {
+# TODO: remove prompt
+if ! command -v 'g' &>/dev/null; then
 	print.info "Installing g"
 	util.req https://git.io/g-install | sh -s
-}
+fi
 
 go get -v golang.org/x/tools/gopls
 go install golang.org/x/tools/cmd/godoc@latest

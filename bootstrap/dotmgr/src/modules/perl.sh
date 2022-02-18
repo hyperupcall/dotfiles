@@ -2,8 +2,8 @@
 
 util.ensure_bin perl
 
-# todo: remove prompt (on unconfigured systems)
-# todo: cleanup
+# TODO: remove prompt (on unconfigured systems)
+# TODO: cleanup
 print.info "Installing perl"
 
 git clone https://github.com/tokuhirom/plenv "${XDG_DATA_HOME:-${HOME}/.local/share}/plenv"

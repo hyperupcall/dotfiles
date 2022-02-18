@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-A network connection is required. A basic network configuration for systemd example is shown below
+A network connection is required. A basic network configuration for `systemd-networkd` is shown below
 
 ```sh
 >/etc/systemd/network/90-wired.network <<-EOF cat

@@ -414,7 +414,6 @@ export SUBVERSION_HOME="$XDG_CONFIG_HOME/subversion"
 # swift
 export SWIFTENV_ROOT="$XDG_DATA_HOME/swiftenv"
 _path_prepend "$SWIFTENV_ROOT/bin"
-# eval "$(swiftenv init -)"
 
 # task
 export TASKRC="$XDG_CONFIG_HOME/taskwarrior/taskrc"

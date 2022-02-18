@@ -8,9 +8,9 @@ _xdg_main() {
 	if [ -f /etc/os-release ]; then
 		while IFS='=' read -r key value; do
 			if [ "$key" = ID ]; then
-				value="${value#\"}"
-				value="${value%\"}"
-				_xdg_distro_id="$value"
+				value=${value#\"}
+				value=${value%\"}
+				_xdg_distro_id=$value
 			fi
 		done < /etc/os-release
 	else

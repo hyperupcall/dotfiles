@@ -3,7 +3,7 @@
 # run alias only
 # clone(user, root)
 a() {
-    # TODO: BASH_ALIASES
+	# TODO: BASH_ALIASES
 	if alias "$1" >/dev/null 2>&1; then
 		_a_aliasValue="$(alias "$1" | awk -v FS="'" '{ print $2 }')"
 

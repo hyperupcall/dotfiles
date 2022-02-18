@@ -8,10 +8,10 @@ _mkt_util_get_latest_file() {
 
 # cd into the most recently created directory
 _mkt_util_cd_latest_dir() {
-	_mkt_latest_dir="$(
+	_mkt_latest_dir=$(
 		find . -mindepth 1 -maxdepth 1 -type d -printf "%T@\t%p\0" \
 				| sort -zn | cut -z -f2- | tail -z -n1 | tr -d '\000'
-	)"
+	)
 
 	if [ -n "$_mkt_latest_dir" ]; then
 		if ! _mkt_util_cd "$_mkt_latest_dir"; then
@@ -44,7 +44,7 @@ _mkt_util_cd() {
 	fi
 
 	if [ -n "$_mkt_old_pwd" ]; then
-		OLDPWD="$_mkt_old_pwd"
+		OLDPWD=$_mkt_old_pwd
 	fi
 }
 
@@ -95,24 +95,24 @@ mkt() {
 		return
 		;;
 	*)
-		_mkt_arg="$arg"
+		_mkt_arg=$arg
 		;;
 	esac done; unset arg
 
-	_mkt_old_pwd="$PWD"
+	_mkt_old_pwd=$PWD
 
 	set -- "$_mkt_arg"
 	case "$1" in
 	# nothing passed
 	'')
-		_mkt_dir="$(mktemp -d)"
+		_mkt_dir=$(mktemp -d)
 		_mkt_util_cd "$_mkt_dir" || return
 		_mkt_util_log "$1"
 		;;
 	# git repository
 	*.git)
-		_mkt_id="$(printf '%s\n' "$1" | rev | cut -d/ -f1 | rev)" # id so we can see this folder in /tmp easier
-		_mkt_dir="$(mktemp -d --suffix "-$_mkt_id")"
+		_mkt_id=$(printf '%s\n' "$1" | rev | cut -d/ -f1 | rev) # id so we can see this folder in /tmp easier
+		_mkt_dir=$(mktemp -d --suffix "-$_mkt_id")
 		_mkt_util_cd "$_mkt_dir" || return
 		_mkt_util_log "$1"
 		unset _mkt_id
@@ -124,12 +124,12 @@ mkt() {
 		;;
 	# remote files
 	https://*/*.*)
-		_mkt_dir="$(mktemp -d)"
+		_mkt_dir=$(mktemp -d)
 		_mkt_util_cd "$_mkt_dir" || return
 		_mkt_util_log "$1"
 
 		command curl -fLO "$1" || { _shell_util_die "mkt: Could not fetch resource with cURL"; return; }
-		_mkt_latest_file="$(_mkt_util_get_latest_file)"
+		_mkt_latest_file=$(_mkt_util_get_latest_file)
 		if file "$_mkt_latest_file" | grep -Eq '(compressed|archive)'; then
 			if command -v aunpack >/dev/null 2>&1; then
 				command aunpack "$_mkt_latest_file" # uncompress if compressed
@@ -146,8 +146,8 @@ mkt() {
 		;;
 	# git repository
 	git@*|git://*|*.git|https://github.com/*|https://gitlab.com/*|https://git.sr.ht/*|https://*@bitbucket.org/*|https://invent.kde.org/*)
-		_mkt_id="$(printf '%s\n' "$1" | rev | cut -d/ -f1 | rev)" # id so we can see this folder in /tmp easier
-		_mkt_dir="$(mktemp -d --suffix "-$_mkt_id")"
+		_mkt_id=$(printf '%s\n' "$1" | rev | cut -d/ -f1 | rev) # id so we can see this folder in /tmp easier
+		_mkt_dir=$(mktemp -d --suffix "-$_mkt_id")
 		_mkt_util_cd "$_mkt_dir" || return
 		_mkt_util_log "$1"
 		unset _mkt_id
@@ -159,8 +159,8 @@ mkt() {
 		;;
 	# file path
 	/*|./*)
-		_mkt_id="$(printf '%s\n' "$1" | rev | cut -d/ -f1 | rev)" # id so we can see this folder in /tmp easier
-		_mkt_dir="$(mktemp -d --suffix "-$_mkt_id")"
+		_mkt_id=$(printf '%s\n' "$1" | rev | cut -d/ -f1 | rev) # id so we can see this folder in /tmp easier
+		_mkt_dir=$(mktemp -d --suffix "-$_mkt_id")
 		_mkt_util_cd "$_mkt_dir" || return
 		_mkt_util_log "$1"
 
@@ -173,8 +173,8 @@ mkt() {
 		;;
 	# github repository shorthand
 	*/*)
-		_mkt_id="$(printf '%s\n' "$1" | rev | cut -d/ -f1 | rev)" # id so we can see this folder in /tmp easier
-		_mkt_dir="$(mktemp -d --suffix "-$_mkt_id")"
+		_mkt_id=$(printf '%s\n' "$1" | rev | cut -d/ -f1 | rev) # id so we can see this folder in /tmp easier
+		_mkt_dir=$(mktemp -d --suffix "-$_mkt_id")
 		_mkt_util_cd "$_mkt_dir" || return
 		_mkt_util_log "$1"
 		unset _mkt_id
@@ -185,7 +185,7 @@ mkt() {
 		_shell_util_ls
 		;;
 	*)
-		_mkt_dir="$(mktemp -d --suffix "-$1")"
+		_mkt_dir=$(mktemp -d --suffix "-$1")
 
 		if [ -f "$1" ] || [ -d "$1" ]; then
 			command cp -r "$1" "$_mkt_dir"

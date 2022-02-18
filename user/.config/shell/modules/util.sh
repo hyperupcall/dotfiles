@@ -5,7 +5,7 @@
 
 _path_prepend() {
 	if [ -n "$2" ]; then
-		case ":$(eval "echo \$$1"):" in
+		case ":$(eval "printf '%s' \"\$$1\""):" in
 			*":$2:"*) :;;
 			*) eval "export $1=$2\${$1:+\":\$$1\"}" ;;
 		esac
@@ -20,7 +20,7 @@ _path_prepend() {
 
 _path_append() {
 	if [ -n "$2" ]; then
-		case ":$(eval "echo \$$1"):" in
+		case ":$(eval "printf '%s' \"\$$1\""):" in
 			*":$2:"*) :;;
 			*) eval "export $1=\${$1:+\"\$$1:\"}$2" ;;
 		esac
