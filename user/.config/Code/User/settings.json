@@ -1,6 +1,17 @@
 {
+	"window.customMenuBarAltFocus": false,
+	"window.menuBarVisibility": "visible",
+	"window.newWindowDimensions": "maximized",
+	"window.restoreWindows": "all",
+	"window.title": "🦊 ${folderName} ${activeEditorLong}${separator}${remoteName}",
+	"window.titleBarStyle": "custom",
+
+	// EDITOR
 	"editor.acceptSuggestionOnCommitCharacter": false,
 	"editor.acceptSuggestionOnEnter": "off",
+	"editor.codeActionsOnSave": {
+		"source.fixAll.shellcheck": false
+	},
 	"editor.codeLens": false,
 	"editor.cursorSmoothCaretAnimation": true,
 	"editor.cursorSurroundingLinesStyle": "all",
@@ -12,6 +23,7 @@
 	"editor.formatOnPaste": false,
 	"editor.formatOnType": false,
 	"editor.insertSpaces": false,
+	"editor.inlineSuggest.enabled": true,
 	"editor.maxTokenizationLineLength": 5000,
 	"editor.minimap.maxColumn": 35,
 	"editor.minimap.renderCharacters": false,
@@ -25,8 +37,84 @@
 	"editor.wordWrap": "on",
 	"editor.wordWrapColumn": 100,
 	"editor.wrappingIndent": "indent",
+
 	"files.autoSave": "afterDelay",
 	"files.autoSaveDelay": 5000,
+	"files.associations": {
+		"*.hbs": "html",
+		"*.rasi": "css",
+		"**/i3/config": "i3",
+		"Vagrantfile": "ruby",
+		"*.html": "html",
+		"*.bbmodel": "json",
+		"*.jscript": "java",
+		"*.sublime-snippet": "xml"
+	},
+	"files.eol": "\n",
+	"files.exclude": {
+		"**/.git": false,
+		"**/.hg": false,
+		"**/.svn": false,
+		"**/CVS": false,
+		"**/.classpath": true,
+		"**/.project": true,
+		"**/.settings": true,
+		"**/.factorypath": true
+	},
+	"files.insertFinalNewline": true,
+	"files.maxMemoryForLargeFilesMB": 2048,
+	"files.participants.timeout": 2000,
+	"files.simpleDialog.enable": true,
+	"files.trimFinalNewlines": true,
+	"files.trimTrailingWhitespace": true,
+	"files.watcherExclude": {
+		"**/.ammonite": true,
+		"**/.bloop": true,
+		"**/.metals": true,
+		"**/bower_components/**": true,
+		"**/linux/**": true,
+		"**/rootfs/**": true
+	},
+
+	"explorer.confirmDelete": false,
+	"explorer.confirmDragAndDrop": false,
+	"explorer.incrementalNaming": "smart",
+	"explorer.openEditors.visible": 0,
+
+	"search.exclude": {
+		"**/.git": true,
+		"**/.glue": true,
+		"**/.hg": true,
+		"**/.svn": true,
+		"**/package-lock.json": true,
+		"**/pnpm-lock.yaml": true,
+		"**/yarn.lock": true
+	},
+	"search.searchOnTypeDebouncePeriod": 200,
+	"search.showLineNumbers": true,
+	"search.smartCase": true,
+
+	"workbench.activityBar.visible": true,
+	"workbench.colorTheme": "Noctis Uva",
+	"workbench.commandPalette.history": 100,
+	"workbench.editor.closeOnFileDelete": true,
+	"workbench.editor.highlightModifiedTabs": true,
+	"workbench.editor.tabCloseButton": "off",
+	"workbench.editor.tabSizing": "shrink",
+	"workbench.editorAssociations": {
+		"*.jpg": "luna.editor",
+		"*.png": "luna.editor",
+		"*.ipynb": "jupyter-notebook",
+		"*.ico": "luna.editor"
+	},
+	"workbench.enableExperiments": false,
+	"workbench.iconTheme": "Monokai Pro Icons",
+	"workbench.quickOpen.closeOnFocusLost": false,
+	"workbench.startupEditor": "none",
+	"workbench.tips.enabled": false,
+	"workbench.tree.indent": 12,
+
+	"update.mode": "manual",
 
 	"prettier.semi": false,
 	"prettier.singleQuote": true,
@@ -153,17 +241,17 @@
 	"[java]": {
 		"editor.defaultFormatter": "redhat.java"
 	},
+	"java.configuration.checkProjectSettingsExclusions": false,
+	"java.project.importOnFirstTimeStartup": "automatic",
 	"[perl]": {
 		"editor.defaultFormatter": "richterger.perl"
 	},
 	"perl.disableCache": true, // TODO: BUGGED
 	"perl.cacheDir": "/home/edwin/.cache/vscode-perl-cache/",
 
-	"java.help.firstView": "none",
-	"java.help.showReleaseNotes": false,
-	"java.configuration.checkProjectSettingsExclusions": false,
-	"java.project.importOnFirstTimeStartup": "automatic",
+	// UNSORTED
 	"comment-divider.length": 60,
+	"cSpell.diagnosticLevel": "Hint",
 	"cSpell.userWords": [
 		"cmds",
 		"dirent",
@@ -192,55 +280,14 @@
 	],
 	"debug.node.autoAttach": "on",
 	"diffEditor.ignoreTrimWhitespace": false,
-
 	"emmet.excludeLanguages": ["markdown", "c"],
 	"emmet.includeLanguages": {
 		"vue-html": "html"
-	},
-	"explorer.confirmDelete": false,
-	"explorer.confirmDragAndDrop": false,
-	"explorer.incrementalNaming": "smart",
-	"explorer.openEditors.visible": 0,
-	"files.associations": {
-		"*.hbs": "html",
-		"*.rasi": "css",
-		"**/i3/config": "i3",
-		"Vagrantfile": "ruby",
-		"*.html": "html",
-		"*.bbmodel": "json",
-		"*.jscript": "java",
-		"*.sublime-snippet": "xml"
-	},
-	"files.eol": "\n",
-	"files.exclude": {
-		"**/.git": false,
-		"**/.hg": false,
-		"**/.svn": false,
-		"**/CVS": false,
-		"**/.classpath": true,
-		"**/.project": true,
-		"**/.settings": true,
-		"**/.factorypath": true
-	},
-	"files.insertFinalNewline": true,
-	"files.maxMemoryForLargeFilesMB": 2048,
-	"files.participants.timeout": 2000,
-	"files.simpleDialog.enable": true,
-	"files.trimFinalNewlines": true,
-	"files.trimTrailingWhitespace": true,
-	"files.watcherExclude": {
-		"**/.ammonite": true,
-		"**/.bloop": true,
-		"**/.metals": true,
-		"**/bower_components/**": true,
-		"**/linux/**": true,
-		"**/rootfs/**": true
 	},
 	"git.alwaysShowStagedChangesResourceGroup": true,
 	"gitlens.advanced.maxListItems": 300,
 	"gitlens.advanced.maxSearchItems": 300,
 	"gitlens.codeLens.includeSingleLineSymbols": true,
-	"html-css-class-completion.includeGlobPattern": "**/*.{css,html,vue}",
 	"html.autoClosingTags": false,
 	"html.format.enable": false,
 	"html.format.wrapLineLength": 0,
@@ -248,103 +295,38 @@
 	"javascript.referencesCodeLens.showOnAllFunctions": true,
 	"javascript.updateImportsOnFileMove.enabled": "always",
 	"markdown.preview.doubleClickToSwitchToEditor": false,
-	"material-icon-theme.files.associations": {
-		".babelignore": "babel",
-		"docker-compose.tflint.yml": "docker",
-		"tflint": "terraform"
-	},
-	"material-icon-theme.folders.associations": {},
-	"material-icon-theme.hidesExplorerArrows": true,
-	"material-icon-theme.languages.associations": {},
-	"material-icon-theme.saturation": 0.8,
-	"material-icon-theme.showWelcomeMessage": false,
 	"merge-conflict.autoNavigateNextConflict.enabled": true,
 	"merge-conflict.diffViewPosition": "Beside",
-	"php.validate.run": "onType",
-
 	"screencastMode.onlyKeyboardShortcuts": true,
-	"search.exclude": {
-		"**/.git": true,
-		"**/.glue": true,
-		"**/.hg": true,
-		"**/.svn": true,
-		"**/package-lock.json": true,
-		"**/pnpm-lock.yaml": true,
-		"**/yarn.lock": true
-	},
-	"search.searchOnTypeDebouncePeriod": 200,
-	"search.showLineNumbers": true,
-	"search.smartCase": true,
-	"sonarlint.disableTelemetry": true,
 	"sortLines.filterBlankLines": true,
 	"sortLines.sortEntireFile": true,
 	"sqltools.useNodeRuntime": true,
-	"tabnine.experimentalAutoImports": true,
 	"task.quickOpen.history": 20,
 	"terminal.integrated.copyOnSelection": true,
-	"terraform.telemetry.enabled": false,
 	"vim.enableNeovim": true,
 	"vsdocker.imageUser": "docker.io/hyperupcall",
-	"window.customMenuBarAltFocus": false,
-	"window.menuBarVisibility": "visible",
-	"window.newWindowDimensions": "maximized",
-	"window.restoreWindows": "all",
-	"window.title": "🦊 ${folderName} ${activeEditorLong}${separator}${remoteName}",
-	"window.titleBarStyle": "custom",
-	"workbench.activityBar.visible": true,
-	"workbench.commandPalette.history": 100,
-	"workbench.editor.closeOnFileDelete": true,
-	"workbench.editor.highlightModifiedTabs": true,
-	"workbench.editor.tabCloseButton": "off",
-	"workbench.editor.tabSizing": "shrink",
-	"workbench.editorAssociations": {
-		"*.jpg": "luna.editor",
-		"*.png": "luna.editor",
-		"*.ipynb": "jupyter-notebook",
-		"*.ico": "luna.editor"
-	},
-	"workbench.enableExperiments": false,
-	"workbench.iconTheme": "Monokai Pro Icons",
-	"workbench.quickOpen.closeOnFocusLost": false,
-	"workbench.startupEditor": "none",
-	"workbench.tips.enabled": false,
-	"workbench.tree.indent": 12,
 	"yaml.format.printWidth": 100,
 	"yaml.format.singleQuote": true,
 	"zenMode.centerLayout": true,
 	"go.toolsManagement.autoUpdate": true,
-	"terminal.integrated.commandsToSkipShell": ["language-julia.interrupt"],
 	"security.workspace.trust.untrustedFiles": "open",
-	"kite.showWelcomeNotificationOnStartup": false,
-	"julia.enableTelemetry": false,
-	"gitlens.showWelcomeOnInstall": false,
-	"editor.inlineSuggest.enabled": true,
 	"github.copilot.enable": {
 		"*": true,
 		"yaml": false,
 		"plaintext": true,
 		"markdown": true
 	},
-	"redhat.telemetry.enabled": false,
+	"vsicons.presets.foldersAllDefaultIcon": true,
 
+	// telemetry / extraneous notifications / unecessary views
 	"telemetry.telemetryLevel": "off",
-
-	"cSpell.diagnosticLevel": "Hint",
-
-	"json.schemas": [
-		{
-			"name": "vscode-expo-manifest",
-			"url": "file:///home/edwin/.config/Code/User/globalStorage/bycedric.vscode-expo/manifest-44.0.0.json",
-			"fileMatch": ["app.json", "app.config.json"]
-		}
-	],
-	"workbench.colorTheme": "Noctis Uva",
+	"redhat.telemetry.enabled": false,
+	"julia.enableTelemetry": false,
+	"terraform.telemetry.enabled": false,
+	"sonarlint.disableTelemetry": true,
 	"vsicons.dontShowNewVersionMessage": true,
-
-	"vs-kubernetes": {
-		"vscode-kubernetes.helm-path.linux": "/home/edwin/.vs-kubernetes/tools/helm/linux-amd64/helm",
-		"vscode-kubernetes.kubectl-path.linux": "/home/edwin/.vs-kubernetes/tools/kubectl/kubectl",
-		"vscode-kubernetes.minikube-path.linux": "/home/edwin/.vs-kubernetes/tools/minikube/linux-amd64/minikube"
-	},
-	"vsicons.presets.foldersAllDefaultIcon": true
+	"kite.showWelcomeNotificationOnStartup": false,
+	"gitlens.showWelcomeOnInstall": false,
+	"java.help.firstView": "none",
+	"java.help.showReleaseNotes": false
 }

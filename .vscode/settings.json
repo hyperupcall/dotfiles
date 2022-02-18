@@ -9,7 +9,7 @@
 	},
 	"files.associations": {
 		"**/i3/**": "i3",
-		"**/polybar/**": "ini",
+		"**/polybar/**": "ini"
 	},
 	"css.validate": false,
 	"editor.codeActionsOnSave": {
@@ -17,9 +17,6 @@
 	},
 	"[css]": {
 		"editor.defaultFormatter": "stylelint.vscode-stylelint"
-	},
-	"files.watcherExclude": {
-		"**/target": true
 	},
 	"restructuredtext.confPath": ""
 }
