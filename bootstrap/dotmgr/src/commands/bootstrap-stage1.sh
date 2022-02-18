@@ -23,15 +23,15 @@ subcommand() {
 		print.info 'Installing jq'
 
 		if util.is_cmd 'pacman'; then
-			util.ensure sudo pacman -S --noconfirm jq
+			util.ensure sudo pacman -S --noconfirm 'jq'
 		elif util.is_cmd 'apt-get'; then
-			util.ensure sudo apt-get -y install jq
+			util.ensure sudo apt-get -y install 'jq'
 		elif util.is_cmd 'dnf'; then
-			util.ensure sudo dnf -y install jq
+			util.ensure sudo dnf -y install 'jq'
 		elif util.is_cmd 'zypper'; then
-			util.ensure sudo zypper -y install jq
+			util.ensure sudo zypper -y install 'jq'
 		elif util.is_cmd 'eopkg'; then
-			util.ensure sudo eopkg -y install jq
+			util.ensure sudo eopkg -y install 'jq'
 		fi
 
 		if ! util.is_cmd 'jq'; then
@@ -43,15 +43,15 @@ subcommand() {
 		print.info 'Installing curl'
 
 		if util.is_cmd 'pacman'; then
-			util.ensure sudo pacman -S --noconfirm curl
+			util.ensure sudo pacman -S --noconfirm 'curl'
 		elif util.is_cmd 'apt-get'; then
-			util.ensure sudo apt-get -y install curl
+			util.ensure sudo apt-get -y install 'curl'
 		elif util.is_cmd 'dnf'; then
-			util.ensure sudo dnf -y install curl
+			util.ensure sudo dnf -y install 'curl'
 		elif util.is_cmd 'zypper'; then
-			util.ensure sudo zypper -y install curl
+			util.ensure sudo zypper -y install 'curl'
 		elif util.is_cmd 'eopkg'; then
-			util.ensure sudo eopkg -y install curl
+			util.ensure sudo eopkg -y install 'curl'
 		fi
 
 		if ! util.is_cmd 'curl'; then

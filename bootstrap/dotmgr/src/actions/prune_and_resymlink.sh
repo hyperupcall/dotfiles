@@ -1,7 +1,7 @@
 # shellcheck shell=bash
 
 # Name:
-# Prune and resymlink
+# Prune and Resymlink
 #
 # Description:
 # Prunes the homefolder for improper dotfiles like '~/.bash_history'. It also makes directories required for things to work properly like '~/.config/yarn/config'. Lastly, it also symlinks directories that are out of the scope of dotfox. More specifically, this symlinks the XDG user directories, ~/.ssh, ~/.config/BraveSoftware, etc. to the shared drive mounted under /storage

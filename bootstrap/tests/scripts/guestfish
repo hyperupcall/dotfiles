@@ -1,7 +1,0 @@
-launch
-mount /dev/sda2 /
-mkdir-p /shared
-copy-in ./tests/shared /shared
-
-#guestfish -a ./tests/data/mkosi/writable-image.qcow2 run : mount /dev/sda2 / : part-list /dev/sda2 | grep part_size | awk '{ print $2 }'
-#		-bios /usr/share/ovmf/x64/OVMF_CODE.fd
