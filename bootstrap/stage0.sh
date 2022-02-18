@@ -7,7 +7,7 @@ die() {
 }
 
 log() {
-	printf 'INFO: %s\n' "$1"
+	printf '%s\n' "INFO: $1"
 }
 
 ensure() {

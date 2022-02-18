@@ -17,11 +17,10 @@ Dotfiles
 Usage
 -----
 
-See `Installation <./docs/installation.md` and `Getting Started <./docs/getting-started.md>`
-::
+See `Installation <./docs/installation.md>`_ and `Getting Started <./docs/getting-started.md>`_
 
-auxiliary utils
------
+Auxiliary Utilities
+-------------------
 
 - https://github.com/hyperupcall/dotfox
 - https://github.com/hyperupcall/themer
