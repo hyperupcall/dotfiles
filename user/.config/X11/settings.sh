@@ -30,7 +30,7 @@ xset m 0 0
 xset r rate 500 40
 
 xsetroot -default
-xsetroot -xcf /usr/share/icons/breeze_cursors/cursors/left_ptr 4
+# xsetroot -xcf /usr/share/icons/breeze_cursors/cursors/left_ptr 4
 xsetroot -mod 8 8
 xsetroot -solid '#212529' # Open Color black-9
 xsetroot -name "Root Window"

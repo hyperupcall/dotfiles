@@ -43,8 +43,9 @@
 	"files.associations": {
 		"*.hbs": "html",
 		"*.rasi": "css",
-		"**/i3/config": "i3",
 		"Vagrantfile": "ruby",
+		"**/i3/config": "i3",
+		"Xresources": "xdefaults",
 		"*.html": "html",
 		"*.bbmodel": "json",
 		"*.jscript": "java",
@@ -83,12 +84,14 @@
 
 	"search.exclude": {
 		"**/.git": true,
-		"**/.glue": true,
 		"**/.hg": true,
 		"**/.svn": true,
+		"**/.glue": true,
 		"**/package-lock.json": true,
 		"**/pnpm-lock.yaml": true,
-		"**/yarn.lock": true
+		"**/yarn.lock": true,
+		"**/.hidden/": true,
+		"**/bake": true
 	},
 	"search.searchOnTypeDebouncePeriod": 200,
 	"search.showLineNumbers": true,
@@ -175,19 +178,22 @@
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.wordWrap": "on",
 		"editor.insertSpaces": true,
-		"editor.tabSize": 2
+		"editor.tabSize": 2,
+		"files.trimTrailingWhitespace": false
 	},
 	"[markdown-math]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.wordWrap": "on",
 		"editor.insertSpaces": true,
-		"editor.tabSize": 2
+		"editor.tabSize": 2,
+		"files.trimTrailingWhitespace": false
 	},
 	"[juliamarkdown]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.wordWrap": "on",
 		"editor.insertSpaces": true,
-		"editor.tabSize": 2
+		"editor.tabSize": 2,
+		"files.trimTrailingWhitespace": false
 	},
 	"[yaml]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"

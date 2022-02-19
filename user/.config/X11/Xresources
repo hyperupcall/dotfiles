@@ -1,6 +1,7 @@
 ! application Xresouces
 #include "resources/misc.Xresources"
-#include "resources/xterm.Xresources"
 #include "resources/urxvt.Xresources"
+#include "resources/uxterm.Xresources"
+#include "resources/xterm.Xresources"
 
-#include "themes/_.theme.Xresources"
+! #include "themes/_.theme.Xresources"
