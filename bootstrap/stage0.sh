@@ -124,7 +124,7 @@ if [ -f ~/.dots/xdg.sh ]; then
   . ~/.dots/xdg.sh
 else
   printf '%s\n' 'Error: ~/.dots/xdg.sh not found'
-  exit 1
+  return 1
 fi
 EOF
 

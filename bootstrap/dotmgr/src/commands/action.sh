@@ -1,6 +1,24 @@
 # shellcheck shell=bash
 
 subcommand() {
+	local action="$1"
+
+	if [ -n "$action" ]; then
+		# Prevent deinit from being called on EXIT
+		unset -f tty.fullscreen_deinit
+
+		if [ -f "$DOTMGR_ROOT_DIR/src/actions/$action.sh" ]; then
+			source "$DOTMGR_ROOT_DIR/src/actions/$action.sh"
+			if ! shift; then
+				print.die 'Failed to shift'
+			fi
+			action "$@"
+		else
+			print.die "Could not find action '$action'"
+		fi
+		exit
+	fi
+
 	local left_str='                    |'
 
 	local -i selected=0

@@ -20,10 +20,13 @@ if command -v direnv &>/dev/null; then
 fi
 
 # pipx.bash
-eval "$(register-python-argcomplete pipx)"
-
+if command -v register-python-argcomplete &>/dev/null; then
+    eval "$(register-python-argcomplete pipx)"
+fi
 # rho.bash
-eval "$(rho shell-init)"
+if command -v rho &>/dev/null; then
+    eval "$(rho shell-init)"
+fi
 
 # sdkman.bash
 if [ -n "$SDKMAN_DIR" ] && [ -f "$SDKMAN_DIR/bin/sdkman-init.sh" ]; then

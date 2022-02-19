@@ -128,19 +128,17 @@ subcommand() {
 		export PATH="$HOME/.bootstrap/dotfox:$HOME/.bootstrap/bin:$XDG_DATA_HOME/basalt/source/pkg/bin:$HOME/.bootstrap/nim-all/nim/bin:$PATH"
 
 		if basalt_output="$("$XDG_DATA_HOME/basalt/source/pkg/bin/basalt" global init sh)"; then
-			eval "$basalt_output"
+		    eval "$basalt_output"
 		else
-			printf '%s\n' "Could not run 'basalt global init sh'"
+		    printf '%s\n' "Could not run 'basalt global init sh'"
 		fi
 	EOF
 
 	cat <<-"EOF"
 	---
 	. ~/.bootstrap/stage2.sh
-	dotmgr bootstrap-stage2
 
-	. ~/.bashrc
-	dotmgr maintain
+	dotmgr action <action>
 	---
 	EOF
 }
