@@ -59,10 +59,10 @@ main() {
 		local destDir="$mnt/desktop-stuff"
 		mkdir -p "$destDir"
 
-		local -a desktopDirs=(~/Docs/Knowledge2 ~/Docs/School)
+		local -a desktopDirs=(~/Docs/Knowledge2 ~/Docs/School ~/Pics)
 		ensure_dirs "${desktopDirs[@]}"
 
-		rsync -av --delete "${desktopDirs[@]}" "$destDir"
+		rsync -avL --delete --exclude '.Trash-1000' "${desktopDirs[@]}" "$destDir"
 	elif [ "$flag_host" = 'laptop' ]; then
 		local destDir="$mnt/laptop-stuff"
 		mkdir -p "$destDir"
@@ -70,7 +70,7 @@ main() {
 		local -a laptopDirs=(~/Documents)
 		ensure_dirs "${laptopDirs[@]}"
 
-		rsync -av --delete "${laptopDirs[@]}" "$destDir"
+		rsync -avL --delete --exclude '.Trash-1000' "${laptopDirs[@]}" "$destDir"
 	fi
 }
 

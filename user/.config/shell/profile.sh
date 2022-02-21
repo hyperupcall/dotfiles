@@ -16,7 +16,7 @@ fi
 . "$XDG_CONFIG_HOME/shell/modules/xdg.sh"
 
 _path_prepend "$HOME/.dots/bootstrap/dotmgr/bin"
-_path_prepend "$HOME/scripts"
+_path_prepend "$HOME/.dots/.bin"
 _path_prepend "$HOME/.local/bin"
 
 if [ -t 0 ]; then # Required due to 'inappropriate ioctl for device' errors on some distros

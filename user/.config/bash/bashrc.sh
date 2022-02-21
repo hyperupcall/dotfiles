@@ -8,7 +8,7 @@
 
 # Ensure /etc/profile is read for non-login shells
 # Bash only reads /etc/profile on interactive, login shells
-! shopt -q login_shell && [ -r /etc/profile ] && source /etc/profile
+# ! shopt -q login_shell && [ -r /etc/profile ] && source /etc/profile
 
 # Ensure ~/.profile is read for non-login shells
 # Bash only reads ~/.profile on login shells when invoked as sh
@@ -35,14 +35,14 @@ export FCEDIT="$EDITOR"
 unset FIGNORE
 unset GLOBIGNORE
 export HISTCONTROL="ignorespace:ignoredups"
-export HISTFILE="$XDG_STATE_HOME/history/bash_history"
+HISTFILE="$XDG_STATE_HOME/history/bash_history" # TODO: bug with exporting this and starship
 export HISTSIZE="-1"
 export HISTFILESIZE="-1"
 export HISTIGNORE="ls:[bf]g:pwd:clear*:exit*:cd*|mkcd*|mkt*"
 export HISTTIMEFORMAT="%B %m %Y %T | "
 export HISTTIMEFORMAT='%F %T ' # ISO 8601
 export TIMEFORMAT=$'real    %3lR\nuser    %3lU\nsystem  %3lS\npercent %P'
-export PROMPT_DIRTRIM="6"
+export PROMPT_DIRTRIM='6'
 unset MAIL
 unset MAILCHECK
 unset MAILPATH
@@ -165,6 +165,3 @@ source "$XDG_CONFIG_HOME/bash/modules/readline.sh"
 source "$XDG_CONFIG_HOME/bash/modules/util.sh"
 
 # ---
-# BEGIN_KITTY_SHELL_INTEGRATION
-if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
-# END_KITTY_SHELL_INTEGRATION

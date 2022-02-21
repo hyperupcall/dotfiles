@@ -27,6 +27,7 @@ subcommand() {
 		'dotshellgen'
 		'dotshellextract'
 		'prune_and_resymlink'
+		'backup'
 		''
 		# bootstrapping
 		'dotfox_deploy'

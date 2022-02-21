@@ -1,6 +1,6 @@
 # basalt.bash
-if [ -d "$XDG_DATA_HOME/basalt/source/pkg/bin" ]; then
-	_path_prepend "$XDG_DATA_HOME/basalt/source/pkg/bin"
+_path_prepend "$XDG_DATA_HOME/basalt/source/pkg/bin"
+if command -v basalt &>/dev/null; then
 	eval "$(basalt global init bash)"
 fi
 
@@ -36,7 +36,7 @@ fi
 
 # woof.bash
 if command -v woof >/dev/null 2>&1; then
-  woof init bash
+  eval "$(woof init bash)"
 fi
 
 # zoxide.bash

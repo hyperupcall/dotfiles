@@ -1,4 +1,4 @@
-if [ -d "$XDG_DATA_HOME/basalt/source/pkg/bin" ]; then
-	_path_prepend "$XDG_DATA_HOME/basalt/source/pkg/bin"
+_path_prepend "$XDG_DATA_HOME/basalt/source/pkg/bin"
+if command -v basalt &>/dev/null; then
 	eval "$(basalt global init bash)"
 fi
