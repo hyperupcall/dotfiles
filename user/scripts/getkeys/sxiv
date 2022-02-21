@@ -1,9 +1,0 @@
-h/j/k/l - Pan image
--/+ - Zoom out/in
-Enter - Toggle thumbnail mode
-f - Fullscreen
-n/p - Previous/next image in list/directory
-r - Reload image if changed
-m - Mark/unmark image
-w - Zoom to fit window
-ctrl-x - Run external command (see ~/.config/sxiv/exec/key-handler for options)

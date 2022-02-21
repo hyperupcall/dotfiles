@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# use at your own risk!!!
-# create backups!!!
+# Syncs subdirectories in minecraft, like `resourcepacks`,
+# `saves`, `screenshots`, etc. Use at your own risk!
 
 remove() {
 	: "${1:?"Error: remove: Argument 1, file not found"}"
@@ -42,7 +42,7 @@ for mcFolder in "${folders[@]}"; do
 				cp "$mcFolder/$file" "$base/files/$file"
 				remove "$mcFolder/$file"
 			}
-			
+
 			ln -sT "$base/files/$file" "$mcFolder/$file"
 		fi
 	done

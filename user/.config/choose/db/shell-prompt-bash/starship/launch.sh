@@ -1,4 +1,4 @@
 # shellcheck shell=bash
 
-str="$(starship init bash)"
+str=$(starship init bash)
 printf "%s" "$str"

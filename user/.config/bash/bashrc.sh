@@ -3,15 +3,15 @@
 # ~/.bashrc
 #
 
-# ensure execution returns if bash is non-interactive
+# Ensure execution returns if bash is non-interactive
 [[ $- != *i* ]] && [ ! -t 0 ] && return
 
-# ensure /etc/profile is read for non-login shells
-# bash only reads /etc/profile on interactive, login shells
+# Ensure /etc/profile is read for non-login shells
+# Bash only reads /etc/profile on interactive, login shells
 ! shopt -q login_shell && [ -r /etc/profile ] && source /etc/profile
 
-# ensure ~/.profile is read for non-login shells
-# bash only reads ~/.profile on login shells when invoked as sh
+# Ensure ~/.profile is read for non-login shells
+# Bash only reads ~/.profile on login shells when invoked as sh
 [ -r ~/.profile ] && source ~/.profile
 
 #
@@ -26,7 +26,7 @@
 # ─── SHELL VARIABLES ────────────────────────────────────────────────────────────
 #
 
-# exported so nested shells, virtual environments, etc. inherit the new values
+# Exported so nested shells, virtual environments, etc. inherit the new values
 
 # export CDPATH=":~:"
 # export CHILD_MAX="256"
@@ -74,7 +74,7 @@ shopt -s nocaseglob
 shopt -s nocasematch
 shopt -u nullglob # setting obtains unexpected parameter expansion behavior
 shopt -s progcomp
-((${BASH_VERSION[0]%%.*} == 5)) && shopt -s progcomp_alias # not working due to complete -D
+((BASH_VERSINFO[0] == 5)) && shopt -s progcomp_alias # not working due to complete -D
 shopt -s shift_verbose
 shopt -s sourcepath
 shopt -u xpg_echo
@@ -165,3 +165,7 @@ source "$XDG_CONFIG_HOME/bash/modules/readline.sh"
 source "$XDG_CONFIG_HOME/bash/modules/util.sh"
 
 # ---
+
+# BEGIN_KITTY_SHELL_INTEGRATION
+if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
+# END_KITTY_SHELL_INTEGRATION
