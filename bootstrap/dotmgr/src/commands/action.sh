@@ -3,8 +3,13 @@
 subcommand() {
 	local action="$1"
 
+	# Ensure these exist (ex. for 'dotshellextract.sh', 'prune_and_resymlink.sh', etc.)
+	if ! [[ -v 'XDG_CONFIG_HOME' && -v 'XDG_DATA_HOME' && -v 'XDG_STATE_HOME' ]]; then
+		print.die 'XDG Variables must be set'
+	fi
+
 	if [ -n "$action" ]; then
-		# Prevent deinit from being called on EXIT
+		# Prevent deinit from being called on EXIT, since we don't show TUI
 		unset -f tty.fullscreen_deinit
 
 		if [ -f "$DOTMGR_ROOT_DIR/src/actions/$action.sh" ]; then

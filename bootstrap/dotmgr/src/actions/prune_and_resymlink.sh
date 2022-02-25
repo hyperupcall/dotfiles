@@ -7,10 +7,6 @@
 # Prunes the homefolder for improper dotfiles like '~/.bash_history'. It also makes directories required for things to work properly like '~/.config/yarn/config'. Lastly, it also symlinks directories that are out of the scope of dotfox. More specifically, this symlinks the XDG user directories, ~/.ssh, ~/.config/BraveSoftware, etc. to the shared drive mounted under /storage
 
 action() {
-	if ! [[ -v 'XDG_CONFIG_HOME' && -v 'XDG_DATA_HOME' && -v 'XDG_STATE_HOME' ]]; then
-		print.die 'XDG Variables must be set'
-	fi
-
 	# Remove crap that some programs append to ~/.bashrc, etc.
 	for file in ~/.profile ~/.bashrc ~/.bash_profile "${ZDOTDIR:-$HOME}/.zshrc" "${XDG_CONFIG_HOME:-$HOME/.config}/fish/config.fish"; do
 		if [ ! -f "$file" ]; then
@@ -32,38 +28,53 @@ action() {
 	done; unset file
 
 
-	declare storage_home='/storage/ur/storage_home'
-	declare storage_other='/storage/ur/storage_other'
+	local -r storage_home='/storage/ur/storage_home'
+	local -r storage_other='/storage/ur/storage_other'
 
 	# Create symlinks
-	must_link "$storage_home/Dls" "$HOME/Dls"
-	must_link "$storage_home/Docs" "$HOME/Docs"
-	must_link "$storage_home/Music" "$HOME/Music"
-	must_link "$storage_home/Pics" "$HOME/Pics"
-	must_link "$storage_home/Vids" "$HOME/Vids"
-	must_link "$storage_other/mozilla" "$HOME/.mozilla"
-	must_link "$storage_other/ssh" "$HOME/.ssh"
-	must_link "$storage_other/BraveSoftware" "$XDG_CONFIG_HOME/BraveSoftware"
-	must_link "$storage_other/calcurse" "$XDG_CONFIG_HOME/calcurse"
-	must_link "$storage_other/fonts" "$XDG_CONFIG_HOME/fonts"
-	must_link "$storage_other/password-store" "$XDG_DATA_HOME/password-store"
-	must_link "$HOME/Docs/Programming/challenges" "$HOME/challenges"
-	must_link "$HOME/Docs/Programming/experiments" "$HOME/experiments"
-	must_link "$HOME/Docs/Programming/git" "$HOME/git"
-	must_link "$HOME/Docs/Programming/repos" "$HOME/repos"
-	must_link "$HOME/Docs/Programming/workspaces" "$HOME/workspaces"
+	must_link "$HOME/.dots/user/scripts" "$HOME/scripts"
 	must_link "$XDG_CONFIG_HOME/X11/Xcompose" "$HOME/.Xcompose"
 	must_link "$XDG_CONFIG_HOME/Code/User/settings.json" "$XDG_CONFIG_HOME/Code - OSS/User/settings.json"
 	must_link "$XDG_CONFIG_HOME/X11/Xmodmap" "$HOME/.Xmodmap"
 	must_link "$XDG_CONFIG_HOME/X11/Xresources" "$HOME/.Xresources"
-	must_link "$HOME/.dots/user/scripts" "$HOME/scripts"
-	if [ -d "$HOME/Docs/Programming/repos" ]; then
+
+	if [ -d "$storage_home" ]; then
+		must_link "$storage_home/Dls" "$HOME/Dls"
+		must_link "$storage_home/Docs" "$HOME/Docs"
+		must_link "$storage_home/Music" "$HOME/Music"
+		must_link "$storage_home/Pics" "$HOME/Pics"
+		must_link "$storage_home/Vids" "$HOME/Vids"
+	else # TODO: move elsewhere
+		mkdir -p "$HOME/Downloads"
+		mkdir -p "$HOME/Documents"
+		mkdir -p "$HOME/Music"
+		mkdir -p "$HOME/Pictures"
+		mkdir -p "$HOME/Videos"
+	fi
+
+	if [ -d "$storage_other" ]; then
+		must_link "$storage_other/mozilla" "$HOME/.mozilla"
+		must_link "$storage_other/ssh" "$HOME/.ssh"
+		must_link "$storage_other/BraveSoftware" "$XDG_CONFIG_HOME/BraveSoftware"
+		must_link "$storage_other/calcurse" "$XDG_CONFIG_HOME/calcurse"
+		must_link "$storage_other/fonts" "$XDG_CONFIG_HOME/fonts"
+		must_link "$storage_other/password-store" "$XDG_DATA_HOME/password-store"
+	fi
+
+	if [ -d "$HOME/Docs/Programming" ]; then
+		must_link "$HOME/Docs/Programming/challenges" "$HOME/challenges"
+		must_link "$HOME/Docs/Programming/experiments" "$HOME/experiments"
+		must_link "$HOME/Docs/Programming/git" "$HOME/git"
+		must_link "$HOME/Docs/Programming/repos" "$HOME/repos"
+		must_link "$HOME/Docs/Programming/workspaces" "$HOME/workspaces"
+
 		mkdir -p ~/.dots/.bin
 		for f in ~/.dots/.bin/*; do unlink "$f"; done
 		for file in "$HOME/Docs/Programming/repos/Groups/Bash"/{bake,basalt,choose,hookah,foxomate,glue,rho,shelldoc,shelltest,woof}/pkg/bin/*; do
 			ln -fs "$file" ~/.dots/.bin
 		done
 	fi
+
 
 	# Create directories for programs that require a directory to exist to use it
 	must_dir "$XDG_STATE_HOME/history"
@@ -109,6 +120,15 @@ action() {
 
 	# Miscellaneous
 	chmod 0700 ~/.gnupg
+	chmod 0700 ~/.ssh
+
+	# Per-desktop settings
+	if [ "$XDG_SESSION_DESKTOP" = 'cinnamon' ]; then
+		dconf write /org/cinnamon/desktop/wm/preferences/mouse-button-modifier  '"<Super>"'
+		dconf write /org/cinnamon/desktop/interface/clock-show-date 'true'
+	else
+		print.warn "Variable '\$XDG_SESSION_DESKTOP' is empty"
+	fi
 
 	# Remove broken symlinks
 	for file in "$HOME"/*; do

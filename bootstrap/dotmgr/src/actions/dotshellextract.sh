@@ -43,7 +43,6 @@ action() {
 
 
 	# ----------------------- Variables ---------------------- #
-	: "${XDG_CONFIG_HOME:=$HOME/.config}"
 	generated_dir=${XDG_STATE_HOME:-$HOME/.local/state}/dotshellextract
 	current_dir="$BASALT_PACKAGE_DIR/pkg/src/bin"
 	profile_dir="$XDG_CONFIG_HOME/shell"
