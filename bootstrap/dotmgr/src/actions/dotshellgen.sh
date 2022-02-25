@@ -17,8 +17,8 @@ action() {
 	esac done
 
 
-	local dotshellgen_config_dir="${XDG_CONFIG_HOME:-$HOME/.config}/dotshellgen"
-	local dotshellgen_state_dir="${XDG_STATE_HOME:-$HOME/.local/state}/dotshellgen"
+	local dotshellgen_config_dir="$XDG_CONFIG_HOME/dotshellgen"
+	local dotshellgen_state_dir="$XDG_STATE_HOME/dotshellgen"
 	mkdir -p "$dotshellgen_config_dir" "$dotshellgen_state_dir"
 
 	local concatenated_bash_file="$dotshellgen_state_dir/concatenated.bash"

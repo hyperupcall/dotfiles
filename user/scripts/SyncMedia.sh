@@ -70,7 +70,7 @@ main() {
 		local -a laptopDirs=(~/Documents)
 		ensure_dirs "${laptopDirs[@]}"
 
-		rsync -avL --delete --exclude '.Trash-1000' "${laptopDirs[@]}" "$destDir"
+		rsync -avL --delete --exclude '.Trash-1000' --exclude 'ignore' "${laptopDirs[@]}" "$destDir"
 	fi
 }
 
