@@ -6,9 +6,9 @@ task.build() {
 
 	cd "$BAKE_ROOT/user/.config/X11/resources"
 	printf '%s\n' "! GENERATERD BY 'bake build'" > uxterm.Xresources
-	sed 's/XTerm/UXTerm/g' xterm.Xresources  >> uxterm.Xresources
+	sed 's/XTerm/UXTerm/g' xterm.Xresources >> uxterm.Xresources
 }
 
 task.test() {
-	cd user/config/bash && bats -p .
+	cd ./user/.config/shell/modules && bats -p .
 }

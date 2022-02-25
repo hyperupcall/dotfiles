@@ -23,14 +23,36 @@ source line-editing.sh
 
 			# echo "line: '$line'" >&3
 
-			[[ $REPLY == "git status -s" ]]
+			assert [ "$REPLY" = "git status -s" ]
 		done
 	done
+}
 
+@test "_readline_util_expand_alias" {
+	local result=
+
+	alias f='f -al'
+
+	declare -A lineCmds=(
+		["f"]="f -al"
+	)
+
+	for key in "${!lineCmds[@]}"; do
+		expectedCmd="${lineCmds[$key]}"
+		_readline_util_expand_alias "$key"
+		expandedAlias="$REPLY"
+
+		# echo "KEY: $key" >&3
+		# echo "EXPECTEDCMD: $expectedCmd" >&3
+		# echo "ACTUALCMD: $expandedAlias" >&3
+		# echo >&3
+
+		assert [ "$expectedCmd" = "$expandedAlias" ]
+	done
 }
 
 @test "_readline_util_get_cmd" {
-	local result
+	local result=
 
 	declare -A lineCmds=(
 		["git status"]="git"
@@ -39,7 +61,7 @@ source line-editing.sh
 	)
 
 	for key in "${!lineCmds[@]}"; do
-		expectedCmd="${lineCmds["$key"]}"
+		expectedCmd="${lineCmds[$key]}"
 		_readline_util_get_cmd "$key"
 		actualCmd="$REPLY"
 
@@ -48,7 +70,7 @@ source line-editing.sh
 		# echo "ACTUALCMD: $actualCmd" >&3
 		# echo >&3
 
-		[[ $expectedCmd == "$actualCmd" ]]
+		assert [ "$expectedCmd" = "$actualCmd" ]
 	done
 }
 
@@ -68,13 +90,13 @@ source line-editing.sh
 
 	for key in "${!lineCmds[@]}"; do
 		expectedCmd="${lineCmds["$key"]}"
-		actualCmd="$(_readline_util_show_man "$key")"
+		actualCmd=$(_readline_util_show_man "$key" &>/dev/null)
 
-		# echo "KEY: $key" >&3
-		# echo "EXPECTEDCMD: $expectedCmd" >&3
-		# echo "ACTUALCMD: $actualCmd" >&3
-		# echo >&3
+		echo "KEY: $key" >&3
+		echo "EXPECTEDCMD: $expectedCmd" >&3
+		echo "ACTUALCMD: $actualCmd" >&3
+		echo >&3
 
-		[[ $expectedCmd == "$actualCmd" ]]
+		assert [ "$expectedCmd" = "$actualCmd" ]
 	done
 }

@@ -1,73 +1,75 @@
 # shellcheck shell=bash
 
 # @file line-editing.sh
-# @brief Common functions for both Bash-configured GNU Readline
-# and Zsh's Zle
+# @summary Common functions for both Bash-configured GNU Readline and Zsh's Zle
 
-# gets line ($1), and removes
-# sudo, ', ", and extra whitespaces
+# @description Removes sudo, ', ", and extra whitespaces
+# @arg $1 string Line to manipulate
 _readline_util_get_line() {
 	REPLY=
 	local line="$1"
 
 	# trim environment variables
-	line="${line##*=* }"
+	line=${line##*=* }
 
 	_readline_util_trim_whitespace "$line"
-	line="$REPLY"
+	line=$REPLY
 
-	if [ "${line:0:4}" = "sudo" ]; then
-		line="${line:4}"
+	if [ "${line:0:4}" = 'sudo' ]; then
+		line=${line:4}
 	fi
 
 	_readline_util_trim_whitespace "$line"
-	line="$REPLY"
+	line=$REPLY
 
 	# Ex. 'grep', \grep
-	line="${line/\\/}"
-	line="${line/\'/}"
-	line="${line/\'/}"
-	line="${line/\"/}"
-	line="${line/\"/}"
+	line=${line/\\/}
+	line=${line/\'/}
+	line=${line/\'/}
+	line=${line/\"/}
+	line=${line/\"/}
 
-	REPLY="$line"
+	REPLY=$line
 }
 
+# @description Expands an alias to its longform
+# @arg $1 string Name of alias
 _readline_util_expand_alias() {
+	unset -v REPLY; REPLY=
 	local line="$1"
 
 	local cmd="${line%% *}"
 	if alias "$cmd" &>/dev/null; then
-		line="$(alias "$cmd")"
-		line="${line#*=\'}"
-		line="${line%\'}"
+		line=$(alias "$cmd")
+		line=${line#*=\'}
+		line=${line%\'}
 	fi
 
 	REPLY="$line"
 }
 
 _readline_util_get_cmd() {
-	REPLY=
+	unset -v REPLY; REPLY=
 	# shellcheck disable=SC1007
 	local line= cmd=
 
 	_readline_util_get_line "$1"
 
-	cmd="${REPLY%%\ *}"
+	cmd=${REPLY%%\ *}
 
-	REPLY="$cmd"
+	REPLY=$cmd
 }
 
 # shellcheck disable=SC2181
 _readline_util_try_show_help() {
 	local line cmd helpText
-	line="$1"
+	line=$1
 	_readline_util_get_cmd "$line"
-	cmd="$REPLY"
+	cmd=$REPLY
 
-	if ! helpText="$($line --help)"; then
-		if ! helpText="$($line -h)"; then
-			if ! helpText="$($line help)"; then
+	if ! helpText=$($line --help); then
+		if ! helpText=$($line -h); then
+			if ! helpText=$($line help); then
 				return 1
 			fi
 		fi
@@ -101,13 +103,13 @@ _readline_util_x_discard() {
 	local pos="$2"
 
 	xclip -selection clipboard <<< "${buf:0:$pos}"
-	buf="${buf:$pos}"
+	buf=${buf:$pos}
 	pos=0
 
 	# shellcheck disable=SC2034
-	REPLY1="$buf"
+	REPLY1=$buf
 	# shellcheck disable=SC2034
-	REPLY2="$pos"
+	REPLY2=$pos
 }
 
 _readline_util_x_kill() {
@@ -118,9 +120,9 @@ _readline_util_x_kill() {
 	buf="${buf:0:$pos}"
 
 	# shellcheck disable=SC2034
-	REPLY1="$buf"
+	REPLY1=$buf
 	# shellcheck disable=SC2034
-	REPLY2="$pos"
+	REPLY2=$pos
 }
 
 _readline_util_x_yank() {
@@ -130,9 +132,9 @@ _readline_util_x_yank() {
 	buf="${buf:0:$pos}$(xclip -selection clipboard -o)${buf:$pos}"
 
 	# shellcheck disable=SC2034
-	REPLY1="$buf"
+	REPLY1=$buf
 	# shellcheck disable=SC2034
-	REPLY2="$pos"
+	REPLY2=$pos
 }
 
 _readline_util_x_paste() {
@@ -142,9 +144,9 @@ _readline_util_x_paste() {
 	buf="$(xclip -selection clipboard -o &>/dev/null)"
 
 	# shellcheck disable=SC2034
-	REPLY1="$buf"
+	REPLY1=$buf
 	# shellcheck disable=SC2034
-	REPLY2="$pos"
+	REPLY2=$pos
 }
 
 # @description Print the help text for the currently-edited command on the
@@ -157,7 +159,7 @@ _readline_util_show_help() {
 
 	_readline_util_get_line "$1"
 	_readline_util_expand_alias "$REPLY"
-	line="$REPLY"
+	line=$REPLY
 
 	# check if builtin from the getgo
 	_readline_util_get_cmd "$line"
@@ -168,21 +170,23 @@ _readline_util_show_help() {
 	fi
 
 	local -a argList=() flagList=()
+	local arg=
 	for arg in $line; do
-		case "$arg" in
+		case $arg in
 			-*) flagList+=("$arg") ;;
 			*) argList+=("$arg") ;;
 		esac
-	done
+	done; unset -v arg
 
 	# For the command line (with flags removed), append help
 	# If a help menu was successfuly shown, return; if not, then
 	# chop off a subcommand and try again
+	local i=
 	for ((i=0; i<${#argList}; i++)); do
 		_readline_util_try_show_help "${argList[*]}" && return
 
 		unset 'argList[${#argList[@]}-1]'
-	done
+	done; unset -v i
 }
 
 # TODO: not POSIX (move this and others somewhere else or skip execution if not in Bash, Ksh, Zsh, etc.)
@@ -197,21 +201,23 @@ _readline_util_show_man() {
 
 	_readline_util_get_line "$1"
 	_readline_util_expand_alias "$REPLY"
-	line="$REPLY"
+	line=$REPLY
 
 	local -a argList=()
+	local arg=
 	for arg in $line; do
 		case "$arg" in
 			-*) ;;
 			*) argList+=("$arg") ;;
 		esac
-	done
+	done; unset -v arg
 
 	# For the command line (with flags removed and spaces converted to
 	# hyphens), invoke the command command. If a man page was successfully
 	# shown, return; if not, then chop off a subcommand and try again
 	local oldIFS="$IFS"
 	IFS='-'
+	local i=
 	for ((i=0; i<${#argList}; i++)); do
 		if _readline_util_try_show_man "${argList[*]}"; then
 			IFS="$oldIFS"
@@ -219,15 +225,15 @@ _readline_util_show_man() {
 		fi
 
 		unset 'argList[${#argList[@]}-1]'
-	done
-	IFS="$oldIFS"
+	done; unset -v i
+	IFS=$oldIFS
 
 	manual="${line%%-*}"
 	if _readline_util_try_show_man "$manual"; then
 		IFS="$oldIFS"
 		return
 	fi
-	IFS="$oldIFS"
+	IFS=$oldIFS
 }
 
 _readline_util_show_tldr() {
@@ -298,16 +304,16 @@ _readline_util_toggle_comment() {
 	fi
 
 	# shellcheck disable=SC2034
-	REPLY1="$buf"
+	REPLY1=$buf
 	# shellcheck disable=SC2034
-	REPLY2="$pos"
+	REPLY2=$pos
 }
 
 _readline_util_trim_whitespace() {
 	local string="$1"
 
-	string="${string#"${string%%[![:space:]]*}"}"
-	string="${string%"${string##*[![:space:]]}"}"
+	string=${string#"${string%%[![:space:]]*}"}
+	string=${string%"${string##*[![:space:]]}"}
 
-	REPLY="$string"
+	REPLY=$string
 }
