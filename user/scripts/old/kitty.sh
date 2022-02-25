@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 if [ -z "$XDG_RUNTIME_DIR" ]; then
-	echo "kitty.sh: Error: XDG_RUNTIME_DIR not set"
+	printf '%s\n' "kitty.sh: Error: XDG_RUNTIME_DIR not set" >&2
 	exit 1
 fi
 mkdir -p "$XDG_RUNTIME_DIR/kitty"

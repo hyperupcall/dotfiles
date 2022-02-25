@@ -4,7 +4,10 @@
 # `saves`, `screenshots`, etc. Use at your own risk!
 
 remove() {
-	: "${1:?"Error: remove: Argument 1, file not found"}"
+	if [ -z "$1" ]; then
+		printf '%s\n' "Error: remove: Argument 1, file not found. Exiting" >&2
+		exit 1
+	fi
 
 	if command -v trash-put &>/dev/null; then
 		trash-put "$1"
