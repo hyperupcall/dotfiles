@@ -1,62 +1,62 @@
 # shellcheck shell=bash
 
 _readline_x_discard() {
-	_readline_util_x_discard "$READLINE_LINE" "$READLINE_POINT"
-	READLINE_LINE="$REPLY1"
-	READLINE_POINT="$REPLY2"
+	_lineediting_action_x_discard "$READLINE_LINE" "$READLINE_POINT"
+	READLINE_LINE=$REPLY1
+	READLINE_POINT=$REPLY2
 }
 
 _readline_x_kill() {
-	_readline_util_x_kill "$READLINE_LINE" "$READLINE_POINT"
-	READLINE_LINE="$REPLY1"
-	READLINE_POINT="$REPLY2"
+	_lineediting_action_x_kill "$READLINE_LINE" "$READLINE_POINT"
+	READLINE_LINE=$REPLY1
+	READLINE_POINT=$REPLY2
 }
 
 _readline_x_yank() {
-	_readline_util_x_yank "$READLINE_LINE" "$READLINE_POINT"
-	READLINE_LINE="$REPLY1"
-	READLINE_POINT="$REPLY2"
+	_lineediting_action_x_yank "$READLINE_LINE" "$READLINE_POINT"
+	READLINE_LINE=$REPLY1
+	READLINE_POINT=$REPLY2
 }
 
 _readline_x_paste() {
-	_readline_util_x_paste "$READLINE_LINE" "$READLINE_POINT"
-	READLINE_LINE="$REPLY1"
-	READLINE_POINT="$REPLY2"
+	_lineediting_action_x_paste "$READLINE_LINE" "$READLINE_POINT"
+	READLINE_LINE=$REPLY1
+	READLINE_POINT=$REPLY2
 }
 
 _readline_show_help() {
-	_readline_util_show_help "$READLINE_LINE"
+	_lineediting_action_show_help "$READLINE_LINE"
 }
 
 _readline_show_man() {
-	_readline_util_show_man "$READLINE_LINE"
+	_lineediting_action_show_man "$READLINE_LINE"
 }
 
 _readline_show_tldr() {
-	_readline_util_show_tldr "$READLINE_LINE"
+	_lineediting_action_show_tldr "$READLINE_LINE"
 }
 
 _readline_toggle_sudo() {
-	_readline_util_toggle_sudo "$READLINE_LINE" "$READLINE_POINT"
-	READLINE_LINE="$REPLY1"
-	READLINE_POINT="$REPLY2"
+	_lineediting_action_toggle_sudo "$READLINE_LINE" "$READLINE_POINT"
+	READLINE_LINE=$REPLY1
+	READLINE_POINT=$REPLY2
 }
 
 _readline_toggle_backslash() {
-	_readline_util_toggle_backslash "$READLINE_LINE" "$READLINE_POINT"
-	READLINE_LINE="$REPLY1"
-	READLINE_POINT="$REPLY2"
+	_lineediting_action_toggle_backslash "$READLINE_LINE" "$READLINE_POINT"
+	READLINE_LINE=$REPLY1
+	READLINE_POINT=$REPLY2
 }
 
 _readline_toggle_comment() {
-	_readline_util_toggle_comment "$READLINE_LINE" "$READLINE_POINT"
-	READLINE_LINE="$REPLY1"
-	READLINE_POINT="$REPLY2"
+	_lineediting_action_toggle_comment "$READLINE_LINE" "$READLINE_POINT"
+	READLINE_LINE=$REPLY1
+	READLINE_POINT=$REPLY2
 }
 
 _readline_trim_whitespace() {
-	_readline_util_trim_whitespace "$READLINE_LINE"
-	READLINE_LINE="$REPLY"
+	_lineediting_action_trim_whitespace "$READLINE_LINE"
+	READLINE_LINE=$REPLY
 }
 
 _readline_ls() {

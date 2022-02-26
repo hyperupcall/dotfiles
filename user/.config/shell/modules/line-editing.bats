@@ -1,12 +1,14 @@
 #!/usr/bin/env bats
 
-set -o vi
+source ../../../../vendor/bats-all/load.bash
 source line-editing.sh
+set -o vi
 
 @test "_readline_util_get_line" {
 	readonly -a gits=(
 		"git"
 		"'git'"
+		'"git"'
 		"\\git"
 	)
 
@@ -33,19 +35,14 @@ source line-editing.sh
 
 	alias f='f -al'
 
-	declare -A lineCmds=(
+	declare -A line_cmds=(
 		["f"]="f -al"
 	)
 
-	for key in "${!lineCmds[@]}"; do
-		expectedCmd="${lineCmds[$key]}"
+	for key in "${!line_cmds[@]}"; do
+		expectedCmd="${line_cmds[$key]}"
 		_readline_util_expand_alias "$key"
 		expandedAlias="$REPLY"
-
-		# echo "KEY: $key" >&3
-		# echo "EXPECTEDCMD: $expectedCmd" >&3
-		# echo "ACTUALCMD: $expandedAlias" >&3
-		# echo >&3
 
 		assert [ "$expectedCmd" = "$expandedAlias" ]
 	done
@@ -54,21 +51,16 @@ source line-editing.sh
 @test "_readline_util_get_cmd" {
 	local result=
 
-	declare -A lineCmds=(
+	declare -A line_cmds=(
 		["git status"]="git"
 		["git"]="git"
 		["exa -ls"]="exa"
 	)
 
-	for key in "${!lineCmds[@]}"; do
-		expectedCmd="${lineCmds[$key]}"
+	for key in "${!line_cmds[@]}"; do
+		expectedCmd="${line_cmds[$key]}"
 		_readline_util_get_cmd "$key"
 		actualCmd="$REPLY"
-
-		# echo "KEY: $key" >&3
-		# echo "EXPECTEDCMD: $expectedCmd" >&3
-		# echo "ACTUALCMD: $actualCmd" >&3
-		# echo >&3
 
 		assert [ "$expectedCmd" = "$actualCmd" ]
 	done
@@ -79,7 +71,7 @@ source line-editing.sh
 	local result
 	export DEBUG_LINE_EDITING=
 
-	declare -A lineCmds=(
+	declare -A line_cmds=(
 		["git status --short"]="git-status"
 		["zfs mount -a"]="zfs-mount"
 		["lsblk --fs"]="lsblk"
@@ -88,14 +80,9 @@ source line-editing.sh
 		["restic --repo cache"]="restic-cache"
 	)
 
-	for key in "${!lineCmds[@]}"; do
-		expectedCmd="${lineCmds["$key"]}"
-		actualCmd=$(_readline_util_show_man "$key" &>/dev/null)
-
-		echo "KEY: $key" >&3
-		echo "EXPECTEDCMD: $expectedCmd" >&3
-		echo "ACTUALCMD: $actualCmd" >&3
-		echo >&3
+	for key in "${!line_cmds[@]}"; do
+		expectedCmd="${line_cmds["$key"]}"
+		actualCmd=$(_lineediting_action_show_man "$key" &>/dev/null)
 
 		assert [ "$expectedCmd" = "$actualCmd" ]
 	done

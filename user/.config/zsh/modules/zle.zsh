@@ -1,62 +1,62 @@
 source "$XDG_CONFIG_HOME/bash/modules/readline_util.sh"
 
 _zle_x_discard() {
-	_readline_util_x_discard "$BUFFER" "$CURSOR"
+	_lineediting_action_x_discard "$BUFFER" "$CURSOR"
 	BUFFER="$REPLY1"
 	CURSOR="$REPLY2"
 }
 
 _zle_x_kill() {
-	_readline_util_x_kill "$BUFFER" "$CURSOR"
+	_lineediting_action_x_kill "$BUFFER" "$CURSOR"
 	BUFFER="$REPLY1"
 	CURSOR="$REPLY2"
 }
 
 _zle_x_yank() {
-	_readline_util_x_yank "$BUFFER" "$CURSOR"
+	_lineediting_action_x_yank "$BUFFER" "$CURSOR"
 	BUFFER="$REPLY1"
 	CURSOR="$REPLY2"
 }
 
 _zle_x_paste() {
-	_readline_util_x_paste "$BUFFER" "$CURSOR"
+	_lineediting_action_x_paste "$BUFFER" "$CURSOR"
 	BUFFER="$REPLY1"
 	CURSOR="$REPLY2"
 }
 
 _zle_show_help() {
-	_readline_util_show_help "$BUFFER"
+	_lineediting_action_show_help "$BUFFER"
 }
 
 _zle_show_man() {
-	_readline_util_show_man "$BUFFER"
+	_lineediting_action_show_man "$BUFFER"
 }
 
 _zle_show_tldr() {
-	_readline_util_show_tldr "$BUFFER"
+	_lineediting_action_show_tldr "$BUFFER"
 }
 
 _zle_toggle_sudo() {
-	_readline_util_toggle_sudo "$BUFFER" "$CURSOR"
+	_lineediting_action_toggle_sudo "$BUFFER" "$CURSOR"
 	BUFFER="$REPLY1"
 	CURSOR="$REPLY2"
 }
 
 _zle_toggle_backslash() {
-	_readline_util_toggle_backslash "$BUFFER" "$CURSOR"
+	_lineediting_action_toggle_backslash "$BUFFER" "$CURSOR"
 	BUFFER="$REPLY1"
 	CURSOR="$REPLY2"
 }
 
 _zle_toggle_comment() {
-	_readline_util_toggle_comment "$BUFFER" "$CURSOR"
+	_lineediting_action_toggle_comment "$BUFFER" "$CURSOR"
 	BUFFER="$REPLY1"
 	CURSOR="$REPLY2"
 }
 
 _zle_trim_whitespace() {
 	BUFFER="$(
-		_readline_util_trim_whitespace "$BUFFER"
+		_lineediting_action_trim_whitespace "$BUFFER"
 	)"
 }
 
