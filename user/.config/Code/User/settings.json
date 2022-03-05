@@ -340,5 +340,6 @@
 	"kite.showWelcomeNotificationOnStartup": false,
 	"gitlens.showWelcomeOnInstall": false,
 	"java.help.firstView": "none",
-	"java.help.showReleaseNotes": false
+	"java.help.showReleaseNotes": false,
+	"window.zoomLevel": -1
 }

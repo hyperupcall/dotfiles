@@ -122,9 +122,7 @@ _lineediting_action_show_man() {
 	IFS='-'
 	local i=
 	for ((i=0; i<${#argList}; i++)); do
-		echo dd "${argList[*]}" >&3
 		if _readline_util_try_show_man "${argList[*]}"; then
-			echo "success" >&3
 			IFS="$oldIFS"
 			return
 		fi

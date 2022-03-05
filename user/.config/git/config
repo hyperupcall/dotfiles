@@ -1,7 +1,7 @@
 [include]
 	path = include/alias.conf
 	path = include/diff.conf
-	path = include/external.conf
+        #path = include/external.conf
 	path = include/main.conf
 	path = include/url.conf
 [mergetool]
