@@ -2,7 +2,7 @@
 
 if ! command -v n &>/dev/null; then
 	print.info "Installing n"
-	util.req https://raw.githubusercontent.com/mklement0/n-install/stable/bin/n-install | bash
+	util.req 'https://raw.githubusercontent.com/mklement0/n-install/stable/bin/n-install' | bash
 fi
 
 npm i -g yarn

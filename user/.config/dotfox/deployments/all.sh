@@ -9,7 +9,7 @@ else
 fi
 
 if ! [[ -v 'XDG_CONFIG_HOME' && -v 'XDG_STATE_HOME' && -v 'XDG_DATA_HOME' ]]; then
-	printf '%s\n' "Error: XDG Variables cannot be empty" >&2
+	printf '%s\n' "Error: XDG Variables cannot be empty. Exiting" >&2
 	exit 1
 fi
 
@@ -162,7 +162,8 @@ declare -ra dotfiles=(
 	cfg:'udiskie'
 	cfg:'urlwatch'
 	cfg:'urxvt'
-	cfg:'user-dirs.dirs'
+	# cfg:'user-dirs.dirs' # Handled by 'dotmgr idempotent'
+	# cfg:'user-dirs.locale' # TODO
 	cfg:'viewnior'
 	cfg:'vim'
 	cfg:'wget'
@@ -173,7 +174,7 @@ declare -ra dotfiles=(
 	cfg:'xmobar'
 	cfg:'xob'
 	cfg:'xplr'
-        cfg:'yapf'
+	cfg:'yapf'
 	cfg:'yay'
 	cfg:'youtube-dl'
 	cfg:'zathura'
@@ -197,7 +198,8 @@ for dotfile in "${dotfiles[@]}"; do
 	case "$file" in *:*)
 		printf '%s\n' "Error: Files must not have colons, but file '$file' does. Exiting" >&2
 		exit 1
-	;; esac
+		;;
+	esac
 
 	if [ "$prefix" = home ]; then
 		printf '%s\n' "symlink:$src_home/$file:$HOME/$file"

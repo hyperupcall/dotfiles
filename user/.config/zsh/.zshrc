@@ -2,17 +2,15 @@
 # ~/.zshrc
 #
 
-return
-
-# ensure execution returns if zsh is non-interactive
+# Ensure execution returns if zsh is non-interactive
 [[ $- != *i* ]] && [ ! -t 0 ] && return
 
-# ensure /etc/zprofile is read for non-login shells
-# zsh only reads /etc/zprofile on interactive, login shells
+# Ensure /etc/zprofile is read for non-login shells
+# Zsh only reads /etc/zprofile on interactive, login shells
 # ! shopt -q login_shell && [ -r /etc/profile ] && source /etc/profile
 
-# ensure ~/.zprofile is read for non-login shells
-# zsh only reads ~/.zprofile on login shells
+# Ensure ~/.zprofile is read for non-login shells
+# Zsh only reads ~/.zprofile on login shells
 [ -r "$XDG_CONFIG_HOME/zsh/.zprofile" ] && source "$XDG_CONFIG_HOME/zsh/.zprofile"
 
 
@@ -98,13 +96,13 @@ unsetopt beep
 #
 
 is8Colors() {
-	colors="$(tput colors 2>/dev/null)"
+	colors=$(tput colors 2>/dev/null)
 
 	[ -n "$colors" ] && [ "$colors" -eq 8 ]
 }
 
 is256Colors() {
-	colors="$(tput colors 2>/dev/null)"
+	colors=$(tput colors 2>/dev/null)
 
 	[ -n "$colors" ] && [ "$colors" -eq 256 ]
 }
@@ -113,14 +111,24 @@ is16MillionColors() {
 	[ "$COLORTERM" = "truecolor" ] || [ "$COLORTERM" = "24bit" ]
 }
 
+# source "$XDG_STATE_HOME/dotshellgen/concatenated.zsh" # TODO
+
+autoload -U colors && colors # TODO
+autoload run-help # TODO
+
 if is16MillionColors; then
 	if ((EUID == 0)); then
 		PS1="%F{#c92a2a}[%n@%M %~]$%f "
 	else
-		PS1="%{$fg[yellow]%}[%n@%M %~]$%{$reset_color%} "
-		# source "$(command -v choose)" launch prompt-zsh || {
-		# 	PS1="[\[\e[0;31m\](PS1 Error)\[\e[0m\] \u@\h \w]\$ "
-		# }
+		PS1="%{$fg[red]%}[%n@%M %~]$%{$reset_color%} "
+		if ! eval "$(
+			if ! choose launch shell-prompt-zsh; then
+				# Without this, the error doesn't propagate to the "if ! eval ..."
+				printf '%s\n' 'false'
+			fi
+		)"; then
+			PS1="[%{$fg[red]%}(PS1 Error)%{$reset_color%} %n@%M %~]\$ "
+		fi
 	fi
 elif is8Colors || is256Colors; then
 	if ((EUID == 0)); then
@@ -133,7 +141,6 @@ else
 fi
 
 unset -f is8Colors is256Colors is16MillionColors
-
 
 #
 # ─── MODULES ────────────────────────────────────────────────────────────────────

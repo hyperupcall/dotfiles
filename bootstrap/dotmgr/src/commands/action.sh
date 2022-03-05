@@ -29,9 +29,9 @@ subcommand() {
 	local -i selected=0
 	local files=(
 		# regular common
+		'idempotent'
 		'dotshellgen'
 		'dotshellextract'
-		'prune_and_resymlink'
 		'backup'
 		''
 		# bootstrapping
@@ -58,10 +58,10 @@ subcommand() {
 		local mode='default' description=
 		local line=
 		while IFS= read -r line; do
-			if [[ $line == '# Name:' ]]; then
+			if [ "$line" = '# Name:' ]; then
 				mode='name'
 				continue
-			elif [[ $line == '# Description:' ]]; then
+			elif [ "$line" = '# Description:' ]; then
 				descriptionsi=0
 				mode='description'
 				continue
