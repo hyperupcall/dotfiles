@@ -19,7 +19,7 @@ action() {
 	# Now, file system is mounted at "$block_dev_target"
 
 	local password=
-	password="$(LC_ALL=C tr -dc '[:alnum:][:digit:]' </dev/urandom | head -c 12; printf '\n')"
+	password=$(LC_ALL=C tr -dc '[:alnum:][:digit:]' </dev/urandom | head -c 12; printf '\n')
 	print.info "Password: $password"
 
 	# Copy over ssh keys

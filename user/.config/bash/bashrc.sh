@@ -90,13 +90,13 @@ set -o physical
 #
 
 is8Colors() {
-	colors="$(tput colors 2>/dev/null)"
+	colors=$(tput colors 2>/dev/null)
 
 	[ -n "$colors" ] && [ "$colors" -eq 8 ]
 }
 
 is256Colors() {
-	colors="$(tput colors 2>/dev/null)"
+	colors=$(tput colors 2>/dev/null)
 
 	[ -n "$colors" ] && [ "$colors" -eq 256 ]
 }
@@ -166,10 +166,3 @@ source "$XDG_CONFIG_HOME/bash/modules/util.sh"
 
 # ---
 
-# BEGIN_KITTY_SHELL_INTEGRATION
-if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
-# END_KITTY_SHELL_INTEGRATION
-# Created by `pipx` on 2022-02-28 18:19:44
-export PATH="$PATH:/home/edwin/.local/state/pipx/bin"
-
-export N_PREFIX="$HOME/.local/share/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).

@@ -65,25 +65,3 @@ set -o vi
 		assert [ "$expectedCmd" = "$actualCmd" ]
 	done
 }
-
-
-@test "_readline_util_try_show_man" {
-	local result
-	export DEBUG_LINE_EDITING=
-
-	declare -A line_cmds=(
-		["git status --short"]="git-status"
-		["zfs mount -a"]="zfs-mount"
-		["lsblk --fs"]="lsblk"
-		["lsblk -f"]="lsblk"
-		["qemu-system-x86_64"]="qemu"
-		["restic --repo cache"]="restic-cache"
-	)
-
-	for key in "${!line_cmds[@]}"; do
-		expectedCmd="${line_cmds["$key"]}"
-		actualCmd=$(_lineediting_action_show_man "$key" &>/dev/null)
-
-		assert [ "$expectedCmd" = "$actualCmd" ]
-	done
-}

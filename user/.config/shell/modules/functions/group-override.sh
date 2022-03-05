@@ -67,23 +67,21 @@ curl() {
 	fi
 }
 
-# clone(user, root)
-__shell_lsblk_can_mountpoints=
+__shell_lsblk_can_mountpoints=no
 if [ -z "$__shell_lsblk_can_mountpoints" ]; then
-	regex="lsblk from util-linux ([[:digit:]]*?)\\.([[:digit:]]*?)"
-	if [[ "$(command lsblk --version)" =~ $regex ]]; then
-		if (( ${BASH_REMATCH[1]} >= 3 || (${BASH_REMATCH[1]} == 2 && ${BASH_REMATCH[2]} >= 37) )); then
-			shell_lsblk_can_mountpoints=yes
-		fi
+	__shell_lsblk_tmp=$(command lsblk --version)
+	__shell_lsblk_major_num=${__shell_lsblk_tmp##* }; __shell_lsblk_major_num=${__shell_lsblk_major_num%%.*}
+	__shell_lsblk_minor_num=${__shell_lsblk_tmp##*.}; __shell_lsblk_minor_num=${__shell_lsblk_minor_num%%.*}
+	if [ "$__shell_lsblk_major_num" -ge 3 ] || \
+		{ [ "$__shell_lsblk_major_num" -eq 2 ] && [ "$__shell_lsblk_minor_num" -ge 37 ]; }; then
+		___shell_lsblk_can_mountpoints=yes
 	fi
-	unset regex
+	unset -v __shell_lsblk_tmp __shell_lsblk_major_num __shell_lsblk_minor_num
 fi
 lsblk() {
-	__str=
-	if [ "$___shell_lsblk_can_mountpoints" = yes ]; then
+	__str='MOUNTPOINT'
+	if [ "$___shell_lsblk_can_mountpoints" = 'yes' ]; then
 		__str='MOUNTPOINTS'
-	else
-		__str='MOUNTPOINT'
 	fi
 
 	if [ $# -eq 1 ] && [ "$1" = "-f" ]; then
@@ -94,7 +92,7 @@ lsblk() {
 		command lsblk "$@"
 	fi
 
-	__str=
+	unset -v __str
 }
 
 ping() {
@@ -106,10 +104,10 @@ ping() {
 }
 
 if [ -t 0 ]; then
-	_stty_saved_settings="$(stty -g)"
+	_stty_saved_settings=$(stty -g)
 fi
 stty() {
-	if [ $# -eq 1 ] && [ "$1" = "sane" ]; then
+	if [ $# -eq 1 ] && [ "$1" = 'sane' ]; then
 		# 'stty sane' resets our modifications to behaviors of tty device
 		# including the line discipline. This assumes tty was sane when initialized
 		if [ -n "$_stty_saved_settings" ]; then
@@ -125,7 +123,7 @@ stty() {
 			_shell_util_log_warn "stty: Variable \$_stty_saved_settings empty. Falling back to 'stty sane'" >&2
 		fi
 
-		return "$_stty_exit_code"
+		return $_stty_exit_code
 	else
 		command stty "$@"
 	fi

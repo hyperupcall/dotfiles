@@ -38,6 +38,17 @@
 	"editor.wordWrapColumn": 100,
 	"editor.wrappingIndent": "indent",
 
+	"terminal.integrated.altClickMovesCursor": false,
+	"terminal.integrated.commandsToSkipShell": [
+		"-workbench.action.terminal.focusFind",
+		"-workbench.action.quickOpen"
+	],
+	"terminal.integrated.allowChords": false,
+	"terminal.integrated.copyOnSelection": true,
+	"terminal.integrated.environmentChangesIndicator": "on",
+	"terminal.integrated.inheritEnv": false,
+	"terminal.integrated.showExitAlert": false,
+
 	"files.autoSave": "afterDelay",
 	"files.autoSaveDelay": 5000,
 	"files.associations": {
@@ -57,10 +68,11 @@
 		"**/.hg": false,
 		"**/.fossil": false,
 		"**/.svn": false,
-		"**/.classpath": false,
-		"**/.project": false,
-		"**/.settings": false,
-		"**/.factorypath": false
+		"**/CVS": false
+		// "**/.classpath": false,
+		// "**/.project": false,
+		// "**/.settings": false,
+		// "**/.factorypath": false
 	},
 	"files.insertFinalNewline": true,
 	"files.maxMemoryForLargeFilesMB": 2048,
@@ -69,9 +81,9 @@
 	"files.trimFinalNewlines": true,
 	"files.trimTrailingWhitespace": true,
 	"files.watcherExclude": {
-		"**/.ammonite": true,
-		"**/.bloop": true,
-		"**/.metals": true,
+		"**/node_modules/**": true,
+		"**/web_modules/**": true,
+		"**/jspm_modules/**": true,
 		"**/bower_components/**": true,
 		"**/linux/**": true,
 		"**/rootfs/**": true
@@ -156,6 +168,8 @@
 	"[html]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
+	"html.format.enable": false,
+	"html.format.wrapLineLength": 0,
 	"[vue]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
@@ -201,6 +215,8 @@
 	"[yaml]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
+	"yaml.format.printWidth": 100,
+	"yaml.format.singleQuote": true,
 	"[python]": {
 		"editor.defaultFormatter": "ms-python.python",
 		"editor.codeActionsOnSave": {
@@ -258,7 +274,20 @@
 	"perl.disableCache": true, // TODO: BUGGED
 	"perl.cacheDir": "/home/edwin/.cache/vscode-perl-cache/",
 
+	// telemetry / extraneous notifications / unecessary views
+	"telemetry.telemetryLevel": "off",
+	"redhat.telemetry.enabled": false,
+	"julia.enableTelemetry": false,
+	"terraform.telemetry.enabled": false,
+	"sonarlint.disableTelemetry": true,
+	"vsicons.dontShowNewVersionMessage": true,
+	"kite.showWelcomeNotificationOnStartup": false,
+	"gitlens.showWelcomeOnInstall": false,
+	"java.help.firstView": "none",
+	"java.help.showReleaseNotes": false,
+
 	// UNSORTED
+
 	"comment-divider.length": 60,
 	"cSpell.diagnosticLevel": "Hint",
 	"cSpell.userWords": [
@@ -311,15 +340,17 @@
 	"sortLines.sortEntireFile": true,
 	"sqltools.useNodeRuntime": true,
 	"task.quickOpen.history": 20,
-	"terminal.integrated.copyOnSelection": true,
-	"terminal.integrated.commandsToSkipShell": [
-		"-workbench.action.terminal.focusFind",
-		"-workbench.action.quickOpen"
+	"vsicons.associations.files": [
+		{
+			"icon": "shell",
+			"extensions": ["bake"],
+			"filename": true,
+			"format": "svg"
+		}
 	],
 	"vim.enableNeovim": true,
 	"vsdocker.imageUser": "docker.io/hyperupcall",
-	"yaml.format.printWidth": 100,
-	"yaml.format.singleQuote": true,
+
 	"zenMode.centerLayout": true,
 	"go.toolsManagement.autoUpdate": true,
 	"github.copilot.enable": {
@@ -328,18 +359,13 @@
 		"plaintext": true,
 		"markdown": true
 	},
-	"vsicons.presets.foldersAllDefaultIcon": true,
-
-	// telemetry / extraneous notifications / unecessary views
-	"telemetry.telemetryLevel": "off",
-	"redhat.telemetry.enabled": false,
-	"julia.enableTelemetry": false,
-	"terraform.telemetry.enabled": false,
-	"sonarlint.disableTelemetry": true,
-	"vsicons.dontShowNewVersionMessage": true,
-	"kite.showWelcomeNotificationOnStartup": false,
-	"gitlens.showWelcomeOnInstall": false,
-	"java.help.firstView": "none",
-	"java.help.showReleaseNotes": false,
+	"git.enableCommitSigning": true,
+	"workbench.iconTheme": "material-icon-theme",
+	"vs-kubernetes": {
+		"vscode-kubernetes.helm-path.linux": "/home/edwin/.vs-kubernetes/tools/helm/linux-amd64/helm",
+		"vscode-kubernetes.kubectl-path.linux": "/home/edwin/.vs-kubernetes/tools/kubectl/kubectl",
+		"vscode-kubernetes.minikube-path.linux": "/home/edwin/.vs-kubernetes/tools/minikube/linux-amd64/minikube"
+	},
+	"workbench.colorTheme": "Monokai Pro",
 	"window.zoomLevel": -1
 }

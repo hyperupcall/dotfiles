@@ -40,7 +40,7 @@ util.show_help() {
 
 		Commands:
 		  bootstrap-stage1
-		    Bootstrap operations that ocur before dotfiles have been deployed
+		    Bootstrap operations that occur before dotfiles have been deployed
 
 		  action
 		    Perform a particular action. If no action was given, show

@@ -3,7 +3,7 @@
 bake linguist-generated
 # foxomate end
 
-vendor/ linguist-vendored
-user/config/npm/npmrc filter=npmrc-clean
-user/config/slack-term/config filter=slack-term-config-clean
-user/config/osc/oscrc filter=oscrc-clean
+/vendor/ linguist-vendored
+user/.config/npm/npmrc filter=npmrc-clean
+user/.config/slack-term/config filter=slack-term-config-clean
+user/.config/osc/oscrc filter=oscrc-clean
