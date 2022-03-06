@@ -107,6 +107,7 @@
 	"search.smartCase": true,
 
 	"workbench.activityBar.visible": true,
+	"workbench.colorTheme": "Night Owl",
 	"workbench.commandPalette.history": 100,
 	"workbench.editor.closeOnFileDelete": true,
 	"workbench.editor.highlightModifiedTabs": true,
@@ -119,6 +120,7 @@
 		"*.ico": "luna.editor"
 	},
 	"workbench.enableExperiments": false,
+	"workbench.iconTheme": "Monokai Pro Icons",
 	"workbench.quickOpen.closeOnFocusLost": false,
 	"workbench.startupEditor": "none",
 	"workbench.tips.enabled": false,
@@ -329,7 +331,12 @@
 		"vue-html": "html"
 	},
 	"git.alwaysShowStagedChangesResourceGroup": true,
+	"gitlens.advanced.maxListItems": 300,
+	"gitlens.advanced.maxSearchItems": 300,
 	"gitlens.codeLens.includeSingleLineSymbols": true,
+	"html.autoClosingTags": false,
+	"html.format.enable": false,
+	"html.format.wrapLineLength": 0,
 	"javascript.referencesCodeLens.enabled": true,
 	"javascript.referencesCodeLens.showOnAllFunctions": true,
 	"javascript.updateImportsOnFileMove.enabled": "always",
@@ -337,6 +344,8 @@
 	"merge-conflict.autoNavigateNextConflict.enabled": true,
 	"merge-conflict.diffViewPosition": "Beside",
 	"screencastMode.onlyKeyboardShortcuts": true,
+	"sortLines.filterBlankLines": true,
+	"sortLines.sortEntireFile": true,
 	"sqltools.useNodeRuntime": true,
 	"task.quickOpen.history": 20,
 	"vsicons.associations.files": [
