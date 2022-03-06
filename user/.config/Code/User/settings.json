@@ -108,6 +108,7 @@
 
 	"workbench.activityBar.visible": true,
 	"workbench.colorTheme": "Night Owl",
+	"window.zoomLevel": -1,
 	"workbench.commandPalette.history": 100,
 	"workbench.editor.closeOnFileDelete": true,
 	"workbench.editor.highlightModifiedTabs": true,
@@ -374,6 +375,5 @@
 		"vscode-kubernetes.kubectl-path.linux": "/home/edwin/.vs-kubernetes/tools/kubectl/kubectl",
 		"vscode-kubernetes.minikube-path.linux": "/home/edwin/.vs-kubernetes/tools/minikube/linux-amd64/minikube"
 	},
-	"workbench.colorTheme": "Monokai Pro",
-	"window.zoomLevel": -1
+	"workbench.colorTheme": "Monokai Pro"
 }
