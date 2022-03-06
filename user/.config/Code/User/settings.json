@@ -15,6 +15,7 @@
 	"editor.codeLens": false,
 	"editor.cursorSmoothCaretAnimation": true,
 	"editor.cursorSurroundingLinesStyle": "all",
+	"editor.detectIndentation": true,
 	"editor.find.addExtraSpaceOnTop": false,
 	"editor.fontFamily": "'Droid Sans Mono', 'Fira Sans Mono', 'monospace'",
 	"editor.fontLigatures": true,
@@ -69,10 +70,6 @@
 		"**/.fossil": false,
 		"**/.svn": false,
 		"**/CVS": false
-		// "**/.classpath": false,
-		// "**/.project": false,
-		// "**/.settings": false,
-		// "**/.factorypath": false
 	},
 	"files.insertFinalNewline": true,
 	"files.maxMemoryForLargeFilesMB": 2048,
@@ -210,6 +207,13 @@
 		"editor.tabSize": 2,
 		"files.trimTrailingWhitespace": false
 	},
+	"markdownlint.run": "onSave",
+	"markdownlint.focusMode": true,
+	"markdownlint.config": {
+		"no-hard-tabs": false,
+		"first-heading-h1": false,
+		"first-line-heading": false
+	},
 	"[yaml]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
@@ -228,8 +232,8 @@
 	"python.languageServer": "Pylance",
 	"[c]": {
 		"editor.defaultFormatter": "ms-vscode.cpptools",
-		"editor.insertSpaces": true,
-		"editor.tabSize": 2
+		"editor.insertSpaces": false,
+		"editor.tabSize": 3
 	},
 	"[cpp]": {
 		"editor.defaultFormatter": "ms-vscode.cpptools",
@@ -240,6 +244,7 @@
 	"C_Cpp.clang_format_sortIncludes": true,
 	"clang-tidy.checks": [
 		"bugprone-*",
+		"-bugprone-easily-swappable-parameters",
 		"cert-*",
 		"clang-analyzer-*",
 		"concurrency-*",
@@ -264,7 +269,6 @@
 	"[java]": {
 		"editor.defaultFormatter": "redhat.java"
 	},
-	"java.configuration.checkProjectSettingsExclusions": false,
 	"java.project.importOnFirstTimeStartup": "automatic",
 	"[perl]": {
 		"editor.defaultFormatter": "richterger.perl"
@@ -283,6 +287,8 @@
 	"gitlens.showWelcomeOnInstall": false,
 	"java.help.firstView": "none",
 	"java.help.showReleaseNotes": false,
+	"gitlens.showWhatsNewAfterUpgrades": false,
+	"update.showReleaseNotes": false,
 
 	// UNSORTED
 
@@ -294,6 +300,7 @@
 		"dirents",
 		"dotfile",
 		"dotfiles",
+		"dotmgr",
 		"editorconfig",
 		"entrypoint",
 		"entrypoints",
@@ -304,6 +311,7 @@
 		"healthcheck",
 		"kbuild",
 		"Kofler",
+		"mkdir",
 		"mongod",
 		"NOLINT",
 		"prettierrc",
@@ -351,7 +359,7 @@
 		"markdown": true
 	},
 	"git.enableCommitSigning": true,
-	"workbench.iconTheme": "material-icon-theme",
+	"workbench.iconTheme": "Monokai Pro Icons",
 	"vs-kubernetes": {
 		"vscode-kubernetes.helm-path.linux": "/home/edwin/.vs-kubernetes/tools/helm/linux-amd64/helm",
 		"vscode-kubernetes.kubectl-path.linux": "/home/edwin/.vs-kubernetes/tools/kubectl/kubectl",

@@ -1,36 +1,104 @@
 set nocompatible
 
+
+" Vim Plug
+source `=expand($XDG_CONFIG_HOME."/vim/modules/pathogen.vim")`
+source `=expand($XDG_CONFIG_HOME."/vim/modules/plug.vim")`
+call plug#begin($XDG_DATA_HOME.'/vim/vim-plug')
+	Plug 'tpope/vim-sensible'
+call plug#end()
+
+
+" XDG Base Directory Specification stuff
 if empty("$MYVIMRC") | let $MYVIMRC = expand('<sfile>:p') | endif
 if empty("$XDG_CONFIG_HOME") | let $XDG_CONFIG_HOME = $HOME."/.config" | endif
 if empty("$XDG_DATA_HOME") | let $XDG_DATA_HOME = $HOME."/.local/share" | endif
 if empty("$XDG_STATE_HOME") | let $XDG_STATE_HOME = $HOME."/.local/state" | endif
 if empty("$XDG_CACHE_HOME") | let $XDG_CACHE_HOME = $HOME."/.cache" | endif
 
-let xdgDataHome = exists('$XDG_DATA_HOME') ? $XDG_DATA_HOME : $HOME.'.local/data'
-
-source `=expand($XDG_CONFIG_HOME."/vim/modules/pathogen.vim")`
-source `=expand($XDG_CONFIG_HOME."/vim/modules/plug.vim")`
-
 set runtimepath^=$XDG_CONFIG_HOME/vim
 set runtimepath+=$XDG_DATA_HOME/vim
 set packpath^=$XDG_DATA_HOME/vim
-
 let g:netrw_home = $XDG_DATA_HOME."./vim"
-" set spellfile=$XDG_CACHE_HOME."/vim/".$LANG."add"
-" call mkdir($XDG_CACHE_HOME."/vim/".$LANG."add", 'p')
 
-set viewdir=$XDG_DATA_HOME."/vim/view" | call mkdir(&viewdir, 'p')
-set backupdir=$XDG_STATE_HOME."/vim/backup" | call mkdir(&backupdir, 'p')
-set directory=$XDG_STATE_HOME."/vim/swap" | call mkdir(&directory, 'p')
-set undodir=$XDG_STATE_HOME."/vim/undo" | call mkdir(&undodir, 'p')
-set viminfofile=$XDG_CACHE_HOME."/vim/viminfo"
+" Don't use 'set' since string concatenation does not work (not expressions)
+let &spellfile = $XDG_CACHE_HOME."/vim/".$LANG."add" | call mkdir(&spellfile, 'p')
+let &viewdir = $XDG_DATA_HOME."/vim/view" | call mkdir(&viewdir, 'p')
+let &backupdir = $XDG_STATE_HOME."/vim/backup" | call mkdir(&backupdir, 'p')
+let &directory = $XDG_STATE_HOME."/vim/swap" | call mkdir(&directory, 'p')
+let &undodir = $XDG_STATE_HOME."/vim/undo" | call mkdir(&undodir, 'p')
+let &viminfofile = $XDG_CACHE_HOME."/vim/viminfo"
 
-" Write buffer through sudo (works on vim but not neovim)
+
+" Essential aneminities
+filetype plugin indent on
+set tabstop=3
+set shiftwidth=3
+set noexpandtab
+
+" Delete word with <Alt><Backspace>
+imap <Esc><BS> <C-w>
+
+" Change cursor shape dependent on editing mode
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"
+
+" Show whitespace characters
+set listchars=eol:¬,tab:>\ ,trail:␣,extends:>,precedes:<,space:␣
+set list
+
+" Force write with sudo (Vim only)
 command! W execute 'w !sudo tee % > /dev/null' ^V|  edit!
-
-call plug#begin(xdgDataHome.'/vim/vim-plug')
-Plug 'tpope/vim-sensible'
-call plug#end()
 
 " Jump to last position when reopening file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+fun! Start()
+	" Don't run if:
+	"  - we have commandline arguments or if
+	"  - we don't have an empty buffer or if
+	"  - we are not invoked as vim or gvim or if
+	"  - we have start in insert mode
+	if argc() || line2byte('$') != -1 || v:progname !~? '^[-gmnq]\=vim\=x\=\%[\.exe]$' || &insertmode
+		return
+	endif
+
+	" Start a new buffer and set aforementioned buffer options
+	enew
+	setlocal
+		\ bufhidden=wipe
+		\ buftype=nofile
+		\ nobuflisted
+		\ nocursorcolumn
+		\ nocursorline
+		\ nolist
+		\ nonumber
+		\ noswapfile
+		\ norelativenumber
+		\ ff=unix
+
+	" Write to buffer
+	" call append('$', "Hello mista human! Welcome to Vim! ^w^")
+	call append('$', '')
+
+	" call system('command -v fortune')
+	" if v:shell_error == '0'
+	" 	call append('$', '')
+	" 	call append('$', '')
+	" 	for line in split(system('fortune -s'), '\n')
+	" 		call append('$', l:line)
+	" 	endfor
+	" endif
+
+	" Disable modifications to this buffer
+	setlocal nomodifiable nomodified
+
+	" When we go to insert mode, start a new buffer and set mode to insert
+	nnoremap <buffer><silent> e :enew<CR>
+	nnoremap <buffer><silent> i :enew <bar> startinsert<CR>
+	nnoremap <buffer><silent> o :enew <bar> startinsert<CR>
+endfun
+
+" Run after "doing all the startup stuff"
+autocmd VimEnter * call Start()

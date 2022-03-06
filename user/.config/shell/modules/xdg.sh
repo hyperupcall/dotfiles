@@ -453,6 +453,11 @@ export VAGRANT_ALIAS_FILE="$VAGRANT_HOME/aliases"
 export VOLTA_HOME="$XDG_STATE_HOME/volta"
 _path_prepend "$XDG_STATE_HOME/volta/bin"
 
+# vim
+# shellcheck disable=SC2016
+# export VIMINIT='if has("nvim") | source $HOME/.local/share/nvim/init.lua | else | source $MYVIMRC | endif' ? # TODO
+# export MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
+
 # vimperator
 export VIMPERATOR_INIT=":source $XDG_CONFIG_HOME/vimperator/vimperatorrc"
 export VIMPERATOR_RUNTIME="$XDG_CONFIG_HOME/vimperator"

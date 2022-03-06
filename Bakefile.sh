@@ -12,3 +12,7 @@ task.build() {
 task.test() {
 	cd ./user/.config/shell/modules && bats -p .
 }
+
+task.commit() {
+	git commit -m "Update: $(date "+%B %d, %Y (%H:%M)")"
+}

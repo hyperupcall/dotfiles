@@ -25,7 +25,7 @@ To begin the bootstrap process, the `stage0.sh` script must be downloaded and ex
 
 ```sh
 mkdir -p ~/.bootstrap
-curl -LsSo ~/.bootstrap/stage0.sh https://raw.githubusercontent.com/hyperupcall/dots/main/bootstrap/stage0.sh
+curl -LsSo ~/.bootstrap/stage0.sh 'https://raw.githubusercontent.com/hyperupcall/dots/main/bootstrap/stage0.sh'
 chmod +x ~/.bootstrap/stage0.sh
 ~/.bootstrap/stage0.sh
 ```

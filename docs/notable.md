@@ -1,3 +1,5 @@
+## four
+
 # Notable Things
 
 The following scripts are notable and may be of use
@@ -12,13 +14,13 @@ of the current dotfiles
 
 Special Bash readline bindings that includes many convenient functionality that include:
 
--  Alt+M to bring up man page (of command/alias currently being edited)s
-   -  extremely useful, as you can view a man page without having to switch readline editing buffers
--  Alt+H to print help menu (of command/alias currently being edited)
-   -  extremely useful, as you can view arguments and flags quickly
--  Alt+S to toggle sudo
--  Alt+/ to toggle comment
--  Alt+\ to toggle backslash
+- Alt+M to bring up man page (of command/alias currently being edited)s
+  - extremely useful, as you can view a man page without having to switch readline editing buffers
+- Alt+H to print help menu (of command/alias currently being edited)
+  - extremely useful, as you can view arguments and flags quickly
+- Alt+S to toggle sudo
+- Alt+/ to toggle comment
+- Alt+\ to toggle backslash
 
 It calls more general functions that can be found at [`line-editing.sh`](../user/.config/shell/modules/line-editing.sh)
 
@@ -26,10 +28,10 @@ It calls more general functions that can be found at [`line-editing.sh`](../user
 
 Quick command to automatically do something in a temporary space. Based on the first argument, it will
 
--  (blank) => cd to new random directory in tempfs (`cd "$(mktemp -d)"`)
--  (file/folder) => copy file/folder to new random directory in tempfs, and cd/ls to it
--  (git repository) => clone (optionally sparse) repo to new random directroy in tempfs, and cd/ls to it
--  (internet file) => curl file to new random directory in tempfs, and cd/ls to it
+- (blank) => cd to new random directory in tempfs (`cd "$(mktemp -d)"`)
+- (file/folder) => copy file/folder to new random directory in tempfs, and cd/ls to it
+- (git repository) => clone (optionally sparse) repo to new random directroy in tempfs, and cd/ls to it
+- (internet file) => curl file to new random directory in tempfs, and cd/ls to it
 
 It will create a history of invocations at `$XDG_STATE_HOME/history/mkt_history`
 
