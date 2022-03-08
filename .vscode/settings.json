@@ -18,5 +18,6 @@
 	"[css]": {
 		"editor.defaultFormatter": "stylelint.vscode-stylelint"
 	},
-	"restructuredtext.confPath": ""
+	"restructuredtext.confPath": "",
+	"esbonio.server.enabled": true
 }
