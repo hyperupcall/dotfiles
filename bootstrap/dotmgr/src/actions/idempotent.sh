@@ -87,9 +87,28 @@ action() {
 	must_link "$XDG_CONFIG_HOME/X11/Xmodmap" "$HOME/.Xmodmap"
 	must_link "$XDG_CONFIG_HOME/X11/Xresources" "$HOME/.Xresources"
 
+	local -ra directoriesOne=(
+		~/Desktop
+		~/Downloads
+		~/Templates ~/Public ~/Documents
+		~/Music
+		~/Pictures
+		~/Videos
+	)
+
+	local -ra directoriesTwo=(
+		~/Desktop
+		~/Dls
+		~/Docs/Templates ~/Docs/Public ~/Docs
+		~/Music
+		~/Pics
+		~/Vids
+	)
+
 	if [ -d "$storage" ]; then
-		# XDG User Directories
 		must_link "$HOME/.dots/user/.config/user-dirs.dirs/user-dirs-custom.conf" "$XDG_CONFIG_HOME/user-dirs.dirs"
+
+		# XDG User Directories
 		# must_rmdir "$HOME/Desktop"
 		must_rmdir "$HOME/Downloads"
 		must_rmdir "$HOME/Documents"
@@ -123,8 +142,13 @@ action() {
 		must_link "$storage_other/fonts" "$XDG_CONFIG_HOME/fonts"
 		must_link "$storage_other/password-store" "$XDG_DATA_HOME/password-store"
 	else
-		# XDG User Directories
 		must_link "$HOME/.dots/user/.config/user-dirs.dirs/user-dirs-regular.conf" "$XDG_CONFIG_HOME/user-dirs.dirs"
+
+		# XDG User Directories
+		for dir in "${directoriesTwo[@]}"; do
+			rmdir "$dir" &>/dev/null || :
+		done; unset -v dir
+
 		must_dir "$HOME/Desktop"
 		must_dir "$HOME/Downloads"
 		must_dir "$HOME/Documents"
