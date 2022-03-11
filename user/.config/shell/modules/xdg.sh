@@ -329,10 +329,10 @@ export PGSERVICEFILE="$XDG_DATA_HOME/pg/pg_service.conf"
 # export PULSE_COOKIE="$XDG_STATE_HOME/pulse/cookie"
 
 # pyenv
-export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
-export PYENV_VIRTUALENV_INIT=1
-_path_prepend "$PYENV_ROOT/bin"
-_path_prepend "$PYENV_ROOT/shims"
+# export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
+# export PYENV_VIRTUALENV_INIT=1
+# _path_prepend "$PYENV_ROOT/bin"
+# _path_prepend "$PYENV_ROOT/shims"
 
 # pylint
 export PYLINTHOME="$XDG_CACHE_HOME/pylint"

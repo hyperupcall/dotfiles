@@ -193,7 +193,28 @@ action() {
 		fi
 	done
 
+	# -------------------------------------------------------- #
+	#                    COPY ROOT DOTFILES                    #
+	# -------------------------------------------------------- #
+	# shopt -s extglob
+	# local {src,dest}File=
+	# for srcFile in ~/.dots/system/**; do
+	# 	destFile=${srcFile#*/.dots/system}
 
+	# 	if [ -d "$srcFile" ]; then
+	# 		continue
+	# 	fi
+
+	# 	if [ "${destFile::8}" = '/efi/EFI' ]; then
+	# 		continue
+	# 	fi
+
+	# 	if [[ $srcFile == *ignore* ]]; then
+	# 		continue
+	# 	fi
+
+	# 	printf '%s -> %s\n' "$srcFile" "$destFile"
+	# done; unset -v f
 
 	# -------------------------------------------------------- #
 	#                DESKTOP ENVIRONMENT TWEAKS                #
