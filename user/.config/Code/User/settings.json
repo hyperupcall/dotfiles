@@ -155,6 +155,9 @@
 	"typescript.referencesCodeLens.enabled": true,
 	"typescript.referencesCodeLens.showOnAllFunctions": true,
 	"typescript.updateImportsOnFileMove.enabled": "always",
+	"deno.suggest.imports.hosts": {
+		"https://deno.land": true
+	},
 	"[json]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.formatOnSave": true
@@ -216,7 +219,8 @@
 		"no-hard-tabs": false,
 		"first-heading-h1": false,
 		"first-line-heading": false,
-		"no-inline-html": false
+		"no-inline-html": false,
+		"no-duplicate-header": false
 	},
 	"[yaml]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"

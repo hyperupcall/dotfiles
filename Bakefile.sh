@@ -1,7 +1,7 @@
 # shellcheck shell=bash
 
 task.build() {
-	cd user/scripts
+	cd ./user/scripts
 	# clang -Wall -Wpedantic show_shell.c -o ../bin/show_shell
 
 	cd "$BAKE_ROOT/user/.config/X11/resources"
@@ -14,5 +14,5 @@ task.test() {
 }
 
 task.commit() {
-	git commit -m "Update: $(date "+%B %d, %Y (%H:%M)")"
+	git commit -m "Update: $(date "+%B %d, %Y (%H:%M)")" "$@"
 }
