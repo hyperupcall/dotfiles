@@ -282,7 +282,8 @@
 	"[perl]": {
 		"editor.defaultFormatter": "richterger.perl"
 	},
-	"perl.disableCache": true, // TODO: BUGGED
+	// richterger.perl
+	"perl.disableCache": false, // If this is 'false', then 'perl.cacheDir' is used
 	"perl.cacheDir": "/home/edwin/.cache/vscode-perl-cache/",
 
 	// telemetry / extraneous notifications / unecessary views

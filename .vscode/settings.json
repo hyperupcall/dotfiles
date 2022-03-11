@@ -1,6 +1,4 @@
 {
-	"shellcheck.useWorkspaceRootAsCwd": true,
-	"shellformat.flag": "-bn -ci -kp",
 	"shellcheck.ignorePatterns": {
 		"**/*.z*": true,
 		"**/.tcshrc": true,
@@ -14,10 +12,5 @@
 	"css.validate": false,
 	"editor.codeActionsOnSave": {
 		"source.fixAll": true
-	},
-	"[css]": {
-		"editor.defaultFormatter": "stylelint.vscode-stylelint"
-	},
-	"restructuredtext.confPath": "",
-	"esbonio.server.enabled": true
+	}
 }
