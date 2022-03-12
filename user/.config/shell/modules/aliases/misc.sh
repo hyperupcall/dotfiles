@@ -1,4 +1,5 @@
 # shellcheck shell=sh
+alias foxomate='deno run --allow-read --allow-write ~/repos/foxomate/src/main.ts'
 alias aria2c='aria2c -d "$HOME/Dls/aria2c"'
 alias b='bukdu --suggest'
 alias but='btrfs'

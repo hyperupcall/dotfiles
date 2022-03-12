@@ -42,7 +42,8 @@
 	"terminal.integrated.altClickMovesCursor": false,
 	"terminal.integrated.commandsToSkipShell": [
 		"-workbench.action.terminal.focusFind",
-		"-workbench.action.quickOpen"
+		"-workbench.action.quickOpen",
+		"language-julia.interrupt"
 	],
 	"terminal.integrated.allowChords": false,
 	"terminal.integrated.copyOnSelection": true,
@@ -280,7 +281,8 @@
 	"[perl]": {
 		"editor.defaultFormatter": "richterger.perl"
 	},
-	"perl.disableCache": true, // TODO: BUGGED
+	// richterger.perl
+	"perl.disableCache": false, // If this is 'false', then 'perl.cacheDir' is used
 	"perl.cacheDir": "/home/edwin/.cache/vscode-perl-cache/",
 
 	// telemetry / extraneous notifications / unecessary views
@@ -376,5 +378,7 @@
 		"vscode-kubernetes.minikube-path.linux": "/home/edwin/.vs-kubernetes/tools/minikube/linux-amd64/minikube"
 	},
 	"workbench.colorTheme": "Monokai Pro",
-	"window.zoomLevel": -2
+	"window.zoomLevel": -2,
+	"extensions.ignoreRecommendations": true,
+	"julia.symbolCacheDownload": true
 }

@@ -119,13 +119,13 @@ action() {
 		must_rmdir "$HOME/Videos"
 
 		# XDG User Directories Common
-		must_dir "$HOME/.dots/.desktop"
-		must_link "$HOME/Desktop" "$HOME/.dots/.desktop/Desktop"
-		must_link "$HOME/Dls" "$HOME/.dots/.desktop/Downloads"
-		must_link "$HOME/Docs" "$HOME/.dots/.desktop/Documents"
-		must_link "$HOME/Music" "$HOME/.dots/.desktop/Music"
-		must_link "$HOME/Pics" "$HOME/.dots/.desktop/Pictures"
-		must_link "$HOME/Vids" "$HOME/.dots/.desktop/Videos"
+		must_dir "$HOME/.dots/.home"
+		must_link "$HOME/Desktop" "$HOME/.dots/.home/Desktop"
+		must_link "$HOME/Dls" "$HOME/.dots/.home/Downloads"
+		must_link "$HOME/Docs" "$HOME/.dots/.home/Documents"
+		must_link "$HOME/Music" "$HOME/.dots/.home/Music"
+		must_link "$HOME/Pics" "$HOME/.dots/.home/Pictures"
+		must_link "$HOME/Vids" "$HOME/.dots/.home/Videos"
 
 		# Misc
 		must_link "$storage_home/Desktop" "$HOME/Desktop"
@@ -159,13 +159,13 @@ action() {
 		must_dir "$HOME/Videos"
 
 		# XDG User Directories Common
-		must_dir "$HOME/.dots/.desktop"
-		must_link "$HOME/Desktop" "$HOME/.dots/.desktop/Desktop"
-		must_link "$HOME/Downloads" "$HOME/.dots/.desktop/Downloads"
-		must_link "$HOME/Documents" "$HOME/.dots/.desktop/Documents"
-		must_link "$HOME/Music" "$HOME/.dots/.desktop/Music"
-		must_link "$HOME/Pictures" "$HOME/.dots/.desktop/Pictures"
-		must_link "$HOME/Videos" "$HOME/.dots/.desktop/Videos"
+		must_dir "$HOME/.dots/.home"
+		must_link "$HOME/Desktop" "$HOME/.dots/.home/Desktop"
+		must_link "$HOME/Downloads" "$HOME/.dots/.home/Downloads"
+		must_link "$HOME/Documents" "$HOME/.dots/.home/Documents"
+		must_link "$HOME/Music" "$HOME/.dots/.home/Music"
+		must_link "$HOME/Pictures" "$HOME/.dots/.home/Pictures"
+		must_link "$HOME/Videos" "$HOME/.dots/.home/Videos"
 	fi
 
 	if [ -d "$HOME/Docs/Programming" ]; then
@@ -199,7 +199,28 @@ action() {
 		fi
 	done
 
+	# -------------------------------------------------------- #
+	#                    COPY ROOT DOTFILES                    #
+	# -------------------------------------------------------- #
+	# shopt -s extglob
+	# local {src,dest}File=
+	# for srcFile in ~/.dots/system/**; do
+	# 	destFile=${srcFile#*/.dots/system}
 
+	# 	if [ -d "$srcFile" ]; then
+	# 		continue
+	# 	fi
+
+	# 	if [ "${destFile::8}" = '/efi/EFI' ]; then
+	# 		continue
+	# 	fi
+
+	# 	if [[ $srcFile == *ignore* ]]; then
+	# 		continue
+	# 	fi
+
+	# 	printf '%s -> %s\n' "$srcFile" "$destFile"
+	# done; unset -v f
 
 	# -------------------------------------------------------- #
 	#                DESKTOP ENVIRONMENT TWEAKS                #
@@ -212,21 +233,34 @@ action() {
 		dconf write /org/nemo/preferences/menu-config/selection-menu-duplicate 'false'
 		dconf write /org/nemo/preferences/menu-config/selection-menu-open-in-new-tab 'false'
 		dconf write /org/nemo/preferences/show-advanced-permissions 'true'
-		/home/edwin/home/edwin/home/edwin/org/nemo/preferences/default-folder-viewer "'list-view'"
+
+		dconf write /org/nemo/preferences/default-folder-viewer "'list-view'"
 		# dconf write /org/gnome/gnome-screenshot/auto-save-directory "'$HOME/Pictures/gnome-screenshot'" # TODO
+
+		dconf write /org/gnome/libgnomekbd/keyboard/layouts "['us', 'us\tdvorak']"
+		dconf write /org/gnome/libgnomekbd/keyboard/options "['grp\tgrp:win_space_toggle']"
+		dconf write /org/gnome/gnome-screenshot/auto-save-directory "'$HOME/.dots/.home/Pictures/gnome-screenshot'" # TODO
+
 
 		dconf write /org/cinnamon/desktop/wm/preferences/mouse-button-modifier '"<Super>"'
 		dconf write /org/cinnamon/desktop/interface/clock-show-date 'true'
 
 		# Media keys
+		dconf write /org/cinnamon/desktop/keybindings/looking-glass-keybinding "['']"
+
+		dconf write /org/cinnamon/desktop/keybindings/magnifier-zoom-in "['']"
+		dconf write /org/cinnamon/desktop/keybindings/magnifier-zoom-out "['']"
+
 		dconf write /org/cinnamon/desktop/keybindings/media-keys/area-screenshot "['<Super><Shift>p']"
 		dconf write /org/cinnamon/desktop/keybindings/media-keys/area-screenshot-clip "['<Super>p']"
 		dconf write /org/cinnamon/desktop/keybindings/media-keys/restart-cinnamon "['']"
 		dconf write /org/cinnamon/desktop/keybindings/media-keys/screenreader "['']"
 		dconf write /org/cinnamon/desktop/keybindings/media-keys/screenreader "['XF86ScreenSaver']" # Default includes '<Control><Alt>l'
+		dconf write /org/cinnamon/desktop/keybindings/media-keys/screensaver "['']"
 		dconf write /org/cinnamon/desktop/keybindings/media-keys/video-outputs "['XF86Display']" # Default includes '<Super>p'
 		dconf write /org/cinnamon/desktop/keybindings/media-keys/screenshot "['<Super><Control><Shift>p']"
 		dconf write /org/cinnamon/desktop/keybindings/media-keys/screenshot-clip "['<Super><Control>p']"
+		dconf write /org/cinnamon/desktop/keybindings/media-keys/terminal "['<Super>Return']"
 		dconf write /org/cinnamon/desktop/keybindings/media-keys/shutdown "['XF86PowerOff']"
 		dconf write /org/cinnamon/desktop/keybindings/media-keys/video-rotation-lock "['']"
 		dconf write /org/cinnamon/desktop/keybindings/media-keys/window-screenshot "['<Super><Alt>p']"
@@ -237,27 +271,27 @@ action() {
 		dconf write /org/cinnamon/desktop/keybindings/wm/toggle-maximized "['<Super>f']"
 
 		# Navigating workspaces
-		dconf write /org/cinnamon/desktop/keybindings/wm/switch-to-workspace-right "['<Super><Control>l']"
-		dconf write /org/cinnamon/desktop/keybindings/wm/switch-to-workspace-down "['<Super><Control>j']"
-		dconf write /org/cinnamon/desktop/keybindings/wm/switch-to-workspace-left "['<Super><Control>h']"
-		dconf write /org/cinnamon/desktop/keybindings/wm/switch-to-workspace-up "['<Super><Control>k']"
+		dconf write /org/cinnamon/desktop/keybindings/wm/switch-to-workspace-right "['<Super><Control>l', '<Super><Control>Up']"
+		dconf write /org/cinnamon/desktop/keybindings/wm/switch-to-workspace-down "['<Super><Control>j', '<Super><Control>Down']"
+		dconf write /org/cinnamon/desktop/keybindings/wm/switch-to-workspace-left "['<Super><Control>h', '<Super><Control>Left']"
+		dconf write /org/cinnamon/desktop/keybindings/wm/switch-to-workspace-up "['<Super><Control>k', '<Super><Control>Up']"
 
 		# Moving window to workspace
-		dconf write /org/cinnamon/desktop/keybindings/wm/move-to-workspace-right "['<Super><Control><Shift>l']"
-		dconf write /org/cinnamon/desktop/keybindings/wm/move-to-workspace-down "['<Super><Control><Shift>j']"
-		dconf write /org/cinnamon/desktop/keybindings/wm/move-to-workspace-left "['<Super><Control><Shift>h']"
-		dconf write /org/cinnamon/desktop/keybindings/wm/move-to-workspace-up "['<Super><Control><Shift>k']"
+		dconf write /org/cinnamon/desktop/keybindings/wm/move-to-workspace-up "['<Super><Control><Shift>k', '<Super><Control><Shift>Up']"
+		dconf write /org/cinnamon/desktop/keybindings/wm/move-to-workspace-right "['<Super><Control><Shift>l', '<Super><Control><Shift>Right']"
+		dconf write /org/cinnamon/desktop/keybindings/wm/move-to-workspace-down "['<Super><Control><Shift>j', '<Super><Control><Shift>Down']"
+		dconf write /org/cinnamon/desktop/keybindings/wm/move-to-workspace-left "['<Super><Control><Shift>h', '<Super><Control><Shift>Left']"
 
 		# Moving window in workspace
 		# `push-snap` is identical to `push-tile` except for the fact that snapped windows won't get covered by other maximized windows
+		dconf write /org/cinnamon/desktop/keybindings/wm/push-snap-up "['']"
 		dconf write /org/cinnamon/desktop/keybindings/wm/push-snap-right "['']"
 		dconf write /org/cinnamon/desktop/keybindings/wm/push-snap-down "['']"
 		dconf write /org/cinnamon/desktop/keybindings/wm/push-snap-left "['']"
-		dconf write /org/cinnamon/desktop/keybindings/wm/push-snap-up "['']"
-		dconf write /org/cinnamon/desktop/keybindings/wm/push-tile-right "['<Super><Alt>l']"
-		dconf write /org/cinnamon/desktop/keybindings/wm/push-tile-down "['<Super><Alt>j']"
-		dconf write /org/cinnamon/desktop/keybindings/wm/push-tile-left "['<Super><Alt>h']"
-		dconf write /org/cinnamon/desktop/keybindings/wm/push-tile-up "['<Super><Alt>k']"
+		dconf write /org/cinnamon/desktop/keybindings/wm/push-tile-up "['<Super><Alt>k', '<Super><Alt>Up']"
+		dconf write /org/cinnamon/desktop/keybindings/wm/push-tile-right "['<Super><Alt>l', '<Super><Alt>Right']"
+		dconf write /org/cinnamon/desktop/keybindings/wm/push-tile-down "['<Super><Alt>j', '<Super><Alt>Down']"
+		dconf write /org/cinnamon/desktop/keybindings/wm/push-tile-left "['<Super><Alt>h', '<Super><Alt>Left']"
 	elif [ -z "$XDG_SESSION_DESKTOP" ]; then
 		print.warn "Variable '\$XDG_SESSION_DESKTOP' is empty"
 	fi

@@ -8,7 +8,7 @@ global.trap_exit() {
 
 main.dotmgr() {
 	set -eo pipefail
-	shopt -s dotglob nullglob shift_verbose
+	shopt -s dotglob extglob globstar nullglob shift_verbose
 	trap 'global.trap_exit' EXIT
 
 	source "$DOTMGR_ROOT_DIR/src/util/print.sh"

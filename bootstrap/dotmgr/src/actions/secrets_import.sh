@@ -28,7 +28,7 @@ action() {
 
 			mkdir -vp ~/.ssh
 			cp -v "$file" ~/.ssh
-		done; unset file
+		done; unset -v file
 
 		local gpgDir="/mnt/c/Users/$name/AppData/Roaming/gnupg"
 		if [ -d "$gpgDir" ]; then
