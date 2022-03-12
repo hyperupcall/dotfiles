@@ -108,7 +108,6 @@
 
 	"workbench.activityBar.visible": true,
 	"workbench.colorTheme": "Night Owl",
-	"window.zoomLevel": -1,
 	"workbench.commandPalette.history": 100,
 	"workbench.editor.closeOnFileDelete": true,
 	"workbench.editor.highlightModifiedTabs": true,
@@ -121,7 +120,7 @@
 		"*.ico": "luna.editor"
 	},
 	"workbench.enableExperiments": false,
-	"workbench.iconTheme": "Monokai Pro Icons",
+	"workbench.iconTheme": "material-icon-theme",
 	"workbench.quickOpen.closeOnFocusLost": false,
 	"workbench.startupEditor": "none",
 	"workbench.tips.enabled": false,
@@ -155,6 +154,9 @@
 	"typescript.referencesCodeLens.enabled": true,
 	"typescript.referencesCodeLens.showOnAllFunctions": true,
 	"typescript.updateImportsOnFileMove.enabled": "always",
+	"deno.suggest.imports.hosts": {
+		"https://deno.land": true
+	},
 	"[json]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.formatOnSave": true
@@ -215,7 +217,9 @@
 	"markdownlint.config": {
 		"no-hard-tabs": false,
 		"first-heading-h1": false,
-		"first-line-heading": false
+		"first-line-heading": false,
+		"no-inline-html": false,
+		"no-duplicate-header": false
 	},
 	"[yaml]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -335,9 +339,6 @@
 	"gitlens.advanced.maxListItems": 300,
 	"gitlens.advanced.maxSearchItems": 300,
 	"gitlens.codeLens.includeSingleLineSymbols": true,
-	"html.autoClosingTags": false,
-	"html.format.enable": false,
-	"html.format.wrapLineLength": 0,
 	"javascript.referencesCodeLens.enabled": true,
 	"javascript.referencesCodeLens.showOnAllFunctions": true,
 	"javascript.updateImportsOnFileMove.enabled": "always",
@@ -359,7 +360,7 @@
 	],
 	"vim.enableNeovim": true,
 	"vsdocker.imageUser": "docker.io/hyperupcall",
-
+	"esbonio.server.enabled": false,
 	"zenMode.centerLayout": true,
 	"go.toolsManagement.autoUpdate": true,
 	"github.copilot.enable": {
@@ -369,11 +370,11 @@
 		"markdown": true
 	},
 	"git.enableCommitSigning": true,
-	"workbench.iconTheme": "Monokai Pro Icons",
 	"vs-kubernetes": {
 		"vscode-kubernetes.helm-path.linux": "/home/edwin/.vs-kubernetes/tools/helm/linux-amd64/helm",
 		"vscode-kubernetes.kubectl-path.linux": "/home/edwin/.vs-kubernetes/tools/kubectl/kubectl",
 		"vscode-kubernetes.minikube-path.linux": "/home/edwin/.vs-kubernetes/tools/minikube/linux-amd64/minikube"
 	},
-	"workbench.colorTheme": "Monokai Pro"
+	"workbench.colorTheme": "Monokai Pro",
+	"window.zoomLevel": -2
 }

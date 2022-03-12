@@ -180,6 +180,12 @@ action() {
 		for file in "$HOME/Docs/Programming/repos/Groups/Bash"/{bake,basalt,choose,hookah,foxomate,glue,rho,shelldoc,shelltest,woof}/pkg/bin/*; do
 			ln -fs "$file" ~/.dots/.bin
 		done
+	else
+			# TODO
+		for f in ~/.dots/.bin/*; do unlink "$f"; done
+		for file in "$HOME/Documents"/{bake,basalt,choose,hookah,foxomate,glue,rho,shelldoc,shelltest,woof}/pkg/bin/*; do
+			ln -fs "$file" ~/.dots/.bin
+		done
 	fi
 
 	# Miscellaneous
@@ -199,6 +205,14 @@ action() {
 	#                DESKTOP ENVIRONMENT TWEAKS                #
 	# -------------------------------------------------------- #
 	if [ "$XDG_SESSION_DESKTOP" = 'cinnamon' ]; then
+		# TODO: general settings, not desktop specific
+		dconf write /org/nemo/preferences/menu-config/selection-menu-copy 'false'
+		dconf write /org/nemo/preferences/menu-config/selection-menu-cut 'false'
+		dconf write /org/nemo/preferences/menu-config/selection-menu-paste 'false'
+		dconf write /org/nemo/preferences/menu-config/selection-menu-duplicate 'false'
+		dconf write /org/nemo/preferences/menu-config/selection-menu-open-in-new-tab 'false'
+		dconf write /org/nemo/preferences/show-advanced-permissions 'true'
+		/home/edwin/home/edwin/home/edwin/org/nemo/preferences/default-folder-viewer "'list-view'"
 		# dconf write /org/gnome/gnome-screenshot/auto-save-directory "'$HOME/Pictures/gnome-screenshot'" # TODO
 
 		dconf write /org/cinnamon/desktop/wm/preferences/mouse-button-modifier '"<Super>"'
