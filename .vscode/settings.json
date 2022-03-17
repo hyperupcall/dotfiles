@@ -12,5 +12,6 @@
 	"css.validate": false,
 	"editor.codeActionsOnSave": {
 		"source.fixAll": true
-	}
+	},
+	"esbonio.server.enabled": true
 }

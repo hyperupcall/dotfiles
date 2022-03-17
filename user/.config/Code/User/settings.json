@@ -12,7 +12,7 @@
 	"editor.codeActionsOnSave": {
 		"source.fixAll.shellcheck": false
 	},
-	"editor.codeLens": false,
+	"editor.codeLens": true,
 	"editor.cursorSmoothCaretAnimation": true,
 	"editor.cursorSurroundingLinesStyle": "all",
 	"editor.detectIndentation": true,
@@ -221,7 +221,8 @@
 		"first-heading-h1": false,
 		"first-line-heading": false,
 		"no-inline-html": false,
-		"no-duplicate-header": false
+		"no-duplicate-header": false,
+		"ol-prefix": false
 	},
 	"[yaml]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -241,8 +242,8 @@
 	"python.languageServer": "Pylance",
 	"[c]": {
 		"editor.defaultFormatter": "ms-vscode.cpptools",
-		"editor.insertSpaces": false,
-		"editor.tabSize": 3
+		"editor.insertSpaces": true,
+		"editor.tabSize": 2
 	},
 	"[cpp]": {
 		"editor.defaultFormatter": "ms-vscode.cpptools",
@@ -306,6 +307,8 @@
 	"cSpell.diagnosticLevel": "Hint",
 	"cSpell.userWords": [
 		"cmds",
+		"Cygwin",
+		"Deno",
 		"dirent",
 		"dirents",
 		"dotfile",
@@ -328,6 +331,7 @@
 		"printk",
 		"Roadmap",
 		"subdependencies",
+		"subshells",
 		"templating",
 		"wasm",
 		"wasmtime"
