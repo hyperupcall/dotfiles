@@ -10,7 +10,7 @@ task.build() {
 }
 
 task.update-subtree() {
-	git subtree -P vendor/bats-all pull 'https://github.com/hyperupcall/bats-all' HEAD
+	git subtree --squash -P vendor/bats-all pull 'https://github.com/hyperupcall/bats-all' HEAD
 }
 
 task.test() {
