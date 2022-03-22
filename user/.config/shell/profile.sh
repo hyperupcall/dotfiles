@@ -3,6 +3,7 @@
 # ------------------------- Basic ------------------------ #
 umask 022
 
+set -- # TODO: This shouldn't be necessary (something to do with Kitty?)
 . ~/.dots/xdg.sh
 
 # XDG variables should have been read by PAM from ~/.pam_environment

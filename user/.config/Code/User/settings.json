@@ -108,7 +108,7 @@
 	"search.smartCase": true,
 
 	"workbench.activityBar.visible": true,
-	"workbench.colorTheme": "Night Owl",
+	"workbench.colorTheme": "Material Theme Ocean High Contrast",
 	"workbench.commandPalette.history": 100,
 	"workbench.editor.closeOnFileDelete": true,
 	"workbench.editor.highlightModifiedTabs": true,
@@ -249,7 +249,7 @@
 		"editor.insertSpaces": true,
 		"editor.tabSize": 2
 	},
-	"C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, ColumnLimit: 120, AllowShortFunctionsOnASingleLine: None}",
+	"C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, AllowShortFunctionsOnASingleLine: Empty, AlwaysBreakTemplateDeclarations: Yes, ColumnLimit: 120 }",
 	"C_Cpp.clang_format_sortIncludes": true,
 	"clang-tidy.checks": [
 		"bugprone-*",
@@ -261,10 +261,14 @@
 		"cppcoreguidelines-*",
 		"-cppcoreguidelines-avoid-c-arrays",
 		"-cppcoreguidelines-avoid-magic-numbers",
+		"-cppcoreguidelines-macro-usage",
+		"-cppcoreguidelines-owning-memory",
+		"-cppcoreguidelines-pro-bounds-pointer-arithmetic",
+		"-cppcoreguidelines-pro-bounds-array-to-pointer-decay",
 		"google-*",
+		"-google-readability-braces-around-statements",
 		"-google-readability-todo",
 		"-google-runtime-references",
-		"-google-readability-braces-around-statements",
 		"misc-*",
 		"modernize-*",
 		"-modernize-avoid-c-arrays",
@@ -272,6 +276,7 @@
 		"performance-*",
 		"portability-*",
 		"readability-*",
+		"-readability-convert-member-functions-to-static",
 		"-readability-magic-numbers",
 		"-readability-braces-around-statements"
 	],
@@ -326,6 +331,7 @@
 		"mkdir",
 		"mongod",
 		"NOLINT",
+		"NOLINTNEXTLINE",
 		"prettierrc",
 		"printk",
 		"Roadmap",
@@ -382,7 +388,7 @@
 		"vscode-kubernetes.minikube-path.linux": "/home/edwin/.vs-kubernetes/tools/minikube/linux-amd64/minikube"
 	},
 	"workbench.colorTheme": "Monokai Pro",
-	"window.zoomLevel": -2,
 	"extensions.ignoreRecommendations": true,
-	"julia.symbolCacheDownload": true
+	"julia.symbolCacheDownload": true,
+	"window.zoomLevel": -1
 }

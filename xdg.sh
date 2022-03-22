@@ -3,7 +3,6 @@
 # @description My XDG Base Directory variables are set differently depending on
 # the operating system. This file is used during my dotfile bootstrap process
 # and by my 'dotfox' configuration
-
 __xdg_main() {
 	if [ -f /etc/os-release ]; then
 		while IFS='=' read -r __key __value; do
@@ -14,7 +13,7 @@ __xdg_main() {
 			fi
 		done < /etc/os-release; unset -v __key __value
 	else
-		printf '%s\n' "Error: xdg.sh: /etc/os-release not found. Exiting" >&2
+		printf '%s\n' "Error: xdg.sh: File /etc/os-release not found. Exiting" >&2
 		return 1
 	fi
 
