@@ -19,6 +19,11 @@ if command -v direnv &>/dev/null; then
 	eval "$(direnv hook bash)"
 fi
 
+# nodejs.bash
+if command -v node &>/dev/null; then
+	source <(node --completion-bash)
+fi
+
 # pipx.bash
 if command -v register-python-argcomplete &>/dev/null; then
     eval "$(register-python-argcomplete pipx)"
@@ -46,18 +51,18 @@ fi
 
 # _dependent.bash
 if command -v basalt &>/dev/null; then
-	# TODO: these don't work
 	basalt.load --global 'github.com/hedning/nix-bash-completions' '_nix'
-	# TODO: the below shouldn't be necessary
 	basalt.load --global 'github.com/dsifford/yarn-completion' 'yarn-completion.bash'
 
 	# complete-alias
 	basalt.load --global 'github.com/cykerway/complete-alias' 'complete_alias'
-	for alias_name in $(alias -p | while IFS= read -r line; do
+	for alias_name in $(
+		alias -p | while IFS= read -r line; do
 			line="${line#alias }"
 			line="${line%%=*}"
 			printf '%s\n' "$line"
-		done ); do
+		done
+	); do
 		complete -F _complete_alias "$alias_name"
 	done; unset alias_name
 fi

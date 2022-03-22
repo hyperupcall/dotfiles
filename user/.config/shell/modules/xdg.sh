@@ -118,6 +118,7 @@ export EM_CACHE="$XDG_CACHE_HOME/emscripten"
 
 # g
 export GOPATH="$XDG_DATA_HOME/gopath"
+export GOROOT="$XDG_DATA_HOME/goroot"
 _path_prepend "$GOPATH/bin"
 
 # gdb
@@ -482,7 +483,6 @@ export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
 
 # wine
 export WINEPREFIX="$XDG_DATA_HOME/wine"
-# wine winecfg # TODO
 
 # wolfram mathematica
 export MATHEMATICA_BASE="/usr/share/mathematica"

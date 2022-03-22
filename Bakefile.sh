@@ -9,6 +9,10 @@ task.build() {
 	sed 's/XTerm/UXTerm/g' xterm.Xresources >> uxterm.Xresources
 }
 
+task.update-subtree() {
+	git subtree -P vendor/bats-all pull 'https://github.com/hyperupcall/bats-all' HEAD
+}
+
 task.test() {
 	cd ./user/.config/shell/modules && bats -p .
 }

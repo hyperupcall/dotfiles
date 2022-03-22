@@ -139,7 +139,7 @@ function unlink {
 	}
 }
 
-# TODO: export all functions that do not begin with '_'?
+# FIXME: export all functions that do not begin with '_'?
 function _powershell_util_die {
 	Write-Host ""
 	return 1

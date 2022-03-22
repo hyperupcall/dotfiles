@@ -273,6 +273,9 @@ action() {
 		set-json-key "$file" '."menu-icon-size".value' '"36"'
 		set-json-key "$file" '."menu-label".value' '""'
 
+		local file="$HOME/.cinnamon/configs/calendar@cinnamon.org/17.json"
+		set-json-key "$file" '."use-custom-format".value' 'false'
+
 		dconf write /org/cinnamon/desktop/wm/preferences/mouse-button-modifier '"<Super>"'
 		dconf write /org/cinnamon/desktop/interface/clock-show-date 'true'
 		dconf write /org/cinnamon/desktop/keybindings/looking-glass-keybinding "['']"

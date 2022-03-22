@@ -1,2 +1,3 @@
-# TODO: test if command exists
-eval `direnv hook tcsh`
+if command -v direnv then
+	eval `direnv hook tcsh`
+endif

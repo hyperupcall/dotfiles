@@ -16,13 +16,12 @@ fi
 
 # pipx.zsh
 if command -v register-python-argcomplete &>/dev/null; then
-    autoload -U bashcompinit
-    bashcompinit # TODO
-    eval "$(register-python-argcomplete pipx)"
+	autoload -U bashcompinit
+	bashcompinit # TODO
+	eval "$(register-python-argcomplete pipx)"
 fi
 
 # zoxide.zsh
 if command -v zoxide &>/dev/null; then
 	eval "$(zoxide init zsh)"
 fi
-

@@ -1,12 +1,6 @@
 # shellcheck shell=bash
 
-util.ensure_bin perl
-
-# TODO: remove prompt (on unconfigured systems)
-# TODO: cleanup
-print.info "Installing perl"
-
-git clone https://github.com/tokuhirom/plenv "${XDG_DATA_HOME:-${HOME}/.local/share}/plenv"
+git clone https://github.com/tokuhirom/plenv ~/.dots/.repos/plenv
 git clone git://github.com/tokuhirom/Perl-Build.git "$(plenv root)/plugins/perl-build"
 
 # https://github.com/regnarg/urxvt-config-reload

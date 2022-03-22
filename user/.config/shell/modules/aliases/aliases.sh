@@ -149,7 +149,7 @@ alias ped='"$EDITOR" "$XDG_CONFIG_HOME/shell/profile.sh"'
 alias bso='. ~/.bashrc'
 alias bed='"$EDITOR" "$XDG_CONFIG_HOME/bash/bashrc.sh"'
 
-# apt # TODO: comment line
+# -------------------------- apt ------------------------- #
 alias aptup='sudo apt update'
 alias aptug='sudo apt upgrade'
 alias aptfug='sudo apt full-upgrade'
@@ -162,7 +162,7 @@ alias aptse='apt search'
 alias aptsh='apt show'
 alias aptl='apt list'
 
-# dpkg # TODO: comment line
+# ------------------------- dpkg ------------------------- #
 alias dl='dpkg -l'
 alias dW='dpkg -W'
 alias ds='dpkg -s'

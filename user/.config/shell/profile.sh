@@ -37,7 +37,7 @@ done
 unset -v d f
 
 # ---------------------- Environment --------------------- #
-# . "$XDG_CONFIG_HOME/shell/generated/aggregated.sh" # TODO
+# . "$XDG_CONFIG_HOME/shell/generated/aggregated.sh" # FIXME
 
 ({
 	if [ -z "$XDG_RUNTIME_DIR" ]; then

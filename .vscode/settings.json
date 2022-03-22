@@ -13,5 +13,9 @@
 	"editor.codeActionsOnSave": {
 		"source.fixAll": true
 	},
-	"esbonio.server.enabled": true
+	"esbonio.server.enabled": true,
+	"search.exclude": {
+		"**/.home/**": true
+	},
+	"commentAnchors.workspace.excludeFiles": "**/{.git,.home}/**"
 }

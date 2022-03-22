@@ -33,6 +33,17 @@ util.ensure_bin() {
 	fi
 }
 
+util.clone() {
+	local repo="$1"
+	local dir="$2"
+
+	if [ ! -d "$dir" ]; then
+		print.info "Cloning '$repo' to $dir"
+		git clone "$repo" "$dir"
+	fi
+
+}
+
 util.show_help() {
 	cat <<-EOF
 		Usage:

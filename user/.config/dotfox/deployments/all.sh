@@ -15,8 +15,6 @@ fi
 
 declare -ra dotfiles=(
 	home:'.alsoftrc'
-	home:'.config/conky' # TODO
-	home:'.config/wtf' # TODO
 	home:'.cpan/CPAN/MyConfig.pm'
 	home:'.gnupg/dirmngr.conf'
 	home:'.gnupg/gpg.conf'
@@ -163,7 +161,6 @@ declare -ra dotfiles=(
 	cfg:'urlwatch'
 	cfg:'urxvt'
 	# cfg:'user-dirs.dirs' # Handled by 'dotmgr idempotent'
-	# cfg:'user-dirs.locale' # TODO
 	cfg:'viewnior'
 	cfg:'vim'
 	cfg:'wget'

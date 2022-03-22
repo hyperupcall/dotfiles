@@ -20,6 +20,7 @@
 
 # source "$XDG_CONFIG_HOME/bash/frameworks/oh-my-bash.sh"
 # source "$XDG_CONFIG_HOME/bash/frameworks/bash-it.sh"
+# source "$HOME/.dots/.repos/blesh/out/ble.sh"
 
 
 #
@@ -35,7 +36,7 @@ export FCEDIT="$EDITOR"
 unset FIGNORE
 unset GLOBIGNORE
 export HISTCONTROL="ignorespace:ignoredups"
-HISTFILE="$XDG_STATE_HOME/history/bash_history" # TODO: bug with exporting this and starship
+HISTFILE="$XDG_STATE_HOME/history/bash_history" # FIXME: bug with exporting this and starship
 export HISTSIZE="-1"
 export HISTFILESIZE="-1"
 export HISTIGNORE="ls:[bf]g:pwd:clear*:exit*:cd*|mkcd*|mkt*"
@@ -159,7 +160,6 @@ if command -v basalt &>/dev/null; then
 	}
 fi
 
-#source "$HOME/.dots/.repos/blesh/out/ble.sh" # TODO
 source "$XDG_CONFIG_HOME/shell/modules/line-editing.sh"
 source "$XDG_CONFIG_HOME/bash/modules/readline.sh"
 source "$XDG_CONFIG_HOME/bash/modules/util.sh"

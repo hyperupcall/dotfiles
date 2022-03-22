@@ -42,7 +42,7 @@ function command-bootstrap() {
 	winget install --id Microsoft.PowerToys --source winget
 
 	Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
-	
+
 	Ensure-ScoopBucket -Name extras
 	Ensure-ScoopBucket -Name versions
 	Ensure-ScoopBucket -Name php
@@ -128,7 +128,7 @@ function command-bootstrap() {
 }
 
 function command-transfer() {
-	$ErrorActionPreference = 'Stop' # TODO
+	$ErrorActionPreference = 'Stop' # FIXME
 
 	$driveLetter = Read-Host -Prompt "Drive letter?"
 
@@ -142,7 +142,7 @@ function command-transfer() {
 
 	if (!(Test-Path "$gpgKeysFile")) {
 		Write-Host "GPG keyfile not found"
-		return 1 # TODO: does not translate to exit code of whole program; prints '1' to console
+		return 1 # FIXME: does not translate to exit code of whole program; prints '1' to console
 	}
 
 	# ssh keys
@@ -161,7 +161,7 @@ function command-transfer() {
 	}
 
 	# gpg keys
-	if ((Read-Host -Prompt "Copy gpg keys? (y/n)") -eq "y") { 
+	if ((Read-Host -Prompt "Copy gpg keys? (y/n)") -eq "y") {
 		$gpgTmp = Join-Path -Path "$HOME" -ChildPath ".ssh/tmp-gpg"
 		age --decrypt --output "$gpgTmp" "$gpgKeysFile"
 		if (!$?) {

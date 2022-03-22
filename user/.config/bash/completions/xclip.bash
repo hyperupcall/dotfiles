@@ -1,10 +1,7 @@
 # shellcheck shell=bash
 
-# TODO: BUG: after completing option, if click space and <tab> will rewrite the
-# current option
-
-# TODO: BUG: since xclip affects files, should only offer option autocomplete
-# if type dash
+# FIXME: after completing option, if click space and <tab> will rewrite the current option
+# FIXME: since xclip affects files, should only offer option autocomplete if type dash
 
 _xclip() {
 	COMPREPLY=()

@@ -25,8 +25,8 @@ disabled = false
 
 [memory_usage]
 disabled = false
-# show_percentage = true TODO
-# show_swap = true TODO
+# show_percentage = true
+# show_swap = true
 threshold = 30
 style = "bold dimmed green"
 
