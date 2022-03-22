@@ -264,7 +264,10 @@ action() {
 
 	if [ "$XDG_SESSION_DESKTOP" = 'cinnamon' ]; then
 		local file="$HOME/.cinnamon/configs/menu@cinnamon.org/0.json"
-		set-json-key "$file" '."menu-icon".value' '"/storage/ur/storage_home/Pics/Icons/Panda1_Transprent.png"'
+		local image=
+		for image in '"/storage/ur/storage_home/Pics/Icons/Panda1_Transprent.png"' "\"$HOME/Dropbox/Pictures/Icons/Panda1_Transparent.png\""; do
+			set-json-key "$file" '."menu-icon".value' "$image"
+		done; unset -v image
 		set-json-key "$file" '."menu-icon-size".value' '"36"'
 		set-json-key "$file" '."menu-label".value' '""'
 
