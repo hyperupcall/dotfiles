@@ -263,6 +263,8 @@ action() {
 	dconf write /org/gnome/gnome-screenshot/auto-save-directory "'$HOME/.dots/.home/Pictures/Screenshots'"
 
 	if [ "$XDG_SESSION_DESKTOP" = 'cinnamon' ]; then
+		# dconf write /org/cinnamon/enabled-applets "['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:1:separator@cinnamon.org:1', 'panel1:left:2:expo@cinnamon.org:2', 'panel1:left:3:show-desktop@cinnamon.org:3', 'panel1:left:4:separator@cinnamon.org:4', 'panel1:left:5:grouped-window-list@cinnamon.org:5', 'panel1:right:1:notifications@cinnamon.org:6', 'panel1:right:2:workspace-switcher@cinnamon.org:7', 'panel1:right:3:windows-quick-list@cinnamon.org:8', 'panel1:right:4:separator@cinnamon.org:9', 'panel1:right:5:systray@cinnamon.org:10', 'panel1:right:6:separator@cinnamon.org:11', 'panel1:right:7:removable-drives@cinnamon.org:12', 'panel1:right:8:network@cinnamon.org:13', 'panel1:right:9:sound@cinnamon.org:14', 'panel1:right:10:power@cinnamon.org:15', 'panel1:right:11:inhibit@cinnamon.org:16', 'panel1:right:12:calendar@cinnamon.org:17', 'panel1:right:13:user@cinnamon.org:18', 'panel1:right:0:keyboard@cinnamon.org:19']"
+
 		local file="$HOME/.cinnamon/configs/menu@cinnamon.org/0.json"
 		local image=
 		for image in '"/storage/ur/storage_home/Pics/Icons/Panda1_Transprent.png"' "\"$HOME/Dropbox/Pictures/Icons/Panda1_Transparent.png\""; do
