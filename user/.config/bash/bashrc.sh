@@ -3,6 +3,8 @@
 # ~/.bashrc
 #
 
+return
+
 # Ensure execution returns if bash is non-interactive
 [[ $- != *i* ]] && [ ! -t 0 ] && return
 
@@ -85,6 +87,7 @@ set -o noclobber
 set -o notify
 set -o physical
 
+return
 
 #
 # ─── PS1 ────────────────────────────────────────────────────────────────────────

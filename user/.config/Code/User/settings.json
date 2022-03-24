@@ -17,6 +17,7 @@
 	"editor.cursorSurroundingLinesStyle": "all",
 	"editor.detectIndentation": true,
 	"editor.find.addExtraSpaceOnTop": false,
+	"editor.find.autoFindInSelection": "multiline",
 	"editor.fontFamily": "'Droid Sans Mono', 'Fira Sans Mono', 'monospace'",
 	"editor.fontLigatures": true,
 	"editor.fontSize": 16,
@@ -64,7 +65,7 @@
 		"*.jscript": "java",
 		"*.sublime-snippet": "xml"
 	},
-	"files.eol": "\n",
+	// "files.eol": "\n",
 	"files.exclude": {
 		"**/.git": false,
 		"**/.hg": false,
@@ -72,12 +73,12 @@
 		"**/.svn": false,
 		"**/CVS": false
 	},
-	"files.insertFinalNewline": true,
+	// "files.insertFinalNewline": true,
 	"files.maxMemoryForLargeFilesMB": 2048,
 	"files.participants.timeout": 2000,
 	"files.simpleDialog.enable": true,
-	"files.trimFinalNewlines": true,
-	"files.trimTrailingWhitespace": true,
+	// "files.trimFinalNewlines": true, // Enabling this and similar breaks EditorConfig
+	// "files.trimTrailingWhitespace": true,
 	"files.watcherExclude": {
 		"**/node_modules/**": true,
 		"**/web_modules/**": true,

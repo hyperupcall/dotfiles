@@ -249,74 +249,77 @@ action() {
 	}
 
 	if [ -n "$(dconf list /org/nemo/)" ]; then
-		dconf write /org/nemo/preferences/menu-config/selection-menu-copy 'false'
-		dconf write /org/nemo/preferences/menu-config/selection-menu-cut 'false'
-		dconf write /org/nemo/preferences/menu-config/selection-menu-paste 'false'
-		dconf write /org/nemo/preferences/menu-config/selection-menu-duplicate 'false'
-		dconf write /org/nemo/preferences/menu-config/selection-menu-open-in-new-tab 'false'
-		dconf write /org/nemo/preferences/show-advanced-permissions 'true'
-		dconf write /org/nemo/preferences/default-folder-viewer "'list-view'"
+		gsettings set org.nemo.preferences.menu-config selection-menu-copy 'false'
+		gsettings set org.nemo.preferences.menu-config selection-menu-cut 'false'
+		gsettings set org.nemo.preferences.menu-config selection-menu-paste 'false'
+		gsettings set org.nemo.preferences.menu-config selection-menu-duplicate 'false'
+		gsettings set org.nemo.preferences.menu-config selection-menu-open-in-new-tab 'false'
+		gsettings set org.nemo.preferences show-advanced-permissions 'true'
+		gsettings set org.nemo.preferences default-folder-viewer "'list-view'"
 	fi
 
-	dconf write /org/gnome/libgnomekbd/keyboard/layouts "['us', 'us\tdvorak']"
-	dconf write /org/gnome/libgnomekbd/keyboard/options "['grp\tgrp:win_space_toggle']"
-	dconf write /org/gnome/gnome-screenshot/auto-save-directory "'$HOME/.dots/.home/Pictures/Screenshots'"
+	gsettings set org.gnome.libgnomekbd.keyboard layouts "['us', 'us\tdvorak']"
+	gsettings set org.gnome.libgnomekbd.keyboard options "['grp\tgrp:win_space_toggle']"
+	gsettings set org.gnome.gnome-screenshot auto-save-directory "'$HOME/.dots/.home/Pictures/Screenshots'"
 
 	if [ "$XDG_SESSION_DESKTOP" = 'cinnamon' ]; then
-		# dconf write /org/cinnamon/enabled-applets "['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:1:separator@cinnamon.org:1', 'panel1:left:2:expo@cinnamon.org:2', 'panel1:left:3:show-desktop@cinnamon.org:3', 'panel1:left:4:separator@cinnamon.org:4', 'panel1:left:5:grouped-window-list@cinnamon.org:5', 'panel1:right:1:notifications@cinnamon.org:6', 'panel1:right:2:workspace-switcher@cinnamon.org:7', 'panel1:right:3:windows-quick-list@cinnamon.org:8', 'panel1:right:4:separator@cinnamon.org:9', 'panel1:right:5:systray@cinnamon.org:10', 'panel1:right:6:separator@cinnamon.org:11', 'panel1:right:7:removable-drives@cinnamon.org:12', 'panel1:right:8:network@cinnamon.org:13', 'panel1:right:9:sound@cinnamon.org:14', 'panel1:right:10:power@cinnamon.org:15', 'panel1:right:11:inhibit@cinnamon.org:16', 'panel1:right:12:calendar@cinnamon.org:17', 'panel1:right:13:user@cinnamon.org:18', 'panel1:right:0:keyboard@cinnamon.org:19']"
+		# gsettings set /org/cinnamon/enabled-applets "['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:1:separator@cinnamon.org:1', 'panel1:left:2:expo@cinnamon.org:2', 'panel1:left:3:show-desktop@cinnamon.org:3', 'panel1:left:4:separator@cinnamon.org:4', 'panel1:left:5:grouped-window-list@cinnamon.org:5', 'panel1:right:1:notifications@cinnamon.org:6', 'panel1:right:2:workspace-switcher@cinnamon.org:7', 'panel1:right:3:windows-quick-list@cinnamon.org:8', 'panel1:right:4:separator@cinnamon.org:9', 'panel1:right:5:systray@cinnamon.org:10', 'panel1:right:6:separator@cinnamon.org:11', 'panel1:right:7:removable-drives@cinnamon.org:12', 'panel1:right:8:network@cinnamon.org:13', 'panel1:right:9:sound@cinnamon.org:14', 'panel1:right:10:power@cinnamon.org:15', 'panel1:right:11:inhibit@cinnamon.org:16', 'panel1:right:12:calendar@cinnamon.org:17', 'panel1:right:13:user@cinnamon.org:18', 'panel1:right:0:keyboard@cinnamon.org:19']"
 
 		local file="$HOME/.cinnamon/configs/menu@cinnamon.org/0.json"
-		local image=
-		for image in '"/storage/ur/storage_home/Pics/Icons/Panda1_Transprent.png"' "\"$HOME/Dropbox/Pictures/Icons/Panda1_Transparent.png\""; do
-			set-json-key "$file" '."menu-icon".value' "$image"
-		done; unset -v image
+		local image_file=
+		for image_file in '/storage/ur/storage_home/Pics/Icons/Panda1_Transprent.png' "$HOME/Dropbox/Pictures/Icons/Panda1_Transparent.png"; do
+			if [ -f "$image_file" ]; then
+				set-json-key "$file" '."menu-icon".value' "\"$image_file\""
+			fi
+		done; unset -v image_file
 		set-json-key "$file" '."menu-icon-size".value' '"36"'
 		set-json-key "$file" '."menu-label".value' '""'
+
 
 		local file="$HOME/.cinnamon/configs/calendar@cinnamon.org/17.json"
 		set-json-key "$file" '."use-custom-format".value' 'false'
 
-		dconf write /org/cinnamon/desktop/wm/preferences/mouse-button-modifier '"<Super>"'
-		dconf write /org/cinnamon/desktop/interface/clock-show-date 'true'
-		dconf write /org/cinnamon/desktop/keybindings/looking-glass-keybinding "['']"
-		dconf write /org/cinnamon/desktop/keybindings/magnifier-zoom-in "['']"
-		dconf write /org/cinnamon/desktop/keybindings/magnifier-zoom-out "['']"
-		dconf write /org/cinnamon/desktop/keybindings/media-keys/area-screenshot "['<Super><Shift>p']"
-		dconf write /org/cinnamon/desktop/keybindings/media-keys/area-screenshot-clip "['<Super>p']"
-		dconf write /org/cinnamon/desktop/keybindings/media-keys/restart-cinnamon "['']"
-		dconf write /org/cinnamon/desktop/keybindings/media-keys/screenreader "['']"
-		dconf write /org/cinnamon/desktop/keybindings/media-keys/screenreader "['XF86ScreenSaver']" # Default includes '<Control><Alt>l'
-		dconf write /org/cinnamon/desktop/keybindings/media-keys/screensaver "['']"
-		dconf write /org/cinnamon/desktop/keybindings/media-keys/video-outputs "['XF86Display']" # Default includes '<Super>p'
-		dconf write /org/cinnamon/desktop/keybindings/media-keys/screenshot "['<Super><Control><Shift>p']"
-		dconf write /org/cinnamon/desktop/keybindings/media-keys/screenshot-clip "['<Super><Control>p']"
-		dconf write /org/cinnamon/desktop/keybindings/media-keys/terminal "['<Super>Return']"
-		dconf write /org/cinnamon/desktop/keybindings/media-keys/shutdown "['XF86PowerOff']"
-		dconf write /org/cinnamon/desktop/keybindings/media-keys/video-rotation-lock "['']"
-		dconf write /org/cinnamon/desktop/keybindings/media-keys/window-screenshot "['<Super><Alt>p']"
-		dconf write /org/cinnamon/desktop/keybindings/media-keys/window-screenshot-clip "['<Super><Alt><Shift>p']"
+		gsettings set org.cinnamon.desktop.wm.preferences mouse-button-modifier '"<Super>"'
+		gsettings set org.cinnamon.desktop.interface clock-show-date 'true'
+		gsettings set org.cinnamon.desktop.keybindings looking-glass-keybinding "['']"
+		gsettings set org.cinnamon.desktop.keybindings magnifier-zoom-in "['']"
+		gsettings set org.cinnamon.desktop.keybindings magnifier-zoom-out "['']"
+		gsettings set org.cinnamon.desktop.keybindings media-keys.area-screenshot "['<Super><Shift>p']"
+		gsettings set org.cinnamon.desktop.keybindings media-keys.area-screenshot-clip "['<Super>p']"
+		gsettings set org.cinnamon.desktop.keybindings media-keys.restart-cinnamon "['']"
+		gsettings set org.cinnamon.desktop.keybindings media-keys.screenreader "['']"
+		gsettings set org.cinnamon.desktop.keybindings media-keys.screenreader "['XF86ScreenSaver']" # Default includes '<Control><Alt>l'
+		gsettings set org.cinnamon.desktop.keybindings media-keys.screensaver "['']"
+		gsettings set org.cinnamon.desktop.keybindings media-keys.video-outputs "['XF86Display']" # Default includes '<Super>p'
+		gsettings set org.cinnamon.desktop.keybindings media-keys.screenshot "['<Super><Control><Shift>p']"
+		gsettings set org.cinnamon.desktop.keybindings media-keys.screenshot-clip "['<Super><Control>p']"
+		gsettings set org.cinnamon.desktop.keybindings media-keys.terminal "['<Super>Return']"
+		gsettings set org.cinnamon.desktop.keybindings media-keys.shutdown "['XF86PowerOff']"
+		gsettings set org.cinnamon.desktop.keybindings media-keys.video-rotation-lock "['']"
+		gsettings set org.cinnamon.desktop.keybindings media-keys.window-screenshot "['<Super><Alt>p']"
+		gsettings set org.cinnamon.desktop.keybindings media-keys.window-screenshot-clip "['<Super><Alt><Shift>p']"
 		# General window manager hotkeys
-		dconf write /org/cinnamon/desktop/keybindings/wm/toggle-fullscreen "['<Super><Shift>f']"
-		dconf write /org/cinnamon/desktop/keybindings/wm/toggle-maximized "['<Super>f']"
+		gsettings set org.cinnamon.desktop.keybindings.wm toggle-fullscreen "['<Super><Shift>f']"
+		gsettings set org.cinnamon.desktop.keybindings.wm toggle-maximized "['<Super>f']"
 		# Navigating workspaces
-		dconf write /org/cinnamon/desktop/keybindings/wm/switch-to-workspace-right "['<Super><Control>l', '<Super><Control>Up']"
-		dconf write /org/cinnamon/desktop/keybindings/wm/switch-to-workspace-down "['<Super><Control>j', '<Super><Control>Down']"
-		dconf write /org/cinnamon/desktop/keybindings/wm/switch-to-workspace-left "['<Super><Control>h', '<Super><Control>Left']"
-		dconf write /org/cinnamon/desktop/keybindings/wm/switch-to-workspace-up "['<Super><Control>k', '<Super><Control>Up']"
+		gsettings set org.cinnamon.desktop.keybindings.wm switch-to-workspace-right "['<Super><Control>l', '<Super><Control>Up']"
+		gsettings set org.cinnamon.desktop.keybindings.wm switch-to-workspace-down "['<Super><Control>j', '<Super><Control>Down']"
+		gsettings set org.cinnamon.desktop.keybindings.wm switch-to-workspace-left "['<Super><Control>h', '<Super><Control>Left']"
+		gsettings set org.cinnamon.desktop.keybindings.wm switch-to-workspace-up "['<Super><Control>k', '<Super><Control>Up']"
 		# Moving window to workspace
-		dconf write /org/cinnamon/desktop/keybindings/wm/move-to-workspace-up "['<Super><Control><Shift>k', '<Super><Control><Shift>Up']"
-		dconf write /org/cinnamon/desktop/keybindings/wm/move-to-workspace-right "['<Super><Control><Shift>l', '<Super><Control><Shift>Right']"
-		dconf write /org/cinnamon/desktop/keybindings/wm/move-to-workspace-down "['<Super><Control><Shift>j', '<Super><Control><Shift>Down']"
-		dconf write /org/cinnamon/desktop/keybindings/wm/move-to-workspace-left "['<Super><Control><Shift>h', '<Super><Control><Shift>Left']"
+		gsettings set org.cinnamon.desktop.keybindings.wm move-to-workspace-up "['<Super><Control><Shift>k', '<Super><Control><Shift>Up']"
+		gsettings set org.cinnamon.desktop.keybindings.wm move-to-workspace-right "['<Super><Control><Shift>l', '<Super><Control><Shift>Right']"
+		gsettings set org.cinnamon.desktop.keybindings.wm move-to-workspace-down "['<Super><Control><Shift>j', '<Super><Control><Shift>Down']"
+		gsettings set org.cinnamon.desktop.keybindings.wm move-to-workspace-left "['<Super><Control><Shift>h', '<Super><Control><Shift>Left']"
 		# Moving window in workspace, `push-snap` is identical to `push-tile` except for the fact that snapped windows won't get covered by other maximized windows
-		dconf write /org/cinnamon/desktop/keybindings/wm/push-snap-up "['']"
-		dconf write /org/cinnamon/desktop/keybindings/wm/push-snap-right "['']"
-		dconf write /org/cinnamon/desktop/keybindings/wm/push-snap-down "['']"
-		dconf write /org/cinnamon/desktop/keybindings/wm/push-snap-left "['']"
-		dconf write /org/cinnamon/desktop/keybindings/wm/push-tile-up "['<Super><Alt>k', '<Super><Alt>Up']"
-		dconf write /org/cinnamon/desktop/keybindings/wm/push-tile-right "['<Super><Alt>l', '<Super><Alt>Right']"
-		dconf write /org/cinnamon/desktop/keybindings/wm/push-tile-down "['<Super><Alt>j', '<Super><Alt>Down']"
-		dconf write /org/cinnamon/desktop/keybindings/wm/push-tile-left "['<Super><Alt>h', '<Super><Alt>Left']"
+		gsettings set org.cinnamon.desktop.keybindings.wm push-snap-up "['']"
+		gsettings set org.cinnamon.desktop.keybindings.wm push-snap-right "['']"
+		gsettings set org.cinnamon.desktop.keybindings.wm push-snap-down "['']"
+		gsettings set org.cinnamon.desktop.keybindings.wm push-snap-left "['']"
+		gsettings set org.cinnamon.desktop.keybindings.wm push-tile-up "['<Super><Alt>k', '<Super><Alt>Up']"
+		gsettings set org.cinnamon.desktop.keybindings.wm push-tile-right "['<Super><Alt>l', '<Super><Alt>Right']"
+		gsettings set org.cinnamon.desktop.keybindings.wm push-tile-down "['<Super><Alt>j', '<Super><Alt>Down']"
+		gsettings set org.cinnamon.desktop.keybindings.wm push-tile-left "['<Super><Alt>h', '<Super><Alt>Left']"
 	elif [ -z "$XDG_SESSION_DESKTOP" ]; then
 		print.warn "Variable '\$XDG_SESSION_DESKTOP' is empty"
 	fi
