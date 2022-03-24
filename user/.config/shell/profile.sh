@@ -1,11 +1,9 @@
 # shellcheck shell=sh
 
 # ------------------------- Basic ------------------------ #
-return
 
 umask 022
 
-set -- # TODO: This shouldn't be necessary (something to do with Kitty?)
 . ~/.dots/xdg.sh
 
 # XDG variables should have been read by PAM from ~/.pam_environment
@@ -13,8 +11,6 @@ if [ -z "$XDG_CONFIG_HOME" ] || [ -z "$XDG_DATA_HOME" ] || [ -z "$XDG_STATE_HOME
 	printf '%s\n' "Error: XDG Base Directory variables are not set. They should have been set by PAM" >&2
 	return 1
 fi
-
-return
 
 . "$XDG_CONFIG_HOME/shell/modules/util.sh"
 . "$XDG_CONFIG_HOME/shell/modules/env.sh"

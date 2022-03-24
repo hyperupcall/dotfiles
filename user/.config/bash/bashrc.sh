@@ -3,8 +3,6 @@
 # ~/.bashrc
 #
 
-return
-
 # Ensure execution returns if bash is non-interactive
 [[ $- != *i* ]] && [ ! -t 0 ] && return
 
@@ -50,6 +48,7 @@ unset MAIL
 unset MAILCHECK
 unset MAILPATH
 
+
 #
 # ─── SHELL OPTIONS ──────────────────────────────────────────────────────────────
 #
@@ -87,7 +86,6 @@ set -o noclobber
 set -o notify
 set -o physical
 
-return
 
 #
 # ─── PS1 ────────────────────────────────────────────────────────────────────────
@@ -136,6 +134,7 @@ else
 fi
 
 unset -f is8Colors is256Colors is16MillionColors
+
 
 #
 # ─── MISCELLANEOUS ──────────────────────────────────────────────────────────────
