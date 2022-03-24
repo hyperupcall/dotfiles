@@ -109,7 +109,6 @@
 	"search.smartCase": true,
 
 	"workbench.activityBar.visible": true,
-	"workbench.colorTheme": "Material Theme Ocean High Contrast",
 	"workbench.commandPalette.history": 100,
 	"workbench.editor.closeOnFileDelete": true,
 	"workbench.editor.highlightModifiedTabs": true,
@@ -122,11 +121,13 @@
 		"*.ico": "luna.editor"
 	},
 	"workbench.enableExperiments": false,
-	"workbench.iconTheme": "material-icon-theme",
+	"workbench.iconTheme": "Monokai Pro Icons",
 	"workbench.quickOpen.closeOnFocusLost": false,
 	"workbench.startupEditor": "none",
 	"workbench.tips.enabled": false,
 	"workbench.tree.indent": 12,
+	"workbench.welcomePage.preferReducedMotion": false,
+	"workbench.welcomePage.walkthroughs.openOnInstall": false,
 
 	"update.mode": "manual",
 
@@ -305,6 +306,7 @@
 	"java.help.showReleaseNotes": false,
 	"gitlens.showWhatsNewAfterUpgrades": false,
 	"update.showReleaseNotes": false,
+	"material-icon-theme.showWelcomeMessage": false,
 
 	// UNSORTED
 

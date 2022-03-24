@@ -43,6 +43,6 @@ Running `dotmgr bootstrap-stage2` installs [dotfox](https://github.com/hyperupca
 . ~/.bootstrap/stage2.sh
 dotmgr action # Choose 'Deploy Dotfiles'
 . ~/.bashrc
-dotmgr action # Choose 'Instalal packages'
+dotmgr action # Choose 'Install packages'
 dotmgr action # Choose 'Prune and Resymlink'
 ```

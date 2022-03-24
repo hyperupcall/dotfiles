@@ -131,7 +131,9 @@ subcommand() {
 		$'\n'|$'\x0d')
 			tty.fullscreen_deinit
 			source "$DOTMGR_ROOT_DIR/src/actions/${files[$selected]}.sh"
-			action
+			if ! action; then
+				print.die "Failed to execute action"
+			fi
 			exit
 			;;
 		1|2|3|4|5|6|7|8|9)

@@ -13,12 +13,12 @@ action() {
 		print.info 'Updating, upgrading, and installing packages'
 		sudo pacman -Syyu --noconfirm
 
-		sudo pacman -Syu --noconfirm base-devel
-		sudo pacman -Syu --noconfirm lvm2
+		sudo pacman -S --noconfirm base-devel
+		sudo pacman -S --noconfirm lvm2
 		# sudo pacman -Syu --noconfirm pkg-config openssl
 		# sudo pacman -Syu --noconfirm browserpass-chrome
 
-		sudo pacman -Syu --noconfirm rsync xclip
+		sudo pacman -S --noconfirm rsync xclip
 	elif util.is_cmd 'apt-get'; then
 		print.info 'Updating, upgrading, and installing packages'
 		sudo apt-get -y update
