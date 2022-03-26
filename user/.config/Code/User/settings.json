@@ -218,11 +218,12 @@
 	"markdownlint.run": "onSave",
 	"markdownlint.focusMode": true,
 	"markdownlint.config": {
-		"no-hard-tabs": false,
 		"first-heading-h1": false,
 		"first-line-heading": false,
-		"no-inline-html": false,
+		"no-bare-urls": false,
 		"no-duplicate-header": false,
+		"no-hard-tabs": false,
+		"no-inline-html": false,
 		"ol-prefix": false
 	},
 	"[yaml]": {
@@ -251,7 +252,7 @@
 		"editor.insertSpaces": true,
 		"editor.tabSize": 2
 	},
-	"C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, AllowShortFunctionsOnASingleLine: Empty, AlwaysBreakTemplateDeclarations: Yes, ColumnLimit: 120 }",
+	"C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, AlignEscapedNewlines: Left, AllowShortFunctionsOnASingleLine: Empty, AlwaysBreakTemplateDeclarations: Yes, ColumnLimit: 120 }",
 	"C_Cpp.clang_format_sortIncludes": true,
 	"clang-tidy.checks": [
 		"bugprone-*",
@@ -342,6 +343,7 @@
 		"subdependencies",
 		"subshells",
 		"templating",
+		"UEFI",
 		"wasm",
 		"wasmtime"
 	],
@@ -394,5 +396,6 @@
 	"workbench.colorTheme": "Monokai Pro",
 	"extensions.ignoreRecommendations": true,
 	"julia.symbolCacheDownload": true,
-	"window.zoomLevel": -1
+	"window.zoomLevel": -1,
+	"gitlens.codeLens.enabled": false
 }

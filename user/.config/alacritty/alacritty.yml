@@ -809,21 +809,8 @@ size: 12.0
 
 debug:
 # Display the time it takes to redraw each frame.
-#render_timer: false
-
-# Keep the log file after quitting Alacritty.
+  # render_timer: false
+# log_level: Warn # (Off, Error, Warn, Info, Debug, Trace)
   persistent_logging: true
-
-# Log level
-#
-# Values for `log_level`:
-#   - Off
-#   - Error
-#   - Warn
-#   - Info
-#   - Debug
-#   - Trace
-#log_level: Warn
-
 # Print all received window events.
-#print_events: false
+  # print_events: false
