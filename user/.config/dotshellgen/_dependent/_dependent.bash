@@ -1,7 +1,4 @@
 if command -v basalt &>/dev/null; then
-	# basalt.load --global 'github.com/hedning/nix-bash-completions' '_nix'
-	basalt.load --global 'github.com/dsifford/yarn-completion' 'yarn-completion.bash'
-
 	# complete-alias
 	basalt.load --global 'github.com/cykerway/complete-alias' 'complete_alias'
 	if declare -F _complete_alias &>/dev/null; then

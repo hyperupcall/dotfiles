@@ -51,5 +51,3 @@ action() {
 	print.info 'Installing Basalt packages globally'
 	basalt global add hyperupcall/choose hyperupcall/autoenv hyperupcall/dotshellextract hyperupcall/dotshellgen
 	basalt global add cykerway/complete-alias rcaloras/bash-preexec
-	basalt global add hedning/nix-bash-completions dsifford/yarn-completion
-}
