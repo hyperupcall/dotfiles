@@ -26,8 +26,7 @@ __xdg_main() {
 		__xdg_flag_value='set-type'
 		;;
 	*)
-		printf '%s\n' "Error: xdg.sh: An invalid flag was specified. Exiting" >&2
-		return 1
+		printf '%s\n' "Warning: xdg.sh: An invalid flag was specified ($__arg). Defaulting to '--export-vars'" >&2
 		;;
 	esac done; unset -v __arg
 
