@@ -4,5 +4,4 @@ source "${0%/*}/.hookah/lib.sh"
 hookah.init
 
 hookah.run ./bake build
-
 hookah.run ./bake test
