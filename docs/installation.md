@@ -37,7 +37,7 @@ The `stage0.sh` script clones this repository, and creates a `stage1.sh` file, a
 dotmgr bootstrap-stage1
 ```
 
-Running `dotmgr bootstrap-stage2` installs [dotfox](https://github.com/hyperupcall/dotfox), [Basalt](https://github.com/hyperupcall/basalt), [Nim](https://nim-lang.org), and creates a `stage2.sh` file, among other things to `~/.bootstrap`. Sourcing `stage2.sh` adds the directories containing these programs to the PATH
+Running `dotmgr bootstrap-stage1` installs [dotfox](https://github.com/hyperupcall/dotfox), [Basalt](https://github.com/hyperupcall/basalt), [Nim](https://nim-lang.org), and creates a `stage2.sh` file, among other things in `~/.bootstrap`. Sourcing `stage2.sh` adds the directories containing these programs to the PATH
 
 ```sh
 . ~/.bootstrap/stage2.sh
@@ -45,4 +45,6 @@ dotmgr action # Choose 'Deploy Dotfiles'
 . ~/.bashrc
 dotmgr action # Choose 'Install packages'
 dotmgr action # Choose 'Prune and Resymlink'
+
+cd ~/.dots && hookah refresh
 ```

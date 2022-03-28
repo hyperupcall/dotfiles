@@ -1,11 +1,11 @@
-========
+====
 dots
-========
+====
 
-My dots maintained with https://github.com/hyperupcall/dotfox
+My Dotties! ^_^
 
-Dotfiles
-========
+Summary
+=======
 
 ::
 
@@ -22,6 +22,6 @@ See `Installation <./docs/installation.md>`_ and `Getting Started <./docs/gettin
 Auxiliary Utilities
 -------------------
 
-- https://github.com/hyperupcall/dotfox
-- https://github.com/hyperupcall/themer
-- https://github.com/hyperupcall/choose
+- `hyperupcall/dotfox <https://github.com/hyperupcall/dotfox>`_
+- `hyperupcall/themer <https://github.com/hyperupcall/themer>`_
+- `hyperupcall/choose <https://github.com/hyperupcall/choose>`_

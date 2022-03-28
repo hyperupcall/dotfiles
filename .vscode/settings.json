@@ -17,5 +17,6 @@
 	"search.exclude": {
 		"**/.home/**": true
 	},
-	"commentAnchors.workspace.excludeFiles": "**/{.git,.home}/**"
+	"commentAnchors.workspace.excludeFiles": "**/{.git,.home}/**",
+	"esbonio.sphinx.confDir": ""
 }
