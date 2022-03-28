@@ -160,7 +160,7 @@ action() {
 		must_link "$storage_other/fonts" "$XDG_CONFIG_HOME/fonts"
 		must_link "$storage_other/password-store" "$XDG_DATA_HOME/password-store"
 	else
-		cp -f "$HOME/.dots/user/.config/user-dirs.dirs/user-dirs-regular.conf" "$XDG_CONFIG_HOME/user-dirs.dirs"
+		cp -f "$HOME/.dots/user/.config/user-dirs.dirs/user-dirs-default.conf" "$XDG_CONFIG_HOME/user-dirs.dirs"
 
 		# XDG User Directories
 		local dir=
@@ -263,20 +263,20 @@ action() {
 		gsettings set org.cinnamon.desktop.keybindings looking-glass-keybinding "['']"
 		gsettings set org.cinnamon.desktop.keybindings magnifier-zoom-in "['']"
 		gsettings set org.cinnamon.desktop.keybindings magnifier-zoom-out "['']"
-		gsettings set org.cinnamon.desktop.keybindings media-keys.area-screenshot "['<Super><Shift>p']"
-		gsettings set org.cinnamon.desktop.keybindings media-keys.area-screenshot-clip "['<Super>p']"
-		gsettings set org.cinnamon.desktop.keybindings media-keys.restart-cinnamon "['']"
-		gsettings set org.cinnamon.desktop.keybindings media-keys.screenreader "['']"
-		gsettings set org.cinnamon.desktop.keybindings media-keys.screenreader "['XF86ScreenSaver']" # Default includes '<Control><Alt>l'
-		gsettings set org.cinnamon.desktop.keybindings media-keys.screensaver "['']"
-		gsettings set org.cinnamon.desktop.keybindings media-keys.video-outputs "['XF86Display']" # Default includes '<Super>p'
-		gsettings set org.cinnamon.desktop.keybindings media-keys.screenshot "['<Super><Control><Shift>p']"
-		gsettings set org.cinnamon.desktop.keybindings media-keys.screenshot-clip "['<Super><Control>p']"
-		gsettings set org.cinnamon.desktop.keybindings media-keys.terminal "['<Super>Return']"
-		gsettings set org.cinnamon.desktop.keybindings media-keys.shutdown "['XF86PowerOff']"
-		gsettings set org.cinnamon.desktop.keybindings media-keys.video-rotation-lock "['']"
-		gsettings set org.cinnamon.desktop.keybindings media-keys.window-screenshot "['<Super><Alt>p']"
-		gsettings set org.cinnamon.desktop.keybindings media-keys.window-screenshot-clip "['<Super><Alt><Shift>p']"
+		gsettings set org.cinnamon.desktop.keybindings.media-keys area-screenshot "['<Super><Shift>p']"
+		gsettings set org.cinnamon.desktop.keybindings.media-keys area-screenshot-clip "['<Super>p']"
+		gsettings set org.cinnamon.desktop.keybindings.media-keys restart-cinnamon "['']"
+		gsettings set org.cinnamon.desktop.keybindings.media-keys screenreader "['']"
+		gsettings set org.cinnamon.desktop.keybindings.media-keys screenreader "['XF86ScreenSaver']" # Default includes '<Control><Alt>l'
+		gsettings set org.cinnamon.desktop.keybindings.media-keys screensaver "['']"
+		gsettings set org.cinnamon.desktop.keybindings.media-keys video-outputs "['XF86Display']" # Default includes '<Super>p'
+		gsettings set org.cinnamon.desktop.keybindings.media-keys screenshot "['<Super><Control><Shift>p']"
+		gsettings set org.cinnamon.desktop.keybindings.media-keys screenshot-clip "['<Super><Control>p']"
+		gsettings set org.cinnamon.desktop.keybindings.media-keys terminal "['<Super>Return']"
+		gsettings set org.cinnamon.desktop.keybindings.media-keys shutdown "['XF86PowerOff']"
+		gsettings set org.cinnamon.desktop.keybindings.media-keys video-rotation-lock "['']"
+		gsettings set org.cinnamon.desktop.keybindings.media-keys window-screenshot "['<Super><Alt>p']"
+		gsettings set org.cinnamon.desktop.keybindings.media-keys window-screenshot-clip "['<Super><Alt><Shift>p']"
 		# General window manager hotkeys
 		gsettings set org.cinnamon.desktop.keybindings.wm toggle-fullscreen "['<Super><Shift>f']"
 		gsettings set org.cinnamon.desktop.keybindings.wm toggle-maximized "['<Super>f']"

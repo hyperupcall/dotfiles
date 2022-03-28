@@ -41,7 +41,34 @@ util.clone() {
 		print.info "Cloning '$repo' to $dir"
 		git clone "$repo" "$dir"
 	fi
+}
 
+util.clone_in_dots() {
+	local repo="1"
+	util.clone "$repo" ~/.dots/.repos/"${repo##*/}"
+}
+
+util.trap_exit() {
+	if declare -f tty.fullscreen_deinit &>/dev/null; then
+		tty.fullscreen_deinit
+	fi
+}
+
+util.prereq() {
+	if [ -z "$XDG_CONFIG_HOME" ]; then
+		# shellcheck disable=SC2016
+		print.die '$XDG_CONFIG_HOME is empty. Did you source profile-pre-bootstrap.sh?'
+	fi
+
+	if [ -z "$XDG_DATA_HOME" ]; then
+		# shellcheck disable=SC2016
+		print.die '$XDG_DATA_HOME is empty. Did you source profile-pre-bootstrap.sh?'
+	fi
+
+	if [ -z "$XDG_STATE_HOME" ]; then
+		# shellcheck disable=SC2016
+		print.die '$XDG_STATE_HOME is empty. Did you source profile-pre-bootstrap.sh?'
+	fi
 }
 
 util.show_help() {

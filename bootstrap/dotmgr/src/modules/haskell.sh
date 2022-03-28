@@ -1,10 +1,6 @@
 # shellcheck shell=bash
 
-util.ensure_bin haskell
-util.ensure_bin ghcup
-util.ensure_bin stack
-
-command -v haskell >/dev/null 2>&1 || {
+if ! command -v haskell >/dev/null 2>&1; then
 	print.info "Installing haskell"
 
 	mkdir -p "${XDG_DATA_HOME:-$HOME/.local/share}/ghcup"
@@ -13,4 +9,4 @@ command -v haskell >/dev/null 2>&1 || {
 	util.req https://get-ghcup.haskell.org | sh
 
 	util.req https://get.haskellstack.org/ | sh
-}
+fi

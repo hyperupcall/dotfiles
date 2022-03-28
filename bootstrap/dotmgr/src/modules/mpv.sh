@@ -1,3 +1,3 @@
 # shellcheck shell=bash
 
-util.clone 'https://github.com/darsain/uosc' ~/.dots/.repos/uosc
+util.clone_in_dots'https://github.com/darsain/uosc'

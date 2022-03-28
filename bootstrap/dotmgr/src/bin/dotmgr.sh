@@ -1,18 +1,13 @@
 # shellcheck shell=bash
 
-global.trap_exit() {
-	if type -t tty.fullscreen_deinit &>/dev/null; then
-		tty.fullscreen_deinit
-	fi
-}
 
 main.dotmgr() {
 	set -eo pipefail
 	shopt -s dotglob extglob globstar nullglob shift_verbose
-	trap 'global.trap_exit' EXIT
-
 	source "$DOTMGR_ROOT_DIR/src/util/print.sh"
 	source "$DOTMGR_ROOT_DIR/src/util/util.sh"
+	trap 'util.trap_exit' EXIT
+	util.prereq
 
 	local arg=
 	for arg; do case $arg in
@@ -27,11 +22,11 @@ main.dotmgr() {
 		if ! shift; then
 			print.die "Failed to shift"
 		fi
-		source "$DOTMGR_ROOT_DIR/src/commands/$subcommand.sh" "$@"
+		source "$DOTMGR_ROOT_DIR/src/commands/$subcommand.sh"
 		subcommand "$@"
 	else
 		util.show_help
-		print.error "No matching subcommand found"
+		print.error 'No matching subcommand found'
 		exit 1
 	fi
 }

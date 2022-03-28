@@ -6,16 +6,6 @@
 # dotmgr in PATH
 
 subcommand() {
-	if [ -z "$XDG_CONFIG_HOME" ]; then
-		# shellcheck disable=SC2016
-		print.die '$XDG_CONFIG_HOME is empty. Did you source profile-pre-bootstrap.sh?'
-	fi
-
-	if [ -z "$XDG_DATA_HOME" ]; then
-		# shellcheck disable=SC2016
-		print.die '$XDG_DATA_HOME is empty. Did you source profile-pre-bootstrap.sh?'
-	fi
-
 	# Ensure prerequisites
 	mkdir -p ~/.bootstrap/{bin,nim-all,old-homedots} "$XDG_CONFIG_HOME"
 

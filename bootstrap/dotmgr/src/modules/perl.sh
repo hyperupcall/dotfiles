@@ -15,5 +15,3 @@ if command -v cpanm >/dev/null >&2; then
 
 	cpanm $pkg
 fi
-
-unset -v pkg
