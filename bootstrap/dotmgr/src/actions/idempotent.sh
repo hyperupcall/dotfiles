@@ -113,7 +113,6 @@ action() {
 		~/Pictures
 		~/Videos
 	)
-
 	local -ra directoriesCustom=(
 		# ~/Desktop
 		~/Dls
@@ -122,20 +121,13 @@ action() {
 		~/Pics
 		~/Vids
 	)
-
 	local -ra directoriesShared=(
 		~/Desktop
 		~/Music
 	)
-
-	if [ -L "$XDG_CONFIG_HOME/user-dirs.dirs" ]; then
-		unlink "$XDG_CONFIG_HOME/user-dirs.dirs"
-	else
-		rm -f "$XDG_CONFIG_HOME/user-dirs.dirs"
-	fi
-
+	# Use 'cp -f' for "$XDG_CONFIG_HOME/user-dirs.dirs", otherwise unlink/link operation races
 	if [ -d "$storage" ]; then
-		must_link "$HOME/.dots/user/.config/user-dirs.dirs/user-dirs-custom.conf" "$XDG_CONFIG_HOME/user-dirs.dirs"
+		cp -f "$HOME/.dots/user/.config/user-dirs.dirs/user-dirs-custom.conf" "$XDG_CONFIG_HOME/user-dirs.dirs"
 
 		# XDG User Directories
 		local dir=
@@ -168,7 +160,7 @@ action() {
 		must_link "$storage_other/fonts" "$XDG_CONFIG_HOME/fonts"
 		must_link "$storage_other/password-store" "$XDG_DATA_HOME/password-store"
 	else
-		must_link "$HOME/.dots/user/.config/user-dirs.dirs/user-dirs-regular.conf" "$XDG_CONFIG_HOME/user-dirs.dirs"
+		cp -f "$HOME/.dots/user/.config/user-dirs.dirs/user-dirs-regular.conf" "$XDG_CONFIG_HOME/user-dirs.dirs"
 
 		# XDG User Directories
 		local dir=
@@ -194,6 +186,8 @@ action() {
 		must_link "$HOME/Music" "$HOME/.dots/.home/Music"
 		must_link "$HOME/Pictures" "$HOME/.dots/.home/Pictures"
 		must_link "$HOME/Videos" "$HOME/.dots/.home/Videos"
+
+		# Miscellaneous
 	fi
 
 	if [ -d "$HOME/Docs/Programming" ]; then
@@ -219,30 +213,6 @@ action() {
 	# Dependencies of symlinking
 	must_dir "$HOME/.dots/.home/Pictures/Screenshots"
 
-
-	# TODO
-	# -------------------------------------------------------- #
-	#                    COPY ROOT DOTFILES                    #
-	# -------------------------------------------------------- #
-	# shopt -s extglob
-	# local {src,dest}File=
-	# for srcFile in ~/.dots/system/**; do
-	# 	destFile=${srcFile#*/.dots/system}
-
-	# 	if [ -d "$srcFile" ]; then
-	# 		continue
-	# 	fi
-
-	# 	if [ "${destFile::8}" = '/efi/EFI' ]; then
-	# 		continue
-	# 	fi
-
-	# 	if [[ $srcFile == *ignore* ]]; then
-	# 		continue
-	# 	fi
-
-	# 	printf '%s -> %s\n' "$srcFile" "$destFile"
-	# done; unset -v f
 
 	# -------------------------------------------------------- #
 	#                DESKTOP ENVIRONMENT TWEAKS                #
@@ -333,6 +303,11 @@ action() {
 		print.warn "Variable '\$XDG_SESSION_DESKTOP' is empty"
 	fi
 }
+
+
+# -------------------------------------------------------- #
+#                     HELPER FUNCTIONS                     #
+# -------------------------------------------------------- #
 
 must_rm() {
 	util_get_file "$1"

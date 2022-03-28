@@ -42,7 +42,6 @@ subcommand() {
 		# regular uncommon
 		'secrets_export'
 		'secrets_import'
-		'extensions_save'
 	)
 
 	local -a actions=() descriptions=()

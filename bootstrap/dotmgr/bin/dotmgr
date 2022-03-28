@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-if ((EUID == 0)); then
-	printf '%s\n' "Error: Cannot run 'dotmgr' as root" >&2
-	exit 1
-fi
-
 DOTMGR_ROOT_DIR=${0%/*}; DOTMGR_ROOT_DIR=${DOTMGR_ROOT_DIR%/*}
 
-source "$DOTMGR_ROOT_DIR/src/bin/dotmgr.sh"
+if ((EUID == 0)); then
+	source "$DOTMGR_ROOT_DIR/src/bin/dotmgr-root.sh"
+else
+	source "$DOTMGR_ROOT_DIR/src/bin/dotmgr.sh"
+fi
+
 main.dotmgr "$@"

@@ -121,7 +121,7 @@
 		"*.ico": "luna.editor"
 	},
 	"workbench.enableExperiments": false,
-	"workbench.iconTheme": "Monokai Pro Icons",
+	"workbench.iconTheme": "vscode-icons",
 	"workbench.quickOpen.closeOnFocusLost": false,
 	"workbench.startupEditor": "none",
 	"workbench.tips.enabled": false,
@@ -396,6 +396,7 @@
 	"workbench.colorTheme": "Monokai Pro",
 	"extensions.ignoreRecommendations": true,
 	"julia.symbolCacheDownload": true,
-	"window.zoomLevel": -1,
-	"gitlens.codeLens.enabled": false
+	"window.zoomLevel": -2,
+	"gitlens.codeLens.enabled": false,
+	"cmake.configureOnOpen": true
 }
