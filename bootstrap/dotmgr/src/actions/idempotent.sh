@@ -8,6 +8,16 @@
 
 action() {
 	# -------------------------------------------------------- #
+	#                         DO MOUNT                         #
+	# -------------------------------------------------------- #
+	if ! grep -q /storage/ur /etc/fstab; then
+		local mnt='/storage/ur'
+		printf '%s\n' "PARTUUID=c875b5ca-08a6-415e-bc11-fc37ec94ab8f  $mnt  btrfs  defaults,noatime,X-mount.mkdir  0 0" \
+			| sudo tee -a /etc/fstab >/dev/null
+		sudo mount "$mnt"
+	fi
+
+	# -------------------------------------------------------- #
 	#                   STRIP SHELL DOTFILES                   #
 	# -------------------------------------------------------- #
 	for file in ~/.profile ~/.bashrc ~/.bash_profile "${ZDOTDIR:-$HOME}/.zshrc" "${XDG_CONFIG_HOME:-$HOME/.config}/fish/config.fish"; do
@@ -313,6 +323,8 @@ action() {
 
 		gsettings set org.mate.terminal.global use-mnemonics 'false'
 		gsettings set org.mate.terminal.global use-menu-accelerators 'false'
+	elif [ "$XDG_SESSION_DESKTOP" = 'gnome' ]; then
+		:
 	elif [ -z "$XDG_SESSION_DESKTOP" ]; then
 		print.warn "Variable '\$XDG_SESSION_DESKTOP' is empty"
 	fi

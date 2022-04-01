@@ -32,7 +32,7 @@ subcommand() {
 		# bootstrapping
 		'dotfox_deploy'
 		'package_install'
-		'mount_setup'
+		'browserpass-native'
 		''
 		# regular uncommon
 		'secrets_export'

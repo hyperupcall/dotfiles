@@ -121,12 +121,11 @@
 		"*.ico": "luna.editor"
 	},
 	"workbench.enableExperiments": false,
-	"workbench.iconTheme": "material-icon-theme",
+	"workbench.iconTheme": "Monokai Pro Icons",
 	"workbench.quickOpen.closeOnFocusLost": false,
 	"workbench.startupEditor": "none",
 	"workbench.tips.enabled": false,
 	"workbench.tree.indent": 12,
-	"workbench.welcomePage.preferReducedMotion": false,
 	"workbench.welcomePage.walkthroughs.openOnInstall": false,
 
 	"update.mode": "manual",
@@ -297,7 +296,7 @@
 	"perl.disableCache": false, // If this is 'false', then 'perl.cacheDir' is used
 	"perl.cacheDir": "/home/edwin/.cache/vscode-perl-cache/",
 
-	// telemetry / extraneous notifications / unecessary views
+	// telemetry / extraneous notifications / unnecessary views
 	"telemetry.telemetryLevel": "off",
 	"redhat.telemetry.enabled": false,
 	"julia.enableTelemetry": false,

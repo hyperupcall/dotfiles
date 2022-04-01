@@ -8,6 +8,8 @@
 
 action() {
 	local version='3.0.9'
+	print.info "Installing version '$version'"
+
 	local url="https://github.com/browserpass/browserpass-native/releases/download/$version/browserpass-linux64-$version.tar.gz"
 	cd "$(mktemp -d)"
 
