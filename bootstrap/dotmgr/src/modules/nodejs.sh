@@ -2,7 +2,8 @@
 
 if ! command -v n &>/dev/null; then
 	print.info "Installing n"
-	util.req 'https://raw.githubusercontent.com/mklement0/n-install/stable/bin/n-install' | bash
+	export N_INSTALL_TEST_OVERRIDE_SKIP_EXISTING_INSTALLATION_TEST=1
+	util.req 'https://raw.githubusercontent.com/mklement0/n-install/stable/bin/n-install' | bash -s -- -n
 fi
 
 npm i -g yarn

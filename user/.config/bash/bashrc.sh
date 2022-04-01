@@ -13,6 +13,7 @@
 # Ensure ~/.profile is read for non-login shells
 # Bash only reads ~/.profile on login shells when invoked as sh
 [ -r ~/.profile ] && source ~/.profile
+if (( $? != 0 )); then printf '%s\n' "Error: bashrc.sh: Failed to source ~/.profile successfuly. Aborting source" >&2; return 1; fi
 
 #
 # ─── FRAMEWORKS ─────────────────────────────────────────────────────────────────
@@ -29,8 +30,8 @@
 
 # Exported so nested shells, virtual environments, etc. inherit the new values
 
-# export CDPATH=":~:"
-# export CHILD_MAX="256"
+# export CDPATH=':~:'
+# export CHILD_MAX='256'
 unset EXECIGNORE
 export FCEDIT="$EDITOR"
 unset FIGNORE
@@ -40,7 +41,7 @@ HISTFILE="$XDG_STATE_HOME/history/bash_history" # FIXME: bug with exporting this
 export HISTSIZE="-1"
 export HISTFILESIZE="-1"
 export HISTIGNORE="ls:[bf]g:pwd:clear*:exit*:cd*|mkcd*|mkt*"
-export HISTTIMEFORMAT="%B %m %Y %T | "
+# export HISTTIMEFORMAT='%B %m %Y %T | '
 export HISTTIMEFORMAT='%F %T ' # ISO 8601
 export TIMEFORMAT=$'real    %3lR\nuser    %3lU\nsystem  %3lS\npercent %P'
 export PROMPT_DIRTRIM='6'
@@ -115,7 +116,10 @@ if is16MillionColors; then
 	else
 		# shellcheck disable=SC3046
 		if ! eval "$(
-			if ! choose launch shell-prompt-bash; then
+			# FIXME BUG IN BASALT SOURCE_PACKAGES:SH SOURCE DIR 'PKG/SRC' DOES NOT EXIST FOR PROJECT
+			# FIXME
+			# FIXME
+			if ! choose launch shell-prompt-bash 2>/dev/null; then
 				# Without this, the error doesn't propagate to the "if ! eval ..."
 				printf '%s\n' 'false'
 			fi

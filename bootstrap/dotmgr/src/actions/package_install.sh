@@ -19,6 +19,13 @@ action() {
 		# sudo pacman -Syu --noconfirm browserpass-chrome
 
 		sudo pacman -S --noconfirm rsync xclip
+		if ! command -v yay &>/dev/null; then
+			yay -S \
+				visual-studio-code-bin visual-studio-code-insiders-bin \
+				brave-browser brave-browser-beta
+			# Required by 'github.com/cykerway/complete-alias'
+			sudo pacman -S bash-completion
+		fi
 	elif util.is_cmd 'apt-get'; then
 		print.info 'Updating, upgrading, and installing packages'
 		sudo apt-get -y update
@@ -51,3 +58,4 @@ action() {
 	print.info 'Installing Basalt packages globally'
 	basalt global add hyperupcall/choose hyperupcall/autoenv hyperupcall/dotshellextract hyperupcall/dotshellgen
 	basalt global add cykerway/complete-alias rcaloras/bash-preexec
+}

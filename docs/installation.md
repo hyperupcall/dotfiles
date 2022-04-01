@@ -47,4 +47,5 @@ dotmgr action # Choose 'Install packages'
 dotmgr action # Choose 'Prune and Resymlink'
 
 cd ~/.dots && hookah refresh
+sudo dotmgr
 ```

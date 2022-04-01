@@ -237,9 +237,11 @@ action() {
 		gsettings set org.nemo.preferences default-folder-viewer "'list-view'"
 	fi
 
+	# TODO
 	# gsettings set org.gnome.libgnomekbd.keyboard layouts "['us', 'us\tdvorak']"
 	# gsettings set org.gnome.libgnomekbd.keyboard options "['grp\tgrp:win_space_toggle']"
 	# gsettings set org.gnome.gnome-screenshot auto-save-directory "'$HOME/.dots/.home/Pictures/Screenshots'"
+	# gsettings ca.desrt.dconf-editor show-warning 'false'
 
 	if [ "$XDG_SESSION_DESKTOP" = 'cinnamon' ]; then
 		# gsettings set /org/cinnamon/enabled-applets "['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:1:separator@cinnamon.org:1', 'panel1:left:2:expo@cinnamon.org:2', 'panel1:left:3:show-desktop@cinnamon.org:3', 'panel1:left:4:separator@cinnamon.org:4', 'panel1:left:5:grouped-window-list@cinnamon.org:5', 'panel1:right:1:notifications@cinnamon.org:6', 'panel1:right:2:workspace-switcher@cinnamon.org:7', 'panel1:right:3:windows-quick-list@cinnamon.org:8', 'panel1:right:4:separator@cinnamon.org:9', 'panel1:right:5:systray@cinnamon.org:10', 'panel1:right:6:separator@cinnamon.org:11', 'panel1:right:7:removable-drives@cinnamon.org:12', 'panel1:right:8:network@cinnamon.org:13', 'panel1:right:9:sound@cinnamon.org:14', 'panel1:right:10:power@cinnamon.org:15', 'panel1:right:11:inhibit@cinnamon.org:16', 'panel1:right:12:calendar@cinnamon.org:17', 'panel1:right:13:user@cinnamon.org:18', 'panel1:right:0:keyboard@cinnamon.org:19']"
@@ -299,6 +301,16 @@ action() {
 		gsettings set org.cinnamon.desktop.keybindings.wm push-tile-right "['<Super><Alt>l', '<Super><Alt>Right']"
 		gsettings set org.cinnamon.desktop.keybindings.wm push-tile-down "['<Super><Alt>j', '<Super><Alt>Down']"
 		gsettings set org.cinnamon.desktop.keybindings.wm push-tile-left "['<Super><Alt>h', '<Super><Alt>Left']"
+	elif [ "$XDG_SESSION_DESKTOP" = 'mate' ]; then
+		gsettings set org.mate.Marco.general mouse-button-modifier '<Super>'
+		gsettings set org.mate.Marco.global-keybindings run-command-screenshot '<Mod4>p'
+		gsettings set org.mate.Marco.global-keybindings.run-command-window-screenshot '<Super><Alt>p'
+		gsettings set org.mate.Marco.global-keybindings run-command-terminal '<Mod4>Return'
+		gsettings set org.mate.SettingsDaemon.plugins.media-keys power ''
+		gsettings set org.mate.SettingsDaemon.plugins.media-keys screensaver ''
+
+		gsettings set org.mate.terminal.global use-mnemonics 'false'
+		gsettings set org.mate.terminal.global use-menu-accelerators 'false'
 	elif [ -z "$XDG_SESSION_DESKTOP" ]; then
 		print.warn "Variable '\$XDG_SESSION_DESKTOP' is empty"
 	fi

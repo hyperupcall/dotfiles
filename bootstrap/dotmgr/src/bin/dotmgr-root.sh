@@ -6,6 +6,7 @@ main.dotmgr() {
 	source "$DOTMGR_ROOT_DIR/src/util/print.sh"
 	source "$DOTMGR_ROOT_DIR/src/util/util.sh"
 
+
 	# -------------------------------------------------------- #
 	#                    COPY ROOT DOTFILES                    #
 	# -------------------------------------------------------- #
@@ -25,4 +26,34 @@ main.dotmgr() {
 		sudo mkdir -p "${dest_file%/*}"
 		sudo cp -f "$src_file" "$dest_file"
 	done; unset -v {src,dest}_file
+
+
+	# -------------------------------------------------------- #
+	#                          GROUPS                          #
+	# -------------------------------------------------------- #
+	local user="$SUDO_USER"
+	if [ -z "$user" ]; then
+		print.die "Failed to determine user running as sudo"
+	fi
+
+	print.info "Adding groups to user '$user'"
+	must_group "$user" 'docker'
+}
+
+must_group() {
+	local user="$1"
+	local group="$2"
+
+	if groupadd "$group"; then
+		print.info "Creating group '$group'"
+	else
+		local code=$?
+		if ((code != 9)); then
+			print.warn "Failed to create group '$group'"
+		fi
+	fi
+
+	if ! usermod -aG "$group" "$user"; then
+		print.warn "Failed to add user '$user' to group '$group'"
+	fi
 }

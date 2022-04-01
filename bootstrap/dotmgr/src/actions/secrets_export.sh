@@ -60,8 +60,8 @@ action() {
 
 	# Copy over gpg keys
 	local -r fingerprints=('6EF89C3EB889D61708E5243DDA8EF6F306AD2CBA' '4C452EC68725DAFD09EC57BAB2D007E5878C6803')
-	local gpgDir="$HOME/.gnupg"
-	if [ -d "$gpgDir" ]; then
+	local gpg_dir="$HOME/.gnupg"
+	if [ -d "$gpg_dir" ]; then
 		exec 4> >(sudo tee "$block_dev_target/gpg-keys.tar.age" >/dev/null)
 		if expect -f <(cat <<-EOF
 			set bashFd [lindex \$argv 0]
