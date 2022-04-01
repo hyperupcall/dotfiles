@@ -125,6 +125,7 @@ action() {
 		~/Desktop
 		~/Music
 	)
+	if [ ! -L "$HOME/Pictures" ]; then rmdir "$HOME/Pictures/Screenshots"; fi
 	# Use 'cp -f' for "$XDG_CONFIG_HOME/user-dirs.dirs", otherwise unlink/link operation races
 	if [ -d "$storage" ]; then
 		cp -f "$HOME/.dots/user/.config/user-dirs.dirs/user-dirs-custom.conf" "$XDG_CONFIG_HOME/user-dirs.dirs"
@@ -154,6 +155,7 @@ action() {
 
 		# Miscellaneous
 		must_link "$storage_other/mozilla" "$HOME/.mozilla"
+		if [ ! -L "$HOME/.ssh" ]; then rm -f "$HOME/.ssh/known_hosts"; fi
 		must_link "$storage_other/ssh" "$HOME/.ssh"
 		must_link "$storage_other/BraveSoftware" "$XDG_CONFIG_HOME/BraveSoftware"
 		must_link "$storage_other/calcurse" "$XDG_CONFIG_HOME/calcurse"

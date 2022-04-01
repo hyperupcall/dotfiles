@@ -394,6 +394,7 @@
 	"workbench.colorTheme": "Monokai Pro",
 	"extensions.ignoreRecommendations": true,
 	"julia.symbolCacheDownload": true,
+	"window.zoomLevel": -1,
 	"gitlens.codeLens.enabled": false,
 	"cmake.configureOnOpen": true
 }

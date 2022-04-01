@@ -15,7 +15,7 @@ action() {
 
 		sudo pacman -S --noconfirm base-devel
 		sudo pacman -S --noconfirm lvm2
-		# sudo pacman -Syu --noconfirm pkg-config openssl
+		sudo pacman -Syu --noconfirm pkg-config openssl # for starship
 		# sudo pacman -Syu --noconfirm browserpass-chrome
 
 		sudo pacman -S --noconfirm rsync xclip
@@ -34,7 +34,7 @@ action() {
 		sudo apt-get -y install build-essential
 		sudo apt-get -y install lvm2
 		sudo apt-get -y install pkg-config libssl-dev # for starship
-		sudo apt-get -y install webext-browserpass
+		# sudo apt-get -y install webext-browserpass
 
 		sudo apt-get -y install rsync xclip
 	elif util.is_cmd 'dnf'; then
@@ -42,6 +42,7 @@ action() {
 		sudo dnf -y update
 		sudo dnf -y upgrade
 
+		sudo dnf -y install @development-tools
 		sudo dnf -y install lvm2
 		sudo dnf -y install pkg-config openssl-devel # for starship
 		# sudo dnf -y install browserpass
