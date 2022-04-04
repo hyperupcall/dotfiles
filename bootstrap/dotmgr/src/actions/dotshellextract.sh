@@ -4,7 +4,9 @@
 # dotshellextract
 #
 # Description:
-# Extracts functions and alises from current dotfiles to use on remote machines
+# Extracts functions and alises from current dotfiles
+#
+# These can be copied to remote machines or to root shell profiless
 
 action() {
 	shopt -s extglob nullglob globstar

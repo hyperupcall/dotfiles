@@ -1,46 +1,56 @@
 # shellcheck shell=bash
 
-_shell_pkg_get_pager() {
-	local cmd=
-	for cmd in bat batcat less; do
-		if command -v "$cmd" &>/dev/null; then
-			PKG_PAGER=$cmd
-			return
-		fi
-	done; unset cmd
-
-	PKG_PAGER="$PAGER"
-}
-
-pkgl() {
-	local pkg=$1
-
-	if command -v pacman &>/dev/null; then
-		if pacman -Qi "$pkg" >/dev/null; then
-			pacman -Ql "$pkg" | "$PKG_PAGER"
-		else
-			_shell_util_log_error "Package not found"
-		fi
-	else
-		_shell_util_log_error "Package manager not recognized"
-	fi
+pkg() {
+	printf '%s\n' "Functions:
+  pkgi: Install a package
+  pkgl: List contents of package
+  pkgp: see package Providing a file
+  pkgs: Search for a package"
 }
 
 pkgi() {
-	local pkg=$1
+	local pkg="$1"
 
-	if command -v pacman &>/dev/null; then
-		pacman -Qi "$pkg" | "$PKG_PAGER"
+	if _shell_util_has 'pacman'; then
+		sudo 'pacman' -S "$pkg"
+	elif _shell_util_has 'dnf'; then
+		sudo 'dnf' install "$pkg"
 	else
 		_shell_util_log_error "Package manager not recognized"
 	fi
 }
 
-pkgo() {
-	local pkg=$1
+pkgl() {
+	local pkg="$1"
 
-	if command -v pacman &>/dev/null; then
-		pacman -Qo "$pkg" | "$_shell_pkg_pager"
+	if _shell_util_has 'pacman'; then
+		'pacman' -Ql "$pkg"
+	elif _shell_util_has 'dnf'; then
+		'rpm' -ql "$pkg"
+	else
+		_shell_util_log_error "Package manager not recognized"
+	fi
+}
+
+pkgp() {
+	local pkg="$1"
+
+	if _shell_util_has 'pacman'; then
+		'pacman' -Qo "$pkg"
+	elif _shell_util_has 'dnf'; then
+		'dnf' provides "$1"
+	else
+		_shell_util_log_error "Package manager not recognized"
+	fi
+}
+
+pkgs() {
+	local pkg="$1"
+
+	if _shell_util_has 'pacman'; then
+		'pacman' -Q "$pkg"
+	elif _shell_util_has 'dnf'; then
+		'dnf' search "$pkg"
 	else
 		_shell_util_log_error "Package manager not recognized"
 	fi

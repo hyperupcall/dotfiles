@@ -4,7 +4,11 @@
 # Idempotent
 #
 # Description:
-# Performs an essentially idempotent operation to setup desktop. Prunes the homefolder for improper dotfiles like '~/.bash_history'. It also makes directories required for things to work properly like '~/.config/yarn/config'. Lastly, it also symlinks directories that are out of the scope of dotfox. More specifically, this symlinks the XDG user directories, ~/.ssh, ~/.config/BraveSoftware, etc. to the shared drive mounted under /storage
+# Idempotently configures the desktop. This includes:
+# - Ensures mount to /storage/ur
+# - Strip ~/.bashrc, etc. dotfiles from random appendage
+# - Symlinks ~/.ssh, etc. software not mananged by dotfox
+# - Symlinks directories to ~/.home
 
 action() {
 	# -------------------------------------------------------- #
@@ -36,7 +40,7 @@ action() {
 
 		printf '%s' "$file_string" > "$file"
 	done; unset -v file
-	print.info "Cleaned shell dotfiles"
+	print.info 'Cleaned shell dotfiles'
 
 
 	# -------------------------------------------------------- #

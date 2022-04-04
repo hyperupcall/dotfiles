@@ -38,6 +38,7 @@ main.dotmgr() {
 
 	print.info "Adding groups to user '$user'"
 	must_group "$user" 'docker'
+	must_group "$user" 'vboxusers'
 }
 
 must_group() {

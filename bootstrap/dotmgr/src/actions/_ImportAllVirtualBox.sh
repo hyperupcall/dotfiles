@@ -1,21 +1,15 @@
 # shellcheck shell=bash
 
+# Name:
+# VirtualBox Import
+#
+# Description:
 # Registers all VirtualBox virtual machine. Optionally
 # enables unregistering all virtual machines
 
 shopt -s nullglob
 
-register() {
-  local dir="$1"
-
-  for file in "$dir"/*.vbox; do
-    printf '%s\n' "Adding '$file'"
-    VBoxManage registervm "$file"
-  done
-}
-
-
-main() {
+action() {
   local flag_unregister='no'
 
   for arg; do case $arg in
@@ -45,4 +39,11 @@ main() {
   done
 }
 
-main "$@"
+register() {
+  local dir="$1"
+
+  for file in "$dir"/*.vbox; do
+    printf '%s\n' "Adding '$file'"
+    VBoxManage registervm "$file"
+  done
+}

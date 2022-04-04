@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
-# Syncs subdirectories in minecraft, like `resourcepacks`,
-# `saves`, `screenshots`, etc. Use at your own risk!
+# Name:
+# Sync .minecraft
+#
+# Description:
+# Syncs subdirectories in minecraft, like 'resourcepacks', 'saves', 'screenshots',
+# for all major launchers. Use at your own risk!
 
 remove() {
 	if [ -z "$1" ]; then

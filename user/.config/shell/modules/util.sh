@@ -59,3 +59,11 @@ _shell_util_ls() {
 	fi
 	printf '%s\n' '---'
 }
+
+_shell_util_has() {
+	if hash "$1" >/dev/null 2>&1; then
+		return 0
+	else
+		return 1
+	fi
+}

@@ -19,24 +19,26 @@ subcommand() {
 		exit
 	fi
 
-	local left_str='                    |'
+	local left_str='                     |'
 
 	local -i selected=0
 	local files=(
-		# regular common
+		# Common
 		'idempotent'
 		'dotshellgen'
 		'dotshellextract'
 		'backup'
 		''
-		# bootstrapping
+		# Bootstrapping
 		'dotfox_deploy'
-		'package_install'
-		'browserpass-native'
+		'install_packages'
+		'install_others'
 		''
 		# regular uncommon
 		'secrets_export'
 		'secrets_import'
+		'_ImportAllVirtualBox'
+		'_minecraft-sync'
 	)
 
 	local -a actions=() descriptions=()
@@ -49,7 +51,7 @@ subcommand() {
 		fi
 
 		local descriptionsi=0
-		local mode='default' description=
+		local mode='default' description=$'\033[0;0H'
 		local line=
 		while IFS= read -r line; do
 			if [ "$line" = '# Name:' ]; then
@@ -66,24 +68,18 @@ subcommand() {
 				mode='default'
 			elif [ "$mode" = 'description' ]; then
 				if [ "${line:0:1}" != '#' ]; then
-					# while ((${#descriptions} > 0)); then
-						# :
-					# fi
-
 					descriptions+=("$description")
 					mode='default'
+					continue
 				fi
 
-
 				local esc=
-				printf -v esc '\033[%d;%dH' 0 $((${#left_str}+2))
+				printf -v esc '\033[%sC' $((${#left_str}+1))
 
 				if [ -z "${line:2}" ]; then
 					description+=$'\n'
 				else
-					# description+="${line:2}"$'\n\033['$((${#left_str}+1))"C"
-					# description+=$'\033['"$descriptionsi;"$((${#left_str}+1))"H${line:2}
-					description+="${line:2}"
+					description+="$esc""${line:2}"$'\n'
 				fi
 
 				descriptionsi=$((descriptionsi++))
@@ -209,7 +205,6 @@ print_menu() {
 	done; unset -v i
 
 	# print description
-	printf '\033[%d;%dH' 0 $((${#left_str}+2)) # tput cup
 	# shellcheck disable=SC2059
 	printf "${descriptions[$selected]}"
 }

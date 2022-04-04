@@ -47,7 +47,7 @@
 		"language-julia.interrupt"
 	],
 	"terminal.integrated.allowChords": false,
-	"terminal.integrated.copyOnSelection": true,
+	"terminal.integrated.copyOnSelection": false,
 	"terminal.integrated.environmentChangesIndicator": "on",
 	"terminal.integrated.inheritEnv": false,
 	"terminal.integrated.showExitAlert": false,
@@ -121,13 +121,12 @@
 		"*.ico": "luna.editor"
 	},
 	"workbench.enableExperiments": false,
-	"workbench.iconTheme": "Monokai Pro Icons",
+	"workbench.iconTheme": "vscode-icons",
 	"workbench.quickOpen.closeOnFocusLost": false,
 	"workbench.startupEditor": "none",
 	"workbench.tips.enabled": false,
 	"workbench.tree.indent": 12,
 	"workbench.welcomePage.walkthroughs.openOnInstall": false,
-
 	"update.mode": "manual",
 
 	"security.workspace.trust.enabled": false,
@@ -393,7 +392,6 @@
 	"workbench.colorTheme": "Monokai Pro",
 	"extensions.ignoreRecommendations": true,
 	"julia.symbolCacheDownload": true,
-	"window.zoomLevel": -1,
 	"gitlens.codeLens.enabled": false,
 	"cmake.configureOnOpen": true
 }

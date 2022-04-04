@@ -8,6 +8,8 @@
 # A lot of these are required since ~/.dots implicitly
 # depends on things like starship, rsync, xclip, etc
 
+# sudo pacman -S docker pigz docker-scan  lazydocker kitematic dive # FIXME
+
 action() {
 	# -------------------------------------------------------- #
 	#                          PACMAN                          #
@@ -19,7 +21,7 @@ action() {
 		{
 			# Generic
 			sudo pacman -S --noconfirm base-devel
-			sudo pacman -S --noconfirm lvm2 bash-completion curl rsync
+			sudo pacman -S --noconfirm lvm2 bash-completion curl rsync pass
 			sudo pacman -Syu --noconfirm pkg-config openssl # for starship
 			# sudo pacman -Syu --noconfirm browserpass-chrome
 		}
@@ -43,7 +45,7 @@ action() {
 		{
 			# Generic
 			sudo apt-get -y install build-essential
-			sudo apt-get -y install lvm2 bash-completion curl rsync
+			sudo apt-get -y install lvm2 bash-completion curl rsync pass
 			sudo apt-get -y install pkg-config libssl-dev # for starship
 			# sudo apt-get -y install webext-browserpass
 		}
@@ -82,7 +84,7 @@ action() {
 		{
 			# Generic
 			sudo dnf -y install @development-tools
-			sudo dnf -y install lvm2 bash-completion curl rsync
+			sudo dnf -y install lvm2 bash-completion curl rsync pass
 			sudo dnf -y install pkg-config openssl-devel # for starship
 			# sudo dnf -y install browserpass
 		}
@@ -116,7 +118,7 @@ action() {
 		{
 			# General
 			sudo zypper -y install -t pattern devel_basis
-			sudo zypper -y install lvm bash-completion curl rsync
+			sudo zypper -y install lvm bash-completion curl rsync pass
 			sudo zypper -y install pkg-config openssl-devel # for starship
 			# sudo zypper -y install browserpass
 		}
@@ -146,6 +148,9 @@ action() {
 		print.info 'Installing starship'
 		cargo install starship
 	fi
+
+
+
 
 	print.info 'Installing Basalt packages globally'
 	basalt global add hyperupcall/choose hyperupcall/autoenv hyperupcall/dotshellextract hyperupcall/dotshellgen
