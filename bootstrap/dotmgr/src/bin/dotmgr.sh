@@ -6,7 +6,7 @@ main.dotmgr() {
 	shopt -s dotglob extglob globstar nullglob shift_verbose
 	source "$DOTMGR_ROOT_DIR/src/util/print.sh"
 	source "$DOTMGR_ROOT_DIR/src/util/util.sh"
-	trap 'util.trap_exit' EXIT
+	# trap 'util.trap_winch' 'WINCH' # FIXME does not work
 	util.prereq
 
 	local arg=

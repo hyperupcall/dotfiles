@@ -48,12 +48,6 @@ util.clone_in_dots() {
 	util.clone "$repo" ~/.dots/.repos/"${repo##*/}"
 }
 
-util.trap_exit() {
-	if declare -f tty.fullscreen_deinit &>/dev/null; then
-		tty.fullscreen_deinit
-	fi
-}
-
 util.prereq() {
 	if [ -z "$XDG_CONFIG_HOME" ]; then
 		# shellcheck disable=SC2016
@@ -69,6 +63,10 @@ util.prereq() {
 		# shellcheck disable=SC2016
 		print.die '$XDG_STATE_HOME is empty. Did you source profile-pre-bootstrap.sh?'
 	fi
+}
+
+util.trap_winch() {
+	read -r global_tty_height global_tty_width < <(stty size)
 }
 
 util.show_help() {

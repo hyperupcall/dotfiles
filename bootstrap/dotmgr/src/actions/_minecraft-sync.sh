@@ -21,59 +21,61 @@ remove() {
 	fi
 }
 
-shopt -s nullglob dotglob
+action() {
+	shopt -s nullglob dotglob
 
-base="$HOME/Docs/Games/Minecraft/common-dot-minecraft"
-dataDir="${XDG_DATA_HOME:-~/.local/share}"
-configDir="${XDG_CONFIG_HOME:-~/.config}"
-folders=(
-	~/.minecraft
-	"$dataDir"/multimc/instances/*/.minecraft
-	"$configDir"/hmcl/.minecraft
-)
+	base="$HOME/Docs/Games/Minecraft/common-dot-minecraft"
+	dataDir="${XDG_DATA_HOME:-~/.local/share}"
+	configDir="${XDG_CONFIG_HOME:-~/.config}"
+	folders=(
+		~/.minecraft
+		"$dataDir"/multimc/instances/*/.minecraft
+		"$configDir"/hmcl/.minecraft
+	)
 
-# sync common files
-for mcFolder in "${folders[@]}"; do
-	echo "SYNCING COMMON FILES: $mcFolder"
-	# files=(optionsLC.txt optionsof.txt optionsshaders.txt options.txt servers.dat servers.dat_old)
-	files=(servers.dat)
+	# sync common files
+	for mcFolder in "${folders[@]}"; do
+		echo "SYNCING COMMON FILES: $mcFolder"
+		# files=(optionsLC.txt optionsof.txt optionsshaders.txt options.txt servers.dat servers.dat_old)
+		files=(servers.dat)
 
-	for file in "${files[@]}"; do
+		for file in "${files[@]}"; do
 
-		# unlink "$mcFolder/$file"
+			# unlink "$mcFolder/$file"
 
-		if [ ! -L "$mcFolder/$file" ]; then
-			echo "     -> Linking '$mcFolder/$file'"
+			if [ ! -L "$mcFolder/$file" ]; then
+				echo "     -> Linking '$mcFolder/$file'"
 
-			[ -e "$mcFolder/$file" ] && {
-				cp "$mcFolder/$file" "$base/files/$file"
-				remove "$mcFolder/$file"
-			}
+				[ -e "$mcFolder/$file" ] && {
+					cp "$mcFolder/$file" "$base/files/$file"
+					remove "$mcFolder/$file"
+				}
 
-			ln -sT "$base/files/$file" "$mcFolder/$file"
-		fi
+				ln -sT "$base/files/$file" "$mcFolder/$file"
+			fi
+		done
 	done
-done
 
-echo ---
+	echo ---
 
-# sync common folders
-for mcFolder in "${folders[@]}"; do
-	echo "SYNCING COMMON DIRS: $mcFolder"
-	declare -a subfolders=(resourcepacks shaderpacks saves screenshots)
+	# sync common folders
+	for mcFolder in "${folders[@]}"; do
+		echo "SYNCING COMMON DIRS: $mcFolder"
+		declare -a subfolders=(resourcepacks shaderpacks saves screenshots)
 
-	for subfolder in "${subfolders[@]}"; do
-		mkdir -p "$base/$subfolder"
-		if [ -d "$mcFolder/$subfolder" ] && [ ! -L "$mcFolder/$subfolder" ]; then
-			echo "     -> Symlinking '$mcFolder/$subfolder'"
+		for subfolder in "${subfolders[@]}"; do
+			mkdir -p "$base/$subfolder"
+			if [ -d "$mcFolder/$subfolder" ] && [ ! -L "$mcFolder/$subfolder" ]; then
+				echo "     -> Symlinking '$mcFolder/$subfolder'"
 
-			for file in "$mcFolder/$subfolder"/*; do
-				cp -r "$file" "$base/$subfolder"
-				remove "$file"
-			done
-			rmdir "$mcFolder/$subfolder"
-		fi
+				for file in "$mcFolder/$subfolder"/*; do
+					cp -r "$file" "$base/$subfolder"
+					remove "$file"
+				done
+				rmdir "$mcFolder/$subfolder"
+			fi
 
-		ln -sT "$base/$subfolder" "$mcFolder/$subfolder"
+			ln -sT "$base/$subfolder" "$mcFolder/$subfolder"
+		done
 	done
-done
+}

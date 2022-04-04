@@ -4,15 +4,14 @@ subcommand() {
 	local action="$1"
 
 	if [ -n "$action" ]; then
-		# Prevent deinit from being called on EXIT, since we don't show TUI
-		unset -f tty.fullscreen_deinit
-
 		if [ -f "$DOTMGR_ROOT_DIR/src/actions/$action.sh" ]; then
 			source "$DOTMGR_ROOT_DIR/src/actions/$action.sh"
 			if ! shift; then
 				print.die 'Failed to shift'
 			fi
-			action "$@"
+			if ! action "$@"; then
+				print.die "Failed to execute action"
+			fi
 		else
 			print.die "Could not find action '$action'"
 		fi
@@ -148,26 +147,19 @@ subcommand() {
 }
 
 tty.fullscreen_init() {
-	global_stty_saved="$(stty --save)"
 	stty -echo
+	tput smcup  # save screen contents
 	tput civis 2>/dev/null # cursor to invisible
-	tput sc # save cursor position
-	tput smcup 2>/dev/null # save screen contents
 
 	printf '\033[3J' # clear
 	read -r global_tty_height global_tty_width < <(stty size)
 }
 
 tty.fullscreen_deinit() {
-	tput rmcup 2>/dev/null # restore screen contents
-	tput rc # restore cursor position
-	tput cnorm 2>/dev/null # cursor to normal
-	if [ -z "$global_stty_saved" ]; then
-		stty sane
-		print.warn "Variable 'global_stty_saved' is empty. Falling back to 'stty sane'"
-	else
-		stty "$global_stty_saved"
-	fi
+	tput sgr0
+	tput cnorm # cursor to normal
+	tput rmcup # restore screen contents
+	stty echo
 }
 
 print_menu() {
