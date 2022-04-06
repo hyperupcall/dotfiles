@@ -389,9 +389,11 @@
 		"markdown": true
 	},
 	"git.enableCommitSigning": true,
-	"workbench.colorTheme": "Monokai Pro",
+	"workbench.colorTheme": "SynthWave '84",
 	"extensions.ignoreRecommendations": true,
 	"julia.symbolCacheDownload": true,
 	"gitlens.codeLens.enabled": false,
-	"cmake.configureOnOpen": true
+	"cmake.configureOnOpen": true,
+	"warmUp.changeCount": "15",
+	"warmUp.switchProgrammingLanguage": "javascript"
 }

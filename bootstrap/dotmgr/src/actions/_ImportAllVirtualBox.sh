@@ -7,9 +7,9 @@
 # Registers all VirtualBox virtual machine. Optionally
 # enables unregistering all virtual machines
 
-shopt -s nullglob
-
 action() {
+	shopt -s nullglob
+
   local flag_unregister='no'
 
   for arg; do case $arg in
@@ -27,14 +27,18 @@ action() {
     return
   fi
 
-  local virtualbox_dir="/storage/vault/rodinia/Virtual_Machines"
+  local virtualbox_dir="/storage/vault/rodinia/VirtualBox_Machines"
+
+	if [ ! -d "$virtualbox_dir" ]; then
+		print.die "Could not find directory '$virtualbox_dir'"
+	fi
 
   # Add all
   for group_dir in "$virtualbox_dir"/*/; do
-    register "$group_dir"
-    local group_name="${group_dir%/}"; group_name=${group_name##*/}
+    register "${group_dir%/}"
+
     for vm_dir in "$group_dir"*/; do
-      register "$vm_dir"
+      register "${vm_dir%/}"
     done
   done
 }

@@ -3,8 +3,8 @@
 main.dotmgr() {
 	set -eo pipefail
 	shopt -s dotglob extglob globstar nullglob shift_verbose
-	source "$DOTMGR_ROOT_DIR/src/util/print.sh"
-	source "$DOTMGR_ROOT_DIR/src/util/util.sh"
+	source "$DOTMGR_ROOT/src/util/print.sh"
+	source "$DOTMGR_ROOT/src/util/util.sh"
 
 
 	# -------------------------------------------------------- #

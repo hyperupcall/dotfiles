@@ -7,12 +7,12 @@ export EMAIL="edwin@kofler.com"
 export LANG="${LANG:-en_US.UTF-8}"
 export LANGUAGE="${LANGUAGE:-"$LANG"}"
 export LC_ALL="${LC_ALL:-"$LANG"}"
-export VISUAL="nvim"
+export VISUAL='nvim'
 export EDITOR="$VISUAL"
-export DIFFPROG="vim -d"
-export PAGER="less"
-# export BROWSER="brave-browser"
-# export SPELL="aspell -x -c"
+export DIFFPROG='vim -d'
+export PAGER='less'
+# export BROWSER='brave-browser'
+# export SPELL='aspell -x -c'
 
 
 # ------------------------ Program ----------------------- #

@@ -18,7 +18,11 @@
 # ─── FRAMEWORKS ─────────────────────────────────────────────────────────────────
 #
 
+# source "$XDG_CONFIG_HOME/zsh/frameworks/antibody.sh"
+source "$HOME/.dots/.usr/share/antigen.zsh"
 # source "$XDG_CONFIG_HOME/zsh/frameworks/oh-my-zsh.sh"
+source "$XDG_DATA_HOME/zinit/zinit.zsh"
+source "$ZPLUG_HOME/init.zsh"
 
 
 #
@@ -152,3 +156,4 @@ done
 unset -v f
 
 # ---
+### End of Zinit's installer chunk

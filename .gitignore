@@ -1,6 +1,10 @@
 .bin/
 .home/
 .repos/
+.usr/
+
+# TODO
+.zcompdump
 
 *.env
 

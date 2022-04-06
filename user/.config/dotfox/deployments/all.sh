@@ -138,6 +138,7 @@ declare -ra dotfiles=(
 	cfg:'rofi'
 	cfg:'rtorrent'
 	cfg:'salamis'
+	cfg:'sheldon'
 	cfg:'shell'
 	cfg:'slack-term'
 	cfg:'starship'

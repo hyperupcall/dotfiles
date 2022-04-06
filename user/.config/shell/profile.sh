@@ -16,11 +16,10 @@ fi
 . "$XDG_CONFIG_HOME/shell/modules/env.sh"
 . "$XDG_CONFIG_HOME/shell/modules/xdg.sh"
 
-_path_prepend "$HOME/.dots/bootstrap/dotmgr/bin"
-_path_prepend "$HOME/.dots/.bin"
+_path_prepend "$HOME/.dots/.usr/bin"
 _path_prepend "$HOME/.local/bin"
 
-if [ -t 0 ]; then # Required due to 'inappropriate ioctl for device' errors on some distros
+if [ -t 0 ]; then # Quench 'inappropriate ioctl for device' errors on some distros
 	stty discard undef # special characters
 	stty start undef
 	stty stop undef
@@ -32,12 +31,12 @@ fi
 for d in aliases functions; do
 	for f in "$XDG_CONFIG_HOME/shell/modules/$d"/*.sh; do
 		[ -r "$f" ] && . "$f"
-	done
+	done; unset -v f
 done
-unset -v d f
+unset -v d
 
 # ---------------------- Environment --------------------- #
-# . "$XDG_CONFIG_HOME/shell/generated/aggregated.sh" # FIXME
+# . "$XDG_CONFIG_HOME/shell/generated/aggregated.sh" # FIXME (CHECK $SHELL?)
 
 ({
 	if [ -z "$XDG_RUNTIME_DIR" ]; then

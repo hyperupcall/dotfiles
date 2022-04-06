@@ -21,6 +21,7 @@ action() {
 		sudo mount "$mnt"
 	fi
 
+
 	# -------------------------------------------------------- #
 	#                   STRIP SHELL DOTFILES                   #
 	# -------------------------------------------------------- #
@@ -59,6 +60,7 @@ action() {
 	must_dir "$HOME/.dots/.bin"
 	must_dir "$HOME/.dots/.home"
 	must_dir "$HOME/.dots/.repos"
+	must_dir "$HOME/.dots/.usr"/{bin,include,lib,libexec,local,share,src}
 	must_dir "$HOME/.gnupg"
 	must_dir "$HOME/.ssh"
 	must_dir "$XDG_STATE_HOME/history"
@@ -139,8 +141,8 @@ action() {
 		~/Desktop
 		~/Music
 	)
-	if [ ! -L "$HOME/Pictures" ]; then rmdir "$HOME/Pictures/Screenshots"; fi
-	# Use 'cp -f' for "$XDG_CONFIG_HOME/user-dirs.dirs", otherwise unlink/link operation races
+	if [[ -d "$HOME/Pictures" && ! -L "$HOME/Pictures" ]]; then rmdir "$HOME/Pictures/Screenshots"; fi
+	# Use 'cp -f' for "$XDG_CONFIG_HOME/user-dirs.dirs"; sotherwise unlink/link operation races
 	if [ -d "$storage" ]; then
 		cp -f "$HOME/.dots/user/.config/user-dirs.dirs/user-dirs-custom.conf" "$XDG_CONFIG_HOME/user-dirs.dirs"
 
@@ -226,8 +228,10 @@ action() {
 		done; unset -v file
 	fi
 
-	# Dependencies of symlinking
+	# Dependent on symlinking
+	must_dir "$HOME/.dots/.home/Documents/Shared"
 	must_dir "$HOME/.dots/.home/Pictures/Screenshots"
+	must_link ~/.dots/bootstrap/dotmgr/bin/dotmgr ~/.dots/.usr/bin/dotmgr
 
 
 	# -------------------------------------------------------- #
@@ -332,15 +336,20 @@ action() {
 	elif [ -z "$XDG_SESSION_DESKTOP" ]; then
 		print.warn "Variable '\$XDG_SESSION_DESKTOP' is empty"
 	fi
+
+
+	# -------------------------------------------------------- #
+	#                    OTHER APPLICATIONS                    #
+	# -------------------------------------------------------- #
+	VBoxManage setproperty machinefolder /storage/vault/rodinia/VirtualBox_Machines
 }
 
 
 # -------------------------------------------------------- #
 #                     HELPER FUNCTIONS                     #
 # -------------------------------------------------------- #
-
 must_rm() {
-	util_get_file "$1"
+	util.get_path "$1"
 	local file="$REPLY"
 
 	if [ -f "$file" ]; then
@@ -355,7 +364,7 @@ must_rm() {
 }
 
 must_rmdir() {
-	util_get_file "$1"
+	util.get_path "$1"
 	local dir="$REPLY"
 
 	if [ -d "$dir" ]; then
@@ -370,22 +379,25 @@ must_rmdir() {
 }
 
 must_dir() {
-	util_get_file "$1"
-	local dir="$REPLY"
+	local d=
+	for d; do
+		util.get_path "$d"
+		local dir="$REPLY"
 
-	if [ ! -d "$dir" ]; then
-		local output=
-		if output=$(mkdir -p -- "$dir" 2>&1); then
-			print.info "Created directory '$dir'"
-		else
-			print.warn "Failed to create directory '$dir'"
-			printf '  -> %s\n' "$output"
+		if [ ! -d "$dir" ]; then
+			local output=
+			if output=$(mkdir -p -- "$dir" 2>&1); then
+				print.info "Created directory '$dir'"
+			else
+				print.warn "Failed to create directory '$dir'"
+				printf '  -> %s\n' "$output"
+			fi
 		fi
-	fi
+	done; unset -v d
 }
 
 must_file() {
-	util_get_file "$1"
+	util.get_path "$1"
 	local file="$REPLY"
 
 	if [ ! -f "$file" ]; then
@@ -400,10 +412,10 @@ must_file() {
 }
 
 must_link() {
-	util_get_file "$1"
+	util.get_path "$1"
 	local src="$REPLY"
 
-	util_get_file "$2"
+	util.get_path "$2"
 	local link="$REPLY"
 
 	if [ -z "$1" ]; then
@@ -445,7 +457,7 @@ must_link() {
 	fi
 }
 
-util_get_file() {
+util.get_path() {
 	if [[ ${1::1} == / ]]; then
 		REPLY="$1"
 	else

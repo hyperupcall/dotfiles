@@ -504,3 +504,6 @@ _path_prepend "$HOME/.yarn/bin"
 
 # z
 export _Z_DATA="$XDG_DATA_HOME/z"
+
+# zplug
+export ZPLUG_HOME="$XDG_STATE_HOME/zplug"

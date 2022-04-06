@@ -10,7 +10,7 @@ subcommand() {
 	local module="$1"
 
 	if [ "$flag_list" = 'yes' ]; then
-		for file in "$DOTMGR_ROOT_DIR/src/modules/"*; do
+		for file in "$DOTMGR_ROOT/src/modules/"*; do
 			file="${file##*/}"
 			file="${file%.sh}"
 			printf '%s  ' "$file"
@@ -24,13 +24,13 @@ subcommand() {
 		print.die 'Name of module stage cannot be empty'
 	fi
 
-	if [ -f "$DOTMGR_ROOT_DIR/src/modules/$module.sh" ]; then
+	if [ -f "$DOTMGR_ROOT/src/modules/$module.sh" ]; then
 		if [ "$flag_show" = 'yes' ]; then
-			printf '%s\n' "$(<"$DOTMGR_ROOT_DIR/src/modules/$module.sh")"
+			printf '%s\n' "$(<"$DOTMGR_ROOT/src/modules/$module.sh")"
 		elif [ "$flag_edit" = 'yes' ]; then
-			"$EDITOR" "$DOTMGR_ROOT_DIR/src/modules/$module.sh"
+			"$EDITOR" "$DOTMGR_ROOT/src/modules/$module.sh"
 		else
-			source "$DOTMGR_ROOT_DIR/src/modules/$module.sh" "$@"
+			source "$DOTMGR_ROOT/src/modules/$module.sh" "$@"
 		fi
 	else
 		printf '%s\n' "Module '$module' not found"

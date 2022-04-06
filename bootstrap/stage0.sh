@@ -82,6 +82,7 @@ if [ ! -d ~/.dots ]; then
 	log 'Cloning github.com/hyperupcall/dots'
 
 	ensure git clone --quiet https://github.com/hyperupcall/dots ~/.dots
+	ensure ln -sf ~/.dots/bootstrap/dotmgr/bin/dotmgr ~/.dots/.usr/bin/dotmgr
 	ensure cd ~/.dots
 	ensure git remote set-url origin git@github.com:hyperupcall/dots
 	ensure git config --local filter.npmrc-clean.clean "$PWD/user/config/npm/npmrc-clean.sh"
@@ -118,7 +119,7 @@ export NAME="Edwin Kofler"
 export EMAIL="edwin@kofler.dev"
 export EDITOR="$EDITOR"
 export VISUAL="\$EDITOR"
-export PATH="\$HOME/.dots/bootstrap/dotmgr/bin:\$PATH"
+export PATH="\$HOME/.dots/.usr/bin:\$PATH"
 
 if [ -f ~/.dots/xdg.sh ]; then
   . ~/.dots/xdg.sh

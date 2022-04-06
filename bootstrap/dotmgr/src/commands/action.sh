@@ -4,8 +4,8 @@ subcommand() {
 	local action="$1"
 
 	if [ -n "$action" ]; then
-		if [ -f "$DOTMGR_ROOT_DIR/src/actions/$action.sh" ]; then
-			source "$DOTMGR_ROOT_DIR/src/actions/$action.sh"
+		if [ -f "$DOTMGR_ROOT/src/actions/$action.sh" ]; then
+			source "$DOTMGR_ROOT/src/actions/$action.sh"
 			if ! shift; then
 				print.die 'Failed to shift'
 			fi
@@ -83,7 +83,7 @@ subcommand() {
 
 				descriptionsi=$((descriptionsi++))
 			fi
-		done < "$DOTMGR_ROOT_DIR/src/actions/$file.sh"; unset -v line
+		done < "$DOTMGR_ROOT/src/actions/$file.sh"; unset -v line
 	done; unset -v file
 
 	tty.fullscreen_init
@@ -115,11 +115,11 @@ subcommand() {
 			fi
 			;;
 		e)
-			"$EDITOR" "$DOTMGR_ROOT_DIR/src/actions/${files[$selected]}.sh"
+			"$EDITOR" "$DOTMGR_ROOT/src/actions/${files[$selected]}.sh"
 			;;
 		$'\n'|$'\x0d')
 			tty.fullscreen_deinit
-			source "$DOTMGR_ROOT_DIR/src/actions/${files[$selected]}.sh"
+			source "$DOTMGR_ROOT/src/actions/${files[$selected]}.sh"
 			if ! action; then
 				print.die "Failed to execute action"
 			fi
