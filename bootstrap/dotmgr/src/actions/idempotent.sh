@@ -15,8 +15,9 @@ action() {
 	#                         DO MOUNT                         #
 	# -------------------------------------------------------- #
 	if ! grep -q /storage/ur /etc/fstab; then
+		local part_uuid="c875b5ca-08a6-415e-bc11-fc37ec94ab8f"
 		local mnt='/storage/ur'
-		printf '%s\n' "PARTUUID=c875b5ca-08a6-415e-bc11-fc37ec94ab8f  $mnt  btrfs  defaults,noatime,X-mount.mkdir  0 0" \
+		printf '%s\n' "PARTUUID=$part_uuid  $mnt  btrfs  defaults,noatime,X-mount.mkdir  0 0" \
 			| sudo tee -a /etc/fstab >/dev/null
 		sudo mount "$mnt"
 	fi
@@ -57,7 +58,6 @@ action() {
 	# -------------------------------------------------------- #
 	#               CREATE DIRECTORIES AND FILES               #
 	# -------------------------------------------------------- #
-	must_dir "$HOME/.dots/.bin"
 	must_dir "$HOME/.dots/.home"
 	must_dir "$HOME/.dots/.repos"
 	must_dir "$HOME/.dots/.usr"/{bin,include,lib,libexec,local,share,src}
@@ -216,15 +216,15 @@ action() {
 		must_link "$HOME/Docs/Programming/workspaces" "$HOME/workspaces"
 
 		local file=
-		for file in ~/.dots/.bin/*; do unlink "$file"; done
+		for file in ~/.dots/.usr/bin/*; do unlink "$file"; done
 		for file in "$HOME/Docs/Programming/repos/Groups/Bash"/{bake,basalt,choose,hookah,foxomate,glue,rho,shelldoc,shelltest,woof}/pkg/bin/*; do
-			ln -fs  "$file" ~/.dots/.bin
+			ln -fs  "$file" ~/.dots/.usr/bin
 		done; unset -v file
 	else
 		local file=
-		for file in ~/.dots/.bin/*; do unlink "$file"; done
+		for file in ~/.dots/.usr/bin/*; do unlink "$file"; done
 		for file in "$HOME/Documents"/{bake,basalt,choose,hookah,foxomate,glue,rho,shelldoc,shelltest,woof}/pkg/bin/*; do
-			ln -fs "$file" ~/.dots/.bin
+			ln -fs "$file" ~/.dots/.usr/bin
 		done; unset -v file
 	fi
 

@@ -156,4 +156,3 @@ done
 unset -v f
 
 # ---
-### End of Zinit's installer chunk
