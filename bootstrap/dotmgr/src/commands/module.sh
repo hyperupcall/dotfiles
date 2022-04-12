@@ -2,7 +2,7 @@
 
 subcommand() {
 	local flag_{list,show,edit}='no'
-	for arg; do case "$arg" in
+	for arg; do case $arg in
 		--list) shift; flag_list='yes' ;;
 		--show) shift; flag_show='yes' ;;
 		--edit) shift; flag_edit='yes' ;;

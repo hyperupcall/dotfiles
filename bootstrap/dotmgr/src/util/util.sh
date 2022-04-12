@@ -85,6 +85,9 @@ util.show_help() {
 		  module [--list] [--show] [--edit] [stage]
 		    Bootstraps dotfiles, only for a particular language
 
+		  sudo
+		    Run this script with superuser priviledges
+
 		Flags:
 		  --help
 		    Show help menu

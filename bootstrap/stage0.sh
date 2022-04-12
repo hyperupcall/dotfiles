@@ -34,8 +34,16 @@ fi
 mkdir -p ~/.bootstrap
 
 if ! iscmd 'sudo'; then
-	die "Sudo not installed"
+	die "Please install 'sudo' before running this script"
 fi
+
+case $(uname) in darwin*)
+	log 'Installing Homebrew'
+
+	ensure cd "$(mktemp -d)"
+	curl -fsSLo './install.sh' 'https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh'
+	bash './install.sh'
+esac
 
 if ! iscmd 'git'; then
 	log 'Installing git'
@@ -50,10 +58,12 @@ if ! iscmd 'git'; then
 		ensure sudo zypper -y install 'git'
 	elif iscmd 'eopkg'; then
 		ensure sudo eopkg -y install 'git'
+	elif iscmd 'brew'; then
+		ensure brew install 'git'
 	fi
 
 	if ! iscmd 'git'; then
-		die 'Automatic installation of sudo failed'
+		die 'Automatic installation of git failed'
 	fi
 fi
 
@@ -70,6 +80,8 @@ if ! iscmd 'nvim'; then
 		ensure sudo zypper -y install 'neovim'
 	elif iscmd 'eopkg'; then
 		ensure sudo eopkg -y install 'neovim'
+	elif iscmd 'brew'; then
+		ensure brew install 'neovim'
 	fi
 
 	if ! iscmd 'nvim'; then

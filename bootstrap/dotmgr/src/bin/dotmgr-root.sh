@@ -33,24 +33,28 @@ main.dotmgr() {
 	# -------------------------------------------------------- #
 	local user="$SUDO_USER"
 	if [ -z "$user" ]; then
-		print.die "Failed to determine user running as sudo"
+		print.die 'Failed to determine user running as sudo'
 	fi
 
 	print.info "Adding groups to user '$user'"
 	must_group "$user" 'docker'
 	must_group "$user" 'vboxusers'
+	must_group "$user" 'libvirt'
+	must_group "$user" 'kvm'
 }
 
 must_group() {
 	local user="$1"
 	local group="$2"
 
-	if groupadd "$group"; then
+	local output=
+	if output=$(groupadd "$group" 2>&1); then
 		print.info "Creating group '$group'"
 	else
 		local code=$?
 		if ((code != 9)); then
 			print.warn "Failed to create group '$group'"
+			printf '%s\n' "  -> $output"
 		fi
 	fi
 

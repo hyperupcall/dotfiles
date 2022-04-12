@@ -22,6 +22,8 @@ subcommand() {
 			util.ensure sudo zypper -y install 'jq'
 		elif util.is_cmd 'eopkg'; then
 			util.ensure sudo eopkg -y install 'jq'
+		elif iscmd 'brew'; then
+			ensure brew install 'jq'
 		fi
 
 		if ! util.is_cmd 'jq'; then
@@ -42,6 +44,8 @@ subcommand() {
 			util.ensure sudo zypper -y install 'curl'
 		elif util.is_cmd 'eopkg'; then
 			util.ensure sudo eopkg -y install 'curl'
+		elif iscmd 'brew'; then
+			ensure brew install 'curl'
 		fi
 
 		if ! util.is_cmd 'curl'; then
@@ -86,12 +90,6 @@ subcommand() {
 		util.ensure chmod +x ~/.bootstrap/bin/dotfox
 	fi
 
-	# Download Basalt
-	if [ ! -d "$XDG_DATA_HOME/basalt/source" ]; then
-		print.info 'Downloading Basalt'
-		util.ensure git clone --quiet https://github.com/hyperupcall/basalt "$XDG_DATA_HOME/basalt/source"
-	fi
-
 	# Install Homebrew
 	if [ "$OSTYPE" = Darwin ]; then
 		util.ensure curl -LsSo ~/.bootstrap/brew-install.sh https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
@@ -107,28 +105,29 @@ subcommand() {
 		util.ensure git -C "$XDG_DATA_HOME/basalt/source" submodule update
 	fi
 
-	if basalt_output="$("$XDG_DATA_HOME/basalt/source/pkg/bin/basalt" global init sh)"; then
+	local basalt_output=
+	if basalt_output=$("$XDG_DATA_HOME/basalt/source/pkg/bin/basalt" global init bash); then
 		eval "$basalt_output"
 	else
-		print.die "Could not run 'basalt global init sh'"
+		print.die "Could not run 'basalt global init bash'"
 	fi
 
-	cat > ~/.bootstrap/stage2.sh <<-"EOF"
-		. ~/.bootstrap/stage1.sh
-		export PATH="$HOME/.bootstrap/dotfox:$HOME/.bootstrap/bin:$XDG_DATA_HOME/basalt/source/pkg/bin:$HOME/.bootstrap/nim-all/nim/bin:$PATH"
+	cat > ~/.bootstrap/stage2.sh <<"EOF"
+. ~/.bootstrap/stage1.sh
+export PATH="$HOME/.bootstrap/dotfox:$HOME/.bootstrap/bin:$XDG_DATA_HOME/basalt/source/pkg/bin:$HOME/.bootstrap/nim-all/nim/bin:$PATH"
 
-		if basalt_output="$("$XDG_DATA_HOME/basalt/source/pkg/bin/basalt" global init sh)"; then
-		    eval "$basalt_output"
-		else
-		    printf '%s\n' "Could not run 'basalt global init sh'"
-		fi
-	EOF
+if basalt_output="$("$XDG_DATA_HOME/basalt/source/pkg/bin/basalt" global init sh)"; then
+    eval "$basalt_output"
+else
+    printf '%s\n' "Could not run 'basalt global init sh'"
+fi
+EOF
 
-	cat <<-"EOF"
-	---
-	. ~/.bootstrap/stage2.sh
+	cat <<"EOF"
+---
+. ~/.bootstrap/stage2.sh
 
-	dotmgr action <action>
-	---
-	EOF
+dotmgr action <action>
+---
+EOF
 }

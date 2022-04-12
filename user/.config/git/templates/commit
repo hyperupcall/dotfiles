@@ -1,23 +1,23 @@
 
-# Conventional Commits: '<type>: <message>
-#   [ fix, feat, 'BREAKING CHANGE' ]
+# Fox: 'type[(scope)]: message'
+#  [ fix, feat, breaking, docs, perf, api ] (user-facing)
+#  [ chore, build, types, wip, style, refactor ] (dev-facing)
+#  [ chore, deps, ci, dx, workflow, test ] (dev-infra)
 #
-# AngularJS: '<type>[<scope>]: <message>
-#   [ build, ci, docs, feat, fix, perf, refactor, test ]
+# Conventional Commits: 'type: message
+#  [ fix, feat, 'BREAKING CHANGE' ]
 #
-# VueJS: '<type>[<scope>]: <message>'
-#   [ dx, style, workflow, chore, types, wip ]
+# AngularJS: 'type[scope]: message
+#  [ build, ci, docs, feat, fix, perf, refactor, test ]
 #
-# ESLint: '<type>: <message> (fixes #1234)'
-#   [ Fix, Update, Breaking, Docs, Build, New, Upgrade ]
+# VueJS: 'type[scope]: message'
+#  [ dx, style, workflow, chore, types, wip ]
 #
-# Atom: '<emoji> <message>'
-#   [ :art:, :racehorse:, :non-portable_water:, :memo:, :apple:,
-#     :checkered_flag:, :bug:, :fire:, :green_heart: :white_check_mark:,
-#     :lock:, :arrow_up:, :arrow_down:, :shirt: ]
+# ESLint: '<type>: message (fixes #1234)'
+#  [ Fix, Update, Breaking, Docs, Build, New, Upgrade ]
 #
 # Ember: '[Type Qualifier] Message'
-#   [ BUGFIX, CLEANUP, FEATURE, DOC, SECURITY ]
+#  [ BUGFIX, CLEANUP, FEATURE, DOC, SECURITY ]
 #
-# JSHint: '[[scope]] <message>'
-#   [ FIX, FEAT, DOCS, TEST, CHORE ]
+# JSHint: '[[scope]] message'
+#  [ FIX, FEAT, DOCS, TEST, CHORE ]

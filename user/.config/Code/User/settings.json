@@ -102,6 +102,7 @@
 		"**/pnpm-lock.yaml": true,
 		"**/yarn.lock": true,
 		"**/.hidden/": true,
+		"**/.hooks/.hookah": true,
 		"**/bake": true
 	},
 	"search.searchOnTypeDebouncePeriod": 200,
@@ -395,5 +396,6 @@
 	"gitlens.codeLens.enabled": false,
 	"cmake.configureOnOpen": true,
 	"warmUp.changeCount": "15",
-	"warmUp.switchProgrammingLanguage": "javascript"
+	"warmUp.switchProgrammingLanguage": "javascript",
+	"window.zoomLevel": -1
 }
