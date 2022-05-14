@@ -88,6 +88,38 @@ action() {
 		cykerway/complete-alias \
 		rcaloras/bash-preexec \
 		reconquest/shdoc
+
+	# -------------------------------------------------------- #
+	#                           WOOF                           #
+	# -------------------------------------------------------- #
+	print.info 'Instaling Woof packages globally'
+	woof install gh latest
+	woof install nodejs latest
+	woof install deno latest
+	woof install go latest
+	woof install nim latest
+	woof install zig latest
+	woof install python latest
+	woof install ruby latest
+	woof install php latest
+
+	# -------------------------------------------------------- #
+	#                            NPM                           #
+	# -------------------------------------------------------- #
+	npm i -g yarn
+	yarn global add pnpm
+	yarn global add diff-so-fancy
+	yarn global add npm-check-updates
+	yarn global add graphqurl
+
+	# -------------------------------------------------------- #
+	#                            GO                            #
+	# -------------------------------------------------------- #
+	go install golang.org/x/tools/gopls@latest
+	go install golang.org/x/tools/cmd/godoc@latest
+
+	go get github.com/motemen/gore/cmd/gore
+	go get github.com/mdempsky/gocode
 }
 
 msg() {
