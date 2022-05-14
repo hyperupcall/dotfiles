@@ -2,17 +2,24 @@
 set -e
 
 die() {
-	printf '%s\n' "ERROR: $1. Exiting" >&2
+	error "$@"
+	printf "$GLOBAL_FMT_START%s$GLOBAL_FMT_END\n" '==> EXITING'
 	exit 1
 }
 
+error() {
+	printf "$GLOBAL_FMT_START%s$GLOBAL_FMT_END %s\n" '==> ERROR:' "$1" >&2
+}
+
 log() {
-	printf '%s\n' "INFO: $1"
+	printf "$GLOBAL_FMT_START%s$GLOBAL_FMT_END %s\n" '==> INFO' "$1"
 }
 
 ensure() {
 	if "$@"; then :; else
-		die "Command '$*' failed (code $?)"
+		error "Failed to run command (code $?)"
+		printf '%s\n' "Command: $*" >&2
+		exit 1
 	fi
 }
 
@@ -27,11 +34,22 @@ iscmd() {
 # shellcheck disable=SC3028,SC3054
 if [ -n "$BASH" ] && [ "${BASH_SOURCE[0]}" != "$0" ]; then
 	printf '%s\n' "Error: File 'stage0.sh' should not be sourced"
-	exit 1
+	return 1
+fi
+
+GLOBAL_FMT_START=
+GLOBAL_FMT_END=
+if [ -t 0 ]; then
+	GLOBAL_FMT_BLACK_FG='\033[1;30m'
+	GLOBAL_FMT_WHITE_BG='\033[1;47m'
+	GLOBAL_FMT_RESET='\033[0;0m'
+	GLOBAL_FMT_START="$GLOBAL_FMT_WHITE_BG$GLOBAL_FMT_BLACK_FG"
+	GLOBAL_FMT_END="$GLOBAL_FMT_RESET"
 fi
 
 # Ensure prerequisites
 mkdir -p ~/.bootstrap
+mkdir -p ~/.dots/.usr/bin
 
 if ! iscmd 'sudo'; then
 	die "Please install 'sudo' before running this script"
@@ -45,7 +63,9 @@ case $(uname) in darwin*)
 	bash './install.sh'
 esac
 
-if ! iscmd 'git'; then
+if iscmd 'git'; then
+	log 'Already installed git'
+else
 	log 'Installing git'
 
 	if iscmd 'pacman'; then
@@ -67,7 +87,9 @@ if ! iscmd 'git'; then
 	fi
 fi
 
-if ! iscmd 'nvim'; then
+if iscmd 'nvim'; then
+	log 'Already installed neovim'
+else
 	log 'Installing neovim'
 
 	if iscmd 'pacman'; then
@@ -90,7 +112,9 @@ if ! iscmd 'nvim'; then
 fi
 
 # Install ~/.dots
-if [ ! -d ~/.dots ]; then
+if [ -d ~/.dots ]; then
+	log 'Already cloned github.com/hyperupcall/dots'
+else
 	log 'Cloning github.com/hyperupcall/dots'
 
 	ensure git clone --quiet https://github.com/hyperupcall/dots ~/.dots
@@ -100,7 +124,7 @@ if [ ! -d ~/.dots ]; then
 	ensure git config --local filter.npmrc-clean.clean "$PWD/user/config/npm/npmrc-clean.sh"
 	ensure git config --local filter.slack-term-config-clean.clean "$PWD/user/config/slack-term/slack-term-config-clean.sh"
 	ensure git config --local filter.oscrc-clean.clean "$PWD/user/config/osc/oscrc-clean.sh"
-	ensure cd
+	ensure cd ~
 fi
 
 # Set EDITOR so editors like 'vi' or 'vim' that may not be installed

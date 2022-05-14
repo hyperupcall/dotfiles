@@ -24,18 +24,15 @@ subcommand() {
 	local files=(
 		# Common
 		'idempotent'
-		'dotshellgen'
-		'dotshellextract'
 		'backup'
 		''
 		# Bootstrapping
-		'dotfox_deploy'
 		'install_packages'
 		'install_others'
 		''
 		# regular uncommon
 		'secrets_export'
-		'secrets_import'
+	'secrets_import'
 		'_ImportAllVirtualBox'
 		'_minecraft-sync'
 	)

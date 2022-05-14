@@ -86,7 +86,8 @@ util.show_help() {
 		    Bootstraps dotfiles, only for a particular language
 
 		  sudo
-		    Run this script with superuser priviledges
+		    Run this script with superuser priviledges. This runs an entirely different
+		    set of commands
 
 		Flags:
 		  --help

@@ -1,7 +1,7 @@
 # shellcheck shell=bash
 
 # Name:
-# Idempotent
+# Idempotent Setup
 #
 # Description:
 # Idempotently configures the desktop. This includes:
@@ -141,7 +141,6 @@ action() {
 		~/Desktop
 		~/Music
 	)
-	if [[ -d "$HOME/Pictures" && ! -L "$HOME/Pictures" ]]; then rmdir "$HOME/Pictures/Screenshots"; fi
 	# Use 'cp -f' for "$XDG_CONFIG_HOME/user-dirs.dirs"; sotherwise unlink/link operation races
 	if [ -d "$storage" ]; then
 		cp -f "$HOME/.dots/user/.config/user-dirs.dirs/user-dirs-custom.conf" "$XDG_CONFIG_HOME/user-dirs.dirs"
@@ -257,12 +256,6 @@ action() {
 		gsettings set org.nemo.preferences default-folder-viewer "'list-view'"
 	fi
 
-	# TODO
-	# gsettings set org.gnome.libgnomekbd.keyboard layouts "['us', 'us\tdvorak']"
-	# gsettings set org.gnome.libgnomekbd.keyboard options "['grp\tgrp:win_space_toggle']"
-	# gsettings set org.gnome.gnome-screenshot auto-save-directory "'$HOME/.dots/.home/Pictures/Screenshots'"
-	# gsettings ca.desrt.dconf-editor show-warning 'false'
-
 	if [ "$XDG_SESSION_DESKTOP" = 'cinnamon' ]; then
 		local file="$HOME/.cinnamon/configs/menu@cinnamon.org/0.json"
 		local image_file=
@@ -329,6 +322,8 @@ action() {
 
 		gsettings set org.mate.terminal.global use-mnemonics 'false'
 		gsettings set org.mate.terminal.global use-menu-accelerators 'false'
+	elif [ "$XDG_SESSION_DESKTOP" = 'pop' ]; then
+		:
 	elif [ "$XDG_SESSION_DESKTOP" = 'gnome' ]; then
 		gsettings set org.gnome.desktop.wm.keybindings minimize "[]"
 		gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-last "[]"
@@ -369,7 +364,13 @@ action() {
 	# -------------------------------------------------------- #
 	#                    OTHER APPLICATIONS                    #
 	# -------------------------------------------------------- #
-	VBoxManage setproperty machinefolder /storage/vault/rodinia/VirtualBox_Machines
+	print.info 'Running dotshellextract'
+	helper.dotshellextract
+	print.info 'Running dotshellgen'
+	helper.dotshellgen
+	print.info 'Running dotfox_deploy'
+	helper.dotfox_deploy
+	VBoxManage setproperty machinefolder '/storage/vault/rodinia/VirtualBox_Machines'
 }
 
 
