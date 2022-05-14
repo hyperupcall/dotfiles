@@ -64,4 +64,3 @@ unset -v d
 # } &)
 
 # ---
-. "/home/edwin/.local/share/cargo/env"

@@ -34,7 +34,7 @@ iscmd() {
 # shellcheck disable=SC3028,SC3054
 if [ -n "$BASH" ] && [ "${BASH_SOURCE[0]}" != "$0" ]; then
 	printf '%s\n' "Error: File 'stage0.sh' should not be sourced"
-	exit 1
+	return 1
 fi
 
 GLOBAL_FMT_START=
