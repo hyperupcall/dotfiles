@@ -4,9 +4,10 @@
 main.dotmgr() {
 	set -eo pipefail
 	shopt -s dotglob extglob globstar nullglob shift_verbose
-	source "$DOTMGR_ROOT/src/util/print.sh"
-	source "$DOTMGR_ROOT/src/util/util.sh"
-	# trap 'util.trap_winch' 'WINCH' # FIXME does not work
+	local f=
+	for f in "$DOTMGR_ROOT"/src/{helpers,util}/?*.sh; do
+		source "$f"
+	done; unset -v f
 	util.prereq
 
 	local arg=

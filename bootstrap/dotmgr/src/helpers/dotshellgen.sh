@@ -10,7 +10,55 @@
 # "$XDG_CONFIG_HOM/dotshellgen" into a single file for each shell. The result
 # is saved at "$XDG_STATE_HOME/dotshellgen"
 
-action() {
+helper.dotshellgen() {
+	# ------------------- Utility Functions ------------------ #
+	is_in_array() {
+		local array_name="$1"
+		local value="$2"
+
+		local -n array="$array_name"
+
+		local item=
+		for item in "${array[@]}"; do
+			if [ "$item" = "$value" ]; then
+				return 0
+			fi
+		done; unset -v item
+
+		return 1
+	}
+
+	concat() {
+		local file="$1"
+
+		local file_name="${file##*/}"
+
+		case "$file_name" in
+		*.bash)
+			local -n output_file='concatenated_bash_file'
+			;;
+		*.zsh)
+			local -n output_file='concatenated_zsh_file'
+			;;
+		*.fish)
+			local -n output_file='concatenated_fish_file'
+			;;
+		*.sh)
+			local -n output_file='concatenated_sh_file'
+			;;
+		*)
+			print.warn "Skipping '$file_name'"
+			return
+			;;
+		esac
+
+		{
+			printf '# %s\n' "$file_name"
+			cat "$file"
+			printf '\n'
+		} >> "$output_file"
+	}
+
 	local flag_clear='no'
 	local arg=
 	for arg; do case $arg in
@@ -30,7 +78,7 @@ action() {
 
 	if [ "$flag_clear" = 'yes' ]; then
 		rm -f "$concatenated_bash_file" "$concatenated_zsh_file" "$concatenated_fish_file" "$concatenated_sh_file"
-		warn 'Cleared all generated files'
+		print.warn 'Cleared all generated files'
 		return
 	fi
 
@@ -79,64 +127,4 @@ action() {
 	done; unset -v dirname
 
 	printf '%s\n' 'Done.'
-}
-
-warn() {
-	printf 'Info: %s\n' "$1"
-}
-
-warn() {
-	printf 'Warning: %s\n' "$1"
-}
-
-error() {
-	printf 'Error: %s\n' "$1"
-	exit 1
-}
-
-is_in_array() {
-	local array_name="$1"
-	local value="$2"
-
-	local -n array="$array_name"
-
-	local item=
-	for item in "${array[@]}"; do
-		if [ "$item" = "$value" ]; then
-			return 0
-		fi
-	done; unset -v item
-
-	return 1
-}
-
-concat() {
-	local file="$1"
-
-	local file_name="${file##*/}"
-
-	case "$file_name" in
-	*.bash)
-		local -n output_file='concatenated_bash_file'
-		;;
-	*.zsh)
-		local -n output_file='concatenated_zsh_file'
-		;;
-	*.fish)
-		local -n output_file='concatenated_fish_file'
-		;;
-	*.sh)
-		local -n output_file='concatenated_sh_file'
-		;;
-	*)
-		warn "Skipping '$file_name'"
-		return
-		;;
-	esac
-
-	{
-		printf '# %s\n' "$file_name"
-		cat "$file"
-		printf '\n'
-	} >> "$output_file"
 }

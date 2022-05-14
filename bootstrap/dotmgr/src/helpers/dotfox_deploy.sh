@@ -7,7 +7,7 @@
 # Executes dotfox with the right arguments. The command is shown before it is ran
 # Before executing, however, it removes ~/.config/user-dirs.dirs
 
-action() {
+helper.dotfox_deploy() {
 	prompt_run dotfox --config-dir="$HOME/.dots/user/.config/dotfox" --deployment=all.sh deploy
 }
 

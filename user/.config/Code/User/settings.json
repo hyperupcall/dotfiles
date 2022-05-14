@@ -22,8 +22,8 @@
 	"editor.fontLigatures": true,
 	"editor.fontSize": 16,
 	"editor.formatOnSave": true,
-	"editor.formatOnPaste": false,
-	"editor.formatOnType": false,
+	"editor.formatOnPaste": true,
+	"editor.formatOnType": true,
 	"editor.insertSpaces": false,
 	"editor.inlineSuggest.enabled": true,
 	"editor.maxTokenizationLineLength": 5000,
@@ -167,6 +167,12 @@
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.formatOnSave": true
 	},
+	"[jsonnet]": {
+		"editor.defaultFormatter": "Sebbia.jsonnetng",
+		"editor.formatOnSave": true,
+		"editor.insertSpaces": true,
+		"editor.tabSize": 2
+	},
 	"[html]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
@@ -197,22 +203,19 @@
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.wordWrap": "on",
 		"editor.insertSpaces": true,
-		"editor.tabSize": 2,
-		"files.trimTrailingWhitespace": false
+		"editor.tabSize": 2
 	},
 	"[markdown-math]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.wordWrap": "on",
 		"editor.insertSpaces": true,
-		"editor.tabSize": 2,
-		"files.trimTrailingWhitespace": false
+		"editor.tabSize": 2
 	},
 	"[juliamarkdown]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.wordWrap": "on",
 		"editor.insertSpaces": true,
-		"editor.tabSize": 2,
-		"files.trimTrailingWhitespace": false
+		"editor.tabSize": 2
 	},
 	"markdownlint.run": "onSave",
 	"markdownlint.focusMode": true,
@@ -259,12 +262,13 @@
 		"cert-*",
 		"clang-analyzer-*",
 		"-clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
-		// "-clang-analyzer-deadcode.DeadStores",
+		"-clang-analyzer-deadcode.DeadStores",
 		"concurrency-*",
 		"-concurrency-mt-unsafe",
 		"cppcoreguidelines-*",
 		"-cppcoreguidelines-avoid-c-arrays",
 		"-cppcoreguidelines-avoid-magic-numbers",
+		"-cppcoreguidelines-avoid-non-const-global-variables",
 		"-cppcoreguidelines-macro-usage",
 		"-cppcoreguidelines-owning-memory",
 		"-cppcoreguidelines-pro-bounds-pointer-arithmetic",
@@ -280,10 +284,12 @@
 		"performance-*",
 		"portability-*",
 		"readability-*",
+		"-readability-braces-around-statements",
 		"-readability-convert-member-functions-to-static",
+		"-readability-else-after-return",
+		"-readability-identifier-length",
 		"-readability-isolate-declaration",
-		"-readability-magic-numbers",
-		"-readability-braces-around-statements"
+		"-readability-magic-numbers"
 	],
 	"[java]": {
 		"editor.defaultFormatter": "redhat.java"
@@ -295,6 +301,13 @@
 	// richterger.perl
 	"perl.disableCache": false, // If this is 'false', then 'perl.cacheDir' is used
 	"perl.cacheDir": "/home/edwin/.cache/vscode-perl-cache/",
+	"[dockerfile]": {
+		"editor.defaultFormatter": "ms-azuretools.vscode-docker"
+	},
+	"[rust]": {
+		"editor.formatOnSave": true,
+		"editor.defaultFormatter": "rust-lang.rust"
+	},
 
 	// telemetry / extraneous notifications / unnecessary views
 	"telemetry.telemetryLevel": "off",
@@ -310,6 +323,7 @@
 	"gitlens.showWhatsNewAfterUpgrades": false,
 	"update.showReleaseNotes": false,
 	"material-icon-theme.showWelcomeMessage": false,
+	"docker-explorer.enableTelemetry": false,
 
 	// UNSORTED
 
@@ -332,6 +346,7 @@
 		"godotenv",
 		"gulpfile",
 		"healthcheck",
+		"hyperupcall",
 		"kbuild",
 		"Kofler",
 		"mkdir",
@@ -341,10 +356,12 @@
 		"prettierrc",
 		"printk",
 		"Roadmap",
+		"selectability",
 		"shelltest",
 		"subdependencies",
 		"subshells",
 		"templating",
+		"tput",
 		"UEFI",
 		"wasm",
 		"wasmtime"
@@ -397,5 +414,6 @@
 	"cmake.configureOnOpen": true,
 	"warmUp.changeCount": "15",
 	"warmUp.switchProgrammingLanguage": "javascript",
-	"window.zoomLevel": -1
+	"window.zoomLevel": -1,
+	"terminal.integrated.defaultProfile.linux": "bash"
 }
