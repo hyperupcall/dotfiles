@@ -1,18 +1,30 @@
 # shellcheck shell=bash
 
 # Name:
-# backup
+# Borg Backup
 #
 # Description:
 # Performs a backup using Borg Backup
+# It ignores the following directories
+#   - **/node_modules
+#   - **/__pycache__
+#   - **/rootfs
+#   - **/.Trash-1000
+#   - **/llvm-project
+#   - **/gcc
 
 action() {
-	return 0
+	local backup_dir="/storage/vault/rodinia/Backups/edwin_borg"
+	local dir="/storage/ur/storage_home"
+
 	borg create \
 		--show-version --show-rc --verbose --stats --progress \
-		--exclude '**/.Trash-1000' --exclude '**/llvm-project' \
-		--exclude '**/gcc' --exclude '**/node_modules' \
-		--exclude '**/__pycache__' --exclude '**/rootfs' \
-		/storage/vault/rodinia/Backups/edwin_borg::'backup-{now}' \
-		/storage/ur/storage_home/
+		--exclude '**/node_modules' \
+		--exclude '**/__pycache__' \
+		--exclude '**/rootfs' \
+		--exclude '**/.Trash-1000' \
+		--exclude '**/llvm-project' \
+		--exclude '**/gcc' \
+		"$backup_dir"::'backup-{now}' \
+		"$dir"
 }

@@ -22,7 +22,7 @@ action() {
 				continue
 			fi
 
-			if [[ "${file##*/}" = @(config|environment|known_hosts) ]]; then
+			if [[ "${file##*/}" == @(config|environment|known_hosts) ]]; then
 				continue
 			fi
 

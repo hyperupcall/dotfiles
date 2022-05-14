@@ -41,11 +41,11 @@ Running `dotmgr bootstrap-stage1` installs [dotfox](https://github.com/hyperupca
 
 ```sh
 . ~/.bootstrap/stage2.sh
-dotmgr action # Choose 'Deploy Dotfiles'
-. ~/.bashrc
-dotmgr action # Choose 'Install packages'
-dotmgr action # Choose 'Prune and Resymlink'
+dotmgr action # Choose 'Idempotent Setup'
+dotmgr action # Choose 'Import Secrets'
+```
 
-cd ~/.dots && hookah refresh
+```sh
+( cd ~/.dots && { ./bake init; hookah refresh; } )
 sudo dotmgr
 ```

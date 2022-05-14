@@ -8,9 +8,7 @@
 #
 # These can be copied to remote machines or to root shell profiless
 
-action() {
-	shopt -s extglob nullglob globstar
-
+helper.dotshellextract() {
 	# Bash is the most featureful lowest common denominator in shells
 	# on Unix machines. We extract bash intrinsics with the '# clone(...)'
 	# annotations such that funtions, aliases, and readline declarations
@@ -97,13 +95,4 @@ action() {
 	exec 6> "$generated_dir/.bashrc-root-readline.sh"
 	util_print_file "$XDG_CONFIG_HOME/bash/modules/readline.sh" >&6
 	exec 6<&-
-}
-
-warn() {
-	printf 'Warning: %s\n' "$1"
-}
-
-error() {
-	printf 'Error: %s\n' "$1"
-	exit 1
 }
