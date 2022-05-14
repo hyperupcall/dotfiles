@@ -1,11 +1,11 @@
 [Unit]
 Description=Dropbox Syncer
-ConditionPathExists=%h/Dls/.dropbox-dist/dropboxd
+ConditionPathExists=%h/.dots/.usr/bin/dropboxd
 After=local-fs.target network.target
 
 [Service]
 Type=simple
-ExecStart=%h/Dls/.dropbox-dist/dropboxd
+ExecStart=%h/.dots/.usr/bin/dropboxd
 Restart=on-failure
 RestartSec=1
 
