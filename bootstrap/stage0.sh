@@ -120,10 +120,8 @@ else
 	ensure git clone --quiet https://github.com/hyperupcall/dots ~/.dots
 	ensure ln -sf ~/.dots/bootstrap/dotmgr/bin/dotmgr ~/.dots/.usr/bin/dotmgr
 	ensure cd ~/.dots
-	ensure git remote set-url origin git@github.com:hyperupcall/dots
-	ensure git config --local filter.npmrc-clean.clean "$PWD/user/config/npm/npmrc-clean.sh"
-	ensure git config --local filter.slack-term-config-clean.clean "$PWD/user/config/slack-term/slack-term-config-clean.sh"
-	ensure git config --local filter.oscrc-clean.clean "$PWD/user/config/osc/oscrc-clean.sh"
+	git remote set-url origin 'git@github.com:hyperupcall/dots'
+	./bake init
 	ensure cd ~
 fi
 

@@ -46,6 +46,6 @@ dotmgr action # Choose 'Import Secrets'
 ```
 
 ```sh
-( cd ~/.dots && hookah refresh )
+( cd ~/.dots && { ./bake init; hookah refresh; } )
 sudo dotmgr
 ```
