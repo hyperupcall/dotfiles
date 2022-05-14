@@ -41,6 +41,7 @@ main.dotmgr() {
 	must_group "$user" 'vboxusers'
 	must_group "$user" 'libvirt'
 	must_group "$user" 'kvm'
+	must_group "$user" 'nordvpn'
 }
 
 must_group() {

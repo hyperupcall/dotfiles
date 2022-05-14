@@ -4,7 +4,7 @@ SETUVAR --export __ABBR_TIPS_KEYS:a__fish_prompt
 SETUVAR --export __ABBR_TIPS_VALUES:\x1d
 SETUVAR --export __abbr_tips_run_once:1
 SETUVAR __done_min_cmd_duration:10000
-SETUVAR __fish_initialized:3100
+SETUVAR __fish_initialized:3400
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:005fd7
@@ -35,4 +35,5 @@ SETUVAR fish_pager_color_completion:\x1d
 SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
+SETUVAR fish_pager_color_selected_background:\x2dr
 SETUVAR pisces_pairs:\x28\x2c\x29\x1e\x5b\x2c\x5d\x1e\x7b\x2c\x7d\x1e\x22\x2c\x22\x1e\x27\x2c\x27

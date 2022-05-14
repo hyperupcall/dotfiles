@@ -10,9 +10,9 @@ pkg() {
 
 pkgi() {
 	if _shell_util_has 'pacman'; then
-		sudo 'pacman' -S "$@"
+		'pacman' -S "$@"
 	elif _shell_util_has 'dnf'; then
-		sudo 'dnf' install "$@"
+		'dnf' install "$@"
 	else
 		_shell_util_log_error "Package manager not recognized"
 	fi

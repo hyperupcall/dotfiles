@@ -264,8 +264,6 @@ action() {
 	# gsettings ca.desrt.dconf-editor show-warning 'false'
 
 	if [ "$XDG_SESSION_DESKTOP" = 'cinnamon' ]; then
-		# gsettings set /org/cinnamon/enabled-applets "['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:1:separator@cinnamon.org:1', 'panel1:left:2:expo@cinnamon.org:2', 'panel1:left:3:show-desktop@cinnamon.org:3', 'panel1:left:4:separator@cinnamon.org:4', 'panel1:left:5:grouped-window-list@cinnamon.org:5', 'panel1:right:1:notifications@cinnamon.org:6', 'panel1:right:2:workspace-switcher@cinnamon.org:7', 'panel1:right:3:windows-quick-list@cinnamon.org:8', 'panel1:right:4:separator@cinnamon.org:9', 'panel1:right:5:systray@cinnamon.org:10', 'panel1:right:6:separator@cinnamon.org:11', 'panel1:right:7:removable-drives@cinnamon.org:12', 'panel1:right:8:network@cinnamon.org:13', 'panel1:right:9:sound@cinnamon.org:14', 'panel1:right:10:power@cinnamon.org:15', 'panel1:right:11:inhibit@cinnamon.org:16', 'panel1:right:12:calendar@cinnamon.org:17', 'panel1:right:13:user@cinnamon.org:18', 'panel1:right:0:keyboard@cinnamon.org:19']"
-
 		local file="$HOME/.cinnamon/configs/menu@cinnamon.org/0.json"
 		local image_file=
 		for image_file in '/storage/ur/storage_home/Pics/Icons/Panda1_Transprent.png' "$HOME/Dropbox/Pictures/Icons/Panda1_Transparent.png"; do
@@ -288,7 +286,7 @@ action() {
 		gsettings set org.cinnamon.desktop.keybindings.media-keys area-screenshot "['<Super><Shift>p']"
 		gsettings set org.cinnamon.desktop.keybindings.media-keys area-screenshot-clip "['<Super>p']"
 		gsettings set org.cinnamon.desktop.keybindings.media-keys restart-cinnamon "['']"
-		gsettings set org.cinnamon.desktop.keybindings.media-keys screenreader "['']"
+		gsettings set org.cinnamon.desktop.keybindings.media-keys screenreader "['']" # FIXME
 		gsettings set org.cinnamon.desktop.keybindings.media-keys screenreader "['XF86ScreenSaver']" # Default includes '<Control><Alt>l'
 		gsettings set org.cinnamon.desktop.keybindings.media-keys screensaver "['']"
 		gsettings set org.cinnamon.desktop.keybindings.media-keys video-outputs "['XF86Display']" # Default includes '<Super>p'
@@ -300,8 +298,8 @@ action() {
 		gsettings set org.cinnamon.desktop.keybindings.media-keys window-screenshot "['<Super><Alt>p']"
 		gsettings set org.cinnamon.desktop.keybindings.media-keys window-screenshot-clip "['<Super><Alt><Shift>p']"
 		# General window manager hotkeys
-		gsettings set org.cinnamon.desktop.keybindings.wm toggle-fullscreen "['<Super><Shift>f']"
-		gsettings set org.cinnamon.desktop.keybindings.wm toggle-maximized "['<Super>f']"
+		gsettings set org.cinnamon.desktop.keybindings.wm toggle-fullscreen "['<Super>f']"
+		gsettings set org.cinnamon.desktop.keybindings.wm toggle-maximized "['<Super><Shift>f']"
 		# Navigating workspaces
 		gsettings set org.cinnamon.desktop.keybindings.wm switch-to-workspace-right "['<Super><Control>l', '<Super><Control>Up']"
 		gsettings set org.cinnamon.desktop.keybindings.wm switch-to-workspace-down "['<Super><Control>j', '<Super><Control>Down']"
@@ -332,7 +330,37 @@ action() {
 		gsettings set org.mate.terminal.global use-mnemonics 'false'
 		gsettings set org.mate.terminal.global use-menu-accelerators 'false'
 	elif [ "$XDG_SESSION_DESKTOP" = 'gnome' ]; then
-		:
+		gsettings set org.gnome.desktop.wm.keybindings minimize "[]"
+		gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-last "[]"
+		gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-1 "[]"
+		gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-last "[]"
+		gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-1 "[]"
+		gsettings set org.gnome.desktop.wm.keybindings unmaximize "[]"
+		gsettings set org.gnome.mutter.keybindings switch-monitor "['XF86Display']"
+
+		gsettings set org.gnome.settings-daemon.plugins.media-keys screensaver "[]"
+		gsettings set org.gnome.settings-daemon.plugins.media-keys screensaver-static "[]"
+
+		gsettings set org.gnome.settings-daemon.plugins.media-keys screenshot "['<Super><Shift>p']"
+		gsettings set org.gnome.settings-daemon.plugins.media-keys screenshot-clip "['<Super>p']"
+		gsettings set org.gnome.settings-daemon.plugins.media-keys window-screenshot "['<Super><Alt>p']"
+		gsettings set org.gnome.settings-daemon.plugins.media-keys window-screenshot-clip "['<Super><Alt><Shift>p']"
+
+		gsettings set org.gnome.desktop.wm.keybindings.show-desktop "['<Super>d']"
+
+		gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['<Super>f']"
+		gsettings set org.gnome.desktop.wm.keybindings toggle-maximized "['<Super><Shift>f']"
+		# Navigating workspaces
+		gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['<Super><Control>l', '<Super><Control>Up']"
+		gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-down "['<Super><Control>j', '<Super><Control>Down']"
+		gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['<Super><Control>h', '<Super><Control>Left']"
+		gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-up "['<Super><Control>k', '<Super><Control>Up']"
+		# Moving window to workspace
+		gsettings set org.gnome.desktop.wm.keybindiLngs move-to-workspace-up "['<Super><Control><Shift>k', '<Super><Control><Shift>Up']"
+		gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-right "['<Super><Control><Shift>l', '<Super><Control><Shift>Right']"
+		gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-down "['<Super><Control><Shift>j', '<Super><Control><Shift>Down']"
+		gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-left "['<Super><Control><Shift>h', '<Super><Control><Shift>Left']"
+
 	elif [ -z "$XDG_SESSION_DESKTOP" ]; then
 		print.warn "Variable '\$XDG_SESSION_DESKTOP' is empty"
 	fi

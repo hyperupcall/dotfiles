@@ -5,77 +5,42 @@
 #
 # Description:
 # Syncs subdirectories in minecraft, like 'resourcepacks', 'saves', 'screenshots',
-# for all major launchers. Use at your own risk!
-
-remove() {
-	if [ -z "$1" ]; then
-		printf '%s\n' "Error: remove: Argument 1, file not found. Exiting" >&2
-		exit 1
-	fi
-
-	if command -v trash-put &>/dev/null; then
-		trash-put "$1"
-	else
-		mkdir -p "$base/trash-directory"
-		mv "$1" "$base/trash-directory/$1-$RANDOM"
-	fi
-}
+# for all major launchers.
 
 action() {
-	shopt -s nullglob dotglob
+	local mc_common_data="$HOME/Docs/Games/Minecraft_Common_Data"
 
-	base="$HOME/Docs/Games/Minecraft/common-dot-minecraft"
-	dataDir="${XDG_DATA_HOME:-~/.local/share}"
-	configDir="${XDG_CONFIG_HOME:-~/.config}"
-	folders=(
+	local xdg_data_dir="${XDG_DATA_HOME:-~/.local/share}"
+	local xdg_config_dir="${XDG_CONFIG_HOME:-~/.config}"
+	local -a minecraft_dirs=(
 		~/.minecraft
-		"$dataDir"/multimc/instances/*/.minecraft
-		"$configDir"/hmcl/.minecraft
+		"$xdg_data_dir"/multimc/instances/*/.minecraft
+		"$xdg_config_dir"/hmcl/.minecraft
 	)
 
-	# sync common files
-	for mcFolder in "${folders[@]}"; do
-		echo "SYNCING COMMON FILES: $mcFolder"
+	for mc_dir in "${minecraft_dirs[@]}"; do
+		if [ ! -d "$mc_dir" ]; then
+			continue
+		fi
+
+		print.info "Processing $mc_dir"
+
+		# Sync Common Files
 		# files=(optionsLC.txt optionsof.txt optionsshaders.txt options.txt servers.dat servers.dat_old)
-		files=(servers.dat)
+		# files=(servers.dat)
 
-		for file in "${files[@]}"; do
+		# Sync Common Directories
+		local subdir=
+		for subdir in resourcepacks shaderpacks saves screenshots; do
+			mkdir -p "$mc_common_data/$subdir"
 
-			# unlink "$mcFolder/$file"
-
-			if [ ! -L "$mcFolder/$file" ]; then
-				echo "     -> Linking '$mcFolder/$file'"
-
-				[ -e "$mcFolder/$file" ] && {
-					cp "$mcFolder/$file" "$base/files/$file"
-					remove "$mcFolder/$file"
-				}
-
-				ln -sT "$base/files/$file" "$mcFolder/$file"
+			printf '%s\n' "  -> Symlinking ./$subdir"
+			if [ -L "$mc_dir/$subdir" ]; then
+				ln -sfT "$mc_common_data/$subdir" "$mc_dir/$subdir"
+			else
+				rmdir "$mc_dir/$subdir"
+				ln -sfT "$mc_common_data/$subdir" "$mc_dir/$subdir"
 			fi
-		done
-	done
-
-	echo ---
-
-	# sync common folders
-	for mcFolder in "${folders[@]}"; do
-		echo "SYNCING COMMON DIRS: $mcFolder"
-		declare -a subfolders=(resourcepacks shaderpacks saves screenshots)
-
-		for subfolder in "${subfolders[@]}"; do
-			mkdir -p "$base/$subfolder"
-			if [ -d "$mcFolder/$subfolder" ] && [ ! -L "$mcFolder/$subfolder" ]; then
-				echo "     -> Symlinking '$mcFolder/$subfolder'"
-
-				for file in "$mcFolder/$subfolder"/*; do
-					cp -r "$file" "$base/$subfolder"
-					remove "$file"
-				done
-				rmdir "$mcFolder/$subfolder"
-			fi
-
-			ln -sT "$base/$subfolder" "$mcFolder/$subfolder"
-		done
+		done; unset -v subdir
 	done
 }

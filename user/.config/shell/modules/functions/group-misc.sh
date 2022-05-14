@@ -171,9 +171,10 @@ serv() {
 		# node http-server
 		http-server "$1" -c-1 -a 127.0.0.1 -p "$2"
 		return
-	elif command -v python3 >/dev/null 2>&1; then
-	_shell_util_log_info 'python3'
-		python3 -m http.server --directory "$1" "$2"
+		# caching wrong
+	#elif command -v python3 >/dev/null 2>&1; then
+	#_shell_util_log_info 'python3'
+	#	python3 -m http.server --directory "$1" "$2"
 	else
 		_shell_util_die "serv: no executable found to start server"
 		return

@@ -116,11 +116,6 @@ export ELINKS_CONFDIR="$XDG_CONFIG_HOME/elinks"
 export EM_CACHE="$XDG_CACHE_HOME/emscripten"
 # export EM_PORTS="$XDG_DATA_HOME/emscripten/cache"
 
-# g
-export GOPATH="$XDG_DATA_HOME/gopath"
-export GOROOT="$XDG_DATA_HOME/goroot"
-_path_prepend "$GOPATH/bin"
-
 # gdb
 export GDBHISTFILE="$XDG_STATE_HOME/history/history"
 
