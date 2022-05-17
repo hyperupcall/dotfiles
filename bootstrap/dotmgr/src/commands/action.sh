@@ -84,6 +84,7 @@ subcommand() {
 	done; unset -v file
 
 	tty.fullscreen_init
+	core.trap_add tty.fullscreen_deinit_and_exit 'EXIT'
 	while :; do
 		print_menu "$selected" 'actions' 'descriptions'
 
@@ -136,9 +137,8 @@ subcommand() {
 			;;
 		q) break ;;
 		$'\x1b')
-			if ! read -rsN1 -t 0.1 key; then
-				break
-			fi
+			core.trap_remove tty.fullscreen_deinit_and_exit 'EXIT'
+			tty.fullscreen_deinit_and_exit
 			;;
 		esac
 	done
@@ -158,6 +158,11 @@ tty.fullscreen_deinit() {
 	tput cnorm # cursor to normal
 	tput rmcup # restore screen contents
 	stty echo
+}
+
+tty.fullscreen_deinit_and_exit() {
+	tty.fullscreen_deinit
+	exit
 }
 
 print_menu() {
