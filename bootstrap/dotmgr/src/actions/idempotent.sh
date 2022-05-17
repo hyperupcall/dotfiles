@@ -173,7 +173,6 @@ action() {
 		if [ ! -L "$HOME/.ssh" ]; then rm -f "$HOME/.ssh/known_hosts"; fi
 		must_link "$storage_other/ssh" "$HOME/.ssh"
 		must_link "$storage_other/BraveSoftware" "$XDG_CONFIG_HOME/BraveSoftware"
-		must_link "$storage_other/calcurse" "$XDG_CONFIG_HOME/calcurse"
 		must_link "$storage_other/fonts" "$XDG_CONFIG_HOME/fonts"
 		must_link "$storage_other/password-store" "$XDG_DATA_HOME/password-store"
 	else

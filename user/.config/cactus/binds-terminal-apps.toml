@@ -2,10 +2,6 @@
 cmd = 'kitty'
 args = ['--title', 'Pulsemixer (floating)', 'pulsemixer']
 
-[C]
-cmd = 'kitty'
-args = ['--title', 'Calcurse (floating)', 'calcurse']
-
 [R]
 cmd = 'kitty'
 args = ['--title', 'Ranger (floating)', 'ranger', '{{ env "HOME" }}/Docs']
