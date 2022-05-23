@@ -75,6 +75,10 @@ dotmgr-bootstrap-stage1() {
 	if [ ! -d ~/.bootstrap/dotfox ]; then
 		core.print_info 'Cloning github.com/hyperupcall/dotfox'
 		util.ensure git clone --quiet https://github.com/hyperupcall/dotfox ~/.bootstrap/dotfox
+		(
+			cd ~/.bootstrap/dotfox
+			"$HOME/.bootstrap/nim-all/nim/bin/nimble" -y --nim="$HOME/.bootstrap/nim-all/nim/bin/nim" build
+		)
 	fi
 
 	# Download Dotfox

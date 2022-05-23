@@ -69,10 +69,13 @@ action() {
 	# -------------------------------------------------------- #
 	#                           CARGO                          #
 	# -------------------------------------------------------- #
-	dotmgr module rust
-	if ! util.is_cmd 'starship'; then
-		core.print_info 'Installing starship'
-		cargo install starship
+	if util.is_cmd 'cargo'; then
+		if ! util.is_cmd 'starship'; then
+			core.print_info 'Installing starship'
+			cargo install starship
+		fi
+	else
+		core.print_warn 'Skipping installing starship'
 	fi
 
 	# -------------------------------------------------------- #

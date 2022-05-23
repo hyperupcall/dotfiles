@@ -44,7 +44,7 @@ util.clone() {
 }
 
 util.clone_in_dots() {
-	local repo="1"
+	local repo="$1"
 	util.clone "$repo" ~/.dots/.repos/"${repo##*/}"
 }
 
@@ -100,9 +100,6 @@ util.show_help() {
 		    Perform a particular action. If no action was given, show
 		    a selection screen for the different actions
 
-		  module [--list] [--show] [--edit] [stage]
-		    Bootstraps dotfiles, only for a particular language
-
 		  sudo
 		    Run this script with superuser priviledges. This runs an entirely different
 		    set of commands
@@ -113,6 +110,6 @@ util.show_help() {
 
 		Examples:
 		  dotmgr bootstrap-stage1
-		  dotmgr module rust
+		  dotmgr action
 	EOF
 }

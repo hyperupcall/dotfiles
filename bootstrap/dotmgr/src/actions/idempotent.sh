@@ -371,7 +371,10 @@ action() {
 	helper.dotshellgen
 	core.print_info 'Running dotfox_deploy'
 	helper.dotfox_deploy
-	VBoxManage setproperty machinefolder '/storage/vault/rodinia/VirtualBox_Machines'
+
+	if util.is_cmd VBoxManage; then
+		VBoxManage setproperty machinefolder '/storage/vault/rodinia/VirtualBox_Machines'
+	fi
 }
 
 
