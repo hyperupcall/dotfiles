@@ -20,7 +20,7 @@ action() {
 	# Browserpass
 	{
 		local version='3.0.10'
-		print.info "Installing version '$version'"
+		core.print_info "Installing version '$version'"
 
 		local url="https://github.com/browserpass/browserpass-native/releases/download/$version/browserpass-linux64-$version.tar.gz"
 		cd "$(mktemp -d)"

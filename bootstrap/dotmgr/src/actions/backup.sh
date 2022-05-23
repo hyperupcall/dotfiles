@@ -29,6 +29,6 @@ action() {
 			"$backup_dir"::'backup-{now}' \
 			"$dir"
 	else
-		print.die "Backup directory does not exist"
+		core.print_die "Backup directory does not exist"
 	fi
 }

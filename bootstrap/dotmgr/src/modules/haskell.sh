@@ -1,7 +1,7 @@
 # shellcheck shell=bash
 
 if ! command -v haskell >/dev/null 2>&1; then
-	print.info "Installing haskell"
+	core.print_info "Installing haskell"
 
 	mkdir -p "${XDG_DATA_HOME:-$HOME/.local/share}/ghcup"
 	ln -s "${XDG_DATA_HOME:-$HOME/.local/share}"/{,ghcup/.}ghcup

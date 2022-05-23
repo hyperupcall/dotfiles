@@ -23,13 +23,13 @@ main.dotmgr() {
 	local subcommand="$1"
 	if [ -f "$DOTMGR_ROOT/src/commands/$subcommand.sh" ]; then
 		if ! shift; then
-			print.die "Failed to shift"
+			core.print_die "Failed to shift"
 		fi
 		source "$DOTMGR_ROOT/src/commands/$subcommand.sh"
 		dotmgr-"$subcommand" "$@"
 	else
 		util.show_help
-		print.error 'No matching subcommand found'
+		core.print_error 'No matching subcommand found'
 		exit 1
 	fi
 }

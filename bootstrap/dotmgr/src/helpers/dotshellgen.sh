@@ -47,7 +47,7 @@ helper.dotshellgen() {
 			local -n output_file='concatenated_sh_file'
 			;;
 		*)
-			print.warn "Skipping '$file_name'"
+			core.print_warn "Skipping '$file_name'"
 			return
 			;;
 		esac
@@ -78,7 +78,7 @@ helper.dotshellgen() {
 
 	if [ "$flag_clear" = 'yes' ]; then
 		rm -f "$concatenated_bash_file" "$concatenated_zsh_file" "$concatenated_fish_file" "$concatenated_sh_file"
-		print.warn 'Cleared all generated files'
+		core.print_warn 'Cleared all generated files'
 		return
 	fi
 

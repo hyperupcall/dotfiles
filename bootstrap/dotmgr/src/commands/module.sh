@@ -21,7 +21,7 @@ dotmgr-module() {
 	fi
 
 	if [ -z "$module" ]; then
-		print.die 'Name of module stage cannot be empty'
+		core.print_die 'Name of module stage cannot be empty'
 	fi
 
 	if [ -f "$DOTMGR_ROOT/src/modules/$module.sh" ]; then

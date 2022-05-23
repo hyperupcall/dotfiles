@@ -5,7 +5,7 @@ util.req() {
 }
 
 util.run() {
-	print.info "Executing '$*'"
+	core.print_info "Executing '$*'"
 	if "$@"; then
 		return $?
 	else
@@ -15,7 +15,7 @@ util.run() {
 
 util.ensure() {
 	if "$@"; then :; else
-		print.die "'$*' failed (code $?)"
+		core.print_die "'$*' failed (code $?)"
 	fi
 }
 
@@ -29,7 +29,7 @@ util.is_cmd() {
 
 util.ensure_bin() {
 	if ! command -v "$1" &>/dev/null; then
-		print.die "Command '$1' does not exist"
+		core.print_die "Command '$1' does not exist"
 	fi
 }
 
@@ -38,7 +38,7 @@ util.clone() {
 	local dir="$2"
 
 	if [ ! -d "$dir" ]; then
-		print.info "Cloning '$repo' to $dir"
+		core.print_info "Cloning '$repo' to $dir"
 		git clone "$repo" "$dir"
 	fi
 }
@@ -62,24 +62,24 @@ util.ensure_profile_read() {
 	done
 
 	if [ "$has_found_profile" = 'no' ]; then
-		print.die 'No matching profile could be found'
+		core.print_die 'No matching profile could be found'
 	fi
 }
 
 util.prereq() {
 	if [ -z "$XDG_CONFIG_HOME" ]; then
 		# shellcheck disable=SC2016
-		print.die '$XDG_CONFIG_HOME is empty. Did you source profile-pre-bootstrap.sh?'
+		core.print_die '$XDG_CONFIG_HOME is empty. Did you source profile-pre-bootstrap.sh?'
 	fi
 
 	if [ -z "$XDG_DATA_HOME" ]; then
 		# shellcheck disable=SC2016
-		print.die '$XDG_DATA_HOME is empty. Did you source profile-pre-bootstrap.sh?'
+		core.print_die '$XDG_DATA_HOME is empty. Did you source profile-pre-bootstrap.sh?'
 	fi
 
 	if [ -z "$XDG_STATE_HOME" ]; then
 		# shellcheck disable=SC2016
-		print.die '$XDG_STATE_HOME is empty. Did you source profile-pre-bootstrap.sh?'
+		core.print_die '$XDG_STATE_HOME is empty. Did you source profile-pre-bootstrap.sh?'
 	fi
 }
 

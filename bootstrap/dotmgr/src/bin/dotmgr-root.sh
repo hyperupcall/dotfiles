@@ -10,7 +10,7 @@ main.dotmgr() {
 	# -------------------------------------------------------- #
 	#                    COPY ROOT DOTFILES                    #
 	# -------------------------------------------------------- #
-	print.info 'Copying root dotfiles'
+	core.print_info 'Copying root dotfiles'
 	local {src,dest}_file=
 	for src_file in ~/.dots/system/**; do
 		dest_file=${src_file#*/.dots/system}
@@ -33,10 +33,10 @@ main.dotmgr() {
 	# -------------------------------------------------------- #
 	local user="$SUDO_USER"
 	if [ -z "$user" ]; then
-		print.die 'Failed to determine user running as sudo'
+		core.print_die 'Failed to determine user running as sudo'
 	fi
 
-	print.info "Adding groups to user '$user'"
+	core.print_info "Adding groups to user '$user'"
 	must_group "$user" 'docker'
 	must_group "$user" 'vboxusers'
 	must_group "$user" 'libvirt'
@@ -50,16 +50,16 @@ must_group() {
 
 	local output=
 	if output=$(groupadd "$group" 2>&1); then
-		print.info "Creating group '$group'"
+		core.print_info "Creating group '$group'"
 	else
 		local code=$?
 		if ((code != 9)); then
-			print.warn "Failed to create group '$group'"
+			core.print_warn "Failed to create group '$group'"
 			printf '%s\n' "  -> $output"
 		fi
 	fi
 
 	if ! usermod -aG "$group" "$user"; then
-		print.warn "Failed to add user '$user' to group '$group'"
+		core.print_warn "Failed to add user '$user' to group '$group'"
 	fi
 }

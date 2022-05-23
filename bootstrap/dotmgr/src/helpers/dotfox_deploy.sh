@@ -12,10 +12,10 @@ helper.dotfox_deploy() {
 }
 
 prompt_run() {
-	print.info "Would you like to run the following?"
+	core.print_info "Would you like to run the following?"
 	printf '%s\n%s' "$ $*" "(y/n): "
 	if ! read -rN1; then
-		print.die "Failed to get input"
+		core.print_die "Failed to get input"
 	fi
 	printf '\n'
 
@@ -24,6 +24,6 @@ prompt_run() {
 			return $?
 		fi
 	else
-		print.info "Skipping command"
+		core.print_info "Skipping command"
 	fi
 }
