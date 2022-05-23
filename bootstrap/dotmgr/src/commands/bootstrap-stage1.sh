@@ -5,7 +5,7 @@
 # hyperupcall/dots cloned
 # dotmgr in PATH
 
-subcommand() {
+dotmgr-bootstrap-stage1() {
 	# Ensure prerequisites
 	mkdir -p ~/.bootstrap/{bin,nim-all,old-homedots} "$XDG_CONFIG_HOME"
 

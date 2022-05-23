@@ -99,9 +99,6 @@ action() {
 	woof install go latest
 	woof install nim latest
 	woof install zig latest
-	woof install python latest
-	woof install ruby latest
-	woof install php latest
 
 	# -------------------------------------------------------- #
 	#                            NPM                           #

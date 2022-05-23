@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 
-subcommand() {
+dotmgr-module() {
 	local flag_{list,show,edit}='no'
 	for arg; do case $arg in
 		--list) shift; flag_list='yes' ;;

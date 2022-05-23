@@ -1,6 +1,5 @@
 # shellcheck shell=bash
 
-
 main.dotmgr() {
 	set -eo pipefail
 	shopt -s dotglob extglob globstar nullglob shift_verbose
@@ -27,7 +26,7 @@ main.dotmgr() {
 			print.die "Failed to shift"
 		fi
 		source "$DOTMGR_ROOT/src/commands/$subcommand.sh"
-		subcommand "$@"
+		dotmgr-"$subcommand" "$@"
 	else
 		util.show_help
 		print.error 'No matching subcommand found'

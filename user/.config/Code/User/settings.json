@@ -416,16 +416,6 @@
 	"cmake.configureOnOpen": true,
 	"warmUp.changeCount": "15",
 	"warmUp.switchProgrammingLanguage": "javascript",
-<<<<<<< Updated upstream
-	"terminal.integrated.defaultProfile.linux": "bash",
-	"window.zoomLevel": -1
-}
-||||||| constructed merge base
 	"window.zoomLevel": -1,
 	"terminal.integrated.defaultProfile.linux": "bash"
 }
-=======
-	"window.zoomLevel": -1,
-	"terminal.integrated.defaultProfile.linux": "bash"
-}
->>>>>>> Stashed changes

@@ -1,5 +1,5 @@
 # shellcheck shell=bash
 
-subcommand() {
+dotmgr-sudo() {
 	exec sudo --preserve-env='HOME' "$DOTMGR_ROOT/bin/dotmgr"
 }

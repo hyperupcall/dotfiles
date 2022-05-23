@@ -14,12 +14,14 @@ action() {
 	# -------------------------------------------------------- #
 	#                         DO MOUNT                         #
 	# -------------------------------------------------------- #
-	if ! grep -q /storage/ur /etc/fstab; then
-		local part_uuid="c875b5ca-08a6-415e-bc11-fc37ec94ab8f"
-		local mnt='/storage/ur'
-		printf '%s\n' "PARTUUID=$part_uuid  $mnt  btrfs  defaults,noatime,X-mount.mkdir  0 0" \
-			| sudo tee -a /etc/fstab >/dev/null
-		sudo mount "$mnt"
+	local part_uuid="c875b5ca-08a6-415e-bc11-fc37ec94ab8f"
+	local mnt='/storage/ur'
+	if [ -d "$mnt" ]; then
+		if ! grep -q "$mnt" /etc/fstab; then
+			printf '%s\n' "PARTUUID=$part_uuid  $mnt  btrfs  defaults,noatime,X-mount.mkdir  0 0" \
+				| sudo tee -a /etc/fstab >/dev/null
+			sudo mount "$mnt"
+		fi
 	fi
 
 
@@ -258,7 +260,7 @@ action() {
 	if [ "$XDG_SESSION_DESKTOP" = 'cinnamon' ]; then
 		local file="$HOME/.cinnamon/configs/menu@cinnamon.org/0.json"
 		local image_file=
-		for image_file in '/storage/ur/storage_home/Pics/Icons/Panda1_Transprent.png' "$HOME/Dropbox/Pictures/Icons/Panda1_Transparent.png"; do
+		for image_file in '/storage/ur/storage_home/Pics/Icons/Panda1_Transprent.png' "$HOME/Dropbox/Common/Icons/Panda1_Transparent.png"; do
 			if [ -f "$image_file" ]; then
 				set-json-key "$file" '."menu-icon".value' "\"$image_file\""
 			fi

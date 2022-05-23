@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 
-subcommand() {
+dotmgr-action() {
 	local action="$1"
 
 	if [ -n "$action" ]; then

@@ -17,14 +17,18 @@ action() {
 	local backup_dir="/storage/vault/rodinia/Backups/edwin_borg"
 	local dir="/storage/ur/storage_home"
 
-	borg create \
-		--show-version --show-rc --verbose --stats --progress \
-		--exclude '**/node_modules' \
-		--exclude '**/__pycache__' \
-		--exclude '**/rootfs' \
-		--exclude '**/.Trash-1000' \
-		--exclude '**/llvm-project' \
-		--exclude '**/gcc' \
-		"$backup_dir"::'backup-{now}' \
-		"$dir"
+	if [ -d "$backup_dir" ]; then
+		borg create \
+			--show-version --show-rc --verbose --stats --progress \
+			--exclude '**/node_modules' \
+			--exclude '**/__pycache__' \
+			--exclude '**/rootfs' \
+			--exclude '**/.Trash-1000' \
+			--exclude '**/llvm-project' \
+			--exclude '**/gcc' \
+			"$backup_dir"::'backup-{now}' \
+			"$dir"
+	else
+		print.die "Backup directory does not exist"
+	fi
 }

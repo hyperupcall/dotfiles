@@ -367,7 +367,7 @@ core.get_package_info() {
 	unset REPLY; REPLY=
 	local basalt_package_dir="$1"
 	local key_name="$2"
-	
+
 	local toml_file="$basalt_package_dir/basalt.toml"
 
 	if [ ! -f "$toml_file" ]; then

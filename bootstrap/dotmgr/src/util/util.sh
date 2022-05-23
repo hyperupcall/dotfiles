@@ -48,6 +48,24 @@ util.clone_in_dots() {
 	util.clone "$repo" ~/.dots/.repos/"${repo##*/}"
 }
 
+util.ensure_profile_read() {
+	local has_found_profile='no'
+	for profile_file in  "$DOTMGR_ROOT/src/profiles"/?*.sh; do
+		source "$profile_file"
+		local profile_name="${profile_file##*/}"; profile_name=${profile_name%.sh}
+
+		if "$profile_name".check; then
+			"$profile_name".vars
+			has_found_profile='yes'
+			break
+		fi
+	done
+
+	if [ "$has_found_profile" = 'no' ]; then
+		print.die 'No matching profile could be found'
+	fi
+}
+
 util.prereq() {
 	if [ -z "$XDG_CONFIG_HOME" ]; then
 		# shellcheck disable=SC2016
@@ -65,10 +83,6 @@ util.prereq() {
 	fi
 }
 
-util.trap_winch() {
-	read -r global_tty_height global_tty_width < <(stty size)
-}
-
 util.show_help() {
 	cat <<-EOF
 		Usage:
@@ -77,6 +91,10 @@ util.show_help() {
 		Commands:
 		  bootstrap-stage1
 		    Bootstrap operations that occur before dotfiles have been deployed
+
+		  info
+		    Get information about the current system. Currently, it lists
+		    information about the current profile
 
 		  action
 		    Perform a particular action. If no action was given, show
