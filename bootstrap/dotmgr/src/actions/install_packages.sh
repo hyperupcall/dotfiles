@@ -26,7 +26,7 @@ action() {
 	#                          PACMAN                          #
 	# -------------------------------------------------------- #
 	if util.is_cmd 'pacman'; then
-		print.info 'Updating, upgrading, and installing packages'
+		core.print_info 'Updating, upgrading, and installing packages'
 		sudo pacman -Syyu --noconfirm
 
 		install.generic 'pacman'
@@ -36,7 +36,7 @@ action() {
 	#                            APT                           #
 	# -------------------------------------------------------- #
 	elif util.is_cmd 'apt'; then
-		print.info 'Updating, upgrading, and installing packages'
+		core.print_info 'Updating, upgrading, and installing packages'
 		sudo apt-get -y update && sudo apt-get -y upgrade
 		sudo apt-get -y install apt-transport-https
 
@@ -47,7 +47,7 @@ action() {
 	#                            DNF                           #
 	# -------------------------------------------------------- #
 	elif util.is_cmd 'dnf'; then
-		print.info 'Updating, upgrading, and installing packages'
+		core.print_info 'Updating, upgrading, and installing packages'
 		sudo dnf -y update
 		sudo dnf install dnf-plugins-core # For at least Brave
 
@@ -58,7 +58,7 @@ action() {
 	#                          ZYPPER                          #
 	# -------------------------------------------------------- #
 	elif util.is_cmd 'zypper'; then
-		print.info 'Updating, upgrading, and installing packages'
+		core.print_info 'Updating, upgrading, and installing packages'
 		sudo zypper -y update && sudo zypper -y upgrade
 
 		install.generic 'zypper'
@@ -69,16 +69,19 @@ action() {
 	# -------------------------------------------------------- #
 	#                           CARGO                          #
 	# -------------------------------------------------------- #
-	dotmgr module rust
-	if ! util.is_cmd 'starship'; then
-		print.info 'Installing starship'
-		cargo install starship
+	if util.is_cmd 'cargo'; then
+		if ! util.is_cmd 'starship'; then
+			core.print_info 'Installing starship'
+			cargo install starship
+		fi
+	else
+		core.print_warn 'Skipping installing starship'
 	fi
 
 	# -------------------------------------------------------- #
 	#                          BASALT                          #
 	# -------------------------------------------------------- #
-	print.info 'Installing Basalt packages globally'
+	core.print_info 'Installing Basalt packages globally'
 	basalt global add \
 		hyperupcall/choose \
 		hyperupcall/autoenv \
@@ -92,16 +95,13 @@ action() {
 	# -------------------------------------------------------- #
 	#                           WOOF                           #
 	# -------------------------------------------------------- #
-	print.info 'Instaling Woof packages globally'
+	core.print_info 'Instaling Woof packages globally'
 	woof install gh latest
 	woof install nodejs latest
 	woof install deno latest
 	woof install go latest
 	woof install nim latest
 	woof install zig latest
-	woof install python latest
-	woof install ruby latest
-	woof install php latest
 
 	# -------------------------------------------------------- #
 	#                            NPM                           #
@@ -123,10 +123,10 @@ action() {
 }
 
 msg() {
-	print.info "Running function '${FUNCNAME[1]}' with method $method"
+	core.print_info "Running function '${FUNCNAME[1]}' with method $method"
 
 	if [ "$1" = 'bad' ]; then
-		print.die "Method '$method' not recognized"
+		core.print_die "Method '$method' not recognized"
 	fi
 }
 

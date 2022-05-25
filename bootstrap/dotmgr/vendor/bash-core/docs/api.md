@@ -13,11 +13,15 @@ Core functions for any Bash program
 * [core.err_set()](#coreerr_set)
 * [core.err_clear()](#coreerr_clear)
 * [core.err_exists()](#coreerr_exists)
+* [core.panic()](#corepanic)
 * [core.print_stacktrace()](#coreprint_stacktrace)
+* [core.print_error_fn()](#coreprint_error_fn)
+* [core.print_warn_fn()](#coreprint_warn_fn)
+* [core.print_info_fn()](#coreprint_info_fn)
+* [core.print_die()](#coreprint_die)
 * [core.print_error()](#coreprint_error)
 * [core.print_warn()](#coreprint_warn)
 * [core.print_info()](#coreprint_info)
-* [core.panic()](#corepanic)
 * [core.should_output_color()](#coreshould_output_color)
 * [core.get_package_info()](#coreget_package_info)
 * [core.init()](#coreinit)
@@ -127,6 +131,10 @@ _does_ exist
 
 _Function has no arguments._
 
+### core.panic()
+
+Use when a serious fault occurs. It will print the current ERR (if it exists)
+
 ### core.print_stacktrace()
 
 Prints stacktrace
@@ -143,6 +151,38 @@ core.trap_add 'err_handler' ERR
 ```
 
 _Function has no arguments._
+
+### core.print_error_fn()
+
+Print an error message to standard error
+
+#### Arguments
+
+* **$1** (string): message
+
+### core.print_warn_fn()
+
+Print a warning message to standard error
+
+#### Arguments
+
+* **$1** (string): message
+
+### core.print_info_fn()
+
+Print an informative message to standard output
+
+#### Arguments
+
+* **$1** (string): message
+
+### core.print_die()
+
+Print a error message to standard error and die
+
+#### Arguments
+
+* **$1** (string): message
 
 ### core.print_error()
 
@@ -167,10 +207,6 @@ Print an informative message to standard output
 #### Arguments
 
 * **$1** (string): message
-
-### core.panic()
-
-Use when a serious fault occurs. It will print the current ERR (if it exists)
 
 ### core.should_output_color()
 

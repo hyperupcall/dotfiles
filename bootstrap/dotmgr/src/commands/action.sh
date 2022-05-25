@@ -1,19 +1,19 @@
 # shellcheck shell=bash
 
-subcommand() {
+dotmgr-action() {
 	local action="$1"
 
 	if [ -n "$action" ]; then
 		if [ -f "$DOTMGR_ROOT/src/actions/$action.sh" ]; then
 			source "$DOTMGR_ROOT/src/actions/$action.sh"
 			if ! shift; then
-				print.die 'Failed to shift'
+				core.print_die 'Failed to shift'
 			fi
 			if ! action "$@"; then
-				print.die "Failed to execute action"
+				core.print_die "Failed to execute action"
 			fi
 		else
-			print.die "Could not find action '$action'"
+			core.print_die "Could not find action '$action'"
 		fi
 		exit
 	fi
@@ -91,7 +91,7 @@ subcommand() {
 
 		local key=
 		if ! read -rsN1 key; then
-			print.die 'Failed to read input'
+			core.print_die 'Failed to read input'
 		fi
 
 		case $key in
@@ -120,7 +120,7 @@ subcommand() {
 			tty.fullscreen_deinit
 			source "$DOTMGR_ROOT/src/actions/${files[$selected]}.sh"
 			if ! action; then
-				print.die "Failed to execute action"
+				core.print_die "Failed to execute action"
 			fi
 			exit
 			;;
@@ -210,7 +210,7 @@ find_mnt_usb() {
 
 	local block_dev="/dev/disk/by-uuid/$usb_partition_uuid"
 	if [ ! -e "$block_dev" ]; then
-		print.die "USB Not plugged in"
+		core.print_die "USB Not plugged in"
 	fi
 
 	local block_dev_target=
@@ -223,13 +223,13 @@ find_mnt_usb() {
 	# If the USB is not already mounted
 	if [ -z "$block_dev_target" ]; then
 		if mountpoint -q /mnt; then
-			print.die "Directory '/mnt' must not already be a mountpoint"
+			core.print_die "Directory '/mnt' must not already be a mountpoint"
 		fi
 
 		util.run sudo mount "$block_dev" /mnt
 
 		if ! block_dev_target=$(findmnt -no TARGET "$block_dev"); then
-			print.die "Automount failed"
+			core.print_die "Automount failed"
 		fi
 	fi
 

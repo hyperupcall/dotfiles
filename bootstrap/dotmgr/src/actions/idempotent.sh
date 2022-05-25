@@ -14,12 +14,14 @@ action() {
 	# -------------------------------------------------------- #
 	#                         DO MOUNT                         #
 	# -------------------------------------------------------- #
-	if ! grep -q /storage/ur /etc/fstab; then
-		local part_uuid="c875b5ca-08a6-415e-bc11-fc37ec94ab8f"
-		local mnt='/storage/ur'
-		printf '%s\n' "PARTUUID=$part_uuid  $mnt  btrfs  defaults,noatime,X-mount.mkdir  0 0" \
-			| sudo tee -a /etc/fstab >/dev/null
-		sudo mount "$mnt"
+	local part_uuid="c875b5ca-08a6-415e-bc11-fc37ec94ab8f"
+	local mnt='/storage/ur'
+	if [ -d "$mnt" ]; then
+		if ! grep -q "$mnt" /etc/fstab; then
+			printf '%s\n' "PARTUUID=$part_uuid  $mnt  btrfs  defaults,noatime,X-mount.mkdir  0 0" \
+				| sudo tee -a /etc/fstab >/dev/null
+			sudo mount "$mnt"
+		fi
 	fi
 
 
@@ -42,7 +44,7 @@ action() {
 
 		printf '%s' "$file_string" > "$file"
 	done; unset -v file
-	print.info 'Cleaned shell dotfiles'
+	core.print_info 'Cleaned shell dotfiles'
 
 
 	# -------------------------------------------------------- #
@@ -282,7 +284,7 @@ action() {
 	if [ "$XDG_SESSION_DESKTOP" = 'cinnamon' ]; then
 		local file="$HOME/.cinnamon/configs/menu@cinnamon.org/0.json"
 		local image_file=
-		for image_file in '/storage/ur/storage_home/Pics/Icons/Panda1_Transprent.png' "$HOME/Dropbox/Pictures/Icons/Panda1_Transparent.png"; do
+		for image_file in '/storage/ur/storage_home/Pics/Icons/Panda1_Transprent.png' "$HOME/Dropbox/Common/Icons/Panda1_Transparent.png"; do
 			if [ -f "$image_file" ]; then
 				set-json-key "$file" '."menu-icon".value' "\"$image_file\""
 			fi
@@ -376,20 +378,23 @@ action() {
 	elif [ "$XDG_SESSION_DESKTOP" = 'pop' ]; then
 		:
 	elif [ -z "$XDG_SESSION_DESKTOP" ]; then
-		print.warn "Variable '\$XDG_SESSION_DESKTOP' is empty"
+		core.print_warn "Variable '\$XDG_SESSION_DESKTOP' is empty"
 	fi
 
 
 	# -------------------------------------------------------- #
 	#                    OTHER APPLICATIONS                    #
 	# -------------------------------------------------------- #
-	print.info 'Running dotshellextract'
+	core.print_info 'Running dotshellextract'
 	helper.dotshellextract
-	print.info 'Running dotshellgen'
+	core.print_info 'Running dotshellgen'
 	helper.dotshellgen
-	print.info 'Running dotfox_deploy'
+	core.print_info 'Running dotfox_deploy'
 	helper.dotfox_deploy
-	VBoxManage setproperty machinefolder '/storage/vault/rodinia/VirtualBox_Machines'
+
+	if util.is_cmd VBoxManage; then
+		VBoxManage setproperty machinefolder '/storage/vault/rodinia/VirtualBox_Machines'
+	fi
 }
 
 
@@ -403,9 +408,9 @@ must_rm() {
 	if [ -f "$file" ]; then
 		local output=
 		if output=$(rm -f -- "$file" 2>&1); then
-			print.info "Removed file '$file'"
+			core.print_info "Removed file '$file'"
 		else
-			print.warn "Failed to remove file '$file'"
+			core.print_warn "Failed to remove file '$file'"
 			printf '  -> %s\n' "$output"
 		fi
 	fi
@@ -418,9 +423,9 @@ must_rmdir() {
 	if [ -d "$dir" ]; then
 		local output=
 		if output=$(rmdir -- "$dir" 2>&1); then
-			print.info "Removed directory '$dir'"
+			core.print_info "Removed directory '$dir'"
 		else
-			print.warn "Failed to remove directory '$dir'"
+			core.print_warn "Failed to remove directory '$dir'"
 			printf '  -> %s\n' "$output"
 		fi
 	fi
@@ -435,9 +440,9 @@ must_dir() {
 		if [ ! -d "$dir" ]; then
 			local output=
 			if output=$(mkdir -p -- "$dir" 2>&1); then
-				print.info "Created directory '$dir'"
+				core.print_info "Created directory '$dir'"
 			else
-				print.warn "Failed to create directory '$dir'"
+				core.print_warn "Failed to create directory '$dir'"
 				printf '  -> %s\n' "$output"
 			fi
 		fi
@@ -451,9 +456,9 @@ must_file() {
 	if [ ! -f "$file" ]; then
 		local output=
 		if output=$(mkdir -p -- "${file%/*}" && touch -- "$file" 2>&1); then
-			print.info "Created file '$file'"
+			core.print_info "Created file '$file'"
 		else
-			print.warn "Failed to create file '$file'"
+			core.print_warn "Failed to create file '$file'"
 			printf '  -> %s\n' "$output"
 		fi
 	fi
@@ -467,12 +472,12 @@ must_link() {
 	local link="$REPLY"
 
 	if [ -z "$1" ]; then
-		print.warn "must_link: First parameter is emptys"
+		core.print_warn "must_link: First parameter is emptys"
 		return
 	fi
 
 	if [ -z "$2" ]; then
-		print.warn "must_link: Second parameter is empty"
+		core.print_warn "must_link: Second parameter is empty"
 		return
 	fi
 
@@ -487,20 +492,20 @@ must_link() {
 		if (( ${#children[@]} == 0)); then
 			rmdir "$link"
 		else
-			print.warn "Skipping symlink from '$src' to '$link'"
+			core.print_warn "Skipping symlink from '$src' to '$link'"
 			return
 		fi
 	fi
 	if [ ! -e "$src" ]; then
-		print.warn "Skipping symlink from '$src' to $link"
+		core.print_warn "Skipping symlink from '$src' to $link"
 		return
 	fi
 
 	local output=
 	if output=$(ln -sfT "$src" "$link" 2>&1); then
-		print.info "Symlinking '$src' to $link"
+		core.print_info "Symlinking '$src' to $link"
 	else
-		print.warn "Failed to symlink from '$src' to '$link'"
+		core.print_warn "Failed to symlink from '$src' to '$link'"
 		printf '  -> %s\n' "$output"
 	fi
 }

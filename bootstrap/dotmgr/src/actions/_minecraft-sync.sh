@@ -23,7 +23,7 @@ action() {
 			continue
 		fi
 
-		print.info "Processing $mc_dir"
+		core.print_info "Processing $mc_dir"
 
 		# Sync Common Files
 		# files=(optionsLC.txt optionsof.txt optionsshaders.txt options.txt servers.dat servers.dat_old)

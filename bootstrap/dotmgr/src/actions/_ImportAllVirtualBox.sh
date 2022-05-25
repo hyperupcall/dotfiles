@@ -30,7 +30,7 @@ action() {
   local virtualbox_dir="/storage/vault/rodinia/VirtualBox_Machines"
 
 	if [ ! -d "$virtualbox_dir" ]; then
-		print.die "Could not find directory '$virtualbox_dir'"
+		core.print_die "Could not find directory '$virtualbox_dir'"
 	fi
 
   # Add all

@@ -241,6 +241,26 @@ core.err_exists() {
 	fi
 }
 
+# @description Use when a serious fault occurs. It will print the current ERR (if it exists)
+core.panic() {
+	local code='1'
+
+	if [[ $1 =~ [0-9]+ ]]; then
+		code=$1
+	elif [ -n "$1" ]; then
+		if [ -n "$2" ]; then
+			code=$2
+		fi
+		printf '%s\n' "Panic: $1" >&2
+	fi
+
+	if core.err_exists; then
+		core.util.err_print
+	fi
+	core.print_stacktrace
+	exit "$code"
+}
+
 # @description Prints stacktrace
 # @noargs
 # @example
@@ -285,7 +305,7 @@ core.print_stacktrace() {
 
 # @description Print an error message to standard error
 # @arg $1 string message
-core.print_error() {
+core.print_error_fn() {
 	local msg="$1"
 
 	printf '%s\n' "Error: ${FUNCNAME[1]}${msg:+": "}$msg" >&2
@@ -293,7 +313,7 @@ core.print_error() {
 
 # @description Print a warning message to standard error
 # @arg $1 string message
-core.print_warn() {
+core.print_warn_fn() {
 	local msg="$1"
 
 	printf '%s\n' "Warn: ${FUNCNAME[1]}${msg:+": "}$msg" >&2
@@ -301,30 +321,41 @@ core.print_warn() {
 
 # @description Print an informative message to standard output
 # @arg $1 string message
-core.print_info() {
+core.print_info_fn() {
 	local msg="$1"
 
 	printf '%s\n' "Info: ${FUNCNAME[1]}${msg:+": "}$msg"
 }
 
-# @description Use when a serious fault occurs. It will print the current ERR (if it exists)
-core.panic() {
-	local code='1'
+# @description Print a error message to standard error and die
+# @arg $1 string message
+core.print_die() {
+	core.print_error "$1"
+	exit 1
+}
 
-	if [[ $1 =~ [0-9]+ ]]; then
-		code=$1
-	elif [ -n "$1" ]; then
-		if [ -n "$2" ]; then
-			code=$2
-		fi
-		printf '%s\n' "Panic: $1" >&2
-	fi
+# @description Print an error message to standard error
+# @arg $1 string message
+core.print_error() {
+	local msg="$1"
 
-	if core.err_exists; then
-		core.util.err_print
-	fi
-	core.print_stacktrace
-	exit "$code"
+	printf '%s\n' "Error${msg:+": "}$msg" >&2
+}
+
+# @description Print a warning message to standard error
+# @arg $1 string message
+core.print_warn() {
+	local msg="$1"
+
+	printf '%s\n' "Warn${msg:+": "}$msg" >&2
+}
+
+# @description Print an informative message to standard output
+# @arg $1 string message
+core.print_info() {
+	local msg="$1"
+
+	printf '%s\n' "Info${msg:+": "}$msg"
 }
 
 # @description Determine if color should be printed. Note that this doesn't

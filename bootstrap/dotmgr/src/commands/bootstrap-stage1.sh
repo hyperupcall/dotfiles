@@ -5,12 +5,12 @@
 # hyperupcall/dots cloned
 # dotmgr in PATH
 
-subcommand() {
+dotmgr-bootstrap-stage1() {
 	# Ensure prerequisites
 	mkdir -p ~/.bootstrap/{bin,nim-all,old-homedots} "$XDG_CONFIG_HOME"
 
 	if ! util.is_cmd 'jq'; then
-		print.info 'Installing jq'
+		core.print_info 'Installing jq'
 
 		if util.is_cmd 'pacman'; then
 			util.ensure sudo pacman -S --noconfirm 'jq'
@@ -27,12 +27,12 @@ subcommand() {
 		fi
 
 		if ! util.is_cmd 'jq'; then
-			print.die 'Automatic installation of jq failed'
+			core.print_die 'Automatic installation of jq failed'
 		fi
 	fi
 
 	if ! util.is_cmd 'curl'; then
-		print.info 'Installing curl'
+		core.print_info 'Installing curl'
 
 		if util.is_cmd 'pacman'; then
 			util.ensure sudo pacman -S --noconfirm 'curl'
@@ -49,7 +49,7 @@ subcommand() {
 		fi
 
 		if ! util.is_cmd 'curl'; then
-			print.die 'Automatic installation of curl failed'
+			core.print_die 'Automatic installation of curl failed'
 		fi
 	fi
 
@@ -62,7 +62,7 @@ subcommand() {
 
 	# Download Nim (in case dotfox doesn't work, it may need to be recompiled)
 	if [ ! -d ~/.bootstrap/nim-all/nim ]; then
-		print.info 'Downloading Nim'
+		core.print_info 'Downloading Nim'
 		util.ensure curl -LSso ~/.bootstrap/nim-all/nim-1.4.8-linux_x64.tar.xz https://nim-lang.org/download/nim-1.4.8-linux_x64.tar.xz
 		util.ensure rm -rf ~/.bootstrap/nim-all/nim-1.4.8
 		util.ensure cd ~/.bootstrap/nim-all
@@ -73,18 +73,22 @@ subcommand() {
 
 	# Clone dotfox
 	if [ ! -d ~/.bootstrap/dotfox ]; then
-		print.info 'Cloning github.com/hyperupcall/dotfox'
+		core.print_info 'Cloning github.com/hyperupcall/dotfox'
 		util.ensure git clone --quiet https://github.com/hyperupcall/dotfox ~/.bootstrap/dotfox
+		(
+			cd ~/.bootstrap/dotfox
+			"$HOME/.bootstrap/nim-all/nim/bin/nimble" -y --nim="$HOME/.bootstrap/nim-all/nim/bin/nim" build
+		)
 	fi
 
 	# Download Dotfox
 	if [ ! -f ~/.bootstrap/bin/dotfox ]; then
-		print.info 'Downloading Dotfox'
+		core.print_info 'Downloading Dotfox'
 		if ! dotfox_download_url="$(
 			curl -LfSs https://api.github.com/repos/hyperupcall/dotfox/releases/latest \
 				| jq -r '.assets[0].browser_download_url'
 		)"; then
-			print.die "Could not fetch the dotfox download URL"
+			core.print_die "Could not fetch the dotfox download URL"
 		fi
 		util.ensure curl -LsSo ~/.bootstrap/bin/dotfox "$dotfox_download_url"
 		util.ensure chmod +x ~/.bootstrap/bin/dotfox
@@ -99,7 +103,7 @@ subcommand() {
 
 	# Download Basalt
 	if [ ! -d "$XDG_DATA_HOME/basalt/source" ]; then
-		print.info 'Downloading Basalt'
+		core.print_info 'Downloading Basalt'
 		util.ensure git clone --quiet https://github.com/hyperupcall/basalt "$XDG_DATA_HOME/basalt/source"
 		util.ensure git -C "$XDG_DATA_HOME/basalt/source" submodule init
 		util.ensure git -C "$XDG_DATA_HOME/basalt/source" submodule update
@@ -109,7 +113,7 @@ subcommand() {
 	if basalt_output=$("$XDG_DATA_HOME/basalt/source/pkg/bin/basalt" global init bash); then
 		eval "$basalt_output"
 	else
-		print.die "Could not run 'basalt global init bash'"
+		core.print_die "Could not run 'basalt global init bash'"
 	fi
 
 	cat > ~/.bootstrap/stage2.sh <<"EOF"

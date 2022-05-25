@@ -22,7 +22,7 @@ action() {
 
 	local password=
 	password=$(LC_ALL=C tr -dc '[:alnum:][:digit:]' </dev/urandom | head -c 12; printf '\n')
-	print.info "Password: $password"
+	core.print_info "Password: $password"
 
 	# Copy over ssh keys
 	local -r sshDir="$HOME/.ssh"
@@ -53,11 +53,11 @@ action() {
 			tar -c ${sshKeys[*]} | age --encrypt --passphrase --armor >&4
 		EOF
 		); then :; else
-			print.die "Command 'expect' failed (code $?)"
+			core.print_die "Command 'expect' failed (code $?)"
 		fi
 		exec 4<&-
 	else
-		print.warn "Skipping copying ssh keys"
+		core.print_warn "Skipping copying ssh keys"
 	fi
 
 	# Copy over gpg keys
@@ -88,10 +88,10 @@ action() {
 			gpg --export-secret-keys --armor ${fingerprints[*]} | age --encrypt --passphrase --armor >&4
 		EOF
 		); then :; else
-			print.die "Command 'expect' failed (code $?)"
+			core.print_die "Command 'expect' failed (code $?)"
 		fi
 		exec 4<&-
 	else
-		print.warn "Skipping copying gpg keys"
+		core.print_warn "Skipping copying gpg keys"
 	fi
 }
