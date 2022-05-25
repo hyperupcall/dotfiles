@@ -62,5 +62,14 @@ unset -v d
 # 		}' \
 # 	| xargs -0 systemctl --user import-environment
 # } &)
+({
+	dropboxd="$HOME/.dots/.home/Downloads/.dropbox-dist/dropboxd"
+	if [ -x "$dropboxd" ]; then
+		if ! pgrep dropbox >/dev/null 2>&1; then
+			nohup "$dropboxd" >/dev/null 2>&1
+		fi
+	fi
+} &)
+
 
 # ---
