@@ -1,4 +1,4 @@
-source "$XDG_CONFIG_HOME/shell/modules/line-editing.sh"
+source "$XDG_CONFIG_HOME/shell/modules/line-editing/line-editing.sh"
 
 _zle_x_discard() {
 	_lineediting_action_x_discard "$BUFFER" "$CURSOR"

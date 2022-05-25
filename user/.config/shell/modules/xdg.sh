@@ -1,5 +1,12 @@
 # shellcheck shell=sh
 
+# android
+export ANDROID_HOME="$HOME/Android/Sdk"
+_path_prepend "$ANDROID_HOME/emulator"
+_path_prepend "$ANDROID_HOME/tools"
+_path_prepend "$ANDROID_HOME/tools/bin"
+_path_prepend "$ANDROID_HOME/platform-tools"
+
 # aspell
 export ASPELL_CONF="per-conf $XDG_CONFIG_HOME/aspell/aspell.conf; personal $XDG_CONFIG_HOME/aspell/en.pws; repl $XDG_CONFIG_HOME/aspell/en.prepl"
 
@@ -56,6 +63,9 @@ export CCACHE_CONFIGPATH="$XDG_CONFIG_HOME/ccache/config"
 
 # cinelerra
 export CIN_CONFIG="$XDG_CONFIG_HOME/bcast5"
+
+# conan
+export CONAN_USER_HOME="$XDG_STATE_HOME"
 
 # conda
 export CONDA_ROOT="$XDG_CONFIG_HOME/conda"
@@ -159,7 +169,7 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 export LEDGER_FILE="$XDG_STATE_HOME/hledger/hledger.journal"
 
 # ice authority
-# export ICEAUTHORITY="$XDG_RUNTIME_DIR/iceauthority" # XDG_RUNTIME_DIR bad
+# export ICEAUTHORITY="$XDG_RUNTIME_DIR/iceauthority" # XDG_RUNTIME_DIR bad?
 
 # ida
 export IDAUSR="$XDG_STATE_HOME/idapro"
@@ -226,9 +236,6 @@ export MBSYNC_CONFIG="$XDG_CONFIG_HOME/mbsync/config"
 
 # mednafen
 export MEDNAFEN_HOME="$XDG_CONFIG_HOME/mednafen"
-
-# mongo
-alias mongo='mongo --norc'
 
 # most
 export MOST_INITFILE="$XDG_CONFIG_HOME/most/mostrc"
@@ -374,7 +381,7 @@ export RUBY_BUILD_CACHE_PATH="$XDG_CACHE_HOME/ruby-build"
 export DOT_SAGE="$XDG_CONFIG_HOME/sage"
 
 # sbt
-alias sbt='sbt -ivy "$XDG_DATA_HOME/ivy2" -sbt-dir "$XDG_DATA_HOME/sbt"'
+# alias sbt='sbt -ivy "$XDG_DATA_HOME/ivy2" -sbt-dir "$XDG_DATA_HOME/sbt"'
 
 # sccache
 export SCCACHE_CACHE_SIZE="100G"
@@ -385,9 +392,6 @@ export SCREENRC="$XDG_CONFIG_HOME/screenrc"
 
 # spacemacs
 export SPACEMACSDIR="$XDG_CONFIG_HOME/spacemacs"
-
-# subversion
-alias svn='svn --config-dir "$XDG_CONFIG_HOME/subversion"'
 
 # xsm
 export SM_SAVE_DIR="$XDG_DATA_HOME/xsm"
@@ -403,9 +407,6 @@ export STACK_ROOT="$XDG_DATA_HOME/stack"
 
 # starship
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
-
-# subversion
-export SUBVERSION_HOME="$XDG_CONFIG_HOME/subversion"
 
 # swift
 export SWIFTENV_ROOT="$XDG_DATA_HOME/swiftenv"
@@ -424,10 +425,6 @@ export TEXMFHOME="$XDG_DATA_HOME/textmf"
 
 # todotxt
 export TODOTXT_CFG_FILE="$XDG_CONFIG_HOME/todotxt/config.sh"
-
-# tmux
-alias tmux='tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf"'
-export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 
 # tree-sitter
 export TREE_SITTER_DIR="$XDG_CONFIG_HOME/tree-sitter"
@@ -448,9 +445,6 @@ export VAGRANT_ALIAS_FILE="$VAGRANT_HOME/aliases"
 # volta
 export VOLTA_HOME="$XDG_STATE_HOME/volta"
 _path_prepend "$XDG_STATE_HOME/volta/bin"
-
-# vim
-export VIMINIT="if has('nvim') | source $XDG_CONFIG_HOME/nvim/nvim.lua | else | source $XDG_CONFIG_HOME/vim/vimrc | endif"
 
 # vimperator
 export VIMPERATOR_INIT=":source $XDG_CONFIG_HOME/vimperator/vimperatorrc"

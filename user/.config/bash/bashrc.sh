@@ -163,7 +163,7 @@ if command -v basalt &>/dev/null; then
 	}
 fi
 
-source "$XDG_CONFIG_HOME/shell/modules/line-editing.sh"
+source "$XDG_CONFIG_HOME/shell/modules/line-editing/line-editing.sh"
 source "$XDG_CONFIG_HOME/bash/modules/readline.sh"
 source "$XDG_CONFIG_HOME/bash/modules/util.sh"
 

@@ -1,8 +1,8 @@
 # shellcheck shell=sh
 
 # ------------------------ General ----------------------- #
-export NAME="Edwin Kofler"
-export EMAIL="edwin@kofler.com"
+export NAME='Edwin Kofler'
+export EMAIL='edwin@kofler.com'
 
 export LANG="${LANG:-en_US.UTF-8}"
 export LANGUAGE="${LANGUAGE:-"$LANG"}"
@@ -16,14 +16,6 @@ export PAGER='less'
 
 
 # ------------------------ Program ----------------------- #
-# android
-export ANDROID_HOME="$HOME/Android/Sdk"
-_path_prepend "$ANDROID_HOME/emulator"
-_path_prepend "$ANDROID_HOME/tools"
-_path_prepend "$ANDROID_HOME/tools/bin"
-_path_prepend "$ANDROID_HOME/platform-tools"
-
-
 # fzf
 export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
 export FZF_DEFAULT_OPTS="--history \"$XDG_STATE_HOME/history/fzf_history\" --history-size=10000"
@@ -91,7 +83,7 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 # export RANGER_LOAD_DEFAULT_RC='FALSE'
 
 # snapd
-_path_append '/var/lib/snapd/snap/bin'
+# _path_append '/var/lib/snapd/snap/bin'
 
 # ssh
 # unset SSH_AGENT_PID
@@ -102,6 +94,9 @@ _path_append '/var/lib/snapd/snap/bin'
 
 # sxhkd
 export SXHKD_SHELL='/bin/sh'
+
+# vim
+export VIMINIT="if has('nvim') | source $XDG_CONFIG_HOME/nvim/nvim.lua | else | source $XDG_CONFIG_HOME/vim/vimrc | endif"
 
 # X11
 export XCURSOR_PATH="$XDG_CONFIG_HOME/icons:$XCURSOR_PATH"
