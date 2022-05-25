@@ -21,9 +21,9 @@
 	"editor.fontFamily": "'Droid Sans Mono', 'Fira Sans Mono', 'monospace'",
 	"editor.fontLigatures": true,
 	"editor.fontSize": 16,
-	"editor.formatOnSave": true,
-	"editor.formatOnPaste": true,
-	"editor.formatOnType": true,
+	"editor.formatOnSave": false,
+	"editor.formatOnPaste": false,
+	"editor.formatOnType": false,
 	"editor.insertSpaces": false,
 	"editor.inlineSuggest.enabled": true,
 	"editor.maxTokenizationLineLength": 5000,
@@ -238,7 +238,9 @@
 		"editor.codeActionsOnSave": {
 			"source.fixAll": true,
 			"source.organizeImports": true
-		}
+		},
+		"editor.insertSpaces": true,
+		"editor.tabSize": 4
 	},
 	"python.formatting.provider": "yapf",
 	"python.globalModuleInstallation": false,

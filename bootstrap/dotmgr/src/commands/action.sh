@@ -29,6 +29,7 @@ subcommand() {
 		# Bootstrapping
 		'install_packages'
 		'install_others'
+		'update_others'
 		''
 		# regular uncommon
 		'secrets_export'

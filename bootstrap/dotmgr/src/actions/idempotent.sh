@@ -65,7 +65,6 @@ action() {
 	must_dir "$HOME/.ssh"
 	must_dir "$XDG_STATE_HOME/history"
 	must_dir "$XDG_DATA_HOME/maven"
-	must_dir "$XDG_DATA_HOME"/vim/{undo,swap,backup}
 	must_dir "$XDG_DATA_HOME"/nano/backups
 	must_dir "$XDG_DATA_HOME/zsh"
 	must_dir "$XDG_DATA_HOME/X11"
@@ -255,6 +254,31 @@ action() {
 		gsettings set org.nemo.preferences default-folder-viewer "'list-view'"
 	fi
 
+	hotkeys.apply_screenshots() {
+		# 1. Screenshot
+		# 2. Screenshot clip (interactive)
+		# 3. Window screenshot
+		# 4. Windows screenshot clip (interactive)
+		case $1 in
+		cinnamon)
+			;;
+		mate)
+			;;
+		gnome)
+			# Old ones?
+			gsettings set org.gnome.settings-daemon.plugins.media-keys screenshot "['<Super><Shift>p']"
+			gsettings set org.gnome.settings-daemon.plugins.media-keys screenshot-clip "['<Super>p']"
+			gsettings set org.gnome.settings-daemon.plugins.media-keys window-screenshot "['<Super><Alt>p']"
+			gsettings set org.gnome.settings-daemon.plugins.media-keys window-screenshot-clip "['<Super><Alt><Shift>p']"
+
+			# Fedora, etc.
+			gsettings set org.gnome.shell.keybindings.screenshot "['<Shift><Super>p']"
+			gsettings set org.gnome.shell.keybindings.show-screenshot-ui "['<Super>p']"
+			gsettings set org.gnome.shell.keybindings.screenshot-window "['<Alt><Super>p']"
+			;;
+		esac
+	}
+
 	if [ "$XDG_SESSION_DESKTOP" = 'cinnamon' ]; then
 		local file="$HOME/.cinnamon/configs/menu@cinnamon.org/0.json"
 		local image_file=
@@ -321,8 +345,6 @@ action() {
 
 		gsettings set org.mate.terminal.global use-mnemonics 'false'
 		gsettings set org.mate.terminal.global use-menu-accelerators 'false'
-	elif [ "$XDG_SESSION_DESKTOP" = 'pop' ]; then
-		:
 	elif [ "$XDG_SESSION_DESKTOP" = 'gnome' ]; then
 		gsettings set org.gnome.desktop.wm.keybindings minimize "[]"
 		gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-last "[]"
@@ -335,10 +357,7 @@ action() {
 		gsettings set org.gnome.settings-daemon.plugins.media-keys screensaver "[]"
 		gsettings set org.gnome.settings-daemon.plugins.media-keys screensaver-static "[]"
 
-		gsettings set org.gnome.settings-daemon.plugins.media-keys screenshot "['<Super><Shift>p']"
-		gsettings set org.gnome.settings-daemon.plugins.media-keys screenshot-clip "['<Super>p']"
-		gsettings set org.gnome.settings-daemon.plugins.media-keys window-screenshot "['<Super><Alt>p']"
-		gsettings set org.gnome.settings-daemon.plugins.media-keys window-screenshot-clip "['<Super><Alt><Shift>p']"
+		hotkeys.apply_screenshots "$XDG_SESSION_DESKTOP"
 
 		gsettings set org.gnome.desktop.wm.keybindings.show-desktop "['<Super>d']"
 
@@ -354,7 +373,8 @@ action() {
 		gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-right "['<Super><Control><Shift>l', '<Super><Control><Shift>Right']"
 		gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-down "['<Super><Control><Shift>j', '<Super><Control><Shift>Down']"
 		gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-left "['<Super><Control><Shift>h', '<Super><Control><Shift>Left']"
-
+	elif [ "$XDG_SESSION_DESKTOP" = 'pop' ]; then
+		:
 	elif [ -z "$XDG_SESSION_DESKTOP" ]; then
 		print.warn "Variable '\$XDG_SESSION_DESKTOP' is empty"
 	fi

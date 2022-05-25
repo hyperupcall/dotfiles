@@ -450,9 +450,7 @@ export VOLTA_HOME="$XDG_STATE_HOME/volta"
 _path_prepend "$XDG_STATE_HOME/volta/bin"
 
 # vim
-# shellcheck disable=SC2016
-# export VIMINIT='if has("nvim") | source $HOME/.local/share/nvim/init.lua | else | source $MYVIMRC | endif' ? # TODO
-# export MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
+export VIMINIT="if has('nvim') | source $XDG_CONFIG_HOME/nvim/nvim.lua | else | source $XDG_CONFIG_HOME/vim/vimrc | endif"
 
 # vimperator
 export VIMPERATOR_INIT=":source $XDG_CONFIG_HOME/vimperator/vimperatorrc"
