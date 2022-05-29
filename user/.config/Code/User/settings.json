@@ -385,8 +385,6 @@
 	"merge-conflict.autoNavigateNextConflict.enabled": true,
 	"merge-conflict.diffViewPosition": "Beside",
 	"screencastMode.onlyKeyboardShortcuts": true,
-	"sortLines.filterBlankLines": true,
-	"sortLines.sortEntireFile": true,
 	"sqltools.useNodeRuntime": true,
 	"task.quickOpen.history": 20,
 	"vsicons.associations.files": [
@@ -416,6 +414,6 @@
 	"cmake.configureOnOpen": true,
 	"warmUp.changeCount": "15",
 	"warmUp.switchProgrammingLanguage": "javascript",
-	"window.zoomLevel": -1,
-	"terminal.integrated.defaultProfile.linux": "bash"
+	"terminal.integrated.defaultProfile.linux": "bash",
+	"window.zoomLevel": -1
 }

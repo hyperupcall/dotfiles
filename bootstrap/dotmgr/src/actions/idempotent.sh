@@ -117,7 +117,6 @@ action() {
 	local -r storage_other='/storage/ur/storage_other'
 
 	must_link "$HOME/.dots/user/scripts" "$HOME/scripts"
-	must_link "$XDG_CONFIG_HOME/X11/Xcompose" "$HOME/.Xcompose"
 	must_link "$XDG_CONFIG_HOME/X11/Xmodmap" "$HOME/.Xmodmap"
 	must_link "$XDG_CONFIG_HOME/X11/Xresources" "$HOME/.Xresources"
 	must_link "$XDG_CONFIG_HOME/Code/User/settings.json" "$XDG_CONFIG_HOME/Code - OSS/User/settings.json"

@@ -193,8 +193,8 @@ export IRBRC="$XDG_CONFIG_HOME/irb/irbrc"
 alias irssi='irssi --config "$XDG_CONFIG_HOME/irssi" --home "$XDG_CONFIG_HOME/irssi"'
 
 # java
-# export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_DATA_HOME/java"
-# export JAVA_TOOL_OPTIONS="-Djava.util.prefs.userRoot=$XDG_DATA_HOME/java"
+export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_STATE_HOME/java"
+export JAVA_TOOL_OPTIONS="-Djava.util.prefs.userRoot=$XDG_STATE_HOME/java"
 
 # julia
 export JULIA_DEPOT_PATH="$XDG_DATA_HOME/julia:$JULIA_DEPOT_PATH"
@@ -237,6 +237,9 @@ export MBSYNC_CONFIG="$XDG_CONFIG_HOME/mbsync/config"
 # mednafen
 export MEDNAFEN_HOME="$XDG_CONFIG_HOME/mednafen"
 
+# minikube
+export MINIKUBE_HOME="$XDG_STATE_HOME/minikube"
+
 # most
 export MOST_INITFILE="$XDG_CONFIG_HOME/most/mostrc"
 
@@ -262,6 +265,12 @@ _path_prepend "$XDG_DATA_HOME/nimble/bin"
 # node
 export NODE_REPL_HISTORY="$XDG_STATE_HOME/history/node_repl_history"
 export TS_NODE_HISTORY="$XDG_STATE_HOME/history/ts_node_repl_history"
+
+# node-gyp
+export npm_config_devdir="$XDG_STATE_HOME/node-gyp"
+
+# node-spawn-wrap
+export SPAWN_WRAP_SHIM_ROOT="$XDG_STATE_HOME/node-spawn-wrap"
 
 # notmuch
 export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch/notmuchrc"
@@ -477,8 +486,8 @@ export MATHEMATICA_USERBASE="$XDG_DATA_HOME/mathematica"
 
 # X11
 # export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
-# export XCOMPOSEFILE="$XDG_CONFIG_HOME/X11/Xcompose"
-# export XCOMPOSECACHE="$XDG_CACHE_HOME/X11/Xcompose"
+export XCOMPOSEFILE="$XDG_CONFIG_HOME/X11/Xcompose"
+export XCOMPOSECACHE="$XDG_CACHE_HOME/X11/Xcompose"
 
 # xsel
 alias xsel='xsel -l "$XDG_DATA_HOME/xsel/xsel.log'
