@@ -1,6 +1,7 @@
 # shellcheck shell=bash
 
 main.dotmgr() {
+	# WET (dotmgr-init)
 	set -eo pipefail
 	shopt -s dotglob extglob globstar nullglob shift_verbose
 	local f=

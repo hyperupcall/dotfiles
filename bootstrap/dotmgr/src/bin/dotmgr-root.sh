@@ -1,10 +1,16 @@
 # shellcheck shell=bash
 
 main.dotmgr() {
+	# WET (dotmgr-init)
 	set -eo pipefail
 	shopt -s dotglob extglob globstar nullglob shift_verbose
-	source "$DOTMGR_ROOT/src/util/print.sh"
-	source "$DOTMGR_ROOT/src/util/util.sh"
+	local f=
+	for f in "$DOTMGR_ROOT"/src/{helpers,util}/?*.sh; do
+		source "$f"
+	done; unset -v f
+	for f in "$DOTMGR_ROOT"/vendor/bash-core/pkg/src/{public,util}/?*.sh; do
+		source "$f"
+	done; unset -v f
 
 
 	# -------------------------------------------------------- #
