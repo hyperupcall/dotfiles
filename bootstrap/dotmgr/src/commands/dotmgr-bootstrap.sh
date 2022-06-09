@@ -5,11 +5,13 @@
 # hyperupcall/dots cloned
 # dotmgr in PATH
 
-dotmgr-bootstrap-stage1() {
+dotmgr-bootstrap() {
 	# Ensure prerequisites
 	mkdir -p ~/.bootstrap/{bin,nim-all,old-homedots} "$XDG_CONFIG_HOME"
 
-	if ! util.is_cmd 'jq'; then
+	if util.is_cmd 'jq'; then
+		core.print_info 'Already installed jq'
+	else
 		core.print_info 'Installing jq'
 
 		if util.is_cmd 'pacman'; then
@@ -31,7 +33,9 @@ dotmgr-bootstrap-stage1() {
 		fi
 	fi
 
-	if ! util.is_cmd 'curl'; then
+	if util.is_cmd 'curl'; then
+		core.print_info 'Already installed curl'
+	else
 		core.print_info 'Installing curl'
 
 		if util.is_cmd 'pacman'; then
@@ -94,13 +98,6 @@ dotmgr-bootstrap-stage1() {
 		util.ensure chmod +x ~/.bootstrap/bin/dotfox
 	fi
 
-	# Install Homebrew
-	if [ "$OSTYPE" = Darwin ]; then
-		util.ensure curl -LsSo ~/.bootstrap/brew-install.sh https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
-		util.ensure chmod +x ~/.bootstrap/brew-install.sh
-		~/.bootstrap/brew-install.sh
-	fi
-
 	# Download Basalt
 	if [ ! -d "$XDG_DATA_HOME/basalt/source" ]; then
 		core.print_info 'Downloading Basalt'
@@ -116,11 +113,11 @@ dotmgr-bootstrap-stage1() {
 		core.print_die "Could not run 'basalt global init bash'"
 	fi
 
-	cat > ~/.bootstrap/stage2.sh <<"EOF"
-. ~/.bootstrap/stage1.sh
-export PATH="$HOME/.bootstrap/dotfox:$HOME/.bootstrap/bin:$XDG_DATA_HOME/basalt/source/pkg/bin:$HOME/.bootstrap/nim-all/nim/bin:$PATH"
+	cat > ~/.bootstrap/bootstrap-out.sh <<"EOF"
+. ~/.bootstrap/stage0-out.sh
+export PATH="$HOME/.bootstrap/dotfox:$XDG_DATA_HOME/basalt/source/pkg/bin:$HOME/.bootstrap/nim-all/nim/bin:$PATH"
 
-if basalt_output="$("$XDG_DATA_HOME/basalt/source/pkg/bin/basalt" global init sh)"; then
+if basalt_output=$("$XDG_DATA_HOME/basalt/source/pkg/bin/basalt" global init sh); then
     eval "$basalt_output"
 else
     printf '%s\n' "Could not run 'basalt global init sh'"
@@ -129,7 +126,7 @@ EOF
 
 	cat <<"EOF"
 ---
-. ~/.bootstrap/stage2.sh
+. ~/.bootstrap/bootstrap-out.sh
 
 dotmgr action <action>
 ---

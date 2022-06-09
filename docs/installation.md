@@ -19,7 +19,7 @@ systemctl daemon-reload
 systemctl enable --now systemd-{network,resolve}d
 ```
 
-## With bootstrap
+## Bootstrapping
 
 To begin the bootstrap process, the `stage0.sh` script must be downloaded and executed
 
@@ -30,14 +30,25 @@ chmod +x ~/.bootstrap/stage0.sh
 ~/.bootstrap/stage0.sh
 ```
 
-The `stage0.sh` script clones this repository, and creates a `stage1.sh` file, among other things. Sourcing the `stage1.sh` adds the directory containing `dotmgr` to the PATH, and set basic environment variables like `NAME`, `EDITOR`, and XDG Base Directory Environment Variables
+The `stage0.sh` script performs the following steps
+
+- Installs homebrew if on macOS (a required package manager)
+- Ensures installation of Git and NeoVim
+- Clones this repository to ~/.dots
+- Creates a `stage0-out.sh`
+
+Sourcing the `stage0-out.sh` performs the following steps
+
+- Sets `NAME`, `EMAIL`, `EDITOR`, `VISUAL`
+- Appends `$HOME/.dots/.usr/bin` to `PATH`
+- Sources `~/.dots/xdg.sh`
 
 ```sh
-. ~/.bootstrap/stage1.sh
-dotmgr bootstrap-stage1
+. ~/.bootstrap/stage0-out.sh
+dotmgr bootstrap
 ```
 
-Running `dotmgr bootstrap-stage1` installs [dotfox](https://github.com/hyperupcall/dotfox), [Basalt](https://github.com/hyperupcall/basalt), [Nim](https://nim-lang.org), and creates a `stage2.sh` file, among other things in `~/.bootstrap`. Sourcing `stage2.sh` adds the directories containing these programs to the PATH
+Running `dotmgr bootstrap` installs [dotfox](https://github.com/hyperupcall/dotfox), [Basalt](https://github.com/hyperupcall/basalt), [Nim](https://nim-lang.org), and creates a `stage2.sh` file, among other things in `~/.bootstrap`. Sourcing `stage2.sh` adds the directories containing these programs to the PATH
 
 ```sh
 . ~/.bootstrap/stage2.sh

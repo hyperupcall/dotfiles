@@ -436,6 +436,5 @@
 	"C_Cpp.codeAnalysis.clangTidy.args": ["-std=gnu++20"],
 	"C_Cpp.default.cppStandard": "gnu++20",
 	"C_Cpp.default.cStandard": "gnu17",
-	"workbench.colorTheme": "Ayu Mirage Bordered",
-	"window.zoomLevel": -1
+	"workbench.colorTheme": "Ayu Mirage Bordered"
 }

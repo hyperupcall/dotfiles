@@ -1,17 +1,7 @@
 # shellcheck shell=bash
 
 main.dotmgr() {
-	# WET (dotmgr-init)
-	set -eo pipefail
-	shopt -s dotglob extglob globstar nullglob shift_verbose
-	local f=
-	for f in "$DOTMGR_ROOT"/src/{helpers,util}/?*.sh; do
-		source "$f"
-	done; unset -v f
-	for f in "$DOTMGR_ROOT"/vendor/bash-core/pkg/src/{public,util}/?*.sh; do
-		source "$f"
-	done; unset -v f
-
+	source "$DOTMGR_ROOT/src/util/source.sh"
 
 	# -------------------------------------------------------- #
 	#                    COPY ROOT DOTFILES                    #

@@ -3,22 +3,22 @@ set -e
 
 die() {
 	error "$@"
-	printf "$GLOBAL_FMT_START%s$GLOBAL_FMT_END\n" '==> EXITING'
+	printf "$GLOBAL_FMT_START%s$GLOBAL_FMT_END Exiting\n" '=>' >&2
 	exit 1
 }
 
 error() {
-	printf "$GLOBAL_FMT_START%s$GLOBAL_FMT_END %s\n" '==> ERROR:' "$1" >&2
+	printf "$GLOBAL_FMT_START%s$GLOBAL_FMT_END Error: %s\n" '=>' "$1" >&2
 }
 
 log() {
-	printf "$GLOBAL_FMT_START%s$GLOBAL_FMT_END %s\n" '==> INFO' "$1"
+	printf "$GLOBAL_FMT_START%s$GLOBAL_FMT_END Info: %s\n" '=>' "$1" >&2
 }
 
 ensure() {
 	if "$@"; then :; else
 		error "Failed to run command (code $?)"
-		printf '%s\n' "Command: $*" >&2
+		printf '%s\n' "  -> Command: $*" >&2
 		exit 1
 	fi
 }
@@ -51,7 +51,6 @@ fi
 
 # Ensure prerequisites
 mkdir -p ~/.bootstrap
-mkdir -p ~/.dots/.usr/bin
 
 if ! iscmd 'sudo'; then
 	die "Please install 'sudo' before running this script"
@@ -120,12 +119,13 @@ else
 	log 'Cloning github.com/hyperupcall/dots'
 
 	ensure git clone --quiet https://github.com/hyperupcall/dots ~/.dots
-	ensure ln -sf ~/.dots/bootstrap/dotmgr/bin/dotmgr ~/.dots/.usr/bin/dotmgr
-	ensure cd ~/.dots
-	git remote set-url origin 'git@github.com:hyperupcall/dots'
-	./bake init
-	ensure cd ~
 fi
+ensure mkdir -p ~/.dots/.usr/bin
+ensure ln -sf ~/.dots/bootstrap/dotmgr/bin/dotmgr ~/.dots/.usr/bin/dotmgr
+ensure cd ~/.dots
+	ensure git remote set-url origin 'git@github.com:hyperupcall/dots'
+	ensure ./bake init
+ensure cd ~
 
 # Set EDITOR so editors like 'vi' or 'vim' that may not be installed
 # are never executed
@@ -148,7 +148,7 @@ if [ ! -f ~/.dots/xdg.sh ]; then
 fi
 
 # Export variables for 'bootstrap.sh'
-cat > ~/.bootstrap/stage1.sh <<-EOF
+cat > ~/.bootstrap/stage0-out.sh <<-EOF
 # shellcheck shell=sh
 
 export NAME="Edwin Kofler"
@@ -167,7 +167,7 @@ EOF
 
 cat <<-"EOF"
 ---
-. ~/.bootstrap/stage1.sh
-dotmgr bootstrap-stage1
+. ~/.bootstrap/stage0-out.sh
+dotmgr bootstrap
 ---
 EOF

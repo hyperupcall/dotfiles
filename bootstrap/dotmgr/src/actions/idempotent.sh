@@ -8,7 +8,7 @@
 # - Ensures mount to /storage/ur
 # - Strip ~/.bashrc, etc. dotfiles from random appendage
 # - Symlinks ~/.ssh, etc. software not mananged by dotfox
-# - Symlinks directories to ~/.home
+# - Symlinks directories to ~/.dots/.home
 
 action() {
 	# -------------------------------------------------------- #
