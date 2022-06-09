@@ -1,3 +1,5 @@
+WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+
 # TODO: zcompile
 # autoload -Uz zcompile
 

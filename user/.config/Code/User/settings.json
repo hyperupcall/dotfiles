@@ -156,6 +156,10 @@
 	"typescript.referencesCodeLens.enabled": true,
 	"typescript.referencesCodeLens.showOnAllFunctions": true,
 	"typescript.updateImportsOnFileMove.enabled": "always",
+	"deno.suggest.imports.autoDiscover": true,
+	"deno.suggest.completeFunctionCalls": true,
+	"deno.suggest.autoImports": true,
+	"deno.suggest.names": true,
 	"deno.suggest.imports.hosts": {
 		"https://deno.land": true
 	},
@@ -201,18 +205,21 @@
 	},
 	"[markdown]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true,
 		"editor.wordWrap": "on",
 		"editor.insertSpaces": true,
 		"editor.tabSize": 2
 	},
 	"[markdown-math]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true,
 		"editor.wordWrap": "on",
 		"editor.insertSpaces": true,
 		"editor.tabSize": 2
 	},
 	"[juliamarkdown]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true,
 		"editor.wordWrap": "on",
 		"editor.insertSpaces": true,
 		"editor.tabSize": 2
@@ -277,6 +284,7 @@
 		"-cppcoreguidelines-pro-bounds-array-to-pointer-decay",
 		"google-*",
 		"-google-readability-braces-around-statements",
+		"-google-readability-casting",
 		"-google-readability-todo",
 		"-google-runtime-references",
 		"misc-*",
@@ -326,6 +334,7 @@
 	"update.showReleaseNotes": false,
 	"material-icon-theme.showWelcomeMessage": false,
 	"docker-explorer.enableTelemetry": false,
+	"code-runner.enableAppInsights": false,
 
 	// UNSORTED
 
@@ -349,6 +358,7 @@
 		"gulpfile",
 		"healthcheck",
 		"hyperupcall",
+		"initializable",
 		"kbuild",
 		"Kofler",
 		"mkdir",
@@ -385,8 +395,6 @@
 	"merge-conflict.autoNavigateNextConflict.enabled": true,
 	"merge-conflict.diffViewPosition": "Beside",
 	"screencastMode.onlyKeyboardShortcuts": true,
-	"sortLines.filterBlankLines": true,
-	"sortLines.sortEntireFile": true,
 	"sqltools.useNodeRuntime": true,
 	"task.quickOpen.history": 20,
 	"vsicons.associations.files": [
@@ -409,13 +417,24 @@
 		"markdown": true
 	},
 	"git.enableCommitSigning": true,
-	"workbench.colorTheme": "SynthWave '84",
 	"extensions.ignoreRecommendations": true,
 	"julia.symbolCacheDownload": true,
 	"gitlens.codeLens.enabled": false,
 	"cmake.configureOnOpen": true,
 	"warmUp.changeCount": "15",
 	"warmUp.switchProgrammingLanguage": "javascript",
-	"window.zoomLevel": -1,
-	"terminal.integrated.defaultProfile.linux": "bash"
+	"terminal.integrated.defaultProfile.linux": "bash",
+	"indentRainbow.errorColor": "rgba(128,32,32,0.1)",
+	"code-runner.executorMap": {
+		"cpp": "cd $dir && g++ -std=gnu++20 -Wall -Wextra -Wpedantic -Wconversion $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt"
+	},
+	"code-runner.saveFileBeforeRun": true,
+	"code-runner.showRunCommandInExplorerContextMenu": false,
+	"code-runner.showRunCommandInEditorContextMenu": false,
+	"clang-tidy.compilerArgsBefore": ["-std=gnu++20"],
+	"C_Cpp.codeAnalysis.clangTidy.enabled": true,
+	"C_Cpp.codeAnalysis.clangTidy.args": ["-std=gnu++20"],
+	"C_Cpp.default.cppStandard": "gnu++20",
+	"C_Cpp.default.cStandard": "gnu17",
+	"workbench.colorTheme": "Ayu Mirage Bordered"
 }

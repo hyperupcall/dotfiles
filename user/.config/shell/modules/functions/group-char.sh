@@ -67,8 +67,8 @@ t() {
 # clone(user, root)
 v() {
 	s=
-	if [ -e "$1" ] && [ "$(stat -c "%G" "$1")" = "root" ]; then
-		s="sudo"
+	if [ -e "$1" ] && [ "$(stat -c "%G" "$1")" = 'root' ]; then
+		s='sudo'
 	fi
 
 	_v_editor="${EDITOR:-vi}"

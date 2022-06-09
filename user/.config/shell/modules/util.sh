@@ -39,15 +39,15 @@ _shell_util_die() {
 }
 
 _shell_util_log_error() {
-	printf "\033[0;31m%s\033[0m %s\n" 'Error' "$1" >&2
+	printf "\033[0;31m%s\033[0m %s\n" 'Error:' "$1" >&2
 }
 
 _shell_util_log_warn() {
-	printf "\033[1;33m%s\033[0m %s\n" 'Warn' "$1" >&2
+	printf "\033[1;33m%s\033[0m %s\n" 'Warn:' "$1" >&2
 }
 
 _shell_util_log_info() {
-	printf "\033[0;34m%s\033[0m %s\n" 'Info' "$1"
+	printf "\033[0;34m%s\033[0m %s\n" 'Info:' "$1"
 }
 
 _shell_util_ls() {
@@ -65,5 +65,13 @@ _shell_util_has() {
 		return 0
 	else
 		return 1
+	fi
+}
+
+_shell_util_run() {
+	_shell_util_log_info "Executing: $*"
+
+	if "$@"; then :; else
+		return $?
 	fi
 }

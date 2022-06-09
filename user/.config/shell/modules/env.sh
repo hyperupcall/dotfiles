@@ -104,5 +104,8 @@ export XCURSOR_PATH="$XDG_CONFIG_HOME/icons:$XCURSOR_PATH"
 # zsh
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
+# zinit
+export ZINIT_HOME="$XDG_DATA_HOME/zinit/zinit.git"
+
 # zfs
 export ZFS_COLOR=

@@ -1,5 +1,5 @@
 # shellcheck shell=sh
-alias foxomate='deno run --allow-read --allow-write ~/repos/foxomate/src/main.ts'
+alias fox='deno run --allow-read --allow-write --allow-run ~/repos/fox/src/main.ts'
 alias b='bukdu --suggest'
 alias but='btrfs'
 alias cat='cat -v' # clone(user, root)

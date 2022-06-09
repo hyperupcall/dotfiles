@@ -10,9 +10,9 @@ pkg() {
 
 pkgi() {
 	if _shell_util_has 'pacman'; then
-		'pacman' -S "$@"
+		_shell_util_run 'pacman' -S "$@"
 	elif _shell_util_has 'dnf'; then
-		'dnf' install "$@"
+		_shell_util_run 'dnf' install "$@"
 	else
 		_shell_util_log_error "Package manager not recognized"
 	fi
@@ -22,9 +22,9 @@ pkgl() {
 	local pkg="$1"
 
 	if _shell_util_has 'pacman'; then
-		'pacman' -Ql "$pkg"
+		_shell_util_run 'pacman' -Ql "$pkg"
 	elif _shell_util_has 'dnf'; then
-		'rpm' -ql "$pkg"
+		_shell_util_run 'rpm' -ql "$pkg"
 	else
 		_shell_util_log_error "Package manager not recognized"
 	fi
@@ -34,9 +34,9 @@ pkgp() {
 	local pkg="$1"
 
 	if _shell_util_has 'pacman'; then
-		'pacman' -Qo "$pkg"
+		_shell_util_run 'pacman' -Qo "$pkg"
 	elif _shell_util_has 'dnf'; then
-		'dnf' provides "$1"
+		_shell_util_run 'dnf' provides "$1"
 	else
 		_shell_util_log_error "Package manager not recognized"
 	fi
@@ -46,9 +46,9 @@ pkgs() {
 	local pkg="$1"
 
 	if _shell_util_has 'pacman'; then
-		'pacman' -Q "$pkg"
+		_shell_util_run 'pacman' -Q "$pkg"
 	elif _shell_util_has 'dnf'; then
-		'dnf' search "$pkg"
+		_shell_util_run 'dnf' search "$pkg"
 	else
 		_shell_util_log_error "Package manager not recognized"
 	fi

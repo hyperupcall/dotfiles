@@ -11,7 +11,8 @@
 # - 4. Bash
 # - 5. Dropbox
 # - 6. Browserpass Brave Client (hard-coded to verison 3.0.9)
-# - 7. Git subcommands (git-recent, git-fresh, etc.)
+# - 7. XP-Pen Driver
+# - 8. Git subcommands (git-recent, git-fresh, etc.)
 
 action() {
 	# 1. Rust
@@ -110,9 +111,37 @@ action() {
 		make BIN="browserpass-$system" PREFIX=/usr/local configure
 		sudo make BIN="browserpass-$system" PREFIX=/usr/local install
 		make BIN="browserpass-$system" PREFIX=/usr/local hosts-brave-user
+
+		# Symlink things
+		for f in \
+			"$XDG_CONFIG_HOME/"{BraveSoftware/Brave-Browser,sidekick,wavebox}"/NativeMessagingHosts/com.github.browserpass.native.json"
+		do
+			mkdir -p "${f%/*}"
+			ln -sf /usr/local/lib/browserpass/hosts/chromium/com.github.browserpass.native.json "$f"
+		done
+		unset -v f
+
+		for f in \
+			"$XDG_CONFIG_HOME/"{BraveSoftware/Brave-Browser,sidekick,wavebox}"/policies/managed/com.github.browserpass.native.json"
+		do
+			mkdir -p "${f%/*}"
+			ln -s "/usr/local/lib/browserpass/policies/chromium/com.github.browserpass.native.json" "$f"
+		done
+		unset -v f
 	}
 
-	# 7. Git
+	# 7. XP-Pen Driver
+	{
+		core.print_info "Downloading and installing XP-Pen Driver"
+
+		cd "$(mktemp -d)"
+		local download_file=
+		download_file="https://www.xp-pen.com$(curl -fsSL "https://www.xp-pen.com/download-421.html" | grep -A 10 '.tar.gz' | grep '/download' | sed -Ene 's|.*"(.*?)".*|\1|p')"
+		curl -fsSLo "xp-pan.tar.gz" "$download_file"
+		sudo ./*/install.sh
+	}
+
+	# 8. Git
 	{
 		util.clone_in_dots 'jayphelps/git-blame-someone-else'
 		util.clone_in_dots 'davidosomething/git-ink'
@@ -170,6 +199,5 @@ action() {
 # # zplug
 # util.req 'https://raw.githubusercontent.com/zplug/installer/master/installer.zsh' | zsh
 
-
-#
+	git clone 'https://github.com/zplug/zplug' "$ZPLUG_HOME"
 }

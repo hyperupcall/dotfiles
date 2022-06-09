@@ -1,4 +1,4 @@
-# $include /etc/inputrc
+$include /etc/inputrc
 
 set bell-style none
 set bind-tty-special-chars off

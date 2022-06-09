@@ -7,6 +7,9 @@ _path_prepend "$ANDROID_HOME/tools"
 _path_prepend "$ANDROID_HOME/tools/bin"
 _path_prepend "$ANDROID_HOME/platform-tools"
 
+# antigen
+export _ANTIGEN_INSTALL_DIR="$XDG_STATE_HOME/antigen"
+
 # aspell
 export ASPELL_CONF="per-conf $XDG_CONFIG_HOME/aspell/aspell.conf; personal $XDG_CONFIG_HOME/aspell/en.pws; repl $XDG_CONFIG_HOME/aspell/en.prepl"
 
@@ -493,4 +496,4 @@ _path_prepend "$HOME/.yarn/bin"
 export _Z_DATA="$XDG_DATA_HOME/z"
 
 # zplug
-export ZPLUG_HOME="$XDG_STATE_HOME/zplug"
+export ZPLUG_HOME="$HOME/.dots/.repos/zplug"
