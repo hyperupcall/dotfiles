@@ -18,7 +18,7 @@
 	"editor.detectIndentation": true,
 	"editor.find.addExtraSpaceOnTop": false,
 	"editor.find.autoFindInSelection": "multiline",
-	"editor.fontFamily": "'Droid Sans Mono', 'Fira Sans Mono', 'monospace'",
+	// "editor.fontFamily": "'Droid Sans Mono', 'Fira Sans Mono', 'monospace'",
 	"editor.fontLigatures": true,
 	"editor.fontSize": 16,
 	"editor.formatOnSave": false,
@@ -335,6 +335,65 @@
 	"material-icon-theme.showWelcomeMessage": false,
 	"docker-explorer.enableTelemetry": false,
 	"code-runner.enableAppInsights": false,
+	"commentAnchors.tags.list": [
+		{
+			"tag": "ANCHOR",
+			"iconColor": "default",
+			"highlightColor": "#A8C023",
+			"scope": "file"
+		},
+		{
+			"tag": "TODO",
+			"iconColor": "blue",
+			"highlightColor": "#3ea8ff",
+			"scope": "workspace"
+		},
+		{
+			"tag": "FIXME",
+			"iconColor": "red",
+			"highlightColor": "#F44336",
+			"scope": "workspace"
+		},
+		{
+			"tag": "STUB",
+			"iconColor": "purple",
+			"highlightColor": "#BA68C8",
+			"scope": "file"
+		},
+		{
+			"tag": "NOTE",
+			"iconColor": "orange",
+			"highlightColor": "#FFB300",
+			"scope": "file"
+		},
+		{
+			"tag": "REVIEW",
+			"iconColor": "green",
+			"highlightColor": "#64DD17",
+			"scope": "workspace"
+		},
+		{
+			"tag": "SECTION",
+			"iconColor": "blurple",
+			"highlightColor": "#896afc",
+			"scope": "workspace",
+			"behavior": "region"
+		},
+		{
+			"tag": "LINK",
+			"iconColor": "#2ecc71",
+			"highlightColor": "#2ecc71",
+			"scope": "workspace",
+			"behavior": "link"
+		},
+		{
+			"tag": "LATER",
+			"iconColor": "#2ecc71",
+			"highlightColor": "#2ecc71",
+			"scope": "workspace",
+			"behavior": "link"
+		}
+	],
 
 	// UNSORTED
 
@@ -431,11 +490,14 @@
 	"code-runner.saveFileBeforeRun": true,
 	"code-runner.showRunCommandInExplorerContextMenu": false,
 	"code-runner.showRunCommandInEditorContextMenu": false,
+	"code-runner.runInTerminal": true,
 	"clang-tidy.compilerArgsBefore": ["-std=gnu++20"],
 	"C_Cpp.codeAnalysis.clangTidy.enabled": true,
 	"C_Cpp.codeAnalysis.clangTidy.args": ["-std=gnu++20"],
 	"C_Cpp.default.cppStandard": "gnu++20",
 	"C_Cpp.default.cStandard": "gnu17",
 	"workbench.colorTheme": "Ayu Mirage Bordered",
-	"window.zoomLevel": -1
+	"window.zoomLevel": -1,
+	"commentAnchors.workspace.lazyLoad": false,
+	"deno.path": "/home/edwin/.local/state/woof/global/bin/deno"
 }

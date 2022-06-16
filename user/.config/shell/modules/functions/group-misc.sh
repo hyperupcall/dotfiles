@@ -118,7 +118,7 @@ np() {
 }
 
 qe() {
-	filterList="BraveSoftware code tetrio-desktop obsidian discord sublime-text Ryujinx unity3d hmcl hdlauncher TabNine zettlr Zettlr Google lunarclient libreoffice VirtualBox configstore pulse obs-studio eDEX-UI 1Password kde.org sublime-text-3 gdlauncher gdlauncher_next launcher-main gitify QtProject GIMP r2modman r2modmanPlus-local Code plover GitKraken Electron"
+	filterList="BraveSoftware code tetrio-desktop obsidian discord sublime-text Ryujinx unity3d hmcl hdlauncher TabNine zettlr Zettlr Google lunarclient libreoffice VirtualBox configstore pulse obs-studio eDEX-UI 1Password kde.org sublime-text-3 gdlauncher gdlauncher_next launcher-main gitify QtProject GIMP r2modman r2modmanPlus-local Code plover GitKraken Electron bonsai-browser sidekick Insomnia Typora wavebox microsoft-edge evolution chromium"
 
 	_qe_file=$(
 		cd -- "$XDG_CONFIG_HOME" || { _shell_util_log_error "qe: Could not cd"; exit 1; }
@@ -132,6 +132,7 @@ qe() {
 			-name 'Beaker Browser' \
 			$filterArgs \
 			-o -name 'Helios Launcher' \
+			-o -name 'Code - Insiders' \
 			-o -path ./kak/plugins \
 			-o -path ./kak/autoload \
 			-o -path ./cookiecutter/cookiecutters \

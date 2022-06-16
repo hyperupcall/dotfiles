@@ -6,7 +6,7 @@
 #  [ change, refactor ] (Dev Code)
 #  [ deps, ci, dx, workflow, test, build ] (Dev Code Meta)
 #  [ docs, readme ] (Dev Docs)
-#  [ types, wip ] (Dev Misc)
+#  [ types, wip, misc, change, update ] (Dev Misc)
 #
 #
 # Conventional Commits: 'type: message
