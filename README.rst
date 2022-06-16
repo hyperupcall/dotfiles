@@ -11,7 +11,6 @@ Summary
 
 	├─ system dotfiles at /
 	├─ user dotfiles at ~
-	├─ project dotfiles at .
 
 
 Usage
