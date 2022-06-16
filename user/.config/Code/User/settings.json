@@ -475,7 +475,6 @@
 		"plaintext": true,
 		"markdown": true
 	},
-	"git.enableCommitSigning": true,
 	"extensions.ignoreRecommendations": true,
 	"julia.symbolCacheDownload": true,
 	"gitlens.codeLens.enabled": false,
@@ -498,6 +497,7 @@
 	"C_Cpp.default.cStandard": "gnu17",
 	"workbench.colorTheme": "Ayu Mirage Bordered",
 	"window.zoomLevel": -1,
+	"deno.path": "/home/edwin/.local/state/woof/global/bin/deno",
 	"commentAnchors.workspace.lazyLoad": false,
-	"deno.path": "/home/edwin/.local/state/woof/global/bin/deno"
+	"git.enableCommitSigning": true
 }

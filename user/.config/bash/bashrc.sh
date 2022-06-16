@@ -115,8 +115,7 @@ if is16MillionColors; then
 	else
 		# shellcheck disable=SC3046
 		if ! eval "$(
-			# FIXME BUG IN BASALT SOURCE_PACKAGES:SH SOURCE DIR 'PKG/SRC' DOES NOT EXIST FOR PROJECT
-			if ! choose launch shell-prompt-bash 2>/dev/null; then
+			if ! choose launch shell-prompt-bash; then
 				# Without this, the error doesn't propagate to the "if ! eval ..."
 				printf '%s\n' 'false'
 			fi

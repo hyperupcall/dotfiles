@@ -89,10 +89,10 @@ util.show_help() {
 		  dotmgr [command]
 
 		Commands:
-		  bootstrap-stage1
+		  bootstrap
 		    Bootstrap operations that occur before dotfiles have been deployed
 
-		  info
+		  doctor
 		    Get information about the current system. Currently, it lists
 		    information about the current profile
 
@@ -109,7 +109,7 @@ util.show_help() {
 		    Show help menu
 
 		Examples:
-		  dotmgr bootstrap-stage1
+		  dotmgr bootstrap
 		  dotmgr action
 	EOF
 }
