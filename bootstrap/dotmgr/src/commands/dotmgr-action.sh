@@ -23,19 +23,19 @@ dotmgr-action() {
 	local -i selected=0
 	local files=(
 		# Common
-		'idempotent'
-		'backup'
+		'10-idempotent'
+		'11-backup'
 		''
 		# Bootstrapping
-		'install_packages'
-		'install_others'
-		'update_others'
+		'20-install_packages'
+		'21-install_others'
+		'22-update_others'
 		''
 		# regular uncommon
-		'secrets_export'
-	'secrets_import'
-		'_ImportAllVirtualBox'
-		'_minecraft-sync'
+		'31-secrets_export'
+		'32-secrets_import'
+		'33-_ImportAllVirtualBox'
+		'34-_minecraft-sync'
 	)
 
 	local -a actions=() descriptions=()

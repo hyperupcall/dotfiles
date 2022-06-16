@@ -21,6 +21,11 @@ if command -v register-python-argcomplete &>/dev/null; then
 	eval "$(register-python-argcomplete pipx)"
 fi
 
+# woof.zsh
+if command -v woof >/dev/null 2>&1; then
+  eval "$(woof init zsh)"
+fi
+
 # zoxide.zsh
 if command -v zoxide &>/dev/null; then
 	eval "$(zoxide init zsh)"

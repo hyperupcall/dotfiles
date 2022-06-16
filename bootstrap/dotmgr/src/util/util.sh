@@ -19,17 +19,17 @@ util.ensure() {
 	fi
 }
 
+util.ensure_bin() {
+	if ! command -v "$1" &>/dev/null; then
+		core.print_die "Command '$1' does not exist"
+	fi
+}
+
 util.is_cmd() {
 	if command -v "$1" &>/dev/null; then
 		return $?
 	else
 		return $?
-	fi
-}
-
-util.ensure_bin() {
-	if ! command -v "$1" &>/dev/null; then
-		core.print_die "Command '$1' does not exist"
 	fi
 }
 
@@ -92,17 +92,24 @@ util.show_help() {
 		  bootstrap
 		    Bootstrap operations that occur before dotfiles have been deployed
 
+		  action [--sudo]
+		    Perform a particular action. If no action was given, show
+		    a selection screen for the different actions
+
+		  action-plumbing [--sudo]
+		    Perform a plumbing action. These are automatically called by 'action', but
+		    in case of issues, they can be called manually
+
 		  doctor
 		    Get information about the current system. Currently, it lists
 		    information about the current profile
 
-		  action
-		    Perform a particular action. If no action was given, show
-		    a selection screen for the different actions
+		  update
+		    Update dotmgr
 
-		  sudo
-		    Run this script with superuser priviledges. This runs an entirely different
-		    set of commands
+		  test
+		    Search the dotfiles repository for Bats testing files. For each one,
+			 change directory and execute Bats
 
 		Flags:
 		  --help

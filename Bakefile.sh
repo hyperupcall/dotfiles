@@ -8,6 +8,10 @@ task.init() {
 	git config --local filter.oscrc-clean.clean "$PWD/user/.config/osc/oscrc-clean.sh"
 }
 
+task.update() {
+	foxxy update
+}
+
 task.build() {
 	cd ./user/scripts
 	# clang -Wall -Wpedantic show_shell.c -o ../bin/show_shell
