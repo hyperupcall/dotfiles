@@ -486,30 +486,6 @@
 	"warmUp.changeCount": "15",
 	"warmUp.switchProgrammingLanguage": "javascript",
 	"terminal.integrated.defaultProfile.linux": "bash",
-<<<<<<< Updated upstream
-	"indentRainbow.errorColor": "rgba(128,32,32,0.1)",
-	"code-runner.executorMap": {
-		"cpp": "cd $dir && g++ -std=gnu++20 -Wall -Wextra -Wpedantic -Wconversion $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt"
-	},
-	"code-runner.saveFileBeforeRun": true,
-	"code-runner.showRunCommandInExplorerContextMenu": false,
-	"code-runner.showRunCommandInEditorContextMenu": false,
-	"code-runner.runInTerminal": true,
-	"clang-tidy.compilerArgsBefore": ["-std=gnu++20"],
-	"C_Cpp.codeAnalysis.clangTidy.enabled": true,
-	"C_Cpp.codeAnalysis.clangTidy.args": ["-std=gnu++20"],
-	"C_Cpp.default.cppStandard": "gnu++20",
-	"C_Cpp.default.cStandard": "gnu17",
-	"workbench.colorTheme": "Ayu Mirage Bordered",
-	"window.zoomLevel": -1,
-	"deno.path": "/home/edwin/.local/state/woof/global/bin/deno",
-	"commentAnchors.workspace.lazyLoad": false,
-	"git.enableCommitSigning": true
-}
-||||||| constructed merge base
-	"window.zoomLevel": -1
-}
-=======
 	"window.zoomLevel": -1,
 	"indentRainbow.errorColor": "rgba(128,32,32,0.1)",
 	"code-runner.executorMap": {
@@ -529,4 +505,3 @@
 	"commentAnchors.workspace.lazyLoad": false,
 	"git.enableCommitSigning": true
 }
->>>>>>> Stashed changes

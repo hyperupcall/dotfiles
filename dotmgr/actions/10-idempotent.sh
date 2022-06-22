@@ -394,6 +394,8 @@ action() {
 	if util.is_cmd VBoxManage; then
 		VBoxManage setproperty machinefolder '/storage/vault/rodinia/VirtualBox_Machines'
 	fi
+
+	util.cmd nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 }
 
 
