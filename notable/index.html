@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Edwin Kofler" /><link rel="canonical" href="https://hyperupcall.github.io/dots/notable/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Notable - dots</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Notable";
+        var mkdocs_page_input_path = "notable.md";
+        var mkdocs_page_url = "/dots/notable/";
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> dots
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../attribution/">Attribution</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../installation-windows/">Installation (Windows)</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Notable</a>
+    <ul class="current">
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">dots</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Notable</li>
+    <li class="wy-breadcrumbs-aside">
+        <a href="https://github.com/hyperupcall/dots/edit/master/docs/notable.md"
+          class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="four">four</h2>
+<h1 id="notable-things">Notable Things</h1>
+<p>The following scripts are notable and may be of use</p>
+<h2 id="generate-remote-shellrcssh"><a href="../user/.config/shell/scripts/generate-remote-shellrcs.sh"><code>generate-remote-shellrcs.sh</code></a></h2>
+<p>Script that automatically generates bash startup scripts
+for remote servers and the root user based on annotations of functions, aliases, and readline declarations
+of the current dotfiles</p>
+<h2 id="readlinesh"><a href="../user/.config/bash/modules/readline.sh"><code>readline.sh</code></a></h2>
+<p>Special Bash readline bindings that includes many convenient functionality that include:</p>
+<ul>
+<li>Alt+M to bring up man page (of command/alias currently being edited)s</li>
+<li>extremely useful, as you can view a man page without having to switch readline editing buffers</li>
+<li>Alt+H to print help menu (of command/alias currently being edited)</li>
+<li>extremely useful, as you can view arguments and flags quickly</li>
+<li>Alt+S to toggle sudo</li>
+<li>Alt+/ to toggle comment</li>
+<li>Alt+\ to toggle backslash</li>
+</ul>
+<p>It calls more general functions that can be found at <a href="../user/.config/shell/modules/line-editing/line-editing.sh"><code>line-editing.sh</code></a></p>
+<h2 id="mktsh"><a href="../user/.config/shell/modules/functions/mkt.sh"><code>mkt.sh</code></a></h2>
+<p>Quick command to automatically do something in a temporary space. Based on the first argument, it will</p>
+<ul>
+<li>(blank) =&gt; cd to new random directory in tempfs (<code>cd "$(mktemp -d)"</code>)</li>
+<li>(file/folder) =&gt; copy file/folder to new random directory in tempfs, and cd/ls to it</li>
+<li>(git repository) =&gt; clone (optionally sparse) repo to new random directroy in tempfs, and cd/ls to it</li>
+<li>(internet file) =&gt; curl file to new random directory in tempfs, and cd/ls to it</li>
+</ul>
+<p>It will create a history of invocations at <code>$XDG_STATE_HOME/history/mkt_history</code></p>
+<h2 id="xdgsh"><a href="../user/.config/shell/modules/xdg.sh"><code>xdg.sh</code></a></h2>
+<p>Contains environment variables and alises that make programs more XDG-compliant. At around ~500 lines, it will reduce the chances that files and folders such as <code>.go</code>, <code>.z</code>, <code>.wine</code>, <code>.rvm</code> will be created in your home directory. It places them in <code>$XDG_CONFIG_HOME</code>, <code>$XDG_STATE_HOME</code>, <code>$XDG_DATA_HOME</code>, <code>$XDG_RUNTIME_DIR</code>, etc. instead</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../installation/" class="btn btn-neutral float-left" title="Installation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>© Edwin Kofler</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/hyperupcall/dots" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../installation/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
