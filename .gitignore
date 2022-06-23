@@ -1,6 +1,7 @@
 .home/
 .repos/
 .usr/
+.dotmgr/
 
 # TODO
 .zcompdump

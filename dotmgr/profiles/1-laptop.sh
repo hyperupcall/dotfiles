@@ -1,12 +1,12 @@
 # shellcheck shell=bash
 
-laptop.check() {
+profile.check() {
 	# 9 is 'Laptop'
 	if [ "$(</sys/class/dmi/id/chassis_type)" = '9' ]; then :; else
 		return $?
 	fi
 }
 
-laptop.vars() {
-	REPO_DIR_REPLY="$HOME/Documents"
+profile.vars() {
+	VAR_REPOS_DIR="$HOME/Documents"
 }

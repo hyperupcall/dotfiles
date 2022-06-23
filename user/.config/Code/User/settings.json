@@ -400,6 +400,7 @@
 	"comment-divider.length": 60,
 	"cSpell.diagnosticLevel": "Hint",
 	"cSpell.userWords": [
+		"arxiv",
 		"cmds",
 		"Cygwin",
 		"Deno",
@@ -412,6 +413,7 @@
 		"entrypoint",
 		"entrypoints",
 		"eval",
+		"Foxxy",
 		"gitattributes",
 		"godotenv",
 		"gulpfile",
@@ -426,6 +428,7 @@
 		"NOLINTNEXTLINE",
 		"prettierrc",
 		"printk",
+		"redirecter",
 		"Roadmap",
 		"selectability",
 		"shelltest",
@@ -435,7 +438,8 @@
 		"tput",
 		"UEFI",
 		"wasm",
-		"wasmtime"
+		"wasmtime",
+		"webext"
 	],
 	"debug.node.autoAttach": "on",
 	"diffEditor.ignoreTrimWhitespace": false,
@@ -496,8 +500,8 @@
 	"C_Cpp.default.cppStandard": "gnu++20",
 	"C_Cpp.default.cStandard": "gnu17",
 	"workbench.colorTheme": "Ayu Mirage Bordered",
-	"window.zoomLevel": -1,
 	"deno.path": "/home/edwin/.local/state/woof/global/bin/deno",
 	"commentAnchors.workspace.lazyLoad": false,
-	"git.enableCommitSigning": true
+	"git.enableCommitSigning": true,
+	"window.zoomLevel": -1
 }

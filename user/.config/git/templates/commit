@@ -1,12 +1,12 @@
 
 # Fox: 'type[(scope)]: message'
-#  [ chore, change, update ] (General)
+#  [ chore, change, update, content, major ] (General)
 #  [ fix, feat, breaking, api, perf ] (Consumer)
 #  [ comment, format, lint, style ] (Dev Style)
 #  [ change, refactor ] (Dev Code)
 #  [ deps, ci, dx, workflow, test, build ] (Dev Code Meta)
 #  [ docs, readme ] (Dev Docs)
-#  [ types, wip, misc, change, update ] (Dev Misc)
+#  [ types, wip, misc, change, update, repo, infra, meta, dev ] (Dev Misc)
 #
 #
 # Conventional Commits: 'type: message

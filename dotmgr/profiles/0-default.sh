@@ -1,5 +1,5 @@
 # shellcheck shell=bash
 
-default.check() {
+profile.check() {
 	return 1
 }

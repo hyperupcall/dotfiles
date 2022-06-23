@@ -1,6 +1,6 @@
 [
 	{
-		"key": "ctrl+p",
+		"key": "ctrl+i",
 		"command": "workbench.action.quickOpen",
 		"when": "!terminalFocus"
 	},
@@ -88,5 +88,49 @@
 		"key": "ctrl+k ctrl+o",
 		"command": "-workbench.action.files.openLocalFolder",
 		"when": "remoteFileDialogVisible"
+	},
+	{
+		"key": "ctrl+u",
+		"command": "editor.action.triggerSuggest",
+		"when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
+	},
+	{
+		"key": "ctrl+i",
+		"command": "-editor.action.triggerSuggest",
+		"when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
+	},
+	{
+		"key": "ctrl+u",
+		"command": "toggleSuggestionDetails",
+		"when": "suggestWidgetVisible && textInputFocus"
+	},
+	{
+		"key": "ctrl+i",
+		"command": "-toggleSuggestionDetails",
+		"when": "suggestWidgetVisible && textInputFocus"
+	},
+	{
+		"key": "ctrl+u",
+		"command": "-cursorUndo",
+		"when": "textInputFocus"
+	},
+	{
+		"key": "ctrl+i ctrl+c",
+		"command": "-language-julia.clearAllInlineResultsInEditor",
+		"when": "editorLangId == 'juliamarkdown' || editorTextFocus && editorLangId == 'julia' && activeEditor != 'workbench.editor.notebook'"
+	},
+	{
+		"key": "ctrl+i ctrl+i",
+		"command": "-v.fmt"
+	},
+	{
+		"key": "ctrl+i",
+		"command": "workbench.action.quickOpenNavigateNextInFilePicker",
+		"when": "inFilesPicker && inQuickOpen"
+	},
+	{
+		"key": "ctrl+p",
+		"command": "-workbench.action.quickOpenNavigateNextInFilePicker",
+		"when": "inFilesPicker && inQuickOpen"
 	}
 ]

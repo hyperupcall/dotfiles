@@ -229,7 +229,7 @@ action() {
 	# Dependent on symlinking
 	must_dir "$HOME/.dots/.home/Documents/Shared"
 	must_dir "$HOME/.dots/.home/Pictures/Screenshots"
-	must_link ~/.dots/bootstrap/dotmgr/bin/dotmgr ~/.dots/.usr/bin/dotmgr
+	must_link ~/.dots/.dotmgr/bin/dotmgr ~/.dots/.usr/bin/dotmgr
 
 
 	# -------------------------------------------------------- #
