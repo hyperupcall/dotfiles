@@ -11,7 +11,7 @@
 
 # Ensure ~/.zprofile is read for non-login shells
 # Zsh only reads ~/.zprofile on login shells
-[ -r "$HOME/.zprofile" ] && source "$HOME/.zprofile"
+[ -r "$ZDOTDIR/.zprofile" ] && source "$ZDOTDIR/.zprofile"
 
 
 #

@@ -77,9 +77,9 @@ action() {
 	must_dir "$XDG_CONFIG_HOME/Code - OSS/User"
 	must_dir "$XDG_DATA_HOME/gq/gq-state" # $GQ_STATE
 	must_dir "$XDG_DATA_HOME/sonarlint" # $SONARLINT_USER_HOME
-	must_dir "$XDG_DATA_HOME/nvm"
 	must_file "$XDG_CONFIG_HOME/yarn/config"
-	must_file "$XDG_DATA_HOME/tig/history"
+	must_file "$XDG_STATE_HOME/tig/history"
+	must_file "$XDG_STATE_HOME/history/zsh_history" # ZSH's $HISTFILE
 	chmod 0700 "$HOME/.gnupg"
 	chmod 0700 "$HOME/.ssh"
 
