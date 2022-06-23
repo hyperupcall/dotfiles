@@ -93,6 +93,8 @@ helper.dotfox_deploy() {
 
 
 helper.dotshellextract() {
+	FIXME_ROOT="$HOME/.dots/dotmgr"
+
 	# Bash is the most featureful lowest common denominator in shells
 	# on Unix machines. We extract bash intrinsics with the '# clone(...)'
 	# annotations such that funtions, aliases, and readline declarations
@@ -138,7 +140,7 @@ helper.dotshellextract() {
 	exec 6> "$generated_dir/.bashrc-user-functions.sh"
 	util_print_autogen_info >&6
 	find "$XDG_CONFIG_HOME/shell/modules/functions/" -ignore_readdir_race -type f -name "*.sh" \
-			-exec sh -c "\"$DOTMGR_ROOT/share/extract_functions.pl\" 'user' < \"\$0\"" {} \; >&6
+			-exec sh -c "\"$FIXME_ROOT/extras/extract_functions.pl\" 'user' < \"\$0\"" {} \; >&6
 	util_print_file "$profile_dir/modules/util.sh" >&6
 	exec 6<&-
 
@@ -162,7 +164,7 @@ helper.dotshellextract() {
 	exec 6> "$generated_dir/.bashrc-root-functions.sh"
 	util_print_autogen_info >&6
 	find "$XDG_CONFIG_HOME/shell/modules/functions/" -ignore_readdir_race -type f -name "*.sh" \
-			-exec sh -c "\"$DOTMGR_ROOT/share/extract_functions.pl\" 'root' < \"\$0\"" {} \; >&6
+			-exec sh -c "\"$FIXME_ROOT/extras/extract_functions.pl\" 'root' < \"\$0\"" {} \; >&6
 	util_print_file "$profile_dir/modules/util.sh" >&6
 	exec 6<&-
 
