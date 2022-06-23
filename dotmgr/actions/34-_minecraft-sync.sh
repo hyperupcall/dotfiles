@@ -8,7 +8,7 @@
 # for all major launchers.
 
 action() {
-	local mc_common_data="$HOME/Docs/Games/Minecraft_Common_Data"
+	local mc_common_data="$HOME/.dots/.home/Documents/Games/Minecraft_Common_Data"
 
 	local xdg_data_dir="${XDG_DATA_HOME:-~/.local/share}"
 	local xdg_config_dir="${XDG_CONFIG_HOME:-~/.config}"
