@@ -38,3 +38,4 @@ My dotfiles have used parts of or have been inspired by at least the following r
 - [FrenzyExists/dotfiles](https://github.com/FrenzyExists/dotfiles)
 - [gist/mwhite/6887990](https://gist.github.com/mwhite/6887990)
 - [must-have-git-aliases-advanced-examples](https://www.durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples)
+- [dotfiles](https://github.com/SuboptimalEng/dotfiles)

@@ -326,6 +326,10 @@ _path_prepend  "$PHPENV_ROOT/bin"
 export PIPX_HOME="$XDG_STATE_HOME/pipx/virtualenv"
 export PIPX_BIN_DIR="$XDG_STATE_HOME/pipx/bin"
 
+# platformio
+export PLATFORMIO_CORE_DIR="$XDG_STATE_HOME/platformio"
+_path_prepend "$PLATFORMIO_CORE_DIR/penv/bin"
+
 # plenv
 export PLENV_ROOT="$XDG_DATA_HOME/plenv"
 _path_prepend "$XDG_DATA_HOME/plenv/bin"

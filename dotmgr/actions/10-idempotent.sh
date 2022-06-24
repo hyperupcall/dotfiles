@@ -396,6 +396,7 @@ action() {
 	fi
 
 	# FIXME
+	# cmd cp "$XDG_SHARE_HOME"/password-store/* "$HOME/Dropbox/password-store"
 	# echo nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 }
 

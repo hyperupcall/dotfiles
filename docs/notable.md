@@ -1,5 +1,3 @@
-## four
-
 # Notable Things
 
 The following scripts are notable and may be of use

@@ -486,7 +486,6 @@
 	"warmUp.changeCount": "15",
 	"warmUp.switchProgrammingLanguage": "javascript",
 	"terminal.integrated.defaultProfile.linux": "bash",
-	"window.zoomLevel": -1,
 	"indentRainbow.errorColor": "rgba(128,32,32,0.1)",
 	"code-runner.executorMap": {
 		"cpp": "cd $dir && g++ -std=gnu++20 -Wall -Wextra -Wpedantic -Wconversion $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt"
@@ -504,5 +503,6 @@
 	"deno.path": "/home/edwin/.local/state/woof/global/bin/deno",
 	"commentAnchors.workspace.lazyLoad": false,
 	"git.enableCommitSigning": true,
+	"platformio-ide.customPATH": "/home/edwin/.platformio/penv/bin",
 	"window.zoomLevel": -1
 }
