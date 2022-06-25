@@ -2,10 +2,10 @@
 
 My Dotties! ^\_^
 
-See [Installation](docs/installation.md) ([windows](docs/installation-windows.md)) for installation instructions.
+See [Installation](./installation.md) ([windows](./installation-windows.md)) for installation instructions.
 
-See [Notable](docs/notable.md) for interesting tidbits
+See [Notable](./notable.md) for interesting tidbits
 
-See [Setup](docs/setup.md) to see my preferences
+See [Setup](./setup.md) to see my preferences
 
-See [Acknowledgements](docs/acknowledgements.md) to see where I've copied code and found inspiration
+See [Acknowledgements](./acknowledgements.md) to see where I've copied code and found inspiration
