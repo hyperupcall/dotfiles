@@ -107,16 +107,6 @@ nh() {
 	nohup "$@" > /dev/null 2>&1 &
 }
 
-np() {
-	if [ "$(printf '%s' "$1" | awk '{ print substr($1, 0, 1) }')" = "/" ]; then
-		mkdir -p "$1"
-		code "$1"
-	else
-		mkdir -p "$HOME/repos/$1"
-		code "$HOME/repos/$1"
-	fi
-}
-
 qe() {
 	filterList="BraveSoftware code tetrio-desktop obsidian discord sublime-text Ryujinx unity3d hmcl hdlauncher TabNine zettlr Zettlr Google lunarclient libreoffice VirtualBox configstore pulse obs-studio eDEX-UI 1Password kde.org sublime-text-3 gdlauncher gdlauncher_next launcher-main gitify QtProject GIMP r2modman r2modmanPlus-local Code plover GitKraken Electron bonsai-browser sidekick Insomnia Typora wavebox microsoft-edge evolution chromium"
 
@@ -147,11 +137,6 @@ qe() {
 	unset -v _qe_file
 }
 
-quickedit() (
-	cd -- "$1" || { _p_die "Could not cd to '$1'"; return; }
-	v .
-)
-
 # https://unix.stackexchange.com/a/123770
 # clone(user, root)
 see_old() {
@@ -160,31 +145,23 @@ see_old() {
 
 # clone(user)
 serv() {
-    	set -- "${1:-.}" "${2:-4000}"
+	set -- "${1:-.}" "${2:-4000}"
 
-	[ -d "$1" ] || { _shell_util_die "serv: dir '$1' doesn't exist"; return; }
-
-	if command -v file_server >/dev/null 2>&1; then
-		# deno file_server
-		file_server "$1" --host 127.0.0.1 -p "$2"
-
-	elif command -v http-server >/dev/null 2>&1; then
-		# node http-server
-		http-server "$1" -c-1 -a 127.0.0.1 -p "$2"
+	if ! [ -d "$1" ]; then
+		_shell_util_die "serv: dir '$1' doesn't exist"
 		return
-		# caching wrong
-	#elif command -v python3 >/dev/null 2>&1; then
-	#_shell_util_log_info 'python3'
-	#	python3 -m http.server --directory "$1" "$2"
+	fi
+
+	# Note: Don't use python built in http.server due to weird caching issues
+	if command -v file_server >/dev/null 2>&1; then
+		file_server "$1" --host 127.0.0.1 -p "$2" # deno
+	elif command -v http-server >/dev/null 2>&1; then
+		http-server "$1" -c-1 -a 127.0.0.1 -p "$2" # node
+		return
 	else
 		_shell_util_die "serv: no executable found to start server"
 		return
 	fi
-}
-
-update() {
-	npm i -g npm
-	python -m pip install --upgrade pip
 }
 
 vtraceroute() {

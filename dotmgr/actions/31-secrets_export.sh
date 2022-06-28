@@ -8,7 +8,7 @@
 # Everything is encrypted with a passphrase. This script Just Works, whether or not the
 # USB is already mounted
 
-action() {
+main() {
 	util.ensure_bin expect
 	util.ensure_bin age
 	util.ensure_bin age-keygen

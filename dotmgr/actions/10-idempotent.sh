@@ -10,7 +10,7 @@
 # - Symlinks ~/.ssh, etc. software not mananged by dotfox
 # - Symlinks directories to ~/.dots/.home
 
-action() {
+main() {
 	# -------------------------------------------------------- #
 	#                         DO MOUNT                         #
 	# -------------------------------------------------------- #
@@ -230,7 +230,7 @@ action() {
 	must_dir "$HOME/.dots/.home/Documents/Shared"
 	must_dir "$HOME/.dots/.home/Pictures/Screenshots"
 	must_link ~/.dots/.dotmgr/bin/dotmgr ~/.dots/.usr/bin/dotmgr
-
+	must_link ~/repos/dotfox/dotfox ~/.dots/.usr/bin/dotfox # TODO: dependent on profile
 
 	# -------------------------------------------------------- #
 	#                DESKTOP ENVIRONMENT TWEAKS                #
@@ -395,9 +395,19 @@ action() {
 		VBoxManage setproperty machinefolder '/storage/vault/rodinia/VirtualBox_Machines'
 	fi
 
+	dotmgr.get_profile
+	local profile="$REPLY"
+	echo "PROFILEEEEEEE: $profile"
+
+	# TODO;
+	deno install --allow-net --allow-read https://deno.land/std@0.145.0/http/file_server.ts
+
+
+	dotmgr.call '10-dotfox_deploy.sh'
 	# FIXME
 	# cmd cp "$XDG_SHARE_HOME"/password-store/* "$HOME/Dropbox/password-store"
 	# echo nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+	# TODO: ~/.config/docker ($DOCKER_HOME?)/config.json : { "credsStore": "secretservice" } (and download binary)
 }
 
 

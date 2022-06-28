@@ -402,13 +402,16 @@
 	"cSpell.userWords": [
 		"arxiv",
 		"cmds",
+		"Containerfile",
 		"Cygwin",
 		"Deno",
 		"dirent",
 		"dirents",
+		"distro",
 		"dotfile",
 		"dotfiles",
 		"dotmgr",
+		"earlyaccess",
 		"editorconfig",
 		"entrypoint",
 		"entrypoints",
@@ -430,7 +433,9 @@
 		"printk",
 		"redirecter",
 		"Roadmap",
+		"rushstack",
 		"selectability",
+		"shellcheck",
 		"shelltest",
 		"subdependencies",
 		"subshells",
@@ -503,6 +508,9 @@
 	"deno.path": "/home/edwin/.local/state/woof/global/bin/deno",
 	"commentAnchors.workspace.lazyLoad": false,
 	"git.enableCommitSigning": true,
-	"platformio-ide.customPATH": "/home/edwin/.platformio/penv/bin",
-	"window.zoomLevel": -1
+	"window.zoomLevel": -1,
+	"evenBetterToml.schema.associations": {
+		"foxxy.toml": "https://raw.githubusercontent.com/hyperupcall/foxxy/main/src/schemas/foxxyProject.schema.json",
+		"basalt.toml": "https://raw.githubusercontent.com/hyperupcall/foxxy/main/src/schemas/basalt.schema.json"
+	}
 }

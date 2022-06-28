@@ -44,4 +44,15 @@ done; unset -v d
 	fi
 } &)
 
+
+watcher() { # TODO
+	# shellcheck disable=SC2086
+	find -L . -ignore_readdir_race \( \
+		-iname 'node_modules' \
+		-o -iname 'dist' \
+		-o -iname 'out' \
+		-o -iname 'target' \
+	\) -prune -o -print | entr -c -dd "$@"
+}
+
 # ---

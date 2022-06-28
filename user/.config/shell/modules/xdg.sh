@@ -96,12 +96,6 @@ export CURL_HOME="$XDG_CONFIG_HOME/curl"
 # dart
 export PUB_CACHE="$XDG_CACHE_HOME/pub-cache"
 
-# deno
-export DENO_INSTALL="$XDG_DATA_HOME/deno"
-export DENO_INSTALL_ROOT="$DENO_INSTALL/bin"
-_path_prepend "$DENO_INSTALL_ROOT"
-_path_prepend "$DENO_INSTALL_ROOT/bin"
-
 # docker
 export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
 

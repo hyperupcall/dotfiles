@@ -7,7 +7,7 @@
 # Registers all VirtualBox virtual machine. Optionally
 # enables unregistering all virtual machines
 
-action() {
+main() {
 	shopt -s nullglob
 
   local flag_unregister='no'

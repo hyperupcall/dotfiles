@@ -7,7 +7,7 @@
 # Installs and updates miscellaneous packages. This includes:
 # - Several Vim package managers
 
-action() {
+main() {
 	# Vim Plug
 	curl -fLo "$XDG_CONFIG_HOME/vim/autoload/plug.vim" --create-dirs 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 

@@ -13,7 +13,7 @@
 #   - **/llvm-project
 #   - **/gcc
 
-action() {
+main() {
 	local backup_dir="/storage/vault/rodinia/Backups/edwin_borg"
 	local dir="/storage/ur/storage_home"
 

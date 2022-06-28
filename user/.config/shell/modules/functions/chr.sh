@@ -19,7 +19,7 @@ chr() {
 	sudo mount -o bind -t devtmpfs /dev "$1/dev"
 
 	if [ "$TERM" = xterm-kitty ]; then
-			TERM="xterm-256color" 	sudo chroot "$@"
+			TERM="xterm-256color" sudo chroot "$@"
 	else
 			sudo chroot "$@"
 	fi

@@ -5,9 +5,9 @@ if command -v basalt &>/dev/null; then
 fi
 
 # autoenv.zsh
-if command -v basalt &>/dev/null; then
-	basalt.load --global 'github.com/hyperupcall/autoenv' 'activate.sh'
-fi
+# if command -v basalt &>/dev/null; then
+# 	basalt.load --global 'github.com/hyperupcall/autoenv' 'activate.sh'
+# fi
 
 # direnv.zsh
 if command -v &>/dev/null; then
@@ -15,15 +15,16 @@ if command -v &>/dev/null; then
 fi
 
 # pipx.zsh
-if command -v register-python-argcomplete &>/dev/null; then
-	autoload -U bashcompinit
-	bashcompinit # TODO
-	eval "$(register-python-argcomplete pipx)"
-fi
+# if command -v register-python-argcomplete &>/dev/null; then
+# 	autoload -U bashcompinit
+# 	bashcompinit # TODO
+# 	eval "$(register-python-argcomplete pipx)"
+# fi
 
 # woof.zsh
 if command -v woof >/dev/null 2>&1; then
   eval "$(woof init zsh)"
+  eval "$(woof init zsh)" # TODO
 fi
 
 # zoxide.zsh

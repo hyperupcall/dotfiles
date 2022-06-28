@@ -21,7 +21,7 @@
 # A lot of these are required since ~/.dots implicitly
 # depends on things like starship, rsync, xclip, etc
 
-action() {
+main() {
 	# -------------------------------------------------------- #
 	#                          PACMAN                          #
 	# -------------------------------------------------------- #

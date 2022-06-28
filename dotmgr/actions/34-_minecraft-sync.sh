@@ -7,7 +7,7 @@
 # Syncs subdirectories in minecraft, like 'resourcepacks', 'saves', 'screenshots',
 # for all major launchers.
 
-action() {
+main() {
 	local mc_common_data="$HOME/.dots/.home/Documents/Games/Minecraft_Common_Data"
 
 	local xdg_data_dir="${XDG_DATA_HOME:-~/.local/share}"

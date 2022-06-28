@@ -88,6 +88,7 @@ declare -ra dotfiles=(
 	cfg:'libfsguest'
 	cfg:'liquidprompt'
 	cfg:'llpp.conf'
+	cfg:'ltrace'
 	cfg:'ly'
 	cfg:'maven'
 	cfg:'micro'
@@ -220,7 +221,7 @@ printf '%s\n' "symlink:$XDG_CONFIG_HOME/bash/bash_profile.sh:$HOME/.bash_profile
 printf '%s\n' "symlink:$XDG_CONFIG_HOME/bash/bash_logout.sh:$HOME/.bash_logout"
 printf '%s\n' "symlink:$XDG_CONFIG_HOME/bash/bashrc.sh:$HOME/.bashrc"
 printf '%s\n' "symlink:$XDG_CONFIG_HOME/shell/profile.sh:$HOME/.profile"
-
+printf '%s\n' "symlink:$XDG_CONFIG_HOME/zsh/.zshenv:$HOME/.zshenv"
 
 # Print dotfiles programatically
 source ~/.dots/xdg.sh --set-type

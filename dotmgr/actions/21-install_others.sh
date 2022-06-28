@@ -14,7 +14,7 @@
 # - 7. XP-Pen Driver
 # - 8. Git subcommands (git-recent, git-fresh, etc.)
 
-action() {
+main() {
 	# 1. Rust
 	{
 		if ! util.is_cmd 'rustup'; then

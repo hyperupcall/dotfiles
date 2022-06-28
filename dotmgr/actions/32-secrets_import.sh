@@ -6,7 +6,7 @@
 # Description:
 # This imports your GPG keys. It imports it from your shared drive mounted under /storage
 
-action() {
+main() {
 	local -r fingerprints=('6EF89C3EB889D61708E5243DDA8EF6F306AD2CBA' '4C452EC68725DAFD09EC57BAB2D007E5878C6803')
 
 	if [ ! -e '/proc/sys/kernel/osrelease' ]; then

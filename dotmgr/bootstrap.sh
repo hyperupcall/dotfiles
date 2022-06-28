@@ -27,17 +27,18 @@ main() {
 	installcmd 'git' 'git'
 	installcmd 'nvim' 'neovim'
 
-	# Install hyperupcall/dots and hyperupcall/dotmgr
+	# Install hyperupcall/dots
 	clonerepo 'github.com/hyperupcall/dots' ~/.dots
 	run cd ~/.dots
 		run git remote set-url origin 'git@github.com:hyperupcall/dots'
 		run ./bake init
 	run cd ~
+
+	# Install hyperupcall/dotmgr
 	clonerepo 'github.com/hyperupcall/dotmgr' ~/.dots/.dotmgr
 	run cd ~/.dots/.dotmgr
 		run git remote set-url origin 'git@github.com:hyperupcall/dotmgr'
 	run cd ~
-	# shellcheck disable=SC2088
 	run printf '%s\n' '~/.dots/dotmgr' > ~/.dots/.dotmgr/.dotmgr_dir
 	run mkdir -p ~/.dots/.usr/bin
 	run ln -sf ~/.dots/.dotmgr/bin/dotmgr ~/.dots/.usr/bin/dotmgr

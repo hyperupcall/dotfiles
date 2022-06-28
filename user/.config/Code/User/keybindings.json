@@ -70,7 +70,7 @@
 		"command": "-workbench.action.showCommands"
 	},
 	{
-		"key": "ctrl+l ctrl+o",
+		"key": "ctrl+m d",
 		"command": "workbench.action.files.openFolder",
 		"when": "openFolderWorkspaceSupport"
 	},
@@ -80,7 +80,7 @@
 		"when": "openFolderWorkspaceSupport"
 	},
 	{
-		"key": "ctrl+l ctrl+o",
+		"key": "ctrl+m d",
 		"command": "workbench.action.files.openLocalFolder",
 		"when": "remoteFileDialogVisible"
 	},
@@ -132,5 +132,107 @@
 		"key": "ctrl+p",
 		"command": "-workbench.action.quickOpenNavigateNextInFilePicker",
 		"when": "inFilesPicker && inQuickOpen"
+	},
+	{
+		"key": "ctrl+k o",
+		"command": "-workbench.action.files.showOpenedFileInNewWindow",
+		"when": "emptyWorkspaceSupport"
+	},
+	{
+		"key": "ctrl+l",
+		"command": "-notebook.centerActiveCell",
+		"when": "notebookEditorFocused"
+	},
+	{
+		"key": "ctrl+l",
+		"command": "-expandLineSelection",
+		"when": "textInputFocus"
+	},
+	{
+		"key": "ctrl+l c",
+		"command": "-extension.copyGitHubLinkToClipboard"
+	},
+	{
+		"key": "ctrl+l g",
+		"command": "-extension.openInGitHub"
+	},
+	{
+		"key": "ctrl+l p",
+		"command": "-extension.openPrGitProvider"
+	},
+	{
+		"key": "ctrl+m f",
+		"command": "workbench.action.files.openFile",
+		"when": "true"
+	},
+	{
+		"key": "ctrl+o",
+		"command": "-workbench.action.files.openFile",
+		"when": "true"
+	},
+	{
+		"key": "ctrl+m r",
+		"command": "workbench.action.openRecent"
+	},
+	{
+		"key": "ctrl+r",
+		"command": "-workbench.action.openRecent"
+	},
+	{
+		"key": "ctrl+m d",
+		"command": "workbench.action.files.openFolderViaWorkspace",
+		"when": "!openFolderWorkspaceSupport && workbenchState == 'workspace'"
+	},
+	{
+		"key": "ctrl+o",
+		"command": "-workbench.action.files.openFolderViaWorkspace",
+		"when": "!openFolderWorkspaceSupport && workbenchState == 'workspace'"
+	},
+	{
+		"key": "ctrl+m",
+		"command": "-luna.layer.mergeLayerDown",
+		"when": "luna:focused && activeCustomEditorId == 'luna.editor' && focusedView == ''"
+	},
+	{
+		"key": "ctrl+m",
+		"command": "-editor.action.toggleTabFocusMode"
+	},
+	{
+		"key": "ctrl+m o",
+		"command": "workbench.action.files.openFileFolder",
+		"when": "false"
+	},
+	{
+		"key": "ctrl+o",
+		"command": "-workbench.action.files.openFileFolder",
+		"when": "isMacNative && openFolderWorkspaceSupport"
+	},
+	{
+		"key": "ctrl+m f",
+		"command": "workbench.action.files.openLocalFile",
+		"when": "remoteFileDialogVisible"
+	},
+	{
+		"key": "ctrl+o",
+		"command": "-workbench.action.files.openLocalFile",
+		"when": "remoteFileDialogVisible"
+	},
+	{
+		"key": "ctrl+m c",
+		"command": "revealFileInOS",
+		"when": "!editorFocus"
+	},
+	{
+		"key": "ctrl+alt+r",
+		"command": "-revealFileInOS",
+		"when": "!editorFocus"
+	},
+	{
+		"key": "ctrl+o",
+		"command": "workbench.action.gotoSymbol"
+	},
+	{
+		"key": "ctrl+shift+o",
+		"command": "-workbench.action.gotoSymbol"
 	}
 ]

@@ -112,7 +112,7 @@ is16MillionColors() {
 	[ "$COLORTERM" = "truecolor" ] || [ "$COLORTERM" = "24bit" ]
 }
 
-# source "$XDG_STATE_HOME/dotshellgen/concatenated.zsh" # TODO
+source "$XDG_STATE_HOME/dotshellgen/concatenated.zsh"
 
 autoload -U colors && colors # TODO
 autoload run-help # TODO
