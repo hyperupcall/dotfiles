@@ -160,9 +160,6 @@
 	"deno.suggest.completeFunctionCalls": true,
 	"deno.suggest.autoImports": true,
 	"deno.suggest.names": true,
-	"deno.suggest.imports.hosts": {
-		"https://deno.land": true
-	},
 	"[json]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.formatOnSave": true
@@ -178,12 +175,14 @@
 		"editor.tabSize": 2
 	},
 	"[html]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true
 	},
 	"html.format.enable": false,
 	"html.format.wrapLineLength": 0,
 	"[vue]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true
 	},
 	"[handlebars]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -400,7 +399,10 @@
 	"comment-divider.length": 60,
 	"cSpell.diagnosticLevel": "Hint",
 	"cSpell.userWords": [
+		"appname",
 		"arxiv",
+		"autofix",
+		"autoremove",
 		"cmds",
 		"Containerfile",
 		"Cygwin",
@@ -512,5 +514,6 @@
 	"evenBetterToml.schema.associations": {
 		"foxxy.toml": "https://raw.githubusercontent.com/hyperupcall/foxxy/main/src/schemas/foxxyProject.schema.json",
 		"basalt.toml": "https://raw.githubusercontent.com/hyperupcall/foxxy/main/src/schemas/basalt.schema.json"
-	}
+	},
+	"npm.keybindingsChangedWarningShown": true
 }
