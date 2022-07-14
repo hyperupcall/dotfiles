@@ -1,5 +1,9 @@
 # shellcheck shell=bash
 
+main() {
+	echo "$EUID"
+}
+
 main.dotmgr() {
 	source "$DOTMGR_ROOT/src/util/source.sh"
 

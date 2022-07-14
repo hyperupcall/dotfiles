@@ -1,6 +1,5 @@
 # shellcheck shell=bash
 
 main() {
-	# TODO
-	:
+	util.assert_prereq
 }

@@ -1,0 +1,5 @@
+# shellcheck shell=bash
+
+main() {
+	:
+}
