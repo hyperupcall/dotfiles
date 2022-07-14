@@ -2,7 +2,43 @@
 j  next-line
 k  prev-line
 
+
+g beginning-of-node
+G end-of-node
+
+o history-node
+i goto-node
+
+^dh list-visited-nodes
+
+^f scroll-forward-page-only
+^b scroll-backward-page-only
+
+\mh backward-char
+\mj next-line
+\mk prev-line
+\ml forward-char
+
+
+^wl next-window
+^wh prev-window
+^ws split-window
+^wd delete-window
+^wD keep-one-window
+^wg grow-window
+^wt tile-windows
+
+^we show-footnotes
+
 #var
-link-style=yellow
-active-link-style=yellow,bold
-match-style=underline,bold,nocolor
+active-link-style=magenta,bold,underline
+link-style=magenta
+match-style=yellow,bold,underline
+
+automatic-footnotes=off
+automatic-tiling=on
+cursor-movement-scrolls=off
+errors-ring-bell=off
+highlight-searches=on
+mouse=on
+visible-bell=off
