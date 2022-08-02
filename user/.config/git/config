@@ -8,3 +8,5 @@
 	keepBackup = false
 [merge]
 	tool = sublime-merge
+[push]
+	autoSetupRemote = true

@@ -1,7 +1,7 @@
 # shellcheck shell=sh
 
 # android
-export ANDROID_HOME="$HOME/Android/Sdk"
+export ANDROID_HOME="$XDG_STATE_HOME/Android/Sdk"
 _path_prepend "$ANDROID_HOME/emulator"
 _path_prepend "$ANDROID_HOME/tools"
 _path_prepend "$ANDROID_HOME/tools/bin"
@@ -190,8 +190,8 @@ export IRBRC="$XDG_CONFIG_HOME/irb/irbrc"
 alias irssi='irssi --config "$XDG_CONFIG_HOME/irssi" --home "$XDG_CONFIG_HOME/irssi"'
 
 # java
-export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_STATE_HOME/java"
-export JAVA_TOOL_OPTIONS="-Djava.util.prefs.userRoot=$XDG_STATE_HOME/java"
+# export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_STATE_HOME/java"
+# export JAVA_TOOL_OPTIONS="-Djava.util.prefs.userRoot=$XDG_STATE_HOME/java"
 
 # julia
 export JULIA_DEPOT_PATH="$XDG_DATA_HOME/julia:$JULIA_DEPOT_PATH"
@@ -314,7 +314,7 @@ _path_prepend "$XDG_DATA_HOME/phpenv/bin"
 
 # phpenv
 export PHPENV_ROOT="$XDG_DATA_HOME/phpenv"
-_path_prepend  "$PHPENV_ROOT/bin"
+_path_prepend "$PHPENV_ROOT/bin"
 
 # pipx
 export PIPX_HOME="$XDG_STATE_HOME/pipx/virtualenv"

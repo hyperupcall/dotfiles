@@ -143,6 +143,7 @@ fi
 
 unset -f is8Colors is256Colors is16MillionColors
 
+
 #
 # ─── MODULES ────────────────────────────────────────────────────────────────────
 #

@@ -63,7 +63,8 @@
 		"*.html": "html",
 		"*.bbmodel": "json",
 		"*.jscript": "java",
-		"*.sublime-snippet": "xml"
+		"*.sublime-snippet": "xml",
+		"*.go ": "go"
 	},
 	// "files.eol": "\n",
 	"files.exclude": {
@@ -136,6 +137,7 @@
 	"prettier.semi": false,
 	"prettier.singleQuote": true,
 	"prettier.useTabs": true,
+	"eslint.format.enable": true,
 	"[javascript]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.formatOnSave": true
@@ -203,7 +205,7 @@
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
 	"[markdown]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
 		"editor.formatOnSave": true,
 		"editor.wordWrap": "on",
 		"editor.insertSpaces": true,
@@ -445,6 +447,7 @@
 		"templating",
 		"tput",
 		"UEFI",
+		"Underutilization",
 		"wasm",
 		"wasmtime",
 		"webext"

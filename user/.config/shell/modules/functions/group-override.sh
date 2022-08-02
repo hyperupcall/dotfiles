@@ -15,6 +15,9 @@ cd() {
 }
 
 cp() {
+	command cp "$@"
+	return
+
 	if command -v rsync >/dev/null 2>&1 && {
 		[ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]
 	}; then

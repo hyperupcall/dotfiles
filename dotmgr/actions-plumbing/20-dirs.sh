@@ -60,6 +60,7 @@ main() {
 	must_dir "$HOME/.gnupg"
 	must_dir "$HOME/.ssh"
 	must_dir "$XDG_STATE_HOME/history"
+	must_dir "$XDG_STATE_HOME/Android/Sdk"
 	must_dir "$XDG_DATA_HOME/maven"
 	must_dir "$XDG_DATA_HOME"/nano/backups
 	must_dir "$XDG_DATA_HOME/zsh"

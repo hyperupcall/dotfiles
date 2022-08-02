@@ -22,7 +22,7 @@ Special Bash readline bindings that includes many convenient functionality that 
 - Alt+/ to toggle comment
 - Alt+\ to toggle backslash
 
-It calls more general functions that can be found at [`line-editing.sh`](../user/.config/shell/modules/line-editing/line-editing.sh)
+It calls more general functions that can be found at [`line-editing.sh`](../user/.config/shell/modules/common/line-editing.sh)
 
 ## [`mkt.sh`](../user/.config/shell/modules/functions/mkt.sh)
 

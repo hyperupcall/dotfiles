@@ -1,9 +1,10 @@
 
 # Fox: 'type[(scope)]: message'
-#  [ chore, change, update, content, major ] (General)
+#  [ add, remove, change ] (General)
+#  [ chore, update, content, major ] (General)
 #  [ fix, feat, breaking, api, perf ] (Consumer)
 #  [ comment, format, lint, style ] (Dev Style)
-#  [ change, refactor ] (Dev Code)
+#  [ change, refactor, restructure ] (Dev Code)
 #  [ deps, ci, dx, workflow, test, build ] (Dev Code Meta)
 #  [ docs, readme ] (Dev Docs)
 #  [ types, wip, misc, change, update, repo, infra, meta, dev ] (Dev Misc)

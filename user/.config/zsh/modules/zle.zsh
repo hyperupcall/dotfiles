@@ -1,4 +1,4 @@
-source "$XDG_CONFIG_HOME/shell/modules/line-editing/line-editing.sh"
+source "$XDG_CONFIG_HOME/shell/modules/common/line-editing.sh"
 
 _zle_x_discard() {
 	_lineediting_action_x_discard "$BUFFER" "$CURSOR"
@@ -95,7 +95,6 @@ bindkey -e "\e/" _zle_toggle_comment
 bindkey -e "\C-_" _zle_toggle_comment
 bindkey -e "\ei" _zle_trim_whitespace
 bindkey -e "\el" _zle_ls
-bindkey -e '^D' _zle_exit
 
 autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
 zle -N edit-command-line

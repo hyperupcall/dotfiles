@@ -1,5 +1,5 @@
 # shellcheck shell=sh
-alias foxxy='deno run --allow-read --allow-write --allow-run --allow-net --allow-env --unstable ~/repos/foxxy/src/main.ts'
+
 alias b='bukdu --suggest'
 alias but='btrfs'
 alias cat='cat -v' # clone(user, root)
