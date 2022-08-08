@@ -8,46 +8,48 @@
 # enables unregistering all virtual machines
 
 main() {
-	shopt -s nullglob
+	core.shopt_push -s nullglob
 
-  local flag_unregister='no'
+	local flag_unregister='no'
 
-  for arg; do case $arg in
-    --help|-h) printf '%s\n' "Usage: $0 [-h|--help] [--unregister] (add is default)" ;;
-    --unregister) flag_unregister='yes'
-  esac done
+	for arg; do case $arg in
+		--help|-h) printf '%s\n' "Usage: $0 [-h|--help] [--unregister] (add is default)" ;;
+		--unregister) flag_unregister='yes'
+	esac done
 
-  if [ "$flag_unregister" = 'yes' ]; then
-    while IFS= read -r line; do
-      printf '%s\n' "Removing '${line}'"
-      local uuid="${line%\}}"
-      uuid=${uuid##*\{}
-      VBoxManage unregistervm "$uuid"
-    done < <(VBoxManage list vms)
-    return
-  fi
+	if [ "$flag_unregister" = 'yes' ]; then
+		while IFS= read -r line; do
+			printf '%s\n' "Removing '${line}'"
+			local uuid="${line%\}}"
+			uuid=${uuid##*\{}
+			VBoxManage unregistervm "$uuid"
+		done < <(VBoxManage list vms)
+		return
+	fi
 
-  local virtualbox_dir="/storage/vault/rodinia/VirtualBox_Machines"
+	local virtualbox_dir="/storage/vault/rodinia/VirtualBox_Machines"
 
 	if [ ! -d "$virtualbox_dir" ]; then
 		core.print_die "Could not find directory '$virtualbox_dir'"
 	fi
 
-  # Add all
-  for group_dir in "$virtualbox_dir"/*/; do
-    register "${group_dir%/}"
+	# Add all
+	for group_dir in "$virtualbox_dir"/*/; do
+		register "${group_dir%/}"
 
-    for vm_dir in "$group_dir"*/; do
-      register "${vm_dir%/}"
-    done
-  done
+		for vm_dir in "$group_dir"*/; do
+			register "${vm_dir%/}"
+		done
+	done
+
+	core.shopt_pop
 }
 
 register() {
-  local dir="$1"
+	local dir="$1"
 
-  for file in "$dir"/*.vbox; do
-    printf '%s\n' "Adding '$file'"
-    VBoxManage registervm "$file"
-  done
+	for file in "$dir"/*.vbox; do
+		printf '%s\n' "Adding '$file'"
+		VBoxManage registervm "$file"
+	done
 }

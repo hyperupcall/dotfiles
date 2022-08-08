@@ -32,10 +32,12 @@ main() {
 
 			install.update_upgrade_os "$package_manager"
 			install.packages "$package_manager"
-			if util.says_yes 'Install VSCode?'; then
-			install.vscode "$package_manager"
+			if util.says_yes 'Install VSCode and VSCode Insiders?'; then
+				install.vscode "$package_manager"
 			fi
-			install.brave "$package_manager"
+			if util.says_yes 'Install Brave and Brave Beta?'; then
+				install.brave "$package_manager"
+			fi
 		fi
 	done; unset -v package_manager
 
@@ -46,66 +48,109 @@ main() {
 	# -------------------------------------------------------- #
 	#                           CARGO                          #
 	# -------------------------------------------------------- #
-	if util.says_yes 'Install Cargo?'; then
-	if util.is_cmd 'cargo'; then
-		if ! util.is_cmd 'starship'; then
-			core.print_info 'Installing starship'
-			cargo install starship
+	if util.says_yes 'Install Rustup?'; then
+		if ! util.is_cmd 'rustup'; then
+			core.print_info "Installing rustup"
+			util.req https://sh.rustup.rs | sh -s -- --default-toolchain stable -y
+			rustup default nightly
 		fi
-	else
-		core.print_warn 'Skipping installing starship'
 	fi
+	cargo install starship
+
+	# -------------------------------------------------------- #
+	#                          PYTHON                          #
+	# -------------------------------------------------------- #
+	if util.says_yes 'Install Python?'; then
+		if ! util.is_cmd 'pip'; then
+			core.print_info "Installing pip"
+			python3 -m ensurepip --upgrade
+		fi
+		python3 -m pip install --upgrade pip
+
+		pip3 install wheel
+
+
+		if ! util.is_cmd 'pipx'; then
+			core.print_info "Installing pipx"
+			python3 -m pip install --user pipx
+			python3 -m pipx ensurepath
+		fi
+
+		if ! util.is_cmd 'poetry'; then
+			core.print_info "Installing poetry"
+			util.req https://install.python-poetry.org | python3 -
+		fi
+	fi
+
+	# -------------------------------------------------------- #
+	#                            GHC                           #
+	# -------------------------------------------------------- #
+	if util.says_yes 'Install GHC?'; then
+		core.print_info "Not implemented"
+		# TODO: fully automate
+		# if ! command -v haskell >/dev/null 2>&1; then
+		# 	core.print_info "Installing haskell"
+
+		# 	mkdir -p "${XDG_DATA_HOME:-$HOME/.local/share}/ghcup"
+		# 	ln -s "${XDG_DATA_HOME:-$HOME/.local/share}"/{,ghcup/.}ghcup
+
+		# 	util.req https://get-ghcup.haskell.org | sh
+
+		# 	util.req https://get.haskellstack.org/ | sh
+		# fi
+		:
 	fi
 
 	# -------------------------------------------------------- #
 	#                          BASALT                          #
 	# -------------------------------------------------------- #
 	if util.says_yes 'Install Basalt?'; then
-	core.print_info 'Installing Basalt packages globally'
-	basalt global add \
-		hyperupcall/choose \
-		hyperupcall/autoenv \
-		hyperupcall/dotshellextract \
-		hyperupcall/dotshellgen
-	basalt global add \
-		cykerway/complete-alias \
-		rcaloras/bash-preexec \
-		reconquest/shdoc
+		core.print_info 'Installing Basalt packages globally'
+		basalt global add \
+			hyperupcall/choose \
+			hyperupcall/autoenv \
+			hyperupcall/dotshellextract \
+			hyperupcall/dotshellgen
+		basalt global add \
+			cykerway/complete-alias \
+			rcaloras/bash-preexec \
+			reconquest/shdoc
 	fi
 
 	# -------------------------------------------------------- #
 	#                           WOOF                           #
 	# -------------------------------------------------------- #
-	if util.says_yes 'Install Woof?'; then
-	core.print_info 'Instaling Woof packages globally'
-	woof install gh latest
-	woof install nodejs latest
-	woof install deno latest
-	woof install go latest
-	woof install nim latest
-	woof install zig latest
+	if util.says_yes 'Install Woof modules?'; then
+		core.print_info 'Instaling Woof modules'
+		woof install gh latest
+		woof install nodejs latest
+		woof install deno latest
+		woof install go latest
+		woof install nim latest
+		woof install zig latest
 	fi
 
 	# -------------------------------------------------------- #
 	#                            NPM                           #
 	# -------------------------------------------------------- #
-	if util.says_yes 'Install NPM?'; then
-	npm i -g yarn
-	yarn global add pnpm
-	yarn global add diff-so-fancy
-	yarn global add npm-check-updates
-	yarn global add graphqurl
+	if util.says_yes 'Install NPM packages?'; then
+		core.print_info 'Installing NPM Packages'
+		npm i -g yarn pnpm
+		yarn global add pnpm
+		yarn global add diff-so-fancy
+		yarn global add npm-check-updates
+		yarn global add graphqurl
 	fi
 
 	# -------------------------------------------------------- #
 	#                            GO                            #
 	# -------------------------------------------------------- #
 	if util.says_yes 'Install Go?'; then
-	go install golang.org/x/tools/gopls@latest
-	go install golang.org/x/tools/cmd/godoc@latest
+		go install golang.org/x/tools/gopls@latest
+		go install golang.org/x/tools/cmd/godoc@latest
 
-	go get github.com/motemen/gore/cmd/gore
-	go get github.com/mdempsky/gocode
+		go get github.com/motemen/gore/cmd/gore
+		go get github.com/mdempsky/gocode
 	fi
 }
 
