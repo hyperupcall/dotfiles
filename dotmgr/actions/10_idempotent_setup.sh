@@ -14,12 +14,12 @@ main() {
 	dotmgr.get_profile
 	local profile="$REPLY"
 
-	dotmgr.call '20-dirs.sh'
-	dotmgr.call '21-dconf.sh'
+	dotmgr.call '10_dirs.sh'
+	dotmgr.call '11_dconf.sh'
 
-	dotmgr.call '11-dotshellextract.sh'
-	dotmgr.call '12-dotshellgen.sh'
-	dotmgr.call '10-dotfox_deploy.sh'
+	dotmgr.call '12_dot_funcalias_extractor.sh'
+	dotmgr.call '13_dot_shell_generator.sh'
+	dotmgr.call '14_dotfox_deploy.sh'
 
 	if util.is_cmd VBoxManage; then
 		VBoxManage setproperty machinefolder '/storage/vault/rodinia/VirtualBox_Machines'

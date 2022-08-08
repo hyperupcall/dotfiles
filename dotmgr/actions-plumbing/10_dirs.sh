@@ -226,4 +226,5 @@ main() {
 	must_dir "$HOME/.dots/.home/Pictures/Screenshots"
 	must_link ~/.dots/.dotmgr/bin/dotmgr ~/.dots/.usr/bin/dotmgr
 	must_link ~/repos/dotfox/dotfox ~/.dots/.usr/bin/dotfox # TODO: dependent on profile
+	must_link ~/Documents/repos/basalt/pkg/bin/basalt ~/.dots/.usr/bin/basalt
 }

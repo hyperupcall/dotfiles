@@ -8,8 +8,8 @@
 # managers while others are installed manually
 
 main() {
-	dotmgr.call '30-install_packages.sh'
-	dotmgr.call '31-install_others.sh'
-	dotmgr.call '32-update-others.sh'
-	dotmgr.call '33-install-browser-extensions.sh'
+	dotmgr.call '30_install_packages.sh'
+	dotmgr.call '31_install_others.sh'
+	dotmgr.call '32_update_others.sh'
+	dotmgr.call '33_install_browser_extensions.sh'
 }
