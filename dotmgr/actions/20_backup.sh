@@ -17,7 +17,13 @@ main() {
 	local backup_dir="/storage/vault/rodinia/Backups/edwin_borg"
 	local dir="/storage/ur/storage_home"
 
-	if [ -d "$backup_dir" ]; then
+	# shellcheck disable=SC2059
+	printf "Backing up\n  from: $backup_dir\n  to:   $dir\n"
+	if util.says_yes; then
+		if [ ! -d "$backup_dir" ]; then
+			core.print_die "Backup directory does not exist"
+		fi
+
 		borg create \
 			--show-version --show-rc --verbose --stats --progress \
 			--exclude '**/node_modules' \
@@ -28,7 +34,5 @@ main() {
 			--exclude '**/gcc' \
 			"$backup_dir"::'backup-{now}' \
 			"$dir"
-	else
-		core.print_die "Backup directory does not exist"
 	fi
 }

@@ -23,52 +23,30 @@
 
 main() {
 	# -------------------------------------------------------- #
-	#                          PACMAN                          #
+	#                          SYSTEM                          #
 	# -------------------------------------------------------- #
-	if util.is_cmd 'pacman'; then
-		core.print_info 'Updating, upgrading, and installing packages'
-		sudo pacman -Syyu --noconfirm
+	local package_manager= did_package_manager='no'
+	for package_manager in pacman apt dnf zypper; do
+		if util.is_cmd "$package_manager"; then
+			did_package_manager='yes'
 
-		install.generic 'pacman'
-		install.vscode 'pacman'
-		install.brave 'pacman'
-	# -------------------------------------------------------- #
-	#                            APT                           #
-	# -------------------------------------------------------- #
-	elif util.is_cmd 'apt'; then
-		core.print_info 'Updating, upgrading, and installing packages'
-		sudo apt-get -y update && sudo apt-get -y upgrade
-		sudo apt-get -y install apt-transport-https
+			install.update_upgrade_os "$package_manager"
+			install.packages "$package_manager"
+			if util.says_yes 'Install VSCode?'; then
+			install.vscode "$package_manager"
+			fi
+			install.brave "$package_manager"
+		fi
+	done; unset -v package_manager
 
-		install.generic 'apt'
-		install.vscode 'apt'
-		install.brave 'apt'
-	# -------------------------------------------------------- #
-	#                            DNF                           #
-	# -------------------------------------------------------- #
-	elif util.is_cmd 'dnf'; then
-		core.print_info 'Updating, upgrading, and installing packages'
-		sudo dnf -y update
-		sudo dnf install dnf-plugins-core # For at least Brave
-
-		install.generic 'dnf'
-		install.vscode 'dnf'
-		install.brave 'dnf'
-	# -------------------------------------------------------- #
-	#                          ZYPPER                          #
-	# -------------------------------------------------------- #
-	elif util.is_cmd 'zypper'; then
-		core.print_info 'Updating, upgrading, and installing packages'
-		sudo zypper -y update && sudo zypper -y upgrade
-
-		install.generic 'zypper'
-		install.vscode 'zypper'
-		install.brave 'zypper'
+	if [ "$did_package_manager" = 'no' ]; then
+		core.print_warn "No supported system package manager detected"
 	fi
 
 	# -------------------------------------------------------- #
 	#                           CARGO                          #
 	# -------------------------------------------------------- #
+	if util.says_yes 'Install Cargo?'; then
 	if util.is_cmd 'cargo'; then
 		if ! util.is_cmd 'starship'; then
 			core.print_info 'Installing starship'
@@ -77,10 +55,12 @@ main() {
 	else
 		core.print_warn 'Skipping installing starship'
 	fi
+	fi
 
 	# -------------------------------------------------------- #
 	#                          BASALT                          #
 	# -------------------------------------------------------- #
+	if util.says_yes 'Install Basalt?'; then
 	core.print_info 'Installing Basalt packages globally'
 	basalt global add \
 		hyperupcall/choose \
@@ -91,10 +71,12 @@ main() {
 		cykerway/complete-alias \
 		rcaloras/bash-preexec \
 		reconquest/shdoc
+	fi
 
 	# -------------------------------------------------------- #
 	#                           WOOF                           #
 	# -------------------------------------------------------- #
+	if util.says_yes 'Install Woof?'; then
 	core.print_info 'Instaling Woof packages globally'
 	woof install gh latest
 	woof install nodejs latest
@@ -102,72 +84,100 @@ main() {
 	woof install go latest
 	woof install nim latest
 	woof install zig latest
+	fi
 
 	# -------------------------------------------------------- #
 	#                            NPM                           #
 	# -------------------------------------------------------- #
+	if util.says_yes 'Install NPM?'; then
 	npm i -g yarn
 	yarn global add pnpm
 	yarn global add diff-so-fancy
 	yarn global add npm-check-updates
 	yarn global add graphqurl
+	fi
 
 	# -------------------------------------------------------- #
 	#                            GO                            #
 	# -------------------------------------------------------- #
+	if util.says_yes 'Install Go?'; then
 	go install golang.org/x/tools/gopls@latest
 	go install golang.org/x/tools/cmd/godoc@latest
 
 	go get github.com/motemen/gore/cmd/gore
 	go get github.com/mdempsky/gocode
-}
-
-msg() {
-	core.print_info "Running function '${FUNCNAME[1]}' with method $method"
-
-	if [ "$1" = 'bad' ]; then
-		core.print_die "Method '$method' not recognized"
 	fi
 }
 
-install.generic() {
-	local method="$1"
+install.update_upgrade_os() {
+	local pkgmngr="$1"
 
-	case $method in
-	pacman) msg
+	core.print_info 'Updating and upgrading operating system'
+
+	case $pkgmngr in
+	pacman)
+		sudo pacman -Syyu --noconfirm
+		;;
+	apt)
+		sudo apt-get -y update
+		sudo apt-get -y upgrade
+		sudo apt-get -y install apt-transport-https
+		;;
+	dnf)
+		sudo dnf -y update
+		sudo dnf install dnf-plugins-core # For at least Brave
+		;;
+	zypper)
+		sudo zypper -y update
+		sudo zypper -y upgrade
+		;;
+	*)
+		core.print_fatal "Pakage manager '$pkgmngr' not supported"
+	esac
+}
+
+
+install.packages() {
+	local pkgmngr="$1"
+
+	core.print_info 'Updating and upgrading operating system'
+
+	case $pkgmngr in
+	pacman)
 		sudo pacman -S --noconfirm base-devel
 		sudo pacman -S --noconfirm lvm2 bash-completion curl rsync pass
 		sudo pacman -Syu --noconfirm pkg-config openssl # for starship
 		;;
-	apt) msg
+	apt)
 		sudo apt-get -y install build-essential
 		sudo apt-get -y install lvm2 bash-completion curl rsync pass
 		sudo apt-get -y install pkg-config libssl-dev # for starship
 		;;
-	dnf) msg
+	dnf)
 		sudo dnf -y install @development-tools
 		sudo dnf -y install lvm2 bash-completion curl rsync pass
 		sudo dnf -y install pkg-config openssl-devel # for starship
 		;;
-	zypper) msg
+	zypper)
 		sudo zypper -y install -t pattern devel_basis
 		sudo zypper -y install lvm bash-completion curl rsync pass
 		sudo zypper -y install pkg-config openssl-devel # for starship
 		;;
 	*)
-		msg 'bad'
-		;;
+		core.print_fatal "Pakage manager '$pkgmngr' not supported"
 	esac
 }
 
 install.vscode() {
-	local method="$1"
+	local pkgmngr="$1"
 
-	case $method in
-	pacman) msg
-		yay -S visual-studio-code-bin
+	core.print_info 'Installing VSCode and VSCode Insiders'
+
+	case $pkgmngr in
+	pacman)
+		yay -S visual-studio-code-bin visual-studio-code-insiders-bin
 		;;
-	apt) msg
+	apt)
 		curl -fsSLo- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > './packages.microsoft.gpg'
 		sudo install -o root -g root -m 644 './packages.microsoft.gpg' '/etc/apt/trusted.gpg.d'
 		rm -f './packages.microsoft.gpg'
@@ -177,7 +187,7 @@ install.vscode() {
 		sudo apt-get -y update
 		sudo apt-get -y install code code-insiders
 		;;
-	dnf) msg
+	dnf)
 		sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 		printf "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc\n" \
 			| sudo tee '/etc/yum.repos.d/vscode.repo'
@@ -185,7 +195,7 @@ install.vscode() {
 		sudo dnf check-update
 		sudo dnf -y install code code-insiders
 		;;
-	zypper) msg
+	zypper)
 		sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 			printf "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc\n" \
 				| sudo tee '/etc/zypp/repos.d/vscode.repo'
@@ -194,19 +204,20 @@ install.vscode() {
 		sudo zypper -y install code code-insiders
 		;;
 	*)
-		msg 'bad'
-		;;
+		core.print_fatal "Pakage manager '$pkgmngr' not supported"
 	esac
 }
 
 install.brave() {
-	local method="$1"
+	local pkgmngr="$1"
 
-	case $method in
-	pacman) msg
-		yay -S brave-browser
+	core.print_info 'Installing Brave and Brave Beta'
+
+	case $pkgmngr in
+	pacman)
+		yay -S brave-browser brave-browser-beta
 		;;
-	apt) msg
+	apt)
 		sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
 		printf '%s\n' "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" \
 			| sudo tee '/etc/apt/sources.list.d/brave-browser-release.list'
@@ -217,7 +228,7 @@ install.brave() {
 		sudo apt-get -y update
 		sudo apt-get -y install brave-browser brave-browser-beta
 		;;
-	dnf) msg
+	dnf)
 		sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/
 		sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
 		sudo dnf config-manager --add-repo https://brave-browser-rpm-beta.s3.brave.com/x86_64/
@@ -226,7 +237,7 @@ install.brave() {
 		dnf check-update
 		sudo dnf -y install brave-browser brave-browser-beta
 		;;
-	zypper) msg
+	zypper)
 		sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
 		sudo zypper -y addrepo https://brave-browser-rpm-release.s3.brave.com/x86_64/ brave-browser
 		sudo rpm --import https://brave-browser-rpm-beta.s3.brave.com/brave-core-nightly.asc
@@ -236,8 +247,7 @@ install.brave() {
 		sudo zypper -y install brave-browser brave-browser-beta
 		;;
 	*)
-		msg 'bad'
-		;;
+		core.print_fatal "Pakage manager '$pkgmngr' not supported"
 	esac
 }
 

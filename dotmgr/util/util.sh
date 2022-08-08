@@ -95,3 +95,20 @@ util.assert_prereq() {
 		core.print_die '$XDG_STATE_HOME is empty. Did you source profile-pre-bootstrap.sh?'
 	fi
 }
+
+util.says_yes() {
+	local message="${1:-Confirm?}"
+
+	local input=
+	until [[ "$input" =~ ^[yn]$ ]]; do
+		read -rN1 -p "$message "
+		input=${REPLY@L}
+	done
+	printf '\n'
+
+	if [ "$input" = 'y' ]; then
+		return 0
+	else
+		return 1
+	fi
+}

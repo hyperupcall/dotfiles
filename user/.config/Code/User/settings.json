@@ -519,5 +519,5 @@
 		"basalt.toml": "https://raw.githubusercontent.com/hyperupcall/foxxy/main/src/schemas/basalt.schema.json"
 	},
 	"npm.keybindingsChangedWarningShown": true,
-	"window.zoomLevel": -1
+	"window.zoomLevel": -2
 }
