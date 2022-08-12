@@ -32,10 +32,10 @@ main() {
 
 			install.update_upgrade_os "$package_manager"
 			install.packages "$package_manager"
-			if util.says_yes 'Install VSCode and VSCode Insiders?'; then
+			if util.confirm 'Install VSCode and VSCode Insiders?'; then
 				install.vscode "$package_manager"
 			fi
-			if util.says_yes 'Install Brave and Brave Beta?'; then
+			if util.confirm 'Install Brave and Brave Beta?'; then
 				install.brave "$package_manager"
 			fi
 		fi
@@ -48,7 +48,7 @@ main() {
 	# -------------------------------------------------------- #
 	#                           CARGO                          #
 	# -------------------------------------------------------- #
-	if util.says_yes 'Install Rustup?'; then
+	if util.confirm 'Install Rustup?'; then
 		if ! util.is_cmd 'rustup'; then
 			core.print_info "Installing rustup"
 			util.req https://sh.rustup.rs | sh -s -- --default-toolchain stable -y
@@ -60,7 +60,7 @@ main() {
 	# -------------------------------------------------------- #
 	#                          PYTHON                          #
 	# -------------------------------------------------------- #
-	if util.says_yes 'Install Python?'; then
+	if util.confirm 'Install Python?'; then
 		if ! util.is_cmd 'pip'; then
 			core.print_info "Installing pip"
 			python3 -m ensurepip --upgrade
@@ -85,7 +85,7 @@ main() {
 	# -------------------------------------------------------- #
 	#                            GHC                           #
 	# -------------------------------------------------------- #
-	if util.says_yes 'Install GHC?'; then
+	if util.confirm 'Install GHC?'; then
 		core.print_info "Not implemented"
 		# TODO: fully automate
 		# if ! command -v haskell >/dev/null 2>&1; then
@@ -104,7 +104,7 @@ main() {
 	# -------------------------------------------------------- #
 	#                          BASALT                          #
 	# -------------------------------------------------------- #
-	if util.says_yes 'Install Basalt?'; then
+	if util.confirm 'Install Basalt?'; then
 		core.print_info 'Installing Basalt packages globally'
 		basalt global add \
 			hyperupcall/choose \
@@ -120,7 +120,7 @@ main() {
 	# -------------------------------------------------------- #
 	#                           WOOF                           #
 	# -------------------------------------------------------- #
-	if util.says_yes 'Install Woof modules?'; then
+	if util.confirm 'Install Woof modules?'; then
 		core.print_info 'Instaling Woof modules'
 		woof install gh latest
 		woof install nodejs latest
@@ -133,7 +133,7 @@ main() {
 	# -------------------------------------------------------- #
 	#                            NPM                           #
 	# -------------------------------------------------------- #
-	if util.says_yes 'Install NPM packages?'; then
+	if util.confirm 'Install NPM packages?'; then
 		core.print_info 'Installing NPM Packages'
 		npm i -g yarn pnpm
 		yarn global add pnpm
@@ -145,7 +145,7 @@ main() {
 	# -------------------------------------------------------- #
 	#                            GO                            #
 	# -------------------------------------------------------- #
-	if util.says_yes 'Install Go?'; then
+	if util.confirm 'Install Go?'; then
 		go install golang.org/x/tools/gopls@latest
 		go install golang.org/x/tools/cmd/godoc@latest
 

@@ -1,6 +1,17 @@
 # shellcheck shell=bash
 
+# Name:
+# Bootstrap
+#
+# Description:
+# Bootstraps dotfiles
 main() {
+	if [ -d ~/.bootstrap ]; then
+		if util.prompt "It seems you have already bootstraped your dotfiles, do you wish to do it again?"; then :; else
+			util.die 'Exiting'
+		fi
+	fi
+
 	# Ensure prerequisites
 	mkdir -p ~/.bootstrap/{bin,nim-all,old-homedots} "$XDG_CONFIG_HOME"
 

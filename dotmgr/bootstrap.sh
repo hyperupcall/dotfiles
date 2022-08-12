@@ -14,7 +14,7 @@ main() {
 
 	mkdir -p ~/.bootstrap
 
-	# Install essentials
+	# Install essential commands
 	case $(uname) in darwin*)
 		if iscmd 'brew'; then
 			log "Already installed brew"

@@ -11,31 +11,14 @@ _path_prepend "$ANDROID_HOME/platform-tools"
 export _ANTIGEN_INSTALL_DIR="$XDG_STATE_HOME/antigen"
 
 # aspell
-export ASPELL_CONF="per-conf $XDG_CONFIG_HOME/aspell/aspell.conf; personal $XDG_CONFIG_HOME/aspell/en.pws; repl $XDG_CONFIG_HOME/aspell/en.prepl"
-
-# asdf
-export ASDF_DATA_DIR="$XDG_DATA_HOME/asdf"
-export ASDF_DIR="$XDG_DATA_HOME/asdf"
-export ASDF_CONFIG_FILE="$XDG_CONFIG_HOME/asdf/asdfrc"
-export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME="$XDG_CONFIG_HOME/asdf/tool-versions"
-_path_prepend "$ASDF_DIR/bin"
-_path_prepend "$ASDF_DATA_DIR/shims"
-
-# atom
-export ATOM_HOME="$XDG_DATA_HOME/atom"
-
-# autoenv
-export AUTOENV_AUTH_FILE="$XDG_DATA_HOME/autoenv/auth_file"
+# export ASPELL_CONF="per-conf $XDG_CONFIG_HOME/aspell/aspell.conf; personal $XDG_CONFIG_HOME/aspell/en.pws; repl $XDG_CONFIG_HOME/aspell/en.prepl"
 
 # aws
-export AWS_SHARED_CREDENTIALS_FILE="$XDG_DATA_HOME/aws/credentials"
-export AWS_CONFIG_FILE="$XDG_DATA_HOME/aws/config"
+export AWS_SHARED_CREDENTIALS_FILE="$XDG_STATE_HOME/aws/credentials"
+export AWS_CONFIG_FILE="$XDG_STATE_HOME/aws/config"
 
 # azure
-export AZURE_CONFIG_DIR="$XDG_DATA_HOME/azure"
-
-# babel
-export BABEL_CACHE_PATH="$XDG_CACHE_HOME/babel.json"
+export AZURE_CONFIG_DIR="$XDG_STATE_HOME/azure"
 
 # bash-completion
 export BASH_COMPLETION_USER_DIR="$XDG_CONFIG_HOME/bash"
@@ -46,9 +29,6 @@ SDIRS="$XDG_DATA_HOME/bashmarks.sh.db"
 
 # boto
 export BOTO_CONFIG="$XDG_DATA_HOME/boto"
-
-# brew
-export HOMEBREW_NO_ANALYTICS=1
 
 # bundle
 export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME/bundle"
@@ -77,10 +57,6 @@ export CONDA_ROOT="$XDG_CONFIG_HOME/conda"
 # cookiecutter
 export COOKIECUTTER_CONFIG="$XDG_CONFIG_HOME/cookiecutter/cookiecutterrc"
 
-# crenv
-# export CRENV_ROOT="$XDG_DATA_HOME/crenv"
-# _path_prepend "$CRENV_ROOT/bin"
-
 # cpanm
 export PERL_CPANM_HOME="$XDG_DATA_HOME/cpanm"
 
@@ -106,7 +82,7 @@ export MACHINE_STORAGE_PATH="$XDG_DATA_HOME/docker-machine"
 export DUC_DATABASE="$XDG_DATA_HOME/duc.db"
 
 # dvdcss
-export DVDCSS_CACHE="$XDG_CACHE_HOME"/dvdcss
+export DVDCSS_CACHE="$XDG_CACHE_HOME/dvdcss"
 
 # dvm
 export DVM_DIR="$XDG_DATA_HOME/dvm"
@@ -165,9 +141,6 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 # hledger
 export LEDGER_FILE="$XDG_STATE_HOME/hledger/hledger.journal"
 
-# ice authority
-# export ICEAUTHORITY="$XDG_RUNTIME_DIR/iceauthority" # XDG_RUNTIME_DIR bad?
-
 # ida
 export IDAUSR="$XDG_STATE_HOME/idapro"
 
@@ -190,8 +163,8 @@ export IRBRC="$XDG_CONFIG_HOME/irb/irbrc"
 alias irssi='irssi --config "$XDG_CONFIG_HOME/irssi" --home "$XDG_CONFIG_HOME/irssi"'
 
 # java
-# export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_STATE_HOME/java"
-# export JAVA_TOOL_OPTIONS="-Djava.util.prefs.userRoot=$XDG_STATE_HOME/java"
+export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_STATE_HOME/java"
+export JAVA_TOOL_OPTIONS="-Djava.util.prefs.userRoot=$XDG_STATE_HOME/java"
 
 # julia
 export JULIA_DEPOT_PATH="$XDG_DATA_HOME/julia:$JULIA_DEPOT_PATH"
@@ -202,9 +175,6 @@ export JUNEST_HOME="$XDG_DATA_HOME/junest"
 
 # jupyter
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
-
-# k9s
-export K9SCONFIG="$XDG_CONFIG_HOME/k9s"
 
 # kde
 export KDEHOME="$XDG_CONFIG_HOME/kde"
@@ -366,7 +336,7 @@ _path_prepend "$RBENV_ROOT/shims"
 # readline
 export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
 
-# redix
+# redis
 export REDISCLI_RCFILE="$XDG_CONFIG_HOME/redis/redisclirc"
 export REDISCLI_HISTFILE="$XDG_STATE_HOME/history/redis_history"
 
@@ -394,7 +364,7 @@ export DOT_SAGE="$XDG_CONFIG_HOME/sage"
 # alias sbt='sbt -ivy "$XDG_DATA_HOME/ivy2" -sbt-dir "$XDG_DATA_HOME/sbt"'
 
 # sccache
-export SCCACHE_CACHE_SIZE="100G"
+export SCCACHE_CACHE_SIZE='100G'
 export SCCACHE_DIR="$XDG_CACHE_HOME/sccache"
 
 # screen
@@ -487,8 +457,8 @@ export MATHEMATICA_USERBASE="$XDG_DATA_HOME/mathematica"
 
 # X11
 # export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
-export XCOMPOSEFILE="$XDG_CONFIG_HOME/X11/Xcompose"
-export XCOMPOSECACHE="$XDG_CACHE_HOME/X11/Xcompose"
+# export XCOMPOSEFILE="$XDG_CONFIG_HOME/X11/Xcompose"
+# export XCOMPOSECACHE="$XDG_CACHE_HOME/X11/Xcompose"
 
 # xsel
 alias xsel='xsel -l "$XDG_DATA_HOME/xsel/xsel.log'
@@ -502,5 +472,5 @@ _path_prepend "$HOME/.yarn/bin"
 # z
 export _Z_DATA="$XDG_DATA_HOME/z"
 
-# zplug
+# zplug # TODO
 export ZPLUG_HOME="$HOME/.dots/.repos/zplug"

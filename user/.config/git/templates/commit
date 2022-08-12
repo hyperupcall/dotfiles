@@ -1,7 +1,7 @@
 
 # Fox: 'type[(scope)]: message'
 #  [ add, remove, change ] (General)
-#  [ chore, update, content, major ] (General)
+#  [ chore, update, content, major, tweak ] (General)
 #  [ fix, feat, breaking, api, perf ] (Consumer)
 #  [ comment, format, lint, style ] (Dev Style)
 #  [ change, refactor, restructure ] (Dev Code)

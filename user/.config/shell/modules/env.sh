@@ -16,6 +16,9 @@ export PAGER='less'
 
 
 # ------------------------ Program ----------------------- #
+# brew
+export HOMEBREW_NO_ANALYTICS=1
+
 # fzf
 export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
 export FZF_DEFAULT_OPTS="--history \"$XDG_STATE_HOME/history/fzf_history\" --history-size=10000"

@@ -19,7 +19,7 @@ main() {
 
 	# shellcheck disable=SC2059
 	printf "Backing up\n  from: $backup_dir\n  to:   $dir\n"
-	if util.says_yes; then
+	if util.confirm; then
 		if [ ! -d "$backup_dir" ]; then
 			core.print_die "Backup directory does not exist"
 		fi
@@ -32,6 +32,11 @@ main() {
 			--exclude '**/.Trash-1000' \
 			--exclude '**/llvm-project' \
 			--exclude '**/gcc' \
+			--exclude '**/aria2c' \
+			--exclude '**/Torrents' \
+			--exclude '**/youtube-dl' \
+			--exclude '**/Dls' \
+			--exclude '**/.git' \
 			"$backup_dir"::'backup-{now}' \
 			"$dir"
 	fi
