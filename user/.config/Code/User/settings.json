@@ -255,9 +255,9 @@
 	"python.venvPath": "~/.cache/pypoetry/virtualenvs",
 	"python.languageServer": "Pylance",
 	"[c]": {
-		"editor.defaultFormatter": "ms-vscode.cpptools",
-		"editor.insertSpaces": true,
-		"editor.tabSize": 2
+		// "editor.defaultFormatter": "ms-vscode.cpptools",
+		"editor.insertSpaces": false,
+		"editor.tabSize": 3
 	},
 	"[cpp]": {
 		"editor.defaultFormatter": "ms-vscode.cpptools",
@@ -519,5 +519,6 @@
 		"basalt.toml": "https://raw.githubusercontent.com/hyperupcall/foxxy/main/src/schemas/basalt.schema.json"
 	},
 	"npm.keybindingsChangedWarningShown": true,
-	"window.zoomLevel": -1
+	"window.zoomLevel": -1,
+	"liveServer.settings.donotShowInfoMsg": true
 }
