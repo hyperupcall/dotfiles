@@ -1,6 +1,6 @@
 # Acknowledgements
 
-My dotfiles have used parts of or have been inspired by at least the following repositories / pages
+My dotfiles have used parts of or have been inspired by at least the following repositories / sites
 
 - [ps1337](https://github.com/ps1337)
 - [bardisty/gruvbox-rofi](https://github.com/bardisty/gruvbox-rofi)

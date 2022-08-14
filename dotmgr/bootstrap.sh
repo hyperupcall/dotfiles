@@ -49,27 +49,27 @@ main() {
 	fi
 
 	# Export variables
-	cat > ~/.bootstrap/stage0-out.sh <<-EOF
-	# shellcheck shell=sh
+	cat > ~/.bootstrap/bootstrap-out.sh <<EOF
+# shellcheck shell=sh
 
-	export NAME='Edwin Kofler'
-	export EMAIL='edwin@kofler.dev'
-	export EDITOR='nvim'
-	export VISUAL="\$EDITOR"
-	export PATH="\$HOME/.dots/.usr/bin:\$PATH"
+export NAME='Edwin Kofler'
+export EMAIL='edwin@kofler.dev'
+export EDITOR='nvim'
+export VISUAL="\$EDITOR"
+export PATH="\$HOME/.dots/.usr/bin:\$PATH"
 
-	if [ -f ~/.dots/xdg.sh ]; then
+if [ -f ~/.dots/xdg.sh ]; then
 	. ~/.dots/xdg.sh
-	else
+else
 	printf '%s\n' 'Error: ~/.dots/xdg.sh not found'
 	return 1
-	fi
-	EOF
+fi
+EOF
 
 	# Next steps
 	cat <<-"EOF"
 	---
-	. ~/.bootstrap/stage0-out.sh
+	. ~/.bootstrap/bootstrap-out.sh
 	dotmgr bootstrap
 	---
 	EOF

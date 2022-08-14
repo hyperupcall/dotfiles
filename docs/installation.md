@@ -21,21 +21,22 @@ systemctl enable --now systemd-{network,resolve}d
 
 ## Bootstrapping
 
-Download and execute `stage0.sh` to begin the bootstrap process
+Download and execute `bootstrap.sh` to begin the bootstrap process
 
 ```sh
 mkdir -p ~/.bootstrap
-curl -LsSo ~/.bootstrap/stage0.sh 'https://raw.githubusercontent.com/hyperupcall/dots/main/bootstrap/stage0.sh'
-chmod +x ~/.bootstrap/stage0.sh
-~/.bootstrap/stage0.sh
+curl -fLsSo ~/.bootstrap/bootstrap.sh 'https://raw.githubusercontent.com/hyperupcall/dots/main/dotmgr/bootstrap.sh'
+chmod +x ~/.bootstrap/bootstrap.sh
+~/.bootstrap/bootstrap.sh
 ```
 
-The `stage0.sh` script performs the following steps:
+The `bootstrap.sh` script performs the following steps:
 
-- Installs homebrew if on macOS (a required package manager)
-- Ensures installation of Git and NeoVim
-- Clones this repository to `~/.dots`
-- Creates a `~/.bootstrap/stage0-out.sh`; sourcing it does the following
+- Installs Homebrew, on macOS
+- Installs Git and NeoVim
+- Clones `hyperupcall/dots` to `~/.dots`
+- Clones `hyperupcall/dotmgr` to `~/.dots/.dotmgr`
+- Creates a `~/.bootstrap/bootstrap-out.sh`; sourcing it does the following
   - Sets `NAME`, `EMAIL`, `EDITOR`, `VISUAL`
   - Appends `$HOME/.dots/.usr/bin` to `PATH`
   - Sources `~/.dots/xdg.sh`
@@ -43,7 +44,7 @@ The `stage0.sh` script performs the following steps:
 Then, run the following
 
 ```sh
-. ~/.bootstrap/stage0-out.sh
+. ~/.bootstrap/bootstrap-out.sh
 dotmgr bootstrap
 . ~/.bootstrap/bootstrap-out.sh
 
@@ -57,3 +58,19 @@ Now, make sure this repository is properly set up
 ( cd ~/.dots && { ./bake init; hookah refresh; } )
 sudo dotmgr
 ```
+
+## Troubleshooting
+
+1. dotmgr not found
+
+```txt
+dotmgr: command not found
+```
+
+Solution is to execute it manually like so:
+
+```sh
+~/.dots/.dotmgr/src/ibn
+```
+
+If that file does not exist, you must re-bootstrap everything
