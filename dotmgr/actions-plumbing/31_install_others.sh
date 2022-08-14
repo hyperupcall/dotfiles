@@ -1,12 +1,10 @@
 # shellcheck shell=bash
 
 # Name:
-# Install Others
+# Install miscellaneous
 #
 # Description:
 # Installs miscellaneous packages. This includes:
-# - 3. GHC (SKIPPED)
-# - 4. Bash
 # - 5. Dropbox
 # - 6. Browserpass Brave Client (hard-coded to verison 3.0.9)
 # - 7. XP-Pen Driver
@@ -14,7 +12,7 @@
 
 main() {
 	# 4. Bash
-	{
+	if util.confirm 'Install Bash stuff?'; then
 		# Frameworks
 		util.clone_in_dots 'https://github.com/ohmybash/oh-my-bash'
 		util.clone_in_dots 'https://github.com/bash-it/bash-it'
@@ -35,17 +33,17 @@ main() {
 
 		# Unused
 		# util.clone 'https://github.com/basherpm/basher' ~/.dots/.repos/basher
-	}
+	fi
 
 	# 5. Dropbox
-	{
+	if util.confirm 'Install Dropbox stuff?'; then
 		cd ~/.dots/.home/Downloads
 		wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
 		ln -sf ~/.dots/.home/Downloads/.dropbox-dist/dropboxd ~/.dots/.usr/bin/dropboxd
-	}
+	fi
 
 	# 6. Browserpass
-	{
+	if util.confirm 'Install Browserpass?'; then
 		local version='3.7.2'
 		core.print_info "Installing version '$version'"
 
@@ -76,26 +74,28 @@ main() {
 			mkdir -p "${f%/*}"
 			ln -s "/usr/local/lib/browserpass/policies/chromium/com.github.browserpass.native.json" "$f"
 		done; unset -v f
-	}
+	fi
 
 	# 7. XP-Pen Driver
-	{
+	if util.confirm 'Install XP-Pen Driver?'; then
 		core.print_info "Downloading and installing XP-Pen Driver"
 
-		cd "$(mktemp -d)"
-		local download_file=
-		download_file="https://www.xp-pen.com$(curl -fsSL "https://www.xp-pen.com/download-421.html" | grep -A 10 '.tar.gz' | grep '/download' | sed -Ene 's|.*"(.*?)".*|\1|p')"
-		curl -fsSLo "xp-pan.tar.gz" "$download_file"
-		sudo ./*/install.sh
-	}
+		(
+			cd "$(mktemp -d)"
+			curl -fsSLo './xp-pen.tar.gz' 'https://www.xp-pen.com/download/file/id/1936/pid/421/ext/gz.html'
+			tar xf './xp-pen.tar.gz'
+			sudo ./xp-pen-pentablet-*/install.sh
+		)
+
+	fi
 
 	# 8. Git
-	{
+	if util.confirm 'Install Random Git packages?'; then
 		util.clone_in_dots 'jayphelps/git-blame-someone-else'
 		util.clone_in_dots 'davidosomething/git-ink'
 		util.clone_in_dots 'qw3rtman/git-fire'
 		util.clone_in_dots 'paulirish/git-recent'
 		util.clone_in_dots 'imsky/git-fresh'
 		util.clone_in_dots 'paulirish/git-open'
-	}
+	fi
 }
