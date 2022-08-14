@@ -15,8 +15,9 @@
 	},
 	"esbonio.server.enabled": true,
 	"search.exclude": {
-		"**/.home/**": true
+		"**/.home/**": true,
+		"**/.repos/**": true,
+		"**/.usr/**": true
 	},
-	"commentAnchors.workspace.excludeFiles": "**/{.git,.home}/**",
-	"esbonio.sphinx.confDir": ""
+	"commentAnchors.workspace.excludeFiles": "**/{.dotmgr,.git,.home,.repos,.usr,Code/User/settings.json}/**"
 }

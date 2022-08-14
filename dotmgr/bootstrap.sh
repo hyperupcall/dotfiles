@@ -12,7 +12,7 @@ main() {
 		die "Please install 'sudo' before running this script"
 	fi
 
-	mkdir -p ~/.bootstrap
+	run mkdir -p ~/.bootstrap
 
 	# Install essential commands
 	case $(uname) in darwin*)
@@ -20,7 +20,7 @@ main() {
 			log "Already installed brew"
 		else
 			log 'Installing brew'
-			curl -fsSLo ~/.bootstrap/install-brew.sh 'https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh'
+			run curl -fsSLo ~/.bootstrap/install-brew.sh 'https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh'
 			bash ~/.bootstrap/install-brew.sh
 		fi
 	esac
@@ -70,7 +70,7 @@ EOF
 	cat <<-"EOF"
 	---
 	. ~/.bootstrap/bootstrap-out.sh
-	dotmgr bootstrap
+	dotmgr action bootstrap
 	---
 	EOF
 }
@@ -79,30 +79,18 @@ EOF
 #                         FUNCTIONS                        #
 # -------------------------------------------------------- #
 
-# TODO: REMOVE
-if [ -t 0 ]; then
-	GLOBAL_FMT_BLACK_FG='\033[1;30m'
-	GLOBAL_FMT_WHITE_BG='\033[1;47m'
-	GLOBAL_FMT_RESET='\033[0;0m'
-	GLOBAL_FMT_START="$GLOBAL_FMT_WHITE_BG$GLOBAL_FMT_BLACK_FG"
-	GLOBAL_FMT_END="$GLOBAL_FMT_RESET"
-else
-	GLOBAL_FMT_START=
-	GLOBAL_FMT_END=
-fi
-
 die() {
 	error "$@"
-	printf "$GLOBAL_FMT_START%s$GLOBAL_FMT_END Exiting\n" '=>' >&2
+	printf "=> Exiting\n" >&2
 	exit 1
 }
 
 error() {
-	printf "$GLOBAL_FMT_START%s$GLOBAL_FMT_END Error: %s\n" '=>' "$1" >&2
+	printf "=> Error: %s\n" "$1" >&2
 }
 
 log() {
-	printf "$GLOBAL_FMT_START%s$GLOBAL_FMT_END Info: %s\n" '=>' "$1" >&2
+	printf "=> Info: %s\n" "$1" >&2
 }
 
 run() {
@@ -110,7 +98,7 @@ run() {
 		error "Failed to run command (code $?)"
 		printf '%s\n' "  -> Command: $*" >&2
 		exit 1
-	fi
+	fi; unset -v output
 }
 
 iscmd() {

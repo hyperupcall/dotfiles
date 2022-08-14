@@ -2,7 +2,7 @@
 
 The following scripts are notable and may be of use
 
-Note that if you're reading this from the documentation site, you may have to open the file links in the GitHub browser. (TODO)
+Note that if you're reading this from the documentation site, you may have to open the file links in the GitHub browser. (FIXME)
 
 ## [`generate-remote-shellrcs.sh`](../user/.config/shell/scripts/generate-remote-shellrcs.sh)
 

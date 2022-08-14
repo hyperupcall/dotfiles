@@ -2,4 +2,4 @@
 # ~/.zshenv
 #
 
-export ZDOTDIR="$HOME/.config/zsh" # TODO: PAM
+export ZDOTDIR="$HOME/.config/zsh" # TODO: PAM check

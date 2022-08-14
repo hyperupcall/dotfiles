@@ -86,8 +86,7 @@ main() {
 	#                            GHC                           #
 	# -------------------------------------------------------- #
 	if util.confirm 'Install GHC?'; then
-		core.print_info "Not implemented"
-		# TODO: fully automate
+		core.print_info "Not implemented" # TODO (fully automate)
 		# if ! command -v haskell >/dev/null 2>&1; then
 		# 	core.print_info "Installing haskell"
 
@@ -151,6 +150,29 @@ main() {
 
 		go get github.com/motemen/gore/cmd/gore
 		go get github.com/mdempsky/gocode
+	fi
+
+	# -------------------------------------------------------- #
+	#                           PERL                           #
+	# -------------------------------------------------------- #
+	if util.confirm 'Install Perl things?'; then
+		core.print_info "Not implemented" # TODO
+	# Perl
+	# git clone https://github.com/tokuhirom/plenv ~/.dots/.repos/plenv
+	# git clone git://github.com/tokuhirom/Perl-Build.git "$(plenv root)/plugins/perl-build"
+
+	# # https://github.com/regnarg/urxvt-config-reload
+	# pkg="AnyEvent Linux::FD common::sense"
+	# if command -v cpan >/dev/null >&2; then
+	# 	cpan -i App::cpanminus
+	# fi
+
+	# if command -v cpanm >/dev/null >&2; then
+	# 	# cpan Loading internal logger. Log::Log4perl recommended for better logging
+	# 	cpanm Log::Log4perl
+
+	# 	cpanm $pkg
+	# fi
 	fi
 }
 

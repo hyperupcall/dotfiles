@@ -112,3 +112,6 @@ export ZINIT_HOME="$XDG_DATA_HOME/zinit/zinit.git"
 
 # zfs
 export ZFS_COLOR=
+
+# zplug
+export ZPLUG_HOME="$HOME/.dots/.repos/zplug"

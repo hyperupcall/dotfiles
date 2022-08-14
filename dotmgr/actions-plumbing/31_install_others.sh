@@ -98,21 +98,4 @@ main() {
 		util.clone_in_dots 'imsky/git-fresh'
 		util.clone_in_dots 'paulirish/git-open'
 	}
-	# TODO
-# Perl
-# git clone https://github.com/tokuhirom/plenv ~/.dots/.repos/plenv
-# git clone git://github.com/tokuhirom/Perl-Build.git "$(plenv root)/plugins/perl-build"
-
-# # https://github.com/regnarg/urxvt-config-reload
-# pkg="AnyEvent Linux::FD common::sense"
-# if command -v cpan >/dev/null >&2; then
-# 	cpan -i App::cpanminus
-# fi
-
-# if command -v cpanm >/dev/null >&2; then
-# 	# cpan Loading internal logger. Log::Log4perl recommended for better logging
-# 	cpanm Log::Log4perl
-
-# 	cpanm $pkg
-# fi
 }

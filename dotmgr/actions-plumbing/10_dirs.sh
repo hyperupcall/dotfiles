@@ -14,6 +14,9 @@
 # - Removing autoappended content to `~/.{profile,bashrc}`, etc.
 
 main() {
+	dotmgr.get_profile
+	local profile="$REPLY"
+
 	local part_uuid="c875b5ca-08a6-415e-bc11-fc37ec94ab8f"
 	local mnt='/storage/ur'
 	if [ -d "$mnt" ]; then
@@ -162,6 +165,10 @@ main() {
 		must_link "$HOME/Music" "$HOME/.dots/.home/Music"
 		must_link "$HOME/Pics" "$HOME/.dots/.home/Pictures"
 		must_link "$HOME/Vids" "$HOME/.dots/.home/Videos"
+		must_link "$HOME/.cache" "$HOME/.dots/.home/xdg_cache_dir"
+		must_link "$HOME/.config" "$HOME/.dots/.home/xdg_config_dir"
+		must_link "$HOME/.local/state" "$HOME/.dots/.home/xdg_state_dir"
+		must_link "$HOME/.local/share" "$HOME/.dots/.home/xdg_data_dir"
 
 		# Miscellaneous
 		must_link "$storage_other/mozilla" "$HOME/.mozilla"
@@ -225,6 +232,8 @@ main() {
 	must_dir "$HOME/.dots/.home/Documents/Shared"
 	must_dir "$HOME/.dots/.home/Pictures/Screenshots"
 	must_link ~/.dots/.dotmgr/bin/dotmgr ~/.dots/.usr/bin/dotmgr
-	must_link ~/repos/dotfox/dotfox ~/.dots/.usr/bin/dotfox # TODO: dependent on profile
+	if [ "$profile" = 'desktop' ]; then
+		must_link ~/repos/dotfox/dotfox ~/.dots/.usr/bin/dotfox
+	fi
 	must_link ~/Documents/repos/basalt/pkg/bin/basalt ~/.dots/.usr/bin/basalt
 }

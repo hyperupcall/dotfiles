@@ -4,11 +4,6 @@
 .dotmgr/
 site/
 
-# TODO
-.zcompdump
-
 *.env
 
-**/fish/completions/
-**/fish/conf.d/
-**/fish/functions/
+.zcompdump # TODO

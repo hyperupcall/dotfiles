@@ -83,7 +83,6 @@ main() {
 		gsettings set org.cinnamon.desktop.keybindings.media-keys area-screenshot "['<Super><Shift>p']"
 		gsettings set org.cinnamon.desktop.keybindings.media-keys area-screenshot-clip "['<Super>p']"
 		gsettings set org.cinnamon.desktop.keybindings.media-keys restart-cinnamon "['']"
-		gsettings set org.cinnamon.desktop.keybindings.media-keys screenreader "['']" # FIXME
 		gsettings set org.cinnamon.desktop.keybindings.media-keys screenreader "['XF86ScreenSaver']" # Default includes '<Control><Alt>l'
 		gsettings set org.cinnamon.desktop.keybindings.media-keys screensaver "['']"
 		gsettings set org.cinnamon.desktop.keybindings.media-keys video-outputs "['XF86Display']" # Default includes '<Super>p'

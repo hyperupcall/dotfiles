@@ -1,6 +1,6 @@
 set autoindent
 set backup
-# set backupdir ~/data/nano/backups # TODO
+set backupdir ~/.dots/.home/xdg_state_dir/nano/backups
 set breaklonglines
 unset casesensitive
 set historylog
@@ -15,7 +15,7 @@ set softwrap
 set tabsize 3
 unset tabstospaces
 
-# see https://github.com/scopatz/nanorc
+# see https://github.com/scopatz/nanorc # TODO
 
 # set not allowed in included file
 # include "~/.config/nano/themes/default.theme.nanorc"

@@ -25,7 +25,7 @@ Download and execute `bootstrap.sh` to begin the bootstrap process
 
 ```sh
 mkdir -p ~/.bootstrap
-curl -fLsSo ~/.bootstrap/bootstrap.sh 'https://raw.githubusercontent.com/hyperupcall/dots/main/dotmgr/bootstrap.sh'
+curl -fLsSo ~/.bootstrap/bootstrap.sh 'https://raw.githubusercontent.com/hyperupcall/dots/trunk/dotmgr/bootstrap.sh'
 chmod +x ~/.bootstrap/bootstrap.sh
 ~/.bootstrap/bootstrap.sh
 ```
@@ -46,10 +46,9 @@ Then, run the following
 ```sh
 . ~/.bootstrap/bootstrap-out.sh
 dotmgr bootstrap
-. ~/.bootstrap/bootstrap-out.sh
 
 # Now, use any dotmgr subcommand
-dotmgr action
+dotmgr action bootstrap
 ```
 
 Now, make sure this repository is properly set up

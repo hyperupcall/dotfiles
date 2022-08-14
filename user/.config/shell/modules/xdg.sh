@@ -471,6 +471,3 @@ _path_prepend "$HOME/.yarn/bin"
 
 # z
 export _Z_DATA="$XDG_DATA_HOME/z"
-
-# zplug # TODO
-export ZPLUG_HOME="$HOME/.dots/.repos/zplug"

@@ -1,2 +1,3 @@
-# FIXME: test if command exists
-eval (zoxide init elvish | slurp)
+if has-command zoxide {
+	eval (zoxide init elvish | slurp)
+}

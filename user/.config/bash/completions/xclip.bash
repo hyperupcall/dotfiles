@@ -1,8 +1,5 @@
 # shellcheck shell=bash
 
-# FIXME: after completing option, if click space and <tab> will rewrite the current option
-# FIXME: since xclip affects files, should only offer option autocomplete if type dash
-
 _xclip() {
 	COMPREPLY=()
 	global_readline_debug
