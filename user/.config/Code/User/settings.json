@@ -42,39 +42,18 @@
 	"terminal.external.linuxExec": "x-terminal-emulator",
 	"terminal.integrated.defaultProfile.linux": "bash",
 	"terminal.explorerKind": "external",
-	"terminal.integrated.profiles.linux": {
-		"bash": {
-			"path": "bash",
-			"icon": "terminal-bash",
-			"args": ["--noprofile", "--norc"]
-		},
-		"zsh": {
-			"path": "zsh"d
-		},
-		"fish": {
-			"path": "fish"
-		},
-		"tmux": {
-			"path": "tmux",
-			"icon": "terminal-tmux"
-		},
-		"pwsh": {
-			"path": "pwsh",
-			"icon": "terminal-powershell"
-		}
-	},
 
-	// "terminal.integrated.altClickMovesCursor": false,
-	// "terminal.integrated.commandsToSkipShell": [
-	// 	"-workbench.action.terminal.focusFind",
-	// 	"-workbench.action.quickOpen",
-	// 	"language-julia.interrupt"
-	// ],
-	// "terminal.integrated.allowChords": false,
-	// "terminal.integrated.copyOnSelection": false,
-	// "terminal.integrated.environmentChangesIndicator": "on",
-	// "terminal.integrated.inheritEnv": false,
-	// "terminal.integrated.showExitAlert": false,
+	"terminal.integrated.altClickMovesCursor": false,
+	"terminal.integrated.commandsToSkipShell": [
+		"-workbench.action.terminal.focusFind",
+		"-workbench.action.quickOpen",
+		"language-julia.interrupt"
+	],
+	"terminal.integrated.allowChords": false,
+	"terminal.integrated.copyOnSelection": false,
+	"terminal.integrated.environmentChangesIndicator": "on",
+	"terminal.integrated.inheritEnv": false,
+	"terminal.integrated.showExitAlert": false,
 
 	"files.autoSave": "afterDelay",
 	"files.autoSaveDelay": 5000,
@@ -87,8 +66,7 @@
 		"*.html": "html",
 		"*.bbmodel": "json",
 		"*.jscript": "java",
-		"*.sublime-snippet": "xml",
-		"*.go ": "go"
+		"*.sublime-snippet": "xml"
 	},
 	// "files.eol": "\n",
 	"files.exclude": {
@@ -268,8 +246,7 @@
 	"[python]": {
 		"editor.defaultFormatter": "ms-python.python",
 		"editor.codeActionsOnSave": {
-			"source.fixAll": true,
-			"source.organizeImports": true
+			"source.fixAll": false
 		},
 		"editor.insertSpaces": true,
 		"editor.tabSize": 4
@@ -534,7 +511,6 @@
 	"C_Cpp.default.cppStandard": "gnu++20",
 	"C_Cpp.default.cStandard": "gnu17",
 	"workbench.colorTheme": "Ayu Mirage Bordered",
-	"deno.path": "/home/edwin/.local/state/woof/global/bin/deno",
 	"commentAnchors.workspace.lazyLoad": false,
 	"git.enableCommitSigning": true,
 	"evenBetterToml.schema.associations": {
@@ -542,6 +518,6 @@
 		"basalt.toml": "https://raw.githubusercontent.com/hyperupcall/foxxy/main/src/schemas/basalt.schema.json"
 	},
 	"npm.keybindingsChangedWarningShown": true,
-	"window.zoomLevel": -1,
-	"liveServer.settings.donotShowInfoMsg": true
+	"liveServer.settings.donotShowInfoMsg": true,
+	"window.zoomLevel": -1
 }

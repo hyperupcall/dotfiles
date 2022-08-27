@@ -7,6 +7,7 @@
 # Installs miscellaneous packages. This includes:
 # - 5. Dropbox
 # - 6. Browserpass Brave Client (hard-coded to verison 3.0.9)
+# - 7. Mullad VPN (TODO)
 # - 7. XP-Pen Driver
 # - 8. Git subcommands (git-recent, git-fresh, etc.)
 
