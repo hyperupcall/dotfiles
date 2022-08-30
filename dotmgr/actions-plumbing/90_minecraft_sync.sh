@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 # Name:
-# Sync .minecraft
+# Sync Minecraft
 #
 # Description:
-# Syncs subdirectories in minecraft, like 'resourcepacks', 'saves', 'screenshots',
-# for all major launchers.
+# Syncs subdirectories like 'resourcepacks', 'saves', 'screenshots' of
+# the most common .minecraft directories for all major launchers.
 
 main() {
 	local mc_common_data="$HOME/.dots/.home/Documents/Games/Minecraft_Common_Data"

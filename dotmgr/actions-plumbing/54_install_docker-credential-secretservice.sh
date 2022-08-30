@@ -1,11 +1,5 @@
 # shellcheck shell=bash
 
-# Name:
-# Sometimes scripts
-#
-# Description:
-# Executes scripts that should only be ran sometimes
-
 main() {
 	if util.confirm "Install docker secretservice credential store?"; then
 		(
@@ -27,9 +21,5 @@ obj = json.load(StringIO(file.read_text()))
 obj['credsStore'] = 'secretservice'
 file.write_text(json.dumps(obj, indent='\t'))
 "
-	fi
-
-	if util.config "Copy password store to dropbox?"; then
-		cp -r "$XDG_SHARE_HOME"/password-store/* "$HOME/Dropbox/password-store"
 	fi
 }
