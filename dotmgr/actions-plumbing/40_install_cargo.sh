@@ -1,5 +1,8 @@
 # shellcheck shell=bash
 
+# Name:
+# Install Cargo
+
 main() {
 	if util.confirm 'Install Rustup?'; then
 		if ! util.is_cmd 'rustup'; then

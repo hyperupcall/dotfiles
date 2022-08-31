@@ -5,6 +5,13 @@
 #
 # Description:
 # Bootstraps dotfiles
+#
+# It may install the following:
+# - jq
+# - curl
+# - Nim (in ~/.bootstrap)
+# - Dotfox (in ~/.bootstrap)
+# - Basalt
 main() {
 	if [ -d ~/.bootstrap ]; then
 		if util.prompt "It seems you have already bootstraped your dotfiles, do you wish to do it again?"; then :; else

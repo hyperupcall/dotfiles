@@ -1,5 +1,8 @@
 # shellcheck shell=bash
 
+# Name:
+# Install GHC
+
 if util.confirm 'Install GHC?'; then
 	core.print_info "Not implemented" # TODO (fully automate)
 	# if ! command -v haskell >/dev/null 2>&1; then

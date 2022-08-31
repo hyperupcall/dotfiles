@@ -1,7 +1,7 @@
 # shellcheck shell=bash
 
 # Name:
-# Install user packages
+# Init lang pkgmgr
 #
 # Description:
 # Installs packages of various programming languages including

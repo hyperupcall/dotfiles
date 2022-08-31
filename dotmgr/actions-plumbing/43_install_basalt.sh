@@ -1,5 +1,8 @@
 # shellcheck shell=bash
 
+# Name:
+# Install Basalt
+
 main() {
 	if util.confirm 'Install Basalt?'; then
 		core.print_info 'Installing Basalt packages globally'

@@ -1,8 +1,9 @@
 # shellcheck shell=bash
 
-# Name: Install system packages
+# Name: Init system pkgmgr
 #
 # Description:
+# Initialize system package manager
 # Uses either pacman, apt, dnf, or zypper to install any of the following packages:
 #  - VSCode
 #  - Brave

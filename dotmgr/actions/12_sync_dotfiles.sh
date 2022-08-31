@@ -1,7 +1,7 @@
 # shellcheck shell=bash
 
 # Name:
-# dotfox Deploy
+# Sync dotfiles
 #
 # Description:
 # Executes dotfox with the right arguments. The command is shown before it is ran
