@@ -1,4 +1,1 @@
-{
-    "Alt-/": "lua:comment.comment",
-    "CtrlUnderscore": "lua:comment.comment"
-}
+/home/edwin/.dots/user/.config/micro/bindings.json
