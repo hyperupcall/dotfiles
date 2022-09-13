@@ -174,7 +174,7 @@ alias dp='dpkg -p'
 # ------------------------- pass ------------------------- #
 alias pl='pass ls'
 alias pf='pass find'
-alias ps='pass show'
+# alias ps='pass show'
 alias pg='pass grep'
 alias pi='pass insert'
 alias pe='pass edit'

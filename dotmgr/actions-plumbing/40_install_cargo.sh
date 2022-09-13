@@ -12,4 +12,8 @@ main() {
 		fi
 	fi
 	cargo install starship
+	cargo install cargo-binstall
+	cargo install fd-find
+	cargo install modenv
+	cargo install --locked bat
 }
