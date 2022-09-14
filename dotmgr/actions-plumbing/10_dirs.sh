@@ -119,7 +119,7 @@ main() {
 	must_link "$XDG_CONFIG_HOME/X11/Xresources" "$HOME/.Xresources"
 	must_link "$XDG_CONFIG_HOME/Code/User/settings.json" "$XDG_CONFIG_HOME/Code - OSS/User/settings.json"
 
-	local -ra directoriesDefault=(
+	local -ra directories_default=(
 		# ~/Desktop
 		~/Downloads
 		~/Templates ~/Public ~/Documents
@@ -135,20 +135,20 @@ main() {
 		~/Pics
 		~/Vids
 	)
-	local -ra directoriesShared=(
+	local -ra directories_shared=(
 		~/Desktop
 		~/Music
 	)
-	# Use 'cp -f' for "$XDG_CONFIG_HOME/user-dirs.dirs"; sotherwise unlink/link operation races
+	# Use 'cp -f' for "$XDG_CONFIG_HOME/user-dirs.dirs"; otherwise unlink/link operation races
 	if [ -d "$storage" ]; then
 		cp -f "$HOME/.dots/user/.config/user-dirs.dirs/user-dirs-custom.conf" "$XDG_CONFIG_HOME/user-dirs.dirs"
 
 		# XDG User Directories
 		local dir=
-		for dir in "${directoriesDefault[@]}"; do
+		for dir in "${directories_default[@]}"; do
 			must_rmdir "$dir"
 		done; unset -v dir
-		for dir in "${directoriesShared[@]}"; do
+		for dir in "${directories_shared[@]}"; do
 			must_dir "$dir"
 		done; unset -v dir
 		must_link "$storage_home/Desktop" "$HOME/Desktop"
@@ -185,7 +185,7 @@ main() {
 		for dir in "${directoriesCustom[@]}"; do
 			must_rmdir "$dir"
 		done; unset -v dir
-		for dir in "${directoriesShared[@]}"; do
+		for dir in "${directories_shared[@]}"; do
 			must_dir "$dir"
 		done; unset -v dir
 		must_dir "$HOME/Desktop"
@@ -208,7 +208,8 @@ main() {
 		# Miscellaneous
 	fi
 
-	if [ -d "$HOME/Docs/Programming" ]; then
+	for file in ~/.dots/.usr/bin/*; do unlink "$file"; done
+	if [ "$profile" = 'desktop' ]; then
 		must_link "$HOME/Docs/Programming/challenges" "$HOME/challenges"
 		must_link "$HOME/Docs/Programming/experiments" "$HOME/experiments"
 		must_link "$HOME/Docs/Programming/git" "$HOME/git"
@@ -216,14 +217,13 @@ main() {
 		must_link "$HOME/Docs/Programming/workspaces" "$HOME/workspaces"
 
 		local file=
-		for file in ~/.dots/.usr/bin/*; do unlink "$file"; done
 		for file in "$HOME/Docs/Programming/repos/Groups/Bash"/{bake,basalt,choose,hookah,foxomate,glue,rho,shelldoc,shelltest,woof}/pkg/bin/*; do
 			ln -fs  "$file" ~/.dots/.usr/bin
 		done; unset -v file
-	else
+	elif [ "$profile" = 'laptop' ]; then
 		local file=
 		for file in ~/.dots/.usr/bin/*; do unlink "$file"; done
-		for file in "$HOME/Documents"/{bake,basalt,choose,hookah,foxomate,glue,rho,shelldoc,shelltest,woof}/pkg/bin/*; do
+		for file in "$HOME/Documents/Programming/repos"/{bake,basalt,choose,hookah,foxomate,glue,rho,shelldoc,shelltest,woof}/pkg/bin/*; do
 			ln -fs "$file" ~/.dots/.usr/bin
 		done; unset -v file
 	fi
