@@ -517,7 +517,7 @@
 		"foxxy.toml": "https://raw.githubusercontent.com/hyperupcall/foxxy/main/src/schemas/foxxyProject.schema.json",
 		"basalt.toml": "https://raw.githubusercontent.com/hyperupcall/foxxy/main/src/schemas/basalt.schema.json"
 	},
-	"npm.keybindingsChangedWarningShown": true,
+	"npm.keybindingsChangedWarningShown": true,	
 	"window.zoomLevel": -1,
 	"liveServer.settings.donotShowInfoMsg": true
 }

@@ -82,3 +82,11 @@ util.confirm() {
 		return 1
 	fi
 }
+
+util.get_path() {
+	if [[ ${1::1} == / ]]; then
+		REPLY="$1"
+	else
+		REPLY="$HOME/$1"
+	fi
+}

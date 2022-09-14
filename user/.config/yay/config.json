@@ -2,5 +2,5 @@
 	"answerdiff": "None",
 	"answerclean": "None",
 	"removemake": "yes",
-	"sudoloop": true
+	"sudoloop": false
 }

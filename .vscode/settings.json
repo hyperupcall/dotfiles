@@ -15,6 +15,7 @@
 	},
 	"esbonio.server.enabled": true,
 	"search.exclude": {
+		"**/.git/**": true,
 		"**/.home/**": true,
 		"**/.repos/**": true,
 		"**/.usr/**": true
