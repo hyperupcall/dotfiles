@@ -9,6 +9,6 @@
 
 main() {
 	if util.confirm "Copy password store to dropbox?"; then
-		rsync -a --delete "${PASSWORD_STORE_DIR:-$HOME/password-store}/" "$HOME/Dropbox/password-store"
+		rsync -a --delete --verbose "${PASSWORD_STORE_DIR:-$HOME/password-store}/" "$HOME/Dropbox/password-store"
 	fi
 }
