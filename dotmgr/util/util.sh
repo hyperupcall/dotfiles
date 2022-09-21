@@ -1,5 +1,9 @@
 # shellcheck shell=bash
 
+util.die() {
+	exit 1
+}
+
 util.req() {
 	curl --proto '=https' --tlsv1.2 -sSLf "$@"
 }
@@ -11,6 +15,13 @@ util.run() {
 	else
 		return $?
 	fi
+}
+
+util.cd_temp() {
+	local dir=
+	dir=$(mktemp -d)
+
+	pushd "$dir" >/dev/null
 }
 
 util.ensure() {

@@ -2,35 +2,39 @@
 
 main() {
 	if util.confirm 'Install Browserpass?'; then
-		local version='3.7.2'
+		local version='3.0.10'
+		local system='linux64'
+		local install_dir='/usr/local'
+
 		core.print_info "Installing version '$version'"
 
-		local url="https://github.com/browserpass/browserpass-native/releases/download/$version/browserpass-linux64-$version.tar.gz"
-		cd "$(mktemp -d)"
+		local url="https://github.com/browserpass/browserpass-native/releases/download/$version/browserpass-$system-$version.tar.gz"
 
+		util.cd_temp
 
-		curl -sSLo browserpass.tar.gz "$url"
-		tar xf 'browserpass.tar.gz'
-		cd "./browserpass-linux64-$version"
+		util.req -o ./browserpass.tar.gz "$url" || util.die
+		tar xf ./browserpass.tar.gz || util.die
+		cd "./browserpass-linux64-$version" || util.die
 
-		local system='linux64'
-		make BIN="browserpass-$system" PREFIX=/usr/local configure
-		sudo make BIN="browserpass-$system" PREFIX=/usr/local install
-		make BIN="browserpass-$system" PREFIX=/usr/local hosts-brave-user
+		util.run make BIN="browserpass-$system" PREFIX="$install_dir" configure || util.die
+		util.run sudo make BIN="browserpass-$system" PREFIX="$install_dir" install || util.die
 
-		# Symlink things
+		local browsers=
+
+		# Symlink messaging host definition
 		for f in \
-			"$XDG_CONFIG_HOME/"{BraveSoftware/Brave-Browser,sidekick,wavebox}"/NativeMessagingHosts/com.github.browserpass.native.json"
+			"$XDG_CONFIG_HOME"/{BraveSoftware/Brave-Browser{,-Beta,-Nightly},microsoft-edge,google-chrome{,-beta,-unstable},opera,sidekick,wavebox}/"NativeMessagingHosts/com.github.browserpass.native.json"
 		do
 			mkdir -p "${f%/*}"
-			ln -sf /usr/local/lib/browserpass/hosts/chromium/com.github.browserpass.native.json "$f"
-		done; unset -v f
+			ln -vsf "$install_dir/lib/browserpass/hosts/chromium/com.github.browserpass.native.json" "$f"
+		done
 
+		# Symlink policies
 		for f in \
-			"$XDG_CONFIG_HOME/"{BraveSoftware/Brave-Browser,sidekick,wavebox}"/policies/managed/com.github.browserpass.native.json"
+			"$XDG_CONFIG_HOME"/{BraveSoftware/Brave-Browser{,-Beta,-Nightly},microsoft-edge,google-chrome{,-beta,-unstable},opera,sidekick,wavebox}/"policies/managed/com.github.browserpass.native.json"
 		do
 			mkdir -p "${f%/*}"
-			ln -s "/usr/local/lib/browserpass/policies/chromium/com.github.browserpass.native.json" "$f"
-		done; unset -v f
+			ln -vsf "$install_dir/lib/browserpass/policies/chromium/com.github.browserpass.native.json" "$f"
+		done
 	fi
 }

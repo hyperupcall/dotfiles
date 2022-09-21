@@ -35,24 +35,4 @@ for d in aliases functions; do
 	done; unset -v f
 done; unset -v d
 
-({ # TODO:
-	dropboxd="$HOME/.dots/.home/Downloads/.dropbox-dist/dropboxd"
-	if [ -x "$dropboxd" ]; then
-		if ! pgrep dropbox >/dev/null 2>&1; then
-			nohup "$dropboxd" >/dev/null 2>&1
-		fi
-	fi
-} &)
-
-
-watcher() { # TODO
-	# shellcheck disable=SC2086
-	find -L . -ignore_readdir_race \( \
-		-iname 'node_modules' \
-		-o -iname 'dist' \
-		-o -iname 'out' \
-		-o -iname 'target' \
-	\) -prune -o -print | entr -c -dd "$@"
-}
-
 # ---
