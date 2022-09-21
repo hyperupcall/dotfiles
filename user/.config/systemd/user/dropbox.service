@@ -1,7 +1,7 @@
 [Unit]
-Description=Dropbox Syncer
+Description=Dropbox Daemon
 ConditionPathExists=%h/.dots/.usr/bin/dropboxd
-After=local-fs.target network.target
+After=network.target
 
 [Service]
 Type=simple

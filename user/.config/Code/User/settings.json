@@ -21,7 +21,6 @@
 	// "editor.fontFamily": "'Droid Sans Mono', 'Fira Sans Mono', 'monospace'",
 	"editor.fontLigatures": true,
 	"editor.fontSize": 16,
-	"editor.formatOnSave": true,
 	"editor.formatOnPaste": true,
 	"editor.formatOnType": true,
 	"editor.insertSpaces": false,
@@ -517,7 +516,7 @@
 		"foxxy.toml": "https://raw.githubusercontent.com/hyperupcall/foxxy/main/src/schemas/foxxyProject.schema.json",
 		"basalt.toml": "https://raw.githubusercontent.com/hyperupcall/foxxy/main/src/schemas/basalt.schema.json"
 	},
-	"npm.keybindingsChangedWarningShown": true,	
+	"npm.keybindingsChangedWarningShown": true,
 	"window.zoomLevel": -1,
 	"liveServer.settings.donotShowInfoMsg": true
 }
