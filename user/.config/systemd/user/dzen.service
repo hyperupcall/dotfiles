@@ -1,6 +1,0 @@
-[Unit]
-Description=Dzen Launch
-
-[Service]
-Type=exec
-ExecStart=%h/config/choose/scripts/start-dzen.sh

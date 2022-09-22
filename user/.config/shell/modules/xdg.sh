@@ -20,6 +20,9 @@ export AWS_CONFIG_FILE="$XDG_STATE_HOME/aws/config"
 # azure
 export AZURE_CONFIG_DIR="$XDG_STATE_HOME/azure"
 
+# babel
+export BABEL_CACHE_PATH="$XDG_CACHE_HOME/babel.json"
+
 # bash-completion
 export BASH_COMPLETION_USER_DIR="$XDG_CONFIG_HOME/bash"
 export BASH_COMPLETION_USER_FILE="$XDG_CONFIG_HOME/bash/bash_completion.sh"

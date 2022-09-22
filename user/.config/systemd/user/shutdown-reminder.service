@@ -1,9 +1,0 @@
-[Unit]
-Description=Shutdown Reminder Timer
-
-[Service]
-Type=oneshot
-ExecStart=%h/scripts/shutdown-reminder.sh
-
-[Install]
-WantedBy=xorg.target

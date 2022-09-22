@@ -11,9 +11,6 @@ _path_prepend "$ASDF_DATA_DIR/shims"
 # atom
 # export ATOM_HOME="$XDG_DATA_HOME/atom"
 
-# babel
-# export BABEL_CACHE_PATH="$XDG_CACHE_HOME/babel.json"
-
 # crenv
 # export CRENV_ROOT="$XDG_DATA_HOME/crenv"
 # _path_prepend "$CRENV_ROOT/bin"

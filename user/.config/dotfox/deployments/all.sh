@@ -21,6 +21,7 @@ declare -ra dotfiles=(
 	home:'.gnupg/gpg-agent.conf'
 	home:'.hushlogin'
 	# home:'.yarnrc'
+	cfg:'.gtktermrc'
 	cfg:'aerc/aerc.conf'
 	cfg:'aerc/binds.conf'
 	cfg:'alacritty'
