@@ -87,10 +87,6 @@ export DUC_DATABASE="$XDG_DATA_HOME/duc.db"
 # dvdcss
 export DVDCSS_CACHE="$XDG_CACHE_HOME/dvdcss"
 
-# dvm
-export DVM_DIR="$XDG_DATA_HOME/dvm"
-_path_prepend "$DVM_DIR/bin"
-
 # electrum
 export ELECTRUMDIR="$XDG_DATA_HOME/electrum"
 
@@ -285,10 +281,6 @@ _path_prepend PERL5LIB "$PERL_LOCAL_LIB_ROOT/lib/perl5"
 # phpbrew
 _path_prepend "$XDG_DATA_HOME/phpenv/bin"
 
-# phpenv
-export PHPENV_ROOT="$XDG_DATA_HOME/phpenv"
-_path_prepend "$PHPENV_ROOT/bin"
-
 # pipx
 export PIPX_HOME="$XDG_STATE_HOME/pipx/virtualenv"
 export PIPX_BIN_DIR="$XDG_STATE_HOME/pipx/bin"
@@ -313,12 +305,6 @@ export PGSERVICEFILE="$XDG_DATA_HOME/pg/pg_service.conf"
 
 # pulse
 # export PULSE_COOKIE="$XDG_STATE_HOME/pulse/cookie"
-
-# pyenv
-# export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
-# export PYENV_VIRTUALENV_INIT=1
-# _path_prepend "$PYENV_ROOT/bin"
-# _path_prepend "$PYENV_ROOT/shims"
 
 # pylint
 export PYLINTHOME="$XDG_CACHE_HOME/pylint"
@@ -391,10 +377,6 @@ export STACK_ROOT="$XDG_DATA_HOME/stack"
 # starship
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 
-# swift
-export SWIFTENV_ROOT="$XDG_DATA_HOME/swiftenv"
-_path_prepend "$SWIFTENV_ROOT/bin"
-
 # task
 export TASKRC="$XDG_CONFIG_HOME/taskwarrior/taskrc"
 export TASKDATA="$XDG_DATA_HOME/taskwarrior"
@@ -424,10 +406,6 @@ export UNISON="$XDG_DATA_HOME/unison"
 # vagrant
 export VAGRANT_HOME="$XDG_DATA_HOME/vagrant"
 export VAGRANT_ALIAS_FILE="$VAGRANT_HOME/aliases"
-
-# volta
-export VOLTA_HOME="$XDG_STATE_HOME/volta"
-_path_prepend "$XDG_STATE_HOME/volta/bin"
 
 # vimperator
 export VIMPERATOR_INIT=":source $XDG_CONFIG_HOME/vimperator/vimperatorrc"

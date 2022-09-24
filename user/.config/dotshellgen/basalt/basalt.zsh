@@ -1,4 +1,6 @@
-_path_prepend "$XDG_DATA_HOME/basalt/source/pkg/bin"
-if command -v basalt &>/dev/null; then
-	eval "$(basalt global init zsh)"
-fi
+for dir in "$HOME/.dots/.usr/bin"; do
+	if [ -e "$dir/basalt" ]; then
+		eval "$("$dir/basalt" global init zsh)"
+		break
+	fi
+done; unset -v dir

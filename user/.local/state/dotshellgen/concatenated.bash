@@ -1,8 +1,10 @@
 # basalt.bash
-_path_prepend "$XDG_DATA_HOME/basalt/source/pkg/bin"
-if command -v basalt &>/dev/null; then
-	eval "$(basalt global init bash)"
-fi
+for dir in "$HOME/.dots/.usr/bin"; do
+	if [ -e "$dir/basalt" ]; then
+		eval "$("$dir/basalt" global init bash)"
+		break
+	fi
+done; unset -v dir
 
 # autoenv.bash
 if command -v basalt &>/dev/null; then
