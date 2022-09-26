@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 set -eo pipefail
 
-if [ -f ~/.dots/xdg.sh ]; then
-	source ~/.dots/xdg.sh --export-vars
+declare dotdir="$HOME/.dots"
+
+if [ -f "$dotdir/xdg.sh" ]; then
+	source "$dotdir/xdg.sh" --export-vars
 else
-	printf '%s\n' "Error: ~/.dots/xdg.sh not found. Exiting" >&2
+	printf '%s\n' "Error: $dotdir/xdg.sh not found. Exiting" >&2
 	exit 1
 fi
 
@@ -26,7 +28,6 @@ declare -ra dotfiles=(
 	cfg:'aerc/binds.conf'
 	cfg:'alacritty'
 	cfg:'albert/albert.conf'
-	cfg:'albert-sticker-searcher'
 	cfg:'alsa'
 	cfg:'appimagelauncher.cfg'
 	cfg:'aria2'
@@ -187,48 +188,52 @@ declare -ra dotfiles=(
 	state:'dotshellgen'
 )
 
-# Print actual dotfiles
-src_home="$HOME/.dots/user"
-src_cfg="$HOME/.dots/user/.config"
-src_state="$HOME/.dots/user/.local/state"
-src_data="$HOME/.dots/user/.local/share"
-for dotfile in "${dotfiles[@]}"; do
-	prefix="${dotfile%%:*}"
-	file="${dotfile#*:}"
+main() {
+	# Print actual dotfiles
+	src_home="$dotdir/user"
+	src_cfg="$dotdir/user/.config"
+	src_state="$dotdir/user/.local/state"
+	src_data="$dotdir/user/.local/share"
+	for dotfile in "${dotfiles[@]}"; do
+		local prefix=${dotfile%%:*}
+		local file=${dotfile#*:}
 
-	case "$file" in *:*)
-		printf '%s\n' "Error: Files must not have colons, but file '$file' does. Exiting" >&2
-		exit 1
-		;;
-	esac
+		case "$file" in *:*)
+			printf '%s\n' "Error: Files must not have colons, but file '$file' does. Exiting" >&2
+			exit 1
+			;;
+		esac
 
-	if [ "$prefix" = home ]; then
-		printf '%s\n' "symlink:$src_home/$file:$HOME/$file"
-	elif [ "$prefix" = cfg ]; then
-		printf '%s\n' "symlink:$src_cfg/$file:$XDG_CONFIG_HOME/$file"
-	elif [ "$prefix" = state ]; then
-		printf '%s\n' "symlink:$src_state/$file:$XDG_STATE_HOME/$file"
-	elif [ "$prefix" = data ]; then
-		printf '%s\n' "symlink:$src_data/$file:$XDG_DATA_HOME/$file"
-	else
-		printf '%s\n' "Error: Prefix '$prefix' not supported (for file '$file'). Exiting" >&2
-		exit 1
+		if [ "$prefix" = home ]; then
+			printf '%s\n' "symlink:$src_home/$file:$HOME/$file"
+		elif [ "$prefix" = cfg ]; then
+			printf '%s\n' "symlink:$src_cfg/$file:$XDG_CONFIG_HOME/$file"
+		elif [ "$prefix" = state ]; then
+			printf '%s\n' "symlink:$src_state/$file:$XDG_STATE_HOME/$file"
+		elif [ "$prefix" = data ]; then
+			printf '%s\n' "symlink:$src_data/$file:$XDG_DATA_HOME/$file"
+		else
+			printf '%s\n' "Error: Prefix '$prefix' not supported (for file '$file'). Exiting" >&2
+			exit 1
+		fi
+	done
+
+
+	# Print dotfiles that do not share a common prefix
+	printf '%s\n' "symlink:$XDG_CONFIG_HOME/X11/xinitrc:$HOME/.xinitrc"
+	printf '%s\n' "symlink:$XDG_CONFIG_HOME/bash/bash_profile.sh:$HOME/.bash_profile"
+	printf '%s\n' "symlink:$XDG_CONFIG_HOME/bash/bash_logout.sh:$HOME/.bash_logout"
+	printf '%s\n' "symlink:$XDG_CONFIG_HOME/bash/bashrc.sh:$HOME/.bashrc"
+	printf '%s\n' "symlink:$XDG_CONFIG_HOME/shell/profile.sh:$HOME/.profile"
+	printf '%s\n' "symlink:$XDG_CONFIG_HOME/zsh/.zshenv:$HOME/.zshenv"
+
+	# Print dotfiles programatically
+	source "$dotdir/xdg.sh" --set-type
+	if [ "$REPLY" = default ]; then
+		printf '%s\n' "symlink:$src_home/.pam_environment/xdg-default.conf:$HOME/.pam_environment"
+	elif [ "$REPLY" = custom ]; then
+		printf '%s\n' "symlink:$src_home/.pam_environment/xdg-custom.conf:$HOME/.pam_environment"
 	fi
-done
+}
 
-
-# Print dotfiles that do not share a common prefix
-printf '%s\n' "symlink:$XDG_CONFIG_HOME/X11/xinitrc:$HOME/.xinitrc"
-printf '%s\n' "symlink:$XDG_CONFIG_HOME/bash/bash_profile.sh:$HOME/.bash_profile"
-printf '%s\n' "symlink:$XDG_CONFIG_HOME/bash/bash_logout.sh:$HOME/.bash_logout"
-printf '%s\n' "symlink:$XDG_CONFIG_HOME/bash/bashrc.sh:$HOME/.bashrc"
-printf '%s\n' "symlink:$XDG_CONFIG_HOME/shell/profile.sh:$HOME/.profile"
-printf '%s\n' "symlink:$XDG_CONFIG_HOME/zsh/.zshenv:$HOME/.zshenv"
-
-# Print dotfiles programatically
-source ~/.dots/xdg.sh --set-type
-if [ "$REPLY" = default ]; then
-	printf '%s\n' "symlink:$src_home/.pam_environment/xdg-default.conf:$HOME/.pam_environment"
-elif [ "$REPLY" = custom ]; then
-	printf '%s\n' "symlink:$src_home/.pam_environment/xdg-custom.conf:$HOME/.pam_environment"
-fi
+main "$@"

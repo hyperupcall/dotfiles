@@ -1,4 +1,0 @@
-[Unit]
-Description=xorg Target
-Documentation=man:xorg(1)
-AllowIsolate=yes
