@@ -6,6 +6,7 @@
 main() {
 	if util.confirm 'Install Basalt?'; then
 		core.print_info 'Installing Basalt packages globally'
+
 		basalt global add \
 			hyperupcall/choose \
 			hyperupcall/autoenv \

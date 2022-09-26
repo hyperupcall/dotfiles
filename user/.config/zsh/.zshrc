@@ -18,7 +18,7 @@
 # ─── FRAMEWORKS ─────────────────────────────────────────────────────────────────
 #
 
-source "$ZDOTDIR/frameworks/zinit.zsh"
+# source "$ZDOTDIR/frameworks/zinit.zsh"
 # source "$ZDOTDIR/frameworks/zplug.zsh"
 
 
@@ -113,44 +113,42 @@ is16MillionColors() {
 }
 
 source "$XDG_STATE_HOME/dotshellgen/concatenated.zsh"
+source "$XDG_CONFIG_HOME"/zsh/modules/primary.zsh
 
-autoload -U colors && colors # TODO
-autoload run-help # TODO
+# if is16MillionColors; then
+# 	if ((EUID == 0)); then
+# 		PS1="%F{#c92a2a}[%n@%M %~]$%f "
+# 	else
+# 		PS1="%{$fg[red]%}[%n@%M %~]$%{$reset_color%} "
+# 		if ! eval "$(
+# 			if ! choose launch shell-prompt-zsh; then
+# 				# Without this, the error doesn't propagate to the "if ! eval ..."
+# 				printf '%s\n' 'false'
+# 			fi
+# 		)"; then
+# 			PS1="[%{$fg[red]%}(PS1 Error)%{$reset_color%} %n@%M %~]\$ "
+# 		fi
+# 	fi
+# elif is8Colors || is256Colors; then
+# 	if ((EUID == 0)); then
+# 		PS1="%{$fg[red]%}[%n@%M %~]$%{$reset_color%} "
+# 	else
+# 		PS1="%{$fg[yellow]%}[%n@%M %~]$%{$reset_color%} "
+# 	fi
+# else
+# 	PS1="[%n@%M %~]$ "
+# fi
 
-if is16MillionColors; then
-	if ((EUID == 0)); then
-		PS1="%F{#c92a2a}[%n@%M %~]$%f "
-	else
-		PS1="%{$fg[red]%}[%n@%M %~]$%{$reset_color%} "
-		if ! eval "$(
-			if ! choose launch shell-prompt-zsh; then
-				# Without this, the error doesn't propagate to the "if ! eval ..."
-				printf '%s\n' 'false'
-			fi
-		)"; then
-			PS1="[%{$fg[red]%}(PS1 Error)%{$reset_color%} %n@%M %~]\$ "
-		fi
-	fi
-elif is8Colors || is256Colors; then
-	if ((EUID == 0)); then
-		PS1="%{$fg[red]%}[%n@%M %~]$%{$reset_color%} "
-	else
-		PS1="%{$fg[yellow]%}[%n@%M %~]$%{$reset_color%} "
-	fi
-else
-	PS1="[%n@%M %~]$ "
-fi
-
-unset -f is8Colors is256Colors is16MillionColors
+# unset -f is8Colors is256Colors is16MillionColors
 
 
 #
 # ─── MODULES ────────────────────────────────────────────────────────────────────
 #
 
-for f in "$XDG_CONFIG_HOME"/zsh/modules/?*.zsh; do
-	source "$f"
-done
-unset -v f
+# for f in "$XDG_CONFIG_HOME"/zsh/modules/?*.zsh; do
+# 	source "$f"
+# done
+# unset -v f
 
 # ---

@@ -1,1 +1,0 @@
-alias help='run-help'

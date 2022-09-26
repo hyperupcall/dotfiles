@@ -11,7 +11,7 @@ main() {
 		fi
 		python3 -m pip install --upgrade pip
 
-		pip3 install wheel
+		python3 -m pip install wheel
 
 
 		if ! util.is_cmd 'pipx'; then
@@ -22,7 +22,7 @@ main() {
 
 		if ! util.is_cmd 'poetry'; then
 			core.print_info "Installing poetry"
-			util.req https://install.python-poetry.org | python3 -
+			util.req 'https://install.python-poetry.org' | python3 -
 		fi
 	fi
 }

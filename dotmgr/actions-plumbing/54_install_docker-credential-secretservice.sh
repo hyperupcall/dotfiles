@@ -1,16 +1,17 @@
 # shellcheck shell=bash
 
 main() {
-	if util.confirm "Install docker secretservice credential store?"; then
-		(
-			local dir=
-			dir=$(mktemp -d)
-			cd "$dir" || exit 1
+	if util.confirm "Install docker secretservice credential store version v0.6.4?"; then
+		local version='v0.6.4'
 
-			curl -o 'docker-credential-secretservice.tar.gz' "https://github.com/docker/docker-credential-helpers/releases/download/v0.6.4/docker-credential-secretservice-v0.6.4-amd64.tar.gz"
-			tar xf 'docker-credential-secretservice.tar.gz'
-			mv './docker-credential-secretservice.tar.gz' "$HOME/bin"
-		)
+		util.cd_temp
+
+		curl -o 'docker-credential-secretservice.tar.gz' "https://github.com/docker/docker-credential-helpers/releases/download/$version/docker-credential-secretservice-$version-amd64.tar.gz"
+		tar xf 'docker-credential-secretservice.tar.gz'
+		mv './docker-credential-secretservice' "$HOME/bin"
+
+		popd >/dev/null
+
 		python -c "import json
 import os
 from io import StringIO
@@ -19,7 +20,6 @@ from pathlib import Path
 file = Path(os.environ['XDG_CONFIG_HOME']) / 'docker' / 'config.json'
 obj = json.load(StringIO(file.read_text()))
 obj['credsStore'] = 'secretservice'
-file.write_text(json.dumps(obj, indent='\t'))
-"
+file.write_text(json.dumps(obj, indent='\t'))"
 	fi
 }

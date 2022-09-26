@@ -518,8 +518,8 @@
 	"commentAnchors.workspace.lazyLoad": false,
 	"git.enableCommitSigning": true,
 	"evenBetterToml.schema.associations": {
-		"foxxy.toml": "https://raw.githubusercontent.com/hyperupcall/foxxy/main/src/schemas/foxxyProject.schema.json",
-		"basalt.toml": "https://raw.githubusercontent.com/hyperupcall/foxxy/main/src/schemas/basalt.schema.json"
+		"foxxo.toml": "https://raw.githubusercontent.com/hyperupcall/foxxo/main/src/schemas/foxxoProject.schema.json",
+		"basalt.toml": "https://raw.githubusercontent.com/hyperupcall/foxxo/main/src/schemas/basalt.schema.json"
 	},
 	"npm.keybindingsChangedWarningShown": false,
 	"window.zoomLevel": -1

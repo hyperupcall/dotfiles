@@ -66,5 +66,4 @@ main() {
 		util.clone_in_dots 'imsky/git-fresh'
 		util.clone_in_dots 'paulirish/git-open'
 	fi
-
 }

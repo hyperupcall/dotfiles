@@ -1,8 +1,6 @@
-WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
-SAVEHIST=1000000 # TODO   max
 
 source "$XDG_CONFIG_HOME/shell/modules/common/common.sh"
 
