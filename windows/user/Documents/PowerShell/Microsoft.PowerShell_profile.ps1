@@ -2,7 +2,7 @@ $ErrorView = 'ConciseView'
 
 Import-Module Dotfox
 Import-Module Dotmgr
-Import-Module Dots
+# Import-Module Dots
 #Enable-ExperimentalFeature -Name PSCommandNotFoundSuggestion
 #Enable-ExperimentalFeature -Name PSCultureInvariantReplaceOperator
 #Enable-ExperimentalFeature -Name PSImplicitRemotingBatching

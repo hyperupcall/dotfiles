@@ -1,14 +1,14 @@
 function Dotmgr() {
-	[CmdletBinding(DefaultParameterSetName='Symlink')]
+	[CmdletBinding(DefaultParameterSetName = 'Symlink')]
 	param (
 		# Subcommand to run
-		[Parameter(ParameterSetName='Symlink', Mandatory=$true)]
+		[Parameter(ParameterSetName = 'Symlink', Mandatory = $true)]
 		[ValidateSet('bootstrap-stage1', 'bootstrap', 'transfer')]
 		[String]
 		$Subcommand,
 
 		# Print help
-		[Parameter(ParameterSetName='Help')]
+		[Parameter(ParameterSetName = 'Help')]
 		[Switch]
 		$Help
 	)
@@ -17,7 +17,7 @@ function Dotmgr() {
 	$ErrorActionPreference = 'Stop'
 	$ErrorView = 'ConciseView'
 
-	if($Help) {
+	if ($Help) {
 		Get-Help "$($MYINVOCATION.InvocationName)"
 		return
 	}
@@ -63,7 +63,8 @@ function command-bootstrap() {
 		$octothorpIndex = $_.IndexOf('#')
 		if ($octothorpIndex -lt 0) {
 			$line = $_.Trim()
-		} else {
+		}
+		else {
 			$line = $_.Substring(0, $octothorpIndex).Trim()
 		}
 
@@ -117,7 +118,7 @@ function command-bootstrap() {
 	Write-Host 'nim, powertoys, gpg4win-portable, autohotkey dont really work'
 
 	# for espanso?
-	# [Environment]::SetEnvironmentVariable('PASSWORD_STORE_DIR', "G:\bridge\password-store", [System.EnvironmentVariableTarget]::User)
+	[Environment]::SetEnvironmentVariable('PASSWORD_STORE_DIR', "$env:USERPROFILE\Dropbox\password-store", [System.EnvironmentVariableTarget]::User)
 	# [Environment]::SetEnvironmentVariable('VISUAL', "neovide", [System.EnvironmentVariableTarget]::User)
 	# [Environment]::SetEnvironmentVariable('EDITOR', "neovide", [System.EnvironmentVariableTarget]::User)
 
@@ -193,7 +194,7 @@ function Ensure-ScoopBucket {
 function Ensure-ScoopPackage {
 	[CmdletBinding()]
 	Param (
-		[Parameter(Mandatory=$true,Position=0)]
+		[Parameter(Mandatory = $true, Position = 0)]
 		[ValidateNotNullOrEmpty()]
 		[ValidatePattern("[a-z]+")]
 		[String]
@@ -203,38 +204,39 @@ function Ensure-ScoopPackage {
 	$appDir = Join-Path -Path "$HOME/scoop/apps" -ChildPath "$Name"
 	if (Test-Path "$appDir") {
 		scoop update "$Name"
-	} else {
+	}
+ else {
 		scoop install "$Name"
 	}
 }
 
 function Test-RegistryKeyValue {
 
-    [CmdletBinding()]
-    param(
-        [Parameter(Mandatory=$true)]
-        [string]
-        # The path to the registry key where the value should be set.  Will be created if it doesn't exist.
-        $Path,
+	[CmdletBinding()]
+	param(
+		[Parameter(Mandatory = $true)]
+		[string]
+		# The path to the registry key where the value should be set.  Will be created if it doesn't exist.
+		$Path,
 
-        [Parameter(Mandatory=$true)]
-        [string]
-        # The name of the value being set.
-        $Name
-    )
+		[Parameter(Mandatory = $true)]
+		[string]
+		# The name of the value being set.
+		$Name
+	)
 
-    if(!(Test-Path -Path $Path -PathType Container)) {
-        return $false
-    }
+	if (!(Test-Path -Path $Path -PathType Container)) {
+		return $false
+	}
 
-    $properties = Get-ItemProperty -Path $Path
-    if(!$properties) {
-        return $false
-    }
+	$properties = Get-ItemProperty -Path $Path
+	if (!$properties) {
+		return $false
+	}
 
-    if(!(Get-Member -InputObject $properties -Name $Name)) {
-        return $false
-    }
+	if (!(Get-Member -InputObject $properties -Name $Name)) {
+		return $false
+	}
 
-    return $true
+	return $true
 }

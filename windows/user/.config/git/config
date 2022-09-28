@@ -7,9 +7,9 @@
 [commit]
 	template = ~/.dots/user/.config/git/templates/commit
 [credential]
-	helper = manager-core
+	helper = wincred
 [credential "helperselector"]
-	selected = manager-core
+	selected = wincred
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -18,4 +18,4 @@
 [status]
 	submoduleSummary = true
 [gpg]
-	program = C:/Program Files (x86)/GnuPG/bin/gpg.exe
+	# program = C:/Program Files (x86)/GnuPG/bin/gpg.exe
