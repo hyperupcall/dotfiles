@@ -14,7 +14,7 @@
 # - Basalt
 main() {
 	if [ -d ~/.bootstrap ]; then
-		if util.prompt "It seems you have already bootstraped your dotfiles, do you wish to do it again?"; then :; else
+		if util.confirm "It seems you have already bootstraped your dotfiles, do you wish to do it again?"; then :; else
 			util.die 'Exiting'
 		fi
 	fi
