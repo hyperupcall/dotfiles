@@ -71,7 +71,7 @@ must.link() {
 	local src="$REPLY"
 
 	util.get_path "$2"
-	local link="$REPLY"
+	local target="$REPLY"
 
 	if [ -z "$1" ]; then
 		core.print_warn "must.link: First parameter is emptys"
@@ -84,30 +84,30 @@ must.link() {
 	fi
 
 	# Skip if already is correct
-	if [ -L "$link" ] && [ "$(readlink "$link")" = "$src" ]; then
+	if [ -L "$target" ] && [ "$(readlink "$target")" = "$src" ]; then
 		return
 	fi
 
 	# If it is an empty directory (and not a symlink) automatically remove it
-	if [ -d "$link" ] && [ ! -L "$link" ]; then
-		local children=("$link"/*)
+	if [ -d "$target" ] && [ ! -L "$target" ]; then
+		local children=("$target"/*)
 		if (( ${#children[@]} == 0)); then
-			rmdir "$link"
+			rmdir "$target"
 		else
-			core.print_warn "Skipping symlink from '$src' to '$link'"
+			core.print_warn "Skipping symlink from '$src' to '$target' (target a non-empty directory)"
 			return
 		fi
 	fi
 	if [ ! -e "$src" ]; then
-		core.print_warn "Skipping symlink from '$src' to $link"
+		core.print_warn "Skipping symlink from '$src' to $target (source directory not found)"
 		return
 	fi
 
 	local output=
-	if output=$(ln -sfT "$src" "$link" 2>&1); then
-		core.print_info "Symlinking '$src' to $link"
+	if output=$(ln -sfT "$src" "$target" 2>&1); then
+		core.print_info "Symlinking '$src' to $target"
 	else
-		core.print_warn "Failed to symlink from '$src' to '$link'"
+		core.print_warn "Failed to symlink from '$src' to '$target'"
 		printf '  -> %s\n' "$output"
 	fi
 }

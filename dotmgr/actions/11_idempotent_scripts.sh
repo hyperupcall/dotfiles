@@ -19,7 +19,7 @@ main() {
 
 	dotmgr.call '12_dot_funcalias_extractor.sh'
 	dotmgr.call '13_dot_shell_generator.sh'
-	dotmgr.call '14_dotfox_deploy.sh'
+	dotmgr.call '14_dotfox_deploy.sh' # TODO
 
 	if [ "$profile" = 'desktop' ]; then
 		if util.is_cmd VBoxManage; then
@@ -27,8 +27,13 @@ main() {
 		fi
 	fi
 
+	# TODO: install http-server nodejs
 	if ! command -v file_server &>/dev/null; then
-		deno install --allow-net --allow-read https://deno.land/std@0.145.0/http/file_server.ts
+		if command -v deno &>/dev/null; then
+			deno install --allow-net --allow-read https://deno.land/std@0.145.0/http/file_server.ts
+		else
+			core.print_warn "Deno not installed. Skipping installation of 'file_server'"
+		fi
 	fi
 
 	if util.confirm "Update Packer?"; then

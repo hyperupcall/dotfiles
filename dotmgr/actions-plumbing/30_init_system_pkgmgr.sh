@@ -20,14 +20,6 @@ main() {
 
 			install.upgrade_os "$package_manager"
 			install.core_packages "$package_manager"
-
-			if util.confirm 'Install VSCode and VSCode Insiders?'; then
-				install.vscode "$package_manager"
-			fi
-
-			if util.confirm 'Install Brave and Brave Beta?'; then
-				install.brave "$package_manager"
-			fi
 		fi
 	done; unset -v package_manager
 
@@ -94,87 +86,3 @@ install.core_packages() {
 		core.print_fatal "Pakage manager '$pkgmngr' not supported"
 	esac
 }
-
-install.vscode() {
-	local pkgmngr="$1"
-
-	core.print_info 'Installing VSCode and VSCode Insiders'
-
-	case $pkgmngr in
-	pacman)
-		yay -S visual-studio-code-bin visual-studio-code-insiders-bin
-		;;
-	apt)
-		curl -fsSLo- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > './packages.microsoft.gpg'
-		sudo install -o root -g root -m 644 './packages.microsoft.gpg' '/etc/apt/trusted.gpg.d'
-		rm -f './packages.microsoft.gpg'
-		printf '%s\n' "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" \
-			| sudo tee '/etc/apt/sources.list.d/vscode.list'
-
-		sudo apt-get -y update
-		sudo apt-get -y install code code-insiders
-		;;
-	dnf)
-		sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-		printf "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc\n" \
-			| sudo tee '/etc/yum.repos.d/vscode.repo'
-
-		sudo dnf check-update
-		sudo dnf -y install code code-insiders
-		;;
-	zypper)
-		sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-			printf "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc\n" \
-				| sudo tee '/etc/zypp/repos.d/vscode.repo'
-
-		sudo zypper refresh
-		sudo zypper -y install code code-insiders
-		;;
-	*)
-		core.print_fatal "Pakage manager '$pkgmngr' not supported"
-	esac
-}
-
-install.brave() {
-	local pkgmngr="$1"
-
-	core.print_info 'Installing Brave and Brave Beta'
-
-	case $pkgmngr in
-	pacman)
-		yay -S brave-browser brave-browser-beta
-		;;
-	apt)
-		sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-		printf '%s\n' "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" \
-			| sudo tee '/etc/apt/sources.list.d/brave-browser-release.list'
-		sudo curl -fsSLo /usr/share/keyrings/brave-browser-beta-archive-keyring.gpg https://brave-browser-apt-beta.s3.brave.com/brave-browser-beta-archive-keyring.gpg
-		printf '%s\n' "deb [signed-by=/usr/share/keyrings/brave-browser-beta-archive-keyring.gpg arch=amd64] https://brave-browser-apt-beta.s3.brave.com/ stable main" \
-			| sudo tee '/etc/apt/sources.list.d/brave-browser-beta.list'
-
-		sudo apt-get -y update
-		sudo apt-get -y install brave-browser brave-browser-beta
-		;;
-	dnf)
-		sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/
-		sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
-		sudo dnf config-manager --add-repo https://brave-browser-rpm-beta.s3.brave.com/x86_64/
-		sudo rpm --import https://brave-browser-rpm-beta.s3.brave.com/brave-core-nightly.asc
-
-		dnf check-update
-		sudo dnf -y install brave-browser brave-browser-beta
-		;;
-	zypper)
-		sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
-		sudo zypper -y addrepo https://brave-browser-rpm-release.s3.brave.com/x86_64/ brave-browser
-		sudo rpm --import https://brave-browser-rpm-beta.s3.brave.com/brave-core-nightly.asc
-		sudo zypper addrepo https://brave-browser-rpm-beta.s3.brave.com/x86_64/ brave-browser-beta
-
-		sudo zypper refresh
-		sudo zypper -y install brave-browser brave-browser-beta
-		;;
-	*)
-		core.print_fatal "Pakage manager '$pkgmngr' not supported"
-	esac
-}
-

@@ -39,16 +39,17 @@ The `bootstrap.sh` script performs the following steps:
 - Creates a `~/.bootstrap/bootstrap-out.sh`; sourcing it does the following
   - Sets `NAME`, `EMAIL`, `EDITOR`, `VISUAL`
   - Appends `$HOME/.dots/.usr/bin` to `PATH`
-  - Sources `~/.dots/xdg.sh`
+  - Sources `~/.dots/xdg.sh`, if it exists
 
 Then, run the following
 
 ```sh
 . ~/.bootstrap/bootstrap-out.sh
-dotmgr bootstrap
 
-# Now, use any dotmgr subcommand
-dotmgr action bootstrap
+# Now, continue with dotmgr
+dotmgr action 10_bootstrap
+dotmgr action 10_sync_dotfiles
+dotmgr action 10_bootstrap
 ```
 
 Now, make sure this repository is properly set up
@@ -58,18 +59,3 @@ Now, make sure this repository is properly set up
 sudo dotmgr
 ```
 
-## Troubleshooting
-
-1. dotmgr not found
-
-```txt
-dotmgr: command not found
-```
-
-Solution is to execute it manually like so:
-
-```sh
-~/.dots/.dotmgr/src/ibn
-```
-
-If that file does not exist, you must re-bootstrap everything

@@ -19,12 +19,10 @@ main() {
 
 	local part_uuid="c875b5ca-08a6-415e-bc11-fc37ec94ab8f"
 	local mnt='/storage/ur'
-	if [ -d "$mnt" ]; then
-		if ! grep -q "$mnt" /etc/fstab; then
-			printf '%s\n' "PARTUUID=$part_uuid  $mnt  btrfs  defaults,noatime,X-mount.mkdir  0 0" \
-				| sudo tee -a /etc/fstab >/dev/null
-			sudo mount "$mnt"
-		fi
+	if ! grep -q "$mnt" /etc/fstab; then
+		printf '%s\n' "PARTUUID=$part_uuid  $mnt  btrfs  defaults,noatime,X-mount.mkdir  0 0" \
+			| sudo tee -a /etc/fstab >/dev/null
+		sudo mount "$mnt"
 	fi
 
 	for file in ~/.profile ~/.bashrc ~/.bash_profile "${ZDOTDIR:-$HOME}/.zshrc" "${XDG_CONFIG_HOME:-$HOME/.config}/fish/config.fish"; do

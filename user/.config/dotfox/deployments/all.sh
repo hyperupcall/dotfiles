@@ -154,7 +154,7 @@ declare -ra dotfiles=(
 	cfg:'sx'
 	cfg:'sxhkd'
 	cfg:'swaylock'
-	cfg:'systemd'
+	cfg:'systemd/user/dropbox.service'
 	cfg:'taffybar'
 	cfg:'taskwarrior'
 	cfg:'terminator'

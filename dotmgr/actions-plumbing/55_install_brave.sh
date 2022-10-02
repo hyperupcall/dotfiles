@@ -1,0 +1,49 @@
+
+main() {
+	if util.confirm 'Install Brave and Brave Beta?'; then
+		install.brave "$package_manager"
+	fi
+}
+
+install.brave() {
+	util.get_package_manager
+	local pkgmngr="$REPLY"
+
+	case $pkgmngr in
+	pacman)
+		# TODO: manjaro: brave-browser brave-browser-beta
+		yay -S brave brave-bin brave-beta-bin
+		;;
+	apt)
+		sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+		printf '%s\n' "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" \
+			| sudo tee '/etc/apt/sources.list.d/brave-browser-release.list'
+		sudo curl -fsSLo /usr/share/keyrings/brave-browser-beta-archive-keyring.gpg https://brave-browser-apt-beta.s3.brave.com/brave-browser-beta-archive-keyring.gpg
+		printf '%s\n' "deb [signed-by=/usr/share/keyrings/brave-browser-beta-archive-keyring.gpg arch=amd64] https://brave-browser-apt-beta.s3.brave.com/ stable main" \
+			| sudo tee '/etc/apt/sources.list.d/brave-browser-beta.list'
+
+		sudo apt-get -y update
+		sudo apt-get -y install brave-browser brave-browser-beta
+		;;
+	dnf)
+		sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/
+		sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+		sudo dnf config-manager --add-repo https://brave-browser-rpm-beta.s3.brave.com/x86_64/
+		sudo rpm --import https://brave-browser-rpm-beta.s3.brave.com/brave-core-nightly.asc
+
+		dnf check-update
+		sudo dnf -y install brave-browser brave-browser-beta
+		;;
+	zypper)
+		sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+		sudo zypper -y addrepo https://brave-browser-rpm-release.s3.brave.com/x86_64/ brave-browser
+		sudo rpm --import https://brave-browser-rpm-beta.s3.brave.com/brave-core-nightly.asc
+		sudo zypper addrepo https://brave-browser-rpm-beta.s3.brave.com/x86_64/ brave-browser-beta
+
+		sudo zypper refresh
+		sudo zypper -y install brave-browser brave-browser-beta
+		;;
+	*)
+		core.print_fatal "Pakage manager '$pkgmngr' not supported"
+	esac
+}
