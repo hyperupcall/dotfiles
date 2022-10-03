@@ -8,6 +8,13 @@
 # enables unregistering all virtual machines
 
 main() {
+	if util.is_cmd VBoxManage; then
+		VBoxManage setproperty machinefolder '/storage/vault/rodinia/VirtualBox_Machines'
+	else
+		core.print_error "Must have command 'VBoxManage' installed"
+		exit 1
+	fi
+
 	core.shopt_push -s nullglob
 
 	local flag_unregister='no'

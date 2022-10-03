@@ -3,7 +3,4 @@
 .usr/
 .dotmgr/
 site/
-
 *.env
-
-.zcompdump # TODO

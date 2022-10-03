@@ -5,11 +5,11 @@ alias help='run-help'
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 
-SAVEHIST=1000000 # TODO   max
+SAVEHIST=2147483647
 autoload -Uz compinit
 compinit -d ~/.zcompdump
 
-HISTFILE=~/.zsh_history
+HISTFILE="$XDG_STATE_HOME/history/zsh_history"
 HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory

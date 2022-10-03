@@ -4,7 +4,6 @@ configuration {
 	cycle: true;
 	show-icons: true;
 	matching: "fuzzy";
-	theme: "~/config/rofi/themes/_.theme.rasi";
 	terminal: "fox-default launch terminal-emulator";
 
 	/* hide-scrollbar: true;
@@ -16,3 +15,4 @@ configuration {
 	display-window: "";
 	columns: 3; */
 }
+

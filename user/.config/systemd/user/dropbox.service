@@ -1,7 +1,7 @@
 [Unit]
 Description=Dropbox Daemon
 ConditionPathExists=%h/.dots/.usr/bin/dropboxd
-After=network.target
+After=local-fs.target network.target
 
 [Service]
 Type=simple

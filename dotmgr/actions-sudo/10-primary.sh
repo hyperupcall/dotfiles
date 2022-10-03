@@ -1,31 +1,33 @@
 # shellcheck shell=bash
 
-main() {
-	echo "$EUID"
-}
+# Name:
+# Primary
+#
+# Description:
+# Adds user to various groups
 
-main.dotmgr() {
+main() {
 	source "$DOTMGR_ROOT/src/util/source.sh"
 
 	# -------------------------------------------------------- #
 	#                    COPY ROOT DOTFILES                    #
 	# -------------------------------------------------------- #
-	core.print_info 'Copying root dotfiles'
-	local {src,dest}_file=
-	for src_file in ~/.dots/system/**; do
-		dest_file=${src_file#*/.dots/system}
+	# core.print_info 'Copying root dotfiles'
+	# local {src,dest}_file=
+	# for src_file in ~/.dots/system/**; do
+	# 	dest_file=${src_file#*/.dots/system}
 
-		if [ -d "$src_file" ]; then
-			continue
-		fi
+	# 	if [ -d "$src_file" ]; then
+	# 		continue
+	# 	fi
 
-		if [[ $src_file == *ignore* ]]; then
-			continue
-		fi
+	# 	if [[ $src_file == *ignore* ]]; then
+	# 		continue
+	# 	fi
 
-		sudo mkdir -p "${dest_file%/*}"
-		sudo cp -f "$src_file" "$dest_file"
-	done; unset -v {src,dest}_file
+	# 	sudo mkdir -p "${dest_file%/*}"
+	# 	sudo cp -f "$src_file" "$dest_file"
+	# done; unset -v {src,dest}_file
 
 
 	# -------------------------------------------------------- #
@@ -59,7 +61,9 @@ must_group() {
 		fi
 	fi
 
-	if ! usermod -aG "$group" "$user"; then
+	if usermod -aG "$group" "$user"; then
+		core.print_info "Added user '$user' to group '$group'"
+	else
 		core.print_warn "Failed to add user '$user' to group '$group'"
 	fi
 }

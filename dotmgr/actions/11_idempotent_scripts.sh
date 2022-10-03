@@ -21,13 +21,13 @@ main() {
 	dotmgr.call '13_dot_shell_generator.sh'
 	dotmgr.call '14_dotfox_deploy.sh' # TODO
 
+	# TODO: install http-server nodejs
 	if [ "$profile" = 'desktop' ]; then
 		if util.is_cmd VBoxManage; then
 			VBoxManage setproperty machinefolder '/storage/vault/rodinia/VirtualBox_Machines'
 		fi
 	fi
 
-	# TODO: install http-server nodejs
 	if ! command -v file_server &>/dev/null; then
 		if command -v deno &>/dev/null; then
 			deno install --allow-net --allow-read https://deno.land/std@0.145.0/http/file_server.ts

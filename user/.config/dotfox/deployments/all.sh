@@ -24,6 +24,7 @@ declare -ra dotfiles=(
 	home:'.hushlogin'
 	# home:'.yarnrc'
 	cfg:'.gtktermrc'
+	cfg:'rofi-json-menu.json'
 	cfg:'aerc/aerc.conf'
 	cfg:'aerc/binds.conf'
 	cfg:'alacritty'

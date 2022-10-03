@@ -21,7 +21,7 @@
 	// "editor.fontFamily": "'Droid Sans Mono', 'Fira Sans Mono', 'monospace'",
 	"editor.fontLigatures": true,
 	"editor.fontSize": 16,
-	"editor.formatOnPaste": true,
+	"editor.formatOnPaste": false,
 	"editor.formatOnType": false,
 	"editor.insertSpaces": false,
 	"editor.inlineSuggest.enabled": true,

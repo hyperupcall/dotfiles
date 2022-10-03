@@ -72,7 +72,6 @@ typeset -U PATH path
 # 	| xargs -0 systemctl --user import-environment
 # } &)
 
-# TODO: compdump
 autoload run-help
 autoload zmv
 autoload -Uz compinit

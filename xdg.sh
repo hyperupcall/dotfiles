@@ -25,10 +25,6 @@ __xdg_main() {
 	--set-type)
 		__xdg_flag_value='set-type'
 		;;
-	*)
-		:
-		#printf '%s\n' "Warning: xdg.sh: An invalid flag was specified ($__arg). Defaulting to '--export-vars'" >&2
-		;;
 	esac done; unset -v __arg
 
 	case $__xdg_flag_value in

@@ -1,0 +1,26 @@
+{
+	"browser": {
+		"description": "Brave",
+		"cmd": "brave-browser",
+		"terminal": false,
+		"icon": "brave-browser"
+	},
+	"terminal": {
+		"description": "Kitty",
+		"cmd": "kitty",
+		"terminal": false,
+		"icon": "kitty"
+	},
+	"code": {
+		"description": "VSCode",
+		"cmd": "code",
+		"terminal": false,
+		"icon": "com.visualstudio.code"
+	},
+	"email": {
+		"description": "thunderbird",
+		"cmd": "thunderbird",
+		"terminal": false,
+		"icon": "thunderbird"
+	}
+}
