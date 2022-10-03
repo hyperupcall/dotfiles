@@ -6,4 +6,7 @@ main() {
 
 	# TEST gpg decryption for a set of keys
 	printf '%s\n' 'Not implemented'
+
+	# IF dropbox is on and syncing
+
 }
