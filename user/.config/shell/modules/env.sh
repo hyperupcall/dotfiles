@@ -24,7 +24,7 @@ export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
 export FZF_DEFAULT_OPTS="--history \"$XDG_STATE_HOME/history/fzf_history\" --history-size=10000"
 
 # gnupg
-export GPG_TTY; GPG_TTY=$(tty)
+# export GPG_TTY; GPG_TTY=$(tty)
 
 # guile
 export GUILE_HISTORY="$XDG_STATE_HOME/history/guile_history"
