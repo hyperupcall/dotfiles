@@ -19,9 +19,8 @@ main() {
 
 	dotmgr.call '12_dot_funcalias_extractor.sh'
 	dotmgr.call '13_dot_shell_generator.sh'
-	dotmgr.call '14_dotfox_deploy.sh' # TODO
+	dotmgr.call 'actions' '12_sync_dotfiles.sh'
 
-	# TODO: install http-server nodejs
 	if [ "$profile" = 'desktop' ]; then
 		if util.is_cmd VBoxManage; then
 			VBoxManage setproperty machinefolder '/storage/vault/rodinia/VirtualBox_Machines'

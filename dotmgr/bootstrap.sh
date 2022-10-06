@@ -54,8 +54,7 @@ main() {
 
 export NAME='Edwin Kofler'
 export EMAIL='edwin@kofler.dev'
-export EDITOR='nvim'
-export VISUAL="\$EDITOR"
+export VISUAL='nvim'
 export PATH="\$HOME/.dots/.usr/bin:\$PATH"
 
 if [ -f ~/.dots/xdg.sh ]; then

@@ -8,9 +8,9 @@ export LANG="${LANG:-en_US.UTF-8}"
 export LANGUAGE="${LANGUAGE:-"$LANG"}"
 export LC_ALL="${LC_ALL:-"$LANG"}"
 export VISUAL='nvim'
-export EDITOR="$VISUAL"
+export EDITOR='ed'
 export DIFFPROG='vim -d'
-export PAGER='less'
+export PAGER='bat'
 # export BROWSER='brave-browser'
 # export SPELL='aspell -x -c'
 

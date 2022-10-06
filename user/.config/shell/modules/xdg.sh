@@ -388,9 +388,6 @@ export TASKDATA="$XDG_DATA_HOME/taskwarrior"
 # texmf
 export TEXMFHOME="$XDG_DATA_HOME/textmf"
 
-# todotxt
-export TODOTXT_CFG_FILE="$XDG_CONFIG_HOME/todotxt/config.sh"
-
 # tree-sitter
 export TREE_SITTER_DIR="$XDG_CONFIG_HOME/tree-sitter"
 

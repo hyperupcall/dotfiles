@@ -9,10 +9,16 @@ install.brave() {
 	util.get_package_manager
 	local pkgmngr="$REPLY"
 
+	util.get_os_id
+	local os_id="$REPLY"
+
 	case $pkgmngr in
 	pacman)
-		# TODO: manjaro: brave-browser brave-browser-beta
-		yay -S brave brave-bin brave-beta-bin
+		if [ "$os_id" = 'manjaro' ]; then
+			yay -S brave-browser brave-browser-beta
+		else
+			yay -S brave brave-bin brave-beta-bin
+		fi
 		;;
 	apt)
 		sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg

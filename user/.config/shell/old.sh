@@ -47,6 +47,9 @@ _path_prepend "$ASDF_DATA_DIR/shims"
 # export SWIFTENV_ROOT="$XDG_DATA_HOME/swiftenv"
 # _path_prepend "$SWIFTENV_ROOT/bin"
 
+# # todotxt
+# export TODOTXT_CFG_FILE="$XDG_CONFIG_HOME/todotxt/config.sh"
+
 # volta
 # export VOLTA_HOME="$XDG_STATE_HOME/volta"
 # _path_prepend "$XDG_STATE_HOME/volta/bin"

@@ -67,6 +67,7 @@ declare -ra dotfiles=(
 	cfg:'eww'
 	cfg:'fish'
 	cfg:'fontconfig'
+	# cfg:'foxxo' TODO (currently contains private tokens)
 	cfg:'gh/config.yml'
 	cfg:'gdb'
 	cfg:'git'

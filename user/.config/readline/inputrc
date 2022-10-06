@@ -46,6 +46,11 @@ set visible-stats on
 "\e\e[C": forward-word
 "\e\e[D": backward-word
 
+# "\ef": shell-forward-word
+# "\eb": shell-backward-word
+# "\ed": shell-kill-word
+# "\et": shell-transpose-words
+# "\e\C-h": shell-backward-kill-word
 
 $if mode=vi
 	set keymap vi-command

@@ -1,8 +1,8 @@
 # shellcheck shell=bash
 
-export VISUAL="kak"
-export EDITOR="$VISUAL"
-export PAGER="less"
+export VISUAL='kak'
+export EDITOR='ed'
+export PAGER='bat'
 
 [ -f ~/.bashrc-generated-aliases ] && source ~/.bashrc-generated-aliases
 [ -f ~/.bashrc-generated-functions ] && source ~/.bashrc-generated-functions

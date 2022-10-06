@@ -14,9 +14,11 @@ main() {
 		fi
 	fi
 
-	cargo install starship
-	cargo install cargo-binstall
-	cargo install fd-find
-	cargo install modenv
-	cargo install --locked bat
+	if util.confirm 'Install Rust packages?'; then
+		cargo install starship
+		cargo install cargo-binstall
+		cargo install fd-find
+		cargo install modenv
+		cargo install --locked bat
+	fi
 }

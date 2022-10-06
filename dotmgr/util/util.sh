@@ -112,3 +112,18 @@ util.get_package_manager() {
 
 	core.print_die 'Failed to get the system package manager'
 }
+
+util.get_os_id() {
+	unset -v REPLY; REPLY=
+
+	while IFS='=' read -r key value; do
+		if [ "$key" = 'ID' ]; then
+			REPLY=$value
+		fi
+	done < /etc/os-release; unset -v line
+
+	if [ -z "$REPLY" ]; then
+		core.print_error "Failed to determine OS id"
+		exit 1
+	fi
+}
