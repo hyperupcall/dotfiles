@@ -2,8 +2,6 @@
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 
-source "$XDG_CONFIG_HOME/shell/modules/common/common.sh"
-
 # autoload -Uz zcompile
 
 # zmodload zsh/attr

@@ -107,6 +107,39 @@ nh() {
 	nohup "$@" > /dev/null 2>&1 &
 }
 
+pbake() {
+	if ! _shell_dir=$(
+		while [ ! -d '.git' ] && [ "$PWD" != / ]; do
+			if ! cd ..; then
+				exit 1
+			fi
+		done
+		if [ "$PWD" = / ]; then
+			exit 1
+		fi
+		printf '%s' "$PWD"
+	); then
+		_shell_util_die "Failed to cd to nearest Git repository" || return
+	fi
+
+	_shell_bakefile='.hidden/Bakefile.sh'
+	if [ -f "$_shell_bakefile" ]; then
+		_shell_bake=
+		if command -v bake >/dev/null 2>&1; then
+			_shell_bake='bake'
+		else
+			_shell_bake='./bake'
+		fi
+
+		_shell_util_log_info "Using Bakefile: $PWD/$_shell_bakefile"
+		"$_shell_bake" -f "$_shell_bakefile" "$@"
+
+		unset -v _shell_bake _shell_bakefile
+	else
+		_shell_util_die "Could not find a Bakefile under hidden directory" || return
+	fi
+}
+
 qe() {
 	filterList="BraveSoftware code tetrio-desktop obsidian discord sublime-text Ryujinx unity3d hmcl hdlauncher TabNine zettlr Zettlr Google lunarclient libreoffice VirtualBox configstore pulse obs-studio eDEX-UI 1Password kde.org sublime-text-3 gdlauncher gdlauncher_next launcher-main gitify QtProject GIMP r2modman r2modmanPlus-local Code plover GitKraken Electron bonsai-browser sidekick Insomnia Typora wavebox microsoft-edge evolution chromium"
 

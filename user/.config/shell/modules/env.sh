@@ -11,6 +11,7 @@ export VISUAL='nvim'
 export EDITOR='ed'
 export DIFFPROG='vim -d'
 export PAGER='bat'
+export GIT_PAGER='less'
 # export BROWSER='brave-browser'
 # export SPELL='aspell -x -c'
 
