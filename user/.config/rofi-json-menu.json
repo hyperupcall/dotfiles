@@ -18,9 +18,9 @@
 		"icon": "com.visualstudio.code"
 	},
 	"email": {
-		"description": "thunderbird",
-		"cmd": "thunderbird",
+		"description": "mailspring",
+		"cmd": "mailspring",
 		"terminal": false,
-		"icon": "thunderbird"
+		"icon": "mailspring"
 	}
 }
