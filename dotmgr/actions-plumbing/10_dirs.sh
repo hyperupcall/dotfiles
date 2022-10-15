@@ -225,6 +225,7 @@ main() {
 			ln -fs "$file" ~/.dots/.usr/bin
 		done; unset -v file
 	fi
+	ln -s ~/repos/choose/target/debug/choose ~/.dots/.usr/bin/choose
 
 	# Must be last as they are dependent on previous symlinking
 	must.dir "$HOME/.dots/.home/Documents/Shared"

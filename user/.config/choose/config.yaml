@@ -1,0 +1,148 @@
+db:
+  application-launcher:
+    - albert
+    - dmenu
+    - i3-dmenu-desktop
+    - j4-dmenu-desktop
+    - jgmenu
+    - kupfer
+    - rofi
+    - ulauncher
+    - wofi
+  audio-mixer:
+    - ncpamixer
+    - pacmixer
+    - pamix
+    - pulsemix
+  brightness-<VALUE>:
+    - ddcci
+    - x11
+  calculator:
+    - kalker
+  file-manager:
+    - cfiles
+    - fff
+    - lf
+    - midnight-commander
+    - nnn
+    - ranger
+    - vifm
+    - xplr
+  file-manager-gui:
+  git-diff:
+    - delta
+    - diff-so-fancy
+    - difftastic
+    - git-split-diffs
+  hex-editor:
+    - imhex
+    - hexyl
+  image-editor:
+    - silvernode
+  image-viewer:
+    - feh
+    - foxitreader
+    - okular
+    - qpdfview
+    - sxiv
+    - viewnior
+  web-browser:
+    - brave
+    - browsh
+  mail-client:
+    - aerc
+    - alpine
+    - mutt
+    - sup
+  menu-bar:
+    - dzen
+    - lemonbar
+    - polybar
+    - taffybar
+    - xmobar
+  menu-bar-text:
+    - i3blocks
+    - i3status
+    - i3status-rs
+  menu-selector:
+    - dmenu
+    - rofi
+  music-player:
+    - cmus
+  notification-daemon:
+    - libnotify
+  pdf-viewer:
+    - foxit
+    - llpp
+    - okular
+  scm-viewer:
+    - gitea
+    - gitlab
+    - kallithea
+  screen-lock-x:
+    - betterlockscreen
+    - i3lock-color
+  screenshot-utility:
+    - maim
+    - scrot
+    - xclip
+  shell:
+    - bash
+    - dash
+    - elvish
+    - ion
+    - ksh
+    - nushell
+    - oil
+    - xonsh
+    - zsh
+  shell-prompt-bash:
+    - bash-git-prompt
+    - gitstatus
+    - liquid-prompt
+    - oh-my-git
+    - powerline
+    - powerline-shell
+    - sexy-bash-prompt
+    - starship
+  shell-prompt-zsh:
+    - starship
+  song-<PART>:
+  system-info:
+    - neofetch
+  system-monitor:
+    - glances
+    - top
+  terminal-emulator:
+    - alacritty
+    - kitty
+    - rxvt
+    - terminator
+    - termite
+    - wezterm
+    - xterm
+  terminal-multiplexer:
+    - dvtm
+    - pymux
+    - screen
+    - tmux
+    - zellij
+  text-editor:
+    - ed
+    - geany
+    - micro
+    - nano
+    - neovim
+    - vim
+  version-control-system:
+    - fossil
+    - git
+    - mecurial
+  video-player:
+    - mpv
+    - vlc
+  volume-<PART>:
+  window-manager:
+    - awesome
+    - i3
+    - wmii

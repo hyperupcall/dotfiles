@@ -8,10 +8,7 @@ main() {
 		core.print_info 'Installing Basalt packages globally'
 
 		basalt global add \
-			hyperupcall/choose \
-			hyperupcall/autoenv \
-			hyperupcall/dotshellextract \
-			hyperupcall/dotshellgen
+			hyperupcall/autoenv
 		basalt global add \
 			cykerway/complete-alias \
 			rcaloras/bash-preexec \

@@ -1,6 +1,0 @@
-[Unit]
-Description=Lemonbar Launch
-
-[Service]
-Type=exec
-ExecStart=%h/config/choose/scripts/start-lemonbar.sh

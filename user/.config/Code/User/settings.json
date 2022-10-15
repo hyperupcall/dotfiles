@@ -239,7 +239,9 @@
 		"ol-prefix": false
 	},
 	"[yaml]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.insertSpaces": true,
+		"editor.tabSize": 2
 	},
 	"yaml.format.printWidth": 100,
 	"yaml.format.singleQuote": true,
