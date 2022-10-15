@@ -9,6 +9,7 @@
 	// EDITOR
 	"editor.acceptSuggestionOnCommitCharacter": false,
 	"editor.acceptSuggestionOnEnter": "off",
+	"editor.bracketPairColorization.enabled": true,
 	"editor.codeActionsOnSave": {
 		"source.fixAll.shellcheck": false
 	},
@@ -521,6 +522,7 @@
 		"foxxo.toml": "https://raw.githubusercontent.com/hyperupcall/foxxo/main/src/schemas/foxxoProject.schema.json",
 		"basalt.toml": "https://raw.githubusercontent.com/hyperupcall/foxxo/main/src/schemas/basalt.schema.json"
 	},
-	"npm.keybindingsChangedWarningShown": false,
-	"window.zoomLevel": -1
+	"npm.keybindingsChangedWarningShown": true,
+	"window.zoomLevel": -1,
+	"rpcServer.showStartupMessage": false
 }

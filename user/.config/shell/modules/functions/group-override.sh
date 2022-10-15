@@ -1,17 +1,53 @@
 # shellcheck shell=sh
 
 cd() {
-	case "$1" in
-	mov)
-		cd /storage/vault/rodinia/Media-Movies || _shell_util_die "Could not cd to '$1'"
-		return ;;
-	ser)
-		cd /storage/vault/rodinia/Media-Series || _shell_util_die "Could not cd to '$1'"
-		return ;;
+	# Ex. new mountpoints
+	if [ "$1" = '.' ]; then
+		# shellcheck disable=SC2164
+		cd -- "$PWD"
+	fi
+
+	if command -v autoenv_init >/dev/null 2>&1; then
+		autoenv_init
+	else
+		_shell_util_log_warn "Function is not defined: autoenv_init"
+	fi
+
+	if command -v autoenv_init >/dev/null 2>&1; then
+		__woof_cd_hook
+	else
+		_shell_util_log_warn "Function is not defined: __woof_cd_hook"
+	fi
+
+	case $1 in
+	--)
+		builtin cd -Pe "$@" || _shell_util_die "Could not cd to '$1'"
+		;;
+	-*)
+		builtin cd "$@" || _shell_util_die "Could not cd to '$1'"
+		;;
+	*)
+		builtin cd -Pe "$@" || _shell_util_die "Could not cd to '$1'"
+		;;
 	esac
 
-	autoenv_init
-	command cd "$@" || _shell_util_die "Could not cd to '$1'"
+	if [ -d "$PWD/.git" ]; then
+		__shell_output=
+		if __shell_output=$(git status --porcelain); then
+			if [ -z "$__shell_output" ]; then
+				if [ -f "$PWD/Bakefile.sh" ]; then
+					bake -u
+				fi
+			fi
+		else
+			_shell_util_log_warn "Command failed: git ..."
+		fi
+		unset -v __shell_output
+	fi
+
+	if [ -f "$PWD/foxxo.toml" ] || [ -f "$PWD/foxxy.toml" ] || [ -f "$PWD/fox.json" ]; then
+		foxxo lint --fix
+	fi
 }
 
 # clone(user)

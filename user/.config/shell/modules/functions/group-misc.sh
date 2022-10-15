@@ -85,6 +85,11 @@ faketty() {
 	unbuffer -p "@"
 }
 
+gs() {
+	_shell_util_log_warn "Correcting command to: 'g s'"
+	g s
+}
+
 # gclonedir() {
 # 	urlEncoded="$(jq -rn --arg x "$1" '$x | @uri')"
 # 	wget "https://download-directory.github.io/?url=$urlEncoded"

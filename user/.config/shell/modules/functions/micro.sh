@@ -39,7 +39,7 @@ v() {
 		s='sudo'
 	fi
 
-	_v_editor="${EDITOR:-vi}"
+	_v_editor="${VISUAL:-vi}"
 	if [ $# -eq 0 ]; then
 		"$_v_editor" .
 	else
