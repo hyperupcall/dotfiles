@@ -1,7 +1,7 @@
-# foxomate start
+# foxxo start
 * text=auto eol=lf
 bake linguist-generated
-# foxomate end
+# foxxo end
 
 user/.config/npm/npmrc filter=npmrc-clean
 user/.config/slack-term/config filter=slack-term-config-clean

@@ -517,7 +517,6 @@
 	"C_Cpp.codeAnalysis.clangTidy.args": ["-std=gnu++20"],
 	"C_Cpp.default.cppStandard": "gnu++20",
 	"C_Cpp.default.cStandard": "gnu17",
-	"workbench.colorTheme": "Ayu Mirage Bordered",
 	"commentAnchors.workspace.lazyLoad": false,
 	"git.enableCommitSigning": true,
 	"evenBetterToml.schema.associations": {
@@ -525,6 +524,7 @@
 		"basalt.toml": "https://raw.githubusercontent.com/hyperupcall/foxxo/main/src/schemas/basalt.schema.json"
 	},
 	"npm.keybindingsChangedWarningShown": true,
+	"rpcServer.showStartupMessage": false,
 	"window.zoomLevel": -1,
-	"rpcServer.showStartupMessage": false
+	"workbench.colorTheme": "Tokyo Night"
 }

@@ -10,8 +10,7 @@ export LC_ALL="${LC_ALL:-"$LANG"}"
 export VISUAL='nvim'
 export EDITOR='ed'
 export DIFFPROG='vim -d'
-export PAGER='bat'
-export GIT_PAGER='less'
+export PAGER='less'
 # export BROWSER='brave-browser'
 # export SPELL='aspell -x -c'
 

@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "poetry-instance"
+version = "1.2.2"
+description = ""
+authors = []
+license = ""
+
+[tool.poetry.dependencies]
+python = "3.10.7"
+poetry = "1.2.2"
+
+[tool.poetry.group.additional.dependencies]
+poetry-plugin-bundle = "^1.0.0"
+

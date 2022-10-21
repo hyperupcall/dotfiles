@@ -7,9 +7,9 @@ alias ll='exa -al --icons --git'
 
 # ------------------------ tweaks ------------------------ #
 alias cd-='cd -'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
+alias ..='cd ./..'
+alias ...='cd ./../..'
+alias ....='cd ./../../..'
 alias bzip2='bzip2 -k'
 alias chmod='chmod -c --preserve-root'
 alias chown='chown -c --preserve-root'

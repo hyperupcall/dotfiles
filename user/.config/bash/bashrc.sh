@@ -167,3 +167,4 @@ source "$XDG_CONFIG_HOME/bash/modules/readline.sh"
 source "$XDG_CONFIG_HOME/bash/modules/util.sh"
 
 # ---
+PATH="$/storage/ur/storage_home/Docs/Programming/repos/Groups/kaxon/init/repos/agent/bin:$PATH"

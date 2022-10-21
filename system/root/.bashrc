@@ -2,7 +2,7 @@
 
 export VISUAL='kak'
 export EDITOR='ed'
-export PAGER='bat'
+export PAGER='less'
 
 [ -f ~/.bashrc-generated-aliases ] && source ~/.bashrc-generated-aliases
 [ -f ~/.bashrc-generated-functions ] && source ~/.bashrc-generated-functions
