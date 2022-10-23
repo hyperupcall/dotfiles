@@ -25,7 +25,7 @@ Download and execute `bootstrap.sh` to begin the bootstrap process
 
 ```sh
 mkdir -p ~/.bootstrap
-curl -fLsSo ~/.bootstrap/bootstrap.sh 'https://raw.githubusercontent.com/hyperupcall/dots/trunk/dotmgr/bootstrap.sh'
+curl -#fLo ~/.bootstrap/bootstrap.sh 'https://raw.githubusercontent.com/hyperupcall/dots/trunk/dotmgr/bootstrap.sh'
 chmod +x ~/.bootstrap/bootstrap.sh
 ~/.bootstrap/bootstrap.sh
 ```
@@ -58,4 +58,3 @@ Now, make sure this repository is properly set up
 ( cd ~/.dots && { ./bake init; hookah refresh; } )
 sudo dotmgr
 ```
-

@@ -7,39 +7,30 @@
 # Bootstraps dotfiles
 #
 # It
+# - Installs dev build tools
 # - Installs jq
 # - Installs curl
 # - Moves distro dotfiles (to ~/.bootstrap)
 # - Installs Nim (in ~/.bootstrap)
 # - Installs dotfox (in ~/.bootstrap)
 main() {
-	if [ -d ~/.bootstrap ]; then
+	if [ -d ~/.bootstrap/done ]; then
 		if util.confirm "It seems you have already bootstraped your dotfiles, do you wish to do it again?"; then :; else
 			util.die 'Exiting'
 		fi
 	fi
 
 	# Ensure prerequisites
-	mkdir -p ~/.bootstrap/{bin,distro-dots} "$XDG_CONFIG_HOME"
+	util.ensure mkdir -p ~/.bootstrap/{bin,distro-dots} "$XDG_CONFIG_HOME"
+
+	# Nim requires GCC for compilation (done below)
+	util.update_and_upgrade
 
 	if util.is_cmd 'jq'; then
 		core.print_info 'Already installed jq'
 	else
 		core.print_info 'Installing jq'
-
-		if util.is_cmd 'pacman'; then
-			util.ensure sudo pacman -S --noconfirm 'jq'
-		elif util.is_cmd 'apt-get'; then
-			util.ensure sudo apt-get -y install 'jq'
-		elif util.is_cmd 'dnf'; then
-			util.ensure sudo dnf -y install 'jq'
-		elif util.is_cmd 'zypper'; then
-			util.ensure sudo zypper -y install 'jq'
-		elif util.is_cmd 'eopkg'; then
-			util.ensure sudo eopkg -y install 'jq'
-		elif iscmd 'brew'; then
-			ensure brew install 'jq'
-		fi
+		util.install_pkg 'jq'
 
 		if ! util.is_cmd 'jq'; then
 			core.print_die 'Automatic installation of jq failed'
@@ -50,20 +41,7 @@ main() {
 		core.print_info 'Already installed curl'
 	else
 		core.print_info 'Installing curl'
-
-		if util.is_cmd 'pacman'; then
-			util.ensure sudo pacman -S --noconfirm 'curl'
-		elif util.is_cmd 'apt-get'; then
-			util.ensure sudo apt-get -y install 'curl'
-		elif util.is_cmd 'dnf'; then
-			util.ensure sudo dnf -y install 'curl'
-		elif util.is_cmd 'zypper'; then
-			util.ensure sudo zypper -y install 'curl'
-		elif util.is_cmd 'eopkg'; then
-			util.ensure sudo eopkg -y install 'curl'
-		elif iscmd 'brew'; then
-			ensure brew install 'curl'
-		fi
+		util.install_pkg 'curl'
 
 		if ! util.is_cmd 'curl'; then
 			core.print_die 'Automatic installation of curl failed'
@@ -112,6 +90,8 @@ main() {
 		util.ensure curl -LsSo ~/.bootstrap/bin/dotfox "$dotfox_download_url"
 		util.ensure chmod +x ~/.bootstrap/bin/dotfox
 	fi
+
+	touch ~/.bootstrap/done
 
 	cat <<"EOF"
 ---

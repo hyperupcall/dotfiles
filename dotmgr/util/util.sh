@@ -54,6 +54,43 @@ util.clone() {
 	fi
 }
 
+util.update_and_upgrade() {
+	if util.is_cmd 'pacman'; then
+		sudo pacman -Syyu --noconfirm
+	elif util.is_cmd 'apt-get'; then
+		sudo apt-get -y update
+		sudo apt-get -y upgrade
+		sudo apt-get -y install apt-transport-https
+	elif util.is_cmd 'dnf'; then
+		sudo dnf -y update
+	elif util.is_cmd 'zypper'; then
+		sudo zypper -y update
+		sudo zypper -y upgrade
+	elif util.is_cmd 'eopkg'; then
+		: # TODO
+	elif iscmd 'brew'; then
+		util.ensure brew install "$cmd"
+	fi
+}
+
+util.install_pkg() {
+	local cmd="$1"
+
+	if util.is_cmd 'pacman'; then
+		util.ensure sudo pacman -S --noconfirm "$cmd"
+	elif util.is_cmd 'apt-get'; then
+		util.ensure sudo apt-get -y install "$cmd"
+	elif util.is_cmd 'dnf'; then
+		util.ensure sudo dnf -y install "$cmd"
+	elif util.is_cmd 'zypper'; then
+		util.ensure sudo zypper -y install "$cmd"
+	elif util.is_cmd 'eopkg'; then
+		util.ensure sudo eopkg -y install "$cmd"
+	elif iscmd 'brew'; then
+		util.ensure brew install "$cmd"
+	fi
+}
+
 util.clone_in_dots() {
 	local repo="$1"
 
