@@ -120,7 +120,7 @@ util.confirm() {
 	local input=
 	until [[ "$input" =~ ^[yn]$ ]]; do
 		read -rN1 -p "$message "
-		input=${REPLY@L}
+		input=${REPLY,,}
 	done
 	printf '\n'
 
@@ -163,4 +163,18 @@ util.get_os_id() {
 		core.print_error "Failed to determine OS id"
 		exit 1
 	fi
+}
+
+util.get_latest_github_tag() {
+	unset -v REPLY; REPLY=
+	local repo="$1"
+	
+	core.print_info "Getting latest version of: $repo"
+	
+	# FIXME: this is going to be rate limited
+	local url="https://api.github.com/repos/$repo/releases/latest"
+	local tag_name=
+	tag_name=$(curl -fsSLo- "$url" | jq -r '.tag_name')
+	
+	REPLY=$tag_name
 }

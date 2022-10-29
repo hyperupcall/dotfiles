@@ -1,7 +1,7 @@
 
 main() {
 	if util.confirm 'Install Brave and Brave Beta?'; then
-		install.brave "$package_manager"
+		install.brave
 	fi
 }
 

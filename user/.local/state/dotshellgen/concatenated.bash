@@ -8,7 +8,19 @@ done; unset -v dir
 
 # autoenv.bash
 if command -v basalt &>/dev/null; then
+	command() {
+		if [[ "$1" = '-v' && "$2" == gsha1sum ]]; then
+			enable_autoenv() { :; }
+
+			if builtin command "$@"; then
+				return $?
+			else
+				return $?
+			fi
+		fi
+	} # TODO
 	basalt.load --global 'github.com/hyperupcall/autoenv' 'activate.sh'
+	unset -f command
 fi
 
 # dircolors.bash
@@ -43,7 +55,7 @@ fi
 
 # woof.bash
 if command -v woof >/dev/null 2>&1; then
-  eval "$(woof init bash)"
+  eval "$(woof init --no-cd bash)"
 fi
 
 # zoxide.bash

@@ -7,9 +7,21 @@ for dir in "$HOME/.dots/.usr/bin"; do
 done; unset -v dir
 
 # autoenv.zsh
-# if command -v basalt &>/dev/null; then
-# 	basalt.load --global 'github.com/hyperupcall/autoenv' 'activate.sh'
-# fi
+if command -v basalt &>/dev/null; then
+	command() {
+		if [[ "$1" = '-v' && "$2" == gsha1sum ]]; then
+			enable_autoenv() { :; }
+
+			if builtin command "$@"; then
+				return $?
+			else
+				return $?
+			fi
+		fi
+	} # TODO
+	basalt.load --global 'github.com/hyperupcall/autoenv' 'activate.sh'
+	unfunction command
+fi
 
 # direnv.zsh
 if command -v &>/dev/null; then
@@ -17,15 +29,15 @@ if command -v &>/dev/null; then
 fi
 
 # pipx.zsh
-# if command -v register-python-argcomplete &>/dev/null; then
-# 	autoload -U bashcompinit
-# 	bashcompinit # TODO
-# 	eval "$(register-python-argcomplete pipx)"
-# fi
+if command -v register-python-argcomplete &>/dev/null; then
+	autoload -U bashcompinit
+	bashcompinit
+	eval "$(register-python-argcomplete pipx)"
+fi
 
 # woof.zsh
 if command -v woof >/dev/null 2>&1; then
-	eval "$(woof init zsh)"
+	eval "$(woof init --no-cd zsh)"
 fi
 
 # zoxide.zsh

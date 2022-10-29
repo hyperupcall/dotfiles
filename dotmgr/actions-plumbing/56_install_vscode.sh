@@ -2,14 +2,13 @@
 
 main() {
 	if util.confirm 'Install VSCode and VSCode Insiders?'; then
-		install.vscode "$package_manager"
+		install.vscode
 	fi
 }
 
 install.vscode() {
-	local pkgmngr="$1"
-
-	core.print_info 'Installing VSCode and VSCode Insiders'
+	util.get_package_manager
+	local pkgmngr="$REPLY"
 
 	case $pkgmngr in
 	pacman)

@@ -5,8 +5,6 @@
 
 main() {
 	if util.confirm 'Install Rustup?'; then
-		source "$XDG_CONFIG_HOME/shell/modules/xdg.sh"
-
 		if ! util.is_cmd 'rustup'; then
 			core.print_info "Installing rustup"
 			util.req https://sh.rustup.rs | sh -s -- --default-toolchain stable -y
