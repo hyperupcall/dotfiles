@@ -143,6 +143,7 @@ util.get_package_manager() {
 	for package_manager in pacman apt dnf zypper; do
 		if util.is_cmd "$package_manager"; then
 			REPLY="$package_manager"
+			
 			return
 		fi
 	done

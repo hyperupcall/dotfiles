@@ -4,7 +4,7 @@
 # Install Basalt
 
 main() {
-	if util.confirm 'Install Basalt?'; then
+	if util.confirm 'Install Basalt? packages'; then
 		core.print_info 'Installing Basalt packages globally'
 
 		basalt global add \

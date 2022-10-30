@@ -36,3 +36,4 @@ for d in aliases functions; do
 done; unset -v d
 
 # ---
+. "$HOME/.cargo/env"
