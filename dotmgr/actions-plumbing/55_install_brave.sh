@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 
 main() {
 	if util.confirm 'Install Brave and Brave Beta?'; then
