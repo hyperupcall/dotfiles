@@ -14,6 +14,5 @@ main() {
 		sudo ./xp-pen-pentablet-*/install.sh || util.die
 
 		popd >/dev/null
-
 	fi
 }

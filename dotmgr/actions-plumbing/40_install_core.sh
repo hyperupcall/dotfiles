@@ -1,7 +1,7 @@
 # shellcheck shell=bash
 
 # Name:
-# Install essential packages
+# Install core packages
 #
 # Description:
 # For base: base-devel, build-essential, @development-tools, etc.

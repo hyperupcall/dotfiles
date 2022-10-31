@@ -6,8 +6,8 @@
 main() {
 	if util.confirm 'Install Rustup?'; then
 		core.print_info "Installing rustup"
-		util.req https://sh.rustup.rs | sh -s -- --default-toolchain nightly -y
-	
+		util.req https://sh.rustup.rs | sh -s -- --default-toolchain nightly -y || util.die
+
 		rustup default nightly
 	fi
 

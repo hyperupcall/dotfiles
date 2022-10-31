@@ -8,6 +8,12 @@ vim.cmd [[set packpath+=$XDG_DATA_HOME/nvim/site]]
 return require('packer').startup(function()
 	use 'wbthomason/packer.nvim'
 
+	-- jump
+	-- use 'phaazon/hop.nvim' -- lua
+	-- use 'ggandor/leap.nvim' -- fennel
+	-- use 'justinmk/vim-sneak'
+	-- use 'easymotion/vim-easymotion'
+
 	-- status lines
 	use {
 		'nvim-lualine/lualine.nvim',

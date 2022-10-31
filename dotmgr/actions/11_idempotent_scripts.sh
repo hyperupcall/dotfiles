@@ -15,7 +15,6 @@ main() {
 	local profile="$REPLY"
 
 	dotmgr.call '10_dirs.sh'
-	dotmgr.call '11_dconf.sh'
 
 	dotmgr.call '12_dot_funcalias_extractor.sh'
 	dotmgr.call '13_dot_shell_generator.sh'

@@ -1,7 +1,7 @@
 # shellcheck shell=sh
 
 cd() {
-	# Ex. new mountpoints
+	# Ex. New mountpoints
 	if [ "$1" = '.' ]; then
 		# shellcheck disable=SC2164
 		cd -- "$PWD"
@@ -13,7 +13,7 @@ cd() {
 		_shell_util_log_warn "Function is not defined: autoenv_init"
 	fi
 
-	if command -v autoenv_init >/dev/null 2>&1; then
+	if command -v __woof_cd_hook >/dev/null 2>&1; then
 		__woof_cd_hook
 	else
 		_shell_util_log_warn "Function is not defined: __woof_cd_hook"
@@ -31,22 +31,16 @@ cd() {
 		;;
 	esac
 
-	if [ -d "$PWD/.git" ]; then
-		__shell_output=
-		if __shell_output=$(git status --porcelain); then
-			if [ -z "$__shell_output" ]; then
-				if [ -f "$PWD/Bakefile.sh" ]; then
-					bake -u
-				fi
+	if [ -f 'foxxo.toml' ] || [ -f 'foxxy.toml' ] || [ -f 'fox.json' ]; then
+		if command -v deno >/dev/null 2>&1; then
+			if command -v foxxo >/dev/null 2>&1; then
+				foxxo lint --fix
+			else
+				_shell_util_log_warn "Command not found: foxxo"
 			fi
 		else
-			_shell_util_log_warn "Command failed: git ..."
+			_shell_util_log_warn "Command not found: deno"
 		fi
-		unset -v __shell_output
-	fi
-
-	if [ -f "$PWD/foxxo.toml" ] || [ -f "$PWD/foxxy.toml" ] || [ -f "$PWD/fox.json" ]; then
-		foxxo lint --fix
 	fi
 }
 
