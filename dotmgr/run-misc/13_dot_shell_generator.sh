@@ -47,7 +47,7 @@ main() {
 			local -n output_file='concatenated_sh_file'
 			;;
 		*)
-			core.print_warn "Skipping '$file_name'"
+			# core.print_warn "Skipping '$file_name'"
 			return
 			;;
 		esac

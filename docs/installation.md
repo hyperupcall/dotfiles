@@ -47,14 +47,6 @@ Then, run the following
 . ~/.bootstrap/bootstrap-out.sh
 
 # Now, continue with dotmgr
-dotmgr action 10_bootstrap
-dotmgr action 10_sync_dotfiles
-dotmgr action 10_bootstrap
-```
-
-Now, make sure this repository is properly set up
-
-```sh
-( cd ~/.dots && { ./bake init; hookah refresh; } )
-sudo dotmgr
+dotmgr run bootstrap
+dotmgr run idempotent
 ```

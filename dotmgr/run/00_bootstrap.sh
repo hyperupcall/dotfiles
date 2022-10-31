@@ -92,12 +92,4 @@ main() {
 	fi
 
 	touch ~/.bootstrap/done
-
-	cat <<"EOF"
----
-. ~/.bootstrap/bootstrap-out.sh
-
-dotmgr action <action>
----
-EOF
 }

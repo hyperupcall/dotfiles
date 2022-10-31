@@ -26,7 +26,5 @@ install.kitty() {
 		sudo zypper refresh
 		sudo zypper -y install kitty
 		;;
-	*)
-		core.print_fatal "Pakage manager '$pkgmngr' not supported"
 	esac
 }

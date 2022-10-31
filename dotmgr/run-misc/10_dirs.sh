@@ -17,14 +17,22 @@ main() {
 	dotmgr.get_profile
 	local profile="$REPLY"
 
-	local part_uuid="c875b5ca-08a6-415e-bc11-fc37ec94ab8f"
-	local mnt='/storage/ur'
-	if ! grep -q "$mnt" /etc/fstab; then
-		printf '%s\n' "PARTUUID=$part_uuid  $mnt  btrfs  defaults,noatime,X-mount.mkdir  0 0" \
-			| sudo tee -a /etc/fstab >/dev/null
-		sudo mount "$mnt"
+	# -------------------------------------------------------- #
+	#                     MOUNT /STORAGE/UR                    #
+	# -------------------------------------------------------- #
+	if [ "$profile" = 'desktop' ]; then
+		local part_uuid="c875b5ca-08a6-415e-bc11-fc37ec94ab8f"
+		local mnt='/storage/ur'
+		if ! grep -q "$mnt" /etc/fstab; then
+			printf '%s\n' "PARTUUID=$part_uuid  $mnt  btrfs  defaults,noatime,X-mount.mkdir  0 0" \
+				| sudo tee -a /etc/fstab >/dev/null
+			sudo mount "$mnt"
+		fi
 	fi
 
+	# -------------------------------------------------------- #
+	#     REMOVE AUTOAPPENDED LINES IN SHELL STARTUP FILES     #
+	# -------------------------------------------------------- #
 	for file in ~/.profile ~/.bashrc ~/.bash_profile "${ZDOTDIR:-$HOME}/.zshrc" "${XDG_CONFIG_HOME:-$HOME/.config}/fish/config.fish"; do
 		if [ ! -f "$file" ]; then
 			continue
@@ -106,13 +114,52 @@ main() {
 
 
 	# -------------------------------------------------------- #
+	#                 CREATE HOME DIR SYMLINKS                 #
+	# -------------------------------------------------------- #
+	if [ "$profile" = 'desktop' ]; then
+		must.link "$HOME/Docs/Programming/challenges" "$HOME/challenges"
+		must.link "$HOME/Docs/Programming/experiments" "$HOME/experiments"
+		must.link "$HOME/Docs/Programming/git" "$HOME/git"
+		must.link "$HOME/Docs/Programming/repos" "$HOME/repos"
+		must.link "$HOME/Docs/Programming/workspaces" "$HOME/workspaces"
+	elif [ "$profile" = 'laptop' ]; then
+		:
+	fi
+	must.link "$HOME/.dots/user/scripts" "$HOME/scripts"
+
+
+	# -------------------------------------------------------- #
+	#                    CREATE BIN SYMLINKS                   #
+	# -------------------------------------------------------- #
+	core.shopt_push -s nullglob
+	local -a files=(~/.dots/.usr/bin/*)
+	core.shopt_pop
+	local file=; for file in "${files[@]}"; do if [ -L "$file" ]; then
+		unlink "$file"
+	fi done; unset -v file
+
+	core.shopt_push -s nullglob
+	local -a files=("$HOME/.dots/.home/Documents/Programming/repos/Groups/Bash"/{bake,basalt,hookah,foxomate,glue,rho,shelldoc,shelltest,woof}/pkg/bin/*)
+	core.shopt_pop
+	local file=; for file in "${files[@]}"; do
+		echo "$file"
+		ln -fs  "$file" ~/.dots/.usr/bin
+	done; unset -v file
+
+	ln -s "$HOME/.dots/.home/Documents/Programming/repos/choose/target/debug/choose" ~/.dots/.usr/bin/choose
+	must.link ~/.dots/.dotmgr/bin/dotmgr ~/.dots/.usr/bin/dotmgr
+	if [ "$profile" = 'desktop' ]; then
+		must.link ~/repos/dotfox/dotfox ~/.dots/.usr/bin/dotfox
+	fi
+	must.link ~/Documents/repos/basalt/pkg/bin/basalt ~/.dots/.usr/bin/basalt
+
+
+	# -------------------------------------------------------- #
 	#                      CREATE SYMLINKS                     #
 	# -------------------------------------------------------- #
-	local -r storage='/storage'
 	local -r storage_home='/storage/ur/storage_home'
 	local -r storage_other='/storage/ur/storage_other'
 
-	must.link "$HOME/.dots/user/scripts" "$HOME/scripts"
 	must.link "$XDG_CONFIG_HOME/X11/Xmodmap" "$HOME/.Xmodmap"
 	must.link "$XDG_CONFIG_HOME/X11/Xresources" "$HOME/.Xresources"
 	must.link "$XDG_CONFIG_HOME/Code/User/settings.json" "$XDG_CONFIG_HOME/Code - OSS/User/settings.json"
@@ -125,7 +172,7 @@ main() {
 		~/Pictures
 		~/Videos
 	)
-	local -ra directoriesCustom=(
+	local -ra directories_custom=(
 		# ~/Desktop
 		~/Dls
 		~/Docs/Templates ~/Docs/Public ~/Docs
@@ -138,7 +185,7 @@ main() {
 		~/Music
 	)
 	# Use 'cp -f' for "$XDG_CONFIG_HOME/user-dirs.dirs"; otherwise unlink/link operation races
-	if [ -d "$storage" ]; then
+	if [ "$profile" = 'desktop' ]; then
 		cp -f "$HOME/.dots/user/.config/user-dirs.dirs/user-dirs-custom.conf" "$XDG_CONFIG_HOME/user-dirs.dirs"
 
 		# XDG User Directories
@@ -180,7 +227,7 @@ main() {
 
 		# XDG User Directories
 		local dir=
-		for dir in "${directoriesCustom[@]}"; do
+		for dir in "${directories_custom[@]}"; do
 			must.rmdir "$dir"
 		done; unset -v dir
 		for dir in "${directories_shared[@]}"; do
@@ -206,33 +253,7 @@ main() {
 		# Miscellaneous
 	fi
 
-	for file in ~/.dots/.usr/bin/*; do unlink "$file"; done
-	if [ "$profile" = 'desktop' ]; then
-		must.link "$HOME/Docs/Programming/challenges" "$HOME/challenges"
-		must.link "$HOME/Docs/Programming/experiments" "$HOME/experiments"
-		must.link "$HOME/Docs/Programming/git" "$HOME/git"
-		must.link "$HOME/Docs/Programming/repos" "$HOME/repos"
-		must.link "$HOME/Docs/Programming/workspaces" "$HOME/workspaces"
-
-		local file=
-		for file in "$HOME/Docs/Programming/repos/Groups/Bash"/{bake,basalt,choose,hookah,foxomate,glue,rho,shelldoc,shelltest,woof}/pkg/bin/*; do
-			ln -fs  "$file" ~/.dots/.usr/bin
-		done; unset -v file
-	elif [ "$profile" = 'laptop' ]; then
-		local file=
-		for file in ~/.dots/.usr/bin/*; do unlink "$file"; done
-		for file in "$HOME/Documents/Programming/repos"/{bake,basalt,choose,hookah,foxomate,glue,rho,shelldoc,shelltest,woof}/pkg/bin/*; do
-			ln -fs "$file" ~/.dots/.usr/bin
-		done; unset -v file
-	fi
-	ln -s ~/repos/choose/target/debug/choose ~/.dots/.usr/bin/choose
-
 	# Must be last as they are dependent on previous symlinking
 	must.dir "$HOME/.dots/.home/Documents/Shared"
 	must.dir "$HOME/.dots/.home/Pictures/Screenshots"
-	must.link ~/.dots/.dotmgr/bin/dotmgr ~/.dots/.usr/bin/dotmgr
-	if [ "$profile" = 'desktop' ]; then
-		must.link ~/repos/dotfox/dotfox ~/.dots/.usr/bin/dotfox
-	fi
-	must.link ~/Documents/repos/basalt/pkg/bin/basalt ~/.dots/.usr/bin/basalt
 }

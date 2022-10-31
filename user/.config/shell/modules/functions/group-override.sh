@@ -18,14 +18,15 @@ cd() {
 	else
 		_shell_util_log_warn "cd: Function is not defined: __woof_cd_hook"
 	fi
-	
-	local dir=
+
+	_shell_dir=
 	for arg; do case $arg in
 		-*) ;;
-		*) dir=$arg ;;
+		*) _shell_dir=$arg ;;
 	esac done
 
-	builtin cd "$@" || _shell_util_die "cd: cd to '$dir' failed with code $?"
+	builtin cd "$@" || _shell_util_die "cd: cd to '$_shell_dir' failed with code $?"
+	unset -v _shell_dir
 
 	if [ -f 'foxxo.toml' ] || [ -f 'foxxy.toml' ] || [ -f 'fox.json' ]; then
 		if command -v deno >/dev/null 2>&1; then

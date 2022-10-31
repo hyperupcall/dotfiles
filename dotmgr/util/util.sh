@@ -92,9 +92,13 @@ util.install_pkg() {
 }
 
 util.clone_in_dots() {
+	unset -v REPLY; REPLY=
 	local repo="$1"
 
-	util.clone "$repo" "$HOME/.dots/.repos/${repo##*/}"
+	local dir="$HOME/.dots/.repos/${repo##*/}"
+	util.clone "$repo" "$dir"
+
+	REPLY=$dir
 }
 
 util.assert_prereq() {
@@ -143,7 +147,7 @@ util.get_package_manager() {
 	for package_manager in pacman apt dnf zypper; do
 		if util.is_cmd "$package_manager"; then
 			REPLY="$package_manager"
-			
+
 			return
 		fi
 	done
@@ -169,13 +173,13 @@ util.get_os_id() {
 util.get_latest_github_tag() {
 	unset -v REPLY; REPLY=
 	local repo="$1"
-	
+
 	core.print_info "Getting latest version of: $repo"
-	
+
 	# FIXME: this is going to be rate limited
 	local url="https://api.github.com/repos/$repo/releases/latest"
 	local tag_name=
 	tag_name=$(curl -fsSLo- "$url" | jq -r '.tag_name')
-	
+
 	REPLY=$tag_name
 }
