@@ -10,36 +10,32 @@ cd() {
 	if command -v autoenv_init >/dev/null 2>&1; then
 		autoenv_init
 	else
-		_shell_util_log_warn "Function is not defined: autoenv_init"
+		_shell_util_log_warn "cd: Function is not defined: autoenv_init"
 	fi
 
 	if command -v __woof_cd_hook >/dev/null 2>&1; then
 		__woof_cd_hook
 	else
-		_shell_util_log_warn "Function is not defined: __woof_cd_hook"
+		_shell_util_log_warn "cd: Function is not defined: __woof_cd_hook"
 	fi
+	
+	local dir=
+	for arg; do case $arg in
+		-*) ;;
+		*) dir=$arg ;;
+	esac done
 
-	case $1 in
-	--)
-		builtin cd -Pe "$@" || _shell_util_die "Could not cd to '$1'"
-		;;
-	-*)
-		builtin cd "$@" || _shell_util_die "Could not cd to '$1'"
-		;;
-	*)
-		builtin cd -Pe "$@" || _shell_util_die "Could not cd to '$1'"
-		;;
-	esac
+	builtin cd "$@" || _shell_util_die "cd: cd to '$dir' failed with code $?"
 
 	if [ -f 'foxxo.toml' ] || [ -f 'foxxy.toml' ] || [ -f 'fox.json' ]; then
 		if command -v deno >/dev/null 2>&1; then
 			if command -v foxxo >/dev/null 2>&1; then
 				foxxo lint --fix
 			else
-				_shell_util_log_warn "Command not found: foxxo"
+				_shell_util_log_warn "cd: Command not found: foxxo"
 			fi
 		else
-			_shell_util_log_warn "Command not found: deno"
+			_shell_util_log_warn "cd: Command not found: deno"
 		fi
 	fi
 }
