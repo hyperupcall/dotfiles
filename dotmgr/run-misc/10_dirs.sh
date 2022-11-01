@@ -220,7 +220,6 @@ main() {
 		must.link "$storage_other/ssh" "$HOME/.ssh"
 		must.link "$storage_other/BraveSoftware" "$XDG_CONFIG_HOME/BraveSoftware"
 		must.link "$storage_other/fonts" "$XDG_CONFIG_HOME/fonts"
-		must.link "$storage_other/password-store" "$XDG_DATA_HOME/password-store"
 		must.link "$storage_other/Mailspring" "$XDG_CONFIG_HOME/Mailspring"
 	else
 		cp -f "$HOME/.dots/user/.config/user-dirs.dirs/user-dirs-default.conf" "$XDG_CONFIG_HOME/user-dirs.dirs"
