@@ -142,7 +142,6 @@ main() {
 	local -a files=("$HOME/.dots/.home/Documents/Programming/repos/Groups/Bash"/{bake,basalt,hookah,foxomate,glue,rho,shelldoc,shelltest,woof}/pkg/bin/*)
 	core.shopt_pop
 	local file=; for file in "${files[@]}"; do
-		echo "$file"
 		ln -fs  "$file" ~/.dots/.usr/bin
 	done; unset -v file
 
@@ -222,6 +221,7 @@ main() {
 		must.link "$storage_other/BraveSoftware" "$XDG_CONFIG_HOME/BraveSoftware"
 		must.link "$storage_other/fonts" "$XDG_CONFIG_HOME/fonts"
 		must.link "$storage_other/password-store" "$XDG_DATA_HOME/password-store"
+		must.link "$storage_other/Mailspring" "$XDG_CONFIG_HOME/Mailspring"
 	else
 		cp -f "$HOME/.dots/user/.config/user-dirs.dirs/user-dirs-default.conf" "$XDG_CONFIG_HOME/user-dirs.dirs"
 
