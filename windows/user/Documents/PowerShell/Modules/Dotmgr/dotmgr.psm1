@@ -118,7 +118,7 @@ function command-bootstrap() {
 	Write-Host 'nim, powertoys, gpg4win-portable, autohotkey dont really work'
 
 	# for espanso?
-	[Environment]::SetEnvironmentVariable('PASSWORD_STORE_DIR', "$env:USERPROFILE\Dropbox\password-store", [System.EnvironmentVariableTarget]::User)
+	# [Environment]::SetEnvironmentVariable('PASSWORD_STORE_DIR', "$env:USERPROFILE\Dropbox\password-store", [System.EnvironmentVariableTarget]::User)
 	# [Environment]::SetEnvironmentVariable('VISUAL', "neovide", [System.EnvironmentVariableTarget]::User)
 	# [Environment]::SetEnvironmentVariable('EDITOR', "neovide", [System.EnvironmentVariableTarget]::User)
 
