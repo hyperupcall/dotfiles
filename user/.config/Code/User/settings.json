@@ -228,6 +228,17 @@
 		"editor.tabSize": 2
 	},
 	"markdownlint.run": "onSave",
+	"markdownlint.lintWorkspaceGlobs": [
+		// default
+		"**/*.{md,mkd,mdwn,mdown,markdown,markdn,mdtxt,mdtext,workbook}",
+		"!**/bower_components",
+		"!**/node_modules",
+		"!**/vendor",
+		"!**/.git",
+		// custom
+		"**/*LICENSE*",
+		"**/*license*"
+	],
 	"markdownlint.focusMode": true,
 	"markdownlint.config": {
 		"first-heading-h1": false,
@@ -526,5 +537,7 @@
 	"npm.keybindingsChangedWarningShown": true,
 	"rpcServer.showStartupMessage": false,
 	"window.zoomLevel": -1,
-	"workbench.colorTheme": "Bearded Theme Monokai Terra"
+	"workbench.colorTheme": "Bearded Theme Monokai Terra",
+	"git.confirmSync": false,
+	"git.autofetch": true
 }

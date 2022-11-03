@@ -5,6 +5,7 @@ cd() {
 	if [ "$1" = '.' ]; then
 		# shellcheck disable=SC2164
 		cd -- "$PWD"
+		return
 	fi
 
 	if command -v autoenv_init >/dev/null 2>&1; then

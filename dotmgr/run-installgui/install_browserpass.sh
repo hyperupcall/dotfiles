@@ -2,6 +2,7 @@
 
 main() {
 	if util.confirm 'Install Browserpass?'; then
+		# TODO: fix
 		# browserpass-native
 		{
 			local version='3.0.10'
@@ -22,6 +23,7 @@ main() {
 			util.run make BIN="browserpass-$system" PREFIX="$install_dir" configure || util.die
 			util.run sudo make BIN="browserpass-$system" PREFIX="$install_dir" install || util.die
 
+			# TODO: don't create a million directories
 			# Symlink messaging host definition
 			for f in \
 				"$XDG_CONFIG_HOME"/{BraveSoftware/Brave-Browser{,-Beta,-Nightly},vivaldi{,-snapshot},microsoft-edge{,-beta,-dev},google-chrome{,-beta,-unstable},opera{,-beta,-developer},sidekick,wavebox}/"NativeMessagingHosts/$app_id"

@@ -18,7 +18,7 @@ main() {
 	local dir="/storage/ur/storage_home"
 
 	# shellcheck disable=SC2059
-	printf "Backing up\n  from: $backup_dir\n  to:   $dir\n"
+	printf "Backing up\n  from: $dir\n  to:   $backup_dir\n"
 	if util.confirm; then
 		if [ ! -d "$backup_dir" ]; then
 			core.print_die "Backup directory does not exist"
