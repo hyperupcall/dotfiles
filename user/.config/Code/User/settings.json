@@ -543,17 +543,6 @@
 		"basalt.toml": "https://raw.githubusercontent.com/hyperupcall/foxxo/main/src/schemas/basalt.schema.json"
 	},
 	"npm.keybindingsChangedWarningShown": true,
-<<<<<<< Updated upstream
-	"rpcServer.showStartupMessage": false,
-	"window.zoomLevel": -1,
-	"workbench.colorTheme": "Bearded Theme Monokai Terra",
-	"git.confirmSync": false,
-	"git.autofetch": true
-||||||| constructed merge base
-	"rpcServer.showStartupMessage": false,
 	"window.zoomLevel": -1,
 	"workbench.colorTheme": "Bearded Theme Monokai Terra"
-=======
-	"workbench.colorTheme": "Bearded Theme Monokai Terra"
->>>>>>> Stashed changes
 }
