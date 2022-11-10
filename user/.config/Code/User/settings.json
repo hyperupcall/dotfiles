@@ -22,6 +22,7 @@
 	// "editor.fontFamily": "'Droid Sans Mono', 'Fira Sans Mono', 'monospace'",
 	"editor.fontLigatures": true,
 	"editor.fontSize": 16,
+	"editor.formatOnSave": false,
 	"editor.formatOnPaste": false,
 	"editor.formatOnType": false,
 	"editor.insertSpaces": false,
@@ -276,7 +277,11 @@
 	"[cpp]": {
 		"editor.defaultFormatter": "ms-vscode.cpptools",
 		"editor.insertSpaces": true,
-		"editor.tabSize": 2
+		"editor.tabSize": 2,
+		"editor.codeActionsOnSave": {
+			"source.fixAll": true,
+			"source.organizeImports": true
+		}
 	},
 	"[fish]": {
 		"editor.defaultFormatter": "bmalehorn.vscode-fish",
@@ -357,6 +362,7 @@
 	"material-icon-theme.showWelcomeMessage": false,
 	"docker-explorer.enableTelemetry": false,
 	"code-runner.enableAppInsights": false,
+	"rpcServer.showStartupMessage": false,
 	"commentAnchors.tags.list": [
 		{
 			"tag": "ANCHOR",
@@ -486,6 +492,8 @@
 		"vue-html": "html"
 	},
 	"git.alwaysShowStagedChangesResourceGroup": true,
+	"git.confirmSync": false,
+	"git.autofetch": true,
 	"gitlens.advanced.maxListItems": 300,
 	"gitlens.advanced.maxSearchItems": 300,
 	"gitlens.codeLens.includeSingleLineSymbols": true,
@@ -535,9 +543,17 @@
 		"basalt.toml": "https://raw.githubusercontent.com/hyperupcall/foxxo/main/src/schemas/basalt.schema.json"
 	},
 	"npm.keybindingsChangedWarningShown": true,
+<<<<<<< Updated upstream
 	"rpcServer.showStartupMessage": false,
 	"window.zoomLevel": -1,
 	"workbench.colorTheme": "Bearded Theme Monokai Terra",
 	"git.confirmSync": false,
 	"git.autofetch": true
+||||||| constructed merge base
+	"rpcServer.showStartupMessage": false,
+	"window.zoomLevel": -1,
+	"workbench.colorTheme": "Bearded Theme Monokai Terra"
+=======
+	"workbench.colorTheme": "Bearded Theme Monokai Terra"
+>>>>>>> Stashed changes
 }
