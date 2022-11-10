@@ -24,17 +24,18 @@ main() {
 	util.ensure mkdir -p ~/.bootstrap/{bin,distro-dots} "$XDG_CONFIG_HOME"
 
 	# Nim requires GCC for compilation (done below)
-	util.update_and_upgrade
+	if util.is_cmd 'gcc'; then
+		core.print_info 'Already installed gcc'
+	else
+		core.print_info 'Installing gcc'
+		util.install_pkg 'gcc'
+	fi
 
 	if util.is_cmd 'jq'; then
 		core.print_info 'Already installed jq'
 	else
 		core.print_info 'Installing jq'
 		util.install_pkg 'jq'
-
-		if ! util.is_cmd 'jq'; then
-			core.print_die 'Automatic installation of jq failed'
-		fi
 	fi
 
 	if util.is_cmd 'curl'; then
@@ -42,10 +43,6 @@ main() {
 	else
 		core.print_info 'Installing curl'
 		util.install_pkg 'curl'
-
-		if ! util.is_cmd 'curl'; then
-			core.print_die 'Automatic installation of curl failed'
-		fi
 	fi
 
 	# Remove distribution specific dotfiles, including
@@ -91,5 +88,19 @@ main() {
 		util.ensure chmod +x ~/.bootstrap/bin/dotfox
 	fi
 
-	touch ~/.bootstrap/done
+	# Get GithHub authorization tokens
+	if [ ! -f ~/.dots/.usr/share/github_token ]; then
+		mkdir -p ~/.dots/.usr/share
+
+		local hostname=
+		hostname=$(hostname)
+
+		printf '%s\n' "Go to: https://github.com/settings/tokens/new?description=General+@${hostname}&scopes="
+		read -eri "Paste token: "
+
+		local token="$REPLY"
+		printf '%s\n' "$token" > ~/.dots/.usr/share/github_token
+	fi
+
+	> ~/.bootstrap/done :
 }

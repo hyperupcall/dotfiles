@@ -15,6 +15,7 @@ main() {
 	run mkdir -p ~/.bootstrap
 
 	# Install essential commands
+	installupdates
 	case $(uname) in darwin*)
 		if iscmd 'brew'; then
 			log "Already installed brew"
@@ -54,7 +55,8 @@ main() {
 
 export NAME='Edwin Kofler'
 export EMAIL='edwin@kofler.dev'
-export VISUAL='nvim'
+export EDITOR='nvim'
+export VISUAL="\$VISUAL"
 export PATH="\$HOME/.dots/.usr/bin:\$PATH"
 
 if [ -f ~/.dots/xdg.sh ]; then
@@ -108,6 +110,23 @@ iscmd() {
 	fi
 }
 
+installupdates() {
+	if util.is_cmd 'pacman'; then
+		sudo pacman -Syyu --noconfirm
+	elif util.is_cmd 'apt-get'; then
+		sudo apt-get -y update
+		sudo apt-get -y upgrade
+		sudo apt-get -y install apt-transport-https
+	elif util.is_cmd 'dnf'; then
+		sudo dnf -y update
+	elif util.is_cmd 'zypper'; then
+		sudo zypper -y update
+		sudo zypper -y upgrade
+	else
+		die 'Failed to determine package manager'
+	fi
+}
+
 installcmd() {
 	if iscmd "$1"; then
 		log "Already installed $1"
@@ -126,6 +145,8 @@ installcmd() {
 			run sudo eopkg -y install "$2"
 		elif iscmd 'brew'; then
 			run brew install "$2"
+		else
+			die 'Failed to determine package manager'
 		fi
 
 		if ! iscmd "$1"; then
