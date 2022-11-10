@@ -1,5 +1,14 @@
 # shellcheck shell=bash
 
+if [ "$1" != 'bootstrap' ]; then
+	if [ -f ~/.dots/.usr/share/github_token ]; then
+		GITHUB_TOKEN=$(<~/.dots/.usr/share/github_token)
+	else
+		core.print_error "GitHub token not found at ~/.dots/.usr/share/github_token. Please re-run bootstrap"
+		exit 1
+	fi
+fi
+
 util.die() {
 	exit 1
 }
