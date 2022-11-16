@@ -18,6 +18,7 @@ alias la='exa -a' # clone(user, root)
 alias ll='exa -al --icons --git' # clone(user, root)
 alias m='make' # clone(user, root)
 alias mp='mountpoint' # clone(user, root)
+alias p='pass' # clone(user)
 alias pbat='bat -p' # clone(user, root)
 alias piup='pip install --upgrade pip' # clone(user)
 alias pnpxni='pnpx --no-install'

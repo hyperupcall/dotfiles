@@ -10,3 +10,6 @@
 	tool = sublime-merge
 [push]
 	autoSetupRemote = true
+[user]
+	name = Edwin Kofler
+	email = edwin@kofler.dev

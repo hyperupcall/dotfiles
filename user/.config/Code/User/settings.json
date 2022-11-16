@@ -27,6 +27,7 @@
 	"editor.formatOnType": false,
 	"editor.insertSpaces": false,
 	"editor.inlineSuggest.enabled": true,
+	"editor.linkedEditing": true,
 	"editor.maxTokenizationLineLength": 5000,
 	"editor.minimap.maxColumn": 35,
 	"editor.minimap.renderCharacters": false,
@@ -142,13 +143,24 @@
 	"prettier.useTabs": true,
 	"eslint.format.enable": true,
 	"[javascript]": {
+		"editor.codeActionsOnSave": {
+			"source.organizeImports": true
+		},
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.formatOnSave": true
 	},
 	"[javascriptreact]": {
+		"editor.codeActionsOnSave": {
+			"source.organizeImports": true
+		},
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.formatOnSave": true
 	},
+	"javascript.autoClosingTags": true,
+	"javascript.referencesCodeLens.enabled": true,
+	"javascript.referencesCodeLens.showOnAllFunctions": true,
+	"javascript.suggest.autoImports": true,
+	"javascript.updateImportsOnFileMove.enabled": "always",
 	"[typescript]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.formatOnSave": true
@@ -157,9 +169,11 @@
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.formatOnSave": true
 	},
+	"typescript.autoClosingTags": true,
 	"typescript.implementationsCodeLens.enabled": true,
 	"typescript.referencesCodeLens.enabled": true,
 	"typescript.referencesCodeLens.showOnAllFunctions": true,
+	"typescript.suggest.autoImports": true,
 	"typescript.updateImportsOnFileMove.enabled": "always",
 	"deno.suggest.imports.autoDiscover": true,
 	"deno.suggest.completeFunctionCalls": true,
@@ -183,6 +197,7 @@
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.formatOnSave": true
 	},
+	"html.autoClosingTags": true,
 	"html.format.enable": false,
 	"html.format.wrapLineLength": 0,
 	"[vue]": {
@@ -487,19 +502,18 @@
 	],
 	"debug.node.autoAttach": "on",
 	"diffEditor.ignoreTrimWhitespace": false,
-	"emmet.excludeLanguages": ["markdown", "c"],
+	"emmet.excludeLanguages": [],
 	"emmet.includeLanguages": {
-		"vue-html": "html"
+		"vue-html": "html",
+		"javascript": "javascriptreact"
 	},
+	"emmet.triggerExpansionOnTab": true,
 	"git.alwaysShowStagedChangesResourceGroup": true,
 	"git.confirmSync": false,
 	"git.autofetch": true,
 	"gitlens.advanced.maxListItems": 300,
 	"gitlens.advanced.maxSearchItems": 300,
 	"gitlens.codeLens.includeSingleLineSymbols": true,
-	"javascript.referencesCodeLens.enabled": true,
-	"javascript.referencesCodeLens.showOnAllFunctions": true,
-	"javascript.updateImportsOnFileMove.enabled": "always",
 	"markdown.preview.doubleClickToSwitchToEditor": false,
 	"merge-conflict.autoNavigateNextConflict.enabled": true,
 	"merge-conflict.diffViewPosition": "Beside",
@@ -544,5 +558,7 @@
 	},
 	"npm.keybindingsChangedWarningShown": true,
 	"window.zoomLevel": -1,
-	"workbench.colorTheme": "Bearded Theme Monokai Terra"
+	"workbench.colorTheme": "Bearded Theme Monokai Terra",
+	"shellcheck.disableVersionCheck": true,
+	"shellcheck.run": "onSave"
 }
