@@ -37,11 +37,11 @@
  .monaco-editor .cursors-layer.cursor-smooth-caret-animation > .cursor {
 	/* NOTE: first enable editor.cursorSmoothCaretAnimation */
 	/* NOTE: always leave the transition in the code */
-	transition: all 100ms ease-out;
+	/* transition: all 100ms ease-out; */
 
 	/* NOTE: uncomment this animation for skew demo */
 	/* animation: my-slide 2s ease-in-out infinite; */
 
 	/* NOTE: uncomment this animation for rotation demo */
 	/* animation: my-rotation 2s linear infinite; */
- } */
+ /* } */

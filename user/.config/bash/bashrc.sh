@@ -168,6 +168,3 @@ source "$XDG_CONFIG_HOME/bash/modules/util.sh"
 
 # ---
 #
-export DENO_INSTALL="/home/edwin/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
-

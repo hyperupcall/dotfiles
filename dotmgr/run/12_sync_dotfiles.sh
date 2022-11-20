@@ -17,4 +17,5 @@ main() {
 	fi
 
 	util.run "$dotfox" --config-dir="$HOME/.dots/user/.config/dotfox" --deployment=all.sh deploy
+	util.run "$dotfox" --config-dir="$HOME/.dots/user/.config/dotfox" --deployment=all.sh status
 }
