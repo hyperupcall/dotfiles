@@ -16,7 +16,5 @@ main() {
 
 		core.print_info 'Symlinking'
 		ln -sf ~/.dots/.home/Downloads/.dropbox-dist/dropboxd ~/.dots/.usr/bin/dropboxd || util.die
-
-		popd >/dev/null
 	fi
 }
