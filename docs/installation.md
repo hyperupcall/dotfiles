@@ -33,7 +33,7 @@ chmod +x ~/.bootstrap/bootstrap.sh
 The `bootstrap.sh` script performs the following steps:
 
 - Installs Homebrew, on macOS
-- Installs Git and NeoVim
+- Installs Git and Neovim
 - Clones `hyperupcall/dots` to `~/.dots`
 - Clones `hyperupcall/dotmgr` to `~/.dots/.dotmgr`
 - Creates a `~/.bootstrap/bootstrap-out.sh`; sourcing it does the following
