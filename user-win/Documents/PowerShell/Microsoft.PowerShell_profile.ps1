@@ -1,14 +1,14 @@
 $ErrorView = 'ConciseView'
 
-Import-Module Dotfox
-Import-Module Dotmgr
-# Import-Module Dots
-#Enable-ExperimentalFeature -Name PSCommandNotFoundSuggestion
+# Enable-ExperimentalFeature -Name PSCommandNotFoundSuggestion
 #Enable-ExperimentalFeature -Name PSCultureInvariantReplaceOperator
 #Enable-ExperimentalFeature -Name PSImplicitRemotingBatching
 #Enable-ExperimentalFeature -Name PSNativePSPathResolution
 #Enable-ExperimentalFeature -Name PSNotApplyErrorActionToStderr
 #Enable-ExperimentalFeature -Name PSSubsystemPluginModel
+# $env:PASSWORD_STORE_DIR = "G:\storage_other\password-store"
+
+$env:VCPKG_DISABLE_METRICS = " "
 
 # Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 #Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowProtectedOSFiles -EnableShowFileExtensions
@@ -58,25 +58,25 @@ $splat = @{
 
         Write-Host 'Not implemented'
 
-        # $line = $null
-        # $cursor = $null
-        # [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$line, [ref]$cursor)
+      #   $line = $null
+      #   $cursor = $null
+      #   [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$line, [ref]$cursor)
 
-        # echo 'so done'
-        # $cmd = $null
-        # $pos = $line.IndexOf(' ')
-        # echo 'RESULT' $pos
-        # if ($pos.Length -lt 0) {
-        #     if (Get-Command "$line" -ErrorAction SilentlyContinue) {
-        #         $cmd = "$line"
-        #     }
-        # } else {
-        #     $cmd = $line.Substring(0, $pos)
-        # }
+      #   echo 'so done'
+      #   $cmd = $null
+      #   $pos = $line.IndexOf(' ')
+      #   echo 'RESULT' $pos
+      #   if ($pos.Length -lt 0) {
+      #       if (Get-Command "$line" -ErrorAction SilentlyContinue) {
+      #           $cmd = "$line"
+      #       }
+      #   } else {
+      #       $cmd = $line.Substring(0, $pos)
+      #   }
 
-        # if (!$cmd) {
-        #     & "$cmd" --help
-        # }
+      #   if (!$cmd) {
+      #       & "$cmd" --help
+      #   }
 
         [Microsoft.PowerShell.PSConsoleReadLine]::RevertLine()
     }

@@ -3,14 +3,17 @@ function Dotmgr() {
 	param (
 		# Subcommand to run
 		[Parameter(ParameterSetName = 'Symlink', Mandatory = $true)]
-		[ValidateSet('bootstrap-stage1', 'bootstrap', 'transfer')]
+		[ValidateSet('run', 'doctor', 'update')]
 		[String]
 		$Subcommand,
 
-		# Print help
 		[Parameter(ParameterSetName = 'Help')]
 		[Switch]
-		$Help
+		$Help,
+
+		[Parameter(ParameterSetName = 'Version')]
+		[Switch]
+		$Version
 	)
 
 	Set-StrictMode -Version Latest
@@ -22,56 +25,66 @@ function Dotmgr() {
 		return
 	}
 
+	if ($Version) {
+		Write-Host "v$($MYINVOCATION.MyCommand.Module.Version)"
+		return
+	}
+
 	if (([Version](Get-CimInstance Win32_OperatingSystem).version).Major -lt 10) {
-		Write-Host "Windows versions under 10 is not supported"
+		Write-Host "Must use Windows at least as recent as 10"
 		return 1
 	}
 
-	& "command-$Subcommand"
+	& "dotmgr$Subcommand"
 }
 
-function command-bootstrap-stage1() {
-	winget install --id Microsoft.Powershell --source winget
+function command-run() {
+	# winget install --id Microsoft.Powershell --source winget
 }
 
-function command-bootstrap() {
-	$__dirname = Split-Path -Parent "$PSCommandPath"
+function command-doctor() {
+	Write-Host 'Not Implemented'
+}
 
-	winget install --id GNUPG.Gpg4win --source winget
-	winget install --id PuTTY.PuTTY --source winget
-	winget install --id Microsoft.PowerToys --source winget
-
-	Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
-
-	Ensure-ScoopBucket -Name extras
-	Ensure-ScoopBucket -Name versions
-	Ensure-ScoopBucket -Name php
-	Ensure-ScoopBucket -Name nerd-fonts
-	Ensure-ScoopBucket -Name java
-	Ensure-ScoopBucket -Name games
-
+function dotmgr-update() {
 	return
-	Get-Content "$(Join-Path -Path "$__dirname" -ChildPath 'packages.conf')" | ForEach-Object {
-		if (!$_) {
-			return
-		}
 
-		if ($_.StartsWith("#")) {
-			return
-		}
+	# $__dirname = Split-Path -Parent "$PSCommandPath"
 
-		$octothorpIndex = $_.IndexOf('#')
-		if ($octothorpIndex -lt 0) {
-			$line = $_.Trim()
-		}
-		else {
-			$line = $_.Substring(0, $octothorpIndex).Trim()
-		}
+	# winget install --id GNUPG.Gpg4win --source winget
+	# winget install --id PuTTY.PuTTY --source winget
+	# winget install --id Microsoft.PowerToys --source winget
 
-		$package = "$line"
-		Write-Host "line: $package"
-		Ensure-ScoopPackage -Name "$package"
-	}
+	# Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+
+	# Assert-ScoopBucket -Name extras
+	# Assert-ScoopBucket -Name versions
+	# Assert-ScoopBucket -Name php
+	# Assert-ScoopBucket -Name nerd-fonts
+	# Assert-ScoopBucket -Name java
+	# Assert-ScoopBucket -Name games
+
+	# Get-Content "$(Join-Path -Path "$__dirname" -ChildPath 'packages.conf')" | ForEach-Object {
+	# 	if (!$_) {
+	# 		return
+	# 	}
+
+	# 	if ($_.StartsWith("#")) {
+	# 		return
+	# 	}
+
+	# 	$octothorpIndex = $_.IndexOf('#')
+	# 	if ($octothorpIndex -lt 0) {
+	# 		$line = $_.Trim()
+	# 	}
+	# 	else {
+	# 		$line = $_.Substring(0, $octothorpIndex).Trim()
+	# 	}
+
+	# 	$package = "$line"
+	# 	Write-Host "line: $package"
+	# 	Ensure-ScoopPackage -Name "$package"
+	# }
 
 	# $ENV:PATH="$HOME\scoop\apps\python\current\Scripts:$ENV:PATH"
 	# 'C:\Users\Edwin\scoop\apps\sublime-text\current\install-context.reg'"
@@ -108,14 +121,14 @@ function command-bootstrap() {
 	# Set-ExecutionPolicy Unrestricted -Scope CurrentUser
 
 	# PowerToys
-	if (!(Test-Path -Path "$env:APPDATA\git-boxstarter")) {
-		git clone 'https://github.com/chocolatey/boxstarter' "$env:APPDATA\git-boxstarter"
-	}
+	# if (!(Test-Path -Path "$env:APPDATA\git-boxstarter")) {
+	# 	git clone 'https://github.com/chocolatey/boxstarter' "$env:APPDATA\git-boxstarter"
+	# }
 
 	# nim
 	# sudo New-Item -Type SymbolicLink -Path ~ -Name .ssh -Value G:\storage_other\ssh\
 
-	Write-Host 'nim, powertoys, gpg4win-portable, autohotkey dont really work'
+	# Write-Host 'nim, powertoys, gpg4win-portable, autohotkey dont really work'
 
 	# for espanso?
 	# [Environment]::SetEnvironmentVariable('PASSWORD_STORE_DIR', "$env:USERPROFILE\Dropbox\password-store", [System.EnvironmentVariableTarget]::User)
@@ -128,55 +141,55 @@ function command-bootstrap() {
 	# Set-WindowsExplorerOptions ...
 }
 
-function command-transfer() {
-	$ErrorActionPreference = 'Stop' # FIXME
+# function command-transfer() {
+# 	$ErrorActionPreference = 'Stop' # FIXME
 
-	$driveLetter = Read-Host -Prompt "Drive letter?"
+# 	$driveLetter = Read-Host -Prompt "Drive letter?"
 
-	$sshKeysFile = Join-Path -Path "${driveLetter}:\" -ChildPath "ssh-keys.tar.age"
-	$gpgKeysFile = Join-Path -Path "${driveLetter}:\" -ChildPath "gpg-keys.tar.age"
+# 	$sshKeysFile = Join-Path -Path "${driveLetter}:\" -ChildPath "ssh-keys.tar.age"
+# 	$gpgKeysFile = Join-Path -Path "${driveLetter}:\" -ChildPath "gpg-keys.tar.age"
 
-	if (!(Test-Path "$sshKeysFile")) {
-		Write-Host "SSH keyfile not found"
-		return 1
-	}
+# 	if (!(Test-Path "$sshKeysFile")) {
+# 		Write-Host "SSH keyfile not found"
+# 		return 1
+# 	}
 
-	if (!(Test-Path "$gpgKeysFile")) {
-		Write-Host "GPG keyfile not found"
-		return 1 # FIXME: does not translate to exit code of whole program; prints '1' to console
-	}
+# 	if (!(Test-Path "$gpgKeysFile")) {
+# 		Write-Host "GPG keyfile not found"
+# 		return 1 # FIXME: does not translate to exit code of whole program; prints '1' to console
+# 	}
 
-	# ssh keys
-	if ((Read-Host -Prompt "Copy ssh keys? (y/n)") -eq "y") {
-		$sshTmp = Join-Path -Path "$HOME" -ChildPath ".ssh/tmp-ssh"
-		age --decrypt --output "$sshTmp" "$sshKeysFile"
-		if (!$?) {
-			return 1
-		}
-		Set-Location -Path ~/.ssh
-		tar -xmf "$sshTmp"
-		if (!$?) {
-			return 1
-		}
-		# Remove-Item -Force "$sshTmp"
-	}
+# 	# ssh keys
+# 	if ((Read-Host -Prompt "Copy ssh keys? (y/n)") -eq "y") {
+# 		$sshTmp = Join-Path -Path "$HOME" -ChildPath ".ssh/tmp-ssh"
+# 		age --decrypt --output "$sshTmp" "$sshKeysFile"
+# 		if (!$?) {
+# 			return 1
+# 		}
+# 		Set-Location -Path ~/.ssh
+# 		tar -xmf "$sshTmp"
+# 		if (!$?) {
+# 			return 1
+# 		}
+# 		# Remove-Item -Force "$sshTmp"
+# 	}
 
-	# gpg keys
-	if ((Read-Host -Prompt "Copy gpg keys? (y/n)") -eq "y") {
-		$gpgTmp = Join-Path -Path "$HOME" -ChildPath ".ssh/tmp-gpg"
-		age --decrypt --output "$gpgTmp" "$gpgKeysFile"
-		if (!$?) {
-			return 1
-		}
-		gpg --import "$gpgTmp"
-		if (!$?) {
-			return 1
-		}
-		Remove-Item -Force "$gpgTmp"
-	}
-}
+# 	# gpg keys
+# 	if ((Read-Host -Prompt "Copy gpg keys? (y/n)") -eq "y") {
+# 		$gpgTmp = Join-Path -Path "$HOME" -ChildPath ".ssh/tmp-gpg"
+# 		age --decrypt --output "$gpgTmp" "$gpgKeysFile"
+# 		if (!$?) {
+# 			return 1
+# 		}
+# 		gpg --import "$gpgTmp"
+# 		if (!$?) {
+# 			return 1
+# 		}
+# 		Remove-Item -Force "$gpgTmp"
+# 	}
+# }
 
-function Ensure-ScoopBucket {
+function Assert-ScoopBucket {
 	[CmdletBinding()]
 	Param (
 		[Parameter()]
@@ -191,7 +204,7 @@ function Ensure-ScoopBucket {
 	}
 }
 
-function Ensure-ScoopPackage {
+function Assert-ScoopPackage {
 	[CmdletBinding()]
 	Param (
 		[Parameter(Mandatory = $true, Position = 0)]

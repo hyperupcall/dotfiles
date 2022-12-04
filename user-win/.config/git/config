@@ -10,6 +10,10 @@
 	helper = wincred
 [credential "helperselector"]
 	selected = wincred
+[status]
+	submoduleSummary = true
+[gpg]
+	program = C:/Program Files (x86)/GnuPG/bin/gpg.exe
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
