@@ -11,8 +11,11 @@
 # - Symlinks directories to ~/.dots/.home
 
 main() {
-	# TODO
-	# ( cd ~/.dots && { ./bake init; hookah refresh; } )
+	(
+		cd ~/.dots
+		./bake init
+	)
+
 	# sudo dotmgr
 
 	dotmgr.get_profile

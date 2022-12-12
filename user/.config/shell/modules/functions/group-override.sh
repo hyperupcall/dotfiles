@@ -26,7 +26,7 @@ cd() {
 		*) _shell_dir=$arg ;;
 	esac done
 
-	builtin cd "$@" || _shell_util_die "cd: cd to '$_shell_dir' failed with code $?"
+	builtin cd -P "$@" || _shell_util_die "cd: cd to '$_shell_dir' failed with code $?"
 	unset -v _shell_dir
 
 	if [ -f 'foxxo.toml' ] || [ -f 'foxxy.toml' ] || [ -f 'fox.json' ]; then

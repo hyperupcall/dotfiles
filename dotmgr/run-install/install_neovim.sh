@@ -7,11 +7,6 @@ main() {
 }
 
 install.neovim() {
-	# util.get_latest_github_tag 'neovim/neovim'
-	# local latest_tag="$REPLY"
-
-	# local url="https://github.com/neovim/neovim/releases/download/$latest_tag/nvim-linux64.tar.gz"
-
 	util.clone_in_dots 'https://github.com/neovim/neovim'
 	local dir="$REPLY"
 

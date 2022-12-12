@@ -558,7 +558,8 @@
 		"basalt.toml": "https://raw.githubusercontent.com/hyperupcall/foxxo/main/src/schemas/basalt.schema.json"
 	},
 	"npm.keybindingsChangedWarningShown": true,
-	"workbench.colorTheme": "Winter is Coming (Light - No Italics)",
+	"workbench.colorTheme": "Bearded Theme Arc Reversed",
 	"shellcheck.disableVersionCheck": true,
-	"shellcheck.run": "onSave"
+	"shellcheck.run": "onSave",
+	"workbench.editor.untitled.hint": "hidden"
 }

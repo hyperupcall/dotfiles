@@ -5,6 +5,7 @@ task.init() {
 	git config --local filter.npmrc-clean.clean "$PWD/user/.config/npm/npmrc-clean.sh"
 	git config --local filter.slack-term-config-clean.clean "$PWD/user/.config/slack-term/slack-term-config-clean.sh"
 	git config --local filter.oscrc-clean.clean "$PWD/user/.config/osc/oscrc-clean.sh"
+	hookah refresh
 }
 
 task.build() {
@@ -18,7 +19,7 @@ task.update-subtree() {
 }
 
 task.test() {
-	cd ./user/.config/shell/modules && bats -p .
+	cd ./user/.config/shell/modules/common && bats -p .
 }
 
 task.commit() {
