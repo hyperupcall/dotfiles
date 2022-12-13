@@ -5,5 +5,5 @@ profile.check() {
 }
 
 profile.vars() {
-	VAR_REPOS_DIR="$HOME/Documents"
+	:
 }

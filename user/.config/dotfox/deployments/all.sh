@@ -16,8 +16,12 @@ if ! [[ -v 'XDG_CONFIG_HOME' && -v 'XDG_STATE_HOME' && -v 'XDG_DATA_HOME' ]]; th
 fi
 
 declare -ra dotfiles=(
+	home:'.agignore'
 	home:'.alsoftrc'
 	home:'.cpan/CPAN/MyConfig.pm'
+	home:'.digrc'
+	home:'.gnuplot'
+	home:'.psqlrc'
 	home:'.gnupg/dirmngr.conf'
 	home:'.gnupg/gpg.conf'
 	home:'.gnupg/gpg-agent.conf'
@@ -156,7 +160,6 @@ declare -ra dotfiles=(
 	cfg:'sx'
 	cfg:'sxhkd'
 	cfg:'swaylock'
-	cfg:'systemd/user/dropbox.service'
 	cfg:'taffybar'
 	cfg:'taskwarrior'
 	cfg:'terminator'
@@ -164,7 +167,6 @@ declare -ra dotfiles=(
 	cfg:'tig'
 	cfg:'tmux'
 	cfg:'toast'
-	cfg:'todotxt'
 	cfg:'twmn'
 	cfg:'udiskie'
 	cfg:'urlwatch'
