@@ -1,1 +1,0 @@
-/home/edwin/data/miniconda3
