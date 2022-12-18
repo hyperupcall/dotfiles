@@ -44,6 +44,7 @@ main() {
 	must_group "$user" 'libvirt'
 	must_group "$user" 'kvm'
 	must_group "$user" 'nordvpn'
+	must_group "$user" 'input'
 }
 
 must_group() {

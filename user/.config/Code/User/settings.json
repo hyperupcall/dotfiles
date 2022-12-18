@@ -23,9 +23,9 @@
 	// "editor.fontFamily": "'Droid Sans Mono', 'Fira Sans Mono', 'monospace'",
 	"editor.fontLigatures": true,
 	"editor.fontSize": 16,
-	"editor.formatOnSave": true,
-	"editor.formatOnPaste": true,
-	"editor.formatOnType": true,
+	"editor.formatOnSave": false,
+	"editor.formatOnPaste": false,
+	"editor.formatOnType": false,
 	"editor.insertSpaces": false,
 	"editor.inlineSuggest.enabled": true,
 	"editor.linkedEditing": true,
@@ -71,7 +71,8 @@
 		"*.html": "html",
 		"*.bbmodel": "json",
 		"*.jscript": "java",
-		"*.sublime-snippet": "xml"
+		"*.sublime-snippet": "xml",
+		"*.ejs": "html"
 	},
 	// "files.eol": "\n",
 	"files.exclude": {
@@ -132,7 +133,7 @@
 	"workbench.startupEditor": "none",
 	"workbench.tips.enabled": false,
 	"workbench.tree.indent": 12,
-	"workbench.colorTheme": "SynthWave '84",
+	"workbench.colorTheme": "1337",
 	"workbench.editor.untitled.hint": "hidden",
 
 	// EXPLORER
