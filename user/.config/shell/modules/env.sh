@@ -99,7 +99,7 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 export SXHKD_SHELL='/bin/sh'
 
 # vim
-export VIMINIT="if has('nvim') | source $XDG_CONFIG_HOME/nvim/nvim.lua | else | source $XDG_CONFIG_HOME/vim/vimrc | endif"
+export VIMINIT="if has('nvim') | source $XDG_CONFIG_HOME/nvim/init.lua | else | source $XDG_CONFIG_HOME/vim/vimrc | endif"
 
 # X11
 export XCURSOR_PATH="$XDG_CONFIG_HOME/icons:$XCURSOR_PATH"

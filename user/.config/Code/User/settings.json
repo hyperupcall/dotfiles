@@ -133,7 +133,7 @@
 	"workbench.startupEditor": "none",
 	"workbench.tips.enabled": false,
 	"workbench.tree.indent": 12,
-	"workbench.colorTheme": "1337",
+	"workbench.colorTheme": "Bearded Theme Arc",
 	"workbench.editor.untitled.hint": "hidden",
 
 	// EXPLORER
@@ -660,5 +660,6 @@
 		"wasm",
 		"wasmtime",
 		"webext"
-	]
+	],
+	"Lua.telemetry.enable": false
 }

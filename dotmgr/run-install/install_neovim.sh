@@ -11,12 +11,19 @@ install.neovim() {
 	local dir="$REPLY"
 
 	cd "$dir"
-	git pull
-	git checkout stable
-	if ! git rev-parse --verify --quiet stable >/dev/null; then
-		git switch -c stable
-	fi
+	git switch master
+	git pull --ff-only origin master
 
+	local channel='nightly' # or stable
+	git fetch origin "$channel"
+	git branch -D 'build'
+	git switch -c 'build' "tags/$channel"
+
+	rm -rf './build'
+	mkdir -p './build'
+
+	make distclean
+	make deps
 	make CMAKE_BUILD_TYPE=RelWithDebInfo
 	sudo make install
 }
