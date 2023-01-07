@@ -1,10 +1,10 @@
 #Requires -Version 5.1
 
 if (!(Get-Command scoop -ErrorAction SilentlyContinue)) {
-    Write-Output 'Installing scoop'
+	Write-Output 'Installing scoop'
 
-    Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-    Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+	Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+	Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
 }
 
 # Scoop does not like strict mode
@@ -12,15 +12,15 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
 if (!(Get-Command git -ErrorAction SilentlyContinue)) {
-   scoop install git
+	scoop install git
 }
 
 if (!(Test-Path -Path "$HOME/.dots")) {
-    git clone 'https://github.com/hyperupcall/dots' "$HOME/.dots"
+	git clone 'https://github.com/hyperupcall/dots' "$HOME/.dots"
 }
 
 if (!(Test-Path -Path "$HOME/.bootstrap")) {
-    New-Item -ItemType Directory "$HOME/.bootstrap" >$null
+	New-Item -ItemType Directory "$HOME/.bootstrap" >$null
 }
 
 @'
@@ -30,6 +30,6 @@ Import-Module "$HOME/.dots/windows/user/Documents/Powershell/Modules/Dotfox"
 Write-Host @"
 ---
 . "`$HOME/.bootstrap/init.ps1"
-Dotfox -Subcommand deploy
+dotfox -Subcommand deploy
 ---
 "@
