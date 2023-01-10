@@ -63,7 +63,7 @@ function Symlink-RelativePath {
 	)
 
 	$symlinkFile = Join-Path -Path "$HOME" -ChildPath "$relativePath"
-	$targetFile = Join-Path -Path "$HOME/.dots/user-windows" -ChildPath "$relativePath"
+	$targetFile = Join-Path -Path "$HOME/.dotfiles/user-windows" -ChildPath "$relativePath"
 
 	# Symlink file must either not exist or be a symlink link. With the original dotfox code, this
 	# is handled in a more elegant way, but here we just fail. Not worth the trouble for Windows

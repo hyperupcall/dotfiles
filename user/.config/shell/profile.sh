@@ -4,7 +4,7 @@
 
 umask 022
 
-. ~/.dots/xdg.sh
+. ~/.dotfiles/xdg.sh
 
 # XDG variables should have been read by PAM from ~/.pam_environment
 if [ -z "$XDG_CONFIG_HOME" ] || [ -z "$XDG_DATA_HOME" ] || [ -z "$XDG_STATE_HOME" ] || [ -z "$XDG_CACHE_HOME" ]; then
@@ -24,7 +24,7 @@ fi
 # ----------------------- Sourcing ----------------------- #
 . "$XDG_CONFIG_HOME/shell/modules/util.sh"
 
-_path_prepend "$HOME/.dots/.usr/bin"
+_path_prepend "$HOME/.dotfiles/.usr/bin"
 _path_prepend "$HOME/.local/bin"
 
 . "$XDG_CONFIG_HOME/shell/modules/env.sh"

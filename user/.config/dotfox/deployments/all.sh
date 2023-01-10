@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -eo pipefail
 
-declare dotdir="$HOME/.dots"
+declare dotdir="$HOME/.dotfiles"
 
 if [ -f "$dotdir/xdg.sh" ]; then
 	source "$dotdir/xdg.sh" --export-vars

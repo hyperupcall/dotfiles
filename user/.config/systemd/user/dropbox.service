@@ -1,11 +1,11 @@
 [Unit]
 Description=Dropbox Daemon
-ConditionPathExists=%h/.dots/.usr/bin/dropboxd
+ConditionPathExists=%h/.dotfiles/.usr/bin/dropboxd
 After=local-fs.target network.target
 
 [Service]
 Type=simple
-ExecStart=%h/.dots/.usr/bin/dropboxd
+ExecStart=%h/.dotfiles/.usr/bin/dropboxd
 Restart=on-failure
 RestartSec=1
 

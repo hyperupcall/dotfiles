@@ -21,7 +21,7 @@ if (( $? != 0 )); then printf '%s\n' "Error: bashrc.sh: Failed to source ~/.prof
 
 # source "$XDG_CONFIG_HOME/bash/frameworks/oh-my-bash.sh"
 # source "$XDG_CONFIG_HOME/bash/frameworks/bash-it.sh"
-# source "$HOME/.dots/.repos/blesh/out/ble.sh"
+# source "$HOME/.dotfiles/.repos/blesh/out/ble.sh"
 
 
 #

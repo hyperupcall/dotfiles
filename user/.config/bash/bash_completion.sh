@@ -2,4 +2,4 @@
 
 # Most completions reside in dotshellgen configuration
 
-source ~/.dots/.dotmgr/completion/completion.bash
+source ~/.dotfiles/.dotmgr/completion/completion.bash

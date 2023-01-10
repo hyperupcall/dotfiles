@@ -1,10 +1,18 @@
 # shellcheck shell=bash
 
+shopt -s globstar
+
+for f in \
+	"${0%/*}/../../vendor/bash-core/pkg"/**/*.sh \
+	"${0%/*}/../../vendor/bash-term/pkg"/**/*.sh; do
+	source "$f"
+done; unset -v f
+
 if [ "$1" != 'bootstrap' ]; then
-	if [ -f ~/.dots/.usr/share/github_token ]; then
-		GITHUB_TOKEN=$(<~/.dots/.usr/share/github_token)
+	if [ -f ~/.dotfiles/.usr/share/github_token ]; then
+		GITHUB_TOKEN=$(<~/.dotfiles/.usr/share/github_token)
 	else
-		core.print_error "GitHub token not found at ~/.dots/.usr/share/github_token. Please re-run bootstrap"
+		core.print_error "GitHub token not found at ~/.dotfiles/.usr/share/github_token. Please re-run bootstrap"
 		exit 1
 	fi
 fi
@@ -30,7 +38,7 @@ util.cd_temp() {
 	local dir=
 	dir=$(mktemp -d)
 
-	pushd "$dir" >/dev/null
+	pushd "$dir" >/dev/null || exit
 }
 
 util.ensure() {
@@ -91,28 +99,12 @@ util.clone_in_dots() {
 	unset -v REPLY; REPLY=
 	local repo="$1"
 
-	local dir="$HOME/.dots/.repos/${repo##*/}"
+	local dir="$HOME/.dotfiles/.repos/${repo##*/}"
 	util.clone "$repo" "$dir"
 
 	REPLY=$dir
 }
 
-util.assert_prereq() {
-	if [ -z "$XDG_CONFIG_HOME" ]; then
-		# shellcheck disable=SC2016
-		core.print_die '$XDG_CONFIG_HOME is empty. Did you source profile-pre-bootstrap.sh?'
-	fi
-
-	if [ -z "$XDG_DATA_HOME" ]; then
-		# shellcheck disable=SC2016
-		core.print_die '$XDG_DATA_HOME is empty. Did you source profile-pre-bootstrap.sh?'
-	fi
-
-	if [ -z "$XDG_STATE_HOME" ]; then
-		# shellcheck disable=SC2016
-		core.print_die '$XDG_STATE_HOME is empty. Did you source profile-pre-bootstrap.sh?'
-	fi
-}
 
 util.confirm() {
 	local message="${1:-Confirm?}"

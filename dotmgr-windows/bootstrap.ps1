@@ -15,8 +15,8 @@ if (!(Get-Command git -ErrorAction SilentlyContinue)) {
 	scoop install git
 }
 
-if (!(Test-Path -Path "$HOME/.dots")) {
-	git clone 'https://github.com/hyperupcall/dots' "$HOME/.dots"
+if (!(Test-Path -Path "$HOME/.dotfiles")) {
+	git clone 'https://github.com/hyperupcall/dots' "$HOME/.dotfiles"
 }
 
 if (!(Test-Path -Path "$HOME/.bootstrap")) {
@@ -24,7 +24,7 @@ if (!(Test-Path -Path "$HOME/.bootstrap")) {
 }
 
 @'
-Import-Module "$HOME/.dots/windows/user/Documents/Powershell/Modules/Dotfox"
+Import-Module "$HOME/.dotfiles/windows/user/Documents/Powershell/Modules/Dotfox"
 '@ | Out-File -FilePath "$HOME/.bootstrap/init.ps1"
 
 Write-Host @"

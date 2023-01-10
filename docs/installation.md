@@ -34,12 +34,12 @@ The `bootstrap.sh` script performs the following steps:
 
 - Installs Homebrew, on macOS
 - Installs Git and Neovim
-- Clones `hyperupcall/dots` to `~/.dots`
-- Clones `hyperupcall/dotmgr` to `~/.dots/.dotmgr`
+- Clones `hyperupcall/dots` to `~/.dotfiles`
+- Clones `hyperupcall/dotmgr` to `~/.dotfiles/.dotmgr`
 - Creates a `~/.bootstrap/bootstrap-out.sh`; sourcing it does the following
   - Sets `NAME`, `EMAIL`, `EDITOR`, `VISUAL`
-  - Appends `$HOME/.dots/.usr/bin` to `PATH`
-  - Sources `~/.dots/xdg.sh`, if it exists
+  - Appends `$HOME/.dotfiles/.usr/bin` to `PATH`
+  - Sources `~/.dotfiles/xdg.sh`, if it exists
 
 Then, run the following
 

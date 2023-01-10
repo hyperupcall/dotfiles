@@ -1,6 +1,6 @@
 set autoindent
 set backup
-set backupdir ~/.dots/.home/xdg_state_dir/nano/backups
+set backupdir ~/.dotfiles/.home/xdg_state_dir/nano/backups
 set breaklonglines
 unset casesensitive
 set historylog

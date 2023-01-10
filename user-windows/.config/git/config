@@ -1,11 +1,11 @@
 [include]
-	path = ~/.dots/user/.config/git/include/alias.conf
-	path = ~/.dots/user/.config/git/include/diff.conf
-	path = ~/.dots/user/.config/git/include/external.conf
-	path = ~/.dots/user/.config/git/include/main.conf
-	path = ~/.dots/user/.config/git/include/url.conf
+	path = ~/.dotfiles/user/.config/git/include/alias.conf
+	path = ~/.dotfiles/user/.config/git/include/diff.conf
+	path = ~/.dotfiles/user/.config/git/include/external.conf
+	path = ~/.dotfiles/user/.config/git/include/main.conf
+	path = ~/.dotfiles/user/.config/git/include/url.conf
 [commit]
-	template = ~/.dots/user/.config/git/templates/commit
+	template = ~/.dotfiles/user/.config/git/templates/commit
 [credential]
 	helper = wincred
 [credential "helperselector"]

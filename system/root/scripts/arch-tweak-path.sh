@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-diffsDir="/home/edwin/.dots/diffs"
+diffsDir="/home/edwin/.dotfiles/diffs"
 tmpdir="$(mktemp -d)"
 
 diff /etc/profile.d/jre.sh "$diffsDir/jre.sh" > "$tmpdir/jre.diff"

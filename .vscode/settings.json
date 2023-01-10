@@ -20,5 +20,6 @@
 		"**/.repos/**": true,
 		"**/.usr/**": true
 	},
-	"commentAnchors.workspace.excludeFiles": "**/{.dotmgr,.git,.home,.repos,.usr,Code/User/settings.json}/**"
+	"commentAnchors.workspace.excludeFiles": "**/{.dotmgr,.git,.home,.repos,.usr,Code/User/settings.json}/**",
+	"esbonio.sphinx.confDir": ""
 }

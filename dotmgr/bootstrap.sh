@@ -29,24 +29,24 @@ main() {
 	installcmd 'nvim' 'neovim'
 
 	# Install hyperupcall/dots
-	clonerepo 'github.com/hyperupcall/dots' ~/.dots
-	run cd ~/.dots
+	clonerepo 'github.com/hyperupcall/dots' ~/.dotfiles
+	run cd ~/.dotfiles
 		run git remote set-url origin 'git@github.com:hyperupcall/dots'
 		run ./bake init
 	run cd
 
 	# Install hyperupcall/dotmgr
-	clonerepo 'github.com/hyperupcall/dotmgr' ~/.dots/.dotmgr
-	run cd ~/.dots/.dotmgr
+	clonerepo 'github.com/hyperupcall/dotmgr' ~/.dotfiles/.dotmgr
+	run cd ~/.dotfiles/.dotmgr
 		run git remote set-url origin 'git@github.com:hyperupcall/dotmgr'
 	run cd
-	run printf '%s\n' '~/.dots/dotmgr' > ~/.dots/.dotmgr/.dotmgr_dir
-	run mkdir -p ~/.dots/.usr/bin
-	run ln -sf ~/.dots/.dotmgr/bin/dotmgr ~/.dots/.usr/bin/dotmgr
+	run printf '%s\n' '~/.dotfiles/dotmgr' > ~/.dotfiles/.dotmgr/.dotmgr_dir
+	run mkdir -p ~/.dotfiles/.usr/bin
+	run ln -sf ~/.dotfiles/.dotmgr/bin/dotmgr ~/.dotfiles/.usr/bin/dotmgr
 
 	# Asserts
-	if [ ! -f ~/.dots/xdg.sh ]; then
-		die 'Failed to find file at ~/.dots/xdg.sh'
+	if [ ! -f ~/.dotfiles/xdg.sh ]; then
+		die 'Failed to find file at ~/.dotfiles/xdg.sh'
 	fi
 
 	# Export variables
@@ -57,12 +57,12 @@ export NAME='Edwin Kofler'
 export EMAIL='edwin@kofler.dev'
 export EDITOR='nvim'
 export VISUAL="\$VISUAL"
-export PATH="\$HOME/.dots/.usr/bin:\$PATH"
+export PATH="\$HOME/.dotfiles/.usr/bin:\$PATH"
 
-if [ -f ~/.dots/xdg.sh ]; then
-	. ~/.dots/xdg.sh
+if [ -f ~/.dotfiles/xdg.sh ]; then
+	. ~/.dotfiles/xdg.sh
 else
-	printf '%s\n' 'Error: ~/.dots/xdg.sh not found'
+	printf '%s\n' 'Error: ~/.dotfiles/xdg.sh not found'
 	return 1
 fi
 EOF
