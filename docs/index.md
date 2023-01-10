@@ -1,6 +1,6 @@
-# dots
+# dotfiles
 
-My Dotties! ^\_^
+My Dotfiles! ^\_^
 
 See [Installation](./installation.md) ([windows](./installation-windows.md)) for installation instructions.
 

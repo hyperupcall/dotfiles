@@ -17,8 +17,8 @@
 	"search.exclude": {
 		"**/.git/**": true,
 		"**/.home/**": true,
-		"**/.repos/**": true,
-		"**/.usr/**": true
+		"**/.data/repos/**": true,
+		"**/.bin/**": true
 	},
 	"commentAnchors.workspace.excludeFiles": "**/{.dotmgr,.git,.home,.repos,.usr,Code/User/settings.json}/**",
 	"esbonio.sphinx.confDir": ""

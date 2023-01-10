@@ -1,0 +1,25 @@
+[include]
+	path = ~/.dotfiles/os/*nix/user/.config/git/include/alias.conf
+	path = ~/.dotfiles/os/*nix/user/.config/git/include/diff.conf
+	path = ~/.dotfiles/os/*nix/user/.config/git/include/external.conf
+	path = ~/.dotfiles/os/*nix/user/.config/git/include/main.conf
+	path = ~/.dotfiles/os/*nix/user/.config/git/include/url.conf
+[commit]
+	template = ~/.dotfiles/os/*nix/user/.config/git/templates/commit
+[credential]
+	helper = wincred
+[credential "helperselector"]
+	selected = wincred
+[status]
+	submoduleSummary = true
+[gpg]
+	program = C:/Program Files (x86)/GnuPG/bin/gpg.exe
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[status]
+	submoduleSummary = true
+[gpg]
+	# program = C:/Program Files (x86)/GnuPG/bin/gpg.exe

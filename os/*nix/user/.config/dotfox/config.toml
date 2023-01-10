@@ -1,0 +1,3 @@
+[config]
+dotDir = '~/.dotfiles/os/*nix/user'
+destDir = '~'

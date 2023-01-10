@@ -2,7 +2,7 @@
 
 The following scripts are notable and may be of use
 
-## [`generate-remote-shellrcs.sh`](../user/.config/shell/scripts/generate-remote-shellrcs.sh)
+## [`generate-remote-shellrcs.sh`](../os/*nix/user/.config/shell/scripts/generate-remote-shellrcs.sh)
 
 Script that automatically generates bash startup scripts
 for remote servers and the root user based on annotations of functions, aliases, and readline declarations
@@ -20,9 +20,9 @@ Special Bash readline bindings that includes many convenient functionality that 
 - Alt+/ to toggle comment
 - Alt+\ to toggle backslash
 
-It calls more general functions that can be found at [`line-editing.sh`](../user/.config/shell/modules/common/line-editing.sh)
+It calls more general functions that can be found at [`line-editing.sh`](../os/*nix/user/.config/shell/modules/common/line-editing.sh)
 
-## [`mkt.sh`](../user/.config/shell/modules/functions/mkt.sh)
+## [`mkt.sh`](../os/*nix/user/.config/shell/modules/functions/mkt.sh)
 
 Quick command to automatically do something in a temporary space. Based on the first argument, it will
 
@@ -33,6 +33,6 @@ Quick command to automatically do something in a temporary space. Based on the f
 
 It will create a history of invocations at `$XDG_STATE_HOME/history/mkt_history`
 
-## [`xdg.sh`](../user/.config/shell/modules/xdg.sh)
+## [`xdg.sh`](../os/*nix/user/.config/shell/modules/xdg.sh)
 
 Contains environment variables and alises that make programs more XDG-compliant. At around ~500 lines, it will reduce the chances that files and folders such as `.go`, `.z`, `.wine`, `.rvm` will be created in your home directory. It places them in `$XDG_CONFIG_HOME`, `$XDG_STATE_HOME`, `$XDG_DATA_HOME`, `$XDG_RUNTIME_DIR`, etc. instead
