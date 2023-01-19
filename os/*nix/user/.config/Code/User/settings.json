@@ -37,6 +37,7 @@
 	"editor.renderWhitespace": "all",
 	"editor.smoothScrolling": true,
 	"editor.suggestSelection": "recentlyUsedByPrefix",
+	"editor.suggest.snippetsPreventQuickSuggestions": false,
 	"editor.tabSize": 3,
 	"editor.unfoldOnClickAfterEndOfLine": true,
 	"editor.wordWrap": "on",
@@ -339,7 +340,13 @@
 	"python.languageServer": "Pylance",
 
 	// BASH
-	"shellcheck.run": "onSave",
+	"shellcheck.run": "onType",
+	"[shellscript]": {
+		"editor.formatOnSave": false,
+		"editor.codeActionsOnSave": {
+			"source.fixAll": false
+		}
+	},
 
 	// FISH
 	"[fish]": {
@@ -383,6 +390,8 @@
 		"editor.formatOnSave": true,
 		"editor.defaultFormatter": "rust-lang.rust-analyzer"
 	},
+	"rust-analyzer.lens.enable": false,
+	"rust-analyzer.inlayHints.typeHints.enable": false,
 
 	// EMMET
 	"emmet.excludeLanguages": [],
@@ -422,7 +431,7 @@
 	"screencastMode.onlyKeyboardShortcuts": true,
 	"sqltools.useNodeRuntime": true,
 	"cmake.configureOnOpen": true,
-	"makefile.alwaysPreConfigure": true,
+	// "makefile.alwaysPreConfigure": true,
 	"vim.enableNeovim": true,
 	"esbonio.server.enabled": false,
 	"zenMode.centerLayout": true,
@@ -480,7 +489,7 @@
 	"C_Cpp.inlayHints.referenceOperator.enabled": true,
 	"C_Cpp.codeAnalysis.runAutomatically": true,
 	"C_Cpp.codeAnalysis.clangTidy.enabled": true,
-	"C_Cpp.codeAnalysis.clangTidy.fallbackConfig": "{ Checks: 'bugprone-*,cert-*,clang-analyzer-*,concurrency-*,cppcoreguidelines-*,google-*,hicpp-*,misc-*,modernize-*,performance-*,portability-*,readability-*,-bugprone-easily-swappable-parameters,-clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling,-clang-analyzer-deadcode.DeadStores,-concurrency-mt-unsafe,-cppcoreguidelines-avoid-c-arrays,-cppcoreguidelines-avoid-magic-numbers,-cppcoreguidelines-avoid-non-const-global-variables,-cppcoreguidelines-macro-usage,-cppcoreguidelines-owning-memory,-cppcoreguidelines-pro-bounds-pointer-arithmetic,-cppcoreguidelines-pro-bounds-array-to-pointer-decay,-google-readability-braces-around-statements,-google-readability-casting,-google-readability-todo,-google-runtime-references,-modernize-avoid-c-arrays,-modernize-use-trailing-return-type,-readability-braces-around-statements,-readability-convert-member-functions-to-static,-readability-else-after-return,-readability-identifier-length,-readability-isolate-declaration,-readability-magic-numbers'}",
+	"C_Cpp.codeAnalysis.clangTidy.fallbackConfig": "{ Checks: 'bugprone-*,cert-*,clang-analyzer-*,concurrency-*,cppcoreguidelines-*,google-*,hicpp-*,misc-*,modernize-*,performance-*,portability-*,readability-*,-bugprone-easily-swappable-parameters,-clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling,-clang-analyzer-deadcode.DeadStores,-concurrency-mt-unsafe,-cppcoreguidelines-avoid-c-arrays,-cppcoreguidelines-avoid-magic-numbers,-cppcoreguidelines-avoid-non-const-global-variables,-cppcoreguidelines-macro-usage,-cppcoreguidelines-owning-memory,-cppcoreguidelines-pro-bounds-pointer-arithmetic,-cppcoreguidelines-pro-bounds-array-to-pointer-decay,-google-readability-braces-around-statements,-google-readability-casting,-google-readability-todo,-google-runtime-references,-modernize-avoid-c-arrays,-modernize-use-trailing-return-type,-readability-braces-around-statements,-readability-convert-member-functions-to-static,-readability-else-after-return,-readability-identifier-length,-readability-isolate-declaration,-readability-magic-numbers,-misc-unused-parameters'}",
 	"C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, UseTab: ForIndentation, IndentWidth: 3, TabWidth: 3, AlignEscapedNewlines: Left, AllowShortFunctionsOnASingleLine: Empty, AlwaysBreakTemplateDeclarations: Yes, ColumnLimit: 120 }",
 	"C_Cpp.clang_format_sortIncludes": true,
 	"c-cpp-flylint.standard": ["c11", "c++20"],

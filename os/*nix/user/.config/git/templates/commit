@@ -1,13 +1,15 @@
 
 # Fox: 'type[(scope)]: message'
-#  [ fix, feat, breaking, api, perf ] (Standard)
+#  cc: [ fix, feat, breaking ]
 #  [ tweak, refactor, restructure ]
-#  [ add, remove, update, change, wip ] (General)
-#  [ chore, content, major, docs, readme ] (General)
-#  [ comment, format, lint, style ] (Dev Style)
-#  [ deps, ci, dx, workflow, test, build ] (Standard)
-#  [ types, wip, misc, change, repo, infra, meta, dev ] (Dev Misc)
-#
+#  [ chore, docs, readme, perf ]
+#  [ misc, infra, meta, dev, dx, test, types ]
+#  category: [ cli, api ]
+#  meta: deps, ci, workflow, build
+#  style: [ format, lint, style ]
+#  bad: [ add, remove, update, change ]
+#  bad: major, minor
+#  bad: [ comment, content, repo, wip ]
 #
 # Conventional Commits: 'type: message
 #  [ fix, feat, 'BREAKING CHANGE' ]

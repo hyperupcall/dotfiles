@@ -64,7 +64,7 @@ main() {
 	# -------------------------------------------------------- #
 	must.dir "$HOME/.dotfiles/.home"
 	must.dir "$HOME/.dotfiles/.repos"
-	must.dir "$HOME/.dotfiles/.usr"/{bin,include,lib,libexec,local,share,src}
+	must.dir "$HOME/.dotfiles/.data"
 	must.dir "$HOME/.gnupg"
 	must.dir "$HOME/.ssh"
 	must.dir "$XDG_STATE_HOME/history"
@@ -116,16 +116,14 @@ main() {
 	#                 CREATE HOME DIR SYMLINKS                 #
 	# -------------------------------------------------------- #
 	if [ "$profile" = 'desktop' ]; then
-		must.link "$HOME/Docs/Programming/challenges" "$HOME/challenges"
-		must.link "$HOME/Docs/Programming/experiments" "$HOME/experiments"
-		must.link "$HOME/Docs/Programming/git" "$HOME/git"
-		must.link "$HOME/Docs/Programming/repos" "$HOME/repos"
-		must.link "$HOME/Docs/Programming/workspaces" "$HOME/workspaces"
+		must.link "$HOME/.dotfiles/.home/Documents/Programming/challenges" "$HOME/challenges"
+		must.link "$HOME/.dotfiles/.home/Documents/Programming/experiments" "$HOME/experiments"
+		must.link "$HOME/.dotfiles/.home/Documents/Programming/workspaces" "$HOME/workspaces"
+		must.link "$HOME/.dotfiles/.home/Documents/Programming/Repositories/git" "$HOME/git"
+		must.link "$HOME/.dotfiles/.home/Documents/Programming/Repositories/default" "$HOME/repos"
 	elif [ "$profile" = 'laptop' ]; then
 		:
 	fi
-	must.link "$HOME/.dotfiles/os/*nix/user/scripts" "$HOME/scripts"
-
 
 	# -------------------------------------------------------- #
 	#                    CREATE BIN SYMLINKS                   #
@@ -138,18 +136,17 @@ main() {
 	fi done; unset -v file
 
 	core.shopt_push -s nullglob
-	local -a files=("$HOME/.dotfiles/.home/Documents/Programming/repos/Groups/Bash"/{bake,basalt,hookah,foxomate,glue,rho,shelldoc,shelltest,woof}/pkg/bin/*)
+	local -a files=("$HOME/.dotfiles/.home/Documents/Programming/Repositories/Bash"/{bake,basalt,hookah,foxomate,glue,rho,shelldoc,shelltest,woof}/pkg/bin/*)
 	core.shopt_pop
 	local file=; for file in "${files[@]}"; do
 		ln -fs  "$file" ~/.dotfiles/.bin
 	done; unset -v file
 
-	ln -s "$HOME/.dotfiles/.home/Documents/Programming/repos/choose/target/debug/choose" ~/.dotfiles/.bin/choose
-	must.link ~/.data/dotmgr-src/bin/dotmgr ~/.dotfiles/.bin/dotmgr
+	ln -s "$HOME/.dotfiles/.home/Documents/Programming/Repositories/default/choose/target/debug/choose" ~/.dotfiles/.bin/choose
+	must.link ~/.dotfiles/.data/dotmgr-src/target/debug/dotmgr ~/.dotfiles/.bin/dotmgr
 	if [ "$profile" = 'desktop' ]; then
 		must.link ~/repos/dotfox/dotfox ~/.dotfiles/.bin/dotfox
 	fi
-	must.link ~/Documents/repos/basalt/pkg/bin/basalt ~/.dotfiles/.bin/basalt
 
 
 	# -------------------------------------------------------- #

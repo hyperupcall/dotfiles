@@ -63,6 +63,7 @@ declare -ra dotfiles=(
 	cfg:'dircolors'
 	cfg:'discocss'
 	cfg:'dotfox'
+	cfg:'dotmgr'
 	cfg:'dotshellgen'
 	cfg:'dunst'
 	cfg:'dxhd'

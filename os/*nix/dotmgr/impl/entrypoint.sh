@@ -1,43 +1,29 @@
 #!/usr/bin/env bash
 
-die() {
-	printf '%s\n' "$1" >&2
+_die() {
+	printf '%s: %s\n' "${0##*/}" "$1" >&2
 	exit 1
 }
 
-main() {
-	if [ -z "$XDG_CONFIG_HOME" ]; then
-		# shellcheck disable=SC2016
-		die '$XDG_CONFIG_HOME is empty. Did you source profile-pre-bootstrap.sh?'
-	fi
-
-	if [ -z "$XDG_DATA_HOME" ]; then
-		# shellcheck disable=SC2016
-		die '$XDG_DATA_HOME is empty. Did you source profile-pre-bootstrap.sh?'
-	fi
-
-	if [ -z "$XDG_STATE_HOME" ]; then
-		# shellcheck disable=SC2016
-		die '$XDG_STATE_HOME is empty. Did you source profile-pre-bootstrap.sh?'
-	fi
-
+# shellcheck disable=SC2016,SC2181
+_main() {
 	local file_to_exec="$1"
 	local files_to_source_str="$2"
+	shift || _die 'Failed shift'
+	shift || _die 'Failed shift'
 
-	local files_to_source=
-	IFS=':' read -ra files_to_source <<< "$files_to_source_str"
-	local file_to_source=
-	for file_to_source in "${files_to_source[@]}"; do
-		if [ -z "$file_to_source" ]; then continue; fi
+	local files=
+	IFS=':' read -ra files <<< "$files_to_source_str"
+	local f=
+	for f in "${files[@]}"; do
+		source "$f"
+	done; unset -v f
 
-		source "$file_to_source"
-	done; unset -v file_to_source
-
-	shift
-	shift
+	[ -z "$XDG_CONFIG_HOME" ] && _die 'Failed because $XDG_CONFIG_HOME is empty'
+	[ -z "$XDG_DATA_HOME" ] && _die 'Failed because $XDG_DATA_HOME is empty'
+	[ -z "$XDG_STATE_HOME" ] && _die 'Failed because $XDG_STATE_HOME is empty'
 
 	source "$file_to_exec"
-	main "$@"
 }
 
-main "$@"
+_main "$@"

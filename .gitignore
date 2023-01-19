@@ -2,6 +2,6 @@
 .data/
 .home/
 
-.dotmgr/
 site/
 *.env
+node_modules/

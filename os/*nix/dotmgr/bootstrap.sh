@@ -28,6 +28,9 @@ main() {
 	installcmd 'git' 'git'
 	installcmd 'nvim' 'neovim'
 
+	# Install Rust
+	curl -fsSL 'https://sh.rustup.rs' | sh -s -- --default-toolchain nightly -y
+
 	# Install hyperupcall/dots
 	clonerepo 'github.com/hyperupcall/dots' ~/.dotfiles
 	run cd ~/.dotfiles
@@ -36,13 +39,13 @@ main() {
 	run cd
 
 	# Install hyperupcall/dotmgr
-	clonerepo 'github.com/hyperupcall/dotmgr' ~/.data/dotmgr-src
-	run cd ~/.data/dotmgr-src
+	clonerepo 'github.com/hyperupcall/dotmgr' ~/.dotfiles/.data/dotmgr-src
+	run cd ~/.dotfiles/.data/dotmgr-src
 		run git remote set-url origin 'git@github.com:hyperupcall/dotmgr'
+		run cargo build
 	run cd
-	run printf '%s\n' '~/.dotfiles/dotmgr' > ~/.data/dotmgr-src/.dotmgr_dir
-	run mkdir -p ~/.dotfiles/.bin
-	run ln -sf ~/.data/dotmgr-src/bin/dotmgr ~/.dotfiles/.bin/dotmgr
+	run mkdir -p ~/.dotfiles/.data/bin
+	run ln -sf ~/.dotfiles/.data/dotmgr-src/target/debug/dotmgr ~/.dotfiles/.data/bin/dotmgr
 
 	# Asserts
 	if [ ! -f ~/.dotfiles/xdg.sh ]; then

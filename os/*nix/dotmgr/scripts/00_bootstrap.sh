@@ -90,8 +90,6 @@ main() {
 
 	# Get GithHub authorization tokens
 	if [ ! -f ~/.dotfiles/.data/github_token ]; then
-		mkdir -p ~/.dotfiles/.usr/share
-
 		local hostname=
 		hostname=$(hostname)
 
