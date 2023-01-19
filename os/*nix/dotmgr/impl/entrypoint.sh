@@ -24,6 +24,7 @@ _main() {
 	[ -z "$XDG_STATE_HOME" ] && _die 'Failed because $XDG_STATE_HOME is empty'
 
 	source "$file_to_exec"
+	main "$@"
 }
 
 _main "$@"

@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-exec node "./permission-repo.js"
+main() {
+	exec node "./permission-repo.js"
+}
