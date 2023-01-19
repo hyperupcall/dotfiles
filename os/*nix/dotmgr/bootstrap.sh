@@ -114,15 +114,15 @@ iscmd() {
 }
 
 installupdates() {
-	if util.is_cmd 'pacman'; then
+	if is_cmd 'pacman'; then
 		sudo pacman -Syyu --noconfirm
-	elif util.is_cmd 'apt-get'; then
+	elif is_cmd 'apt-get'; then
 		sudo apt-get -y update
 		sudo apt-get -y upgrade
 		sudo apt-get -y install apt-transport-https
-	elif util.is_cmd 'dnf'; then
+	elif is_cmd 'dnf'; then
 		sudo dnf -y update
-	elif util.is_cmd 'zypper'; then
+	elif is_cmd 'zypper'; then
 		sudo zypper -y update
 		sudo zypper -y upgrade
 	else

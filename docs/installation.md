@@ -25,7 +25,7 @@ Download and execute `bootstrap.sh` to begin the bootstrap process
 
 ```sh
 mkdir -p ~/.bootstrap
-curl -#fLo ~/.bootstrap/bootstrap.sh 'https://raw.githubusercontent.com/hyperupcall/dots/trunk/dotmgr/bootstrap.sh'
+curl -#fLo ~/.bootstrap/bootstrap.sh 'https://raw.githubusercontent.com/hyperupcall/dots/trunk/os/*nix/dotmgr/bootstrap.sh'
 chmod +x ~/.bootstrap/bootstrap.sh
 ~/.bootstrap/bootstrap.sh
 ```
