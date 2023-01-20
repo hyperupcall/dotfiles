@@ -6,9 +6,9 @@
 # Description:
 # Does a doctor
 
-main() {
-	local -a cmds=(clang-format clang-tidy)
-	local cmd=
+{
+	declare -a cmds=(clang-format clang-tidy)
+	declare cmd=
 	for cmd in "${cmds[@]}"; do
 		if ! util.is_cmd "$cmd"; then
 			core.print_warn "Not installed: $cmd"

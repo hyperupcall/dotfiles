@@ -10,24 +10,19 @@
 # - Symlinks ~/.ssh, etc. software not mananged by dotfox
 # - Symlinks directories to ~/.dotfiles/.home
 
-main() {
+{
 	(
 		cd ~/.dotfiles || exit
 		./bake init
 	)
 
-	# sudo dotmgr
+	util.run_script 'scripts-misc' '10_dirs.sh'
 
-	local profile='desktop'
+	util.run_script 'scripts-misc' '12_dot_funcalias_extractor.sh'
+	util.run_script 'scripts-misc' '13_dot_shell_generator.sh'
+	# TODO: if wrong directory is called, infinite loop (util.run_script 'run-misc' 'actions' '12_sync_dotfiles.sh')
+	util.run_script 'scripts' '12_sync_dotfiles.sh'
 
-	dotmgr.call 'run-misc' '10_dirs.sh'
-
-	dotmgr.call 'run-misc' '12_dot_funcalias_extractor.sh'
-	dotmgr.call 'run-misc' '13_dot_shell_generator.sh'
-	# TODO: if wrong directory is called, infinite loop (dotmgr.call 'run-misc' 'actions' '12_sync_dotfiles.sh')
-	dotmgr.call 'run' '12_sync_dotfiles.sh'
-
-	# TODO
 
 	# if [ "$profile" = 'desktop' ]; then
 	# 	if util.is_cmd VBoxManage; then

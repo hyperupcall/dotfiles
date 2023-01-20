@@ -8,7 +8,7 @@
 # Everything is encrypted with a passphrase. This script Just Works, whether or not the
 # USB is already mounted
 
-main() {
+{
 	util.ensure_bin expect
 	util.ensure_bin age
 	util.ensure_bin age-keygen
@@ -16,17 +16,17 @@ main() {
 	sudo -v
 
 	find_mnt_usb '6044-5CC1' # WET
-	local block_dev_target=$REPLY
+	declare block_dev_target=$REPLY
 
 	# Now, file system is mounted at "$block_dev_target"
 
-	local password=
+	declare password=
 	password=$(LC_ALL=C tr -dc '[:alnum:][:digit:]' </dev/urandom | head -c 12; printf '\n')
 	core.print_info "Password: $password"
 
 	# Copy over ssh keys
-	local -r sshDir="$HOME/.ssh"
-	local -a sshKeys=(environment config github github.pub)
+	declare -r sshDir="$HOME/.ssh"
+	declare -a sshKeys=(environment config github github.pub)
 	if [ -d "$sshDir" ]; then
 		exec 4> >(sudo tee "$block_dev_target/ssh-keys.tar.age" >/dev/null)
 		if expect -f <(cat <<-EOF
@@ -61,8 +61,8 @@ main() {
 	fi
 
 	# Copy over gpg keys
-	local -r fingerprints=('6EF89C3EB889D61708E5243DDA8EF6F306AD2CBA' '4C452EC68725DAFD09EC57BAB2D007E5878C6803')
-	local gpg_dir="$HOME/.gnupg"
+	declare -r fingerprints=('6EF89C3EB889D61708E5243DDA8EF6F306AD2CBA' '4C452EC68725DAFD09EC57BAB2D007E5878C6803')
+	declare gpg_dir="$HOME/.gnupg"
 	if [ -d "$gpg_dir" ]; then
 		exec 4> >(sudo tee "$block_dev_target/gpg-keys.tar.age" >/dev/null)
 		if expect -f <(cat <<-EOF

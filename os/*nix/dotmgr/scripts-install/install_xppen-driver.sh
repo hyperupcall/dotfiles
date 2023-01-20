@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 
-main() {
+{
 	if util.confirm 'Install XP-Pen Driver?'; then
 		util.cd_temp
 

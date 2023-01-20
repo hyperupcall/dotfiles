@@ -1,12 +1,12 @@
 # shellcheck shell=bash
 
-main() {
+{
 	if util.confirm 'Install Pass?'; then
 		install.pass
 	fi
 
 	if util.confirm 'Clone password repository?'; then
-		local dir="${PASSWORD_STORE_DIR:-$HOME/.password-store}"
+		declare dir="${PASSWORD_STORE_DIR:-$HOME/.password-store}"
 
 		if [ -d "$dir" ]; then
 			if [ -d "$dir/.git" ]; then
@@ -23,7 +23,7 @@ main() {
 
 install.pass() {
 	util.get_package_manager
-	local pkgmngr="$REPLY"
+	declare pkgmngr="$REPLY"
 
 	case $pkgmngr in
 	pacman)

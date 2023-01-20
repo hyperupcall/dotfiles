@@ -10,9 +10,9 @@
 # For C++: cmake, ccache
 # For backup editing: vim, nano
 
-main() {
+{
 	util.get_package_manager
-	local pkgmngr="$REPLY"
+	declare pkgmngr="$REPLY"
 
 	case $pkgmngr in
 	pacman)

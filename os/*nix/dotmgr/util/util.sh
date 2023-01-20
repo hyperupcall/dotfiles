@@ -1,26 +1,5 @@
 # shellcheck shell=bash
 
-shopt -s globstar
-
-for f in \
-	"${0%/*}/../../vendor/bash-core/pkg"/**/*.sh \
-	"${0%/*}/../../vendor/bash-term/pkg"/**/*.sh; do
-	source "$f"
-done; unset -v f
-
-if [ "$1" != 'bootstrap' ]; then
-	if [ -f ~/.dotfiles/.data/github_token ]; then
-		GITHUB_TOKEN=$(<~/.dotfiles/.data/github_token)
-	else
-		core.print_error "GitHub token not found at ~/.dotfiles/.data/github_token. Please re-run bootstrap"
-		exit 1
-	fi
-fi
-
-_util.get_user_dotmgr_dir() {
-	REPLY="$HOME/.data/"
-}
-
 util.die() {
 	exit 1
 }
@@ -174,4 +153,37 @@ util.get_latest_github_tag() {
 	tag_name=$(curl -fsSLo- "$url" | jq -r '.tag_name')
 
 	REPLY=$tag_name
+}
+
+util.run_script() {
+	local dir="$HOME/.dotfiles/os/*nix/dotmgr/$1"
+	local glob_pattern="$2"
+
+	local -a files=("$dir/"*"$glob_pattern"*)
+	if (( ${#files[@]} == 0 )); then
+		core.print_error "Failed to find a file matching '$glob_pattern' in dir '$dir'"
+		if ! util.confirm 'Continue?'; then
+			exit 1
+		fi
+	elif (( ${#files[@]} > 1 )); then
+		core.print_error "Failed to find a single file matching '$glob_pattern' in dir '$dir' (multiple matches found)"
+		if ! util.confirm 'Continue?'; then
+			exit 1
+		fi
+	else
+		core.print_info "Executing ${files[0]}"
+		{
+			FORCE_COLOR=3 source "${files[0]}"
+		} \
+			4>&1 1> >(
+				while IFS= read -r line; do
+					printf "  %s\n" "$line" >&4
+				done; unset -v line
+			) \
+			5>&2 2> >(
+				while IFS= read -r line; do
+					printf "  %s\n" "$line" >&5
+				done; unset -v line
+			)
+	fi
 }

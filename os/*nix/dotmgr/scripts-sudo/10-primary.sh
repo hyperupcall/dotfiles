@@ -6,14 +6,14 @@
 # Description:
 # Adds user to various groups
 
-main() {
+{
 	source "$DOTMGR_ROOT/src/util/source.sh"
 
 	# -------------------------------------------------------- #
 	#                    COPY ROOT DOTFILES                    #
 	# -------------------------------------------------------- #
 	# core.print_info 'Copying root dotfiles'
-	# local {src,dest}_file=
+	# declare {src,dest}_file=
 	# for src_file in ~/.dotfiles/system/**; do
 	# 	dest_file=${src_file#*/.dotfiles/system}
 
@@ -33,7 +33,7 @@ main() {
 	# -------------------------------------------------------- #
 	#                          GROUPS                          #
 	# -------------------------------------------------------- #
-	local user="$SUDO_USER"
+	declare user="$SUDO_USER"
 	if [ -z "$user" ]; then
 		core.print_die 'Failed to determine user running as sudo'
 	fi
@@ -48,14 +48,14 @@ main() {
 }
 
 must_group() {
-	local user="$1"
-	local group="$2"
+	declare user="$1"
+	declare group="$2"
 
-	local output=
+	declare output=
 	if output=$(groupadd "$group" 2>&1); then
 		core.print_info "Creating group '$group'"
 	else
-		local code=$?
+		declare code=$?
 		if ((code != 9)); then
 			core.print_warn "Failed to create group '$group'"
 			printf '%s\n' "  -> $output"

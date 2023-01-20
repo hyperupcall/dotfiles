@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 
-main() {
+{
 	if util.confirm 'Install AppImage Launcher?'; then
 		install.appimage_launcher
 	fi

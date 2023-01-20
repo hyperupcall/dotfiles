@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 
-main() {
+{
 	if util.confirm 'Install Kitty?'; then
 		install.kitty
 	fi
@@ -8,7 +8,7 @@ main() {
 
 install.kitty() {
 	util.get_package_manager
-	local pkgmngr="$REPLY"
+	declare pkgmngr="$REPLY"
 
 	case $pkgmngr in
 	pacman)

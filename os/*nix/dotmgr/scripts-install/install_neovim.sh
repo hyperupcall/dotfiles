@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 
-main() {
+{
 	if util.confirm 'Install Neovim latest?'; then
 		install.neovim
 	fi
@@ -8,13 +8,13 @@ main() {
 
 install.neovim() {
 	util.clone_in_dots 'https://github.com/neovim/neovim'
-	local dir="$REPLY"
+	declare dir="$REPLY"
 
 	cd "$dir"
 	git switch master
 	git pull --ff-only origin master
 
-	local channel='nightly' # or stable
+	declare channel='nightly' # or stable
 	git fetch origin "$channel"
 	git branch -D 'build'
 	git switch -c 'build' "tags/$channel"

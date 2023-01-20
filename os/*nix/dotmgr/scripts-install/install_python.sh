@@ -3,7 +3,7 @@
 # Name:
 # Install Python stuff
 
-main() {
+{
 	if util.confirm 'Install Python?'; then
 		if ! util.is_cmd 'pip'; then
 			core.print_info "Installing pip"

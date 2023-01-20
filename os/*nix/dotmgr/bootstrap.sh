@@ -7,7 +7,7 @@ if [ -n "$BASH" ] && [ "${BASH_SOURCE[0]}" != "$0" ]; then
 	return 1
 fi
 
-main() {
+{
 	if ! iscmd 'sudo'; then
 		die "Please install 'sudo' before running this script"
 	fi
@@ -28,7 +28,7 @@ main() {
 	installcmd 'git' 'git'
 	installcmd 'nvim' 'neovim'
 
-	# Install Rust
+	# Install Cargo, Rust
 	if [ -d ~/.cargo ]; then
 		log 'Already installed Cargo'
 	else
@@ -66,7 +66,7 @@ export NAME='Edwin Kofler'
 export EMAIL='edwin@kofler.dev'
 export EDITOR='nvim'
 export VISUAL="\$EDITOR"
-export PATH="\$HOME/.dotfiles/.bin:\$PATH"
+export PATH="\$HOME/.dotfiles/.data/bin:\$PATH"
 
 if [ -f ~/.dotfiles/xdg.sh ]; then
 	. ~/.dotfiles/xdg.sh
@@ -80,7 +80,7 @@ EOF
 	cat <<-"EOF"
 	---
 	. ~/.bootstrap/bootstrap-out.sh
-	dotmgr action bootstrap
+	dotmgr script run bootstrap
 	---
 	EOF
 }
@@ -108,7 +108,7 @@ run() {
 		error "Failed to run command (code $?)"
 		printf '%s\n' "  -> Command: $*" >&2
 		exit 1
-	fi; unset -v output
+	fi
 }
 
 iscmd() {

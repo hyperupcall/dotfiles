@@ -13,7 +13,8 @@
 # - Moves distro dotfiles (to ~/.bootstrap)
 # - Installs Nim (in ~/.bootstrap)
 # - Installs dotfox (in ~/.bootstrap)
-main() {
+
+{
 	if [ -d ~/.bootstrap/done ]; then
 		if util.confirm "It seems you have already bootstraped your dotfiles, do you wish to do it again?"; then :; else
 			util.die 'Exiting'
@@ -56,7 +57,7 @@ main() {
 	if [ ! -d ~/.bootstrap/nim ]; then
 		core.print_info 'Downloading Nim'
 		util.ensure cd ~/.bootstrap
-			local nim_version='1.6.8'
+			declare nim_version='1.6.8'
 			util.ensure curl -LSso "./nim-$nim_version-linux_x64.tar.xz" "https://nim-lang.org/download/nim-$nim_version-linux_x64.tar.xz"
 			util.ensure rm -rf "./nim-$nim_version"
 			util.ensure tar xf "./nim-$nim_version-linux_x64.tar.xz"
@@ -90,13 +91,13 @@ main() {
 
 	# Get GithHub authorization tokens
 	if [ ! -f ~/.dotfiles/.data/github_token ]; then
-		local hostname=
+		declare hostname=
 		hostname=$(hostname)
 
 		printf '%s\n' "Go to: https://github.com/settings/tokens/new?description=General+@${hostname}&scopes="
 		read -eri "Paste token: "
 
-		local token="$REPLY"
+		declare token="$REPLY"
 		printf '%s\n' "$token" > ~/.dotfiles/.data/github_token
 	fi
 

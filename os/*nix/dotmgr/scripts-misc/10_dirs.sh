@@ -13,15 +13,15 @@
 # - Removing broken symlinks
 # - Removing autoappended content to `~/.{profile,bashrc}`, etc.
 
-main() {
-	local profile='desktop'
+{
+	declare profile='desktop'
 
 	# -------------------------------------------------------- #
 	#                     MOUNT /STORAGE/UR                    #
 	# -------------------------------------------------------- #
 	if [ "$profile" = 'desktop' ]; then
-		local part_uuid="c875b5ca-08a6-415e-bc11-fc37ec94ab8f"
-		local mnt='/storage/ur'
+		declare part_uuid="c875b5ca-08a6-415e-bc11-fc37ec94ab8f"
+		declare mnt='/storage/ur'
 		if ! grep -q "$mnt" /etc/fstab; then
 			printf '%s\n' "PARTUUID=$part_uuid  $mnt  btrfs  defaults,noatime,X-mount.mkdir  0 0" \
 				| sudo tee -a /etc/fstab >/dev/null
@@ -37,7 +37,7 @@ main() {
 			continue
 		fi
 
-		local file_string=
+		declare file_string=
 		while IFS= read -r line; do
 			file_string+="$line"$'\n'
 
@@ -121,6 +121,7 @@ main() {
 		must.link "$HOME/.dotfiles/.home/Documents/Programming/workspaces" "$HOME/workspaces"
 		must.link "$HOME/.dotfiles/.home/Documents/Programming/Repositories/git" "$HOME/git"
 		must.link "$HOME/.dotfiles/.home/Documents/Programming/Repositories/default" "$HOME/repos"
+		must.link "$HOME/.dotfiles/.home/Documents/Programming/Repositories" "$HOME/groups"
 	elif [ "$profile" = 'laptop' ]; then
 		:
 	fi
@@ -129,16 +130,16 @@ main() {
 	#                    CREATE BIN SYMLINKS                   #
 	# -------------------------------------------------------- #
 	core.shopt_push -s nullglob
-	local -a files=(~/.dotfiles/.bin/*)
+	declare -a files=(~/.dotfiles/.bin/*)
 	core.shopt_pop
-	local file=; for file in "${files[@]}"; do if [ -L "$file" ]; then
+	declare file=; for file in "${files[@]}"; do if [ -L "$file" ]; then
 		unlink "$file"
 	fi done; unset -v file
 
 	core.shopt_push -s nullglob
-	local -a files=("$HOME/.dotfiles/.home/Documents/Programming/Repositories/Bash"/{bake,basalt,hookah,foxomate,glue,rho,shelldoc,shelltest,woof}/pkg/bin/*)
+	declare -a files=("$HOME/.dotfiles/.home/Documents/Programming/Repositories/Bash"/{bake,basalt,hookah,foxomate,glue,rho,shelldoc,shelltest,woof}/pkg/bin/*)
 	core.shopt_pop
-	local file=; for file in "${files[@]}"; do
+	declare file=; for file in "${files[@]}"; do
 		ln -fs  "$file" ~/.dotfiles/.bin
 	done; unset -v file
 
@@ -152,14 +153,14 @@ main() {
 	# -------------------------------------------------------- #
 	#                      CREATE SYMLINKS                     #
 	# -------------------------------------------------------- #
-	local -r storage_home='/storage/ur/storage_home'
-	local -r storage_other='/storage/ur/storage_other'
+	declare -r storage_home='/storage/ur/storage_home'
+	declare -r storage_other='/storage/ur/storage_other'
 
 	must.link "$XDG_CONFIG_HOME/X11/Xmodmap" "$HOME/.Xmodmap"
 	must.link "$XDG_CONFIG_HOME/X11/Xresources" "$HOME/.Xresources"
 	must.link "$XDG_CONFIG_HOME/Code/User/settings.json" "$XDG_CONFIG_HOME/Code - OSS/User/settings.json"
 
-	local -ra directories_default=(
+	declare -ra directories_default=(
 		# ~/Desktop
 		~/Downloads
 		~/Templates ~/Public ~/Documents
@@ -167,7 +168,7 @@ main() {
 		~/Pictures
 		~/Videos
 	)
-	local -ra directories_custom=(
+	declare -ra directories_custom=(
 		# ~/Desktop
 		~/Dls
 		~/Docs/Templates ~/Docs/Public ~/Docs
@@ -175,7 +176,7 @@ main() {
 		~/Pics
 		~/Vids
 	)
-	local -ra directories_shared=(
+	declare -ra directories_shared=(
 		~/Desktop
 		~/Music
 	)
@@ -184,7 +185,7 @@ main() {
 		cp -f "$HOME/.dotfiles/os/*nix/user/.config/user-dirs.dirs/user-dirs-custom.conf" "$XDG_CONFIG_HOME/user-dirs.dirs"
 
 		# XDG User Directories
-		local dir=
+		declare dir=
 		for dir in "${directories_default[@]}"; do
 			must.rmdir "$dir"
 		done; unset -v dir
@@ -221,7 +222,7 @@ main() {
 		cp -f "$HOME/.dotfiles/os/*nix/user/.config/user-dirs.dirs/user-dirs-default.conf" "$XDG_CONFIG_HOME/user-dirs.dirs"
 
 		# XDG User Directories
-		local dir=
+		declare dir=
 		for dir in "${directories_custom[@]}"; do
 			must.rmdir "$dir"
 		done; unset -v dir

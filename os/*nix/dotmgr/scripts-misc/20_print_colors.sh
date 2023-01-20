@@ -6,7 +6,7 @@
 # Description:
 # Print colors
 
-main() {
+{
 	set -uo pipefail
 
 	# console_codes(4)

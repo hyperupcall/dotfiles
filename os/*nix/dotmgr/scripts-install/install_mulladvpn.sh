@@ -1,5 +1,5 @@
 # shellcheck shell=bash
 
-main() {
+{
 	:
 }

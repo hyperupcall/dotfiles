@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 
-main() {
+{
 	if util.confirm 'Install Sublime Text?'; then
 		install.sublime_text
 	fi

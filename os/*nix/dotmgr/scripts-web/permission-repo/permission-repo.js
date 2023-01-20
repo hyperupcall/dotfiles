@@ -14,7 +14,7 @@ const captainWoofers = new Octokit({
 
 await hyperupcall.rest.users.getAuthenticated()
 
-await acceptInvites()
+await protectBranches()
 
 async function sendInvites() {
 	const repos = await hyperupcall.paginate(
@@ -56,6 +56,38 @@ async function acceptInvites() {
 		console.log(`Accepting invitation for ${owner}/${repo} (${id})`)
 		await captainWoofers.repos.acceptInvitationForAuthenticatedUser({
 			invitation_id: id,
+		})
+	}
+}
+
+async function protectBranches() {
+	const repos = await hyperupcall.paginate(
+		hyperupcall.repos.listForAuthenticatedUser,
+		{
+			visibility: 'all',
+			affiliation: 'owner',
+			per_page: 100,
+		},
+	)
+	for (const repo of repos) {
+		if (repo.private) continue
+
+		const owner = repo.owner.login
+		const repoName = repo.name
+		const branch = repo.default_branch
+
+		console.log(
+			`Updating branch protection on ${branch} to ${owner}/${repoName}...`,
+		)
+		await hyperupcall.repos.updateBranchProtection({
+			owner,
+			repo: repoName,
+			branch,
+			required_status_checks: null,
+			enforce_admins: false,
+			required_pull_request_reviews: null,
+			restrictions: null,
+			required_conversation_resolution: true,
 		})
 	}
 }

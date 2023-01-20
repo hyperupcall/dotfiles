@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 
-main() {
+{
 	if util.confirm 'Install Perl packages?'; then
 		# https://github.com/regnarg/urxvt-config-reload
 		cpan -i App::cpanminus

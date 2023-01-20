@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 
-main() {
+{
 	if util.confirm 'Install Brave and Brave Beta?'; then
 		install.brave
 	fi
@@ -8,10 +8,10 @@ main() {
 
 install.brave() {
 	util.get_package_manager
-	local pkgmngr="$REPLY"
+	declare pkgmngr="$REPLY"
 
 	util.get_os_id
-	local os_id="$REPLY"
+	declare os_id="$REPLY"
 
 	case $pkgmngr in
 	pacman)

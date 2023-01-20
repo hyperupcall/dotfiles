@@ -3,9 +3,9 @@
 # Name:
 # Install Docker Credential Secret Service
 
-main() {
+{
 	if util.confirm "Install docker secretservice credential store version v0.6.4?"; then
-		local version='v0.6.4'
+		declare version='v0.6.4'
 
 		util.cd_temp
 
