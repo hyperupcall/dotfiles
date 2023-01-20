@@ -2,10 +2,9 @@
 
 My Dotfiles! ^\_^
 
-See [Installation](./installation.md) ([windows](./installation-windows.md)) for installation instructions.
+Installation Instructions:
+
+- [*nix](./installation-*nix.md)
+- [windows](./installation-windows.md)
 
 See [Notable](./notable.md) for interesting tidbits
-
-See [Setup](./setup.md) to see my preferences
-
-See [Acknowledgements](./acknowledgements.md) to see where I've copied code and found inspiration

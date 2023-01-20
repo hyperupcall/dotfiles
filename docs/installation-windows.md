@@ -3,5 +3,5 @@
 ```powershell
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 
-iwr -useb 'https://raw.githubusercontent.com/hyperupcall/dots/main/windows/bootstrap/stage0.ps1' | iex
+iwr -useb 'https://raw.githubusercontent.com/hyperupcall/dots/main/os/windows/dotmgr/bootstrap.ps1' | iex
 ```

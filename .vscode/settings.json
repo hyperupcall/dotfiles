@@ -10,10 +10,6 @@
 		"**/polybar/**": "ini"
 	},
 	"css.validate": false,
-	"editor.codeActionsOnSave": {
-		"source.fixAll": true
-	},
-	"esbonio.server.enabled": true,
 	"search.exclude": {
 		"**/.git/**": true,
 		"**/.home/**": true,

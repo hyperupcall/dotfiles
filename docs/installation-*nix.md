@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-A network connection is required. A basic network configuration for `systemd-networkd` is shown below
+A network connection is required. A basic network configuration for `systemd-networkd` is shown below:
 
 ```sh
 >/etc/systemd/network/90-wired.network <<-EOF cat
@@ -21,7 +21,7 @@ systemctl enable --now systemd-{network,resolve}d
 
 ## Bootstrapping
 
-Download and execute `bootstrap.sh` to begin the bootstrap process
+Download and execute `bootstrap.sh` to begin the bootstrap process:
 
 ```sh
 mkdir -p ~/.bootstrap
@@ -34,19 +34,20 @@ The `bootstrap.sh` script performs the following steps:
 
 - Installs Homebrew, on macOS
 - Installs Git and Neovim
+- Installs Cargo and Rust
 - Clones `hyperupcall/dots` to `~/.dotfiles`
-- Clones `hyperupcall/dotmgr` to `~/.data/dotmgr-src`
+- Clones `hyperupcall/dotmgr` to `~/.dotfiles/.data/dotmgr-src`
 - Creates a `~/.bootstrap/bootstrap-out.sh`; sourcing it does the following
   - Sets `NAME`, `EMAIL`, `EDITOR`, `VISUAL`
-  - Appends `$HOME/.dotfiles/.bin` to `PATH`
+  - Appends `$HOME/.dotfiles/.data/bin` to `PATH`
   - Sources `~/.dotfiles/xdg.sh`, if it exists
 
-Then, run the following
+Then, run the following:
 
 ```sh
 . ~/.bootstrap/bootstrap-out.sh
 
 # Now, continue with dotmgr
-dotmgr run bootstrap
-dotmgr run idempotent
+dotmgr action run bootstrap
+dotmgr action run idempotent
 ```
