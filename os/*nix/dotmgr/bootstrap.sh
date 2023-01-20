@@ -59,7 +59,7 @@ main() {
 export NAME='Edwin Kofler'
 export EMAIL='edwin@kofler.dev'
 export EDITOR='nvim'
-export VISUAL="\$VISUAL"
+export VISUAL="\$EDITOR"
 export PATH="\$HOME/.dotfiles/.bin:\$PATH"
 
 if [ -f ~/.dotfiles/xdg.sh ]; then
@@ -114,15 +114,15 @@ iscmd() {
 }
 
 installupdates() {
-	if is_cmd 'pacman'; then
+	if iscmd 'pacman'; then
 		sudo pacman -Syyu --noconfirm
-	elif is_cmd 'apt-get'; then
+	elif iscmd 'apt-get'; then
 		sudo apt-get -y update
 		sudo apt-get -y upgrade
 		sudo apt-get -y install apt-transport-https
-	elif is_cmd 'dnf'; then
+	elif iscmd 'dnf'; then
 		sudo dnf -y update
-	elif is_cmd 'zypper'; then
+	elif iscmd 'zypper'; then
 		sudo zypper -y update
 		sudo zypper -y upgrade
 	else
