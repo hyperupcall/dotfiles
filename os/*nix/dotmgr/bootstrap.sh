@@ -18,9 +18,9 @@ main() {
 	installupdates
 	case $(uname) in darwin*)
 		if iscmd 'brew'; then
-			log "Already installed brew"
+			log "Already installed Homebrew"
 		else
-			log 'Installing brew'
+			log 'Installing Homebrew'
 			run curl -fsSLo ~/.bootstrap/install-brew.sh 'https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh'
 			bash ~/.bootstrap/install-brew.sh
 		fi
@@ -29,7 +29,13 @@ main() {
 	installcmd 'nvim' 'neovim'
 
 	# Install Rust
-	curl -fsSL 'https://sh.rustup.rs' | sh -s -- --default-toolchain nightly -y
+	if [ -d ~/.cargo ]; then
+		log 'Already installed Cargo'
+	else
+		log 'Installing Cargo'
+		curl -fsSL 'https://sh.rustup.rs' | sh -s -- --default-toolchain nightly -y
+	fi
+	. ~/.cargo/env
 
 	# Install hyperupcall/dots
 	clonerepo 'github.com/hyperupcall/dots' ~/.dotfiles
