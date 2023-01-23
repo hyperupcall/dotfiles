@@ -3,6 +3,6 @@
 source "${0%/*}/.hookah/lib.sh"
 hookah.init
 
-hookah.run grep -r '/home/edwin' "./os/*nix"/{user,system}*
+hookah.run grep -r '/home/edwin' "./os/unix"/{user,system}*
 hookah.run ./bake build
 hookah.run ./bake test

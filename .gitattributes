@@ -3,6 +3,6 @@
 bake linguist-generated
 # foxxo end
 
-os/*nix/user/.config/npm/npmrc filter=npmrc-clean
-os/*nix/user/.config/slack-term/config filter=slack-term-config-clean
-os/*nix/user/.config/osc/oscrc filter=oscrc-clean
+os/unix/user/.config/npm/npmrc filter=npmrc-clean
+os/unix/user/.config/slack-term/config filter=slack-term-config-clean
+os/unix/user/.config/osc/oscrc filter=oscrc-clean

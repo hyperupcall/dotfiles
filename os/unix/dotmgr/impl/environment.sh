@@ -3,7 +3,7 @@
 main() {
 	cat <<-EOF
 	# agnostic
-	VAR_DOTMGR_DIR="$HOME/.dotfiles/os/*nix/dotmgr"
+	VAR_DOTMGR_DIR="$HOME/.dotfiles/os/unix/dotmgr"
 
 	# specific
 	EOF

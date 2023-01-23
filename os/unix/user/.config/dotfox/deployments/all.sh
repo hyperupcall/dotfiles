@@ -195,10 +195,10 @@ declare -ra dotfiles=(
 
 main() {
 	# Print actual dotfiles
-	src_home="$dotdir/os/*nix/user"
-	src_cfg="$dotdir/os/*nix/user/.config"
-	src_state="$dotdir/os/*nix/user/.local/state"
-	src_data="$dotdir/os/*nix/user/.local/share"
+	src_home="$dotdir/os/unix/user"
+	src_cfg="$dotdir/os/unix/user/.config"
+	src_state="$dotdir/os/unix/user/.local/state"
+	src_data="$dotdir/os/unix/user/.local/share"
 	for dotfile in "${dotfiles[@]}"; do
 		local prefix=${dotfile%%:*}
 		local file=${dotfile#*:}
@@ -210,13 +210,13 @@ main() {
 		esac
 
 		if [ "$prefix" = home ]; then
-			printf '%s\n' "symlink:$src_home/$file:$HOME/$file"
+			printf '%s\n' "symlink|$src_home/$file|$HOME/$file"
 		elif [ "$prefix" = cfg ]; then
-			printf '%s\n' "symlink:$src_cfg/$file:$XDG_CONFIG_HOME/$file"
+			printf '%s\n' "symlink|$src_cfg/$file|$XDG_CONFIG_HOME/$file"
 		elif [ "$prefix" = state ]; then
-			printf '%s\n' "symlink:$src_state/$file:$XDG_STATE_HOME/$file"
+			printf '%s\n' "symlink|$src_state/$file|$XDG_STATE_HOME/$file"
 		elif [ "$prefix" = data ]; then
-			printf '%s\n' "symlink:$src_data/$file:$XDG_DATA_HOME/$file"
+			printf '%s\n' "symlink|$src_data/$file|$XDG_DATA_HOME/$file"
 		else
 			printf '%s\n' "Error: Prefix '$prefix' not supported (for file '$file'). Exiting" >&2
 			exit 1

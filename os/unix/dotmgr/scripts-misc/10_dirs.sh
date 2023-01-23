@@ -182,7 +182,7 @@
 	)
 	# Use 'cp -f' for "$XDG_CONFIG_HOME/user-dirs.dirs"; otherwise unlink/link operation races
 	if [ "$profile" = 'desktop' ]; then
-		cp -f "$HOME/.dotfiles/os/*nix/user/.config/user-dirs.dirs/user-dirs-custom.conf" "$XDG_CONFIG_HOME/user-dirs.dirs"
+		cp -f "$HOME/.dotfiles/os/unix/user/.config/user-dirs.dirs/user-dirs-custom.conf" "$XDG_CONFIG_HOME/user-dirs.dirs"
 
 		# XDG User Directories
 		declare dir=
@@ -219,7 +219,7 @@
 		must.link "$storage_other/fonts" "$XDG_CONFIG_HOME/fonts"
 		must.link "$storage_other/Mailspring" "$XDG_CONFIG_HOME/Mailspring"
 	else
-		cp -f "$HOME/.dotfiles/os/*nix/user/.config/user-dirs.dirs/user-dirs-default.conf" "$XDG_CONFIG_HOME/user-dirs.dirs"
+		cp -f "$HOME/.dotfiles/os/unix/user/.config/user-dirs.dirs/user-dirs-default.conf" "$XDG_CONFIG_HOME/user-dirs.dirs"
 
 		# XDG User Directories
 		declare dir=

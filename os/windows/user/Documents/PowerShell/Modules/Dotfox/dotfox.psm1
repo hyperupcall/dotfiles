@@ -1,14 +1,14 @@
 function Dotfox {
-	[CmdletBinding(DefaultParameterSetName='Symlink')]
+	[CmdletBinding(DefaultParameterSetName = 'Symlink')]
 	param (
 		# Subcommand to run
-		[Parameter(ParameterSetName='Symlink', Position=0)]
+		[Parameter(ParameterSetName = 'Symlink', Position = 0)]
 		[ValidateSet('deploy')]
 		[String]
 		$Subcommand,
 
 		# Print help
-		[Parameter(ParameterSetName='Help')]
+		[Parameter(ParameterSetName = 'Help')]
 		[Switch]
 		$Help
 	)
@@ -22,7 +22,7 @@ function Dotfox {
 		$Subcommand = 'deploy'
 	}
 
-	if($Help) {
+	if ($Help) {
 		Get-Help "$($MYINVOCATION.InvocationName)"
 		return
 	}
@@ -36,16 +36,16 @@ function Dotfox {
 }
 
 function command-deploy() {
-	foreach($relativePath in @(
-		'.config/git/attributes',
-		'.config/git/config',
-		'Documents/PowerShell/Microsoft.PowerShell_profile.ps1',
-		'Documents/PowerShell/Modules/Dotfox',
-		'Documents/PowerShell/Modules/Dotmgr',
-		'Documents/PowerShell/Modules/Dots',
-		'Documents/WindowsPowershell/Microsoft.PowerShell_profile.ps1'
-		'AppData/Roaming/gnupg/gpg-agent.conf'
-	)) {
+	foreach ($relativePath in @(
+			'.config/git/attributes',
+			'.config/git/config',
+			'Documents/PowerShell/Microsoft.PowerShell_profile.ps1',
+			'Documents/PowerShell/Modules/Dotfox',
+			'Documents/PowerShell/Modules/Dotmgr',
+			'Documents/PowerShell/Modules/Dots',
+			'Documents/WindowsPowershell/Microsoft.PowerShell_profile.ps1'
+			'AppData/Roaming/gnupg/gpg-agent.conf'
+		)) {
 		[void](Symlink-RelativePath -RelativePath "$relativePath")
 	}
 }
@@ -53,7 +53,7 @@ function command-deploy() {
 function Symlink-RelativePath {
 	[CmdletBinding()]
 	param (
-		[Parameter(Mandatory=$true)]
+		[Parameter(Mandatory = $true)]
 		[ValidateNotNullOrEmpty()]
 		[string]
 		$RelativePath,
@@ -63,7 +63,7 @@ function Symlink-RelativePath {
 	)
 
 	$symlinkFile = Join-Path -Path "$HOME" -ChildPath "$relativePath"
-	$targetFile = Join-Path -Path "$HOME/.dotfiles/os/*nix/user-windows" -ChildPath "$relativePath"
+	$targetFile = Join-Path -Path "$HOME/.dotfiles/os/unix/user-windows" -ChildPath "$relativePath"
 
 	# Symlink file must either not exist or be a symlink link. With the original dotfox code, this
 	# is handled in a more elegant way, but here we just fail. Not worth the trouble for Windows
@@ -86,7 +86,8 @@ function Symlink-RelativePath {
 
 	if ($Dry) {
 		Write-Host "Would have symlinked '$symlinkFile' -> '$targetFile'"
-	} else {
+	}
+ else {
 		Write-Host "Symlinking '$symlinkFile' -> '$targetFile'"
 		New-Item -ItemType SymbolicLink -Force -Path "$(Split-Path $symlinkFile -Parent)" -Name "$(Split-Path $symlinkFile -Leaf)" -Target "$targetFile"
 	}

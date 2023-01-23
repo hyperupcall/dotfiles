@@ -25,7 +25,7 @@ Download and execute `bootstrap.sh` to begin the bootstrap process:
 
 ```sh
 mkdir -p ~/.bootstrap
-curl -#fLo ~/.bootstrap/bootstrap.sh 'https://raw.githubusercontent.com/hyperupcall/dotfiles/trunk/os/*nix/dotmgr/bootstrap.sh'
+curl -#fLo ~/.bootstrap/bootstrap.sh 'https://raw.githubusercontent.com/hyperupcall/dotfiles/trunk/os/unix/dotmgr/bootstrap.sh'
 chmod +x ~/.bootstrap/bootstrap.sh
 ~/.bootstrap/bootstrap.sh
 ```
@@ -35,9 +35,9 @@ The `bootstrap.sh` script performs the following steps:
 - Installs Homebrew, on macOS
 - Installs Git and Neovim
 - Installs Cargo and Rust
-- Clones `hyperupcall/dots` to `~/.dotfiles`
+- Clones `hyperupcall/dotfiles` to `~/.dotfiles`
 - Clones `hyperupcall/dotmgr` to `~/.dotfiles/.data/dotmgr-src`
-- Creates a `~/.bootstrap/bootstrap-out.sh`; sourcing it does the following
+- Creates a `~/.bootstrap/bootstrap-out.sh`; sourcing it does the following:
   - Sets `NAME`, `EMAIL`, `EDITOR`, `VISUAL`
   - Appends `$HOME/.dotfiles/.data/bin` to `PATH`
   - Sources `~/.dotfiles/xdg.sh`, if it exists

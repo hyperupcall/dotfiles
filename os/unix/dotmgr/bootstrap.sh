@@ -7,7 +7,7 @@ if [ -n "$BASH" ] && [ "${BASH_SOURCE[0]}" != "$0" ]; then
 	return 1
 fi
 
-{
+main() {
 	if ! iscmd 'sudo'; then
 		die "Please install 'sudo' before running this script"
 	fi
@@ -37,10 +37,10 @@ fi
 	fi
 	. ~/.cargo/env
 
-	# Install hyperupcall/dots
-	clonerepo 'github.com/hyperupcall/dots' ~/.dotfiles
+	# Install hyperupcall/dotfiles
+	clonerepo 'github.com/hyperupcall/dotfiles' ~/.dotfiles
 	run cd ~/.dotfiles
-		run git remote set-url origin 'git@github.com:hyperupcall/dots'
+		run git remote set-url origin 'git@github.com:hyperupcall/dotfiles'
 		run ./bake init
 	run cd
 
@@ -100,7 +100,7 @@ error() {
 }
 
 log() {
-	printf "=> Info: %s\n" "$1" >&2
+	printf "=> Info: %s\n" "$1"
 }
 
 run() {

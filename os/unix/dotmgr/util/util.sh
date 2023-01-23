@@ -156,7 +156,7 @@ util.get_latest_github_tag() {
 }
 
 util.run_script() {
-	local dir="$HOME/.dotfiles/os/*nix/dotmgr/$1"
+	local dir="$HOME/.dotfiles/os/unix/dotmgr/$1"
 	local glob_pattern="$2"
 
 	local -a files=("$dir/"*"$glob_pattern"*)

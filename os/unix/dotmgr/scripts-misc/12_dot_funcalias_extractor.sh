@@ -12,7 +12,7 @@
 	# Bash is the most featureful lowest common denominator in shells
 	# on Unix machines. We extract bash intrinsics with the '# clone(...)'
 	# annotations such that funtions, aliases, and readline declarations
-	# can be shared more easily across *nix machines
+	# can be shared more easily across unix machines
 
 	# ------------------- Utility Functions ------------------ #
 	util_print_autogen_info() {

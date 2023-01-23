@@ -13,13 +13,13 @@ task.init() {
 }
 
 task.build() {
-	cd "$BAKE_ROOT/os/*nix/user/.config/X11/resources" || exit
+	cd "$BAKE_ROOT/os/unix/user/.config/X11/resources" || exit
 	printf '%s\n' "! GENERATERD BY 'bake build'" > uxterm.Xresources
 	sed 's/XTerm/UXTerm/g' xterm.Xresources >> uxterm.Xresources
 }
 
 task.test() {
-	cd "./os/*nix/user/.config/shell/modules/common" && bats -p .
+	cd "./os/unix/user/.config/shell/modules/common" && bats -p .
 }
 
 task.commit() {

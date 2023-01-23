@@ -7,4 +7,4 @@ My dotfiles! ^_^
 Usage
 -----
 
-See `Installation <./docs/installation-*nix.md>`_.
+See `Installation <./docs/installation-unix.md>`_.

@@ -16,6 +16,6 @@
 		dotfox="$HOME/.bootstrap/dotfox/dotfox"
 	fi
 
-	util.run "$dotfox" --config-dir="$HOME/.dotfiles/os/*nix/user/.config/dotfox" --deployment=all.sh deploy
-	util.run "$dotfox" --config-dir="$HOME/.dotfiles/os/*nix/user/.config/dotfox" --deployment=all.sh status
+	util.run "$dotfox" --config-dir="$HOME/.dotfiles/os/unix/user/.config/dotfox" --deployment=all.sh deploy
+	util.run "$dotfox" --config-dir="$HOME/.dotfiles/os/unix/user/.config/dotfox" --deployment=all.sh status
 }
