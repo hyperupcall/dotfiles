@@ -6,11 +6,11 @@ _die() {
 }
 
 # shellcheck disable=SC2016,SC2181
-main() {
+_main() {
 	local file_to_exec="$1"
 	local files_to_source_str="$2"
-	shift || _die 'Failed shift'
-	shift || _die 'Failed shift'
+	shift || _die 'Failed to shift'
+	shift || _die 'Failed to shift'
 
 	# Source vendor
 	local globstar_set='no'
@@ -41,4 +41,4 @@ main() {
 	source "$file_to_exec"
 }
 
-main "$@"
+_main "$@"

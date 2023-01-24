@@ -147,10 +147,10 @@
 	"security.workspace.trust.enabled": false,
 	"security.workspace.trust.untrustedFiles": "open",
 	"update.mode": "manual",
-
-	// PRETTIER
+	"prettier.requireConfig": true,
 	"prettier.semi": false,
 	"prettier.singleQuote": true,
+	"prettier.tabWidth": 3,
 	"prettier.useTabs": true,
 
 	// ESLINT
@@ -540,8 +540,8 @@
 	],
 
 	// DISABLE TELEMETRY / DISABLE NOTIFICATIONS / EXTRANEOUS VIEWS
-	"clangd.checkUpdates": false,
 	"telemetry.telemetryLevel": "off",
+	"clangd.checkUpdates": false,
 	"redhat.telemetry.enabled": false,
 	"julia.enableTelemetry": false,
 	"terraform.telemetry.enabled": false,
@@ -561,6 +561,7 @@
 	"shellcheck.disableVersionCheck": true,
 	"extensions.ignoreRecommendations": true,
 	"workbench.welcomePage.walkthroughs.openOnInstall": false,
+	"Lua.telemetry.enable": false,
 
 	// comment-anchors
 	"commentAnchors.workspace.lazyLoad": false,
@@ -685,5 +686,4 @@
 		"wasmtime",
 		"webext"
 	],
-	"Lua.telemetry.enable": false
 }
