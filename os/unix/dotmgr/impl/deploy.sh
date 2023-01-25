@@ -195,10 +195,10 @@ declare -ra dotfiles=(
 
 main() {
 	# Print actual dotfiles
-	src_home="$dotdir/os/*nix/user"
-	src_cfg="$dotdir/os/*nix/user/.config"
-	src_state="$dotdir/os/*nix/user/.local/state"
-	src_data="$dotdir/os/*nix/user/.local/share"
+	src_home="$dotdir/os/unix/user"
+	src_cfg="$dotdir/os/unix/user/.config"
+	src_state="$dotdir/os/unix/user/.local/state"
+	src_data="$dotdir/os/unix/user/.local/share"
 	for dotfile in "${dotfiles[@]}"; do
 		local prefix=${dotfile%%:*}
 		local file=${dotfile#*:}
@@ -210,13 +210,13 @@ main() {
 		esac
 
 		if [ "$prefix" = home ]; then
-			printf '%s\n' "symlink:$src_home/$file:$HOME/$file"
+			printf '%s\n' "symlink|$src_home/$file|$HOME/$file"
 		elif [ "$prefix" = cfg ]; then
-			printf '%s\n' "symlink:$src_cfg/$file:$XDG_CONFIG_HOME/$file"
+			printf '%s\n' "symlink|$src_cfg/$file|$XDG_CONFIG_HOME/$file"
 		elif [ "$prefix" = state ]; then
-			printf '%s\n' "symlink:$src_state/$file:$XDG_STATE_HOME/$file"
+			printf '%s\n' "symlink|$src_state/$file|$XDG_STATE_HOME/$file"
 		elif [ "$prefix" = data ]; then
-			printf '%s\n' "symlink:$src_data/$file:$XDG_DATA_HOME/$file"
+			printf '%s\n' "symlink|$src_data/$file|$XDG_DATA_HOME/$file"
 		else
 			printf '%s\n' "Error: Prefix '$prefix' not supported (for file '$file'). Exiting" >&2
 			exit 1
@@ -224,21 +224,21 @@ main() {
 	done
 
 
-	# Print dotfiles that do not share a common prefix
-	printf '%s\n' "symlink:$XDG_CONFIG_HOME/X11/xinitrc:$HOME/.xinitrc"
-	printf '%s\n' "symlink:$XDG_CONFIG_HOME/bash/bash_profile.sh:$HOME/.bash_profile"
-	printf '%s\n' "symlink:$XDG_CONFIG_HOME/bash/bash_logout.sh:$HOME/.bash_logout"
-	printf '%s\n' "symlink:$XDG_CONFIG_HOME/bash/bashrc.sh:$HOME/.bashrc"
-	printf '%s\n' "symlink:$XDG_CONFIG_HOME/shell/profile.sh:$HOME/.profile"
-	printf '%s\n' "symlink:$XDG_CONFIG_HOME/zsh/.zshenv:$HOME/.zshenv"
+	# # Print dotfiles that do not share a common prefix
+	# printf '%s\n' "symlink|$XDG_CONFIG_HOME/X11/xinitrc|$HOME/.xinitrc"
+	# printf '%s\n' "symlink|$XDG_CONFIG_HOME/bash/bash_profile.sh|$HOME/.bash_profile"
+	# printf '%s\n' "symlink|$XDG_CONFIG_HOME/bash/bash_logout.sh|$HOME/.bash_logout"
+	# printf '%s\n' "symlink|$XDG_CONFIG_HOME/bash/bashrc.sh|$HOME/.bashrc"
+	# printf '%s\n' "symlink|$XDG_CONFIG_HOME/shell/profile.sh|$HOME/.profile"
+	# printf '%s\n' "symlink|$XDG_CONFIG_HOME/zsh/.zshenv|$HOME/.zshenv"
 
-	# Print dotfiles programatically
-	source "$dotdir/xdg.sh" --set-type
-	if [ "$REPLY" = default ]; then
-		printf '%s\n' "symlink:$src_home/.pam_environment/xdg-default.conf:$HOME/.pam_environment"
-	elif [ "$REPLY" = custom ]; then
-		printf '%s\n' "symlink:$src_home/.pam_environment/xdg-custom.conf:$HOME/.pam_environment"
-	fi
+	# # Print dotfiles programatically
+	# source "$dotdir/xdg.sh" --set-type
+	# if [ "$REPLY" = default ]; then
+	# 	printf '%s\n' "symlink|$src_home/.pam_environment/xdg-default.conf|$HOME/.pam_environment"
+	# elif [ "$REPLY" = custom ]; then
+	# 	printf '%s\n' "symlink|$src_home/.pam_environment/xdg-custom.conf|$HOME/.pam_environment"
+	# fi
 }
 
 main "$@"
