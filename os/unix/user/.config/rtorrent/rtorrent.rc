@@ -32,7 +32,7 @@ schedule = tied_directory,5,5,start_tied=
 schedule = untied_directory,5,5,stop_untied=
 
 # Session directory
-session = ~/.cache/rtorrent
+session = ~/.dotfiles/.home/xdg_cache_dir/rtorrent
 
 # Download path (incomplete)
 directory = /storage/data/torrents/incomplete

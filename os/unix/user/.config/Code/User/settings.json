@@ -336,8 +336,9 @@
 	},
 	"python.formatting.provider": "yapf",
 	"python.globalModuleInstallation": false,
-	"python.venvPath": "~/.cache/pypoetry/virtualenvs",
+	"python.venvPath": "~/.dotfiles/.home/xdg_cache_dir/pypoetry/virtualenvs",
 	"python.languageServer": "Pylance",
+	"python.analysis.typeCheckingMode": "strict",
 
 	// BASH
 	"shellcheck.run": "onType",
@@ -685,5 +686,5 @@
 		"wasm",
 		"wasmtime",
 		"webext"
-	],
+	]
 }

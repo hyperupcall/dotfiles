@@ -36,7 +36,7 @@ setxkbmap -option caps:swapescape
 ~/eww/target/release/eww daemon &
 
 # panel
-zsh ~/.config/polybar/launch.sh
+zsh ~/.dotfiles/.home/xdg_config_dir/polybar/launch.sh
 
 # Set some bsp specific stuff
 bspc monitor -d I II III IV V VI

@@ -53,9 +53,9 @@
 	# -------------------------------------------------------- #
 	#                  REMOVE BROKEN SYMLINKS                  #
 	# -------------------------------------------------------- #
-	for file in "$HOME"/*; do
-		if [ -L "$file" ] && [ ! -e "$file" ]; then
-			unlink "$file"
+	for f in "$HOME"/*; do
+		if [ -L "$f" ] && [ ! -e "$f" ]; then
+			unlink "$f"
 		fi
 	done
 
@@ -125,6 +125,11 @@
 	elif [ "$profile" = 'laptop' ]; then
 		:
 	fi
+	for f in "$HOME/.dotfiles/.home"/*; do
+		if [ -L "$f" ] && [ ! -e "$f" ]; then
+			unlink "$f"
+		fi
+	done; unset -v f
 
 	# -------------------------------------------------------- #
 	#                    CREATE BIN SYMLINKS                   #

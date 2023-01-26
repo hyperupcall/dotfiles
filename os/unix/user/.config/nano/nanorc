@@ -18,7 +18,7 @@ unset tabstospaces
 # see https://github.com/scopatz/nanorc # TODO
 
 # set not allowed in included file
-# include "~/.config/nano/themes/default.theme.nanorc"
+# include "~/.dotfiles/.home/xdg_config_dir/nano/themes/default.theme.nanorc"
 # set titlecolor bold,lightwhite,blue
 # set statuscolor bold,lightwhite,green
 # set errorcolor bold,lightwhite,red

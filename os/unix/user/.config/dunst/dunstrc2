@@ -103,7 +103,7 @@
 [urgency_low]
     background = "#1b1b23"
     frame_color = "#caf6bb"
-    icon = "~/.config/dunst/icons/low.svg"
+    icon = "~/.dotfiles/.home/xdg_config_dir/dunst/icons/low.svg"
     foreground="#8791a3"
     timeout = 3
 
@@ -116,6 +116,6 @@
 [urgency_critical]
     background = "#1b1b23"
     frame_color = "#ebb9b9"
-    icon = "~/.config/dunst/icons/critical.svg"
+    icon = "~/.dotfiles/.home/xdg_config_dir/dunst/icons/critical.svg"
     timeout = 0
     foreground="#8791a3"

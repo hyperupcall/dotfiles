@@ -1,8 +1,8 @@
 # Frenzy's
 
 ### Directories ###
-ncmpcpp_directory = ~/.config/ncmpcpp
-lyrics_directory  = ~/.config/ncmpcpp/lyrics
+ncmpcpp_directory = ~/.dotfiles/.home/xdg_config_dir/ncmpcpp
+lyrics_directory  = ~/.dotfiles/.home/xdg_config_dir/ncmpcpp/lyrics
 mpd_music_dir = "~/Music"
 
 # Encoding
