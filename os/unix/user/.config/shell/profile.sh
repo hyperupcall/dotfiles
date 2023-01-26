@@ -24,7 +24,7 @@ fi
 # ----------------------- Sourcing ----------------------- #
 . "$XDG_CONFIG_HOME/shell/modules/util.sh"
 
-_path_prepend "$HOME/.dotfiles/.bin"
+_path_prepend "$HOME/.dotfiles/.data/bin"
 _path_prepend "$HOME/.local/bin"
 
 . "$XDG_CONFIG_HOME/shell/modules/env.sh"

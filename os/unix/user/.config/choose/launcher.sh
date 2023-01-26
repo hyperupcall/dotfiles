@@ -18,6 +18,10 @@ _main() {
 		uninstall "$@"
 	elif [ "$action" = 'test' ]; then
 		test "$@"
+	elif [ "$action" = 'switch' ]; then
+		if declare -f 'switch' &>/dev/null; then
+			switch "$@"
+		fi
 	elif [ "$action" = 'launch' ]; then
 		launch "$@"
 	fi

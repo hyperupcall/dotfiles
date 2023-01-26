@@ -1,1 +1,1 @@
-{"choices":{"shell_prompt_bash":"liquidprompt"}}
+{"choices":{"shell_prompt_bash":"liquidprompt","shell_prompt_zsh":"starship","git_diff":"diff-so-fancy"}}

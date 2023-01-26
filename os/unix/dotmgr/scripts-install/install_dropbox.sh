@@ -15,6 +15,6 @@
 		mv ./.dropbox-dist ~/.dotfiles/.home/Downloads || util.die
 
 		core.print_info 'Symlinking'
-		ln -sf ~/.dotfiles/.home/Downloads/.dropbox-dist/dropboxd ~/.dotfiles/.bin/dropboxd || util.die
+		ln -sf ~/.dotfiles/.home/Downloads/.dropbox-dist/dropboxd ~/.dotfiles/.data/bin/dropboxd || util.die
 	fi
 }

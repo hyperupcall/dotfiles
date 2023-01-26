@@ -134,8 +134,9 @@
 	# -------------------------------------------------------- #
 	#                    CREATE BIN SYMLINKS                   #
 	# -------------------------------------------------------- #
+	mkdir -p ~/.dotfiles/.data/bin
 	core.shopt_push -s nullglob
-	declare -a files=(~/.dotfiles/.bin/*)
+	declare -a files=(~/.dotfiles/.data/bin/*)
 	core.shopt_pop
 	declare file=; for file in "${files[@]}"; do if [ -L "$file" ]; then
 		unlink "$file"
@@ -145,13 +146,13 @@
 	declare -a files=("$HOME/.dotfiles/.home/Documents/Programming/Repositories/Bash"/{bake,basalt,hookah,foxomate,glue,rho,shelldoc,shelltest,woof}/pkg/bin/*)
 	core.shopt_pop
 	declare file=; for file in "${files[@]}"; do
-		ln -fs  "$file" ~/.dotfiles/.bin
+		ln -fs  "$file" ~/.dotfiles/.data/bin
 	done; unset -v file
 
-	ln -s "$HOME/.dotfiles/.home/Documents/Programming/Repositories/default/choose/target/debug/choose" ~/.dotfiles/.bin/choose
-	must.link ~/.dotfiles/.data/dotmgr-src/target/debug/dotmgr ~/.dotfiles/.bin/dotmgr
+	ln -s "$HOME/.dotfiles/.home/Documents/Programming/Repositories/default/choose/target/debug/choose" ~/.dotfiles/.data/bin/choose
+	must.link ~/.dotfiles/.data/dotmgr-src/target/debug/dotmgr ~/.dotfiles/.data/bin/dotmgr
 	if [ "$profile" = 'desktop' ]; then
-		must.link ~/repos/dotfox/dotfox ~/.dotfiles/.bin/dotfox
+		must.link ~/repos/dotfox/dotfox ~/.dotfiles/.data/bin/dotfox
 	fi
 
 
