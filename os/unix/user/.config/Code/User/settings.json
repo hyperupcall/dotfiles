@@ -1,10 +1,9 @@
 {
 	// WINDOW
 	"window.customMenuBarAltFocus": false,
-	"window.menuBarVisibility": "visible",
 	"window.newWindowDimensions": "maximized",
 	"window.restoreWindows": "all",
-	"window.title": "🦊 ${folderName} ${activeEditorLong}${separator}${remoteName}",
+	"window.title": "${folderName} ${activeEditorLong}${separator}${remoteName}",
 	"window.titleBarStyle": "custom",
 
 	// EDITOR
@@ -12,10 +11,11 @@
 	"editor.acceptSuggestionOnEnter": "off",
 	"editor.bracketPairColorization.enabled": true,
 	"editor.codeActionsOnSave": {
-		"source.fixAll": true
+		"source.organizeImports": false,
+		"source.fixAll": false
 	},
 	"editor.codeLens": true,
-	"editor.cursorSmoothCaretAnimation": true,
+	"editor.cursorSmoothCaretAnimation": false,
 	"editor.cursorSurroundingLinesStyle": "all",
 	"editor.detectIndentation": true,
 	"editor.find.addExtraSpaceOnTop": false,
@@ -26,7 +26,7 @@
 	"editor.formatOnSave": true,
 	"editor.formatOnPaste": false,
 	"editor.formatOnType": false,
-	"editor.insertSpaces": false,
+	// "editor.insertSpaces": false,
 	"editor.inlineSuggest.enabled": true,
 	"editor.linkedEditing": true,
 	"editor.maxTokenizationLineLength": 5000,
@@ -114,14 +114,10 @@
 	"search.searchOnTypeDebouncePeriod": 100,
 	"search.showLineNumbers": true,
 	"search.smartCase": true,
-
-	// WORKBENCH
-	"workbench.activityBar.visible": true,
 	"workbench.commandPalette.history": 100,
 	"workbench.editor.closeOnFileDelete": true,
 	"workbench.editor.highlightModifiedTabs": true,
 	"workbench.editor.tabCloseButton": "off",
-	"workbench.editor.tabSizing": "shrink",
 	"workbench.editorAssociations": {
 		"*.jpg": "luna.editor",
 		"*.png": "luna.editor",
@@ -134,8 +130,8 @@
 	"workbench.startupEditor": "none",
 	"workbench.tips.enabled": false,
 	"workbench.tree.indent": 12,
-	"workbench.colorTheme": "Bearded Theme Monokai Metallian",
 	"workbench.editor.untitled.hint": "hidden",
+	"workbench.colorTheme": "Bearded Theme Monokai Metallian",
 
 	// EXPLORER
 	"explorer.confirmDelete": false,
@@ -147,7 +143,7 @@
 	"security.workspace.trust.enabled": false,
 	"security.workspace.trust.untrustedFiles": "open",
 	"update.mode": "manual",
-	"prettier.requireConfig": true,
+	"prettier.requireConfig": false,
 	"prettier.semi": false,
 	"prettier.singleQuote": true,
 	"prettier.tabWidth": 3,
@@ -159,7 +155,7 @@
 	// JAVASCRIPT
 	"[javascript]": {
 		"editor.codeActionsOnSave": {
-			"source.organizeImports": true
+			"source.organizeImports": false
 		},
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.formatOnSave": true
@@ -210,17 +206,20 @@
 	// JSON
 	"[json]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
-		"editor.formatOnSave": true
+		"editor.formatOnSave": true,
+		"editor.defaultFoldingRangeProvider": "esbenp.prettier-vscode"
 	},
 	"[jsonc]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
-		"editor.formatOnSave": true
+		"editor.formatOnSave": true,
+		"editor.defaultFoldingRangeProvider": "esbenp.prettier-vscode"
 	},
 	"[jsonnet]": {
 		"editor.defaultFormatter": "Sebbia.jsonnetng",
 		"editor.formatOnSave": true,
 		"editor.insertSpaces": true,
-		"editor.tabSize": 2
+		"editor.tabSize": 2,
+		"editor.defaultFoldingRangeProvider": "esbenp.prettier-vscode"
 	},
 
 	// TOML
@@ -263,11 +262,13 @@
 
 	// CSS
 	"[css]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true
 	},
 	"css.validate": false,
 	"[less]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true
 	},
 	"less.validate": false,
 	"[scss]": {
@@ -342,6 +343,7 @@
 
 	// BASH
 	"shellcheck.run": "onType",
+	"shellcheck.customArgs": ["--external-sources"],
 	"[shellscript]": {
 		"editor.formatOnSave": false,
 		"editor.codeActionsOnSave": {
@@ -482,7 +484,7 @@
 		},
 		"editor.formatOnSave": true
 	},
-	"C_Cpp.intelliSenseEngine": "default",
+	"C_Cpp.intelliSenseEngine": "disabled",
 	"C_Cpp.default.cppStandard": "c++20",
 	"C_Cpp.default.cStandard": "c17",
 	"C_Cpp.inlayHints.autoDeclarationTypes.enabled": true,
@@ -540,7 +542,7 @@
 		"-readability-magic-numbers"
 	],
 
-	// DISABLE TELEMETRY / DISABLE NOTIFICATIONS / EXTRANEOUS VIEWS
+	// DISABLE TELEMETRY / DISABLE NOTIFICATIONS / DISABLE WHAT'S NEW
 	"telemetry.telemetryLevel": "off",
 	"clangd.checkUpdates": false,
 	"redhat.telemetry.enabled": false,
@@ -564,75 +566,6 @@
 	"workbench.welcomePage.walkthroughs.openOnInstall": false,
 	"Lua.telemetry.enable": false,
 
-	// comment-anchors
-	"commentAnchors.workspace.lazyLoad": false,
-	"commentAnchors.tags.anchors": {
-		"ANCHOR": {
-			"enabled": true,
-			"tag": "ANCHOR",
-			"iconColor": "default",
-			"highlightColor": "#A8C023",
-			"scope": "file",
-			"behavior": "anchor"
-		},
-		"TODO": {
-			"enabled": true,
-			"tag": "TODO",
-			"iconColor": "blue",
-			"highlightColor": "#3ea8ff",
-			"scope": "workspace",
-			"behavior": "anchor"
-		},
-		"FIXME": {
-			"enabled": true,
-			"tag": "FIXME",
-			"iconColor": "red",
-			"highlightColor": "#F44336",
-			"scope": "workspace",
-			"behavior": "anchor"
-		},
-		"STUB": {
-			"enabled": true,
-			"tag": "STUB",
-			"iconColor": "purple",
-			"highlightColor": "#BA68C8",
-			"scope": "file",
-			"behavior": "anchor"
-		},
-		"NOTE": {
-			"enabled": true,
-			"tag": "NOTE",
-			"iconColor": "orange",
-			"highlightColor": "#FFB300",
-			"scope": "file",
-			"behavior": "anchor"
-		},
-		"REVIEW": {
-			"enabled": true,
-			"tag": "REVIEW",
-			"iconColor": "green",
-			"highlightColor": "#64DD17",
-			"scope": "workspace",
-			"behavior": "anchor"
-		},
-		"SECTION": {
-			"enabled": true,
-			"tag": "SECTION",
-			"iconColor": "blurple",
-			"highlightColor": "#896afc",
-			"scope": "workspace",
-			"behavior": "region"
-		},
-		"LINK": {
-			"enabled": true,
-			"tag": "LINK",
-			"iconColor": "#2ecc71",
-			"highlightColor": "#2ecc71",
-			"scope": "workspace",
-			"behavior": "link"
-		}
-	},
-
 	// cspell
 	"cSpell.diagnosticLevel": "Hint",
 	"cSpell.userWords": [
@@ -640,6 +573,9 @@
 		"arxiv",
 		"autofix",
 		"autoremove",
+		"Bashisms",
+		"builtins",
+		"checkstyle",
 		"cmds",
 		"Containerfile",
 		"Cygwin",
@@ -655,6 +591,7 @@
 		"elif",
 		"entrypoint",
 		"entrypoints",
+		"errexit",
 		"eval",
 		"Foxxy",
 		"gitattributes",
@@ -665,26 +602,36 @@
 		"initializable",
 		"kbuild",
 		"Kofler",
+		"localvar",
 		"mkdir",
 		"mongod",
 		"NOLINT",
 		"NOLINTNEXTLINE",
+		"nounset",
+		"POSIX",
 		"prettierrc",
 		"printk",
+		"Quazipanacea",
 		"redirecter",
 		"Roadmap",
 		"rushstack",
 		"selectability",
 		"shellcheck",
 		"shelltest",
+		"shopt",
 		"subdependencies",
+		"subshell",
 		"subshells",
 		"templating",
 		"tput",
+		"trpc",
 		"UEFI",
 		"Underutilization",
+		"Unsetting",
 		"wasm",
 		"wasmtime",
-		"webext"
+		"webext",
+		"xopp",
+		"Xournalpp"
 	]
 }

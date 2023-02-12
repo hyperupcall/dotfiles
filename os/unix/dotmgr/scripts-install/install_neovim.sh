@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 
-{
+main() {
 	if util.confirm 'Install Neovim latest?'; then
 		install.neovim
 	fi
@@ -27,3 +27,5 @@ install.neovim() {
 	make CMAKE_BUILD_TYPE=RelWithDebInfo
 	sudo make install
 }
+
+main "$@"

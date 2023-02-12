@@ -8,7 +8,7 @@
 # Everything is encrypted with a passphrase. This script Just Works, whether or not the
 # USB is already mounted
 
-{
+main() {
 	util.ensure_bin expect
 	util.ensure_bin age
 	util.ensure_bin age-keygen
@@ -95,3 +95,5 @@
 		core.print_warn "Skipping copying gpg keys"
 	fi
 }
+
+main "$@"

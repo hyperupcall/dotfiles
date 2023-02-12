@@ -3,7 +3,7 @@
 # Name:
 # Install Docker Credential Secret Service
 
-{
+main() {
 	if util.confirm "Install docker secretservice credential store version v0.6.4?"; then
 		declare version='v0.6.4'
 
@@ -26,3 +26,5 @@ obj['credsStore'] = 'secretservice'
 file.write_text(json.dumps(obj, indent='\t'))"
 	fi
 }
+
+main "$@"

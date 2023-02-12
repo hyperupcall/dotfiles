@@ -7,7 +7,7 @@
 # Syncs subdirectories like 'resourcepacks', 'saves', 'screenshots' of
 # the most common .minecraft directories for all major launchers.
 
-{
+main() {
 	declare mc_common_data="$HOME/.dotfiles/.home/Documents/Games/Minecraft_Common_Data"
 
 	declare xdg_data_dir="${XDG_DATA_HOME:-~/.local/share}"
@@ -44,3 +44,5 @@
 		done; unset -v subdir
 	done
 }
+
+main "$@"

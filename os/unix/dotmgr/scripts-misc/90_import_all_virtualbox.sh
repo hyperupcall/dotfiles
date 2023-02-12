@@ -7,7 +7,7 @@
 # Registers all VirtualBox virtual machine. Optionally
 # enables unregistering all virtual machines
 
-{
+main() {
 	if util.is_cmd VBoxManage; then
 		VBoxManage setproperty machinefolder '/storage/vault/rodinia/VirtualBox_Machines'
 	else
@@ -60,3 +60,5 @@ register() {
 		VBoxManage registervm "$file"
 	done
 }
+
+main "$@"

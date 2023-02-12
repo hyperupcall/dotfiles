@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 
-{
+main() {
 	if util.confirm 'Install Pass?'; then
 		install.pass
 	fi
@@ -43,3 +43,5 @@ install.pass() {
 		;;
 	esac
 }
+
+main "$@"

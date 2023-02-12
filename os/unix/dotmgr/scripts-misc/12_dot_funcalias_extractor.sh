@@ -8,7 +8,7 @@
 #
 # These can be copied to remote machines or to root shell profiless
 
-{
+main() {
 	# Bash is the most featureful lowest common denominator in shells
 	# on Unix machines. We extract bash intrinsics with the '# clone(...)'
 	# annotations such that funtions, aliases, and readline declarations
@@ -95,3 +95,5 @@
 	util_print_file "$XDG_CONFIG_HOME/bash/modules/readline.sh" >&6
 	exec 6<&-
 }
+
+main "$@"

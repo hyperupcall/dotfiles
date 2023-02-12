@@ -14,7 +14,7 @@
 # - Installs Nim (in ~/.bootstrap)
 # - Installs dotfox (in ~/.bootstrap)
 
-{
+main() {
 	if [ -d ~/.bootstrap/done ]; then
 		if util.confirm "It seems you have already bootstraped your dotfiles, do you wish to do it again?"; then :; else
 			util.die 'Exiting'
@@ -103,3 +103,5 @@
 
 	> ~/.bootstrap/done :
 }
+
+main "$@"

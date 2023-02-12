@@ -3,7 +3,7 @@
 # Name:
 # Install Basalt
 
-{
+main() {
 	if util.confirm 'Install Basalt? packages'; then
 		core.print_info 'Installing Basalt packages globally'
 
@@ -15,3 +15,5 @@
 			reconquest/shdoc
 	fi
 }
+
+main "$@"

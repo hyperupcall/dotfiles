@@ -1,3 +1,0 @@
-[config]
-dotDir = '~/.dotfiles/os/unix/user'
-destDir = '~'

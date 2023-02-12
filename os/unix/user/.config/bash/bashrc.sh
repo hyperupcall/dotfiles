@@ -36,11 +36,11 @@ unset EXECIGNORE
 export FCEDIT="$EDITOR"
 unset FIGNORE
 unset GLOBIGNORE
-export HISTCONTROL="ignorespace:ignoredups"
+export HISTCONTROL='ignorespace:ignoredups'
 HISTFILE="$XDG_STATE_HOME/history/bash_history" # FIXME: bug with exporting this and starship
-export HISTSIZE="-1"
-export HISTFILESIZE="-1"
-export HISTIGNORE="ls:[bf]g:pwd:clear*:exit*:cd*|mkcd*|mkt*"
+export HISTSIZE='-1'
+export HISTFILESIZE='-1'
+export HISTIGNORE='ls:dir|vdir|[bf]g:pwd:clear*:exit*:mkcd*:mkt*'
 # export HISTTIMEFORMAT='%B %m %Y %T | '
 export HISTTIMEFORMAT='%F %T ' # ISO 8601
 export TIMEFORMAT=$'real    %3lR\nuser    %3lU\nsystem  %3lS\npercent %P'
@@ -115,7 +115,7 @@ if is16MillionColors; then
 	else
 		# shellcheck disable=SC3046
 		if ! eval "$(
-			if ! choose launch shell-prompt-bash; then
+			if ! defaultmgr launch shell-prompt-bash; then
 				# Without this, the error doesn't propagate to the "if ! eval ..."
 				printf '%s\n' 'false'
 			fi

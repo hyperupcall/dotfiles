@@ -6,7 +6,7 @@
 # Description:
 # Adds user to various groups
 
-{
+main() {
 	source "$DOTMGR_ROOT/src/util/source.sh"
 
 	# -------------------------------------------------------- #
@@ -68,3 +68,5 @@ must_group() {
 		core.print_warn "Failed to add user '$user' to group '$group'"
 	fi
 }
+
+main "$@"

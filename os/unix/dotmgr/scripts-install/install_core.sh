@@ -10,7 +10,7 @@
 # For C++: cmake, ccache
 # For backup editing: vim, nano
 
-{
+main() {
 	util.get_package_manager
 	declare pkgmngr="$REPLY"
 
@@ -49,3 +49,5 @@
 		;;
 	esac
 }
+
+main "$@"

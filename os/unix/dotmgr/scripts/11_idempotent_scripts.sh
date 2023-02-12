@@ -10,7 +10,7 @@
 # - Symlinks ~/.ssh, etc. software not mananged by dotfox
 # - Symlinks directories to ~/.dotfiles/.home
 
-{
+main() {
 	(
 		cd ~/.dotfiles || exit
 		./bake init
@@ -42,3 +42,5 @@
 	# 	nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 	# fi
 }
+
+main "$@"

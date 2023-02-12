@@ -6,7 +6,7 @@
 # Description:
 # Does a doctor
 
-{
+main() {
 	declare -a cmds=(clang-format clang-tidy)
 	declare cmd=
 	for cmd in "${cmds[@]}"; do
@@ -19,7 +19,9 @@
 	# Maybe verify if certain shortcuts exist or certain binaries are in the PATH (of either interactive or non-interactive apps)
 
 	# TEST gpg decryption for a set of keys
-
+	# TODO: test if password-store is a git directory and is up to date
 	# IF dropbox is on and syncing
 	printf '%s\n' 'Done.'
 }
+
+main "$@"

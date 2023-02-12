@@ -13,7 +13,7 @@
 # - Removing broken symlinks
 # - Removing autoappended content to `~/.{profile,bashrc}`, etc.
 
-{
+main() {
 	declare profile='desktop'
 
 	# -------------------------------------------------------- #
@@ -149,7 +149,7 @@
 		ln -fs  "$file" ~/.dotfiles/.data/bin
 	done; unset -v file
 
-	ln -s "$HOME/.dotfiles/.home/Documents/Programming/Repositories/default/choose/target/debug/choose" ~/.dotfiles/.data/bin/choose
+	ln -s "$HOME/.dotfiles/.home/Documents/Programming/Repositories/mgr/defaultmgr/target/debug/defaultmgr" ~/.dotfiles/.data/bin/defaultmgr
 	must.link ~/.dotfiles/.data/dotmgr-src/target/debug/dotmgr ~/.dotfiles/.data/bin/dotmgr
 	if [ "$profile" = 'desktop' ]; then
 		must.link ~/repos/dotfox/dotfox ~/.dotfiles/.data/bin/dotfox
@@ -259,3 +259,5 @@
 	must.dir "$HOME/.dotfiles/.home/Documents/Shared"
 	must.dir "$HOME/.dotfiles/.home/Pictures/Screenshots"
 }
+
+main "$@"

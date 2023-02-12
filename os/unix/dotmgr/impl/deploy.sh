@@ -21,6 +21,7 @@ declare -ra dotfiles=(
 	home:'.cpan/CPAN/MyConfig.pm'
 	home:'.digrc'
 	home:'.gnuplot'
+	home:'.keep'
 	home:'.psqlrc'
 	home:'.gnupg/dirmngr.conf'
 	home:'.gnupg/gpg.conf'
@@ -72,7 +73,6 @@ declare -ra dotfiles=(
 	cfg:'eww'
 	cfg:'fish'
 	cfg:'fontconfig'
-	# cfg:'foxxo' TODO (currently contains private tokens)
 	cfg:'gh/config.yml'
 	cfg:'gdb'
 	cfg:'git'
@@ -225,20 +225,20 @@ main() {
 
 
 	# # Print dotfiles that do not share a common prefix
-	# printf '%s\n' "symlink|$XDG_CONFIG_HOME/X11/xinitrc|$HOME/.xinitrc"
-	# printf '%s\n' "symlink|$XDG_CONFIG_HOME/bash/bash_profile.sh|$HOME/.bash_profile"
-	# printf '%s\n' "symlink|$XDG_CONFIG_HOME/bash/bash_logout.sh|$HOME/.bash_logout"
-	# printf '%s\n' "symlink|$XDG_CONFIG_HOME/bash/bashrc.sh|$HOME/.bashrc"
-	# printf '%s\n' "symlink|$XDG_CONFIG_HOME/shell/profile.sh|$HOME/.profile"
-	# printf '%s\n' "symlink|$XDG_CONFIG_HOME/zsh/.zshenv|$HOME/.zshenv"
+	printf '%s\n' "symlink|$XDG_CONFIG_HOME/X11/xinitrc|$HOME/.xinitrc"
+	printf '%s\n' "symlink|$XDG_CONFIG_HOME/bash/bash_profile.sh|$HOME/.bash_profile"
+	printf '%s\n' "symlink|$XDG_CONFIG_HOME/bash/bash_logout.sh|$HOME/.bash_logout"
+	printf '%s\n' "symlink|$XDG_CONFIG_HOME/bash/bashrc.sh|$HOME/.bashrc"
+	printf '%s\n' "symlink|$XDG_CONFIG_HOME/shell/profile.sh|$HOME/.profile"
+	printf '%s\n' "symlink|$XDG_CONFIG_HOME/zsh/.zshenv|$HOME/.zshenv"
 
-	# # Print dotfiles programatically
-	# source "$dotdir/xdg.sh" --set-type
-	# if [ "$REPLY" = default ]; then
-	# 	printf '%s\n' "symlink|$src_home/.pam_environment/xdg-default.conf|$HOME/.pam_environment"
-	# elif [ "$REPLY" = custom ]; then
-	# 	printf '%s\n' "symlink|$src_home/.pam_environment/xdg-custom.conf|$HOME/.pam_environment"
-	# fi
+	# Print dotfiles programatically
+	source "$dotdir/xdg.sh" --set-type
+	if [ "$REPLY" = default ]; then
+		printf '%s\n' "symlink|$src_home/.pam_environment/xdg-default.conf|$HOME/.pam_environment"
+	elif [ "$REPLY" = custom ]; then
+		printf '%s\n' "symlink|$src_home/.pam_environment/xdg-custom.conf|$HOME/.pam_environment"
+	fi
 }
 
 main "$@"

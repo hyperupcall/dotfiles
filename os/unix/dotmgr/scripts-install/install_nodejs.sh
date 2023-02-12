@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 
-{
+main() {
 	if util.confirm 'Install NPM packages?'; then
 		core.print_info 'Installing NPM Packages'
 		npm i -g yarn pnpm
@@ -11,3 +11,5 @@
 		yarn global add http-server
 	fi
 }
+
+main "$@"

@@ -3,7 +3,7 @@
 declare -g dir="$HOME/.dotfiles/.data/repos/bash-git-prompt"
 
 install() {
-	git clone 'https://github.com/magicmonty/bash-git-prompt'  "$dir"
+	git clone 'https://github.com/magicmonty/bash-git-prompt' "$dir"
 }
 
 uninstall() {

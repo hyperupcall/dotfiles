@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 
-{
+main() {
 	if util.confirm 'Install Dropbox stuff?'; then
 		util.cd_temp
 
@@ -18,3 +18,5 @@
 		ln -sf ~/.dotfiles/.home/Downloads/.dropbox-dist/dropboxd ~/.dotfiles/.data/bin/dropboxd || util.die
 	fi
 }
+
+main "$@"

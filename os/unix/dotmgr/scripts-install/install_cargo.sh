@@ -3,7 +3,7 @@
 # Name:
 # Install Cargo
 
-{
+main() {
 	if util.confirm 'Install Rustup?'; then
 		core.print_info "Installing rustup"
 		util.req https://sh.rustup.rs | sh -s -- --default-toolchain nightly -y || util.die
@@ -19,3 +19,5 @@
 		cargo install --locked bat
 	fi
 }
+
+main "$@"

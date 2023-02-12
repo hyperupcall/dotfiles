@@ -3,7 +3,7 @@
 # Name:
 # Install GHC
 
-{
+main() {
 	if util.confirm 'Install GHC?'; then
 		core.print_info "Installing haskell"
 
@@ -16,3 +16,4 @@
 	fi
 }
 
+main "$@"

@@ -6,7 +6,7 @@
 # Description:
 # This imports your GPG keys. It imports it from your shared drive mounted under /storage
 
-{
+main() {
 	declare -r fingerprints=('6EF89C3EB889D61708E5243DDA8EF6F306AD2CBA' '4C452EC68725DAFD09EC57BAB2D007E5878C6803')
 
 	if [ ! -e '/proc/sys/kernel/osrelease' ]; then
@@ -48,7 +48,9 @@
 			core.print_warn "Skipping importing GPG keys from /storage/ur subdirectory"
 
 			find_mnt_usb '6044-5CC1' # WET
-			declare block_dev_target=$REPLY
+			local block_dev_target=$REPLY
 		fi
 	fi
 }
+
+main "$@"

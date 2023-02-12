@@ -6,7 +6,7 @@
 # Description:
 # Executes dotfox with the right arguments. The command is shown before it is ran
 
-{
+main() {
 	declare dotfox=
 	if util.is_cmd dotfox; then
 		dotfox='dotfox'
@@ -18,3 +18,5 @@
 	util.run "$dotfox" --config-dir="$HOME/.dotfiles/os/unix/user/.config/dotfox" --deployment=all.sh deploy
 	util.run "$dotfox" --config-dir="$HOME/.dotfiles/os/unix/user/.config/dotfox" --deployment=all.sh status
 }
+
+main "$@"

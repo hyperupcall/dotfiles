@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 
-{
+main() {
 	if util.confirm 'Install Brave and Brave Beta?'; then
 		install.brave
 	fi
@@ -54,3 +54,5 @@ install.brave() {
 		core.print_fatal "Pakage manager '$pkgmngr' not supported"
 	esac
 }
+
+main "$@"

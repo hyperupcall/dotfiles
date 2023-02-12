@@ -121,7 +121,7 @@ source "$XDG_CONFIG_HOME"/zsh/modules/primary.zsh
 # 	else
 # 		PS1="%{$fg[red]%}[%n@%M %~]$%{$reset_color%} "
 # 		if ! eval "$(
-# 			if ! choose launch shell-prompt-zsh; then
+# 			if ! defaultmgr launch shell-prompt-zsh; then
 # 				# Without this, the error doesn't propagate to the "if ! eval ..."
 # 				printf '%s\n' 'false'
 # 			fi

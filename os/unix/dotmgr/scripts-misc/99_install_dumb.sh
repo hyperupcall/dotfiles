@@ -7,7 +7,7 @@
 # Installs and updates miscellaneous packages. This includes:
 # - Several Vim package managers
 
-{
+main() {
 	if util.confirm 'Install random Vim plugin managers'; then
 	# Vim Plug
 	curl -fLo "$XDG_CONFIG_HOME/vim/autoload/plug.vim" --create-dirs 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -67,3 +67,5 @@
 		util.clone_in_dots 'paulirish/git-open'
 	fi
 }
+
+main "$@"

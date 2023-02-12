@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 
-{
+main() {
 	if util.confirm 'Install Kitty?'; then
 		install.kitty
 	fi
@@ -28,3 +28,5 @@ install.kitty() {
 		;;
 	esac
 }
+
+main "$@"

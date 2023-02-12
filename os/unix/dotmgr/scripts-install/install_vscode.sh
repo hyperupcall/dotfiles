@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 
-{
+main() {
 	if util.confirm 'Install VSCode and VSCode Insiders?'; then
 		install.vscode
 	fi
@@ -44,3 +44,5 @@ install.vscode() {
 		core.print_fatal "Pakage manager '$pkgmngr' not supported"
 	esac
 }
+
+main "$@"

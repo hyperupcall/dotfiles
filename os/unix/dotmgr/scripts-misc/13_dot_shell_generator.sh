@@ -10,7 +10,7 @@
 # "$XDG_CONFIG_HOM/dotshellgen" into a single file for each shell. The result
 # is saved at "$XDG_STATE_HOME/dotshellgen"
 
-{
+main() {
 	# ------------------- Utility Functions ------------------ #
 	is_in_array() {
 		declare array_name="$1"
@@ -128,3 +128,5 @@
 
 	printf '%s\n' 'Done.'
 }
+
+main "$@"

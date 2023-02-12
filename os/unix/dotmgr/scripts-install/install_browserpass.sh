@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 
-{
+main() {
 	if util.confirm 'Install Browserpass?'; then
 		# TODO: fix
 		# browserpass-native
@@ -84,3 +84,5 @@
 
 	fi
 }
+
+main "$@"

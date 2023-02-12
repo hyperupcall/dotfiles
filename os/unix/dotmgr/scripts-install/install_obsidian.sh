@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 
-{
+main() {
 	if util.confirm 'Install Obsidian?'; then
 		install.obsidian
 	fi
@@ -21,3 +21,5 @@ install.obsidian() {
 
 	popd >/dev/null
 }
+
+main "$@"
