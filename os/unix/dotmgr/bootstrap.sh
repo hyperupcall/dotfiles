@@ -35,7 +35,9 @@ main() {
 		log 'Installing Cargo'
 		curl -fsSL 'https://sh.rustup.rs' | sh -s -- --default-toolchain nightly -y
 	fi
-	. ~/.cargo/env
+	if [ -f ~/.cargo/env ]; then
+		. ~/.cargo/env
+	fi
 
 	# Install hyperupcall/dotfiles
 	clonerepo 'github.com/hyperupcall/dotfiles' ~/.dotfiles

@@ -8,7 +8,7 @@ main() {
 
 install.vscode() {
 	util.get_package_manager
-	declare pkgmngr="$REPLY"
+	local pkgmngr="$REPLY"
 
 	case $pkgmngr in
 	pacman)

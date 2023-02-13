@@ -35,7 +35,7 @@ set -o vi
 
 	alias f='f -al'
 
-	declare -A line_cmds=(
+	local -A line_cmds=(
 		["f"]="f -al"
 	)
 
@@ -51,7 +51,7 @@ set -o vi
 @test "_readline_util_get_cmd" {
 	local result=
 
-	declare -A line_cmds=(
+	local -A line_cmds=(
 		["git status"]="git"
 		["git"]="git"
 		["exa -ls"]="exa"

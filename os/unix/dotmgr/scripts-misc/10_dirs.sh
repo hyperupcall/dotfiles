@@ -14,14 +14,14 @@
 # - Removing autoappended content to `~/.{profile,bashrc}`, etc.
 
 main() {
-	declare profile='desktop'
+	local profile='desktop'
 
 	# -------------------------------------------------------- #
 	#                     MOUNT /STORAGE/UR                    #
 	# -------------------------------------------------------- #
 	if [ "$profile" = 'desktop' ]; then
-		declare part_uuid="c875b5ca-08a6-415e-bc11-fc37ec94ab8f"
-		declare mnt='/storage/ur'
+		local part_uuid="c875b5ca-08a6-415e-bc11-fc37ec94ab8f"
+		local mnt='/storage/ur'
 		if ! grep -q "$mnt" /etc/fstab; then
 			printf '%s\n' "PARTUUID=$part_uuid  $mnt  btrfs  defaults,noatime,X-mount.mkdir  0 0" \
 				| sudo tee -a /etc/fstab >/dev/null
@@ -37,7 +37,7 @@ main() {
 			continue
 		fi
 
-		declare file_string=
+		local file_string=
 		while IFS= read -r line; do
 			file_string+="$line"$'\n'
 
@@ -136,16 +136,16 @@ main() {
 	# -------------------------------------------------------- #
 	mkdir -p ~/.dotfiles/.data/bin
 	core.shopt_push -s nullglob
-	declare -a files=(~/.dotfiles/.data/bin/*)
+	local -a files=(~/.dotfiles/.data/bin/*)
 	core.shopt_pop
-	declare file=; for file in "${files[@]}"; do if [ -L "$file" ]; then
+	local file=; for file in "${files[@]}"; do if [ -L "$file" ]; then
 		unlink "$file"
 	fi done; unset -v file
 
 	core.shopt_push -s nullglob
-	declare -a files=("$HOME/.dotfiles/.home/Documents/Programming/Repositories/Bash"/{bake,basalt,hookah,foxomate,glue,rho,shelldoc,shelltest,woof}/pkg/bin/*)
+	local -a files=("$HOME/.dotfiles/.home/Documents/Programming/Repositories/Bash"/{bake,basalt,hookah,foxomate,glue,rho,shelldoc,shelltest,woof}/pkg/bin/*)
 	core.shopt_pop
-	declare file=; for file in "${files[@]}"; do
+	local file=; for file in "${files[@]}"; do
 		ln -fs  "$file" ~/.dotfiles/.data/bin
 	done; unset -v file
 
@@ -159,14 +159,14 @@ main() {
 	# -------------------------------------------------------- #
 	#                      CREATE SYMLINKS                     #
 	# -------------------------------------------------------- #
-	declare -r storage_home='/storage/ur/storage_home'
-	declare -r storage_other='/storage/ur/storage_other'
+	local -r storage_home='/storage/ur/storage_home'
+	local -r storage_other='/storage/ur/storage_other'
 
 	must.link "$XDG_CONFIG_HOME/X11/Xmodmap" "$HOME/.Xmodmap"
 	must.link "$XDG_CONFIG_HOME/X11/Xresources" "$HOME/.Xresources"
 	must.link "$XDG_CONFIG_HOME/Code/User/settings.json" "$XDG_CONFIG_HOME/Code - OSS/User/settings.json"
 
-	declare -ra directories_default=(
+	local -ra directories_default=(
 		# ~/Desktop
 		~/Downloads
 		~/Templates ~/Public ~/Documents
@@ -174,7 +174,7 @@ main() {
 		~/Pictures
 		~/Videos
 	)
-	declare -ra directories_custom=(
+	local -ra directories_custom=(
 		# ~/Desktop
 		~/Dls
 		~/Docs/Templates ~/Docs/Public ~/Docs
@@ -182,7 +182,7 @@ main() {
 		~/Pics
 		~/Vids
 	)
-	declare -ra directories_shared=(
+	local -ra directories_shared=(
 		~/Desktop
 		~/Music
 	)
@@ -191,7 +191,7 @@ main() {
 		cp -f "$HOME/.dotfiles/os/unix/user/.config/user-dirs.dirs/user-dirs-custom.conf" "$XDG_CONFIG_HOME/user-dirs.dirs"
 
 		# XDG User Directories
-		declare dir=
+		local dir=
 		for dir in "${directories_default[@]}"; do
 			must.rmdir "$dir"
 		done; unset -v dir
@@ -228,7 +228,7 @@ main() {
 		cp -f "$HOME/.dotfiles/os/unix/user/.config/user-dirs.dirs/user-dirs-default.conf" "$XDG_CONFIG_HOME/user-dirs.dirs"
 
 		# XDG User Directories
-		declare dir=
+		local dir=
 		for dir in "${directories_custom[@]}"; do
 			must.rmdir "$dir"
 		done; unset -v dir

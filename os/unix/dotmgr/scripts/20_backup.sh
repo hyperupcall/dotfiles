@@ -14,8 +14,8 @@
 #   - **/gcc
 
 main() {
-	declare backup_dir="/storage/vault/rodinia/Backups/edwin_borg"
-	declare dir="/storage/ur/storage_home"
+	local backup_dir="/storage/vault/rodinia/Backups/edwin_borg"
+	local dir="/storage/ur/storage_home"
 
 	# shellcheck disable=SC2059
 	printf "Backing up\n  from: $dir\n  to:   $backup_dir\n"

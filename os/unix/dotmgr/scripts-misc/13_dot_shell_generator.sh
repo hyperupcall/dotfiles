@@ -13,12 +13,12 @@
 main() {
 	# ------------------- Utility Functions ------------------ #
 	is_in_array() {
-		declare array_name="$1"
-		declare value="$2"
+		local array_name="$1"
+		local value="$2"
 
-		declare -n array="$array_name"
+		local -n array="$array_name"
 
-		declare item=
+		local item=
 		for item in "${array[@]}"; do
 			if [ "$item" = "$value" ]; then
 				return 0
@@ -29,22 +29,22 @@ main() {
 	}
 
 	concat() {
-		declare file="$1"
+		local file="$1"
 
-		declare file_name="${file##*/}"
+		local file_name="${file##*/}"
 
 		case "$file_name" in
 		*.bash)
-			declare -n output_file='concatenated_bash_file'
+			local -n output_file='concatenated_bash_file'
 			;;
 		*.zsh)
-			declare -n output_file='concatenated_zsh_file'
+			local -n output_file='concatenated_zsh_file'
 			;;
 		*.fish)
-			declare -n output_file='concatenated_fish_file'
+			local -n output_file='concatenated_fish_file'
 			;;
 		*.sh)
-			declare -n output_file='concatenated_sh_file'
+			local -n output_file='concatenated_sh_file'
 			;;
 		*)
 			# core.print_warn "Skipping '$file_name'"
@@ -59,22 +59,22 @@ main() {
 		} >> "$output_file"
 	}
 
-	declare flag_clear='no'
-	declare arg=
+	local flag_clear='no'
+	local arg=
 	for arg; do case $arg in
 		-h|--help) printf '%s\n' "Usage: [-h|--help] [--clear]"; return ;;
 		--clear) flag_clear='yes'
 	esac done
 
 
-	declare dotshellgen_config_dir="$XDG_CONFIG_HOME/dotshellgen"
-	declare dotshellgen_state_dir="$XDG_STATE_HOME/dotshellgen"
+	local dotshellgen_config_dir="$XDG_CONFIG_HOME/dotshellgen"
+	local dotshellgen_state_dir="$XDG_STATE_HOME/dotshellgen"
 	mkdir -p "$dotshellgen_config_dir" "$dotshellgen_state_dir"
 
-	declare concatenated_bash_file="$dotshellgen_state_dir/concatenated.bash"
-	declare concatenated_zsh_file="$dotshellgen_state_dir/concatenated.zsh"
-	declare concatenated_fish_file="$dotshellgen_state_dir/concatenated.fish"
-	declare concatenated_sh_file="$dotshellgen_state_dir/concatenated.sh"
+	local concatenated_bash_file="$dotshellgen_state_dir/concatenated.bash"
+	local concatenated_zsh_file="$dotshellgen_state_dir/concatenated.zsh"
+	local concatenated_fish_file="$dotshellgen_state_dir/concatenated.fish"
+	local concatenated_sh_file="$dotshellgen_state_dir/concatenated.sh"
 
 	if [ "$flag_clear" = 'yes' ]; then
 		rm -f "$concatenated_bash_file" "$concatenated_zsh_file" "$concatenated_fish_file" "$concatenated_sh_file"
@@ -88,19 +88,19 @@ main() {
 	> "$concatenated_fish_file" :
 	> "$concatenated_sh_file" :
 
-	declare -a pre=() post=() disabled=()
+	local -a pre=() post=() disabled=()
 	source "$dotshellgen_config_dir/config.sh"
 
-	declare dirname=
+	local dirname=
 	for dirname in "${pre[@]}"; do
 		for file in "$dotshellgen_config_dir/$dirname"/*; do
 			concat "$file"
 		done; unset -v file
 	done; unset -v dirname
 
-	declare dir=
+	local dir=
 	for dir in "$dotshellgen_config_dir"/*/; do
-		declare dirname="${dir%/}"; dirname=${dirname##*/}
+		local dirname="${dir%/}"; dirname=${dirname##*/}
 
 		if is_in_array 'pre' "$dirname"; then
 			continue
@@ -113,13 +113,13 @@ main() {
 			continue
 		fi
 
-		declare file=
+		local file=
 		for file in "$dir"/*; do
 			concat "$file"
 		done; unset -v file
 	done; unset -v dir
 
-	declare dirname=
+	local dirname=
 	for dirname in "${post[@]}"; do
 		for file in "$dotshellgen_config_dir/$dirname"/*; do
 			concat "$file"

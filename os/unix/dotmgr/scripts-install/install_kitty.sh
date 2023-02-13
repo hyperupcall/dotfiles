@@ -8,7 +8,7 @@ main() {
 
 install.kitty() {
 	util.get_package_manager
-	declare pkgmngr="$REPLY"
+	local pkgmngr="$REPLY"
 
 	case $pkgmngr in
 	pacman)

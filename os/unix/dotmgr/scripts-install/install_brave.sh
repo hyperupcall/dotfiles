@@ -8,10 +8,10 @@ main() {
 
 install.brave() {
 	util.get_package_manager
-	declare pkgmngr="$REPLY"
+	local pkgmngr="$REPLY"
 
 	util.get_os_id
-	declare os_id="$REPLY"
+	local os_id="$REPLY"
 
 	case $pkgmngr in
 	pacman)

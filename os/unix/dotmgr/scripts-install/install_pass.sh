@@ -6,7 +6,7 @@ main() {
 	fi
 
 	if util.confirm 'Clone password repository?'; then
-		declare dir="${PASSWORD_STORE_DIR:-$HOME/.password-store}"
+		local dir="${PASSWORD_STORE_DIR:-$HOME/.password-store}"
 
 		if [ -d "$dir" ]; then
 			if [ -d "$dir/.git" ]; then
@@ -23,7 +23,7 @@ main() {
 
 install.pass() {
 	util.get_package_manager
-	declare pkgmngr="$REPLY"
+	local pkgmngr="$REPLY"
 
 	case $pkgmngr in
 	pacman)

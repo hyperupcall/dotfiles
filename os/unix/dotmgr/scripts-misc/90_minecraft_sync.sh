@@ -8,11 +8,11 @@
 # the most common .minecraft directories for all major launchers.
 
 main() {
-	declare mc_common_data="$HOME/.dotfiles/.home/Documents/Games/Minecraft_Common_Data"
+	local mc_common_data="$HOME/.dotfiles/.home/Documents/Games/Minecraft_Common_Data"
 
-	declare xdg_data_dir="${XDG_DATA_HOME:-~/.local/share}"
-	declare xdg_config_dir="${XDG_CONFIG_HOME:-~/.config}"
-	declare -a minecraft_dirs=(
+	local xdg_data_dir="${XDG_DATA_HOME:-~/.local/share}"
+	local xdg_config_dir="${XDG_CONFIG_HOME:-~/.config}"
+	local -a minecraft_dirs=(
 		~/.minecraft
 		"$xdg_data_dir"/multimc/instances/*/.minecraft
 		"$xdg_config_dir"/hmcl/.minecraft
@@ -30,7 +30,7 @@ main() {
 		# files=(servers.dat)
 
 		# Sync Common Directories
-		declare subdir=
+		local subdir=
 		for subdir in resourcepacks shaderpacks saves screenshots; do
 			mkdir -p "$mc_common_data/$subdir"
 

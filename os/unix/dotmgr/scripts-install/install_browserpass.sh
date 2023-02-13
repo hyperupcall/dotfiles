@@ -5,14 +5,14 @@ main() {
 		# TODO: fix
 		# browserpass-native
 		{
-			declare version='3.0.10'
-			declare system='linux64'
-			declare install_dir='/usr/local'
-			declare app_id='com.github.browserpass.native.json'
+			local version='3.0.10'
+			local system='linux64'
+			local install_dir='/usr/local'
+			local app_id='com.github.browserpass.native.json'
 
 			core.print_info "Installing browserpass-native version '$version'"
 
-			declare url="https://github.com/browserpass/browserpass-native/releases/download/$version/browserpass-$system-$version.tar.gz"
+			local url="https://github.com/browserpass/browserpass-native/releases/download/$version/browserpass-$system-$version.tar.gz"
 
 			util.cd_temp
 
@@ -48,15 +48,15 @@ main() {
 		# browserpass-extension
 		core.print_warn "Not installing browserpass-extension, only the native client"
 # 		{
-# 			declare version='3.7.2'
+# 			local version='3.7.2'
 
 # 			core.print_info "Installing browserpass-native version '$version'"
 
-# 			declare url_firefox="https://addons.mozilla.org/firefox/downloads/file/3711209/browserpass-$version-fx.xpi"
-# 			declare url_chromium="https://github.com/browserpass/browserpass-extension/releases/download/$version/browserpass-github-$version.crx"
+# 			local url_firefox="https://addons.mozilla.org/firefox/downloads/file/3711209/browserpass-$version-fx.xpi"
+# 			local url_chromium="https://github.com/browserpass/browserpass-extension/releases/download/$version/browserpass-github-$version.crx"
 
-# 			declare file_firefox='browserpass@maximbaz.com.xpi'
-# 			declare file_chromium='browserpass@maximbaz.com.crx'
+# 			local file_firefox='browserpass@maximbaz.com.xpi'
+# 			local file_chromium='browserpass@maximbaz.com.crx'
 
 # 			util.cd_temp
 

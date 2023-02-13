@@ -15,7 +15,7 @@
 		"source.fixAll": false
 	},
 	"editor.codeLens": true,
-	"editor.cursorSmoothCaretAnimation": false,
+	"editor.cursorSmoothCaretAnimation": "off",
 	"editor.cursorSurroundingLinesStyle": "all",
 	"editor.detectIndentation": true,
 	"editor.find.addExtraSpaceOnTop": false,

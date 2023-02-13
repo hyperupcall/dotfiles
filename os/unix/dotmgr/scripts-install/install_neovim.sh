@@ -8,13 +8,13 @@ main() {
 
 install.neovim() {
 	util.clone_in_dots 'https://github.com/neovim/neovim'
-	declare dir="$REPLY"
+	local dir="$REPLY"
 
 	cd "$dir"
 	git switch master
 	git pull --ff-only origin master
 
-	declare channel='nightly' # or stable
+	local channel='nightly' # or stable
 	git fetch origin "$channel"
 	git branch -D 'build'
 	git switch -c 'build' "tags/$channel"

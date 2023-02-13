@@ -29,14 +29,14 @@ main() {
 	done
 
 	echo; echo; echo '16 and 256 colors'
-	declare -a fg
-	declare -a bg
+	local -a fg
+	local -a bg
 	for color in {0..255}; do
 			fg+=("$(printf "\e[38;5;%sm  %3s  \e[0m" "$color" "$color")")
 			bg+=("$(printf "\e[48;5;%sm  %3s  \e[0m" "$color" "$color")")
 	done
 	for v in fg bg; do
-		declare -n fgbg="$v"
+		local -n fgbg="$v"
 		for ((i=0; i<4; i++)); do
 			printf "%s" "${fgbg[i]}"
 		done
@@ -45,7 +45,7 @@ main() {
 	echo
 	for ((i=4; i<${#fg[@]}; i=i+6)); do
 		for v in fg bg; do
-			declare -n fgbg="$v"
+			local -n fgbg="$v"
 			for ((j=0; j<6; j++)); do
 				printf "%s" "${fgbg[i+j]}"
 			done

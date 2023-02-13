@@ -16,17 +16,17 @@ main() {
 	sudo -v
 
 	find_mnt_usb '6044-5CC1' # WET
-	declare block_dev_target=$REPLY
+	local block_dev_target=$REPLY
 
 	# Now, file system is mounted at "$block_dev_target"
 
-	declare password=
+	local password=
 	password=$(LC_ALL=C tr -dc '[:alnum:][:digit:]' </dev/urandom | head -c 12; printf '\n')
 	core.print_info "Password: $password"
 
 	# Copy over ssh keys
-	declare -r sshDir="$HOME/.ssh"
-	declare -a sshKeys=(environment config github github.pub)
+	local -r sshDir="$HOME/.ssh"
+	local -a sshKeys=(environment config github github.pub)
 	if [ -d "$sshDir" ]; then
 		exec 4> >(sudo tee "$block_dev_target/ssh-keys.tar.age" >/dev/null)
 		if expect -f <(cat <<-EOF
@@ -61,8 +61,8 @@ main() {
 	fi
 
 	# Copy over gpg keys
-	declare -r fingerprints=('6EF89C3EB889D61708E5243DDA8EF6F306AD2CBA' '4C452EC68725DAFD09EC57BAB2D007E5878C6803')
-	declare gpg_dir="$HOME/.gnupg"
+	local -r fingerprints=('6EF89C3EB889D61708E5243DDA8EF6F306AD2CBA' '4C452EC68725DAFD09EC57BAB2D007E5878C6803')
+	local gpg_dir="$HOME/.gnupg"
 	if [ -d "$gpg_dir" ]; then
 		exec 4> >(sudo tee "$block_dev_target/gpg-keys.tar.age" >/dev/null)
 		if expect -f <(cat <<-EOF

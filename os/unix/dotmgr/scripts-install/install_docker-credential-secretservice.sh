@@ -5,7 +5,7 @@
 
 main() {
 	if util.confirm "Install docker secretservice credential store version v0.6.4?"; then
-		declare version='v0.6.4'
+		local version='v0.6.4'
 
 		util.cd_temp
 
