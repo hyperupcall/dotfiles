@@ -48,6 +48,6 @@ Then, run the following:
 . ~/.bootstrap/bootstrap-out.sh
 
 # Now, continue with dotmgr
-dotmgr action run bootstrap
-dotmgr action run idempotent
+dotmgr script run bootstrap
+dotmgr script run idempotent
 ```

@@ -67,7 +67,7 @@ fi
 if command -v basalt &>/dev/null; then
 	# complete-alias
 	basalt.load --global 'github.com/cykerway/complete-alias' 'complete_alias'
-	if local -F _complete_alias &>/dev/null; then
+	if declare -F _complete_alias &>/dev/null; then
 		for alias_name in $(
 		alias -p | while IFS= read -r line; do
 			line="${line#alias }"

@@ -224,7 +224,7 @@ main() {
 	done
 
 
-	# # Print dotfiles that do not share a common prefix
+	# Print dotfiles that do not share a common prefix
 	printf '%s\n' "symlink|$XDG_CONFIG_HOME/X11/xinitrc|$HOME/.xinitrc"
 	printf '%s\n' "symlink|$XDG_CONFIG_HOME/bash/bash_profile.sh|$HOME/.bash_profile"
 	printf '%s\n' "symlink|$XDG_CONFIG_HOME/bash/bash_logout.sh|$HOME/.bash_logout"

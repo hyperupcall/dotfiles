@@ -46,7 +46,9 @@ main() {
 	done
 
 	# Get GithHub authorization tokens
-	if [ ! -f ~/.dotfiles/.data/github_token ]; then
+	if [ -f ~/.dotfiles/.data/github_token ]; then
+		core.print_info 'Already stored GitHub token'
+	else
 		local hostname=
 		hostname=$(hostname)
 
@@ -58,6 +60,7 @@ main() {
 	fi
 
 	> ~/.bootstrap/done :
+	printf '%s\n' 'Done.'
 }
 
 main "$@"
