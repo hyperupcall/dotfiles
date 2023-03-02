@@ -67,8 +67,9 @@ main() {
 	must.dir "$HOME/.dotfiles/.data"
 	must.dir "$HOME/.gnupg"
 	must.dir "$HOME/.ssh"
-	must.dir "$XDG_STATE_HOME/history"
 	must.dir "$XDG_STATE_HOME/Android/Sdk"
+	must.dir "$XDG_STATE_HOME/history"
+	must.dir "$XDG_STATE_HOME/nano/backups"
 	must.dir "$XDG_DATA_HOME/maven"
 	must.dir "$XDG_DATA_HOME"/nano/backups
 	must.dir "$XDG_DATA_HOME/zsh"
@@ -151,9 +152,6 @@ main() {
 
 	ln -s "$HOME/.dotfiles/.home/Documents/Programming/Repositories/mgr/defaultmgr/target/debug/defaultmgr" ~/.dotfiles/.data/bin/defaultmgr
 	must.link ~/.dotfiles/.data/dotmgr-src/target/debug/dotmgr ~/.dotfiles/.data/bin/dotmgr
-	if [ "$profile" = 'desktop' ]; then
-		must.link ~/repos/dotfox/dotfox ~/.dotfiles/.data/bin/dotfox
-	fi
 
 
 	# -------------------------------------------------------- #
@@ -256,8 +254,8 @@ main() {
 	fi
 
 	# Must be last as they are dependent on previous symlinking
-	must.dir "$HOME/.dotfiles/.home/Documents/Shared"
-	must.dir "$HOME/.dotfiles/.home/Pictures/Screenshots"
+	# must.dir "$HOME/.dotfiles/.home/Documents/Shared"
+	# must.dir "$HOME/.dotfiles/.home/Pictures/Screenshots"
 }
 
 main "$@"
