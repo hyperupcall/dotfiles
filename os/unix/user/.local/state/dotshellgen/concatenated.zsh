@@ -35,6 +35,9 @@ if command -v register-python-argcomplete &>/dev/null; then
 	eval "$(register-python-argcomplete pipx)"
 fi
 
+# repomgr.zsh
+_path_prepend "$HOME/.local/state/repomgr/bin"
+
 # woof.zsh
 if command -v woof >/dev/null 2>&1; then
 	eval "$(woof init --no-cd zsh)"

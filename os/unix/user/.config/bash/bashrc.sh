@@ -3,7 +3,7 @@
 # ~/.bashrc
 #
 
-# Ensure execution returns if bash is non-interactive
+# Stop execution if bash is non-interactive
 [[ $- != *i* ]] && [ ! -t 0 ] && return
 
 # Ensure /etc/profile is read for non-login shells
@@ -32,10 +32,10 @@ if (( $? != 0 )); then printf '%s\n' "Error: bashrc.sh: Failed to source ~/.prof
 
 # export CDPATH=':~:'
 # export CHILD_MAX='256'
-unset EXECIGNORE
+unset -v EXECIGNORE
 export FCEDIT="$EDITOR"
-unset FIGNORE
-unset GLOBIGNORE
+unset -v FIGNORE
+unset -v GLOBIGNORE
 export HISTCONTROL='ignorespace:ignoredups'
 HISTFILE="$XDG_STATE_HOME/history/bash_history" # FIXME: bug with exporting this and starship
 export HISTSIZE='-1'
@@ -45,9 +45,9 @@ export HISTIGNORE='ls:dir|vdir|[bf]g:pwd:clear*:exit*:mkcd*:mkt*'
 export HISTTIMEFORMAT='%F %T ' # ISO 8601
 export TIMEFORMAT=$'real    %3lR\nuser    %3lU\nsystem  %3lS\npercent %P'
 export PROMPT_DIRTRIM='6'
-unset MAIL
-unset MAILCHECK
-unset MAILPATH
+unset -v MAIL
+unset -v MAILCHECK
+unset -v MAILPATH
 
 #
 # ─── SHELL OPTIONS ──────────────────────────────────────────────────────────────

@@ -20,8 +20,6 @@ main() {
 
 	util.run_script 'scripts-misc' '12_dot_funcalias_extractor.sh'
 	util.run_script 'scripts-misc' '13_dot_shell_generator.sh'
-	# TODO: if wrong directory is called, infinite loop (util.run_script 'run-misc' 'actions' '12_sync_dotfiles.sh')
-	util.run_script 'scripts' '12_sync_dotfiles.sh'
 
 
 	# if [ "$profile" = 'desktop' ]; then

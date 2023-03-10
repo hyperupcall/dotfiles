@@ -2,7 +2,7 @@
 # ~/.zshrc
 #
 
-# Ensure execution returns if zsh is non-interactive
+# Stop execution if zsh is non-interactive
 [[ $- != *i* ]] && [ ! -t 0 ] && return
 
 # Ensure /etc/zprofile is read for non-login shells

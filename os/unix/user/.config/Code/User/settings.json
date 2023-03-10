@@ -131,7 +131,7 @@
 	"workbench.tips.enabled": false,
 	"workbench.tree.indent": 12,
 	"workbench.editor.untitled.hint": "hidden",
-	"workbench.colorTheme": "Bearded Theme Monokai Metallian",
+	"workbench.colorTheme": "Noctis Lilac",
 
 	// EXPLORER
 	"explorer.confirmDelete": false,
@@ -405,10 +405,11 @@
 	"emmet.triggerExpansionOnTab": true,
 
 	// GIT
-	"git.enableCommitSigning": true,
 	"git.alwaysShowStagedChangesResourceGroup": true,
-	"git.confirmSync": false,
 	"git.autofetch": true,
+	"git.confirmSync": false,
+	"git.enableCommitSigning": true,
+	"git.openRepositoryInParentFolders": "never",
 
 	// GITLENS
 	"gitlens.advanced.maxListItems": 300,
@@ -602,10 +603,12 @@
 		"Foxxy",
 		"gitattributes",
 		"godotenv",
+		"goldenlayout",
 		"gulpfile",
 		"healthcheck",
 		"hyperupcall",
 		"initializable",
+		"katex",
 		"kbuild",
 		"Kofler",
 		"linebreak",
@@ -627,6 +630,8 @@
 		"purecss",
 		"Quazipanacea",
 		"redirecter",
+		"Rehype",
+		"relfile",
 		"Roadmap",
 		"rushstack",
 		"selectability",
@@ -653,6 +658,5 @@
 		"webext",
 		"xopp",
 		"Xournalpp"
-	],
-	"editor.largeFileOptimizations": false
+	]
 }
