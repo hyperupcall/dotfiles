@@ -10,6 +10,11 @@ if command -v basalt &>/dev/null; then
 			fi
 		fi
 	} # TODO
-	basalt.load --global 'github.com/hyperupcall/autoenv' 'activate.sh'
-	unfunction command
+	# TODO
+	# if command -v basalt.load; then
+	# 	basalt.load --global 'github.com/hyperupcall/autoenv' 'activate.sh'
+	# else
+	# 	printf '%s\n' "Failed to source hyperupcall/autoenv through Basalt" # TODO
+	# fi
+	# unfunction command
 fi

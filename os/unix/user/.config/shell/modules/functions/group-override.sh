@@ -28,18 +28,6 @@ cd() {
 
 	builtin cd -P "$@" || _shell_util_die "cd: cd to '$_shell_dir' failed with code $?"
 	unset -v _shell_dir
-
-	if [ -f 'foxxo.toml' ] || [ -f 'foxxy.toml' ] || [ -f 'fox.json' ]; then
-		if command -v deno >/dev/null 2>&1; then
-			if command -v foxxo >/dev/null 2>&1; then
-				foxxo lint --fix || :
-			else
-				_shell_util_log_warn "cd: Command not found: foxxo"
-			fi
-		else
-			_shell_util_log_warn "cd: Command not found: deno"
-		fi
-	fi
 }
 
 # clone(user)

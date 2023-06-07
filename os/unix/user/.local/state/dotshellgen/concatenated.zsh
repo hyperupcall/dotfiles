@@ -19,8 +19,13 @@ if command -v basalt &>/dev/null; then
 			fi
 		fi
 	} # TODO
-	basalt.load --global 'github.com/hyperupcall/autoenv' 'activate.sh'
-	unfunction command
+	# TODO
+	# if command -v basalt.load; then
+	# 	basalt.load --global 'github.com/hyperupcall/autoenv' 'activate.sh'
+	# else
+	# 	printf '%s\n' "Failed to source hyperupcall/autoenv through Basalt" # TODO
+	# fi
+	# unfunction command
 fi
 
 # direnv.zsh
@@ -29,11 +34,12 @@ if command -v &>/dev/null; then
 fi
 
 # pipx.zsh
-if command -v register-python-argcomplete &>/dev/null; then
-	autoload -U bashcompinit
-	bashcompinit
-	eval "$(register-python-argcomplete pipx)"
-fi
+# TODO
+# if command -v register-python-argcomplete &>/dev/null; then
+# 	autoload -U bashcompinit
+# 	bashcompinit
+# 	eval "$(register-python-argcomplete pipx)"
+# fi
 
 # repomgr.zsh
 _path_prepend "$HOME/.local/state/repomgr/bin"

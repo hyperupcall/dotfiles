@@ -13,7 +13,6 @@
 # Zsh only reads ~/.zprofile on login shells
 [ -r "$ZDOTDIR/.zprofile" ] && source "$ZDOTDIR/.zprofile"
 
-
 #
 # ─── FRAMEWORKS ─────────────────────────────────────────────────────────────────
 #
@@ -96,59 +95,62 @@ unsetopt beep
 # ─── PS1 ────────────────────────────────────────────────────────────────────────
 #
 
-is8Colors() {
+is_8_colors() {
 	colors=$(tput colors 2>/dev/null)
 
 	[ -n "$colors" ] && [ "$colors" -eq 8 ]
 }
 
-is256Colors() {
+is_256_colors() {
 	colors=$(tput colors 2>/dev/null)
 
 	[ -n "$colors" ] && [ "$colors" -eq 256 ]
 }
 
-is16MillionColors() {
+is_16million_colors() {
 	[ "$COLORTERM" = "truecolor" ] || [ "$COLORTERM" = "24bit" ]
 }
 
 source "$XDG_STATE_HOME/dotshellgen/concatenated.zsh"
 source "$XDG_CONFIG_HOME"/zsh/modules/primary.zsh
 
-# if is16MillionColors; then
-# 	if ((EUID == 0)); then
-# 		PS1="%F{#c92a2a}[%n@%M %~]$%f "
-# 	else
-# 		PS1="%{$fg[red]%}[%n@%M %~]$%{$reset_color%} "
-# 		if ! eval "$(
-# 			if ! defaultmgr launch shell-prompt-zsh; then
-# 				# Without this, the error doesn't propagate to the "if ! eval ..."
-# 				printf '%s\n' 'false'
-# 			fi
-# 		)"; then
-# 			PS1="[%{$fg[red]%}(PS1 Error)%{$reset_color%} %n@%M %~]\$ "
-# 		fi
-# 	fi
-# elif is8Colors || is256Colors; then
-# 	if ((EUID == 0)); then
-# 		PS1="%{$fg[red]%}[%n@%M %~]$%{$reset_color%} "
-# 	else
-# 		PS1="%{$fg[yellow]%}[%n@%M %~]$%{$reset_color%} "
-# 	fi
-# else
-# 	PS1="[%n@%M %~]$ "
-# fi
+if is_16million_colors; then
+	if ((EUID == 0)); then
+		PS1="%F{#c92a2a}[%n@%M %~]$%f "
+	else
+		PS1="%{$fg[red]%}[%n@%M %~]$%{$reset_color%} "
+		if ! eval "$(
+			if ! defaultmgr launch shell-prompt-zsh; then
+				# Without this, the error doesn't propagate to the "if ! eval ..."
+				printf '%s\n' 'false'
+			fi
+		)"; then
+			PS1="[%{$fg[red]%}(PS1 Error)%{$reset_color%} %n@%M %~]\$ "
+		fi
+	fi
+elif is_8_colors || is_256_colors; then
+	if ((EUID == 0)); then
+		PS1="%{$fg[red]%}[%n@%M %~]$%{$reset_color%} "
+	else
+		PS1="%{$fg[yellow]%}[%n@%M %~]$%{$reset_color%} "
+	fi
+else
+	PS1="[%n@%M %~]$ "
+fi
 
-# unset -f is8Colors is256Colors is16MillionColors
+unset -f is_8_colors is_256_colors is_16million_colors
 
 
 #
 # ─── MODULES ────────────────────────────────────────────────────────────────────
 #
 
-# for f in "$XDG_CONFIG_HOME"/zsh/modules/?*.zsh; do
-# 	source "$f"
-# done
-# unset -v f
+for f in "$XDG_CONFIG_HOME"/zsh/modules/?*.zsh; do
+	source "$f"
+done
+unset -v f
 
 # ---
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

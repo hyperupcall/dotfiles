@@ -5,7 +5,7 @@ util.die() {
 }
 
 util.req() {
-	curl --proto '=https' --tlsv1.2 -sSLf "$@"
+	curl --proto '=https' --tlsv1.2 -#Lf "$@"
 }
 
 util.run() {

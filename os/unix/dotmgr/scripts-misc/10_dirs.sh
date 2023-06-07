@@ -144,7 +144,7 @@ main() {
 	fi done; unset -v file
 
 	core.shopt_push -s nullglob
-	local -a files=("$HOME/.dotfiles/.home/Documents/Programming/Repositories/Bash"/{bake,basalt,hookah,foxomate,glue,rho,shelldoc,shelltest,woof}/pkg/bin/*)
+	local -a files=("$HOME/.dotfiles/.home/Documents/Programming/Repositories/Bash"/{bake,basalt,hookah,foxomate,glue,rho,shelldoc,shelltest}/pkg/bin/* "$HOME/.dotfiles/.home/Documents/Programming/Repositories/version-manager/woof/pkg/bin"/*)
 	core.shopt_pop
 	local file=; for file in "${files[@]}"; do
 		ln -fs  "$file" ~/.dotfiles/.data/bin

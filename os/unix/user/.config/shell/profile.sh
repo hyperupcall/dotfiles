@@ -25,14 +25,18 @@ fi
 . "$XDG_CONFIG_HOME/shell/modules/util.sh"
 
 _path_prepend "$HOME/.dotfiles/.data/bin"
+_path_prepend "$HOME/.bin"
 _path_prepend "$HOME/.local/bin"
 
-. "$XDG_CONFIG_HOME/shell/modules/env.sh"
-. "$XDG_CONFIG_HOME/shell/modules/xdg.sh"
-for d in aliases functions; do
+for d in environment aliases functions; do
 	for f in "$XDG_CONFIG_HOME/shell/modules/$d"/*.sh; do
 		[ -r "$f" ] && . "$f"
 	done; unset -v f
 done; unset -v d
 
 # ---
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

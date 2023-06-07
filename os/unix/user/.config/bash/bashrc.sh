@@ -91,39 +91,41 @@ set -o physical
 # ─── PS1 ────────────────────────────────────────────────────────────────────────
 #
 
-is8Colors() {
+is_8_colors() {
 	colors=$(tput colors 2>/dev/null)
 
 	[ -n "$colors" ] && [ "$colors" -eq 8 ]
 }
 
-is256Colors() {
+is_256_colors() {
 	colors=$(tput colors 2>/dev/null)
 
 	[ -n "$colors" ] && [ "$colors" -eq 256 ]
 }
 
-is16MillionColors() {
+is_16million_colors() {
 	[ "$COLORTERM" = "truecolor" ] || [ "$COLORTERM" = "24bit" ]
 }
 
 source "$XDG_STATE_HOME/dotshellgen/concatenated.bash"
 
-if is16MillionColors; then
+if is_16million_colors; then
 	if ((EUID == 0)); then
 		PS1="\[\e[38;2;201;42;42m\][\u@\h \w]\[\e[0m\]\$ "
 	else
+		PS1="[\u@\h \w]\$ "
 		# shellcheck disable=SC3046
-		if ! eval "$(
-			if ! defaultmgr launch shell-prompt-bash; then
-				# Without this, the error doesn't propagate to the "if ! eval ..."
-				printf '%s\n' 'false'
-			fi
-		)"; then
-			PS1="[\[\e[0;31m\](PS1 Error)\[\e[0m\] \u@\h \w]\$ "
-		fi
+		# if ! eval "$(
+		# 	printf '%s\n' 'false'
+		# 	# if ! defaultmgr launch shell-prompt-bash; then
+		# 	# 	# Without this, the error doesn't propagate to the "if ! eval ..."
+		# 	# 	printf '%s\n' 'false'
+		# 	# fi
+		# )"; then
+		# 	PS1="[\[\e[0;31m\](PS1 Error)\[\e[0m\] \u@\h \w]\$ "
+		# fi
 	fi
-elif is8Colors || is256Colors; then
+elif is_8_colors || is_256_colors; then
 	if ((EUID == 0)); then
 		PS1="\[\e[0;31m\][\u@\h \w]\[\e[0m\]\$ "
 	else
@@ -133,7 +135,7 @@ else
 	PS1="[\u@\h \w]\$ "
 fi
 
-unset -f is8Colors is256Colors is16MillionColors
+unset -f is_8_colors is_256_colors is_16million_colors
 
 
 #
@@ -167,3 +169,6 @@ source "$XDG_CONFIG_HOME/bash/modules/readline.sh"
 source "$XDG_CONFIG_HOME/bash/modules/util.sh"
 
 # ---
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

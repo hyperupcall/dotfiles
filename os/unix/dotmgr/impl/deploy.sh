@@ -90,7 +90,7 @@ declare -ra dotfiles=(
 	cfg:'irb'
 	cfg:'irssi'
 	cfg:'kak'
-	cfg:'quazipanacea'
+	cfg:'quasipanacea'
 	cfg:'kermit'
 	cfg:'kitty'
 	cfg:'lazydocker'

@@ -15,6 +15,8 @@
 		"source.fixAll": false
 	},
 	"editor.codeLens": true,
+	"editor.cursorBlinking": "phase",
+	"editor.cursorStyle": "line-thin",
 	"editor.cursorSmoothCaretAnimation": "off",
 	"editor.cursorSurroundingLinesStyle": "all",
 	"editor.detectIndentation": true,
@@ -26,19 +28,21 @@
 	"editor.formatOnSave": true,
 	"editor.formatOnPaste": false,
 	"editor.formatOnType": false,
-	// "editor.insertSpaces": false,
 	"editor.inlineSuggest.enabled": true,
 	"editor.linkedEditing": true,
 	"editor.maxTokenizationLineLength": 5000,
 	"editor.minimap.maxColumn": 35,
 	"editor.minimap.renderCharacters": false,
 	"editor.minimap.showSlider": "always",
-	"editor.minimap.side": "left",
+	"editor.minimap.side": "right",
+	"editor.occurrencesHighlight": false,
 	"editor.renderWhitespace": "all",
 	"editor.smoothScrolling": true,
+	"editor.snippetSuggestions": "bottom",
+	"editor.stickyScroll.enabled": true,
+	"editor.suggestOnTriggerCharacters": true,
 	"editor.suggestSelection": "recentlyUsedByPrefix",
 	"editor.suggest.snippetsPreventQuickSuggestions": false,
-	"editor.tabSize": 3,
 	"editor.unfoldOnClickAfterEndOfLine": true,
 	"editor.wordWrap": "on",
 	"editor.wordWrapColumn": 100,
@@ -75,7 +79,6 @@
 		"*.sublime-snippet": "xml",
 		"*.ejs": "html"
 	},
-	// "files.eol": "\n",
 	"files.exclude": {
 		"**/.git": false,
 		"**/.hg": false,
@@ -83,12 +86,10 @@
 		"**/.svn": false,
 		"**/CVS": false
 	},
-	// "files.insertFinalNewline": true,
+	"files.insertFinalNewline": true,
 	"files.maxMemoryForLargeFilesMB": 2048,
 	"files.participants.timeout": 2000,
 	"files.simpleDialog.enable": true,
-	// "files.trimFinalNewlines": true, // Enabling this and similar breaks EditorConfig
-	// "files.trimTrailingWhitespace": true,
 	"files.watcherExclude": {
 		"**/node_modules/**": true,
 		"**/web_modules/**": true,
@@ -114,24 +115,24 @@
 	"search.searchOnTypeDebouncePeriod": 100,
 	"search.showLineNumbers": true,
 	"search.smartCase": true,
+
+	// WORKBENCH
+	"workbench.colorTheme": "Monokai Dimmed",
 	"workbench.commandPalette.history": 100,
 	"workbench.editor.closeOnFileDelete": true,
 	"workbench.editor.highlightModifiedTabs": true,
 	"workbench.editor.tabCloseButton": "off",
+	"workbench.editor.untitled.hint": "hidden",
 	"workbench.editorAssociations": {
-		"*.jpg": "luna.editor",
-		"*.png": "luna.editor",
 		"*.ipynb": "jupyter-notebook",
-		"*.ico": "luna.editor"
 	},
 	"workbench.enableExperiments": false,
 	"workbench.iconTheme": "vscode-icons",
 	"workbench.quickOpen.closeOnFocusLost": false,
+	"workbench.sideBar.location": "right",
 	"workbench.startupEditor": "none",
 	"workbench.tips.enabled": false,
 	"workbench.tree.indent": 12,
-	"workbench.editor.untitled.hint": "hidden",
-	"workbench.colorTheme": "Noctis Lilac",
 
 	// EXPLORER
 	"explorer.confirmDelete": false,
@@ -143,7 +144,7 @@
 	"security.workspace.trust.enabled": false,
 	"security.workspace.trust.untrustedFiles": "open",
 	"update.mode": "manual",
-	"prettier.requireConfig": false,
+	"prettier.requireConfig": true,
 	"prettier.semi": false,
 	"prettier.singleQuote": true,
 	"prettier.tabWidth": 3,
@@ -153,19 +154,10 @@
 	"eslint.format.enable": true,
 
 	// JAVASCRIPT
-	"[javascript]": {
-		"editor.codeActionsOnSave": {
-			"source.organizeImports": false
-		},
+	"[javascript][javascriptreact]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
-		"editor.formatOnSave": true
-	},
-	"[javascriptreact]": {
-		"editor.codeActionsOnSave": {
-			"source.organizeImports": true
-		},
-		"editor.defaultFormatter": "esbenp.prettier-vscode",
-		"editor.formatOnSave": true
+		"editor.insertSpaces": false,
+		"editor.tabSize": 3
 	},
 	"javascript.autoClosingTags": true,
 	"javascript.referencesCodeLens.enabled": true,
@@ -174,13 +166,10 @@
 	"javascript.updateImportsOnFileMove.enabled": "always",
 
 	// TYPESCRIPT
-	"[typescript]": {
+	"[typescript][typescriptreact]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
-		"editor.formatOnSave": true
-	},
-	"[typescriptreact]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode",
-		"editor.formatOnSave": true
+		"editor.insertSpaces": false,
+		"editor.tabSize": 3
 	},
 	"typescript.autoClosingTags": true,
 	"typescript.implementationsCodeLens.enabled": true,
@@ -204,30 +193,14 @@
 	"deno.inlayHints.variableTypes.suppressWhenTypeMatchesName": false,
 
 	// JSON
-	"[json]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode",
-		"editor.formatOnSave": true,
-		"editor.defaultFoldingRangeProvider": "esbenp.prettier-vscode"
+	"[json][jsonc][jsonl]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
-	"[jsonc]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode",
-		"editor.formatOnSave": true,
-		"editor.defaultFoldingRangeProvider": "esbenp.prettier-vscode"
-	},
-	"[jsonnet]": {
-		"editor.defaultFormatter": "Sebbia.jsonnetng",
-		"editor.formatOnSave": true,
-		"editor.insertSpaces": true,
-		"editor.tabSize": 2,
-		"editor.defaultFoldingRangeProvider": "esbenp.prettier-vscode"
-	},
+	"[json5]": {},
+	"[jsonnet]": {},
 
 	// TOML
-	"[toml]": {
-		"editor.defaultFormatter": "tamasfe.even-better-toml",
-		"editor.insertSpaces": false,
-		"editor.tabSize": 3
-	},
+	"[toml]": {},
 	"evenBetterToml.schema.associations": {
 		"foxxo.toml": "https://raw.githubusercontent.com/hyperupcall/foxxo/main/src/schemas/foxxoProject.schema.json",
 		"basalt.toml": "https://raw.githubusercontent.com/hyperupcall/foxxo/main/src/schemas/basalt.schema.json"
@@ -235,7 +208,7 @@
 
 	// YAML
 	"[yaml]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.defaultFormatter": "redhat.vscode-yaml",
 		"editor.insertSpaces": true,
 		"editor.tabSize": 2
 	},
@@ -251,9 +224,11 @@
 	"html.format.enable": false,
 	"html.format.wrapLineLength": 0,
 
-	// HTML MISC
+	// MISCELLANEOUS
 	"[vue]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.insertSpaces": false,
+		"editor.tabSize": 3,
 		"editor.formatOnSave": true
 	},
 	"[handlebars]": {
@@ -261,41 +236,33 @@
 	},
 
 	// CSS
-	"[css]": {
+	"[css][less][scss]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.formatOnSave": true
 	},
 	"css.validate": false,
-	"[less]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode",
-		"editor.formatOnSave": true
-	},
 	"less.validate": false,
-	"[scss]": {
+	"scss.validate": false,
+
+	// POSTCSS
+	"[postcss]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
-	"scss.validate": false,
+
+	// GRAPHQL
 	"[graphql]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
 
 	// MARKDOWN
-	"[markdown]": {
-		"editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
-		"editor.formatOnSave": true,
-		"editor.wordWrap": "on",
-		"editor.insertSpaces": true,
-		"editor.tabSize": 2
-	},
-	"[markdown-math]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode",
-		"editor.formatOnSave": true,
-		"editor.wordWrap": "on",
-		"editor.insertSpaces": true,
-		"editor.tabSize": 2
-	},
-	"[juliamarkdown]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"[markdown][markdown-math][juliamarkdown]": {
+		"editor.defaultFormatter": "fcrespo82.markdown-table-formatter",
+		// "editor.defaultFormatter": "Jota0222.multi-formatter",
+		"multiFormatter.formatterList": [
+			"esbenp.prettier-vscode",
+			"DavidAnson.vscode-markdownlint",
+			"fcrespo82.markdown-table-formatter"
+		],
 		"editor.formatOnSave": true,
 		"editor.wordWrap": "on",
 		"editor.insertSpaces": true,
@@ -324,6 +291,21 @@
 		"ol-prefix": false
 	},
 	"markdown.preview.doubleClickToSwitchToEditor": false,
+
+	// LATEX
+	"[latex]": {
+		"editor.insertSpaces": false,
+		"editor.tabSize": 3
+	},
+	"latex-workshop.latexindent.args": [
+		"-c",
+		"%DIR%/",
+		"%TMPFILE%",
+		"--local=/home/edwin/settings.yaml"
+		// "-y=defaultIndent: '%INDENT%'"
+	],
+	"latex-workshop.latex.autoClean.run": "onBuilt",
+	"latex-workshop.bibtex-format.tab": "tab",
 
 	// PYTHON
 	"[python]": {
@@ -410,6 +392,17 @@
 	"git.confirmSync": false,
 	"git.enableCommitSigning": true,
 	"git.openRepositoryInParentFolders": "never",
+	"git.suggestSmartCommit": false,
+
+	// GITHUB
+	"github.copilot.enable": {
+		"*": true,
+		"yaml": false,
+		"plaintext": false,
+		"markdown": false,
+		"scminput": false
+	},
+	"githubPullRequests.pullBranch": "never",
 
 	// GITLENS
 	"gitlens.advanced.maxListItems": 300,
@@ -428,7 +421,7 @@
 
 	// UNSORTED
 	"comment-divider.length": 60,
-	"debug.node.autoAttach": "on",
+	"debug.openDebug": "openOnDebugBreak",
 	"diffEditor.ignoreTrimWhitespace": false,
 	"merge-conflict.autoNavigateNextConflict.enabled": true,
 	"merge-conflict.diffViewPosition": "Beside",
@@ -453,6 +446,7 @@
 
 	"vscord.app.name": "Visual Studio Code",
 	"vscord.status.problems.enabled": false,
+	"vscord.behaviour.suppressNotifications": true,
 
 	// C/C++
 	"[c]": {
@@ -505,7 +499,7 @@
 	"c-cpp-flylint.lizard.enable": true,
 	// TODO: automatically generate other string from this array. one approach
 	// would be to just use clang-tidy for clang-tidy stuff, but its a bit more
-	// bugy and slower to check. but it is sort of required if clangd is enabled
+	// buggy and slower to check. but it is sort of required if clangd is enabled
 	"clang-tidy.checks": [
 		"bugprone-*",
 		"-bugprone-easily-swappable-parameters",
@@ -544,47 +538,64 @@
 	],
 
 	// DISABLE TELEMETRY / DISABLE NOTIFICATIONS / DISABLE WHAT'S NEW
-	"telemetry.telemetryLevel": "off",
 	"clangd.checkUpdates": false,
-	"redhat.telemetry.enabled": false,
-	"julia.enableTelemetry": false,
-	"terraform.telemetry.enabled": false,
-	"sonarlint.disableTelemetry": true,
-	"vsicons.dontShowNewVersionMessage": true,
-	"kite.showWelcomeNotificationOnStartup": false,
+	"code-runner.enableAppInsights": false,
+	"docker-explorer.enableTelemetry": false,
+	"extensions.ignoreRecommendations": true,
 	"gitlens.showWelcomeOnInstall": false,
-	"liveServer.settings.donotShowInfoMsg": true,
+	"gitlens.showWhatsNewAfterUpgrades": false,
 	"java.help.firstView": "none",
 	"java.help.showReleaseNotes": false,
-	"gitlens.showWhatsNewAfterUpgrades": false,
-	"update.showReleaseNotes": false,
+	"julia.enableTelemetry": false,
+	"kite.showWelcomeNotificationOnStartup": false,
+	"liveServer.settings.donotShowInfoMsg": true,
+	"Lua.telemetry.enable": false,
 	"material-icon-theme.showWelcomeMessage": false,
-	"docker-explorer.enableTelemetry": false,
-	"code-runner.enableAppInsights": false,
+	"pros.showWelcomeOnStartup": false,
+	"pros.useGoogleAnalytics": false,
+	"redhat.telemetry.enabled": false,
 	"rpcServer.showStartupMessage": false,
 	"shellcheck.disableVersionCheck": true,
-	"extensions.ignoreRecommendations": true,
+	"sonarlint.disableTelemetry": true,
+	"telemetry.enableCrashReporter": false,
+	"telemetry.enableTelemetry": false,
+	"telemetry.telemetryLevel": "off",
+	"terraform.telemetry.enabled": false,
+	"update.showReleaseNotes": false,
+	"vsicons.dontShowNewVersionMessage": true,
 	"workbench.welcomePage.walkthroughs.openOnInstall": false,
-	"Lua.telemetry.enable": false,
 
 	// cspell
 	"cSpell.diagnosticLevel": "Hint",
 	"cSpell.userWords": [
 		"appname",
 		"arxiv",
+		"autoenv",
+		"autofetch",
 		"autofix",
+		"automake",
 		"autoremove",
+		"autotools",
 		"Bashisms",
+		"bibtex",
 		"builtins",
+		"bulma",
+		"camino",
 		"checkstyle",
+		"clangd",
 		"cmds",
 		"codemirror",
-		"Containerfile",
+		"containerfile",
+		"cout",
+		"crdt",
 		"ctxmenu",
 		"cxtmenu",
-		"Cygwin",
+		"cygwin",
 		"cytoscape",
-		"Deno",
+		"datas",
+		"dbus",
+		"deno",
+		"dircolors",
 		"dirent",
 		"dirents",
 		"distro",
@@ -592,48 +603,68 @@
 		"dotfiles",
 		"dotmgr",
 		"earlyaccess",
+		"edgehandles",
 		"editorconfig",
+		"eframe",
+		"egui",
 		"elif",
 		"entrypoint",
 		"entrypoints",
 		"errexit",
 		"eval",
+		"excalidraw",
+		"fcose",
+		"fira",
 		"formatjs",
 		"formkit",
-		"Foxxy",
+		"foxxy",
 		"gitattributes",
 		"godotenv",
 		"goldenlayout",
 		"gulpfile",
 		"healthcheck",
+		"hoverable",
 		"hyperupcall",
 		"initializable",
+		"isnt",
+		"jsonnet",
+		"kanban",
 		"katex",
 		"kbuild",
-		"Kofler",
+		"kofler",
+		"latexindent",
 		"linebreak",
 		"localvar",
+		"markmap",
 		"middlewares",
 		"mkdir",
 		"mongod",
 		"ngraph",
 		"nocomment",
-		"NOLINT",
-		"NOLINTNEXTLINE",
+		"nofollow",
+		"nolint",
+		"nolintnextline",
 		"nounset",
+		"nproc",
+		"nullptr",
+		"nushell",
 		"parens",
+		"pdfjs",
 		"pinia",
 		"plotly",
-		"POSIX",
+		"pnpm",
+		"posix",
 		"prettierrc",
 		"printk",
+		"prismjs",
 		"purecss",
-		"Quazipanacea",
+		"Quasipanacea",
 		"redirecter",
-		"Rehype",
+		"rehype",
 		"relfile",
 		"Roadmap",
 		"rushstack",
+		"sdkman",
 		"selectability",
 		"shellcheck",
 		"shelltest",
@@ -643,20 +674,28 @@
 		"subshells",
 		"templating",
 		"testdir",
+		"tmpl",
 		"tput",
 		"trpc",
 		"typecheck",
-		"UEFI",
-		"Underutilization",
-		"Unsetting",
+		"uefi",
+		"underutilization",
+		"unsetting",
 		"unsymlink",
+		"venv",
 		"vivagraphjs",
+		"vsdocker",
+		"vueuse",
+		"walkdir",
 		"wasm",
 		"wasmtime",
 		"watchpack",
 		"webcola",
 		"webext",
+		"xonsh",
 		"xopp",
-		"Xournalpp"
-	]
+		"xournalpp"
+	],
+	"editor.inlineSuggest.showToolbar": "always"
+
 }

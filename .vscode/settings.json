@@ -17,5 +17,6 @@
 		"**/.bin/**": true
 	},
 	"commentAnchors.workspace.excludeFiles": "**/{.dotmgr,.git,.home,.repos,Code/User/settings.json}/**",
-	"esbonio.sphinx.confDir": ""
+	"esbonio.sphinx.confDir": "",
+	"restructuredtext.preview.docutils.disabled": true
 }
