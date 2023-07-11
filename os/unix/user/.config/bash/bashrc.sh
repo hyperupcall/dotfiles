@@ -169,6 +169,3 @@ source "$XDG_CONFIG_HOME/bash/modules/readline.sh"
 source "$XDG_CONFIG_HOME/bash/modules/util.sh"
 
 # ---
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"

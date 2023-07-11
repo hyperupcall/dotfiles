@@ -2,14 +2,9 @@
 
 # config: big-print=off
 task.init() {
-	git config --local filter.npmrc-clean.clean "$PWD/user/.config/npm/npmrc-clean.sh"
-	git config --local filter.slack-term-config-clean.clean "$PWD/user/.config/slack-term/slack-term-config-clean.sh"
-	git config --local filter.oscrc-clean.clean "$PWD/user/.config/osc/oscrc-clean.sh"
-	if command -v hookah &>/dev/null; then
-		hookah refresh
-	else
-		bake.info 'Skipping hookah'
-	fi
+	git config --local filter.npmrc-clean.clean "$PWD/os/unix/user/.config/npm/npmrc-clean.sh"
+	git config --local filter.slack-term-config-clean.clean "$PWD/os/unix/user/.config/slack-term/slack-term-config-clean.sh"
+	git config --local filter.oscrc-clean.clean "$PWD/os/unix/user/.config/osc/oscrc-clean.sh"
 }
 
 task.build() {
