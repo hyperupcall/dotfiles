@@ -111,9 +111,7 @@ is_16million_colors() {
 	[ "$COLORTERM" = "truecolor" ] || [ "$COLORTERM" = "24bit" ]
 }
 
-source "$XDG_STATE_HOME/dotshellgen/concatenated.zsh"
-source "$XDG_CONFIG_HOME"/zsh/modules/primary.zsh
-
+autoload -U colors && colors
 if is_16million_colors; then
 	if ((EUID == 0)); then
 		PS1="%F{#c92a2a}[%n@%M %~]$%f "
@@ -121,8 +119,7 @@ if is_16million_colors; then
 		PS1="%{$fg[red]%}[%n@%M %~]$%{$reset_color%} "
 		if ! eval "$(
 			if ! defaultmgr launch shell-prompt-zsh; then
-				# Without this, the error doesn't propagate to the "if ! eval ..."
-				printf '%s\n' 'false'
+				printf '%s\n' 'false' # Propagate error to the "if ! eval ..."
 			fi
 		)"; then
 			PS1="[%{$fg[red]%}(PS1 Error)%{$reset_color%} %n@%M %~]\$ "
@@ -145,6 +142,7 @@ unset -f is_8_colors is_256_colors is_16million_colors
 # ─── MODULES ────────────────────────────────────────────────────────────────────
 #
 
+# source "$XDG_STATE_HOME/dotshellgen/concatenated.zsh"
 for f in "$XDG_CONFIG_HOME"/zsh/modules/?*.zsh; do
 	source "$f"
 done

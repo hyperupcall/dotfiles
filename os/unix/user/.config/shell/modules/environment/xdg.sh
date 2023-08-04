@@ -27,9 +27,6 @@ export BABEL_CACHE_PATH="$XDG_CACHE_HOME/babel.json"
 export BASH_COMPLETION_USER_DIR="$XDG_CONFIG_HOME/bash"
 export BASH_COMPLETION_USER_FILE="$XDG_CONFIG_HOME/bash/bash_completion.sh"
 
-# bashmarks
-SDIRS="$XDG_DATA_HOME/bashmarks.sh.db"
-
 # boto
 export BOTO_CONFIG="$XDG_DATA_HOME/boto"
 
@@ -99,7 +96,7 @@ export EM_CACHE="$XDG_CACHE_HOME/emscripten"
 # export EM_PORTS="$XDG_DATA_HOME/emscripten/cache"
 
 # gdb
-export GDBHISTFILE="$XDG_STATE_HOME/history/history"
+export GDBHISTFILE="$XDG_STATE_HOME/history/gdb_history"
 
 # gem
 export GEM_HOME="$XDG_DATA_HOME/gem" # conflicts with rvm
@@ -286,8 +283,8 @@ export PIPX_HOME="$XDG_STATE_HOME/pipx/virtualenv"
 export PIPX_BIN_DIR="$XDG_STATE_HOME/pipx/bin"
 
 # platformio
-export PLATFORMIO_CORE_DIR="$XDG_STATE_HOME/platformio"
-_path_prepend "$PLATFORMIO_CORE_DIR/penv/bin"
+# export PLATFORMIO_CORE_DIR="$XDG_STATE_HOME/platformio"
+# _path_prepend "$PLATFORMIO_CORE_DIR/penv/bin"
 
 # plenv
 export PLENV_ROOT="$XDG_DATA_HOME/plenv"

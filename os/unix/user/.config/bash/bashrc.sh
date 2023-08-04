@@ -115,15 +115,13 @@ if is_16million_colors; then
 	else
 		PS1="[\u@\h \w]\$ "
 		# shellcheck disable=SC3046
-		# if ! eval "$(
-		# 	printf '%s\n' 'false'
-		# 	# if ! defaultmgr launch shell-prompt-bash; then
-		# 	# 	# Without this, the error doesn't propagate to the "if ! eval ..."
-		# 	# 	printf '%s\n' 'false'
-		# 	# fi
-		# )"; then
-		# 	PS1="[\[\e[0;31m\](PS1 Error)\[\e[0m\] \u@\h \w]\$ "
-		# fi
+		if ! eval "$(
+			if ! defaultmgr launch shell-prompt-bash; then
+				printf '%s\n' 'false' # Propagate error to the "if ! eval ..."
+			fi
+		)"; then
+			PS1="[\[\e[0;31m\](PS1 Error)\[\e[0m\] \u@\h \w]\$ "
+		fi
 	fi
 elif is_8_colors || is_256_colors; then
 	if ((EUID == 0)); then

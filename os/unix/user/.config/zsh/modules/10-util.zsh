@@ -1,7 +1,3 @@
-
-autoload -Uz compinit && compinit
-zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
-
 # autoload -Uz zcompile
 
 # zmodload zsh/attr
@@ -41,7 +37,6 @@ zmodload zsh/zpty
 # zmodload zsh/util
 
 typeset -U PATH path
-# path=("$HOME/.local/bin" /other/things/in/path "$path[@]")
 
 
 # ({
@@ -71,19 +66,16 @@ typeset -U PATH path
 
 autoload run-help
 autoload zmv
-autoload -Uz compinit
-compinit
-autoload -Uz edit-command-line run-help compinit zmv
-autoload -Uz add-zsh-hook
+# autoload -Uz edit-command-line run-help zmv
+# autoload -Uz add-zsh-hook
 
 autoload -RU colors && colors
 autoload -RUz run-help
 autoload -RUz run-help-git
 autoload -RUz run-help-svn
 autoload -RUz run-help-svk
-autoload -RUz compinit promptinit
-compinit
-promptinit
+# autoload -RUz promptinit
+# promptinit
 
 [[ -n "${key[Up]}"   ]] && bindkey -- "${key[Up]}"   up-line-or-beginning-search
 [[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" down-line-or-beginning-search
@@ -92,10 +84,3 @@ promptinit
 
 [[ -n "${key[Control-Left]}"  ]] && bindkey -- "${key[Control-Left]}"  backward-word
 [[ -n "${key[Control-Right]}" ]] && bindkey -- "${key[Control-Right]}" forward-word
-
-compinit
-
-function zle-line-init zle-keymap-select {
-	vimode=${${KEYMAP/vicmd/c}/main/i}
-	zle reset-prompt
-}

@@ -10,6 +10,9 @@ _path_prepend "$ASDF_DATA_DIR/shims"
 # atom
 # export ATOM_HOME="$XDG_DATA_HOME/atom"
 
+# bashmarks
+SDIRS="$XDG_DATA_HOME/bashmarks.sh.db"
+
 # crenv
 # export CRENV_ROOT="$XDG_DATA_HOME/crenv"
 # _path_prepend "$CRENV_ROOT/bin"
