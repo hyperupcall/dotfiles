@@ -3,20 +3,16 @@
 		"**/*.z*": true,
 		"**/.tcshrc": true,
 		"**/.cshrc": true,
-		"**/.git": true
-	},
-	"files.associations": {
-		"**/i3/**": "i3",
-		"**/polybar/**": "ini"
-	},
-	"css.validate": false,
-	"search.exclude": {
+		"**/.data/**": true,
 		"**/.git/**": true,
 		"**/.home/**": true,
-		"**/.data/**": true,
-		"**/.bin/**": true
+		"**/.bin/**": true,
 	},
-	"commentAnchors.workspace.excludeFiles": "**/{.dotmgr,.git,.home,.repos,Code/User/settings.json}/**",
-	"esbonio.sphinx.confDir": "",
-	"restructuredtext.preview.docutils.disabled": true
+	"search.exclude": {
+		"**/.data/**": true,
+		"**/.git/**": true,
+		"**/.home/**": true,
+		"**/.bin/**": true,
+		"os/unix/user/.config/bash/frameworks/bash-it.sh": true
+	},
 }

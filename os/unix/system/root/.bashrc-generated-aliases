@@ -39,7 +39,7 @@ alias p7zip='p7zip -k'
 # alias rm='rm -dI --preserve-root=all'
 alias speedtest-cli='speedtest-cli --secure'
 alias sudo='sudo ' # sudo aliases `info bash -n Aliases`
-alias tree='tree -h'
+alias tree='tree'
 alias vdir='vdir --color=auto'
 alias xz='xz -k'
 alias yay='yay --color=auto'

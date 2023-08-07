@@ -17,5 +17,6 @@
 	"vscode-edge-devtools.webhint": false,
 	"symbols.hidesExplorerArrows": false,
 	"cSpell.diagnosticLevel": "Hint",
-	"git.confirmSync": false
+	"git.confirmSync": false,
+	"update.showReleaseNotes": false
 }

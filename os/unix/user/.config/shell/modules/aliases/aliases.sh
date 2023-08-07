@@ -40,7 +40,7 @@ alias rm='rm -dI --preserve-root=all'
 alias rsync='rsync --verbose --archive --info=progress2 --human-readable --partial'
 alias speedtest-cli='speedtest-cli --secure'
 alias sudo='sudo ' # sudo aliases `info bash -n Aliases`
-alias tree='tree -a --dirsfirst -h'
+alias tree='tree -a --dirsfirst'
 alias vdir='vdir --color=auto'
 alias xz='xz -k'
 # alias yay='yay --color=auto'
