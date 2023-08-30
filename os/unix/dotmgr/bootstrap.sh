@@ -40,7 +40,7 @@ main() {
 	fi
 
 	# Install hyperupcall/dotfiles
-	clonerepo 'github.com/hyperupcall/dotfiles' ~/.dotfiles
+	clonerepo 'github.com/hyperupcall/dotfiles' ~/.dotfiles '--recurse-submodules'
 	run cd ~/.dotfiles
 		run git remote set-url origin 'git@github.com:hyperupcall/dotfiles'
 		run ./bake init
@@ -54,6 +54,15 @@ main() {
 	run cd
 	run mkdir -p ~/.dotfiles/.data/bin
 	run ln -sf ~/.dotfiles/.data/dotmgr-src/target/debug/dotmgr ~/.dotfiles/.data/bin/dotmgr
+
+	# Create dotdrop script
+	cat <<"EOF" > ~/.dotfiles/.data/bin/dotdrop
+#!/usr/bin/env sh
+set -e
+. ~/.dotfiles/os/unix/vendor/dotdrop/venv/bin/activate
+~/.dotfiles/os/unix/vendor/dotdrop/dotdrop.sh "$@"
+EOF
+	chmod +x ~/.dotfiles/.data/bin/dotdrop
 
 	# Asserts
 	if [ ! -f ~/.dotfiles/xdg.sh ]; then
@@ -171,7 +180,8 @@ clonerepo() {
 		log "Already cloned $1"
 	else
 		log "Cloning $1"
-		run git clone --quiet "https://$1" "$2"
+		# shellcheck disable=SC2086
+		run git clone --quiet "https://$1" "$2" $3
 	fi
 }
 
