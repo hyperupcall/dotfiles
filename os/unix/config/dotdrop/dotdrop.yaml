@@ -1,0 +1,544 @@
+config:
+  backup: true
+  banner: false
+  check_version: true
+  create: true
+  dotpath: '~/.dotfiles/os/unix/user'
+  link_dotfile_default: 'relative'
+  link_on_import: 'relative'
+  template_dotfile_default: false
+  workdir: '~/.dotfiles/.dotdrop-workdir'
+
+profiles:
+  nullptr:
+    variables:
+      email: 'edwin@kofler.dev'
+      home_src: '.'
+      cfg_src: '.config'
+      state_src: '.local/state'
+      data_src: '.local/share'
+    dynvariables:
+      home_dst: 'printf "%s\n" "$HOME"'
+      cfg_dst: 'printf "%s\n" "$XDG_CONFIG_HOME"'
+      state_dst: 'printf "%s\n" "$XDG_STATE_HOME"'
+      data_dst: 'printf "%s\n" "$XDG_DATA_HOME"'
+    import:
+      - './dotdrop-include.yaml'
+
+dotfiles:
+  .agignore:
+    src: '{{@@ home_src @@}}/.agignore'
+    dst: '{{@@ home_dst @@}}/..agignore'
+  .alsoftrc:
+    src: '{{@@ home_src @@}}/.alsoftrc'
+    dst: '{{@@ home_dst @@}}/..alsoftrc'
+  .cpan__CPAN__MyConfig.pm:
+    src: '{{@@ home_src @@}}/.cpan/CPAN/MyConfig.pm'
+    dst: '{{@@ home_dst @@}}/..cpan/CPAN/MyConfig.pm'
+  .digrc:
+    src: '{{@@ home_src @@}}/.digrc'
+    dst: '{{@@ home_dst @@}}/..digrc'
+  .gnuplot:
+    src: '{{@@ home_src @@}}/.gnuplot'
+    dst: '{{@@ home_dst @@}}/..gnuplot'
+  .keep:
+    src: '{{@@ home_src @@}}/.keep'
+    dst: '{{@@ home_dst @@}}/..keep'
+  .psqlrc:
+    src: '{{@@ home_src @@}}/.psqlrc'
+    dst: '{{@@ home_dst @@}}/..psqlrc'
+  .gnupg__dirmngr.conf:
+    src: '{{@@ home_src @@}}/.gnupg/dirmngr.conf'
+    dst: '{{@@ home_dst @@}}/..gnupg/dirmngr.conf'
+  .gnupg__gpg.conf:
+    src: '{{@@ home_src @@}}/.gnupg/gpg.conf'
+    dst: '{{@@ home_dst @@}}/..gnupg/gpg.conf'
+  .gnupg__gpg-agent.conf:
+    src: '{{@@ home_src @@}}/.gnupg/gpg-agent.conf'
+    dst: '{{@@ home_dst @@}}/..gnupg/gpg-agent.conf'
+  .hushlogin:
+    src: '{{@@ home_src @@}}/.hushlogin'
+    dst: '{{@@ home_dst @@}}/..hushlogin'
+  .config__.gtktermrc:
+    src: '{{@@ cfg_src @@}}/.gtktermrc'
+    dst: '{{@@ cfg_dst @@}}/..gtktermrc'
+  .config__rofi-json-menu.json:
+    src: '{{@@ cfg_src @@}}/rofi-json-menu.json'
+    dst: '{{@@ cfg_dst @@}}/.rofi-json-menu.json'
+  .config__aerc__aerc.conf:
+    src: '{{@@ cfg_src @@}}/aerc/aerc.conf'
+    dst: '{{@@ cfg_dst @@}}/.aerc/aerc.conf'
+  .config__aerc__binds.conf:
+    src: '{{@@ cfg_src @@}}/aerc/binds.conf'
+    dst: '{{@@ cfg_dst @@}}/.aerc/binds.conf'
+  .config__alacritty:
+    src: '{{@@ cfg_src @@}}/alacritty'
+    dst: '{{@@ cfg_dst @@}}/.alacritty'
+  .config__albert__albert.conf:
+    src: '{{@@ cfg_src @@}}/albert/albert.conf'
+    dst: '{{@@ cfg_dst @@}}/.albert/albert.conf'
+  .config__alsa:
+    src: '{{@@ cfg_src @@}}/alsa'
+    dst: '{{@@ cfg_dst @@}}/.alsa'
+  .config__appimagelauncher.cfg:
+    src: '{{@@ cfg_src @@}}/appimagelauncher.cfg'
+    dst: '{{@@ cfg_dst @@}}/.appimagelauncher.cfg'
+  .config__aria2:
+    src: '{{@@ cfg_src @@}}/aria2'
+    dst: '{{@@ cfg_dst @@}}/.aria2'
+  .config__aspell:
+    src: '{{@@ cfg_src @@}}/aspell'
+    dst: '{{@@ cfg_dst @@}}/.aspell'
+  .config__awesome:
+    src: '{{@@ cfg_src @@}}/awesome'
+    dst: '{{@@ cfg_dst @@}}/.awesome'
+  .config__bash:
+    src: '{{@@ cfg_src @@}}/bash'
+    dst: '{{@@ cfg_dst @@}}/.bash'
+  .config__bat:
+    src: '{{@@ cfg_src @@}}/bat'
+    dst: '{{@@ cfg_dst @@}}/.bat'
+  .config__bpython:
+    src: '{{@@ cfg_src @@}}/bpython'
+    dst: '{{@@ cfg_dst @@}}/.bpython'
+  .config__broot:
+    src: '{{@@ cfg_src @@}}/broot'
+    dst: '{{@@ cfg_dst @@}}/.broot'
+  .config__bspwm:
+    src: '{{@@ cfg_src @@}}/bspwm'
+    dst: '{{@@ cfg_dst @@}}/.bspwm'
+  .config__cabal__config:
+    src: '{{@@ cfg_src @@}}/cabal/config'
+    dst: '{{@@ cfg_dst @@}}/.cabal/config'
+  .config__cactus:
+    src: '{{@@ cfg_src @@}}/cactus'
+    dst: '{{@@ cfg_dst @@}}/.cactus'
+  .config__calcurse:
+    src: '{{@@ cfg_src @@}}/calcurse'
+    dst: '{{@@ cfg_dst @@}}/.calcurse'
+  .config__cargo:
+    src: '{{@@ cfg_src @@}}/cargo'
+    dst: '{{@@ cfg_dst @@}}/.cargo'
+  .config__cava:
+    src: '{{@@ cfg_src @@}}/cava'
+    dst: '{{@@ cfg_dst @@}}/.cava'
+  .config__ccache:
+    src: '{{@@ cfg_src @@}}/ccache'
+    dst: '{{@@ cfg_dst @@}}/.ccache'
+  .config__cdm:
+    src: '{{@@ cfg_src @@}}/cdm'
+    dst: '{{@@ cfg_dst @@}}/.cdm'
+  .config__choose:
+    src: '{{@@ cfg_src @@}}/choose'
+    dst: '{{@@ cfg_dst @@}}/.choose'
+  .config__cliflix:
+    src: '{{@@ cfg_src @@}}/cliflix'
+    dst: '{{@@ cfg_dst @@}}/.cliflix'
+  .config__conda:
+    src: '{{@@ cfg_src @@}}/conda'
+    dst: '{{@@ cfg_dst @@}}/.conda'
+  .config__conky:
+    src: '{{@@ cfg_src @@}}/conky'
+    dst: '{{@@ cfg_dst @@}}/.conky'
+  .config__cookiecutter:
+    src: '{{@@ cfg_src @@}}/cookiecutter'
+    dst: '{{@@ cfg_dst @@}}/.cookiecutter'
+  .config__cmus__rc:
+    src: '{{@@ cfg_src @@}}/cmus/rc'
+    dst: '{{@@ cfg_dst @@}}/.cmus/rc'
+  .config__Code__User__keybindings.json:
+    src: '{{@@ cfg_src @@}}/Code/User/keybindings.json'
+    dst: '{{@@ cfg_dst @@}}/.Code/User/keybindings.json'
+  .config__Code__User__settings.json:
+    src: '{{@@ cfg_src @@}}/Code/User/settings.json'
+    dst: '{{@@ cfg_dst @@}}/.Code/User/settings.json'
+  .config__curl:
+    src: '{{@@ cfg_src @@}}/curl'
+    dst: '{{@@ cfg_dst @@}}/.curl'
+  .config__ddcutil:
+    src: '{{@@ cfg_src @@}}/ddcutil'
+    dst: '{{@@ cfg_dst @@}}/.ddcutil'
+  .config__dircolors:
+    src: '{{@@ cfg_src @@}}/dircolors'
+    dst: '{{@@ cfg_dst @@}}/.dircolors'
+  .config__discocss:
+    src: '{{@@ cfg_src @@}}/discocss'
+    dst: '{{@@ cfg_dst @@}}/.discocss'
+  .config__dotfox:
+    src: '{{@@ cfg_src @@}}/dotfox'
+    dst: '{{@@ cfg_dst @@}}/.dotfox'
+  .config__dotmgr:
+    src: '{{@@ cfg_src @@}}/dotmgr'
+    dst: '{{@@ cfg_dst @@}}/.dotmgr'
+  .config__dotshellgen:
+    src: '{{@@ cfg_src @@}}/dotshellgen'
+    dst: '{{@@ cfg_dst @@}}/.dotshellgen'
+  .config__dunst:
+    src: '{{@@ cfg_src @@}}/dunst'
+    dst: '{{@@ cfg_dst @@}}/.dunst'
+  .config__dxhd:
+    src: '{{@@ cfg_src @@}}/dxhd'
+    dst: '{{@@ cfg_dst @@}}/.dxhd'
+  .config__emptty:
+    src: '{{@@ cfg_src @@}}/emptty'
+    dst: '{{@@ cfg_dst @@}}/.emptty'
+  .config__environment.d:
+    src: '{{@@ cfg_src @@}}/environment.d'
+    dst: '{{@@ cfg_dst @@}}/.environment.d'
+  .config__eww:
+    src: '{{@@ cfg_src @@}}/eww'
+    dst: '{{@@ cfg_dst @@}}/.eww'
+  .config__fish:
+    src: '{{@@ cfg_src @@}}/fish'
+    dst: '{{@@ cfg_dst @@}}/.fish'
+  .config__fontconfig:
+    src: '{{@@ cfg_src @@}}/fontconfig'
+    dst: '{{@@ cfg_dst @@}}/.fontconfig'
+  .config__gh__config.yml:
+    src: '{{@@ cfg_src @@}}/gh/config.yml'
+    dst: '{{@@ cfg_dst @@}}/.gh/config.yml'
+  .config__gdb:
+    src: '{{@@ cfg_src @@}}/gdb'
+    dst: '{{@@ cfg_dst @@}}/.gdb'
+  .config__git:
+    src: '{{@@ cfg_src @@}}/git'
+    dst: '{{@@ cfg_dst @@}}/.git'
+  .config__glue:
+    src: '{{@@ cfg_src @@}}/glue'
+    dst: '{{@@ cfg_dst @@}}/.glue'
+  .config__octave:
+    src: '{{@@ cfg_src @@}}/octave'
+    dst: '{{@@ cfg_dst @@}}/.octave'
+  .config__osc:
+    src: '{{@@ cfg_src @@}}/osc'
+    dst: '{{@@ cfg_dst @@}}/.osc'
+  .config__helix:
+    src: '{{@@ cfg_src @@}}/helix'
+    dst: '{{@@ cfg_dst @@}}/.helix'
+  .config__hg:
+    src: '{{@@ cfg_src @@}}/hg'
+    dst: '{{@@ cfg_dst @@}}/.hg'
+  .config__htop:
+    src: '{{@@ cfg_src @@}}/htop'
+    dst: '{{@@ cfg_dst @@}}/.htop'
+  .config__i3:
+    src: '{{@@ cfg_src @@}}/i3'
+    dst: '{{@@ cfg_dst @@}}/.i3'
+  .config__i3blocks:
+    src: '{{@@ cfg_src @@}}/i3blocks'
+    dst: '{{@@ cfg_dst @@}}/.i3blocks'
+  .config__i3status:
+    src: '{{@@ cfg_src @@}}/i3status'
+    dst: '{{@@ cfg_dst @@}}/.i3status'
+  .config__info:
+    src: '{{@@ cfg_src @@}}/info'
+    dst: '{{@@ cfg_dst @@}}/.info'
+  .config__ion:
+    src: '{{@@ cfg_src @@}}/ion'
+    dst: '{{@@ cfg_dst @@}}/.ion'
+  .config__irb:
+    src: '{{@@ cfg_src @@}}/irb'
+    dst: '{{@@ cfg_dst @@}}/.irb'
+  .config__irssi:
+    src: '{{@@ cfg_src @@}}/irssi'
+    dst: '{{@@ cfg_dst @@}}/.irssi'
+  .config__kak:
+    src: '{{@@ cfg_src @@}}/kak'
+    dst: '{{@@ cfg_dst @@}}/.kak'
+  .config__quasipanacea:
+    src: '{{@@ cfg_src @@}}/quasipanacea'
+    dst: '{{@@ cfg_dst @@}}/.quasipanacea'
+  .config__kermit:
+    src: '{{@@ cfg_src @@}}/kermit'
+    dst: '{{@@ cfg_dst @@}}/.kermit'
+  .config__kitty:
+    src: '{{@@ cfg_src @@}}/kitty'
+    dst: '{{@@ cfg_dst @@}}/.kitty'
+  .config__lazydocker:
+    src: '{{@@ cfg_src @@}}/lazydocker'
+    dst: '{{@@ cfg_dst @@}}/.lazydocker'
+  .config__less:
+    src: '{{@@ cfg_src @@}}/less'
+    dst: '{{@@ cfg_dst @@}}/.less'
+  .config__libfsguest:
+    src: '{{@@ cfg_src @@}}/libfsguest'
+    dst: '{{@@ cfg_dst @@}}/.libfsguest'
+  .config__liquidprompt:
+    src: '{{@@ cfg_src @@}}/liquidprompt'
+    dst: '{{@@ cfg_dst @@}}/.liquidprompt'
+  .config__llpp.conf:
+    src: '{{@@ cfg_src @@}}/llpp.conf'
+    dst: '{{@@ cfg_dst @@}}/.llpp.conf'
+  .config__ltrace:
+    src: '{{@@ cfg_src @@}}/ltrace'
+    dst: '{{@@ cfg_dst @@}}/.ltrace'
+  .config__ly:
+    src: '{{@@ cfg_src @@}}/ly'
+    dst: '{{@@ cfg_dst @@}}/.ly'
+  .config__maven:
+    src: '{{@@ cfg_src @@}}/maven'
+    dst: '{{@@ cfg_dst @@}}/.maven'
+  .config__micro__bindings.json:
+    src: '{{@@ cfg_src @@}}/micro/bindings.json'
+    dst: '{{@@ cfg_dst @@}}/.micro/bindings.json'
+  .config__micro__settings.json:
+    src: '{{@@ cfg_src @@}}/micro/settings.json'
+    dst: '{{@@ cfg_dst @@}}/.micro/settings.json'
+  .config__mnemosyne__config.py:
+    src: '{{@@ cfg_src @@}}/mnemosyne/config.py'
+    dst: '{{@@ cfg_dst @@}}/.mnemosyne/config.py'
+  .config__most:
+    src: '{{@@ cfg_src @@}}/most'
+    dst: '{{@@ cfg_dst @@}}/.most'
+  .config__mpd:
+    src: '{{@@ cfg_src @@}}/mpd'
+    dst: '{{@@ cfg_dst @@}}/.mpd'
+  .config__mpv:
+    src: '{{@@ cfg_src @@}}/mpv'
+    dst: '{{@@ cfg_dst @@}}/.mpv'
+  .config__namur:
+    src: '{{@@ cfg_src @@}}/namur'
+    dst: '{{@@ cfg_dst @@}}/.namur'
+  .config__nano:
+    src: '{{@@ cfg_src @@}}/nano'
+    dst: '{{@@ cfg_dst @@}}/.nano'
+  .config__nb:
+    src: '{{@@ cfg_src @@}}/nb'
+    dst: '{{@@ cfg_dst @@}}/.nb'
+  .config__ncmpcpp:
+    src: '{{@@ cfg_src @@}}/ncmpcpp'
+    dst: '{{@@ cfg_dst @@}}/.ncmpcpp'
+  .config__ncpamixer.conf:
+    src: '{{@@ cfg_src @@}}/ncpamixer.conf'
+    dst: '{{@@ cfg_dst @@}}/.ncpamixer.conf'
+  .config__neofetch:
+    src: '{{@@ cfg_src @@}}/neofetch'
+    dst: '{{@@ cfg_dst @@}}/.neofetch'
+  .config__nimble:
+    src: '{{@@ cfg_src @@}}/nimble'
+    dst: '{{@@ cfg_dst @@}}/.nimble'
+  .config__nitrogen:
+    src: '{{@@ cfg_src @@}}/nitrogen'
+    dst: '{{@@ cfg_dst @@}}/.nitrogen'
+  .config__notmuch:
+    src: '{{@@ cfg_src @@}}/notmuch'
+    dst: '{{@@ cfg_dst @@}}/.notmuch'
+  .config__npm:
+    src: '{{@@ cfg_src @@}}/npm'
+    dst: '{{@@ cfg_dst @@}}/.npm'
+  .config__nu:
+    src: '{{@@ cfg_src @@}}/nu'
+    dst: '{{@@ cfg_dst @@}}/.nu'
+  .config__nvchecker:
+    src: '{{@@ cfg_src @@}}/nvchecker'
+    dst: '{{@@ cfg_dst @@}}/.nvchecker'
+  .config__nvim:
+    src: '{{@@ cfg_src @@}}/nvim'
+    dst: '{{@@ cfg_dst @@}}/.nvim'
+  .config__obs-studio__themes:
+    src: '{{@@ cfg_src @@}}/obs-studio/themes'
+    dst: '{{@@ cfg_dst @@}}/.obs-studio/themes'
+  .config__openbox:
+    src: '{{@@ cfg_src @@}}/openbox'
+    dst: '{{@@ cfg_dst @@}}/.openbox'
+  .config__OpenSCAD:
+    src: '{{@@ cfg_src @@}}/OpenSCAD'
+    dst: '{{@@ cfg_dst @@}}/.OpenSCAD'
+  .config__ox:
+    src: '{{@@ cfg_src @@}}/ox'
+    dst: '{{@@ cfg_dst @@}}/.ox'
+  .config__pacman:
+    src: '{{@@ cfg_src @@}}/pacman'
+    dst: '{{@@ cfg_dst @@}}/.pacman'
+  .config__pacmixer:
+    src: '{{@@ cfg_src @@}}/pacmixer'
+    dst: '{{@@ cfg_dst @@}}/.pacmixer'
+  .config__pamix.conf:
+    src: '{{@@ cfg_src @@}}/pamix.conf'
+    dst: '{{@@ cfg_dst @@}}/.pamix.conf'
+  .config__paru:
+    src: '{{@@ cfg_src @@}}/paru'
+    dst: '{{@@ cfg_dst @@}}/.paru'
+  .config__pavucontrol.ini:
+    src: '{{@@ cfg_src @@}}/pavucontrol.ini'
+    dst: '{{@@ cfg_dst @@}}/.pavucontrol.ini'
+  .config__pgcli:
+    src: '{{@@ cfg_src @@}}/pgcli'
+    dst: '{{@@ cfg_dst @@}}/.pgcli'
+  .config__picom:
+    src: '{{@@ cfg_src @@}}/picom'
+    dst: '{{@@ cfg_dst @@}}/.picom'
+  .config__pijul:
+    src: '{{@@ cfg_src @@}}/pijul'
+    dst: '{{@@ cfg_dst @@}}/.pijul'
+  .config__please:
+    src: '{{@@ cfg_src @@}}/please'
+    dst: '{{@@ cfg_dst @@}}/.please'
+  .config__polybar:
+    src: '{{@@ cfg_src @@}}/polybar'
+    dst: '{{@@ cfg_dst @@}}/.polybar'
+  .config__powerline:
+    src: '{{@@ cfg_src @@}}/powerline'
+    dst: '{{@@ cfg_dst @@}}/.powerline'
+  .config__pudb:
+    src: '{{@@ cfg_src @@}}/pudb'
+    dst: '{{@@ cfg_dst @@}}/.pudb'
+  .config__pulse__client.conf:
+    src: '{{@@ cfg_src @@}}/pulse/client.conf'
+    dst: '{{@@ cfg_dst @@}}/.pulse/client.conf'
+  .config__pulsemixer.cfg:
+    src: '{{@@ cfg_src @@}}/pulsemixer.cfg'
+    dst: '{{@@ cfg_dst @@}}/.pulsemixer.cfg'
+  .config__pylint:
+    src: '{{@@ cfg_src @@}}/pylint'
+    dst: '{{@@ cfg_dst @@}}/.pylint'
+  .config__pypoetry:
+    src: '{{@@ cfg_src @@}}/pypoetry'
+    dst: '{{@@ cfg_dst @@}}/.pypoetry'
+  .config__python:
+    src: '{{@@ cfg_src @@}}/python'
+    dst: '{{@@ cfg_dst @@}}/.python'
+  .config__quark:
+    src: '{{@@ cfg_src @@}}/quark'
+    dst: '{{@@ cfg_dst @@}}/.quark'
+  .config__ranger:
+    src: '{{@@ cfg_src @@}}/ranger'
+    dst: '{{@@ cfg_dst @@}}/.ranger'
+  .config__readline:
+    src: '{{@@ cfg_src @@}}/readline'
+    dst: '{{@@ cfg_dst @@}}/.readline'
+  .config__redshift:
+    src: '{{@@ cfg_src @@}}/redshift'
+    dst: '{{@@ cfg_dst @@}}/.redshift'
+  .config__repoctl:
+    src: '{{@@ cfg_src @@}}/repoctl'
+    dst: '{{@@ cfg_dst @@}}/.repoctl'
+  .config__ripgrep:
+    src: '{{@@ cfg_src @@}}/ripgrep'
+    dst: '{{@@ cfg_dst @@}}/.ripgrep'
+  .config__rofi:
+    src: '{{@@ cfg_src @@}}/rofi'
+    dst: '{{@@ cfg_dst @@}}/.rofi'
+  .config__rtorrent:
+    src: '{{@@ cfg_src @@}}/rtorrent'
+    dst: '{{@@ cfg_dst @@}}/.rtorrent'
+  .config__salamis:
+    src: '{{@@ cfg_src @@}}/salamis'
+    dst: '{{@@ cfg_dst @@}}/.salamis'
+  .config__sheldon:
+    src: '{{@@ cfg_src @@}}/sheldon'
+    dst: '{{@@ cfg_dst @@}}/.sheldon'
+  .config__shell:
+    src: '{{@@ cfg_src @@}}/shell'
+    dst: '{{@@ cfg_dst @@}}/.shell'
+  .config__slack-term:
+    src: '{{@@ cfg_src @@}}/slack-term'
+    dst: '{{@@ cfg_dst @@}}/.slack-term'
+  .config__starship:
+    src: '{{@@ cfg_src @@}}/starship'
+    dst: '{{@@ cfg_dst @@}}/.starship'
+  .config__sticker-selector:
+    src: '{{@@ cfg_src @@}}/sticker-selector'
+    dst: '{{@@ cfg_dst @@}}/.sticker-selector'
+  .config__sublime-text-3__Packages__User__Preferences.sublime-settings:
+    src: '{{@@ cfg_src @@}}/sublime-text-3/Packages/User/Preferences.sublime-settings'
+    dst: '{{@@ cfg_dst @@}}/.sublime-text-3/Packages/User/Preferences.sublime-settings'
+  .config__sublime-text-3__Packages__User__Package Control.sublime-settings:
+    src: '{{@@ cfg_src @@}}/sublime-text-3/Packages/User/Package Control.sublime-settings'
+    dst: '{{@@ cfg_dst @@}}/.sublime-text-3/Packages/User/Package Control.sublime-settings'
+  .config__sx:
+    src: '{{@@ cfg_src @@}}/sx'
+    dst: '{{@@ cfg_dst @@}}/.sx'
+  .config__sxhkd:
+    src: '{{@@ cfg_src @@}}/sxhkd'
+    dst: '{{@@ cfg_dst @@}}/.sxhkd'
+  .config__swaylock:
+    src: '{{@@ cfg_src @@}}/swaylock'
+    dst: '{{@@ cfg_dst @@}}/.swaylock'
+  .config__taffybar:
+    src: '{{@@ cfg_src @@}}/taffybar'
+    dst: '{{@@ cfg_dst @@}}/.taffybar'
+  .config__taskwarrior:
+    src: '{{@@ cfg_src @@}}/taskwarrior'
+    dst: '{{@@ cfg_dst @@}}/.taskwarrior'
+  .config__terminator:
+    src: '{{@@ cfg_src @@}}/terminator'
+    dst: '{{@@ cfg_dst @@}}/.terminator'
+  .config__termite:
+    src: '{{@@ cfg_src @@}}/termite'
+    dst: '{{@@ cfg_dst @@}}/.termite'
+  .config__tig:
+    src: '{{@@ cfg_src @@}}/tig'
+    dst: '{{@@ cfg_dst @@}}/.tig'
+  .config__tmux:
+    src: '{{@@ cfg_src @@}}/tmux'
+    dst: '{{@@ cfg_dst @@}}/.tmux'
+  .config__toast:
+    src: '{{@@ cfg_src @@}}/toast'
+    dst: '{{@@ cfg_dst @@}}/.toast'
+  .config__twmn:
+    src: '{{@@ cfg_src @@}}/twmn'
+    dst: '{{@@ cfg_dst @@}}/.twmn'
+  .config__udiskie:
+    src: '{{@@ cfg_src @@}}/udiskie'
+    dst: '{{@@ cfg_dst @@}}/.udiskie'
+  .config__urlwatch:
+    src: '{{@@ cfg_src @@}}/urlwatch'
+    dst: '{{@@ cfg_dst @@}}/.urlwatch'
+  .config__urxvt:
+    src: '{{@@ cfg_src @@}}/urxvt'
+    dst: '{{@@ cfg_dst @@}}/.urxvt'
+  .config__viewnior:
+    src: '{{@@ cfg_src @@}}/viewnior'
+    dst: '{{@@ cfg_dst @@}}/.viewnior'
+  .config__vim:
+    src: '{{@@ cfg_src @@}}/vim'
+    dst: '{{@@ cfg_dst @@}}/.vim'
+  .config__wget:
+    src: '{{@@ cfg_src @@}}/wget'
+    dst: '{{@@ cfg_dst @@}}/.wget'
+  .config__wtf:
+    src: '{{@@ cfg_src @@}}/wtf'
+    dst: '{{@@ cfg_dst @@}}/.wtf'
+  .config__xbindkeys:
+    src: '{{@@ cfg_src @@}}/xbindkeys'
+    dst: '{{@@ cfg_dst @@}}/.xbindkeys'
+  .config__X11:
+    src: '{{@@ cfg_src @@}}/X11'
+    dst: '{{@@ cfg_dst @@}}/.X11'
+  .config__xkb:
+    src: '{{@@ cfg_src @@}}/xkb'
+    dst: '{{@@ cfg_dst @@}}/.xkb'
+  .config__xmobar:
+    src: '{{@@ cfg_src @@}}/xmobar'
+    dst: '{{@@ cfg_dst @@}}/.xmobar'
+  .config__xob:
+    src: '{{@@ cfg_src @@}}/xob'
+    dst: '{{@@ cfg_dst @@}}/.xob'
+  .config__xplr:
+    src: '{{@@ cfg_src @@}}/xplr'
+    dst: '{{@@ cfg_dst @@}}/.xplr'
+  .config__yapf:
+    src: '{{@@ cfg_src @@}}/yapf'
+    dst: '{{@@ cfg_dst @@}}/.yapf'
+  .config__yay:
+    src: '{{@@ cfg_src @@}}/yay'
+    dst: '{{@@ cfg_dst @@}}/.yay'
+  .config__youtube-dl:
+    src: '{{@@ cfg_src @@}}/youtube-dl'
+    dst: '{{@@ cfg_dst @@}}/.youtube-dl'
+  .config__zathura:
+    src: '{{@@ cfg_src @@}}/zathura'
+    dst: '{{@@ cfg_dst @@}}/.zathura'
+  .config__zsh:
+    src: '{{@@ cfg_src @@}}/zsh'
+    dst: '{{@@ cfg_dst @@}}/.zsh'
+  .local__share__applications__FoxBlender.desktop:
+    src: '{{@@ data_src @@}}/applications/FoxBlender.desktop'
+    dst: '{{@@ data_dst @@}}/.applications/FoxBlender.desktop'
+  .local__share__sdkman__etc__config:
+    src: '{{@@ data_src @@}}/sdkman/etc/config'
+    dst: '{{@@ data_dst @@}}/.sdkman/etc/config'
+  .local__state__dotshellgen:
+    src: '{{@@ state_src @@}}/dotshellgen'
+    dst: '{{@@ state_dst @@}}/.dotshellgen'

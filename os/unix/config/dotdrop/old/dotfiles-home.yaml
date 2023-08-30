@@ -1,0 +1,22 @@
+config:
+
+dotfiles:
+  f_agignore:
+    src: .agignore
+    dst: ~/.agignore
+  f_hushlogin:
+    src: .hushlogin
+    dst: ~/.hushlogin
+  f_psqlrc:
+    src: .psqlrc
+    dst: ~/.psqlrc
+
+profiles:
+  nullptr:
+    variables:
+      email: 'edwin@kofler.dev'
+    dynvariables:
+      home: 'printf "%s\n" "$HOME"'
+      xdg_config_home: 'printf "%s\n" "$HOME"'
+    import:
+      - '~/.dotfiles/os/unix/config/dotdrop/dotfiles-home.yaml'

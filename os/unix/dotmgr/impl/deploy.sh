@@ -195,11 +195,68 @@ declare -ra dotfiles=(
 )
 
 main() {
+	local dotdrop_file="$HOME/.dotfiles/os/unix/config/dotdrop/dotdrop.yaml"
+	local dotdrop_include_file="$HOME/.dotfiles/os/unix/config/dotdrop/dotdrop-include.yaml"
+	mkdir -p "${dotdrop_file%/*}"
+	> "$dotdrop_include_file" :
+	> "$dotdrop_file" :
+	cat <<"EOF" > "$dotdrop_include_file"
+dotfiles:
+EOF
+	cat <<"EOF" > "$dotdrop_file"
+config:
+  backup: true
+  banner: false
+  check_version: true
+  create: true
+  dotpath: '~/.dotfiles/os/unix/user'
+  link_dotfile_default: 'relative'
+  link_on_import: 'relative'
+  template_dotfile_default: false
+  workdir: '~/.dotfiles/.dotdrop-workdir'
+
+profiles:
+  nullptr:
+    variables:
+      email: 'edwin@kofler.dev'
+      home_src: '.'
+      cfg_src: '.config'
+      state_src: '.local/state'
+      data_src: '.local/share'
+    dynvariables:
+      home_dst: 'printf "%s\n" "$HOME"'
+      cfg_dst: 'printf "%s\n" "$XDG_CONFIG_HOME"'
+      state_dst: 'printf "%s\n" "$XDG_STATE_HOME"'
+      data_dst: 'printf "%s\n" "$XDG_DATA_HOME"'
+    import:
+      - './dotdrop-include.yaml'
+
+dotfiles:
+EOF
+
 	# Print actual dotfiles
 	src_home="$dotdir/os/unix/user"
 	src_cfg="$dotdir/os/unix/user/.config"
 	src_state="$dotdir/os/unix/user/.local/state"
 	src_data="$dotdir/os/unix/user/.local/share"
+	local -A src_map=(
+		[home]="$src_home"
+		[cfg]="$src_cfg"
+		[state]="$src_state"
+		[data]="$src_data"
+	)
+	local -A src_map_rel=(
+		[home]=""
+		[cfg]=".config"
+		[state]=".local/state"
+		[data]=".local/share"
+	)
+	local -A dst_map=(
+		[home]="$HOME"
+		[cfg]="$XDG_CONFIG_HOME"
+		[state]="$XDG_STATE_HOME"
+		[data]="$XDG_DATA_HOME"
+	)
 	for dotfile in "${dotfiles[@]}"; do
 		local prefix=${dotfile%%:*}
 		local file=${dotfile#*:}
@@ -210,18 +267,20 @@ main() {
 			;;
 		esac
 
-		if [ "$prefix" = home ]; then
-			printf '%s\n' "symlink|$src_home/$file|$HOME/$file"
-		elif [ "$prefix" = cfg ]; then
-			printf '%s\n' "symlink|$src_cfg/$file|$XDG_CONFIG_HOME/$file"
-		elif [ "$prefix" = state ]; then
-			printf '%s\n' "symlink|$src_state/$file|$XDG_STATE_HOME/$file"
-		elif [ "$prefix" = data ]; then
-			printf '%s\n' "symlink|$src_data/$file|$XDG_DATA_HOME/$file"
-		else
+		if [ -z "${src_map[$prefix]}" ] || [ -z "${dst_map[$prefix]}" ]; then
 			printf '%s\n' "Error: Prefix '$prefix' not supported (for file '$file'). Exiting" >&2
 			exit 1
 		fi
+		printf '%s\n' "symlink|${src_map[$prefix]}/$file|${dst_map[$prefix]}/$file"
+
+		# dotdrop
+		local dundered_path="${dst_map[$prefix]}/$file"
+		dundered_path=${dundered_path#~/}
+		dundered_path=${dundered_path//\//__}
+		printf '%s\n' "  $dundered_path:
+    src: '{{@@ ${prefix}_src @@}}/$file'
+    dst: '{{@@ ${prefix}_dst @@}}/.$file'" >> "$dotdrop_file"
+		printf '%s\n' "  - '$dundered_path'" >> "$dotdrop_include_file"
 	done
 
 

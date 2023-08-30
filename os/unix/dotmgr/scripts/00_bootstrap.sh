@@ -10,9 +10,8 @@
 # - Installs dev build tools
 # - Installs jq
 # - Installs curl
-# - Moves distro dotfiles (to ~/.bootstrap)
-# - Installs Nim (in ~/.bootstrap)
-# - Installs dotfox (in ~/.bootstrap)
+# - Moves distro dotfiles (to ~/.bootstrap/distro-dots)
+# - Downloads GitHub authorization tokens
 
 main() {
 	if [ -d ~/.bootstrap/done ]; then

@@ -1,18 +1,74 @@
 {
 	"shellcheck.ignorePatterns": {
-		"**/*.z*": true,
-		"**/.tcshrc": true,
-		"**/.cshrc": true,
 		"**/.data/**": true,
 		"**/.git/**": true,
 		"**/.home/**": true,
+		"**/.repos/**": true,
 		"**/.bin/**": true,
+		"**/venv/**": true,
+		"**/.venv/**": true,
+		"**/node_modules/**": true
 	},
 	"search.exclude": {
 		"**/.data/**": true,
 		"**/.git/**": true,
 		"**/.home/**": true,
+		"**/.repos/**": true,
 		"**/.bin/**": true,
-		"os/unix/user/.config/bash/frameworks/bash-it.sh": true
+		"**/venv/**": true,
+		"**/.venv/**": true,
+		"os/unix/user/.config/bash/frameworks/bash-it.sh": false
 	},
+	"npm.exclude": "**/.*",
+	"files.watcherExclude": {
+		"**/.data/**": true,
+		"**/.git/**": true,
+		"**/.home/**": true,
+		"**/.repos/**": true,
+		"**/.bin/**": true,
+		"**/venv/**": true,
+		"**/.venv/**": true,
+		"**/node_modules/**": true
+	},
+	"explorer.excludeGitIgnore": true,
+	"files.exclude": {
+		"**/.data/**": true,
+		"**/.git/**": true,
+		"**/.home/**": true,
+		"**/.repos/**": true,
+		"**/.bin/**": true,
+		"**/venv/**": true,
+		"**/.venv/**": true,
+		"**/node_modules/**": true
+	},
+	"errorLens.excludePatterns": [
+		"**/.data/**",
+		"**/.git/**",
+		"**/.home/**",
+		"**/.repos/**",
+		"**/.bin/**",
+		"**/venv/**",
+		"**/.venv/**",
+		"**/node_modules/**",
+	],
+	"todo-tree.filtering.excludeGlobs": [
+		"**/.data/**",
+		"**/.git/**",
+		"**/.home/**",
+		"**/.repos/**",
+		"**/.bin/**",
+		"**/venv/**",
+		"**/.venv/**",
+		"**/node_modules/**",
+	],
+	"workbench.localHistory.exclude": {
+		"**/.data/**": true,
+		"**/.git/**": true,
+		"**/.home/**": true,
+		"**/.repos/**": true,
+		"**/.bin/**": true,
+		"**/venv/**": true,
+		"**/.venv/**": true,
+		"**/node_modules/**": true
+	}
 }

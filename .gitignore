@@ -5,3 +5,4 @@
 site/
 *.env
 node_modules/
+.venv/

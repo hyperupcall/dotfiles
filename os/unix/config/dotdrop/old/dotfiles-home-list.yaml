@@ -1,0 +1,7 @@
+dotfiles:
+  - f_agignore
+  - f_alsoftrc
+  - f_digrc
+  - f_gnuplot
+  - f_hushlogin
+  - f_psqlrc
