@@ -1,10 +1,16 @@
 dotfiles:
+  - xinit
+  - bash_profile
+  - bash_logout
+  - bashrc
+  - profile_sh
+  - zshenv
   - '.agignore'
   - '.alsoftrc'
+  - '.aspell.conf'
   - '.cpan__CPAN__MyConfig.pm'
   - '.digrc'
   - '.gnuplot'
-  - '.keep'
   - '.psqlrc'
   - '.gnupg__dirmngr.conf'
   - '.gnupg__gpg.conf'
@@ -19,7 +25,6 @@ dotfiles:
   - '.config__alsa'
   - '.config__appimagelauncher.cfg'
   - '.config__aria2'
-  - '.config__aspell'
   - '.config__awesome'
   - '.config__bash'
   - '.config__bat'
@@ -45,8 +50,6 @@ dotfiles:
   - '.config__ddcutil'
   - '.config__dircolors'
   - '.config__discocss'
-  - '.config__dotfox'
-  - '.config__dotmgr'
   - '.config__dotshellgen'
   - '.config__dunst'
   - '.config__dxhd'
