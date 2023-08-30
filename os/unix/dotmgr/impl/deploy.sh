@@ -51,7 +51,6 @@ declare -ra dotfiles=(
 	cfg:'cava'
 	cfg:'ccache'
 	cfg:'cdm'
-	cfg:'chezmoi'
 	cfg:'choose'
 	cfg:'cliflix'
 	cfg:'conda'
