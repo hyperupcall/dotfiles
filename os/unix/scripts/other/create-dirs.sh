@@ -1,4 +1,4 @@
-# shellcheck shell=bash
+#!/usr/bin/env bash
 
 # Name:
 # dirs
@@ -12,6 +12,8 @@
 # - Removing extraneous directories and files
 # - Removing broken symlinks
 # - Removing autoappended content to `~/.{profile,bashrc}`, etc.
+
+source "${0%/*}/../source.sh"
 
 main() {
 	local profile='desktop'
@@ -117,6 +119,7 @@ main() {
 	#                 CREATE HOME DIR SYMLINKS                 #
 	# -------------------------------------------------------- #
 	if [ "$profile" = 'desktop' ]; then
+		must.link "$HOME/.dotfiles/os/unix/scripts" "$HOME/scripts"
 		must.link "$HOME/.dotfiles/.home/Documents/Programming/challenges" "$HOME/challenges"
 		must.link "$HOME/.dotfiles/.home/Documents/Programming/experiments" "$HOME/experiments"
 		must.link "$HOME/.dotfiles/.home/Documents/Programming/workspaces" "$HOME/workspaces"

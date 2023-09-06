@@ -15,12 +15,11 @@ source "${0%/*}/../source.sh"
 main() {
 	~/.dotfiles/bake init
 
-	util.run_script 'scripts-misc' '10_dirs.sh'
+	"$VAR_DOTMGR_DIR/scripts/other/create-dirs.sh"
+	"$VAR_DOTMGR_DIR/scripts/other/extract-aliases.sh"
+	"$VAR_DOTMGR_DIR/scripts/other/extract-shell-inits.sh"
 
-	util.run_script 'scripts-misc' '12_dot_funcalias_extractor.sh'
-	util.run_script 'scripts-misc' '13_dot_shell_generator.sh'
-
-
+	# TODO
 	# if [ "$profile" = 'desktop' ]; then
 	# 	if util.is_cmd VBoxManage; then
 	# 		VBoxManage setproperty machinefolder '/storage/vault/rodinia/VirtualBox_Machines'

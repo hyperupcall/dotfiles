@@ -19,6 +19,23 @@
 	[ -z "$XDG_STATE_HOME" ] && printf '%s\n' 'Failed because $XDG_STATE_HOME is empty' >&2
 }
 
+{
+	# agnostic
+	export VAR_DOTMGR_DIR="$HOME/.dotfiles/os/unix"
+
+	#
+	# desktop
+	if [ "$(</sys/class/dmi/id/chassis_type)" = '3' ]; then
+		export VAR_PROFILE='desktop'
+		export VAR_REPOS_DIR="$HOME/repos"
+	#
+	# laptop
+	elif [ "$(</sys/class/dmi/id/chassis_type)" = '9' ]; then
+		export VAR_PROFILE='desktop'
+		export VAR_REPOS_DIR=$HOME/Documents
+	fi
+}
+
 # -------------------------------------------------------- #
 #                     HELPER FUNCTIONS                     #
 # -------------------------------------------------------- #
