@@ -1,4 +1,4 @@
-# shellcheck shell=bash
+#!/usr/bin/env bash
 
 # Name:
 # Export Secrets
@@ -7,6 +7,8 @@
 # This exports gpg keys, ssh keys, and the pass database to your 'secrets' USB.
 # Everything is encrypted with a passphrase. This script Just Works, whether or not the
 # USB is already mounted
+
+source "${0%/*}/../source.sh"
 
 main() {
 	util.ensure_bin expect

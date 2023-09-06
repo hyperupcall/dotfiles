@@ -1,10 +1,12 @@
-# shellcheck shell=bash
+#!/usr/bin/env bash
 
 # Name:
 # Import Secrets
 #
 # Description:
 # This imports your GPG keys. It imports it from your shared drive mounted under /storage
+
+source "${0%/*}/../source.sh"
 
 main() {
 	local -r fingerprints=('6EF89C3EB889D61708E5243DDA8EF6F306AD2CBA' '4C452EC68725DAFD09EC57BAB2D007E5878C6803')
@@ -42,8 +44,6 @@ main() {
 		if [ -d "$gpg_dir" ]; then
 			gpg --homedir "$gpg_dir" "${fingerprints[@]}" --export-ownertrust | gpg --import-ownertrust
 			gpg --homedir "$gpg_dir" --armor --export-secret-key "${fingerprints[@]}" | gpg --import
-
-
 		else
 			core.print_warn "Skipping importing GPG keys from /storage/ur subdirectory"
 

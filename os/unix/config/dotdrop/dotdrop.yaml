@@ -26,24 +26,6 @@ profiles:
       - './dotdrop-include.yaml'
 
 dotfiles:
-  xinit:
-    src: '{{@@ cfg_dst @@}}/X11/xinitrc'
-    dst: '{{@@ home_dst @@}}/.xinitrc'
-  bash_profile:
-    src: '{{@@ cfg_dst @@}}/bash/bash_profile.sh'
-    dst: '{{@@ home_dst @@}}/.bash_profile'
-  bash_logout:
-    src: '{{@@ cfg_dst @@}}/bash/bash_logout.sh'
-    dst: '{{@@ home_dst @@}}/.bash_logout.sh'
-  bashrc:
-    src: '{{@@ cfg_dst @@}}/bash/bashrc.sh'
-    dst: '{{@@ home_dst @@}}/.bashrc.sh'
-  profile_sh:
-    src: '{{@@ cfg_dst @@}}/shell/profile.sh'
-    dst: '{{@@ home_dst @@}}/.profile'
-  zshenv:
-    src: '{{@@ cfg_dst @@}}/zsh/.zshenv'
-    dst: '{{@@ home_dst @@}}/.zshenv'
   .agignore:
     src: '{{@@ home_src @@}}/.agignore'
     dst: '{{@@ home_dst @@}}/.agignore'
@@ -77,6 +59,24 @@ dotfiles:
   .hushlogin:
     src: '{{@@ home_src @@}}/.hushlogin'
     dst: '{{@@ home_dst @@}}/.hushlogin'
+  xinitrc:
+    src: '{{@@ cfg_src @@}}/X11/xinitrc'
+    dst: '{{@@ home_dst @@}}/home:.xinitrc'
+  bash_profile:
+    src: '{{@@ cfg_src @@}}/bash/bash_profile.sh'
+    dst: '{{@@ home_dst @@}}/home:.bash_profile'
+  bash_logout:
+    src: '{{@@ cfg_src @@}}/bash/bash_logout.sh'
+    dst: '{{@@ home_dst @@}}/home:.bash_logout'
+  bashrc:
+    src: '{{@@ cfg_src @@}}/bash/bashrc.sh'
+    dst: '{{@@ home_dst @@}}/home:.bashrc'
+  profile:
+    src: '{{@@ cfg_src @@}}/shell/profile.sh'
+    dst: '{{@@ home_dst @@}}/home:.profile'
+  zshenv:
+    src: '{{@@ cfg_src @@}}/zsh/.zshenv'
+    dst: '{{@@ home_dst @@}}/home:.zshenv'
   .config__.gtktermrc:
     src: '{{@@ cfg_src @@}}/.gtktermrc'
     dst: '{{@@ cfg_dst @@}}/.gtktermrc'
@@ -551,3 +551,6 @@ dotfiles:
   .local__state__dotshellgen:
     src: '{{@@ state_src @@}}/dotshellgen'
     dst: '{{@@ state_dst @@}}/dotshellgen'
+  pam:
+    src: '{{@@ home_src @@}}/.pam_environment/xdg-default.conf'
+    dst: '{{@@ home_dst @@}}/home:.pam_environment'

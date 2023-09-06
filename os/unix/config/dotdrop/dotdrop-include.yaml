@@ -1,10 +1,4 @@
 dotfiles:
-  - xinit
-  - bash_profile
-  - bash_logout
-  - bashrc
-  - profile_sh
-  - zshenv
   - '.agignore'
   - '.alsoftrc'
   - '.aspell.conf'
@@ -16,6 +10,12 @@ dotfiles:
   - '.gnupg__gpg.conf'
   - '.gnupg__gpg-agent.conf'
   - '.hushlogin'
+  - 'xinitrc'
+  - 'bash_profile'
+  - 'bash_logout'
+  - 'bashrc'
+  - 'profile'
+  - 'zshenv'
   - '.config__.gtktermrc'
   - '.config__rofi-json-menu.json'
   - '.config__aerc__aerc.conf'
@@ -174,3 +174,4 @@ dotfiles:
   - '.local__share__applications__FoxBlender.desktop'
   - '.local__share__sdkman__etc__config'
   - '.local__state__dotshellgen'
+  - 'pam'

@@ -405,6 +405,9 @@ export VAGRANT_ALIAS_FILE="$VAGRANT_HOME/aliases"
 export VIMPERATOR_INIT=":source $XDG_CONFIG_HOME/vimperator/vimperatorrc"
 export VIMPERATOR_RUNTIME="$XDG_CONFIG_HOME/vimperator"
 
+# vpython (chromium)
+export VPYTHON_VIRTUALENV_ROOT="$XDG_STATE_HOME/vpython"
+
 # urxvt
 export URXVT_PERL_LIB="$XDG_CONFIG_HOME/urxvt/ext"
 export RXVT_SOCKET="$XDG_RUNTIME_DIR"/urxvtd
