@@ -28,6 +28,11 @@ if command -v basalt &>/dev/null; then
 	# unfunction command
 fi
 
+# direnv.zsh
+if command -v direnv &>/dev/null; then
+	eval "$(direnv hook zsh)"
+fi
+
 # pipx.zsh
 # TODO
 # if command -v register-python-argcomplete &>/dev/null; then
@@ -42,5 +47,10 @@ _path_prepend "$HOME/.local/state/repomgr/bin"
 # woof.zsh
 if command -v woof >/dev/null 2>&1; then
 	eval "$(woof init --no-cd zsh)"
+fi
+
+# zoxide.zsh
+if command -v zoxide &>/dev/null; then
+	eval "$(zoxide init zsh)"
 fi
 

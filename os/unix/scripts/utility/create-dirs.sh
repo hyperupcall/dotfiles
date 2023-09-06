@@ -120,11 +120,9 @@ main() {
 	# -------------------------------------------------------- #
 	if [ "$profile" = 'desktop' ]; then
 		must.link "$HOME/.dotfiles/os/unix/scripts" "$HOME/scripts"
-		must.link "$HOME/.dotfiles/.home/Documents/Programming/challenges" "$HOME/challenges"
-		must.link "$HOME/.dotfiles/.home/Documents/Programming/experiments" "$HOME/experiments"
-		must.link "$HOME/.dotfiles/.home/Documents/Programming/workspaces" "$HOME/workspaces"
+		must.link "$HOME/.dotfiles/.home/Documents/Programming/Challenges" "$HOME/challenges"
+		must.link "$HOME/.dotfiles/.home/Documents/Programming/Experiments" "$HOME/experiments"
 		must.link "$HOME/.dotfiles/.home/Documents/Programming/Repositories/git" "$HOME/git"
-		must.link "$HOME/.dotfiles/.home/Documents/Programming/Repositories/default" "$HOME/repos"
 		must.link "$HOME/.dotfiles/.home/Documents/Programming/Repositories" "$HOME/groups"
 	elif [ "$profile" = 'laptop' ]; then
 		:

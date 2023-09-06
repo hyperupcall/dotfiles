@@ -15,9 +15,10 @@ source "${0%/*}/../source.sh"
 main() {
 	~/.dotfiles/bake init
 
-	"$VAR_DOTMGR_DIR/scripts/other/create-dirs.sh"
-	"$VAR_DOTMGR_DIR/scripts/other/extract-aliases.sh"
-	"$VAR_DOTMGR_DIR/scripts/other/extract-shell-inits.sh"
+	"$VAR_DOTMGR_DIR/scripts/utility/create-dirs.sh"
+	"$VAR_DOTMGR_DIR/scripts/utility/extract-aliases.sh"
+	"$VAR_DOTMGR_DIR/scripts/utility/extract-shell-inits.sh"
+	"$VAR_DOTMGR_DIR/scripts/utility/generate-dotconfig.sh"
 
 	# TODO
 	# if [ "$profile" = 'desktop' ]; then

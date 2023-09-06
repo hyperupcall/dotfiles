@@ -91,7 +91,7 @@ EOF
 	cat <<-"EOF"
 	---
 	. ~/.bootstrap/bootstrap-out.sh
-	dotmgr script run bootstrap
+	~/.dotfiles/os/unix/scripts/lifecycle/bootstrap.sh
 	---
 	EOF
 }
