@@ -5,8 +5,8 @@
 	set -e
 	shopt -s extglob globstar shift_verbose
 
-	# Source vendored dependencies
-	_f=
+	# Source all the things
+	source ~/.dotfiles/xdg.sh
 	for _f in \
 		"${0%/*}/../../vendor/bash-core/pkg"/**/*.sh \
 		"${0%/*}/../../vendor/bash-term/pkg"/**/*.sh; do
@@ -14,13 +14,21 @@
 	done; unset -v _f
 
 	# Assert environment
-	[ -z "$XDG_CONFIG_HOME" ] && printf '%s\n' 'Failed because $XDG_CONFIG_HOME is empty' >&2
-	[ -z "$XDG_DATA_HOME" ] && printf '%s\n' 'Failed because $XDG_DATA_HOME is empty' >&2
-	[ -z "$XDG_STATE_HOME" ] && printf '%s\n' 'Failed because $XDG_STATE_HOME is empty' >&2
+	if [ -z "$XDG_CONFIG_HOME" ]; then
+		printf '%s\n' 'Failed because $XDG_CONFIG_HOME is empty' >&2
+		exit 1
+	fi
+	if [ -z "$XDG_DATA_HOME" ]; then
+		printf '%s\n' 'Failed because $XDG_DATA_HOME is empty' >&2
+		exit 1
+	fi
+	if [ -z "$XDG_STATE_HOME" ]; then
+		printf '%s\n' 'Failed because $XDG_STATE_HOME is empty' >&2
+		exit 1
+	fi
 }
 
 {
-	# agnostic
 	export VAR_DOTMGR_DIR="$HOME/.dotfiles/os/unix"
 
 	#
@@ -39,6 +47,15 @@
 # -------------------------------------------------------- #
 #                     HELPER FUNCTIONS                     #
 # -------------------------------------------------------- #
+helper.assert_app_image_launcher_installed() {
+	if command -v appimagelauncherd; then
+		return 0
+	else
+		core.print_error "This scripts depends on the installation of AppImageLauncher"
+		exit 1
+	fi
+}
+
 must.rm() {
 	util.get_path "$1"
 	local file="$REPLY"

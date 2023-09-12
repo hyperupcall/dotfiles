@@ -13,7 +13,7 @@
 source "${0%/*}/../source.sh"
 
 main() {
-	~/.dotfiles/bake init
+	~/.dotfiles/bake -f ~/.dotfiles/Bakefile.sh init
 
 	"$VAR_DOTMGR_DIR/scripts/utility/create-dirs.sh"
 	"$VAR_DOTMGR_DIR/scripts/utility/extract-aliases.sh"

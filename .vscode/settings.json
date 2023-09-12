@@ -17,7 +17,8 @@
 		"**/.bin/**": true,
 		"**/venv/**": true,
 		"**/.venv/**": true,
-		"os/unix/user/.config/bash/frameworks/bash-it.sh": false
+		"**/vendor/**": true,
+		"os/unix/user/.config/bash/frameworks/bash-it.sh": false,
 	},
 	"npm.exclude": "**/.*",
 	"files.watcherExclude": {
@@ -28,6 +29,7 @@
 		"**/.bin/**": true,
 		"**/venv/**": true,
 		"**/.venv/**": true,
+		"**/vendor/**": true,
 		"**/node_modules/**": true
 	},
 	"explorer.excludeGitIgnore": true,
@@ -39,6 +41,7 @@
 		"**/.bin/**": true,
 		"**/venv/**": true,
 		"**/.venv/**": true,
+		"**/vendor/**": true,
 		"**/node_modules/**": true
 	},
 	"errorLens.excludePatterns": [
@@ -49,6 +52,7 @@
 		"**/.bin/**",
 		"**/venv/**",
 		"**/.venv/**",
+		"**/vendor/**",,
 		"**/node_modules/**",
 	],
 	"todo-tree.filtering.excludeGlobs": [
@@ -59,6 +63,7 @@
 		"**/.bin/**",
 		"**/venv/**",
 		"**/.venv/**",
+		"**/vendor/**",
 		"**/node_modules/**",
 	],
 	"workbench.localHistory.exclude": {
@@ -69,6 +74,7 @@
 		"**/.bin/**": true,
 		"**/venv/**": true,
 		"**/.venv/**": true,
+		"**/vendor/**": true,
 		"**/node_modules/**": true
 	}
 }

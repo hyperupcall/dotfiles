@@ -18,5 +18,7 @@
 	"symbols.hidesExplorerArrows": false,
 	"cSpell.diagnosticLevel": "Hint",
 	"git.confirmSync": false,
-	"update.showReleaseNotes": false
+	"update.showReleaseNotes": false,
+	"explorer.confirmDragAndDrop": false,
+	"workbench.colorTheme": "Noctis Lilac"
 }

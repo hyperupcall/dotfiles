@@ -9,6 +9,8 @@ main() {
 }
 
 install.obsidian() {
+	helper.assert_app_image_launcher_installed
+
 	util.get_latest_github_tag 'obsidianmd/obsidian-releases'
 	local latest_tag="$REPLY"
 
@@ -17,9 +19,9 @@ install.obsidian() {
 	core.print_info 'Downloading and Installing Obsidian AppImage'
 	local latest_version="${latest_tag#v}"
 	local file='Obsidian.AppImage'
-	curl -fsSLo "$file" "https://github.com/obsidianmd/obsidian-releases/releases/download/$latest_tag/Obsidian-$latest_version.AppImage"
+	util.req -o "$file" "https://github.com/obsidianmd/obsidian-releases/releases/download/$latest_tag/Obsidian-$latest_version.AppImage"
 	chmod +x "$file"
-	./"$file"
+	nohup ./"$file" & # TODO (does not work)
 
 	popd >/dev/null
 }

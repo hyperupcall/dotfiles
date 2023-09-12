@@ -21,15 +21,16 @@ main() {
 	# -------------------------------------------------------- #
 	#                     MOUNT /STORAGE/UR                    #
 	# -------------------------------------------------------- #
-	if [ "$profile" = 'desktop' ]; then
-		local part_uuid="c875b5ca-08a6-415e-bc11-fc37ec94ab8f"
-		local mnt='/storage/ur'
-		if ! grep -q "$mnt" /etc/fstab; then
-			printf '%s\n' "PARTUUID=$part_uuid  $mnt  btrfs  defaults,noatime,X-mount.mkdir  0 0" \
-				| sudo tee -a /etc/fstab >/dev/null
-			sudo mount "$mnt"
-		fi
-	fi
+	# TODO
+	# if [ "$profile" = 'desktop' ]; then
+	# 	local part_uuid="c875b5ca-08a6-415e-bc11-fc37ec94ab8f"
+	# 	local mnt='/storage/ur'
+	# 	if ! grep -q "$mnt" /etc/fstab; then
+	# 		printf '%s\n' "PARTUUID=$part_uuid  $mnt  btrfs  defaults,noatime,X-mount.mkdir  0 0" \
+	# 			| sudo tee -a /etc/fstab >/dev/null
+	# 		sudo mount "$mnt"
+	# 	fi
+	# fi
 
 	# -------------------------------------------------------- #
 	#     REMOVE AUTOAPPENDED LINES IN SHELL STARTUP FILES     #
@@ -257,6 +258,7 @@ main() {
 	# Must be last as they are dependent on previous symlinking
 	# must.dir "$HOME/.dotfiles/.home/Documents/Shared"
 	# must.dir "$HOME/.dotfiles/.home/Pictures/Screenshots"
+	must.dir "$HOME/.dotfiles/.home/Documents/Applications/IntegratedAppImages"
 }
 
 main "$@"
