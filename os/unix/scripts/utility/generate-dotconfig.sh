@@ -234,7 +234,7 @@ c.dotfiles() {
 			local src_prefix=${src%%:*}
 			local dest_prefix=${dest%%:*}
 			local src_relfile=${src#*:}
-			local dest_relfile=${dest#&:}
+			local dest_relfile=${dest#*:}
 
 			printf '%s\n' "  $name:
     src: '{{@@ ${src_prefix}_src @@}}/$src_relfile'

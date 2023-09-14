@@ -61,22 +61,22 @@ dotfiles:
     dst: '{{@@ home_dst @@}}/.hushlogin'
   xinitrc:
     src: '{{@@ cfg_src @@}}/X11/xinitrc'
-    dst: '{{@@ home_dst @@}}/home:.xinitrc'
+    dst: '{{@@ home_dst @@}}/.xinitrc'
   bash_profile:
     src: '{{@@ cfg_src @@}}/bash/bash_profile.sh'
-    dst: '{{@@ home_dst @@}}/home:.bash_profile'
+    dst: '{{@@ home_dst @@}}/.bash_profile'
   bash_logout:
     src: '{{@@ cfg_src @@}}/bash/bash_logout.sh'
-    dst: '{{@@ home_dst @@}}/home:.bash_logout'
+    dst: '{{@@ home_dst @@}}/.bash_logout'
   bashrc:
     src: '{{@@ cfg_src @@}}/bash/bashrc.sh'
-    dst: '{{@@ home_dst @@}}/home:.bashrc'
+    dst: '{{@@ home_dst @@}}/.bashrc'
   profile:
     src: '{{@@ cfg_src @@}}/shell/profile.sh'
-    dst: '{{@@ home_dst @@}}/home:.profile'
+    dst: '{{@@ home_dst @@}}/.profile'
   zshenv:
     src: '{{@@ cfg_src @@}}/zsh/.zshenv'
-    dst: '{{@@ home_dst @@}}/home:.zshenv'
+    dst: '{{@@ home_dst @@}}/.zshenv'
   .config__.gtktermrc:
     src: '{{@@ cfg_src @@}}/.gtktermrc'
     dst: '{{@@ cfg_dst @@}}/.gtktermrc'
@@ -553,4 +553,4 @@ dotfiles:
     dst: '{{@@ state_dst @@}}/dotshellgen'
   pam:
     src: '{{@@ home_src @@}}/.pam_environment/xdg-default.conf'
-    dst: '{{@@ home_dst @@}}/home:.pam_environment'
+    dst: '{{@@ home_dst @@}}/.pam_environment'
