@@ -43,6 +43,7 @@ main() {
 	clonerepo 'github.com/hyperupcall/dotfiles' ~/.dotfiles '--recurse-submodules'
 	run cd ~/.dotfiles
 		run git remote set-url origin 'git@github.com:hyperupcall/dotfiles'
+		run git remote rename origin me
 		run ./bake init
 	run cd
 
@@ -50,6 +51,7 @@ main() {
 	clonerepo 'github.com/hyperupcall/dotmgr' ~/.dotfiles/.data/dotmgr-src
 	run cd ~/.dotfiles/.data/dotmgr-src
 		run git remote set-url origin 'git@github.com:hyperupcall/dotmgr'
+		run git remote rename origin me
 		run cargo build
 	run cd
 	run mkdir -p ~/.dotfiles/.data/bin
