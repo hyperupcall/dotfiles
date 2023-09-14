@@ -31,7 +31,6 @@ declare -ga g_dotfiles=(
 	home:'.gnupg/gpg.conf'
 	home:'.gnupg/gpg-agent.conf'
 	home:'.hushlogin'
-	# home:'.yarnrc'
 	xinitrc"|cfg:X11/xinitrc|home:.xinitrc"
 	bash_profile"|cfg:bash/bash_profile.sh|home:.bash_profile"
 	bash_logout"|cfg:bash/bash_logout.sh|home:.bash_logout"
@@ -110,7 +109,6 @@ declare -ga g_dotfiles=(
 	cfg:'maven'
 	cfg:'micro/bindings.json'
 	cfg:'micro/settings.json'
-	# cfg:'mimeapps.list'
 	cfg:'mnemosyne/config.py'
 	cfg:'most'
 	cfg:'mpd'
@@ -121,7 +119,7 @@ declare -ga g_dotfiles=(
 	cfg:'ncmpcpp'
 	cfg:'ncpamixer.conf'
 	cfg:'neofetch'
-	# cfg:'neomutt'
+	cfg:'neomutt'
 	cfg:'nimble'
 	cfg:'nitrogen'
 	cfg:'notmuch'
@@ -236,7 +234,7 @@ c.dotfiles() {
 			local src_relfile=${src#*:}
 			local dest_relfile=${dest#*:}
 
-			printf '%s\n' "  $name:
+			printf '%s\n' "  '$name':
     src: '{{@@ ${src_prefix}_src @@}}/$src_relfile'
     dst: '{{@@ ${dest_prefix}_dst @@}}/$dest_relfile'" >> "$dotdrop_file"
 			printf '%s\n' "  - '$name'" >> "$dotdrop_include_file"
@@ -251,8 +249,8 @@ c.dotfiles() {
 
 			local name="${g_dotfiles_dst[$prefix]}/$relfile"
 			name=${name#~/}
-			name=${name//\//__}
-			printf '%s\n' "  $name:
+			# name=${name//\//__}
+			printf '%s\n' "  '$name':
     src: '{{@@ ${prefix}_src @@}}/$relfile'
     dst: '{{@@ ${prefix}_dst @@}}/$relfile'" >> "$dotdrop_file"
 			printf '%s\n' "  - '$name'" >> "$dotdrop_include_file"

@@ -26,531 +26,534 @@ profiles:
       - './dotdrop-include.yaml'
 
 dotfiles:
-  .agignore:
+  '.agignore':
     src: '{{@@ home_src @@}}/.agignore'
     dst: '{{@@ home_dst @@}}/.agignore'
-  .alsoftrc:
+  '.alsoftrc':
     src: '{{@@ home_src @@}}/.alsoftrc'
     dst: '{{@@ home_dst @@}}/.alsoftrc'
-  .aspell.conf:
+  '.aspell.conf':
     src: '{{@@ home_src @@}}/.aspell.conf'
     dst: '{{@@ home_dst @@}}/.aspell.conf'
-  .cpan__CPAN__MyConfig.pm:
+  '.cpan/CPAN/MyConfig.pm':
     src: '{{@@ home_src @@}}/.cpan/CPAN/MyConfig.pm'
     dst: '{{@@ home_dst @@}}/.cpan/CPAN/MyConfig.pm'
-  .digrc:
+  '.digrc':
     src: '{{@@ home_src @@}}/.digrc'
     dst: '{{@@ home_dst @@}}/.digrc'
-  .gnuplot:
+  '.gnuplot':
     src: '{{@@ home_src @@}}/.gnuplot'
     dst: '{{@@ home_dst @@}}/.gnuplot'
-  .psqlrc:
+  '.psqlrc':
     src: '{{@@ home_src @@}}/.psqlrc'
     dst: '{{@@ home_dst @@}}/.psqlrc'
-  .gnupg__dirmngr.conf:
+  '.gnupg/dirmngr.conf':
     src: '{{@@ home_src @@}}/.gnupg/dirmngr.conf'
     dst: '{{@@ home_dst @@}}/.gnupg/dirmngr.conf'
-  .gnupg__gpg.conf:
+  '.gnupg/gpg.conf':
     src: '{{@@ home_src @@}}/.gnupg/gpg.conf'
     dst: '{{@@ home_dst @@}}/.gnupg/gpg.conf'
-  .gnupg__gpg-agent.conf:
+  '.gnupg/gpg-agent.conf':
     src: '{{@@ home_src @@}}/.gnupg/gpg-agent.conf'
     dst: '{{@@ home_dst @@}}/.gnupg/gpg-agent.conf'
-  .hushlogin:
+  '.hushlogin':
     src: '{{@@ home_src @@}}/.hushlogin'
     dst: '{{@@ home_dst @@}}/.hushlogin'
-  xinitrc:
+  'xinitrc':
     src: '{{@@ cfg_src @@}}/X11/xinitrc'
     dst: '{{@@ home_dst @@}}/.xinitrc'
-  bash_profile:
+  'bash_profile':
     src: '{{@@ cfg_src @@}}/bash/bash_profile.sh'
     dst: '{{@@ home_dst @@}}/.bash_profile'
-  bash_logout:
+  'bash_logout':
     src: '{{@@ cfg_src @@}}/bash/bash_logout.sh'
     dst: '{{@@ home_dst @@}}/.bash_logout'
-  bashrc:
+  'bashrc':
     src: '{{@@ cfg_src @@}}/bash/bashrc.sh'
     dst: '{{@@ home_dst @@}}/.bashrc'
-  profile:
+  'profile':
     src: '{{@@ cfg_src @@}}/shell/profile.sh'
     dst: '{{@@ home_dst @@}}/.profile'
-  zshenv:
+  'zshenv':
     src: '{{@@ cfg_src @@}}/zsh/.zshenv'
     dst: '{{@@ home_dst @@}}/.zshenv'
-  .config__.gtktermrc:
+  '.config/.gtktermrc':
     src: '{{@@ cfg_src @@}}/.gtktermrc'
     dst: '{{@@ cfg_dst @@}}/.gtktermrc'
-  .config__rofi-json-menu.json:
+  '.config/rofi-json-menu.json':
     src: '{{@@ cfg_src @@}}/rofi-json-menu.json'
     dst: '{{@@ cfg_dst @@}}/rofi-json-menu.json'
-  .config__aerc__aerc.conf:
+  '.config/aerc/aerc.conf':
     src: '{{@@ cfg_src @@}}/aerc/aerc.conf'
     dst: '{{@@ cfg_dst @@}}/aerc/aerc.conf'
-  .config__aerc__binds.conf:
+  '.config/aerc/binds.conf':
     src: '{{@@ cfg_src @@}}/aerc/binds.conf'
     dst: '{{@@ cfg_dst @@}}/aerc/binds.conf'
-  .config__alacritty:
+  '.config/alacritty':
     src: '{{@@ cfg_src @@}}/alacritty'
     dst: '{{@@ cfg_dst @@}}/alacritty'
-  .config__albert__albert.conf:
+  '.config/albert/albert.conf':
     src: '{{@@ cfg_src @@}}/albert/albert.conf'
     dst: '{{@@ cfg_dst @@}}/albert/albert.conf'
-  .config__alsa:
+  '.config/alsa':
     src: '{{@@ cfg_src @@}}/alsa'
     dst: '{{@@ cfg_dst @@}}/alsa'
-  .config__appimagelauncher.cfg:
+  '.config/appimagelauncher.cfg':
     src: '{{@@ cfg_src @@}}/appimagelauncher.cfg'
     dst: '{{@@ cfg_dst @@}}/appimagelauncher.cfg'
-  .config__aria2:
+  '.config/aria2':
     src: '{{@@ cfg_src @@}}/aria2'
     dst: '{{@@ cfg_dst @@}}/aria2'
-  .config__awesome:
+  '.config/awesome':
     src: '{{@@ cfg_src @@}}/awesome'
     dst: '{{@@ cfg_dst @@}}/awesome'
-  .config__bash:
+  '.config/bash':
     src: '{{@@ cfg_src @@}}/bash'
     dst: '{{@@ cfg_dst @@}}/bash'
-  .config__bat:
+  '.config/bat':
     src: '{{@@ cfg_src @@}}/bat'
     dst: '{{@@ cfg_dst @@}}/bat'
-  .config__bpython:
+  '.config/bpython':
     src: '{{@@ cfg_src @@}}/bpython'
     dst: '{{@@ cfg_dst @@}}/bpython'
-  .config__broot:
+  '.config/broot':
     src: '{{@@ cfg_src @@}}/broot'
     dst: '{{@@ cfg_dst @@}}/broot'
-  .config__bspwm:
+  '.config/bspwm':
     src: '{{@@ cfg_src @@}}/bspwm'
     dst: '{{@@ cfg_dst @@}}/bspwm'
-  .config__cabal__config:
+  '.config/cabal/config':
     src: '{{@@ cfg_src @@}}/cabal/config'
     dst: '{{@@ cfg_dst @@}}/cabal/config'
-  .config__cactus:
+  '.config/cactus':
     src: '{{@@ cfg_src @@}}/cactus'
     dst: '{{@@ cfg_dst @@}}/cactus'
-  .config__calcurse:
+  '.config/calcurse':
     src: '{{@@ cfg_src @@}}/calcurse'
     dst: '{{@@ cfg_dst @@}}/calcurse'
-  .config__cargo:
+  '.config/cargo':
     src: '{{@@ cfg_src @@}}/cargo'
     dst: '{{@@ cfg_dst @@}}/cargo'
-  .config__cava:
+  '.config/cava':
     src: '{{@@ cfg_src @@}}/cava'
     dst: '{{@@ cfg_dst @@}}/cava'
-  .config__ccache:
+  '.config/ccache':
     src: '{{@@ cfg_src @@}}/ccache'
     dst: '{{@@ cfg_dst @@}}/ccache'
-  .config__cdm:
+  '.config/cdm':
     src: '{{@@ cfg_src @@}}/cdm'
     dst: '{{@@ cfg_dst @@}}/cdm'
-  .config__choose:
+  '.config/choose':
     src: '{{@@ cfg_src @@}}/choose'
     dst: '{{@@ cfg_dst @@}}/choose'
-  .config__cliflix:
+  '.config/cliflix':
     src: '{{@@ cfg_src @@}}/cliflix'
     dst: '{{@@ cfg_dst @@}}/cliflix'
-  .config__conda:
+  '.config/conda':
     src: '{{@@ cfg_src @@}}/conda'
     dst: '{{@@ cfg_dst @@}}/conda'
-  .config__conky:
+  '.config/conky':
     src: '{{@@ cfg_src @@}}/conky'
     dst: '{{@@ cfg_dst @@}}/conky'
-  .config__cookiecutter:
+  '.config/cookiecutter':
     src: '{{@@ cfg_src @@}}/cookiecutter'
     dst: '{{@@ cfg_dst @@}}/cookiecutter'
-  .config__cmus__rc:
+  '.config/cmus/rc':
     src: '{{@@ cfg_src @@}}/cmus/rc'
     dst: '{{@@ cfg_dst @@}}/cmus/rc'
-  .config__Code__User__keybindings.json:
+  '.config/Code/User/keybindings.json':
     src: '{{@@ cfg_src @@}}/Code/User/keybindings.json'
     dst: '{{@@ cfg_dst @@}}/Code/User/keybindings.json'
-  .config__Code__User__settings.json:
+  '.config/Code/User/settings.json':
     src: '{{@@ cfg_src @@}}/Code/User/settings.json'
     dst: '{{@@ cfg_dst @@}}/Code/User/settings.json'
-  .config__curl:
+  '.config/curl':
     src: '{{@@ cfg_src @@}}/curl'
     dst: '{{@@ cfg_dst @@}}/curl'
-  .config__ddcutil:
+  '.config/ddcutil':
     src: '{{@@ cfg_src @@}}/ddcutil'
     dst: '{{@@ cfg_dst @@}}/ddcutil'
-  .config__dircolors:
+  '.config/dircolors':
     src: '{{@@ cfg_src @@}}/dircolors'
     dst: '{{@@ cfg_dst @@}}/dircolors'
-  .config__discocss:
+  '.config/discocss':
     src: '{{@@ cfg_src @@}}/discocss'
     dst: '{{@@ cfg_dst @@}}/discocss'
-  .config__dotshellgen:
+  '.config/dotshellgen':
     src: '{{@@ cfg_src @@}}/dotshellgen'
     dst: '{{@@ cfg_dst @@}}/dotshellgen'
-  .config__dunst:
+  '.config/dunst':
     src: '{{@@ cfg_src @@}}/dunst'
     dst: '{{@@ cfg_dst @@}}/dunst'
-  .config__dxhd:
+  '.config/dxhd':
     src: '{{@@ cfg_src @@}}/dxhd'
     dst: '{{@@ cfg_dst @@}}/dxhd'
-  .config__emptty:
+  '.config/emptty':
     src: '{{@@ cfg_src @@}}/emptty'
     dst: '{{@@ cfg_dst @@}}/emptty'
-  .config__environment.d:
+  '.config/environment.d':
     src: '{{@@ cfg_src @@}}/environment.d'
     dst: '{{@@ cfg_dst @@}}/environment.d'
-  .config__eww:
+  '.config/eww':
     src: '{{@@ cfg_src @@}}/eww'
     dst: '{{@@ cfg_dst @@}}/eww'
-  .config__fish:
+  '.config/fish':
     src: '{{@@ cfg_src @@}}/fish'
     dst: '{{@@ cfg_dst @@}}/fish'
-  .config__fontconfig:
+  '.config/fontconfig':
     src: '{{@@ cfg_src @@}}/fontconfig'
     dst: '{{@@ cfg_dst @@}}/fontconfig'
-  .config__gh__config.yml:
+  '.config/gh/config.yml':
     src: '{{@@ cfg_src @@}}/gh/config.yml'
     dst: '{{@@ cfg_dst @@}}/gh/config.yml'
-  .config__gdb:
+  '.config/gdb':
     src: '{{@@ cfg_src @@}}/gdb'
     dst: '{{@@ cfg_dst @@}}/gdb'
-  .config__git:
+  '.config/git':
     src: '{{@@ cfg_src @@}}/git'
     dst: '{{@@ cfg_dst @@}}/git'
-  .config__glue:
+  '.config/glue':
     src: '{{@@ cfg_src @@}}/glue'
     dst: '{{@@ cfg_dst @@}}/glue'
-  .config__octave:
+  '.config/octave':
     src: '{{@@ cfg_src @@}}/octave'
     dst: '{{@@ cfg_dst @@}}/octave'
-  .config__osc:
+  '.config/osc':
     src: '{{@@ cfg_src @@}}/osc'
     dst: '{{@@ cfg_dst @@}}/osc'
-  .config__helix:
+  '.config/helix':
     src: '{{@@ cfg_src @@}}/helix'
     dst: '{{@@ cfg_dst @@}}/helix'
-  .config__hg:
+  '.config/hg':
     src: '{{@@ cfg_src @@}}/hg'
     dst: '{{@@ cfg_dst @@}}/hg'
-  .config__htop:
+  '.config/htop':
     src: '{{@@ cfg_src @@}}/htop'
     dst: '{{@@ cfg_dst @@}}/htop'
-  .config__i3:
+  '.config/i3':
     src: '{{@@ cfg_src @@}}/i3'
     dst: '{{@@ cfg_dst @@}}/i3'
-  .config__i3blocks:
+  '.config/i3blocks':
     src: '{{@@ cfg_src @@}}/i3blocks'
     dst: '{{@@ cfg_dst @@}}/i3blocks'
-  .config__i3status:
+  '.config/i3status':
     src: '{{@@ cfg_src @@}}/i3status'
     dst: '{{@@ cfg_dst @@}}/i3status'
-  .config__info:
+  '.config/info':
     src: '{{@@ cfg_src @@}}/info'
     dst: '{{@@ cfg_dst @@}}/info'
-  .config__ion:
+  '.config/ion':
     src: '{{@@ cfg_src @@}}/ion'
     dst: '{{@@ cfg_dst @@}}/ion'
-  .config__irb:
+  '.config/irb':
     src: '{{@@ cfg_src @@}}/irb'
     dst: '{{@@ cfg_dst @@}}/irb'
-  .config__irssi:
+  '.config/irssi':
     src: '{{@@ cfg_src @@}}/irssi'
     dst: '{{@@ cfg_dst @@}}/irssi'
-  .config__kak:
+  '.config/kak':
     src: '{{@@ cfg_src @@}}/kak'
     dst: '{{@@ cfg_dst @@}}/kak'
-  .config__quasipanacea:
+  '.config/quasipanacea':
     src: '{{@@ cfg_src @@}}/quasipanacea'
     dst: '{{@@ cfg_dst @@}}/quasipanacea'
-  .config__kermit:
+  '.config/kermit':
     src: '{{@@ cfg_src @@}}/kermit'
     dst: '{{@@ cfg_dst @@}}/kermit'
-  .config__kitty:
+  '.config/kitty':
     src: '{{@@ cfg_src @@}}/kitty'
     dst: '{{@@ cfg_dst @@}}/kitty'
-  .config__lazydocker:
+  '.config/lazydocker':
     src: '{{@@ cfg_src @@}}/lazydocker'
     dst: '{{@@ cfg_dst @@}}/lazydocker'
-  .config__less:
+  '.config/less':
     src: '{{@@ cfg_src @@}}/less'
     dst: '{{@@ cfg_dst @@}}/less'
-  .config__libfsguest:
+  '.config/libfsguest':
     src: '{{@@ cfg_src @@}}/libfsguest'
     dst: '{{@@ cfg_dst @@}}/libfsguest'
-  .config__liquidprompt:
+  '.config/liquidprompt':
     src: '{{@@ cfg_src @@}}/liquidprompt'
     dst: '{{@@ cfg_dst @@}}/liquidprompt'
-  .config__llpp.conf:
+  '.config/llpp.conf':
     src: '{{@@ cfg_src @@}}/llpp.conf'
     dst: '{{@@ cfg_dst @@}}/llpp.conf'
-  .config__ltrace:
+  '.config/ltrace':
     src: '{{@@ cfg_src @@}}/ltrace'
     dst: '{{@@ cfg_dst @@}}/ltrace'
-  .config__ly:
+  '.config/ly':
     src: '{{@@ cfg_src @@}}/ly'
     dst: '{{@@ cfg_dst @@}}/ly'
-  .config__maven:
+  '.config/maven':
     src: '{{@@ cfg_src @@}}/maven'
     dst: '{{@@ cfg_dst @@}}/maven'
-  .config__micro__bindings.json:
+  '.config/micro/bindings.json':
     src: '{{@@ cfg_src @@}}/micro/bindings.json'
     dst: '{{@@ cfg_dst @@}}/micro/bindings.json'
-  .config__micro__settings.json:
+  '.config/micro/settings.json':
     src: '{{@@ cfg_src @@}}/micro/settings.json'
     dst: '{{@@ cfg_dst @@}}/micro/settings.json'
-  .config__mnemosyne__config.py:
+  '.config/mnemosyne/config.py':
     src: '{{@@ cfg_src @@}}/mnemosyne/config.py'
     dst: '{{@@ cfg_dst @@}}/mnemosyne/config.py'
-  .config__most:
+  '.config/most':
     src: '{{@@ cfg_src @@}}/most'
     dst: '{{@@ cfg_dst @@}}/most'
-  .config__mpd:
+  '.config/mpd':
     src: '{{@@ cfg_src @@}}/mpd'
     dst: '{{@@ cfg_dst @@}}/mpd'
-  .config__mpv:
+  '.config/mpv':
     src: '{{@@ cfg_src @@}}/mpv'
     dst: '{{@@ cfg_dst @@}}/mpv'
-  .config__namur:
+  '.config/namur':
     src: '{{@@ cfg_src @@}}/namur'
     dst: '{{@@ cfg_dst @@}}/namur'
-  .config__nano:
+  '.config/nano':
     src: '{{@@ cfg_src @@}}/nano'
     dst: '{{@@ cfg_dst @@}}/nano'
-  .config__nb:
+  '.config/nb':
     src: '{{@@ cfg_src @@}}/nb'
     dst: '{{@@ cfg_dst @@}}/nb'
-  .config__ncmpcpp:
+  '.config/ncmpcpp':
     src: '{{@@ cfg_src @@}}/ncmpcpp'
     dst: '{{@@ cfg_dst @@}}/ncmpcpp'
-  .config__ncpamixer.conf:
+  '.config/ncpamixer.conf':
     src: '{{@@ cfg_src @@}}/ncpamixer.conf'
     dst: '{{@@ cfg_dst @@}}/ncpamixer.conf'
-  .config__neofetch:
+  '.config/neofetch':
     src: '{{@@ cfg_src @@}}/neofetch'
     dst: '{{@@ cfg_dst @@}}/neofetch'
-  .config__nimble:
+  '.config/neomutt':
+    src: '{{@@ cfg_src @@}}/neomutt'
+    dst: '{{@@ cfg_dst @@}}/neomutt'
+  '.config/nimble':
     src: '{{@@ cfg_src @@}}/nimble'
     dst: '{{@@ cfg_dst @@}}/nimble'
-  .config__nitrogen:
+  '.config/nitrogen':
     src: '{{@@ cfg_src @@}}/nitrogen'
     dst: '{{@@ cfg_dst @@}}/nitrogen'
-  .config__notmuch:
+  '.config/notmuch':
     src: '{{@@ cfg_src @@}}/notmuch'
     dst: '{{@@ cfg_dst @@}}/notmuch'
-  .config__npm:
+  '.config/npm':
     src: '{{@@ cfg_src @@}}/npm'
     dst: '{{@@ cfg_dst @@}}/npm'
-  .config__nu:
+  '.config/nu':
     src: '{{@@ cfg_src @@}}/nu'
     dst: '{{@@ cfg_dst @@}}/nu'
-  .config__nvchecker:
+  '.config/nvchecker':
     src: '{{@@ cfg_src @@}}/nvchecker'
     dst: '{{@@ cfg_dst @@}}/nvchecker'
-  .config__nvim:
+  '.config/nvim':
     src: '{{@@ cfg_src @@}}/nvim'
     dst: '{{@@ cfg_dst @@}}/nvim'
-  .config__obs-studio__themes:
+  '.config/obs-studio/themes':
     src: '{{@@ cfg_src @@}}/obs-studio/themes'
     dst: '{{@@ cfg_dst @@}}/obs-studio/themes'
-  .config__openbox:
+  '.config/openbox':
     src: '{{@@ cfg_src @@}}/openbox'
     dst: '{{@@ cfg_dst @@}}/openbox'
-  .config__OpenSCAD:
+  '.config/OpenSCAD':
     src: '{{@@ cfg_src @@}}/OpenSCAD'
     dst: '{{@@ cfg_dst @@}}/OpenSCAD'
-  .config__ox:
+  '.config/ox':
     src: '{{@@ cfg_src @@}}/ox'
     dst: '{{@@ cfg_dst @@}}/ox'
-  .config__pacman:
+  '.config/pacman':
     src: '{{@@ cfg_src @@}}/pacman'
     dst: '{{@@ cfg_dst @@}}/pacman'
-  .config__pacmixer:
+  '.config/pacmixer':
     src: '{{@@ cfg_src @@}}/pacmixer'
     dst: '{{@@ cfg_dst @@}}/pacmixer'
-  .config__pamix.conf:
+  '.config/pamix.conf':
     src: '{{@@ cfg_src @@}}/pamix.conf'
     dst: '{{@@ cfg_dst @@}}/pamix.conf'
-  .config__paru:
+  '.config/paru':
     src: '{{@@ cfg_src @@}}/paru'
     dst: '{{@@ cfg_dst @@}}/paru'
-  .config__pavucontrol.ini:
+  '.config/pavucontrol.ini':
     src: '{{@@ cfg_src @@}}/pavucontrol.ini'
     dst: '{{@@ cfg_dst @@}}/pavucontrol.ini'
-  .config__pgcli:
+  '.config/pgcli':
     src: '{{@@ cfg_src @@}}/pgcli'
     dst: '{{@@ cfg_dst @@}}/pgcli'
-  .config__picom:
+  '.config/picom':
     src: '{{@@ cfg_src @@}}/picom'
     dst: '{{@@ cfg_dst @@}}/picom'
-  .config__pijul:
+  '.config/pijul':
     src: '{{@@ cfg_src @@}}/pijul'
     dst: '{{@@ cfg_dst @@}}/pijul'
-  .config__please:
+  '.config/please':
     src: '{{@@ cfg_src @@}}/please'
     dst: '{{@@ cfg_dst @@}}/please'
-  .config__polybar:
+  '.config/polybar':
     src: '{{@@ cfg_src @@}}/polybar'
     dst: '{{@@ cfg_dst @@}}/polybar'
-  .config__powerline:
+  '.config/powerline':
     src: '{{@@ cfg_src @@}}/powerline'
     dst: '{{@@ cfg_dst @@}}/powerline'
-  .config__pudb:
+  '.config/pudb':
     src: '{{@@ cfg_src @@}}/pudb'
     dst: '{{@@ cfg_dst @@}}/pudb'
-  .config__pulse__client.conf:
+  '.config/pulse/client.conf':
     src: '{{@@ cfg_src @@}}/pulse/client.conf'
     dst: '{{@@ cfg_dst @@}}/pulse/client.conf'
-  .config__pulsemixer.cfg:
+  '.config/pulsemixer.cfg':
     src: '{{@@ cfg_src @@}}/pulsemixer.cfg'
     dst: '{{@@ cfg_dst @@}}/pulsemixer.cfg'
-  .config__pylint:
+  '.config/pylint':
     src: '{{@@ cfg_src @@}}/pylint'
     dst: '{{@@ cfg_dst @@}}/pylint'
-  .config__pypoetry:
+  '.config/pypoetry':
     src: '{{@@ cfg_src @@}}/pypoetry'
     dst: '{{@@ cfg_dst @@}}/pypoetry'
-  .config__python:
+  '.config/python':
     src: '{{@@ cfg_src @@}}/python'
     dst: '{{@@ cfg_dst @@}}/python'
-  .config__quark:
+  '.config/quark':
     src: '{{@@ cfg_src @@}}/quark'
     dst: '{{@@ cfg_dst @@}}/quark'
-  .config__ranger:
+  '.config/ranger':
     src: '{{@@ cfg_src @@}}/ranger'
     dst: '{{@@ cfg_dst @@}}/ranger'
-  .config__readline:
+  '.config/readline':
     src: '{{@@ cfg_src @@}}/readline'
     dst: '{{@@ cfg_dst @@}}/readline'
-  .config__redshift:
+  '.config/redshift':
     src: '{{@@ cfg_src @@}}/redshift'
     dst: '{{@@ cfg_dst @@}}/redshift'
-  .config__repoctl:
+  '.config/repoctl':
     src: '{{@@ cfg_src @@}}/repoctl'
     dst: '{{@@ cfg_dst @@}}/repoctl'
-  .config__ripgrep:
+  '.config/ripgrep':
     src: '{{@@ cfg_src @@}}/ripgrep'
     dst: '{{@@ cfg_dst @@}}/ripgrep'
-  .config__rofi:
+  '.config/rofi':
     src: '{{@@ cfg_src @@}}/rofi'
     dst: '{{@@ cfg_dst @@}}/rofi'
-  .config__rtorrent:
+  '.config/rtorrent':
     src: '{{@@ cfg_src @@}}/rtorrent'
     dst: '{{@@ cfg_dst @@}}/rtorrent'
-  .config__salamis:
+  '.config/salamis':
     src: '{{@@ cfg_src @@}}/salamis'
     dst: '{{@@ cfg_dst @@}}/salamis'
-  .config__sheldon:
+  '.config/sheldon':
     src: '{{@@ cfg_src @@}}/sheldon'
     dst: '{{@@ cfg_dst @@}}/sheldon'
-  .config__shell:
+  '.config/shell':
     src: '{{@@ cfg_src @@}}/shell'
     dst: '{{@@ cfg_dst @@}}/shell'
-  .config__slack-term:
+  '.config/slack-term':
     src: '{{@@ cfg_src @@}}/slack-term'
     dst: '{{@@ cfg_dst @@}}/slack-term'
-  .config__starship:
+  '.config/starship':
     src: '{{@@ cfg_src @@}}/starship'
     dst: '{{@@ cfg_dst @@}}/starship'
-  .config__sticker-selector:
+  '.config/sticker-selector':
     src: '{{@@ cfg_src @@}}/sticker-selector'
     dst: '{{@@ cfg_dst @@}}/sticker-selector'
-  .config__sublime-text-3__Packages__User__Preferences.sublime-settings:
+  '.config/sublime-text-3/Packages/User/Preferences.sublime-settings':
     src: '{{@@ cfg_src @@}}/sublime-text-3/Packages/User/Preferences.sublime-settings'
     dst: '{{@@ cfg_dst @@}}/sublime-text-3/Packages/User/Preferences.sublime-settings'
-  .config__sublime-text-3__Packages__User__Package Control.sublime-settings:
+  '.config/sublime-text-3/Packages/User/Package Control.sublime-settings':
     src: '{{@@ cfg_src @@}}/sublime-text-3/Packages/User/Package Control.sublime-settings'
     dst: '{{@@ cfg_dst @@}}/sublime-text-3/Packages/User/Package Control.sublime-settings'
-  .config__sx:
+  '.config/sx':
     src: '{{@@ cfg_src @@}}/sx'
     dst: '{{@@ cfg_dst @@}}/sx'
-  .config__sxhkd:
+  '.config/sxhkd':
     src: '{{@@ cfg_src @@}}/sxhkd'
     dst: '{{@@ cfg_dst @@}}/sxhkd'
-  .config__swaylock:
+  '.config/swaylock':
     src: '{{@@ cfg_src @@}}/swaylock'
     dst: '{{@@ cfg_dst @@}}/swaylock'
-  .config__taffybar:
+  '.config/taffybar':
     src: '{{@@ cfg_src @@}}/taffybar'
     dst: '{{@@ cfg_dst @@}}/taffybar'
-  .config__taskwarrior:
+  '.config/taskwarrior':
     src: '{{@@ cfg_src @@}}/taskwarrior'
     dst: '{{@@ cfg_dst @@}}/taskwarrior'
-  .config__terminator:
+  '.config/terminator':
     src: '{{@@ cfg_src @@}}/terminator'
     dst: '{{@@ cfg_dst @@}}/terminator'
-  .config__termite:
+  '.config/termite':
     src: '{{@@ cfg_src @@}}/termite'
     dst: '{{@@ cfg_dst @@}}/termite'
-  .config__tig:
+  '.config/tig':
     src: '{{@@ cfg_src @@}}/tig'
     dst: '{{@@ cfg_dst @@}}/tig'
-  .config__tmux:
+  '.config/tmux':
     src: '{{@@ cfg_src @@}}/tmux'
     dst: '{{@@ cfg_dst @@}}/tmux'
-  .config__toast:
+  '.config/toast':
     src: '{{@@ cfg_src @@}}/toast'
     dst: '{{@@ cfg_dst @@}}/toast'
-  .config__twmn:
+  '.config/twmn':
     src: '{{@@ cfg_src @@}}/twmn'
     dst: '{{@@ cfg_dst @@}}/twmn'
-  .config__udiskie:
+  '.config/udiskie':
     src: '{{@@ cfg_src @@}}/udiskie'
     dst: '{{@@ cfg_dst @@}}/udiskie'
-  .config__urlwatch:
+  '.config/urlwatch':
     src: '{{@@ cfg_src @@}}/urlwatch'
     dst: '{{@@ cfg_dst @@}}/urlwatch'
-  .config__urxvt:
+  '.config/urxvt':
     src: '{{@@ cfg_src @@}}/urxvt'
     dst: '{{@@ cfg_dst @@}}/urxvt'
-  .config__viewnior:
+  '.config/viewnior':
     src: '{{@@ cfg_src @@}}/viewnior'
     dst: '{{@@ cfg_dst @@}}/viewnior'
-  .config__vim:
+  '.config/vim':
     src: '{{@@ cfg_src @@}}/vim'
     dst: '{{@@ cfg_dst @@}}/vim'
-  .config__wget:
+  '.config/wget':
     src: '{{@@ cfg_src @@}}/wget'
     dst: '{{@@ cfg_dst @@}}/wget'
-  .config__wtf:
+  '.config/wtf':
     src: '{{@@ cfg_src @@}}/wtf'
     dst: '{{@@ cfg_dst @@}}/wtf'
-  .config__xbindkeys:
+  '.config/xbindkeys':
     src: '{{@@ cfg_src @@}}/xbindkeys'
     dst: '{{@@ cfg_dst @@}}/xbindkeys'
-  .config__X11:
+  '.config/X11':
     src: '{{@@ cfg_src @@}}/X11'
     dst: '{{@@ cfg_dst @@}}/X11'
-  .config__xkb:
+  '.config/xkb':
     src: '{{@@ cfg_src @@}}/xkb'
     dst: '{{@@ cfg_dst @@}}/xkb'
-  .config__xmobar:
+  '.config/xmobar':
     src: '{{@@ cfg_src @@}}/xmobar'
     dst: '{{@@ cfg_dst @@}}/xmobar'
-  .config__xob:
+  '.config/xob':
     src: '{{@@ cfg_src @@}}/xob'
     dst: '{{@@ cfg_dst @@}}/xob'
-  .config__xplr:
+  '.config/xplr':
     src: '{{@@ cfg_src @@}}/xplr'
     dst: '{{@@ cfg_dst @@}}/xplr'
-  .config__yapf:
+  '.config/yapf':
     src: '{{@@ cfg_src @@}}/yapf'
     dst: '{{@@ cfg_dst @@}}/yapf'
-  .config__yay:
+  '.config/yay':
     src: '{{@@ cfg_src @@}}/yay'
     dst: '{{@@ cfg_dst @@}}/yay'
-  .config__youtube-dl:
+  '.config/youtube-dl':
     src: '{{@@ cfg_src @@}}/youtube-dl'
     dst: '{{@@ cfg_dst @@}}/youtube-dl'
-  .config__zathura:
+  '.config/zathura':
     src: '{{@@ cfg_src @@}}/zathura'
     dst: '{{@@ cfg_dst @@}}/zathura'
-  .config__zsh:
+  '.config/zsh':
     src: '{{@@ cfg_src @@}}/zsh'
     dst: '{{@@ cfg_dst @@}}/zsh'
-  .local__share__applications__FoxBlender.desktop:
+  '.local/share/applications/FoxBlender.desktop':
     src: '{{@@ data_src @@}}/applications/FoxBlender.desktop'
     dst: '{{@@ data_dst @@}}/applications/FoxBlender.desktop'
-  .local__share__sdkman__etc__config:
+  '.local/share/sdkman/etc/config':
     src: '{{@@ data_src @@}}/sdkman/etc/config'
     dst: '{{@@ data_dst @@}}/sdkman/etc/config'
-  .local__state__dotshellgen:
+  '.local/state/dotshellgen':
     src: '{{@@ state_src @@}}/dotshellgen'
     dst: '{{@@ state_dst @@}}/dotshellgen'
-  pam:
+  'pam':
     src: '{{@@ home_src @@}}/.pam_environment/xdg-default.conf'
     dst: '{{@@ home_dst @@}}/.pam_environment'
