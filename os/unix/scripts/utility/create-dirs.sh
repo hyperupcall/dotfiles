@@ -123,7 +123,6 @@ main() {
 		must.link "$HOME/.dotfiles/os/unix/scripts" "$HOME/scripts"
 		must.link "$HOME/.dotfiles/.home/Documents/Programming/Challenges" "$HOME/challenges"
 		must.link "$HOME/.dotfiles/.home/Documents/Programming/Experiments" "$HOME/experiments"
-		must.link "$HOME/.dotfiles/.home/Documents/Programming/Repositories/git" "$HOME/git"
 		must.link "$HOME/.dotfiles/.home/Documents/Programming/Repositories" "$HOME/groups"
 	elif [ "$profile" = 'laptop' ]; then
 		:
@@ -146,13 +145,13 @@ main() {
 	fi done; unset -v file
 
 	core.shopt_push -s nullglob
-	local -a files=("$HOME/.dotfiles/.home/Documents/Programming/Repositories/Bash"/{bake,basalt,hookah,foxomate,glue,rho,shelldoc,shelltest}/pkg/bin/* "$HOME/.dotfiles/.home/Documents/Programming/Repositories/version-manager/woof/pkg/bin"/*)
+	local -a files=("$HOME/.dotfiles/.home/Documents/Programming/Repositories/bash-bastion"/{bake,basalt,shelldoc,shelltest}/pkg/bin/* "$HOME/.dotfiles/.home/Documents/Programming/Repositories/version-manager/woof/pkg/bin"/*)
 	core.shopt_pop
 	local file=; for file in "${files[@]}"; do
 		ln -fs  "$file" ~/.dotfiles/.data/bin
 	done; unset -v file
 
-	ln -s "$HOME/.dotfiles/.home/Documents/Programming/Repositories/mgr/defaultmgr/target/debug/defaultmgr" ~/.dotfiles/.data/bin/defaultmgr
+	ln -s "$HOME/.dotfiles/.home/Documents/Programming/Repositories/fox-managers/default/target/debug/default" ~/.dotfiles/.data/bin/default
 	must.link ~/.dotfiles/.data/dotmgr-src/target/debug/dotmgr ~/.dotfiles/.data/bin/dotmgr
 
 

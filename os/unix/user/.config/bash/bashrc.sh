@@ -116,7 +116,7 @@ if is_16million_colors; then
 		PS1="[\u@\h \w]\$ "
 		# shellcheck disable=SC3046
 		if ! eval "$(
-			if ! defaultmgr launch shell-prompt-bash; then
+			if ! default launch shell-prompt-bash; then
 				printf '%s\n' 'false' # Propagate error to the "if ! eval ..."
 			fi
 		)"; then

@@ -1,0 +1,64 @@
+categories:
+  git-diff:
+    default: 'colordiff'
+    choices:
+      colordiff:
+        switch: >
+          mkdir -p ~/.dotfiles/.home/xdg_config_dir/git/include/diff
+          printf '%s' "[include]
+          path = ./colordiff.conf
+          " > ~/.dotfiles/.home/xdg_config_dir/git/include/diff/_.conf
+      delta:
+      diff-so-fancy:
+        install: >
+          git clone 'https://github.com/so-fancy/diff-so-fancy' "$dir"
+          ln -sf "$dir/diff-so-fancy" "$HOME/.dotfiles/.data/bin/diff-so-fancy"
+        uninstall: >
+          rm -rf "$dir"
+          unlink "$HOME/.dotfiles/.data/.bin/diff-so-fancy"
+        check: >
+          [ -d "$dir" ]
+      diffr:
+      difftastic:
+      git-split-diffs:
+  shell:
+    default: 'bash'
+    switch: 'sudo chsh -s /usr/bin/{choice} "$USER"'
+    choices:
+      bash:
+      dash:
+      fish:
+      ksh:
+      pwsh:
+      zsh:
+  shell-prompt-bash:
+    default: powerline
+    choices:
+      bash-git-prompt:
+      bash-powerline:
+      git-prompt:
+      gitstatus:
+      kube-ps1:
+      liquidprompt:
+      pista:
+      polyglot:
+      pureline:
+      sbp:
+      sexy-bash-prompt.sh:
+      starship:
+      trueline:
+  shell-prompt-zsh:
+    default: 'starship'
+    choices:
+      starship:
+  terminal-emulator:
+    default: 'kitty'
+    choices:
+      alacritty:
+      kitty:
+      konsole:
+      rxvt:
+      terminator:
+      terminology:
+      tilix:
+      xterm:

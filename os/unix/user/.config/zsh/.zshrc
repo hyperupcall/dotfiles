@@ -118,7 +118,7 @@ if is_16million_colors; then
 	else
 		PS1="%{$fg[red]%}[%n@%M %~]$%{$reset_color%} "
 		if ! eval "$(
-			if ! defaultmgr launch shell-prompt-zsh; then
+			if ! default launch shell-prompt-zsh; then
 				printf '%s\n' 'false' # Propagate error to the "if ! eval ..."
 			fi
 		)"; then
