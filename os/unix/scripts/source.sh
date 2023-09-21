@@ -2,10 +2,11 @@
 
 # shellcheck disable=SC2016
 {
+	# Set options
 	set -e
 	shopt -s extglob globstar shift_verbose
 
-	# Source all the things
+	# Source libraries
 	source ~/.dotfiles/xdg.sh
 	for _f in \
 		"${0%/*}/../../vendor/bash-core/pkg"/**/*.sh \
@@ -13,7 +14,7 @@
 		source "$_f"
 	done; unset -v _f
 
-	# Assert environment
+	# Assumption checks
 	if [ -z "$XDG_CONFIG_HOME" ]; then
 		printf '%s\n' 'Failed because $XDG_CONFIG_HOME is empty' >&2
 		exit 1
@@ -183,6 +184,13 @@ util.run() {
 	fi
 }
 
+util.cd() {
+	if ! cd "$1"; then
+		core.print_error "Failed to cd to '$1'"
+		exit 1
+	fi
+}
+
 util.cd_temp() {
 	local dir=
 	dir=$(mktemp -d)
@@ -220,27 +228,21 @@ util.clone() {
 	fi
 }
 
-util.install_pkg() {
-	local cmd="$1"
-
+util.install_packages() {
 	if util.is_cmd 'pacman'; then
-		util.ensure sudo pacman -S --noconfirm "$cmd"
+		util.ensure sudo pacman -S --noconfirm "$@"
 	elif util.is_cmd 'apt-get'; then
-		util.ensure sudo apt-get -y install "$cmd"
+		util.ensure sudo apt-get -y install "$@"
 	elif util.is_cmd 'dnf'; then
-		util.ensure sudo dnf -y install "$cmd"
+		util.ensure sudo dnf -y install "$@"
 	elif util.is_cmd 'zypper'; then
-		util.ensure sudo zypper -y install "$cmd"
+		util.ensure sudo zypper -y install "$@"
 	elif util.is_cmd 'eopkg'; then
-		util.ensure sudo eopkg -y install "$cmd"
+		util.ensure sudo eopkg -y install "$@"
 	elif iscmd 'brew'; then
-		util.ensure brew install "$cmd"
+		util.ensure brew install "$@"
 	else
 		util.die 'Failed to determine package manager'
-	fi
-
-	if ! util.is_cmd 'jq'; then
-		core.print_die 'Automatic installation of jq failed'
 	fi
 }
 
@@ -256,7 +258,7 @@ util.clone_in_dots() {
 
 
 util.confirm() {
-	local message="${1:-Confirm?}"
+	local message=${1:-Confirm?}
 
 	local input=
 	until [[ "$input" =~ ^[yn]$ ]]; do
@@ -295,11 +297,13 @@ util.get_package_manager() {
 util.get_os_id() {
 	unset -v REPLY; REPLY=
 
+	# shellcheck disable=SC1007
+	local key= value=
 	while IFS='=' read -r key value; do
 		if [ "$key" = 'ID' ]; then
 			REPLY=$value
 		fi
-	done < /etc/os-release; unset -v line
+	done < /etc/os-release; unset -v key value
 
 	if [ -z "$REPLY" ]; then
 		core.print_error "Failed to determine OS id"
@@ -319,37 +323,4 @@ util.get_latest_github_tag() {
 	tag_name=$(curl -fsSLo- "$url" | jq -r '.tag_name')
 
 	REPLY=$tag_name
-}
-
-util.run_script() {
-	local dir="$HOME/.dotfiles/os/unix/dotmgr/$1"
-	local glob_pattern="$2"
-
-	local -a files=("$dir/"*"$glob_pattern"*)
-	if (( ${#files[@]} == 0 )); then
-		core.print_error "Failed to find a file matching '$glob_pattern' in dir '$dir'"
-		if ! util.confirm 'Continue?'; then
-			exit 1
-		fi
-	elif (( ${#files[@]} > 1 )); then
-		core.print_error "Failed to find a single file matching '$glob_pattern' in dir '$dir' (multiple matches found)"
-		if ! util.confirm 'Continue?'; then
-			exit 1
-		fi
-	else
-		core.print_info "Executing ${files[0]}"
-		{
-			FORCE_COLOR=3 source "${files[0]}"
-		} \
-			4>&1 1> >(
-				while IFS= read -r line; do
-					printf "  %s\n" "$line" >&4
-				done; unset -v line
-			) \
-			5>&2 2> >(
-				while IFS= read -r line; do
-					printf "  %s\n" "$line" >&5
-				done; unset -v line
-			)
-	fi
 }

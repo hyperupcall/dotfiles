@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
 
-# Name:
-# Doctor
-#
-# Description:
-# Does a doctor
-
 source "${0%/*}/../source.sh"
 
 success() {

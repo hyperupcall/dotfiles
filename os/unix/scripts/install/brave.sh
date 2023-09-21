@@ -3,7 +3,7 @@
 source "${0%/*}/../source.sh"
 
 main() {
-	if util.confirm 'Install Brave and Brave Beta?'; then
+	if util.confirm 'Install Brave?'; then
 		install.brave
 	fi
 }

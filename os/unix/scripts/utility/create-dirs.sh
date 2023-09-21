@@ -66,8 +66,8 @@ main() {
 	#               CREATE DIRECTORIES AND FILES               #
 	# -------------------------------------------------------- #
 	must.dir "$HOME/.dotfiles/.home"
-	must.dir "$HOME/.dotfiles/.repos"
 	must.dir "$HOME/.dotfiles/.data"
+	must.dir "$HOME/.dotfiles/.data/workspace"
 	must.dir "$HOME/.gnupg"
 	must.dir "$HOME/.ssh"
 	must.dir "$XDG_STATE_HOME/Android/Sdk"

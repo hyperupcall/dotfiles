@@ -3,9 +3,9 @@
 source "${0%/*}/../source.sh"
 
 main() {
-	sudo apt-get update
+	sudo apt-get -y update
 
-	sudo apt-get install \
+	sudo apt-get -y install \
 		ca-certificates \
 		curl \
 		gnupg \

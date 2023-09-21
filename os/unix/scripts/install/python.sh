@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# Name:
-# Install Python stuff
-
 source "${0%/*}/../source.sh"
 
 main() {

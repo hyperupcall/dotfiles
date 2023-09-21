@@ -16,10 +16,12 @@ install.discord() {
 		util.cd_temp
 		util.req -o './discord.deb' 'https://discord.com/api/download?platform=linux&format=deb'
 		sudo apt install ./discord.deb
+		rm -f ./discord.deb
 	) else (
 		util.cd_temp
 		util.req -o './discord.tar.gz' 'https://discord.com/api/download?platform=linux&format=tar.gz'
 		tar xf './discord.tar.gz'
+		rm -f ./discord.deb
 	) fi
 }
 

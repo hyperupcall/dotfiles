@@ -23,32 +23,72 @@ main() {
 	fi
 
 	# Ensure prerequisites
-	util.ensure mkdir -p ~/.bootstrap/distro-dots "$XDG_CONFIG_HOME"
+	util.ensure mkdir -p "$XDG_CONFIG_HOME"
+
 
 	if util.is_cmd 'jq'; then
 		core.print_info 'Already installed jq'
 	else
 		core.print_info 'Installing jq'
-		util.install_pkg 'jq'
+		util.install_packages 'jq'
 	fi
 
 	if util.is_cmd 'curl'; then
 		core.print_info 'Already installed curl'
 	else
 		core.print_info 'Installing curl'
-		util.install_pkg 'curl'
+		util.install_packages 'curl'
 	fi
 
-	# Remove distribution specific dotfiles, including
+	# Remove distribution specific dotfiles
+	util.ensure mkdir -p ~/.bootstrap/distro-dots
 	for file in ~/.bash_login ~/.bash_logout ~/.bash_profile ~/.bashrc ~/.profile; do
 		if [[ ! -L "$file" && -f "$file" ]]; then
 			util.ensure mv "$file" ~/.bootstrap/distro-dots
 		fi
 	done
 
+	util.get_package_manager
+	local pkgmngr="$REPLY"
+
+	case $pkgmngr in
+	pacman)
+		sudo pacman -Syyu --noconfirm
+		sudo pacman -S --noconfirm base-devel
+		sudo pacman -S --noconfirm lvm2
+		sudo pacman -S --noconfirm openssl # for starship
+		;;
+	apt)
+		sudo apt-get -y update
+		sudo apt-get -y upgrade
+		sudo apt-get -y install apt-transport-https
+		sudo apt-get -y install build-essential
+		sudo apt-get -y install lvm2
+		sudo apt-get -y install libssl-dev # for starship
+		;;
+	dnf)
+		sudo dnf -y update
+		sudo dnf install dnf-plugins-core # For at least Brave
+		sudo dnf -y install @development-tools
+		sudo dnf -y install lvm2
+		sudo dnf -y install openssl-devel # for starship
+		;;
+	zypper)
+		sudo zypper -y update
+		sudo zypper -y upgrade
+		sudo zypper -y install -t pattern devel_basis
+		sudo zypper -y install lvm
+		sudo zypper -y install openssl-devel # for starship
+		;;
+	esac
+
+	util.install_package bash-completion curl rsync pass
+	util.install_package pkg-config # for starship
+	util.install_packages cmake ccache vim nano
+
 	# Get GithHub authorization tokens
 	if [ -f ~/.dotfiles/.data/github_token ]; then
-		core.print_info 'Already stored GitHub token'
+		core.print_info 'Already downloaded GitHub token'
 	else
 		local hostname=
 		hostname=$(hostname)

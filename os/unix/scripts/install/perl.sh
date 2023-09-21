@@ -10,8 +10,8 @@ main() {
 		# cpan Loading internal logger. Log::Log4perl recommended for better logging
 		cpanm Log::Log4perl
 
-		pkgs='AnyEvent Linux::FD common::sense'
-		cpanm $pkgs
+		pkgs=(AnyEvent Linux::FD common::sense)
+		cpanm "${pkgs[@]}"
 	fi
 }
 

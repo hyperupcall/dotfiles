@@ -2,25 +2,33 @@
 
 source "${0%/*}/../source.sh"
 
+mkdir -p ~/.dotfiles/.data/workspace/dotdrop
+util.cd ~/.dotfiles/.data/workspace/dotdrop
 
-cd ~/.dotfiles/os/unix/vendor
-
-if [ ! -d 'dotdrop' ]; then
-    git submodule add https://github.com/deadc0de6/dotdrop
+if [ -d ./repository ]; then
+	core.print_info 'Found dotdrop repository'
+else
+	core.print_info 'Downloading dotdrop repository'
+	git clone https://github.com/deadc0de6/dotdrop ./repository
 fi
-cd dotdrop
+util.cd ./repository
 
-if [ ! -d './venv' ]; then
-    python3 -m venv './venv'
-    source './venv/bin/activate'
-    python3 -m pip install -r './requirements.txt'
+if [ -d ./venv ]; then
+	core.print_info 'Found virtualenv'
+else
+	core.print_info 'Creating virtualenv'
+	python3 -m venv ./venv
 fi
+source ./venv/bin/activate
 
-cat <<"EOF" > ~/.dotfiles/.data/bin/dotdrop
+python3 -m pip install --upgrade wheel
+python3 -m pip install -r ./requirements.txt
+
+
+cat <<'EOF' > ~/.dotfiles/.data/bin/dotdrop
 #!/usr/bin/env sh
 set -e
-dotdrop_dir="$HOME/.dotfiles/os/unix/vendor/dotdrop"
-. "$dotdrop_dir/venv/bin/activate"
-"$dotdrop_dir/dotdrop.sh" "$@"
+. ~/.dotfiles/.data/workspace/dotdrop/repository/venv/bin/activate
+~/.dotfiles/.data/workspace/dotdrop/repository/dotdrop.sh "$@"
 EOF
 chmod +x ~/.dotfiles/.data/bin/dotdrop

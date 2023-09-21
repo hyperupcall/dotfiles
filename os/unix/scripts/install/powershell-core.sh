@@ -3,7 +3,7 @@
 source "${0%/*}/../source.sh"
 
 main() {
-	if util.confirm 'Install PowershellCore?'; then
+	if util.confirm 'Install Powershell Core?'; then
 		install.powershell_core
 	fi
 }
@@ -14,7 +14,7 @@ install.powershell_core() {
 
 	case $pkgmngr in
 	pacman)
-		echo 'not implemented'
+		printf '%s\n' 'Not implemented'
 		;;
 	apt)
 		curl -fsSLo- https://packages.microsoft.com/keys/microsoft.asc | sudo tee >/dev/null /etc/apt/trusted.gpg.d/microsoft.asc
@@ -23,10 +23,10 @@ install.powershell_core() {
 		sudo apt-get -y install powershell
 		;;
 	dnf)
-		echo 'not implemented'
+		printf '%s\n' 'Not implemented'
 		;;
 	zypper)
-		echo 'not implemented'
+		printf '%s\n' 'Not implemented'
 		;;
 	esac
 }

@@ -3,7 +3,7 @@
 source "${0%/*}/../source.sh"
 
 main() {
-	if util.confirm 'Install Pass and your own password store?'; then
+	if util.confirm 'Install pass?'; then
 		install.pass
 	fi
 
