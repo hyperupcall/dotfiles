@@ -141,7 +141,6 @@ db:
   video-player:
     - mpv
     - vlc
-  volume-<PART>:
   window-manager:
     - awesome
     - i3

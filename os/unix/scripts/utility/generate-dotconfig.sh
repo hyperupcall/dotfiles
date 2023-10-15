@@ -79,6 +79,7 @@ declare -ga g_dotfiles=(
 	cfg:'eww'
 	cfg:'fish'
 	cfg:'fontconfig'
+	cfg:'fox-default'
 	cfg:'gh/config.yml'
 	cfg:'gdb'
 	cfg:'git'

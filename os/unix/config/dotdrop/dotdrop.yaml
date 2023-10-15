@@ -203,6 +203,9 @@ dotfiles:
   '.config/fontconfig':
     src: '{{@@ cfg_src @@}}/fontconfig'
     dst: '{{@@ cfg_dst @@}}/fontconfig'
+  '.config/fox-default':
+    src: '{{@@ cfg_src @@}}/fox-default'
+    dst: '{{@@ cfg_dst @@}}/fox-default'
   '.config/gh/config.yml':
     src: '{{@@ cfg_src @@}}/gh/config.yml'
     dst: '{{@@ cfg_dst @@}}/gh/config.yml'

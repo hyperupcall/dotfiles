@@ -58,6 +58,7 @@ dotfiles:
   - '.config/eww'
   - '.config/fish'
   - '.config/fontconfig'
+  - '.config/fox-default'
   - '.config/gh/config.yml'
   - '.config/gdb'
   - '.config/git'
