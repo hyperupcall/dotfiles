@@ -35,7 +35,7 @@ main() {
 	# -------------------------------------------------------- #
 	#     REMOVE AUTOAPPENDED LINES IN SHELL STARTUP FILES     #
 	# -------------------------------------------------------- #
-	for file in ~/.profile ~/.bashrc ~/.bash_profile "${ZDOTDIR:-$HOME}/.zshrc" "${XDG_CONFIG_HOME:-$HOME/.config}/fish/config.fish"; do
+	for file in ~/.profile ~/.bashrc ~/.bash_profile "${ZDOTDIR:-$HOME}/.zshrc" "$XDG_CONFIG_HOME/fish/config.fish"; do
 		if [ ! -f "$file" ]; then
 			continue
 		fi
@@ -132,27 +132,6 @@ main() {
 			unlink "$f"
 		fi
 	done; unset -v f
-
-	# -------------------------------------------------------- #
-	#                    CREATE BIN SYMLINKS                   #
-	# -------------------------------------------------------- #
-	mkdir -p ~/.dotfiles/.data/bin
-	core.shopt_push -s nullglob
-	local -a files=(~/.dotfiles/.data/bin/*)
-	core.shopt_pop
-	local file=; for file in "${files[@]}"; do if [ -L "$file" ]; then
-		unlink "$file"
-	fi done; unset -v file
-
-	core.shopt_push -s nullglob
-	local -a files=("$HOME/.dotfiles/.home/Documents/Programming/Repositories/bash-bastion"/{bake,basalt,shelldoc,shelltest}/pkg/bin/* "$HOME/.dotfiles/.home/Documents/Programming/Repositories/version-manager/woof/pkg/bin"/*)
-	core.shopt_pop
-	local file=; for file in "${files[@]}"; do
-		ln -fs  "$file" ~/.dotfiles/.data/bin
-	done; unset -v file
-
-	ln -s "$HOME/.dotfiles/.home/Documents/Programming/Repositories/fox-managers/default/target/debug/default" ~/.dotfiles/.data/bin/default
-	must.link ~/.dotfiles/.data/dotmgr-src/target/debug/dotmgr ~/.dotfiles/.data/bin/dotmgr
 
 
 	# -------------------------------------------------------- #

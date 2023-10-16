@@ -45,7 +45,7 @@ main() {
 
 
 	# ----------------------- Variables ---------------------- #
-	generated_dir="${XDG_STATE_HOME:-$HOME/.local/state}/dotshellextract"
+	generated_dir="$XDG_STATE_HOME/dotshellextract"
 	profile_dir="$XDG_CONFIG_HOME/shell"
 
 	mkdir -p "$generated_dir"

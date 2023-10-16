@@ -11,8 +11,8 @@ main() {
 install.ghc() {
 	core.print_info "Installing haskell"
 
-	mkdir -p "${XDG_DATA_HOME:-$HOME/.local/share}/ghcup"
-	ln -s "${XDG_DATA_HOME:-$HOME/.local/share}"/{,ghcup/.}ghcup
+	mkdir -p "$XDG_DATA_HOME/ghcup"
+	ln -s "$XDG_DATA_HOME"/{,ghcup/.}ghcup
 
 	util.req 'https://get-ghcup.haskell.org' | sh
 
