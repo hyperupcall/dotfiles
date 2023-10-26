@@ -1,12 +1,5 @@
 #!/usr/bin/env bash
 
-# Name:
-# Update Others
-#
-# Description:
-# Installs and updates miscellaneous packages. This includes:
-# - Several Vim package managers
-
 source "${0%/*}/../source.sh"
 
 main() {

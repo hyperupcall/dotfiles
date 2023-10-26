@@ -1,24 +1,25 @@
 {
-	// WINDOW
-	"window.customMenuBarAltFocus": false,
-	"window.newWindowDimensions": "maximized",
-	"window.restoreWindows": "all",
-	"window.titleBarStyle": "custom",
-	// TERMINAL
-	"terminal.external.linuxExec": "x-terminal-emulator",
-	"terminal.integrated.inheritEnv": false,
-	// WORKBENCH
-	"workbench.enableExperiments": false,
-	// MISC
-	"security.workspace.trust.enabled": false,
-	"security.workspace.trust.untrustedFiles": "open",
-	"update.mode": "manual",
-	"telemetry.telemetryLevel": "off",
-	"vscode-edge-devtools.webhint": false,
-	"symbols.hidesExplorerArrows": false,
-	"cSpell.diagnosticLevel": "Hint",
-	"git.confirmSync": false,
-	"update.showReleaseNotes": false,
-	"explorer.confirmDragAndDrop": false,
-	"workbench.colorTheme": "Noctis Lilac"
+  // WINDOW
+  "window.customMenuBarAltFocus": false,
+  "window.newWindowDimensions": "maximized",
+  "window.restoreWindows": "all",
+  "window.titleBarStyle": "custom",
+  // TERMINAL
+  "terminal.external.linuxExec": "x-terminal-emulator",
+  "terminal.integrated.inheritEnv": false,
+  // WORKBENCH
+  "workbench.enableExperiments": false,
+  // MISC
+  "security.workspace.trust.enabled": false,
+  "security.workspace.trust.untrustedFiles": "open",
+  "update.mode": "manual",
+  "telemetry.telemetryLevel": "off",
+  "vscode-edge-devtools.webhint": false,
+  "symbols.hidesExplorerArrows": false,
+  "cSpell.diagnosticLevel": "Hint",
+  "git.confirmSync": false,
+  "update.showReleaseNotes": false,
+  "explorer.confirmDragAndDrop": false,
+  "workbench.colorTheme": "Noctis Lilac",
+  "julia.symbolCacheDownload": true
 }

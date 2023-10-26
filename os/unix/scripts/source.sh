@@ -9,8 +9,8 @@
 	# Source libraries
 	source ~/.dotfiles/xdg.sh
 	for _f in \
-		"${0%/*}/../../vendor/bash-core/pkg"/**/*.sh \
-		"${0%/*}/../../vendor/bash-term/pkg"/**/*.sh; do
+		"${BASH_SOURCE[0]%/*}/../vendor/bash-core/pkg"/**/*.sh \
+		"${BASH_SOURCE[0]%/*}/../vendor/bash-term/pkg"/**/*.sh; do
 		source "$_f"
 	done; unset -v _f
 

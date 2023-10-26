@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
 
-# Name:
-# Primary
-#
-# Description:
-# Adds user to various groups
-
 main() {
 	source "$DOTMGR_ROOT/src/util/source.sh"
 

@@ -1,19 +1,6 @@
 #!/usr/bin/env bash
 
-# Name:
-# Borg Backup
-#
-# Description:
-# Performs a backup using Borg Backup
-# It ignores the following directories
-#   - **/node_modules
-#   - **/__pycache__
-#   - **/rootfs
-#   - **/.Trash-1000
-#   - **/llvm-project
-#   - **/gcc
-
-source "${0%/*}/../source.sh"
+source "${0%/*}/../../source.sh"
 
 main() {
 	local backup_dir="/storage/vault/rodinia/Backups/edwin_borg"
@@ -28,17 +15,30 @@ main() {
 
 		borg create \
 			--show-version --show-rc --verbose --stats --progress \
+			--exclude '**/brave-browser*' \
+			--exclude '**/chromium*' \
+			--exclude '**/firefox*' \
+			--exclude '**/llvm-project*' \
+			--exclude '**/gcc*' \
+			--exclude '**/android*' \
+			--exclude '**/buildroot*' \
+			--exclude '**/linux*' \
+			--exclude '**/rootfs*' \
 			--exclude '**/node_modules' \
 			--exclude '**/__pycache__' \
-			--exclude '**/rootfs' \
+			--exclude '**/target' \
+			--exclude '**/dist' \
+			--exclude '**/output' \
+			--exclude '**/build' \
 			--exclude '**/.Trash-1000' \
-			--exclude '**/llvm-project' \
-			--exclude '**/gcc' \
 			--exclude '**/aria2c' \
 			--exclude '**/Torrents' \
 			--exclude '**/youtube-dl' \
 			--exclude '**/Dls' \
+			--exclude '**/*.git' \
 			--exclude '**/.git' \
+			--exclude '**/.hg' \
+			--exclude '**/.svn' \
 			"$backup_dir"::'backup-{now}' \
 			"$dir"
 	fi
