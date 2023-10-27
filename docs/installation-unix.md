@@ -34,10 +34,7 @@ The `bootstrap.sh` script performs the following steps:
 
 - Installs Homebrew, on macOS
 - Installs Git and Neovim
-- Installs Cargo and Rust
 - Clones `hyperupcall/dotfiles` to `~/.dotfiles`
-- Clones `hyperupcall/dotmgr` to `~/.dotfiles/.data/dotmgr-src`
-- Create a `dotdrop` script in `~/.dotfiles/.data/bin`
 - Creates a `~/.bootstrap/bootstrap-out.sh`; sourcing it does the following:
   - Sets `NAME`, `EMAIL`, `EDITOR`, `VISUAL`
   - Appends `$HOME/.dotfiles/.data/bin` to `PATH`
@@ -47,8 +44,11 @@ Then, run the following:
 
 ```sh
 . ~/.bootstrap/bootstrap-out.sh
+```
 
-# Now, continue with dotmgr
-dotmgr script run bootstrap
-dotmgr script run idempotent
+Now, execute the scripts you need:
+
+```sh
+~/scripts/lifecycle/bootstrap.sh
+~/scripts/lifecycle/idempotent.sh
 ```

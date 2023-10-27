@@ -60,6 +60,8 @@ main() {
 	else
 		success "Does not have GitHub private SSH key"
 	fi
+	find ~/.ssh/ ~/.gnupg/ -type d -exec chmod 700 {} \;
+	find ~/.ssh/ ~/.gnupg/ -type f -exec chmod 600 {} \;
 }
 
 main "$@"

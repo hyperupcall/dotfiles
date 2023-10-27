@@ -15,7 +15,13 @@ main() {
 	run mkdir -p ~/.bootstrap
 
 	# Install essential commands
-	installupdates
+	updatesystem
+	if iscmd 'curl'; then
+		log 'Already installed curl'
+	else
+		log 'Installing curl'
+		installcmd 'curl' 'curl'
+	fi
 	case $(uname) in darwin*)
 		if iscmd 'brew'; then
 			log "Already installed Homebrew"
@@ -28,17 +34,6 @@ main() {
 	installcmd 'git' 'git'
 	installcmd 'nvim' 'neovim'
 
-	# Install Cargo, Rust
-	if [ -d ~/.cargo ]; then
-		log 'Already installed Cargo'
-	else
-		log 'Installing Cargo'
-		curl -fsSL 'https://sh.rustup.rs' | sh -s -- --default-toolchain nightly -y
-	fi
-	if [ -f ~/.cargo/env ]; then
-		. ~/.cargo/env
-	fi
-
 	# Install hyperupcall/dotfiles
 	clonerepo 'github.com/hyperupcall/dotfiles' ~/.dotfiles '--recurse-submodules'
 	run cd ~/.dotfiles
@@ -46,25 +41,6 @@ main() {
 		run git remote rename origin me
 		run ./bake init
 	run cd
-
-	# Install hyperupcall/dotmgr
-	clonerepo 'github.com/hyperupcall/dotmgr' ~/.dotfiles/.data/dotmgr-src
-	run cd ~/.dotfiles/.data/dotmgr-src
-		run git remote set-url origin 'git@github.com:hyperupcall/dotmgr'
-		run git remote rename origin me
-		run cargo build
-	run cd
-	run mkdir -p ~/.dotfiles/.data/bin
-	run ln -sf ~/.dotfiles/.data/dotmgr-src/target/debug/dotmgr ~/.dotfiles/.data/bin/dotmgr
-
-	# Create dotdrop script
-	cat <<"EOF" > ~/.dotfiles/.data/bin/dotdrop
-#!/usr/bin/env sh
-set -e
-. ~/.dotfiles/os/unix/vendor/dotdrop/venv/bin/activate
-~/.dotfiles/os/unix/vendor/dotdrop/dotdrop.sh "$@"
-EOF
-	chmod +x ~/.dotfiles/.data/bin/dotdrop
 
 	# Asserts
 	if [ ! -f ~/.dotfiles/xdg.sh ]; then
@@ -94,6 +70,7 @@ EOF
 	---
 	. ~/.bootstrap/bootstrap-out.sh
 	~/.dotfiles/os/unix/scripts/lifecycle/bootstrap.sh
+	~/.dotfiles/os/unix/scripts/lifecycle/idempotent.sh
 	---
 	EOF
 }
@@ -132,15 +109,18 @@ iscmd() {
 	fi
 }
 
-installupdates() {
+updatesystem() {
 	if iscmd 'pacman'; then
 		sudo pacman -Syyu --noconfirm
+		sudo pacman -R $(pacman -Qdtq)
 	elif iscmd 'apt-get'; then
 		sudo apt-get -y update
 		sudo apt-get -y upgrade
 		sudo apt-get -y install apt-transport-https
+		sudo apt-get -y autoremove
 	elif iscmd 'dnf'; then
 		sudo dnf -y update
+		sudo dnf -y autoremove
 	elif iscmd 'zypper'; then
 		sudo zypper -y update
 		sudo zypper -y upgrade

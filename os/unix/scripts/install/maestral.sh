@@ -15,9 +15,8 @@ source ./venv/bin/activate
 
 python3 -m pip install --upgrade wheel
 python3 -m pip install --upgrade maestral 'maestral[gui]'
+# TODO: apt install libsystemd-dev, cython3
 python3 -m pip install --upgrade 'maestral[syslog]' # May fail
-
-maestral autostart --yes
 
 cat <<'EOF' > ~/.dotfiles/.data/bin/maestral
 #!/usr/bin/env sh
@@ -26,3 +25,6 @@ set -e
 maestral "$@"
 EOF
 chmod +x ~/.dotfiles/.data/bin/maestral
+
+maestral auth link
+maestral autostart --yes

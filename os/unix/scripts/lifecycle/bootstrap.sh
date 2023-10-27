@@ -25,19 +25,12 @@ main() {
 	# Ensure prerequisites
 	util.ensure mkdir -p "$XDG_CONFIG_HOME"
 
-
+	# Install distro packages
 	if util.is_cmd 'jq'; then
 		core.print_info 'Already installed jq'
 	else
 		core.print_info 'Installing jq'
 		util.install_packages 'jq'
-	fi
-
-	if util.is_cmd 'curl'; then
-		core.print_info 'Already installed curl'
-	else
-		core.print_info 'Installing curl'
-		util.install_packages 'curl'
 	fi
 
 	# Remove distribution specific dotfiles
@@ -47,6 +40,40 @@ main() {
 			util.ensure mv "$file" ~/.bootstrap/distro-dots
 		fi
 	done
+
+	# Install Cargo, Rust
+	if [ -d ~/.cargo ]; then
+		core.print_info 'Already installed Cargo'
+	else
+		core.print_info 'Installing Cargo'
+		curl -fsSL 'https://sh.rustup.rs' | sh -s -- --default-toolchain nightly -y
+	fi
+	if [ -f ~/.cargo/env ]; then
+		. ~/.cargo/env
+	fi
+
+	# Install hyperupcall/dotmgr
+	util.clone 'github.com/hyperupcall/dotmgr' ~/.dotfiles/.data/dotmgr-src
+	cd ~/.dotfiles/.data/dotmgr-src
+		git_remote=$(git remote)
+		if [ "$git_remote" = 'origin' ]; then
+			git remote rename origin me
+		fi
+		unset -v git_remote
+		git remote set-url me 'git@github.com:hyperupcall/dotmgr'
+		cargo build
+	cd
+	mkdir -p ~/.dotfiles/.data/bin
+	ln -sf ~/.dotfiles/.data/dotmgr-src/target/debug/dotmgr ~/.dotfiles/.data/bin/dotmgr
+	
+	# Create dotdrop script
+	cat <<"EOF" > ~/.dotfiles/.data/bin/dotdrop
+#!/usr/bin/env sh
+set -e
+. ~/.dotfiles/os/unix/vendor/dotdrop/venv/bin/activate
+~/.dotfiles/os/unix/vendor/dotdrop/dotdrop.sh "$@"
+EOF
+	chmod +x ~/.dotfiles/.data/bin/dotdrop
 
 	util.get_package_manager
 	local pkgmngr="$REPLY"
@@ -82,8 +109,8 @@ main() {
 		;;
 	esac
 
-	util.install_package bash-completion curl rsync pass
-	util.install_package pkg-config # for starship
+	util.install_packages bash-completion curl rsync pass
+	util.install_packages pkg-config # for starship
 	util.install_packages cmake ccache vim nano
 
 	# Get GithHub authorization tokens
