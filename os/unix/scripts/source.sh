@@ -225,6 +225,12 @@ util.clone() {
 	if [ ! -d "$dir" ]; then
 		core.print_info "Cloning '$repo' to $dir"
 		git clone "$repo" "$dir"
+
+		git_remote=$(git -C "$dir" remote)
+		if [ "$git_remote" = 'origin' ]; then
+			git -C "$dir" remote rename origin me
+		fi
+		unset -v git_remote
 	fi
 }
 

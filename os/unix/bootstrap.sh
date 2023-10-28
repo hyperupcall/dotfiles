@@ -16,12 +16,6 @@ main() {
 
 	# Install essential commands
 	updatesystem
-	if iscmd 'curl'; then
-		log 'Already installed curl'
-	else
-		log 'Installing curl'
-		installcmd 'curl' 'curl'
-	fi
 	case $(uname) in darwin*)
 		if iscmd 'brew'; then
 			log "Already installed Homebrew"
@@ -31,16 +25,19 @@ main() {
 			bash ~/.bootstrap/install-brew.sh
 		fi
 	esac
+	installcmd 'curl' 'curl'
 	installcmd 'git' 'git'
 	installcmd 'nvim' 'neovim'
 
 	# Install hyperupcall/dotfiles
 	clonerepo 'github.com/hyperupcall/dotfiles' ~/.dotfiles '--recurse-submodules'
 	run cd ~/.dotfiles
-		run git remote set-url origin 'git@github.com:hyperupcall/dotfiles'
-		run git remote rename origin me
+		run git remote set-url me 'git@github.com:hyperupcall/dotfiles'
 		run ./bake init
 	run cd
+
+	# Symlink ~/scripts
+	ln -fs ~/.dotfiles/os/unix/scripts ~/
 
 	# Asserts
 	if [ ! -f ~/.dotfiles/xdg.sh ]; then
@@ -69,8 +66,9 @@ EOF
 	cat <<-"EOF"
 	---
 	. ~/.bootstrap/bootstrap-out.sh
-	~/.dotfiles/os/unix/scripts/lifecycle/bootstrap.sh
-	~/.dotfiles/os/unix/scripts/lifecycle/idempotent.sh
+	~/scripts/lifecycle/doctor.sh
+	~/scripts/lifecycle/bootstrap.sh
+	~/scripts/lifecycle/idempotent.sh
 	---
 	EOF
 }
@@ -164,6 +162,12 @@ clonerepo() {
 		log "Cloning $1"
 		# shellcheck disable=SC2086
 		run git clone --quiet "https://$1" "$2" $3
+
+		git_remote=$(git -C "$2" remote)
+		if [ "$git_remote" = 'origin' ]; then
+			run git -C "$2" remote rename origin me
+		fi
+		unset -v git_remote
 	fi
 }
 

@@ -32,9 +32,10 @@ chmod +x ~/.bootstrap/bootstrap.sh
 
 The `bootstrap.sh` script performs the following steps:
 
-- Installs Homebrew, on macOS
-- Installs Git and Neovim
+- Installs Homebrew on macOS
+- Installs cURL, Git and Neovim
 - Clones `hyperupcall/dotfiles` to `~/.dotfiles`
+- Symlinks scripts to `~/scripts`
 - Creates a `~/.bootstrap/bootstrap-out.sh`; sourcing it does the following:
   - Sets `NAME`, `EMAIL`, `EDITOR`, `VISUAL`
   - Appends `$HOME/.dotfiles/.data/bin` to `PATH`
@@ -49,6 +50,7 @@ Then, run the following:
 Now, execute the scripts you need:
 
 ```sh
+~/scripts/lifecycle/doctor.sh
 ~/scripts/lifecycle/bootstrap.sh
 ~/scripts/lifecycle/idempotent.sh
 ```

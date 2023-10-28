@@ -55,11 +55,6 @@ main() {
 	# Install hyperupcall/dotmgr
 	util.clone 'github.com/hyperupcall/dotmgr' ~/.dotfiles/.data/dotmgr-src
 	cd ~/.dotfiles/.data/dotmgr-src
-		git_remote=$(git remote)
-		if [ "$git_remote" = 'origin' ]; then
-			git remote rename origin me
-		fi
-		unset -v git_remote
 		git remote set-url me 'git@github.com:hyperupcall/dotmgr'
 		cargo build
 	cd
