@@ -110,6 +110,7 @@ iscmd() {
 updatesystem() {
 	if iscmd 'pacman'; then
 		sudo pacman -Syyu --noconfirm
+		# shellcheck disable=SC2046
 		sudo pacman -R $(pacman -Qdtq)
 	elif iscmd 'apt-get'; then
 		sudo apt-get -y update
@@ -163,7 +164,7 @@ clonerepo() {
 		# shellcheck disable=SC2086
 		run git clone --quiet "https://$1" "$2" $3
 
-		git_remote=$(git -C "$2" remote)
+		git_remote=$(run git -C "$2" remote)
 		if [ "$git_remote" = 'origin' ]; then
 			run git -C "$2" remote rename origin me
 		fi
