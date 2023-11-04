@@ -9,13 +9,15 @@ main() {
 }
 
 install.lutris() {
-	apt_add_source 'lutris' 'deb [signed-by=/etc/apt/keyrings/lutris.gpg] https://download.opensuse.org/repositories/home:/strycore/Debian_12/ ./'
-	wget -q -O- https://download.opensuse.org/repositories/home:/strycore/Debian_12/Release.key | gpg --dearmor | sudo tee /etc/apt/keyrings/lutris.gpg > /dev/null
+	local gpg_file="/etc/apt/keyrings/lutris.asc"
 
-}
+	pkg.add_apt_key \
+		'https://download.opensuse.org/repositories/home:/strycore/Debian_12/Release.key' \
+		"$gpg_file"
 
-apt_add_source() {
-	printf '% s\n' "$2" | sudo tee "/etc/apt/sources.list.d/$1.list" > /dev/null
+	pkg.add_apt_repository \
+		"deb [signed-by=$gpg_file] https://download.opensuse.org/repositories/home:/strycore/Debian_12/ ./" \
+		'/etc/apt/sources.list.d/lutris.list'
 }
 
 main "$@"

@@ -17,11 +17,15 @@ install.vscode() {
 		yay -S visual-studio-code-bin visual-studio-code-insiders-bin
 		;;
 	apt)
-		curl -fsSLo- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > './packages.microsoft.gpg'
-		sudo install -o root -g root -m 644 './packages.microsoft.gpg' '/etc/apt/trusted.gpg.d'
-		rm -f './packages.microsoft.gpg'
-		printf '%s\n' "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" \
-			| sudo tee '/etc/apt/sources.list.d/vscode.list' >/dev/null
+		local gpg_file="/etc/apt/keyrings/microsoft.asc"
+
+		pkg.add_apt_key \
+			'https://packages.microsoft.com/keys/microsoft.asc' \
+			"$gpg_file"
+
+		pkg.add_apt_repository \
+			"deb [arch=amd64,arm64,armhf signed-by=$gpg_file] https://packages.microsoft.com/repos/code stable main" \
+			'/etc/apt/sources.list.d/vscode.list'
 
 		sudo apt-get -y update
 		sudo apt-get -y install code code-insiders

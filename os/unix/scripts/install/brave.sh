@@ -24,12 +24,29 @@ install.brave() {
 		fi
 		;;
 	apt)
-		sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-		printf '%s\n' "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" \
-			| sudo tee '/etc/apt/sources.list.d/brave-browser-release.list' >/dev/null
-		sudo curl -fsSLo /usr/share/keyrings/brave-browser-beta-archive-keyring.gpg https://brave-browser-apt-beta.s3.brave.com/brave-browser-beta-archive-keyring.gpg
-		printf '%s\n' "deb [signed-by=/usr/share/keyrings/brave-browser-beta-archive-keyring.gpg arch=amd64] https://brave-browser-apt-beta.s3.brave.com/ stable main" \
-			| sudo tee '/etc/apt/sources.list.d/brave-browser-beta.list' >/dev/null
+		local gpg_file_release="/etc/apt/keyrings/brave-browser-release.gpg"
+		local gpg_file_beta="/etc/apt/keyrings/brave-browser-beta.gpg"
+		local gpg_file_nightly="/etc/apt/keyrings/brave-browser-nightly.gpg"
+
+		pkg.add_apt_key \
+			'https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg' \
+			"$gpg_file_release"
+		pkg.add_apt_key \
+			'https://brave-browser-apt-beta.s3.brave.com/brave-browser-beta-archive-keyring.gpg' \
+			"$gpg_file_beta"
+		pkg.add_apt_key \
+			'https://brave-browser-apt-nightly.s3.brave.com/brave-browser-nightly-archive-keyring.gpg' \
+			"$gpg_file_nightly"
+
+		pkg.add_apt_repository \
+			"deb [arch=amd64,arm64 signed-by=$gpg_file_release] https://brave-browser-apt-release.s3.brave.com/ stable main" \
+			'/etc/apt/sources.list.d/brave-browser-release.list'
+		pkg.add_apt_repository \
+			"deb [arch=amd64,arm64 signed-by=$gpg_file_beta] https://brave-browser-apt-beta.s3.brave.com/ stable main" \
+			'/etc/apt/sources.list.d/brave-browser-beta.list'
+		pkg.add_apt_repository \
+			"deb [arch=amd64,arm64 signed-by=$gpg_file_nightly] https://brave-browser-apt-nightly.s3.brave.com/ stable main" \
+			'/etc/apt/sources.list.d/brave-browser-nightly.list'
 
 		sudo apt-get -y update
 		sudo apt-get -y install brave-browser brave-browser-beta

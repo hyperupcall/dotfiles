@@ -57,6 +57,27 @@ helper.assert_app_image_launcher_installed() {
 	fi
 }
 
+pkg.add_apt_key() {
+	local source_url=$1
+	local dest_file="$2"
+
+	if [ ! -f "$dest_file" ]; then
+		sudo mkdir -p "${dest_file%/*}"
+		util.req "$source_url" \
+			| sudo tee "$dest_file" >/dev/null
+	fi
+}
+
+pkg.add_apt_repository() {
+	local source_line="$1"
+	local dest_file="$2"
+
+	sudo mkdir -p "${dest_file%/*}"
+	sudo rm -f "${dest_file%.*}.list"
+	sudo rm -f "${dest_file%.*}.sources"
+	printf '%s\n' "$source_line" | sudo tee "$dest_file" >/dev/null
+}
+
 must.rm() {
 	util.get_path "$1"
 	local file="$REPLY"
