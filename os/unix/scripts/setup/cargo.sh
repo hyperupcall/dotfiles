@@ -3,7 +3,7 @@
 source "${0%/*}/../source.sh"
 
 main() {
-	if util.confirm 'Setup Basalt?'; then
+	if util.confirm 'Setup Cargo?'; then
 		setup.basalt
 	fi
 }
