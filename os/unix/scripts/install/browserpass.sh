@@ -10,7 +10,7 @@ main() {
 
 install.browserpass() {
 	# browserpass-native
-	local version='3.0.10'
+	local version='3.1.0'
 	local system='linux64'
 	local install_dir='/usr/local'
 	local app_id='com.github.browserpass.native.json'
@@ -21,12 +21,12 @@ install.browserpass() {
 
 	util.cd_temp
 
-	util.req -o ./browserpass.tar.gz "$url" || util.die
-	tar xf ./browserpass.tar.gz || util.die
-	cd "./browserpass-linux64-$version" || util.die
+	util.req -o ./browserpass.tar.gz "$url"
+	tar xf ./browserpass.tar.gz
+	cd "./browserpass-linux64-$version"
 
-	util.run make BIN="browserpass-$system" PREFIX="$install_dir" configure || util.die
-	util.run sudo make BIN="browserpass-$system" PREFIX="$install_dir" install || util.die
+	util.run make BIN="browserpass-$system" PREFIX="$install_dir" configure
+	util.run sudo make BIN="browserpass-$system" PREFIX="$install_dir" install
 
 	# TODO: don't create a million directories
 	# Symlink messaging host definition

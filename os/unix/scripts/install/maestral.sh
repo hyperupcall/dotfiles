@@ -1,4 +1,4 @@
-# shellcheck shell=bash
+#!/usr/bin/env bash
 
 source "${0%/*}/../source.sh"
 
@@ -13,10 +13,10 @@ else
 fi
 source ./venv/bin/activate
 
-python3 -m pip install --upgrade wheel
-python3 -m pip install --upgrade maestral 'maestral[gui]'
+python3 -m pip --require-virtualenv install --upgrade wheel
+python3 -m pip --require-virtualenv install --upgrade maestral 'maestral[gui]'
 # TODO: apt install libsystemd-dev, cython3
-python3 -m pip install --upgrade 'maestral[syslog]' # May fail
+python3 -m pip --require-virtualenv install --upgrade 'maestral[syslog]' # May fail
 
 cat <<'EOF' > ~/.dotfiles/.data/bin/maestral
 #!/usr/bin/env sh
