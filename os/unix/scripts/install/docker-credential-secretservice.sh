@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# Name:
-# Install Docker Credential Secret Service
-
 source "${0%/*}/../source.sh"
 
 main() {
