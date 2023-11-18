@@ -27,6 +27,12 @@
 		printf '%s\n' 'Failed because $XDG_STATE_HOME is empty' >&2
 		exit 1
 	fi
+
+	err_handler() {
+		core.print_stacktrace
+	}
+	core.trap_add 'err_handler' SIGINT
+	sleep 30
 }
 
 {
