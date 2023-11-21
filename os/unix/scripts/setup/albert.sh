@@ -12,13 +12,18 @@ install.albert() {
 	local pkgmngr="$REPLY"
 
 	if util.is_cmd 'apt'; then
-		sudo apt-get install -y libarchive-dev
+		sudo apt-get install -y libarchive-dev autoconf
 	fi
 
 	util.clone_in_dotfiles 'https://github.com/albertlauncher/albert' --recursive
+	git submodule update --init lib/QHotkey # TODO
 	local dir="$REPLY"
 	cd "$dir"
 
+
+	if util.is_cmd 'apt'; then
+		sudo apt-get install -y intltool libtool libgmp-dev libmpfr-dev libcurl4-openssl-dev
+	fi
 	if [ ! -d lib/pybind11 ]; then
 		git submodule add https://github.com/pybind/pybind11 lib/pybind11
 	fi
@@ -47,6 +52,7 @@ install.albert() {
 		sudo make install
 	)
 
+	sudo apt install qt6-base-dev libqt6svg6-dev
 	mise install cmake
 	PATH="$XDG_DATA_HOME/mise/shims:$PATH"
 	cmake -B build -S . -DCMAKE_INSTALL_PREFIX=/usr/local -DCMAKE_BUILD_TYPE=Debug
