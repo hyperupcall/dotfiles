@@ -32,7 +32,6 @@
 		core.print_stacktrace
 	}
 	core.trap_add 'err_handler' SIGINT
-	sleep 30
 }
 
 {
