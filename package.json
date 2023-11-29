@@ -1,6 +1,7 @@
 {
 	"devDependencies": {
-		"prettier": "^3.0.1",
-		"@hyperupcall/prettier-config": "^0.6.0"
+		"@hyperupcall/markdownlint-config": "^0.3.1",
+		"@hyperupcall/prettier-config": "^0.6.0",
+		"prettier": "^3.0.1"
 	}
 }

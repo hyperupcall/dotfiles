@@ -4,7 +4,10 @@
 {
 	# Set options
 	set -e
-	shopt -s extglob globstar shift_verbose
+	if [ -n "$BASH_VERSION" ]; then
+		# shellcheck disable=SC3044
+		shopt -s extglob globstar shift_verbose
+	fi
 
 	# Source libraries
 	source ~/.dotfiles/xdg.sh
@@ -170,7 +173,8 @@ must.link() {
 
 	# If it is an empty directory (and not a symlink) automatically remove it
 	if [ -d "$target" ] && [ ! -L "$target" ]; then
-		local children=("$target"/*)
+		local children=
+		children=("$target"/*)
 		if (( ${#children[@]} == 0)); then
 			rmdir "$target"
 		else
@@ -295,7 +299,13 @@ util.confirm() {
 	local input=
 	until [[ "$input" =~ ^[yn]$ ]]; do
 		read -rN1 -p "$message "
-		input=${REPLY,,}
+		if [ -n "$BASH_VERSION" ]; then
+			input=${REPLY,,}
+		elif [ -n "$KSH_VERSION" ]; then
+			typeset -M toupper input="$REPLY"
+		else
+			input=$(printf '%s\n' "$REPLY" | tr '[:upper:]' '[:lower:]')
+		fi
 	done
 	printf '\n'
 

@@ -47,6 +47,10 @@ export PASSWORD_STORE_CLIP_TIME='15'
 export PASSWORD_STORE_ENABLE_EXTENSIONS='true'
 export PASSWORD_STORE_GENERATED_LENGTH='40'
 
+# pnpm
+export PNPM_HOME="$XDG_DATA_HOME/pnpm"
+_path_prepend "$PNPM_HOME"
+
 # ps
 export CMD_ENV='linux'
 

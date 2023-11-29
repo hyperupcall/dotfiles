@@ -2,7 +2,7 @@
 
 The following scripts are notable and may be of use:
 
-## [`dot_funcalias_extractor`](/os/unix/dotmgr/scripts-misc/12_dot_funcalias_extractor.sh)
+## [`extract-aliases`](/os/unix/scripts/utility/extract-aliases)
 
 Script that automatically generates bash startup scripts
 for remote servers and the root user based on annotations of functions, aliases, and readline declarations

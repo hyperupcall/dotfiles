@@ -54,3 +54,10 @@ Now, execute the scripts you need:
 ~/scripts/lifecycle/bootstrap.sh
 ~/scripts/lifecycle/idempotent.sh
 ```
+
+## Next Steps
+
+Some scripts may need to be updated. They include:
+
+- Keybindings. Different DEs have different configuration mechanisms
+- Installation scripts

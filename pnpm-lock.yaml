@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 devDependencies:
+  '@hyperupcall/markdownlint-config':
+    specifier: ^0.3.1
+    version: 0.3.1
   '@hyperupcall/prettier-config':
     specifier: ^0.6.0
     version: 0.6.0
@@ -13,6 +16,10 @@ devDependencies:
     version: 3.0.1
 
 packages:
+
+  /@hyperupcall/markdownlint-config@0.3.1:
+    resolution: {integrity: sha512-Z8TmgusDupMjCyxcvHRmU3Iwd9WabGsuu8BJ6sr2pRgzvUnJIWMaZdcqnm1x5t9AtQHUncJqKSKt14ylgmfI0w==}
+    dev: true
 
   /@hyperupcall/prettier-config@0.6.0:
     resolution: {integrity: sha512-nAJ+/9eZ4pnc/zVi3GvIE1hWIUjopr7iCaTQstW4hGeL8XjnUPMGz9Pn97PDqAWyDieQ8TT4PM+IILwaWFtBiQ==}
