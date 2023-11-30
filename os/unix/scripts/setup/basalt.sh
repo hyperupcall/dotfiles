@@ -10,7 +10,8 @@ main() {
 
 setup.basalt() {
 	basalt global add \
-		hyperupcall/autoenv
+		hyperupcall/autoenv \
+		hyperupcall/bake
 
 	basalt global add \
 		cykerway/complete-alias \

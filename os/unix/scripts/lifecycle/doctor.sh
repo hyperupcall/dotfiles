@@ -12,7 +12,7 @@ failure() {
 
 main() {
 	printf '%s\n' "BINARIES:"
-	local -a cmds=(dotmgr dotdrop clang-format clang-tidy)
+	local -a cmds=(dotmgr dotdrop clang-format clang-tidy bake basalt)
 	local cmd=
 	for cmd in "${cmds[@]}"; do
 		if util.is_cmd "$cmd"; then

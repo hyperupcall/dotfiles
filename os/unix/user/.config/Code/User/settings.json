@@ -20,6 +20,5 @@
   "git.confirmSync": false,
   "update.showReleaseNotes": false,
   "explorer.confirmDragAndDrop": false,
-  "workbench.colorTheme": "Noctis Lilac",
   "julia.symbolCacheDownload": true
 }
