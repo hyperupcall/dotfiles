@@ -175,5 +175,6 @@ dotfiles:
   - '.config/zsh'
   - '.local/share/applications/FoxBlender.desktop'
   - '.local/share/sdkman/etc/config'
+  - '.local/share/albert/python/plugins'
   - '.local/state/dotshellgen'
   - 'pam'

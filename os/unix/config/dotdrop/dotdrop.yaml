@@ -554,6 +554,9 @@ dotfiles:
   '.local/share/sdkman/etc/config':
     src: '{{@@ data_src @@}}/sdkman/etc/config'
     dst: '{{@@ data_dst @@}}/sdkman/etc/config'
+  '.local/share/albert/python/plugins':
+    src: '{{@@ data_src @@}}/albert/python/plugins'
+    dst: '{{@@ data_dst @@}}/albert/python/plugins'
   '.local/state/dotshellgen':
     src: '{{@@ state_src @@}}/dotshellgen'
     dst: '{{@@ state_dst @@}}/dotshellgen'

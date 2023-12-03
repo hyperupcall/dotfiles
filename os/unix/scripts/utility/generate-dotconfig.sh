@@ -197,6 +197,7 @@ declare -ga g_dotfiles=(
 	cfg:'zsh'
 	data:'applications/FoxBlender.desktop'
 	data:'sdkman/etc/config'
+	data:'albert/python/plugins'
 	state:'dotshellgen'
 )
 {

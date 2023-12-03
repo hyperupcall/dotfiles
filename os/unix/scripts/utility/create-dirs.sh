@@ -124,6 +124,7 @@ main() {
 		must.link "$HOME/.dotfiles/.home/Documents/Programming/Challenges" "$HOME/challenges"
 		must.link "$HOME/.dotfiles/.home/Documents/Programming/Experiments" "$HOME/experiments"
 		must.link "$HOME/.dotfiles/.home/Documents/Programming/Repositories" "$HOME/groups"
+		must.link "$HOME/.dotfiles/.home/Documents/Programming/Repositories" "$HOME/repositories"
 	elif [ "$profile" = 'laptop' ]; then
 		:
 	fi

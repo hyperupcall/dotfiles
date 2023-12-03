@@ -23,6 +23,18 @@ main() {
 	done; unset -v cmd
 	printf '\n'
 
+	printf '%s\n' "BINARIES: DEVELOPMENT:"
+	local -a cmds=(gh)
+	local cmd=
+	for cmd in "${cmds[@]}"; do
+		if util.is_cmd "$cmd"; then
+			success "Is installed: $cmd"
+		else
+			failure "Not installed: $cmd"
+		fi
+	done; unset -v cmd
+	printf '\n'
+
 	printf '%s\n' "DROPBOX:"
 	if pgrep dropbox &>/dev/null; then
 		success "Dropbox is running"
