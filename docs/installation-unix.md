@@ -19,7 +19,7 @@ systemctl daemon-reload
 systemctl enable --now systemd-{network,resolve}d
 ```
 
-## Bootstrapping
+## Bootstrap
 
 Download and execute `bootstrap.sh` to begin the bootstrap process:
 
@@ -47,7 +47,7 @@ Then, run the following:
 . ~/.bootstrap/bootstrap-out.sh
 ```
 
-Now, execute the scripts you need:
+Now, execute:
 
 ```sh
 ~/scripts/lifecycle/doctor.sh
@@ -59,5 +59,10 @@ Now, execute the scripts you need:
 
 Some scripts may need to be updated. They include:
 
-- Keybindings. Different DEs have different configuration mechanisms
-- Installation scripts
+- Install ZFS, BTRFS
+- Install pass
+- Install Brave
+- Install Obsidian
+- Install Dropbox, Maestral
+- Retreieve SSH, PGP keys
+- Configuring keybindings

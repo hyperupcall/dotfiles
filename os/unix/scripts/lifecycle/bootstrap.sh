@@ -1,18 +1,5 @@
 #!/usr/bin/env bash
 
-# Name:
-# Bootstrap
-#
-# Description:
-# Bootstraps dotfiles
-#
-# It
-# - Installs dev build tools
-# - Installs jq
-# - Installs curl
-# - Moves distro dotfiles (to ~/.bootstrap/distro-dots)
-# - Downloads GitHub authorization tokens
-
 source "${0%/*}/../source.sh"
 
 main() {
@@ -52,16 +39,8 @@ main() {
 		. ~/.cargo/env
 	fi
 
-	# Install hyperupcall/dotmgr
-	util.clone 'github.com/hyperupcall/dotmgr' ~/.dotfiles/.data/dotmgr-src
-	cd ~/.dotfiles/.data/dotmgr-src
-		git remote set-url me 'git@github.com:hyperupcall/dotmgr'
-		cargo build
-	cd
-	mkdir -p ~/.dotfiles/.data/bin
-	ln -sf ~/.dotfiles/.data/dotmgr-src/target/debug/dotmgr ~/.dotfiles/.data/bin/dotmgr
-	
 	# Create dotdrop script
+	mkdir -p ~/.dotfiles/.data/bin
 	cat <<"EOF" > ~/.dotfiles/.data/bin/dotdrop
 #!/usr/bin/env sh
 set -e
@@ -70,6 +49,7 @@ set -e
 EOF
 	chmod +x ~/.dotfiles/.data/bin/dotdrop
 
+	# Install generally useful dependencies
 	util.get_package_manager
 	local pkgmngr="$REPLY"
 
