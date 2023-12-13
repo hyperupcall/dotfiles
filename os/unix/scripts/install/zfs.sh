@@ -9,10 +9,6 @@ main() {
 }
 
 install.zfs() {
-	# pkg.add_apt_key \
-	# 	'https://download.opensuse.org/repositories/home:/strycore/Debian_12/Release.key' \
-	# 	"$gpg_file"
-
 	pkg.add_apt_repository \
 		"deb https://deb.debian.org/debian bookworm-backports main contrib
 deb-src https://deb.debian.org/debian bookworm-backports main contrib" \

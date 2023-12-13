@@ -9,8 +9,8 @@ main() {
 }
 
 install.browserpass() {
-	# browserpass-native
-	local version='3.1.0'
+	util.get_latest_github_tag 'browserpass/browserpass-native'
+	local version="$REPLY"
 	local system='linux64'
 	local install_dir='/usr/local'
 	local app_id='com.github.browserpass.native.json'
@@ -28,24 +28,24 @@ install.browserpass() {
 	util.run make BIN="browserpass-$system" PREFIX="$install_dir" configure
 	util.run sudo make BIN="browserpass-$system" PREFIX="$install_dir" install
 
-	# TODO: don't create a million directories
 	# Symlink messaging host definition
-	for f in \
-		"$XDG_CONFIG_HOME"/{BraveSoftware/Brave-Browser{,-Beta,-Nightly},vivaldi{,-snapshot},microsoft-edge{,-beta,-dev},google-chrome{,-beta,-unstable},opera{,-beta,-developer},sidekick,wavebox}/"NativeMessagingHosts/$app_id"
+	local dir=
+	for dir in \
+		"$XDG_CONFIG_HOME"/{BraveSoftware/Brave-Browser{,-Beta,-Nightly},vivaldi{,-snapshot},microsoft-edge{,-beta,-dev},google-chrome{,-beta,-unstable},opera{,-beta,-developer},sidekick,wavebox}/
 	do
-		mkdir -p "${f%/*}"
-		ln -sfv  "$install_dir/lib/browserpass/hosts/chromium/$app_id" "$f"
+		# local browser_dir="${f%/*}"
+		# browser_dir=${browser_dir%/*}
+
+		if [ -d "$dir" ]; then
+			mkdir -p "$dir/NativeMessagingHosts"
+			ln -sfv  "$install_dir/lib/browserpass/hosts/chromium/$app_id" "$dir/NativeMessagingHosts/$app_id"
+			
+			mkdir -p "$dir/policies/managed"
+			ln -sfv "$install_dir/lib/browserpass/policies/chromium/$app_id" "$dir/policies/managed/$app_id"
+		fi
 	done
 
-	# Symlink policies
-	for f in \
-		"$XDG_CONFIG_HOME"/{BraveSoftware/Brave-Browser{,-Beta,-Nightly},vivaldi{,-snapshot},microsoft-edge{,-beta,-dev},google-chrome{,-beta,-unstable},opera{,-beta,-developer},sidekick,wavebox}/"policies/managed/$app_id"
-	do
-		mkdir -p "${f%/*}"
-		ln -sfv "$install_dir/lib/browserpass/policies/chromium/$app_id" "$f"
-	done
-
-	# Firefox
+	# # Firefox
 	mkdir -p "${HOME}/.mozilla/native-messaging-hosts"
 	ln -sfv "$install_dir/lib/browserpass/hosts/firefox/$app_id" "${HOME}/.mozilla/native-messaging-hosts/$app_id"
 

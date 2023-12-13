@@ -9,16 +9,19 @@ main() {
 }
 
 install.neovim() {
+	# TODO: install gettext
 	util.clone_in_dots 'https://github.com/neovim/neovim'
 	local dir="$REPLY"
 
 	cd "$dir"
 	git switch master
-	git pull --ff-only origin master
+	git pull --ff-only me master
 
 	local channel='nightly' # or stable
-	git fetch origin "$channel"
-	git branch -D 'build'
+	git fetch me "$channel"
+	if git show-ref --quiet refs/heads/build; then
+		git branch -D 'build'
+	fi
 	git switch -c 'build' "tags/$channel"
 
 	rm -rf './build'

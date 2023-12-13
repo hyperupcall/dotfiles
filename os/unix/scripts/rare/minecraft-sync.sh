@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-# Name:
-# Sync Minecraft
-#
-# Description:
 # Syncs subdirectories like 'resourcepacks', 'saves', 'screenshots' of
 # the most common .minecraft directories for all major launchers.
 

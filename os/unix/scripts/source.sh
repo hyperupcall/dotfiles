@@ -287,7 +287,7 @@ util.clone_in_dots() {
 	local repo="$1"
 
 	local dir="$HOME/.dotfiles/.data/repos/${repo##*/}"
-	util.clone "$repo" "$dir"
+	util.clone "$repo" "$dir" "${@:2}"
 
 	REPLY=$dir
 }
@@ -359,10 +359,10 @@ util.get_latest_github_tag() {
 
 	core.print_info "Getting latest version of: $repo"
 
-	# FIXME: this is going to be rate limited
+	local token="$(<~/.dotfiles/.data/github_token)"
 	local url="https://api.github.com/repos/$repo/releases/latest"
 	local tag_name=
-	tag_name=$(curl -fsSLo- "$url" | jq -r '.tag_name')
+	tag_name=$(curl -fsSLo- -H "Authorization: token: $token" "$url" | jq -r '.tag_name')
 
 	REPLY=$tag_name
 }

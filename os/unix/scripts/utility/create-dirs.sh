@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-# Name:
-# dirs
-#
-# Description:
 # Deal with:
 # - Mounting file systems (if applicable)
 # - Removing pre-existing dotfiles

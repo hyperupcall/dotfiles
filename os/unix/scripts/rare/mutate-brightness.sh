@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
 
-# Name:
-# Primary
-#
-# Description:
-# Adds user to various groups
-
 source "${0%/*}/../source.sh"
 
 main() {

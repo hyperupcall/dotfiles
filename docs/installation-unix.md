@@ -60,7 +60,7 @@ Now, execute:
 Some scripts may need to be updated. They include:
 
 - Install ZFS, BTRFS
-- Install pass
+- Install pass, pass-browserpass
 - Install Brave
 - Install Obsidian
 - Install Dropbox, Maestral

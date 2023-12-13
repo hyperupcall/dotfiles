@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# Name:
-# Export Secrets
-#
 # Description:
 # This exports gpg keys, ssh keys, and the pass database to your 'secrets' USB.
 # Everything is encrypted with a passphrase. This script Just Works, whether or not the

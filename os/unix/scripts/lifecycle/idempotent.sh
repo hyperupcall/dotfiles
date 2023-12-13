@@ -1,15 +1,5 @@
 #!/usr/bin/env bash
 
-# Name:
-# Idempotent Scripts
-#
-# Description:
-# Idempotently configures the desktop. This includes:
-# - Ensures mount to /storage/ur
-# - Strip ~/.bashrc, etc. dotfiles from random appendage
-# - Symlinks ~/.ssh, etc. software not mananged by dotfox
-# - Symlinks directories to ~/.dotfiles/.home
-
 source "${0%/*}/../source.sh"
 
 main() {

@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
 
-# Name:
-# Import Secrets
-#
-# Description:
-# This imports your GPG keys. It imports it from your shared drive mounted under /storage
-
 source "${0%/*}/../source.sh"
 
 main() {

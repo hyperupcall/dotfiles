@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
 
-# Name:
-# Print Colors
-#
-# Description:
-# Print colors
-
 source "${0%/*}/../source.sh"
 
 main() {

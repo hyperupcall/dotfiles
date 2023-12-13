@@ -39,15 +39,7 @@ main() {
 		. ~/.cargo/env
 	fi
 
-	# Create dotdrop script
-	mkdir -p ~/.dotfiles/.data/bin
-	cat <<"EOF" > ~/.dotfiles/.data/bin/dotdrop
-#!/usr/bin/env sh
-set -e
-. ~/.dotfiles/os/unix/vendor/dotdrop/venv/bin/activate
-~/.dotfiles/os/unix/vendor/dotdrop/dotdrop.sh "$@"
-EOF
-	chmod +x ~/.dotfiles/.data/bin/dotdrop
+	~/scripts/install/dotdrop.sh
 
 	# Install generally useful dependencies
 	util.get_package_manager

@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-# Name:
-# VirtualBox Import
-#
-# Description:
 # Registers all VirtualBox virtual machine. Optionally
 # enables unregistering all virtual machines
 

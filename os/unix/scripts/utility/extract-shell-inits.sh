@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-# Name:
-# dotshellgen.sh
-#
-# Description:
 # Generates shell scripts for different shells from a nicer directory hierarchy
 #
 # More specifically, it concatenates files from a hierarchy located at

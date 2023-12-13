@@ -24,6 +24,7 @@ main() {
 			run curl -fsSLo ~/.bootstrap/install-brew.sh 'https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh'
 			bash ~/.bootstrap/install-brew.sh
 		fi
+		brew install bash
 	esac
 	installcmd 'curl' 'curl'
 	installcmd 'git' 'git'
