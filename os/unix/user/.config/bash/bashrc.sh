@@ -57,13 +57,16 @@ unset -v MAILPATH
 shopt -s autocd
 shopt -s cdable_vars
 shopt -s cdspell
+shopt -s checkhash
 shopt -s checkjobs
 shopt -s checkwinsize
 shopt -s cmdhist
-shopt -s direxpand
+shopt -u complete_fullquote
+shopt -u direxpand
 shopt -s dirspell
 shopt -s dotglob
 shopt -u failglob
+shopt -s globasciiranges
 shopt -s globstar
 shopt -s histappend
 shopt -s histreedit
@@ -167,3 +170,4 @@ source "$XDG_CONFIG_HOME/bash/modules/readline.sh"
 source "$XDG_CONFIG_HOME/bash/modules/util.sh"
 
 # ---
+. "/home/edwin/.local/share/cargo/env"

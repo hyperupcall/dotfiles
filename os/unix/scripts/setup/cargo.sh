@@ -9,10 +9,10 @@ main() {
 }
 
 setup.basalt() {
-	cargo install starship
-	cargo install cargo-binstall
-	cargo install fd-find
-	cargo install modenv
+	cargo install --locked starship
+	cargo install --locked cargo-binstall
+	cargo install --locked fd-find
+	cargo install --locked modenv
 	cargo install --locked bat
 }
 

@@ -64,5 +64,6 @@ Some scripts may need to be updated. They include:
 - Install Brave
 - Install Obsidian
 - Install Dropbox, Maestral
-- Retreieve SSH, PGP keys
+- Retreieve SSH, PGP keys,
+- Install default, my-tools, etc.
 - Configuring keybindings
