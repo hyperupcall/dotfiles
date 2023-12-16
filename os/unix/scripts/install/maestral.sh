@@ -14,7 +14,8 @@ install.maestral() {
 
 	case $pkgmngr in
 	apt)
-		sudo apt install python3-dev python3-venv libsystemd-dev cython
+		sudo apt install python3-dev python3-venv libsystemd-dev cython qt5-default
+		sudo apt install libxcb-cursor0 # maestral gui
 		;;
 	*)
 		core.print_warn 'Unable to automatically install venv, libsystemd, cython'
@@ -32,8 +33,10 @@ install.maestral() {
 	fi
 	source ./venv/bin/activate
 
+	python3 -m pip --require-virtualenv install --upgrade pip
 	python3 -m pip --require-virtualenv install --upgrade wheel
-	python3 -m pip --require-virtualenv install --upgrade maestral 'maestral[gui]'
+	python3 -m pip --require-virtualenv install --upgrade maestral
+	python3 -m pip --require-virtualenv install --upgrade 'maestral[gui]'
 	python3 -m pip --require-virtualenv install --upgrade 'maestral[syslog]' # May fail
 
 	cat <<'EOF' > ~/.dotfiles/.data/bin/maestral

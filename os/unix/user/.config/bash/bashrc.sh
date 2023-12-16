@@ -61,7 +61,6 @@ shopt -s checkhash
 shopt -s checkjobs
 shopt -s checkwinsize
 shopt -s cmdhist
-shopt -u complete_fullquote
 shopt -u direxpand
 shopt -s dirspell
 shopt -s dotglob

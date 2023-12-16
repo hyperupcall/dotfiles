@@ -67,3 +67,4 @@ Some scripts may need to be updated. They include:
 - Retreieve SSH, PGP keys,
 - Install default, my-tools, etc.
 - Configuring keybindings
+- Testing spellchecker
