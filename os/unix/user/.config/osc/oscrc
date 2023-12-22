@@ -116,10 +116,7 @@ apiurl = https://api.opensuse.org
 # realname =
 # email used in .changes, unless the one from osc meta prj <user> will be used
 # email =
-# additional headers to pass to a request, e.g. for special authentication
 #http_headers = Host: foofoobar,
 #       User: mumblegack
-# Plain text password
-#pass =
 user=eankeen
 credentials_mgr_class=osc.credentials.KeyringCredentialsManager:keyring.backends.SecretService.Keyring
