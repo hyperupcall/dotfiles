@@ -30,22 +30,22 @@ main() {
 	# 4. Bash
 	if util.confirm 'Install Bash stuff?'; then
 		# Frameworks
-		util.clone_in_dots 'https://github.com/ohmybash/oh-my-bash'
-		util.clone_in_dots 'https://github.com/bash-it/bash-it'
+		util.clone_in_dotfiles 'https://github.com/ohmybash/oh-my-bash'
+		util.clone_in_dotfiles 'https://github.com/bash-it/bash-it'
 		source ~/.dotfiles/.data/repos/bash-it/install.sh --no-modify-config
 
 		# Prompts
-		util.clone_in_dots 'https://github.com/magicmonty/bash-git-prompt'
-		util.clone_in_dots 'https://github.com/riobard/bash-powerline'
-		util.clone_in_dots 'https://github.com/barryclark/bashstrap'
-		util.clone_in_dots 'https://github.com/lvv/git-prompt'
-		util.clone_in_dots 'https://github.com/nojhan/liquidprompt'
-		util.clone_in_dots 'https://github.com/arialdomartini/oh-my-git'
-		util.clone_in_dots 'https://github.com/twolfson/sexy-bash-prompt'
+		util.clone_in_dotfiles 'https://github.com/magicmonty/bash-git-prompt'
+		util.clone_in_dotfiles 'https://github.com/riobard/bash-powerline'
+		util.clone_in_dotfiles 'https://github.com/barryclark/bashstrap'
+		util.clone_in_dotfiles 'https://github.com/lvv/git-prompt'
+		util.clone_in_dotfiles 'https://github.com/nojhan/liquidprompt'
+		util.clone_in_dotfiles 'https://github.com/arialdomartini/oh-my-git'
+		util.clone_in_dotfiles 'https://github.com/twolfson/sexy-bash-prompt'
 
 		# Utilities
-		util.clone_in_dots 'https://github.com/akinomyoga/ble.sh'
-		util.clone_in_dots 'https://github.com/huyng/bashmarks'
+		util.clone_in_dotfiles 'https://github.com/akinomyoga/ble.sh'
+		util.clone_in_dotfiles 'https://github.com/huyng/bashmarks'
 
 		# Unused
 		# util.clone 'https://github.com/basherpm/basher' ~/.dotfiles/.data/repos/basher
@@ -54,12 +54,12 @@ main() {
 
 	# 8. Git
 	if util.confirm 'Install Random Git packages?'; then
-		util.clone_in_dots 'jayphelps/git-blame-someone-else'
-		util.clone_in_dots 'davidosomething/git-ink'
-		util.clone_in_dots 'qw3rtman/git-fire'
-		util.clone_in_dots 'paulirish/git-recent'
-		util.clone_in_dots 'imsky/git-fresh'
-		util.clone_in_dots 'paulirish/git-open'
+		util.clone_in_dotfiles 'jayphelps/git-blame-someone-else'
+		util.clone_in_dotfiles 'davidosomething/git-ink'
+		util.clone_in_dotfiles 'qw3rtman/git-fire'
+		util.clone_in_dotfiles 'paulirish/git-recent'
+		util.clone_in_dotfiles 'imsky/git-fresh'
+		util.clone_in_dotfiles 'paulirish/git-open'
 	fi
 }
 

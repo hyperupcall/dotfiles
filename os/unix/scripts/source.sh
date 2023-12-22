@@ -282,7 +282,7 @@ util.install_packages() {
 	fi
 }
 
-util.clone_in_dots() {
+util.clone_in_dotfiles() {
 	unset -v REPLY; REPLY=
 	local repo="$1"
 

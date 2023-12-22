@@ -24,7 +24,7 @@ main() {
 	printf '\n'
 
 	printf '%s\n' "BINARIES: DEVELOPMENT:"
-	local -a cmds=(gh)
+	local -a cmds=(gh nvim)
 	local cmd=
 	for cmd in "${cmds[@]}"; do
 		if util.is_cmd "$cmd"; then

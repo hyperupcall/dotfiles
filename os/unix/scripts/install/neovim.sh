@@ -10,7 +10,7 @@ main() {
 
 install.neovim() {
 	# TODO: install gettext
-	util.clone_in_dots 'https://github.com/neovim/neovim'
+	util.clone_in_dotfiles 'https://github.com/neovim/neovim'
 	local dir="$REPLY"
 
 	cd "$dir"
