@@ -48,6 +48,10 @@ main() {
 	fi
 	printf '\n'
 
+	printf '%s\n' "FISH:"
+	# fish, fish-indent TODO
+	printf '\n'
+
 	printf '%s\n' "SENSITIVE:"
 	if [ -d "$XDG_DATA_HOME/password-store" ]; then
 		if [ -d "$XDG_DATA_HOME/password-store" ]; then

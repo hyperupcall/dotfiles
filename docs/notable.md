@@ -2,7 +2,7 @@
 
 The following scripts are notable and may be of use:
 
-## [`extract-aliases`](/os/unix/scripts/utility/extract-aliases)
+## [`generate-aliases`](/os/unix/scripts/utility/generate-aliases)
 
 Script that automatically generates bash startup scripts
 for remote servers and the root user based on annotations of functions, aliases, and readline declarations

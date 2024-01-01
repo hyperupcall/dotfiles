@@ -143,9 +143,6 @@ dotfiles:
   '.config/cdm':
     src: '{{@@ cfg_src @@}}/cdm'
     dst: '{{@@ cfg_dst @@}}/cdm'
-  '.config/choose':
-    src: '{{@@ cfg_src @@}}/choose'
-    dst: '{{@@ cfg_dst @@}}/choose'
   '.config/cliflix':
     src: '{{@@ cfg_src @@}}/cliflix'
     dst: '{{@@ cfg_dst @@}}/cliflix'
@@ -350,9 +347,6 @@ dotfiles:
   '.config/nvim':
     src: '{{@@ cfg_src @@}}/nvim'
     dst: '{{@@ cfg_dst @@}}/nvim'
-  '.config/obs-studio/themes':
-    src: '{{@@ cfg_src @@}}/obs-studio/themes'
-    dst: '{{@@ cfg_dst @@}}/obs-studio/themes'
   '.config/openbox':
     src: '{{@@ cfg_src @@}}/openbox'
     dst: '{{@@ cfg_dst @@}}/openbox'

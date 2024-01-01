@@ -109,7 +109,7 @@ is_16million_colors() {
 	[ "$COLORTERM" = "truecolor" ] || [ "$COLORTERM" = "24bit" ]
 }
 
-source "$XDG_STATE_HOME/dotshellgen/concatenated.bash"
+source "$HOME/.dotfiles/os/unix/config/dotgen-output/concatenated.bash"
 
 if is_16million_colors; then
 	if ((EUID == 0)); then

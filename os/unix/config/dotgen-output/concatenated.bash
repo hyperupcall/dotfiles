@@ -38,6 +38,49 @@ if command -v node &>/dev/null; then
 	source <(node --completion-bash)
 fi
 
+# concatenated.bash
+# basalt.bash
+for dir in "$HOME/.dotfiles/.data/bin"; do
+	if [ -e "$dir/basalt" ]; then
+		eval "$("$dir/basalt" global init bash)"
+		break
+	fi
+done; unset -v dir
+
+# autoenv.bash
+if command -v basalt &>/dev/null; then
+	command() {
+		if [[ "$1" = '-v' && "$2" == gsha1sum ]]; then
+			enable_autoenv() { :; }
+
+			if builtin command "$@"; then
+				return $?
+			else
+				return $?
+			fi
+		fi
+	} # TODO
+	basalt.load --global 'github.com/hyperupcall/autoenv' 'activate.sh'
+	unset -f command
+fi
+
+# dircolors.bash
+if [ -f "$XDG_CONFIG_HOME/dircolors/dir_colors" ]; then
+	eval "$(dircolors -b "$XDG_CONFIG_HOME/dircolors/dir_colors")"
+fi
+
+# direnv.bash
+if command -v direnv &>/dev/null; then
+	eval "$(direnv hook bash)"
+fi
+
+# nodejs.bash
+if command -v node &>/dev/null; then
+	source <(node --completion-bash)
+fi
+
+# concatenated.bash
+
 # pipx.bash
 if command -v register-python-argcomplete &>/dev/null; then
     eval "$(register-python-argcomplete pipx)"
@@ -50,6 +93,9 @@ _path_prepend "$HOME/.local/state/repomgr/bin"
 if command -v rho &>/dev/null; then
     eval "$(rho shell-init)"
 fi
+
+# rho.bash
+eval "$("$XDG_DATA_HOME/rtx/bin/rtx" activate bash)"
 
 # sdkman.bash
 if [ -n "$SDKMAN_DIR" ] && [ -f "$SDKMAN_DIR/bin/sdkman-init.sh" ]; then

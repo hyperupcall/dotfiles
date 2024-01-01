@@ -326,7 +326,7 @@
 
 	// PYTHON
 	"[python]": {
-		"editor.defaultFormatter": "ms-python.python",
+		"editor.defaultFormatter": "charliermarsh.ruff",
 		"editor.codeActionsOnSave": {
 			"source.fixAll": false
 		},
@@ -334,7 +334,6 @@
 		"editor.formatOnSave": false,
 		"editor.tabSize": 4
 	},
-	"python.formatting.provider": "yapf",
 	"python.globalModuleInstallation": false,
 	"python.venvPath": "~/.dotfiles/.home/xdg_cache_dir/pypoetry/virtualenvs",
 	"python.languageServer": "Pylance",
@@ -450,7 +449,9 @@
 	],
 
 	"vscord.app.name": "Visual Studio Code",
+	"vscord.app.privacyMode.enable": false,
 	"vscord.status.problems.enabled": false,
+	"vscord.behaviour.suppressNotifications": true,
 
 	// C/C++
 	"[c]": {

@@ -3,7 +3,7 @@
 # Generates shell scripts for different shells from a nicer directory hierarchy
 #
 # More specifically, it concatenates files from a hierarchy located at
-# "$XDG_CONFIG_HOM/dotshellgen" into a single file for each shell. The result
+# "$XDG_CONFIG_HOME/dotshellgen" into a single file for each shell. The result
 # is saved at "$XDG_STATE_HOME/dotshellgen"
 
 source "${0%/*}/../source.sh"
@@ -65,8 +65,8 @@ main() {
 	esac done
 
 
-	local dotshellgen_config_dir="$XDG_CONFIG_HOME/dotshellgen"
-	local dotshellgen_state_dir="$XDG_STATE_HOME/dotshellgen"
+	local dotshellgen_config_dir="$HOME/.dotfiles/os/unix/config/dotgen"
+	local dotshellgen_state_dir="$HOME/.dotfiles/os/unix/config/dotgen-output"
 	mkdir -p "$dotshellgen_config_dir" "$dotshellgen_state_dir"
 
 	local concatenated_bash_file="$dotshellgen_state_dir/concatenated.bash"

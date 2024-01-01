@@ -6,6 +6,16 @@ for dir in "$HOME/.dotfiles/.data/bin"; do
 	fi
 done; unset -v dir
 
+# concatenated.sh
+# basalt.sh
+for dir in "$HOME/.dotfiles/.data/bin"; do
+	if [ -e "$dir/basalt" ]; then
+		eval "$("$dir/basalt" global init sh)"
+		break
+	fi
+done; unset -v dir
+
+
 # repomgr.sh
 _path_prepend "$HOME/.local/state/repomgr/bin"
 

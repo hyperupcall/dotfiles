@@ -2,6 +2,13 @@
 
 source "${0%/*}/../source.sh"
 
+# Behavior: Show desktop menu / home
+case $XDG_CURRENT_DESKTOP in
+	GNOME|zorin:GNOME)
+		gsettings set org.gnome.mutter overlay-key ''
+		;;
+esac
+
 # Behavior: Toggle move window on moues drag
 case $XDG_CURRENT_DESKTOP in
 	XFCE)

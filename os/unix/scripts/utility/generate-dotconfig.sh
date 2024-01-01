@@ -59,7 +59,6 @@ declare -ga g_dotfiles=(
 	cfg:'cava'
 	cfg:'ccache'
 	cfg:'cdm'
-	cfg:'choose'
 	cfg:'cliflix'
 	cfg:'conda'
 	cfg:'conky'
@@ -128,7 +127,7 @@ declare -ga g_dotfiles=(
 	cfg:'nu'
 	cfg:'nvchecker'
 	cfg:'nvim'
-	cfg:'obs-studio/themes'
+	# cfg:'obs-studio/themes' # TODO
 	cfg:'openbox'
 	cfg:'OpenSCAD'
 	cfg:'ox'

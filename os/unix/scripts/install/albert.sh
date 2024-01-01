@@ -14,8 +14,17 @@ install.albert() {
 
 	case $pkgmngr in
 	apt)
-		local gpg_file="/etc/apt/keyrings/albert"
 		local version='22.04'
+		source /etc/os-release
+		if [ "$ID" = 'zorin' ]; then
+			if [ "$VERSION_ID" = 16 ]; then
+				version='20.04'
+			elif [ "$VERSION_ID" = 15 ]; then
+				version='20.04'
+			fi
+		fi
+		local gpg_file="/etc/apt/keyrings/albert"
+
 
 		pkg.add_apt_key \
 			"https://download.opensuse.org/repositories/home:manuelschneid3r/xUbuntu_$version/Release.key" \
