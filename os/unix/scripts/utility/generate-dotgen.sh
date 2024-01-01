@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
 
 # Generates shell scripts for different shells from a nicer directory hierarchy
-#
-# More specifically, it concatenates files from a hierarchy located at
-# "$XDG_CONFIG_HOME/dotshellgen" into a single file for each shell. The result
-# is saved at "$XDG_STATE_HOME/dotshellgen"
 
 source "${0%/*}/../source.sh"
 

@@ -117,10 +117,8 @@ main() {
 	# -------------------------------------------------------- #
 	if [ "$profile" = 'desktop' ]; then
 		must.link "$HOME/.dotfiles/os/unix/scripts" "$HOME/scripts"
-		must.link "$HOME/.dotfiles/.home/Documents/Programming/Challenges" "$HOME/challenges"
-		must.link "$HOME/.dotfiles/.home/Documents/Programming/Experiments" "$HOME/experiments"
-		must.link "$HOME/.dotfiles/.home/Documents/Programming/Repositories" "$HOME/groups"
-		must.link "$HOME/.dotfiles/.home/Documents/Programming/Repositories" "$HOME/repositories"
+		must.link "$HOME/.dotfiles/.home/Documents/Projects/Programming/Repositories/fox-forks" "$HOME/forks"
+		must.link "$HOME/.dotfiles/.home/Documents/Projects/Programming/Repositories" "$HOME/repositories"
 	elif [ "$profile" = 'laptop' ]; then
 		:
 	fi
@@ -134,56 +132,54 @@ main() {
 	# -------------------------------------------------------- #
 	#                      CREATE SYMLINKS                     #
 	# -------------------------------------------------------- #
-	local -r storage_home='/storage/ur/storage_home'
-	local -r storage_other='/storage/ur/storage_other'
-
+	# TODO: Move this over to generate-dotgen.sh
 	must.link "$XDG_CONFIG_HOME/X11/Xmodmap" "$HOME/.Xmodmap"
 	must.link "$XDG_CONFIG_HOME/X11/Xresources" "$HOME/.Xresources"
 	must.link "$XDG_CONFIG_HOME/Code/User/settings.json" "$XDG_CONFIG_HOME/Code - OSS/User/settings.json"
 
-	local -ra directories_default=(
-		# ~/Desktop
-		~/Downloads
-		~/Templates ~/Public ~/Documents
-		# ~/Music
-		~/Pictures
-		~/Videos
-	)
-	local -ra directories_custom=(
-		# ~/Desktop
-		~/Dls
-		~/Docs/Templates ~/Docs/Public ~/Docs
-		# ~/Music
-		~/Pics
-		~/Vids
-	)
-	local -ra directories_shared=(
-		~/Desktop
-		~/Music
-	)
-	# Use 'cp -f' for "$XDG_CONFIG_HOME/user-dirs.dirs"; otherwise unlink/link operation races
-	if [ "$profile" = 'desktop' ]; then
-		cp -f "$HOME/.dotfiles/os/unix/user/.config/user-dirs.dirs/user-dirs-custom.conf" "$XDG_CONFIG_HOME/user-dirs.dirs"
+	{
+		# Use 'cp -f' for "$XDG_CONFIG_HOME/user-dirs.dirs"; otherwise unlink/link operation races
+		if [ "$profile" = 'desktop' ]; then
+			local -r filename='user-dirs-custom.conf'
+		else
+			local -r filename='user-dirs-default.conf'
+		fi
+		cp -f "$HOME/.dotfiles/os/unix/user/.config/user-dirs.dirs/$filename" "$XDG_CONFIG_HOME/user-dirs.dirs"
+	}
 
+
+	local -r storage_home='/storage/ur/storage_home'
+	local -r storage_other='/storage/ur/storage_other'
+	if [ "$profile" = 'desktop' ]; then
 		# XDG User Directories
+		source "$XDG_CONFIG_HOME/user-dirs.dirs"
 		local dir=
-		for dir in "${directories_default[@]}"; do
-			must.rmdir "$dir"
-		done; unset -v dir
-		for dir in "${directories_shared[@]}"; do
+		for dir in "$XDG_DESKTOP_DIR" "$XDG_DOWNLOAD_DIR" "$XDG_TEMPLATES_DIR" "$XDG_PUBLICSHARE_DIR" "$XDG_DOCUMENTS_DIR" "$XDG_MUSIC_DIR" "$XDG_PICTURES_DIR" "$XDG_VIDEOS_DIR"; do
 			must.dir "$dir"
 		done; unset -v dir
 		must.link "$storage_home/Desktop" "$HOME/Desktop"
 		must.link "$storage_home/Dls" "$HOME/Dls"
-		must.link "$storage_home/Docs" "$HOME/Docs"
+		must.link "$storage_home/Other/Templates" "$HOME/Other/Templates"
+		must.link "$storage_home/Other/Public" "$HOME/Other/Public"
+		must.link "$storage_home/Docs" "$HOME/Documents"
 		must.link "$storage_home/Music" "$HOME/Music"
 		must.link "$storage_home/Pics" "$HOME/Pics"
 		must.link "$storage_home/Vids" "$HOME/Vids"
 
-		# Populate ~/.dotfiles/.home/
+	else
+		# XDG User Directories
+		source "$XDG_CONFIG_HOME/user-dirs.dirs"
+		local dir=
+		for dir in "$XDG_DESKTOP_DIR" "$XDG_DOWNLOAD_DIR" "$XDG_TEMPLATES_DIR" "$XDG_PUBLICSHARE_DIR" "$XDG_DOCUMENTS_DIR" "$XDG_MUSIC_DIR" "$XDG_PICTURES_DIR" "$XDG_VIDEOS_DIR"; do
+			must.dir "$dir"
+		done; unset -v dir
+	fi
+
+	# Populate ~/.dotfiles/.home/
+	if [ "$profile" = 'desktop' ]; then
 		must.link "$HOME/Desktop" "$HOME/.dotfiles/.home/Desktop"
 		must.link "$HOME/Dls" "$HOME/.dotfiles/.home/Downloads"
-		must.link "$HOME/Docs" "$HOME/.dotfiles/.home/Documents"
+		must.link "$HOME/Documents" "$HOME/.dotfiles/.home/Documents"
 		must.link "$HOME/Music" "$HOME/.dotfiles/.home/Music"
 		must.link "$HOME/Pics" "$HOME/.dotfiles/.home/Pictures"
 		must.link "$HOME/Vids" "$HOME/.dotfiles/.home/Videos"
@@ -191,48 +187,28 @@ main() {
 		must.link "$HOME/.config" "$HOME/.dotfiles/.home/xdg_config_dir"
 		must.link "$HOME/.local/state" "$HOME/.dotfiles/.home/xdg_state_dir"
 		must.link "$HOME/.local/share" "$HOME/.dotfiles/.home/xdg_data_dir"
-
-		# Miscellaneous
-		must.link "$storage_other/mozilla" "$HOME/.mozilla"
-		if [ ! -L "$HOME/.ssh" ]; then rm -f "$HOME/.ssh/known_hosts"; fi
-		must.link "$storage_other/ssh" "$HOME/.ssh"
-		must.link "$storage_other/BraveSoftware" "$XDG_CONFIG_HOME/BraveSoftware"
-		must.link "$storage_other/fonts" "$XDG_CONFIG_HOME/fonts"
-		must.link "$storage_other/Mailspring" "$XDG_CONFIG_HOME/Mailspring"
 	else
-		cp -f "$HOME/.dotfiles/os/unix/user/.config/user-dirs.dirs/user-dirs-default.conf" "$XDG_CONFIG_HOME/user-dirs.dirs"
-
-		# XDG User Directories
-		local dir=
-		for dir in "${directories_custom[@]}"; do
-			must.rmdir "$dir"
-		done; unset -v dir
-		for dir in "${directories_shared[@]}"; do
-			must.dir "$dir"
-		done; unset -v dir
-		must.dir "$HOME/Desktop"
-		must.dir "$HOME/Downloads"
-		must.dir "$HOME/Documents"
-		must.dir "$HOME/Templates"
-		must.dir "$HOME/Public"
-		must.dir "$HOME/Music"
-		must.dir "$HOME/Pictures"
-		must.dir "$HOME/Videos"
-
-		# Populate ~/.dotfiles/.home/
 		must.link "$HOME/Desktop" "$HOME/.dotfiles/.home/Desktop"
 		must.link "$HOME/Downloads" "$HOME/.dotfiles/.home/Downloads"
 		must.link "$HOME/Documents" "$HOME/.dotfiles/.home/Documents"
 		must.link "$HOME/Music" "$HOME/.dotfiles/.home/Music"
 		must.link "$HOME/Pictures" "$HOME/.dotfiles/.home/Pictures"
 		must.link "$HOME/Videos" "$HOME/.dotfiles/.home/Videos"
-
-		# Miscellaneous
+		must.link "$HOME/.cache" "$HOME/.dotfiles/.home/xdg_cache_dir"
+		must.link "$HOME/.config" "$HOME/.dotfiles/.home/xdg_config_dir"
+		must.link "$HOME/.local/state" "$HOME/.dotfiles/.home/xdg_state_dir"
+		must.link "$HOME/.local/share" "$HOME/.dotfiles/.home/xdg_data_dir"
 	fi
 
+	if [ "$profile" = 'desktop' ]; then
+		must.link "$storage_other/mozilla" "$HOME/.mozilla"
+		if [ ! -L "$HOME/.ssh" ]; then rm -f "$HOME/.ssh/known_hosts"; fi
+		must.link "$storage_other/ssh" "$HOME/.ssh"
+		must.link "$storage_other/BraveSoftware" "$XDG_CONFIG_HOME/BraveSoftware"
+		must.link "$storage_other/fonts" "$XDG_CONFIG_HOME/fonts"
+		must.link "$storage_other/Mailspring" "$XDG_CONFIG_HOME/Mailspring"
+	fi
 	# Must be last as they are dependent on previous symlinking
-	# must.dir "$HOME/.dotfiles/.home/Documents/Shared"
-	# must.dir "$HOME/.dotfiles/.home/Pictures/Screenshots"
 	must.dir "$HOME/.dotfiles/.home/Documents/Applications/IntegratedAppImages"
 }
 

@@ -94,7 +94,7 @@ if command -v rho &>/dev/null; then
     eval "$(rho shell-init)"
 fi
 
-# rho.bash
+# rtx.bash
 eval "$("$XDG_DATA_HOME/rtx/bin/rtx" activate bash)"
 
 # sdkman.bash

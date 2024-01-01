@@ -49,7 +49,9 @@ EOF
 
 	maestral auth link
 	maestral autostart --yes
+	maestral config set path "$HOME/Dropbox-Maestral"
 	maestral start
+
 }
 
 main "$@"

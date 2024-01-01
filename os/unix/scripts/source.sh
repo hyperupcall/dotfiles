@@ -171,7 +171,13 @@ must.link() {
 		return
 	fi
 
+	if [ ! -e "$src" ]; then
+		core.print_warn "Skipping symlink from '$src' to $target (source directory not found)"
+		return
+	fi
+
 	# If it is an empty directory (and not a symlink) automatically remove it
+	core.shopt_push -s nullglob
 	if [ -d "$target" ] && [ ! -L "$target" ]; then
 		local children=
 		children=("$target"/*)
@@ -182,10 +188,7 @@ must.link() {
 			return
 		fi
 	fi
-	if [ ! -e "$src" ]; then
-		core.print_warn "Skipping symlink from '$src' to $target (source directory not found)"
-		return
-	fi
+	core.shopt_pop
 
 	local output=
 	if output=$(ln -sfT "$src" "$target" 2>&1); then

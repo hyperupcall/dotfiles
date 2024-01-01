@@ -30,7 +30,7 @@ export GUILE_HISTORY="$XDG_STATE_HOME/history/guile_history"
 export HSTR_CONFIG='hicolor'
 
 # less
-export LESSKEY="$XDG_CONFIG_HOME/less/lesskey"
+export LESSKEY="$XDG_CONFIG_HOME/less/less"
 
 # more
 export MORE='-l'
