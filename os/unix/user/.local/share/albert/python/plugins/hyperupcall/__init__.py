@@ -1,16 +1,15 @@
-# -*- coding: utf-8 -*-
 # TODO
 import fnmatch
 import os
 from albert import *
 
 md_iid = "2.1"
-md_version = "1.5"
-md_name = "Pass"
-md_description = "Manage passwords in pass"
-md_bin_dependencies = ["pass"]
-md_maintainers = ["@Pete-Hamlin"]
-md_license = "BSD-3"
+md_version = "1.0"
+md_name = "Edwin's Binaries"
+md_description = "Launch Edwin's binaries"
+# md_bin_dependencies = ["pass"]
+md_maintainers = ["@hyperupcall"]
+md_license = "MPL-2.0"
 
 HOME_DIR = os.environ["HOME"]
 PASS_DIR = os.environ.get("PASSWORD_STORE_DIR", os.path.join(HOME_DIR, ".password-store/"))
@@ -24,12 +23,12 @@ class Plugin(PluginInstance, TriggerQueryHandler):
 			name=md_name,
 			description=md_description,
 			synopsis="<pass-name>",
-			defaultTrigger="l ",
+			defaultTrigger="e ",
 		)
 		PluginInstance.__init__(self, extensions=[self])
 		self.iconUrls = ["xdg:dialog-password"]
-		self._use_otp = self.readConfig("use_otp", bool) or False
-		self._otp_glob = self.readConfig("otp_glob", str) or "*-otp.gpg"
+		# self._use_otp = self.readConfig("use_otp", bool) or False
+		# self._otp_glob = self.readConfig("otp_glob", str) or "*-otp.gpg"
 
 	@property
 	def use_otp(self):
@@ -52,6 +51,7 @@ class Plugin(PluginInstance, TriggerQueryHandler):
 		self.writeConfig("otp_glob", value)
 
 	def configWidget(self):
+		return []
 		return [
 			{"type": "checkbox", "property": "use_otp", "label": "Enable pass OTP extension"},
 			{
@@ -64,15 +64,31 @@ class Plugin(PluginInstance, TriggerQueryHandler):
 
 	def handleTriggerQuery(self, query):
 		apps = {
-
+			'default': ''
 		}
+		query.add(
+			StandardItem(
+				id="launch_thing_2",
+				iconUrls=self.iconUrls,
+				text="Launch default UI",
+				subtext="Launch the user interface for default",
+				inputActionText="e default",
+				actions=[
+					Action(
+						"default",
+						"Default",
+						lambda: runDetachedProcess(["firefox"]),
+					)
+				],
+			)
+		)
 		query.add(
 			StandardItem(
 				id="launch_thing",
 				iconUrls=self.iconUrls,
 				text="Generate a new password",
 				subtext="The new password will be located at location",
-				inputActionText="l %s" % query.string,
+				inputActionText="e %s" % query.string,
 				actions=[
 					Action(
 						"default",
@@ -100,7 +116,7 @@ class Plugin(PluginInstance, TriggerQueryHandler):
 				iconUrls=self.iconUrls,
 				text="Generate a new password",
 				subtext="The new password will be located at %s" % location,
-				inputActionText="pass %s" % query.string,
+				inputActionText="e %s" % query.string,
 				actions=[
 					Action(
 						"generate",
@@ -153,7 +169,7 @@ class Plugin(PluginInstance, TriggerQueryHandler):
 					text=name,
 					subtext=password,
 					iconUrls=self.iconUrls,
-					inputActionText="pass %s" % password,
+					inputActionText="e %s" % password,
 					actions=[
 						Action(
 							"copy",

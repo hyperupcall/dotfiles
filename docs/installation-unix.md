@@ -60,11 +60,12 @@ Now, execute:
 Some scripts may need to be updated. They include:
 
 - Install ZFS, BTRFS
+- Install Albert
 - Install pass, pass-browserpass
-- Install Brave
+- Install Firefox, Brave
 - Install Obsidian
 - Install Dropbox, Maestral
-- Retreieve SSH, PGP keys,
+- Retrieve SSH, PGP keys,
 - Install default, my-tools, etc.
 - Configuring keybindings
 - Testing spellchecker

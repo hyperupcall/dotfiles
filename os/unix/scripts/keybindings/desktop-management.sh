@@ -2,15 +2,6 @@
 
 source "${0%/*}/../source.sh"
 
-case $XDG_CURRENT_DESKTOP in
-	MATE)
-		;;
-	*)
-		core.print_warn "Desktop environment not supported: $XDG_CURRENT_DESKTOP"
-		exit 1
-		;;
-esac
-
 # Behavior: Toggle move window on moues drag
 case $XDG_CURRENT_DESKTOP in
 	XFCE)
