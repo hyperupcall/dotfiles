@@ -30,7 +30,18 @@ export GUILE_HISTORY="$XDG_STATE_HOME/history/guile_history"
 export HSTR_CONFIG='hicolor'
 
 # less
-export LESSKEY="$XDG_CONFIG_HOME/less/less"
+# shellcheck disable=SC3003
+{
+	export LESSKEY="$XDG_CONFIG_HOME/less/less"
+	export LESS_TERMCAP_mb=$'\e[1;31m' # start blink
+	export LESS_TERMCAP_md=$'\e[1;36m' # start bold
+	export LESS_TERMCAP_me=$'\e[0m' # end all
+	export LESS_TERMCAP_so=$'\e[01;44;33m' # start reverse video
+	export LESS_TERMCAP_se=$'\e[0m' # end reverse video
+	export LESS_TERMCAP_us=$'\e[1;32m' # start underline
+	export LESS_TERMCAP_ue=$'\e[0m' # end underline
+	export LESS_TERMCAP_us=$'\e[1;32m' # start underline
+}
 
 # more
 export MORE='-l'
