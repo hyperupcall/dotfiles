@@ -295,7 +295,6 @@ util.clone_in_dotfiles() {
 	REPLY=$dir
 }
 
-
 util.confirm() {
 	local message=${1:-Confirm?}
 
@@ -305,6 +304,7 @@ util.confirm() {
 		if [ -n "$BASH_VERSION" ]; then
 			input=${REPLY,,}
 		elif [ -n "$KSH_VERSION" ]; then
+			# shellcheck disable=SC2034
 			typeset -M toupper input="$REPLY"
 		else
 			input=$(printf '%s\n' "$REPLY" | tr '[:upper:]' '[:lower:]')
@@ -316,6 +316,16 @@ util.confirm() {
 		return 0
 	else
 		return 1
+	fi
+}
+
+# TODO
+util.confirm_install() {
+	local name="$1"
+	local fn="$2"
+
+	if util.confirm "Install $name?"; then
+		"$fn"
 	fi
 }
 
@@ -362,7 +372,8 @@ util.get_latest_github_tag() {
 
 	core.print_info "Getting latest version of: $repo"
 
-	local token="$(<~/.dotfiles/.data/github_token)"
+	local token=
+	token="$(<~/.dotfiles/.data/github_token)"
 	local url="https://api.github.com/repos/$repo/releases/latest"
 	local tag_name=
 	tag_name=$(curl -fsSLo- -H "Authorization: token: $token" "$url" | jq -r '.tag_name')

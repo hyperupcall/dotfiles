@@ -1,7 +1,10 @@
 {
+	"type": "commonjs",
 	"devDependencies": {
-		"@hyperupcall/markdownlint-config": "^0.3.1",
-		"@hyperupcall/prettier-config": "^0.6.0",
-		"prettier": "^3.0.1"
+		"@hyperupcall/markdownlint-config": "^0.3.2",
+		"@hyperupcall/prettier-config": "^0.7.0",
+		"markdownlint": "^0.32.1",
+		"prettier": "^3.1.1",
+		"prettier-plugin-pkg": "^0.18.0"
 	}
 }
