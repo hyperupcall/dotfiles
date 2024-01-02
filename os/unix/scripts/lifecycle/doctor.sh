@@ -10,6 +10,7 @@ failure() {
 	printf '%s\n' "⛔ $1"
 }
 
+# TODO: hub.woof
 # TODO: git smuge etc filters are in use
 main() {
 	printf '%s\n' "BINARIES:"
