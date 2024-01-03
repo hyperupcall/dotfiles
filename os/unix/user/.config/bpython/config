@@ -1,2 +1,2 @@
 [general]
-hist_file = ~/state/.history/bpython_history
+hist_file = ~/.dotfiles/.home/xdg_state_dir/history/bpython_history

@@ -14,7 +14,7 @@ install.caddy() {
 
 	case $pkgmngr in
 	apt)
-		sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https curl
+		sudo apt-get install -y debian-keyring debian-archive-keyring apt-transport-https curl
 		local gpg_file="/etc/apt/keyrings/caddy-stable.asc"
 
 		pkg.add_apt_key \
@@ -26,7 +26,7 @@ deb-src [signed-by=$gpg_file] https://dl.cloudsmith.io/public/caddy/stable/deb/d
 				'/etc/apt/sources.list.d/caddy-stable.list'
 
 		sudo apt update
-		sudo apt install caddy
+		sudo apt-get install -y caddy
 		;;
 	*)
 		core.print_fatal "Pakage manager '$pkgmngr' not supported"

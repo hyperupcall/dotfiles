@@ -66,6 +66,6 @@ Some scripts may need to be updated. They include:
 - Install Obsidian
 - Install Dropbox, Maestral
 - Retrieve SSH, PGP keys,
-- Install default, my-tools, etc.
+- Install default, my-tools, hub, etc.
 - Configuring keybindings
 - Testing spellchecker

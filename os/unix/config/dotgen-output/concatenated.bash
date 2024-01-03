@@ -33,6 +33,9 @@ if command -v direnv &>/dev/null; then
 	eval "$(direnv hook bash)"
 fi
 
+# mise.bash
+eval "$("$XDG_DATA_HOME/mise/bin/mise" activate bash)"
+
 # nodejs.bash
 if command -v node &>/dev/null; then
 	source <(node --completion-bash)
@@ -93,9 +96,6 @@ _path_prepend "$HOME/.local/state/repomgr/bin"
 if command -v rho &>/dev/null; then
     eval "$(rho shell-init)"
 fi
-
-# rtx.bash
-eval "$("$XDG_DATA_HOME/rtx/bin/rtx" activate bash)"
 
 # sdkman.bash
 if [ -n "$SDKMAN_DIR" ] && [ -f "$SDKMAN_DIR/bin/sdkman-init.sh" ]; then

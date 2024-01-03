@@ -25,7 +25,7 @@ install.sublime_text() {
 			'/etc/apt/sources.list.d/sublime-text.list'
 
 		sudo apt update
-		sudo apt install sublime-text
+		sudo apt-get install -y sublime-text
 		;;
 	esac
 }

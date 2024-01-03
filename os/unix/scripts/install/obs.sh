@@ -12,7 +12,7 @@ install.obs() {
 	if util.is_cmd 'apt'; then
 		sudo add-apt-repository ppa:obsproject/obs-studio
 		sudo apt update -y
-		sudo apt install -y obs-studio
+		sudo apt-get install -y obs-studio
 	else
 		flatpak install flathub com.obsproject.Studio
 	fi

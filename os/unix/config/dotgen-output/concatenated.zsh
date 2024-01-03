@@ -33,6 +33,9 @@ if command -v direnv &>/dev/null; then
 	eval "$(direnv hook zsh)"
 fi
 
+# mise.zsh
+eval "$("$XDG_DATA_HOME/mise/bin/mise" activate zsh)"
+
 # concatenated.zsh
 # basalt.zsh
 for dir in "$HOME/.dotfiles/.data/bin"; do
@@ -80,9 +83,6 @@ fi
 
 # repomgr.zsh
 _path_prepend "$HOME/.local/state/repomgr/bin"
-
-# rtx.zsh
-eval "$("$XDG_DATA_HOME/rtx/bin/rtx" activate zsh)"
 
 # woof.zsh
 if command -v woof >/dev/null 2>&1; then

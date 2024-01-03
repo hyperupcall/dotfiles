@@ -14,8 +14,8 @@ install.maestral() {
 
 	case $pkgmngr in
 	apt)
-		sudo apt install python3-dev python3-venv libsystemd-dev cython qt5-default
-		sudo apt install libxcb-cursor0 # maestral gui
+		sudo apt-get install -y python3-dev python3-venv libsystemd-dev cython qt5-default
+		sudo apt-get install -y libxcb-cursor0 # maestral gui
 		;;
 	*)
 		core.print_warn 'Unable to automatically install venv, libsystemd, cython'

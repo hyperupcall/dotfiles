@@ -25,7 +25,7 @@ install.unity_hub() {
 			'/etc/apt/sources.list.d/unityhub.list'
 
 		sudo apt update
-		sudo apt install unityhub
+		sudo apt-get install -y unityhub
 		;;
 	esac
 }

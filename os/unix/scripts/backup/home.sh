@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
 
-source "${0%/*}/../../source.sh"
+source "${0%/*}/../source.sh"
 
 main() {
-	local backup_dir="/storage/vault/rodinia/Backups/edwin_borg"
-	local dir="/storage/ur/storage_home"
+	local backup_dir="/storage/vault/rodinia/Backups/backup_storage_home"
 
 	# shellcheck disable=SC2059
-	printf "Backing up\n  from: $dir\n  to:   $backup_dir\n"
+	printf "Backing up\n  from: /storage/ur/storage_{home,other}\n  to:   $backup_dir\n"
 	if util.confirm; then
 		if [ ! -d "$backup_dir" ]; then
 			core.print_die "Backup directory does not exist"
@@ -40,7 +39,9 @@ main() {
 			--exclude '**/.hg' \
 			--exclude '**/.svn' \
 			"$backup_dir"::'backup-{now}' \
-			"$dir"
+			'/storage/ur/storage_home' \
+			'/storage/ur/storage_other' \
+			"${XDG_STATE_HOME:?}/history"
 	fi
 }
 
