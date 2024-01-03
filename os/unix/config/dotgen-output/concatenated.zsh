@@ -34,7 +34,7 @@ if command -v direnv &>/dev/null; then
 fi
 
 # mise.zsh
-eval "$("$XDG_DATA_HOME/mise/bin/mise" activate zsh)"
+eval "$("$HOME/.local/bin/mise" activate zsh)"
 
 # concatenated.zsh
 # basalt.zsh

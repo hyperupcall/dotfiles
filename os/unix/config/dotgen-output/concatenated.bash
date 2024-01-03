@@ -34,7 +34,7 @@ if command -v direnv &>/dev/null; then
 fi
 
 # mise.bash
-eval "$("$XDG_DATA_HOME/mise/bin/mise" activate bash)"
+eval "$("$HOME/.local/bin/mise" activate bash)"
 
 # nodejs.bash
 if command -v node &>/dev/null; then

@@ -1,4 +1,5 @@
-# TODO
+# type: ignore
+# flake8: noqa
 import fnmatch
 import os
 from albert import *
@@ -27,38 +28,25 @@ class Plugin(PluginInstance, TriggerQueryHandler):
 		)
 		PluginInstance.__init__(self, extensions=[self])
 		self.iconUrls = ["xdg:dialog-password"]
-		# self._use_otp = self.readConfig("use_otp", bool) or False
-		# self._otp_glob = self.readConfig("otp_glob", str) or "*-otp.gpg"
+		# self._some_path = self.readConfig("some_path", "") or ""
 
 	@property
-	def use_otp(self):
-		return self._use_otp
+	def some_path(self):
+		return self._some_path
 
-	@use_otp.setter
-	def use_otp(self, value):
-		print(f"Setting _use_otp to {value}")
-		self._use_otp = value
-		self.writeConfig("use_otp", value)
-
-	@property
-	def otp_glob(self):
-		return self._otp_glob
-
-	@otp_glob.setter
-	def otp_glob(self, value):
-		print(f"Setting _otp_glob to {value}")
-		self._otp_glob = value
-		self.writeConfig("otp_glob", value)
+	@some_path.setter
+	def some_path(self, value):
+		print(f"Setting _some_path to {value}")
+		self._some_path = value
+		self.writeConfig("some_path", value)
 
 	def configWidget(self):
-		return []
 		return [
-			{"type": "checkbox", "property": "use_otp", "label": "Enable pass OTP extension"},
 			{
 				"type": "lineedit",
-				"property": "otp_glob",
-				"label": "Glob pattern for OTP passwords",
-				"widget_properties": {"placeholderText": "*-otp.gpg"},
+				"property": "some_path",
+				"label": "Some path for testing",
+				"widget_properties": {"placeholderText": "this is epic"},
 			},
 		]
 
@@ -68,138 +56,17 @@ class Plugin(PluginInstance, TriggerQueryHandler):
 		}
 		query.add(
 			StandardItem(
-				id="launch_thing_2",
+				id="launch_hub",
 				iconUrls=self.iconUrls,
-				text="Launch default UI",
-				subtext="Launch the user interface for default",
-				inputActionText="e default",
+				text="Launch hub.woof",
+				subtext="Launch hub.woof site in a browser",
+				inputActionText="e hub",
 				actions=[
 					Action(
-						"default",
-						"Default",
-						lambda: runDetachedProcess(["firefox"]),
+						"hub",
+						"hub.woof",
+						lambda: runDetachedProcess(["xdg-open", "http://localhost:49501"]),
 					)
 				],
 			)
 		)
-		query.add(
-			StandardItem(
-				id="launch_thing",
-				iconUrls=self.iconUrls,
-				text="Generate a new password",
-				subtext="The new password will be located at location",
-				inputActionText="e %s" % query.string,
-				actions=[
-					Action(
-						"default",
-						"Default",
-						lambda: runDetachedProcess(["pass", "generate", "--clip", 'blah', "20"]),
-					)
-				],
-			)
-		)
-		return
-
-		if query.string.strip().startswith("generate"):
-			self.generatePassword(query)
-		elif query.string.strip().startswith("otp") and self._use_otp:
-			self.showOtp(query)
-		else:
-			self.showPasswords(query)
-
-	def generatePassword(self, query):
-		location = query.string.strip()[9:]
-
-		query.add(
-			StandardItem(
-				id="generate_password",
-				iconUrls=self.iconUrls,
-				text="Generate a new password",
-				subtext="The new password will be located at %s" % location,
-				inputActionText="e %s" % query.string,
-				actions=[
-					Action(
-						"generate",
-						"Generate",
-						lambda: runDetachedProcess(["pass", "generate", "--clip", location, "20"]),
-					)
-				],
-			)
-		)
-
-	def showOtp(self, query):
-		otp_query = query.string.strip()[4:]
-		passwords = []
-		if otp_query:
-			passwords = self.getPasswordsFromSearch(otp_query, otp=True)
-		else:
-			passwords = self.getPasswords(otp=True)
-
-		results = []
-		for password in passwords:
-			results.append(
-				StandardItem(
-					id=password,
-					iconUrls=self.iconUrls,
-					text=password.split("/")[-1],
-					subtext=password,
-					actions=[
-						Action(
-							"copy",
-							"Copy",
-							lambda pwd=password: runDetachedProcess(["pass", "otp", "--clip", pwd]),
-						),
-					],
-				),
-			)
-		query.add(results)
-
-	def showPasswords(self, query):
-		if query.string.strip():
-			passwords = self.getPasswordsFromSearch(query.string)
-		else:
-			passwords = self.getPasswords()
-
-		results = []
-		for password in passwords:
-			name = password.split("/")[-1]
-			results.append(
-				StandardItem(
-					id=password,
-					text=name,
-					subtext=password,
-					iconUrls=self.iconUrls,
-					inputActionText="e %s" % password,
-					actions=[
-						Action(
-							"copy",
-							"Copy",
-							lambda pwd=password: runDetachedProcess(["pass", "--clip", pwd]),
-						),
-						Action(
-							"edit",
-							"Edit",
-							lambda pwd=password: runDetachedProcess(["pass", "edit", pwd]),
-						),
-						Action(
-							"remove",
-							"Remove",
-							lambda pwd=password: runDetachedProcess(["pass", "rm", "--force", pwd]),
-						),
-					],
-				),
-			)
-
-		query.add(results)
-
-	def getPasswords(self, otp=False):
-		passwords = []
-		for root, dirnames, filenames in os.walk(PASS_DIR, followlinks=True):
-			for filename in fnmatch.filter(filenames, self._otp_glob if otp else "*.gpg"):
-				passwords.append(os.path.join(root, filename.replace(".gpg", "")).replace(PASS_DIR, ""))
-
-		return sorted(passwords, key=lambda s: s.lower())
-
-	def getPasswordsFromSearch(self, otp_query, otp=False):
-		passwords = [password for password in self.getPasswords(otp) if otp_query.strip().lower() in password.lower()]
-		return passwords

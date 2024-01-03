@@ -1,1 +1,1 @@
-eval "$("$XDG_DATA_HOME/mise/bin/mise" activate zsh)"
+eval "$("$HOME/.local/bin/mise" activate zsh)"
