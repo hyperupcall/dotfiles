@@ -1,7 +1,5 @@
-set -a fish_user_paths ~/.dotfiles/.home/xdg_config_dir/fish/functions
-
 # franciscolourenco/done
-set -U __done_min_cmd_duration 10000
+# set -U __done_min_cmd_duration 10000
 
 # oh-my-fish/plugin-foreign-env
 # source ~/.dotfiles/.home/xdg_config_dir/fish/functions/fenv.fish

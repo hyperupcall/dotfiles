@@ -39,7 +39,7 @@
 	"editor.smoothScrolling": true,
 	"editor.suggestSelection": "recentlyUsedByPrefix",
 	"editor.suggest.snippetsPreventQuickSuggestions": false,
-	"editor.tabSize": 3,
+	// "editor.tabSize": 3,
 	"editor.unfoldOnClickAfterEndOfLine": true,
 	"editor.wordWrap": "on",
 	"editor.wordWrapColumn": 100,
@@ -616,5 +616,12 @@
 			"source.organizeImports": "explicit"
 		}
 	},
-	"symbols.hidesExplorerArrows": false
+	"symbols.hidesExplorerArrows": false,
+	"python.defaultInterpreterPath": "/home/edwin/.dotfiles/os/unix/user/.local/share/albert/python/plugins/hyperupcall/.venv",
+	"github.copilot.enable": {
+		"*": false,
+		"plaintext": false,
+		"markdown": false,
+		"scminput": false
+	}
 }

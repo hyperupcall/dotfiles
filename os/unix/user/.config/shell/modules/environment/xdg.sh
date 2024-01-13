@@ -221,10 +221,6 @@ export NBRC_PATH="$XDG_CONFIG_HOME/nb/nbrc"
 export NB_DIR="$XDG_DATA_HOME/nb"
 export NB_HIST="$XDG_STATE_HOME/history/nb_history"
 
-# nimble
-export CHOOSENIM_NO_ANALYTICS='1'
-_path_prepend "$XDG_DATA_HOME/nimble/bin"
-
 # node
 export NODE_REPL_HISTORY="$XDG_STATE_HOME/history/node_repl_history"
 export TS_NODE_HISTORY="$XDG_STATE_HOME/history/ts_node_repl_history"
@@ -247,9 +243,6 @@ export NUGET_PACKAGES="$XDG_DATA_HOME/nuget/packages"
 
 # nvidia
 # alias nvidia-settings='nvidia-settings --config $XDG_DATA_HOME/nvidia-settings'
-
-# nvm
-export NVM_DIR="$XDG_DATA_HOME/nvm"
 
 # octave
 export OCTAVE_SITE_INITFILE="$XDG_CONFIG_HOME/octave/octaverc"
@@ -275,9 +268,6 @@ export PERL_MM_OPT="INSTALL_BASE=\"$PERL_LOCAL_LIB_ROOT\""
 _path_prepend "$PERL_LOCAL_LIB_ROOT/bin"
 _path_prepend PERL5LIB "$PERL_LOCAL_LIB_ROOT/lib/perl5"
 
-# phpbrew
-_path_prepend "$XDG_DATA_HOME/phpenv/bin"
-
 # pipx
 export PIPX_HOME="$XDG_STATE_HOME/pipx/virtualenv"
 export PIPX_BIN_DIR="$XDG_STATE_HOME/pipx/bin"
@@ -285,10 +275,6 @@ export PIPX_BIN_DIR="$XDG_STATE_HOME/pipx/bin"
 # platformio
 # export PLATFORMIO_CORE_DIR="$XDG_STATE_HOME/platformio"
 # _path_prepend "$PLATFORMIO_CORE_DIR/penv/bin"
-
-# plenv
-export PLENV_ROOT="$XDG_DATA_HOME/plenv"
-_path_prepend "$XDG_DATA_HOME/plenv/bin"
 
 # poetry
 export POETRY_HOME="$XDG_DATA_HOME/poetry"
@@ -313,11 +299,6 @@ export PYTHON_EGG_CACHE="$XDG_CACHE_HOME/python-eggs"
 
 # racket
 export PLTUSERHOME="$XDG_DATA_HOME/racket"
-
-# rbenv
-export RBENV_ROOT="$XDG_STATE_HOME/rbenv"
-_path_prepend "$RBENV_ROOT/bin"
-_path_prepend "$RBENV_ROOT/shims"
 
 # readline
 export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"

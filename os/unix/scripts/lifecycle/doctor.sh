@@ -2,55 +2,36 @@
 
 source "${0%/*}/../source.sh"
 
-success() {
-	printf '%s\n' "✅ $1"
-}
-
-failure() {
-	printf '%s\n' "⛔ $1"
-}
-
 # TODO: hub.woof
 # TODO: git smuge etc filters are in use
+# TODO: minimum Git version of 2.37.0 for 'push.autoSetupRemote'
 main() {
+	printf '%s\n' "GIT:"
+	check.command 'spaceman-diff'
+	check.command 'npm-merge-driver'
+	check.command 'yarn-merge-driver'
+
 	printf '%s\n' "BINARIES:"
-	local -a cmds=(dotmgr dotdrop clang-format clang-tidy bake basalt)
-	local cmd=
-	for cmd in "${cmds[@]}"; do
-		if util.is_cmd "$cmd"; then
-			success "Is installed: $cmd"
-		else
-			failure "Not installed: $cmd"
-		fi
-	done; unset -v cmd
+	check.command dotmgr
+	check.command dotdrop
+	check.command clang-format
+	check.command clang-tidy
+	check.command bake
+	check.command basalt
 	printf '\n'
 
 	printf '%s\n' "BINARIES: DEVELOPMENT:"
-	local -a cmds=(gh nvim)
-	local cmd=
-	for cmd in "${cmds[@]}"; do
-		if util.is_cmd "$cmd"; then
-			success "Is installed: $cmd"
-		else
-			failure "Not installed: $cmd"
-		fi
-	done; unset -v cmd
+	check.command gh
+	check.command nvim
 	printf '\n'
 
 	printf '%s\n' "DROPBOX:"
-	if pgrep dropbox &>/dev/null; then
-		success "Dropbox is running"
-	else
-		if (($? == 1)); then
-			failure "Dropbox not installed"
-		else
-			failure "Syntax or memory error when calling pgrep"
-		fi
-	fi
+	check.process dropbox
 	printf '\n'
 
 	printf '%s\n' "FISH:"
-	# fish, fish-indent TODO
+	check.command fish
+	check.command fish-indent
 	printf '\n'
 
 	printf '%s\n' "SENSITIVE:"
@@ -80,6 +61,38 @@ main() {
 	fi
 	find ~/.ssh/ ~/.gnupg/ -type d -exec chmod 700 {} \;
 	find ~/.ssh/ ~/.gnupg/ -type f -exec chmod 600 {} \;
+}
+
+success() {
+	printf '%s\n' "✅ $1"
+}
+
+failure() {
+	printf '%s\n' "⛔ $1"
+}
+
+check.command() {
+	local cmd="$1"
+
+	if util.is_cmd "$cmd"; then
+				success "Is installed: $cmd"
+	else
+		failure "Not installed: $cmd"
+	fi
+}
+
+check.process() {
+	local process="$1"
+
+	if pgrep "$process" &>/dev/null; then
+		success "$process is running"
+	else
+		if (($? == 1)); then
+			failure "$process not installed"
+		else
+			failure "Syntax or memory error when calling pgrep"
+		fi
+	fi
 }
 
 main "$@"

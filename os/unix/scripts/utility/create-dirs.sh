@@ -118,6 +118,7 @@ main() {
 	if [ "$profile" = 'desktop' ]; then
 		must.link "$HOME/.dotfiles/os/unix/scripts" "$HOME/scripts"
 		must.link "$HOME/.dotfiles/.home/Documents/Projects/Programming/Repositories/fox-forks" "$HOME/forks"
+		must.link "$HOME/.dotfiles/.home/Documents/Projects/Programming/Git" "$HOME/git"
 		must.link "$HOME/.dotfiles/.home/Documents/Projects/Programming/Repositories" "$HOME/repositories"
 	elif [ "$profile" = 'laptop' ]; then
 		:

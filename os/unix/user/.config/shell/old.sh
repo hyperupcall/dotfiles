@@ -35,6 +35,19 @@ SDIRS="$XDG_DATA_HOME/bashmarks.sh.db"
 # k9s
 # export K9SCONFIG="$XDG_CONFIG_HOME/k9s"
 
+# nimble
+# _path_prepend "$XDG_DATA_HOME/nimble/bin"
+
+# nvm
+# export NVM_DIR="$XDG_DATA_HOME/nvm"
+
+# phpbrew
+# _path_prepend "$XDG_DATA_HOME/phpenv/bin"
+
+# plenv
+# export PLENV_ROOT="$XDG_DATA_HOME/plenv"
+# _path_prepend "$XDG_DATA_HOME/plenv/bin"
+
 # phpenv
 # export PHPENV_ROOT="$XDG_DATA_HOME/phpenv"
 # _path_prepend "$PHPENV_ROOT/bin"
@@ -44,6 +57,11 @@ SDIRS="$XDG_DATA_HOME/bashmarks.sh.db"
 # export PYENV_VIRTUALENV_INIT=1
 # _path_prepend "$PYENV_ROOT/bin"
 # _path_prepend "$PYENV_ROOT/shims"
+
+# rbenv
+# export RBENV_ROOT="$XDG_STATE_HOME/rbenv"
+# _path_prepend "$RBENV_ROOT/bin"
+# _path_prepend "$RBENV_ROOT/shims"
 
 # swift
 # export SWIFTENV_ROOT="$XDG_DATA_HOME/swiftenv"

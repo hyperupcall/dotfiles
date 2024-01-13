@@ -4,13 +4,6 @@ package-lock.json merge=npm-merge-driver
 npm-shrinkwrap.json merge=npm-merge-driver
 yarn.lock merge=yarn-merge-driver
 
-*.docx diff=pandoc2md
-*.pdf diff=pdfconv
-*.md diff=wrap
-*.jpg diff=exif
-*.jpeg diff=exif
-*.png diff=exif
-*.gif diff=exif
 *.png  diff=spaceman-diff
 *.jpg  diff=spaceman-diff
 *.jpeg diff=spaceman-diff
