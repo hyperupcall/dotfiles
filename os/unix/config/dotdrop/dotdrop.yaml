@@ -1,3 +1,4 @@
+---
 config:
   backup: true
   banner: false

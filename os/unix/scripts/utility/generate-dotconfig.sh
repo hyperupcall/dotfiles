@@ -272,9 +272,11 @@ main() {
 	> "$dotdrop_file" :
 
 	cat <<"EOF" > "$dotdrop_include_file"
+---
 dotfiles:
 EOF
 	cat <<"EOF" > "$dotdrop_file"
+---
 config:
   backup: true
   banner: false
