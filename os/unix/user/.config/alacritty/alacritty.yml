@@ -1,3 +1,4 @@
+---
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 
 # Import additional configuration files
@@ -9,7 +10,7 @@
 # All imports must either be absolute paths starting with `/`, or paths relative
 # to the user's home directory starting with `~/`.
 import:
-  - ~/config/alacritty/themes/_.theme.yml
+  - '~/config/alacritty/themes/_.theme.yml'
 
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables

@@ -1,9 +1,10 @@
+---
 wtf:
   colors:
     border:
-      focusable: darkslateblue
-      focused: orange
-      normal: gray
+      focusable: 'darkslateblue'
+      focused: 'orange'
+      normal: 'gray'
   grid:
     columns: [32, 32, 32, 32, 90]
     rows: [10, 10, 10, 4, 4, 90]
@@ -49,7 +50,7 @@ wtf:
     feedreader:
       enabled: true
       feeds:
-        - http://wtfutil.com/blog/index.xml
+        - 'http://wtfutil.com/blog/index.xml'
       feedLimit: 10
       position:
         top: 1
@@ -98,4 +99,4 @@ wtf:
         height: 1
         width: 2
       refreshInterval: 30
-      type: cmdrunner
+      type: 'cmdrunner'

@@ -33,6 +33,3 @@ function fish_user_key_bindings
 end
 
 # ---
-# Basalt
-set -gx PATH "${XDG_DATA_HOME:-$HOME/.local/share}/basalt/source/pkg/bin" $PATH
-source (basalt global init fish | psub)

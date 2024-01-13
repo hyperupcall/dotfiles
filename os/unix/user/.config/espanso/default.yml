@@ -1,86 +1,87 @@
+---
 # espanso configuration file
 
 # This is the default configuration file, change it as you like it
 # You can refer to the official documentation:
 # https://espanso.org/docs/
 
-toggle_key: OFF
+toggle_key: false
 
 # Matches are the substitution rules, when you type the "trigger" string
 # it gets replaced by the "replace" string.
 matches:
   # Phrases
-  - trigger: ";imo"
-    replace: "in my opinion"
+  - trigger: ';imo'
+    replace: 'in my opinion'
 
-  - trigger: ";hu"
-    replace: "have you"
+  - trigger: ';hu'
+    replace: 'have you'
 
-  - trigger: ";asap"
-    replace: "as soon as possible"
+  - trigger: ';asap'
+    replace: 'as soon as possible'
 
-  - trigger: ";btw"
-    replace: "by the way"
+  - trigger: ';btw'
+    replace: 'by the way'
 
-  - trigger: ";fwis"
-    replace: "from what I see"
+  - trigger: ';fwis'
+    replace: 'from what I see'
 
-  - trigger: ";ofc"
-    replace: "of course"
+  - trigger: ';ofc'
+    replace: 'of course'
 
   # Words
-  - trigger: ";def"
-    replace: "definitely"
+  - trigger: ';def'
+    replace: 'definitely'
 
-  - trigger: ";gql"
-    replace: "GraphQL"
+  - trigger: ';gql'
+    replace: 'GraphQL'
 
-  - trigger: ";bst"
-    replace: "Booster"
+  - trigger: ';bst'
+    replace: 'Booster'
 
-  - trigger: ";ror"
-    replace: "Ruby on Rails"
+  - trigger: ';ror'
+    replace: 'Ruby on Rails'
 
-  - trigger: ";bdi"
-    replace: "Buenos días!"
+  - trigger: ';bdi'
+    replace: 'Buenos días!'
 
   # Code
-  - trigger: ";mdc"
-    replace: "```\n\n```"
+  - trigger: ';mdc'
+    replace: '```\n\n```'
 
   # Dates
-  - trigger: ";date"
-    replace: "{{mydate}}"
+  - trigger: ';date'
+    replace: '{{mydate}}'
     vars:
-      - name: mydate
-        type: date
+      - name: 'mydate'
+        type: 'date'
         params:
-          format: "%d/%m/%Y"
+          format: '%d/%m/%Y'
 
   # Zettelkasten
-  - trigger: ";zid"
-    replace: "§{{mydate}} - "
+  - trigger: ';zid'
+    replace: '§{{mydate}} - '
     vars:
-      - name: mydate
-        type: date
+      - name: 'mydate'
+        type: 'date'
         params:
-          format: "%Y%m%d%H%M"
+          format: '%Y%m%d%H%M'
 
   # Shell commands
-  - trigger: ";shell"
-    replace: "{{output}}"
+  - trigger: ';shell'
+    replace: '{{output}}'
     vars:
-      - name: output
-        type: shell
+      - name: 'output'
+        type: 'shell'
         params:
-          cmd: "echo Hello from your shell"
+          cmd: 'echo Hello from your shell'
 
   # Emoji
-  - trigger: ";shrug"
-    replace: "¯\\_(ツ)_/¯"
+  - trigger: ';shrug'
+    replace: '¯\\_(ツ)_/¯'
 
-  - trigger: ";tableflip"
-    replace: "(╯°□°）╯︵ ┻━┻"
+  - trigger: ';tableflip'
+    replace: '(╯°□°）╯︵ ┻━┻'
 
-  - trigger: ";lenny"
-    replace: "( ͡° ͜ʖ ͡°)"
+  - trigger: ';lenny'
+    replace: '( ͡° ͜ʖ ͡°)'

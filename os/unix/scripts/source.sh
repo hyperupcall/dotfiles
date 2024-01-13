@@ -70,6 +70,7 @@ pkg.add_apt_key() {
 	local dest_file="$2"
 
 	if [ ! -f "$dest_file" ]; then
+		core.print_info "Downloading and writing key to $dest_file"
 		sudo mkdir -p "${dest_file%/*}"
 		util.req "$source_url" \
 			| sudo tee "$dest_file" >/dev/null

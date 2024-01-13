@@ -14,8 +14,7 @@ configure.python() {
 		python3 -m ensurepip --upgrade
 	fi
 	python3 -m pip install --upgrade pip
-
-	python3 -m pip install wheel
+	python3 -m pip install --upgrade wheel
 
 
 	if ! util.is_cmd 'pipx'; then

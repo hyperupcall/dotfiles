@@ -1,4 +1,5 @@
+---
 - JOB: 'intercept -g $DEVNODE | python /usr/local/bin/chorded_keymap.py | uinput -d $DEVNODE'
   DEVICE:
     EVENTS:
-      EV_KEY: [KEY_ENTER]
+      EV_KEY: ['KEY_ENTER']

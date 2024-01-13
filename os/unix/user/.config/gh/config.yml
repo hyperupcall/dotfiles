@@ -1,4 +1,5 @@
-git_protocol: ssh
-prompt: enabled
+---
+git_protocol: 'ssh'
+prompt: 'enabled'
 aliases:
-    repocr: repo create --disable-wiki --public
+  repocr: 'repo create --disable-wiki --public'

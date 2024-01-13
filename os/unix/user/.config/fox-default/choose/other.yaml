@@ -1,102 +1,103 @@
+---
 backup-manager:
-  - borg
-  - bupstash
-  - restic
-  - rsnapshot
-  - timediff
+  - 'borg'
+  - 'bupstash'
+  - 'restic'
+  - 'rsnapshot'
+  - 'timediff'
 backup-manager-gui:
-  - burp
+  - 'burp'
 container-engine:
-  - buildash
-  - docker
-  - runc
+  - 'buildash'
+  - 'docker'
+  - 'runc'
 df:
-  - df
-  - duf
+  - 'df'
+  - 'duf'
 diff:
-  - diff-gnu
-  - kitty-diff
+  - 'diff-gnu'
+  - 'kitty-diff'
 disk-scanner:
-  - df
-  - du
-  - duc
-  - duf
-  - dust
-  - dutree
-  - gdu
-  - ncdu
+  - 'df'
+  - 'du'
+  - 'duc'
+  - 'duf'
+  - 'dust'
+  - 'dutree'
+  - 'gdu'
+  - 'ncdu'
 du:
-  - du
-  - dua
-  - dust
-  - dutree
-  - gdu
-  - ncdu
-  - pdu
+  - 'du'
+  - 'dua'
+  - 'dust'
+  - 'dutree'
+  - 'gdu'
+  - 'ncdu'
+  - 'pdu'
 file-searcher:
-  - fd
-  - find
+  - 'fd'
+  - 'find'
 filter:
-  - fzf
-  - peco
+  - 'fzf'
+  - 'peco'
 git:
-  - fac
-  - gitui
-  - grv
+  - 'fac'
+  - 'gitui'
+  - 'grv'
 grep:
-  - ack
-  - ag
-  - grep
-  - rg
+  - 'ack'
+  - 'ag'
+  - 'grep'
+  - 'rg'
 js-bundler:
-  - browserify
-  - fuse-box
-  - parcel
-  - pax
-  - rollup
-  - webpack
+  - 'browserify'
+  - 'fuse-box'
+  - 'parcel'
+  - 'pax'
+  - 'rollup'
+  - 'webpack'
 ls:
-  - exa
-  - ls-bsd
-  - ls-gnu
-  - lsd
+  - 'exa'
+  - 'ls-bsd'
+  - 'ls-gnu'
+  - 'lsd'
 make:
-  - colormake
-  - make
-  - mmake
-  - remake
+  - 'colormake'
+  - 'make'
+  - 'mmake'
+  - 'remake'
 man:
-  - cheat
-  - navi
-  - tldr
-  - man
+  - 'cheat'
+  - 'navi'
+  - 'tldr'
+  - 'man'
 git-merge-tool:
-  - meld
-  - vdiff
+  - 'meld'
+  - 'vdiff'
 ping:
-  - gping
-  - mtr
-  - ping
-  - prettyping
+  - 'gping'
+  - 'mtr'
+  - 'ping'
+  - 'prettyping'
 ps:
-  - procs
-  - ps
+  - 'procs'
+  - 'ps'
 sed:
-  - sd
+  - 'sd'
 text-searcher:
-  - ack
-  - grep
-  - ripgrep
-  - the_silver_searcher
+  - 'ack'
+  - 'grep'
+  - 'ripgrep'
+  - 'the_silver_searcher'
 top:
-  - bashtop
-  - bottom
-  - glances
-  - gotop
-  - gtop
-  - htop
-  - tiptop
-  - ytop
+  - 'bashtop'
+  - 'bottom'
+  - 'glances'
+  - 'gotop'
+  - 'gtop'
+  - 'htop'
+  - 'tiptop'
+  - 'ytop'
 tree:
-  - broot
-  - tree
+  - 'broot'
+  - 'tree'
