@@ -3,12 +3,17 @@
 source "${0%/*}/../source.sh"
 
 main() {
-	if util.confirm 'Setup Cargo?'; then
-		setup.basalt
-	fi
+	util.install_and_configure 'rust' 'Rust' "$@"
 }
 
-setup.basalt() {
+install.rust() {
+	core.print_info "Installing rustup"
+	util.req https://sh.rustup.rs | sh -s -- --default-toolchain nightly -y || util.die
+
+	rustup default nightly
+}
+
+configure.rust() {
 	cargo install --locked starship
 	cargo install --locked cargo-binstall
 	cargo install --locked fd-find

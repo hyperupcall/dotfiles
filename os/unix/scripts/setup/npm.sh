@@ -3,12 +3,12 @@
 source "${0%/*}/../source.sh"
 
 main() {
-	if util.confirm 'Setup npm dependencies?'; then
-		setup.npm
+	if util.confirm 'Configure npm dependencies?'; then
+		configure.npm
 	fi
 }
 
-setup.npm() {
+configure.npm() {
 	npm i -g yarn pnpm
 	yarn global add pnpm
 	yarn global add diff-so-fancy

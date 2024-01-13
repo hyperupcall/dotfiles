@@ -149,3 +149,6 @@ done
 unset -v f
 
 # ---
+# Basalt
+export PATH="${XDG_DATA_HOME:-$HOME/.local/share}/basalt/source/pkg/bin:$PATH"
+eval "$(basalt global init zsh)"

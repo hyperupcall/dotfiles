@@ -319,6 +319,34 @@ util.confirm() {
 	fi
 }
 
+util.install_and_configure() {
+	local id="$1"
+	local name="$2"
+	local flag_force_install=no
+
+	local arg=
+	for arg; do
+		case $arg in
+			--force-install) flag_force_install=yes ;;
+		esac
+	done
+
+	if declare -f install."$id" &>/dev/null; then
+		if ! installed || [ "$flag_force_install" = yes ]; then
+			if util.confirm "Install $name?"; then
+				install."$id"
+			fi
+		else
+			core.print_info "$name already installed. Pass --force-install to run install again"
+		fi
+	else
+		core.print_info "$name has no install function"
+	fi
+
+	core.print_info "Configuring $name"
+	configure."$id"
+}
+
 # TODO
 util.confirm_install() {
 	local name="$1"

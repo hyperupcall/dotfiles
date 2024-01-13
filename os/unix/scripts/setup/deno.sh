@@ -3,12 +3,10 @@
 source "${0%/*}/../source.sh"
 
 main() {
-	if util.confirm 'Setup Deno?'; then
-		setup.deno
-	fi
+	util.install_and_configure 'deno' 'Deno' "$@"
 }
 
-setup.deno() {
+configure.deno() {
 	if ! command -v file_server &>/dev/null; then
 		if command -v deno &>/dev/null; then
 			deno install --allow-net --allow-read https://deno.land/std@0.145.0/http/file_server.ts
@@ -16,6 +14,10 @@ setup.deno() {
 			core.print_warn "Deno not installed. Skipping installation of 'file_server'"
 		fi
 	fi
+}
+
+installed() {
+	command -v deno &>/dev/null
 }
 
 main "$@"

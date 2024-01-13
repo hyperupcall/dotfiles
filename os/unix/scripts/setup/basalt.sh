@@ -3,12 +3,14 @@
 source "${0%/*}/../source.sh"
 
 main() {
-	if util.confirm 'Setup Basalt?'; then
-		setup.basalt
-	fi
+	util.install_and_configure 'basalt' 'Basalt' "$@"
 }
 
-setup.basalt() {
+install.basalt() {
+	util.req -o- https://raw.githubusercontent.com/hyperupcall/basalt/main/scripts/install.sh | sh
+}
+
+configure.basalt() {
 	basalt global add \
 		hyperupcall/autoenv \
 		hyperupcall/bake
@@ -19,4 +21,8 @@ setup.basalt() {
 		reconquest/shdoc
 }
 
+installed() {
+	command -v basalt &>/dev/null
+
+}
 main "$@"

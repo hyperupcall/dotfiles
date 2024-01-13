@@ -10,6 +10,7 @@ main() {
 	check.command 'spaceman-diff'
 	check.command 'npm-merge-driver'
 	check.command 'yarn-merge-driver'
+	printf '%s\n'
 
 	printf '%s\n' "BINARIES:"
 	check.command dotmgr

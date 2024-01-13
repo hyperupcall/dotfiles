@@ -3,12 +3,12 @@
 source "${0%/*}/../source.sh"
 
 main() {
-	if util.confirm 'Setup Go?'; then
-		setup.go
+	if util.confirm 'Configure Go?'; then
+		configure.go
 	fi
 }
 
-setup.go() {
+configure.go() {
 	go install golang.org/x/tools/gopls@latest
 	go install golang.org/x/tools/cmd/godoc@latest
 

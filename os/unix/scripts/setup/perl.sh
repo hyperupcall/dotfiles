@@ -3,12 +3,12 @@
 source "${0%/*}/../source.sh"
 
 main() {
-	if util.confirm 'Setup perl?'; then
-		setup.perl
+	if util.confirm 'Configure perl?'; then
+		configure.perl
 	fi
 }
 
-setup.perl() {
+configure.perl() {
 	# https://github.com/regnarg/urxvt-config-reload
 	cpan -i App::cpanminus
 
