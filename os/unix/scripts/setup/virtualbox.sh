@@ -20,8 +20,9 @@ install.virtualbox() {
 }
 
 configure.virtualbox() {
-	# TODO
-	VBoxManage setproperty machinefolder '/storage/vault/rodinia/VirtualBox_Machines'
+	if [[ "$HOSTNAME" = 'nullptr' ]]; then
+		VBoxManage setproperty machinefolder '/storage/vault/rodinia/VirtualBox_Machines'
+	fi
 }
 
 main "$@"

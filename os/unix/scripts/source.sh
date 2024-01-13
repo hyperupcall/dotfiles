@@ -37,26 +37,10 @@
 	core.trap_add 'err_handler' SIGINT
 }
 
-{
-	export VAR_DOTMGR_DIR="$HOME/.dotfiles/os/unix"
-
-	#
-	# desktop
-	if [ "$(</sys/class/dmi/id/chassis_type)" = '3' ]; then
-		export VAR_PROFILE='desktop'
-		export VAR_REPOS_DIR="$HOME/repos"
-	#
-	# laptop
-	elif [ "$(</sys/class/dmi/id/chassis_type)" = '9' ]; then
-		export VAR_PROFILE='desktop'
-		export VAR_REPOS_DIR=$HOME/Documents
-	fi
-}
-
 # -------------------------------------------------------- #
 #                     HELPER FUNCTIONS                     #
 # -------------------------------------------------------- #
-helper.assert_app_image_launcher_installed() {
+helper.assert_app_image_launcher_installed() { # TODO
 	if command -v appimagelauncherd; then
 		return 0
 	else
@@ -346,16 +330,6 @@ util.install_and_configure() {
 
 	core.print_info "Configuring $name"
 	configure."$id"
-}
-
-# TODO
-util.confirm_install() {
-	local name="$1"
-	local fn="$2"
-
-	if util.confirm "Install $name?"; then
-		"$fn"
-	fi
 }
 
 util.get_path() {

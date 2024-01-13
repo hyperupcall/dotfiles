@@ -24,6 +24,7 @@ main() {
 	printf '%s\n' "BINARIES: DEVELOPMENT:"
 	check.command gh
 	check.command nvim
+	check.command just
 	printf '\n'
 
 	printf '%s\n' "DROPBOX:"
