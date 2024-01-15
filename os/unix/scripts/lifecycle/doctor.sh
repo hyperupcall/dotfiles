@@ -25,6 +25,7 @@ main() {
 	check.command gh
 	check.command nvim
 	check.command just
+	check.command 'dufs'
 	printf '\n'
 
 	printf '%s\n' "DROPBOX:"

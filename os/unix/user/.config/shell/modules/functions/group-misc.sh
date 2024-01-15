@@ -191,7 +191,9 @@ serv() {
 	fi
 
 	# Note: Don't use python built in http.server due to weird caching issues
-	if command -v file_server >/dev/null 2>&1; then
+	if command -v dufs >/dev/null 2>&1; then
+		dufs --port "$2" "$1"
+	elif command -v file_server >/dev/null 2>&1; then
 		file_server "$1" --host 127.0.0.1 -p "$2" # deno
 	elif command -v http-server >/dev/null 2>&1; then
 		http-server "$1" -c-1 -a 127.0.0.1 -p "$2" # node

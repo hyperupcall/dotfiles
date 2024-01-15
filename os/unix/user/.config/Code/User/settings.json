@@ -484,37 +484,17 @@
 
 	//
 	// C/C++
-	"[c]": {
+	"[c][cpp][cuda-cpp]": {
 		"editor.defaultFormatter": "ms-vscode.cpptools",
 		"editor.insertSpaces": false,
 		"editor.tabSize": 3,
 		"editor.codeActionsOnSave": {
-			"source.fixAll": true,
-			"source.organizeImports": true
+			"source.fixAll": "explicit",
+			"source.organizeImports": "explicit"
 		},
 		"editor.formatOnSave": true
 	},
-	"[cpp]": {
-		"editor.defaultFormatter": "ms-vscode.cpptools",
-		"editor.insertSpaces": false,
-		"editor.tabSize": 3,
-		"editor.codeActionsOnSave": {
-			"source.fixAll": true,
-			"source.organizeImports": true
-		},
-		"editor.formatOnSave": true
-	},
-	"[cuda-cpp]": {
-		"editor.defaultFormatter": "ms-vscode.cpptools",
-		"editor.insertSpaces": false,
-		"editor.tabSize": 3,
-		"editor.codeActionsOnSave": {
-			"source.fixAll": true,
-			"source.organizeImports": true
-		},
-		"editor.formatOnSave": true
-	},
-	"C_Cpp.intelliSenseEngine": "disabled",
+	"C_Cpp.intelliSenseEngine": "default",
 	"C_Cpp.default.cppStandard": "c++20",
 	"C_Cpp.default.cStandard": "c17",
 	"C_Cpp.inlayHints.autoDeclarationTypes.enabled": true,
@@ -610,19 +590,6 @@
 	},
 
 	// TODO
-	"[c][cpp][cuda-cpp]": {
-		"editor.codeActionsOnSave": {
-			"source.fixAll": "explicit",
-			"source.organizeImports": "explicit"
-		}
-	},
 	"symbols.hidesExplorerArrows": false,
-	"python.defaultInterpreterPath": "/home/edwin/.dotfiles/os/unix/user/.local/share/albert/python/plugins/hyperupcall/.venv",
-	"github.copilot.enable": {
-		"*": false,
-		"plaintext": false,
-		"markdown": false,
-		"scminput": false
-	},
 	"svelte.enable-ts-plugin": true
 }
