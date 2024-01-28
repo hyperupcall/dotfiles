@@ -49,6 +49,25 @@ helper.assert_app_image_launcher_installed() { # TODO
 	fi
 }
 
+helper.run_for_distro() {
+	# TODO: actuall write
+	if declare -f 'install.debian' &>/dev/null; then
+		install.debian "$@"
+	elif declare -f 'install.ubuntu' &>/dev/null; then
+		install.ubuntu "$@"
+	elif declare -f 'install.fedora' &>/dev/null; then
+		install.fedora "$@"
+	elif declare -f 'install.opensuse' &>/dev/null; then
+		install.opensuse "$@"
+	elif declare -f 'install.arch' &>/dev/null; then
+		install.arch "$@"
+	else
+		core.print_fatal "Distribution not supported"
+	fi
+	# TODO: install.opensuse
+	# TODO: arch but make it work with derivatives by default
+}
+
 pkg.add_apt_key() {
 	local source_url=$1
 	local dest_file="$2"
@@ -317,7 +336,7 @@ util.install_and_configure() {
 	done
 
 	if declare -f install."$id" &>/dev/null; then
-		if ! installed || [ "$flag_force_install" = yes ]; then
+		if ! declare -f installed &>/dev/null || ! installed || [ "$flag_force_install" = yes ]; then
 			if util.confirm "Install $name?"; then
 				install."$id"
 			fi

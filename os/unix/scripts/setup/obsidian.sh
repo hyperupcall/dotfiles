@@ -21,7 +21,7 @@ install.obsidian() {
 	local file='Obsidian.AppImage'
 	util.req -o "$file" "https://github.com/obsidianmd/obsidian-releases/releases/download/$latest_tag/Obsidian-$latest_version.AppImage"
 	chmod +x "$file"
-	nohup ./"$file" & # TODO (does not work)
+	nohup 2>/dev/null ./"$file" & # TODO (does not work)
 
 	popd >/dev/null
 }

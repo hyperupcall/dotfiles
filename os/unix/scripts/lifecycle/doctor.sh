@@ -5,6 +5,7 @@ source "${0%/*}/../source.sh"
 # TODO: hub.woof
 # TODO: git smuge etc filters are in use
 # TODO: minimum Git version of 2.37.0 for 'push.autoSetupRemote'
+# TODO: nerdfonts
 main() {
 	printf '%s\n' "GIT:"
 	check.command 'spaceman-diff'
@@ -50,20 +51,24 @@ main() {
 	if gpg --list-keys 0x2FB93BF35E14E7C4 &>/dev/null; then
 		success "Has password-store gpg public key"
 	else
-		success "Does not have password-store gpg public key"
+		failure "Does not have password-store gpg public key"
 	fi
 	if gpg --list-keys 0x3851E5FD042C7C6C &>/dev/null; then
 		success "Has commit signing gpg public key"
 	else
-		success "Does not have commit signing gpg public key"
+		failure "Does not have commit signing gpg public key"
 	fi
 	if [ -f ~/.ssh/github ]; then
 		success "Has GitHub private SSH key"
 	else
-		success "Does not have GitHub private SSH key"
+		failure "Does not have GitHub private SSH key"
 	fi
-	find ~/.ssh/ ~/.gnupg/ -type d -exec chmod 700 {} \;
-	find ~/.ssh/ ~/.gnupg/ -type f -exec chmod 600 {} \;
+	for dir in ~/.ssh/ ~/.gnupg/; do
+		if [ -d "$dir" ]; then
+			find "$dir" -type d -exec chmod 700 {} \;
+			find "$dir" -type f -exec chmod 600 {} \;
+		fi
+	done
 }
 
 success() {

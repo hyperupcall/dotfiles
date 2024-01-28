@@ -25,7 +25,7 @@ Download and execute `bootstrap.sh` to begin the bootstrap process:
 
 ```sh
 mkdir -p ~/.bootstrap
-curl -#fLo ~/.bootstrap/bootstrap.sh 'https://raw.githubusercontent.com/hyperupcall/dotfiles/trunk/os/unix/bootstrap.sh'
+curl -#fsSLo ~/.bootstrap/bootstrap.sh 'https://raw.githubusercontent.com/hyperupcall/dotfiles/trunk/os/unix/bootstrap.sh'
 chmod +x ~/.bootstrap/bootstrap.sh
 ~/.bootstrap/bootstrap.sh
 ```
@@ -50,8 +50,8 @@ Then, run the following:
 Now, execute:
 
 ```sh
-~/scripts/lifecycle/doctor.sh
 ~/scripts/lifecycle/bootstrap.sh
+source ~/.bootstrap/bootstrap-out.sh
 ~/scripts/lifecycle/idempotent.sh
 ```
 
@@ -60,12 +60,13 @@ Now, execute:
 Some scripts may need to be updated. They include:
 
 - Install ZFS, BTRFS
+- Install SSH, PGP keys, and pass (pass-browserpass, and `~/.password-store`)
 - Install Albert
-- Install pass, pass-browserpass
 - Install Firefox, Brave
 - Install Obsidian
-- Install Dropbox, Maestral
-- Retrieve SSH, PGP keys,
+- Install Maestral
 - Install default, my-tools, hub, etc.
+- Install Mise
 - Configuring keybindings
 - Testing spellchecker
+- Run doctor

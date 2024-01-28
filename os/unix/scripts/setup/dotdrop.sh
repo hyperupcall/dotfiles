@@ -21,10 +21,11 @@ else
 fi
 source ./venv/bin/activate
 
+python3 -m pip install --upgrade pip
 python3 -m pip install --upgrade wheel
 python3 -m pip install -r ./requirements.txt
 
-
+mkdir -p ~/.dotfiles/.data/bin
 cat <<'EOF' > ~/.dotfiles/.data/bin/dotdrop
 #!/usr/bin/env sh
 set -e

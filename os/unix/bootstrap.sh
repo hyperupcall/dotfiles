@@ -22,23 +22,23 @@ main() {
 		else
 			log 'Installing Homebrew'
 			run curl -fsSLo ~/.bootstrap/install-brew.sh 'https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh'
-			bash ~/.bootstrap/install-brew.sh
+			run bash ~/.bootstrap/install-brew.sh
 		fi
-		brew install bash
+		run brew install bash
 	esac
 	installcmd 'curl' 'curl'
 	installcmd 'git' 'git'
 	installcmd 'nvim' 'neovim'
 
 	# Install hyperupcall/dotfiles
-	clonerepo 'github.com/hyperupcall/dotfiles' ~/.dotfiles '--recurse-submodules'
+	clonerepo 'github.com/hyperupcall/dotfiles' ~/.dotfiles
 	run cd ~/.dotfiles
 		run git remote set-url me 'git@github.com:hyperupcall/dotfiles'
 		run ./bake init
 	run cd
 
 	# Symlink ~/scripts
-	ln -fs ~/.dotfiles/os/unix/scripts ~/
+	run ln -fs ~/.dotfiles/os/unix/scripts ~/
 
 	# Asserts
 	if [ ! -f ~/.dotfiles/xdg.sh ]; then
@@ -73,10 +73,6 @@ EOF
 	---
 	EOF
 }
-
-# -------------------------------------------------------- #
-#                         FUNCTIONS                        #
-# -------------------------------------------------------- #
 
 die() {
 	error "$@"
@@ -162,8 +158,7 @@ clonerepo() {
 		log "Already cloned $1"
 	else
 		log "Cloning $1"
-		# shellcheck disable=SC2086
-		run git clone --quiet "https://$1" "$2" $3
+		run git clone --quiet "https://$1" "$2" --recurse-submodules
 
 		git_remote=$(run git -C "$2" remote)
 		if [ "$git_remote" = 'origin' ]; then
@@ -172,9 +167,5 @@ clonerepo() {
 		unset -v git_remote
 	fi
 }
-
-# -------------------------------------------------------- #
-#                           START                          #
-# -------------------------------------------------------- #
 
 main "$@"

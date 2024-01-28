@@ -17,6 +17,9 @@ install.maestral() {
 		sudo apt-get install -y python3-dev python3-venv libsystemd-dev cython qt5-default
 		sudo apt-get install -y libxcb-cursor0 # maestral gui
 		;;
+	dnf)
+		sudo dnf install -y python3 python3-devel systemd-devel cython qt5-qtbase-devel
+		;;
 	*)
 		core.print_warn 'Unable to automatically install venv, libsystemd, cython'
 		;;
@@ -35,10 +38,12 @@ install.maestral() {
 
 	python3 -m pip --require-virtualenv install --upgrade pip
 	python3 -m pip --require-virtualenv install --upgrade wheel
+	python3 -m pip --require-virtualenv install --upgrade importlib_metadata # Fedora 39
 	python3 -m pip --require-virtualenv install --upgrade maestral
 	python3 -m pip --require-virtualenv install --upgrade 'maestral[gui]'
 	python3 -m pip --require-virtualenv install --upgrade 'maestral[syslog]' # May fail
 
+	mkdir -p ~/.dotfiles/.data/bin
 	cat <<'EOF' > ~/.dotfiles/.data/bin/maestral
 #!/usr/bin/env sh
 set -e
@@ -48,10 +53,10 @@ EOF
 	chmod +x ~/.dotfiles/.data/bin/maestral
 
 	maestral auth link
-	maestral autostart --yes
+	mkdir -p ~/Dropbox-Maestral
 	maestral config set path "$HOME/Dropbox-Maestral"
+	maestral autostart --yes
 	maestral start
-
 }
 
 main "$@"

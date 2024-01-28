@@ -35,7 +35,7 @@ install.vscode() {
 		printf "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc\n" \
 			| sudo tee '/etc/yum.repos.d/vscode.repo' >/dev/null
 
-		sudo dnf check-update
+		sudo dnf -y update
 		sudo dnf -y install code code-insiders
 		;;
 	zypper)

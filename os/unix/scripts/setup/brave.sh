@@ -57,7 +57,7 @@ install.brave() {
 		sudo dnf config-manager --add-repo https://brave-browser-rpm-beta.s3.brave.com/x86_64/
 		sudo rpm --import https://brave-browser-rpm-beta.s3.brave.com/brave-core-nightly.asc
 
-		dnf check-update
+		sudo dnf -y update
 		sudo dnf -y install brave-browser brave-browser-beta
 		;;
 	zypper)

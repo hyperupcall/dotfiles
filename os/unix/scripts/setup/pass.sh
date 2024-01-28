@@ -4,7 +4,7 @@ source "${0%/*}/../source.sh"
 
 main() {
 	if util.confirm 'Install pass?'; then
-		install.pass
+		helper.run_for_distro "$@"
 	fi
 
 	if util.confirm 'Clone password repository?'; then
@@ -23,27 +23,27 @@ main() {
 	fi
 }
 
-install.pass() {
-	util.get_package_manager
-	local pkgmngr="$REPLY"
+install.debian() {
+	sudo apt-get -y update
+	sudo apt-get -y install pass
+}
 
-	case $pkgmngr in
-	pacman)
-		yay -S pass
-		;;
-	apt)
-		sudo apt-get -y update
-		sudo apt-get -y install pass
-		;;
-	dnf)
-		dnf check-update
-		sudo dnf -y install pass
-		;;
-	zypper)
-		sudo zypper refresh
-		sudo zypper -y install pass
-		;;
-	esac
+install.ubuntu() {
+	install.debian "$@"
+}
+
+install.fedora() {
+	sudo dnf -y update
+	sudo dnf -y install pass
+}
+
+install.opensuse() {
+	sudo zypper refresh
+	sudo zypper -y install pass
+}
+
+install.pacman() {
+	yay -Syu pass
 }
 
 main "$@"

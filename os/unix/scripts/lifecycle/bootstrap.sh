@@ -12,40 +12,9 @@ main() {
 	# Ensure prerequisites
 	util.ensure mkdir -p "$XDG_CONFIG_HOME"
 
-	# Install distro packages
-	if util.is_cmd 'jq'; then
-		core.print_info 'Already installed jq'
-	else
-		core.print_info 'Installing jq'
-		util.install_packages 'jq'
-	fi
-
-	# Remove distribution specific dotfiles
-	util.ensure mkdir -p ~/.bootstrap/distro-dots
-	for file in ~/.bash_login ~/.bash_logout ~/.bash_profile ~/.bashrc ~/.profile; do
-		if [[ ! -L "$file" && -f "$file" ]]; then
-			util.ensure mv "$file" ~/.bootstrap/distro-dots
-		fi
-	done
-
-	# Install Cargo, Rust
-	if [ -d ~/.cargo ]; then
-		core.print_info 'Already installed Cargo'
-	else
-		core.print_info 'Installing Cargo'
-		curl -fsSL 'https://sh.rustup.rs' | sh -s -- --default-toolchain nightly -y
-	fi
-	if [ -f ~/.cargo/env ]; then
-		. ~/.cargo/env
-	fi
-
-	~/scripts/install/dotdrop.sh
-
 	# Install generally useful dependencies
 	util.get_package_manager
-	local pkgmngr="$REPLY"
-
-	case $pkgmngr in
+	case $REPLY in
 	pacman)
 		sudo pacman -Syyu --noconfirm
 		sudo pacman -S --noconfirm base-devel
@@ -75,10 +44,25 @@ main() {
 		sudo zypper -y install openssl-devel # for starship
 		;;
 	esac
-
 	util.install_packages bash-completion curl rsync pass
 	util.install_packages pkg-config # for starship
 	util.install_packages cmake ccache vim nano
+	if util.is_cmd 'jq'; then
+		core.print_info 'Already installed jq'
+	else
+		core.print_info 'Installing jq'
+		util.install_packages 'jq'
+	fi
+
+	# Remove distribution specific dotfiles
+	util.ensure mkdir -p ~/.bootstrap/distro-dots
+	for file in ~/.bash_login ~/.bash_logout ~/.bash_profile ~/.bashrc ~/.profile; do
+		if [[ ! -L "$file" && -f "$file" ]]; then
+			util.ensure mv "$file" ~/.bootstrap/distro-dots
+		fi
+	done
+
+	~/scripts/setup/dotdrop.sh
 
 	# Get GithHub authorization tokens
 	if [ -f ~/.dotfiles/.data/github_token ]; then
