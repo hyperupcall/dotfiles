@@ -57,8 +57,9 @@ source ~/.bootstrap/bootstrap-out.sh
 
 ## Next Steps
 
-Some scripts may need to be updated. They include:
+Some scripts should be executed. They include:
 
+<<<<<<< Updated upstream
 - Install ZFS, BTRFS
 - Install SSH, PGP keys, and pass (pass-browserpass, and `~/.password-store`)
 - Install Albert
@@ -70,3 +71,18 @@ Some scripts may need to be updated. They include:
 - Configuring keybindings
 - Testing spellchecker
 - Run doctor
+=======
+- Setup ZFS, BTRFS
+  - Modify `/etc/fstab`
+- Setup Albert
+  - Enable plugins
+- Setup pass, pass-browserpass
+- Setup Firefox, Brave
+  - sync
+- Setup Obsidian
+- Setup Dropbox, Maestral
+- Retrieve SSH, PGP keys
+- Setup default, my-tools, hub, etc.
+- Configure keybindings
+- Test spellchecker
+>>>>>>> Stashed changes

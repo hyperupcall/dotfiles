@@ -5,7 +5,11 @@ source "${0%/*}/../source.sh"
 # TODO: hub.woof
 # TODO: git smuge etc filters are in use
 # TODO: minimum Git version of 2.37.0 for 'push.autoSetupRemote'
+<<<<<<< Updated upstream
 # TODO: nerdfonts
+=======
+# TODO: latexindent
+>>>>>>> Stashed changes
 main() {
 	printf '%s\n' "GIT:"
 	check.command 'spaceman-diff'
@@ -27,6 +31,7 @@ main() {
 	check.command nvim
 	check.command just
 	check.command 'dufs'
+	check.command 'pre-commit'
 	printf '\n'
 
 	printf '%s\n' "DROPBOX:"

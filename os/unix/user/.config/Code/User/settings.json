@@ -14,7 +14,7 @@
 	"editor.bracketPairColorization.enabled": true,
 	"editor.codeActionsOnSave": {
 		"source.organizeImports": "never",
-		"source.fixAll": "never"
+		"source.fixAll": "explicit"
 	},
 	"editor.codeLens": true,
 	"editor.cursorSmoothCaretAnimation": "off",
@@ -39,7 +39,7 @@
 	"editor.smoothScrolling": true,
 	"editor.suggestSelection": "recentlyUsedByPrefix",
 	"editor.suggest.snippetsPreventQuickSuggestions": false,
-	// "editor.tabSize": 3,
+	"editor.tabSize": 3,
 	"editor.unfoldOnClickAfterEndOfLine": true,
 	"editor.wordWrap": "on",
 	"editor.wordWrapColumn": 100,
@@ -121,20 +121,17 @@
 	"workbench.editor.closeOnFileDelete": true,
 	"workbench.editor.highlightModifiedTabs": true,
 	"workbench.editor.languageDetection": false,
-	"workbench.editor.tabCloseButton": "off",
-	"workbench.editorAssociations": {
-		"*.jpg": "luna.editor",
-		"*.png": "luna.editor",
-		"*.ipynb": "jupyter-notebook",
-		"*.ico": "luna.editor"
-	},
 	"workbench.enableExperiments": false,
-	"workbench.iconTheme": "vscode-icons",
+	"workbench.iconTheme": "moxer-icons",
 	"workbench.quickOpen.closeOnFocusLost": false,
 	"workbench.startupEditor": "none",
 	"workbench.tips.enabled": false,
 	"workbench.tree.indent": 12,
+<<<<<<< Updated upstream
 	"workbench.colorTheme": "Gruvbox Light Hard",
+=======
+	"workbench.colorTheme": "Bearded Theme Coffee Cream",
+>>>>>>> Stashed changes
 
 	//
 	// EXPLORER
@@ -147,6 +144,9 @@
 	"security.workspace.trust.enabled": false,
 	"security.workspace.trust.untrustedFiles": "open",
 	"update.mode": "manual",
+
+	//
+	// PRETTIER
 	"prettier.requireConfig": false,
 	"prettier.semi": false,
 	"prettier.singleQuote": true,
@@ -154,21 +154,10 @@
 	"prettier.useTabs": true,
 
 	//
-	// ESLINT
-	"eslint.format.enable": true,
-
-	//
 	// JAVASCRIPT
-	"[javascript]": {
+	"[javascript][javascriptreact]": {
 		"editor.codeActionsOnSave": {
 			"source.organizeImports": "never"
-		},
-		"editor.defaultFormatter": "esbenp.prettier-vscode",
-		"editor.formatOnSave": true
-	},
-	"[javascriptreact]": {
-		"editor.codeActionsOnSave": {
-			"source.organizeImports": "explicit"
 		},
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.formatOnSave": true
@@ -177,11 +166,12 @@
 	"javascript.referencesCodeLens.enabled": true,
 	"javascript.referencesCodeLens.showOnAllFunctions": true,
 	"javascript.suggest.autoImports": true,
+	"javascript.suggest.completeFunctionCalls": true,
 	"javascript.updateImportsOnFileMove.enabled": "always",
 
 	//
 	// TYPESCRIPT
-	"[typescript]": {
+	"[typescript][typescriptreact]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.formatOnSave": true
 	},
@@ -194,6 +184,7 @@
 	"typescript.referencesCodeLens.enabled": true,
 	"typescript.referencesCodeLens.showOnAllFunctions": true,
 	"typescript.suggest.autoImports": true,
+	"typescript.suggest.completeFunctionCalls": true,
 	"typescript.updateImportsOnFileMove.enabled": "always",
 
 	"typescript.inlayHints.enumMemberValues.enabled": false,
@@ -206,18 +197,8 @@
 	"typescript.inlayHints.variableTypes.suppressWhenTypeMatchesName": false,
 
 	//
-	// DENO
-	"deno.suggest.imports.autoDiscover": true,
-	"typescript.suggest.completeFunctionCalls": true,
-
-	//
 	// JSON
-	"[json]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode",
-		"editor.formatOnSave": true,
-		"editor.defaultFoldingRangeProvider": "esbenp.prettier-vscode"
-	},
-	"[jsonc]": {
+	"[json][jsonc]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.formatOnSave": true,
 		"editor.defaultFoldingRangeProvider": "esbenp.prettier-vscode"
@@ -238,7 +219,6 @@
 		"editor.tabSize": 3
 	},
 	"evenBetterToml.schema.associations": {
-		"foxxo.toml": "https://raw.githubusercontent.com/hyperupcall/foxxo/main/src/schemas/foxxoProject.schema.json",
 		"basalt.toml": "https://raw.githubusercontent.com/hyperupcall/foxxo/main/src/schemas/basalt.schema.json"
 	},
 
@@ -441,6 +421,12 @@
 	"gitlens.codeLens.includeSingleLineSymbols": true,
 	"gitlens.codeLens.enabled": false,
 
+	// VSCORD
+	"vscord.app.name": "Visual Studio Code",
+	"vscord.app.privacyMode.enable": false,
+	"vscord.status.problems.enabled": false,
+	"vscord.behaviour.suppressNotifications": true,
+
 	//
 	// CODE-RUNNER
 	"code-runner.executorMap": {
@@ -452,20 +438,21 @@
 	"code-runner.runInTerminal": true,
 
 	//
-	// UNSORTED
-	"comment-divider.length": 60,
-	"debug.node.autoAttach": "on",
+	// UNSORTED EDITOR
 	"diffEditor.ignoreTrimWhitespace": false,
 	"merge-conflict.autoNavigateNextConflict.enabled": true,
 	"merge-conflict.diffViewPosition": "Beside",
+
+	//
+	// UNSORTED PLUGIN
+	"comment-divider.length": 60,
+	"debug.node.autoAttach": "on",
 	"screencastMode.onlyKeyboardShortcuts": true,
 	"sqltools.useNodeRuntime": true,
 	"cmake.configureOnOpen": true,
-	// "makefile.alwaysPreConfigure": true,
 	"vim.enableNeovim": true,
 	"esbonio.server.enabled": false,
 	"zenMode.centerLayout": true,
-	"indentRainbow.errorColor": "rgba(128,32,32,0.1)",
 	"npm.keybindingsChangedWarningShown": true,
 	"liveServer.settings.showOnStatusbar": false,
 	"vsicons.associations.files": [
@@ -476,11 +463,15 @@
 			"format": "svg"
 		}
 	],
-
-	"vscord.app.name": "Visual Studio Code",
-	"vscord.app.privacyMode.enable": false,
-	"vscord.status.problems.enabled": false,
-	"vscord.behaviour.suppressNotifications": true,
+	"cSpell.diagnosticLevel": "Hint",
+	"cSpell.dictionaryDefinitions": [
+		{
+			"name": "custom-words",
+			"path": "~/.dotfiles/os/unix/config/custom-words.txt",
+			"addWords": true
+		}
+	],
+	"cSpell.dictionaries": ["custom-words"],
 
 	//
 	// C/C++
@@ -505,11 +496,7 @@
 	"C_Cpp.codeAnalysis.clangTidy.fallbackConfig": "{ Checks: 'bugprone-*,cert-*,clang-analyzer-*,concurrency-*,cppcoreguidelines-*,google-*,hicpp-*,misc-*,modernize-*,performance-*,portability-*,readability-*,-bugprone-easily-swappable-parameters,-clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling,-clang-analyzer-deadcode.DeadStores,-concurrency-mt-unsafe,-cppcoreguidelines-avoid-c-arrays,-cppcoreguidelines-avoid-magic-numbers,-cppcoreguidelines-avoid-non-const-global-variables,-cppcoreguidelines-macro-usage,-cppcoreguidelines-owning-memory,-cppcoreguidelines-pro-bounds-pointer-arithmetic,-cppcoreguidelines-pro-bounds-array-to-pointer-decay,-google-readability-braces-around-statements,-google-readability-casting,-google-readability-todo,-google-runtime-references,-modernize-avoid-c-arrays,-modernize-use-trailing-return-type,-readability-braces-around-statements,-readability-convert-member-functions-to-static,-readability-else-after-return,-readability-identifier-length,-readability-isolate-declaration,-readability-magic-numbers,-misc-unused-parameters'}",
 	"C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, UseTab: ForIndentation, IndentWidth: 3, TabWidth: 3, AlignEscapedNewlines: Left, AllowShortFunctionsOnASingleLine: Empty, AlwaysBreakTemplateDeclarations: Yes, ColumnLimit: 120 }",
 	"C_Cpp.clang_format_sortIncludes": true,
-	"c-cpp-flylint.standard": ["c11", "c++20"],
-	"c-cpp-flylint.clang.enable": true,
 	"c-cpp-flylint.cppcheck.enable": false,
-	"c-cpp-flylint.flexelint.enable": false,
-	"c-cpp-flylint.pclintplus.enable": false,
 	"c-cpp-flylint.flawfinder.enable": true,
 	"c-cpp-flylint.lizard.enable": true,
 	// TODO: automatically generate other string from this array. one approach
@@ -577,19 +564,16 @@
 	"workbench.welcomePage.walkthroughs.openOnInstall": false,
 	"Lua.telemetry.enable": false,
 
-	//
-	// cspell
-	"cSpell.diagnosticLevel": "Hint",
+	// TODO
 	"editor.largeFileOptimizations": false,
 	"workbench.editor.tabActionCloseVisibility": false,
 	"workbench.editor.empty.hint": "hidden",
+	"symbols.hidesExplorerArrows": false,
+	"svelte.enable-ts-plugin": true,
 	"[python][shellscript]": {
 		"editor.codeActionsOnSave": {
 			"source.fixAll": "never"
 		}
 	},
-
-	// TODO
-	"symbols.hidesExplorerArrows": false,
-	"svelte.enable-ts-plugin": true
+	"latex-utilities.message.update.show": false
 }

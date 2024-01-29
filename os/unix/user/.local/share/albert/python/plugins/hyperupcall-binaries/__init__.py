@@ -24,11 +24,11 @@ class Plugin(PluginInstance, TriggerQueryHandler):
 			name=md_name,
 			description=md_description,
 			synopsis="<pass-name>",
-			defaultTrigger="e ",
+			defaultTrigger="run ",
 		)
 		PluginInstance.__init__(self, extensions=[self])
 		self.iconUrls = ["xdg:dialog-password"]
-		# self._some_path = self.readConfig("some_path", "") or ""
+		self._some_path = ''
 
 	@property
 	def some_path(self):
