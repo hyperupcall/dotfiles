@@ -1,7 +1,6 @@
 # shellcheck shell=sh
 
 # ------------------------- Basic ------------------------ #
-
 umask 022
 
 . ~/.dotfiles/xdg.sh

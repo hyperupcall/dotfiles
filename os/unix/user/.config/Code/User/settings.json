@@ -127,11 +127,7 @@
 	"workbench.startupEditor": "none",
 	"workbench.tips.enabled": false,
 	"workbench.tree.indent": 12,
-<<<<<<< Updated upstream
-	"workbench.colorTheme": "Gruvbox Light Hard",
-=======
-	"workbench.colorTheme": "Bearded Theme Coffee Cream",
->>>>>>> Stashed changes
+	"workbench.colorTheme": "Bearded Theme feat. Mintshake D Raynh",
 
 	//
 	// EXPLORER

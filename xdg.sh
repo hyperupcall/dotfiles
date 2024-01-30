@@ -1,8 +1,8 @@
 # shellcheck shell=sh
 
-# @description My XDG Base Directory variables are set differently depending on
-# the operating system. This file is used during my dotfile bootstrap process
-# and by my 'dotfox' configuration
+# My XDG Base Directory variables are set differently depending on
+# the operating system. This file is used during my dotfile bootstrap process.
+
 __xdg_main() {
 	if [ -f /etc/os-release ]; then
 		while IFS='=' read -r __key __value; do

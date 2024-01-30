@@ -59,30 +59,19 @@ source ~/.bootstrap/bootstrap-out.sh
 
 Some scripts should be executed. They include:
 
-<<<<<<< Updated upstream
-- Install ZFS, BTRFS
-- Install SSH, PGP keys, and pass (pass-browserpass, and `~/.password-store`)
-- Install Albert
-- Install Firefox, Brave
-- Install Obsidian
-- Install Maestral
-- Install default, my-tools, hub, etc.
-- Install Mise
-- Configuring keybindings
-- Testing spellchecker
-- Run doctor
-=======
 - Setup ZFS, BTRFS
   - Modify `/etc/fstab`
+- Install SSH, PGP keys, and pass (pass-browserpass, and `~/.password-store`)
 - Setup Albert
   - Enable plugins
 - Setup pass, pass-browserpass
 - Setup Firefox, Brave
   - sync
 - Setup Obsidian
-- Setup Dropbox, Maestral
+- Setup Maestral
 - Retrieve SSH, PGP keys
 - Setup default, my-tools, hub, etc.
+- Install Mise
 - Configure keybindings
 - Test spellchecker
->>>>>>> Stashed changes
+- Run doctor

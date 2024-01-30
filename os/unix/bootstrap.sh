@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 set -e
 
-# shellcheck disable=SC3028,SC3054
+# shellcheck disable=SC3028,SC3054,SC2039
 if [ -n "$BASH" ] && [ "${BASH_SOURCE[0]}" != "$0" ]; then
 	printf '%s\n' "Error: This file should not be sourced"
 	return 1
