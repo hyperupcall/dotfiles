@@ -2,16 +2,24 @@
 
 source "${0%/*}/../source.sh"
 
-# TODO: hub.woof
+# TODO: hub.woof, nerdfonts
 # TODO: git smuge etc filters are in use
-# TODO: minimum Git version of 2.37.0 for 'push.autoSetupRemote'
-# TODO: nerdfonts, latexindent
 main() {
+	git_version=$(git version)
+	git_version=${git_version#git version }
+	IFS='.' read -ra git_version <<< "${git_version}"
+	if ! (( git_version[0] >= 3 || (git_version[0] == 2 && git_version[1] >= 37) )); then
+		failure "Git version is too old. It must be at least 2.37.0 to support 'push.autoSetupRemote'"
+	fi
+	echo "${git_version[0]}"
+	echo "${git_version[1]}"
+	echo "${git_version[2]}"
+
 	printf '%s\n' "GIT:"
 	check.command 'spaceman-diff'
 	check.command 'npm-merge-driver'
 	check.command 'yarn-merge-driver'
-	printf '%s\n'
+	printf '\n'
 
 	printf '%s\n' "BINARIES:"
 	check.command dotmgr
@@ -32,6 +40,10 @@ main() {
 
 	printf '%s\n' "DROPBOX:"
 	check.process dropbox
+	printf '\n'
+
+	printf '%s\n' "LATEX:"
+	check.process latexindent
 	printf '\n'
 
 	printf '%s\n' "FISH:"

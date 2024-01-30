@@ -9,7 +9,7 @@ export BASH_IT="$XDG_DATA_HOME/bash-it"
 export BASH_IT_THEME='powerline-multiline'
 
 # (Advanced): Change this to the name of your remote repo if you
-# cloned bash-it with a remote other than origin such as `bash-it`.
+#cloned bash-it with a remote other than origin such as `bash-it`.
 # export BASH_IT_REMOTE='bash-it'
 
 # (Advanced): Change this to the name of the main development branch if

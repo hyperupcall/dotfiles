@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 
 # Ex.
-# # clone (root)
+# #clone (root)
 # functionName() {
 # 	:
 # }

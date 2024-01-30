@@ -11,9 +11,6 @@ export VISUAL='nvim'
 export EDITOR='nvim'
 export DIFFPROG='vim -d'
 export PAGER='less'
-# export BROWSER='brave-browser'
-# export SPELL='aspell -x -c'
-
 
 # ------------------------ Program ----------------------- #
 # fzf

@@ -1,6 +1,6 @@
 # shellcheck shell=sh
 
-# clone(user)
+#clone(user)
 bash() {
 	if { [ "$1" = --noprofile ] && [ "$2" = --norc ]; } \
 		|| { [ "$1" = --norc ] && [ "$2" = --noprofile ]; }
@@ -12,7 +12,7 @@ bash() {
 	fi
 }
 
-# clone(user, root)
+#clone(user, root)
 cls() {
 	# assume hardware is not real (not 'reset')
 	tput reset
@@ -21,7 +21,7 @@ cls() {
 	stty sane
 }
 
-# clone(user)
+#clone(user)
 cdp() {
 	if [ -z "$_shell_cdp_dir" ]; then
 		_shell_util_log_error "Variable '_shell_cdp_dir' not set. Recommended is to set it in 'PROMPT_COMMAND' or precmd()"
@@ -57,7 +57,7 @@ docker_nuke() {
 	docker images | grep none | col 3 | xargs docker rmi -f
 }
 
-# clone(user, root)
+#clone(user, root)
 dg() {
 	dig +nocmd "$1" any +multiline +noall +answer
 }
@@ -65,8 +65,8 @@ dg() {
 edit() {
 	_edit_grep_result="$(grep -nR "^$1() {$" "$XDG_CONFIG_HOME"/shell | head -1)"
 	if [ -z "$_edit_grep_result" ]; then
-    		_edit_grep_result="$(grep -nR "^alias $1=" "$XDG_CONFIG_HOME"/shell)"
-    		if [ -z "$_edit_grep_result" ]; then
+			_edit_grep_result="$(grep -nR "^alias $1=" "$XDG_CONFIG_HOME"/shell)"
+			if [ -z "$_edit_grep_result" ]; then
 			_shell_util_die "edit: Function or alias '$1' not found"
 			return
 		fi
@@ -80,7 +80,7 @@ edit() {
 	unset -v _edit_grep_result _edit_file _edit_line
 }
 
-# clone(user, root)
+#clone(user, root)
 faketty() {
 	unbuffer -p "@"
 }
@@ -90,24 +90,20 @@ gs() {
 	g s
 }
 
-# gclonedir() {
-# 	urlEncoded="$(jq -rn --arg x "$1" '$x | @uri')"
-# 	wget "https://download-directory.github.io/?url=$urlEncoded"
-# }
-
-# clone(user, root)
+#clone(user, root)
 isup() {
+	_shell_util_log_warn "Executing: 'curl -sS --head -X GET \"$1\" | grep -q '200 OK'"
 	command curl -sS --head -X GET "$1" | grep -q '200 OK'
 }
 
-# clone(user, root)
+#clone(user, root)
 kkexec() {
 	sudo kexec -l /efi/EFI/arch/vmlinuz-linux-lts --initrd /efi/EFI/arch/initramfs-linux-lts.img --reuse-cmdline
 	sudo systemctl kexec
 	# sudo kexec -e
 }
 
-# clone(user, root)
+#clone(user, root)
 nh() {
 	nohup "$@" > /dev/null 2>&1 &
 }
@@ -176,12 +172,12 @@ qe() {
 }
 
 # https://unix.stackexchange.com/a/123770
-# clone(user, root)
+#clone(user, root)
 see_old() {
 	sudo lsof +c 0 | grep 'DEL.*lib' | awk '1 { print $1 ": " $NF }' | sort -u
 }
 
-# clone(user)
+#clone(user)
 serv() {
 	set -- "${1:-.}" "${2:-4000}"
 
@@ -190,7 +186,7 @@ serv() {
 		return
 	fi
 
-	# Note: Don't use python built in http.server due to weird caching issues
+	# Don't use Python's built in http.server due to weird caching issues.
 	if command -v dufs >/dev/null 2>&1; then
 		dufs --port "$2" "$1"
 	elif command -v file_server >/dev/null 2>&1; then
@@ -208,19 +204,19 @@ vtraceroute() {
 	xdg-open "https://stefansundin.github.io/traceroute-mapper/?trace=$('traceroute' -q1 "$*" | sed ':a;N;$!ba;s/\n/%0A/g')"
 }
 
-# clone(user)
+#clone(user)
 wa() {
 	watch -cn.3 "$@"
 }
 
 # watch fast
-# clone(user)
+#clone(user)
 waf() {
 	watch -cn.1 "$@"
 }
 
 # watch slow
-# clone(user)
+#clone(user)
 was() {
 	watch -cn1 "$@"
 }

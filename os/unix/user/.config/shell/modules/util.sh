@@ -1,7 +1,6 @@
 # shellcheck shell=sh
 
-# Common functions used in starup files for POSIX shell,
-# Bash, and Zsh
+# Common functions used in starup files for POSIX shell, Bash, and Zsh.
 
 _path_prepend() {
 	if [ -n "$2" ]; then

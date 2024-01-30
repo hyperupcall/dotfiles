@@ -571,5 +571,6 @@
 			"source.fixAll": "never"
 		}
 	},
-	"latex-utilities.message.update.show": false
+	"latex-utilities.message.update.show": false,
+	"git.openRepositoryInParentFolders": "never"
 }

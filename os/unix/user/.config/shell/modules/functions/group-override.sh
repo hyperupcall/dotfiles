@@ -30,7 +30,7 @@ cd() {
 	unset -v _shell_dir
 }
 
-# clone(user)
+#clone(user)
 curl() {
 	if command -v curlie >/dev/null 2>&1; then
 		curlie "$@"
@@ -101,7 +101,7 @@ stty() {
 	fi
 }
 
-# clone(user, root)
+#clone(user, root)
 unlink() {
 	for arg; do
 		case "$arg" in

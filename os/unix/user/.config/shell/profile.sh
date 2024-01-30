@@ -19,7 +19,6 @@ if [ -t 0 ]; then # Surpress 'inappropriate ioctl for device' errors on some dis
 	stty -ixon
 fi
 
-
 # ----------------------- Sourcing ----------------------- #
 . "$XDG_CONFIG_HOME/shell/modules/util.sh"
 

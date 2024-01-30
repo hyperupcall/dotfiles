@@ -1,5 +1,10 @@
 # shellcheck shell=sh
 
+## OTHER
+# export BROWSER='brave-browser'
+# export SPELL='aspell -x -c'
+
+## XDG
 # asdf
 export ASDF_DATA_DIR="$XDG_DATA_HOME/asdf"
 ASDF_DIR="$XDG_DATA_HOME/asdf"
@@ -67,7 +72,7 @@ SDIRS="$XDG_DATA_HOME/bashmarks.sh.db"
 # export SWIFTENV_ROOT="$XDG_DATA_HOME/swiftenv"
 # _path_prepend "$SWIFTENV_ROOT/bin"
 
-# # todotxt
+# todotxt
 # export TODOTXT_CFG_FILE="$XDG_CONFIG_HOME/todotxt/config.sh"
 
 # volta

@@ -1,8 +1,8 @@
 # shellcheck shell=sh
 
-# clone(user, root)
+#clone(user, root)
 chr() {
-	[ -z "$1" ] && { _shell_util_die "chr: No mountpoint specified"; return; }
+	[ -z "$1" ] && { _shell_util_die "chr: No mountpoint specified"; return 1; }
 	[ -d "$1" ] || { _shell_util_die "chr: Folder doesn't exist"; return; }
 
 	command -v arch-chroot >/dev/null 2>&1 && {
@@ -25,7 +25,7 @@ chr() {
 	fi
 }
 
-# clone(user, root)
+#clone(user, root)
 unchr() {
 	[ -z "$1" ] && { _shell_util_die "unchr: No mountpoint specified"; return; }
 	[ -d "$1" ] || { _shell_util_die "unchr: Folder doesn't exist"; return; }
