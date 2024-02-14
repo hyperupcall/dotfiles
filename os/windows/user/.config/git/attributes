@@ -1,13 +1,1 @@
 * text=auto eol=lf
-
-*.docx diff=pandoc2md
-*.pdf diff=pdfconv
-*.md diff=wrap
-*.jpg diff=exif
-*.jpeg diff=exif
-*.png diff=exif
-*.gif diff=exif
-*.png  diff=spaceman-diff
-*.jpg  diff=spaceman-diff
-*.jpeg diff=spaceman-diff
-*.gif  diff=spaceman-diff

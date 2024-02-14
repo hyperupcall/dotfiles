@@ -7,8 +7,8 @@ Download and execute `bootstrap.ps1` to begin the bootstrap process:
 ```powershell
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 
-New-Item -type Directory -Force ~/.bootstrap >$null
-Invoke-WebRequest -UseBasicParsing -Uri 'https://raw.githubusercontent.com/hyperupcall/dotfiles/main/os/windows/dotmgr/bootstrap.ps1' -OutFile ~/.bootstrap/bootstrap.ps1
+New-Item -Type Directory -Force ~/.bootstrap >$null
+Invoke-WebRequest -UseBasicParsing -Uri 'https://raw.githubusercontent.com/hyperupcall/dotfiles/main/os/windows/bootstrap.ps1' -OutFile ~/.bootstrap/bootstrap.ps1
 ~/.bootstrap/bootstrap.ps1
 ```
 

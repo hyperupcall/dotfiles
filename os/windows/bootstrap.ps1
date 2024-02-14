@@ -2,42 +2,33 @@
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
-function Use-BMain() {
+function main() {
 	New-Item -ItemType Directory -Force "$HOME/.bootstrap" >$null
 
 	# Install essential commands
-	Use-BInstallUpdates
-	if (Use-BIsCmd scoop) {
-		Use-BLog 'Already installed Scoop'
+	updatesystem
+	if (iscmd scoop) {
+		log 'Already installed Scoop'
 	}
 	else {
-		Use-BLog 'Installing Scoop'
+		log 'Installing Scoop'
 
 		Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 		Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
 	}
-	Use-BInstallCmd 'sudo'
-	Use-BInstallCmd 'git'
-	Use-BInstallCmd 'neovim'
+	installcmd 'sudo'
+	installcmd 'git'
+	installcmd 'neovim'
 
 	# Install Cargo, Rust
-	Use-BInstallCmd 'rust'
+	installcmd 'rust'
 
 	# Install hyperupcall/dotfiles
-	Use-BCloneRepo 'https://github.com/hyperupcall/dotfiles' "$HOME/.dotfiles"
+	clonerepo 'https://github.com/hyperupcall/dotfiles' "$HOME/.dotfiles"
 	Push-Location ~/.dotfiles
 		git remote set-url origin 'git@github.com:hyperupcall/dotfiles'
 	Pop-Location
 
-	# Install hyperupcall/dotmgr
-	Use-BCloneRepo 'github.com/hyperupcall/dotmgr' "$HOME/.dotfiles/.data/dotmgr-src"
-	Push-Location ~/.dotfiles/.data/dotmgr-src
-		git remote set-url origin 'git@github.com:hyperupcall/dotmgr'
-		cargo build
-		if (!($?)) {
-			Use-BDie 'Failed to build dotmgr'
-		}
-	Pop-Location
 	New-Item -Type Directory -Force -Path ~/.dotfiles/.data/bin >$null
 	New-Item -Type SymbolicLink -Force -Path ~/.dotfiles/.data/bin/dotmgr.exe -Value "$HOME/.dotfiles/.data/dotmgr-src/target/debug/dotmgr.exe" >$null
 
@@ -53,59 +44,64 @@ function Use-BMain() {
 	# Next Steps
 	Write-Host @"
 ---
-. "`$HOME/.bootstrap/init.ps1"
+. "`$HOME/.bootstrap/bootstrap-out.ps1"
 dotfox -Subcommand deploy
 ---
 "@
 }
 
-function Use-BDie([string]$message) {
-	Use-BError "$message"
+function die([string]$message) {
+	error "$message"
 	[Console]::Error.WriteLine("=> Exiting")
 	exit 1
 }
 
-function Use-BError([string]$message) {
+function error([string]$message) {
 	[Console]::Error.WriteLine("=> Error: $message")
 }
 
-function Use-BLog([string]$message) {
+function log([string]$message) {
 	Write-Output "=> Info: $message"
 }
 
-function Use-BIsCmd([string]$command) {
+function iscmd([string]$command) {
 	Get-Command "$command" -ErrorAction SilentlyContinue
 }
 
-function Use-BInstallUpdates() {
+function updatesystem() {
 	scoop update
 }
 
-function Use-BInstallCmd([string]$command) {
+function installcmd([string]$command) {
 	scoop info "$command" >$null
 	if ($?) {
-		Use-BLog "Already installed $command"
+		log "Already installed $command"
 	}
 	else {
-		Use-BLog "Installing $command"
+		log "Installing $command"
 
 		scoop install "$command"
 
 		scoop info "$command" >$null
 		if (!($?)) {
-			Use-BDie "Automatic installation of $command failed"
+			die "Automatic installation of $command failed"
 		}
 	}
 }
 
-function Use-BCloneRepo([string]$uri, [string]$directory) {
+function clonerepo([string]$uri, [string]$directory) {
 	if (Test-Path -Path $directory) {
-		Use-BLog "Already cloned $uri"
+		log "Already cloned $uri"
 	}
 	else {
-		Use-BLog "Cloning $uri"
-		git clone --quiet "https://$uri" "$directory"
+		log "Cloning $uri"
+		git clone --quiet "https://$uri" "$directory" --recurse-submodules
+
+		[array] $git_remote = git -C "$directory" remote
+		if ($git_remote[0] -eq 'origin') {
+			git -C "$directory" remote rename origin me
+		}
 	}
 }
 
-Use-BMain
+main

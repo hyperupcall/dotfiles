@@ -6,7 +6,6 @@ $ErrorView = 'ConciseView'
 #Enable-ExperimentalFeature -Name PSNativePSPathResolution
 #Enable-ExperimentalFeature -Name PSNotApplyErrorActionToStderr
 #Enable-ExperimentalFeature -Name PSSubsystemPluginModel
-# $env:PASSWORD_STORE_DIR = "G:\storage_other\password-store"
 
 $env:VCPKG_DISABLE_METRICS = " "
 
@@ -109,7 +108,8 @@ $splat = @{
 	}
 }
 
-if ($env:WT_SESSION -or ($env:TERM -eq 'xterm-256color')) {
-	Invoke-Expression (&starship init powershell)
+if (Get-Command starship -ErrorAction SilentlyContinue) {
+	if ($env:WT_SESSION -or ($env:TERM -eq 'xterm-256color')) {
+		Invoke-Expression (&starship init powershell)
+	}
 }
-

@@ -21,5 +21,3 @@
 	required = true
 [status]
 	submoduleSummary = true
-[gpg]
-	# program = C:/Program Files (x86)/GnuPG/bin/gpg.exe
