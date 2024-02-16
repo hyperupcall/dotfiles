@@ -9,7 +9,6 @@ case "$1" in
 		pyenv global "$latest"
 		;;
 	*)
-		echo "Subcommand not found"
-		exit 1
+		core.print_die "Subcommand not found"
 		;;
 esac

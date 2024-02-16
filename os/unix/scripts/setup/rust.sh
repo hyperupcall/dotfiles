@@ -3,7 +3,7 @@
 source "${0%/*}/../source.sh"
 
 main() {
-	util.install_and_configure 'rust' 'Rust' "$@"
+	helper.install_and_configure 'rust' 'Rust' "$@"
 }
 
 install.rust() {

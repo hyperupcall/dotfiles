@@ -3,7 +3,7 @@
 source "${0%/*}/../source.sh"
 
 main() {
-	util.install_and_configure 'albert' 'Albert' "$@"
+	helper.install_and_configure 'albert' 'Albert' "$@"
 }
 
 install.albert() {

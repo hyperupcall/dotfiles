@@ -14,8 +14,7 @@ main() {
 			if [ -d "$dir/.git" ]; then
 				core.print_info "Secrets repository already cloned"
 			else
-				core.print_error "Non-git directory already exists in place of secrets dir. Please remove manually"
-				exit 1
+				core.print_die "Non-git directory already exists in place of secrets dir. Please remove manually"
 			fi
 		else
 			git clone 'git@github.com:hyperupcall/secrets' "$dir"

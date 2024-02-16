@@ -11,8 +11,7 @@ main() {
 	if util.is_cmd VBoxManage; then
 		VBoxManage setproperty machinefolder "$virtualbox_dir"
 	else
-		core.print_error "Must have command 'VBoxManage' installed"
-		exit 1
+		core.print_die "Must have command 'VBoxManage' installed"
 	fi
 
 	core.shopt_push -s nullglob

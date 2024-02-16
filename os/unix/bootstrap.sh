@@ -41,8 +41,8 @@ main() {
 	run ln -fs ~/.dotfiles/os/unix/scripts ~/
 
 	# Asserts
-	if [ ! -f ~/.dotfiles/xdg.sh ]; then
-		die 'Failed to find file at ~/.dotfiles/xdg.sh'
+	if [ ! -f ~/.dotfiles/os/unix/scripts/xdg.sh ]; then
+		die 'Failed to find file at ~/.dotfiles/os/unix/scripts/xdg.sh'
 	fi
 
 	# Export variables
@@ -55,10 +55,10 @@ export EDITOR='nvim'
 export VISUAL="\$EDITOR"
 export PATH="\$HOME/.dotfiles/.data/bin:\$PATH"
 
-if [ -f ~/.dotfiles/xdg.sh ]; then
-	. ~/.dotfiles/xdg.sh
+if [ -f ~/.dotfiles/os/unix/scripts/xdg.sh ]; then
+	. ~/.dotfiles/os/unix/scripts/xdg.sh
 else
-	printf '%s\n' 'Error: ~/.dotfiles/xdg.sh not found'
+	printf '%s\n' 'Error: ~/.dotfiles/os/unix/scripts/xdg.sh not found'
 	return 1
 fi
 EOF

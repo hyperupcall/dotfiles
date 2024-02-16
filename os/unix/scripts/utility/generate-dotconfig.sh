@@ -201,7 +201,7 @@ declare -ga g_dotfiles=(
 )
 {
 	# Print dotfiles programatically
-	source "$g_dotfiles_dir/xdg.sh" --set-type
+	source "$g_dotfiles_dir/os/unix/scripts/xdg.sh" --set-type
 	if [ "$REPLY" = default ]; then
 		g_dotfiles+=("pam|home:.pam_environment/xdg-default.conf|home:.pam_environment")
 	elif [ "$REPLY" = custom ]; then
@@ -211,15 +211,13 @@ declare -ga g_dotfiles=(
 
 
 c.export_xdg_vars() {
-	if [ -f "$g_dotfiles_dir/xdg.sh" ]; then
-		source "$g_dotfiles_dir/xdg.sh" --export-vars
+	if [ -f "$g_dotfiles_dir/os/unix/scripts/xdg.sh" ]; then
+		source "$g_dotfiles_dir/os/unix/scripts/xdg.sh" --export-vars
 		if ! [[ -v 'XDG_CONFIG_HOME' ]]; then
-			printf '%s\n' "Error: XDG Variables cannot be empty. Exiting" >&2
-			exit 1
+			core.print_die '%s\n' "Error: XDG Variables cannot be empty. Exiting"
 		fi
 	else
-		printf '%s\n' "Error: $g_dotfiles_dir/xdg.sh not found. Exiting" >&2
-		exit 1
+		core.print_die '%s\n' "Error: $g_dotfiles_dir/os/unix/scripts/xdg.sh not found. Exiting"
 	fi
 }
 
@@ -244,8 +242,7 @@ c.dotfiles() {
 			local relfile=${line#*:}
 
 			if [ -z "${g_dotfiles_src[$prefix]}" ] || [ -z "${g_dotfiles_dst[$prefix]}" ]; then
-				printf '%s\n' "Error: Prefix '$prefix' not supported (for relfile '$relfile'). Exiting" >&2
-				exit 1
+				core.print_die '%s\n' "Error: Prefix '$prefix' not supported (for relfile '$relfile'). Exiting"
 			fi
 
 			local name="${g_dotfiles_dst[$prefix]}/$relfile"

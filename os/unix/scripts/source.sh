@@ -10,7 +10,7 @@
 	fi
 
 	# Source libraries
-	source ~/.dotfiles/xdg.sh
+	source ~/.dotfiles/os/unix/scripts/xdg.sh
 	for _f in \
 		"${BASH_SOURCE[0]%/*}/../vendor/bash-core/pkg"/**/*.sh \
 		"${BASH_SOURCE[0]%/*}/../vendor/bash-term/pkg"/**/*.sh; do
@@ -40,17 +40,9 @@
 # -------------------------------------------------------- #
 #                     HELPER FUNCTIONS                     #
 # -------------------------------------------------------- #
-helper.assert_app_image_launcher_installed() { # TODO
-	if command -v appimagelauncherd; then
-		return 0
-	else
-		core.print_error "This scripts depends on the installation of AppImageLauncher"
-		exit 1
-	fi
-}
-
 helper.run_for_distro() {
-	# TODO: actuall write
+	# TODO: actually write
+	# TODO: arch but make it work with derivatives by default
 	if declare -f 'install.debian' &>/dev/null; then
 		install.debian "$@"
 	elif declare -f 'install.ubuntu' &>/dev/null; then
@@ -64,8 +56,34 @@ helper.run_for_distro() {
 	else
 		core.print_fatal "Distribution not supported"
 	fi
-	# TODO: install.opensuse
-	# TODO: arch but make it work with derivatives by default
+}
+
+helper.install_and_configure() {
+	local id="$1"
+	local name="$2"
+	local flag_force_install=no
+
+	local arg=
+	for arg; do
+		case $arg in
+			--force-install) flag_force_install=yes ;;
+		esac
+	done
+
+	if declare -f install."$id" &>/dev/null; then
+		if ! declare -f installed &>/dev/null || ! installed || [ "$flag_force_install" = yes ]; then
+			if util.confirm "Install $name?"; then
+				install."$id"
+			fi
+		else
+			core.print_info "$name already installed. Pass --force-install to run install again"
+		fi
+	else
+		core.print_info "$name has no install function"
+	fi
+
+	core.print_info "Configuring $name"
+	configure."$id"
 }
 
 pkg.add_apt_key() {
@@ -90,124 +108,6 @@ pkg.add_apt_repository() {
 	printf '%s\n' "$source_line" | sudo tee "$dest_file" >/dev/null
 }
 
-must.rm() {
-	util.get_path "$1"
-	local file="$REPLY"
-
-	if [ -f "$file" ]; then
-		local output=
-		if output=$(rm -f -- "$file" 2>&1); then
-			core.print_info "Removed file '$file'"
-		else
-			core.print_warn "Failed to remove file '$file'"
-			printf '  -> %s\n' "$output"
-		fi
-	fi
-}
-
-must.rmdir() {
-	util.get_path "$1"
-	local dir="$REPLY"
-
-	if [ -d "$dir" ]; then
-		local output=
-		if output=$(rmdir -- "$dir" 2>&1); then
-			core.print_info "Removed directory '$dir'"
-		else
-			core.print_warn "Failed to remove directory '$dir'"
-			printf '  -> %s\n' "$output"
-		fi
-	fi
-}
-
-must.dir() {
-	local d=
-	for d; do
-		util.get_path "$d"
-		local dir="$REPLY"
-
-		if [ ! -d "$dir" ]; then
-			local output=
-			if output=$(mkdir -p -- "$dir" 2>&1); then
-				core.print_info "Created directory '$dir'"
-			else
-				core.print_warn "Failed to create directory '$dir'"
-				printf '  -> %s\n' "$output"
-			fi
-		fi
-	done; unset -v d
-}
-
-must.file() {
-	util.get_path "$1"
-	local file="$REPLY"
-
-	if [ ! -f "$file" ]; then
-		local output=
-		if output=$(mkdir -p -- "${file%/*}" && touch -- "$file" 2>&1); then
-			core.print_info "Created file '$file'"
-		else
-			core.print_warn "Failed to create file '$file'"
-			printf '  -> %s\n' "$output"
-		fi
-	fi
-}
-
-must.link() {
-	util.get_path "$1"
-	local src="$REPLY"
-
-	util.get_path "$2"
-	local target="$REPLY"
-
-	if [ -z "$1" ]; then
-		core.print_warn "must.link: First parameter is emptys"
-		return
-	fi
-
-	if [ -z "$2" ]; then
-		core.print_warn "must.link: Second parameter is empty"
-		return
-	fi
-
-	# Skip if already is correct
-	if [ -L "$target" ] && [ "$(readlink "$target")" = "$src" ]; then
-		return
-	fi
-
-	if [ ! -e "$src" ]; then
-		core.print_warn "Skipping symlink from '$src' to $target (source directory not found)"
-		return
-	fi
-
-	# If it is an empty directory (and not a symlink) automatically remove it
-	core.shopt_push -s nullglob
-	if [ -d "$target" ] && [ ! -L "$target" ]; then
-		local children=
-		children=("$target"/*)
-		if (( ${#children[@]} == 0)); then
-			rmdir "$target"
-		else
-			core.print_warn "Skipping symlink from '$src' to '$target' (target a non-empty directory)"
-			return
-		fi
-	fi
-	core.shopt_pop
-
-	local output=
-	if output=$(ln -sfT "$src" "$target" 2>&1); then
-		core.print_info "Symlinking '$src' to $target"
-	else
-		core.print_warn "Failed to symlink from '$src' to '$target'"
-		printf '  -> %s\n' "$output"
-	fi
-}
-
-
-util.die() {
-	exit 1
-}
-
 util.req() {
 	curl --proto '=https' --tlsv1.2 -#Lf "$@"
 }
@@ -223,8 +123,7 @@ util.run() {
 
 util.cd() {
 	if ! cd "$1"; then
-		core.print_error "Failed to cd to '$1'"
-		exit 1
+		core.print_die "Failed to cd to '$1'"
 	fi
 }
 
@@ -241,7 +140,7 @@ util.ensure() {
 	fi
 }
 
-util.ensure_bin() {
+util.requires_bin() {
 	if ! command -v "$1" &>/dev/null; then
 		core.print_die "Command '$1' does not exist"
 	fi
@@ -268,24 +167,6 @@ util.clone() {
 			git -C "$dir" remote rename origin me
 		fi
 		unset -v git_remote
-	fi
-}
-
-util.install_packages() {
-	if util.is_cmd 'pacman'; then
-		util.ensure sudo pacman -S --noconfirm "$@"
-	elif util.is_cmd 'apt-get'; then
-		util.ensure sudo apt-get -y install "$@"
-	elif util.is_cmd 'dnf'; then
-		util.ensure sudo dnf -y install "$@"
-	elif util.is_cmd 'zypper'; then
-		util.ensure sudo zypper -y install "$@"
-	elif util.is_cmd 'eopkg'; then
-		util.ensure sudo eopkg -y install "$@"
-	elif iscmd 'brew'; then
-		util.ensure brew install "$@"
-	else
-		util.die 'Failed to determine package manager'
 	fi
 }
 
@@ -323,42 +204,6 @@ util.confirm() {
 	fi
 }
 
-util.install_and_configure() {
-	local id="$1"
-	local name="$2"
-	local flag_force_install=no
-
-	local arg=
-	for arg; do
-		case $arg in
-			--force-install) flag_force_install=yes ;;
-		esac
-	done
-
-	if declare -f install."$id" &>/dev/null; then
-		if ! declare -f installed &>/dev/null || ! installed || [ "$flag_force_install" = yes ]; then
-			if util.confirm "Install $name?"; then
-				install."$id"
-			fi
-		else
-			core.print_info "$name already installed. Pass --force-install to run install again"
-		fi
-	else
-		core.print_info "$name has no install function"
-	fi
-
-	core.print_info "Configuring $name"
-	configure."$id"
-}
-
-util.get_path() {
-	if [[ ${1::1} == / ]]; then
-		REPLY="$1"
-	else
-		REPLY="$HOME/$1"
-	fi
-}
-
 util.get_package_manager() {
 	for package_manager in pacman apt dnf zypper; do
 		if util.is_cmd "$package_manager"; then
@@ -369,6 +214,43 @@ util.get_package_manager() {
 	done
 
 	core.print_die 'Failed to get the system package manager'
+}
+
+util.install_packages() {
+	if util.is_cmd 'pacman'; then
+		util.ensure sudo pacman -S --noconfirm "$@"
+	elif util.is_cmd 'apt-get'; then
+		util.ensure sudo apt-get -y install "$@"
+	elif util.is_cmd 'dnf'; then
+		util.ensure sudo dnf -y install "$@"
+	elif util.is_cmd 'zypper'; then
+		util.ensure sudo zypper -y install "$@"
+	elif util.is_cmd 'eopkg'; then
+		util.ensure sudo eopkg -y install "$@"
+	elif iscmd 'brew'; then
+		util.ensure brew install "$@"
+	else
+		core.print_die 'Failed to determine package manager'
+	fi
+}
+
+util.get_latest_github_tag() {
+	unset -v REPLY; REPLY=
+	local repo="$1"
+
+	if [ ! -f ~/.dotfiles/.data/github_token ]; then
+		core.print_die "Error: File not found: ~/.dotfiles/.data/github_token"
+	fi
+
+	core.print_info "Getting latest version of: $repo"
+
+	local token=
+	token="$(<~/.dotfiles/.data/github_token)"
+	local url="https://api.github.com/repos/$repo/releases/latest"
+	local tag_name=
+	tag_name=$(curl -fsSLo- -H "Authorization: token: $token" "$url" | jq -r '.tag_name')
+
+	REPLY=$tag_name
 }
 
 util.get_os_id() {
@@ -383,22 +265,6 @@ util.get_os_id() {
 	done < /etc/os-release; unset -v key value
 
 	if [ -z "$REPLY" ]; then
-		core.print_error "Failed to determine OS id"
-		exit 1
+		core.print_die "Failed to determine OS id"
 	fi
-}
-
-util.get_latest_github_tag() {
-	unset -v REPLY; REPLY=
-	local repo="$1"
-
-	core.print_info "Getting latest version of: $repo"
-
-	local token=
-	token="$(<~/.dotfiles/.data/github_token)"
-	local url="https://api.github.com/repos/$repo/releases/latest"
-	local tag_name=
-	tag_name=$(curl -fsSLo- -H "Authorization: token: $token" "$url" | jq -r '.tag_name')
-
-	REPLY=$tag_name
 }

@@ -96,7 +96,7 @@ check.command() {
 	local cmd="$1"
 
 	if util.is_cmd "$cmd"; then
-				success "Is installed: $cmd"
+		success "Is installed: $cmd"
 	else
 		failure "Not installed: $cmd"
 	fi

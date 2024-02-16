@@ -5,7 +5,7 @@ source "${0%/*}/../source.sh"
 main() {
 	if [ -f ~/.bootstrap/done ]; then
 		if util.confirm "It seems you have already bootstraped your dotfiles, do you wish to do it again?"; then :; else
-			util.die 'Exiting'
+			core.print_die 'Exiting'
 		fi
 	fi
 

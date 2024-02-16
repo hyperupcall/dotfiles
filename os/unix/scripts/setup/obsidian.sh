@@ -9,7 +9,9 @@ main() {
 }
 
 install.obsidian() {
-	helper.assert_app_image_launcher_installed
+	if ! command -v appimagelauncherd &>/dev/null; then
+		core.print_die "This scripts depends on the installation of AppImageLauncher"
+	fi
 
 	util.get_latest_github_tag 'obsidianmd/obsidian-releases'
 	local latest_tag="$REPLY"

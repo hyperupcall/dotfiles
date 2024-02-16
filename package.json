@@ -1,5 +1,6 @@
 {
 	"type": "commonjs",
+	"prettier": "@hyperupcall/prettier-config",
 	"devDependencies": {
 		"@hyperupcall/markdownlint-config": "^0.3.2",
 		"@hyperupcall/prettier-config": "^0.7.0",

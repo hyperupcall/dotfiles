@@ -3,7 +3,7 @@
 source "${0%/*}/../source.sh"
 
 main() {
-	util.install_and_configure 'deno' 'Deno' "$@"
+	helper.install_and_configure 'deno' 'Deno' "$@"
 }
 
 configure.deno() {

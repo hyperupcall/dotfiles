@@ -8,9 +8,9 @@
 source "${0%/*}/../source.sh"
 
 main() {
-	util.ensure_bin expect
-	util.ensure_bin age
-	util.ensure_bin age-keygen
+	util.requires_bin expect
+	util.requires_bin age
+	util.requires_bin age-keygen
 
 	sudo -v
 

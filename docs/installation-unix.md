@@ -39,7 +39,7 @@ The `bootstrap.sh` script performs the following steps:
 - Creates a `~/.bootstrap/bootstrap-out.sh`; sourcing it does the following:
   - Sets `NAME`, `EMAIL`, `EDITOR`, `VISUAL`
   - Appends `$HOME/.dotfiles/.data/bin` to `PATH`
-  - Sources `~/.dotfiles/xdg.sh`, if it exists
+  - Sources `~/.dotfiles/os/unix/scripts/xdg.sh`, if it exists
 
 Then, run the following:
 
