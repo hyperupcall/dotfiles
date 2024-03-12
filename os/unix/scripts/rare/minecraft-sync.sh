@@ -8,12 +8,10 @@ source "${0%/*}/../source.sh"
 main() {
 	local mc_common_data="$HOME/.dotfiles/.home/Documents/Games/Minecraft_Common_Data"
 
-	local xdg_data_dir="$XDG_DATA_HOME"
-	local xdg_config_dir="$XDG_CONFIG_HOME"
 	local -a minecraft_dirs=(
 		~/.minecraft
-		"$xdg_data_dir"/multimc/instances/*/.minecraft
-		"$xdg_config_dir"/hmcl/.minecraft
+		"$XDG_DATA_HOME"/multimc/instances/*/.minecraft
+		"$XDG_CONFIG_HOME"/hmcl/.minecraft
 	)
 
 	for mc_dir in "${minecraft_dirs[@]}"; do

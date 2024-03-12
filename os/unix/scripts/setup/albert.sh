@@ -13,37 +13,43 @@ install.albert() {
 
 	if util.is_cmd 'apt'; then
 		sudo apt-get install -y libarchive-dev autoconf
+	elif util.is_cmd 'dnf'; then
+		sudo dnf install -y libarchive-devel autoconf
 	fi
 
 	util.clone_in_dotfiles 'https://github.com/albertlauncher/albert' --recursive
-	git submodule update --init lib/QHotkey # TODO
 	local dir="$REPLY"
 	cd "$dir"
-
-
-	if util.is_cmd 'apt'; then
-		sudo apt-get install -y intltool libtool libgmp-dev libmpfr-dev libcurl4-openssl-dev
-	fi
-	if [ ! -d lib/pybind11 ]; then
-		git submodule add https://github.com/pybind/pybind11 lib/pybind11
-	fi
+	git submodule update --init lib/QHotkey
+	
 	(
+		if util.is_cmd 'apt'; then
+			sudo apt-get install -y intltool libtool libgmp-dev libmpfr-dev libcurl4-openssl-dev
+		elif util.is_cmd 'dnf'; then
+			sudo dnf install -y intltool libtool libcurl-devel gmp-devel mpfr-devel libicu-devel
+		fi
+	
+		if [ ! -d lib/pybind11 ]; then
+			git submodule add https://github.com/pybind/pybind11 lib/pybind11
+		fi
 		cd lib/pybind11
 		git switch --detach v2.11.1
 		if [ ! -d .venv ]; then
 			python3 -m venv .venv
 		fi
 		source .venv/bin/activate
-		pip install -r tests/requirements.txt
+		python3 -m pip --require-virtualenv install --upgrade pip
+		python3 -m pip --require-virtualenv install -r tests/requirements.txt
 		cmake -S . -B build -DDOWNLOAD_CATCH=ON -DDOWNLOAD_EIGEN=ON
-		cmake --build build -j4
+		cmake --build build -j$(nproc)
 		sudo cmake --install build
 	)
 
-	if [ ! -d lib/Qalculate ]; then
-		git submodule add https://github.com/Qalculate/libqalculate lib/Qalculate
-	fi
+	
 	(
+		if [ ! -d lib/Qalculate ]; then
+			git submodule add https://github.com/Qalculate/libqalculate lib/Qalculate
+		fi
 		cd lib/Qalculate
 		git switch --detach v4.9.0
 		./autogen.sh
@@ -52,7 +58,12 @@ install.albert() {
 		sudo make install
 	)
 
-	sudo apt install qt6-base-dev libqt6svg6-dev
+	if util.is_cmd 'apt'; then
+		sudo apt install qt6-base-dev libqt6svg6-dev
+	elif util.is_cmd 'dnf'; then
+		sudo dnf install -y qt6-qtbase-devel qt6-qtsvg-devel qt6-linguist qt6-qttools-devel qt6-qt5compat-devel qt6-qtscxml
+
+	fi
 	mise install cmake
 	PATH="$XDG_DATA_HOME/mise/shims:$PATH"
 	cmake -B build -S . -DCMAKE_INSTALL_PREFIX=/usr/local -DCMAKE_BUILD_TYPE=Debug

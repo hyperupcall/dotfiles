@@ -14,7 +14,8 @@ install.obs() {
 		sudo apt update -y
 		sudo apt-get install -y obs-studio
 	else
-		flatpak install flathub com.obsproject.Studio
+		#flatpak install flathub TODO
+		flatpak install com.obsproject.Studio
 	fi
 }
 

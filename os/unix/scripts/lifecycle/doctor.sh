@@ -7,7 +7,7 @@ source "${0%/*}/../source.sh"
 main() {
 	git_version=$(git version)
 	git_version=${git_version#git version }
-	IFS='.' read -ra git_version <<< "${git_version}"
+	IFS='.' read -ra git_version <<< "$git_version"
 	if ! (( git_version[0] >= 3 || (git_version[0] == 2 && git_version[1] >= 37) )); then
 		failure "Git version is too old. It must be at least 2.37.0 to support 'push.autoSetupRemote'"
 	fi
@@ -28,6 +28,7 @@ main() {
 	check.command clang-tidy
 	check.command bake
 	check.command basalt
+	check.command ksh
 	printf '\n'
 
 	printf '%s\n' "BINARIES: DEVELOPMENT:"

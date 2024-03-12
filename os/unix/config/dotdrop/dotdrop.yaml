@@ -63,6 +63,12 @@ dotfiles:
   'xinitrc':
     src: '{{@@ cfg_src @@}}/X11/xinitrc'
     dst: '{{@@ home_dst @@}}/.xinitrc'
+  'xmodmap':
+    src: '{{@@ cfg_src @@}}/X11/Xmodmap/home:.Xmodmap'
+    dst: '{{@@ cfg_dst @@}}/X11/Xmodmap/home:.Xmodmap'
+  'xresources':
+    src: '{{@@ cfg_src @@}}/X11/Xresources/home:.Xresources'
+    dst: '{{@@ cfg_dst @@}}/X11/Xresources/home:.Xresources'
   'bash_profile':
     src: '{{@@ cfg_src @@}}/bash/bash_profile.sh'
     dst: '{{@@ home_dst @@}}/.bash_profile'
@@ -165,6 +171,9 @@ dotfiles:
   '.config/Code/User/settings.json':
     src: '{{@@ cfg_src @@}}/Code/User/settings.json'
     dst: '{{@@ cfg_dst @@}}/Code/User/settings.json'
+  'vscode-settings':
+    src: '{{@@ cfg_src @@}}/Code/User/settings.json'
+    dst: '{{@@ cfg_dst @@}}/Code - OSS/User/settings.json'
   '.config/curl':
     src: '{{@@ cfg_src @@}}/curl'
     dst: '{{@@ cfg_dst @@}}/curl'

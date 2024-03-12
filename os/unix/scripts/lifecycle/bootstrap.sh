@@ -4,15 +4,13 @@ source "${0%/*}/../source.sh"
 
 main() {
 	if [ -f ~/.bootstrap/done ]; then
-		if util.confirm "It seems you have already bootstraped your dotfiles, do you wish to do it again?"; then :; else
-			core.print_die 'Exiting'
+		if util.confirm "You have already bootstraped your dotfiles. Do you wish to do it again?"; then :; else
+			core.print_info 'Exiting'
+			exit 0
 		fi
 	fi
 
-	# Ensure prerequisites
-	util.ensure mkdir -p "$XDG_CONFIG_HOME"
-
-	# Install generally useful dependencies
+	# Install generally useful dependencies.
 	util.get_package_manager
 	case $REPLY in
 	pacman)
@@ -31,7 +29,7 @@ main() {
 		;;
 	dnf)
 		sudo dnf -y update
-		sudo dnf install dnf-plugins-core # For at least Brave
+		sudo dnf -y install dnf-plugins-core # For at least Brave
 		sudo dnf -y install @development-tools
 		sudo dnf -y install lvm2
 		sudo dnf -y install openssl-devel # for starship
@@ -45,16 +43,13 @@ main() {
 		;;
 	esac
 	util.install_packages bash-completion curl rsync pass
+	util.install_packages cmake ccache vim nano jq
 	util.install_packages pkg-config # for starship
-	util.install_packages cmake ccache vim nano
-	if util.is_cmd 'jq'; then
-		core.print_info 'Already installed jq'
-	else
-		core.print_info 'Installing jq'
-		util.install_packages 'jq'
-	fi
 
-	# Remove distribution specific dotfiles
+	# Ensure prerequisites.
+	util.ensure mkdir -p "$XDG_CONFIG_HOME"
+
+	# Remove distribution-specific dotfiles.
 	util.ensure mkdir -p ~/.bootstrap/distro-dots
 	for file in ~/.bash_login ~/.bash_logout ~/.bash_profile ~/.bashrc ~/.profile; do
 		if [[ ! -L "$file" && -f "$file" ]]; then
@@ -64,12 +59,24 @@ main() {
 
 	~/scripts/setup/dotdrop.sh
 
-	# Get GithHub authorization tokens
+	# Set current system profile.
+	if [ -f ~/.dotfiles/.data/profile ]; then
+		core.print_info 'Already downloaded GitHub token'
+	else
+		local cur=
+		local options='desktop|laptop'
+		while [[ $cur != @($options) ]]; do
+			printf '%s' "System profile? ($options): "
+			read -er cur
+		done
+		printf '%s\n' "$cur" > ~/.dotfiles/.data/profile
+	fi
+
+	# Fetch GithHub authorization tokens.
 	if [ -f ~/.dotfiles/.data/github_token ]; then
 		core.print_info 'Already downloaded GitHub token'
 	else
-		local hostname=
-		hostname=$(hostname)
+		local hostname=$HOSTNAME
 
 		printf '%s\n' "Go to: https://github.com/settings/tokens/new?description=General+@${hostname}&scopes="
 		read -eri "Paste token: "

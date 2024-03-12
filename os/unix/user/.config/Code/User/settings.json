@@ -320,7 +320,7 @@
 	"[python]": {
 		"editor.defaultFormatter": "charliermarsh.ruff",
 		"editor.codeActionsOnSave": {
-			"source.fixAll": false
+			"source.fixAll": "never"
 		},
 		"editor.insertSpaces": true,
 		"editor.formatOnSave": false,
@@ -338,7 +338,7 @@
 	"[shellscript]": {
 		"editor.formatOnSave": false,
 		"editor.codeActionsOnSave": {
-			"source.fixAll": false
+			"source.fixAll": "never"
 		}
 	},
 

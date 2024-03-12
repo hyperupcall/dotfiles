@@ -32,6 +32,8 @@ declare -ga g_dotfiles=(
 	home:'.gnupg/gpg-agent.conf'
 	home:'.hushlogin'
 	xinitrc"|cfg:X11/xinitrc|home:.xinitrc"
+	xmodmap"|cfg:X11/Xmodmap/home:.Xmodmap"
+	xresources"|cfg:X11/Xresources/home:.Xresources"
 	bash_profile"|cfg:bash/bash_profile.sh|home:.bash_profile"
 	bash_logout"|cfg:bash/bash_logout.sh|home:.bash_logout"
 	bashrc"|cfg:bash/bashrc.sh|home:.bashrc"
@@ -66,6 +68,7 @@ declare -ga g_dotfiles=(
 	cfg:'cmus/rc'
 	cfg:'Code/User/keybindings.json'
 	cfg:'Code/User/settings.json'
+	vscode-settings"|cfg:Code/User/settings.json|cfg:Code - OSS/User/settings.json"
 	cfg:'curl'
 	cfg:'ddcutil'
 	cfg:'dircolors'
@@ -214,10 +217,10 @@ c.export_xdg_vars() {
 	if [ -f "$g_dotfiles_dir/os/unix/scripts/xdg.sh" ]; then
 		source "$g_dotfiles_dir/os/unix/scripts/xdg.sh" --export-vars
 		if ! [[ -v 'XDG_CONFIG_HOME' ]]; then
-			core.print_die '%s\n' "Error: XDG Variables cannot be empty. Exiting"
+			core.print_die "Error: XDG Variables cannot be empty. Exiting"
 		fi
 	else
-		core.print_die '%s\n' "Error: $g_dotfiles_dir/os/unix/scripts/xdg.sh not found. Exiting"
+		core.print_die "Error: $g_dotfiles_dir/os/unix/scripts/xdg.sh not found. Exiting"
 	fi
 }
 
@@ -242,7 +245,7 @@ c.dotfiles() {
 			local relfile=${line#*:}
 
 			if [ -z "${g_dotfiles_src[$prefix]}" ] || [ -z "${g_dotfiles_dst[$prefix]}" ]; then
-				core.print_die '%s\n' "Error: Prefix '$prefix' not supported (for relfile '$relfile'). Exiting"
+				core.print_die "Error: Prefix '$prefix' not supported (for relfile '$relfile'). Exiting"
 			fi
 
 			local name="${g_dotfiles_dst[$prefix]}/$relfile"
@@ -253,7 +256,7 @@ c.dotfiles() {
     dst: '{{@@ ${prefix}_dst @@}}/$relfile'" >> "$dotdrop_file"
 			printf '%s\n' "  - '$name'" >> "$dotdrop_include_file"
 		else
-			printf '%s\n' "Error: Line does not match glob"
+			core.print_die "Error: Line does not match glob"
 		fi
 	done; unset -v line
 }
