@@ -11,10 +11,22 @@ main() {
 install.maestral() {
 	util.get_package_manager
 	local pkgmngr="$REPLY"
-
+	
+	util.get_os_id
+	case $REPLY in
+		neon)
+			sudo apt install cython3
+		;;
+		*)
+			if [ $pkgmngr = 'apt' ]; then
+				sudo apt install cython
+			fi
+		;;
+	esac
+	
 	case $pkgmngr in
 	apt)
-		sudo apt-get install -y python3-dev python3-venv libsystemd-dev cython qt5-default
+		sudo apt-get install -y python3-dev python3-venv libsystemd-dev qt5-default
 		sudo apt-get install -y libxcb-cursor0 # maestral gui
 		;;
 	dnf)
@@ -28,7 +40,7 @@ install.maestral() {
 	mkdir -p ~/.dotfiles/.data/workspace/maestral
 	util.cd ~/.dotfiles/.data/workspace/maestral
 
-	if [ -d ./venv ]; then
+	if [ -f ./venv/bin/activate ]; then
 		core.print_info 'Found virtualenv'
 	else
 		core.print_info 'Creating virtualenv'

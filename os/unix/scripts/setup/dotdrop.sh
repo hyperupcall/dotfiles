@@ -13,7 +13,7 @@ else
 fi
 util.cd ./repository
 
-if [ -d ./venv ]; then
+if [ -f ./venv/bin/activate ]; then
 	core.print_info 'Found virtualenv'
 else
 	core.print_info 'Creating virtualenv'

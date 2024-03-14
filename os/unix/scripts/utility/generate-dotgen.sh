@@ -75,8 +75,6 @@ main() {
 	printf '%s\n' 'Done.'
 }
 
-main "$@"
-
 is_in_array() {
 	local array_name="$1"
 	local value="$2"
@@ -123,3 +121,5 @@ concat() {
 		printf '\n'
 	} >> "$output_file"
 }
+
+main "$@"

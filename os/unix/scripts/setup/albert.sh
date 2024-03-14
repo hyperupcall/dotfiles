@@ -24,7 +24,7 @@ install.albert() {
 	
 	(
 		if util.is_cmd 'apt'; then
-			sudo apt-get install -y intltool libtool libgmp-dev libmpfr-dev libcurl4-openssl-dev
+			sudo apt-get install -y intltool libtool libgmp-dev libmpfr-dev libcurl4-openssl-dev libicu-dev libxml2-dev
 		elif util.is_cmd 'dnf'; then
 			sudo dnf install -y intltool libtool libcurl-devel gmp-devel mpfr-devel libicu-devel
 		fi
@@ -34,7 +34,7 @@ install.albert() {
 		fi
 		cd lib/pybind11
 		git switch --detach v2.11.1
-		if [ ! -d .venv ]; then
+		if [ ! -f ./.venv/bin/activate ]; then
 			python3 -m venv .venv
 		fi
 		source .venv/bin/activate
@@ -59,9 +59,9 @@ install.albert() {
 	)
 
 	if util.is_cmd 'apt'; then
-		sudo apt install qt6-base-dev libqt6svg6-dev
+		sudo apt install qt6-base-dev qt6-tools-dev qt6-5compat-dev libqt6svg6-dev
 	elif util.is_cmd 'dnf'; then
-		sudo dnf install -y qt6-qtbase-devel qt6-qtsvg-devel qt6-linguist qt6-qttools-devel qt6-qt5compat-devel qt6-qtscxml
+		sudo dnf install -y qt6-qtbase-devel qt6-qttools-devel qt6-qt5compat-devel qt6-qtsvg-devel qt6-linguist qt6-qtscxml
 
 	fi
 	mise install cmake

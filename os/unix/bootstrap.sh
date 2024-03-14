@@ -111,7 +111,9 @@ updatesystem() {
 		sudo pacman -R $(pacman -Qdtq)
 	elif iscmd 'apt-get'; then
 		sudo apt-get -y update
-		sudo apt-get -y upgrade
+		if ! iscmd 'pkcon'; then # KDE Neon
+			sudo apt-get -y upgrade
+		fi
 		sudo apt-get -y install apt-transport-https
 		sudo apt-get -y autoremove
 	elif iscmd 'dnf'; then

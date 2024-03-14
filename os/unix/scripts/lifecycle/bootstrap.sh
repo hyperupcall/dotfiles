@@ -57,8 +57,6 @@ main() {
 		fi
 	done
 
-	~/scripts/setup/dotdrop.sh
-
 	# Set current system profile.
 	if [ -f ~/.dotfiles/.data/profile ]; then
 		core.print_info 'Already downloaded GitHub token'
@@ -84,6 +82,8 @@ main() {
 		local token="$REPLY"
 		printf '%s\n' "$token" > ~/.dotfiles/.data/github_token
 	fi
+
+	~/scripts/setup/dotdrop.sh
 
 	> ~/.bootstrap/done :
 	printf '%s\n' 'Done.'

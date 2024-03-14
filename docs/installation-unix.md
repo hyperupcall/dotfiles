@@ -51,7 +51,6 @@ Now, execute:
 
 ```sh
 ~/scripts/lifecycle/bootstrap.sh
-source ~/.bootstrap/bootstrap-out.sh
 ~/scripts/lifecycle/idempotent.sh
 ```
 
@@ -61,17 +60,17 @@ Some scripts should be executed. They include:
 
 - Setup ZFS, BTRFS
   - Modify `/etc/fstab`
-- Install SSH, PGP keys, and pass (pass-browserpass, and `~/.password-store`)
+- Retrieve SSH, PGP keys
+- Setup pass (pass-browserpass, and `~/.password-store`)
+- Setup Firefox, Brave
+  - Sync data
+- Setup dotdrop
+- Setup Maestral
+- Setup Mise
 - Setup Albert
   - Enable plugins
-- Setup pass, pass-browserpass
-- Setup Firefox, Brave
-  - sync
 - Setup Obsidian
-- Setup Maestral
-- Retrieve SSH, PGP keys
 - Setup default, my-tools, hub, etc.
-- Install Mise
 - Configure keybindings
 - Test spellchecker
 - Run doctor
