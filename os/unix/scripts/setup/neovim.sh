@@ -29,7 +29,7 @@ install.neovim() {
 
 	make distclean
 	make deps
-	make CMAKE_BUILD_TYPE=RelWithDebInfo
+	make CMAKE_BUILD_TYPE=Release
 	sudo make install
 }
 

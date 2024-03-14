@@ -28,7 +28,7 @@ main() {
 	esac
 	installcmd 'curl' 'curl'
 	installcmd 'git' 'git'
-	installcmd 'nvim' 'neovim'
+	installcmd 'nvim' 'vim'
 
 	# Install hyperupcall/dotfiles
 	clonerepo 'github.com/hyperupcall/dotfiles' ~/.dotfiles
@@ -51,7 +51,7 @@ main() {
 
 export NAME='Edwin Kofler'
 export EMAIL='edwin@kofler.dev'
-export EDITOR='nvim'
+export EDITOR='vim'
 export VISUAL="\$EDITOR"
 export PATH="\$HOME/.dotfiles/.data/bin:\$PATH"
 
