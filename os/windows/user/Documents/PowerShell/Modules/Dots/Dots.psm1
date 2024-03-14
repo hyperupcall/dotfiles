@@ -1,3 +1,4 @@
+# TODO
 function ls() {
 	Get-ChildItem -Attributes 'Hidden,!Hidden'
 }
@@ -40,8 +41,8 @@ function mkcd() {
 
 function cdls() {
 	Set-Location "$($args[0])"
-	if(!$?) {
-		 _powershell_util_die "cdls failed"
+	if (!$?) {
+		_powershell_util_die "cdls failed"
 	}
 	_powershell_util_ls
 }
@@ -86,54 +87,55 @@ function Relaunch-Admin {
 function With-Env {
 	$ori = @{}
 	Try {
-	$i = 0
+		$i = 0
 
-	# Loading .env files
-	if(Test-Path $args[0]) {
-		foreach($line in (Get-Content $args[0])) {
-		if($line -Match '^\s*$' -Or $line -Match '^#') {
-			continue
+		# Loading .env files
+		if (Test-Path $args[0]) {
+			foreach ($line in (Get-Content $args[0])) {
+				if ($line -Match '^\s*$' -Or $line -Match '^#') {
+					continue
+				}
+
+				$key, $val = $line.Split("=")
+				$ori[$key] = if (Test-Path Env:\$key) { (Get-Item Env:\$key).Value } else { "" }
+				New-Item -Name $key -Value $val -ItemType Variable -Path Env: -Force > $null
+			}
+
+			$i++
 		}
 
-		$key, $val = $line.Split("=")
-		$ori[$key] = if(Test-Path Env:\$key) { (Get-Item Env:\$key).Value } else { "" }
-		New-Item -Name $key -Value $val -ItemType Variable -Path Env: -Force > $null
+		while (1) {
+			if ($i -ge $args.length) {
+				exit
+			}
+
+			if (!($args[$i] -Match '^[^ ]+=[^ ]+$')) {
+				break
+			}
+
+			$key, $val = $args[$i].Split("=")
+			$ori[$key] = if (Test-Path Env:\$key) { (Get-Item Env:\$key).Value } else { "" }
+			New-Item -Name $key -Value $val -ItemType Variable -Path Env: -Force > $null
+
+			$i++
 		}
 
-		$i++
+
+		Invoke-Expression ($args[$i..$args.length] -Join " ")
 	}
-
-	while(1) {
-		if($i -ge $args.length) {
-		exit
+ Finally {
+		foreach ($key in $ori.Keys) {
+			New-Item -Name $key -Value $ori.Item($key) -ItemType Variable -Path Env: -Force > $null
 		}
-
-		if(!($args[$i] -Match '^[^ ]+=[^ ]+$')) {
-		break
-		}
-
-		$key, $val = $args[$i].Split("=")
-		$ori[$key] = if(Test-Path Env:\$key) { (Get-Item Env:\$key).Value } else { "" }
-		New-Item -Name $key -Value $val -ItemType Variable -Path Env: -Force > $null
-
-		$i++
-	}
-
-
-	Invoke-Expression ($args[$i..$args.length] -Join " ")
-	} Finally {
-	foreach($key in $ori.Keys) {
-		New-Item -Name $key -Value $ori.Item($key) -ItemType Variable -Path Env: -Force > $null
-	}
 	}
 }
 
 function unlink {
-	for ($i=0; $i -lt $args.Length; $i++) {
-		 # (Get-Item) -is [System.IO.DirectoryInfo]
-		 if ((Test-Path "$($args[$i])") -and (Get-Item -ItemType Symlink "$($args[$i])")) {
+	for ($i = 0; $i -lt $args.Length; $i++) {
+		# (Get-Item) -is [System.IO.DirectoryInfo]
+		if ((Test-Path "$($args[$i])") -and (Get-Item -ItemType Symlink "$($args[$i])")) {
 
-		 }
+		}
 		Write-host "folder: $($args[$i])"
 		# does something with the arguments
 	}
@@ -157,11 +159,11 @@ function Print-Color() {
 		for ($g = 0; $g -le 255; $g += 8) {
 			write-host ""
 			for ($b = 0; $b -le 255; $b += 4) {
-					$ansi_command = "$ansi_escape[48;2;{0};{1};{2}m" -f $r, $g, $b
-					$text = " "
-					$ansi_terminate = "$ansi_escape[0m"
-					$out = $ansi_command + $text + $ansi_terminate
-					write-host -nonewline $out
+				$ansi_command = "$ansi_escape[48;2;{0};{1};{2}m" -f $r, $g, $b
+				$text = " "
+				$ansi_terminate = "$ansi_escape[0m"
+				$out = $ansi_command + $text + $ansi_terminate
+				write-host -nonewline $out
 			}
 		}
 	}

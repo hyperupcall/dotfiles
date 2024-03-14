@@ -20,17 +20,14 @@ function main() {
 	installcmd 'git'
 	installcmd 'neovim'
 
-	# Install Cargo, Rust
-	installcmd 'rust'
-
 	# Install hyperupcall/dotfiles
 	clonerepo 'https://github.com/hyperupcall/dotfiles' "$HOME/.dotfiles"
 	Push-Location ~/.dotfiles
-		git remote set-url origin 'git@github.com:hyperupcall/dotfiles'
+	git remote set-url me 'git@github.com:hyperupcall/dotfiles'
 	Pop-Location
 
-	New-Item -Type Directory -Force -Path ~/.dotfiles/.data/bin >$null
-	New-Item -Type SymbolicLink -Force -Path ~/.dotfiles/.data/bin/dotmgr.exe -Value "$HOME/.dotfiles/.data/dotmgr-src/target/debug/dotmgr.exe" >$null
+	# Symlink scripts
+	New-Item -Type SymbolicLink -Force -Path ~/scripts -Value "$HOME/.dotfiles/os/windows/scripts" >$null
 
 	# Export variables
 	Write-Output @"
@@ -45,7 +42,9 @@ function main() {
 	Write-Host @"
 ---
 . "`$HOME/.bootstrap/bootstrap-out.ps1"
-dotfox -Subcommand deploy
+~/scripts/lifecycle/doctor.ps1
+~/scripts/lifecycle/bootstrap.ps1
+~/scripts/lifecycle/idempotent.ps1
 ---
 "@
 }
@@ -95,7 +94,7 @@ function clonerepo([string]$uri, [string]$directory) {
 	}
 	else {
 		log "Cloning $uri"
-		git clone --quiet "https://$uri" "$directory" --recurse-submodules
+		git clone --quiet "$uri" "$directory" --recurse-submodules
 
 		[array] $git_remote = git -C "$directory" remote
 		if ($git_remote[0] -eq 'origin') {
