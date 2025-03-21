@@ -1,0 +1,7 @@
+import = ["/home/edwin/config/alacritty/themes/_.theme.yml"]
+
+[debug]
+persistent_logging = true
+
+[scrolling]
+history = 10000

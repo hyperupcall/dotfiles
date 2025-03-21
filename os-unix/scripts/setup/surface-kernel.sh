@@ -23,6 +23,12 @@ install.debian() {
 
 	sudo apt-get update -y
 	sudo apt-get install -y linux-image-surface linux-headers-surface libwacom-surface iptsd
+	sudo apt-get install -y linux-surface-secureboot-mok # Do this after.
+	sudo update-grub
+}
+
+install.ubuntu() {
+	install.debian "$@"
 }
 
 util.is_executing_as_script && main "$@"

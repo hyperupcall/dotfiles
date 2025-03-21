@@ -51,6 +51,7 @@ mkdir
 mongod
 NOLINT
 NOLINTNEXTLINE
+Nord
 nounset
 Overconstraint
 pipefail

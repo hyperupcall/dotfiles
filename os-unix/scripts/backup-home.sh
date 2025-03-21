@@ -15,6 +15,7 @@ main() {
 
 		borg create \
 			--show-version --show-rc --verbose --stats --progress \
+			--exclude '**/Downloads' \
 			--exclude '**/brave-browser*' \
 			--exclude '**/chromium*' \
 			--exclude '**/firefox*' \
@@ -40,7 +41,7 @@ main() {
 			--exclude '**/aria2c' \
 			--exclude '**/Torrents' \
 			--exclude '**/youtube-dl' \
-			--exclude '**/Dls' \
+			--exclude '**/google-fonts-repository' \
 			--exclude '**/*.git' \
 			--exclude '**/.git' \
 			--exclude '**/.hg' \

@@ -3,14 +3,18 @@
 source ~/.dotfiles/os-unix/data/source.sh
 
 main() {
-	helper.setup --prefix-fn=install_deps.debian 'Albert' "$@"
+	helper.setup --fn-prefix=install_deps 'Albert' "$@"
 	install_albert
 }
 
 install_deps.debian() {
 	sudo apt-get install -y libarchive-dev autoconf
 	sudo apt-get install -y intltool libtool libgmp-dev libmpfr-dev libcurl4-openssl-dev libicu-dev libxml2-dev # pybind11
-	sudo apt-get install -y qt6-base-dev qt6-tools-dev qt6-5compat-dev libqt6svg6-dev # albert
+	sudo apt-get install -y qt6-base-dev qt6-tools-dev qt6-5compat-dev libqt6svg6-dev qt6-scxml # albert
+}
+
+install_deps.ubuntu() {
+	install_deps.debian "$@"
 }
 
 install_deps.fedora() {
@@ -31,6 +35,7 @@ install_albert() {
 	util.clone "$dir" 'https://github.com/albertlauncher/albert' --recursive
 
 	cd "$dir"
+	git switch --detach v0.27.5
 	git submodule update --init lib/QHotkey
 
 	(
@@ -38,14 +43,14 @@ install_albert() {
 			git submodule add https://github.com/pybind/pybind11 lib/pybind11
 		fi
 		cd lib/pybind11
-		git switch --detach v2.11.1
+		git switch --detach v2.13.6
 		if [ ! -f ./.venv/bin/activate ]; then
 			python3 -m venv .venv
 		fi
 		source .venv/bin/activate
 		python3 -m pip --require-virtualenv install --upgrade pip
 		python3 -m pip --require-virtualenv install -r tests/requirements.txt
-		cmake -S . -B build -DDOWNLOAD_CATCH=ON -DDOWNLOAD_EIGEN=ON
+		cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DDOWNLOAD_CATCH=ON -DDOWNLOAD_EIGEN=ON
 		cmake --build build -j$(nproc)
 		sudo cmake --install build
 	)
@@ -56,16 +61,17 @@ install_albert() {
 			git submodule add https://github.com/Qalculate/libqalculate lib/Qalculate
 		fi
 		cd lib/Qalculate
-		git switch --detach v4.9.0
+		git switch --detach v5.5.2
 		./autogen.sh
 		./configure --prefix=/usr/local
 		make
 		sudo make install
+		sudo ldconfig
 	)
 
 	mise install cmake
 	PATH="$XDG_DATA_HOME/mise/shims:$PATH"
-	cmake -B build -S . -DCMAKE_INSTALL_PREFIX=/usr/local -DCMAKE_BUILD_TYPE=Debug
+	cmake -B build -S . --debug-find-pkg=Qt6StateMachine -DQT_DEBUG_FIND_PACKAGE=ON -DCMAKE_INSTALL_PREFIX=/usr/local -DCMAKE_BUILD_TYPE=Debug
 	cmake --build build
 	sudo cmake --install build
 }

@@ -122,7 +122,6 @@
 	"workbench.editor.highlightModifiedTabs": true,
 	"workbench.editor.languageDetection": false,
 	"workbench.enableExperiments": false,
-	"workbench.iconTheme": "moxer-icons",
 	"workbench.quickOpen.closeOnFocusLost": false,
 	"workbench.startupEditor": "none",
 	"workbench.tips.enabled": false,
