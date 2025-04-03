@@ -1,8 +1,8 @@
 ====
-dots
+dotfiles
 ====
 
-My dotfiles! ^_^
+My dotfiles!
 
 Usage
 -----
