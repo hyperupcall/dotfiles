@@ -1,0 +1,30 @@
+[
+   // {
+   //   "bindings": {
+   //     "ctrl-q": null,
+   //     "ctrl-p": null,
+   //     "ctrl-o": "file_finder::Toggle",
+   //     "ctrl-b": null
+   //   }
+   // },
+   {
+      "context": "Workspace",
+      "bindings": {}
+   },
+   {
+      "context": "Editor",
+      "bindings": {
+         "ctrl-tab": "pane::ActivateNextItem",
+         "ctrl-shift+tab": "pane::ActivatePrevItem"
+      }
+   },
+   {
+      "context": "Terminal",
+      "bindings": {
+         "ctrl-n": null,
+         "alt-f": null,
+         "ctrl-p": null,
+         "ctrl-b": null
+      }
+   }
+]

@@ -46,6 +46,7 @@ katex
 kbuild
 keymon
 kofler
+languageservice
 localvar
 mkdir
 mongod
@@ -65,11 +66,13 @@ redirecter
 Replit
 roadmap
 rushstack
+schemasafe
 schemastore
 selectability
 shellcheck
 shelltest
 shopt
+smol
 subdependencies
 subdir
 subschema
@@ -78,6 +81,7 @@ subshell
 subshells
 taplo
 templating
+tombi
 tput
 trpc
 UEFI

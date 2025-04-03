@@ -1,0 +1,55 @@
+{
+	"eslint-disable-line": {
+		"prefix": "decl:eslint-disable-line",
+		"body": ["$LINE_COMMENT eslint-disable-line ${0:rule}"],
+		"description": "ESLint disable line"
+	},
+	"eslint-disable-next-line": {
+		"prefix": "decl:eslint-disable-next-line",
+		"body": ["$LINE_COMMENT eslint-disable-next-line ${0:rule}"],
+		"description": "ESLint disable next line"
+	},
+
+	"prettier-config": {
+		"prefix": "prettier-config",
+		"body": ["\"@hyperupcall/prettier-config\"", ""]
+	},
+	"prettier-ignore": {
+		"prefix": "decl:prettier-ignore",
+		"body": ["$LINE_COMMENT prettier-ignore"]
+	},
+	"prettier-ignore-embedded": {
+		"prefix": "decl:prettier-ignore-embedded",
+		"body": ["$BLOCK_COMMENT_START prettier-ignore $BLOCK_COMMENT_END"]
+	},
+	"stylelint-config": {
+		"prefix": "stylelint-config",
+		"body": [
+			"{",
+			"\t\"plugins\": [],",
+			"\t\"extends\": [",
+			"\t\t\"@hyperupcall/stylelint-config\"",
+			"\t]",
+			"}",
+			""
+		]
+	},
+	"stylelint-disable-line": {
+		"prefix": "decl:stylelint-disable-line",
+		"body": ["$BLOCK_COMMENT_START stylelint-disable-line ${0:rule} */"]
+	},
+	"stylelint-disable-next-line": {
+		"prefix": "decl:stylelint-disable-next-line",
+		"body": [
+			"$BLOCK_COMMENT_START stylelint-disable-next-line ${0:rule} $BLOCK_COMMENT_END"
+		]
+	},
+	"stylelint-disable-block": {
+		"prefix": "decl:stylelint-disable-block",
+		"body": [
+			"$BLOCK_COMMENT_START stylelint-disable ${0:rule} $BLOCK_COMMENT_END",
+			"$TM_SELECTED_TEXT",
+			"$BLOCK_COMMENT_START stylelint-enable ${0:rule} $BLOCK_COMMENT_END"
+		]
+	}
+}
