@@ -1,12 +1,12 @@
 {
 	"eslint-disable-line": {
 		"prefix": "decl:eslint-disable-line",
-		"body": ["$LINE_COMMENT eslint-disable-line ${0:rule}"],
+		"body": ["$LINE_COMMENT eslint-disable-line ${1:rule}"],
 		"description": "ESLint disable line"
 	},
 	"eslint-disable-next-line": {
 		"prefix": "decl:eslint-disable-next-line",
-		"body": ["$LINE_COMMENT eslint-disable-next-line ${0:rule}"],
+		"body": ["$LINE_COMMENT eslint-disable-next-line ${1:rule}"],
 		"description": "ESLint disable next line"
 	},
 

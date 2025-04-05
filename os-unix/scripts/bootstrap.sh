@@ -92,7 +92,7 @@ main() {
 		cat <<-EOF > ~/.dotfiles/.data/bin/dev
 		#!/usr/bin/env sh
 		set -e
-		PATH="$bin_dir:\$PATH" ~/.dev/bin/dev.js "\$@"
+		PATH="$bin_dir:\$PATH" ~/.dev/bin/dev.ts "\$@"
 		EOF
 		chmod +x ~/.dotfiles/.data/bin/dev
 	fi

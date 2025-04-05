@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-#!/usr/bin/env bash
 
 source ~/.dotfiles/os-unix/data/source.sh
 

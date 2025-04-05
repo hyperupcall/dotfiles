@@ -26,10 +26,10 @@ _mkt_util_cd_latest_dir() {
 	unset _mkt_latest_dir
 }
 
-# For pOsIX coMplIanCe since pushd isn't POSIX
 _mkt_util_cd() {
+	# Running 'pushd' may fail if current directory no longer exists or if in strictly POSIX environment.
 	# shellcheck disable=SC3044
-	if (builtin pushd . >/dev/null); then
+	if [ -d "$PWD" ] && (builtin pushd . >/dev/null); then
 		if ! pushd -- "$1" >/dev/null; then
 			_shell_util_die "mkt: Could not pushd"
 			rmdir "$_mkt_dir" 2>/dev/null

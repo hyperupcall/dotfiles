@@ -6,6 +6,12 @@
 		"YAML": {
 			"hard_tabs": false,
 			"tab_size": 2
+		},
+		"C": {
+			"format_on_save": "on"
+		},
+		"C++": {
+			"format_on_save": "on"
 		}
 	},
 	"features": {
