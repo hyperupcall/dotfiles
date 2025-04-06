@@ -19,7 +19,7 @@ if command -v basalt &>/dev/null; then
 			fi
 		fi
 	} # TODO
-	basalt.load --global 'github.com/hyperupcall/autoenv' 'activate.sh'
+	#basalt.load --global 'github.com/hyperupcall/autoenv' 'activate.sh'
 	unset -f command
 fi
 
@@ -63,7 +63,7 @@ if command -v basalt &>/dev/null; then
 			fi
 		fi
 	} # TODO
-	basalt.load --global 'github.com/hyperupcall/autoenv' 'activate.sh'
+	#basalt.load --global 'github.com/hyperupcall/autoenv' 'activate.sh'
 	unset -f command
 fi
 
@@ -112,7 +112,7 @@ fi
 # _dependent.bash
 if command -v basalt &>/dev/null; then
 	# complete-alias
-	basalt.load --global 'github.com/cykerway/complete-alias' 'complete_alias'
+	#basalt.load --global 'github.com/cykerway/complete-alias' 'complete_alias'
 	if declare -F _complete_alias &>/dev/null; then
 		for alias_name in $(
 		alias -p | while IFS= read -r line; do
@@ -127,4 +127,3 @@ if command -v basalt &>/dev/null; then
 		_shell_util_log_warn "Completions from cykerway/complete-alias not loaded properly"
 	fi
 fi
-

@@ -10,6 +10,6 @@ if command -v basalt &>/dev/null; then
 			fi
 		fi
 	} # TODO
-	basalt.load --global 'github.com/hyperupcall/autoenv' 'activate.sh'
+	#basalt.load --global 'github.com/hyperupcall/autoenv' 'activate.sh'
 	unset -f command
 fi

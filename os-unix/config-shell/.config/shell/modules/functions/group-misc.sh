@@ -5,8 +5,8 @@ bash() {
 	if { [ "$1" = --noprofile ] && [ "$2" = --norc ]; } \
 		|| { [ "$1" = --norc ] && [ "$2" = --noprofile ]; }
 	then
-		_shell_util_log_info "Additionally resetting path to a sane default"
-		PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin" command bash "$@"
+		_shell_util_log_info "Additionally resetting path to its initial value"
+		PATH="$_shell_original_path" command bash "$@"
 	else
 		command bash "$@"
 	fi

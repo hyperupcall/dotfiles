@@ -135,7 +135,15 @@ less() {
 	# On OpenSUSE (Tumbleweed), 'less' is a function that opens "xdg-open".
 	# This overrides that.
 
-	_less_cmd=$(type -fp less)
+	if [ -n "$ZSH_VERSION" ]; then
+		if ! _less_cmd=$(whence -p less); then
+			_shell_util_log_error 'Failed to find absolute path to less command'
+		fi
+	else
+		if ! _less_cmd=$(type -fp less); then
+			_shell_util_log_error 'Failed to find absolute path to less command'
+		fi
+	fi
 
 	"$_less_cmd" "$@"
 	_exit_code=$?
