@@ -47,6 +47,7 @@ kbuild
 keymon
 kofler
 languageservice
+letterpaper
 localvar
 mkdir
 mongod
@@ -59,6 +60,7 @@ pipefail
 pipx
 Positionals
 posix
+Preact
 prettierrc
 printk
 quazipanacea
