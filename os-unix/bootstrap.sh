@@ -15,8 +15,8 @@ main() {
 	run mkdir -p ~/.bootstrap
 
 	# Install essential commands.
-	updatesystem
-	case $(uname) in darwin*)
+	case $(uname) in Darwin*)
+		PATH="/opt/homebrew/bin:$PATH"
 		if iscmd 'brew'; then
 			log "Already installed Homebrew"
 		else
@@ -26,6 +26,7 @@ main() {
 		fi
 		run brew install bash
 	esac
+	updatesystem
 	installcmd 'curl' 'curl'
 	installcmd 'git' 'git'
 	installcmd 'vim' 'vim'
@@ -128,6 +129,8 @@ updatesystem() {
 		sudo dnf -y autoremove
 	elif iscmd 'zypper'; then
 		sudo zypper -n update
+  	elif iscmd 'brew'; then
+   		brew update
 	else
 		die 'Failed to determine package manager'
 	fi
