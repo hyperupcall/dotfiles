@@ -3,7 +3,7 @@
 declare -g dir="$HOME/.dotfiles/.data/repos/git-prompt"
 
 install() {
-	git clone 'https://github.com/lvv/git-prompt'  "$dir"
+	git clone 'https://github.com/lvv/git-prompt' "$dir"
 }
 
 uninstall() {

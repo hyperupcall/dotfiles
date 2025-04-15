@@ -3,7 +3,7 @@
 source ~/.dotfiles/os-unix/data/source.sh
 
 main() {
-    local virtualbox_dir=/storage/bigfiles/VirtualBox_Machines
+    local virtualbox_dir='/storage/bigfiles/VirtualBox_Machines'
 
 	if command -v VBoxManage &>/dev/null; then
 		VBoxManage setproperty machinefolder "$virtualbox_dir"

@@ -8,7 +8,7 @@ main() {
 		core.print_info 'Downloading Thunderbird...'
 		local download_url=
 		download_url=$(
-			curl -sK "$CURL_CONFIG" 'https://www.thunderbird.net' \
+			curl -K "$CURL_CONFIG" -s 'https://www.thunderbird.net' \
 				| sed -nE 's|.*(https://download\.mozilla\.org/\?product=thunderbird-[-.0-9]+-SSL&os=linux64&lang=[[:alpha:]-]+).*|\1|p' \
 				| head -1
 		)
@@ -54,4 +54,4 @@ EOF
 
 }
 
-util.is_executing_as_script && main "$@"
+util.if_file_sourced || main "$@"

@@ -36,10 +36,10 @@
 		exit 1
 	fi
 
-	err_handler() {
-		core.print_stacktrace
-	}
-	core.trap_add 'err_handler' SIGINT
+	# err_handler() {
+	# 	core.print_stacktrace
+	# }
+	# core.trap_add 'err_handler' SIGINT
 
 	CURL_CONFIG="$HOME/.dotfiles/os-unix/data/curl_config.conf"
 }
@@ -104,7 +104,13 @@ helper.setup() {
 				ran_function=yes
 				if ! declare -f installed &>/dev/null || ! installed || [ "$flag_force_install" = yes ]; then
 					if [ "$flag_no_confirm" = yes ] || util.confirm "Install $program_name?"; then
+						local orig_dir="$PWD" temp_dir=
+						temp_dir=$(mktemp -d --suffix "-dotfiles")
+						cd "$temp_dir"
+
 						"$flag_fn_prefix.$id" "$@"
+
+						cd "$orig_dir"
 						break
 					fi
 				else
@@ -119,7 +125,13 @@ helper.setup() {
 
 		if declare -f 'configure.any' &>/dev/null; then
 			core.print_info "Configuring..."
+			local orig_dir="$PWD" temp_dir=
+			temp_dir=$(mktemp -d --suffix "-dotfiles")
+			cd "$temp_dir"
+
 			configure.any "$@"
+
+			cd "$orig_dir"
 		fi
 	)
 }
@@ -272,34 +284,38 @@ util.install_package() {
 	helper.setup --no-confirm --fn-prefix=install_package
 }
 
-util.remove_package() {
+util.uninstall_package() {
 	local package="$1"
 
-	remove_package.debian() {
+	uninstall_package.debian() {
 		sudo apt-get remove -y "$package"
 	}
-	remove_package.fedora() {
+	uninstall_package.fedora() {
 		sudo dnf remove -y "$package"
 	}
-	remove_package.opensuse() {
+	uninstall_package.opensuse() {
 		sudo zypper -n remove "$package"
 	}
-	remove_package.arch() {
+	uninstall_package.arch() {
 		sudo pacman -R --noconfirm "$package"
 	}
 
-	helper.setup --no-confirm --fn-prefix=remove_package
+	helper.setup --no-confirm --fn-prefix=uninstall_package
 }
 
-util.is_executing_as_script() {
+util.if_file_sourced() {
 	if [ -n "$BASH_VERSION" ]; then
-		[ "${BASH_SOURCE[1]}" = "$0" ]
+		if [ "${BASH_SOURCE[1]}" = "$0" ]; then
+			return 1
+		else
+			return 0
+		fi
 	elif [ -n "$ZSH_VERSION" ]; then
   		case $ZSH_EVAL_CONTEXT in
-			toplevel:file*) return 1 ;;
-			*) return 0
+			toplevel:file*) return 0 ;;
+			*) return 1
     	esac
     else
-		return 1
+		return 0
 	fi
 }

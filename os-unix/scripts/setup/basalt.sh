@@ -23,7 +23,6 @@ configure.any() {
 
 installed() {
 	command -v basalt &>/dev/null
-
 }
 
-util.is_executing_as_script && main "$@"
+util.if_file_sourced || main "$@"

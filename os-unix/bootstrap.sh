@@ -102,6 +102,21 @@ iscmd() {
 }
 
 updatesystem() {
+	(
+		source /etc/os-release
+		if [ "$ID" = 'neon' ]; then
+			sudo apt-get -y update
+			sudo apt-get -y install apt-transport-https
+			if sudo pkcon -y update; then :; else
+				# Exit code for "Nothing useful was done".
+				if (($? != 5)); then
+					die "Failed to run 'pkgcon'"
+				fi
+			fi
+			sudo apt-get -y autoremove
+		fi
+	)
+
 	if iscmd 'pacman'; then
 		sudo pacman -Syyu --noconfirm
 		local orphaned_dependencies=
@@ -109,16 +124,6 @@ updatesystem() {
 		if [ -n "$orphaned_dependencies" ]; then
 			sudo pacman -R $orphaned_dependencies
 		fi
-	elif iscmd 'pkcon'; then
-		sudo apt-get -y update
-		sudo apt-get -y install apt-transport-https
-		if sudo pkcon -y update; then :; else
-			# Exit code for "Nothing useful was done".
-			if (($? != 5)); then
-				die "Failed to run 'pkgcon'"
-			fi
-		fi
-		sudo apt-get -y autoremove
 	elif iscmd 'apt-get'; then
 		sudo apt-get -y update
 		sudo apt-get -y install apt-transport-https

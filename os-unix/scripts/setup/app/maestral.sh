@@ -77,4 +77,8 @@ EOF
 	maestral start
 }
 
-util.is_executing_as_script && main "$@"
+installed() {
+	command -v maestral &>/dev/null
+}
+
+util.if_file_sourced || main "$@"

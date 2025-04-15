@@ -3,15 +3,17 @@
 source ~/.dotfiles/os-unix/data/source.sh
 
 main() {
-	helper.setup 'Mise' "$@"
+	helper.setup 'lefthook' "$@"
 }
 
 install.any() {
-	curl -K "$CURL_CONFIG" https://mise.jdx.dev/install.sh | sh
+	~/scripts/setup/go.sh
+
+	go install github.com/evilmartians/lefthook@latest
 }
 
 installed() {
-	command -v mise &>/dev/null
+	command -v lefthook &>/dev/null
 }
 
 util.if_file_sourced || main "$@"

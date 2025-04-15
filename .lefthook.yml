@@ -1,5 +1,0 @@
----
-pre-commit:
-  commands:
-    build-and-test:
-      run: 'grep -r "/home/edwin" ./os-unix/config- ./os-unix/system && ./bake build && ./bake test'

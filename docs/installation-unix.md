@@ -41,24 +41,17 @@ The `bootstrap.sh` script performs the following steps:
   - Appends `$HOME/.dotfiles/.data/bin` to `PATH`
   - Sources `~/.dotfiles/os-unix/data/xdg.sh`, if it exists
 
-Now, execute:
-
-```sh
-. ~/.bootstrap/bootstrap-out.sh
-~/scripts/bootstrap.sh
-~/scripts/doctor.sh
-~/scripts/idempotent.sh
-~/scripts/dotfile.mjs deploy
-```
-
 ## Next Steps
 
 Some scripts should be executed. They include:
 
+- `. ~/.bootstrap/bootstrap-out.sh`
 - Setup ZFS, BTRFS
   - Modify `/etc/fstab`
 - Retrieve SSH, PGP keys
 - `~/scripts/doctor.sh`
+  - Setup d
+  - Test if dotfiles are deployed and have proper env variables (CARGO, pass_password_dir, etc)
   - Setup Git (at least v2.37.0)
   - Setup neovim (at least v0.10.0)
   - Setup pass
@@ -77,4 +70,5 @@ Some scripts should be executed. They include:
 - Configure keybindings
 - Test spellchecker
 - Add favorites to file explorer and dock
-- Run doctor
+- `~/scripts/idempotent.sh`
+- `~/scripts/dotfile.mjs deploy`
