@@ -14,4 +14,4 @@ install.any() {
 	sudo ./install.sh
 }
 
-main "$@"
+util.if_file_sourced || main "$@"

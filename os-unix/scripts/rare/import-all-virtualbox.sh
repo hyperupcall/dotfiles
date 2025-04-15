@@ -48,7 +48,7 @@ main() {
 
 register() {
 	local dir="$1"
-    printf '%s\n' "Registering: $dir"
+	printf '%s\n' "Registering: $dir"
 
 	for file in "$dir"/*.vbox; do
 		printf '%s\n' "Adding '$file'"
@@ -56,4 +56,4 @@ register() {
 	done
 }
 
-main "$@"
+util.if_file_sourced || main "$@"

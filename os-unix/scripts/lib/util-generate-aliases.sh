@@ -93,4 +93,4 @@ main() {
 	exec 6<&-
 }
 
-main "$@"
+util.if_file_sourced || main "$@"

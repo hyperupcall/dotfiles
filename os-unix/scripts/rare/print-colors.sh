@@ -96,4 +96,4 @@ main() {
 	}'
 }
 
-main "$@"
+util.if_file_sourced || main "$@"

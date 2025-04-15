@@ -122,4 +122,4 @@ concat() {
 	} >> "$output_file"
 }
 
-main "$@"
+util.if_file_sourced || main "$@"

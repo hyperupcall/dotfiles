@@ -398,4 +398,4 @@ install_packages.opensuse() {
 	sudo zypper -n install pkg-config openssl-devel # For starship
 }
 
-main "$@"
+util.if_file_sourced || main "$@"
