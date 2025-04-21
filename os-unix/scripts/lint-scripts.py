@@ -137,7 +137,7 @@ def main():
 		prestr, _, poststr = utilGetStrs(line, m)
 
 		subcmd = m.group('subcommand')
-		return f'{prestr}apt-get {subcmd} -y {poststr}'
+		return f'{prestr}apt-get {subcmd} -y{poststr}'
 
 	rules.append({
 		'name': 'apt-must-have-y',
@@ -158,8 +158,7 @@ def main():
 	def addAptRepositoryMustHaveY(line: str, m: any) -> str:
 		prestr, _, poststr = utilGetStrs(line, m)
 
-		subcmd = m.group('subcommand')
-		return f'{prestr}add-apt-repository -y {poststr}'
+		return f'{prestr}add-apt-repository -y{poststr}'
 
 	rules.append({
 		'name': 'apt-must-have-y',
@@ -181,7 +180,7 @@ def main():
 		prestr, _, poststr = utilGetStrs(line, m)
 
 		subcmd = m.group('subcommand')
-		return f'{prestr}dnf {subcmd} -y {poststr}'
+		return f'{prestr}dnf {subcmd} -y{poststr}'
 
 	rules.append({
 		'name': 'dnf-must-have-y',
@@ -203,7 +202,7 @@ def main():
 		prestr, _, poststr = utilGetStrs(line, m)
 
 		subcmd = m.group('subcommand')
-		return f'{prestr}zypper {subcmd} -y {poststr}'
+		return f'{prestr}zypper {subcmd} -y{poststr}'
 
 	rules.append({
 		'name': 'zypper-must-have-y',
@@ -225,7 +224,7 @@ def main():
 		prestr, _, poststr = utilGetStrs(line, m)
 
 		subcmd = m.group('subcommand')
-		return f'{prestr}flatpak {subcmd} -y {poststr}'
+		return f'{prestr}flatpak {subcmd} -y{poststr}'
 
 	rules.append({
 		'name': 'flatpak-must-have-y',
@@ -269,7 +268,7 @@ def main():
 	def pkconMustYes(line: str, m: any) -> str:
 		prestr, _, poststr = utilGetStrs(line, m)
 
-		return f'{prestr}pkcon -y {poststr}'
+		return f'{prestr}pkcon -y{poststr}'
 
 	rules.append({
 		'name': 'pkcon-must-yes',
@@ -362,8 +361,7 @@ def main():
 	def curlMustHaveArgs(line: str, m: any) -> str:
 		prestr, _, poststr = utilGetStrs(line, m)
 
-		subcmd = m.group('subcommand')
-		return f'{prestr}curl {subcmd} -K "$CURL_CONFIG" {poststr}'
+		return f'{prestr}curl -K "$CURL_CONFIG" {poststr}'
 
 	rules.append({
 		'name': 'curl-must-have-args',
@@ -376,6 +374,29 @@ def main():
 		],
 		'testNegativeMatches': [
 			'curl -K "$CURL_CONFIG" | sh'
+		],
+	})
+
+	# Before: ^main "$@"
+	# After: ^util.if_file_sourced || main "$@"
+	def scriptsMustHaveSourceGuard(line: str, m: any) -> str:
+		prestr, _, poststr = utilGetStrs(line, m)
+
+		return f'util.if_file_sourced || main "$@"'
+
+	rules.append({
+		'name': 'scripts-must-have-source-guard',
+		'regex': '(?P<match>^[ \\t]*main "\\$@")',
+		'reason': 'To ensure source guards exist on all scripts',
+		'fileTypes': ['bash', 'sh'],
+		'fixerFn': scriptsMustHaveSourceGuard,
+		'testPositiveMatches': [
+			'main "$@"',
+			' main "$@"'
+		],
+		'testNegativeMatches': [
+			'util.if_file_sourced || main "$@"',
+			' util.if_file_sourced || main "$@"'
 		],
 	})
 

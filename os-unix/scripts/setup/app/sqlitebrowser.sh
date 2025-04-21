@@ -29,4 +29,4 @@ install.arch() {
 	sudo pacman -Syu --noconfirm sqlitebrowser
 }
 
-main "$@"
+util.if_file_sourced || main "$@"

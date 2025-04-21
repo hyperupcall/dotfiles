@@ -49,4 +49,18 @@ install.arch() {
 	yay -S --noconfirm neovim
 }
 
-util.is_executing_as_script && main "$@"
+installed() {
+	neovim_version_check() {
+		local -a nvim_version_arr
+		nvim_version=$(nvim --version)
+		nvim_version=${nvim_version%%$'\n'*}
+		nvim_version=${nvim_version#NVIM v}
+		nvim_version=${nvim_version%%-*}
+		IFS='.' read -ra nvim_version_arr <<< "$nvim_version"
+		(( nvim_version_arr[0] >= 1 || (nvim_version_arr[0] == 0 && nvim_version_arr[1] >= 10) ))
+	}
+
+	command -v nvim &>/dev/null && neovim_version_check
+}
+
+util.if_file_sourced || main "$@"

@@ -3,7 +3,7 @@
 declare -g dir="$HOME/.dotfiles/.data/repos/pureline"
 
 install() {
-	git clone 'https://github.com/chris-marsh/pureline'  "$dir"
+	git clone 'https://github.com/chris-marsh/pureline' "$dir"
 }
 
 uninstall() {

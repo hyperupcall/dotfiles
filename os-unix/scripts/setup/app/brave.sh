@@ -39,8 +39,11 @@ install.fedora() {
 	sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
 	sudo rpm --import https://brave-browser-rpm-beta.s3.brave.com/brave-core-nightly.asc
 
-	sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/
-	sudo dnf config-manager --add-repo https://brave-browser-rpm-beta.s3.brave.com/x86_64/
+	# TODO: test VERSION_ID
+	# sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
+	# sudo dnf config-manager --add-repo https://brave-browser-rpm-beta.s3.brave.com/brave-browser.repo
+	sudo dnf config-manager addrepo --overwrite --from-repofile=https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
+	sudo dnf config-manager addrepo --overwrite --from-repofile=https://brave-browser-rpm-beta.s3.brave.com/brave-browser.repo
 
 	sudo dnf -y update
 	sudo dnf -y install brave-browser brave-browser-beta
@@ -65,4 +68,8 @@ install.arch() {
 	yay -S brave-bin brave-beta-bin
 }
 
-util.is_executing_as_script && main "$@"
+installed() {
+	command -v brave-browser &>/dev/null && command -v brave-browser-beta &>/dev/null
+}
+
+util.if_file_sourced || main "$@"

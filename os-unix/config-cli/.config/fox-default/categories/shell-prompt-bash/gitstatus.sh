@@ -3,7 +3,7 @@
 declare -g dir="$HOME/.dotfiles/.data/repos/gitstatus"
 
 install() {
-	git clone 'https://github.com/romkatv/gitstatus'  "$dir"
+	git clone 'https://github.com/romkatv/gitstatus' "$dir"
 }
 
 uninstall() {

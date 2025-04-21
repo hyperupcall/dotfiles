@@ -13,4 +13,4 @@ install.any() {
 	yarn global add graphqurl
 }
 
-util.is_executing_as_script && main "$@"
+util.if_file_sourced || main "$@"

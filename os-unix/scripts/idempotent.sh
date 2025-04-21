@@ -31,4 +31,4 @@ main() {
 	~/.dotfiles/os-unix/scripts/lib/util-generate-dotgen.sh
 }
 
-main "$@"
+util.if_file_sourced || main "$@"

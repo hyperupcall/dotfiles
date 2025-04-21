@@ -22,4 +22,8 @@ install.opensuse() {
 	sudo zypper -n install firefox
 }
 
-util.is_executing_as_script && main "$@"
+installed() {
+	command -v firefox &>/dev/null
+}
+
+util.if_file_sourced || main "$@"

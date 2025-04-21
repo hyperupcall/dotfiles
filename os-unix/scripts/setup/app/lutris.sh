@@ -7,16 +7,12 @@ main() {
 }
 
 install.ubuntu() {
-	local temp_dir=
-	temp_dir=$(mktemp -d)
-	cd "$temp_dir"
-
 	util.get_latest_github_tag 'lutris/lutris'
 	local version="$REPLY"
 	version=${version#v}
 
 	curl -K "$CURL_CONFIG" -o 'lutris.deb' "https://github.com/lutris/lutris/releases/download/v${version}/lutris_${version}_all.deb"
-	sudo apt install './lutris.deb'
+	sudo apt-get install -y './lutris.deb'
 }
 
 install.debian() {
@@ -43,4 +39,4 @@ install.arch() {
 	sudo pacman -Syu --noconfirm lutris
 }
 
-util.is_executing_as_script && main "$@"
+util.if_file_sourced || main "$@"

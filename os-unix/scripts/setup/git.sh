@@ -28,4 +28,4 @@ installed() {
 	command -v git &>/dev/null && git_version_check
 }
 
-util.is_executing_as_script && main "$@"
+util.if_file_sourced || main "$@"

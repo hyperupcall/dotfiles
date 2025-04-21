@@ -3,7 +3,7 @@
 source ~/.dotfiles/os-unix/data/source.sh
 
 main() {
-    local virtualbox_dir=/storage/bigfiles/VirtualBox_Machines
+    local virtualbox_dir='/storage/bigfiles/VirtualBox_Machines'
 
 	if command -v VBoxManage &>/dev/null; then
 		VBoxManage setproperty machinefolder "$virtualbox_dir"
@@ -48,7 +48,7 @@ main() {
 
 register() {
 	local dir="$1"
-    printf '%s\n' "Registering: $dir"
+	printf '%s\n' "Registering: $dir"
 
 	for file in "$dir"/*.vbox; do
 		printf '%s\n' "Adding '$file'"
@@ -56,4 +56,4 @@ register() {
 	done
 }
 
-main "$@"
+util.if_file_sourced || main "$@"

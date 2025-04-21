@@ -22,4 +22,4 @@ install.debian() {
 	sudo apt-get -y install powershell
 }
 
-util.is_executing_as_script && main "$@"
+util.if_file_sourced || main "$@"

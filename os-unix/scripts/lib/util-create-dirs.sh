@@ -308,4 +308,4 @@ util.get_path() {
 	fi
 }
 
-main "$@"
+util.if_file_sourced || main "$@"

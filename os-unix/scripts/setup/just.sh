@@ -3,15 +3,15 @@
 source ~/.dotfiles/os-unix/data/source.sh
 
 main() {
-	helper.setup 'Mise' "$@"
+	helper.setup 'just' "$@"
 }
 
 install.any() {
-	curl -K "$CURL_CONFIG" https://mise.jdx.dev/install.sh | sh
+	cargo install --locked just
 }
 
 installed() {
-	command -v mise &>/dev/null
+	command -v just &>/dev/null
 }
 
 util.if_file_sourced || main "$@"

@@ -6,8 +6,7 @@ main() {
 	local save_dir="$HOME"
 	local backup_dir="/storage/vault/rodinia/Backups/backup_storage_home"
 
-	# shellcheck disable=SC2059
-	printf "Backing up\n  from: $save_dir\n  to:   $backup_dir\n"
+	printf "Backing up\n  from: %s\n  to:   %s\n" "$save_dir" "$backup_dir"
 	if util.confirm; then
 		if [ ! -d "$backup_dir" ]; then
 			core.print_die "Backup directory does not exist"
@@ -52,4 +51,4 @@ main() {
 	fi
 }
 
-main "$@"
+util.if_file_sourced || main "$@"

@@ -66,4 +66,4 @@ install.cachyos() {
 	sudo pacman -Syu --noconfirm cachyos-v3/linux-cachyos-zfs cachyos-v3/linux-cachyos-lto-zfs
 }
 
-util.is_executing_as_script && main "$@"
+util.if_file_sourced || main "$@"
