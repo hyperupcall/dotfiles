@@ -60,7 +60,7 @@ _readline_trim_whitespace() {
 }
 
 _readline_ls() {
-	_shell_util_ls
+	_util_ls
 }
 
 bind -x '"\eu": _readline_x_discard'

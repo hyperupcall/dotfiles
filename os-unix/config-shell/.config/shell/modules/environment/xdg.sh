@@ -2,10 +2,10 @@
 
 # android
 export ANDROID_HOME="$XDG_STATE_HOME/Android/Sdk"
-_path_prepend "$ANDROID_HOME/emulator"
-_path_prepend "$ANDROID_HOME/tools"
-_path_prepend "$ANDROID_HOME/tools/bin"
-_path_prepend "$ANDROID_HOME/platform-tools"
+_util_path_prepend "$ANDROID_HOME/emulator"
+_util_path_prepend "$ANDROID_HOME/tools"
+_util_path_prepend "$ANDROID_HOME/tools/bin"
+_util_path_prepend "$ANDROID_HOME/platform-tools"
 export ANDROID_USER_HOME="$XDG_STATE_HOME/Android/User"
 
 # antigen
@@ -39,7 +39,7 @@ export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/bundle"
 # cabal
 export CABAL_CONFIG="$XDG_CONFIG_HOME/cabal/config"
 export CABAL_DIR="$XDG_DATA_HOME/cabal"
-_path_prepend "$CABAL_DIR/bin"
+_util_path_prepend "$CABAL_DIR/bin"
 
 # ccache
 export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
@@ -101,15 +101,15 @@ export GDBHISTFILE="$XDG_STATE_HOME/history/gdb_history"
 # gem
 export GEM_HOME="$XDG_DATA_HOME/gem" # conflicts with rvm
 export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
-_path_prepend "$GEM_HOME/bin"
-# _path_prepend "$HOME/.gem/ruby/2.7.0/bin"
+_util_path_prepend "$GEM_HOME/bin"
+# _util_path_prepend "$HOME/.gem/ruby/2.7.0/bin"
 
 # get_iplayer
 export GETIPLAYERUSERPREFS="$XDG_DATA_HOME/get_iplayer"
 
 # ghcup (haskell)
 export GHCUP_INSTALL_BASE_PREFIX="$XDG_DATA_HOME/ghcup"
-_path_prepend "$GHCUP_INSTALL_BASE_PREFIX/bin" # requires symlink
+_util_path_prepend "$GHCUP_INSTALL_BASE_PREFIX/bin" # requires symlink
 
 # gitlib
 export GITLIBS="$XDG_DATA_HOME/gitlibs"
@@ -177,7 +177,7 @@ export KDEHOME="$XDG_CONFIG_HOME/kde"
 
 # krew
 export KREW_ROOT="$XDG_STATE_HOME/krew"
-_path_prepend "$KREW_ROOT/bin"
+_util_path_prepend "$KREW_ROOT/bin"
 
 # ldap
 # export LDAPRC="$XDG_CONFIG_HOME/ldap.conf"
@@ -214,7 +214,7 @@ export MYSQL_HISTFILE="$XDG_STATE_HOME/history/mysql_history"
 
 # n
 export N_PREFIX="$XDG_DATA_HOME/n"
-_path_prepend "$N_PREFIX/bin"
+_util_path_prepend "$N_PREFIX/bin"
 
 # nb
 export NBRC_PATH="$XDG_CONFIG_HOME/nb/nbrc"
@@ -265,8 +265,8 @@ export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
 export PERL_LOCAL_LIB_ROOT="$XDG_DATA_HOME/perl5"
 export PERL_MB_OPT="--install_base \"$PERL_LOCAL_LIB_ROOT\""
 export PERL_MM_OPT="INSTALL_BASE=\"$PERL_LOCAL_LIB_ROOT\""
-_path_prepend "$PERL_LOCAL_LIB_ROOT/bin"
-_path_prepend PERL5LIB "$PERL_LOCAL_LIB_ROOT/lib/perl5"
+_util_path_prepend "$PERL_LOCAL_LIB_ROOT/bin"
+_util_path_prepend PERL5LIB "$PERL_LOCAL_LIB_ROOT/lib/perl5"
 
 # pipx
 export PIPX_HOME="$XDG_STATE_HOME/pipx/virtualenv"
@@ -274,11 +274,11 @@ export PIPX_BIN_DIR="$XDG_STATE_HOME/pipx/bin"
 
 # platformio
 # export PLATFORMIO_CORE_DIR="$XDG_STATE_HOME/platformio"
-# _path_prepend "$PLATFORMIO_CORE_DIR/penv/bin"
+# _util_path_prepend "$PLATFORMIO_CORE_DIR/penv/bin"
 
 # poetry
 export POETRY_HOME="$XDG_DATA_HOME/poetry"
-_path_prepend "$POETRY_HOME/bin"
+_util_path_prepend "$POETRY_HOME/bin"
 
 # postgresql
 export PSQLRC="$XDG_DATA_HOME/pg/psqlrc"
@@ -316,7 +316,7 @@ export RLWRAP_HOME="$XDG_STATE_HOME/history"
 # rust
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
-_path_prepend "$CARGO_HOME/bin"
+_util_path_prepend "$CARGO_HOME/bin"
 
 # ruby-build
 export RUBY_BUILD_CACHE_PATH="$XDG_CACHE_HOME/ruby-build"
@@ -404,7 +404,7 @@ export WASMER_DIR="$XDG_DATA_HOME/wasmer"
 
 # wasmtime
 export WASMTIME_HOME="$XDG_DATA_HOME/wasmtime"
-_path_prepend "$WASMTIME_HOME/bin"
+_util_path_prepend "$WASMTIME_HOME/bin"
 
 # wget
 export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
@@ -421,8 +421,8 @@ alias xsel='xsel -l "$XDG_DATA_HOME/xsel/xsel.log'
 
 # yarn
 export YARN_CACHE_FOLDER="$XDG_CACHE_HOME/yarn"
-_path_prepend "$HOME/.yarn/bin"
-# _path_prepend "$XDG_DATA_HOME/yarn/bin"
+_util_path_prepend "$HOME/.yarn/bin"
+# _util_path_prepend "$XDG_DATA_HOME/yarn/bin"
 # alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 
 # z

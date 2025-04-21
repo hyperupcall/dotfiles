@@ -6,7 +6,7 @@ main() {
 	helper.setup 'VirtualBox' "$@"
 }
 
-install.any() {
+install.debian() {
 	local dist='jammy'
 	local gpg_file="/etc/apt/keyrings/oracle-virtualbox-2016.asc"
 
@@ -21,7 +21,7 @@ install.any() {
 
 configure.any() {
 	if [[ "$HOSTNAME" = 'nullptr' ]]; then
-		VBoxManage setproperty machinefolder '/storage/vault/rodinia/VirtualBox_Machines'
+		VBoxManage setproperty machinefolder '/storage/bigfiles/VirtualBox_Machines'
 	fi
 }
 

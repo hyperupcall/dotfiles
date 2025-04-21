@@ -22,7 +22,7 @@ r() {
 #clone(user, root)
 t() {
 	if [ $# -eq 0 ]; then
-		_shell_util_log_error 't: Missing file arguments'
+		_util_log_error 't: Missing file arguments'
 		return
 	fi
 
@@ -54,40 +54,44 @@ del() {
 	if command -v trash-put >/dev/null 2>&1; then
 		for f; do
 			if ! trash-put "$f"; then
-				_shell_util_die "del: 'trash-put' failed"
+				_util_die "del: 'trash-put' failed"
 				return
 			fi
 		done
 	elif command -v gio >/dev/null 2>&1; then
 		for f; do
 			if ! gio trash "$f"; then
-				_shell_util_die "del: 'gio trash' failed"
+				_util_die "del: 'gio trash' failed"
 				return
 			fi
 		done
 	else
-		_shell_util_log_warn "del: Neither 'trash-cli' nor 'gio' installed. Skipping"
+		_util_log_warn "del: Neither 'trash-cli' nor 'gio' installed. Skipping"
 	fi
 }
 
 #clone(user, root)
 cdls() {
-	cd -- "$1" || { _shell_util_die "cdls: cd failed"; return; }
-	_shell_util_ls
+	if ! cd -- "$1"; then
+		_util_die "cdls: Failed to cd"
+		return
+	fi
+	_util_ls
 }
 
 #clone(user, root)
 mkcd() {
 	command mkdir -p -- "$@"
-	cd -- "$@" || { _shell_util_die "mkcd: could not cd"; return; }
+	if ! cd -- "$@"; then
+		_util_die "mkcd: Failed to cd"
+		return
+	fi
 }
 
 #clone(user, root)
 mkmv() {
-	for lastArg; do :; done
-	mkdir -p "$lastArg"
+	for last_arg; do :; done
+	mkdir -p "$last_arg"
 
 	mv "$@"
 }
-
-

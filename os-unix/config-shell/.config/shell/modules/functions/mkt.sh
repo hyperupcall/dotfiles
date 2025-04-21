@@ -31,13 +31,13 @@ _mkt_util_cd() {
 	# shellcheck disable=SC3044
 	if [ -d "$PWD" ] && (builtin pushd . >/dev/null); then
 		if ! pushd -- "$1" >/dev/null; then
-			_shell_util_die "mkt: Could not pushd"
+			_util_die "mkt: Could not pushd"
 			rmdir "$_mkt_dir" 2>/dev/null
 			return 1
 		fi
 	else
 		if ! cd -- "$1"; then
-			_shell_util_die "mkt: Could not cd"
+			_util_die "mkt: Could not cd"
 			rmdir "$_mkt_dir" 2>/dev/null
 			return 1
 		fi
@@ -51,13 +51,13 @@ _mkt_util_cd() {
 _mkt_util_git_clone() {
 	if [ "$_mkt_flag_shallow" = 'yes' ]; then
 		if ! git clone -- "$1"; then
-			_shell_util_die "mkt: Could not clone repository"
+			_util_die "mkt: Could not clone repository"
 			rmdir "$_mkt_dir" 2>/dev/null
 			return 1
 		fi
 	else
 		if ! git clone --depth=1 --single-branch -- "$1"; then
-			_shell_util_die "mkt: Could not clone repository"
+			_util_die "mkt: Could not clone repository"
 			rmdir "$_mkt_dir" 2>/dev/null
 			return 1
 		fi
@@ -91,7 +91,7 @@ mkt() {
 		_mkt_flag_shallow=yes
 		;;
 	-*)
-		_shell_util_die "mkt: Flag '$arg' not recognized"
+		_util_die "mkt: Flag '$arg' not recognized"
 		return
 		;;
 	*)
@@ -120,7 +120,7 @@ mkt() {
 		_mkt_util_git_clone "$1" || return
 
 		_mkt_util_cd_latest_dir || return
-		_shell_util_ls
+		_util_ls
 		;;
 	# remote files
 	https://*/*.*)
@@ -128,21 +128,21 @@ mkt() {
 		_mkt_util_cd "$_mkt_dir" || return
 		_mkt_util_log "$1"
 
-		command curl -fLO "$1" || { _shell_util_die "mkt: Could not fetch resource with cURL"; return; }
+		command curl -fLO "$1" || { _util_die "mkt: Could not fetch resource with cURL"; return; }
 		_mkt_latest_file=$(_mkt_util_get_latest_file)
 		if file "$_mkt_latest_file" | grep -Eq '(compressed|archive)'; then
 			if command -v aunpack >/dev/null 2>&1; then
 				command aunpack "$_mkt_latest_file" # uncompress if compressed
 			else
-				_shell_util_ls
-				_shell_util_die "mkt: Command aunpack not found"
+				_util_ls
+				_util_die "mkt: Command aunpack not found"
 				return
 			fi
 		fi
 		unset _mkt_latest_file
 
 		_mkt_util_cd_latest_dir || return
-		_shell_util_ls
+		_util_ls
 		;;
 	# git repository
 	git@*|git://*|*.git|https://github.com/*|https://gitlab.com/*|https://git.sr.ht/*|https://*@bitbucket.org/*|https://invent.kde.org/*)
@@ -155,7 +155,7 @@ mkt() {
 		_mkt_util_git_clone "$1" || return
 
 		_mkt_util_cd_latest_dir || return
-		_shell_util_ls
+		_util_ls
 		;;
 	# file path
 	/*|./*)
@@ -182,7 +182,7 @@ mkt() {
 		_mkt_util_git_clone "https://github.com/$1" || return
 
 		_mkt_util_cd_latest_dir || return
-		_shell_util_ls
+		_util_ls
 		;;
 	*)
 		_mkt_dir=$(mktemp -d --suffix "-$1")

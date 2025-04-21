@@ -5,7 +5,7 @@ bash() {
 	if { [ "$1" = --noprofile ] && [ "$2" = --norc ]; } \
 		|| { [ "$1" = --norc ] && [ "$2" = --noprofile ]; }
 	then
-		_shell_util_log_info "Additionally resetting path to its initial value"
+		_util_log_info "Additionally resetting path to its initial value"
 		PATH="$_shell_original_path" command bash "$@"
 	else
 		command bash "$@"
@@ -24,7 +24,7 @@ cls() {
 #clone(user)
 cdp() {
 	if [ -z "$_shell_cdp_dir" ]; then
-		_shell_util_log_error "Variable '_shell_cdp_dir' not set. Recommended is to set it in 'PROMPT_COMMAND' or precmd()"
+		_util_log_error "Variable '_shell_cdp_dir' not set. Recommended is to set it in 'PROMPT_COMMAND' or precmd()"
 		return
 	fi
 
@@ -67,7 +67,7 @@ edit() {
 	if [ -z "$_edit_grep_result" ]; then
 			_edit_grep_result="$(grep -nR "^alias $1=" "$XDG_CONFIG_HOME"/shell)"
 			if [ -z "$_edit_grep_result" ]; then
-			_shell_util_die "edit: Function or alias '$1' not found"
+			_util_die "edit: Function or alias '$1' not found"
 			return
 		fi
 	fi
@@ -81,7 +81,7 @@ edit() {
 	elif command -v 'vim' &>/dev/null; then
 		vim "+$_edit_line" "$_edit_file"
 	else
-		_shell_util_die "edit: Editor not found"
+		_util_die "edit: Editor not found"
 		return
 	fi
 	unset -v _edit_grep_result _edit_file _edit_line
@@ -93,13 +93,13 @@ faketty() {
 }
 
 gs() {
-	_shell_util_log_warn "Correcting command to: 'g s'"
+	_util_log_warn "Correcting command to: 'g s'"
 	g s
 }
 
 #clone(user, root)
 isup() {
-	_shell_util_log_warn "Executing: 'curl -sS --head -X GET \"$1\" | grep -q '200 OK'"
+	_util_log_warn "Executing: 'curl -sS --head -X GET \"$1\" | grep -q '200 OK'"
 	command curl -sS --head -X GET "$1" | grep -q '200 OK'
 }
 
@@ -127,7 +127,7 @@ pbake() {
 		fi
 		printf '%s' "$PWD"
 	); then
-		_shell_util_die "Failed to cd to nearest Git repository" || return
+		_util_die "Failed to cd to nearest Git repository" || return
 	fi
 
 	_shell_bakefile='.hidden/Bakefile.sh'
@@ -139,12 +139,12 @@ pbake() {
 			_shell_bake='./bake'
 		fi
 
-		_shell_util_log_info "Using Bakefile: $PWD/$_shell_bakefile"
+		_util_log_info "Using Bakefile: $PWD/$_shell_bakefile"
 		"$_shell_bake" -f "$_shell_bakefile" "$@"
 
 		unset -v _shell_bake _shell_bakefile
 	else
-		_shell_util_die "Could not find a Bakefile under hidden directory" || return
+		_util_die "Could not find a Bakefile under hidden directory" || return
 	fi
 }
 
@@ -152,7 +152,7 @@ qe() {
 	filterList="BraveSoftware code tetrio-desktop obsidian discord sublime-text Ryujinx unity3d hmcl hdlauncher TabNine zettlr Zettlr Google lunarclient libreoffice VirtualBox configstore pulse obs-studio eDEX-UI 1Password kde.org sublime-text-3 gdlauncher gdlauncher_next launcher-main gitify QtProject GIMP r2modman r2modmanPlus-local Code plover GitKraken Electron bonsai-browser sidekick Insomnia Typora wavebox microsoft-edge evolution chromium"
 
 	_qe_file=$(
-		cd -- "$XDG_CONFIG_HOME" || { _shell_util_log_error "qe: Could not cd"; exit 1; }
+		cd -- "$XDG_CONFIG_HOME" || { _util_log_error "qe: Could not cd"; exit 1; }
 		filterArgs=
 		for file in $filterList; do
 			filterArgs="$filterArgs -o -name $file"
@@ -170,7 +170,7 @@ qe() {
 		\) -prune -o -print | fzf
 	)
 
-	[ -z "$_qe_file" ] && { _shell_util_die "qe: Chosen file empty"; return; }
+	[ -z "$_qe_file" ] && { _util_die "qe: Chosen file empty"; return; }
 
 	_qe_file="$XDG_CONFIG_HOME/$(printf "%s" "$_qe_file" | cut -c3-)"
 	v "$_qe_file"
@@ -189,7 +189,7 @@ serv() {
 	set -- "${1:-.}" "${2:-4000}"
 
 	if ! [ -d "$1" ]; then
-		_shell_util_die "serv: dir '$1' doesn't exist"
+		_util_die "serv: dir '$1' doesn't exist"
 		return
 	fi
 
@@ -202,7 +202,7 @@ serv() {
 		http-server "$1" -c-1 -a 127.0.0.1 -p "$2" # node
 		return
 	else
-		_shell_util_die "serv: no executable found to start server"
+		_util_die "serv: no executable found to start server"
 		return
 	fi
 }

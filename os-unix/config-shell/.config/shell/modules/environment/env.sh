@@ -11,6 +11,7 @@ export VISUAL='nvim'
 export EDITOR='nvim'
 export DIFFPROG='vim -d'
 export PAGER='less'
+export MANPAGER='vim +MANPAGER --not-a-term -'
 
 # ------------------------ Program ----------------------- #
 # fzf
@@ -57,7 +58,7 @@ export PASSWORD_STORE_GENERATED_LENGTH='40'
 
 # pnpm
 export PNPM_HOME="$XDG_DATA_HOME/pnpm"
-_path_prepend "$PNPM_HOME"
+_util_path_prepend "$PNPM_HOME"
 
 # ps
 export CMD_ENV='linux'
@@ -70,7 +71,7 @@ export QT_ACCESSIBILITY='1'
 # export RANGER_LOAD_DEFAULT_RC='FALSE'
 
 # snapd
-# _path_append '/var/lib/snapd/snap/bin'
+# _util_path_append '/var/lib/snapd/snap/bin'
 
 # ssh
 # unset SSH_AGENT_PID

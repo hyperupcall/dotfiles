@@ -91,12 +91,12 @@ stty() {
 			_stty_exit_code=$?
 
 			# Redirect log to standard error since this could be a scripted command used within a tty.
-			_shell_util_log_info "stty: Restored stty settings to our defaults" >&2
+			_util_log_info "stty: Restored stty settings to our defaults" >&2
 		else
 			command stty sane
 			_stty_exit_code=$?
 
-			_shell_util_log_warn "stty: Variable \$_stty_saved_settings empty. Falling back to 'stty sane'"
+			_util_log_warn "stty: Variable \$_stty_saved_settings empty. Falling back to 'stty sane'"
 		fi
 
 		return $_stty_exit_code
@@ -137,11 +137,11 @@ less() {
 
 	if [ -n "$ZSH_VERSION" ]; then
 		if ! _less_cmd=$(whence -p less); then
-			_shell_util_log_error 'Failed to find absolute path to less command'
+			_util_log_error 'Failed to find absolute path to less command'
 		fi
 	else
 		if ! _less_cmd=$(type -fp less); then
-			_shell_util_log_error 'Failed to find absolute path to less command'
+			_util_log_error 'Failed to find absolute path to less command'
 		fi
 	fi
 

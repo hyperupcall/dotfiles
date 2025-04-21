@@ -124,6 +124,6 @@ if command -v basalt &>/dev/null; then
 			complete -F _complete_alias "$alias_name"
 		done; unset -v alias_name
 	else
-		_shell_util_log_warn "Completions from cykerway/complete-alias not loaded properly"
+		_util_log_warn "Completions from cykerway/complete-alias not loaded properly"
 	fi
 fi

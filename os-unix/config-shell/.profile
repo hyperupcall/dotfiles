@@ -22,11 +22,11 @@ fi
 _shell_original_path="$PATH"
 
 # ----------------------- Sourcing ----------------------- #
-. "$XDG_CONFIG_HOME/shell/modules/util.sh"
+. "$XDG_CONFIG_HOME/shell/util.sh"
 
-_path_prepend "$HOME/.dotfiles/.data/bin"
-_path_prepend "$HOME/.bin"
-_path_prepend "$HOME/.local/bin"
+_util_path_prepend "$HOME/.dotfiles/.data/bin"
+_util_path_prepend "$HOME/.bin"
+_util_path_prepend "$HOME/.local/bin"
 
 for d in environment aliases functions; do
 	for f in "$XDG_CONFIG_HOME/shell/modules/$d"/*.sh; do

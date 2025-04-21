@@ -20,7 +20,7 @@
 		~/.dotfiles/os-unix/vendor/bash-term/pkg/**/*.sh; \
 	do
 		source "$_f"
-	done; unset -v _f
+	done
 
 	# Check for assumptions.
 	if [ -z "$XDG_CONFIG_HOME" ]; then
@@ -36,10 +36,10 @@
 		exit 1
 	fi
 
-	err_handler() {
-		core.print_stacktrace
-	}
-	core.trap_add 'err_handler' SIGINT
+	# err_handler() {
+	# 	core.print_stacktrace
+	# }
+	# core.trap_add 'err_handler' SIGINT
 
 	CURL_CONFIG="$HOME/.dotfiles/os-unix/data/curl_config.conf"
 }

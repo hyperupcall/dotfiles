@@ -61,7 +61,7 @@ _zle_trim_whitespace() {
 }
 
 _zle_ls(){
-	_shell_util_ls
+	_util_ls
 }
 
 _zle_exit() {

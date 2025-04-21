@@ -1,8 +1,7 @@
 # shellcheck shell=sh
 
-# Common functions used in starup files for POSIX shell, Bash, and Zsh.
-
-_path_prepend() {
+# https://superuser.com/questions/39751/add-directory-to-path-if-its-not-already-there/1644866#1644866
+_util_path_prepend() {
 	if [ -n "$2" ]; then
 		case ":$(eval "printf '%s' \"\$$1\""):" in
 			*":$2:"*) :;;
@@ -17,7 +16,7 @@ _path_prepend() {
 	esac
 }
 
-_path_append() {
+_util_path_append() {
 	if [ -n "$2" ]; then
 		case ":$(eval "printf '%s' \"\$$1\""):" in
 			*":$2:"*) :;;
@@ -32,12 +31,12 @@ _path_append() {
 	esac
 }
 
-_shell_util_die() {
-	_shell_util_log_error "$*"
+_util_die() {
+	_util_log_error "$*"
 	return 1
 }
 
-_shell_util_log_error() {
+_util_log_error() {
 	if [ -t 0 ]; then
 		printf "\033[0;31m%s\033[0m %s\n" 'Error:' "$1" >&2
 	else
@@ -45,7 +44,7 @@ _shell_util_log_error() {
 	fi
 }
 
-_shell_util_log_warn() {
+_util_log_warn() {
 	if [ -t 0 ]; then
 		printf "\033[1;33m%s\033[0m %s\n" 'Warn:' "$1" >&2
 	else
@@ -53,7 +52,7 @@ _shell_util_log_warn() {
 	fi
 }
 
-_shell_util_log_info() {
+_util_log_info() {
 	if [ -t 0 ]; then
 		printf "\033[0;34m%s\033[0m %s\n" 'Info:' "$1"
 	else
@@ -61,7 +60,7 @@ _shell_util_log_info() {
 	fi
 }
 
-_shell_util_ls() {
+_util_ls() {
 	printf '%s\n' '---'
 	if command -v exa >/dev/null 2>&1; then
 		exa -a --color=always
@@ -71,7 +70,7 @@ _shell_util_ls() {
 	printf '%s\n' '---'
 }
 
-_shell_util_has() {
+_util_has() {
 	if hash "$1" >/dev/null 2>&1; then
 		return 0
 	else
@@ -79,8 +78,8 @@ _shell_util_has() {
 	fi
 }
 
-_shell_util_run() {
-	_shell_util_log_info "Executing: $*"
+_util_run() {
+	_util_log_info "Executing: $*"
 
 	if "$@"; then :; else
 		return $?

@@ -107,7 +107,7 @@ main() {
 	# -------------------------------------------------------- #
 	#                 CREATE HOME DIR SYMLINKS                 #
 	# -------------------------------------------------------- #
-	must.link -fs ~/.dotfiles/os-unix/scripts ~/Q
+	must.link ~/.dotfiles/os-unix/scripts ~/scripts
 	if [ "$profile" = 'desktop' ]; then
 		must.link "$HOME/.dotfiles/.home/Documents/Projects/Programming/Organizations/fox-forks" "$HOME/forks"
 		must.link "$HOME/.dotfiles/.home/Documents/Projects/Programming/Git" "$HOME/git"
