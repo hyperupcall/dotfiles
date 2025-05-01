@@ -79,11 +79,11 @@ main() {
 			if [ -e "$dir" ]; then
 				core.print_warn "File or directory \"$dir\" already exists"
 				read -rN1 -p 'Remove? [y/n] ' answer
+				printf '\n'
 				if [[ $answer =~ ^[Yy] ]]; then
 					rm -rf "$dir"
 				else
-					core.print_error "Directory must not exist"
-					exit 1
+					core.print_die "Directory must not exist"
 				fi
 			fi
 

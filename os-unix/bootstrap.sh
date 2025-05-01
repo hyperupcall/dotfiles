@@ -58,17 +58,6 @@ else
 	return 1
 fi
 EOF
-
-	# Print next steps.
-	cat <<-"EOF"
-	---
-	. ~/.bootstrap/bootstrap-out.sh
-	~/scripts/doctor.sh
-	~/scripts/bootstrap.sh
-	~/scripts/dotfile.mjs deploy
-	~/scripts/idempotent.sh
-	---
-	EOF
 }
 
 die() {
@@ -88,7 +77,7 @@ log() {
 run() {
 	if "$@"; then :; else
 		error "Failed to run command (code $?)"
-		printf '%s\n' "  -> Command: $*" >&2
+		printf '%s\n' "  => Command: $*" >&2
 		exit 1
 	fi
 }

@@ -15,8 +15,11 @@ main() {
 }
 
 install.debian() {
-	util.update_system
-	sudo apt-get -y install texlive texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-extra-utils texlive-fonts-recommended texlive-fonts-extra texlive-bibtex-extra texlive-lang-english texlive-xetex latexmk
+	sudo apt-get -y install texlive-full
+}
+
+installed() {
+	command -v pdftex &>/dev/null && command -v tex-fmt &>/dev/null
 }
 
 util.if_file_sourced || main "$@"

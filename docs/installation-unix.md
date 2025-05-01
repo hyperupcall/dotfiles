@@ -33,12 +33,12 @@ chmod +x ~/.bootstrap/bootstrap.sh
 The `bootstrap.sh` script performs the following steps:
 
 - Installs Homebrew on macOS
-- Installs cURL, Git and Neovim
+- Installs cURL, Git and Vim
 - Clones `hyperupcall/dotfiles` to `~/.dotfiles`
 - Symlinks scripts to `~/scripts`
-- Creates a `~/.bootstrap/bootstrap-out.sh`; sourcing it does the following:
+- Creates a `~/.bootstrap/bootstrap-out.sh`. Sourcing it:
   - Sets `NAME`, `EMAIL`, `EDITOR`, and `VISUAL`
-  - Appends `$HOME/.dotfiles/.data/bin` to `PATH`
+  - Prepends `$HOME/.dotfiles/.data/bin` to `PATH`
   - Sources `~/.dotfiles/os-unix/data/xdg.sh`, if it exists
 
 ## Next Steps
@@ -46,19 +46,24 @@ The `bootstrap.sh` script performs the following steps:
 Some scripts should be executed. They include:
 
 - `. ~/.bootstrap/bootstrap-out.sh`
+- `~/scripts/rare/transfer-secrets.sh`
+  - Transfer SSH, PGP files to computer
 - Setup ZFS, BTRFS
-  - Modify `/etc/fstab`
-- Retrieve SSH, PGP keys
 - `~/scripts/doctor.sh`
-  - Setup d
-  - Test if dotfiles are deployed and have proper env variables (CARGO, pass_password_dir, etc)
+  - Write to `~/.dotfiles/.data/{profile,github_token}`
+  - Check permissions for `~/.{ssh,gnupg}`
+  - Setup [dev](https://github.com/fox-incubating/dev)
+    - Install NodeJS v23.6.0
+  - Setup [d](https://github.com/fox-incubating/d)
+  - Setup mise, lefthook
+    - Configure for `~/.dotfiles`
   - Setup Git (at least v2.37.0)
-  - Setup neovim (at least v0.10.0)
+  - Setup Neovim (at least v0.10.0)
   - Setup pass
   - Setup Browsers (Firefox, Brave)
     - Sync data (do manually)
   - Setup Maestral
-  - Setup Mise
+  - Setup gh, bats
 - Setup Albert
   - Enable plugins
 - Setup Obsidian
@@ -71,4 +76,4 @@ Some scripts should be executed. They include:
 - Test spellchecker
 - Add favorites to file explorer and dock
 - `~/scripts/idempotent.sh`
-- `~/scripts/dotfile.mjs deploy`
+- `d deploy`

@@ -108,14 +108,6 @@ main() {
 	#                 CREATE HOME DIR SYMLINKS                 #
 	# -------------------------------------------------------- #
 	must.link ~/.dotfiles/os-unix/scripts ~/scripts
-	if [ "$profile" = 'desktop' ]; then
-		must.link "$HOME/.dotfiles/.home/Documents/Projects/Programming/Organizations/fox-forks" "$HOME/forks"
-		must.link "$HOME/.dotfiles/.home/Documents/Projects/Programming/Git" "$HOME/git"
-		must.link "$HOME/.dotfiles/.home/Documents/Projects/Programming/Organizations" "$HOME/repositories"
-		must.link "$HOME/.dotfiles/.home/Documents/Projects/Programming/Organizations" "$HOME/organizations"
-	elif [ "$profile" = 'laptop' ]; then
-		:
-	fi
 
 	# -------------------------------------------------------- #
 	#                      CREATE SYMLINKS                     #

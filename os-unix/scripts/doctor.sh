@@ -20,10 +20,12 @@ main() {
 	local flag_fix=false
 	local flag_no_upgrade=false
 	for arg; do case $arg in
-	--prompt-to-fix)
+	--prompt-fix)
 		flag_fix=true ;;
 	--no-upgrade)
 		flag_no_upgrade=true ;;
+	*)
+		core.print_die "Invalid argument: \"$arg\"" ;;
 	esac done; unset -v arg
 
 	if [ "$flag_no_upgrade" != 'true' ]; then
@@ -56,6 +58,61 @@ main() {
 		printf '%s\n' "$cur" > ~/.dotfiles/.data/profile
 	fi
 
+	# Fetch GithHub authorization tokens.
+	if [ -f ~/.dotfiles/.data/github_token ]; then
+		core.print_info 'Already downloaded GitHub token'
+	else
+		local hostname=$HOSTNAME
+
+		printf '%s\n' "Go to: https://github.com/settings/tokens/new?description=General+@${hostname}&scopes="
+		read -erp "Paste token: "
+
+		local token="$REPLY"
+		printf '%s\n' "$token" > ~/.dotfiles/.data/github_token
+	fi
+
+	# SSH
+	{
+		if [ ! -d ~/.ssh ]; then
+			failure "ssh: Expected to find an ~/.ssh directory"
+		fi
+		check_dir_permissions 'ssh' ~/.ssh/
+		check_file_permissions 'ssh' ~/.ssh/*
+
+		if [ -f ~/.ssh/github ]; then
+			success "Has GitHub private SSH key"
+		else
+			failure "ssh: Expected the file \"~/.ssh/github\" to exist"
+			core.print_die 'Exiting...'
+		fi
+	}
+
+	# GnuPG
+	{
+		if [ ! -d ~/.gnupg ]; then
+			failure "gpg: Expected to find an ~/.gnupg directory"
+		fi
+		check_dir_permissions 'gpg' ~/.gnupg/
+		check_file_permissions 'gpg' ~/.gnupg/*
+
+		if ! gpg --list-public-keys | grep --quiet 'edwin@kofler.dev'; then
+			failure "gpg: Expected a gpg key with email \"edwin@kofler.dev\" to exist"
+			core.print_die 'Exiting...'
+		fi
+		if gpg --list-keys 0x2FB93BF35E14E7C4 &>/dev/null; then
+			success "gpg: Has password-store gpg public key"
+		else
+			failure "gpg: Does not have password-store gpg public key"
+			core.print_die 'Exiting...'
+		fi
+		if gpg --list-keys 0x3851E5FD042C7C6C &>/dev/null; then
+			success "gpg: Has commit signing gpg public key"
+		else
+			failure "gpg: Does not have commit signing gpg public key"
+			core.print_die 'Exiting...'
+		fi
+	}
+
 	# Download and install NodeJS runtime.
 	local dir=(~/.dotfiles/.data/node-v*/)
 	dir=${dir%/}
@@ -65,7 +122,7 @@ main() {
 	local old_nodejs_version="${dir[0]##*/}"
 	old_nodejs_version=${old_nodejs_version#node-v}
 	old_nodejs_version=${old_nodejs_version%%-*}
-	local nodejs_version='23.6.0' # TODO: Update
+	local nodejs_version='23.6.0' # TODO: Update and update docs
 	if [ -d "${dir[0]}" ] && [ "$old_nodejs_version" = "$nodejs_version" ]; then
 		local dir_nice="~${dir[0]#$HOME}"
 		core.print_info "Already installed NodeJS to $dir_nice"
@@ -130,63 +187,7 @@ EOF
 	systemctl --user daemon-reload
 	# systemctl --user enable --now dev.service # TODO
 
-	# Fetch GithHub authorization tokens.
-	if [ -f ~/.dotfiles/.data/github_token ]; then
-		core.print_info 'Already downloaded GitHub token'
-	else
-		local hostname=$HOSTNAME
-
-		printf '%s\n' "Go to: https://github.com/settings/tokens/new?description=General+@${hostname}&scopes="
-		read -erp "Paste token: "
-
-		local token="$REPLY"
-		printf '%s\n' "$token" > ~/.dotfiles/.data/github_token
-	fi
-
-	# SSH
-	{
-		if [ ! -d ~/.ssh ]; then
-			failure "ssh: Expected to find an ~/.ssh directory"
-		fi
-		check_dir_permissions 'ssh' ~/.ssh/
-		check_file_permissions 'ssh' ~/.ssh/*
-
-		if [ -f ~/.ssh/github ]; then
-			success "Has GitHub private SSH key"
-		else
-			failure "ssh: Expected the file \"~/.ssh/github\" to exist"
-			core.print_die 'Exiting...'
-		fi
-	}
-
-	
-	# GnuPG
-	{
-		if [ ! -d ~/.gnupg ]; then
-			failure "gpg: Expected to find an ~/.gnupg directory"
-		fi
-		check_dir_permissions 'gpg' ~/.gnupg/
-		check_file_permissions 'gpg' ~/.gnupg/*
-
-		if ! gpg --list-public-keys | grep --quiet 'edwin@kofler.dev'; then
-			failure "gpg: Expected a gpg key with email \"edwin@kofler.dev\" to exist"
-			core.print_die 'Exiting...'
-		fi
-		if gpg --list-keys 0x2FB93BF35E14E7C4 &>/dev/null; then
-			success "gpg: Has password-store gpg public key"
-		else
-			failure "gpg: Does not have password-store gpg public key"
-			core.print_die 'Exiting...'
-		fi
-		if gpg --list-keys 0x3851E5FD042C7C6C &>/dev/null; then
-			success "gpg: Has commit signing gpg public key"
-		else
-			failure "gpg: Does not have commit signing gpg public key"
-			core.print_die 'Exiting...'
-		fi
-	}
-
-	# d
+	# d # TODO: ~/scripts/setup/{self/,}d
 	{
 		mkdir -p ~/.dotfiles/.data/repos
 		local dir="$HOME/.dotfiles/.data/repos/d"
@@ -198,15 +199,27 @@ EOF
 		ln -fs "$PWD/d" ~/.local/bin/d
 	}
 
-	install_from_setup ~/scripts/setup/bats.sh
 	install_from_setup ~/scripts/setup/mise.sh
+	install_from_setup ~/scripts/setup/lefthook.sh
+	(
+		if ! mise trust --show mise | grep -q '~/.dotfiles: trusted'; then
+			mise trust ~/.dotfiles/.mise.toml
+		fi
+		cd ~/.dotfiles
+		if [ ! -f ./.git/info/lefthook.checksum ]; then
+			lefthook install
+		fi
+	)
 	install_from_setup ~/scripts/setup/git.sh # TODO: 'spaceman-diff'
 	install_from_setup ~/scripts/setup/neovim.sh
 	install_from_setup ~/scripts/setup/pass.sh
+
 	install_from_setup ~/scripts/setup/app/firefox.sh
 	install_from_setup ~/scripts/setup/app/brave.sh
 	install_from_setup ~/scripts/setup/app/maestral.sh
+
 	install_from_setup ~/scripts/setup/gh.sh
+	install_from_setup ~/scripts/setup/bats.sh
 
 	printf '%s\n' "BINARIES:"
 	check.command clang-format
@@ -316,7 +329,7 @@ check_dir_permissions() {
 			chown ":$USER" "$dir"
 		fi
 	fi
-	
+
 }
 
 check_file_permissions() {
@@ -327,6 +340,9 @@ check_file_permissions() {
 
 	local file= result= badfiles=()
 	for file; do
+		if [ -d "$file" ]; then
+			continue
+		fi
 		result=$(stat -L -c '%a %G %U' "$file")
 		if [ "$result" != "600 $USER $USER" ]; then
 			failure "$prefix: File \"$file\" has incorrect permission or owner or group set"

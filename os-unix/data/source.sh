@@ -114,7 +114,7 @@ helper.setup() {
 						break
 					fi
 				else
-					core.print_warn "Application has already been setup. Pass --force-install to run setup again"
+					core.print_warn "Application has already been set up. Pass \"--force-install\" to run setup again"
 				fi
 			fi
 		done; unset -v id

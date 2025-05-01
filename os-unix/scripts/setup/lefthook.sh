@@ -7,9 +7,8 @@ main() {
 }
 
 install.any() {
-	~/scripts/setup/go.sh
-
-	go install github.com/evilmartians/lefthook@latest
+	mise install lefthook@latest
+	mise use -g lefthook@latest
 }
 
 installed() {
