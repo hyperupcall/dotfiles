@@ -12,6 +12,7 @@ export EDITOR='nvim'
 export DIFFPROG='vim -d'
 export PAGER='less'
 export MANPAGER='vim +MANPAGER --not-a-term -'
+export MANPAGER='less' # TODO
 
 # ------------------------ Program ----------------------- #
 # fzf

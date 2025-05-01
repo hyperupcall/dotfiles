@@ -103,7 +103,7 @@ iscmd() {
 
 updatesystem() {
 	(
-		source /etc/os-release
+		. /etc/os-release
 		if [ "$ID" = 'neon' ]; then
 			sudo apt-get -y update
 			sudo apt-get -y install apt-transport-https
