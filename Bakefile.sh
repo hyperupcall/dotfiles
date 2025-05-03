@@ -18,7 +18,7 @@ task.lint() {
 }
 
 task.test() {
-	(cd "./os-unix/config-shell/.config/shell/modules/common" && bats -p .)
+	(cd "./os-unix/config-shell/.config/sh/modules/common" && bats -p .)
 	~/scripts/lint-scripts.py
 }
 

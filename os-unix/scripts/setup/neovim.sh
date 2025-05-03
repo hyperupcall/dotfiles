@@ -7,17 +7,20 @@ main() {
 }
 
 install.any() {
-	helper.setup --no-confirm --fn-prefix=install_gettext.debian
-	install_gettext.debian() {
+	helper.setup --no-confirm --fn-prefix=dependencies.debian
+	dependencies.debian() {
 		sudo apt-get -y install gettext
 	}
-	install_gettext.fedora() {
+	dependencies.ubuntu() {
+		dependencies.debian "$@"
+	}
+	dependencies.fedora() {
 		sudo dnf install -y gettext
 	}
-	install_gettext.opensuse() {
+	dependencies.opensuse() {
 		sudo zypper -n install gettext
 	}
-	install_gettext.arch() {
+	dependencies.arch() {
 		sudo pacman -Syu --noconfirm gettext
 	}
 

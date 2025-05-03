@@ -1,7 +1,6 @@
 # shellcheck shell=bash
 
-# @file util.sh
-# @brief Utility functions specifically for the Bash runtime environment
+# Utility functions for Bash.
 
 _debug_completion() {
 	echo

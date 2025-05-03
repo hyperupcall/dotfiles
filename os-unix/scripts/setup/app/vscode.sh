@@ -25,6 +25,10 @@ install.debian() {
 	sudo apt-get -y install code code-insiders
 }
 
+install.ubuntu() {
+	install.debian "$@"
+}
+
 install.fedora() {
 	sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 	printf "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc\n" \
@@ -41,6 +45,10 @@ install.opensuse() {
 
 	sudo zypper refresh
 	sudo zypper -n install code code-insiders
+}
+
+installed() {
+	command -v code &>/dev/null && command -v code-insiders &>/dev/null
 }
 
 util.if_file_sourced || main "$@"

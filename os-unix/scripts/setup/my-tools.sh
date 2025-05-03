@@ -7,16 +7,15 @@ main() {
 }
 
 install.any() {
-	if ! command -v cargo &>/dev/null; then
+	if ! commaind -v cargo &>/dev/null; then
 		~/scripts/setup/rust.sh
 	fi
 
-	cargo install \
-		fox-template \
-		fox-dotfile \
-		fox-repo \
-		fox-repos \
-		fox-default
+	cargo install fox-default
+}
+
+installed() {
+	command -v default &>/dev/null
 }
 
 util.if_file_sourced || main "$@"

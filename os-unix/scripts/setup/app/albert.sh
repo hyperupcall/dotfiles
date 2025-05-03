@@ -3,30 +3,26 @@
 source ~/.dotfiles/os-unix/data/source.sh
 
 main() {
-	helper.setup --fn-prefix=install_deps 'Albert' "$@"
+	helper.setup --fn-prefix=dependencies 'Albert' "$@"
+	dependencies.debian() {
+		sudo apt-get install -y libarchive-dev autoconf
+		sudo apt-get install -y intltool libtool libgmp-dev libmpfr-dev libcurl4-openssl-dev libicu-dev libxml2-dev # pybind11
+		sudo apt-get install -y qt6-base-dev qt6-tools-dev qt6-5compat-dev libqt6svg6-dev qt6-scxml # albert
+	}
+	dependencies.ubuntu() {
+		dependencies.debian "$@"
+	}
+	dependencies.fedora() {
+		sudo dnf install -y libarchive-devel autoconf
+		sudo dnf install -y intltool libtool libcurl-devel gmp-devel mpfr-devel libicu-devel # pybind11
+		sudo dnf install -y qt6-qtbase-devel qt6-qttools-devel qt6-qt5compat-devel qt6-qtsvg-devel qt6-qtscxml # albert
+	}
+	dependencies.arch() {
+		sudo pacman -Syu --noconfirm libarchive autoconf
+		sudo pacman -Syu --noconfirm intltool # pybind11
+		sudo pacman -Syu --noconfirm qt6-base qt6-tools qt6-5compat qt6-scxml # albert
+	}
 	install_albert
-}
-
-install_deps.debian() {
-	sudo apt-get install -y libarchive-dev autoconf
-	sudo apt-get install -y intltool libtool libgmp-dev libmpfr-dev libcurl4-openssl-dev libicu-dev libxml2-dev # pybind11
-	sudo apt-get install -y qt6-base-dev qt6-tools-dev qt6-5compat-dev libqt6svg6-dev qt6-scxml # albert
-}
-
-install_deps.ubuntu() {
-	install_deps.debian "$@"
-}
-
-install_deps.fedora() {
-	sudo dnf install -y libarchive-devel autoconf
-	sudo dnf install -y intltool libtool libcurl-devel gmp-devel mpfr-devel libicu-devel # pybind11
-	sudo dnf install -y qt6-qtbase-devel qt6-qttools-devel qt6-qt5compat-devel qt6-qtsvg-devel qt6-qtscxml # albert
-}
-
-install_deps.arch() {
-	sudo pacman -Syu --noconfirm libarchive autoconf
-	sudo pacman -Syu --noconfirm intltool # pybind11
-	sudo pacman -Syu --noconfirm qt6-base qt6-tools qt6-5compat qt6-scxml # albert
 }
 
 # Built from scratch because the version from the custom repositories it outdated.
@@ -55,7 +51,6 @@ install_albert() {
 		sudo cmake --install build
 	)
 
-
 	(
 		if [ ! -d lib/Qalculate ]; then
 			git submodule add https://github.com/Qalculate/libqalculate lib/Qalculate
@@ -76,7 +71,7 @@ install_albert() {
 	sudo cmake --install build
 }
 
-configure.any() {
+configure() {
 	mkdir -p "$XDG_CONFIG_HOME/autostart"
 	cat <<EOF > "$XDG_CONFIG_HOME/autostart/albert.desktop"
 [Desktop Entry]

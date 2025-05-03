@@ -16,7 +16,6 @@ install.any() {
 		util.clone ./dotdrop https://github.com/deadc0de6/dotdrop
 	fi
 	cd ./dotdrop
-	# TODO: apt-get install -y python3-venv
 	if [ -f ./venv/bin/activate ]; then
 		core.print_info 'Found virtualenv'
 	else

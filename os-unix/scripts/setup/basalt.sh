@@ -8,9 +8,7 @@ main() {
 
 install.any() {
 	curl -K "$CURL_CONFIG" https://raw.githubusercontent.com/hyperupcall/basalt/main/scripts/install.sh | sh
-}
 
-configure.any() {
 	basalt global add \
 		hyperupcall/autoenv \
 		hyperupcall/bake

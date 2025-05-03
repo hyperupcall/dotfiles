@@ -35,15 +35,16 @@ install.debian() {
 	sudo apt-get -y install brave-browser brave-browser-beta
 }
 
-install.fedora() {
-	sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
-	sudo rpm --import https://brave-browser-rpm-beta.s3.brave.com/brave-core-nightly.asc
+install.ubuntu() {
+	install.debian "$@"
+}
 
-	# TODO: test VERSION_ID
-	# sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
-	# sudo dnf config-manager --add-repo https://brave-browser-rpm-beta.s3.brave.com/brave-browser.repo
-	sudo dnf config-manager addrepo --overwrite --from-repofile=https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
-	sudo dnf config-manager addrepo --overwrite --from-repofile=https://brave-browser-rpm-beta.s3.brave.com/brave-browser.repo
+install.fedora() {
+	pkg.add_dnf_key 'https://brave-browser-rpm-release.s3.brave.com/brave-core.asc'
+	pkg.add_dnf_key 'https://brave-browser-rpm-beta.s3.brave.com/brave-core-nightly.asc'
+
+	pkg.add_dnf_repository 'https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo'
+	pkg.add_dnf_repository 'https://brave-browser-rpm-beta.s3.brave.com/brave-browser.repo'
 
 	sudo dnf -y update
 	sudo dnf -y install brave-browser brave-browser-beta

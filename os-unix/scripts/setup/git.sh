@@ -17,6 +17,7 @@ install.ubuntu() {
 }
 
 installed() {
+	# Version must be at least 2.37.0 to support "push.autoSetupRemote".
 	git_version_check() {
 		local -a git_version_arr
 		git_version=$(git version)

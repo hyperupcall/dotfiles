@@ -1,7 +1,7 @@
 #! perl
 # TabbedEx plugin for rxvt-unicode; based on original tabbed plugin.
 # https://github.com/mina86/urxvt-tabbedex
-# Copyright 2006-2019 tabbed and tabbedex authors
+# Copyright 2006-2020 tabbed and tabbedex authors
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -107,10 +107,10 @@ current tab's title will be displayed after the last tab.
 
 =item B<title-fg>:    [I<style>] I<colour>  and  B<title-bg>:    I<colour>
 
-Foreground and background styles of respectively: the tab bar (including
-inactive tabs), the current/active tab on the tab bar and new button, an
-inactive tab on which bell has rung, an active tab on which bell has rung and
-finally the tab title.
+Foreground and background styles of elements of the tab bar, respectively: 1)
+the tab bar including background tabs, 2) the current tab and new button, 3)
+a background tab on which bell has rung, 4) the current tab if bell has rung and
+5) tab title.
 
 Colours can be specified as: I<-2> meaning default foreground, I<-1> meaning
 default background, an integer between B<0> and B<255> specifying index in
@@ -190,8 +190,8 @@ starts at zero and always increments for each subsequent tab.
 
 Replaced by ID of a process group which is running in foreground of the pseudo
 terminal in the current tab (as in, not the new tab being created but the tab
-where the new tab request originated from) or -1 if there are no active tabs (or
-that information could not be determined).
+where the new tab request originated from) or -1 if this piece of information
+could not be determined.
 
 This can be used to guess the current working directory of current tab.
 
@@ -206,8 +206,7 @@ Unrecognised sequences are replaced with an empty string.
 
 See B<command-runner.sample> file distributed with this extension for some ideas
 how this resource can be used to start different commands in different tabs or
-how to use the same current working directory for new tabs as the active tab
-has.
+how to start new tabs in the same working directory as the current tab is using.
 
 =item B<no-tabbedex-keys>: I<boolean>
 
@@ -248,8 +247,8 @@ If set, whenever last tab is destroyed a new one will be created.
 
 =item B<tabbar-timeouts>: I<string>
 
-When new text is written to an inactive tab, activity marks are displayed around
-its number (or name if it has one) on the tab bar.  By default Unicode
+When new text is written to a background tab, activity marks are displayed
+around its number (or name if it has one) on the tab bar.  By default Unicode
 characters are used to display a block which grows with time the longer it was
 since last time there was any activity in the tab.
 
@@ -263,27 +262,8 @@ character is given, it specifies both.  For example:
 
     URxvt.tabbedex.tabbar-timeouts: 0:|:3:():6:[]:9:{}:12:<>
 
-As a deprecated feature, if a single character is given and it's (, [, { or <,
-matching closing brace will be used for right activity mark.  This is feature
-will be removed in the future.
-
-=item B<tabbed.tabbedex-rs-prefix>: I<string>
-
-A B<deprecated> alternative resource name prefix.  It's always specified with
-C<tabbed> prefix which is also its default value.
-
-If resource using extension's name as well as one using the alternate prefix are
-found, the former takes precedence.  If only the latter is present, its value is
-used but a warning is issued as well, for example:
-
-    URxvt.tabbed.tabbar-fg:   5   -- ignored
-    URxvt.tabbed.tabbar-bg:   0   -- used but issues a warning
-    URxvt.tabbedex.tabbar-fg: 4   -- used
-
-For best backwards compatibility, all options should use C<tabbedex> prefix and
-the <tabbedex-rs-prefix> resource should be to percent sign as in:
-
-    URxvt.tabbed.tabbedex-rs-prefix: %
+See B<tabbedex;ignore_line_activity> OSC sequence below to see how the activity
+detection can be further affected.
 
 =back
 
@@ -295,11 +275,11 @@ information about them).  The options include:
 
 =item B<mapAlert>
 
-If set, when bell rings in an inactive tab, the tab is made active.
+If set, when bell rings in a background tab, the tab is selected as current.
 
 =item B<urgentOnBell>
 
-If set, when bell rings in an inactive tab, the master terminal's urgency hint
+If set, when bell rings in a background tab, the master terminal's urgency hint
 is set.
 
 =back
@@ -350,13 +330,27 @@ makes I<Ctrl+T> start a new tab next to the current one.
 
 =item B<tabbedex:next_tab> and B<tabbedex:prev_tab>
 
-Switches to the tab on the right or left of the current tab.
+Switches to the tab on the right or left of the current tab.  Wraps around when
+switching right from the last tab or left from the first one.
+
+=item B<tabbedex:next_tab:nowrap> and B<tabbedex:prev_tab:nowrap>
+
+Switches tabs like B<tabbedex:next_tab> and B<tabbedex:prev_tab> action but does
+not wrap around.  I.e. does nothing if trying to switch to the last tab's next
+tab or first tab's previous tab.
 
 =item B<tabbedex:move_tab_left> and B<tabbedex:move_tab_right>
 
-Moves the current tab left or right.
+Moves the current tab left or right.  Wraps around when moving last tab right or
+first tab left.
 
-=item B<goto_tab_>I<N>
+=item B<tabbedex:move_tab_left:nowrap> and B<tabbedex:move_tab_right:nowrap>
+
+Moves the current tab left or right like B<tabbedex:move_tab_left> and
+B<tabbedex:move_tab_right> but does not wrap around.  I.e. moving first tab left
+or last tab right does nothing.
+
+=item B<tabbedex:goto_tab_>I<N>
 
 If I<N> is a positive integer, switches to the I<N>th tab.  If I<N> is negative,
 switches to the -I<N>th tab counting from the last one.
@@ -373,9 +367,9 @@ Start renaming the tab.
 
 =head1 OSC SEQUENCES
 
-tabbedex supports a single OSC sequence which can be invoked by programs running
-in the terminal by writing a special sequence, namely I<ESC ] 777 ; string ST>
-where I<string> is the command to execute.  For example:
+tabbedex supports two OSC sequences.  They can be invoked by programs running in
+the terminal by writing an OSC sequence I<ESC ] 777 ; string ST> where I<string>
+is the command to execute.  For example:
 
     printf '\033]777;tabbedex;set_tab_name;%s\007' "foo"
 
@@ -384,6 +378,33 @@ where I<string> is the command to execute.  For example:
 =item B<tabbedex;set_tab_name;>I<name>
 
 Sets name of the current tab to I<name>.
+
+=item B<tabbedex;ignore_line_activity;>I<n>
+
+Prevents new text on given line affecting activity marks displayed in the tab
+bar (see B<tabbar-timeouts> resource).  Positive values specify I<n>th row from
+the top, negative specify -I<n>th row from the bottom and zero disables the
+filtering (thus making all updates affect activity marks).
+
+This is useful if an application has a periodically-updating status line whose
+refresh does not indicate activity in the tab.  For example, L<screen(1)> can
+display current time in its hardstatus.  To prevent updates to the clock
+registering as activity in the screen window, tabbedex can be instructed to
+ignore the bottom row of the display:
+
+    printf '\033]777;tabbedex;ignore_line_activity;%d\007' -1
+
+To make this automatic a custom script for starting L<screen(1)> could be used:
+
+    #!/bin/sh
+    ignore_line_activity() {
+        printf '\033]777;tabbedex;ignore_line_activity;%d\007' "$1"
+    }
+    ignore_line_activity -1
+    screen "$@"
+    ignore_line_activity 0
+
+Note that if text wraps multiple lines, only the topmost row counts as changed.
 
 =back
 
@@ -394,7 +415,7 @@ L<tabbedex-pgid-cd(1)>
 
 =head1 COPYRIGHT
 
-Copyright 2006-2019 tabbed and tabbedex authors
+Copyright 2006-2020 tabbed and tabbedex authors
 
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -801,7 +822,7 @@ sub args_percent_substitution {
 		quote_words @{ $root->{argv} }
 	} elsif ($ch eq 'E') {
 		quote_words @{ $root->{argv} }
-			? @{ $root->{argv} }[1..$#$root->{argv}]
+			? @{ $root->{argv} }[1..$#{ $root->{argv} }]
 			: ($ENV{SHELL} || '/bin/sh')
 	} elsif ($ch eq 'p') {
 		$tab ? $tab->foreground_pgid : -1
@@ -880,11 +901,26 @@ sub copy_properties {
                                                                $atom);
 
       # fix up size hints
-      if ($atom == $wm_normal_hints) {
+      if ($atom == $wm_normal_hints && $root->{tabheight}) {
+         # typedef struct {
+         #         long flags;                  /* 0 */
+         #         int x, y;                    /* 1, 2 */ /* Obsolete */
+         #         int width, height;           /* 3, 4 */ /* Obsolete */
+         #         int min_width, min_height;   /* 5, 6 */
+         #         int max_width, max_height;   /* 7, 8 */
+         #         int width_inc, height_inc;   /* 9, 10 */
+         #         struct {
+         #                 int x; /* numerator */
+         #                 int y; /* denominator */
+         #         } min_aspect, max_aspect;    /* 11, 12, 13, 14 */
+         #         int base_width, base_height; /* 15, 16 */
+         #         int win_gravity;             /* 17 */
+         # } XSizeHints;
+         #
+         # (Don’t ask me how this works with long and int types.  Somehow it
+         # does – mina86).
          my (@hints) = unpack "l!*", $items;
-
          $hints[$_] += $root->{tabheight} for (4, 6, 16);
-
          $items = pack "l!*", @hints;
       }
 
@@ -919,6 +955,7 @@ sub make_current {
 		if ($cur->is_being_renamed) {
 			return;
 		}
+		$cur->enable_activity_hook(1);
 		delete $cur->{last_activity};
 		$cur->{bell_ends} = 0;
 		$cur->XUnmapWindow ($cur->parent) if $cur->mapped;
@@ -926,6 +963,10 @@ sub make_current {
 	}
 
 	$root->{cur} = $tab;
+	# Disable the add_lines hook so that we don’t waste time processing that
+	# hook for the current tab.  We’re not interested in that hook on the
+	# current tab.
+	$tab->enable_activity_hook(0);
 
 	$root->configure;
 	$root->copy_properties;
@@ -960,8 +1001,24 @@ _on tt_write => sub {
 };
 
 _on key_press => sub {
-   my ($root, $event) = @_;
-   $root->key_event('key_press', $event);
+	my ($root, $event) = @_;
+
+	# This check fixes dead keys when pointer is not above the terminal
+	# window (see https://github.com/mina86/urxvt-tabbedex/issues/26).  The
+	# fix only works if ibus is used; if ibus is not used, the condition is
+	# always true.
+	#
+	# When a dead key is combined with a letter a key_press event with zero
+	# state, keycode and time is generated.  If we forward it to the tab and
+	# report back to urxvt that the event was handled, nothing happens and
+	# the character is not inserted.
+	#
+	# On the other hand, if we ignore such events everything works as
+	# expected.  To be honest, I don’t completely understand what is
+	# happening here, but it fixes stuff. — mina86
+	if ($event->{state} || $event->{keycode} || $event->{time}) {
+		$root->key_event('key_press', $event);
+	}
 };
 
 _on key_release => sub {
@@ -971,6 +1028,7 @@ _on key_release => sub {
 
 sub key_event {
 	my ($root, $type, $event) = @_;
+
 	my $tab = $root->{cur};
 	$tab->$type($event->{state}, $event->{keycode}, $event->{time});
 
@@ -1014,19 +1072,19 @@ _on button_release => sub {
 
 {
 
-# TODO: Add a warning in late 2020 or thereabouts if this is used and then
-# remove completely a year later or such.
-my %matching_marks = ('[' => ']', '{' => '}', '(' => ')', '<' => '>');
+sub parse_single_timeout {
+	my ($root, $t, $l, $r) = @_;
+	$l = $root->special_encode($l);
+	$r = defined $r ? $root->special_encode($r) : $l;
+	[$t + 0, $l, $r]
+}
 
 sub parse_timeouts {
 	my ($root, $timeouts) = @_;
 	my $char = eval { qr/\X/ } // qr/./;
 	my @timeouts;
 	while ($timeouts =~ /\G(\d*\.\d+|\d+):($char)($char)?(?::|$)/g) {
-		my $left = $root->special_encode($2);
-		my $right = $root->special_encode(
-			$3 // $matching_marks{$2} // $2);
-		push @timeouts, [$1 + 0, $left, $right];
+		push @timeouts, $root->parse_single_timeout($1, $2, $3);
 	}
 	@timeouts = sort { $b->[0] <=> $a->[0] } @timeouts;
 	if (!@timeouts || $timeouts[$#timeouts][0] > 0) {
@@ -1043,11 +1101,14 @@ sub init {
    $root->{resource} = [map $root->resource ("+$_"),
                             0 .. urxvt::NUM_RESOURCES - 1];
 
+   $root->{hpadding} = $root->{vpadding} = 2 * $root->int_bwidth;
    $root->resource (int_bwidth => 0);
    $root->resource (pty_fd => -1);
 
    if (defined(my $key = $urxvt::OPTION{scrollBar})) {
-      $root->{option}{$key} = $root->option($key, 0);
+      if ($root->{option}{$key} = $root->option($key, 0)) {
+         $root->{hpadding} += $root->get_scrollbar_thickness;
+      }
    }
    # Disable ‘intensityStyles’ so that bold, blink etc. specified in tabbar
    # styles don’t affect the colours.
@@ -1067,12 +1128,6 @@ sub init {
    $root->{reopen_on_close}  = $rs->bool('reopen-on-close', 0);
    $root->{tab_arguments}    = $rs->text('tab-arguments', '');
 
-   # TODO: Remove the warning in late 2020.
-   if (defined $rs->text('new-tab-command')) {
-      $root->warn('‘new-tab-command’ resource is no longer recognised; ',
-                  'use ‘tab-arguments’ instead');
-   }
-
    if (my $blacklist = $rs->text('perl-ext-blacklist')) {
        $blacklist =~ s/,/,-/;
        $root->{perl_ext_blacklist} = ',-' . $blacklist;
@@ -1089,12 +1144,68 @@ sub init {
    $root->{timer} = urxvt::timer->new->cb ( sub { $root->refresh; } );
 }
 
+# Figures out the thickness of scroll bar.  This is based on scrollBar_t::setup
+# code and written with the assumption that urxvt was compiled with all styles
+# enabled.
+sub get_scrollbar_thickness {
+	my ($root) = @_;
+
+	my $style = $root->resource('scrollstyle') || '';
+	my $width;
+
+	if ($style =~ /^next/i) {
+		$style = 'next';
+		$width = 19;  # SB_WIDTH_NEXT
+	} elsif ($style =~ /^xterm/i) {
+		$width = 15;  # SB_STYLE_XTERM
+	} elsif ($style =~ /^plain/i) {
+		$width = 7;  # SB_WIDTH_PLAIN
+	} else {
+		$style = 'rxvt';
+		$width = 10;  # SB_WIDTH_RXVT
+	}
+
+	# Relevant excerpt from the C++ code:
+	#
+	#  thickness = term->rs[Rs_scrollBar_thickness];
+	#  if (style != SB_STYLE_NEXT)	/* dishonour request - for now */
+	#    if (thickness && (i = atoi (thickness)) >= SB_WIDTH_MINIMUM)
+	#      width = min (i, SB_WIDTH_MAXIMUM);
+	if ($style ne 'next') {
+		my $thickness = $root->resource('scrollBar_thickness');
+		if ($thickness && $thickness >= 5) {
+			# SB_WIDTH_MAXIMUM == 100
+			$width = $thickness < 100 ? $thickness : 100;
+		}
+	}
+
+	my $key = $urxvt::OPTION{scrollBar_floating};
+	if ($style eq 'rxvt' && defined $key && !$root->option($key)) {
+		$width += 2;
+	}
+
+	$width
+}
+
 _on start => sub {
    my ($root) = @_;
 
    $root->{maxtabheight} =
       $root->int_bwidth + $root->fheight + $root->lineSpace;
    $root->{tabheight} = $root->{autohide} ? 0 : $root->{maxtabheight};
+
+   # Root window is always created without scroll bar or border which means that
+   # it’s sized without any space allocated for those elements.  However, tabs
+   # may have those options enabled which makes means that they end up with less
+   # usable space than user requested. To account for that, enlarge the root to
+   # make space for the border and scroll bar.
+   my $hpadding = delete $root->{hpadding};
+   my $vpadding = delete $root->{vpadding};
+   if ($hpadding || $vpadding || $root->{tabheight}) {
+      my $w = $root->width + $hpadding;
+      my $h = $root->height + $vpadding + $root->{tabheight};
+      $root->XMoveResizeWindow($root->parent, 0, 0, $w, $h);
+   }
 
    $root->cmd_parse(delete $root->{init_cmd});
 
@@ -1214,9 +1325,13 @@ sub tab_bell {
 }
 
 
-sub tab_add_lines {
-	my ($root, $tab) = @_;
-	if ($tab != $root->{cur}) {
+sub tab_line_update {
+	my ($root, $tab, $row) = @_;
+	my $ignore = $tab->{ignore_line_activity} // 0;
+	# 0 ≤ $row < nrow thus if $ignore is zero the condition is always true.
+	# Otherwise, the two tests handle checks for when $ignore is positive
+	# and negative respectively.
+	if ($row + 1 != $ignore && $tab->nrow + $ignore != $row) {
 		my $now = urxvt::NOW;
 		my @pre = $root->tab_activity_marks($tab, $now);
 		$tab->{last_activity} = $now;
@@ -1225,7 +1340,7 @@ sub tab_add_lines {
 			$root->refresh($now);
 		}
 	}
-	();
+	()
 }
 
 
@@ -1239,14 +1354,13 @@ sub tab_action {
 			}
 			$root->new_tab($tab, $2, $index);
 		}
-	} elsif ($cmd eq 'next_tab') {
-		$root->make_current(($tab->index + 1) % @{ $root->{tabs} });
-	} elsif ($cmd eq 'prev_tab') {
-		$root->make_current($tab->index - 1);
-	} elsif ($cmd eq 'move_tab_left') {
-		$root->move_tab($tab, -1);
-	} elsif ($cmd eq 'move_tab_right') {
-		$root->move_tab($tab, 1);
+	} elsif ($cmd =~ /^(next|prev)_tab(:nowrap)?$/) {
+		my $index = $tab->index + ($1 eq 'next' ? 1 : -1);
+		if (!$2 || ($index >= 0 && $index < @{ $root->{tabs} })) {
+			$root->make_current($index % @{ $root->{tabs} });
+		}
+	} elsif ($cmd =~ /^move_tab_(left|right)(:nowrap)?$/) {
+		$root->move_tab($tab, $1 eq 'left' ? -1 : 1, !!$2);
 	} elsif ($cmd =~ /^goto_tab[_:](-?)(0*[1-9]\d*)$/) {
 		if ($2 <= @{ $root->{tabs} }) {
 			$root->make_current($1 eq '' ? $2 - 1 : -$2);
@@ -1264,7 +1378,7 @@ sub tab_action {
 }
 
 sub move_tab {
-	my ($root, $tab, $direction) = @_;
+	my ($root, $tab, $direction, $nowrap) = @_;
 	if (@{ $root->{tabs} } < 2) {
 		return;
 	}
@@ -1273,15 +1387,18 @@ sub move_tab {
 	my $idx = $tab->index;
 
 	if ($idx == 0 && $direction == -1) {
+		if ($nowrap) {
+			return;
+		}
 		push @{$root->{tabs}}, shift @{$root->{tabs}};
-		$idx = $last;
 	} elsif ($idx == $last && $direction == 1) {
+		if ($nowrap) {
+			return;
+		}
 		unshift @{$root->{tabs}}, pop @{$root->{tabs}};
-		$idx = 0;
 	} else {
 		($root->{tabs}[$idx], $root->{tabs}[$idx + $direction]) =
 			($root->{tabs}[$idx + $direction], $root->{tabs}[$idx]);
-		$idx += $direction;
 	}
 	$root->refresh;
 }
@@ -1297,6 +1414,9 @@ sub tab_osc_seq_perl {
 			$root->refresh;
 		}
 		1;
+	} elsif ($osc =~ /^tabbedex;ignore_line_activity;(-?\d+)$/) {
+		$tab->{ignore_line_activity} = $1 + 0;
+		1;
 	}
 }
 
@@ -1309,15 +1429,28 @@ use POSIX qw/tcgetpgrp/;
 # simply proxies all interesting calls back to the tabbedex class.
 
 
-sub enable_hooks {
-	for my $hook (qw(start destroy property_notify add_lines
-	                 bell osc_seq_perl)) {
-		my $name = "urxvt::ext::tabbedex::root::tab_$hook";
-		$_[0]->enable($hook => sub {
+{
+	my %hooks = map {
+		my $name = "urxvt::ext::tabbedex::root::tab_$_";
+		$_ => sub {
 			unshift @_, $_[0]{root};
 			goto &$name;
-		});
-	};
+		}
+	} qw(start destroy property_notify line_update bell osc_seq_perl);
+
+	sub enable_hooks {
+		my ($root) = @_;
+		$root->enable(%hooks);
+	}
+
+	sub enable_activity_hook {
+		my ($tab, $enable) = (@_, 1);
+		if ($enable) {
+			$tab->enable(line_update => $hooks{line_update});
+		} else {
+			$tab->disable('line_update');
+		}
+	}
 }
 
 sub init {
@@ -1423,38 +1556,32 @@ sub _rename_tab_key_press {
 }
 
 
-## Class for getting data from resources.  Most notably, it handles the
-## deprecated ‘tabbedex-rs-prefix’ resource and parsing of colours.
+## Class for getting data from resources.  Most notably, it handles locale
+## decoding and parsing the values.
 package urxvt::ext::tabbedex::rs_reader;
 
 sub new {
 	my ($class, $root) = @_;
-	my $prefix = $root->x_resource('tabbed.tabbedex-rs-prefix') // 'tabbed';
+	my $prefix = $root->x_resource('tabbed.tabbedex-rs-prefix') // '%';
 	my $extname = $root->{_name};
-	my $rs = [$root, $extname];
 	if ($prefix ne '%' && $prefix ne $extname) {
-		push @$rs, $prefix;
+		$root->warn("‘tabbed.tabbedex-rs-prefix’ resource is no " .
+		            "longer respected; use ‘$extname’ as prefix for " .
+		            "tabbedex resources");
 	}
-	bless $rs, $class
+	bless \$root, $class
 }
 
 sub text {
 	my ($rs, $name, $default) = @_;
-	my ($root, $extname, $prefix) = @$rs;
-	my $value = $root->x_resource("%.$name");
-	if (!defined $value && defined $prefix) {
-		$value = $root->x_resource("$prefix.$name");
-		if (defined $value) {
-			$root->warn("‘$prefix.$name’ resource uses deprecated " .
-			            "prefix. Use ‘$extname.$name’ instead.");
-		}
-	}
-	defined $value ? $root->locale_decode($value) : $default
+	my $value = ($$rs)->x_resource("%.$name");
+	defined $value ? ($$rs)->locale_decode($value) : $default
 }
 
 sub bool {
-	my $value = $_[0]->text($_[1]);
-	defined $value ? $value !~ /^(?:false|0|no|off)$/i : $_[2];
+	my ($rs, $name, $default) = @_;
+	my $value = $rs->text($name);
+	defined $value ? $value !~ /^(?:false|0|no|off)$/i : $default;
 }
 
 sub colours {

@@ -88,6 +88,7 @@ DefineEntry(gnuplot, Home(CategoryApplication, ".gnuplot"))
 DefineEntry(aria2, Config(CategoryCli, "aria2/"))
 DefineEntry(bat, Config(CategoryCli, "bat/"))
 DefineEntry(ccache, Config(CategoryCli, "ccache/"))
+DefineEntry(sccache, Config(CategoryCli, "sccache/"))
 DefineEntry(cookiecutter, Config(CategoryCli, "cookiecutter/"))
 DefineEntry(foxDefault, Config(CategoryCli, "fox-default/"))
 DefineEntry(neofetch, Config(CategoryCli, "neofetch/"))
@@ -245,7 +246,7 @@ DefineEntry(ion, Config(CategoryShell, "ion/"))
 DefineEntry(liquidprompt, Config(CategoryShell, "liquidprompt/"))
 DefineEntry(nu, Config(CategoryShell, "nu/"))
 DefineEntry(powerline, Config(CategoryShell, "powerline/"))
-DefineEntry(shell, Config(CategoryShell, "shell/"))
+DefineEntry(sh, Config(CategoryShell, "sh/"))
 DefineEntry(starship, Config(CategoryShell, "starship/"))
 DefineEntry(zsh, Config(CategoryShell, "zsh/"))
 static struct Entry bash[] = {
@@ -314,13 +315,14 @@ struct Entry *configuration[] = {
 	// wtf,
 	// xplr,
 	// zathura,
-	// appimagelauncher,
+	appimagelauncher,
 	// llpp,
 	// blender,
 	// gnuplot,
 	// aria2,
 	// bat,
 	// ccache,
+	// sccache,
 	// cookiecutter,
 	// foxDefault,
 	// neofetch,
@@ -340,11 +342,11 @@ struct Entry *configuration[] = {
 	// helix,
 	// kak,
 	// micro,
-	// nano,
+	nano,
 	nvim,
 	// ox,
 	// sublimeText3,
-	// vim,
+	vim,
 	zed,
 	// exrc,
 	// aerc,
@@ -358,7 +360,7 @@ struct Entry *configuration[] = {
 	// irb,
 	// maven,
 	// nimble,
-	// npm,
+	npm,
 	// please,
 	// pudb,
 	// pylint,
@@ -368,13 +370,13 @@ struct Entry *configuration[] = {
 	// cpan,
 	// sdkman,
 	// curl,
-	// dircolors,
-	// environmentD,
+	dircolors,
+	environmentD,
 	// fontconfig,
-	// info,
-	// less,
+	info,
+	less,
 	// most,
-	// readline,
+	readline,
 	// userDirsDirs,
 	userDirsConf,
 	gnupgDirmngr,
@@ -432,7 +434,7 @@ struct Entry *configuration[] = {
 	// liquidprompt,
 	// nu,
 	// powerline,
-	shell,
+	sh,
 	// starship,
 	zsh,
 	bash,

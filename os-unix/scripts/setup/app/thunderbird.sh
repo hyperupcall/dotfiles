@@ -54,4 +54,8 @@ EOF
 
 }
 
+installed() {
+	command -v thunderbird &>/dev/null
+}
+
 util.if_file_sourced || main "$@"

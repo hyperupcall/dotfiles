@@ -50,6 +50,8 @@ Some scripts should be executed. They include:
   - Transfer SSH, PGP files to computer
 - Setup ZFS, BTRFS
 - `~/scripts/doctor.sh`
+  - Upgrade system dependencies
+  - Create necessary directories, remove default dotfiles
   - Write to `~/.dotfiles/.data/{profile,github_token}`
   - Check permissions for `~/.{ssh,gnupg}`
   - Setup [dev](https://github.com/fox-incubating/dev)
@@ -61,19 +63,16 @@ Some scripts should be executed. They include:
   - Setup Neovim (at least v0.10.0)
   - Setup pass
   - Setup Browsers (Firefox, Brave)
-    - Sync data (do manually)
+    - Sync data (_do manually_)
   - Setup Maestral
+  - Setup Visual Studio Code
+    - Install extensions (_do manually_)
+  - Setup Thunderbird
+    - Install extension (_do manually_)
   - Setup gh, bats
 - Setup Albert
   - Enable plugins
 - Setup Obsidian
-- Setup default, my-tools, hub, etc.
-- Setup Visual Studio Code
-  - Enable plugins
-- Setup Thunderbird
-  - Enable plugins
 - Configure keybindings
 - Test spellchecker
 - Add favorites to file explorer and dock
-- `~/scripts/idempotent.sh`
-- `d deploy`

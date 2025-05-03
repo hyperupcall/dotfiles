@@ -91,6 +91,16 @@ main() {
 			cat "$encrypted_file" \
 				| gpg --homedir "$temp_gnupg" --no-keyring --batch --yes --passphrase-fd 3 --cipher-algo AES256 --no-symkey-cache --armor --decrypt 3<<< "$password" \
 				| tar -C "${dir%/*}" -x
+
+			# Ensure that no broken symlinks are copied over.
+			local file=
+			for file in "$dir"/*; do
+				if [ -L "$file" ] && [ ! -e "$file" ]; then
+					unlink "$file"
+				fi
+			done
+
+			rm "$encrypted_file"
 		done
 	else
 		core.print_die "Invalid mode: \"$mode\""

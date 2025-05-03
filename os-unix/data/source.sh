@@ -36,6 +36,7 @@
 		exit 1
 	fi
 
+	# TODO
 	# err_handler() {
 	# 	core.print_stacktrace
 	# }
@@ -44,9 +45,11 @@
 	CURL_CONFIG="$HOME/.dotfiles/os-unix/data/curl_config.conf"
 }
 
+# TODO: This does not nest (ex. in d.sh) when function are nested
 helper.setup() {
 	local flag_force_install=no
 	local flag_no_confirm=no
+	local flag_configure_only=no
 	local flag_fn_prefix=install
 	local program_name=
 
@@ -59,6 +62,10 @@ helper.setup() {
 				;;
 			--no-confirm)
 				flag_no_confirm=yes
+				shift
+				;;
+			--configure-only)
+				flag_configure_only=yes
 				shift
 				;;
 			--fn-prefix*)
@@ -83,7 +90,7 @@ helper.setup() {
 		esac
 	done
 
-	(
+	[ "$flag_configure_only" != yes ] && (
 		# A list of 'os-release' files can be found at https://github.com/which-distro/os-release.
 		# In some distros, like CachyOS, /usr/lib/os-release has the wrong contents.
 		source /etc/os-release
@@ -111,8 +118,8 @@ helper.setup() {
 						"$flag_fn_prefix.$id" "$@"
 
 						cd "$orig_dir"
-						break
 					fi
+					break
 				else
 					core.print_warn "Application has already been set up. Pass \"--force-install\" to run setup again"
 				fi
@@ -121,15 +128,16 @@ helper.setup() {
 		if [ "$ran_function" = no ] && ! declare -f install.any &>/dev/null; then
 			core.print_warn "Application has no installation function for this distribution for prefix \"$flag_fn_prefix\""
 		fi
+	)
 
-
-		if declare -f 'configure.any' &>/dev/null; then
+	(
+		if declare -f 'configure' &>/dev/null; then
 			core.print_info "Configuring..."
 			local orig_dir="$PWD" temp_dir=
 			temp_dir=$(mktemp -d --suffix "-dotfiles")
 			cd "$temp_dir"
 
-			configure.any "$@"
+			configure "$@"
 
 			cd "$orig_dir"
 		fi
@@ -156,6 +164,27 @@ pkg.add_apt_repository() {
 	sudo rm -f "${dest_file%.*}.list"
 	sudo rm -f "${dest_file%.*}.sources"
 	printf '%s\n' "$source_line" | sudo tee "$dest_file" >/dev/null
+}
+
+pkg.add_dnf_key() {
+	local source_url=$1
+
+	# TODO: Don't import if already exists
+	sudo rpm --import "$source_url"
+}
+
+pkg.add_dnf_repository() {
+	local repo_url="$1"
+
+	# TODO: Don't import if already exists
+	(
+		source /etc/os-release
+		if ((VERSION_ID >= 41 )); then
+			sudo dnf config-manager addrepo --overwrite --from-repofile="$repo_url"
+		else
+			sudo dnf config-manager --add-repo "$repo_url"
+		fi
+	)
 }
 
 util.clone() {
@@ -210,32 +239,6 @@ util.get_latest_github_tag() {
 	tag_name=$(curl -K "$CURL_CONFIG" -H "Authorization: token: $token" "https://api.github.com/repos/$repo/releases/latest" | jq -r '.tag_name')
 
 	REPLY=$tag_name
-}
-
-util.add_user_to_group() {
-	local user="$1"
-	local group="$2"
-
-	if id -nG "$user" | grep -qw "$group"; then
-		return
-	fi
-
-	local output=
-	if output=$(sudo groupadd "$group" 2>&1); then
-		core.print_info "Creating group \"$group\""
-	else
-		local code=$?
-		if ((code != 9)); then
-			core.print_warn "Failed to create group \"$group\""
-			printf '%s\n' "  -> $output"
-		fi
-	fi
-
-	if sudo usermod -aG "$group" "$user"; then
-		core.print_info "Added user \"$user\" to group \"$group\""
-	else
-		core.print_warn "Failed to add user \"$user\" to group \"$group\""
-	fi
 }
 
 util.update_system() {
@@ -311,11 +314,38 @@ util.if_file_sourced() {
 			return 0
 		fi
 	elif [ -n "$ZSH_VERSION" ]; then
-  		case $ZSH_EVAL_CONTEXT in
+		case $ZSH_EVAL_CONTEXT in
 			toplevel:file*) return 0 ;;
-			*) return 1
-    	esac
-    else
+			*) return 1 ;;
+		esac
+	else
 		return 0
 	fi
+}
+
+util.write_shellfile() {
+	local name="$1"
+	local shell="$2"
+	local content="$3"
+
+	local dirname=
+	case $shell in
+		sh) dirname='shell.d' ;;
+		bash) dirname='bash.d' ;;
+		zsh) dirname='zsh.d' ;;
+		ksh) dirname='ksh.d' ;;
+		*) core.print_die "Invalid shell \"$shell\"" ;;
+	esac
+
+	mkdir -p "$HOME/.dotfiles/.home/xdg_config_dir/$shell"
+	printf '%s\n' "$content" > "$HOME/.dotfiles/.home/xdg_config_dir/$shell/$dirname/$name.$shell"
+}
+
+util.remove_shellfile() {
+	local name="$1"
+
+	local shell=
+	for shell in sh bash zsh ksh; do
+		rm -f "$HOME/.dotfiles/.home/xdg_config_dir/$shell/$dirname/$name.$shell"
+	done
 }

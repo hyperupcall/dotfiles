@@ -137,7 +137,7 @@ dotfiles:
   - '.config/rtorrent'
   - '.config/salamis'
   - '.config/sheldon'
-  - '.config/shell'
+  - '.config/sh'
   - '.config/slack-term'
   - '.config/starship'
   - '.config/sticker-selector'

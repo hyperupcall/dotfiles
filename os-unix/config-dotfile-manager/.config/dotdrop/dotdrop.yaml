@@ -73,7 +73,7 @@ dotfiles:
     src: '{{@@ cfg_src @@}}/bash/bashrc.sh'
     dst: '{{@@ home_dst @@}}/.bashrc'
   'profile':
-    src: '{{@@ cfg_src @@}}/shell/profile.sh'
+    src: '{{@@ cfg_src @@}}/sh/profile.sh'
     dst: '{{@@ home_dst @@}}/.profile'
   'zshenv':
     src: '{{@@ cfg_src @@}}/zsh/.zshenv'
@@ -438,9 +438,9 @@ dotfiles:
   '.config/sheldon':
     src: '{{@@ cfg_src @@}}/sheldon'
     dst: '{{@@ cfg_dst @@}}/sheldon'
-  '.config/shell':
-    src: '{{@@ cfg_src @@}}/shell'
-    dst: '{{@@ cfg_dst @@}}/shell'
+  '.config/sh':
+    src: '{{@@ cfg_src @@}}/sh'
+    dst: '{{@@ cfg_dst @@}}/sh'
   '.config/slack-term':
     src: '{{@@ cfg_src @@}}/slack-term'
     dst: '{{@@ cfg_dst @@}}/slack-term'

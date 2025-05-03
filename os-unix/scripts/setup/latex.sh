@@ -4,18 +4,15 @@ source ~/.dotfiles/os-unix/data/source.sh
 
 main() {
 	helper.setup 'LaTeX (Tex Live)' "$@"
-
-	if ! command -v tex-fmt >/dev/null; then
-		if command -v cargo >/dev/null; then
-			cargo install tex-fmt
-		else
-			core.print_warn "Skipping install of tex-fmt since cargo not installed"
-		fi
-	fi
+	cargo install tex-fmt
 }
 
 install.debian() {
-	sudo apt-get -y install texlive-full
+	sudo apt-get -y install texlive-full tex-fmt
+}
+
+install.ubuntu() {
+	install.debian "$@"
 }
 
 installed() {

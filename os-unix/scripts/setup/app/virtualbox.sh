@@ -19,10 +19,8 @@ install.debian() {
 		'/etc/apt/sources.list.d/virtualbox.list'
 }
 
-configure.any() {
-	if [[ "$HOSTNAME" = 'nullptr' ]]; then
-		VBoxManage setproperty machinefolder '/storage/bigfiles/VirtualBox_Machines'
-	fi
+configure() {
+	VBoxManage setproperty machinefolder '/storage/bigfiles/VirtualBox_Machines'
 }
 
 util.if_file_sourced || main "$@"

@@ -41,7 +41,7 @@ main() {
 
 	# ----------------------- Variables ---------------------- #
 	generated_dir="$XDG_STATE_HOME/dotshellextract"
-	profile_dir="$XDG_CONFIG_HOME/shell"
+	profile_dir="$XDG_CONFIG_HOME/sh"
 
 	mkdir -p "$generated_dir" "$profile_dir"
 
@@ -49,15 +49,15 @@ main() {
 	# user Functions
 	exec 6> "$generated_dir/.bashrc-user-functions.sh"
 	util_print_autogen_info >&6
-	find "$XDG_CONFIG_HOME/shell/modules/functions/" -ignore_readdir_race -type f -name "*.sh" \
+	find "$XDG_CONFIG_HOME/sh/modules/functions/" -ignore_readdir_race -type f -name "*.sh" \
 			-exec sh -c "\"$HOME/.dotfiles/os-unix/scripts/lib/util-extract_functions.pl\" 'user' < \"\$0\"" {} \; >&6
-	util_print_file "$profile_dir/modules/util.sh" >&6
+	util_print_file "$profile_dir/../bash/modules/util.sh" >&6
 	exec 6<&-
 
 	# user Aliases
 	exec 6> "$generated_dir/.bashrc-user-aliases.sh"
 	util_print_autogen_info >&6
-	find "$XDG_CONFIG_HOME/shell/modules/aliases/" -ignore_readdir_race -type f -name "*.sh" \
+	find "$XDG_CONFIG_HOME/sh/modules/aliases/" -ignore_readdir_race -type f -name "*.sh" \
 			-exec sh -c 'cat < $0' {} \; \
 		| util_extract_alias 'user' >&6
 	util_print_file "$profile_dir/modules/aliases/aliases.sh" >&6
@@ -73,15 +73,15 @@ main() {
 	# root Functions
 	exec 6> "$generated_dir/.bashrc-root-functions.sh"
 	util_print_autogen_info >&6
-	find "$XDG_CONFIG_HOME/shell/modules/functions/" -ignore_readdir_race -type f -name "*.sh" \
+	find "$XDG_CONFIG_HOME/sh/modules/functions/" -ignore_readdir_race -type f -name "*.sh" \
 			-exec sh -c "\"$HOME/.dotfiles/os-unix/scripts/lib/util-extract_functions.pl\" 'root' < \"\$0\"" {} \; >&6
-	util_print_file "$profile_dir/modules/util.sh" >&6
+	util_print_file "$profile_dir/../bash/modules/util.sh" >&6
 	exec 6<&-
 
 	# root Aliases
 	exec 6> "$generated_dir/.bashrc-root-aliases.sh"
 	util_print_autogen_info >&6
-	find "$XDG_CONFIG_HOME/shell/modules/aliases/" -ignore_readdir_race -type f -name "*.sh" \
+	find "$XDG_CONFIG_HOME/sh/modules/aliases/" -ignore_readdir_race -type f -name "*.sh" \
 			-exec sh -c 'cat < $0' {} \; \
 		| util_extract_alias 'root' >&6
 	util_print_file "$profile_dir/modules/aliases/aliases.sh" >&6

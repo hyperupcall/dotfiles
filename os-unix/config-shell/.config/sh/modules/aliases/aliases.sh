@@ -1,0 +1,159 @@
+# shellcheck shell=sh
+
+# ------------------------ tweaks ------------------------ #
+alias cd-='cd ~-'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias ..l='cd .. && ll'
+alias ...l='cd ../.. && ll'
+alias ....l='cd ../../.. && ll'
+alias bzip2='bzip2 -k'
+alias chmod='chmod -c --preserve-root'
+alias chown='chown -c --preserve-root'
+alias chgrp='chgrp -c --preserve-root'
+alias dd='dd status=progress'
+alias diff='diff --color=auto'
+alias dir='dir --color=auto'
+alias dmesg='dmesg -ex'
+alias dmesgw='dmesg -exw'
+alias df='df -h'
+alias du='du -h'
+alias egrep='egrep --colour=auto'
+alias feh='feh --no-fehbg'
+alias fgrep='fgrep --colour=auto'
+alias free='free -m'
+alias gdb='gdb -nh -x "$XDG_CONFIG_HOME/gdb/gdbinit"'
+alias grep='grep --colour=auto'
+alias gzip='gzip -k'
+alias ip='ip -color=auto'
+alias ln='ln -v'
+alias locate='locate -i'
+alias ls='ls --color=auto -hF'
+alias mkdir='mkdir -p'
+alias pacman='pacman --color=auto'
+alias paru='paru --color=auto'
+alias p7zip='p7zip -k'
+alias rm='rm -dI --preserve-root=all'
+alias rsync='rsync --verbose --info=progress2 --human-readable --partial'
+alias speedtest-cli='speedtest-cli --secure'
+alias sudo='sudo ' # sudo aliases `info bash -n Aliases`
+alias tree='tree -a --dirsfirst'
+alias vdir='vdir --color=auto'
+alias xz='xz -k'
+
+
+# -------------------------- git ------------------------- #
+alias g='git'
+alias ginit='git init'
+alias gclone='git clone'
+# gclonedir shell function
+alias gpull='git pull'
+alias gpush='git push'
+alias gstatus='git status'
+alias gcommit='git commit'
+
+
+# ----------------------- systemctl ---------------------- #
+alias sl='systemctl ---system'
+alias slu='systemctl --user'
+
+# unit commands
+alias sllu='systemctl --system list-units'
+alias slls='systemctl --system list-sockets'
+alias sllt='systemctl --system list-timers'
+alias slia='systemctl --system is-active'
+alias slif='systemctl --system is-failed'
+alias sls='systemctl --system status'
+alias slstatus='systemctl --system status'
+alias slshow='systemctl --system show'
+alias slc='systemctl --system cat'
+alias slcat='systemctl --system cat'
+alias slhelp='systemctl --system help'
+alias slld='systemctl --system list-dependencies'
+alias slstart='systemctl --system start'
+alias slstop='systemctl --system stop'
+alias slreload='systemctl --system reload'
+alias slr='systemctl --system restart'
+alias slrestart='systemctl --system restart'
+
+# unit file commands
+alias slluf='systemctl --system list-unit-files'
+alias sldr='systemctl --system daemon-reload'
+alias sln='systemctl --system enable'
+alias slenable='systemctl --system enable'
+alias sld='systemctl --system disable'
+alias sle='systemctl --system edit --full'
+
+# unit commands
+alias slulu='systemctl --user list-units'
+alias sluls='systemctl --user list-sockets'
+alias slult='systemctl --user list-timers'
+alias sluia='systemctl --user is-active'
+alias sluif='systemctl --user is-failed'
+alias slus='systemctl --user status'
+alias slustatus='systemctl --user status'
+alias slushow='systemctl --user show'
+alias sluc='systemctl --user cat'
+alias slucat='systemctl --user cat'
+alias sluhelp='systemctl --user help'
+alias sluld='systemctl --user list-dependencies'
+alias slustart='systemctl --user start'
+alias slustop='systemctl --user stop'
+alias slureload='systemctl --user reload'
+alias slur='systemctl --user restart'
+alias slurestart='systemctl --user restart'
+
+# unit file commands
+alias sluluf='systemctl --user list-unit-files'
+alias sludr='systemctl --user daemon-reload'
+alias slun='systemctl --user enable'
+alias sluenable='systemctl --user enable'
+alias slud='systemctl --user disable'
+alias slue='systemctl --user edit --full'
+
+
+# ---------------------- journalctl ---------------------- #
+alias jctl='journalctl'
+alias ju='journalctl --user -b -eu'
+alias js='journalctl --system -b -eu'
+
+
+# ------------------------- *ctl ------------------------- #
+alias bctl='busctl'
+alias btctl='bluetoothctl'
+alias cdctl='coredumpctl'
+alias hctl='hostnamectl'
+alias hnctl='hostnamectl'
+alias lcctl='localectl'
+alias lgctl='loginctl'
+alias lctl='loginctl'
+alias mctl='machinectl'
+alias pctl='portablectl'
+alias rctl='resolvectl'
+alias tdctl='timedatectl'
+
+
+# ------------------------ shells ------------------------ #
+alias sop='. ~/.profile'
+alias sob='. ~/.bashrc'
+alias edp='"$EDITOR" "$XDG_CONFIG_HOME/sh/profile.sh"'
+alias edb='"$EDITOR" "$XDG_CONFIG_HOME/bash/bashrc.sh"'
+
+alias pso='. ~/.profile'
+alias ped='"$EDITOR" "$XDG_CONFIG_HOME/sh/profile.sh"'
+alias bso='. ~/.bashrc'
+alias bed='"$EDITOR" "$XDG_CONFIG_HOME/bash/bashrc.sh"'
+
+# -------------------------- apt ------------------------- #
+alias aptup='sudo apt update'
+alias aptug='sudo apt upgrade'
+alias aptfug='sudo apt full-upgrade'
+alias apti='sudo apt install'
+alias aptri='sudo apt reinstall'
+alias aptrei='sudo apt reinstall'
+alias aptrem='sudo apt remove'
+alias aptp='sudo apt purge'
+alias aptse='apt search'
+alias aptsh='apt show'
+alias aptl='apt list'

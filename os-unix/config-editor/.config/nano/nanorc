@@ -1,3 +1,5 @@
+# For color themes, see https://github.com/scopatz/nanorc.
+
 set autoindent
 set backup
 set backupdir ~/.dotfiles/.home/xdg_state_dir/nano/backups
@@ -8,22 +10,8 @@ set locking
 set mouse
 set noconvert
 set positionlog
-unset preserve
-set smooth
+# unset preserve
 set softwrap
 # unset suspendable
 set tabsize 3
 unset tabstospaces
-
-# see https://github.com/scopatz/nanorc # TODO
-
-# set not allowed in included file
-# include "~/.dotfiles/.home/xdg_config_dir/nano/themes/default.theme.nanorc"
-# set titlecolor bold,lightwhite,blue
-# set statuscolor bold,lightwhite,green
-# set errorcolor bold,lightwhite,red
-# set selectedcolor lightwhite,magenta
-# set stripecolor ,yellow
-# set numbercolor cyan
-# set keycolor cyan
-# set functioncolor green

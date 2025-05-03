@@ -118,16 +118,17 @@ def main():
 
 	rules.append({
 		'name': 'apt-use-apt-get',
-		'regex': '(?P<match>apt )',
+		'regex': '(?P<match>(?:^apt |[\\t ]apt ))',
 		'reason': 'Use apt-get',
 		'fileTypes': ['bash', 'sh'],
 		'fixerFn': aptUseAptGet,
 		'testPositiveMatches': [
 			'apt install',
-			'apt update'
+			' apt update'
 		],
 		'testNegativeMatches': [
-			'apt-get install'
+			'apt-get install',
+			' apt-get update'
 		],
 	})
 

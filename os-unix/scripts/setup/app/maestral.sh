@@ -7,38 +7,34 @@ main() {
 }
 
 install.debian() {
-	sudo apt-get install -y python3-dev python3-venv cython libsystemd-dev qt5-default
+	sudo apt-get install -y python3-dev python3-venv cython libsystemd-dev pkg-config qt5-default
 	sudo apt-get install -y libxcb-cursor0 # maestral gui
 	install_maestral "$@"
 }
 
-install.pop() {
-	sudo apt-get install -y python3-dev python3-venv cython3 libsystemd-dev
+install.ubuntu() {
+	sudo apt-get install -y python3-dev python3-venv cython3 libsystemd-dev pkg-config
 	sudo apt-get install -y libxcb-cursor0 # maestral gui
 	install_maestral "$@"
 }
 
 install.neon() {
-	sudo apt-get install -y python3-dev python3-venv cython3 libsystemd-dev qt5-default
+	sudo apt-get install -y python3-dev python3-venv cython3 libsystemd-dev pkg-config qt5-default
 	sudo apt-get install -y libxcb-cursor0 # maestral gui
 	install_maestral "$@"
 }
 
 install.fedora() {
-	sudo dnf install -y python3 python3-devel cython systemd-devel qt5-qtbase-devel
+	sudo dnf install -y python3 python3-devel cython systemd-devel pkg-config qt5-qtbase-devel
 }
 
 install.opensuse() {
-	sudo zypper -n install python311 python-devel python311-cython systemd-devel libqt5-qtbase-devel
+	sudo zypper -n install python311 python-devel python311-cython systemd-devel pkg-config libqt5-qtbase-devel
 	install_maestral "$@"
 }
 
 install.arch() {
-	sudo pacman -Syu --noconfirm python3
-}
-
-install.any() {
-	install_maestral "$@"
+	sudo pacman -Syu --noconfirm python3 pkg-config
 }
 
 install_maestral() {
@@ -72,7 +68,7 @@ EOF
 
 	maestral auth link
 	mkdir -p ~/Dropbox-Maestral
-	maestral config set path "$HOME/Dropbox-Maestral"
+	maestral config set path ~/Dropbox-Maestral
 	maestral autostart --yes
 	maestral start
 }

@@ -29,6 +29,10 @@ install.debian() {
 	sudo apt-get -y install pass
 }
 
+install.ubuntu() {
+	install.debian "$@"
+}
+
 install.fedora() {
 	sudo dnf -y update
 	sudo dnf -y install pass

@@ -17,8 +17,6 @@
 		"source.fixAll": "explicit"
 	},
 	"editor.codeLens": true,
-	"editor.cursorSmoothCaretAnimation": "off",
-	"editor.cursorSurroundingLinesStyle": "all",
 	"editor.detectIndentation": true,
 	"editor.find.addExtraSpaceOnTop": false,
 	"editor.find.autoFindInSelection": "multiline",
@@ -36,7 +34,6 @@
 	"editor.minimap.showSlider": "always",
 	"editor.minimap.side": "left",
 	"editor.renderWhitespace": "all",
-	"editor.smoothScrolling": true,
 	"editor.suggestSelection": "recentlyUsedByPrefix",
 	"editor.suggest.snippetsPreventQuickSuggestions": false,
 	"editor.tabSize": 3,
@@ -119,14 +116,15 @@
 	// WORKBENCH
 	"workbench.commandPalette.history": 100,
 	"workbench.editor.closeOnFileDelete": true,
+	"workbench.editor.empty.hint": "hidden",
 	"workbench.editor.highlightModifiedTabs": true,
 	"workbench.editor.languageDetection": false,
+	"workbench.editor.tabActionCloseVisibility": false,
 	"workbench.enableExperiments": false,
 	"workbench.quickOpen.closeOnFocusLost": false,
 	"workbench.startupEditor": "none",
 	"workbench.tips.enabled": false,
 	"workbench.tree.indent": 12,
-	"workbench.colorTheme": "Bearded Theme Solarized Light",
 
 	//
 	// EXPLORER
@@ -408,6 +406,7 @@
 	"[latex]": {
 		"editor.defaultFormatter": "James-Yu.latex-workshop"
 	},
+	"latex-workshop.formatting.latex": "latexindent",
 	"latex-utilities.message.update.show": false,
 
 	//
@@ -420,14 +419,13 @@
 	"emmet.triggerExpansionOnTab": true,
 
 	//
-	// GIT
-	"git.enableCommitSigning": true,
+	// GIT, GITHUB, GITLENS
 	"git.alwaysShowStagedChangesResourceGroup": true,
-	"git.confirmSync": false,
 	"git.autofetch": true,
-
-	//
-	// GITLENS
+	"git.confirmSync": false,
+	"git.enableCommitSigning": true,
+	"git.openRepositoryInParentFolders": "never",
+	"github.copilot.editor.enable": true,
 	"gitlens.advanced.blame.customArguments": ["-M", "-C"],
 	"gitlens.advanced.maxListItems": 300,
 	"gitlens.advanced.maxSearchItems": 300,
@@ -445,6 +443,7 @@
 	"diffEditor.ignoreTrimWhitespace": false,
 	"merge-conflict.autoNavigateNextConflict.enabled": true,
 	"merge-conflict.diffViewPosition": "Beside",
+	"symbols.hidesExplorerArrows": false,
 
 	//
 	// UNSORTED PLUGIN
@@ -453,6 +452,7 @@
 	"screencastMode.onlyKeyboardShortcuts": true,
 	"sqltools.useNodeRuntime": true,
 	"cmake.configureOnOpen": true,
+	"cmake.showOptionsMovedNotification": false,
 	"vim.enableNeovim": true,
 	"esbonio.server.enabled": false,
 	"zenMode.centerLayout": true,
@@ -475,6 +475,7 @@
 		}
 	],
 	"cSpell.dictionaries": ["custom-words"],
+	"svelte.enable-ts-plugin": true,
 
 	//
 	// C/C++
@@ -543,7 +544,7 @@
 	],
 
 	//
-	// DISABLE TELEMETRY / DISABLE NOTIFICATIONS / DISABLE WHAT'S NEW
+	// DISABLE TELEMETRY, NOTIFICATIONS & WHAT'S NEW
 	"telemetry.telemetryLevel": "off",
 	"clangd.checkUpdates": false,
 	"redhat.telemetry.enabled": false,
@@ -566,20 +567,6 @@
 	"extensions.ignoreRecommendations": true,
 	"workbench.welcomePage.walkthroughs.openOnInstall": false,
 	"Lua.telemetry.enable": false,
-
-	// TODO
-	"editor.largeFileOptimizations": false,
-	"workbench.editor.tabActionCloseVisibility": false,
-	"workbench.editor.empty.hint": "hidden",
-	"symbols.hidesExplorerArrows": false,
-	"svelte.enable-ts-plugin": true,
-	"[python][shellscript]": {
-		"editor.codeActionsOnSave": {
-			"source.fixAll": "never"
-		}
-	},
-	"git.openRepositoryInParentFolders": "never",
-	"github.copilot.editor.enableAutoCompletions": true,
-	"cmake.showOptionsMovedNotification": false,
-	"latex-workshop.formatting.latex": "latexindent"
+	"workbench.colorTheme": "Solarized Light",
+	"editor.cursorBlinking": "smooth"
 }

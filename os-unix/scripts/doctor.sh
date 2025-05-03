@@ -21,8 +21,10 @@ main() {
 	local flag_no_upgrade=false
 	for arg; do case $arg in
 	--prompt-fix)
+		shift
 		flag_fix=true ;;
 	--no-upgrade)
+		shift
 		flag_no_upgrade=true ;;
 	*)
 		core.print_die "Invalid argument: \"$arg\"" ;;
@@ -31,16 +33,138 @@ main() {
 	if [ "$flag_no_upgrade" != 'true' ]; then
 		core.print_info 'Upgrading system (pass "--no-upgrade" to skip)...'
 		util.update_system
-		helper.setup --no-confirm --fn-prefix=install_packages 'Bootstrap' "$@"
+		helper.setup --no-confirm --fn-prefix=dependencies 'Bootstrap' "$@"
 	fi
 
-	mkdir -p "$XDG_CONFIG_HOME"
+	# Remove broken symlinks.
+	for f in "$HOME"/*; do
+		if [ -L "$f" ] && [ ! -e "$f" ]; then
+			unlink "$f"
+		fi
+	done
+
+	# Remove autoappended lines in shell startup files.
+	for file in ~/.profile ~/.bashrc ~/.bash_profile "${ZDOTDIR:-$HOME}/.zshrc" "${ZDOTDIR:-$HOME}/.zshenv" "$XDG_CONFIG_HOME/fish/config.fish"; do
+		if [ ! -f "$file" ]; then
+			continue
+		fi
+
+		local file_string=
+		while IFS= read -r line; do
+			file_string+="$line"$'\n'
+
+			if [[ "$line" == '# ---' ]]; then
+				break
+			fi
+		done < "$file"; unset -v line
+
+		printf '%s' "$file_string" > "$file"
+	done; unset -v file
+	core.print_info 'Cleaned shell dotfiles'
+	
+	# Create necessary directories, files, and groups.
+	must.dir "$XDG_CONFIG_HOME"
+	must.dir ~/.local/bin
+	must.dir ~/.dotfiles/.data/bin
+	must.dir ~/.dotfiles/.data/repos
+	must.dir ~/.dotfiles/.home
+	must.dir ~/.dotfiles/.data
+	must.dir "$XDG_STATE_HOME/Android/Sdk"
+	must.dir "$XDG_STATE_HOME/history"
+	must.dir "$XDG_STATE_HOME/nano/backups"
+	must.dir "$XDG_DATA_HOME/maven"
+	must.dir "$XDG_DATA_HOME/tig"
+	must.dir "$XDG_CONFIG_HOME/sage" # $DOT_SAGE
+	must.dir "$XDG_CONFIG_HOME/Code - OSS/User"
+	must.dir "$XDG_CONFIG_HOME/spacemacs"
+	must.dir "$XDG_DATA_HOME/sonarlint" # $SONARLINT_USER_HOME
+	# must.file "$XDG_CONFIG_HOME/yarn/config" # TODO
+	must.file "$XDG_STATE_HOME/tig/history"
+	must.file "$XDG_STATE_HOME/history/zsh_history" # ZSH's $HISTFILE
+	must.user_in_group "$USER" 'docker'
+	must.user_in_group "$USER" 'vboxusers'
+	must.user_in_group "$USER" 'libvirt'
+	must.user_in_group "$USER" 'kvm'
+	must.user_in_group "$USER" 'input'
+
+	# Remove default dotfiles. These are customized with environment variables.
+	must.rm ~/.bash_history
+	must.rm ~/.flutter
+	must.rm ~/.flutter_tool_state
+	must.rm ~/.gitconfig
+	must.rm ~/.gmrun_history
+	must.rm ~/.inputrc
+	must.rm ~/.lesshst
+	must.rm ~/.mkshrc
+	must.rm ~/.pythonhist
+	must.rm ~/.sh_history
+	must.rm ~/.sqlite_history
+	must.rm ~/.sudo_as_admin_successful
+	must.rm ~/.viminfo
+	must.rm ~/.wget-hsts
+	must.rm ~/.xsession-errors
+	must.rm ~/.zlogin
+	must.rm ~/.zshenv
+	must.rm ~/.zshrc
+	must.rm ~/.zprofile
+	must.rm ~/.zcompdump
+	must.link ~/.dotfiles/os-unix/scripts ~/scripts
+
+	# Use correct XDG user directories config.
+	{
+		local profile="$(<~/.dotfiles/.data/profile)"
+		if [ "$profile" = 'desktop' ]; then
+			local filename='user-dirs-custom.conf'
+		else
+			local filename='user-dirs-other.conf'
+		fi
+		if [ -f "$XDG_CONFIG_HOME/user-dirs.dirs" ]; then
+			mv "$XDG_CONFIG_HOME/user-dirs.dirs" ~/.bootstrap/distro-dotfiles
+		fi
+		# Use 'cp -f' for "$XDG_CONFIG_HOME/user-dirs.dirs"; otherwise unlink/link operation fails.
+		cp -f "$HOME/.dotfiles/os-unix/config-linux-core/.config/user-dirs.dirs/$filename" "$XDG_CONFIG_HOME/user-dirs.dirs"
+		unset -v filename
+	}
+
+	# Create and symlink XDG user directories.
+	(
+		source "$XDG_CONFIG_HOME/user-dirs.dirs"
+
+		for dir in "$XDG_DESKTOP_DIR" "$XDG_DOWNLOAD_DIR" "$XDG_TEMPLATES_DIR" "$XDG_PUBLICSHARE_DIR" "$XDG_DOCUMENTS_DIR" "$XDG_MUSIC_DIR" "$XDG_PICTURES_DIR" "$XDG_VIDEOS_DIR"; do
+			if [ -n "$dir" ]; then
+				must.dir "$dir"
+			fi
+		done; unset -v dir
+
+		must.link "$XDG_DESKTOP_DIR" "$HOME/.dotfiles/.home/Desktop"
+		must.link "$XDG_DOWNLOAD_DIR" "$HOME/.dotfiles/.home/Downloads"
+		must.link "$XDG_TEMPLATES_DIR" "$HOME/.dotfiles/.home/Templates"
+		must.link "$XDG_PUBLICSHARE_DIR" "$HOME/.dotfiles/.home/Public"
+		must.link "$XDG_DOCUMENTS_DIR" "$HOME/.dotfiles/.home/Documents"
+		must.link "$XDG_MUSIC_DIR" "$HOME/.dotfiles/.home/Music"
+		must.link "$XDG_PICTURES_DIR" "$HOME/.dotfiles/.home/Pictures"
+		must.link "$XDG_VIDEOS_DIR" "$HOME/.dotfiles/.home/Videos"
+
+		must.link "$XDG_CACHE_HOME" "$HOME/.dotfiles/.home/xdg_cache_dir"
+		must.link "$XDG_CONFIG_HOME" "$HOME/.dotfiles/.home/xdg_config_dir"
+		must.link "$XDG_STATE_HOME" "$HOME/.dotfiles/.home/xdg_state_dir"
+		must.link "$XDG_DATA_HOME" "$HOME/.dotfiles/.home/xdg_data_dir"
+
+		for f in "$HOME/.dotfiles/.home"/*; do
+			if [ -L "$f" ] && [ ! -e "$f" ]; then
+				unlink "$f"
+			fi
+		done; unset -v f
+	)
+
+	# Last since they're dependent on the previous symlinking.
+	must.dir "$HOME/.dotfiles/.home/Documents/AppImages"
 
 	# Remove distribution-specific dotfiles.
-	mkdir -p ~/.bootstrap/distro-dots
-	for file in ~/.bash_login ~/.bash_logout ~/.bash_profile ~/.bashrc ~/.profile; do
+	mkdir -p ~/.bootstrap/distro-dotfiles
+	for file in ~/.bash_login ~/.bash_logout ~/.bash_profile ~/.bashrc ~/.profile .dir_colors .dircolors; do
 		if [[ ! -L "$file" && -f "$file" ]]; then
-			mv "$file" ~/.bootstrap/distro-dots
+			mv "$file" ~/.bootstrap/distro-dotfiles
 		fi
 	done
 
@@ -76,8 +200,8 @@ main() {
 		if [ ! -d ~/.ssh ]; then
 			failure "ssh: Expected to find an ~/.ssh directory"
 		fi
-		check_dir_permissions 'ssh' ~/.ssh/
-		check_file_permissions 'ssh' ~/.ssh/*
+		must.strict_directory_permissions 'ssh' ~/.ssh/
+		must.strict_file_permissions 'ssh' ~/.ssh/*
 
 		if [ -f ~/.ssh/github ]; then
 			success "Has GitHub private SSH key"
@@ -92,8 +216,8 @@ main() {
 		if [ ! -d ~/.gnupg ]; then
 			failure "gpg: Expected to find an ~/.gnupg directory"
 		fi
-		check_dir_permissions 'gpg' ~/.gnupg/
-		check_file_permissions 'gpg' ~/.gnupg/*
+		must.strict_directory_permissions 'gpg' ~/.gnupg/
+		must.strict_file_permissions 'gpg' ~/.gnupg/*
 
 		if ! gpg --list-public-keys | grep --quiet 'edwin@kofler.dev'; then
 			failure "gpg: Expected a gpg key with email \"edwin@kofler.dev\" to exist"
@@ -160,7 +284,6 @@ main() {
 		npm i -g pnpm
 		pnpm install
 
-		mkdir -p ~/.dotfiles/.data/bin
 		cat <<-EOF > ~/.dotfiles/.data/bin/dev
 		#!/usr/bin/env sh
 		set -e
@@ -187,39 +310,37 @@ EOF
 	systemctl --user daemon-reload
 	# systemctl --user enable --now dev.service # TODO
 
-	# d # TODO: ~/scripts/setup/{self/,}d
-	{
-		mkdir -p ~/.dotfiles/.data/repos
-		local dir="$HOME/.dotfiles/.data/repos/d"
-		if [ ! -d "$dir" ]; then
-			util.clone "$dir" git@github.com:fox-incubating/d
-		fi
-		cd ~/.dotfiles/.data/repos/d
-		./bake build "\"$HOME/.dotfiles/os-unix/data\""
-		ln -fs "$PWD/d" ~/.local/bin/d
-	}
-
-	install_from_setup ~/scripts/setup/mise.sh
-	install_from_setup ~/scripts/setup/lefthook.sh
+	must.setup ~/scripts/setup/d.sh
+	must.setup ~/scripts/setup/mise.sh
+	must.setup ~/scripts/setup/lefthook.sh
 	(
 		if ! mise trust --show mise | grep -q '~/.dotfiles: trusted'; then
 			mise trust ~/.dotfiles/.mise.toml
 		fi
+		mise install cmake@latest
+		mise use -g cmake@latest
 		cd ~/.dotfiles
 		if [ ! -f ./.git/info/lefthook.checksum ]; then
 			lefthook install
 		fi
 	)
-	install_from_setup ~/scripts/setup/git.sh # TODO: 'spaceman-diff'
-	install_from_setup ~/scripts/setup/neovim.sh
-	install_from_setup ~/scripts/setup/pass.sh
+	must.setup ~/scripts/setup/git.sh # TODO: 'spaceman-diff'
+	must.setup ~/scripts/setup/neovim.sh
+	must.setup ~/scripts/setup/pass.sh
 
-	install_from_setup ~/scripts/setup/app/firefox.sh
-	install_from_setup ~/scripts/setup/app/brave.sh
-	install_from_setup ~/scripts/setup/app/maestral.sh
+	must.setup ~/scripts/setup/app/firefox.sh
+	must.setup ~/scripts/setup/app/brave.sh
+	must.setup ~/scripts/setup/app/maestral.sh
+	must.setup ~/scripts/setup/app/vscode.sh
+	must.setup ~/scripts/setup/app/thunderbird.sh
 
-	install_from_setup ~/scripts/setup/gh.sh
-	install_from_setup ~/scripts/setup/bats.sh
+	must.setup ~/scripts/setup/gh.sh
+	must.setup ~/scripts/setup/bats.sh
+	must.setup ~/scripts/setup/less.sh
+	must.setup ~/scripts/setup/latex.sh
+	must.setup ~/scripts/setup/fish.sh
+	must.setup ~/scripts/setup/my-tools.sh
+	~/.dotfiles/os-unix/scripts/lib/util-generate-aliases.sh
 
 	printf '%s\n' "BINARIES:"
 	check.command clang-format
@@ -227,32 +348,8 @@ EOF
 	check.command bake
 	check.command basalt
 	check.command ksh
-	printf '\n'
-
-	printf '%s\n' "BINARIES: DEVELOPMENT:"
 	check.command 'dufs'
 	check.command 'pre-commit'
-	printf '\n'
-
-	printf '%s\n' "LATEX:"
-	check.command latexindent
-	printf '\n'
-
-	printf '%s\n' "FISH:"
-	check.command fish
-	check.command fish-indent
-	printf '\n'
-
-	printf '%s\n' "SENSITIVE:"
-	if [ -d "$XDG_DATA_HOME/password-store" ]; then
-		if [ -d "$XDG_DATA_HOME/password-store" ]; then
-			success "Has password-store and is git directory"
-		else
-			failure "Password-store not a git directory"
-		fi
-	else
-		failure "Password-store not found in the correct location"
-	fi
 }
 
 success() {
@@ -263,6 +360,7 @@ failure() {
 	printf '%s\n' "⛔ $1"
 }
 
+# TODO: The whole output thing needs to be improved generally. Use alternative screen?
 check.command() {
 	local cmd="$1"
 
@@ -295,7 +393,131 @@ should_fix() {
 	fi
 }
 
-check_dir_permissions() {
+must.rm() {
+	local file="$1"
+
+	if [ -f "$file" ]; then
+		local output=
+		if output=$(rm -f -- "$file" 2>&1); then
+			core.print_info "Removed file '$file'"
+		else
+			core.print_warn "Failed to remove file '$file'"
+			printf '  -> %s\n' "$output"
+		fi
+	fi
+}
+
+must.rmdir() {
+	local dir="$1"
+
+	if [ -d "$dir" ]; then
+		local output=
+		if output=$(rmdir -- "$dir" 2>&1); then
+			core.print_info "Removed directory '$dir'"
+		else
+			core.print_warn "Failed to remove directory '$dir'"
+			printf '  -> %s\n' "$output"
+		fi
+	elif [ -e "$dir" ]; then
+		core.print_fatal "Not a directory: \"$dir\""
+	fi
+}
+
+must.dir() {
+	local d=
+	for d; do
+		local dir="$d"
+
+		if [ ! -d "$dir" ]; then
+			local output=
+			if output=$(mkdir -p -- "$dir" 2>&1); then
+				core.print_info "Created directory '$dir'"
+			else
+				core.print_warn "Failed to create directory '$dir'"
+				printf '  -> %s\n' "$output"
+			fi
+		fi
+	done; unset -v d
+}
+
+must.file() {
+	local file="$1"
+
+	if [ ! -f "$file" ]; then
+		local output=
+		if output=$(mkdir -p -- "${file%/*}" && touch -- "$file" 2>&1); then
+			core.print_info "Created file '$file'"
+		else
+			core.print_warn "Failed to create file '$file'"
+			printf '  -> %s\n' "$output"
+		fi
+	fi
+}
+
+must.link() {
+	local src="$1"
+	local target="$2"
+
+	# Skip if symlink is already correct.
+	if [ -L "$target" ] && [ "$(readlink "$target")" = "$src" ]; then
+		return
+	fi
+
+	if [ ! -e "$src" ]; then
+		core.print_warn "Skipping symlink from '$src' to $target (source directory not found)"
+		return
+	fi
+
+	# If it is an empty directory and not a symlink, automatically remove it.
+	core.shopt_push -s nullglob
+	if [ -d "$target" ] && [ ! -L "$target" ]; then
+		local children=
+		children=("$target"/*)
+		if (( ${#children[@]} == 0)); then
+			rmdir "$target"
+		else
+			core.print_warn "Skipping symlink from '$src' to '$target' (target a non-empty directory)"
+			return
+		fi
+	fi
+	core.shopt_pop
+
+	local output=
+	if output=$(ln -sfT "$src" "$target" 2>&1); then
+		core.print_info "Symlinking '$src' to $target"
+	else
+		core.print_warn "Failed to symlink from '$src' to '$target'"
+		printf '  -> %s\n' "$output"
+	fi
+}
+
+must.user_in_group() {
+	local user="$1"
+	local group="$2"
+
+	if id -nG "$user" | grep -qw "$group"; then
+		return
+	fi
+
+	local output=
+	if output=$(sudo groupadd "$group" 2>&1); then
+		core.print_info "Creating group \"$group\""
+	else
+		local code=$?
+		if ((code != 9)); then
+			core.print_warn "Failed to create group \"$group\""
+			printf '%s\n' "  -> $output"
+		fi
+	fi
+
+	if sudo usermod -aG "$group" "$user"; then
+		core.print_info "Added user \"$user\" to group \"$group\""
+	else
+		core.print_warn "Failed to add user \"$user\" to group \"$group\""
+	fi
+}
+
+must.strict_directory_permissions() {
 	local prefix="$1"
 	local dir="$2"
 
@@ -332,7 +554,7 @@ check_dir_permissions() {
 
 }
 
-check_file_permissions() {
+must.strict_file_permissions() {
 	local prefix="$1"
 	if ! shift; then
 		core.print_die 'Failed to shift'
@@ -358,60 +580,60 @@ check_file_permissions() {
 	fi
 }
 
-install_from_setup() {
+must.setup() {
 	local setup_file=$1
+
+	# Use separate subshells in case PATH is modified.
 	(
 		source "$setup_file"
 		if ! command -v installed &>/dev/null; then
-			:
+			failure "Function not found: \"installed\""
 		fi
 
 		if installed; then
 			success "Program already installed: \"${setup_file##*/}\""
 		else
-			# Version must be at least 2.37.0 to support "push.autoSetupRemote".
 			failure "Program not installed: \"${setup_file##*/}\""
 			if should_fix; then
-				install
+				helper.setup --no-confirm "$@"
 			fi
 		fi
 	)
 
-	# Separate subshell in case PATH was modified etc.
 	(
 		source "$setup_file"
 		if ! installed; then
-			failure "Attempted to install \"${setup_file##*/}\", but failed"
+			failure "Attempted to install \"${setup_file##*/}\", but failed (pass \"--prompt-fix\"?)"
 			exit 1
 		fi
 	)
 }
 
-install_packages.arch() {
-	sudo pacman -Syyu --noconfirm
-	sudo pacman -Syu --noconfirm base-devl lvm2 openssl yay
-}
-
-install_packages.debian() {
+dependencies.debian() {
 	sudo apt-get -y update && sudo apt-get -y upgrade
 	sudo apt-get -y install apt-transport-https build-essential
 	sudo apt-get -y install bash-completion curl rsync cmake ccache vim nano jq lvm2 # lint-ignore:curl-must-have-args
 	sudo apt-get -y install pkg-config libssl-dev # For starship
 }
-
-install_packages.fedora() {
+dependencies.ubuntu() {
+	dependencies.debian "$@"
+}
+dependencies.fedora() {
 	sudo dnf -y update
 	sudo dnf -y install @development-tools
 	sudo dnf -y install bash-completion curl rsync cmake ccache vim nano jq lvm2 # lint-ignore
 	sudo dnf -y install pkg-config openssl-devel # For starship
 	sudo dnf -y install dnf-plugins-core # For at least Brave
 }
-
-install_packages.opensuse() {
+dependencies.opensuse() {
 	sudo zypper -n update
 	sudo zypper -n install -t pattern devel_basis
 	sudo zypper -n install bash-completion curl rsync cmake ccache vim nano jq lvm2 # lint-ignore
 	sudo zypper -n install pkg-config openssl-devel # For starship
+}
+dependencies.arch() {
+	sudo pacman -Syyu --noconfirm
+	sudo pacman -Syu --noconfirm base-devl lvm2 openssl yay
 }
 
 util.if_file_sourced || main "$@"
