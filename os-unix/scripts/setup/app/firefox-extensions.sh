@@ -31,4 +31,4 @@ util.install() {
 	firefox -install -extension ./extension.xpi
 }
 
-util.if_file_sourced || main "$@"
+util.if_file_sourced || helper.run_main "$@"

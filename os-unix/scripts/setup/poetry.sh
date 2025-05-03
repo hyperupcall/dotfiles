@@ -14,4 +14,4 @@ installed() {
 	command -v poetry &>/dev/null
 }
 
-util.if_file_sourced || main "$@"
+util.if_file_sourced || helper.run_main "$@"

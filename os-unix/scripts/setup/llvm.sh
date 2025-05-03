@@ -24,4 +24,4 @@ deb-src [signed-by=$gpg_file] http://apt.llvm.org/$dist/ llvm-toolchain-$dist-$v
 	sudo apt-get -y install clang-17
 }
 
-util.if_file_sourced || main "$@"
+util.if_file_sourced || helper.run_main "$@"

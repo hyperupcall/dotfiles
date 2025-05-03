@@ -3,11 +3,11 @@
 source ~/.dotfiles/os-unix/data/source.sh
 
 main() {
-	helper.setup 'less' "$@"
+	helper.setup 'blender' "$@"
 }
 
 install.debian() {
-	sudo apt-get install -y source-highlight
+	sudo apt-get install -y blender
 }
 
 install.ubuntu() {
@@ -15,19 +15,19 @@ install.ubuntu() {
 }
 
 install.fedora() {
-	sudo dnf install -y source-highlight
+	sudo dnf install -y blender
 }
 
 install.opensuse() {
-	sudo zypper -n install source-highlight
+	sudo zypper -n install blender
 }
 
 install.arch() {
-	yay -Syu --noconfirm source-highlight
+	sudo pacman -Syu --noconfirm blender
 }
 
 installed() {
-	command -v source-highlight &>/dev/null
+	command -v blender &>/dev/null
 }
 
 util.if_file_sourced || helper.run_main "$@"

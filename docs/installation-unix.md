@@ -68,8 +68,8 @@ Some scripts should be executed. They include:
   - Setup Visual Studio Code
     - Install extensions (_do manually_)
   - Setup Thunderbird
-    - Install extension (_do manually_)
-  - Setup gh, bats
+    - Install extensions (_do manually_)
+  - Setup Bats, `gh`
 - Setup Albert
   - Enable plugins
 - Setup Obsidian

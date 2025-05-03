@@ -45,6 +45,17 @@
 	CURL_CONFIG="$HOME/.dotfiles/os-unix/data/curl_config.conf"
 }
 
+helper.run_main() {
+	local orig_dir="$PWD" temp_dir=
+	temp_dir=$(mktemp -d --suffix "-dotfiles")
+	cd "$temp_dir" || exit $?
+
+	main "$@"
+
+	cd "$orig_dir"
+	rm -rf "$temp_dir"
+}
+
 # TODO: This does not nest (ex. in d.sh) when function are nested
 helper.setup() {
 	local flag_force_install=no
@@ -111,13 +122,7 @@ helper.setup() {
 				ran_function=yes
 				if ! declare -f installed &>/dev/null || ! installed || [ "$flag_force_install" = yes ]; then
 					if [ "$flag_no_confirm" = yes ] || util.confirm "Install $program_name?"; then
-						local orig_dir="$PWD" temp_dir=
-						temp_dir=$(mktemp -d --suffix "-dotfiles")
-						cd "$temp_dir"
-
 						"$flag_fn_prefix.$id" "$@"
-
-						cd "$orig_dir"
 					fi
 					break
 				else

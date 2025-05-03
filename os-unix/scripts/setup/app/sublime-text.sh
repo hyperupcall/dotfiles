@@ -21,4 +21,4 @@ install.debian() {
 	sudo apt-get install -y sublime-text
 }
 
-util.if_file_sourced || main "$@"
+util.if_file_sourced || helper.run_main "$@"

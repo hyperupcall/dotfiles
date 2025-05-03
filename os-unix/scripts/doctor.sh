@@ -636,4 +636,4 @@ dependencies.arch() {
 	sudo pacman -Syu --noconfirm base-devl lvm2 openssl yay
 }
 
-util.if_file_sourced || main "$@"
+util.if_file_sourced || helper.run_main "$@"

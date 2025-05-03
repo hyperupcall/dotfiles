@@ -66,4 +66,4 @@ installed() {
 	command -v nvim &>/dev/null && neovim_version_check
 }
 
-util.if_file_sourced || main "$@"
+util.if_file_sourced || helper.run_main "$@"

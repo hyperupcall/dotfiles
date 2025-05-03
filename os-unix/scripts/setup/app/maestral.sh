@@ -67,8 +67,8 @@ EOF
 	chmod +x ~/.dotfiles/.data/bin/maestral
 
 	maestral auth link
-	mkdir -p ~/Dropbox-Maestral
-	maestral config set path ~/Dropbox-Maestral
+	mkdir -p ~/Documents/Dropbox
+	maestral config set path ~/Documents/Dropbox
 	maestral autostart --yes
 	maestral start
 }
@@ -77,4 +77,4 @@ installed() {
 	command -v maestral &>/dev/null
 }
 
-util.if_file_sourced || main "$@"
+util.if_file_sourced || helper.run_main "$@"

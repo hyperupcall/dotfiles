@@ -10,4 +10,4 @@ install.any() {
 	curl -K "$CURL_CONFIG" https://zed.dev/install.sh | sh
 }
 
-util.if_file_sourced || main "$@"
+util.if_file_sourced || helper.run_main "$@"

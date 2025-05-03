@@ -14,4 +14,4 @@ install.any() {
 	python3 -m pipx ensurepath
 }
 
-util.if_file_sourced || main "$@"
+util.if_file_sourced || helper.run_main "$@"

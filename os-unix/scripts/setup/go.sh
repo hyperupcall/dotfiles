@@ -17,4 +17,4 @@ install.any() {
 	go install github.com/x-motemen/gore/cmd/gore@latest
 }
 
-util.if_file_sourced || main "$@"
+util.if_file_sourced || helper.run_main "$@"

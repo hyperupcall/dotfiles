@@ -22,4 +22,4 @@ deb-src [signed-by=$gpg_file] https://dl.cloudsmith.io/public/caddy/stable/deb/d
 	sudo apt-get install -y caddy
 }
 
-util.if_file_sourced || main "$@"
+util.if_file_sourced || helper.run_main "$@"

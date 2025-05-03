@@ -10,4 +10,4 @@ install.ubuntu() {
 	sudo add-apt-repository -y 'ppa:dotnet/backports'
 }
 
-util.if_file_sourced || main "$@"
+util.if_file_sourced || helper.run_main "$@"

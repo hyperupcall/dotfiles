@@ -18,4 +18,4 @@ installed() {
 	command -v fish &>/dev/null && command -v fish_indent &>/dev/null
 }
 
-util.if_file_sourced || main "$@"
+util.if_file_sourced || helper.run_main "$@"

@@ -33,7 +33,7 @@ Pin-Priority: 990" | sudo tee "$dest_file" >/dev/null
 }
 
 install.ubuntu() {
-	install.debian "$@"
+	sudo apt-get install -y zfsutils-linux
 }
 
 install.fedora() {
@@ -67,4 +67,4 @@ install.cachyos() {
 	sudo pacman -Syu --noconfirm cachyos-v3/linux-cachyos-zfs cachyos-v3/linux-cachyos-lto-zfs
 }
 
-util.if_file_sourced || main "$@"
+util.if_file_sourced || helper.run_main "$@"

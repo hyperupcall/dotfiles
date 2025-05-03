@@ -29,4 +29,4 @@ install.arch() {
 	yay -Syu --noconfirm btrfs-progs
 }
 
-util.if_file_sourced || main "$@"
+util.if_file_sourced || helper.run_main "$@"
