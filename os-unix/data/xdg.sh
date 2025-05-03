@@ -5,7 +5,7 @@
 
 __xdg_main() {
 	if [ -f /etc/os-release ]; then
-		while IFS='=' read -r __key __value; do
+		while IFS='=' read -r __key __value; do # TODO
 			if [ "$__key" = ID ]; then
 				__value=${__value#\"}
 				__value=${__value%\"}

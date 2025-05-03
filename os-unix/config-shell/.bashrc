@@ -18,6 +18,9 @@ if (( $? != 0 )); then printf '%s\n' "Error: bashrc.sh: Failed to source ~/.prof
 # source "$XDG_CONFIG_HOME/bash/frameworks/oh-my-bash.sh"
 # source "$XDG_CONFIG_HOME/bash/frameworks/bash-it.sh"
 # source "$HOME/.dotfiles/.data/repos/blesh/out/ble.sh"
+source "$XDG_CONFIG_HOME/sh/modules/line-editing.sh"
+source "$XDG_CONFIG_HOME/bash/modules/readline.sh"
+source "$HOME/.dotfiles/os-unix/config-dotfile-manager/.config/dotgen-output/concatenated.bash"
 
 
 #
@@ -105,8 +108,6 @@ is_16million_colors() {
 	[ "$COLORTERM" = "truecolor" ] || [ "$COLORTERM" = "24bit" ]
 }
 
-source "$HOME/.dotfiles/os-unix/config-dotfile-manager/.config/dotgen-output/concatenated.bash"
-
 if is_16million_colors; then
 	if ((EUID == 0)); then
 		PS1="\[\e[38;2;201;42;42m\][\u@\h \w]\[\e[0m\]\$ "
@@ -158,8 +159,4 @@ if command -v basalt &>/dev/null; then
 		_shell_cdp_dir="$PWD"
 	}
 fi
-
-source "$XDG_CONFIG_HOME/sh/modules/common/line-editing.sh"
-source "$XDG_CONFIG_HOME/bash/modules/readline.sh"
-source "$XDG_CONFIG_HOME/bash/modules/util.sh"
 # ---

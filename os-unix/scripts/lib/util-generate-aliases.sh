@@ -49,7 +49,7 @@ main() {
 	# user Functions
 	exec 6> "$generated_dir/.bashrc-user-functions.sh"
 	util_print_autogen_info >&6
-	find "$XDG_CONFIG_HOME/sh/modules/functions/" -ignore_readdir_race -type f -name "*.sh" \
+	find "$XDG_CONFIG_HOME/sh/modules/" -ignore_readdir_race -type f -name "func-*.sh" \
 			-exec sh -c "\"$HOME/.dotfiles/os-unix/scripts/lib/util-extract_functions.pl\" 'user' < \"\$0\"" {} \; >&6
 	util_print_file "$profile_dir/../bash/modules/util.sh" >&6
 	exec 6<&-
@@ -57,10 +57,10 @@ main() {
 	# user Aliases
 	exec 6> "$generated_dir/.bashrc-user-aliases.sh"
 	util_print_autogen_info >&6
-	find "$XDG_CONFIG_HOME/sh/modules/aliases/" -ignore_readdir_race -type f -name "*.sh" \
+	find "$XDG_CONFIG_HOME/sh/modules/" -ignore_readdir_race -type f -name "aliases*.sh" \
 			-exec sh -c 'cat < $0' {} \; \
 		| util_extract_alias 'user' >&6
-	util_print_file "$profile_dir/modules/aliases/aliases.sh" >&6
+	util_print_file "$profile_dir/modules/aliases.sh" >&6
 	exec 6<&-
 
 	# user Readline
@@ -73,7 +73,7 @@ main() {
 	# root Functions
 	exec 6> "$generated_dir/.bashrc-root-functions.sh"
 	util_print_autogen_info >&6
-	find "$XDG_CONFIG_HOME/sh/modules/functions/" -ignore_readdir_race -type f -name "*.sh" \
+	find "$XDG_CONFIG_HOME/sh/modules/" -ignore_readdir_race -type f -name "func-*.sh" \
 			-exec sh -c "\"$HOME/.dotfiles/os-unix/scripts/lib/util-extract_functions.pl\" 'root' < \"\$0\"" {} \; >&6
 	util_print_file "$profile_dir/../bash/modules/util.sh" >&6
 	exec 6<&-
@@ -81,10 +81,10 @@ main() {
 	# root Aliases
 	exec 6> "$generated_dir/.bashrc-root-aliases.sh"
 	util_print_autogen_info >&6
-	find "$XDG_CONFIG_HOME/sh/modules/aliases/" -ignore_readdir_race -type f -name "*.sh" \
+	find "$XDG_CONFIG_HOME/sh/modules/" -ignore_readdir_race -type f -name "aliases*.sh" \
 			-exec sh -c 'cat < $0' {} \; \
 		| util_extract_alias 'root' >&6
-	util_print_file "$profile_dir/modules/aliases/aliases.sh" >&6
+	util_print_file "$profile_dir/modules/aliases.sh" >&6
 	exec 6<&-
 
 	# root Readline

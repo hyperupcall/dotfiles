@@ -16,9 +16,10 @@ install.debian() {
 	sudo apt-get update -y
 	sudo apt-get install -y debian-archive-keyring
 
+	local gpg_file='/usr/share/keyrings/debian-archive-keyring.gpg'
 	pkg.add_apt_repository \
-		"deb [signed-by=/usr/share/keyrings/debian-archive-keyring.gpg] https://deb.debian.org/debian bookworm-backports main contrib
-deb-src [signed-by=/usr/share/keyrings/debian-archive-keyring.gpg] https://deb.debian.org/debian bookworm-backports main contrib" \
+		"deb [signed-by=$gpg_file] https://deb.debian.org/debian bookworm-backports main contrib
+deb-src [signed-by=$gpg_file] https://deb.debian.org/debian bookworm-backports main contrib" \
 		'/etc/apt/sources.list.d/bookworm-backports.list'
 
 	dest_file=/etc/apt/preferences.d/90_zfs

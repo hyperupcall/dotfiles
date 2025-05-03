@@ -66,15 +66,13 @@ export CMD_ENV='linux'
 
 # qt
 export QT_ACCESSIBILITY='1'
-# export QT_QPA_PLATFORMTHEME="qt5ct"
 
 # ranger
 # export RANGER_LOAD_DEFAULT_RC='FALSE'
 
-# snapd
-# _util_path_append '/var/lib/snapd/snap/bin'
-
 # ssh
+# export SSH_ASKPASS=/usr/bin/ksshaskpass
+# export SSH_ASKPASS_REQUIRE=prefer
 # unset SSH_AGENT_PID
 # if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
 #   export SSH_AUTH_SOCK=

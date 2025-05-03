@@ -20,9 +20,9 @@ Special Bash readline bindings that includes many convenient functionality that 
 - Alt+/ to toggle comment
 - Alt+\ to toggle backslash
 
-It calls more general functions that can be found at [`line-editing.sh`](/os-unix/config-shell/.config/sh/modules/common/line-editing.sh)
+It calls more general functions that can be found at [`line-editing.sh`](/os-unix/config-shell/.config/sh/modules/line-editing.sh)
 
-## [`mkt.sh`](/os-unix/config-shell/.config/sh/modules/functions/mkt.sh)
+## [`mkt.sh`](/os-unix/config-shell/.config/sh/modules/func-mkt.sh)
 
 Quick command to automatically do something in a temporary space. Based on the first argument, it will
 
@@ -33,6 +33,6 @@ Quick command to automatically do something in a temporary space. Based on the f
 
 It will create a history of invocations at `$XDG_STATE_HOME/history/mkt_history`
 
-## [`xdg.sh`](/os-unix/config-shell/.config/sh/modules/xdg.sh)
+## [`xdg.sh`](/os-unix/config-shell/.config/sh/modules/env-xdg.sh)
 
-Contains environment variables and alises that make programs more XDG-compliant. At around ~500 lines, it will reduce the chances that files and folders such as `.go`, `.z`, `.wine`, `.rvm` will be created in your home directory. It places them in `$XDG_CONFIG_HOME`, `$XDG_STATE_HOME`, `$XDG_DATA_HOME`, `$XDG_RUNTIME_DIR`, etc. instead
+Contains environment variables and alises that make programs more compliant with the XDG Base Directory specification. It will reduce the chances that files and folders such as `.go`, `.z`, `.wine`, `.rvm` will be created in your home directory. Instead, it places them in `$XDG_CONFIG_HOME`, `$XDG_STATE_HOME`, `$XDG_DATA_HOME`, `$XDG_RUNTIME_DIR`, etc.
