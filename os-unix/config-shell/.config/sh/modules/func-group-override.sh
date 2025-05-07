@@ -108,7 +108,7 @@ stty() {
 #clone(user, root)
 unlink() {
 	for _arg; do
-		case "$_arg" in
+		case $_arg in
 		--help|--version)
 			command unlink "$@"
 			return
@@ -118,7 +118,7 @@ unlink() {
 
 	_exit_code=0
 	for _file; do
-		command unlink "$_file"
+		command unlink "${_file%/}"
 		_code=$?
 		if (($_code > 0)); then
 			_exit_code=$_code

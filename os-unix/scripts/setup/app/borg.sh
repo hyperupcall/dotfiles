@@ -10,6 +10,10 @@ install.debian() {
 	sudo apt-get install -y borgbackup
 }
 
+install.ubuntu() {
+	install.debian "$@"
+}
+
 install.fedora() {
 	sudo dnf install -y borgbackup
 }

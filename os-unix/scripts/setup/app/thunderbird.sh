@@ -2,6 +2,7 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+# TODO: flatpak
 main() {
 	cd ~/.dotfiles/.data
 	if [ ! -d './thunderbird' ]; then

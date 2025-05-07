@@ -4,7 +4,7 @@ source ~/.dotfiles/os-unix/data/source.sh
 
 main() {
 	local save_dir="$HOME"
-	local backup_dir="/storage/vault/rodinia/Backups/backup_storage_home"
+	local backup_dir='/storage/vault/Records/Backups/home'
 
 	printf "Backing up\n  from: %s\n  to:   %s\n" "$save_dir" "$backup_dir"
 	if util.confirm; then
@@ -14,7 +14,6 @@ main() {
 
 		borg create \
 			--show-version --show-rc --verbose --stats --progress \
-			--exclude '**/Downloads' \
 			--exclude '**/brave-browser*' \
 			--exclude '**/chromium*' \
 			--exclude '**/firefox*' \
@@ -31,6 +30,7 @@ main() {
 			--exclude '**/__pycache__' \
 			--exclude '**/.npm/_cacache' \
 			--exclude '**/.conan2/p' \
+			--exclude '**/conan2' \
 			--exclude '**/node_modules' \
 			--exclude '**/target' \
 			--exclude '**/dist' \
@@ -42,11 +42,13 @@ main() {
 			--exclude '**/youtube-dl' \
 			--exclude '**/google-fonts-repository' \
 			--exclude '**/*.git' \
-			--exclude '**/.git' \
 			--exclude '**/.hg' \
 			--exclude '**/.svn' \
 			--exclude '**/.cache' \
-			"$backup_dir"::'backup-{now}' \
+			--exclude '**/Steam/steamapps' \
+			--exclude '**/Steam/ubuntu12_32' \
+			--exclude '**/Steam/ubuntu12_64' \
+			"$backup_dir"::'backup-{now}-{hostname}' \
 			"$save_dir"
 	fi
 }

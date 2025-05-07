@@ -21,11 +21,9 @@ main() {
 			printf '%s\n' "$line"
 		fi
 	done < <(
-		lsblk --list --json --output ID,FSSIZE,FSTYPE,MODEL,PATH,NAME,LABEL,MOUNTPOINT \
-			| jq -r '
+		lsblk --list --json --output ID,FSSIZE,FSTYPE,MODEL,PATH,NAME,LABEL,MOUNTPOINT | jq -r '
 		[
-			.blockdevices[] |
-			select(.mountpoint != null and (.mountpoint | test("^/mnt|/media|/run")))
+			.blockdevices[] | select(.mountpoint != null and (.mountpoint | test("^/mnt|/media|/run")))
 		]
 			| to_entries[]
 			| debug("\(.key):\(.value.mountpoint)")
@@ -35,27 +33,33 @@ main() {
 
 	local answer=
 	while :; do
-		read -re -p 'Choose #: ' answer
+		read -re -p 'Choose USB to use: ' answer
 		if [[ $answer =~ [0-9]+ ]] && ((answer >= 0)) && ((answer < ${#options[@]})); then
 			break
 		fi
 	done
 
 	local device_path="${options[$choice]}"
-	local -A dirs=(
+	local -A dirs_encrypt=(
 		[gnupg]="$HOME/.gnupg"
 		[ssh]="$HOME/.ssh"
+		[libreoffice]="$XDG_CONFIG_HOME/libreoffice"
+		[fonts]="$XDG_DATA_HOME/fonts"
+		[history]="$XDG_STATE_HOME/history"
 	)
 
 	if [ "$mode" = save ]; then
+		# Backup directories that should be encrypted
 		local pasword= temp_gnupg=
 		password=$(LC_ALL=C tr -dc '[:graph:]' </dev/urandom | head -c 14)
 		temp_gnupg=$(mktemp -d --suffix '-gnupg')
 		mkdir -p "$temp_gnupg"
 		core.print_info "Password: $password"
-		for name in "${!dirs[@]}"; do
-			local dir="${dirs[$name]}"
-			local encrypted_file="$device_path/$name.asc"
+
+		local encrypted_file="$device_path/_data/$name.asc"
+		mkdir -p "${encrypted_file%/*}"
+		for name in "${!dirs_encrypt[@]}"; do
+			local dir="${dirs_encrypt[$name]}"
 
 			core.print_info "Encrypting \"$dir\" to \"$encrypted_file\""
 			tar -C "${dir%/*}" -c "./${dir##*/}/" \
@@ -63,18 +67,13 @@ main() {
 				| cat > "$encrypted_file"
 		done
 
-		core.print_info "Ejecting \"$device_path\""
-		if [ "$device_path" = '/mnt' ]; then
-			sudo umount "$device_path"
-		else
-			umount "$device_path"
-		fi
 	elif [ "$mode" = restore ]; then
 		local password=
 		read -re -p 'Password? ' password
-		for name in "${!dirs[@]}"; do
-			local dir="${dirs[$name]}"
-			local encrypted_file="$device_path/$name.asc"
+
+		local encrypted_file="$device_path/_data/$name.asc"
+		for name in "${!dirs_encrypt[@]}"; do
+			local dir="${dirs_encrypt[$name]}"
 
 			if [ -e "$dir" ]; then
 				core.print_warn "File or directory \"$dir\" already exists"
@@ -102,6 +101,7 @@ main() {
 
 			rm "$encrypted_file"
 		done
+		rmdir "${encrypted_file%/*}"
 	else
 		core.print_die "Invalid mode: \"$mode\""
 	fi

@@ -19,6 +19,8 @@ systemctl daemon-reload
 systemctl enable --now systemd-{network,resolve}d
 ```
 
+**Remember to copy important data from your old computer!** See your _Setting up Linux_ note.
+
 ## Bootstrap
 
 Download and execute `bootstrap.sh` to begin the bootstrap process:
@@ -35,15 +37,15 @@ The `bootstrap.sh` script performs the following steps:
 - Installs Homebrew on macOS
 - Installs cURL, Git and Vim
 - Clones `hyperupcall/dotfiles` to `~/.dotfiles`
-- Symlinks scripts to `~/scripts`
-- Creates a `~/.bootstrap/bootstrap-out.sh`. Sourcing it:
+- Symlinks `~/scripts` to `~/.dotfiles/os-unix/scripts`
+- Creates `~/.bootstrap/bootstrap-out.sh`. Sourcing it:
   - Sets `NAME`, `EMAIL`, `EDITOR`, and `VISUAL`
   - Prepends `$HOME/.dotfiles/.data/bin` to `PATH`
   - Sources `~/.dotfiles/os-unix/data/xdg.sh`, if it exists
 
 ## Next Steps
 
-Some scripts should be executed. They include:
+Additional scripts should be executed. They include:
 
 - `. ~/.bootstrap/bootstrap-out.sh`
 - `~/scripts/rare/transfer-secrets.sh`
@@ -63,6 +65,11 @@ Some scripts should be executed. They include:
   - Setup Neovim (at least v0.10.0)
   - Setup pass
   - Setup Browsers (Firefox, Brave)
+    - Backup & restore settings (_do manually_):
+      - uBlacklist
+      - uBlock Origin
+      - SponsorBlock
+      - ViolentMonkey
     - Sync data (_do manually_)
   - Setup Maestral
   - Setup Visual Studio Code
@@ -73,6 +80,10 @@ Some scripts should be executed. They include:
 - Setup Albert
   - Enable plugins
 - Setup Obsidian
+- Setup LibreOffice
+  - Backup & restore (_do manually_)
+    - SpellCheck dictionary
+    - Document templates
 - Configure keybindings
 - Test spellchecker
 - Add favorites to file explorer and dock
