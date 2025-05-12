@@ -7,7 +7,9 @@ main() {
 }
 
 install.any() {
-	if ! command -v file_server &>/dev/null; then
+	curl -K "$CURL_CONFIG" https://deno.land/install.sh | DENO_INSTALL="$PWD" sh
+
+	if ! command -v file_server &>/dev/null; then # TODO
 		if command -v deno &>/dev/null; then
 			deno install --allow-net --allow-read https://deno.land/std@0.145.0/http/file_server.ts
 		else
@@ -17,7 +19,7 @@ install.any() {
 }
 
 installed() {
-	command -v deno &>/dev/null
+	command -v deno
 }
 
 util.if_file_sourced || helper.run_main "$@"

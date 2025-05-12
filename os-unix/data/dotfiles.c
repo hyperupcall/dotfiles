@@ -110,13 +110,24 @@ DefineEntry(rcrc, Home(CategoryDotfileManager, ".rcrc"))
 static struct Entry vscode[] = {
 	Config(CategoryEditor, "Code/User/keybindings.json"),
 	Config(CategoryEditor, "Code/User/settings.json"),
+	Config(CategoryEditor, "Code/User/snippets/"),
 	Done,
 };
 static struct Entry ossCode[] = {
 	{
 		.category = CategoryEditor,
+		.source = H ".config/Code/User/keybindings.json",
+		.destination = H ".config/Code - OSS/User/keybindings.json"
+	},
+	{
+		.category = CategoryEditor,
 		.source = H ".config/Code/User/settings.json",
 		.destination = H ".config/Code - OSS/User/settings.json"
+	},
+	{
+		.category = CategoryEditor,
+		.source = H ".config/Code/User/snippets/",
+		.destination = H ".config/Code - OSS/User/snippets/"
 	},
 	Done
 };
@@ -176,7 +187,6 @@ DefineEntry(info, Config(CategoryLinuxCore, "info/"))
 DefineEntry(less, Config(CategoryLinuxCore, "less/"))
 DefineEntry(most, Config(CategoryLinuxCore, "most/"))
 DefineEntry(readline, Config(CategoryLinuxCore, "readline/"))
-// DefineEntry(userDirsDirs, Config(CategoryLinuxCore, "user-dirs.dirs")) // Handled by "~/scripts/idempotent.sh".
 DefineEntry(userDirsConf, Config(CategoryLinuxCore, "user-dirs.conf"))
 DefineEntry(gnupgDirmngr, Home(CategoryLinuxCore, ".gnupg/dirmngr.conf"))
 DefineEntry(gnupgGpg, Home(CategoryLinuxCore, ".gnupg/gpg.conf"))

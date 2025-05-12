@@ -82,6 +82,10 @@ export QT_ACCESSIBILITY='1'
 # sxhkd
 export SXHKD_SHELL='/bin/sh'
 
+# systemd
+export SYSTEMD_PAGER="env LESSKEYIN=$XDG_CONFIG_HOME/less/lesskey-systemd less"
+export SYSTEMD_PAGERSECURE=false
+
 # vim
 export VIMINIT="if has('nvim') | source $XDG_CONFIG_HOME/nvim/init.lua | else | source $XDG_CONFIG_HOME/vim/vimrc | endif"
 

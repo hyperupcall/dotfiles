@@ -3,7 +3,7 @@
 #line-edit
 
 #env
-LESS =-FRQ # Common Flags: -F,-I,-M,-R,-Q
+LESS =-RQ # Common Flags: -F,-I,-M,-R,-Q
 LESS_ADVANCED_PREPROCESSOR = 1
 LESSOPEN = | ~/.dotfiles/.home/xdg_config_dir/less/lessopen.sh %s
 LESSCLOSE = ~/.dotfiles/.home/xdg_config_dir/less/lessclose.sh %s %s

@@ -67,39 +67,40 @@ helper.setup() {
 	local arg=
 	for arg; do
 		case $arg in
-			--force-install)
-				flag_force_install=yes
-				shift
-				;;
-			--no-confirm)
-				flag_no_confirm=yes
-				shift
-				;;
-			--configure-only)
-				flag_configure_only=yes
-				shift
-				;;
-			--fn-prefix*)
-				core.shopt_push -s nullglob on
-				flag_fn_prefix=${arg#--fn-prefix}
-				flag_fn_prefix=${flag_fn_prefix#=}
-				core.shopt_pop
-				if [ -z "$flag_fn_prefix" ]; then
-					core.print_die "Expected a value for --fn-prefix"
-				fi
-				shift
-				;;
-			-*)
-				core.print_die "Invalid flag \"$arg\""
-				;;
-			*)
-				if [ -n "$program_name" ]; then
-					core.print_die "Expected a single positional argument"
-				fi
-				program_name=$arg
-				;;
+		--force-install)
+			flag_force_install=yes
+			shift
+			;;
+		--no-confirm)
+			flag_no_confirm=yes
+			shift
+			;;
+		--configure-only)
+			flag_configure_only=yes
+			shift
+			;;
+		--fn-prefix*)
+			core.shopt_push -s nullglob on
+			flag_fn_prefix=${arg#--fn-prefix}
+			flag_fn_prefix=${flag_fn_prefix#=}
+			core.shopt_pop
+			if [ -z "$flag_fn_prefix" ]; then
+				core.print_die "Expected a value for --fn-prefix"
+			fi
+			shift
+			;;
+		-*)
+			core.print_die "Invalid flag \"$arg\""
+			;;
+		--)
+			break
+			;;
 		esac
 	done
+
+	if ! declare -f installed &>/dev/null; then
+		core.print_die "Expected file \"$0\" to have function \"installed\""
+	fi
 
 	[ "$flag_configure_only" != yes ] && (
 		# A list of 'os-release' files can be found at https://github.com/which-distro/os-release.
@@ -120,7 +121,7 @@ helper.setup() {
 		for id in "$ID" "$ID_LIKE" any; do
 			if declare -f "$flag_fn_prefix.$id" &>/dev/null; then
 				ran_function=yes
-				if ! declare -f installed &>/dev/null || ! installed || [ "$flag_force_install" = yes ]; then
+				if ! installed || [ "$flag_force_install" = yes ]; then
 					if [ "$flag_no_confirm" = yes ] || util.confirm "Install $program_name?"; then
 						"$flag_fn_prefix.$id" "$@"
 					fi
@@ -130,8 +131,8 @@ helper.setup() {
 				fi
 			fi
 		done; unset -v id
-		if [ "$ran_function" = no ] && ! declare -f install.any &>/dev/null; then
-			core.print_warn "Application has no installation function for this distribution for prefix \"$flag_fn_prefix\""
+		if [ "$ran_function" = no ]; then
+			core.print_die "Failed to find any functions that match \"$flag_fn_prefix.*\""
 		fi
 	)
 
@@ -227,6 +228,10 @@ util.confirm() {
 	fi
 }
 
+util.ask_fix() {
+	util.confirm "Would you like to fix this?"
+}
+
 util.get_latest_github_tag() {
 	unset -v REPLY; REPLY=
 	local repo="$1"
@@ -247,30 +252,32 @@ util.get_latest_github_tag() {
 }
 
 util.update_system() {
-	update_system.debian() {
-		sudo apt-get -y update
-		sudo apt-get -y upgrade
-	}
-	update_system.neon() {
-		sudo apt-get -y update
-		if sudo pkcon -y update; then :; else
-			# Exit code for "Nothing useful was done".
-			if (($? != 5)); then
-				core.print_die "Failed to run 'pkgcon'"
-			fi
-		fi
-	}
-	update_system.fedora() {
-		sudo dnf -y update
-	}
-	update_system.opensuse() {
-		sudo zypper -n update
-	}
-	update_system.arch() {
-		sudo pacman -Syyu --noconfirm
-	}
-
 	helper.setup --no-confirm --fn-prefix=update_system
+}
+update_system.debian() {
+	sudo apt-get -y update
+	sudo apt-get -y upgrade
+}
+update_system.ubuntu() {
+	update_system.debian "$@"
+}
+update_system.neon() {
+	sudo apt-get -y update
+	if sudo pkcon -y update; then :; else
+		# Exit code for "Nothing useful was done".
+		if (($? != 5)); then
+			core.print_die "Failed to run 'pkgcon'"
+		fi
+	fi
+}
+update_system.fedora() {
+	sudo dnf -y update
+}
+update_system.opensuse() {
+	sudo zypper -n update
+}
+update_system.arch() {
+	sudo pacman -Syyu --noconfirm
 }
 
 util.install_package() {

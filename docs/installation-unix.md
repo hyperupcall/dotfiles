@@ -52,20 +52,26 @@ Additional scripts should be executed. They include:
   - Transfer SSH, PGP files to computer
 - Setup ZFS, BTRFS
 - `~/scripts/doctor.sh`
-  - Upgrade system dependencies
-  - Create necessary directories, remove default dotfiles
+  - Install required dependencies
+  - Fix files in home directory
+    - Remove broken home directory symlinks
+    - Remove autoappended lines in shell startup files
+    - Create necessary symlinks
+    - Set XDG user directories
+    - Symlink XDG base and user directories
+    - Add and remove necessary directories, files, and groups
   - Write to `~/.dotfiles/.data/{profile,github_token}`
   - Check permissions for `~/.{ssh,gnupg}`
   - Setup [dev](https://github.com/fox-incubating/dev)
     - Install NodeJS v23.6.0
   - Setup [d](https://github.com/fox-incubating/d)
-  - Setup mise, lefthook
+  - Setup mise and lefthook
     - Configure for `~/.dotfiles`
   - Setup Git (at least v2.37.0)
   - Setup Neovim (at least v0.10.0)
   - Setup pass
   - Setup Browsers (Firefox, Brave)
-    - Backup & restore settings (_do manually_):
+    - Backup and restore settings (_do manually_):
       - uBlacklist
       - uBlock Origin
       - SponsorBlock
@@ -81,7 +87,7 @@ Additional scripts should be executed. They include:
   - Enable plugins
 - Setup Obsidian
 - Setup LibreOffice
-  - Backup & restore (_do manually_)
+  - Backup and restore (_do manually_)
     - SpellCheck dictionary
     - Document templates
 - Configure keybindings

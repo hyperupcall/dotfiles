@@ -1,0 +1,59 @@
+{
+	"newcomp": {
+		"prefix": "wfnewcomp",
+		"body": [
+			"import { html } from 'htm/preact'",
+			"import { useEffect, useState } from 'preact/hooks'",
+			"",
+			"export function ${1:FileName}() {",
+			"\t$0",
+			"}"
+		],
+		"description": "WebFramework: Create Component"
+	},
+	"wfnewlay": {
+		"body": [
+			"import { renderToString } from 'preact-render-to-string'",
+			"import { h } from 'preact'",
+			"",
+			"export function Layout(pagePath, Page, imports, serverData) {",
+			"\tconst content = renderToString(h(() => Page(serverData.data), {}))",
+			"",
+			"\treturn `<!DOCTYPE html>",
+			"\t\t<html>",
+			"\t\t\t$0",
+			"\t\t</html>"
+		]
+	},
+	"wfnewpage": {
+		"body": [
+			"import { html } from 'htm/preact'",
+			"import { useEffect, useState } from 'preact/hooks'",
+			"import type { PageSchemaT } from './$1.server.ts'",
+			"",
+			"export function Page({}: PageSchemaT) {",
+			"\treturn html`",
+			"\t\t$0",
+			"\t`",
+			"}"
+		]
+	},
+	"wfnewserverpage": {
+		"body": [
+			"import { html } from 'htm/preact'",
+			"import { useEffect, useState } from 'preact/hooks'",
+			"import * as v from 'valibot'",
+			"",
+			"export type PageSchemaT = v.InferInput<typeof PageSchema>",
+			"export const PageSchema = v.strictObject({",
+			"\t$1",
+			"})",
+			"",
+			"export async function PageData(): Promise<PageSchemaT> {",
+			"\treturn html`",
+			"\t\t$0",
+			"\t`",
+			"}"
+		]
+	}
+}

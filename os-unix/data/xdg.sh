@@ -1,6 +1,6 @@
 # shellcheck shell=sh
 
-# My XDG Base Directory variables are set differently depending on
+# My XDG base directory variables are set differently depending on
 # the operating system. This file is used during my dotfile bootstrap process.
 
 __xdg_main() {

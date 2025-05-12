@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+publisher=$1
+extname=$2
+shift 2
+
+extdir="$HOME/.dotfiles/.data/vscode-extensions/$extname"
+datadir="$HOME/.dotfiles/.data/vscode-datadirs/$extname"
+if [ ! -d "$extdir" ]; then
+	notify-send 'Installing extension pack before launching...'
+	code --user-data-dir "$datadir" --extensions-dir "$extdir" --install-extension "$publisher.$extname"
+fi
+exec code --user-data-dir "$datadir" --extensions-dir "$extdir" "$@"

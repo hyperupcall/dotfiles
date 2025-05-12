@@ -196,6 +196,10 @@
 	"typescript.inlayHints.variableTypes.suppressWhenTypeMatchesName": false,
 
 	//
+	// DENO
+	"deno.path": "/home/edwin/.local/share/mise/installs/deno/2.3.1/bin/deno"
+
+	//
 	// JSON
 	"[json][jsonc]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode",

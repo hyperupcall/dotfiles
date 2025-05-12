@@ -5,7 +5,7 @@ endif
 " Skips initialization for vim-tiny or vim-small
 if 0 | endif
 
-" XDG Base Directory Specification stuff
+" XDG base directory specification stuff
 if empty($XDG_CONFIG_HOME) | let $XDG_CONFIG_HOME = $HOME."/.config" | endif
 if empty($XDG_DATA_HOME) | let $XDG_DATA_HOME = $HOME."/.local/share" | endif
 if empty($XDG_STATE_HOME) | let $XDG_STATE_HOME = $HOME."/.local/state" | endif

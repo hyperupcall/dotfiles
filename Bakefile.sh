@@ -23,5 +23,7 @@ task.test() {
 }
 
 task.commit() {
-	git commit -m "update: $(date '+%B %d, %Y (%H:%M)')" "$@"
+	local date=
+	date=$(date '+%Y.%m.%d')
+	git commit -m "$date" "$@"
 }

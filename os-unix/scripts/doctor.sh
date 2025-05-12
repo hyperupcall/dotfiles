@@ -2,7 +2,7 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
-# TODO: woof, nerdfonts
+# TODO: woof, nerdfonts, notify-send
 # TODO: git smuge etc filters are in use
 # if command -v autoenv_init >/dev/null 2>&1; then
 # 		autoenv_init || :
@@ -17,23 +17,16 @@ source ~/.dotfiles/os-unix/data/source.sh
 # 	fi
 
 main() {
-	local flag_fix=false
-	local flag_no_upgrade=false
 	for arg; do case $arg in
-	--prompt-fix)
-		shift
-		flag_fix=true ;;
-	--no-upgrade)
-		shift
-		flag_no_upgrade=true ;;
 	*)
 		core.print_die "Invalid argument: \"$arg\"" ;;
 	esac done; unset -v arg
 
-	if [ "$flag_no_upgrade" != 'true' ]; then
-		core.print_info 'Upgrading system (pass "--no-upgrade" to skip)...'
-		util.update_system
-		helper.setup --no-confirm --fn-prefix=dependencies 'Bootstrap' "$@"
+	# Install required dependencies.
+	if [ ! -f ~/.dotfiles/.data/finished_bootstrap ]; then
+		install_required_dependencies
+		touch ~/.dotfiles/.data/finished_bootstrap
+		core.print_info "Installed required dependencies"
 	fi
 
 	# Remove broken symlinks.
@@ -59,28 +52,75 @@ main() {
 		done < "$file"; unset -v line
 
 		printf '%s' "$file_string" > "$file"
+		unset -v file_string
 	done; unset -v file
 	core.print_info 'Cleaned shell dotfiles'
-	
+
+	# Create necessary symlinks.
+	must.link ~/.dotfiles/os-unix/scripts ~/scripts
+	for f in ~/.dotfiles/os-unix/bin/*; do
+		ln -sf "$f" ~/.local/bin
+	done; unset -v f
+
+	# Set XDG user directories.
+	{
+		xdg-user-dirs-update --set DESKTOP ~/Other/Desktop
+		xdg-user-dirs-update --set DOWNLOAD ~/Downloads
+		xdg-user-dirs-update --set TEMPLATES ~/Other/Templates
+		xdg-user-dirs-update --set PUBLICSHARE ~/Other/Public
+		xdg-user-dirs-update --set DOCUMENTS ~/Documents
+		xdg-user-dirs-update --set MUSIC ~/Music
+		xdg-user-dirs-update --set PICTURES ~/Pictures
+		xdg-user-dirs-update --set VIDEOS ~/Videos
+	}
+
+	# Symlink XDG base and user directories.
+	(
+		source "$XDG_CONFIG_HOME/user-dirs.dirs"
+
+		must.link "$XDG_DESKTOP_DIR" "$HOME/.dotfiles/.home/Desktop"
+		must.link "$XDG_DOWNLOAD_DIR" "$HOME/.dotfiles/.home/Downloads"
+		must.link "$XDG_TEMPLATES_DIR" "$HOME/.dotfiles/.home/Templates"
+		must.link "$XDG_PUBLICSHARE_DIR" "$HOME/.dotfiles/.home/Public"
+		must.link "$XDG_DOCUMENTS_DIR" "$HOME/.dotfiles/.home/Documents"
+		must.link "$XDG_MUSIC_DIR" "$HOME/.dotfiles/.home/Music"
+		must.link "$XDG_PICTURES_DIR" "$HOME/.dotfiles/.home/Pictures"
+		must.link "$XDG_VIDEOS_DIR" "$HOME/.dotfiles/.home/Videos"
+
+		must.link "$XDG_CACHE_HOME" "$HOME/.dotfiles/.home/xdg_cache_dir"
+		must.link "$XDG_CONFIG_HOME" "$HOME/.dotfiles/.home/xdg_config_dir"
+		must.link "$XDG_STATE_HOME" "$HOME/.dotfiles/.home/xdg_state_dir"
+		must.link "$XDG_DATA_HOME" "$HOME/.dotfiles/.home/xdg_data_dir"
+
+		for f in "$HOME/.dotfiles/.home"/*; do
+			if [ -L "$f" ] && [ ! -e "$f" ]; then
+				unlink "$f"
+			fi
+		done; unset -v f
+	)
+
 	# Create necessary directories, files, and groups.
-	must.dir "$XDG_CONFIG_HOME"
-	must.dir ~/.local/bin
 	must.dir ~/.dotfiles/.data/bin
 	must.dir ~/.dotfiles/.data/repos
 	must.dir ~/.dotfiles/.home
 	must.dir ~/.dotfiles/.data
+	must.dir ~/.local/bin
+	must.dir "$XDG_CONFIG_HOME"
+	must.dir "$XDG_DATA_HOME"
+	must.dir "$XDG_STATE_HOME"
+	must.dir "$XDG_CACHE_HOME"
 	must.dir "$XDG_STATE_HOME/Android/Sdk"
 	must.dir "$XDG_STATE_HOME/history"
 	must.dir "$XDG_STATE_HOME/nano/backups"
 	must.dir "$XDG_DATA_HOME/maven"
 	must.dir "$XDG_DATA_HOME/tig"
-	must.dir "$XDG_CONFIG_HOME/sage" # $DOT_SAGE
+	must.dir "$XDG_CONFIG_HOME/sage" # For $DOT_SAGE.
 	must.dir "$XDG_CONFIG_HOME/Code - OSS/User"
 	must.dir "$XDG_CONFIG_HOME/spacemacs"
-	must.dir "$XDG_DATA_HOME/sonarlint" # $SONARLINT_USER_HOME
-	# must.file "$XDG_CONFIG_HOME/yarn/config" # TODO
+	must.dir "$XDG_DATA_HOME/sonarlint" # For $SONARLINT_USER_HOME.
+	must.dir "$HOME/.dotfiles/.home/Documents/AppImages"
 	must.file "$XDG_STATE_HOME/tig/history"
-	must.file "$XDG_STATE_HOME/history/zsh_history" # ZSH's $HISTFILE
+	must.file "$XDG_STATE_HOME/history/zsh_history" For # For ZSH $HISTFILE.
 	must.user_in_group "$USER" 'docker'
 	must.user_in_group "$USER" 'vboxusers'
 	must.user_in_group "$USER" 'libvirt'
@@ -108,57 +148,6 @@ main() {
 	must.rm ~/.zshrc
 	must.rm ~/.zprofile
 	must.rm ~/.zcompdump
-	must.link ~/.dotfiles/os-unix/scripts ~/scripts
-
-	# Use correct XDG user directories config.
-	{
-		local profile="$(<~/.dotfiles/.data/profile)"
-		if [ "$profile" = 'desktop' ]; then
-			local filename='user-dirs-custom.conf'
-		else
-			local filename='user-dirs-other.conf'
-		fi
-		if [ -f "$XDG_CONFIG_HOME/user-dirs.dirs" ]; then
-			mv "$XDG_CONFIG_HOME/user-dirs.dirs" ~/.bootstrap/distro-dotfiles
-		fi
-		# Use 'cp -f' for "$XDG_CONFIG_HOME/user-dirs.dirs"; otherwise unlink/link operation fails.
-		cp -f "$HOME/.dotfiles/os-unix/config-linux-core/.config/user-dirs.dirs/$filename" "$XDG_CONFIG_HOME/user-dirs.dirs"
-		unset -v filename
-	}
-
-	# Create and symlink XDG user directories.
-	(
-		source "$XDG_CONFIG_HOME/user-dirs.dirs"
-
-		for dir in "$XDG_DESKTOP_DIR" "$XDG_DOWNLOAD_DIR" "$XDG_TEMPLATES_DIR" "$XDG_PUBLICSHARE_DIR" "$XDG_DOCUMENTS_DIR" "$XDG_MUSIC_DIR" "$XDG_PICTURES_DIR" "$XDG_VIDEOS_DIR"; do
-			if [ -n "$dir" ]; then
-				must.dir "$dir"
-			fi
-		done; unset -v dir
-
-		must.link "$XDG_DESKTOP_DIR" "$HOME/.dotfiles/.home/Desktop"
-		must.link "$XDG_DOWNLOAD_DIR" "$HOME/.dotfiles/.home/Downloads"
-		must.link "$XDG_TEMPLATES_DIR" "$HOME/.dotfiles/.home/Templates"
-		must.link "$XDG_PUBLICSHARE_DIR" "$HOME/.dotfiles/.home/Public"
-		must.link "$XDG_DOCUMENTS_DIR" "$HOME/.dotfiles/.home/Documents"
-		must.link "$XDG_MUSIC_DIR" "$HOME/.dotfiles/.home/Music"
-		must.link "$XDG_PICTURES_DIR" "$HOME/.dotfiles/.home/Pictures"
-		must.link "$XDG_VIDEOS_DIR" "$HOME/.dotfiles/.home/Videos"
-
-		must.link "$XDG_CACHE_HOME" "$HOME/.dotfiles/.home/xdg_cache_dir"
-		must.link "$XDG_CONFIG_HOME" "$HOME/.dotfiles/.home/xdg_config_dir"
-		must.link "$XDG_STATE_HOME" "$HOME/.dotfiles/.home/xdg_state_dir"
-		must.link "$XDG_DATA_HOME" "$HOME/.dotfiles/.home/xdg_data_dir"
-
-		for f in "$HOME/.dotfiles/.home"/*; do
-			if [ -L "$f" ] && [ ! -e "$f" ]; then
-				unlink "$f"
-			fi
-		done; unset -v f
-	)
-
-	# Last since they're dependent on the previous symlinking.
-	must.dir "$HOME/.dotfiles/.home/Documents/AppImages"
 
 	# Remove distribution-specific dotfiles.
 	mkdir -p ~/.bootstrap/distro-dotfiles
@@ -195,121 +184,40 @@ main() {
 		printf '%s\n' "$token" > ~/.dotfiles/.data/github_token
 	fi
 
-	# SSH
+	# Check permissions for SSH files
 	{
 		if [ ! -d ~/.ssh ]; then
-			failure "ssh: Expected to find an ~/.ssh directory"
+			core.print_die "ssh: Expected to find an ~/.ssh directory"
 		fi
-		must.strict_directory_permissions 'ssh' ~/.ssh/
-		must.strict_file_permissions 'ssh' ~/.ssh/*
+		must.strict_permissions 'ssh' ~/.ssh/ ~/.ssh/*
 
 		if [ -f ~/.ssh/github ]; then
-			success "Has GitHub private SSH key"
+			core.print_info "ssh: Has key \"~/.ssh/github\""
 		else
-			failure "ssh: Expected the file \"~/.ssh/github\" to exist"
-			core.print_die 'Exiting...'
+			core.print_die "ssh: Does not have key \"~/.ssh/github\""
 		fi
 	}
 
-	# GnuPG
+	# Check permissions for GnuPG files
 	{
 		if [ ! -d ~/.gnupg ]; then
-			failure "gpg: Expected to find an ~/.gnupg directory"
+			core.print_die "gpg: Expected to find an ~/.gnupg directory"
 		fi
-		must.strict_directory_permissions 'gpg' ~/.gnupg/
-		must.strict_file_permissions 'gpg' ~/.gnupg/*
+		must.strict_permissions 'gpg' ~/.gnupg/ ~/.gnupg/*
 
-		if ! gpg --list-public-keys | grep --quiet 'edwin@kofler.dev'; then
-			failure "gpg: Expected a gpg key with email \"edwin@kofler.dev\" to exist"
-			core.print_die 'Exiting...'
-		fi
 		if gpg --list-keys 0x2FB93BF35E14E7C4 &>/dev/null; then
-			success "gpg: Has password-store gpg public key"
+			core.print_info "gpg: Has key \"Edwin Kofler (FOR PASSWORDS ONLY) <edwin@kofler.dev>\""
 		else
-			failure "gpg: Does not have password-store gpg public key"
-			core.print_die 'Exiting...'
+			core.print_info "gpg: Does not have key \"Edwin Kofler (FOR PASSWORDS ONLY) <edwin@kofler.dev>\""
 		fi
 		if gpg --list-keys 0x3851E5FD042C7C6C &>/dev/null; then
-			success "gpg: Has commit signing gpg public key"
+			core.print_info "gpg: Has key \"Edwin Kofler <edwin@kofler.dev>\""
 		else
-			failure "gpg: Does not have commit signing gpg public key"
-			core.print_die 'Exiting...'
+			core.print_die "gpg: Does not have key \"Edwin Kofler <edwin@kofler.dev>\""
 		fi
 	}
 
-	# Download and install NodeJS runtime.
-	local dir=(~/.dotfiles/.data/node-v*/)
-	dir=${dir%/}
-	if [[ "${dir}" == *\* ]]; then
-		dir=
-	fi
-	local old_nodejs_version="${dir[0]##*/}"
-	old_nodejs_version=${old_nodejs_version#node-v}
-	old_nodejs_version=${old_nodejs_version%%-*}
-	local nodejs_version='23.6.0' # TODO: Update and update docs
-	if [ -d "${dir[0]}" ] && [ "$old_nodejs_version" = "$nodejs_version" ]; then
-		local dir_nice="~${dir[0]#$HOME}"
-		core.print_info "Already installed NodeJS to $dir_nice"
-	else
-		pushd ~/.dotfiles/.data >/dev/null
-		local file="./node-v$nodejs_version.tar.xz"
-		if [ "$old_nodejs_version" != "$nodejs_version" ] && [ -n "$old_nodejs_version" ]; then
-			core.print_info "Removing outdated NodeJS v$old_nodejs_version"
-			rm -rf "${dir[0]}"
-		fi
-		core.print_info "Downloading NodeJS v$nodejs_version"
-		curl -K "$CURL_CONFIG" -o "$file" "https://nodejs.org/dist/v$nodejs_version/node-v$nodejs_version-linux-x64.tar.xz"
-		core.print_info "Extracting $file"
-		tar xf "$file"
-		rm -rf "$file"
-		popd >/dev/null
-	fi
-	if [ ! -f ~/.dotfiles/.data/node ]; then
-		ln -sf ~/.dotfiles/.data/node-v*/bin/node ~/.dotfiles/.data/node
-	fi
-
-	# Download and install "dev".
-	local dir="$HOME/.dev"
-	if [ ! -d "$dir" ]; then
-		util.clone "$dir" git@github.com:fox-incubating/dev
-	fi
-	if [ ! -f ~/.dotfiles/.data/bin/dev ]; then
-		cd ~/.dotfiles/.data/node*/
-		local bin_dir="$PWD"
-		bin_dir=${bin_dir#/home/}
-		bin_dir=${bin_dir#*/}
-		bin_dir="$HOME/$bin_dir/bin"
-		PATH="$bin_dir:$PATH"
-		cd ~/.dev/
-		npm i -g pnpm
-		pnpm install
-
-		cat <<-EOF > ~/.dotfiles/.data/bin/dev
-		#!/usr/bin/env sh
-		set -e
-		PATH="$bin_dir:\$PATH" ~/.dev/bin/dev.ts "\$@"
-		EOF
-		chmod +x ~/.dotfiles/.data/bin/dev
-	fi
-	mkdir -p "${XDG_DATA_HOME:-$HOME/.local/share}/systemd/user"
-	cat > "${XDG_DATA_HOME:-$HOME/.local/share}/systemd/user/dev.service" <<-'EOF'
-[Unit]
-Description=Dev
-ConditionPathIsDirectory=%h/.dev
-
-[Service]
-Type=simple
-WorkingDirectory=%h/.dev
-ExecStart=%h/.dotfiles/.data/node %h/.dev/bin/dev.js start-dev-server
-Environment=PORT=40008
-Restart=on-failure
-
-[Install]
-WantedBy=default.target
-EOF
-	systemctl --user daemon-reload
-	# systemctl --user enable --now dev.service # TODO
-
+	must.setup ~/scripts/setup/app/dev.sh
 	must.setup ~/scripts/setup/d.sh
 	must.setup ~/scripts/setup/mise.sh
 	must.setup ~/scripts/setup/lefthook.sh
@@ -352,44 +260,27 @@ EOF
 	check.command 'pre-commit'
 }
 
-success() {
-	printf '%s\n' "✅ $1"
-}
-
-failure() {
-	printf '%s\n' "⛔ $1"
-}
-
-# TODO: The whole output thing needs to be improved generally. Use alternative screen?
 check.command() {
 	local cmd="$1"
 
 	if command -v "$cmd" &>/dev/null; then
-		success "Is installed: $cmd"
+		core.print_info "Is installed: $cmd"
 	else
-		failure "Not installed: $cmd"
+		core.print_die "Not installed: $cmd"
 	fi
 }
 
-check.process() {
+check.process() { # TODO
 	local process="$1"
 
 	if pgrep "$process" &>/dev/null; then
-		success "$process is running"
+		core.print_info "$process is running"
 	else
 		if (($? == 1)); then
-			failure "$process not running"
+			core.print_die "$process not running"
 		else
-			failure "Syntax or memory error when calling pgrep"
+			core.print_die "Syntax or memory error when calling pgrep"
 		fi
-	fi
-}
-
-should_fix() {
-	if [ "$flag_fix" = true ] && util.confirm "Would you like to fix this?"; then
-		return 0
-	else
-		return 1
 	fi
 }
 
@@ -517,44 +408,7 @@ must.user_in_group() {
 	fi
 }
 
-must.strict_directory_permissions() {
-	local prefix="$1"
-	local dir="$2"
-
-	local result=
-	result=$(stat -L -c '%a %G %U' "$dir")
-
-	local perm=${result%% *}
-	if [ "$perm" != '700' ]; then
-		failure "$prefix: Directory \"$dir\" has incorrect permissions set"
-		printf '%s\n' "  -> Expected \"700\" got \"$perm\"" >&2
-		if should_fix; then
-			chmod 700 "$dir"
-		fi
-	fi
-
-	local owner=${result##* }
-	if [ "$owner" != "$USER" ]; then
-		failure "$prefix: Directory \"$dir\" has incorrect owner set"
-		printf '%s\n' "  -> Expected \"$USER\" got \"$group\"" >&2
-		if should_fix; then
-			chown "$USER" "$dir"
-		fi
-	fi
-
-	local group=${result#* }
-	group=${group% *}
-	if [ "$group" != "$USER" ]; then
-		failure "$prefix: Directory \"$dir\" has incorrect group set"
-		printf '%s\n' "  -> Expected \"$USER\" got \"$group\"" >&2
-		if should_fix; then
-			chown ":$USER" "$dir"
-		fi
-	fi
-
-}
-
-must.strict_file_permissions() {
+must.strict_permissions() {
 	local prefix="$1"
 	if ! shift; then
 		core.print_die 'Failed to shift'
@@ -565,17 +419,44 @@ must.strict_file_permissions() {
 		if [ -d "$file" ]; then
 			continue
 		fi
+
 		result=$(stat -L -c '%a %G %U' "$file")
-		if [ "$result" != "600 $USER $USER" ]; then
-			failure "$prefix: File \"$file\" has incorrect permission or owner or group set"
-			printf '%s\n' "  -> Expected \"600 $USER $USER\" got \"$result\"" >&2
+		local perms=${result%% *}
+		local group=${result#* }; group=${group% *}
+		local user=${result##* }
+		local file_pretty=~${file#$HOME}
+		if [ -d "$file" ]; then
+			if [ "$perms" != '700' ]; then
+				core.print_warn "Expected permissions of \"600\" instead of \"$perms\" on file \"$file_pretty\""
+				badfiles+=("$file")
+			fi
+		else
+			if [ "$perms" != '600' ]; then
+				core.print_warn "Expected permissions of \"600\" instead of \"$perms\" on file \"$file_pretty\""
+				badfiles+=("$file")
+			fi
+		fi
+		if [ "$user" != "$USER" ]; then
+			core.print_warn "Expected ownership of user \"$USER\" instead of \"$group\" on file \"$file_pretty\""
+			badfiles+=("$file")
+		fi
+		if [ "$group" != "$USER" ]; then
+			core.print_warn "Expected ownership of group \"$USER\" instead of \"$group\" on file \"$file_pretty\""
 			badfiles+=("$file")
 		fi
 	done
+
 	if ((${#badfiles} > 0)); then
-		if should_fix; then
-			chmod 600 "${badfiles[@]}"
-			chown "$USER:$USER" "${badfiles[@]}"
+		if util.ask_fix; then
+			for file in "${badfiles[@]}"; do
+				if [ -d "$file" ]; then
+					chmod 700 "$file"
+					chown "$USER:$USER" "$file"
+				else
+					chmod 600 "$file"
+					chown "$USER:$USER" "$file"
+				fi
+			done
 		fi
 	fi
 }
@@ -586,16 +467,16 @@ must.setup() {
 	# Use separate subshells in case PATH is modified.
 	(
 		source "$setup_file"
-		if ! command -v installed &>/dev/null; then
-			failure "Function not found: \"installed\""
+		if ! declare -f installed &>/dev/null; then
+			core.print_die "Expected file \"$setup_file\" to have function \"installed\""
 		fi
 
 		if installed; then
-			success "Program already installed: \"${setup_file##*/}\""
+			core.print_info "Already installed \"${setup_file##*/}\""
 		else
-			failure "Program not installed: \"${setup_file##*/}\""
-			if should_fix; then
-				helper.setup --no-confirm "$@"
+			core.print_warn "Not installed \"${setup_file##*/}\""
+			if util.ask_fix; then
+				helper.run_main "$@" # lint-ignore:scripts-must-have-source-guard
 			fi
 		fi
 	)
@@ -603,37 +484,48 @@ must.setup() {
 	(
 		source "$setup_file"
 		if ! installed; then
-			failure "Attempted to install \"${setup_file##*/}\", but failed (pass \"--prompt-fix\"?)"
-			exit 1
+			core.print_die "Attempted to install \"${setup_file##*/}\", but failed"
 		fi
 	)
 }
 
+install_required_dependencies() {
+	util.update_system
+	helper.setup --no-confirm --fn-prefix=dependencies 'Bootstrap' "$@"
+}
 dependencies.debian() {
-	sudo apt-get -y update && sudo apt-get -y upgrade
-	sudo apt-get -y install apt-transport-https build-essential
-	sudo apt-get -y install bash-completion curl rsync cmake ccache vim nano jq lvm2 # lint-ignore:curl-must-have-args
-	sudo apt-get -y install pkg-config libssl-dev # For starship
+	local packages=()
+	packages+=(apt-transport-https build-essential)
+	packages+=(bash-completion curl rsync cmake ccache vim nano jq lvm2) # lint-ignore:curl-must-have-args
+	packages+=(pkg-config libssl-dev) # For starship
+
+	sudo apt-get -y install "${packages[@]}"
 }
 dependencies.ubuntu() {
 	dependencies.debian "$@"
 }
 dependencies.fedora() {
-	sudo dnf -y update
-	sudo dnf -y install @development-tools
-	sudo dnf -y install bash-completion curl rsync cmake ccache vim nano jq lvm2 # lint-ignore
-	sudo dnf -y install pkg-config openssl-devel # For starship
-	sudo dnf -y install dnf-plugins-core # For at least Brave
+	local packages=()
+	packages+=(@development-tools)
+	packages+=(bash-completion curl rsync cmake ccache vim nano jq lvm2) # lint-ignore:curl-must-have-args
+	packages+=(pkg-config openssl-devel) # For starship
+	packages+=(dnf-plugins-core) # For at least Brave
+
+	sudo dnf -y install "${packages[@]}"
 }
 dependencies.opensuse() {
-	sudo zypper -n update
+	local packages=()
+	packages+=(bash-completion curl rsync cmake ccache vim nano jq lvm2) # lint-ignore:curl-must-have-args
+	packages+=(pkg-config openssl-devel) # For starship
+
 	sudo zypper -n install -t pattern devel_basis
-	sudo zypper -n install bash-completion curl rsync cmake ccache vim nano jq lvm2 # lint-ignore
-	sudo zypper -n install pkg-config openssl-devel # For starship
+	sudo zypper -n install "${packages[@]}"
 }
 dependencies.arch() {
-	sudo pacman -Syyu --noconfirm
-	sudo pacman -Syu --noconfirm base-devl lvm2 openssl yay
+	local packages=()
+	packages+=(base-devl lvm2 openssl yay)
+
+	sudo pacman -Syu --noconfirm "${packages[@]}"
 }
 
 util.if_file_sourced || helper.run_main "$@"

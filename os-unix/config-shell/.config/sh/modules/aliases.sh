@@ -113,9 +113,9 @@ alias slue='systemctl --user edit --full'
 
 
 # journalctl.
-alias jctl='journalctl'
-alias ju='journalctl --user -b -eu'
-alias js='journalctl --system -b -eu'
+alias jl='journalctl'
+alias jlu='journalctl --user'
+alias jls='journalctl --system'
 
 
 # Other "control" commands.
@@ -123,7 +123,6 @@ alias bctl='busctl'
 alias btctl='bluetoothctl'
 alias cdctl='coredumpctl'
 alias hctl='hostnamectl'
-alias hnctl='hostnamectl'
 alias lcctl='localectl'
 alias lgctl='loginctl'
 alias lctl='loginctl'

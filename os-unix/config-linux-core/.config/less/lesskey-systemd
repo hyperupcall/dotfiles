@@ -1,0 +1,6 @@
+#command
+
+#line-edit
+
+#env
+LESS = -FR

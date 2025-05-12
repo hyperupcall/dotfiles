@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g name='Firefox'
+
 main() {
-	helper.setup 'Firefox' "$@"
+	helper.setup "$@"
 }
 
 install.debian() {
@@ -22,7 +24,7 @@ install.ubuntu() {
 		'/etc/apt/sources.list.d/mozilla.list'
 
 	printf '%s\n' 'Package: *
-Pin: origin packages.mozilla.orgw
+Pin: origin packages.mozilla.org
 Pin-Priority: 1000' | sudo tee /etc/apt/preferences.d/mozilla >/dev/null
 	sudo apt-get -y update
 	sudo apt-get install -y firefox
