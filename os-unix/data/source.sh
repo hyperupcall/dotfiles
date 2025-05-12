@@ -16,8 +16,8 @@
 	# Source libraries.
 	source ~/.dotfiles/os-unix/data/xdg.sh
 	for _f in \
-		~/.dotfiles/os-unix/vendor/bash-core/pkg/**/*.sh \
-		~/.dotfiles/os-unix/vendor/bash-term/pkg/**/*.sh; \
+		~/.dotfiles/vendor/bash-core/pkg/**/*.sh \
+		~/.dotfiles/vendor/bash-term/pkg/**/*.sh; \
 	do
 		source "$_f"
 	done

@@ -1,6 +1,6 @@
 #!/usr/bin/env bats
 
-source ../../../../vendor/bats-all/load.bash
+source ../../../../../vendor/bats-all/load.bash
 source ./line-editing.sh
 set -o vi
 

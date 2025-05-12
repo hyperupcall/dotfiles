@@ -1,9 +1,9 @@
-[submodule "os-unix/vendor/bash-core"]
-	path = os-unix/vendor/bash-core
-	url = https://github.com/bash-bastion/bash-core
-[submodule "os-unix/vendor/bash-term"]
-	path = os-unix/vendor/bash-term
-	url = https://github.com/bash-bastion/bash-term
-[submodule "os-unix/vendor/bats-all"]
-	path = os-unix/vendor/bats-all
-	url = https://github.com/bash-bastion/bats-all
+[submodule "vendor/bash-core"]
+	path = vendor/bash-core
+	url = git@github.com:bash-bastion/bash-core
+[submodule "vendor/bash-term"]
+	path = vendor/bash-term
+	url = git@github.com:bash-bastion/bash-term
+[submodule "vendor/bats-all"]
+	path = vendor/bats-all
+	url = git@github.com:bash-bastion/bats-all
