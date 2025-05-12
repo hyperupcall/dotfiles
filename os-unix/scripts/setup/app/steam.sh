@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='Steam'
+
 main() {
-	helper.setup 'Steam' "$@"
+	helper.setup "$@"
 }
 
 install.debian() {

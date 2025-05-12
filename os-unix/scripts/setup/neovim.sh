@@ -2,12 +2,13 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='Neovim'
+
 main() {
-	helper.setup 'Neovim' "$@"
+	helper.setup "$@"
 }
 
 install.any() {
-	helper.setup --no-confirm --fn-prefix=dependencies.debian
 	dependencies.debian() {
 		sudo apt-get -y install gettext
 	}
@@ -23,6 +24,8 @@ install.any() {
 	dependencies.arch() {
 		sudo pacman -Syu --noconfirm gettext
 	}
+
+	helper.setup --no-confirm --fn-prefix=dependencies.debian
 
 	local dir="$HOME/.dotfiles/.data/repos/neovim"
 	util.clone "$dir" 'https://github.com/neovim/neovim'

@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='autoenv'
+
 main() {
-	helper.setup 'autoenv' "$@"
+	helper.setup "$@"
 }
 
 install.any() {

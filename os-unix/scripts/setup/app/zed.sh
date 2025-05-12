@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='Zed'
+
 main() {
-	helper.setup 'Zed' "$@"
+	helper.setup "$@"
 }
 
 install.any() {

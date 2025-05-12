@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='PowerShell Core'
+
 main() {
-	helper.setup 'PowerShell Core' "$@"
+	helper.setup "$@"
 }
 
 install.debian() {

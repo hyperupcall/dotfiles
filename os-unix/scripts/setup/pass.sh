@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='pass'
+
 main() {
-	helper.setup 'pass' "$@"
+	helper.setup "$@"
 
 	if util.confirm 'Clone password repository?'; then
 		local dir="${PASSWORD_STORE_DIR:-$HOME/.password-store}"

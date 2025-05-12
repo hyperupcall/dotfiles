@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='Lutris'
+
 main() {
-	helper.setup 'Lutris' "$@"
+	helper.setup "$@"
 }
 
 install.ubuntu() {

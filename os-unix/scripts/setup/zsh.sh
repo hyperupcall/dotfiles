@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='zsh'
+
 main() {
-	helper.setup 'zsh' "$@"
+	helper.setup "$@"
 }
 
 install.debian() {

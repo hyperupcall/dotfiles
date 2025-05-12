@@ -2,20 +2,6 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
-# TODO: woof, nerdfonts, notify-send
-# TODO: git smuge etc filters are in use
-# if command -v autoenv_init >/dev/null 2>&1; then
-# 		autoenv_init || :
-# 	else
-# 		_util_log_warn "cd: Function is not defined: autoenv_init"
-# 	fi
-
-# 	if command -v __woof_cd_hook >/dev/null 2>&1; then
-# 		__woof_cd_hook || :
-# 	else
-# 		_util_log_warn "cd: Function is not defined: __woof_cd_hook"
-# 	fi
-
 main() {
 	for arg; do case $arg in
 	*)
@@ -226,7 +212,7 @@ main() {
 			mise trust ~/.dotfiles/.mise.toml
 		fi
 		mise install cmake@latest
-		mise use -g cmake@latest
+		mise use -g cmake@latest # TODO: not latest, move somewhere else
 		cd ~/.dotfiles
 		if [ ! -f ./.git/info/lefthook.checksum ]; then
 			lefthook install
@@ -250,38 +236,25 @@ main() {
 	must.setup ~/scripts/setup/my-tools.sh
 	~/.dotfiles/os-unix/scripts/lib/util-generate-aliases.sh
 
-	printf '%s\n' "BINARIES:"
-	check.command clang-format
-	check.command clang-tidy
-	check.command bake
-	check.command basalt
-	check.command ksh
-	check.command 'dufs'
-	check.command 'pre-commit'
-}
+	~/scripts/setup/llvm.sh
+	~/scripts/setup/zsh.sh
+	~/scripts/setup/ksh.sh
+	~/scripts/setup/basalt.sh
 
-check.command() {
-	local cmd="$1"
+	# TODO: bake, pre-commit
+	# TODO: woof, nerdfonts, notify-send
+	# TODO: git smuge etc filters are in use
+	# if command -v autoenv_init >/dev/null 2>&1; then
+	# 		autoenv_init || :
+	# 	else
+	# 		_util_log_warn "cd: Function is not defined: autoenv_init"
+	# 	fi
 
-	if command -v "$cmd" &>/dev/null; then
-		core.print_info "Is installed: $cmd"
-	else
-		core.print_die "Not installed: $cmd"
-	fi
-}
-
-check.process() { # TODO
-	local process="$1"
-
-	if pgrep "$process" &>/dev/null; then
-		core.print_info "$process is running"
-	else
-		if (($? == 1)); then
-			core.print_die "$process not running"
-		else
-			core.print_die "Syntax or memory error when calling pgrep"
-		fi
-	fi
+	# 	if command -v __woof_cd_hook >/dev/null 2>&1; then
+	# 		__woof_cd_hook || :
+	# 	else
+	# 		_util_log_warn "cd: Function is not defined: __woof_cd_hook"
+	# 	fi
 }
 
 must.rm() {
@@ -490,42 +463,43 @@ must.setup() {
 }
 
 install_required_dependencies() {
+	dependencies.debian() {
+		local packages=()
+		packages+=(apt-transport-https build-essential)
+		packages+=(bash-completion curl rsync cmake ccache vim nano jq lvm2) # lint-ignore:curl-must-have-args
+		packages+=(pkg-config libssl-dev) # For starship
+
+		sudo apt-get -y install "${packages[@]}"
+	}
+	dependencies.ubuntu() {
+		dependencies.debian "$@"
+	}
+	dependencies.fedora() {
+		local packages=()
+		packages+=(@development-tools)
+		packages+=(bash-completion curl rsync cmake ccache vim nano jq lvm2) # lint-ignore:curl-must-have-args
+		packages+=(pkg-config openssl-devel) # For starship
+		packages+=(dnf-plugins-core) # For at least Brave
+
+		sudo dnf -y install "${packages[@]}"
+	}
+	dependencies.opensuse() {
+		local packages=()
+		packages+=(bash-completion curl rsync cmake ccache vim nano jq lvm2) # lint-ignore:curl-must-have-args
+		packages+=(pkg-config openssl-devel) # For starship
+
+		sudo zypper -n install -t pattern devel_basis
+		sudo zypper -n install "${packages[@]}"
+	}
+	dependencies.arch() {
+		local packages=()
+		packages+=(base-devl lvm2 openssl yay)
+
+		sudo pacman -Syu --noconfirm "${packages[@]}"
+	}
+
 	util.update_system
 	helper.setup --no-confirm --fn-prefix=dependencies 'Bootstrap' "$@"
-}
-dependencies.debian() {
-	local packages=()
-	packages+=(apt-transport-https build-essential)
-	packages+=(bash-completion curl rsync cmake ccache vim nano jq lvm2) # lint-ignore:curl-must-have-args
-	packages+=(pkg-config libssl-dev) # For starship
-
-	sudo apt-get -y install "${packages[@]}"
-}
-dependencies.ubuntu() {
-	dependencies.debian "$@"
-}
-dependencies.fedora() {
-	local packages=()
-	packages+=(@development-tools)
-	packages+=(bash-completion curl rsync cmake ccache vim nano jq lvm2) # lint-ignore:curl-must-have-args
-	packages+=(pkg-config openssl-devel) # For starship
-	packages+=(dnf-plugins-core) # For at least Brave
-
-	sudo dnf -y install "${packages[@]}"
-}
-dependencies.opensuse() {
-	local packages=()
-	packages+=(bash-completion curl rsync cmake ccache vim nano jq lvm2) # lint-ignore:curl-must-have-args
-	packages+=(pkg-config openssl-devel) # For starship
-
-	sudo zypper -n install -t pattern devel_basis
-	sudo zypper -n install "${packages[@]}"
-}
-dependencies.arch() {
-	local packages=()
-	packages+=(base-devl lvm2 openssl yay)
-
-	sudo pacman -Syu --noconfirm "${packages[@]}"
 }
 
 util.if_file_sourced || helper.run_main "$@"

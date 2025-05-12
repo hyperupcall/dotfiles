@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='less'
+
 main() {
-	helper.setup 'less' "$@"
+	helper.setup "$@"
 }
 
 install.debian() {

@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='LaTeX (Tex Live)'
+
 main() {
-	helper.setup 'LaTeX (Tex Live)' "$@"
+	helper.setup "$@"
 	cargo install tex-fmt
 }
 

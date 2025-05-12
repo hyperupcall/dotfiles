@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='Maestral'
+
 main() {
-	helper.setup 'Maestral' "$@"
+	helper.setup "$@"
 }
 
 install.debian() {

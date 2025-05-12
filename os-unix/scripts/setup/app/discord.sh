@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='Discord'
+
 main() {
-	helper.setup 'Discord' "$@"
+	helper.setup "$@"
 }
 
 install.debian() {

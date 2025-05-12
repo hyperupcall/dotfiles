@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='Dropbox'
+
 main() {
-	helper.setup 'Dropbox' "$@"
+	helper.setup "$@"
 }
 
 install.any() {

@@ -2,12 +2,13 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='d'
+
 main() {
-	helper.setup 'd' "$@"
+	helper.setup "$@"
 }
 
 install.any() {
-	helper.setup --fn-prefix=dependencies "$@"
 	dependencies.debian() {
 		sudo apt-get -y install bear
 	}
@@ -23,6 +24,8 @@ install.any() {
 	dependencies.arch() {
 		yay -Syu --noconfirm bear
 	}
+
+	helper.setup --fn-prefix=dependencies "$@"
 
 	local dir="$HOME/.dotfiles/.data/repos/d"
 	util.clone "$dir" git@github.com:fox-incubating/d

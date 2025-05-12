@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='Brave'
+
 main() {
-	helper.setup 'Brave' "$@"
+	helper.setup "$@"
 }
 
 install.debian() {

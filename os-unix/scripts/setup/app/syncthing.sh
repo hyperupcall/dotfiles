@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='Synthing'
+
 main() {
-	helper.setup 'Synthing' "$@"
+	helper.setup "$@"
 }
 
 install.debian() {

@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='Firefox Extensions'
+
 main() {
-	helper.setup 'Firefox Extensions' "$@"
+	helper.setup "$@"
 }
 
 install.any() {

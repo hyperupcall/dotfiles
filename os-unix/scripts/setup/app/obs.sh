@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='OBS'
+
 main() {
-	helper.setup 'OBS' "$@"
+	helper.setup "$@"
 }
 
 install.any() {

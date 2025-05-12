@@ -2,9 +2,13 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
-main() {
-	# helper.setup 'AppImageLauncher' "$@"
+declare -g g_name='AppImageLauncher'
 
+main() {
+	helper.setup "$@"
+}
+
+install.any() {
 	sudo apt-get install -y make cmake libglib2.0-dev libcairo2-dev librsvg2-dev libfuse-dev libarchive-dev libxpm-dev libcurl4-openssl-dev libboost-all-dev qtbase5-dev qtdeclarative5-dev qttools5-dev-tools patchelf libc6-dev libc6-dev gcc-multilib g++-multilib
 
 	local dir="$HOME/.dotfiles/.data/repos/AppImageLauncher"
@@ -23,6 +27,7 @@ main() {
 	bash
 }
 
+# TODO: what to do with these?
 install.arch() {
 	yay -S appimagelauncher
 }

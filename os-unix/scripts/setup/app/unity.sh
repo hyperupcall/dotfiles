@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='Unity Hub'
+
 main() {
-	helper.setup 'Unity Hub' "$@"
+	helper.setup "$@"
 }
 
 install.debian() {

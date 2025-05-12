@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='GHC'
+
 main() {
-	helper.setup 'GHC' "$@"
+	helper.setup "$@"
 }
 
 install.any() {

@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='Anki'
+
 main() {
-	helper.setup 'Anki' "$@"
+	helper.setup "$@"
 }
 
 install.any() {

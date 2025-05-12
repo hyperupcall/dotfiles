@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='Mise'
+
 main() {
-	helper.setup 'Mise' "$@"
+	helper.setup "$@"
 }
 
 install.any() {

@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='just'
+
 main() {
-	helper.setup 'just' "$@"
+	helper.setup "$@"
 }
 
 install.any() {

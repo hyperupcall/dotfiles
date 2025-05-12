@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='Sublime Text'
+
 main() {
-	helper.setup 'Sublime Text' "$@"
+	helper.setup "$@"
 }
 
 install.debian() {

@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='Caddy'
+
 main() {
-	helper.setup 'Caddy' "$@"
+	helper.setup "$@"
 }
 
 install.debian() {

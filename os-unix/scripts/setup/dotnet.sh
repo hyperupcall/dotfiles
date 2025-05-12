@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='Dotnet'
+
 main() {
-	helper.setup 'Dotnet' "$@"
+	helper.setup "$@"
 }
 
 install.ubuntu() {

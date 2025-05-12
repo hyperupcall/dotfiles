@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='VirtualBox'
+
 main() {
-	helper.setup 'VirtualBox' "$@"
+	helper.setup "$@"
 }
 
 install.debian() {

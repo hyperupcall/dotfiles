@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='Poetry'
+
 main() {
-	helper.setup 'Poetry' "$@"
+	helper.setup "$@"
 }
 
 install.any() {

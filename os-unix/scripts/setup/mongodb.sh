@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='MongoDB'
+
 main() {
-	helper.setup 'MongoDB' "$@"
+	helper.setup "$@"
 }
 
 install.debian() {

@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='Python Tools'
+
 main() {
-	helper.setup 'Python Tools' "$@"
+	helper.setup "$@"
 }
 
 install.any() {

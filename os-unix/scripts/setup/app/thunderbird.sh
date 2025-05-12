@@ -2,8 +2,18 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
-# TODO: flatpak
+declare -g g_name='Thunderbird'
+
 main() {
+	helper.setup "$@"
+}
+
+install.ubuntu() {
+	# On Ubuntu, by default, the "thunderbird" package uses snap.
+	flatpak install -y org.mozilla.Thunderbird
+}
+
+install.any() {
 	cd ~/.dotfiles/.data
 	if [ ! -d './thunderbird' ]; then
 		core.print_info 'Downloading Thunderbird...'
@@ -52,11 +62,10 @@ Name=Contacts
 Exec=thunderbird -addressbook
 OnlyShowIn=Messaging Menu;Unity;
 EOF
-
 }
 
 installed() {
-	command -v thunderbird &>/dev/null
+	command -v thunderbird &>/dev/null || { command -v flatpak &>/dev/null && flatpak info org.mozilla.Thunderbird &>/dev/null; }
 }
 
 util.if_file_sourced || helper.run_main "$@"

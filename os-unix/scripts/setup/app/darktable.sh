@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='darktable'
+
 main() {
-	helper.setup 'darktable' "$@"
+	helper.setup "$@"
 }
 
 install.any() {

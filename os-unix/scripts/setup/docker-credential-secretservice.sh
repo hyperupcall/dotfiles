@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='docker secretservice credential store version v0.6.4'
+
 main() {
-	helper.setup 'docker secretservice credential store version v0.6.4' "$@"
+	helper.setup "$@"
 }
 
 install.any() {

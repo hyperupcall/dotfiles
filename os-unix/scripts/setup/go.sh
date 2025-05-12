@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='Go'
+
 main() {
-	helper.setup 'Go' "$@"
+	helper.setup "$@"
 }
 
 install.any() {

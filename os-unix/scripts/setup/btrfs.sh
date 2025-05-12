@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='btrfs'
+
 main() {
-	helper.setup 'btrfs' "$@"
+	helper.setup "$@"
 }
 
 install.debian() {

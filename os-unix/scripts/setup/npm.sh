@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='npm dependencies'
+
 main() {
-	helper.setup 'npm dependencies' "$@"
+	helper.setup "$@"
 }
 
 install.any() {

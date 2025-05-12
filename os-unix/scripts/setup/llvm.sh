@@ -2,26 +2,22 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='LLVM'
+
 main() {
-	helper.setup 'LLVM' "$@"
+	helper.setup "$@"
 }
 
 install.debian() {
-	local dist='jammy'
-	local version='17'
-	local gpg_file="/etc/apt/keyrings/apt.llvm.org.asc"
+	sudo apt-get install -y clang clang-format clang-tidy
+}
 
-	pkg.add_apt_key \
-		'https://apt.llvm.org/llvm-snapshot.gpg.key' \
-		"$gpg_file"
+install.ubuntu() {
+	install.debuan "$@"
+}
 
-	pkg.add_apt_repository \
-	"deb [signed-by=$gpg_file] http://apt.llvm.org/$dist/ llvm-toolchain-$dist-$version main
-deb-src [signed-by=$gpg_file] http://apt.llvm.org/$dist/ llvm-toolchain-$dist-$version main" \
-		'/etc/apt/sources.list.d/llvm.list'
-
-	sudo apt-get -y update
-	sudo apt-get -y install clang-17
+installed() {
+	command -v clang &>/dev/null && command -v clang-format &>/dev/null && command -v clang-tidy &>/dev/null
 }
 
 util.if_file_sourced || helper.run_main "$@"

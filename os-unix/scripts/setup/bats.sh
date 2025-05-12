@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='bats'
+
 main() {
-	helper.setup 'bats' "$@"
+	helper.setup "$@"
 }
 
 install.any() {

@@ -2,14 +2,14 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
-declare -g g_name='blender'
+declare -g g_name='ksh'
 
 main() {
 	helper.setup "$@"
 }
 
 install.debian() {
-	sudo apt-get install -y blender
+	sudo apt-get install -y ksh
 }
 
 install.ubuntu() {
@@ -17,19 +17,24 @@ install.ubuntu() {
 }
 
 install.fedora() {
-	sudo dnf install -y blender
+	sudo dnf install -y ksh
 }
 
 install.opensuse() {
-	sudo zypper -n install blender
+	sudo zypper -n install ksh
 }
 
 install.arch() {
-	sudo pacman -Syu --noconfirm blender
+	yay -Syu --noconfirm ksh
 }
 
 installed() {
-	command -v blender &>/dev/null
+	command -v ksh &>/dev/null
+}
+
+configure() {
+	# TODO: Edit dotfiles.c, and d compile & reconfigure
+	:
 }
 
 util.if_file_sourced || helper.run_main "$@"

@@ -2,7 +2,7 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
-declare -g name='Firefox'
+declare -g g_name='Firefox'
 
 main() {
 	helper.setup "$@"
@@ -13,6 +13,7 @@ install.debian() {
 }
 
 install.ubuntu() {
+	# On Ubuntu, by default, the "thunderbird" package uses snap.
 	local gpg_file='/etc/apt/keyrings/mozilla.asc'
 
 	pkg.add_apt_key \

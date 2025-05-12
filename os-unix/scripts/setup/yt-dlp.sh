@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='yt-dlp'
+
 main() {
-	helper.setup 'yt-dlp' "$@"
+	helper.setup "$@"
 }
 
 install.any() {

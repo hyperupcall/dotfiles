@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='gh'
+
 main() {
-	helper.setup 'gh' "$@"
+	helper.setup "$@"
 }
 
 install.any() {

@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='fish'
+
 main() {
-	helper.setup 'fish' "$@"
+	helper.setup "$@"
 }
 
 install.debian() {

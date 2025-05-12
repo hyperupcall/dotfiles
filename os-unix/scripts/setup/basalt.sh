@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='Basalt'
+
 main() {
-	helper.setup 'Basalt' "$@"
+	helper.setup "$@"
 }
 
 install.any() {

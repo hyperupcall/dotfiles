@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='arch-chroot'
+
 main() {
-	helper.setup 'arch-chroot' "$@"
+	helper.setup "$@"
 }
 
 install.any() {

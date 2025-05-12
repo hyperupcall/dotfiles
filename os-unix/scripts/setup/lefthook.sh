@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='lefthook'
+
 main() {
-	helper.setup 'lefthook' "$@"
+	helper.setup "$@"
 }
 
 install.any() {

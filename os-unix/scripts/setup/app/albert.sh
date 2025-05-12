@@ -3,7 +3,6 @@
 source ~/.dotfiles/os-unix/data/source.sh
 
 main() {
-	helper.setup --fn-prefix=dependencies 'Albert' "$@"
 	dependencies.debian() {
 		sudo apt-get install -y libarchive-dev autoconf
 		sudo apt-get install -y intltool libtool libgmp-dev libmpfr-dev libcurl4-openssl-dev libicu-dev libxml2-dev # pybind11
@@ -22,6 +21,8 @@ main() {
 		sudo pacman -Syu --noconfirm intltool # pybind11
 		sudo pacman -Syu --noconfirm qt6-base qt6-tools qt6-5compat qt6-scxml # albert
 	}
+
+	helper.setup --fn-prefix=dependencies 'Albert' "$@"
 	install_albert
 }
 

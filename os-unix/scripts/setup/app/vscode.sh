@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='VSCode and VSCode Insiders'
+
 main() {
-	helper.setup 'VSCode and VSCode Insiders' "$@"
+	helper.setup "$@"
 }
 
 install.arch() {

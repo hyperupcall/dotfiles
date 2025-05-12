@@ -56,13 +56,12 @@ helper.run_main() {
 	rm -rf "$temp_dir"
 }
 
-# TODO: This does not nest (ex. in d.sh) when function are nested
 helper.setup() {
 	local flag_force_install=no
 	local flag_no_confirm=no
 	local flag_configure_only=no
 	local flag_fn_prefix=install
-	local program_name=
+	local program_name=$g_name
 
 	local arg=
 	for arg; do
@@ -127,7 +126,7 @@ helper.setup() {
 					fi
 					break
 				else
-					core.print_warn "Application has already been set up. Pass \"--force-install\" to run setup again"
+					core.print_warn "Program \"$program_name\" has already been set up. Pass \"--force-install\" to run setup again"
 				fi
 			fi
 		done; unset -v id
@@ -252,32 +251,33 @@ util.get_latest_github_tag() {
 }
 
 util.update_system() {
-	helper.setup --no-confirm --fn-prefix=update_system
-}
-update_system.debian() {
-	sudo apt-get -y update
-	sudo apt-get -y upgrade
-}
-update_system.ubuntu() {
-	update_system.debian "$@"
-}
-update_system.neon() {
-	sudo apt-get -y update
-	if sudo pkcon -y update; then :; else
-		# Exit code for "Nothing useful was done".
-		if (($? != 5)); then
-			core.print_die "Failed to run 'pkgcon'"
+	update_system.debian() {
+		sudo apt-get -y update
+		sudo apt-get -y upgrade
+	}
+	update_system.ubuntu() {
+		update_system.debian "$@"
+	}
+	update_system.neon() {
+		sudo apt-get -y update
+		if sudo pkcon -y update; then :; else
+			# Exit code for "Nothing useful was done".
+			if (($? != 5)); then
+				core.print_die "Failed to run 'pkgcon'"
+			fi
 		fi
-	fi
-}
-update_system.fedora() {
-	sudo dnf -y update
-}
-update_system.opensuse() {
-	sudo zypper -n update
-}
-update_system.arch() {
-	sudo pacman -Syyu --noconfirm
+	}
+	update_system.fedora() {
+		sudo dnf -y update
+	}
+	update_system.opensuse() {
+		sudo zypper -n update
+	}
+	update_system.arch() {
+		sudo pacman -Syyu --noconfirm
+	}
+
+	helper.setup --no-confirm --fn-prefix=update_system
 }
 
 util.install_package() {

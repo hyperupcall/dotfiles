@@ -2,8 +2,10 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
+declare -g g_name='ZFS'
+
 main() {
-	helper.setup 'ZFS' "$@"
+	helper.setup "$@"
 
 	if ! sudo zpool status vault &>/dev/null; then
 		sudo zpool import -f vault
