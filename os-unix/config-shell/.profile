@@ -24,6 +24,7 @@ fi
 source "$XDG_CONFIG_HOME/sh/util.sh"
 _util_path_prepend "$HOME/.dotfiles/.data/bin"
 _util_path_prepend "$HOME/.local/bin"
+_util_path_prepend "$XDG_STATE_HOME/pipx/bin"
 
 # Source other shell configuration files.
 for f in "$XDG_CONFIG_HOME/sh/modules"/*.sh; do

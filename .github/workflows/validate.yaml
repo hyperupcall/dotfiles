@@ -2,7 +2,7 @@ name: 'Validate'
 
 jobs:
   validate:
-  runs-on: 'ubuntu-latest'
-  steps:
-    - uses: 'actions/checkout@v4'
-    - run: './bake test'
+    runs-on: 'ubuntu-latest'
+    steps:
+      - uses: 'actions/checkout@v4'
+      - run: './bake test'

@@ -135,8 +135,8 @@ alias tdctl='timedatectl'
 # Shell-related.
 alias sop='. ~/.profile'
 alias sob='. ~/.bashrc'
-alias edp='"$EDITOR" "$XDG_CONFIG_HOME/sh/profile.sh"'
-alias edb='"$EDITOR" "$XDG_CONFIG_HOME/bash/bashrc.sh"'
+alias edp='"$EDITOR" ~/.profile'
+alias edb='"$EDITOR" ~/.bashrc'
 
 
 # apt.
