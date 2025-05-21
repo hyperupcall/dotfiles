@@ -36,7 +36,7 @@ export FCEDIT="$EDITOR"
 unset -v FIGNORE
 unset -v GLOBIGNORE
 export HISTCONTROL='ignorespace:ignoredups'
-HISTFILE="$XDG_STATE_HOME/history/bash_history" # FIXME: bug with exporting this and starship
+HISTFILE="$XDG_STATE_HOME/history/bash_history" # TODO: bug with exporting this and starship
 export HISTSIZE='-1'
 export HISTFILESIZE='-1'
 export HISTIGNORE='ls:dir|vdir|[bf]g:pwd:clear*:exit*:mkcd*:mkt*'
@@ -115,8 +115,8 @@ if is_16million_colors; then
 		PS1="[\u@\h \w]\$ "
 		# shellcheck disable=SC3046
 		if ! eval "$(
-			if ! default launch shell-prompt-bash; then
-				printf '%s\n' 'false' # Propagate error to the "if ! eval ..."
+			if ! starship init bash; then # TODO: default
+				printf '%s\n' 'false' # Propagate error to the "if ! eval ...".
 			fi
 		)"; then
 			PS1="[\[\e[0;31m\](PS1 Error)\[\e[0m\] \u@\h \w]\$ "

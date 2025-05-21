@@ -1,11 +1,15 @@
 {
 	"type": "commonjs",
-	"prettier": "@hyperupcall/prettier-config",
+	"prettier": "@hyperupcall/scripts-nodejs/config-prettier.js",
 	"devDependencies": {
-		"@hyperupcall/markdownlint-config": "^0.3.2",
-		"@hyperupcall/prettier-config": "^0.9.1",
-		"markdownlint": "^0.38.0",
-		"prettier": "^3.5.3",
-		"prettier-plugin-pkg": "^0.19.1"
-	}
+		"@hyperupcall/scripts-nodejs": "0.4.0"
+	},
+	"markdownlint-cli2": {
+		"extends": "./node_modules/@hyperupcall/markdownlint-config/.markdownlint.json"
+	},
+	"scripts": {
+		"format": "hyperupcall-scripts-nodejs format",
+		"lint": "hyperupcall-scripts-nodejs lint"
+	},
+	"private": true
 }

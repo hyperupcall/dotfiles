@@ -2,14 +2,14 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
-declare -g g_name='ksh'
+declare -g g_name='colordiff'
 
 main() {
 	helper.setup "$@"
 }
 
 install.debian() {
-	sudo apt-get install -y ksh
+	sudo apt-get install -y colordiff
 }
 
 install.ubuntu() {
@@ -17,19 +17,19 @@ install.ubuntu() {
 }
 
 install.fedora() {
-	sudo dnf install -y ksh
+	sudo dnf install -y colordiff
 }
 
 install.opensuse() {
-	sudo zypper -n install ksh
+	sudo zypper -n install colordiff
 }
 
 install.arch() {
-	yay -Syu --noconfirm ksh
+	yay -Syu --noconfirm colordiff
 }
 
 installed() {
-	command -v ksh &>/dev/null
+	command -v colordiff &>/dev/null
 }
 
 util.if_file_sourced || helper.run_main "$@"

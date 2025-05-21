@@ -1,0 +1,3 @@
+[rules]
+'version-control/project-name/local-remote-name-mismatch' = 'off'
+'remote-url/remote-metadata/default-branch-main' = 'off'

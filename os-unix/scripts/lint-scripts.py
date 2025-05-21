@@ -21,8 +21,6 @@ from typing import Callable
 # Check to ensure all regular expressions are working as intended:
 # $ lint-scripts.py --internal-test-regex
 
-# TODO: there needs to be a main/install."" for every single setup/* script
-
 Rule = dict[str, any]
 
 class c:

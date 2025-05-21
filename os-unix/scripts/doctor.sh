@@ -219,6 +219,7 @@ main() {
 		fi
 	)
 	must.setup ~/scripts/setup/git.sh # TODO: 'spaceman-diff'
+	must.setup ~/scripts/setup/git-colordiff.sh
 	must.setup ~/scripts/setup/neovim.sh
 	must.setup ~/scripts/setup/pass.sh
 

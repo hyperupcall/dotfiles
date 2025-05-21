@@ -1,4 +1,5 @@
 ---
+assert_lefthook_installed: true
 pre-commit:
   commands:
     build-and-test:
