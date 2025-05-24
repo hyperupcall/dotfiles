@@ -32,4 +32,8 @@ install.any() {
 	sudo usermod -aG docker "$USER"
 }
 
+installed() {
+	command -v docker &>/dev/null
+}
+
 util.if_file_sourced || helper.run_main "$@"

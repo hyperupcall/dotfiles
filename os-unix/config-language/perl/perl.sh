@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+source ~/.dotfiles/os-unix/data/source.sh
+
+declare -g g_name='Perl'
+
+main() {
+	helper.setup "$@"
+}
+
+install.any() {
+	# https://github.com/regnarg/urxvt-config-reload
+	cpan -i App::cpanminus
+
+	# cpan Loading internal logger. Log::Log4perl recommended for better logging
+	cpanm Log::Log4perl
+
+	pkgs=(AnyEvent Linux::FD common::sense)
+	cpanm "${pkgs[@]}"
+}
+
+util.if_file_sourced || helper.run_main "$@"

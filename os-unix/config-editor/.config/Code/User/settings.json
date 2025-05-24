@@ -58,10 +58,6 @@
 	"terminal.integrated.environmentChangesIndicator": "on",
 	"terminal.integrated.inheritEnv": false,
 	"terminal.integrated.showExitAlert": false,
-
-	//
-	// FILES
-	"files.autoSave": "afterDelay",
 	"files.autoSaveDelay": 5000,
 	"files.associations": {
 		"*.hbs": "html",
@@ -197,7 +193,7 @@
 
 	//
 	// DENO
-	"deno.path": "/home/edwin/.local/share/mise/installs/deno/2.3.1/bin/deno"
+	"deno.path": "/home/edwin/.local/share/mise/installs/deno/2.3.1/bin/deno",
 
 	//
 	// JSON

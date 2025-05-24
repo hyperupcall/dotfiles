@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+source ~/.dotfiles/os-unix/data/source.sh
+
+declare -g g_name='LLVM'
+
+main() {
+	helper.setup "$@"
+}
+
+install.debian() {
+	sudo apt-get install -y clang clang-format clang-tidy
+}
+
+install.ubuntu() {
+	install.debuan "$@"
+}
+
+installed() {
+	command -v clang &>/dev/null && command -v clang-format &>/dev/null && command -v clang-tidy &>/dev/null
+}
+
+util.if_file_sourced || helper.run_main "$@"

@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+source ~/.dotfiles/os-unix/data/source.sh
+
+declare -g g_name='Basalt'
+
+main() {
+	helper.setup "$@"
+}
+
+install.any() {
+	curl -K "$CURL_CONFIG" https://raw.githubusercontent.com/hyperupcall/basalt/main/scripts/install.sh | sh
+
+	basalt global add \
+		hyperupcall/autoenv \
+		hyperupcall/bake
+
+	basalt global add \
+		cykerway/complete-alias \
+		rcaloras/bash-preexec \
+		reconquest/shdoc
+}
+
+installed() {
+	command -v basalt &>/dev/null
+}
+
+util.if_file_sourced || helper.run_main "$@"

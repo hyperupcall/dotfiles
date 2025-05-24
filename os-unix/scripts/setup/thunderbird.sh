@@ -1,0 +1,1 @@
+/home/edwin/.dotfiles/os-unix/config-email/thunderbird/thunderbird.sh

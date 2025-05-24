@@ -44,9 +44,27 @@ main() {
 
 	# Create necessary symlinks.
 	must.link ~/.dotfiles/os-unix/scripts ~/scripts
-	for f in ~/.dotfiles/os-unix/bin/*; do
-		ln -sf "$f" ~/.local/bin
-	done; unset -v f
+	for file in ~/.dotfiles/os-unix/bin/*; do
+		ln -sf "$file" ~/.local/bin
+	done; unset -v file
+	for file in ~/.dotfiles/os-unix/config-*/*; do
+		if [ -d "$file" ]; then
+			local dir="$file"
+			local dirname=${dir##*/}
+			core.shopt_push -s nullglob
+			local -a files=("$dir"/"$dirname"@(|-*).sh)
+			core.shopt_pop
+			for file in "${files[@]}"; do
+				ln -sf "$file" ~/scripts/setup/"${file##*/}"
+			done
+		else
+
+			local filename=${file##*/}
+			if [[ "$filename" =~ ^[[:alnum:]-]+.sh$ ]]; then
+				ln -sf "$file" ~/scripts/setup/"$filename"
+			fi
+		fi
+	done; unset -v file files
 
 	# Set XDG user directories.
 	{
@@ -203,7 +221,7 @@ main() {
 		fi
 	}
 
-	must.setup ~/scripts/setup/app/dev.sh
+	must.setup ~/scripts/setup/dev.sh
 	must.setup ~/scripts/setup/d.sh
 	must.setup ~/scripts/setup/mise.sh
 	must.setup ~/scripts/setup/lefthook.sh

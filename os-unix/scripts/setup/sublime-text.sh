@@ -1,0 +1,1 @@
+/home/edwin/.dotfiles/os-unix/config-editor/sublime-text/sublime-text.sh

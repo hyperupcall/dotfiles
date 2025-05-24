@@ -1,5 +1,8 @@
 @2*://*.freecodecamp.org/*
 
+@1*://*.w3resource.com/*
+@1*://*.tpointtech.com/*
+@1*://*.delftstack.com.com/*
 @1*://*.codegrepper.com/*
 @1*://*.w3schools.com/*
 @1*://*.geeksforgeeks.org/*

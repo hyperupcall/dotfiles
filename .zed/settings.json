@@ -1,0 +1,3 @@
+{
+	"file_scan_exclusions": ["os-unix/scripts/setup"]
+}

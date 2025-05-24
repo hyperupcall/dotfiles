@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+source ~/.dotfiles/os-unix/data/source.sh
+
+declare -g g_name='Go'
+
+main() {
+	helper.setup "$@"
+}
+
+install.any() {
+	mise install go@latest
+	mise use -g go@latest
+
+	go install golang.org/x/tools/gopls@latest
+	go install golang.org/x/tools/cmd/godoc@latest
+	go install golang.org/x/tools/cmd/goimports@latest
+
+	go install github.com/x-motemen/gore/cmd/gore@latest
+}
+
+util.if_file_sourced || helper.run_main "$@"
