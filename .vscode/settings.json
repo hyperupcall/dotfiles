@@ -1,63 +1,40 @@
 {
 	"shellcheck.ignorePatterns": {
-		"**/.data/**": true,
 		"**/.git/**": true,
 		"**/.home/**": true,
-		"**/.bin/**": true,
-		"**/venv/**": true,
 		"**/.venv/**": true,
 		"**/node_modules/**": true
 	},
 	"search.exclude": {
-		"**/.data/**": true,
 		"**/.git/**": true,
 		"**/.home/**": true,
-		"**/.bin/**": true,
-		"**/venv/**": true,
 		"**/.venv/**": true,
-		"**/vendor/**": true,
 		"os-unix/config-shell/.config/bash/frameworks/bash-it.sh": false,
 	},
 	"npm.exclude": "**/.*",
 	"files.watcherExclude": {
-		"**/.data/**": true,
 		"**/.git/**": true,
 		"**/.home/**": true,
-		"**/.bin/**": true,
-		"**/venv/**": true,
 		"**/.venv/**": true,
-		"**/vendor/**": true,
 		"**/node_modules/**": true
 	},
 	"explorer.excludeGitIgnore": true,
 	"errorLens.excludePatterns": [
-		"**/.data/**",
 		"**/.git/**",
 		"**/.home/**",
-		"**/.bin/**",
-		"**/venv/**",
 		"**/.venv/**",
-		"**/vendor/**",
 		"**/node_modules/**",
 	],
 	"todo-tree.filtering.excludeGlobs": [
-		"**/.data/**",
 		"**/.git/**",
 		"**/.home/**",
-		"**/.bin/**",
-		"**/venv/**",
 		"**/.venv/**",
-		"**/vendor/**",
 		"**/node_modules/**",
 	],
 	"workbench.localHistory.exclude": {
-		"**/.data/**": true,
 		"**/.git/**": true,
 		"**/.home/**": true,
-		"**/.bin/**": true,
-		"**/venv/**": true,
 		"**/.venv/**": true,
-		"**/vendor/**": true,
 		"**/node_modules/**": true
 	}
 }

@@ -27,7 +27,7 @@ function main() {
 	Pop-Location
 
 	# Symlink scripts
-	New-Item -Type SymbolicLink -Force -Path ~/scripts -Value "$HOME/.dotfiles/os/windows/scripts" >$null
+	New-Item -Type SymbolicLink -Force -Path ~/scripts -Value "$HOME/.dotfiles/os-windows/scripts" >$null
 
 	# Export variables
 	Write-Output @"
