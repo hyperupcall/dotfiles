@@ -40,4 +40,4 @@ installed() {
 	command -v d &>/dev/null
 }
 
-util.if_file_sourced || helper.run_main "$@"
+util.if_file_sourced || _main "$@"

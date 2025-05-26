@@ -29,4 +29,4 @@ install.debian() {
 	sudo apt-get install -y mongodb-org
 }
 
-util.if_file_sourced || helper.run_main "$@"
+util.if_file_sourced || _main "$@"

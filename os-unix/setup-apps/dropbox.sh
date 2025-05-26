@@ -23,4 +23,4 @@ install.any() {
 	ln -sf ~/.dotfiles/.home/Downloads/.dropbox-dist/dropboxd ~/.dotfiles/.data/bin/dropboxd
 }
 
-util.if_file_sourced || helper.run_main "$@"
+util.if_file_sourced || _main "$@"

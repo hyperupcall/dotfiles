@@ -9,7 +9,10 @@
 # Ensure ~/.profile is read for non-login shells
 # Bash only reads ~/.profile on login shells when invoked as sh
 [ -r ~/.profile ] && source ~/.profile
-if (( $? != 0 )); then printf '%s\n' "Error: bashrc.sh: Failed to source ~/.profile successfuly. Aborting source" >&2; return 1; fi
+if (( $? != 0 )); then
+	printf '%s\n' "Error: bashrc.sh: Failed to source ~/.profile successfuly. Aborting source" >&2
+	return 1
+fi
 
 #
 # ─── FRAMEWORKS ─────────────────────────────────────────────────────────────────
@@ -20,8 +23,13 @@ if (( $? != 0 )); then printf '%s\n' "Error: bashrc.sh: Failed to source ~/.prof
 # source "$HOME/.dotfiles/.data/repos/blesh/out/ble.sh"
 source "$XDG_CONFIG_HOME/sh/modules/line-editing.sh"
 source "$XDG_CONFIG_HOME/bash/modules/readline.sh"
-source "$HOME/.dotfiles/os-unix/config-dotfile-manager/.config/dotgen-output/concatenated.bash"
-
+for dir in "$XDG_CONFIG_HOME/bash/bash.d" "$XDG_CONFIG_HOME/sh/sh.d"; do
+	if [ -d "$dir" ]; then
+		for file in "$dir"/*; do
+			source "$file"
+		done
+	fi
+done; unset -v dir file
 
 #
 # ─── SHELL VARIABLES ────────────────────────────────────────────────────────────
@@ -145,16 +153,16 @@ unset -f is_8_colors is_256_colors is_16million_colors
 
 # bash-preexec
 if command -v basalt &>/dev/null; then
-	basalt.load --global 'github.com/rcaloras/bash-preexec' 'bash-preexec.sh'
+	source "$XDG_DATA_HOME"/basalt/store/packages/github.com/rcaloras/bash-preexec\@*/bash-preexec.sh
 
-	# after command is read, before command execution
+	# Executes after command is read, but before command execution.
 	preexec() {
 		:
 	}
 
-	# before each prompt
+	# Executes before each prompt.
 	precmd() {
-		# for cdp()
+		# For cdp().
 		# shellcheck disable=SC2034
 		_shell_cdp_dir="$PWD"
 	}

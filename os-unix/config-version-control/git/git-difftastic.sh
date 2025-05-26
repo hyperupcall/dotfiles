@@ -16,4 +16,4 @@ installed() {
 	command -v difft &>/dev/null
 }
 
-util.if_file_sourced || helper.run_main "$@"
+util.if_file_sourced || _main "$@"

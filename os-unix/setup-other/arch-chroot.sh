@@ -17,4 +17,4 @@ install.any() {
 	cp ./arch-chroot ~/.local/bin
 }
 
-util.if_file_sourced || helper.run_main "$@"
+util.if_file_sourced || _main "$@"

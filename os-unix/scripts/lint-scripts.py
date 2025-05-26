@@ -377,26 +377,26 @@ def main():
 	})
 
 	# Before: ^main "$@"
-	# After: ^util.if_file_sourced || helper.run_main "$@"
+	# After: ^util.if_file_sourced || _main "$@"
 	def scriptsMustHaveSourceGuard(line: str, m: any) -> str:
 		prestr, _, poststr = utilGetStrs(line, m)
 
-		return f'util.if_file_sourced || helper.run_main "$@"'
+		return f'util.if_file_sourced || _main "$@"'
 
 	rules.append({
 		'name': 'scripts-must-have-source-guard',
-		'regex': '(?P<match>^[ \\t]*(?:main|helper.run_main) "\\$@")',
+		'regex': '(?P<match>^[ \\t]*(?:main|_main) "\\$@")',
 		'reason': 'To ensure source guards exist on all scripts',
 		'fileTypes': ['bash', 'sh'],
 		'fixerFn': scriptsMustHaveSourceGuard,
 		'testPositiveMatches': [
 			'main "$@"',
-			'helper.run_main "$@"',
+			'_main "$@"',
 			' main "$@"'
 		],
 		'testNegativeMatches': [
-			'util.if_file_sourced || helper.run_main "$@"',
-			' util.if_file_sourced || helper.run_main "$@"'
+			'util.if_file_sourced || _main "$@"',
+			' util.if_file_sourced || _main "$@"'
 		],
 	})
 

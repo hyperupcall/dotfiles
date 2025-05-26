@@ -45,7 +45,7 @@
 	CURL_CONFIG="$HOME/.dotfiles/os-unix/data/curl_config.conf"
 }
 
-helper.run_main() {
+_main() {
 	local flag_force=no
 
 	local arg=
@@ -194,6 +194,32 @@ helper.setup() {
 			cd "$orig_dir"
 		fi
 	)
+}
+
+helper.setup_distro_package() {
+	local package="$1"
+	local command="$2"
+
+	install.debian() {
+		sudo apt-get install -y "$package"
+	}
+	install.ubuntu() {
+		install.debian "$@"
+	}
+	install.fedora() {
+		sudo dnf install -y "$package"
+	}
+	install.opensuse() {
+		sudo zypper -n install "$package"
+	}
+	install.arch() {
+		yay -Syu --noconfirm "$package"
+	}
+	installed() {
+		command -v "$command" &>/dev/null
+	}
+
+	helper.setup "$@"
 }
 
 pkg.add_apt_key() {
@@ -436,7 +462,7 @@ util.remove_shellfile() {
 	local name="$1"
 
 	local shell=
-	for shell in sh bash zsh ksh; do
+	for shell in sh bash zsh ksh fish elvish tcsh; do
 		rm -f "$HOME/.dotfiles/.home/xdg_config_dir/$shell/$dirname/$name.$shell"
 	done
 }

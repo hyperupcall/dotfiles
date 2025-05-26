@@ -20,4 +20,4 @@ install.any() {
 	core.print_warn 'Do not know how to handle tarball on non-deb Linux'
 }
 
-util.if_file_sourced || helper.run_main "$@"
+util.if_file_sourced || _main "$@"

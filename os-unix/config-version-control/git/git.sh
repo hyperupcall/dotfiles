@@ -31,4 +31,4 @@ installed() {
 	command -v git &>/dev/null && git_version_check
 }
 
-util.if_file_sourced || helper.run_main "$@"
+util.if_file_sourced || _main "$@"

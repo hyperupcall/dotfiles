@@ -10,4 +10,4 @@ main() {
 	sudo ddccontrol dev:/dev/i2c-7 -r 0x10 -w "$n"
 }
 
-util.if_file_sourced || helper.run_main "$@"
+util.if_file_sourced || _main "$@"

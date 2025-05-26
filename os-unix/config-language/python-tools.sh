@@ -23,4 +23,4 @@ configure() {
 		--tcsh 'eval `register-python-argcomplete --shell tcsh pipx`'
 }
 
-util.if_file_sourced || helper.run_main "$@"
+util.if_file_sourced || _main "$@"

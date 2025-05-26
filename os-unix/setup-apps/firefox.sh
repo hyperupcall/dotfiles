@@ -52,4 +52,4 @@ installed() {
 	command -v firefox &>/dev/null
 }
 
-util.if_file_sourced || helper.run_main "$@"
+util.if_file_sourced || _main "$@"

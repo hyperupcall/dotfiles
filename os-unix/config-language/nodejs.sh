@@ -17,4 +17,4 @@ configure() {
 		--bash 'source <(node --completion-bash)'
 }
 
-util.if_file_sourced || helper.run_main "$@"
+util.if_file_sourced || _main "$@"

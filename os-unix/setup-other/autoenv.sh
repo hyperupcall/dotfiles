@@ -18,4 +18,4 @@ configure() {
 		--sh 'source ~/.dotfiles/.data/repos/autoenv/activate.sh'
 }
 
-util.if_file_sourced || helper.run_main "$@"
+util.if_file_sourced || _main "$@"

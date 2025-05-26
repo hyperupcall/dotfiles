@@ -41,4 +41,4 @@ installed() {
 	command -v docker &>/dev/null
 }
 
-util.if_file_sourced || helper.run_main "$@"
+util.if_file_sourced || _main "$@"

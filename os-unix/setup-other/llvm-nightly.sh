@@ -30,4 +30,4 @@ install.debian() {
 	sudo apt-get -y install clang-17
 }
 
-util.if_file_sourced || helper.run_main "$@"
+util.if_file_sourced || _main "$@"

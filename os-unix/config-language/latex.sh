@@ -21,4 +21,4 @@ installed() {
 	command -v pdftex &>/dev/null && command -v tex-fmt &>/dev/null
 }
 
-util.if_file_sourced || helper.run_main "$@"
+util.if_file_sourced || _main "$@"

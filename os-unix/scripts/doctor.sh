@@ -264,7 +264,10 @@ main() {
 	~/scripts/setup/woof.sh
 	~/scripts/setup/notify-send.sh
 
-	# TODO: bake, pre-commit, nerdfonts, notify-send
+	# TODO: bake
+	# TODO: pre-commit
+	# TODO: nerdfonts
+	# TODO: notify-send
 	# if command -v autoenv_init >/dev/null 2>&1; then
 	# 		autoenv_init || :
 	# 	else
@@ -500,4 +503,4 @@ install_required_dependencies() {
 	helper.setup --no-confirm --fn-prefix=dependencies 'Bootstrap' "$@"
 }
 
-util.if_file_sourced || helper.run_main "$@"
+util.if_file_sourced || _main "$@"

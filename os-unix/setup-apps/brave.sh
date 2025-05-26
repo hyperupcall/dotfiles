@@ -92,4 +92,4 @@ installed() {
 	command -v brave-browser &>/dev/null && command -v brave-browser-beta &>/dev/null
 }
 
-util.if_file_sourced || helper.run_main "$@"
+util.if_file_sourced || _main "$@"

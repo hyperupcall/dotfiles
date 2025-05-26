@@ -21,4 +21,4 @@ configure() {
 		--elvish 'eval (zoxide init elvish | slurp)'
 }
 
-util.if_file_sourced || helper.run_main "$@"
+util.if_file_sourced || _main "$@"

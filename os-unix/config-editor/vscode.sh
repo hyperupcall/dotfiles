@@ -58,4 +58,4 @@ installed() {
 	command -v code &>/dev/null && command -v code-insiders &>/dev/null
 }
 
-util.if_file_sourced || helper.run_main "$@"
+util.if_file_sourced || _main "$@"

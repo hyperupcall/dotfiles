@@ -93,4 +93,4 @@ main() {
 	exec 6<&-
 }
 
-util.if_file_sourced || helper.run_main "$@"
+util.if_file_sourced || _main "$@"

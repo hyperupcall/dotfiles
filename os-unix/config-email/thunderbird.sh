@@ -68,4 +68,4 @@ installed() {
 	command -v thunderbird &>/dev/null || { command -v flatpak &>/dev/null && flatpak info org.mozilla.Thunderbird &>/dev/null; }
 }
 
-util.if_file_sourced || helper.run_main "$@"
+util.if_file_sourced || _main "$@"

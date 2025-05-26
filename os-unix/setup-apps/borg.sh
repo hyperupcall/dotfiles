@@ -28,4 +28,4 @@ install.arch() {
 	sudo pacman -Syu --noconfirm borgbackup
 }
 
-util.if_file_sourced || helper.run_main "$@"
+util.if_file_sourced || _main "$@"

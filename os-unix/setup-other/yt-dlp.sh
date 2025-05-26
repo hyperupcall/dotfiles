@@ -13,4 +13,4 @@ install.any() {
 	chmod +x ~/.local/bin/yt-dlp
 }
 
-util.if_file_sourced || helper.run_main "$@"
+util.if_file_sourced || _main "$@"

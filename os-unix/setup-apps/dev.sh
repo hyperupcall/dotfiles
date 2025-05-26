@@ -96,4 +96,4 @@ installed() {
 	[ -f "$XDG_DATA_HOME/systemd/user/dev.service" ]
 }
 
-util.if_file_sourced || helper.run_main "$@"
+util.if_file_sourced || _main "$@"
