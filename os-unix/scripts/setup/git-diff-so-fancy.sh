@@ -1,1 +1,0 @@
-/home/edwin/.dotfiles/os-unix/config-version-control/git/git-diff-so-fancy.sh

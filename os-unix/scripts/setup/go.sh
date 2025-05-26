@@ -1,1 +1,0 @@
-/home/edwin/.dotfiles/os-unix/config-language/go/go.sh

@@ -1,1 +1,0 @@
-/home/edwin/.dotfiles/os-unix/config-personal/basalt.sh

@@ -46,18 +46,60 @@
 }
 
 helper.run_main() {
+	local flag_force=no
+
+	local arg=
+	for arg; do
+		case $arg in
+		--force)
+			flag_force=yes
+			;;
+		esac
+	done
+
 	local orig_dir="$PWD" temp_dir=
 	temp_dir=$(mktemp -d --suffix "-dotfiles")
 	cd "$temp_dir" || exit $?
 
+	local script_path=$0
+	if [ -n "$ZSH_VERSION" ]; then
+		script_path=$ZSH_ARGZERO
+	fi
+
+	if [[ $script_path == "$HOME/scripts/setup"/* ]]; then
+		if [ -z "$g_name" ]; then
+			core.print_die "Expected file \"$0\" to have variable \"g_name\""
+		fi
+
+		if ! declare -f main &>/dev/null; then
+			core.print_die "Expected file \"$0\" to have function \"main\""
+		fi
+
+		if ! declare -f installed &>/dev/null; then
+			core.print_die "Expected file \"$0\" to have function \"installed\""
+		fi
+
+		if installed && [ "$flag_force" = no ]; then
+			core.print_info "Already installed \"$g_name\""
+			return
+		fi
+	fi
+
 	main "$@"
+
+	if [[ $script_path == "$HOME/scripts/setup"/* ]]; then
+		if ! installed; then
+			core.print_die "Attempted to install \"$g_name\", but failed"
+		fi
+	fi
 
 	cd "$orig_dir"
 	rm -rf "$temp_dir"
 }
 
+# TODO: --help
 helper.setup() {
-	local flag_force_install=no
+	local flag_force=no
 	local flag_no_confirm=no
 	local flag_configure_only=no
 	local flag_fn_prefix=install
@@ -66,8 +108,8 @@ helper.setup() {
 	local arg=
 	for arg; do
 		case $arg in
-		--force-install)
-			flag_force_install=yes
+		--force)
+			flag_force=yes
 			shift
 			;;
 		--no-confirm)
@@ -95,10 +137,10 @@ helper.setup() {
 			break
 			;;
 		esac
-	done
+	done; unset -v arg
 
-	if ! declare -f installed &>/dev/null; then
-		core.print_die "Expected file \"$0\" to have function \"installed\""
+	if ! util.confirm_fix; then
+		return
 	fi
 
 	[ "$flag_configure_only" != yes ] && (
@@ -107,7 +149,7 @@ helper.setup() {
 		source /etc/os-release
 
 		# Normalize values that are missing or have bad capitalization.
-		[ "$ID" = +(arch|blackarch) ] && ID_LIKE=arch
+		[[ "$ID" == +(arch|blackarch) ]] && ID_LIKE=arch
 		[ "$ID" = 'debian' ] && ID_LIKE=debian
 		[ "$ID" = 'Deepin' ] && ID=deepin
 		[[ "$ID_LIKE" == +(*debian*|*ubuntu*) ]] && ID_LIKE=ubuntu
@@ -120,18 +162,23 @@ helper.setup() {
 		for id in "$ID" "$ID_LIKE" any; do
 			if declare -f "$flag_fn_prefix.$id" &>/dev/null; then
 				ran_function=yes
-				if ! installed || [ "$flag_force_install" = yes ]; then
+				if ! installed || [ "$flag_force" = yes ]; then
 					if [ "$flag_no_confirm" = yes ] || util.confirm "Install $program_name?"; then
 						"$flag_fn_prefix.$id" "$@"
 					fi
 					break
 				else
-					core.print_warn "Program \"$program_name\" has already been set up. Pass \"--force-install\" to run setup again"
+					core.print_warn "Program \"$program_name\" has already been set up. Pass \"--force\" to run setup again"
+					return
 				fi
 			fi
 		done; unset -v id
 		if [ "$ran_function" = no ]; then
-			core.print_die "Failed to find any functions that match \"$flag_fn_prefix.*\""
+			local text="\"$flag_fn_prefix.$ID\" or \"$flag_fn_prefix.$ID_LIKE\""
+			if [ "$ID" = "$ID_LIKE" ]; then
+				text="\"$flag_fn_prefix.$ID\""
+			fi
+			core.print_die "Failed to find a \"$flag_fn_prefix.*\" function that matches the current distribution ($text)"
 		fi
 	)
 
@@ -162,13 +209,30 @@ pkg.add_apt_key() {
 }
 
 pkg.add_apt_repository() {
-	local source_line="$1"
-	local dest_file="$2"
+	local dest_file="$1"
+	local content="$2"
 
 	sudo mkdir -p "${dest_file%/*}"
 	sudo rm -f "${dest_file%.*}.list"
-	sudo rm -f "${dest_file%.*}.sources"
-	printf '%s\n' "$source_line" | sudo tee "$dest_file" >/dev/null
+	sudo rm -f "$dest_file"
+
+	if [ "${content::1}" != $'\n' ]; then
+		core.print_die "Failed to find starting newline in content for \"$dest_file\""
+	fi
+
+	local line= file_content=
+	if [[ $content == *@(\'|\"|\\)* ]]; then
+		core.print_die "Invallid character found in content for \"$dest_file\""
+	fi
+	while IFS= read -r line; do
+		line="${line#"${line%%[![:space:]]*}"}"
+		if [[ $line != @(Types|URIs|Suites|Components|Architectures|signed-by):* ]]; then
+			core.print_die "Invalid start of entry in content for \"$dest_file\""
+		fi
+		file_content+="$line"$'\n'
+	done <<< "${content:1}"
+
+	printf '%s' "${file_content::-1}" | sudo tee "$dest_file" >/dev/null
 }
 
 pkg.add_dnf_key() {
@@ -212,10 +276,17 @@ util.clone() {
 
 util.confirm() {
 	local message=${1:-Confirm?}
+	local args=('-rN1' -p "$message ")
+	if [ -n "$ZSH_VERSION" ]; then
+		args=('-rsk')
+	fi
 
 	local input=
 	until [[ "$input" =~ ^[yYnN]$ ]]; do
-		read -rN1 -p "$message "
+		if [ -n "$ZSH_VERSION" ]; then
+			printf '%s' "$message "
+		fi
+		read "${args[@]}"
 		input=$REPLY
 		printf '\n'
 	done
@@ -227,7 +298,7 @@ util.confirm() {
 	fi
 }
 
-util.ask_fix() {
+util.confirm_fix() {
 	util.confirm "Would you like to fix this?"
 }
 
@@ -337,20 +408,28 @@ util.if_file_sourced() {
 
 util.write_shellfile() {
 	local name="$1"
-	local shell="$2"
-	local content="$3"
+	shift
 
-	local dirname=
-	case $shell in
-		sh) dirname='shell.d' ;;
-		bash) dirname='bash.d' ;;
-		zsh) dirname='zsh.d' ;;
-		ksh) dirname='ksh.d' ;;
-		*) core.print_die "Invalid shell \"$shell\"" ;;
-	esac
+	while (($# >= 2)); do
+		local shell="${1#--}"
+		local content="$2"
+		shift 2
 
-	mkdir -p "$HOME/.dotfiles/.home/xdg_config_dir/$shell"
-	printf '%s\n' "$content" > "$HOME/.dotfiles/.home/xdg_config_dir/$shell/$dirname/$name.$shell"
+		local dirname=
+		case $shell in
+			sh) dirname='shell.d' ;;
+			bash) dirname='bash.d' ;;
+			zsh) dirname='zsh.d' ;;
+			ksh) dirname='ksh.d' ;;
+			fish) dirname='fish.d' ;;
+			elvish) dirname='elvish.d' ;;
+			tcsh) dirname='tcsh.d' ;;
+			*) core.print_die "Invalid shell \"$shell\"" ;;
+		esac
+
+		mkdir -p "$HOME/.dotfiles/.home/xdg_config_dir/$shell/$dirname"
+		printf '%s\n' "$content" > "$HOME/.dotfiles/.home/xdg_config_dir/$shell/$dirname/$name.$shell"
+	done
 }
 
 util.remove_shellfile() {

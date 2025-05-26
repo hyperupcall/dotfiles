@@ -1,1 +1,0 @@
-/home/edwin/.dotfiles/os-unix/config-setup-apps/steam.sh

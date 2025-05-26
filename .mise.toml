@@ -1,4 +1,4 @@
 [tools]
-cmake = "4.0.2"
+cmake = "latest"
 go = "1.24.3"
 python = "3.12.3"

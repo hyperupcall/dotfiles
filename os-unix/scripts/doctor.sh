@@ -12,7 +12,7 @@ main() {
 	if [ ! -f ~/.dotfiles/.data/finished_bootstrap ]; then
 		install_required_dependencies
 		touch ~/.dotfiles/.data/finished_bootstrap
-		core.print_info "Installed required dependencies"
+		core.print_info "Installed requiredelse dependencies"
 	fi
 
 	# Remove broken symlinks.
@@ -47,7 +47,7 @@ main() {
 	for file in ~/.dotfiles/os-unix/bin/*; do
 		ln -sf "$file" ~/.local/bin
 	done; unset -v file
-	for file in ~/.dotfiles/os-unix/config-*/*; do
+	for file in ~/.dotfiles/os-unix/{config,setup}-*/*; do
 		if [ -d "$file" ]; then
 			local dir="$file"
 			local dirname=${dir##*/}
@@ -188,81 +188,83 @@ main() {
 		printf '%s\n' "$token" > ~/.dotfiles/.data/github_token
 	fi
 
-	# Check permissions for SSH files
+	# Check SSH files
 	{
 		if [ ! -d ~/.ssh ]; then
-			core.print_die "ssh: Expected to find an ~/.ssh directory"
+			core.print_die "Expected to find an ~/.ssh directory"
 		fi
-		must.strict_permissions 'ssh' ~/.ssh/ ~/.ssh/*
+		must.strict_permissions ~/.ssh/ ~/.ssh/*
 
 		if [ -f ~/.ssh/github ]; then
-			core.print_info "ssh: Has key \"~/.ssh/github\""
+			core.print_info "Has ssh key \"~/.ssh/github\""
 		else
-			core.print_die "ssh: Does not have key \"~/.ssh/github\""
+			core.print_die "Does not have ssh key \"~/.ssh/github\""
 		fi
 	}
 
-	# Check permissions for GnuPG files
+	# Check GnuPG files
 	{
 		if [ ! -d ~/.gnupg ]; then
-			core.print_die "gpg: Expected to find an ~/.gnupg directory"
+			core.print_die "Expected to find an ~/.gnupg directory"
 		fi
-		must.strict_permissions 'gpg' ~/.gnupg/ ~/.gnupg/*
+		must.strict_permissions ~/.gnupg/ ~/.gnupg/*
 
 		if gpg --list-keys 0x2FB93BF35E14E7C4 &>/dev/null; then
-			core.print_info "gpg: Has key \"Edwin Kofler (FOR PASSWORDS ONLY) <edwin@kofler.dev>\""
+			core.print_info "Has gpg key \"Edwin Kofler (FOR PASSWORDS ONLY) <edwin@kofler.dev>\""
 		else
-			core.print_info "gpg: Does not have key \"Edwin Kofler (FOR PASSWORDS ONLY) <edwin@kofler.dev>\""
+			core.print_info "Does not have gpg key \"Edwin Kofler (FOR PASSWORDS ONLY) <edwin@kofler.dev>\""
 		fi
 		if gpg --list-keys 0x3851E5FD042C7C6C &>/dev/null; then
-			core.print_info "gpg: Has key \"Edwin Kofler <edwin@kofler.dev>\""
+			core.print_info "Has gpg key \"Edwin Kofler <edwin@kofler.dev>\""
 		else
-			core.print_die "gpg: Does not have key \"Edwin Kofler <edwin@kofler.dev>\""
+			core.print_die "Does not have gpg key \"Edwin Kofler <edwin@kofler.dev>\""
 		fi
 	}
 
-	must.setup ~/scripts/setup/dev.sh
-	must.setup ~/scripts/setup/d.sh
-	must.setup ~/scripts/setup/mise.sh
-	must.setup ~/scripts/setup/lefthook.sh
+	~/scripts/setup/dev.sh
+	~/scripts/setup/d.sh
+	~/scripts/setup/mise.sh
+	~/scripts/setup/cmake.sh
+	~/scripts/setup/lefthook.sh
 	(
-		if ! mise trust --show mise | grep -q '~/.dotfiles: trusted'; then
-			mise trust ~/.dotfiles/.mise.toml
+		if ! mise trust --cd ~/.dotfiles --show mise | grep -q '~/.dotfiles: trusted'; then
+			local output=
+			if ! output=$(mise trust ~/.dotfiles/.mise.toml 2>&1); then
+				printf '%s\n' "$output"
+			fi
 		fi
-		mise install cmake@latest
-		mise use -g cmake@latest # TODO: not latest, move somewhere else
 		cd ~/.dotfiles
 		if [ ! -f ./.git/info/lefthook.checksum ]; then
 			lefthook install
 		fi
 	)
-	must.setup ~/scripts/setup/git.sh # TODO: 'spaceman-diff'
-	must.setup ~/scripts/setup/git-colordiff.sh
-	must.setup ~/scripts/setup/neovim.sh
-	must.setup ~/scripts/setup/pass.sh
+	~/scripts/setup/git.sh # TODO: 'spaceman-diff'
+	~/scripts/setup/git-colordiff.sh
+	~/scripts/setup/neovim.sh
+	~/scripts/setup/pass.sh
 
-	must.setup ~/scripts/setup/app/firefox.sh
-	must.setup ~/scripts/setup/app/brave.sh
-	must.setup ~/scripts/setup/app/maestral.sh
-	must.setup ~/scripts/setup/app/vscode.sh
-	must.setup ~/scripts/setup/app/thunderbird.sh
+	~/scripts/setup/firefox.sh
+	~/scripts/setup/brave.sh
+	~/scripts/setup/maestral.sh
+	~/scripts/setup/vscode.sh
+	~/scripts/setup/thunderbird.sh
 
-	must.setup ~/scripts/setup/gh.sh
-	must.setup ~/scripts/setup/bats.sh
-	must.setup ~/scripts/setup/less.sh
-	must.setup ~/scripts/setup/latex.sh
-	must.setup ~/scripts/setup/fish.sh
-	must.setup ~/scripts/setup/my-tools.sh
+	~/scripts/setup/gh.sh
+	~/scripts/setup/bats.sh
+	~/scripts/setup/less.sh
+	~/scripts/setup/latex.sh
+	~/scripts/setup/fish.sh
+	~/scripts/setup/my-tools.sh
 	~/.dotfiles/os-unix/scripts/lib/util-generate-aliases.sh
 
 	~/scripts/setup/llvm.sh
 	~/scripts/setup/zsh.sh
 	~/scripts/setup/ksh.sh
 	~/scripts/setup/basalt.sh
+	~/scripts/setup/woof.sh
+	~/scripts/setup/notify-send.sh
 
-	# TODO: bake, pre-commit
-	# TODO: woof, nerdfonts, notify-send
-	# TODO: git smuge etc filters are in use
+	# TODO: bake, pre-commit, nerdfonts, notify-send
 	# if command -v autoenv_init >/dev/null 2>&1; then
 	# 		autoenv_init || :
 	# 	else
@@ -274,6 +276,16 @@ main() {
 	# 	else
 	# 		_util_log_warn "cd: Function is not defined: __woof_cd_hook"
 	# 	fi
+
+	# Generate configuration files.
+	for file in ~/scripts/setup/*; do
+		(
+			source "$file" # TODO: could be ksh or zsh etc.
+			if installed && command -v configure &>/dev/null; then
+				configure
+			fi
+		)
+	done; unset -v file
 }
 
 must.rm() {
@@ -401,11 +413,6 @@ must.user_in_group() {
 }
 
 must.strict_permissions() {
-	local prefix="$1"
-	if ! shift; then
-		core.print_die 'Failed to shift'
-	fi
-
 	local file= result= badfiles=()
 	for file; do
 		if [ -d "$file" ]; then
@@ -439,7 +446,7 @@ must.strict_permissions() {
 	done
 
 	if ((${#badfiles} > 0)); then
-		if util.ask_fix; then
+		if util.confirm_fix; then
 			for file in "${badfiles[@]}"; do
 				if [ -d "$file" ]; then
 					chmod 700 "$file"
@@ -451,34 +458,6 @@ must.strict_permissions() {
 			done
 		fi
 	fi
-}
-
-must.setup() {
-	local setup_file=$1
-
-	# Use separate subshells in case PATH is modified.
-	(
-		source "$setup_file"
-		if ! declare -f installed &>/dev/null; then
-			core.print_die "Expected file \"$setup_file\" to have function \"installed\""
-		fi
-
-		if installed; then
-			core.print_info "Already installed \"${setup_file##*/}\""
-		else
-			core.print_warn "Not installed \"${setup_file##*/}\""
-			if util.ask_fix; then
-				helper.run_main "$@" # lint-ignore:scripts-must-have-source-guard
-			fi
-		fi
-	)
-
-	(
-		source "$setup_file"
-		if ! installed; then
-			core.print_die "Attempted to install \"${setup_file##*/}\", but failed"
-		fi
-	)
 }
 
 install_required_dependencies() {
