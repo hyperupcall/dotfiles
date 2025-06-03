@@ -1,7 +1,7 @@
 #!/usr/bin/env bats
 
-source ../../../../../vendor/bats-all/load.bash
-source ./line-editing.sh
+source ../../../../vendor/bats-all/load.bash
+source ./modules/line-editing.sh
 set -o vi
 
 @test "_readline_util_get_line" {
@@ -54,7 +54,7 @@ set -o vi
 	local -A line_cmds=(
 		["git status"]="git"
 		["git"]="git"
-		["exa -ls"]="exa"
+		["eza -ls"]="eza"
 	)
 
 	for key in "${!line_cmds[@]}"; do

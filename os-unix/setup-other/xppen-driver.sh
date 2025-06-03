@@ -5,10 +5,6 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='XP-Pen Driver'
 
 main() {
-	helper.setup "$@"
-}
-
-install.any() {
 	core.print_info 'Downloading'
 	curl -K "$CURL_CONFIG" -o './xp-pen.tar.gz' 'https://www.xp-pen.com/download/file/id/1936/pid/421/ext/gz.html'
 

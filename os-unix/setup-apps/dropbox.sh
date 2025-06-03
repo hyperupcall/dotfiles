@@ -5,10 +5,6 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='Dropbox'
 
 main() {
-	helper.setup "$@"
-}
-
-install.any() {
 	core.print_info 'Downloading'
 	curl -K "$CURL_CONFIG" -o ./dropbox.tar.gz 'https://www.dropbox.com/download?plat=lnx.x86_64'
 

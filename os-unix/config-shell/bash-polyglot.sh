@@ -3,14 +3,14 @@
 source ~/.dotfiles/os-unix/data/source.sh
 
 declare -g g_name='bash-polyglot'
-declare -g dir="$HOME/.dotfiles/.data/repos/polyglot"
+declare -g g_dir="$HOME/.dotfiles/.data/repos/polyglot"
 
 main() {
-	helper.setup_gitrepo 'https://github.com/agkozak/polyglot' "$dir"
+	util.clone "$g_dir" 'https://github.com/agkozak/polyglot'
 }
 
 launch() {
-	cat "$dir/polyglot.sh"
+	cat "$g_dir/polyglot.sh"
 }
 
 util.if_file_sourced || _main "$@"

@@ -5,10 +5,6 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='My tools'
 
 main() {
-	helper.setup "$@"
-}
-
-install.any() {
 	if ! commaind -v cargo &>/dev/null; then
 		~/scripts/setup/rust.sh
 	fi

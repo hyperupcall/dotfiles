@@ -3,14 +3,14 @@
 source ~/.dotfiles/os-unix/data/source.sh
 
 declare -g g_name='bash-trueline'
-declare -g dir="$HOME/.dotfiles/.data/repos/trueline"
+declare -g g_dir="$HOME/.dotfiles/.data/repos/trueline"
 
 main() {
-	helper.setup_gitrepo 'https://github.com/petobens/trueline' "$dir"
+	util.clone "$g_dir" 'https://github.com/petobens/trueline'
 }
 
 launch() {
-	cat "$dir/trueline.sh"
+	cat "$g_dir/trueline.sh"
 }
 
 util.if_file_sourced || _main "$@"

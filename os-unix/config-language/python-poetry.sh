@@ -5,10 +5,6 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='Poetry'
 
 main() {
-	helper.setup "$@"
-}
-
-install.any() {
 	curl -K "$CURL_CONFIG" https://install.python-poetry.org | python3 -
 }
 

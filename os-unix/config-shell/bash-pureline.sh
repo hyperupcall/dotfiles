@@ -3,14 +3,14 @@
 source ~/.dotfiles/os-unix/data/source.sh
 
 declare -g g_name='bash-pureline'
-declare -g dir="$HOME/.dotfiles/.data/repos/pureline"
+declare -g g_dir="$HOME/.dotfiles/.data/repos/pureline"
 
 main() {
-	helper.setup_gitrepo 'https://github.com/chris-marsh/pureline' "$dir"
+	util.clone "$g_dir" 'https://github.com/chris-marsh/pureline'
 }
 
 launch() {
-	cat "$dir/pureline"
+	cat "$g_dir/pureline"
 }
 
 util.if_file_sourced || _main "$@"

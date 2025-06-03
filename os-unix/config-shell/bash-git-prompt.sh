@@ -3,15 +3,15 @@
 source ~/.dotfiles/os-unix/data/source.sh
 
 declare -g g_name='xterm'
-declare -g dir="$HOME/.dotfiles/.data/repos/bash-git-prompt"
+declare -g g_dir="$HOME/.dotfiles/.data/repos/bash-git-prompt"
 
 main() {
-	helper.setup_gitrepo 'https://github.com/magicmonty/bash-git-prompt' "$dir"
+	util.clone "$g_dir" 'https://github.com/magicmonty/bash-git-prompt'
 }
 
 launch() { # TODO
-	printf '%s\n' "__GIT_PROMPT_DIR=\"$dir\""
-	cat "$dir/gitprompt.sh"
+	printf '%s\n' "__GIT_PROMPT_DIR=\"$g_dir\""
+	cat "$g_dir/gitprompt.sh"
 }
 
 util.if_file_sourced || _main "$@"

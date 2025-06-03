@@ -5,10 +5,6 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='Firefox Extensions'
 
 main() {
-	helper.setup "$@"
-}
-
-install.any() {
 	util.get_latest_github_tag 'gorhill/uBlock'
 	local latest_tag="$REPLY"
 	util.install "https://github.com/gorhill/uBlock/releases/download/$latest_tag/uBlock0_$latest_tag.firefox.signed.xpi"

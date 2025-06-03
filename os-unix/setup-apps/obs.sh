@@ -5,10 +5,6 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='OBS'
 
 main() {
-	helper.setup "$@"
-}
-
-install.any() {
 	if command -v 'apt' &>/dev/null; then
 		sudo add-apt-repository -y ppa:obsproject/obs-studio
 		sudo apt-get update -y

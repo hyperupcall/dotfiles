@@ -313,7 +313,7 @@ export RXVT_SOCKET="$XDG_RUNTIME_DIR"/urxvtd
 
 # wasmer
 export WASMER_DIR="$XDG_DATA_HOME/wasmer"
-# [ -r "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
+# [ -f "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
 
 # wasmtime
 export WASMTIME_HOME="$XDG_DATA_HOME/wasmtime"

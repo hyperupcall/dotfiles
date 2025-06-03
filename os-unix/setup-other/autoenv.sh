@@ -3,19 +3,22 @@
 source ~/.dotfiles/os-unix/data/source.sh
 
 declare -g g_name='autoenv'
+declare -g g_dir="$HOME/.dotfiles/.data/repos/autoenv"
 
 main() {
-	helper.setup "$@"
-}
-
-install.any() {
-	local dir="$HOME/.dotfiles/.data/repos/autoenv"
-	util.clone "$dir" git@github.com:hyperupcall/autoenv
+	util.clone "$g_dir" git@github.com:hyperupcall/autoenv
 }
 
 configure() {
 	util.write_shellfile 'autoenv' \
-		--sh 'source ~/.dotfiles/.data/repos/autoenv/activate.sh'
+		--sh \
+	'AUTOENV_PRESERVE_CD=yes
+	. ~/.dotfiles/.data/repos/autoenv/activate.sh
+	unset -v AUTOENV_PRESERVE_CD'
+}
+
+installed() {
+	[ -d "$g_dir" ]
 }
 
 util.if_file_sourced || _main "$@"

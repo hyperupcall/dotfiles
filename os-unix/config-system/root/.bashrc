@@ -33,4 +33,4 @@ fi
 
 unset -f 8Colors 256Colors 16MillionColors
 
-[ -r ~/.dir_colors ] && eval "$(dircolors ~/.dir_colors)"
+[ -f ~/.dir_colors ] && eval "$(dircolors ~/.dir_colors)"

@@ -5,10 +5,6 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='arch-chroot'
 
 main() {
-	helper.setup "$@"
-}
-
-install.any() {
 	local dir="$HOME/.dotfiles/.data/repos/arch-install-scripts"
 	util.clone "$dir" https://github.com/archlinux/arch-install-scripts
 

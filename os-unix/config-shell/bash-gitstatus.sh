@@ -3,15 +3,15 @@
 source ~/.dotfiles/os-unix/data/source.sh
 
 declare -g g_name='bash-gitstatus'
-declare -g dir="$HOME/.dotfiles/.data/repos/gitstatus"
+declare -g g_dir="$HOME/.dotfiles/.data/repos/gitstatus"
 
 main() {
-	helper.setup_gitrepo 'https://github.com/romkatv/gitstatus' "$dir"
+	util.clone "$g_dir" 'https://github.com/romkatv/gitstatus'
 }
 
 launch() {
-	printf '%s\n' "export GITSTATUS_DIR=\"$dir/gitstatus.plugin.sh\""
-	cat "$dir/gitstatus.prompt.sh"
+	printf '%s\n' "export GITSTATUS_DIR=\"$g_dir/gitstatus.plugin.sh\""
+	cat "$g_dir/gitstatus.prompt.sh"
 }
 
 util.if_file_sourced || _main "$@"

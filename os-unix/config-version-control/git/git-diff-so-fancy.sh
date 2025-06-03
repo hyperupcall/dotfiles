@@ -5,10 +5,6 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='diff-so-fancy'
 
 main() {
-	helper.setup "$@"
-}
-
-install.any() {
 	util.get_latest_github_tag 'so-fancy/diff-so-fancy'
 	local latest_tag=$REPLY
 

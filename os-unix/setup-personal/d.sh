@@ -5,10 +5,6 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='d'
 
 main() {
-	helper.setup "$@"
-}
-
-install.any() {
 	dependencies.debian() {
 		sudo apt-get -y install bear
 	}

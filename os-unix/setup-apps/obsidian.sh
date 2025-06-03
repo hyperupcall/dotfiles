@@ -5,10 +5,6 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='Obsidian'
 
 main() {
-	helper.setup "$@"
-}
-
-install.any() {
 	if ! command -v appimagelauncherd &>/dev/null; then
 		core.print_die "This scripts depends on the installation of AppImageLauncher"
 	fi

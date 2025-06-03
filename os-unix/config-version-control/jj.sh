@@ -5,10 +5,6 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='jj'
 
 main() {
-	helper.setup "$@"
-}
-
-install.any() {
 	~/scripts/setup/rust.sh --no-confirm
 	cargo binstall --strategies crate-meta-data jj-cli
 }

@@ -3,14 +3,14 @@
 source ~/.dotfiles/os-unix/data/source.sh
 
 declare -g g_name='bash-sbp'
-declare -g dir="$HOME/.dotfiles/.data/repos/sbp"
+declare -g g_dir="$HOME/.dotfiles/.data/repos/sbp"
 
 main() {
-	helper.setup_gitrepo 'https://github.com/brujoand/sbp' "$dir"
+	util.clone "$g_dir" 'https://github.com/brujoand/sbp'
 }
 
 launch() {
-	printf '%s\n' "SBP_PATH=\"$dir\""
+	printf '%s\n' "SBP_PATH=\"$g_dir\""
 	printf '%s\n' "source \$SBP_PATH/sbp.bash"
 }
 

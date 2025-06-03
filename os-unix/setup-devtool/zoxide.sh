@@ -5,15 +5,11 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='Python Tools'
 
 main() {
-	helper.setup "$@"
-}
-
-install.any() {
-	:
+	: # TODO
 }
 
 configure() {
-	util.write_shellfile 'pipx' \
+	util.write_shellfile 'zoxide' \
 		--bash 'eval "$(zoxide init bash)"' \
 		--zsh 'eval "$(zoxide init zsh)"' \
 		--sh 'eval "$(zoxide init posix --hook prompt)"' \

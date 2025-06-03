@@ -503,45 +503,6 @@
 	"c-cpp-flylint.cppcheck.enable": false,
 	"c-cpp-flylint.flawfinder.enable": true,
 	"c-cpp-flylint.lizard.enable": true,
-	// TODO: automatically generate other string from this array. one approach
-	// would be to just use clang-tidy for clang-tidy stuff, but its a bit more
-	// bugy and slower to check. but it is sort of required if clangd is enabled
-	"clang-tidy.checks": [
-		"bugprone-*",
-		"-bugprone-easily-swappable-parameters",
-		"cert-*",
-		"clang-analyzer-*",
-		"-clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
-		"-clang-analyzer-deadcode.DeadStores",
-		"concurrency-*",
-		"-concurrency-mt-unsafe",
-		"cppcoreguidelines-*",
-		"-cppcoreguidelines-avoid-c-arrays",
-		"-cppcoreguidelines-avoid-magic-numbers",
-		"-cppcoreguidelines-avoid-non-const-global-variables",
-		"-cppcoreguidelines-macro-usage",
-		"-cppcoreguidelines-owning-memory",
-		"-cppcoreguidelines-pro-bounds-pointer-arithmetic",
-		"-cppcoreguidelines-pro-bounds-array-to-pointer-decay",
-		"google-*",
-		"-google-readability-braces-around-statements",
-		"-google-readability-casting",
-		"-google-readability-todo",
-		"-google-runtime-references",
-		"misc-*",
-		"modernize-*",
-		"-modernize-avoid-c-arrays",
-		"-modernize-use-trailing-return-type",
-		"performance-*",
-		"portability-*",
-		"readability-*",
-		"-readability-braces-around-statements",
-		"-readability-convert-member-functions-to-static",
-		"-readability-else-after-return",
-		"-readability-identifier-length",
-		"-readability-isolate-declaration",
-		"-readability-magic-numbers"
-	],
 
 	//
 	// DISABLE TELEMETRY, NOTIFICATIONS & WHAT'S NEW

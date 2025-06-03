@@ -1,9 +1,9 @@
-zmodload zsh/compctl
-zmodload zsh/complete
-zmodload zsh/complist
-zmodload zsh/computil
+# zmodload zsh/compctl
+# zmodload zsh/complete
+# zmodload zsh/complist
+# zmodload zsh/computil
 
-zmodload zsh/zle
+# zmodload zsh/zle
 # zmodload zsh/zleparameter
 # zmodload zsh/zpty
 

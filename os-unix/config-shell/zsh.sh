@@ -32,9 +32,4 @@ installed() {
 	command -v zsh &>/dev/null
 }
 
-configure() {
-	# TODO: Edit dotfiles.c, and d compile & reconfigure
-	:
-}
-
 util.if_file_sourced || _main "$@"

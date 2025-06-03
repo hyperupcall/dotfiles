@@ -2,6 +2,11 @@
 .data/
 .home/
 os-unix/scripts/setup/
+bash/bash.d/
+sh/shell.d/
+zsh/zsh.d/
+.zcompcache/
+.zcompdump
 
 site/
 *.env

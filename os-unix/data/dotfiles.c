@@ -90,7 +90,6 @@ DefineEntry(bat, Config(CategoryCli, "bat/"))
 DefineEntry(ccache, Config(CategoryCli, "ccache/"))
 DefineEntry(sccache, Config(CategoryCli, "sccache/"))
 DefineEntry(cookiecutter, Config(CategoryCli, "cookiecutter/"))
-DefineEntry(foxDefault, Config(CategoryCli, "fox-default/"))
 DefineEntry(neofetch, Config(CategoryCli, "neofetch/"))
 DefineEntry(pgcli, Config(CategoryCli, "pgcli/"))
 DefineEntry(ripgrep, Config(CategoryCli, "ripgrep/"))
@@ -334,7 +333,6 @@ struct Entry *configuration[] = {
 	// ccache,
 	// sccache,
 	// cookiecutter,
-	foxDefault, // TODO
 	// neofetch,
 	// pgcli,
 	// ripgrep,
@@ -454,7 +452,7 @@ struct Entry *configuration[] = {
 	// mkshrc,
 	profile,
 	// tcshrc,
-	// zshenv,
+	zshenv,
 	alacritty,
 	// kermit,
 	kitty,

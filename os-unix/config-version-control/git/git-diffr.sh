@@ -5,10 +5,6 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='diffr'
 
 main() {
-	helper.setup "$@"
-}
-
-install.any() {
 	cargo install --force diffr
 }
 

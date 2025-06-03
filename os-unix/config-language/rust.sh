@@ -5,10 +5,6 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='Rust'
 
 main() {
-	helper.setup "$@"
-}
-
-install.any() {
 	core.print_info "Installing rustup"
 	curl -K "$CURL_CONFIG" https://sh.rustup.rs | sh -s -- --default-toolchain nightly -y
 

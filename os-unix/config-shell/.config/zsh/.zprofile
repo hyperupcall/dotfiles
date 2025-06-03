@@ -1,1 +1,1 @@
-[ -r ~/.profile ] && emulate sh -c '. ~/.profile'
+[ -f ~/.profile ] && emulate sh -c '. ~/.profile'

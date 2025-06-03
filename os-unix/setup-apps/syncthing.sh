@@ -28,4 +28,12 @@ install.debian() {
 	sudo apt-get install -y syncthing
 }
 
+install.ubuntu() {
+	install.debian "$@"
+}
+
+installed() {
+	command -v syncthing &>/dev/null
+}
+
 util.if_file_sourced || _main "$@"

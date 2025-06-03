@@ -5,10 +5,6 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='npm dependencies'
 
 main() {
-	helper.setup "$@"
-}
-
-install.any() {
 	npm i -g yarn pnpm
 	yarn global add pnpm
 	yarn global add diff-so-fancy

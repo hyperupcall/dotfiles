@@ -5,10 +5,6 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='Woof'
 
 main() {
-	helper.setup "$@"
-}
-
-install.any() {
 	basalt global add version-manager/woof
 }
 

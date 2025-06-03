@@ -1,33 +1,24 @@
-# Stop execution if Zsh is non-interactive
+# Stop execution if Zsh is non-interactive.
 [[ $- != *i* ]] && [ ! -t 0 ] && return
 
-# Ensure /etc/zprofile is read for non-login shells
-# Zsh only reads /etc/zprofile on interactive, login shells
-# ! shopt -q login_shell && [ -r /etc/profile ] && source /etc/profile
+# Ensure /etc/zprofile is read for non-login shells.
+# Zsh only reads /etc/zprofile on interactive, login shells.
+# ! shopt -q login_shell && [ -f /etc/profile ] && source /etc/profile
 
 # Ensure ~/.zprofile is read for non-login shells
 # Zsh only reads ~/.zprofile on login shells
-[ -r "$ZDOTDIR/.zprofile" ] && source "$ZDOTDIR/.zprofile"
+[ -f "$ZDOTDIR/.zprofile" ] && source "$ZDOTDIR/.zprofile"
+(( $? != 0 )) && _util_print_source_error '~/.profile'
 
-#
-# ─── FRAMEWORKS ─────────────────────────────────────────────────────────────────
-#
-
+# Use frameworks.
 # source "$ZDOTDIR/frameworks/zinit.zsh"
 # source "$ZDOTDIR/frameworks/zplug.zsh"
 
-
-#
-# ─── SHELL VARIABLES ────────────────────────────────────────────────────────────
-#
+# Set shell variables.
+# Exported variables are inherited in nested shells and virtual environments.
 export HISTFILE="$XDG_STATE_HOME/history/zsh_history"
 
-
-#
-# ─── SHELL OPTIONS ──────────────────────────────────────────────────────────────
-#
-
-# ------------------------ setopt ------------------------ #
+# Set Zsh options.
 setopt auto_cd
 unsetopt auto_pushd
 unsetopt cdable_vars
@@ -86,62 +77,37 @@ setopt posix_aliases
 
 unsetopt beep
 
-
-#
-# ─── PS1 ────────────────────────────────────────────────────────────────────────
-#
-
-is_8_colors() {
-	colors=$(tput colors 2>/dev/null)
-
-	[ -n "$colors" ] && [ "$colors" -eq 8 ]
-}
-
-is_256_colors() {
-	colors=$(tput colors 2>/dev/null)
-
-	[ -n "$colors" ] && [ "$colors" -eq 256 ]
-}
-
-is_16million_colors() {
-	[ "$COLORTERM" = "truecolor" ] || [ "$COLORTERM" = "24bit" ]
-}
-
+# PS1.
 autoload -U colors && colors
-if is_16million_colors; then
+if [ "$COLORTERM" = "truecolor" ] || [ "$COLORTERM" = "24bit" ]; then
 	if ((EUID == 0)); then
 		PS1="%F{#c92a2a}[%n@%M %~]$%f "
 	else
 		PS1="%{$fg[red]%}[%n@%M %~]$%{$reset_color%} "
 		if ! eval "$(
 			if ! default launch shell-prompt-zsh; then
-				printf '%s\n' 'false' # Propagate error to the "if ! eval ..."
+				printf '%s\n' 'false' # Propagate error.
 			fi
 		)"; then
 			PS1="[%{$fg[red]%}(PS1 Error)%{$reset_color%} %n@%M %~]\$ "
 		fi
 	fi
-elif is_8_colors || is_256_colors; then
-	if ((EUID == 0)); then
-		PS1="%{$fg[red]%}[%n@%M %~]$%{$reset_color%} "
-	else
-		PS1="%{$fg[yellow]%}[%n@%M %~]$%{$reset_color%} "
-	fi
 else
-	PS1="[%n@%M %~]$ "
+	_colors=$(tput colors 2>/dev/null)
+	if [ -n "$_colors" ] && (( _colors == 8 || _colors == 256)); then
+		if ((EUID == 0)); then
+			PS1="%{$fg[red]%}[%n@%M %~]$%{$reset_color%} "
+		else
+			PS1="%{$fg[yellow]%}[%n@%M %~]$%{$reset_color%} "
+		fi
+	else
+		PS1="[%n@%M %~]$ "
+	fi
+	unset -v _colors
 fi
 
-unset -f is_8_colors is_256_colors is_16million_colors
-
-
-#
-# ─── MODULES ────────────────────────────────────────────────────────────────────
-#
-
-source "$HOME/.dotfiles/os-unix/config-dotfile-manager/.config/dotgen-output/concatenated.zsh"
-for f in "$XDG_CONFIG_HOME"/zsh/modules/?*.zsh; do
-	source "$f"
-done
-unset -v f
+# Modules.
+_util_source_dir "$XDG_CONFIG_HOME/zsh/modules"
+_util_source_dir "$XDG_CONFIG_HOME/zsh/zsh.d"
 
 # ---

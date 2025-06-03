@@ -5,10 +5,6 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='gh'
 
 main() {
-	helper.setup "$@"
-}
-
-install.any() {
 	util.get_latest_github_tag 'cli/cli'
 	local version="$REPLY"
 	version=${version#v}

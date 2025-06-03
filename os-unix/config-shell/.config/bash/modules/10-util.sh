@@ -1,7 +1,5 @@
 # shellcheck shell=bash
 
-# Utility functions for Bash.
-
 _debug_completion() {
 	echo
 	echo "----- debug start -----"

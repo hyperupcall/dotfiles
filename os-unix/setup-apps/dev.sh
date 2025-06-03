@@ -5,10 +5,8 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='dev'
 
 main() {
-	helper.setup "$@"
-}
+	local nodejs_version='23.6.0'
 
-install.any() {
 	# Download and install NodeJS runtime.
 	local dir=(~/.dotfiles/.data/node-v*/)
 	dir=${dir%/}
@@ -18,7 +16,6 @@ install.any() {
 	local old_nodejs_version="${dir[0]##*/}"
 	old_nodejs_version=${old_nodejs_version#node-v}
 	old_nodejs_version=${old_nodejs_version%%-*}
-	local nodejs_version='23.6.0' # TODO: Update and update docs
 	if [ -d "${dir[0]}" ] && [ "$old_nodejs_version" = "$nodejs_version" ]; then
 		local dir_pretty="~${dir[0]#$HOME}"
 		core.print_info "Already installed NodeJS to $dir_pretty"
@@ -89,7 +86,7 @@ Restart=on-failure
 WantedBy=default.target
 EOF
 	systemctl --user daemon-reload
-	# systemctl --user enable --now dev.service # TODO
+	systemctl --user enable --now dev.service
 }
 
 installed() {

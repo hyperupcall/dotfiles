@@ -59,9 +59,6 @@ install.ubuntu() {
 }
 
 install.fedora() {
-	pkg.add_dnf_key 'https://brave-browser-rpm-release.s3.brave.com/brave-core.asc'
-	pkg.add_dnf_key 'https://brave-browser-rpm-beta.s3.brave.com/brave-core-nightly.asc'
-
 	pkg.add_dnf_repository 'https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo'
 	pkg.add_dnf_repository 'https://brave-browser-rpm-beta.s3.brave.com/brave-browser.repo'
 

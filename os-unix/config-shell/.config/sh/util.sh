@@ -2,12 +2,20 @@
 
 # https://superuser.com/questions/39751/add-directory-to-path-if-its-not-already-there/1644866#1644866
 _util_path_prepend() {
-	# TODO: Use local -n for speed improvements
 	if [ -n "$2" ]; then
-		case :$(eval "printf '%s' \"\$$1\""): in
-			*":$2:"*) :;;
-			*) eval "export $1=$2\${$1:+\":\$$1\"}" ;;
-		esac
+		if [ -n "$BASH_VERSION" ]; then
+			local -n _path="$1"
+			case ":$_path:" in
+				*":$2:"*) :;;
+				*) export $1="$2${_path:+":$_path"}"
+			esac
+			unset -vn _path
+		else
+			case :$(eval "printf '%s' \"\$$1\""): in
+				*":$2:"*) :;;
+				*) eval "export $1=$2\${$1:+\":\$$1\"}" ;;
+			esac
+		fi
 		return
 	fi
 
@@ -19,10 +27,19 @@ _util_path_prepend() {
 
 _util_path_append() {
 	if [ -n "$2" ]; then
-		case :$(eval "printf '%s' \"\$$1\""): in
-			*":$2:"*) :;;
-			*) eval "export $1=\${$1:+\"\$$1:\"}$2" ;;
-		esac
+		if [ -n "$BASH_VERSION" ]; then
+			local -n _path="$1"
+			case ":$_path:" in
+				*":$2:"*) :;;
+				*) export $1="${_path:+":$_path"}$2"
+			esac
+			unset -vn _path
+		else
+			case :$(eval "printf '%s' \"\$$1\""): in
+				*":$2:"*) :;;
+				*) eval "export $1=\${$1:+\"\$$1:\"}$2" ;;
+			esac
+		fi
 		return
 	fi
 
@@ -30,6 +47,24 @@ _util_path_append() {
 		*":$1:"*) :;;
 		*) export PATH="${PATH:+"$PATH:"}$1"
 	esac
+}
+
+_util_source_dir() {
+	for _dir; do
+		_dir=${_dir%/}
+		if [ -d "$_dir" ]; then
+			for _file in "$_dir"/*; do
+				if [ -f "$_file" ]; then
+					. "$_file"
+					(($? != 0 )) && _util_print_source_error "$_file"
+				fi
+			done
+			unset -v _file
+		else
+			_util_log_warn "_util_source_dir: Not a directory: \"$_dir\""
+		fi
+	done
+	unset -v _dir
 }
 
 _util_die() {
@@ -61,28 +96,16 @@ _util_log_info() {
 	fi
 }
 
+_util_print_source_error() {
+	_util_log_warn "Failed to source $1 successfully"
+}
+
 _util_ls() {
 	printf '%s\n' '---'
-	if command -v exa >/dev/null 2>&1; then
-		exa -a --color=always
+	if command -v eza >/dev/null 2>&1; then
+		eza -a --color=always
 	else
 		ls -A --color=always
 	fi
 	printf '%s\n' '---'
-}
-
-_util_has() {
-	if hash "$1" >/dev/null 2>&1; then
-		return 0
-	else
-		return 1
-	fi
-}
-
-_util_run() {
-	_util_log_info "Executing: $*"
-
-	if "$@"; then :; else
-		return $?
-	fi
 }

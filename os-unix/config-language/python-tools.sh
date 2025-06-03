@@ -5,10 +5,6 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='Python Tools'
 
 main() {
-	helper.setup "$@"
-}
-
-install.any() {
 	python3 -m ensurepip --upgrade
 	python3 -m pip install --upgrade pip
 	python3 -m pip install --upgrade wheel

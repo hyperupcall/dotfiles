@@ -5,10 +5,6 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='Mise'
 
 main() {
-	helper.setup "$@"
-}
-
-install.any() {
 	curl -K "$CURL_CONFIG" https://mise.jdx.dev/install.sh | sh
 }
 

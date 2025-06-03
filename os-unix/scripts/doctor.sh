@@ -12,7 +12,7 @@ main() {
 	if [ ! -f ~/.dotfiles/.data/finished_bootstrap ]; then
 		install_required_dependencies
 		touch ~/.dotfiles/.data/finished_bootstrap
-		core.print_info "Installed requiredelse dependencies"
+		core.print_info "Installed required dependencies"
 	fi
 
 	# Remove broken symlinks.
@@ -22,7 +22,7 @@ main() {
 		fi
 	done
 
-	# Remove autoappended lines in shell startup files.
+	# Remove auto-appended lines in shell startup files.
 	for file in ~/.profile ~/.bashrc ~/.bash_profile "${ZDOTDIR:-$HOME}/.zshrc" "${ZDOTDIR:-$HOME}/.zshenv" "$XDG_CONFIG_HOME/fish/config.fish"; do
 		if [ ! -f "$file" ]; then
 			continue
@@ -55,12 +55,14 @@ main() {
 			local -a files=("$dir"/"$dirname"@(|-*).sh)
 			core.shopt_pop
 			for file in "${files[@]}"; do
+				chmod +x "$file"
 				ln -sf "$file" ~/scripts/setup/"${file##*/}"
 			done
 		else
 
 			local filename=${file##*/}
 			if [[ "$filename" =~ ^[[:alnum:]-]+.sh$ ]]; then
+				chmod +x "$file"
 				ln -sf "$file" ~/scripts/setup/"$filename"
 			fi
 		fi
@@ -104,10 +106,8 @@ main() {
 	)
 
 	# Create necessary directories, files, and groups.
-	must.dir ~/.dotfiles/.data/bin
-	must.dir ~/.dotfiles/.data/repos
-	must.dir ~/.dotfiles/.home
-	must.dir ~/.dotfiles/.data
+	must.dir ~/.dotfiles/.data/{bin,repos}
+	must.dir ~/.dotfiles/.{data,home}
 	must.dir ~/.local/bin
 	must.dir "$XDG_CONFIG_HOME"
 	must.dir "$XDG_DATA_HOME"
@@ -152,6 +152,7 @@ main() {
 	must.rm ~/.zshrc
 	must.rm ~/.zprofile
 	must.rm ~/.zcompdump
+	must.rm "${ZDOTDIR-"$HOME"}/.zcompdump"
 
 	# Remove distribution-specific dotfiles.
 	mkdir -p ~/.bootstrap/distro-dotfiles
@@ -188,7 +189,7 @@ main() {
 		printf '%s\n' "$token" > ~/.dotfiles/.data/github_token
 	fi
 
-	# Check SSH files
+	# Check SSH files.
 	{
 		if [ ! -d ~/.ssh ]; then
 			core.print_die "Expected to find an ~/.ssh directory"
@@ -202,7 +203,7 @@ main() {
 		fi
 	}
 
-	# Check GnuPG files
+	# Check GnuPG files.
 	{
 		if [ ! -d ~/.gnupg ]; then
 			core.print_die "Expected to find an ~/.gnupg directory"
@@ -238,7 +239,7 @@ main() {
 			lefthook install
 		fi
 	)
-	~/scripts/setup/git.sh # TODO: 'spaceman-diff'
+	~/scripts/setup/git.sh
 	~/scripts/setup/git-colordiff.sh
 	~/scripts/setup/neovim.sh
 	~/scripts/setup/pass.sh
@@ -255,30 +256,19 @@ main() {
 	~/scripts/setup/latex.sh
 	~/scripts/setup/fish.sh
 	~/scripts/setup/my-tools.sh
+	~/scripts/setup/miscellaneous.sh
 	~/.dotfiles/os-unix/scripts/lib/util-generate-aliases.sh
 
 	~/scripts/setup/llvm.sh
 	~/scripts/setup/zsh.sh
 	~/scripts/setup/ksh.sh
+	~/scripts/setup/bake.sh
 	~/scripts/setup/basalt.sh
 	~/scripts/setup/woof.sh
 	~/scripts/setup/notify-send.sh
+	~/scripts/setup/pre-commit.sh
 
-	# TODO: bake
-	# TODO: pre-commit
 	# TODO: nerdfonts
-	# TODO: notify-send
-	# if command -v autoenv_init >/dev/null 2>&1; then
-	# 		autoenv_init || :
-	# 	else
-	# 		_util_log_warn "cd: Function is not defined: autoenv_init"
-	# 	fi
-
-	# 	if command -v __woof_cd_hook >/dev/null 2>&1; then
-	# 		__woof_cd_hook || :
-	# 	else
-	# 		_util_log_warn "cd: Function is not defined: __woof_cd_hook"
-	# 	fi
 
 	# Generate configuration files.
 	for file in ~/scripts/setup/*; do
@@ -322,10 +312,8 @@ must.rmdir() {
 }
 
 must.dir() {
-	local d=
-	for d; do
-		local dir="$d"
-
+	local dir=
+	for dir; do
 		if [ ! -d "$dir" ]; then
 			local output=
 			if output=$(mkdir -p -- "$dir" 2>&1); then
@@ -335,7 +323,7 @@ must.dir() {
 				printf '  -> %s\n' "$output"
 			fi
 		fi
-	done; unset -v d
+	done; unset -v dir
 }
 
 must.file() {
@@ -357,7 +345,8 @@ must.link() {
 	local target="$2"
 
 	# Skip if symlink is already correct.
-	if [ -L "$target" ] && [ "$(readlink "$target")" = "$src" ]; then
+	local target_full=$(readlink "$target")
+	if [ -L "$target" ] && [ "$target_full" = "$src" ]; then
 		return
 	fi
 

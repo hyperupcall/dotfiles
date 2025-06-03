@@ -5,12 +5,6 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='GHC'
 
 main() {
-	helper.setup "$@"
-}
-
-install.any() {
-	core.print_info "Installing haskell"
-
 	mkdir -p "$XDG_DATA_HOME/ghcup"
 	ln -s "$XDG_DATA_HOME"/{,ghcup/.}ghcup
 

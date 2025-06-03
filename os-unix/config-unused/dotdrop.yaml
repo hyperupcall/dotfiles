@@ -1,5 +1,4 @@
 ---
-# TODO: These do not belong in ~
 config:
   backup: true
   banner: false

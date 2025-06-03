@@ -5,14 +5,10 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='Basalt'
 
 main() {
-	helper.setup "$@"
-}
-
-install.any() {
 	curl -K "$CURL_CONFIG" https://raw.githubusercontent.com/bash-bastion/basalt/main/scripts/install.sh | sh
-	# TODO
+
 	ln -fs ~/.local/share/basalt/source/pkg/bin/basalt ~/.local/bin/basalt >/dev/null
-	ln -fs ~/.local/share/basalt/source/pkg/bin/basalt-package-init >/dev/null ~/.local/bin/basalt-package-init
+	ln -fs ~/.local/share/basalt/source/pkg/bin/basalt-package-init ~/.local/bin/basalt-package-init >/dev/null
 
 	basalt global add \
 		hyperupcall/autoenv \

@@ -8,7 +8,7 @@ main() {
 	helper.setup "$@"
 }
 
-install.any() {
+install.ubuntu() {
 	sudo apt-get -y install \
 		ca-certificates \
 		gnupg \

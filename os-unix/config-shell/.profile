@@ -21,15 +21,16 @@ if [ -t 0 ]; then # Surpress 'inappropriate ioctl for device' errors on some dis
 	stty -ixon
 fi
 
+# Set options.
+set +o noclobber
+set -o notify
+set -o physical
+
+# Add custom functions and PATH.
 source "$XDG_CONFIG_HOME/sh/util.sh"
 _util_path_prepend "$HOME/.dotfiles/.data/bin"
 _util_path_prepend "$HOME/.local/bin"
 _util_path_prepend "$XDG_STATE_HOME/pipx/bin"
-
-# Source other shell configuration files.
-for f in "$XDG_CONFIG_HOME/sh/modules"/*.sh; do
-	[ -r "$f" ] && . "$f"
-done
-unset -v f
-
+_util_source_dir "$XDG_CONFIG_HOME/sh/modules"
+_util_source_dir "$XDG_CONFIG_HOME/sh/shell.d"
 # ---

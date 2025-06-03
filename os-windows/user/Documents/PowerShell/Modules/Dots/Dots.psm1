@@ -1,4 +1,3 @@
-# TODO
 function ls() {
 	Get-ChildItem -Attributes 'Hidden,!Hidden'
 }

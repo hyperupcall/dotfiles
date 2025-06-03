@@ -36,17 +36,12 @@
 		exit 1
 	fi
 
-	# TODO
-	# err_handler() {
-	# 	core.print_stacktrace
-	# }
-	# core.trap_add 'err_handler' SIGINT
-
 	CURL_CONFIG="$HOME/.dotfiles/os-unix/data/curl_config.conf"
 }
 
 _main() {
 	local flag_force=no
+	local flag_help=no
 
 	local arg=
 	for arg; do
@@ -54,17 +49,29 @@ _main() {
 		--force)
 			flag_force=yes
 			;;
+		--help)
+			flag_help=yes
+			;;
 		esac
 	done
+
+	if [ "$flag_help" = 'yes' ]; then
+		util.get_script_path
+		local script_path=$REPLY
+
+		local script=${script_path}
+		cat <<EOF
+~${script_path/#"$HOME"} [--force] [--no-confirm] [--configure-only]
+EOF
+		return
+	fi
 
 	local orig_dir="$PWD" temp_dir=
 	temp_dir=$(mktemp -d --suffix "-dotfiles")
 	cd "$temp_dir" || exit $?
 
-	local script_path=$0
-	if [ -n "$ZSH_VERSION" ]; then
-		script_path=$ZSH_ARGZERO
-	fi
+	util.get_script_path
+	local script_path=$REPLY
 
 	if [[ $script_path == "$HOME/scripts/setup"/* ]]; then
 		if [ -z "$g_name" ]; then
@@ -97,9 +104,7 @@ _main() {
 	rm -rf "$temp_dir"
 }
 
-# TODO: --help
 helper.setup() {
-	local flag_force=no
 	local flag_no_confirm=no
 	local flag_configure_only=no
 	local flag_fn_prefix=install
@@ -261,25 +266,21 @@ pkg.add_apt_repository() {
 	printf '%s' "${file_content::-1}" | sudo tee "$dest_file" >/dev/null
 }
 
-pkg.add_dnf_key() {
-	local source_url=$1
-
-	# TODO: Don't import if already exists
-	sudo rpm --import "$source_url"
-}
-
 pkg.add_dnf_repository() {
 	local repo_url="$1"
+	local repo_name=${repo_url##*/}
 
-	# TODO: Don't import if already exists
-	(
-		source /etc/os-release
-		if ((VERSION_ID >= 41 )); then
-			sudo dnf config-manager addrepo --overwrite --from-repofile="$repo_url"
-		else
-			sudo dnf config-manager --add-repo "$repo_url"
-		fi
-	)
+	sudo rm -f "/etc/yum.repos.d/$repo_name"
+
+	local dnf_version=
+	dnf_version=$(dnf --version)
+	if [[ $dnf_version == *dnf5* ]]; then
+		sudo dnf install -y dnf-plugins-core
+		sudo dnf config-manager addrepo --overwrite --from-repofile="$repo_url"
+	else
+		sudo dnf install -y dnf-plugins-core
+		sudo dnf config-manager --add-repo "$repo_url"
+	fi
 }
 
 util.clone() {
@@ -432,6 +433,14 @@ util.if_file_sourced() {
 	fi
 }
 
+util.get_script_path() {
+	if [ -n "$ZSH_VERSION" ]; then
+		REPLY=$ZSH_ARGZERO
+	else
+		REPLY=$0
+	fi
+}
+
 util.write_shellfile() {
 	local name="$1"
 	shift
@@ -454,7 +463,14 @@ util.write_shellfile() {
 		esac
 
 		mkdir -p "$HOME/.dotfiles/.home/xdg_config_dir/$shell/$dirname"
-		printf '%s\n' "$content" > "$HOME/.dotfiles/.home/xdg_config_dir/$shell/$dirname/$name.$shell"
+		: > "$HOME/.dotfiles/.home/xdg_config_dir/$shell/$dirname/_$name.$shell"
+		local line=
+		while IFS= read -r line; do
+			line="${line#"${line%%[![:space:]]*}"}"
+			printf '%s\n' "$line" >> "$HOME/.dotfiles/.home/xdg_config_dir/$shell/$dirname/_$name.$shell"
+		done <<< "$content"
+		unset -v line
+
 	done
 }
 
@@ -463,6 +479,6 @@ util.remove_shellfile() {
 
 	local shell=
 	for shell in sh bash zsh ksh fish elvish tcsh; do
-		rm -f "$HOME/.dotfiles/.home/xdg_config_dir/$shell/$dirname/$name.$shell"
+		rm -f "$HOME/.dotfiles/.home/xdg_config_dir/$shell/$dirname/_$name.$shell"
 	done
 }

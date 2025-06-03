@@ -9,11 +9,11 @@ main() {
 }
 
 install.any() {
-	:
+	: # TODO
 }
 
 configure() {
-	util.write_shellfile 'pipx' \
+	util.write_shellfile 'nodejs' \
 		--bash 'source <(node --completion-bash)'
 }
 

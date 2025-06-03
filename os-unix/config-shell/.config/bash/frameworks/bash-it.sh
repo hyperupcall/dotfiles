@@ -68,4 +68,4 @@ export SCM_CHECK=true
 # export BASH_IT_RELOAD_LEGACY=1
 
 # Load Bash It
-[ -r "$BASH_IT/bash_it.sh" ] && source "$BASH_IT/bash_it.sh"
+[ -f "$BASH_IT/bash_it.sh" ] && source "$BASH_IT/bash_it.sh"

@@ -8,6 +8,10 @@ main() {
 	helper.setup "$@"
 }
 
+install.arch() {
+	yay -S --noconfirm neovim
+}
+
 install.any() {
 	dependencies.debian() {
 		sudo apt-get -y install gettext
@@ -49,10 +53,6 @@ install.any() {
 	make deps
 	make CMAKE_BUILD_TYPE=Release
 	sudo make install
-}
-
-install.arch() {
-	yay -S --noconfirm neovim
 }
 
 installed() {

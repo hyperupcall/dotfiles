@@ -7,6 +7,12 @@ use File::Spec;
 use File::Basename;
 use feature qw(say);
 
+# TODO
+# - order q_ keys last
+# - if has login key, check it is on second line
+# - error on invalid email addresses
+# - $+{Key} is [a-z][A-Z][0-9]_ only
+
 my $password_store_dir = '~/.dotfiles/.home/xdg_data_dir/password-store/';
 my $total_passwords = 0;
 my %property_counts = ();
@@ -36,15 +42,6 @@ sub wanted {
 	$pass_name =~ s/.gpg$//g;
 	$pass_name = substr($pass_name, $len);
 
-	# TODO: jobs/ should not be a website
-	if ("$pass_name/" !~ /\.(?:
-		com|edu|org|net|io|gov|dev|app|co|us|tv|ht|club|info|uk|me|de|ai|world|sh|click|
-		works|is|ws|works|academy|to|lgbt|pizza|jobs|info|so|one|garden|xyz|ninja|link|
-		dhl|exchange|it|fyi|ee|group|do|na|fm|host|tech|im|engineer|network|social|rest
-	)\//x and $pass_name !~ /^jobs\//) {
-		say(STDERR "Error: Filename must be a website: $pass_name");
-	}
-
 	my $pid = open(my $pipe_fh, "-|", "pass show $pass_name 2>&1");
 	if (!defined $pid) {
 		die "Failed to fork: $!";
@@ -52,9 +49,14 @@ sub wanted {
 	my $pass_content = "";
 	while (my $line = <$pipe_fh>) {
 		$pass_content .= $line;
-   }
-   close($pipe_fh);
-   waitpid($pid, 0);
+	}
+	close($pipe_fh);
+	waitpid($pid, 0);
+
+	if ($pass_content =~ /gpg: decryption failed: No secret key/) {
+		say "No secret key found for file: \"$File::Find::name\"";
+		return;
+	}
 
 	if ($pass_content =~ /gpg: no valid OpenPGP data found/) {
 		my $symlink_content = "";
@@ -79,7 +81,7 @@ sub wanted {
 				say "Skipping...";
 			}
 		} else {
-			say(STDERR "Error: No valid GPG data found: \"$File::Find::name\"");
+			say(STDERR "No valid GPG data found: \"$File::Find::name\"");
 			return;
 		}
 	}
@@ -87,17 +89,20 @@ sub wanted {
 
 	my $filtered_pass_content = $pass_content =~ s/\s/+/gr;
 	if ($filtered_pass_content eq '') {
-		say(STDERR "Error: Should not be empty: $pass_name");
+		say(STDERR "Should not be empty: $pass_name");
 		return;
 	}
 
 	if ($pass_content !~ /^login:/m) {
-		say(STDERR "Error: Should have the login field: $pass_name");
+		my @ignore_list = ('myvaccinerecord.cdph.ca.gov');
+		if (!grep(/^$pass_name$/, @ignore_list)) {
+			say(STDERR "Should have the \"login\" field: $pass_name");
+		}
 	}
 
 	# Extra newline appended from run command.
 	if ($pass_content =~ /\n\n\z/) {
-		say(STDERR "Error: Should not have ending newline: $pass_name");
+		say(STDERR "Should not have ending newline: $pass_name");
 	}
 
 	while ($pass_content =~ /\n(?<key>\N+?):[ \t]*(?<value>\N+)$/gm) {
@@ -106,10 +111,10 @@ sub wanted {
 
 		if ($key =~ /[ \t]/) {
 			$key =~ s/[ \t]+/_INVALID_WHITESPACE_/g;
-			say(STDERR "Error: Key should not have spaces: $pass_name");
+			say(STDERR "Field identifier should not have spaces: $pass_name");
 		}
 
-		if ($key =~ /^login$/) {
+		if ($key =~ /^login/) {
 			$property_counts{'login'} += 1;
 		} elsif ($key =~ /^email$/) {
 			$property_counts{'email'} += 1;
@@ -117,8 +122,12 @@ sub wanted {
 			$property_counts{'username'} += 1;
 		} elsif ($key =~ /^comment$/) {
 			$property_counts{'comment'} += 1;
-		} elsif ($key =~ /^security_/) {
-			$property_counts{'security_'} += 1;
+		} elsif ($key =~ /^info$/) {
+			$property_counts{'info'} += 1;
+		} elsif ($key =~ /^password_/) {
+			$property_counts{'password_'} += 1;
+		} elsif ($key =~ /^secret_/) {
+			$property_counts{'secret_'} += 1;
 		} elsif ($key =~ /^id/) {
 			$property_counts{'id_'} += 1;
 		} elsif ($key =~ /^pin/) {
@@ -126,16 +135,13 @@ sub wanted {
 		} elsif ($key =~ /^q_/) {
 			$property_counts{'q_'} += 1;
 		} else {
-			say(STDERR "Error: Bad Key: ${pass_name}: $key");
+			say(STDERR "Bad field: ${pass_name}: $key");
 			$property_counts{$key} += 1;
 		}
 	}
-
-	# TODO: number with old email
-	# TODO: login is second line
-	# TODO: $+{Key} is [a-z][A-Z][0-9]_ only
 }
 
+say("---");
 say("Total passwords: $total_passwords");
 my @keys = sort { $property_counts{$a} <=> $property_counts{$b} } keys(%property_counts);
 my @vals = @property_counts{@keys};
