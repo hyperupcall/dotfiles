@@ -32,7 +32,6 @@ dotfiles:
   - '.config/bpython'
   - '.config/broot'
   - '.config/bspwm'
-  - '.config/cabal/config'
   - '.config/cactus'
   - '.config/calcurse'
   - '.config/cargo'

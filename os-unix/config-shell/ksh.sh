@@ -5,31 +5,7 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='ksh'
 
 main() {
-	util.install_by_setup "$@"
-}
-
-install.debian() {
-	sudo apt-get install -y ksh
-}
-
-install.ubuntu() {
-	install.debian "$@"
-}
-
-install.fedora() {
-	sudo dnf install -y ksh
-}
-
-install.opensuse() {
-	sudo zypper -n install ksh
-}
-
-install.arch() {
-	yay -Syu --noconfirm ksh
-}
-
-installed() {
-	command -v ksh &>/dev/null
+	util.install_by_setup_distro_package 'ksh' 'ksh'
 }
 
 util.if_file_sourced || _setup "$@"

@@ -1,12 +1,12 @@
 # shellcheck shell=bash
 
-# config: big-print=off
 task.init() {
 	git config set --local filter.npmrc-clean.clean './os-unix/config-language/.config/npm/npmrc-clean.sh'
 	git config set --local filter.oscrc-clean.clean './os-unix/config-tools/.config/osc/oscrc-clean.sh'
 }
 
 task.build() {
+	grep -r "/home/edwin" ./os-unix/config-*
 	cd "./os-unix/config-linux-rice/.config/X11/resources" || exit
 	printf '%s\n' "! GENERATERD BY 'bake build'" > uxterm.Xresources
 	sed 's/XTerm/UXTerm/g' xterm.Xresources >> uxterm.Xresources
@@ -17,7 +17,7 @@ task.lint() {
 }
 
 task.test() {
-	(cd "./os-unix/config-shell/.config/sh" && bats -p .)
+	bats -p './os-unix/config-shell/.config/sh'
 	~/scripts/lint-scripts.py
 }
 

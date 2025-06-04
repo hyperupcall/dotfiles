@@ -193,7 +193,7 @@
 
 	//
 	// DENO
-	"deno.path": "/home/edwin/.local/share/mise/installs/deno/2.3.1/bin/deno",
+	"deno.path": "~/.local/share/mise/installs/deno/2.3.1/bin/deno",
 
 	//
 	// JSON

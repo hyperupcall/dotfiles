@@ -33,11 +33,6 @@ export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME/bundle"
 export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle"
 export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/bundle"
 
-# cabal
-export CABAL_CONFIG="$XDG_CONFIG_HOME/cabal/config"
-export CABAL_DIR="$XDG_DATA_HOME/cabal"
-_util_path_prepend "$CABAL_DIR/bin"
-
 # cinelerra
 export CIN_CONFIG="$XDG_CONFIG_HOME/bcast5"
 

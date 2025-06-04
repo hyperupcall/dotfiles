@@ -70,7 +70,6 @@ DefineEntry(mpv, Config(CategoryApplication, "mpv/"))
 DefineEntry(nb, Config(CategoryApplication, "nb/"))
 DefineEntry(ncmpcpp, Config(CategoryApplication, "ncmpcpp/"))
 DefineEntry(octave, Config(CategoryApplication, "octave/"))
-DefineEntry(OpenSCAD, Config(CategoryApplication, "OpenSCAD/"))
 DefineEntry(ranger, Config(CategoryApplication, "ranger/"))
 DefineEntry(taskwarrior, Config(CategoryApplication, "taskwarrior/"))
 DefineEntry(viewnior, Config(CategoryApplication, "viewnior/"))
@@ -159,7 +158,6 @@ DefineEntry(notmuch, Config(CategoryEmail, "notmuch/"))
 
 // Language
 DefineEntry(bpython, Config(CategoryLanguage, "bpython/"))
-DefineEntry(cabal, Config(CategoryLanguage, "cabal/config"))
 DefineEntry(cargo, Config(CategoryLanguage, "cargo/"))
 DefineEntry(conda, Config(CategoryLanguage, "conda/"))
 DefineEntry(gdb, Config(CategoryLanguage, "gdb/"))
@@ -314,9 +312,6 @@ struct Entry *configuration[] = {
 	// nb,
 	// ncmpcpp,
 	// octave,
-	// OpenSCAD,
-	// ranger,
-	// slackTerm,
 	// taskwarrior,
 	// viewnior,
 	// vimiv,
@@ -360,7 +355,6 @@ struct Entry *configuration[] = {
 	// neomutt,
 	// notmuch,
 	// bpython,
-	// cabal,
 	// cargo,
 	// conda,
 	// gdb,

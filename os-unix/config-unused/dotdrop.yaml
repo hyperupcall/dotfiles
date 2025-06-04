@@ -123,9 +123,6 @@ dotfiles:
   '.config/bspwm':
     src: '{{@@ cfg_src @@}}/bspwm'
     dst: '{{@@ cfg_dst @@}}/bspwm'
-  '.config/cabal/config':
-    src: '{{@@ cfg_src @@}}/cabal/config'
-    dst: '{{@@ cfg_dst @@}}/cabal/config'
   '.config/cactus':
     src: '{{@@ cfg_src @@}}/cactus'
     dst: '{{@@ cfg_dst @@}}/cactus'

@@ -3,4 +3,4 @@ assert_lefthook_installed: true
 pre-commit:
   commands:
     build-and-test:
-      run: 'grep -r "/home/edwin" ./os-unix/config-* && ./bake build && ./bake test'
+      run: './bake build && ./bake test'

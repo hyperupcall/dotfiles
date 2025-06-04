@@ -13,8 +13,8 @@
 	name = Edwin Kofler
 	email = edwin@kofler.dev
 [credential "https://github.com"]
-	helper = 
-	helper = !/home/edwin/.local/bin/gh auth git-credential
+	helper =
+	helper = !~/.local/bin/gh auth git-credential
 [credential "https://gist.github.com"]
-	helper = 
-	helper = !/home/edwin/.local/bin/gh auth git-credential
+	helper =
+	helper = !~/.local/bin/gh auth git-credential
