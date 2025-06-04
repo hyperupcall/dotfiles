@@ -267,18 +267,8 @@ main() {
 	~/scripts/setup/woof.sh
 	~/scripts/setup/notify-send.sh
 	~/scripts/setup/pre-commit.sh
-
-	# TODO: nerdfonts
-
-	# Generate configuration files.
-	for file in ~/scripts/setup/*; do
-		(
-			source "$file" # TODO: could be ksh or zsh etc.
-			if installed && command -v configure &>/dev/null; then
-				configure
-			fi
-		)
-	done; unset -v file
+	~/scripts/setup/homebrew.sh
+	~/scripts/setup/nerdfonts.sh
 }
 
 must.rm() {
@@ -489,7 +479,7 @@ install_required_dependencies() {
 	}
 
 	util.update_system
-	helper.setup --no-confirm --fn-prefix=dependencies 'Bootstrap' "$@"
+	util.install_by_setup --fn-prefix=dependencies 'Bootstrap' "$@"
 }
 
 util.if_file_sourced || _main "$@"

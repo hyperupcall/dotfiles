@@ -5,7 +5,7 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='VirtualBox'
 
 main() {
-	helper.setup "$@"
+	util.install_by_setup "$@"
 }
 
 install.debian() {
@@ -58,4 +58,4 @@ configure() {
 	VBoxManage setproperty machinefolder '/storage/bigfiles/VirtualBox_Machines'
 }
 
-util.if_file_sourced || _main "$@"
+util.if_file_sourced || _setup "$@"

@@ -24,7 +24,7 @@ main() {
 		sudo pacman -Syu --noconfirm qt6-base qt6-tools qt6-5compat qt6-scxml # albert
 	}
 
-	helper.setup --fn-prefix=dependencies 'Albert' "$@"
+	util.install_by_setup --fn-prefix=dependencies 'Albert' "$@"
 	install_albert
 }
 
@@ -97,4 +97,4 @@ installed() {
 	command -v albert &>/dev/null
 }
 
-util.if_file_sourced || _main "$@"
+util.if_file_sourced || _setup "$@"

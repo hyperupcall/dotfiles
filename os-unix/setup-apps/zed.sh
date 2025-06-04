@@ -8,4 +8,4 @@ main() {
 	curl -K "$CURL_CONFIG" https://zed.dev/install.sh | sh
 }
 
-util.if_file_sourced || _main "$@"
+util.if_file_sourced || _setup "$@"

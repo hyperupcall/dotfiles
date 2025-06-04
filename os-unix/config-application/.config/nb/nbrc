@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
-
+# shellcheck shell=bash
 export NB_COLOR_THEME="blacklight"
 export NB_SYNTAX_THEME="Nord"

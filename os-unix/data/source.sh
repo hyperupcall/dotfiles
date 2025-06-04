@@ -40,20 +40,19 @@
 }
 
 _main() {
-	local flag_force=no
 	local flag_help=no
-
 	local arg=
 	for arg; do
 		case $arg in
-		--force)
-			flag_force=yes
-			;;
 		--help)
 			flag_help=yes
+			shift
+			;;
+		-*)
+			core.print_die "Invalid flag \"$arg\""
 			;;
 		esac
-	done
+	done; unset -v arg
 
 	if [ "$flag_help" = 'yes' ]; then
 		util.get_script_path
@@ -61,7 +60,59 @@ _main() {
 
 		local script=${script_path}
 		cat <<EOF
-~${script_path/#"$HOME"} [--force] [--no-confirm] [--configure-only]
+~${script_path/#"$HOME"} [--help]
+EOF
+		return
+	fi
+
+	local orig_dir="$PWD" temp_dir=
+	temp_dir=$(mktemp -d --suffix "-dotfiles")
+	cd "$temp_dir" || exit $?
+
+	main "$@"
+
+	cd "$orig_dir"
+	rm -rf "$temp_dir"
+}
+
+_setup() {
+	local flag_force=no
+	local flag_configure_only=no
+	local flag_no_confirm=no
+	local flag_help=no
+
+	local arg=
+	for arg; do
+		case $arg in
+		--force)
+			flag_force=yes
+			shift
+			;;
+		--configure-only)
+			flag_configure_only=yes
+			shift
+			;;
+		--no-confirm)
+			flag_no_confirm=yes
+			shift
+			;;
+		--help)
+			flag_help=yes
+			shift
+			;;
+		-*)
+			core.print_die "Invalid flag \"$arg\""
+			;;
+		esac
+	done; unset -v arg
+
+	if [ "$flag_help" = 'yes' ]; then
+		util.get_script_path
+		local script_path=$REPLY
+
+		local script=${script_path}
+		cat <<EOF
+~${script_path/#"$HOME"} [--force] [--configure-only] [--no-confirm]
 EOF
 		return
 	fi
@@ -73,58 +124,68 @@ EOF
 	util.get_script_path
 	local script_path=$REPLY
 
-	if [[ $script_path == "$HOME/scripts/setup"/* ]]; then
-		if [ -z "$g_name" ]; then
-			core.print_die "Expected file \"$0\" to have variable \"g_name\""
-		fi
-
-		if ! declare -f main &>/dev/null; then
-			core.print_die "Expected file \"$0\" to have function \"main\""
-		fi
-
-		if ! declare -f installed &>/dev/null; then
-			core.print_die "Expected file \"$0\" to have function \"installed\""
-		fi
-
-		if installed && [ "$flag_force" = no ]; then
-			core.print_info "Already installed \"$g_name\""
-			return
-		fi
+	if [ -z "$g_name" ]; then
+		core.print_die "Expected file \"$0\" to have variable \"g_name\""
 	fi
 
-	main "$@"
+	if ! declare -f main &>/dev/null; then
+		core.print_die "Expected file \"$0\" to have function \"main\""
+	fi
 
-	if [[ $script_path == "$HOME/scripts/setup"/* ]]; then
+	if ! declare -f installed &>/dev/null; then
+		core.print_die "Expected file \"$0\" to have function \"installed\""
+	fi
+
+	if [ "$flag_configure_only" = 'no' ]; then
+		if installed; then
+			if [ "$flag_force" = yes ]; then
+				core.print_warn "Already installed \"$g_name\". Force installing..."
+			else
+				core.print_info "Already installed \"$g_name\""
+				return
+			fi
+		fi
+
+		if [ "$flag_no_confirm" = 'no' ]; then
+			core.print_warn "Program \"$g_name\" not installed"
+			if ! util.confirm_fix; then
+				return
+			fi
+		fi
+
+		main "$@"
+
 		if ! installed; then
 			core.print_die "Attempted to install \"$g_name\", but failed"
 		fi
 	fi
 
+	(
+		if declare -f 'configure' &>/dev/null; then
+			core.print_info "Configuring..."
+			local orig_dir="$PWD" temp_dir=
+			temp_dir=$(mktemp -d --suffix "-dotfiles")
+			cd "$temp_dir"
+
+			configure "$@"
+
+			cd "$orig_dir"
+		fi
+	)
+
 	cd "$orig_dir"
 	rm -rf "$temp_dir"
 }
 
-helper.setup() {
-	local flag_no_confirm=no
-	local flag_configure_only=no
+util.install_by_setup() {
 	local flag_fn_prefix=install
 	local program_name=$g_name
+	flag_no_confirm=n
+	flag_force=n
 
 	local arg=
 	for arg; do
 		case $arg in
-		--force)
-			flag_force=yes
-			shift
-			;;
-		--no-confirm)
-			flag_no_confirm=yes
-			shift
-			;;
-		--configure-only)
-			flag_configure_only=yes
-			shift
-			;;
 		--fn-prefix*)
 			core.shopt_push -s nullglob on
 			flag_fn_prefix=${arg#--fn-prefix}
@@ -144,11 +205,7 @@ helper.setup() {
 		esac
 	done; unset -v arg
 
-	if ! util.confirm_fix; then
-		return
-	fi
-
-	[ "$flag_configure_only" != yes ] && (
+	(
 		# A list of 'os-release' files can be found at https://github.com/which-distro/os-release.
 		# In some distros, like CachyOS, /usr/lib/os-release has the wrong contents.
 		source /etc/os-release
@@ -186,22 +243,9 @@ helper.setup() {
 			core.print_die "Failed to find a \"$flag_fn_prefix.*\" function that matches the current distribution ($text)"
 		fi
 	)
-
-	(
-		if declare -f 'configure' &>/dev/null; then
-			core.print_info "Configuring..."
-			local orig_dir="$PWD" temp_dir=
-			temp_dir=$(mktemp -d --suffix "-dotfiles")
-			cd "$temp_dir"
-
-			configure "$@"
-
-			cd "$orig_dir"
-		fi
-	)
 }
 
-helper.setup_distro_package() {
+util.install_by_setup_distro_package() {
 	local package="$1"
 	local command="$2"
 
@@ -224,7 +268,7 @@ helper.setup_distro_package() {
 		command -v "$command" &>/dev/null
 	}
 
-	helper.setup "$@"
+	util.install_by_setup "$@"
 }
 
 pkg.add_apt_key() {
@@ -375,10 +419,10 @@ util.update_system() {
 		sudo pacman -Syyu --noconfirm
 	}
 
-	helper.setup --no-confirm --fn-prefix=update_system
+	util.install_by_setup --fn-prefix=update_system
 }
 
-util.install_package() {
+util.install_by_setup_package() {
 	local package="$1"
 
 	install_package.debian() {
@@ -394,7 +438,7 @@ util.install_package() {
 		sudo pacman -Syu --noconfirm "$package"
 	}
 
-	helper.setup --no-confirm --fn-prefix=install_package
+	util.install_by_setup --fn-prefix=install_package
 }
 
 util.uninstall_package() {
@@ -413,7 +457,7 @@ util.uninstall_package() {
 		sudo pacman -R --noconfirm "$package"
 	}
 
-	helper.setup --no-confirm --fn-prefix=uninstall_package
+	util.install_by_setup --fn-prefix=uninstall_package
 }
 
 util.if_file_sourced() {

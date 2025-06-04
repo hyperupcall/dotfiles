@@ -32,4 +32,4 @@ configure() {
 		--tcsh 'basalt global init fish | source'
 }
 
-util.if_file_sourced || _main "$@"
+util.if_file_sourced || _setup "$@"

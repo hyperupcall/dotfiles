@@ -14,4 +14,4 @@ launch() {
 	printf '%s\n' "source \$SBP_PATH/sbp.bash"
 }
 
-util.if_file_sourced || _main "$@"
+util.if_file_sourced || _setup "$@"

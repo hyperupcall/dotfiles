@@ -18,4 +18,4 @@ configure() {
 		--zsh 'eval "$(woof init --no-cd zsh)"'
 }
 
-util.if_file_sourced || _main "$@"
+util.if_file_sourced || _setup "$@"

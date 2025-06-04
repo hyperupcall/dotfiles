@@ -7,7 +7,7 @@ main() {
 		exit 0
 	fi
 
-	helper.setup 'Surface Kernel' "$@"
+	util.install_by_setup 'Surface Kernel' "$@"
 }
 
 install.debian() {
@@ -36,4 +36,4 @@ install.ubuntu() {
 	install.debian "$@"
 }
 
-util.if_file_sourced || _main "$@"
+util.if_file_sourced || _setup "$@"

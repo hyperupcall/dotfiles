@@ -5,7 +5,7 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='sqlitebrowser'
 
 main() {
-	helper.setup "$@"
+	util.install_by_setup "$@"
 }
 
 install.ubuntu() {
@@ -31,4 +31,4 @@ install.arch() {
 	sudo pacman -Syu --noconfirm sqlitebrowser
 }
 
-util.if_file_sourced || _main "$@"
+util.if_file_sourced || _setup "$@"

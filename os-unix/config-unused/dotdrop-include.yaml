@@ -138,7 +138,6 @@ dotfiles:
   - '.config/salamis'
   - '.config/sheldon'
   - '.config/sh'
-  - '.config/slack-term'
   - '.config/starship'
   - '.config/sticker-selector'
   - '.config/sublime-text-3/Packages/User/Preferences.sublime-settings'

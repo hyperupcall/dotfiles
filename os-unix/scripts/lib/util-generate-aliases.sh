@@ -51,7 +51,7 @@ main() {
 	util_print_autogen_info >&6
 	find "$XDG_CONFIG_HOME/sh/modules/" -ignore_readdir_race -type f -name "func-*.sh" \
 			-exec sh -c "\"$HOME/.dotfiles/os-unix/scripts/lib/util-extract_functions.pl\" 'user' < \"\$0\"" {} \; >&6
-	util_print_file "$profile_dir/../bash/modules/util.sh" >&6
+	util_print_file "$profile_dir/../bash/modules/10-util.sh" >&6
 	exec 6<&-
 
 	# user Aliases
@@ -65,7 +65,7 @@ main() {
 
 	# user Readline
 	exec 6> "$generated_dir/.bashrc-user-readline.sh"
-	util_print_file "$XDG_CONFIG_HOME/bash/modules/readline.sh" >&6
+	util_print_file "$XDG_CONFIG_HOME/bash/modules/20-readline.sh" >&6
 	exec 6<&-
 
 
@@ -75,7 +75,7 @@ main() {
 	util_print_autogen_info >&6
 	find "$XDG_CONFIG_HOME/sh/modules/" -ignore_readdir_race -type f -name "func-*.sh" \
 			-exec sh -c "\"$HOME/.dotfiles/os-unix/scripts/lib/util-extract_functions.pl\" 'root' < \"\$0\"" {} \; >&6
-	util_print_file "$profile_dir/../bash/modules/util.sh" >&6
+	util_print_file "$profile_dir/../bash/modules/10-util.sh" >&6
 	exec 6<&-
 
 	# root Aliases
@@ -89,7 +89,7 @@ main() {
 
 	# root Readline
 	exec 6> "$generated_dir/.bashrc-root-readline.sh"
-	util_print_file "$XDG_CONFIG_HOME/bash/modules/readline.sh" >&6
+	util_print_file "$XDG_CONFIG_HOME/bash/modules/20-readline.sh" >&6
 	exec 6<&-
 }
 

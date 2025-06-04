@@ -5,7 +5,7 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='ZFS'
 
 main() {
-	helper.setup "$@"
+	util.install_by_setup "$@"
 
 	if ! sudo zpool status vault &>/dev/null; then
 		sudo zpool import -f vault
@@ -73,4 +73,4 @@ install.cachyos() {
 	sudo pacman -Syu --noconfirm cachyos-v3/linux-cachyos-zfs cachyos-v3/linux-cachyos-lto-zfs
 }
 
-util.if_file_sourced || _main "$@"
+util.if_file_sourced || _setup "$@"

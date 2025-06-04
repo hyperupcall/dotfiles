@@ -21,7 +21,7 @@ main() {
 		yay -Syu --noconfirm bear
 	}
 
-	helper.setup --fn-prefix=dependencies "$@"
+	util.install_by_setup --fn-prefix=dependencies "$@"
 
 	local dir="$HOME/.dotfiles/.data/repos/d"
 	util.clone "$dir" git@github.com:fox-incubating/d
@@ -36,4 +36,4 @@ installed() {
 	command -v d &>/dev/null
 }
 
-util.if_file_sourced || _main "$@"
+util.if_file_sourced || _setup "$@"

@@ -5,7 +5,7 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='LLVM'
 
 main() {
-	helper.setup "$@"
+	util.install_by_setup "$@"
 }
 
 install.debian() {
@@ -20,4 +20,4 @@ installed() {
 	command -v clang &>/dev/null && command -v clang-format &>/dev/null && command -v clang-tidy &>/dev/null
 }
 
-util.if_file_sourced || _main "$@"
+util.if_file_sourced || _setup "$@"

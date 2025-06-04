@@ -13,4 +13,4 @@ launch() {
 	cat "$g_dir/.bash_prompt"
 }
 
-util.if_file_sourced || _main "$@"
+util.if_file_sourced || _setup "$@"

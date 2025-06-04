@@ -5,7 +5,7 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='PowerShell Core'
 
 main() {
-	helper.setup "$@"
+	util.install_by_setup "$@"
 }
 
 install.debian() {
@@ -30,4 +30,4 @@ install.debian() {
 	sudo apt-get -y install powershell
 }
 
-util.if_file_sourced || _main "$@"
+util.if_file_sourced || _setup "$@"

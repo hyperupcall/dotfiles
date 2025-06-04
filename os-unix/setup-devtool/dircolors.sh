@@ -15,4 +15,4 @@ configure() {
 		--tcsh 'eval "$(dircolors -c "$XDG_CONFIG_HOME/dircolors/dir_colors")"'
 }
 
-util.if_file_sourced || _main "$@"
+util.if_file_sourced || _setup "$@"

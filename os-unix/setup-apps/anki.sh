@@ -12,4 +12,4 @@ main() {
 	sudo ./install.sh
 }
 
-util.if_file_sourced || _main "$@"
+util.if_file_sourced || _setup "$@"

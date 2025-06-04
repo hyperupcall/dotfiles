@@ -5,7 +5,7 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='complete-alias'
 
 main() {
-	helper.setup "$@"
+	util.install_by_setup "$@"
 }
 
 configure() {

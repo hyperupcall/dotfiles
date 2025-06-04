@@ -14,4 +14,4 @@ launch() {
 	cat "$g_dir/gitstatus.prompt.sh"
 }
 
-util.if_file_sourced || _main "$@"
+util.if_file_sourced || _setup "$@"

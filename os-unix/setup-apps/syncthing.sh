@@ -5,7 +5,7 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='Synthing'
 
 main() {
-	helper.setup "$@"
+	util.install_by_setup "$@"
 }
 
 install.debian() {
@@ -36,4 +36,4 @@ installed() {
 	command -v syncthing &>/dev/null
 }
 
-util.if_file_sourced || _main "$@"
+util.if_file_sourced || _setup "$@"

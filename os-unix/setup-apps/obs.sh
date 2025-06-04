@@ -19,4 +19,4 @@ installed() {
 	command -v obs &>/dev/null
 }
 
-util.if_file_sourced || _main "$@"
+util.if_file_sourced || _setup "$@"

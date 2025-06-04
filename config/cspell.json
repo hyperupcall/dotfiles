@@ -1,10 +1,15 @@
 {
 	"dictionaryDefinitions": [
 		{
-			"name": "custom-words",
-			"path": "./custom-words.txt",
+			"name": "Tech",
+			"path": "~/.dotfiles/config/dictionary-tech.txt",
+			"addWords": true
+		},
+		{
+			"name": "Personal",
+			"path": "~/.dotfiles/config/dictionary-personal.txt",
 			"addWords": true
 		}
 	],
-	"dictionaries": ["custom-words"]
+	"dictionaries": ["Tech", "Personal"]
 }

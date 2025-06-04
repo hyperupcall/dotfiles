@@ -12,4 +12,4 @@ launch() {
 	starship init bash --print-full-init
 }
 
-util.if_file_sourced || _main "$@"
+util.if_file_sourced || _setup "$@"

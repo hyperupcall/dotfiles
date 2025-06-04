@@ -5,7 +5,7 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='Caddy'
 
 main() {
-	helper.setup "$@"
+	util.install_by_setup "$@"
 }
 
 install.debian() {
@@ -29,4 +29,4 @@ install.debian() {
 	sudo apt-get install -y caddy
 }
 
-util.if_file_sourced || _main "$@"
+util.if_file_sourced || _setup "$@"

@@ -1,10 +1,10 @@
 # dotfiles
 
-My Dotfiles! ^\_^
+My Dotfiles!
 
-Installation Instructions:
+Installation instructions:
 
-- [unix](./installation-unix.md)
-- [windows](./installation-windows.md)
+- [UNIX](./installation-unix.md)
+- [Windows](./installation-windows.md)
 
 See [Notable](./notable.md) for interesting tidbits

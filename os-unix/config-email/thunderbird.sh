@@ -5,7 +5,7 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='Thunderbird'
 
 main() {
-	helper.setup "$@"
+	util.install_by_setup "$@"
 }
 
 install.ubuntu() {
@@ -68,4 +68,4 @@ installed() {
 	command -v thunderbird &>/dev/null || { command -v flatpak &>/dev/null && flatpak info org.mozilla.Thunderbird &>/dev/null; }
 }
 
-util.if_file_sourced || _main "$@"
+util.if_file_sourced || _setup "$@"

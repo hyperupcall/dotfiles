@@ -11,7 +11,7 @@ if (([Version](Get-CimInstance Win32_OperatingSystem).version).Major -lt 10) {
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
-function util.install_command([string]$command) {
+function util.install_by_setup_command([string]$command) {
 	scoop info "$command" >$null
 	if ($?) {
 		util.log "Already installed $command"

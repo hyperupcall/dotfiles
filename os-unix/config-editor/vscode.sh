@@ -5,7 +5,7 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='VSCode and VSCode Insiders'
 
 main() {
-	helper.setup "$@"
+	util.install_by_setup "$@"
 }
 
 install.arch() {
@@ -58,4 +58,4 @@ installed() {
 	command -v code &>/dev/null && command -v code-insiders &>/dev/null
 }
 
-util.if_file_sourced || _main "$@"
+util.if_file_sourced || _setup "$@"

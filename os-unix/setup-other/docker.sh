@@ -5,7 +5,7 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='Docker'
 
 main() {
-	helper.setup "$@"
+	util.install_by_setup "$@"
 }
 
 install.ubuntu() {
@@ -41,4 +41,4 @@ installed() {
 	command -v docker &>/dev/null
 }
 
-util.if_file_sourced || _main "$@"
+util.if_file_sourced || _setup "$@"

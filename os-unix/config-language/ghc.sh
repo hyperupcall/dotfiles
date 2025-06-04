@@ -12,4 +12,4 @@ main() {
 	curl -K "$CURL_CONFIG" 'https://get.haskellstack.org' | sh
 }
 
-util.if_file_sourced || _main "$@"
+util.if_file_sourced || _setup "$@"

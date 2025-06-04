@@ -5,7 +5,7 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='Steam'
 
 main() {
-	helper.setup "$@"
+	util.install_by_setup "$@"
 }
 
 install.debian() {
@@ -19,4 +19,4 @@ install.opensuse() {
 	sudo zypper -n install steam-devices
 }
 
-util.if_file_sourced || _main "$@"
+util.if_file_sourced || _setup "$@"

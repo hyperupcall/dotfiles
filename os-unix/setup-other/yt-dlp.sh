@@ -9,4 +9,4 @@ main() {
 	chmod +x ~/.local/bin/yt-dlp
 }
 
-util.if_file_sourced || _main "$@"
+util.if_file_sourced || _setup "$@"

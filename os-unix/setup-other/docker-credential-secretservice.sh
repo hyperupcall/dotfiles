@@ -21,4 +21,4 @@ obj['credsStore'] = 'secretservice'
 file.write_text(json.dumps(obj, indent='\t'))"
 }
 
-util.if_file_sourced || _main "$@"
+util.if_file_sourced || _setup "$@"

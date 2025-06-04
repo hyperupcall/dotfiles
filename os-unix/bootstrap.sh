@@ -108,11 +108,11 @@ updatesystem() {
 
 	if iscmd 'pacman'; then
 		sudo pacman -Syyu --noconfirm
-		local orphaned_dependencies=
-		orphaned_dependencies=$(pacman -Qdtq)
-		if [ -n "$orphaned_dependencies" ]; then
-			sudo pacman -R $orphaned_dependencies
+		orphaned_deps=$(pacman -Qdtq)
+		if [ -n "$orphaned_deps" ]; then
+			sudo pacman -R $orphaned_deps
 		fi
+		unset -v orphaned_deps
 	elif iscmd 'apt-get'; then
 		sudo apt-get -y update
 		sudo apt-get -y install apt-transport-https

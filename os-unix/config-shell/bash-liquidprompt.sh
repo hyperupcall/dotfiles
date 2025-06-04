@@ -13,4 +13,4 @@ launch() {
 	cat "$g_dir/liquidprompt"
 }
 
-util.if_file_sourced || _main "$@"
+util.if_file_sourced || _setup "$@"

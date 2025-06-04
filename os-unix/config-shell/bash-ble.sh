@@ -13,4 +13,4 @@ installed() {
 	[ -d "$g_dir" ]
 }
 
-util.if_file_sourced || _main "$@"
+util.if_file_sourced || _setup "$@"

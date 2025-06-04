@@ -12,4 +12,4 @@ installed() {
 	command -v deno
 }
 
-util.if_file_sourced || _main "$@"
+util.if_file_sourced || _setup "$@"

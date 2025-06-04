@@ -12,4 +12,4 @@ launch() {
 	printf '%s\n' "PS1='$(pista -m)'"
 }
 
-util.if_file_sourced || _main "$@"
+util.if_file_sourced || _setup "$@"

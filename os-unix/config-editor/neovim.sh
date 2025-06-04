@@ -5,7 +5,7 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='Neovim'
 
 main() {
-	helper.setup "$@"
+	util.install_by_setup "$@"
 }
 
 install.arch() {
@@ -29,7 +29,7 @@ install.any() {
 		sudo pacman -Syu --noconfirm gettext
 	}
 
-	helper.setup --no-confirm --fn-prefix=dependencies.debian
+	util.install_by_setup --fn-prefix=dependencies.debian
 
 	local dir="$HOME/.dotfiles/.data/repos/neovim"
 	util.clone "$dir" 'https://github.com/neovim/neovim'
@@ -69,4 +69,4 @@ installed() {
 	command -v nvim &>/dev/null && neovim_version_check
 }
 
-util.if_file_sourced || _main "$@"
+util.if_file_sourced || _setup "$@"

@@ -9,17 +9,12 @@ function New-TemporaryDirectory {
 }
 
 function mkt() {
-	# TODO
-	# $randomfile = [System.IO.Path]::GetRandomFileName()
-	# Out-File "$randomFile"
+	$randomfileName = [System.IO.Path]::GetRandomFileName()
+	$tempPath = [System.IO.Path]::GetTempPath()
+	$dir = Join-Path $tempPath "$($randomFileName.Split('.')[0])"
 
-	$file = New-TemporaryFile
-	Remove-Item "$file" | Out-Null
-	New-Item -ItemType Directory "$file-dir" | Out-Null
+	New-Item -ItemType Directory "$dir" | Out-Null
 	Set-Location "$file-dir" | Out-Null
-
-	# $tempFolderPath = Join-Path $Env:Temp $(New-Guid)
-	# New-Item -Type Directory -Path $tempFolderPath | Out-Null
 }
 
 function rmrf() {

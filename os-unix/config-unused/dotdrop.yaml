@@ -441,9 +441,6 @@ dotfiles:
   '.config/sh':
     src: '{{@@ cfg_src @@}}/sh'
     dst: '{{@@ cfg_dst @@}}/sh'
-  '.config/slack-term':
-    src: '{{@@ cfg_src @@}}/slack-term'
-    dst: '{{@@ cfg_dst @@}}/slack-term'
   '.config/starship':
     src: '{{@@ cfg_src @@}}/starship'
     dst: '{{@@ cfg_dst @@}}/starship'

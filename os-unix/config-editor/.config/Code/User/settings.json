@@ -469,12 +469,17 @@
 	"cSpell.diagnosticLevel": "Hint",
 	"cSpell.dictionaryDefinitions": [
 		{
-			"name": "custom-words",
-			"path": "~/.dotfiles/config/custom-words.txt",
+			"name": "Tech",
+			"path": "~/.dotfiles/config/dictionary-tech.txt",
+			"addWords": true
+		},
+		{
+			"name": "Personal",
+			"path": "~/.dotfiles/config/dictionary-personal.txt",
 			"addWords": true
 		}
 	],
-	"cSpell.dictionaries": ["custom-words"],
+	"cSpell.dictionaries": ["Tech", "Personal"],
 	"svelte.enable-ts-plugin": true,
 
 	//
@@ -529,5 +534,6 @@
 	"workbench.welcomePage.walkthroughs.openOnInstall": false,
 	"Lua.telemetry.enable": false,
 	"workbench.colorTheme": "Solarized Light",
-	"editor.cursorBlinking": "smooth"
+	"editor.cursorBlinking": "smooth",
+	"editor.fontFamily": "'Hack', monospace"
 }

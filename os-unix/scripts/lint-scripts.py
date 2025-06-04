@@ -304,7 +304,7 @@ def main():
 		],
 	})
 
-	# Before: helper.setup
+	# Before: util.install_by_setup
 	# After: N/A
 	# rules.append({
 	# 	'name': 'helper-setup-assert-arguments',
@@ -313,11 +313,11 @@ def main():
 	# 	'fileTypes': ['bash', 'sh'],
 	# 	'fixerFn': None,
 	# 	'testPositiveMatches': [
-	# 		'helper.setup',
-	# 		'helper.setup "value" "$@"'
+	# 		'util.install_by_setup',
+	# 		'util.install_by_setup "value" "$@"'
 	# 	],
 	# 	'testNegativeMatches': [
-	# 		'helper.setup \'param\' "$@"'
+	# 		'util.install_by_setup \'param\' "$@"'
 	# 	],
 	# })
 
@@ -376,11 +376,11 @@ def main():
 	})
 
 	# Before: ^main "$@"
-	# After: ^util.if_file_sourced || _main "$@"
+	# After: ^util.if_file_sourced || _setup "$@"
 	def scriptsMustHaveSourceGuard(line: str, m: any) -> str:
 		prestr, _, poststr = utilGetStrs(line, m)
 
-		return f'util.if_file_sourced || _main "$@"'
+		return f'util.if_file_sourced || _setup "$@"'
 
 	rules.append({
 		'name': 'scripts-must-have-source-guard',
@@ -394,8 +394,8 @@ def main():
 			' main "$@"'
 		],
 		'testNegativeMatches': [
-			'util.if_file_sourced || _main "$@"',
-			' util.if_file_sourced || _main "$@"'
+			'util.if_file_sourced || _setup "$@"',
+			' util.if_file_sourced || _setup "$@"'
 		],
 	})
 

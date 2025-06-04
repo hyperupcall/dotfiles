@@ -3,9 +3,9 @@ extends: 'default'
 ignore:
   - '.data/'
   - 'vendor/'
+  - '.venv/'
   - 'node_modules/'
   - 'pnpm-lock.yaml'
-  - '.venv'
 rules:
   anchors:
     forbid-undeclared-aliases: true

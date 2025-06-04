@@ -5,7 +5,7 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='Discord'
 
 main() {
-	helper.setup "$@"
+	util.install_by_setup "$@"
 }
 
 install.debian() {
@@ -20,4 +20,4 @@ install.any() {
 	core.print_warn 'Do not know how to handle tarball on non-deb Linux'
 }
 
-util.if_file_sourced || _main "$@"
+util.if_file_sourced || _setup "$@"

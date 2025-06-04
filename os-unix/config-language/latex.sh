@@ -5,7 +5,7 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='LaTeX (Tex Live)'
 
 main() {
-	helper.setup "$@"
+	util.install_by_setup "$@"
 	cargo install tex-fmt
 }
 
@@ -21,4 +21,4 @@ installed() {
 	command -v pdftex &>/dev/null && command -v tex-fmt &>/dev/null
 }
 
-util.if_file_sourced || _main "$@"
+util.if_file_sourced || _setup "$@"
