@@ -7,6 +7,7 @@ task.init() {
 
 task.build() {
 	grep -r "/home/edwin" ./os-unix/config-*
+	grep -r "/storage" ./os-unix/config-*
 	cd "./os-unix/config-linux-rice/.config/X11/resources" || exit
 	printf '%s\n' "! GENERATERD BY 'bake build'" > uxterm.Xresources
 	sed 's/XTerm/UXTerm/g' xterm.Xresources >> uxterm.Xresources

@@ -33,10 +33,10 @@ main() {
 
 	# Install hyperupcall/dotfiles.
 	clonerepo 'github.com/hyperupcall/dotfiles' ~/.dotfiles
-	run cd ~/.dotfiles
-		run git remote set-url me 'git@github.com:hyperupcall/dotfiles'
-		run ./bake init
-	run cd
+	run pushd ~/.dotfiles >/dev/null
+	run git remote set-url me 'git@github.com:hyperupcall/dotfiles'
+	run ./bake init
+	run popd >/dev/null
 
 	# Symlink ~/scripts.
 	run ln -fs ~/.dotfiles/os-unix/scripts ~/

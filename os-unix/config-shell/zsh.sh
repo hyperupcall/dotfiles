@@ -8,4 +8,8 @@ main() {
 	util.install_by_setup_distro_package 'zsh' 'zsh'
 }
 
+installed() {
+	command -v 'zsh' &>/dev/null
+}
+
 util.if_file_sourced || _setup "$@"

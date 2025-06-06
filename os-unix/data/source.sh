@@ -40,31 +40,6 @@
 }
 
 _main() {
-	local flag_help=no
-	local arg=
-	for arg; do
-		case $arg in
-		--help)
-			flag_help=yes
-			shift
-			;;
-		-*)
-			core.print_die "Invalid flag \"$arg\""
-			;;
-		esac
-	done; unset -v arg
-
-	if [ "$flag_help" = 'yes' ]; then
-		util.get_script_path
-		local script_path=$REPLY
-
-		local script=${script_path}
-		cat <<EOF
-~${script_path/#"$HOME"} [--help]
-EOF
-		return
-	fi
-
 	local orig_dir="$PWD" temp_dir=
 	temp_dir=$(mktemp -d --suffix "-dotfiles")
 	cd "$temp_dir" || exit $?
@@ -264,10 +239,6 @@ util.install_by_setup_distro_package() {
 	install.arch() {
 		yay -Syu --noconfirm "$package"
 	}
-	installed() {
-		command -v "$command" &>/dev/null
-	}
-
 	util.install_by_setup "$@"
 }
 

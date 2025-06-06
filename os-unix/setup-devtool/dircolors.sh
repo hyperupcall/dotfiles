@@ -4,10 +4,6 @@ source ~/.dotfiles/os-unix/data/source.sh
 
 declare -g g_name='dircolors'
 
-main() {
-	: # TODO
-}
-
 configure() {
 	util.write_shellfile 'dircolors' \
 		--bash 'eval "$(dircolors -b "$XDG_CONFIG_HOME/dircolors/dir_colors")"' \

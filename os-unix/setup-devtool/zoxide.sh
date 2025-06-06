@@ -2,10 +2,15 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
-declare -g g_name='Python Tools'
+declare -g g_name='Zoxide'
 
 main() {
-	: # TODO
+	~/scripts/setup/fzf.sh
+	util.install_by_setup_distro_package 'zoxide' 'zoxide'
+}
+
+installed() {
+	command -v 'zoxide' &>/dev/null
 }
 
 configure() {

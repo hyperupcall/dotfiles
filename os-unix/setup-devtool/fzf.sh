@@ -2,14 +2,14 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
-declare -g g_name='kitty'
+declare -g g_name='fzf'
 
 main() {
-	util.install_by_setup_distro_package 'kitty' 'kitty'
+	util.install_by_setup_distro_package 'fzf' 'fzf'
 }
 
 installed() {
-	command -v 'kitty' &>/dev/null
+	command -v 'fzf' &>/dev/null
 }
 
 util.if_file_sourced || _setup "$@"

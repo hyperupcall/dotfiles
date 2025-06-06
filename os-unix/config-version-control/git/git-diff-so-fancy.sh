@@ -9,6 +9,7 @@ main() {
 	local latest_tag=$REPLY
 
 	curl -K "$CURL_CONFIG" -o ~/.local/bin/diff-so-fancy "https://github.com/so-fancy/diff-so-fancy/releases/download/$latest_tag/diff-so-fancy"
+	chmod +x ~/.local/bin/diff-so-fancy
 }
 
 installed() {

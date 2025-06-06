@@ -240,7 +240,6 @@ main() {
 		fi
 	)
 	~/scripts/setup/git.sh
-	~/scripts/setup/git-colordiff.sh
 	~/scripts/setup/neovim.sh
 	~/scripts/setup/pass.sh
 

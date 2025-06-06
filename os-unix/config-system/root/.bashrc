@@ -7,10 +7,6 @@ export PAGER='less'
 [ -f ~/.bashrc-generated-aliases ] && source ~/.bashrc-generated-aliases
 [ -f ~/.bashrc-generated-functions ] && source ~/.bashrc-generated-functions
 
-#
-# ─── PS1 ────────────────────────────────────────────────────────────────────────
-#
-
 8Colors() {
 	test "$(tput colors)" -eq 8
 }
