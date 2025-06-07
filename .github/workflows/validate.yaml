@@ -8,8 +8,11 @@ jobs:
     runs-on: 'ubuntu-latest'
     steps:
       - uses: 'actions/checkout@v4'
+        with:
+          submodules: 'recursive'
       - uses: bats-core/bats-action@3.0.0
         id: setup-bats
       - run: './bake test'
         env:
           BATS_LIB_PATH: ${{ steps.setup-bats.outputs.lib-path }}
+          TERM: 'xterm'
