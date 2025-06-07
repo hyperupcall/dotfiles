@@ -22,6 +22,14 @@
 		source "$_f"
 	done
 
+	if [ -n "${DEBUG+x}" ]; then
+		err_handler() {
+			exit_code=$1
+			core.print_stacktrace
+		}
+		core.trap_add 'err_handler' ERR EXIT
+	fi
+
 	# Check for assumptions.
 	if [ -z "$XDG_CONFIG_HOME" ]; then
 		printf '%s\n' 'Failed because $XDG_CONFIG_HOME is empty' >&2
@@ -101,6 +109,11 @@ EOF
 
 	if [ -z "$g_name" ]; then
 		core.print_die "Expected file \"$0\" to have variable \"g_name\""
+	fi
+
+	if [ "$g_disable" = 'true' ]; then
+		core.print_warn "Skipping \"$g_name\" because it is disabled"
+		return 0
 	fi
 
 	if ! declare -f main &>/dev/null; then

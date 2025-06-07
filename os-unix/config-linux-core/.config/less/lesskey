@@ -8,4 +8,4 @@ LESS_ADVANCED_PREPROCESSOR = 1
 LESSOPEN = | ~/.dotfiles/.home/xdg_config_dir/less/lessopen.sh %s
 LESSCLOSE = ~/.dotfiles/.home/xdg_config_dir/less/lessclose.sh %s %s
 LESSHISTSIZE = 32768
-LESSHISTFILE = /home/edwin/.dotfiles/.home/xdg_state_dir/history/less_history
+LESSHISTFILE = .dotfiles/.home/xdg_state_dir/history/less_history

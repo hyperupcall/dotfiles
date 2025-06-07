@@ -32,7 +32,7 @@ main() {
 	installcmd 'vim' 'vim'
 
 	# Install hyperupcall/dotfiles.
-	clonerepo 'github.com/hyperupcall/dotfiles' ~/.dotfiles
+	clonerepo 'https://github.com/hyperupcall/dotfiles' ~/.dotfiles
 	run pushd ~/.dotfiles >/dev/null
 	run git remote set-url me 'git@github.com:hyperupcall/dotfiles'
 	run ./bake init
@@ -163,7 +163,7 @@ clonerepo() {
 		log "Already cloned $1"
 	else
 		log "Cloning $1"
-		run git clone --quiet "https://$1" "$2" --recurse-submodules
+		run git clone --quiet "$1" "$2" --recurse-submodules
 
 		git_remote=$(run git -C "$2" remote)
 		if [ "$git_remote" = 'origin' ]; then

@@ -2,7 +2,14 @@
 
 ## Bootstrapping
 
-Download and execute `bootstrap.ps1` to begin the bootstrap process:
+First,
+
+- [Active developer mode](https://learn.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development#activate-developer-mode)
+- Don't enable "enable sudo", this one is buggy
+- Launch System Restore, System Properties > System Protection > Configure, set Max Usage to 2GB (each restore takes about ~100MB)
+- Launch Local Group Policy Editor, and navigate towards `Computer Configuration > Windows Settings > Security Settings > Local Policies > User Rights Assignment > Create symbolic links`, adding own user
+
+Then, download and execute `bootstrap.ps1` to begin the bootstrap process:
 
 ```powershell
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
@@ -21,16 +28,9 @@ The `bootstrap.ps1` script performs the following steps:
   - Sets `NAME`, `EMAIL`, `EDITOR`, `VISUAL`
   - Appends `$HOME/.dotfiles/.data/bin` to `PATH`
 
-Then, run the following:
+## Next Steps
 
-```powershell
-. ~/.bootstrap/bootstrap-out.ps1
-```
+Additional scripts should be executed. They include:
 
-Now, execute:
-
-```powershell
-~/scripts/doctor.ps1
-~/scripts/bootstrap.ps1
-~/scripts/idempotent.ps1
-```
+- `. ~/.bootstrap/bootstrap-out.ps1`
+- `~/scripts/doctor.ps1`
