@@ -19,7 +19,7 @@ task.lint() {
 
 task.test() {
 	bats -p './os-unix/config-shell/.config/sh'
-	~/scripts/lint-scripts.py
+	./os-unix/scripts/lint-scripts.py
 }
 
 task.commit() {
