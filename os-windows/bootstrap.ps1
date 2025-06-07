@@ -5,48 +5,34 @@ $ErrorActionPreference = 'Stop'
 function main() {
 	New-Item -ItemType Directory -Force "$HOME/.bootstrap" >$null
 
-	# Install essential commands
-	updatesystem
+	# Install essential commands.
 	if (iscmd scoop) {
 		log 'Already installed Scoop'
 	}
 	else {
 		log 'Installing Scoop'
-
-		Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-		Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+		Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+		scoop install git
 	}
-	installcmd 'sudo'
-	installcmd 'git'
-	installcmd 'neovim'
+	updatesystem
 
-	# Install hyperupcall/dotfiles
+	# Install hyperupcall/dotfiles.
 	clonerepo 'https://github.com/hyperupcall/dotfiles' "$HOME/.dotfiles"
-	Push-Location ~/.dotfiles
+	Push-Location "$HOME/.dotfiles"
 	git remote set-url me 'git@github.com:hyperupcall/dotfiles'
 	Pop-Location
 
-	# Symlink scripts
-	New-Item -Type SymbolicLink -Force -Path ~/scripts -Value "$HOME/.dotfiles/os-windows/scripts" >$null
+	# Symlink ~/scripts.
+	New-Item -Type SymbolicLink -Force -Path "$HOME/scripts" -Value "$HOME/.dotfiles/os-windows/scripts" >$null
 
-	# Export variables
+	# Export variables.
 	Write-Output @"
 `$Env:NAME = 'Edwin Kofler'
 `$Env:EMAIL = 'edwin@kofler.dev'
 `$Env:EDITOR = 'nvim'
 `$Env:VISUAL = "`$Env:EDITOR"
 `$Env:Path = "`$HOME/.dotfiles/.data/bin;`$Env:Path"
-"@ | Out-File -FilePath ~/.bootstrap/bootstrap-out.ps1
-
-	# Next Steps
-	Write-Host @"
----
-. "`$HOME/.bootstrap/bootstrap-out.ps1"
-~/scripts/doctor.ps1
-~/scripts/bootstrap.ps1
-~/scripts/idempotent.ps1
----
-"@
+"@ | Out-File -FilePath "$HOME/.bootstrap/bootstrap-out.ps1"
 }
 
 function die([string]$message) {
