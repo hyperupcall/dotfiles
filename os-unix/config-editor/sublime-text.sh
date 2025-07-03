@@ -28,4 +28,12 @@ install.debian() {
 	sudo apt-get install -y sublime-text
 }
 
+install.ubuntu() {
+	install.debian "$@"
+}
+
+installed() {
+	command -v subl &>/dev/null
+}
+
 util.if_file_sourced || _setup "$@"

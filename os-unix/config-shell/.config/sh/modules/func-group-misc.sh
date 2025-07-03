@@ -1,6 +1,5 @@
 # shellcheck shell=sh
 
-#clone(user)
 bash() {
 	if { [ "$1" = --noprofile ] && [ "$2" = --norc ]; } \
 		|| { [ "$1" = --norc ] && [ "$2" = --noprofile ]; }
@@ -12,7 +11,6 @@ bash() {
 	fi
 }
 
-#clone(user, root)
 cls() {
 	# assume hardware is not real (not 'reset')
 	tput reset
@@ -21,7 +19,6 @@ cls() {
 	stty sane
 }
 
-#clone(user)
 cdp() {
 	if [ -z "$_shell_cdp_dir" ]; then
 		_util_log_error "Variable '_shell_cdp_dir' not set. Recommended is to set it in 'PROMPT_COMMAND' or precmd()"
@@ -57,7 +54,6 @@ docker_nuke() {
 	docker images | grep none | col 3 | xargs docker rmi -f
 }
 
-#clone(user, root)
 dg() {
 	dig +nocmd "$1" any +multiline +noall +answer
 }
@@ -88,7 +84,6 @@ edit() {
 	unset -v _edit_grep_result _edit_file _edit_line
 }
 
-#clone(user, root)
 faketty() {
 	unbuffer -p "@"
 }
@@ -98,20 +93,17 @@ gs() {
 	g s
 }
 
-#clone(user, root)
 isup() {
 	_util_log_warn "Executing: 'curl -sS --head -X GET \"$1\" | grep -q '200 OK'"
 	command curl -sS --head -X GET "$1" | grep -q '200 OK'
 }
 
-#clone(user, root)
 kkexec() {
 	sudo kexec -l /efi/EFI/arch/vmlinuz-linux-lts --initrd /efi/EFI/arch/initramfs-linux-lts.img --reuse-cmdline
 	sudo systemctl kexec
 	# sudo kexec -e
 }
 
-#clone(user, root)
 nh() {
 	nohup "$@" > /dev/null 2>&1 &
 }
@@ -180,12 +172,10 @@ qe() {
 }
 
 # https://unix.stackexchange.com/a/123770
-#clone(user, root)
 see_old() {
 	sudo lsof +c 0 | grep 'DEL.*lib' | awk '1 { print $1 ": " $NF }' | sort -u
 }
 
-#clone(user)
 serv() {
 	set -- "${1:-.}" "${2:-4000}"
 
@@ -212,19 +202,15 @@ vtraceroute() {
 	xdg-open "https://stefansundin.github.io/traceroute-mapper/?trace=$('traceroute' -q1 "$*" | sed ':a;N;$!ba;s/\n/%0A/g')"
 }
 
-#clone(user)
 wa() {
 	watch -cn.3 "$@"
 }
 
-# watch fast
-#clone(user)
 waf() {
 	watch -cn.1 "$@"
 }
 
 # watch slow
-#clone(user)
 was() {
 	watch -cn1 "$@"
 }

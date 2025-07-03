@@ -8,7 +8,6 @@ o() {
 	fi
 }
 
-#clone(user, root)
 r() {
 	for _file; do
 		if [ -d "$_file" ]; then
@@ -19,7 +18,6 @@ r() {
 	done; unset -v _file
 }
 
-#clone(user, root)
 t() {
 	if [ $# -eq 0 ]; then
 		_util_log_error 't: Missing file arguments'
@@ -32,7 +30,6 @@ t() {
 	done; unset -v _file
 }
 
-#clone(user, root)
 v() {
 	s=
 	if [ -e "$1" ] && [ "$(stat -c "%G" "$1")" = 'root' ]; then
@@ -49,7 +46,6 @@ v() {
 	unset -v _v_editor
 }
 
-#clone(user, root)
 del() {
 	if command -v trash-put >/dev/null 2>&1; then
 		for f; do
@@ -70,7 +66,6 @@ del() {
 	fi
 }
 
-#clone(user, root)
 cdls() {
 	if ! cd -- "$1"; then
 		_util_die "cdls: Failed to cd"
@@ -79,7 +74,6 @@ cdls() {
 	_util_ls
 }
 
-#clone(user, root)
 mkcd() {
 	command mkdir -p -- "$@"
 	if ! cd -- "$@"; then
@@ -88,7 +82,6 @@ mkcd() {
 	fi
 }
 
-#clone(user, root)
 mkmv() {
 	for last_arg; do :; done
 	mkdir -p "$last_arg"

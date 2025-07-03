@@ -1,13 +1,8 @@
 {
 	"dictionaryDefinitions": [
 		{
-			"name": "Tech",
-			"path": "~/.dotfiles/config/dictionary-tech.txt",
-			"addWords": true
-		},
-		{
-			"name": "Personal",
-			"path": "~/.dotfiles/config/dictionary-personal.txt",
+			"name": "hyperupcall",
+			"path": "~/.dotfiles/config/dictionary-hyperupcall.txt",
 			"addWords": true
 		}
 	],

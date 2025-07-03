@@ -66,7 +66,7 @@ main() {
 				ln -sf "$file" ~/scripts/setup/"$filename"
 			fi
 		fi
-	done; unset -v file files
+	done; unset -v file
 
 	# Set XDG user directories.
 	{
@@ -78,6 +78,16 @@ main() {
 		xdg-user-dirs-update --set MUSIC ~/Music
 		xdg-user-dirs-update --set PICTURES ~/Pictures
 		xdg-user-dirs-update --set VIDEOS ~/Videos
+
+		for file in ~/Other/Templates/*; do
+			if [ ! -e "$file" ]; then
+				unlink "$file"
+			fi
+		done
+		for file in "$XDG_CONFIG_HOME"/libreoffice/4/user/template/*; do
+			ln -sf "$file" ~/Other/Templates
+		done
+		unset -v file
 	}
 
 	# Symlink XDG base and user directories.
@@ -256,7 +266,6 @@ main() {
 	~/scripts/setup/fish.sh
 	~/scripts/setup/my-tools.sh
 	~/scripts/setup/miscellaneous.sh
-	~/.dotfiles/os-unix/scripts/lib/util-generate-aliases.sh
 
 	~/scripts/setup/llvm.sh
 	~/scripts/setup/zsh.sh

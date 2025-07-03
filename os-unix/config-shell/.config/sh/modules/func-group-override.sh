@@ -34,7 +34,6 @@ cd() {
 	return $_exit_code
 }
 
-#clone(user)
 curl() {
 	if command -v curlie >/dev/null 2>&1; then
 		curlie "$@"
@@ -110,7 +109,6 @@ stty() {
 	fi
 }
 
-#clone(user, root)
 unlink() {
 	for _arg; do
 		case $_arg in
@@ -135,7 +133,6 @@ unlink() {
 	return $_exit_code
 }
 
-#clone(user, root)
 less() {
 	# On OpenSUSE (Tumbleweed), 'less' is a function that opens "xdg-open".
 	# This overrides that.

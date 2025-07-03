@@ -2,10 +2,6 @@
 
 The following scripts are notable and may be helpful to others:
 
-## [`generate-aliases`](/os-unix/scripts/lib/util-generate-aliases.sh)
-
-Script that automatically generates bash startup scripts for remote servers and the root user based on annotations of functions, aliases, and readline declarations of the current dotfiles
-
 ## [`readline.sh`](/os-unix/config-shell/.config/bash/modules)
 
 Special Bash readline bindings that includes many convenient functionality that include:
