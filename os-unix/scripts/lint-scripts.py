@@ -116,7 +116,7 @@ def main():
 
 	rules.append({
 		'name': 'apt-use-apt-get',
-		'regex': '(?P<match>(?:^apt |[\\t ]apt ))',
+		'regex': '(?P<match>apt )',
 		'reason': 'Use apt-get',
 		'fileTypes': ['bash', 'sh'],
 		'fixerFn': aptUseAptGet,

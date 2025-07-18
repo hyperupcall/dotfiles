@@ -42,7 +42,6 @@ EOF
    version="1.1"
    inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
    sodipodi:docname="icon.svg"
-   inkscape:export-filename="/home/akien/Projects/godot/godot.git/icon.png"
    inkscape:export-xdpi="24"
    inkscape:export-ydpi="24">
   <defs

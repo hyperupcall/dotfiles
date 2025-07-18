@@ -10,7 +10,7 @@ struct Entry {
 	char const *destination;
 };
 
-#define H "/home/" Username "/"
+#define H "/home/" Username "/" // lint-ignore
 
 #define Home(_category, path) { \
 	.category = _category, \
@@ -77,10 +77,15 @@ DefineEntry(vimiv, Config(CategoryApplication, "vimiv/"))
 DefineEntry(wtf, Config(CategoryApplication, "wtf/"))
 DefineEntry(xplr, Config(CategoryApplication, "xplr/"))
 DefineEntry(zathura, Config(CategoryApplication, "zathura/"))
-DefineEntry(appimagelauncher, Config(CategoryApplication, "appimagelauncher.cfg"))
 DefineEntry(llpp, Config(CategoryApplication, "llpp.conf"))
 DefineEntry(blender, Data(CategoryApplication, "applications/FoxBlender.desktop"))
 DefineEntry(gnuplot, Home(CategoryApplication, ".gnuplot"))
+static struct Entry librewolf[] = {
+	Home(CategoryApplication, ".librewolf/librewolf.overrides.cfg"),
+	Home(CategoryApplication, ".librewolf/kpfswkqk.default-default/chrome/userChrome.css"),
+	Home(CategoryApplication, ".librewolf/kpfswkqk.default-default/chrome/userChrome.js"),
+	Done,
+};
 
 // CLIs
 DefineEntry(aria2, Config(CategoryCli, "aria2/"))
@@ -318,7 +323,6 @@ struct Entry *configuration[] = {
 	// wtf,
 	// xplr,
 	// zathura,
-	appimagelauncher,
 	// llpp,
 	// blender,
 	// gnuplot,

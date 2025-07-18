@@ -436,7 +436,7 @@ must.strict_permissions() {
 	done
 
 	if ((${#badfiles} > 0)); then
-		if util.confirm_fix; then
+		if util.confirm 'Fix?'; then
 			for file in "${badfiles[@]}"; do
 				if [ -d "$file" ]; then
 					chmod 700 "$file"

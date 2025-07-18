@@ -24,7 +24,6 @@ dotfiles:
   - '.config/alacritty'
   - '.config/albert/albert.conf'
   - '.config/alsa'
-  - '.config/appimagelauncher.cfg'
   - '.config/aria2'
   - '.config/awesome'
   - '.config/bash'

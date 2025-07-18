@@ -54,7 +54,7 @@ main() {
 	if [ ! -f ~/.dotfiles/.data/bin/dev ]; then
 		cd ~/.dotfiles/.data/node*/
 		local bin_dir="$PWD"
-		bin_dir=${bin_dir#/home/}
+		bin_dir=${bin_dir#/home/} # lint-ignore
 		bin_dir=${bin_dir#*/}
 		bin_dir="$HOME/$bin_dir/bin"
 		PATH="$bin_dir:$PATH"

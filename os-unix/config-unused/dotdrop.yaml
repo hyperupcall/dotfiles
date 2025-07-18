@@ -99,9 +99,6 @@ dotfiles:
   '.config/alsa':
     src: '{{@@ cfg_src @@}}/alsa'
     dst: '{{@@ cfg_dst @@}}/alsa'
-  '.config/appimagelauncher.cfg':
-    src: '{{@@ cfg_src @@}}/appimagelauncher.cfg'
-    dst: '{{@@ cfg_dst @@}}/appimagelauncher.cfg'
   '.config/aria2':
     src: '{{@@ cfg_src @@}}/aria2'
     dst: '{{@@ cfg_dst @@}}/aria2'

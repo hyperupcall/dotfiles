@@ -83,6 +83,8 @@ Additional scripts should be executed. They include:
   - Setup Thunderbird
     - Install extensions (_do manually_)
   - Setup Bats, `gh`
+- Configure AppImageLauncher
+  - Set destination directory
 - Setup Albert
   - Enable plugins
 - Setup Obsidian

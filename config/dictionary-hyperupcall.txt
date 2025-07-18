@@ -1,3 +1,4 @@
+achiote
 animatable
 appname
 arxiv
@@ -180,6 +181,7 @@ tombi
 tput
 trpc
 typecheck
+ublacklist
 uefi
 UEFI
 underutilization

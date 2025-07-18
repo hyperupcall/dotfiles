@@ -379,11 +379,8 @@
 	//
 	// PERL
 	"[perl]": {
-		"editor.defaultFormatter": "richterger.perl"
+		"editor.defaultFormatter": "bscan.perlnavigator"
 	},
-	// richterger.perl
-	"perl.disableCache": false, // If this is 'false', then 'perl.cacheDir' is used
-	"perl.cacheDir": "/home/edwin/.cache/vscode-perl-cache/",
 
 	//
 	// DOCKER
@@ -531,5 +528,5 @@
 	"workbench.colorTheme": "Solarized Light",
 	"editor.cursorBlinking": "smooth",
 	"editor.fontFamily": "'Hack', monospace",
-	
+
 }

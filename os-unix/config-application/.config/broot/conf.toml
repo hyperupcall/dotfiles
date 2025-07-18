@@ -7,8 +7,8 @@ default_flags = "ihp"
 #
 # [special-paths]
 # "/media/slow-backup-disk" = "no-enter"
-# "/home/dys/useless" = "hide"
-# "/home/dys/my-link-I-want-to-explore" = "enter"
+# "/home/user/useless" = "hide"
+# "/home/user/my-link-I-want-to-explore" = "enter"
 
 ###############################################################
 # Date/Time format
@@ -238,5 +238,3 @@ leave_broot = false
 # [ext-colors]
 # png = "rgb(255, 128, 75)"
 # rs = "yellow"
-
-

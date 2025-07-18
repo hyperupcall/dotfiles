@@ -6,7 +6,9 @@ task.init() {
 }
 
 task.build() {
-	grep -r "/home/edwin" ./os-unix/config-*
+	if grep -IPr '/home/(?!linuxbrew|user)' ./os-*/ | grep -Ev '(#|//) lint-ignore'; then
+		bake.die "Expected to find no '/home/* strings'"
+	fi
 	grep -r "/storage" ./os-unix/config-*
 	cd "./os-unix/config-linux-rice/.config/X11/resources" || exit
 	printf '%s\n' "! GENERATERD BY 'bake build'" > uxterm.Xresources

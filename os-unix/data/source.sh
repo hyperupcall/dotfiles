@@ -136,7 +136,7 @@ EOF
 
 		if [ "$flag_no_confirm" = 'no' ]; then
 			core.print_warn "Program \"$g_name\" not installed"
-			if ! util.confirm_fix; then
+			if ! util.confirm 'Fix?'; then
 				return
 			fi
 		fi
@@ -168,8 +168,6 @@ EOF
 util.install_by_setup() {
 	local flag_fn_prefix=install
 	local program_name=$g_name
-	flag_no_confirm=n
-	flag_force=n
 
 	local arg=
 	for arg; do
@@ -212,10 +210,8 @@ util.install_by_setup() {
 		for id in "$ID" "$ID_LIKE" any; do
 			if declare -f "$flag_fn_prefix.$id" &>/dev/null; then
 				ran_function=yes
-				if ! installed || [ "$flag_force" = yes ]; then
-					if [ "$flag_no_confirm" = yes ] || util.confirm "Install $program_name?"; then
-						"$flag_fn_prefix.$id" "$@"
-					fi
+				if ! installed; then
+					"$flag_fn_prefix.$id" "$@"
 					break
 				else
 					core.print_warn "Program \"$program_name\" has already been set up. Pass \"--force\" to run setup again"
@@ -331,30 +327,24 @@ util.clone() {
 
 util.confirm() {
 	local message=${1:-Confirm?}
-	local args=('-rN1' -p "$message ")
+	local args=('-rN1')
 	if [ -n "$ZSH_VERSION" ]; then
 		args=('-rsk')
 	fi
 
 	local input=
-	until [[ "$input" =~ ^[yYnN]$ ]]; do
-		if [ -n "$ZSH_VERSION" ]; then
-			printf '%s' "$message "
-		fi
+	until [[ $input =~ ^[yYnN]$ ]]; do
+		printf '%s' "$message "
 		read "${args[@]}"
 		input=$REPLY
 		printf '\n'
 	done
 
-	if [ "$input" = 'y' ] || [ "$input" = 'Y' ]; then
+	if [[ $input =~ ^[yY]$ ]]; then
 		return 0
 	else
 		return 1
 	fi
-}
-
-util.confirm_fix() {
-	util.confirm "Would you like to fix this?"
 }
 
 util.get_latest_github_tag() {
