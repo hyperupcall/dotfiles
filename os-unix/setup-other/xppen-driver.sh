@@ -2,7 +2,7 @@
 
 source ~/.dotfiles/os-unix/data/source.sh
 
-declare -g g_name='XP-Pen Driver'
+declare -g g_name='XPPen Driver'
 
 main() {
 	core.print_info 'Downloading'
@@ -12,7 +12,11 @@ main() {
 	tar xf './xp-pen.tar.gz'
 
 	core.print_info 'Installing'
-	./XPPenLinux*/install.sh
+	sudo ./XPPenLinux*/install.sh
+}
+
+installed() {
+	[ -d /usr/lib/pentablet ]
 }
 
 util.if_file_sourced || _setup "$@"

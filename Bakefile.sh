@@ -6,10 +6,12 @@ task.init() {
 }
 
 task.build() {
-	if grep -IPr '/home/(?!linuxbrew|user)' ./os-*/ | grep -Ev '(#|//) lint-ignore'; then
+	if grep -IPr '/home/(?!linuxbrew|user)' ./os-*/ | grep -Ev '(#|//|") lint-ignore'; then
 		bake.die "Expected to find no '/home/* strings'"
 	fi
-	grep -r "/storage" ./os-unix/config-*
+	if grep -IPr 'vim:' ./os-*/ | grep -Ev '(#|//|") lint-ignore'; then
+		bake.die "Expected to find no 'vim:' strings"
+	fi
 	cd "./os-unix/config-linux-rice/.config/X11/resources" || exit
 	printf '%s\n' "! GENERATERD BY 'bake build'" > uxterm.Xresources
 	sed 's/XTerm/UXTerm/g' xterm.Xresources >> uxterm.Xresources

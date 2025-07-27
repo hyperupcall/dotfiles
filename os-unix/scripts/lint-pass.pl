@@ -12,6 +12,93 @@ use feature qw(say);
 # - if has login key, check it is on second line
 # - error on invalid email addresses
 # - $+{Key} is [a-z][A-Z][0-9]_ only
+# - cleanup
+
+if (grep { $_ eq '--fix-symlinks' } @ARGV) {
+	say "FILES WITH ASCII TEXT";
+	my $pass_store_dir = $ENV{PASSWORD_STORE_DIR};
+	if (!defined $pass_store_dir) {
+		# Expand '~/.password-store' to the full path
+		my @glob_result = glob '~/.password-store';
+		if (@glob_result) {
+			$pass_store_dir = $glob_result[0];
+		} else {
+			die "Could not determine PASSWORD_STORE_DIR. Please set PASSWORD_STORE_DIR environment variable or ensure ~/.password-store exists.\n";
+		}
+	}
+
+	File::Find::find(
+		{
+			wanted => sub {
+				# Only process regular files ending with .gpg
+				return unless -f $_ && /\.gpg$/;
+
+				my $current_file_path = $File::Find::name; # Full path to the current .gpg file
+
+				# Execute the 'file' command to determine the file type
+				# 2>&1 redirects stderr to stdout, similar to Python's stderr=subprocess.PIPE
+				my $file_command_output = `file \"$current_file_path\" 2>&1`;
+
+				# Check if the output indicates 'ASCII text'
+				if ($file_command_output =~ /ASCII text/) {
+					# Read the entire content of the file
+					open my $fh, '<:encoding(UTF-8)', $current_file_path
+						or warn "Could not open '$current_file_path' for reading: $!\n" and return;
+					my $content = do { local $/; <$fh> }; # Slurp the file content
+					close $fh;
+					chomp $content; # Remove any trailing newline characters
+
+					my $target_link_path;
+
+					# Determine the target path for the symlink
+					if ($content =~ /^\//) { # If content starts with '/' it's an absolute path
+						if ($content eq $pass_store_dir) {
+							# If the content is exactly the PASSWORD_STORE_DIR, the target is '.'
+							# This mimics Python's Path('/a/b').relative_to('/a/b') giving Path('.').
+							$target_link_path = '.';
+						} elsif ($content =~ s/^\Q$pass_store_dir\/\E//) {
+							# If content starts with '$pass_store_dir/', remove that prefix.
+							# \Q...\E quotes any special regex characters in $pass_store_dir.
+							# This makes the path relative to the password store root.
+							$target_link_path = $content;
+						} else {
+							# Warn and skip if the absolute path content is not within or exactly the PASSWORD_STORE_DIR
+							warn "Content '$content' is an absolute path but not within or equal to PASSWORD_STORE_DIR '$pass_store_dir'. Skipping '$current_file_path'.\n";
+							return; # Skip this file as its target is outside the expected store
+						}
+					} else {
+						# If content is not an absolute path, it's already considered a relative target
+						$target_link_path = $content;
+					}
+
+					say "removing $current_file_path";
+					print "Remove $current_file_path for symlink to $target_link_path? [y/n]? ";
+					my $user_input = <STDIN>;
+					chomp $user_input;
+
+					if (lc $user_input eq 'y') {
+						# Remove the original file
+						if (unlink $current_file_path) {
+							# Create the symlink: symlink(SOURCE, LINK_NAME)
+							# SOURCE is the path to which the symlink points ($target_link_path)
+							# LINK_NAME is the path of the new symlink ($current_file_path)
+							if (symlink $target_link_path, $current_file_path) {
+								say "Symlink created at $current_file_path, to $target_link_path";
+							} else {
+								warn "Failed to create symlink from '$current_file_path' to '$target_link_path': $!\n";
+							}
+						} else {
+							warn "Failed to remove '$current_file_path': $!\n";
+						}
+					}
+				}
+			},
+			no_chdir => 1,
+		},
+		$pass_store_dir # Start searching from the password store directory
+	);
+	exit 0;
+}
 
 my $password_store_dir = '~/.dotfiles/.home/xdg_data_dir/password-store/';
 my $total_passwords = 0;
@@ -122,18 +209,18 @@ sub wanted {
 			$property_counts{'username'} += 1;
 		} elsif ($key =~ /^comment$/) {
 			$property_counts{'comment'} += 1;
-		} elsif ($key =~ /^info$/) {
-			$property_counts{'info'} += 1;
 		} elsif ($key =~ /^password_/) {
 			$property_counts{'password_'} += 1;
-		} elsif ($key =~ /^secret_/) {
-			$property_counts{'secret_'} += 1;
+		} elsif ($key =~ /^(?:secret_|password_)/) {
+			$property_counts{'secret_|password_'} += 1;
 		} elsif ($key =~ /^id/) {
 			$property_counts{'id_'} += 1;
 		} elsif ($key =~ /^pin/) {
 			$property_counts{'pin_'} += 1;
 		} elsif ($key =~ /^q_/) {
 			$property_counts{'q_'} += 1;
+		} elsif ($key =~ /^confidential_fields/) {
+		$property_counts{'confidential_fields'} += 1;
 		} else {
 			say(STDERR "Bad field: ${pass_name}: $key");
 			$property_counts{$key} += 1;

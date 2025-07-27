@@ -1,6 +1,5 @@
 ! X11 colors pieced together by Dmitry Medvinsky.
 ! Based on Vim colorscheme "badwolf" pieced together by Steve Losh.
-! vim: fdm=marker
 
 ! Colors definition {{{
 #define   plain            #f8f6f2

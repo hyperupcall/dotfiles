@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 import re
+from re import Match
 import os
 import argparse
 from pathlib import Path
-from typing import Callable
+from typing import Callable, NotRequired, TypedDict
 
 # This file checks Bash and Shell scripts for violations not found with
 # shellcheck or existing methods. You can use it in several ways:
@@ -21,7 +22,15 @@ from typing import Callable
 # Check to ensure all regular expressions are working as intended:
 # $ lint-scripts.py --internal-test-regex
 
-Rule = dict[str, any]
+class Rule(TypedDict):
+	name: str
+	regex: str
+	reason: str
+	fileTypes: list[str]
+	fixerFn: Callable[[str, Match[str]], str] | None
+	testPositiveMatches: list[str]
+	testNegativeMatches: list[str]
+	found: NotRequired[int]
 
 class c:
 	RED = '\033[91m'
@@ -35,14 +44,14 @@ class c:
 	UNDERLINE = '\033[4m'
 	LINK: Callable[[str, str], str] = lambda href, text: f'\033]8;;{href}\a{text}\033]8;;\a'
 
-def utilGetStrs(line: any, m: any):
+def utilGetStrs(line: str, m: Match[str]):
 	return (
 		line[0:m.start('match')],
 		line[m.start('match'):m.end('match')],
 		line[m.end('match'):]
 	)
 
-def lintfile(file: Path, rules: list[Rule], options: dict[str, any]):
+def lintfile(file: Path, rules: list[Rule], options: dict[str, str]):
 	content_arr = file.read_text().split('\n')
 
 	for line_i, line in enumerate(content_arr):
@@ -109,7 +118,7 @@ def main():
 
 	# Before: apt install
 	# After: apt-get install
-	def aptUseAptGet(line: str, m: any) -> str:
+	def aptUseAptGet(line: str, m: Match[str]) -> str:
 		prestr, _, poststr = utilGetStrs(line, m)
 
 		return f'{prestr}apt-get {poststr}'
@@ -132,7 +141,7 @@ def main():
 
 	# Before: apt-get install
 	# After: apt-get -y install
-	def aptMustHaveY(line: str, m: any) -> str:
+	def aptMustHaveY(line: str, m: Match[str]) -> str:
 		prestr, _, poststr = utilGetStrs(line, m)
 
 		subcmd = m.group('subcommand')
@@ -154,7 +163,7 @@ def main():
 
 	# Before: add-apt-repository install
 	# After: add-apt-repository -y install
-	def addAptRepositoryMustHaveY(line: str, m: any) -> str:
+	def addAptRepositoryMustHaveY(line: str, m: Match[str]) -> str:
 		prestr, _, poststr = utilGetStrs(line, m)
 
 		return f'{prestr}add-apt-repository -y{poststr}'
@@ -175,7 +184,7 @@ def main():
 
 	# Before: dnf install
 	# After: dnf install -y
-	def dnfMustHaveY(line: str, m: any) -> str:
+	def dnfMustHaveY(line: str, m: Match[str]) -> str:
 		prestr, _, poststr = utilGetStrs(line, m)
 
 		subcmd = m.group('subcommand')
@@ -197,7 +206,7 @@ def main():
 
 	# Before: zypper install
 	# After: zypper install -y
-	def zypperMustHaveY(line: str, m: any) -> str:
+	def zypperMustHaveY(line: str, m: Match[str]) -> str:
 		prestr, _, poststr = utilGetStrs(line, m)
 
 		subcmd = m.group('subcommand')
@@ -219,7 +228,7 @@ def main():
 
 	# Before: flatpak install
 	# After: flatpak install -y
-	def flatpakMustHaveY(line: str, m: any) -> str:
+	def flatpakMustHaveY(line: str, m: Match[str]) -> str:
 		prestr, _, poststr = utilGetStrs(line, m)
 
 		subcmd = m.group('subcommand')
@@ -241,7 +250,7 @@ def main():
 
 	# Before: pacman -S
 	# After: pacman -Syu --noconfirm
-	def pacmanMustNoConfirm(line: str, m: any) -> str:
+	def pacmanMustNoConfirm(line: str, m: Match[str]) -> str:
 		prestr, _, poststr = utilGetStrs(line, m)
 
 		return f'{prestr}pacman -Syu --noconfirm{poststr}'
@@ -263,7 +272,7 @@ def main():
 
 	# Before: pkcon
 	# After: pkcon -y
-	def pkconMustYes(line: str, m: any) -> str:
+	def pkconMustYes(line: str, m: Match[str]) -> str:
 		prestr, _, poststr = utilGetStrs(line, m)
 
 		return f'{prestr}pkcon -y{poststr}'
@@ -285,7 +294,7 @@ def main():
 
 	# Before: sudo yay -S
 	# After: yay -S
-	def yayNoSudo(line: str, m: any) -> str:
+	def yayNoSudo(line: str, m: Match[str]) -> str:
 		prestr, _, poststr = utilGetStrs(line, m)
 
 		return f'{prestr}yay {poststr}'
@@ -356,7 +365,7 @@ def main():
 
 	# Before: curl
 	# After: curl
-	def curlMustHaveArgs(line: str, m: any) -> str:
+	def curlMustHaveArgs(line: str, m: Match[str]) -> str:
 		prestr, _, poststr = utilGetStrs(line, m)
 
 		return f'{prestr}curl -K "$CURL_CONFIG" {poststr}'
@@ -377,10 +386,10 @@ def main():
 
 	# Before: ^main "$@"
 	# After: ^util.if_file_sourced || _setup "$@"
-	def scriptsMustHaveSourceGuard(line: str, m: any) -> str:
+	def scriptsMustHaveSourceGuard(line: str, m: Match[str]) -> str:
 		prestr, _, poststr = utilGetStrs(line, m)
 
-		return f'util.if_file_sourced || _setup "$@"'
+		return 'util.if_file_sourced || _setup "$@"'
 
 	rules.append({
 		'name': 'scripts-must-have-source-guard',
@@ -428,14 +437,14 @@ def main():
 	if args.internal_test_regex:
 		for rule in rules:
 			for positiveMatch in rule['testPositiveMatches']:
-				m: any = re.search(rule['regex'], positiveMatch)
+				m = re.search(rule['regex'], positiveMatch)
 				if m is None or m.group('match') is None:
 					print(f'{c.MAGENTA}{rule["name"]}{c.RESET}: Failed {c.CYAN}positive{c.RESET} test:')
 					print(f'=> {positiveMatch}')
 					print()
 
 			for negativeMatch in rule['testNegativeMatches']:
-				m: any = re.search(rule['regex'], negativeMatch)
+				m = re.search(rule['regex'], negativeMatch)
 				if m is not None and m.group('match') is not None:
 					print(f'{c.MAGENTA}{rule["name"]}{c.RESET}: Failed {c.YELLOW}negative{c.RESET} test:')
 					print(f'=> {negativeMatch}')

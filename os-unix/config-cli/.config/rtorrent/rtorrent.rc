@@ -34,12 +34,6 @@ schedule = untied_directory,5,5,stop_untied=
 # Session directory
 session = ~/.dotfiles/.home/xdg_cache_dir/rtorrent
 
-# Download path (incomplete)
-directory = /storage/data/torrents/incomplete
-
-# Download path (finished)
-system.method.set_key = event.download.finished,move_complete,"set_directory=/storage/data/torrents/;execute=mv,-u,$d.get_base_path=,/storage/data/torrents/"
-
 # color_active_bg = 4
 # color_active_fg = 7
 #
@@ -51,5 +45,3 @@ system.method.set_key = event.download.finished,move_complete,"set_directory=/st
 #
 # color_finished_bg = 2
 # color_finished_fg = 0
-
-# vim:ft=conf

@@ -27,5 +27,3 @@ base0f = #d65d0e
 ; Additional custom overrides, e.g.
 ; font = 10pt Hack
 ; thumbnail.padding = 32
-
-; vim:ft=dosini

@@ -3,9 +3,6 @@ type = internal/fs
 
 ; mountpoints to display
 mount-0 = /
-mount-1 = /storage/data
-mount-2 = /storage/edwin
-mount-3 = /storage/vault/rodinia
 
 ; seconds to sleep between updates
 ; default: 30

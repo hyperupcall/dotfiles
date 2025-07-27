@@ -85,5 +85,3 @@ keybindings.highlight.color = #8959a8
 metadata.bg = #AAd6d6d6
 metadata.padding = 2px
 metadata.border_radius = 10px
-
-; vim:ft=dosini

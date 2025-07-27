@@ -525,8 +525,9 @@
 	"extensions.ignoreRecommendations": true,
 	"workbench.welcomePage.walkthroughs.openOnInstall": false,
 	"Lua.telemetry.enable": false,
+
+	// OTHER
 	"workbench.colorTheme": "Solarized Light",
 	"editor.cursorBlinking": "smooth",
 	"editor.fontFamily": "'Hack', monospace",
-
 }

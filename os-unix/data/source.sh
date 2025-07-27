@@ -210,12 +210,9 @@ util.install_by_setup() {
 		for id in "$ID" "$ID_LIKE" any; do
 			if declare -f "$flag_fn_prefix.$id" &>/dev/null; then
 				ran_function=yes
-				if ! installed; then
+				if ! installed || [ "$flag_force" = 'yes' ]; then
 					"$flag_fn_prefix.$id" "$@"
 					break
-				else
-					core.print_warn "Program \"$program_name\" has already been set up. Pass \"--force\" to run setup again"
-					return
 				fi
 			fi
 		done; unset -v id

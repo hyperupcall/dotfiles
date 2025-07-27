@@ -19,4 +19,8 @@ configure() {
 		--tcsh 'eval `register-python-argcomplete --shell tcsh pipx`'
 }
 
+installed() {
+	[ -f "$XDG_CONFIG_HOME/bash/bash.d/_pipx.bash" ]
+}
+
 util.if_file_sourced || _setup "$@"

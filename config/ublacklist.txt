@@ -10,6 +10,7 @@
 @1*://*.blender.org/*
 @1*://*.endoflife.date/*
 @1*://*.stackoverflow.com/*
+@1*://*.leetcode.com/*
 
 # Competitive Programming
 @1*://*.algo.monster/*
@@ -82,5 +83,9 @@
 *://*.pythoncentral.io/*
 *://*.datagy.io/*
 
+
 *://*.markaicode.com/*
 *://*.twoorbits.com/*
+*://*.thepoorcoder.com/*
+*://*.devexplain.com/*
+*://*.zyrastory.com/*
