@@ -126,7 +126,7 @@ fun! Start()
 		\ ff=unix
 
 	" Write to buffer
-	call append('$', "Welcome!)
+	call append('$', "Welcome!")
 
 	" Disable further modifications
 	setlocal nomodifiable nomodified

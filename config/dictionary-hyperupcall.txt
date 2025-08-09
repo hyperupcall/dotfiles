@@ -28,6 +28,7 @@ containerfile
 cout
 cpan
 crdt
+CSUMB
 ctxmenu
 cxtmenu
 cygwin

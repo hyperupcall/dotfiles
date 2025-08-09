@@ -7,10 +7,6 @@ const blocklists: { link: string, type: 'ublockorigin' | 'ublacklist' }[] = [
 	// https://github.com/quenhus/uBlock-Origin-dev-filter
 	{ link: 'https://raw.githubusercontent.com/quenhus/uBlock-Origin-dev-filter/main/dist/other_format/uBlacklist/all.txt', type: 'ublockorigin' },
 
-	// https://raw.githubusercontent.com/laylavish/uBlockOrigin-HUGE-AI-Blocklist
-	{ link: 'https://raw.githubusercontent.com/laylavish/uBlockOrigin-HUGE-AI-Blocklist/main/list.txt', type: 'ublockorigin' },
-	{ link: 'https://raw.githubusercontent.com/laylavish/uBlockOrigin-HUGE-AI-Blocklist/main/list_uBlacklist.txt', type: 'ublacklist' },
-
 	// https://github.com/elliotwutingfeng/SpamdexingSites
 	{ link: 'https://raw.githubusercontent.com/elliotwutingfeng/SpamdexingSites/refs/heads/main/blocklist_UBL.txt', type: 'ublacklist' },
 	{ link: 'https://raw.githubusercontent.com/elliotwutingfeng/SpamdexingSites/refs/heads/main/blocklist_UBO.txt', type: 'ublacklist' },
