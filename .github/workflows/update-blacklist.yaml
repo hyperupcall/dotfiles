@@ -1,4 +1,4 @@
-name: Daily Blacklist Update
+name: 'Update Website Blacklist'
 
 on:
   schedule:
@@ -20,7 +20,7 @@ jobs:
         with:
           deno-version: 'v2.x'
 
-      - run: deno ./scripts/compile-blacklist.ts
+      - run: './scripts/compile-blacklist.ts'
 
       - name: Set commit date variable
         id: 'set-commit-message'
@@ -30,5 +30,4 @@ jobs:
         with:
           author_name: 'Otternaut'
           author_email: '99463792+otternaut-bot@users.noreply.github.com'
-          commit_message: "Updated blacklist data ${{ $ENV._COMMIT_MESSAGE }}"
-          branch: 'main'
+          message: "${{ env._COMMIT_MESSAGE }}"
