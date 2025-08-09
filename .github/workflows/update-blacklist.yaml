@@ -1,0 +1,34 @@
+name: Daily Blacklist Update
+
+on:
+  schedule:
+    - cron: '0 1 */3 * *'
+  workflow_dispatch:
+
+jobs:
+  update-and-commit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: 'actions/checkout@v4'
+
+      - name: Setup Deno
+        uses: 'denoland/setup-deno@v2'
+        with:
+          deno-version: 'v2.x'
+
+      - run: deno ./scripts/compile-blacklist.ts
+
+      - name: Set commit date variable
+        id: 'set-commit-message'
+        run: echo "_COMMIT_MESSAGE=$(date '+%Y.%m.%d')" >> $GITHUB_ENV
+
+      - uses: 'EndBug/add-and-commit@v9'
+        with:
+          author_name: 'Otternaut'
+          author_email: '99463792+otternaut-bot@users.noreply.github.com'
+          commit_message: "Updated blacklist data ${{ $ENV._COMMIT_MESSAGE }}"
+          branch: 'main'
