@@ -1,0 +1,1 @@
+KERNEL=="event3", ATTRS{name}=="AT Translated Set 2 keyboard", ATTRS{phys}=="isa0060/serio0/input0", SYMLINK+="input/by-id/clevo-keyboard"

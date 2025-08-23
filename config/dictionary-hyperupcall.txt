@@ -19,6 +19,7 @@ bulma
 camino
 checkstyle
 clangd
+clevo
 cmds
 codeberg
 codemirror
@@ -39,6 +40,7 @@ darktext
 datas
 dbus
 deno
+denoland
 digrc
 dircolors
 dirent
@@ -85,6 +87,7 @@ hushlogin
 hyperupcall
 importmap
 initializable
+inkscape
 intellij
 isnt
 jsonlint
@@ -105,6 +108,7 @@ letterpaper
 linebreak
 liquidprompt
 localvar
+magick
 markmap
 marymount
 microblogging
@@ -127,7 +131,9 @@ nproc
 nullptr
 nushell
 nvim
+Otternaut
 overconstraint
+ovsx
 pacman
 parens
 paru
@@ -174,6 +180,7 @@ subschemas
 subshell
 subshells
 swaylock
+sxiv
 taplo
 templating
 testdir
@@ -188,6 +195,7 @@ UEFI
 underutilization
 unsetting
 unsymlink
+uxterm
 venv
 vivagraphjs
 vscord
@@ -202,3 +210,4 @@ webext
 xonsh
 xopp
 xournalpp
+Xresources

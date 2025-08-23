@@ -11,5 +11,8 @@
 		"format": "hyperupcall-scripts-nodejs format",
 		"lint": "hyperupcall-scripts-nodejs lint"
 	},
-	"private": true
+	"private": true,
+	"dependencies": {
+		"@types/node": "^24.3.0"
+	}
 }

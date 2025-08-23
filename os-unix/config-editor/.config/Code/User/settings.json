@@ -193,7 +193,6 @@
 
 	//
 	// DENO
-	"deno.path": "~/.local/share/mise/installs/deno/2.3.1/bin/deno",
 
 	//
 	// JSON
@@ -530,4 +529,7 @@
 	"workbench.colorTheme": "Solarized Light",
 	"editor.cursorBlinking": "smooth",
 	"editor.fontFamily": "'Hack', monospace",
+	"[typescript]": {
+		"editor.defaultFormatter": "vscode.typescript-language-features"
+	}
 }
