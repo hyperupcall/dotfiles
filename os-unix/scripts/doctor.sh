@@ -21,6 +21,15 @@ main() {
 			unlink "$f"
 		fi
 	done
+	core.print_info 'Removed broken symlinks'
+
+	# Remove distribution-specific dotfiles.
+	mkdir -p ~/.bootstrap/distro-dotfiles
+	for file in ~/.bash_login ~/.bash_logout ~/.bash_profile ~/.bashrc ~/.profile .dir_colors .dircolors; do
+		if [[ ! -L "$file" && -f "$file" ]]; then
+			mv "$file" ~/.bootstrap/distro-dotfiles
+		fi
+	done
 
 	# Remove auto-appended lines in shell startup files.
 	for file in ~/.profile ~/.bashrc ~/.bash_profile "${ZDOTDIR:-$HOME}/.zshrc" "${ZDOTDIR:-$HOME}/.zshenv" "$XDG_CONFIG_HOME/fish/config.fish"; do
@@ -67,6 +76,7 @@ main() {
 			fi
 		fi
 	done; unset -v file
+	core.print_info 'Created necessary symlinks in ~/scripts'
 
 	# Set XDG user directories.
 	{
@@ -78,16 +88,6 @@ main() {
 		xdg-user-dirs-update --set MUSIC ~/Music
 		xdg-user-dirs-update --set PICTURES ~/Pictures
 		xdg-user-dirs-update --set VIDEOS ~/Videos
-
-		for file in ~/Other/Templates/*; do
-			if [ ! -e "$file" ]; then
-				unlink "$file"
-			fi
-		done
-		for file in "$XDG_CONFIG_HOME"/libreoffice/4/user/template/*; do
-			ln -sf "$file" ~/Other/Templates
-		done
-		unset -v file
 	}
 
 	# Symlink XDG base and user directories.
@@ -114,6 +114,7 @@ main() {
 			fi
 		done; unset -v f
 	)
+	core.print_info 'Set and symlink XDG base and user directories'
 
 	# Create necessary directories, files, and groups.
 	must.dir ~/.dotfiles/.data/{bin,repos}
@@ -163,14 +164,6 @@ main() {
 	must.rm ~/.zprofile
 	must.rm ~/.zcompdump
 	must.rm "${ZDOTDIR-"$HOME"}/.zcompdump"
-
-	# Remove distribution-specific dotfiles.
-	mkdir -p ~/.bootstrap/distro-dotfiles
-	for file in ~/.bash_login ~/.bash_logout ~/.bash_profile ~/.bashrc ~/.profile .dir_colors .dircolors; do
-		if [[ ! -L "$file" && -f "$file" ]]; then
-			mv "$file" ~/.bootstrap/distro-dotfiles
-		fi
-	done
 
 	# Set current system profile.
 	if [ -f ~/.dotfiles/.data/profile ]; then
@@ -277,6 +270,22 @@ main() {
 	~/scripts/setup/pre-commit.sh
 	~/scripts/setup/homebrew.sh
 	~/scripts/setup/nerdfonts.sh
+
+	core.shopt_push -s nullglob
+	for file in "$XDG_CONFIG_HOME"/libreoffice/4/user/template/*; do
+		case $file in
+		*.ott)
+			core.print_info "Creating instance of template \"${file##*/}\""
+			libreoffice --headless --convert-to odt --outdir ~/Other/Templates "$file" ;;
+		*.ots)
+			core.print_info "Creating instance of template \"${file##*/}\""
+			libreoffice --headless --convert-to ods --outdir ~/Other/Templates "$file" ;;
+		*)
+			core.print_info "Skipping template file \"${file##*/}\"" ;;
+		esac
+	done
+	core.shopt_pop
+	unset -v file
 }
 
 must.rm() {

@@ -186,15 +186,18 @@ serv() {
 
 	# Don't use Python's built in http.server due to weird caching issues.
 	if command -v dufs >/dev/null 2>&1; then
-		dufs --port "$2" "$1"
+		dufs --hidden '*env*' --bind '::1' --port "$2" "$1"
 	elif command -v file_server >/dev/null 2>&1; then
 		file_server "$1" --host 127.0.0.1 -p "$2" # deno
 	elif command -v http-server >/dev/null 2>&1; then
 		http-server "$1" -c-1 -a 127.0.0.1 -p "$2" # node
-		return
 	else
-		_util_die "serv: no executable found to start server"
-		return
+		if _util_confirm "Would you like to install dufs?"; then
+			cargo install dufs
+			dufs --hidden '*env*' --bind '::1' --port "$2" "$1"
+		else
+			_util_die "serv: no executable found to start server"
+		fi
 	fi
 }
 

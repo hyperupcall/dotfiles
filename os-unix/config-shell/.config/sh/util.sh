@@ -67,6 +67,28 @@ _util_source_dir() {
 	unset -v _dir
 }
 
+_util_confirm() {
+	local message=${1:-Confirm?}
+	local args=('-rN1')
+	if [ -n "$ZSH_VERSION" ]; then
+		args=('-rsk')
+	fi
+
+	local input=
+	until [[ $input =~ ^[yYnN]$ ]]; do
+		printf '%s' "$message "
+		read "${args[@]}"
+		input=$REPLY
+		printf '\n'
+	done
+
+	if [[ $input =~ ^[yY]$ ]]; then
+		return 0
+	else
+		return 1
+	fi
+}
+
 _util_die() {
 	_util_log_error "$*"
 	return 1
