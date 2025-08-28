@@ -4,7 +4,7 @@
 	"window.customMenuBarAltFocus": false,
 	"window.newWindowDimensions": "maximized",
 	"window.restoreWindows": "all",
-	"window.title": "${folderName} ${activeEditorLong}${separator}${remoteName}",
+	"window.title": "${folderName} ${separator}${activeRepositoryBranchName}${separator}${remoteName}",
 	"window.titleBarStyle": "custom",
 
 	//
@@ -526,10 +526,11 @@
 	"Lua.telemetry.enable": false,
 
 	// OTHER
-	"workbench.colorTheme": "Solarized Light",
+	"workbench.colorTheme": "Quiet Light",
 	"editor.cursorBlinking": "smooth",
 	"editor.fontFamily": "'Hack', monospace",
 	"[typescript]": {
 		"editor.defaultFormatter": "vscode.typescript-language-features"
-	}
+	},
+	"autotitle.autoUpdate": false
 }
