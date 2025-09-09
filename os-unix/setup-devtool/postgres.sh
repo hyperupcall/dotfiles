@@ -16,7 +16,7 @@ install.ubuntu() {
 }
 
 installed() {
-	command -v postgres &>/dev/null
+	[ -d /usr/lib/postgresql ]
 }
 
 util.if_file_sourced || _setup "$@"

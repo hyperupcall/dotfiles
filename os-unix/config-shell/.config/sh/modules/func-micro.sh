@@ -51,14 +51,14 @@ del() {
 		for f; do
 			if ! trash-put "$f"; then
 				_util_die "del: 'trash-put' failed"
-				return
+				return 1
 			fi
 		done
 	elif command -v gio >/dev/null 2>&1; then
 		for f; do
 			if ! gio trash "$f"; then
 				_util_die "del: 'gio trash' failed"
-				return
+				return 1
 			fi
 		done
 	else
@@ -69,7 +69,7 @@ del() {
 cdls() {
 	if ! cd -- "$1"; then
 		_util_die "cdls: Failed to cd"
-		return
+		return 1
 	fi
 	_util_ls
 }
@@ -78,7 +78,7 @@ mkcd() {
 	command mkdir -p -- "$@"
 	if ! cd -- "$@"; then
 		_util_die "mkcd: Failed to cd"
-		return
+		return 1
 	fi
 }
 

@@ -1,7 +1,7 @@
 # shellcheck shell=sh
 
-# ------------------------ General ----------------------- #
-export NAME='Edwin Kofler'
+# GENERAL.
+# export NAME='Edwin Kofler'
 export EMAIL='edwin@kofler.com'
 
 export LANG="${LANG:-en_US.UTF-8}"
@@ -14,7 +14,7 @@ export PAGER='less'
 # export MANPAGER='vim +MANPAGER --not-a-term -u /dev/null -'
 export MANPAGER='less'
 
-# ------------------------ Program ----------------------- #
+# PROGRAM.
 # fzf
 export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
 export FZF_DEFAULT_OPTS="--history \"$XDG_STATE_HOME/history/fzf_history\" --history-size=10000"

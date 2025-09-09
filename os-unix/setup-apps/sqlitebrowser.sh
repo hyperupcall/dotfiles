@@ -31,4 +31,8 @@ install.arch() {
 	sudo pacman -Syu --noconfirm sqlitebrowser
 }
 
+installed() {
+	command -v sqlitebrowser &>/dev/null
+}
+
 util.if_file_sourced || _setup "$@"

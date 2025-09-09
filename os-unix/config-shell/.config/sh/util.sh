@@ -95,7 +95,7 @@ _util_die() {
 }
 
 _util_log_error() {
-	if [ -t 0 ]; then
+	if _util_should_print_color; then
 		printf "\033[0;31m%s\033[0m %s\n" 'Error:' "$1" >&2
 	else
 		printf "%s %s\n" 'Error:' "$1" >&2
@@ -103,7 +103,7 @@ _util_log_error() {
 }
 
 _util_log_warn() {
-	if [ -t 0 ]; then
+	if _util_should_print_color; then
 		printf "\033[1;33m%s\033[0m %s\n" 'Warn:' "$1" >&2
 	else
 		printf "%s %s\n" 'Warn:' "$1" >&2
@@ -111,7 +111,7 @@ _util_log_warn() {
 }
 
 _util_log_info() {
-	if [ -t 0 ]; then
+	if _util_should_print_color; then
 		printf "\033[0;34m%s\033[0m %s\n" 'Info:' "$1"
 	else
 		printf "%s %s\n" 'Info:' "$1"
@@ -119,7 +119,7 @@ _util_log_info() {
 }
 
 _util_print_source_error() {
-	_util_log_warn "Failed to source $1 successfully"
+	_util_log_warn "Failed to source \"$1\" successfully"
 }
 
 _util_ls() {
@@ -130,4 +130,25 @@ _util_ls() {
 		ls -A --color=always
 	fi
 	printf '%s\n' '---'
+}
+
+_util_should_print_color() {
+	if [ ${NO_COLOR+x} ]; then
+		return 1
+	fi
+
+	case $FORCE_COLOR in
+		1|2|3) return 0 ;;
+		0) return 1 ;;
+	esac
+
+	if [ "$TERM" = 'dumb' ]; then
+		return 1
+	fi
+
+	if [ -t 0 ]; then
+		return 0
+	fi
+
+	return 1
 }

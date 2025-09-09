@@ -16,6 +16,10 @@ install.ubuntu() {
 	install.debian "$@"
 }
 
+install.neon() {
+	sudo apt-get install -y libnotify-bin notify-osd
+}
+
 install.fedora() {
 	sudo dnf install -y notify-send
 }

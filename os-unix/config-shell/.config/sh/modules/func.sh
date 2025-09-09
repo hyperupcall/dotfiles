@@ -1,16 +1,5 @@
 # shellcheck shell=sh
 
-bash() {
-	if { [ "$1" = --noprofile ] && [ "$2" = --norc ]; } \
-		|| { [ "$1" = --norc ] && [ "$2" = --noprofile ]; }
-	then
-		_util_log_info "Additionally resetting path to its initial value"
-		PATH="$_shell_original_path" command bash "$@"
-	else
-		command bash "$@"
-	fi
-}
-
 cls() {
 	# assume hardware is not real (not 'reset')
 	tput reset

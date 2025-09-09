@@ -24,12 +24,12 @@
 	},
 	"soft_wrap": "editor_width",
 	"agent": {
-		"play_sound_when_agent_done": true,
+		"default_profile": "ask",
+  "play_sound_when_agent_done": true,
   "default_model": {
-			"provider": "google",
-			"model": "gemini-2.5-flash"
+			"provider": "zed.dev",
+			"model": "claude-sonnet-4-thinking"
 		},
-		"version": "2"
 	},
 	"telemetry": {
 		"diagnostics": false,

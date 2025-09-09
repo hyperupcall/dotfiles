@@ -14,8 +14,13 @@ install.ubuntu() {
 	pkg.add_apt_key 'https://www.pgadmin.org/static/packages_pgadmin_org.pub' \
 		"$gpg_file"
 
-	# TODO
-	sudo sh -c "echo \"deb [signed-by=$gpg_file] https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main\" > /etc/apt/sources.list.d/pgadmin4.list && apt-get update -y"
+	pkg.add_apt_repository \
+	'/etc/apt/sources.list.d/pgadmin4.sources' \
+		"Types: deb
+URIs: https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/noble
+Suites: pgadmin4
+Components: main
+Signed-By: /etc/apt/keyrings/pgadmin.asc"
 
 	sudo apt-get update -y
 	sudo apt-get install -y pgadmin4-desktop

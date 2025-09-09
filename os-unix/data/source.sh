@@ -210,9 +210,13 @@ util.install_by_setup() {
 		for id in "$ID" "$ID_LIKE" any; do
 			if declare -f "$flag_fn_prefix.$id" &>/dev/null; then
 				ran_function=yes
-				if ! installed || [ "$flag_force" = 'yes' ]; then
-					"$flag_fn_prefix.$id" "$@"
-					break
+				if command -v installed &>/dev/null; then
+					if ! installed || [ "$flag_force" = 'yes' ]; then
+						"$flag_fn_prefix.$id" "$@"
+						break
+					fi
+				else
+					core.print_info "File \"$program_name\" has not function \"installed\""
 				fi
 			fi
 		done; unset -v id

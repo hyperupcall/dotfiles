@@ -53,9 +53,11 @@ main() {
 
 	# Create necessary symlinks.
 	must.link ~/.dotfiles/os-unix/scripts ~/scripts
+	mkdir -p ~/.local/bin
 	for file in ~/.dotfiles/os-unix/bin/*; do
 		ln -sf "$file" ~/.local/bin
 	done; unset -v file
+	mkdir -p ~/scripts/setup
 	for file in ~/.dotfiles/os-unix/{config,setup}-*/*; do
 		if [ -d "$file" ]; then
 			local dir="$file"

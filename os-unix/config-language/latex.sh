@@ -6,11 +6,11 @@ declare -g g_name='LaTeX (Tex Live)'
 
 main() {
 	util.install_by_setup "$@"
-	cargo install tex-fmt
+	cargo install --locked tex-fmt
 }
 
 install.debian() {
-	sudo apt-get -y install texlive-full tex-fmt
+	sudo apt-get -y install texlive-full
 }
 
 install.ubuntu() {

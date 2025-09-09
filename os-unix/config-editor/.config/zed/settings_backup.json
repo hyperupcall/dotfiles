@@ -23,10 +23,11 @@
 		"option_as_meta": true
 	},
 	"soft_wrap": "editor_width",
-	"assistant": {
-		"default_model": {
-			"provider": "google",
-			"model": "gemini-1.5-flash"
+	"agent": {
+		"play_sound_when_agent_done": true,
+  "default_model": {
+			"provider": "openai",
+			"model": "gpt-5"
 		},
 		"version": "2"
 	},
@@ -34,6 +35,7 @@
 		"diagnostics": false,
 		"metrics": false
 	},
+	"buffer_font_family": "Hack",
 	"ui_font_size": 16,
 	"buffer_font_size": 16,
 	"theme": {

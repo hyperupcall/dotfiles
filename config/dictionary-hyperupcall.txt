@@ -41,6 +41,7 @@ datas
 dbus
 deno
 denoland
+devresources
 digrc
 dircolors
 dirent
@@ -128,6 +129,7 @@ NOLINTNEXTLINE
 nord
 nounset
 nproc
+nullglob
 nullptr
 nushell
 nvim
@@ -172,6 +174,7 @@ shelltest
 shopt
 skyblue
 smol
+startuml
 stylelint
 subdependencies
 subdir

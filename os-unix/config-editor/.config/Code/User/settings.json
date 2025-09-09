@@ -151,6 +151,8 @@
 			"source.fixAll.eslint": "always"
 		},
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.insertSpaces": false,
+		"editor.tabSize": 3,
 		"editor.formatOnSave": true
 	},
 	"javascript.autoClosingTags": true,
@@ -170,6 +172,8 @@
 			"source.fixAll.eslint": "always"
 		},
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.insertSpaces": false,
+		"editor.tabSize": 3,
 		"editor.formatOnSave": true
 	},
 	"typescript.autoClosingTags": true,
@@ -367,7 +371,9 @@
 	//
 	// JAVA
 	"[java]": {
-		"editor.defaultFormatter": "redhat.java"
+		"editor.defaultFormatter": "redhat.java",
+		"editor.insertSpaces": false,
+		"editor.tabSize": 3
 	},
 	"java.project.importOnFirstTimeStartup": "automatic",
 
@@ -526,7 +532,7 @@
 	"Lua.telemetry.enable": false,
 
 	// OTHER
-	"workbench.colorTheme": "Quiet Light",
+	"workbench.colorTheme": "GitHub Light",
 	"editor.cursorBlinking": "smooth",
 	"editor.fontFamily": "'Hack', monospace",
 	"[typescript]": {

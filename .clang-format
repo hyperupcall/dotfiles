@@ -1,10 +1,12 @@
 {
 	BasedOnStyle: LLVM,
-	UseTab: ForIndentation,
+	UseTab: Always,
 	IndentWidth: 3,
 	TabWidth: 3,
-	AlignEscapedNewlines: Left,
+	ContinuationIndentWidth: 3,
+	AlignEscapedNewlines: DontAlign,
 	AllowShortFunctionsOnASingleLine: Empty,
 	AlwaysBreakTemplateDeclarations: Yes,
 	ColumnLimit: 120,
+	AlignArrayOfStructures: Left,
 }

@@ -21,7 +21,7 @@ main() {
 }
 
 installed() {
-	command -v basalt &>/dev/null
+	command -v basalt &>/dev/null && command -v shdoc &>/dev/null
 }
 
 configure() {

@@ -1,5 +1,16 @@
 # shellcheck shell=sh
 
+bash() {
+	if { [ "$1" = --noprofile ] && [ "$2" = --norc ]; } \
+		|| { [ "$1" = --norc ] && [ "$2" = --noprofile ]; }
+	then
+		_util_log_info "Additionally resetting path to its initial value"
+		PATH="$_shell_original_path" command bash "$@"
+	else
+		command bash "$@"
+	fi
+}
+
 cd() {
 	# Ex. New mountpoints
 	if [ "$1" = '.' ]; then
@@ -32,6 +43,25 @@ cd() {
 
 	unset -v _shell_dir
 	return $_exit_code
+}
+
+code() {
+	_dir=
+	for _arg in "$@"; do
+		case $_arg in
+			-*|tunnel|serve-web) ;;
+			*) _dir=$_arg ;;
+		esac
+	done
+	unset -v _arg _dir
+
+	node -e "
+		import { getEcosystems } from '.dev/devutils/index.ts'
+		const ecosystems = await getEcosystems('$PWD')
+		console.log('Ecosystem: ' + ecosystems + ' (not launching with it though))
+	"
+
+	command code "$@"
 }
 
 curl() {
