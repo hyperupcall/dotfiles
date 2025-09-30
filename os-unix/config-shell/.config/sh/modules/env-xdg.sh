@@ -2,7 +2,7 @@
 
 # android
 export ANDROID_HOME="$XDG_STATE_HOME/Android/Sdk"
-_util_path_prepend "$ANDROID_HOME/emulator"
+# _util_path_prepend "$ANDROID_HOME/emulator"
 _util_path_prepend "$ANDROID_HOME/tools"
 _util_path_prepend "$ANDROID_HOME/tools/bin"
 _util_path_prepend "$ANDROID_HOME/platform-tools"
@@ -39,10 +39,7 @@ export CIN_CONFIG="$XDG_CONFIG_HOME/bcast5"
 # conan
 export CONAN_HOME="$XDG_STATE_HOME/conan2"
 
-# conda
-export CONDA_ROOT="$XDG_CONFIG_HOME/conda"
-
-# cpanm
+# cpam
 export PERL_CPANM_HOME="$XDG_DATA_HOME/cpanm"
 
 # crawl
@@ -135,8 +132,8 @@ export IRBRC="$XDG_CONFIG_HOME/irb/irbrc"
 alias irssi='irssi --config "$XDG_CONFIG_HOME/irssi" --home "$XDG_CONFIG_HOME/irssi"'
 
 # java
-export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_STATE_HOME/java"
-export JAVA_TOOL_OPTIONS="$_JAVA_OPTIONS"
+# export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_STATE_HOME/java"
+# export JAVA_TOOL_OPTIONS="$_JAVA_OPTIONS"
 
 # julia
 export JULIA_DEPOT_PATH="$XDG_DATA_HOME/julia:$JULIA_DEPOT_PATH"
@@ -248,6 +245,9 @@ export RUBY_BUILD_CACHE_PATH="$XDG_CACHE_HOME/ruby-build"
 
 # sage
 export DOT_SAGE="$XDG_CONFIG_HOME/sage"
+
+# sdkman
+export SDKMAN_DIR="$XDG_STATE_HOME/sdkman"
 
 # screen
 export SCREENRC="$XDG_CONFIG_HOME/screenrc"

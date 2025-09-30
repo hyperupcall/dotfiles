@@ -18,7 +18,7 @@ if [[ $# -eq 0 ]]; then
     exit 1
 else
     while [ $# -ne 0 ]; do
-        case "$1" in
+        case $1 in
             -o | --yes-text) # Optional
                 [ -n "$2" ] && yes_text="$2" || yes_text=""
                 shift

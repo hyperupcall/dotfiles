@@ -37,7 +37,7 @@ function mkcd() {
 function cdls() {
 	Set-Location "$($args[0])"
 	if (!$?) {
-		_powershell_util_die "cdls failed"
+		_powershell_util_log_error "cdls failed"
 	}
 	_powershell_util_ls
 }
@@ -137,7 +137,7 @@ function unlink {
 }
 
 # FIXME: export all functions that do not begin with '_'?
-function _powershell_util_die {
+function _powershell_util_log_error {
 	Write-Host ""
 	return 1
 }

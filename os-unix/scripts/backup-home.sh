@@ -26,6 +26,10 @@ main() {
 			--exclude '**/rustup/toolchains' \
 			--exclude '**/cargo/registry' \
 			--exclude '**/mise/installs' \
+			--exclude '**/miniforge3/pkgs' \
+			--exclude '**/.miniforge3/pkgs' \
+			--exclude '**/miniconda3/pkgs' \
+			--exclude '**/.miniconda3/pkgs' \
 			--exclude '**/pnpm/store' \
 			--exclude '**/__pycache__' \
 			--exclude '**/.npm/_cacache' \

@@ -17,7 +17,7 @@ main() {
 				core.print_die "Non-git directory already exists in place of secrets dir. Please remove manually"
 			fi
 		else
-			util.clone "$dir" 'git@github.com:hyperupcall/secrets'
+			util.clone "$dir" 'ssh://git@codeberg.org/hyperupcall/secrets.git'
 		fi
 	fi
 

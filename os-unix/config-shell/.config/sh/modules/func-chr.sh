@@ -1,8 +1,8 @@
 # shellcheck shell=sh
 
 chr() {
-	[ -z "$1" ] && { _util_die "chr: No mountpoint specified"; return 1; }
-	[ -d "$1" ] || { _util_die "chr: Folder doesn't exist"; return; }
+	[ -z "$1" ] && { _util_log_error "chr: No mountpoint specified"; return 1; }
+	[ -d "$1" ] || { _util_log_error "chr: Folder doesn't exist"; return 1; }
 
 	if command -v arch-chroot >/dev/null 2>&1; then
 		if [ "$TERM" = xterm-kitty ]; then
@@ -25,8 +25,8 @@ chr() {
 }
 
 unchr() {
-	[ -z "$1" ] && { _util_die "unchr: No mountpoint specified"; return; }
-	[ -d "$1" ] || { _util_die "unchr: Folder doesn't exist"; return; }
+	[ -z "$1" ] && { _util_log_error "unchr: No mountpoint specified"; return 1; }
+	[ -d "$1" ] || { _util_log_error "unchr: Folder doesn't exist"; return 1; }
 
 	umount "$1/proc"
 	umount "$1/sys"

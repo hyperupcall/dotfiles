@@ -25,7 +25,7 @@ cdp() {
 
 dataurl() {
 	mimeType=$(file -b --mime-type "$1")
-	case "$mimeType" in
+	case $mimeType in
 		text/*)
 			mimeType="${mimeType};charset=utf-8"
 		;;
@@ -52,8 +52,8 @@ edit() {
 	if [ -z "$_edit_grep_result" ]; then
 			_edit_grep_result="$(grep -nR "^alias $1=" "$XDG_CONFIG_HOME"/sh)"
 			if [ -z "$_edit_grep_result" ]; then
-			_util_die "edit: Function or alias '$1' not found"
-			return
+			_util_log_error "edit: Function or alias '$1' not found"
+			return 1
 		fi
 	fi
 
@@ -67,8 +67,8 @@ edit() {
 	elif command -v 'nano' &>/dev/null; then
 		nano "+$_edit_line" "$_edit_file"
 	else
-		_util_die "edit: Editor not found"
-		return
+		_util_log_error "edit: Editor not found"
+		return 1
 	fi
 	unset -v _edit_grep_result _edit_file _edit_line
 }
@@ -109,7 +109,7 @@ pbake() {
 		fi
 		printf '%s' "$PWD"
 	); then
-		_util_die "Failed to cd to nearest Git repository" || return
+		_util_log_error "Failed to cd to nearest Git repository" || return 1
 	fi
 
 	_shell_bakefile='.hidden/Bakefile.sh'
@@ -126,7 +126,7 @@ pbake() {
 
 		unset -v _shell_bake _shell_bakefile
 	else
-		_util_die "Could not find a Bakefile under hidden directory" || return
+		_util_log_error "Could not find a Bakefile under hidden directory" || return 1
 	fi
 }
 
@@ -152,7 +152,7 @@ qe() {
 		\) -prune -o -print | fzf
 	)
 
-	[ -z "$_qe_file" ] && { _util_die "qe: Chosen file empty"; return; }
+	[ -z "$_qe_file" ] && { _util_log_error "qe: Chosen file empty"; return 1; }
 
 	_qe_file="$XDG_CONFIG_HOME/$(printf "%s" "$_qe_file" | cut -c3-)"
 	v "$_qe_file"
@@ -169,13 +169,13 @@ serv() {
 	set -- "${1:-.}" "${2:-4000}"
 
 	if ! [ -d "$1" ]; then
-		_util_die "serv: dir '$1' doesn't exist"
-		return
+		_util_log_error "serv: Dir '$1' doesn't exist"
+		return 1
 	fi
 
 	# Don't use Python's built in http.server due to weird caching issues.
 	if command -v dufs >/dev/null 2>&1; then
-		dufs --hidden '*env*' --bind '::1' --port "$2" "$1"
+		dufs --render-try-index --hidden '*env*' --bind '::1' --port "$2" "$1"
 	elif command -v file_server >/dev/null 2>&1; then
 		file_server "$1" --host 127.0.0.1 -p "$2" # deno
 	elif command -v http-server >/dev/null 2>&1; then
@@ -183,9 +183,10 @@ serv() {
 	else
 		if _util_confirm "Would you like to install dufs?"; then
 			cargo install dufs
-			dufs --hidden '*env*' --bind '::1' --port "$2" "$1"
+			dufs --render-try-index --hidden '*env*' --bind '::1' --port "$2" "$1"
 		else
-			_util_die "serv: no executable found to start server"
+			_util_log_error "serv: No executable found to start server"
+			return 1
 		fi
 	fi
 }

@@ -89,11 +89,6 @@ _util_confirm() {
 	fi
 }
 
-_util_die() {
-	_util_log_error "$*"
-	return 1
-}
-
 _util_log_error() {
 	if _util_should_print_color; then
 		printf "\033[0;31m%s\033[0m %s\n" 'Error:' "$1" >&2

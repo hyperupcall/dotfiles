@@ -51,6 +51,10 @@ _main() {
 	local orig_dir="$PWD" temp_dir=
 	temp_dir=$(mktemp -d --suffix "-dotfiles")
 	cd "$temp_dir" || exit $?
+	_setup_cleanup1() {
+		rm -rf "$temp_dir"
+	}
+	core.trap_add '_setup_cleanup1' ERR EXIT
 
 	main "$@"
 
@@ -103,6 +107,10 @@ EOF
 	local orig_dir="$PWD" temp_dir=
 	temp_dir=$(mktemp -d --suffix "-dotfiles")
 	cd "$temp_dir" || exit $?
+	_setup_cleanup2() {
+		rm -rf "$temp_dir"
+	}
+	core.trap_add '_setup_cleanup2' ERR EXIT
 
 	util.get_script_path
 	local script_path=$REPLY
@@ -124,42 +132,53 @@ EOF
 		core.print_die "Expected file \"$0\" to have function \"installed\""
 	fi
 
+	# Configure first.
+	if declare -f 'configure' &>/dev/null; then
+		core.print_info "Configuring \"$g_name\"..."
+		local orig_dir="$PWD" temp_dir=
+		temp_dir=$(mktemp -d --suffix "-dotfiles")
+		cd "$temp_dir"
+		_setup_cleanup3() {
+			rm -rf "$temp_dir"
+		}
+		core.trap_add '_setup_cleanup3' ERR EXIT
+
+		(
+			configure "$@"
+		)
+		cd "$orig_dir"
+	fi
+
 	if [ "$flag_configure_only" = 'no' ]; then
-		if installed; then
-			if [ "$flag_force" = yes ]; then
-				core.print_warn "Already installed \"$g_name\". Force installing..."
-			else
-				core.print_info "Already installed \"$g_name\""
-				return
-			fi
+		if installed && [ "$flag_force" = no ]; then
+			core.print_info "Program \"$g_name\" already installed"
+			return
 		fi
 
 		if [ "$flag_no_confirm" = 'no' ]; then
-			core.print_warn "Program \"$g_name\" not installed"
+			if installed; then
+				# Variable "flag_force" is "yes".
+				core.print_info "Would you like to force install \"$g_name\"?"
+			else
+				core.print_info "Program \"$g_name\" not installed"
+			fi
 			if ! util.confirm 'Fix?'; then
 				return
 			fi
 		fi
 
-		main "$@"
-
-		if ! installed; then
-			core.print_die "Attempted to install \"$g_name\", but failed"
-		fi
+		(
+			main "$@"
+		)
 	fi
 
-	(
-		if declare -f 'configure' &>/dev/null; then
-			core.print_info "Configuring..."
-			local orig_dir="$PWD" temp_dir=
-			temp_dir=$(mktemp -d --suffix "-dotfiles")
-			cd "$temp_dir"
+	if ! installed; then
+		core.print_die "Attempted to install \"$g_name\", but failed"
+	fi
 
-			configure "$@"
-
-			cd "$orig_dir"
-		fi
-	)
+	if declare -f 'caveats' &>/dev/null; then
+		caveats
+	fi
 
 	cd "$orig_dir"
 	rm -rf "$temp_dir"
@@ -364,6 +383,8 @@ util.get_latest_github_tag() {
 	local tag_name=
 	tag_name=$(curl -K "$CURL_CONFIG" -H "Authorization: token: $token" "https://api.github.com/repos/$repo/releases/latest" | jq -r '.tag_name')
 
+	core.print_info "Latest version of \"$repo\": \"$tag_name\""
+
 	REPLY=$tag_name
 }
 
@@ -481,15 +502,16 @@ util.write_shellfile() {
 			*) core.print_die "Invalid shell \"$shell\"" ;;
 		esac
 
-		mkdir -p "$HOME/.dotfiles/.home/xdg_config_dir/$shell/$dirname"
-		: > "$HOME/.dotfiles/.home/xdg_config_dir/$shell/$dirname/_$name.$shell"
+		local output_file="$XDG_CONFIG_HOME/$shell/$dirname/_$name.$shell"
+		core.print_info "Writing to \"$output_file\""
+		mkdir -p "$XDG_CONFIG_HOME/$shell/$dirname"
+		: > "$output_file"
 		local line=
 		while IFS= read -r line; do
 			line="${line#"${line%%[![:space:]]*}"}"
-			printf '%s\n' "$line" >> "$HOME/.dotfiles/.home/xdg_config_dir/$shell/$dirname/_$name.$shell"
+			printf '%s\n' "$line" >> "$output_file"
 		done <<< "$content"
 		unset -v line
-
 	done
 }
 

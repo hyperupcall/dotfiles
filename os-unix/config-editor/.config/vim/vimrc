@@ -92,8 +92,8 @@ let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[2 q"
 
 " Show whitespace characters
-set listchars=eol:¬,tab:>\ ,trail:␣,extends:>,precedes:<,space:␣
-set list
+" set listchars=eol:¬,tab:>\ ,trail:␣,extends:>,precedes:<,space:␣
+" set list
 
 " Force write with sudo (Vim only)
 command! W execute 'w !sudo tee % > /dev/null' ^V|  edit!

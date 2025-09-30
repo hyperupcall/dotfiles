@@ -1,8 +1,10 @@
-# Editor
+# Editor-related ignores.
 *~
 *-
 ._*
 *.kate-swp
+# LibreOffice
+.~lock.*#
 
-# Custom
+# Custom ignores.
 .hidden/

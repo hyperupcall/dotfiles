@@ -58,7 +58,7 @@ code() {
 	node -e "
 		import { getEcosystems } from '.dev/devutils/index.ts'
 		const ecosystems = await getEcosystems('$PWD')
-		console.log('Ecosystem: ' + ecosystems + ' (not launching with it though))
+		console.log('Ecosystem: ' + ecosystems + ' (not launching with it though)')
 	"
 
 	command code "$@"

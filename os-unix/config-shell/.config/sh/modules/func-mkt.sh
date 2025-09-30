@@ -31,13 +31,13 @@ _mkt_util_cd() {
 	# shellcheck disable=SC3044
 	if [ -d "$PWD" ] && (builtin pushd . >/dev/null); then
 		if ! pushd -- "$1" >/dev/null; then
-			_util_die "mkt: Could not pushd"
+			_util_log_error "mkt: Could not pushd"
 			rmdir "$_mkt_dir" 2>/dev/null
 			return 1
 		fi
 	else
 		if ! cd -- "$1"; then
-			_util_die "mkt: Could not cd"
+			_util_log_error "mkt: Could not cd"
 			rmdir "$_mkt_dir" 2>/dev/null
 			return 1
 		fi
@@ -49,18 +49,10 @@ _mkt_util_cd() {
 }
 
 _mkt_util_git_clone() {
-	if [ "$_mkt_flag_shallow" = 'yes' ]; then
-		if ! git clone -- "$1"; then
-			_util_die "mkt: Could not clone repository"
-			rmdir "$_mkt_dir" 2>/dev/null
-			return 1
-		fi
-	else
-		if ! git clone --depth=1 --single-branch -- "$1"; then
-			_util_die "mkt: Could not clone repository"
-			rmdir "$_mkt_dir" 2>/dev/null
-			return 1
-		fi
+	if ! git clone -- "$1"; then
+		_util_log_error "mkt: Could not clone repository"
+		rmdir "$_mkt_dir" 2>/dev/null
+		return 1
 	fi
 }
 
@@ -69,30 +61,21 @@ _mkt_util_log() {
 }
 
 mkt() {
-	_mkt_flag_shallow='no'
-
-	for arg; do case "$arg" in
+	for arg; do case $arg in
 	--help)
 		cat <<-EOF
 		mkt
 
-		Flags:
-		  --shallow
-		    When git cloning a repository, only clone from HEAD ref
-
 		Examples:
-		  mkt https://github.com/eankeen/dots
-		  mkt --shallow eankeen/dots
-		  mkt https://releases.hashicorp.com/packer/1.7.2/packer_1.7.2_linux_amd64.zip
+		  mkt https://github.com/hyperupcall/dotfiles
+		  mkt hyperupcall/dotfiles
+		  mkt https://example.com/archive.zip
 		EOF
 		return
 		;;
-	--shallow)
-		_mkt_flag_shallow=yes
-		;;
 	-*)
-		_util_die "mkt: Flag '$arg' not recognized"
-		return
+		_util_log_error "mkt: Flag '$arg' not recognized"
+		return 1
 		;;
 	*)
 		_mkt_arg=$arg
@@ -102,16 +85,16 @@ mkt() {
 	_mkt_old_pwd=$PWD
 
 	set -- "$_mkt_arg"
-	case "$1" in
-	# nothing passed
+	case $1 in
+	# Nothing passed.
 	'')
 		_mkt_dir=$(mktemp -d)
 		_mkt_util_cd "$_mkt_dir" || return
 		_mkt_util_log "$1"
 		;;
-	# git repository
+	# Git repository.
 	*.git)
-		_mkt_id=$(printf '%s\n' "$1" | rev | cut -d/ -f1 | rev) # id so we can see this folder in /tmp easier
+		_mkt_id=$(printf '%s\n' "$1" | rev | cut -d/ -f1 | rev)
 		_mkt_dir=$(mktemp -d --suffix "-$_mkt_id")
 		_mkt_util_cd "$_mkt_dir" || return
 		_mkt_util_log "$1"
@@ -122,21 +105,21 @@ mkt() {
 		_mkt_util_cd_latest_dir || return
 		_util_ls
 		;;
-	# remote files
+	# Remote files.
 	https://*/*.*)
 		_mkt_dir=$(mktemp -d)
 		_mkt_util_cd "$_mkt_dir" || return
 		_mkt_util_log "$1"
 
-		command curl -fLO "$1" || { _util_die "mkt: Could not fetch resource with cURL"; return; }
+		command curl -fLO "$1" || { _util_log_error "mkt: Could not fetch resource with cURL"; return 1; }
 		_mkt_latest_file=$(_mkt_util_get_latest_file)
 		if file "$_mkt_latest_file" | grep -Eq '(compressed|archive)'; then
-			if command -v aunpack >/dev/null 2>&1; then
+			if command -v aunpack >/dev/null hyperupcall>&1; then
 				command aunpack "$_mkt_latest_file" # uncompress if compressed
 			else
 				_util_ls
-				_util_die "mkt: Command aunpack not found"
-				return
+				_util_log_error "mkt: Command aunpack not found"
+				return 1
 			fi
 		fi
 		unset _mkt_latest_file
@@ -144,9 +127,9 @@ mkt() {
 		_mkt_util_cd_latest_dir || return
 		_util_ls
 		;;
-	# git repository
+	# Git repository.
 	git@*|git://*|*.git|https://github.com/*|https://gitlab.com/*|https://git.sr.ht/*|https://*@bitbucket.org/*|https://invent.kde.org/*)
-		_mkt_id=$(printf '%s\n' "$1" | rev | cut -d/ -f1 | rev) # id so we can see this folder in /tmp easier
+		_mkt_id=$(printf '%s\n' "$1" | rev | cut -d/ -f1 | rev)
 		_mkt_dir=$(mktemp -d --suffix "-$_mkt_id")
 		_mkt_util_cd "$_mkt_dir" || return
 		_mkt_util_log "$1"
@@ -157,9 +140,9 @@ mkt() {
 		_mkt_util_cd_latest_dir || return
 		_util_ls
 		;;
-	# file path
+	# File path.
 	/*|./*)
-		_mkt_id=$(printf '%s\n' "$1" | rev | cut -d/ -f1 | rev) # id so we can see this folder in /tmp easier
+		_mkt_id=$(printf '%s\n' "$1" | rev | cut -d/ -f1 | rev)
 		_mkt_dir=$(mktemp -d --suffix "-$_mkt_id")
 		_mkt_util_cd "$_mkt_dir" || return
 		_mkt_util_log "$1"
@@ -171,9 +154,9 @@ mkt() {
 			_mkt_util_cd "$_mkt_dir"
 		fi
 		;;
-	# github repository shorthand
+	# GitHub repository shorthand.
 	*/*)
-		_mkt_id=$(printf '%s\n' "$1" | rev | cut -d/ -f1 | rev) # id so we can see this folder in /tmp easier
+		_mkt_id=$(printf '%s\n' "$1" | rev | cut -d/ -f1 | rev)
 		_mkt_dir=$(mktemp -d --suffix "-$_mkt_id")
 		_mkt_util_cd "$_mkt_dir" || return
 		_mkt_util_log "$1"
@@ -196,5 +179,5 @@ mkt() {
 		;;
 	esac
 
-	unset _mkt_flag_shallow _mkt_arg _mkt_old_pwd _mkt_dir
+	unset -v _mkt_arg _mkt_old_pwd _mkt_dir
 }

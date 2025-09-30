@@ -11,6 +11,7 @@ main() {
 	# Install required dependencies.
 	if [ ! -f ~/.dotfiles/.data/finished_bootstrap ]; then
 		install_required_dependencies
+		mkdir -p ~/.dotfiles/.data
 		touch ~/.dotfiles/.data/finished_bootstrap
 		core.print_info "Installed required dependencies"
 	fi
@@ -227,6 +228,7 @@ main() {
 		fi
 	}
 
+	~/scripts/setup/pass.sh
 	~/scripts/setup/dev.sh
 	~/scripts/setup/d.sh
 	~/scripts/setup/mise.sh

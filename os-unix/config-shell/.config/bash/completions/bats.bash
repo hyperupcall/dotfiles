@@ -8,7 +8,7 @@ _bats() {
 	# this ensures we bm_get command completion even after passing flags
 	while [[ "$i" -lt "$COMP_CWORD" ]]; do
 		local s="${COMP_WORDS[i]}"
-		case "$s" in
+		case $s in
 		# if our current word starts with a '-', it is not a subcommand
 		-*) ;;
 		# we are completing a subcommand, set cmd
@@ -28,7 +28,7 @@ _bats() {
 	fi
 
 	# if we're not completing 'bats', then we're completing a subcommand
-	case "$cmd" in
+	case $cmd in
 	*)
 		COMPREPLY=() ;;
 	esac

@@ -10,7 +10,7 @@ main() {
 }
 
 installed() {
-	command -v lefthook &>/dev/null
+	command -v lefthook &>/dev/null || [ -d "$XDG_DATA_HOME/mise/installs/lefthook" ]
 }
 
 util.if_file_sourced || _setup "$@"

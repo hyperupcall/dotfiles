@@ -240,7 +240,9 @@
 	// HTML
 	"[html]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
-		"editor.formatOnSave": true
+		"editor.formatOnSave": true,
+		"editor.insertSpaces": false,
+		"editor.tabSize": 3
 	},
 	"html.autoClosingTags": true,
 	"html.format.enable": false,
@@ -260,7 +262,9 @@
 	// CSS
 	"[css]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
-		"editor.formatOnSave": true
+		"editor.formatOnSave": true,
+		"editor.insertSpaces": false,
+		"editor.tabSize": 3
 	},
 	"css.validate": false,
 	"[less]": {
@@ -330,7 +334,7 @@
 		"editor.codeActionsOnSave": {
 			"source.fixAll": "never"
 		},
-		"editor.insertSpaces": true,
+		"editor.insertSpaces": false,
 		"editor.formatOnSave": false,
 		"editor.tabSize": 4
 	},
@@ -375,7 +379,16 @@
 		"editor.insertSpaces": false,
 		"editor.tabSize": 3
 	},
+	"[kotlin]": {
+		"editor.insertSpaces": false,
+		"editor.tabSize": 3
+	},
+	"[gradle]": {
+		"editor.insertSpaces": false,
+		"editor.tabSize": 3
+	},
 	"java.project.importOnFirstTimeStartup": "automatic",
+	"java.format.onType.enabled": false,
 
 	//
 	// JULIA
@@ -406,9 +419,12 @@
 	//
 	// LATEX
 	"[latex]": {
-		"editor.defaultFormatter": "James-Yu.latex-workshop"
+		"editor.defaultFormatter": "James-Yu.latex-workshop",
+		"editor.insertSpaces": false,
+		"editor.tabSize": 3
 	},
 	"latex-workshop.formatting.latex": "latexindent",
+	"latex-workshop.latex.outDir": "%WORKSPACE_FOLDER%/.hidden/.latex-workshop",
 	"latex-utilities.message.update.show": false,
 
 	//
@@ -442,7 +458,7 @@
 
 	//
 	// UNSORTED EDITOR
-	"diffEditor.ignoreTrimWhitespace": false,
+	"diffEditor.ignoreTrimWhitespace": true,
 	"merge-conflict.autoNavigateNextConflict.enabled": true,
 	"merge-conflict.diffViewPosition": "Beside",
 	"symbols.hidesExplorerArrows": false,
@@ -532,11 +548,16 @@
 	"Lua.telemetry.enable": false,
 
 	// OTHER
-	"workbench.colorTheme": "GitHub Light",
+	"workbench.colorTheme": "Bearded Theme Milkshake Blueberry",
 	"editor.cursorBlinking": "smooth",
 	"editor.fontFamily": "'Hack', monospace",
 	"[typescript]": {
 		"editor.defaultFormatter": "vscode.typescript-language-features"
 	},
-	"autotitle.autoUpdate": false
+	"autotitle.autoUpdate": false,
+	"[javascript]": {
+		"editor.defaultFormatter": "ms-vsliveshare.vsliveshare"
+	},
+	"gitlens.ai.model": "vscode",
+	"gitlens.ai.vscode.model": "copilot:gpt-4.1"
 }

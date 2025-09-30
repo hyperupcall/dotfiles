@@ -46,7 +46,7 @@ function main {
 	Ensure-Winget-Package 'Alacritty.Alacritty'
 	Ensure-Winget-Package 'FreeCAD.FreeCAD'
 	Ensure-Winget-Package 'GnuPG.Gpg4win'
-	
+
 	In-VirtualBox
 	if (!$?) {
 		Write-Host "Would you like to install WSL2?"
@@ -62,7 +62,7 @@ function main {
 	Assert-ScoopBucket -Name php
 	Assert-ScoopBucket -Name java
 
-	
+
 	Install-Module Microsoft.PowerShell.PSResourceGet -Repository PSGallery
 
 	[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
@@ -189,7 +189,7 @@ foreach ($relativePath in @(
 		'.config/git/attributes',
 		'.config/git/config',
 		'Documents/PowerShell/Microsoft.PowerShell_profile.ps1',
-		'Documents/PowerShell/Modules/Dots',
+		'Documents/PowerShell/Modules/Dotfiles',
 		'Documents/WindowsPowershell/Microsoft.PowerShell_profile.ps1'
 		'AppData/Roaming/gnupg/gpg-agent.conf'
 	)) {
