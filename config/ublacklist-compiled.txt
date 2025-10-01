@@ -46189,6 +46189,7 @@
 *://*.allfathhoudec.tk/*
 *://*.allfleet.xyz/*
 *://*.allfordemocracy.eu/*
+*://*.allforturntables.com/*
 *://*.allfree.my.id/*
 *://*.allfree.us/*
 *://*.allfreebabes.buzz/*
@@ -92873,6 +92874,7 @@
 *://*.clearance-kitchen.com/*
 *://*.clearancebath.com/*
 *://*.clearancebuttertire.com/*
+*://*.clearancecurrent.com/*
 *://*.clearancegowns.com/*
 *://*.clearancesurfsale.com/*
 *://*.clearancetastybroadsheet.com/*
@@ -100042,6 +100044,7 @@
 *://*.corkagalosi.cf/*
 *://*.corkakatmireetccount.ga/*
 *://*.corkandoeu.shop/*
+*://*.corkandopop.shop/*
 *://*.corkarssteveramun.tk/*
 *://*.corkassumedharden.com/*
 *://*.corkdappmariherc.tk/*
@@ -128347,7 +128350,6 @@
 *://*.elegare.de/*
 *://*.elegiajbdp.site/*
 *://*.elegio.pl/*
-*://*.elegranitl.com/*
 *://*.elegsant.com/*
 *://*.elekom.si/*
 *://*.elektora.de/*
@@ -200064,6 +200066,7 @@
 *://*.juredakaviche.tk/*
 *://*.jureib.tokyo/*
 *://*.juretro.com/*
+*://*.juridicialpolice.fr/*
 *://*.juridiqueassistance.fr/*
 *://*.jurikavocam.tk/*
 *://*.jurisconcept.fr/*
@@ -224960,6 +224963,7 @@
 *://*.lunteamswritincal.ml/*
 *://*.luntmidihuco.cf/*
 *://*.lunu-bet.fr/*
+*://*.lunubet-casinos.fr/*
 *://*.lunubet-fr.fr/*
 *://*.lunubetcasino.fr/*
 *://*.lunubetcasinos.fr/*
@@ -232547,6 +232551,7 @@
 *://*.mehfvf.tokyo/*
 *://*.mehicdifudo.tk/*
 *://*.mehidetuadi.ml/*
+*://*.mehiv.com/*
 *://*.mehlbungprethelsi.tk/*
 *://*.mehlhandtutivo.gq/*
 *://*.mehllenbima.tk/*
@@ -276371,9 +276376,11 @@
 *://*.pharmacie-leonetti.fr/*
 *://*.pharmacie-marseillan.fr/*
 *://*.pharmacie-moulinier.fr/*
+*://*.pharmacie-nantes.fr/*
 *://*.pharmacie-pavilly.fr/*
 *://*.pharmacie-pontailler.fr/*
 *://*.pharmacie-principale.net/*
+*://*.pharmacie-reydy.fr/*
 *://*.pharmacie-signoret-heyraud-wilson.fr/*
 *://*.pharmacie-sterling.fr/*
 *://*.pharmacie2000-caen.fr/*
@@ -276391,6 +276398,7 @@
 *://*.pharmaciecentrale-vannes.fr/*
 *://*.pharmaciecentraleduparc.fr/*
 *://*.pharmaciechampion.fr/*
+*://*.pharmaciechouquet-bonsecours.fr/*
 *://*.pharmaciecondorcet-clamart.fr/*
 *://*.pharmaciecourbevoie.fr/*
 *://*.pharmaciecraponne.fr/*
@@ -276423,6 +276431,7 @@
 *://*.pharmaciedes2rives.fr/*
 *://*.pharmaciedes4pavillons-cenon.fr/*
 *://*.pharmaciedesflamands-tourlaville.fr/*
+*://*.pharmaciedeshallettes.fr/*
 *://*.pharmaciedeslaitieres-vincennes.fr/*
 *://*.pharmaciedesorgues.fr/*
 *://*.pharmaciedesponts-charny.fr/*
@@ -276451,6 +276460,7 @@
 *://*.pharmaciedurupione.fr/*
 *://*.pharmaciedutriolet-montpellier.fr/*
 *://*.pharmacieenlignefrance.com/*
+*://*.pharmacieferriere-artiguelouve.fr/*
 *://*.pharmaciegenilac.fr/*
 *://*.pharmaciegounod-nice.fr/*
 *://*.pharmaciegourgue.fr/*
@@ -288052,6 +288062,7 @@
 *://*.provicitin.tk/*
 *://*.provicoslorec.ga/*
 *://*.provideanswersdespite.biz/*
+*://*.providedes.com/*
 *://*.providelocalpoint.de/*
 *://*.providentfo.com/*
 *://*.provideoadblocker.com/*
@@ -319548,6 +319559,7 @@
 *://*.security-bankwest-app.com/*
 *://*.security-chase.org/*
 *://*.security-deliveroo.fr/*
+*://*.security-instagram.fr/*
 *://*.security-lebonc.fr/*
 *://*.security-mail-instagram.fr/*
 *://*.security-microsoft.fr/*
@@ -341752,6 +341764,7 @@
 *://*.system-activationclient.fr/*
 *://*.system-auth.fr/*
 *://*.system-ca.fr/*
+*://*.system-capital.org/*
 *://*.system-checker.com/*
 *://*.system-libs.com/*
 *://*.system-noticers.com/*
@@ -345610,7 +345623,6 @@
 *://*.tawvvi.bar/*
 *://*.tax--lawyer.com/*
 *://*.tax-binance.com/*
-*://*.tax.crypto.com/*
 *://*.taxbipabeme.tk/*
 *://*.taxbluresphonews.tk/*
 *://*.taxbornchancemoney.biz/*
@@ -382638,6 +382650,7 @@
 *://*.vinyl-casino.fr/*
 *://*.vinylcasinoenligne.fr/*
 *://*.vinylcollectordeeu.shop/*
+*://*.vinylcollectordepop.shop/*
 *://*.vioary.com/*
 *://*.viobravwiepromem.ml/*
 *://*.viobytoorecni.tk/*
@@ -383368,6 +383381,7 @@
 *://*.vivahost.host/*
 *://*.vivaiaboutiques.fr/*
 *://*.vivaiabuty.pl/*
+*://*.vivaiacollection.com/*
 *://*.vivaiaparis.fr/*
 *://*.vivaiaschaussures.fr/*
 *://*.vivaiaschuhe.at/*
@@ -387684,6 +387698,7 @@
 *://*.wannaiputhotoma.ga/*
 *://*.wanniya.com/*
 *://*.wannnadoo.fr/*
+*://*.wannounce.com/*
 *://*.wanpartrolunba.cf/*
 *://*.wanqdoo.fr/*
 *://*.wanrededevime.tk/*
@@ -393003,6 +393018,7 @@
 *://*.windeliracus.gq/*
 *://*.windelnschritte.de/*
 *://*.windelwissendeava.shop/*
+*://*.windelwissendepop.shop/*
 *://*.windendew.de/*
 *://*.winders.my.id/*
 *://*.windevv.fr/*
