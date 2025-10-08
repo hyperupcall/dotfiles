@@ -23964,6 +23964,11 @@
 *://*.5002fs6.tokyo/*
 *://*.50090t8.cyou/*
 *://*.500affiliates.fr/*
+*://*.500casinoapp365.fr/*
+*://*.500casinobonus.fr/*
+*://*.500casinobonus777.fr/*
+*://*.500casinologin.fr/*
+*://*.500casinopromocode.fr/*
 *://*.500d1s.shop/*
 *://*.500dns.cn/*
 *://*.500fr.com/*
@@ -39577,6 +39582,7 @@
 *://*.abugoe.tokyo/*
 *://*.abuking-casino.fr/*
 *://*.abuking-fr.fr/*
+*://*.abukingcasino-fr.fr/*
 *://*.abulvacbebonmo.tk/*
 *://*.abulverzietrav.tk/*
 *://*.abumflabkan.tk/*
@@ -39641,6 +39647,7 @@
 *://*.abzkra.tokyo/*
 *://*.abzqyj.bar/*
 *://*.abzutdiarektalan.ml/*
+*://*.abzvay.shop/*
 *://*.ac-aix.fr/*
 *://*.ac-ameli.fr/*
 *://*.ac-amins.fr/*
@@ -42346,7 +42353,6 @@
 *://*.advancinghumorous.com/*
 *://*.advancingrecruitingamy.com/*
 *://*.advancingtheirs.com/*
-*://*.advantage-career.online/*
 *://*.advantageroughplay.com/*
 *://*.advantagerunyanstevenson.com/*
 *://*.advantagesblareseizure.com/*
@@ -43151,6 +43157,7 @@
 *://*.agadezlaplage.buzz/*
 *://*.agadferphodisci.ga/*
 *://*.agadgranorit.gq/*
+*://*.agadishop.com/*
 *://*.agafexiwsouth.tk/*
 *://*.agafgabcardmidd.tk/*
 *://*.agafinplymte.cf/*
@@ -44820,6 +44827,7 @@
 *://*.ajfdkbvuherbvrdhkbe.xyz/*
 *://*.ajfelk.bar/*
 *://*.ajfg1td.cyou/*
+*://*.ajfm.org/*
 *://*.ajfs5p3.cyou/*
 *://*.ajghtafutjt.com/*
 *://*.ajguczv.work/*
@@ -45786,6 +45794,12 @@
 *://*.alfathprice.store/*
 *://*.alfcasino.fr/*
 *://*.alfcasino1.com/*
+*://*.alfcasinoapp.fr/*
+*://*.alfcasinobonus.fr/*
+*://*.alfcasinobonus777.fr/*
+*://*.alfcasinologin.fr/*
+*://*.alfcasinologin365.fr/*
+*://*.alfcasinopromocode.fr/*
 *://*.alfcdk.tokyo/*
 *://*.alfcqg.tokyo/*
 *://*.alfdever.com/*
@@ -46625,7 +46639,6 @@
 *://*.alpauhiggting.tk/*
 *://*.alpaxvaleric.digital/*
 *://*.alpaysiometfia.ml/*
-*://*.alpbeat.com/*
 *://*.alpebitwara.cf/*
 *://*.alpecfedisvu.cf/*
 *://*.alpeconbewin.cf/*
@@ -47667,6 +47680,7 @@
 *://*.ameli-2022.fr/*
 *://*.ameli-2022cartevitale.fr/*
 *://*.ameli-2023.fr/*
+*://*.ameli-2025.fr/*
 *://*.ameli-acces.fr/*
 *://*.ameli-accompagnement.fr/*
 *://*.ameli-accueil.fr/*
@@ -49720,7 +49734,6 @@
 *://*.andrea-ballhause.de/*
 *://*.andrea-berg.info/*
 *://*.andreajaeckle.de/*
-*://*.andrearebecca.com/*
 *://*.andreas-dannhauer.de/*
 *://*.andreasfarago.com/*
 *://*.andreasfeldt.xyz/*
@@ -50377,7 +50390,6 @@
 *://*.annalisbucom.ga/*
 *://*.annami.buzz/*
 *://*.annamodecostumes.website/*
-*://*.annamodehaus.ch/*
 *://*.annanebankza.gq/*
 *://*.annapilopersa.tk/*
 *://*.annardvolutin.life/*
@@ -51271,7 +51283,6 @@
 *://*.anthonyspage.buzz/*
 *://*.anthophyte.com/*
 *://*.anthracocide.com/*
-*://*.anthria.de/*
 *://*.anthropimeric.tk/*
 *://*.anthy-passioncommune.fr/*
 *://*.antiastronomical.best/*
@@ -51641,6 +51652,7 @@
 *://*.aodgxm.bar/*
 *://*.aodibhk.tokyo/*
 *://*.aodjbm.tokyo/*
+*://*.aodlchangwangyj.jxckd.shop/*
 *://*.aodomab-dijon.fr/*
 *://*.aodumm.cn/*
 *://*.aodxni.tokyo/*
@@ -52318,7 +52330,6 @@
 *://*.app-validationdsp.fr/*
 *://*.app-valley.vip/*
 *://*.app.onlinelebenslauf.com/*
-*://*.app.robex-ai.com/*
 *://*.app.upifex.org/*
 *://*.app.zety.de/*
 *://*.app11ee.com/*
@@ -53144,7 +53155,6 @@
 *://*.aramrandeli.tk/*
 *://*.aramsperis.tk/*
 *://*.aramterli.tk/*
-*://*.aramusic-trantow.de/*
 *://*.arananbad.tk/*
 *://*.arandeealisurp.tk/*
 *://*.aranfersubufle.tk/*
@@ -54473,7 +54483,6 @@
 *://*.artech.digital/*
 *://*.artech.xyz/*
 *://*.artediez.com/*
-*://*.artek-wien.com/*
 *://*.arteltelefonia.eu/*
 *://*.artemarkglobal.es/*
 *://*.artemilarpe.ml/*
@@ -54993,7 +55002,6 @@
 *://*.asculharosrayli.ml/*
 *://*.ascv-musculation.buzz/*
 *://*.asd6789.tk/*
-*://*.asda-career.shop/*
 *://*.asdacogo.gq/*
 *://*.asdadesa.tk/*
 *://*.asdalenepor.ga/*
@@ -55111,7 +55119,6 @@
 *://*.asfintarg.com/*
 *://*.asflnaq.me/*
 *://*.asflubenuc.tk/*
-*://*.asfnagvignette.sa.com/*
 *://*.asfolzk.bar/*
 *://*.asfotesenlide.cf/*
 *://*.asfrigbanviredi.ml/*
@@ -55483,6 +55490,7 @@
 *://*.asp-services.fr/*
 *://*.asp6zrx.tokyo/*
 *://*.aspachipocarlo.tk/*
+*://*.aspacommerce.shop/*
 *://*.aspadhodglfeathderpri.tk/*
 *://*.asparagusdisconnectaccustomed.com/*
 *://*.asparagusentitledfunds.com/*
@@ -56557,7 +56565,6 @@
 *://*.atdrifblimor.com/*
 *://*.atdundedpchan.tk/*
 *://*.atdynabu.tk/*
-*://*.ate-assetsmarkets.com/*
 *://*.ate0vb.xyz/*
 *://*.ate5.com.au/*
 *://*.ateallancurockda.tk/*
@@ -56934,7 +56941,6 @@
 *://*.atogcrowunoboph.ga/*
 *://*.atohihipeqep.gq/*
 *://*.atoj5.tokyo/*
-*://*.atol-finance.com/*
 *://*.atolalandrosar.cf/*
 *://*.atolamso.tk/*
 *://*.atolleatertio.gq/*
@@ -57297,7 +57303,6 @@
 *://*.atuttoauto.it/*
 *://*.atuvnavachacu.cf/*
 *://*.atv4wk.tokyo/*
-*://*.atvelektro.com/*
 *://*.atvemabehosvi.ml/*
 *://*.atverkamopo.gq/*
 *://*.atversempselftwic.cf/*
@@ -57496,14 +57501,12 @@
 *://*.aufsperrdienst-service.at/*
 *://*.aufsperrdienst.tech/*
 *://*.aufsperrhilfe.at/*
-*://*.aufstern.de/*
 *://*.auftrag-rezeptfrei.de/*
 *://*.aufzug-roesler.buzz/*
 *://*.aug-dus.de/*
 *://*.augenbrauenlidschatten.com/*
 *://*.augend76columbi.top/*
 *://*.augennstern.com/*
-*://*.augesterne.de/*
 *://*.auggener-wein.shop/*
 *://*.aughaitoaph.com/*
 *://*.augi.fr/*
@@ -58008,7 +58011,6 @@
 *://*.authentipallm.fr/*
 *://*.authentipayi.fr/*
 *://*.authentipayp.fr/*
-*://*.authentisch-tickets.de/*
 *://*.authentpal.fr/*
 *://*.authetificationforcepal.fr/*
 *://*.autheverified.fr/*
@@ -59074,6 +59076,7 @@
 *://*.axiome-group.fr/*
 *://*.axioncapitalmanagement.com/*
 *://*.axioncapitalmanagement.com/*
+*://*.axioswatches.com/*
 *://*.axiqdw.rest/*
 *://*.axismakup.com/*
 *://*.axisop.com/*
@@ -60786,7 +60789,6 @@
 *://*.bacnamandioheistaw.tk/*
 *://*.bacnonasubtsa.ml/*
 *://*.bacnyrubercons.tk/*
-*://*.baco-rondeshagen.de/*
 *://*.bacogdepati.ga/*
 *://*.bacolnitus.tk/*
 *://*.bacomlohocal.ml/*
@@ -60857,7 +60859,6 @@
 *://*.badevtasucol.cf/*
 *://*.badextspigurstan.tk/*
 *://*.badezimmer.xyz/*
-*://*.badezimmerbillig.de/*
 *://*.badezimmerfein.com/*
 *://*.badfaidriv.cf/*
 *://*.badfofernatifo.cf/*
@@ -60907,7 +60908,6 @@
 *://*.badsips.com/*
 *://*.badskates.com/*
 *://*.badskies.com/*
-*://*.badspiegelonshop.com/*
 *://*.badspiegelstore.com/*
 *://*.badstad.dk/*
 *://*.badsways.com/*
@@ -61293,7 +61293,6 @@
 *://*.balerireatritumb.ga/*
 *://*.balethoughamen.com/*
 *://*.baleurs.de/*
-*://*.baleurshop.de/*
 *://*.balfourcapitalgroup.com/*
 *://*.balgangmicnegu.gq/*
 *://*.balgodingprotsa.ml/*
@@ -61383,7 +61382,21 @@
 *://*.balltiloho.ml/*
 *://*.ballushop.uz/*
 *://*.ballwayyearbuys.biz/*
+*://*.ballyaccessoires.fr/*
+*://*.ballyboutique.fr/*
 *://*.ballycanpofillhal.tk/*
+*://*.ballychaussures.fr/*
+*://*.ballycuir.fr/*
+*://*.ballyfemme.fr/*
+*://*.ballyhomme.fr/*
+*://*.ballyjupes.fr/*
+*://*.ballymaille.fr/*
+*://*.ballymanteaux.fr/*
+*://*.ballypantalons.fr/*
+*://*.ballyrobes.fr/*
+*://*.ballysacs.fr/*
+*://*.ballyshop.fr/*
+*://*.ballyvestes.fr/*
 *://*.ballyvourneyhoney.xyz/*
 *://*.balmaameliteg.tk/*
 *://*.balmainfr.fr/*
@@ -62120,6 +62133,7 @@
 *://*.barboranoter.tk/*
 *://*.barboriming.tk/*
 *://*.barbottlolekoco.tk/*
+*://*.barbour-at.com/*
 *://*.barbour-outlet.fr/*
 *://*.barbouraustria.at/*
 *://*.barbourfr.fr/*
@@ -62812,7 +62826,6 @@
 *://*.batxifoxbegold.ga/*
 *://*.batxihatamit.tk/*
 *://*.batyternewordcheck.tk/*
-*://*.batzare.com/*
 *://*.bau-profis24.de/*
 *://*.baualcs.tokyo/*
 *://*.baubadurnexsfullpo.tk/*
@@ -65108,7 +65121,6 @@
 *://*.berglandcempagelac.gq/*
 *://*.berglust.shop/*
 *://*.bergmann-mode.ch/*
-*://*.bergmann-mode.de/*
 *://*.bergmann.com/*
 *://*.bergmannhamburg.de/*
 *://*.bergmannmode.de/*
@@ -65810,7 +65822,6 @@
 *://*.bestdatings-4you-now.com/*
 *://*.bestdatings-4you-now1.com/*
 *://*.bestdatingzone2.com/*
-*://*.bestdealtoday.net/*
 *://*.bestdeguwouri.gq/*
 *://*.bestdemanphoperdo.tk/*
 *://*.bestdesclingti.gq/*
@@ -65831,14 +65842,13 @@
 *://*.bestecomhub.com/*
 *://*.besteditingsoftware.buzz/*
 *://*.besteducationpeople.bar/*
-*://*.bestefahrrad.com/*
 *://*.besteholzlager.ch/*
 *://*.besteinternetrkredite.pw/*
 *://*.bestekaufhauser24.com/*
 *://*.bestekontaktlinsen.de/*
+*://*.bestekreditvergabe.ltd/*
 *://*.besteldx.web.app/*
 *://*.bestelektronicshop.de/*
-*://*.bestellenmedicament.com/*
 *://*.bestellrezeptfrei.de/*
 *://*.bestellungapotheke.de/*
 *://*.bestemailmarketingservices.xyz/*
@@ -65918,7 +65928,6 @@
 *://*.bestkettlebell.xyz/*
 *://*.bestkevbraccokick.gq/*
 *://*.bestkht.com/*
-*://*.bestkitchenonline.com/*
 *://*.bestknifeworld.com/*
 *://*.bestkredits.com/*
 *://*.bestlanvouvacseco.ml/*
@@ -65942,7 +65951,6 @@
 *://*.bestmedicalcodingandbilling.com/*
 *://*.bestmersniroba.tk/*
 *://*.bestmosknewsnasedi.ga/*
-*://*.bestmotorbikeparts.com/*
 *://*.bestmove.xyz/*
 *://*.bestmovies.watch/*
 *://*.bestmovievideo.agency/*
@@ -66146,7 +66154,6 @@
 *://*.bestsexyhub.xyz/*
 *://*.bestsflix.net/*
 *://*.bestshippingcompanies.buzz/*
-*://*.bestshop-angebote.net/*
 *://*.bestsibetingholi.tk/*
 *://*.bestsinrigapa.tk/*
 *://*.bestsiringdockpan.ga/*
@@ -66287,7 +66294,6 @@
 *://*.betbluebird.com/*
 *://*.betbrightcasino.fr/*
 *://*.betbuchanighrangai.cf/*
-*://*.betbuilt.sbs/*
 *://*.betbuyturliolisu.tk/*
 *://*.betcalawture.gq/*
 *://*.betcli.fr/*
@@ -66351,6 +66357,7 @@
 *://*.betify.xyz/*
 *://*.betifycasino-fr.fr/*
 *://*.betifycasino3.fr/*
+*://*.betifycasino4.fr/*
 *://*.betifycasinoenligne.fr/*
 *://*.betifycasinofr.fr/*
 *://*.betifycasinofrance.fr/*
@@ -66420,6 +66427,11 @@
 *://*.betotiridsing.ga/*
 *://*.betovo.fr/*
 *://*.betpanda.fr/*
+*://*.betpandacasino777.fr/*
+*://*.betpandacasinoapp.fr/*
+*://*.betpandacasinobonus.fr/*
+*://*.betpandacasinologin.fr/*
+*://*.betpandacasinopromocode.fr/*
 *://*.betpcommamerbanc.gq/*
 *://*.betpeasotegi.tk/*
 *://*.betphocorleftna.tk/*
@@ -67791,7 +67803,6 @@
 *://*.bikaliricon.cf/*
 *://*.bikbokpantalon.fr/*
 *://*.bike-blissful.com/*
-*://*.bike-handel.com/*
 *://*.bike-shop-market.com/*
 *://*.bike2smile.it/*
 *://*.bikeandhike-ti-tours.ch/*
@@ -69051,7 +69062,6 @@
 *://*.bitai-method.com/*
 *://*.bitaiapp.pro/*
 *://*.bitaimethod.com/*
-*://*.bitalphaai.io/*
 *://*.bitandnivisque.ml/*
 *://*.bitangawesna.gq/*
 *://*.bitanimation.ir/*
@@ -69077,7 +69087,6 @@
 *://*.bitcoin-prime.net/*
 *://*.bitcoin-revolution.org/*
 *://*.bitcoin-shop.ro/*
-*://*.bitcoin-up.io/*
 *://*.bitcoin360ai.com/*
 *://*.bitcoinarchon.com/*
 *://*.bitcoinasystem.su/*
@@ -71021,6 +71030,7 @@
 *://*.blstore.fr/*
 *://*.blsulb.tokyo/*
 *://*.blsxmo.bar/*
+*://*.blsyconcept.com/*
 *://*.blszcb.rest/*
 *://*.blszph.rest/*
 *://*.bltbzz.tokyo/*
@@ -71528,6 +71538,7 @@
 *://*.bnpassitance.fr/*
 *://*.bnpbanq.fr/*
 *://*.bnpbanque.fr/*
+*://*.bnpconnect.fr/*
 *://*.bnpdepotplainte.fr/*
 *://*.bnpepargne.fr/*
 *://*.bnpfinance.fr/*
@@ -71743,7 +71754,6 @@
 *://*.boardcaserightmatters.biz/*
 *://*.boardersedge.buzz/*
 *://*.boardgamearena.fr/*
-*://*.boardgameaster.shop/*
 *://*.boardgamesrules.com/*
 *://*.boardingarmoryrough.com/*
 *://*.boardingproximity.com/*
@@ -72340,7 +72350,6 @@
 *://*.bonnegeule.fr/*
 *://*.bonnetmarshal.com/*
 *://*.bonnetsurns.space/*
-*://*.bonnieandbloom.com/*
 *://*.bonniel-dog.eu/*
 *://*.bonogliwhunto.tk/*
 *://*.bonomasdeporte.es/*
@@ -72386,6 +72395,11 @@
 *://*.bonus-point7.life/*
 *://*.bonus-point8.life/*
 *://*.bonus-point9.life/*
+*://*.bonusbetcasinoapp.fr/*
+*://*.bonusbetcasinobonus.fr/*
+*://*.bonusbetcasinobonus777.fr/*
+*://*.bonusbetcasinologin.fr/*
+*://*.bonusbetcasinologin777.fr/*
 *://*.bonuscasinoexpert.fr/*
 *://*.bonusdecasinoenligne.fr/*
 *://*.bonusfurnishedben.com/*
@@ -73191,6 +73205,7 @@
 *://*.boutique-drmartens.fr/*
 *://*.boutique-dunk.fr/*
 *://*.boutique-fast.cam/*
+*://*.boutique-jonak.fr/*
 *://*.boutique-ldlc-pro.fr/*
 *://*.boutique-marian.dk/*
 *://*.boutique-model-store.com/*
@@ -74534,12 +74549,12 @@
 *://*.brenn-holzde.com/*
 *://*.brennholz-angebot.com/*
 *://*.brennholz-deckarm.de/*
+*://*.brennholz-deutsch.com/*
 *://*.brennholz-goignerog.at/*
 *://*.brennholz-granulat.com/*
 *://*.brennholz-haus.de/*
 *://*.brennholz-hofmann.de/*
 *://*.brennholz-pelletspreise.com/*
-*://*.brennholz-saale.de/*
 *://*.brennholz-world.at/*
 *://*.brennholz-zertifikats.de/*
 *://*.brennholz360.com/*
@@ -74549,10 +74564,8 @@
 *://*.brennholzdge.com/*
 *://*.brennholzdirekt.com/*
 *://*.brennholzgo.de/*
-*://*.brennholzhandelnahn.com/*
 *://*.brennholzhaus.de/*
 *://*.brennholzkamin.de/*
-*://*.brennholzknuth.de/*
 *://*.brennholzmeister.com/*
 *://*.brennholzpellets.com/*
 *://*.brennholzruhl.de/*
@@ -74572,6 +74585,7 @@
 *://*.brennzgutes.com/*
 *://*.brenomimflexazun.ga/*
 *://*.brenpitbere.ml/*
+*://*.brenstoffe-versand.de/*
 *://*.brentitiwordbutta.tk/*
 *://*.brentomugbuckschoolcharl.cf/*
 *://*.brenutandraczharschas.tk/*
@@ -76916,6 +76930,11 @@
 *://*.burago.fr/*
 *://*.buramocitop.tk/*
 *://*.burancasino.fr/*
+*://*.burancasinoapp.fr/*
+*://*.burancasinobonus.fr/*
+*://*.burancasinologin.fr/*
+*://*.burancasinoonline777.fr/*
+*://*.burancasinopromocode.fr/*
 *://*.buranmedanla.tk/*
 *://*.burann.com/*
 *://*.burbanbliss.com/*
@@ -77852,7 +77871,6 @@
 *://*.bw4qe0.tokyo/*
 *://*.bw5lfhq.cyou/*
 *://*.bw64py.cyou/*
-*://*.bw6mijgqj.com/*
 *://*.bw85hk.cyou/*
 *://*.bw8r.com/*
 *://*.bw94ma3.cyou/*
@@ -79547,6 +79565,11 @@
 *://*.cadoodterfwebru.tk/*
 *://*.cadoola-casino.fr/*
 *://*.cadoolacasino.fr/*
+*://*.cadoolacasinoapp.fr/*
+*://*.cadoolacasinobonus777.fr/*
+*://*.cadoolacasinologin.fr/*
+*://*.cadoolacasinomobile.fr/*
+*://*.cadoolacasinopromocode.fr/*
 *://*.cadorohuanet.cf/*
 *://*.cadouldiferit.ro/*
 *://*.cadrctlnk.com/*
@@ -80935,7 +80958,6 @@
 *://*.candponnorabea.tk/*
 *://*.candpossversbatabirk.gq/*
 *://*.candprocapeg.ml/*
-*://*.candriamsmarts.com/*
 *://*.candrichcomimorva.ga/*
 *://*.candselreitemce.gq/*
 *://*.candsenslesbigbgu.tk/*
@@ -81344,7 +81366,6 @@
 *://*.capt.co.jp/*
 *://*.captain-slots.fr/*
 *://*.captain.care/*
-*://*.captainboot.de/*
 *://*.captaincuu.org/*
 *://*.captainiebharhandmi.tk/*
 *://*.captainjack-casino.fr/*
@@ -82075,6 +82096,7 @@
 *://*.carte-pass-carrefour.fr/*
 *://*.carte-pass.fr/*
 *://*.carte-pcs-security.fr/*
+*://*.carte-pokemon-unite.fr/*
 *://*.carte-regularisation.fr/*
 *://*.carte-regularisations.fr/*
 *://*.carte-renouvellement-enligne.fr/*
@@ -82623,6 +82645,7 @@
 *://*.casino-hermes.fr/*
 *://*.casino-infinite.fr/*
 *://*.casino-jackpotbob.fr/*
+*://*.casino-legiano-fr.fr/*
 *://*.casino-legiano.fr/*
 *://*.casino-lite.net/*
 *://*.casino-locowin.fr/*
@@ -86260,7 +86283,6 @@
 *://*.ch8z06.shop/*
 *://*.ch92381.tokyo/*
 *://*.chabarbeydeherzpan.cf/*
-*://*.chabgyu.shop/*
 *://*.chabhanddenla.tk/*
 *://*.chabhatotachan.cf/*
 *://*.chabnilaper.ml/*
@@ -91888,6 +91910,7 @@
 *://*.ciutrimorenokim.tk/*
 *://*.ciuurz.shop/*
 *://*.civapulmai.cf/*
+*://*.civarchive.com/*
 *://*.civasan.ca/*
 *://*.civbvh.cn/*
 *://*.civbwsq.rest/*
@@ -92435,7 +92458,6 @@
 *://*.claimyourprizes9.life/*
 *://*.claimyoursuccess.info/*
 *://*.claire-pitollat.fr/*
-*://*.clairine.de/*
 *://*.clairvoyancedzaq.buzz/*
 *://*.clairvoyantentrance.com/*
 *://*.clairvoyantsoftware.buzz/*
@@ -92576,7 +92598,6 @@
 *://*.clarks-ar.com/*
 *://*.clarks-dk.com/*
 *://*.clarks-germany.com/*
-*://*.clarks-osterreich.at/*
 *://*.clarks-osterreich.com/*
 *://*.clarks-pe.com/*
 *://*.clarks-romania.com/*
@@ -95347,7 +95368,6 @@
 *://*.coingecko.com/*
 *://*.coinglobal.xyz/*
 *://*.coingrowers.com/*
-*://*.coinhouse-fr.com/*
 *://*.coinidabamys.ga/*
 *://*.coinidx.com/*
 *://*.coinllectibles.art/*
@@ -96697,7 +96717,6 @@
 *://*.compiotruddino.tk/*
 *://*.compittsiken.tk/*
 *://*.compixa-shop.de/*
-*://*.compixa.de/*
 *://*.compjebarmeabu.ga/*
 *://*.compjhanapfibat.ml/*
 *://*.compjoucerckuns.ml/*
@@ -96839,7 +96858,6 @@
 *://*.composedcontractsailor.com/*
 *://*.composeindependentlyfibber.com/*
 *://*.compositedelirious.com/*
-*://*.compostione.com/*
 *://*.compoststordumo.ga/*
 *://*.compoun73bathrob.science/*
 *://*.compoundecstatic.com/*
@@ -98851,7 +98869,6 @@
 *://*.consulting.my.id/*
 *://*.consultingeastrubber.com/*
 *://*.consultingtrading.it/*
-*://*.consultist-germany.com/*
 *://*.consultoriodelactancia.com/*
 *://*.consulzsungnewduipeu.tk/*
 *://*.consumer.agency/*
@@ -99604,7 +99621,6 @@
 *://*.conxethypodli.cf/*
 *://*.conxianiefren.ml/*
 *://*.conxicormu.ml/*
-*://*.conywelpen.de/*
 *://*.conzadifuds.ga/*
 *://*.conzeburlicomcu.cf/*
 *://*.conzharslidisnaydist.tk/*
@@ -99828,6 +99844,7 @@
 *://*.copkebinlautorel.tk/*
 *://*.copkereawipma.tk/*
 *://*.coplicare.tk/*
+*://*.coplimentues.com/*
 *://*.copmachondstofgin.cf/*
 *://*.copmalanrenfme.tk/*
 *://*.copmerany.tk/*
@@ -99992,7 +100009,6 @@
 *://*.corelimiglocer.ga/*
 *://*.coremotusus.tk/*
 *://*.corentinmaribro.shop/*
-*://*.coreoskredit.com/*
 *://*.corepenotosi.cf/*
 *://*.coresgaibrookditheat.gq/*
 *://*.coreticalfepan.cf/*
@@ -100539,7 +100555,6 @@
 *://*.coterforecamb.cf/*
 *://*.cotesdiesime.tk/*
 *://*.cotesinbols.tk/*
-*://*.cotex-kredit.com/*
 *://*.cotfadetextgans.tk/*
 *://*.cotfinkhalfrejohn.cf/*
 *://*.cotgiugradunta.ml/*
@@ -100711,7 +100726,6 @@
 *://*.counsellorraffle.com/*
 *://*.counsellorseriously.com/*
 *://*.countacanweacal.cf/*
-*://*.countach-research.com/*
 *://*.countattachmententertaining.com/*
 *://*.countbrowdegentterpmidd.gq/*
 *://*.countcarscinkeba.ml/*
@@ -102916,6 +102930,7 @@
 *://*.critairsuivi.fr/*
 *://*.critairsuivit.fr/*
 *://*.critairvignette.fr/*
+*://*.critairvignettes.fr/*
 *://*.critairzero.fr/*
 *://*.critaitgouv.fr/*
 *://*.critakinlumthega.gq/*
@@ -103637,7 +103652,6 @@
 *://*.crzpassoscuro.it/*
 *://*.crzswy.cyou/*
 *://*.crzy.ml/*
-*://*.cs-bikes.de/*
 *://*.cs-go.tm/*
 *://*.cs-pharmacy.net/*
 *://*.cs-regularisation.fr/*
@@ -106316,7 +106330,6 @@
 *://*.czud2q.xyz/*
 *://*.czugsyn.tokyo/*
 *://*.czupx.xyz/*
-*://*.czv-vertrieb.de/*
 *://*.czvezp.tokyo/*
 *://*.czvo0n.xyz/*
 *://*.czvylj.tokyo/*
@@ -107679,7 +107692,6 @@
 *://*.damagingmanconserve.com/*
 *://*.damagingottersane.com/*
 *://*.damagurgparmau.ml/*
-*://*.damaikjhhh.com/*
 *://*.damamavevo.tk/*
 *://*.damandtuchabusta.tk/*
 *://*.damanggusting.tk/*
@@ -108243,7 +108255,6 @@
 *://*.dasfurnilux.myshopify.com/*
 *://*.dashangvip.com/*
 *://*.dashatrevelergod.xyz/*
-*://*.dashausderjuwelenosterreich.com/*
 *://*.dashausimgarten.de/*
 *://*.dashboardpang.com/*
 *://*.dashcams4you.nl/*
@@ -109036,6 +109047,11 @@
 *://*.dbordereau-pathyboncoinsecurise.fr/*
 *://*.dboryg.tokyo/*
 *://*.dbossescasino.fr/*
+*://*.dbossescasinoapp.fr/*
+*://*.dbossescasinobonus.fr/*
+*://*.dbossescasinobonus777.fr/*
+*://*.dbossescasinocode.fr/*
+*://*.dbossescasinologin.fr/*
 *://*.dbpass.de/*
 *://*.dbpatc.bar/*
 *://*.dbpc.cc/*
@@ -110366,8 +110382,8 @@
 *://*.degrouptest.com/*
 *://*.degsahefol.tk/*
 *://*.deguo-shop.de/*
+*://*.degussa-goldhandel-de.to/*
 *://*.degussa-goldhandel.ac/*
-*://*.degussa-goldhandel.click/*
 *://*.degussa.to/*
 *://*.deguzzrisobi.tk/*
 *://*.dehaag-tech.de/*
@@ -110736,6 +110752,11 @@
 *://*.delorigdisc.tk/*
 *://*.deloris-ai.com/*
 *://*.delorocasino.fr/*
+*://*.delorocasinoapp.fr/*
+*://*.delorocasinobonus.fr/*
+*://*.delorocasinobonus777.fr/*
+*://*.delorocasinologin.fr/*
+*://*.delorocasinopromocode.fr/*
 *://*.delotactte.ml/*
 *://*.deloupostcabde.ga/*
 *://*.delovaspehin.gq/*
@@ -110768,7 +110789,6 @@
 *://*.deltacorriher.best/*
 *://*.deltacover.ir/*
 *://*.deltadns.org/*
-*://*.deltaprofit24.com/*
 *://*.deltatransilvaniei.ro/*
 *://*.deltatransport.eu/*
 *://*.deltentwechsnurba.tk/*
@@ -110915,6 +110935,7 @@
 *://*.dematsearchstomfull.tk/*
 *://*.demays.cc/*
 *://*.demboocackoles.tk/*
+*://*.demeaningfulbrands.com/*
 *://*.demeankamouffgoo.tk/*
 *://*.demeanourpawsdose.com/*
 *://*.demeatoter.cf/*
@@ -113111,6 +113132,7 @@
 *://*.dfcjst.rest/*
 *://*.dfcnxl.tokyo/*
 *://*.dfd0xe.cyou/*
+*://*.dfdge.shop/*
 *://*.dfdhs.yt/*
 *://*.dfdi.yt/*
 *://*.dfdpgj.bar/*
@@ -115021,7 +115043,6 @@
 *://*.digimarketclub.com/*
 *://*.digimax.xyz/*
 *://*.digiopdesign.shop/*
-*://*.digipoint.org/*
 *://*.digiport.ee/*
 *://*.digipote.fr/*
 *://*.digipsote.fr/*
@@ -115992,7 +116013,6 @@
 *://*.directionoffstudents.buzz/*
 *://*.directions-impots.fr/*
 *://*.directionslotfacts.biz/*
-*://*.directkredite.com/*
 *://*.directlyboilermarco.com/*
 *://*.directlymasonflakes.com/*
 *://*.directnergy.com/*
@@ -116221,6 +116241,7 @@
 *://*.discnibtiloorin.ml/*
 *://*.discniracroa.cf/*
 *://*.discoberstudentloans.com/*
+*://*.discocho.com/*
 *://*.discodociback.tk/*
 *://*.discompnireamas.tk/*
 *://*.disconcerting.com/*
@@ -116271,6 +116292,7 @@
 *://*.discount-sneaks.fr/*
 *://*.discountbloc.com/*
 *://*.discountbloc.ru/*
+*://*.discountdlife.shop/*
 *://*.discountdomainsdns.co.uk/*
 *://*.discountdrug.cheap/*
 *://*.discountdrug.news/*
@@ -117375,6 +117397,7 @@
 *://*.divikickpres.tk/*
 *://*.divinagioielli.it/*
 *://*.divinaq4aw.web.app/*
+*://*.divine-group.io/*
 *://*.divinebydivinefrance.fr/*
 *://*.divinehosting.org/*
 *://*.divinel79leer.pw/*
@@ -120799,7 +120822,6 @@
 *://*.dressedoutrageousrun.com/*
 *://*.dresserbirth.com/*
 *://*.dresserstil.xyz/*
-*://*.dressfat.com/*
 *://*.dressinlaw.pl/*
 *://*.dressmakerdisturb.com/*
 *://*.dressmede.xyz/*
@@ -120906,7 +120928,6 @@
 *://*.drinfirmdansiha.tk/*
 *://*.drinituncusa.ml/*
 *://*.drinkevolution.shop/*
-*://*.drinkkunst.com/*
 *://*.drinksinvoluntary.com/*
 *://*.drinksnow.org/*
 *://*.drinotimalnat.tk/*
@@ -121067,7 +121088,6 @@
 *://*.droganrioredgdi.tk/*
 *://*.drogansioflipig.ml/*
 *://*.drogargusjungca.tk/*
-*://*.drogariahadama.com/*
 *://*.drogarovdio.tk/*
 *://*.drogbobslirawbo.cf/*
 *://*.drogcornfranbeli.tk/*
@@ -121092,7 +121112,6 @@
 *://*.drogue-info-service.fr/*
 *://*.drogue.jp/*
 *://*.drogwarriffpretraiprac.ga/*
-*://*.drohnen4you.de/*
 *://*.drohnenhero.de/*
 *://*.droht.xyz/*
 *://*.droidkupedia.xyz/*
@@ -121401,7 +121420,6 @@
 *://*.drymsebbentpole.ml/*
 *://*.dryncorreperbe.tk/*
 *://*.drynintilatire.tk/*
-*://*.drypulse.de/*
 *://*.dryredwineshop.com/*
 *://*.drysinidtuanys.tk/*
 *://*.drysyv.cyou/*
@@ -122368,7 +122386,6 @@
 *://*.duogalgogaper.ga/*
 *://*.duohost.info/*
 *://*.duojamlangrich.web.app/*
-*://*.duolaimi-handel.de/*
 *://*.duolingoguides.com/*
 *://*.duomicreithreatnaethe.tk/*
 *://*.duonuh.rest/*
@@ -125147,6 +125164,7 @@
 *://*.ebookgerxm.web.app/*
 *://*.ebookhokhg.web.app/*
 *://*.ebookhxnet.web.app/*
+*://*.ebooklyn.net/*
 *://*.ebooknaytb.web.app/*
 *://*.ebookrmhpae.web.app/*
 *://*.ebooksfreedownload-ce351.firebaseapp.com/*
@@ -125686,7 +125704,6 @@
 *://*.economie-gouv-controle-tva.fr/*
 *://*.economie-gouv-dgfp-controle-tva.fr/*
 *://*.economie-gouv-indemnite.fr/*
-*://*.economie-horizon.com/*
 *://*.economiechezvous.com/*
 *://*.economischdoorleren.nl/*
 *://*.economix.io/*
@@ -128350,6 +128367,7 @@
 *://*.elegare.de/*
 *://*.elegiajbdp.site/*
 *://*.elegio.pl/*
+*://*.elegranitl.com/*
 *://*.elegsant.com/*
 *://*.elekom.si/*
 *://*.elektora.de/*
@@ -128683,6 +128701,7 @@
 *://*.elkpze.tokyo/*
 *://*.elkritorcanna.tk/*
 *://*.elkwedsiled.tk/*
+*://*.ellabelle.de/*
 *://*.ellada-farmakeio.com/*
 *://*.elladoti.tk/*
 *://*.ellaelis.eu/*
@@ -130616,7 +130635,6 @@
 *://*.enguidesulip.tk/*
 *://*.enguilaslina.ml/*
 *://*.engwe-ebike.com/*
-*://*.engwe-ebike.de/*
 *://*.engweebike.de/*
 *://*.engwevelo.fr/*
 *://*.enhalchildcourco.tk/*
@@ -133232,6 +133250,7 @@
 *://*.erntle.my.id/*
 *://*.ernuafibolibudd.tk/*
 *://*.ernymnarirute.tk/*
+*://*.eroadstore.com/*
 *://*.eroaty.xyz/*
 *://*.erobot-pisicne.fr/*
 *://*.erobpettiraro.ml/*
@@ -133596,7 +133615,6 @@
 *://*.ertod.com/*
 *://*.ertomirore.gq/*
 *://*.ertopecagin.gq/*
-*://*.ertops2021.com/*
 *://*.ertotardescpets.ml/*
 *://*.ertradfelefo.ml/*
 *://*.ertrantondicira.tk/*
@@ -134887,6 +134905,7 @@
 *://*.esprisimcidixmyo.tk/*
 *://*.espritbd.fr/*
 *://*.espritfr.fr/*
+*://*.esprits.at/*
 *://*.espritssinguliers.fr/*
 *://*.esprogidpurna.gq/*
 *://*.esprogtofvitibo.tk/*
@@ -135698,6 +135717,7 @@
 *://*.eu-facturation.fr/*
 *://*.eu-first.com/*
 *://*.eu-impots.fr/*
+*://*.eu-meds.online/*
 *://*.eu-new-media.eu/*
 *://*.eu-sezane.com/*
 *://*.eu-snapchat.fr/*
@@ -135803,7 +135823,6 @@
 *://*.eukan.yt/*
 *://*.eukjj2.cyou/*
 *://*.eukorea-fire.eu/*
-*://*.eukram.com/*
 *://*.eukrypto.site/*
 *://*.eukufsh.work/*
 *://*.eukworektobe.pics/*
@@ -137007,7 +137026,6 @@
 *://*.exccjhj.tokyo/*
 *://*.excdnw.bar/*
 *://*.excelgiven.com/*
-*://*.excelia.net/*
 *://*.excellentmarkets.best/*
 *://*.excelmission.com/*
 *://*.excelprowlvein.com/*
@@ -137055,6 +137073,11 @@
 *://*.exclusi92fertili.trade/*
 *://*.exclusioneveryone.com/*
 *://*.exclusiveautoexchange.com/*
+*://*.exclusivecasinoapp777.fr/*
+*://*.exclusivecasinobonus.fr/*
+*://*.exclusivecasinobonuscode.fr/*
+*://*.exclusivecasinodeposit777.fr/*
+*://*.exclusivecasinologin.fr/*
 *://*.exclusivekicks.shop/*
 *://*.exclusivelyapplication.com/*
 *://*.exclusiveskis.com/*
@@ -137903,6 +137926,7 @@
 *://*.extractcares.com/*
 *://*.extractcrash.com/*
 *://*.extractforgiveness.com/*
+*://*.extradestock.fr/*
 *://*.extrafocal.site/*
 *://*.extragorabkhav.gq/*
 *://*.extrahealth.xyz/*
@@ -138450,7 +138474,6 @@
 *://*.ezzz8uy.tokyo/*
 *://*.ezzzrr.tokyo/*
 *://*.f-franprix.fr/*
-*://*.f-versand.de/*
 *://*.f-voyance.fr/*
 *://*.f005m8.shop/*
 *://*.f00gtm.cyou/*
@@ -139609,7 +139632,6 @@
 *://*.fahrradrabatt.com/*
 *://*.fahrradrabattdeneu.com/*
 *://*.fahrradradde.com/*
-*://*.fahrradspab.com/*
 *://*.fahrradstromkreis.com/*
 *://*.fahrradteileladen.com/*
 *://*.fahrradteilesoldes.com/*
@@ -142378,6 +142400,7 @@
 *://*.festgeld360.de/*
 *://*.festgeld724.de/*
 *://*.festgelder-eu.com/*
+*://*.festgeldsicher.at/*
 *://*.festhoscoka.ga/*
 *://*.festicket.fr/*
 *://*.festicolor.fr/*
@@ -143010,6 +143033,7 @@
 *://*.fiafickfretifli.cf/*
 *://*.fiahimesoketsu.ga/*
 *://*.fiaiano.it/*
+*://*.fiammshop.eu/*
 *://*.fianascamadenche.gq/*
 *://*.fianewsscherunorad.ml/*
 *://*.fianisnybuckspyz.ga/*
@@ -143075,7 +143099,6 @@
 *://*.fibtemptation.com/*
 *://*.fibtianicholkingconc.gq/*
 *://*.fibtingwonsoper.tk/*
-*://*.fibusgewerblicherbuchhalter.com/*
 *://*.ficacha.xyz/*
 *://*.ficade.gq/*
 *://*.ficadorohkung.tk/*
@@ -144532,7 +144555,6 @@
 *://*.fitnessinf.com/*
 *://*.fitnesspark-brb.eu/*
 *://*.fitnessstar.org/*
-*://*.fitnesstogether.co.uk/*
 *://*.fitnesstorage.xyz/*
 *://*.fitnestar.de/*
 *://*.fitnistdewarge.cf/*
@@ -144718,7 +144740,6 @@
 *://*.fjallraven-france.fr/*
 *://*.fjallraven.com.de/*
 *://*.fjallravengreece.com/*
-*://*.fjallravensale.de/*
 *://*.fjallravensoutlet.com/*
 *://*.fjaltj.bar/*
 *://*.fjapvy.tokyo/*
@@ -145795,7 +145816,6 @@
 *://*.flogwear.buzz/*
 *://*.flohcamsleabuneeds.ga/*
 *://*.flokbobonne.ml/*
-*://*.flolyea.com/*
 *://*.flomicblanaktatec.ml/*
 *://*.flonarutonym.ml/*
 *://*.flonrootencolandsack.cf/*
@@ -146854,7 +146874,6 @@
 *://*.followchained.com/*
 *://*.followdz.com/*
 *://*.followedconcept.com/*
-*://*.followeron.com/*
 *://*.followingdonation.com/*
 *://*.followingflirtatious.com/*
 *://*.followingpicklehysterical.com/*
@@ -147844,6 +147863,7 @@
 *://*.forsarthvibilche.cf/*
 *://*.forsasisroute.tk/*
 *://*.forsceptileon.com/*
+*://*.forschwerk.com/*
 *://*.forscompnemelgems.ml/*
 *://*.forseda.ro/*
 *://*.forseeperlaywood.tk/*
@@ -148918,7 +148938,6 @@
 *://*.fradolu.xyz/*
 *://*.fradperdarasstresear.ml/*
 *://*.fraezenbikes.com/*
-*://*.frafondi.de/*
 *://*.frag3.buzz/*
 *://*.fragabprin.cf/*
 *://*.fragaburtioher.gq/*
@@ -149136,6 +149155,7 @@
 *://*.francejacket.fr/*
 *://*.francejeuxlicences.fr/*
 *://*.francejeuxolympiques.fr/*
+*://*.francejustice.fr/*
 *://*.francelbleu.fr/*
 *://*.franceleggings.fr/*
 *://*.francelogistiquesuivit.fr/*
@@ -150218,7 +150238,6 @@
 *://*.frilta.rest/*
 *://*.friluftsbillig.com/*
 *://*.friluftsde.com/*
-*://*.friluftsguru.com/*
 *://*.friluftsloppen.dk/*
 *://*.friluftsrabatt.com/*
 *://*.friluftsshopde.com/*
@@ -150524,7 +150543,6 @@
 *://*.frospubnitisge.ga/*
 *://*.frosrudanalchdoctdi.tk/*
 *://*.frostbird.space/*
-*://*.frostedlane.com/*
 *://*.frosthunter.xyz/*
 *://*.frostwire.com/*
 *://*.frostyestablished.com/*
@@ -153957,7 +153975,6 @@
 *://*.galeremira.gq/*
 *://*.galeriakaufhof.rest/*
 *://*.galerialimes.pl/*
-*://*.galerie-kaufhaus.de/*
 *://*.galerie.my.id/*
 *://*.galeriemodehaus.com/*
 *://*.galerieoswald.de/*
@@ -154452,7 +154469,6 @@
 *://*.garacuwhoma.tk/*
 *://*.garage-automobile-bairon-08.fr/*
 *://*.garage-sedex.eu/*
-*://*.garageabtcar.com/*
 *://*.garagebandforpc.org/*
 *://*.garageclothingfrance.fr/*
 *://*.garagedoorrepairboston.com/*
@@ -154622,7 +154638,6 @@
 *://*.garmin-store.ru/*
 *://*.garminconnect.fr/*
 *://*.garminfr.fr/*
-*://*.garminshop.at/*
 *://*.garminwatchoutlets.hxprop.top/*
 *://*.garmontparis.fr/*
 *://*.garmpz.tokyo/*
@@ -154701,12 +154716,10 @@
 *://*.gartenflamme24.de/*
 *://*.gartenfreunde-murrhardt.de/*
 *://*.gartengeraete-shop.de/*
-*://*.gartengreifer.de/*
 *://*.gartenguenter.de/*
 *://*.gartenhandel-marsmann.de/*
 *://*.gartenil.com/*
 *://*.gartenira.com/*
-*://*.gartenladende.com/*
 *://*.gartenland-martens.de/*
 *://*.gartenlands.com/*
 *://*.gartenlandschaftladen.com/*
@@ -155299,7 +155312,6 @@
 *://*.gbuzgvv2.ru/*
 *://*.gbvcrad.tokyo/*
 *://*.gbvin.cyou/*
-*://*.gbviu-vip.shop/*
 *://*.gbvnigp.tokyo/*
 *://*.gbvzak.tokyo/*
 *://*.gbw888.com/*
@@ -156616,7 +156628,6 @@
 *://*.georiwindgrav.tk/*
 *://*.georonlelepa.tk/*
 *://*.georouspaydupazan.tk/*
-*://*.georworker.shop/*
 *://*.georyboware.cf/*
 *://*.geosacebedvi.cf/*
 *://*.geosamilot.gq/*
@@ -156804,6 +156815,7 @@
 *://*.gerlicaldesp.tk/*
 *://*.gerlo.my.id/*
 *://*.germal.my.id/*
+*://*.germalls-garten.de/*
 *://*.german-apotheke.de/*
 *://*.german-audio-equipment.com/*
 *://*.german-discount-carsparts.com/*
@@ -156924,7 +156936,6 @@
 *://*.gervirodmiesam.tk/*
 *://*.gervong.xyz/*
 *://*.gerwieting.ga/*
-*://*.gerworkfind.com/*
 *://*.gerxzt.tokyo/*
 *://*.gerytocotara.tk/*
 *://*.gerzocoturo.tk/*
@@ -157149,7 +157160,6 @@
 *://*.gesund-wachsen.com/*
 *://*.gesund.world/*
 *://*.gesunde-lebensweise.com/*
-*://*.gesundeswelpenhaus.de/*
 *://*.gesundheit-aok.com/*
 *://*.gesundheitapotheke.de/*
 *://*.gesundheitkatalog.de/*
@@ -160079,7 +160089,6 @@
 *://*.global-dates11.com/*
 *://*.global-dnszx2wc3uv.biz/*
 *://*.global-dnszyhf0xk2.biz/*
-*://*.global-grupoinnovation.com/*
 *://*.global-mask-mandate.com/*
 *://*.global-news-blog.com/*
 *://*.global-remboursement.fr/*
@@ -160655,7 +160664,6 @@
 *://*.gmkh9i.cyou/*
 *://*.gmklvo.cyou/*
 *://*.gmkzfn.bar/*
-*://*.gmm-holzgmbh.com/*
 *://*.gmmx.fr/*
 *://*.gmnavale.cz/*
 *://*.gmno8v.xyz/*
@@ -161601,7 +161609,6 @@
 *://*.golvop.tokyo/*
 *://*.golvyouu.com/*
 *://*.golydextmindprocil.cf/*
-*://*.golz-motorgerate.de/*
 *://*.golzmaschinen.com/*
 *://*.gomadownre.tk/*
 *://*.gomahicdaymont.tk/*
@@ -162176,7 +162183,6 @@
 *://*.gosinsevea.tk/*
 *://*.goslialandderp.ml/*
 *://*.goslyacalo.ml/*
-*://*.gosmartwatch.de/*
 *://*.gosmuponve.tk/*
 *://*.gosnorafe.ml/*
 *://*.gosnovoremivo.tk/*
@@ -162685,7 +162691,6 @@
 *://*.gpsvehiracking.xyz/*
 *://*.gpt-definity.com/*
 *://*.gpt-immediate.com/*
-*://*.gpt-investor.de/*
 *://*.gpt-trader.de/*
 *://*.gpt4free.io/*
 *://*.gpt4free.io/*
@@ -163801,6 +163806,11 @@
 *://*.greatven.my.id/*
 *://*.greatvyaquanimit.tk/*
 *://*.greatwebdesign.xyz/*
+*://*.greatwincasinoapp.fr/*
+*://*.greatwincasinobonus.fr/*
+*://*.greatwincasinobonus777.fr/*
+*://*.greatwincasinologin.fr/*
+*://*.greatwincasinospins.fr/*
 *://*.greavadevoutunvan.cf/*
 *://*.greavanpini.tk/*
 *://*.greavnavabanseles.gq/*
@@ -164171,7 +164181,6 @@
 *://*.grillgaz.fr/*
 *://*.grillmeisterde.com/*
 *://*.grillo.xyz/*
-*://*.grillprove.top/*
 *://*.grillsandgreens.com/*
 *://*.grillscloud.com/*
 *://*.grillspro.shop/*
@@ -164815,6 +164824,7 @@
 *://*.grtksx.tokyo/*
 *://*.grtpcr.cyou/*
 *://*.gru4sz.cyou/*
+*://*.gruavl.com/*
 *://*.grubcerzeiglycan.cf/*
 *://*.grubepalmonconftal.tk/*
 *://*.gruber-graz.at/*
@@ -165485,7 +165495,6 @@
 *://*.guenstig-heizoel.com/*
 *://*.guenstig-pillen.de/*
 *://*.guenstig-rezeptfrei.de/*
-*://*.guenstiger-rasenmaeher.com/*
 *://*.guentelsentetor.tk/*
 *://*.guenther-scholz.de/*
 *://*.guenursethela.tk/*
@@ -166825,7 +166834,6 @@
 *://*.gym-shark-france.fr/*
 *://*.gym-shark-india.com/*
 *://*.gym-sharkmexico.com.mx/*
-*://*.gym2goshop.de/*
 *://*.gymampcab.live/*
 *://*.gymanoi.xyz/*
 *://*.gymcnba.tokyo/*
@@ -169032,7 +169040,6 @@
 *://*.hannes-hofstetter.it/*
 *://*.hannestattoo.dk/*
 *://*.hannevewelltics.gq/*
-*://*.hannibalvajilla.com/*
 *://*.hanniharmbangsmucrus.tk/*
 *://*.hannnewimulwitch.cf/*
 *://*.hannotici.tk/*
@@ -170716,7 +170723,6 @@
 *://*.hartlatenettchar.cf/*
 *://*.hartlimorttrancongent.ga/*
 *://*.hartman.fr/*
-*://*.hartmannmode.de/*
 *://*.hartmecedeju.tk/*
 *://*.hartmitcoree.ml/*
 *://*.hartnarhefotan.tk/*
@@ -170998,7 +171004,6 @@
 *://*.haus-stmartin.de/*
 *://*.haus-winkelmann.de/*
 *://*.hausaderpoti.tk/*
-*://*.hausbulle.de/*
 *://*.hauscaplombagothe.tk/*
 *://*.hauselektro.shop/*
 *://*.hausermodehaus.de/*
@@ -173589,6 +173594,7 @@
 *://*.heisen-handel.de/*
 *://*.heisenberg24.com/*
 *://*.heisenpacydu.ga/*
+*://*.heiser-handel.de/*
 *://*.heiserciemi.ml/*
 *://*.heiskeepgoalaves.ml/*
 *://*.heispotidanfe.tk/*
@@ -173623,19 +173629,14 @@
 *://*.heiz-oil.de/*
 *://*.heiz-pellets24.com/*
 *://*.heiz-traum.com/*
-*://*.heizenbillig.com/*
 *://*.heizendirekt.de/*
 *://*.heizenkleidung.com/*
 *://*.heizensmart.de/*
 *://*.heizensofort.de/*
-*://*.heizfit.de/*
 *://*.heizfreude.de/*
-*://*.heizgo.de/*
 *://*.heizhaus-kohle.de/*
 *://*.heizhilin.com/*
 *://*.heizinsel.de/*
-*://*.heizix.de/*
-*://*.heizjet.de/*
 *://*.heizkessel-sale.com/*
 *://*.heizmeister-24.com/*
 *://*.heizoase.de/*
@@ -173662,25 +173663,37 @@
 *://*.heizoelblitz.com/*
 *://*.heizoelblitz.de/*
 *://*.heizoelbp.de/*
+*://*.heizoelconnect.de/*
 *://*.heizoelfit.de/*
+*://*.heizoelhilfe.de/*
+*://*.heizoelikone.de/*
 *://*.heizoelitx.de/*
 *://*.heizoelix.de/*
 *://*.heizoeljet.de/*
 *://*.heizoeljetzt.de/*
 *://*.heizoellieferung.de/*
+*://*.heizoelmax.de/*
+*://*.heizoelnow.de/*
 *://*.heizoelonline24.com/*
+*://*.heizoelport.de/*
 *://*.heizoelpro.de/*
 *://*.heizoelprofi.de/*
+*://*.heizoelprofit.de/*
 *://*.heizoelpunkt.de/*
 *://*.heizoelsofort.de/*
 *://*.heizoelsolutions.com/*
 *://*.heizoelsolutions.net/*
+*://*.heizoelteam.de/*
+*://*.heizoelversand.de/*
+*://*.heizoelwerk.de/*
 *://*.heizoil-24.de/*
 *://*.heizoil-vergleich.de/*
 *://*.heizoil24.de/*
+*://*.heizone.de/*
 *://*.heizparadies.de/*
 *://*.heizpellets.com/*
 *://*.heizpellets247.de/*
+*://*.heizport.de/*
 *://*.heizpro.com/*
 *://*.heizstrahlerprada.de/*
 *://*.heiztankstelle.de/*
@@ -173694,6 +173707,7 @@
 *://*.heizungselement.com/*
 *://*.heizungsinsel.de/*
 *://*.heizungstechnik-online.de/*
+*://*.heizup24.de/*
 *://*.hejaen.bar/*
 *://*.hejaen.rest/*
 *://*.hejhwp.tokyo/*
@@ -173737,7 +173751,6 @@
 *://*.helfalltoxuke.ga/*
 *://*.helfest.fr/*
 *://*.helgadesign.eu/*
-*://*.helganieblershop.com/*
 *://*.helgawelpenhaus.com/*
 *://*.helgumicha.ga/*
 *://*.helhickran.tk/*
@@ -174889,7 +174902,6 @@
 *://*.hgnich.bar/*
 *://*.hgnoxg.rest/*
 *://*.hgo8090.com/*
-*://*.hgoobtimio.cc/*
 *://*.hgoogle.fr/*
 *://*.hgoyr0.tokyo/*
 *://*.hgphpg.tokyo/*
@@ -175421,6 +175433,7 @@
 *://*.hiiwheeserchio.ml/*
 *://*.hij8351.tokyo/*
 *://*.hijabsalmaava.shop/*
+*://*.hijabsalmapop.shop/*
 *://*.hijack34endorse.com/*
 *://*.hijackingszsrga.buzz/*
 *://*.hijaslavei.eu/*
@@ -176802,7 +176815,6 @@
 *://*.hochsoundrabmomo.ga/*
 *://*.hochspegrinudcessdi.tk/*
 *://*.hochsrerutomangu.tk/*
-*://*.hochstift-garten.de/*
 *://*.hochsurphillismtact.cf/*
 *://*.hochtief.ie/*
 *://*.hochtytomewo.tk/*
@@ -177199,13 +177211,13 @@
 *://*.holywoodspecialsecrets.com/*
 *://*.holz-brennholzhandel.de/*
 *://*.holz-discounter.com/*
+*://*.holzarteiche.de/*
 *://*.holzbau-steiermark.at/*
 *://*.holzbau.xyz/*
 *://*.holzbaubillig.com/*
 *://*.holzbrenn.de/*
 *://*.holzbriketts-kaufen.com/*
 *://*.holzcreff.de/*
-*://*.holzelektronikmarket.com/*
 *://*.holzerneblocke.com/*
 *://*.holzfursfeuer.de/*
 *://*.holzhandler.com/*
@@ -181313,6 +181325,8 @@
 *://*.i-messagerieleboncoin.fr/*
 *://*.i-net-market.buzz/*
 *://*.i-nternet.info/*
+*://*.i-see-mo.re/*
+*://*.i-seemo.re/*
 *://*.i-sneakers.fr/*
 *://*.i-spring.xyz/*
 *://*.i-trojmiasto.pl/*
@@ -183099,7 +183113,6 @@
 *://*.idealonsahlwg.shop/*
 *://*.idealonsahlwg.top/*
 *://*.idealonsahlwi.top/*
-*://*.idealonsahwu.xyz/*
 *://*.idealpi.net/*
 *://*.idealstoreonline.com/*
 *://*.idealtypes.tk/*
@@ -185859,7 +185872,6 @@
 *://*.imonocdicu.tk/*
 *://*.imonwebfeiglob.tk/*
 *://*.imood.xyz/*
-*://*.imoonbeam.com/*
 *://*.imopakchasank.tk/*
 *://*.imopallac.tk/*
 *://*.imopsn.tokyo/*
@@ -189620,6 +189632,7 @@
 *://*.insoke.tk/*
 *://*.insolencecountriesblunder.com/*
 *://*.insolencemanipulative.com/*
+*://*.insolesgeeks.com/*
 *://*.insometomare.ml/*
 *://*.insomniasplitting.com/*
 *://*.insoosipcurec.ml/*
@@ -190525,7 +190538,6 @@
 *://*.invest.luxtious.net/*
 *://*.investadia.es/*
 *://*.investbook.fr/*
-*://*.investcapitalmarkets.com/*
 *://*.investfw.com/*
 *://*.investi-ray.com/*
 *://*.investify-global.com/*
@@ -190707,6 +190719,7 @@
 *://*.iobyasd.tokyo/*
 *://*.iobzii.bar/*
 *://*.ioc7cl.xyz/*
+*://*.iocaiiser-id.fr/*
 *://*.iocaliser-id.fr/*
 *://*.iocp.cn/*
 *://*.iocsfczi.tokyo/*
@@ -191408,6 +191421,11 @@
 *://*.irisdiscord.xyz/*
 *://*.irisgrabbedblocking.com/*
 *://*.irish-anpost.re/*
+*://*.irishluckcasinoapp.fr/*
+*://*.irishluckcasinobonus.fr/*
+*://*.irishluckcasinobonus777.fr/*
+*://*.irishluckcasinocode.fr/*
+*://*.irishluckcasinologin.fr/*
 *://*.irishnewstoday.com/*
 *://*.irishorizontally.com/*
 *://*.irishorridamount.com/*
@@ -194768,6 +194786,11 @@
 *://*.jackasswax.buzz/*
 *://*.jackbarsfeabookpa.gq/*
 *://*.jackbit-casino.fr/*
+*://*.jackbitcasinoapp.fr/*
+*://*.jackbitcasinoavis.fr/*
+*://*.jackbitcasinobonus777.fr/*
+*://*.jackbitcasinologin.fr/*
+*://*.jackbitcasinopromocode.fr/*
 *://*.jackbyjackie.nl/*
 *://*.jackcarey.co/*
 *://*.jackcarog.ga/*
@@ -194835,6 +194858,11 @@
 *://*.jacksubshardporetu.cf/*
 *://*.jacktiboverha.ml/*
 *://*.jacktiriskede.gq/*
+*://*.jacktopcasinoapp.fr/*
+*://*.jacktopcasinobonus365.fr/*
+*://*.jacktopcasinologin.fr/*
+*://*.jacktopcasinopromocode.fr/*
+*://*.jacktopcasinoslots777.fr/*
 *://*.jacktrice.org/*
 *://*.jacktripuntonwaide.ga/*
 *://*.jacktsufilrattest.ga/*
@@ -195925,6 +195953,7 @@
 *://*.jeansniedrigerpreis.com/*
 *://*.jeanspeeredexotic.com/*
 *://*.jeapmz.shop/*
+*://*.jeapn.shop/*
 *://*.jeary.xyz/*
 *://*.jeash.xyz/*
 *://*.jeasubkidslonitsicf.tk/*
@@ -196015,6 +196044,7 @@
 *://*.jefferycooper.com/*
 *://*.jeffhildebrand.buzz/*
 *://*.jeffie39crazy.pw/*
+*://*.jeffkelleher.shop/*
 *://*.jefflagreropac.ga/*
 *://*.jeffmistral.fr/*
 *://*.jeffora.de/*
@@ -196136,6 +196166,7 @@
 *://*.jenreiscalfighribuz.tk/*
 *://*.jensenled.dk/*
 *://*.jensenwork.shop/*
+*://*.jenshoping.top/*
 *://*.jensnauntofte.dk/*
 *://*.jenter.xyz/*
 *://*.jenuss-boutik.de/*
@@ -198226,7 +198257,6 @@
 *://*.jodush.xyz/*
 *://*.jodybertness.shop/*
 *://*.jodydutt.com/*
-*://*.joeai.shop/*
 *://*.joeautobroker.com/*
 *://*.joebanweipropovla.ml/*
 *://*.joecapista.eu/*
@@ -199826,7 +199856,6 @@
 *://*.julieta.xyz/*
 *://*.juliettehasagun.fr/*
 *://*.julikenrele.gq/*
-*://*.julischnetzer.at/*
 *://*.julittatreese.xyz/*
 *://*.julius-casino-fr.fr/*
 *://*.julius-casino.fr/*
@@ -202080,6 +202109,7 @@
 *://*.kamagraeu.de/*
 *://*.kamagraeu.net/*
 *://*.kamagraeu.to/*
+*://*.kamagrakaufen24.net/*
 *://*.kamagraonline.fr/*
 *://*.kamagrashop.online/*
 *://*.kamagrastack.xyz/*
@@ -202112,7 +202142,6 @@
 *://*.kamineo24.de/*
 *://*.kamingmbh.de/*
 *://*.kaminholz-briketts-holzpellets.eu/*
-*://*.kaminholzbeumer.de/*
 *://*.kaminholzrhein.shop/*
 *://*.kaminmarket.de/*
 *://*.kamisamagha.ga/*
@@ -202342,6 +202371,7 @@
 *://*.karcher-france.fr/*
 *://*.karcher.work/*
 *://*.karcherfr.fr/*
+*://*.karcherfrance.fr/*
 *://*.karcht.xyz/*
 *://*.karciejunhifi.ml/*
 *://*.karciufredan.tk/*
@@ -202399,7 +202429,6 @@
 *://*.karlena.de/*
 *://*.karleykahlo.com/*
 *://*.karlfashions.com/*
-*://*.karlgarten.com/*
 *://*.karlkani.shop/*
 *://*.karlkarl.dk/*
 *://*.karlkase.ee/*
@@ -202614,9 +202643,9 @@
 *://*.kaufhauswerkzeuge.com/*
 *://*.kaufica.de/*
 *://*.kaufkomet24.de/*
-*://*.kauflaand.shop/*
 *://*.kauflandfr.fr/*
 *://*.kaufmann-modehaus.com/*
+*://*.kaufmannshop.de/*
 *://*.kaufspiel.de/*
 *://*.kaufuniversum.myshoplaza.com/*
 *://*.kaufyshop.de/*
@@ -204852,7 +204881,6 @@
 *://*.kidraisquarsorapor.ml/*
 *://*.kidrogacom.tk/*
 *://*.kidroleland.info/*
-*://*.kids-craft.de/*
 *://*.kidsaktiv.ru/*
 *://*.kidscardoimetpart.cf/*
 *://*.kidscurtprotpostlong.tk/*
@@ -205258,7 +205286,6 @@
 *://*.kingnanlawsdjaruryw.cf/*
 *://*.kingnshop.com/*
 *://*.kingofbuy.com/*
-*://*.kingofcosmetic.com/*
 *://*.kingoodcn.com/*
 *://*.kingpacxomalraper.tk/*
 *://*.kingpartstinafer.cf/*
@@ -205492,7 +205519,7 @@
 *://*.kiseahickthorthe.ga/*
 *://*.kisemicorni.tk/*
 *://*.kisenmage.tk/*
-*://*.kisforstundholz.de/*
+*://*.kisforstholz.de/*
 *://*.kishakatolike.eu/*
 *://*.kishita-silky.dk/*
 *://*.kisholz.com/*
@@ -205885,6 +205912,7 @@
 *://*.kkqnfd.tokyo/*
 *://*.kkqwwe.shop/*
 *://*.kkradovljica.si/*
+*://*.kkrde-api.com/*
 *://*.kkrejf.tokyo/*
 *://*.kkrescue.pl/*
 *://*.kkrevision.dk/*
@@ -208581,6 +208609,7 @@
 *://*.kukxij.bar/*
 *://*.kul84kk.cyou/*
 *://*.kul8jjk.cyou/*
+*://*.kulako.com/*
 *://*.kulantesn.xyz/*
 *://*.kulbit.lv/*
 *://*.kuldarebathego.tk/*
@@ -209349,6 +209378,11 @@
 *://*.kyn08.rest/*
 *://*.kynaz10fashion.com/*
 *://*.kyngs-casino.fr/*
+*://*.kyngscasinoapp.fr/*
+*://*.kyngscasinobonus777.fr/*
+*://*.kyngscasinologin.fr/*
+*://*.kyngscasinologin777.fr/*
+*://*.kyngscasinopromocode.fr/*
 *://*.kynubeauty.de/*
 *://*.kyo36b.cyou/*
 *://*.kyoba.es/*
@@ -211829,7 +211863,6 @@
 *://*.lanuttoxy.ml/*
 *://*.lanvallthee.ml/*
 *://*.lanvascwoodrerasto.tk/*
-*://*.lanvin.at/*
 *://*.lanvinfrance.fr/*
 *://*.lanvinmarseille.fr/*
 *://*.lanvx.com/*
@@ -212031,7 +212064,6 @@
 *://*.laramepache.tk/*
 *://*.larancondespirates.fr/*
 *://*.laranjinhastore.com/*
-*://*.laranora.de/*
 *://*.larantomedcu.tk/*
 *://*.larantothispjo.tk/*
 *://*.lararepgepe.ml/*
@@ -212732,7 +212764,6 @@
 *://*.lautarputekhbusmo.ml/*
 *://*.lautdecevcesgist.tk/*
 *://*.lautecotabthedidd.ml/*
-*://*.lautenberg-mode.de/*
 *://*.lautepa.ml/*
 *://*.lauterlimoficca.ml/*
 *://*.lautheafolkinabcou.ga/*
@@ -213346,7 +213377,6 @@
 *://*.lbyzee.tokyo/*
 *://*.lbzvqtb.tokyo/*
 *://*.lbzzhfd.bar/*
-*://*.lc-markt.co/*
 *://*.lc0ncm.cyou/*
 *://*.lc1.akcelia.net/*
 *://*.lc1xof.cyou/*
@@ -213808,6 +213838,7 @@
 *://*.leakplepytesir.gq/*
 *://*.leakz.net/*
 *://*.lealabashighmaze.cf/*
+*://*.lealbys.com/*
 *://*.lealentrivapad.tk/*
 *://*.lealepa.bar/*
 *://*.lealeroholevi.tk/*
@@ -214437,7 +214468,6 @@
 *://*.ledger-store.fr/*
 *://*.ledger-support.fr/*
 *://*.ledger-verification.com/*
-*://*.ledger.live-transactions-check.com/*
 *://*.ledgerapp.fr/*
 *://*.ledgerguidance.com/*
 *://*.ledgerlive-customer.com/*
@@ -215172,6 +215202,7 @@
 *://*.lemvigps.dk/*
 *://*.lemwgaf.tokyo/*
 *://*.lemylesagachanch.cf/*
+*://*.lena-boutique.de/*
 *://*.lena-leipzig.de/*
 *://*.lena-moda.com/*
 *://*.lenaborke.shop/*
@@ -215420,7 +215451,6 @@
 *://*.leogarderstighrahal.tk/*
 *://*.leoginijingsic.tk/*
 *://*.leoguiroydfathmauder.tk/*
-*://*.leohandel24.de/*
 *://*.leohandleportative.com/*
 *://*.leohaucicons.tk/*
 *://*.leohome.shop/*
@@ -215432,7 +215462,6 @@
 *://*.leolantubulklycir.tk/*
 *://*.leolelotoprecy.ml/*
 *://*.leolesandro.ga/*
-*://*.leolia-tech.de/*
 *://*.leolilownimimur.tk/*
 *://*.leolimhareha.tk/*
 *://*.leolinlerariwi.ml/*
@@ -216561,7 +216590,6 @@
 *://*.lezeekehbows.cf/*
 *://*.lezgame.com/*
 *://*.lezguiraditcy.tk/*
-*://*.lezido.de/*
 *://*.lezmoradesor.tk/*
 *://*.lezpress.fr/*
 *://*.lezumurcilymo.tk/*
@@ -220158,7 +220186,6 @@
 *://*.littleberg.com/*
 *://*.littlebreizh.fr/*
 *://*.littlecaselifes.rest/*
-*://*.littledreamersshop.com/*
 *://*.littleduck.fr/*
 *://*.littledutchev.shop/*
 *://*.littlegryph.com/*
@@ -220299,6 +220326,7 @@
 *://*.livelyyway.xyz/*
 *://*.livemintnewstoday.com/*
 *://*.livenations.fr/*
+*://*.livenationsas.fr/*
 *://*.livenewcairo.video/*
 *://*.livenmalisyleg.tk/*
 *://*.liveordieburns.com/*
@@ -221676,6 +221704,7 @@
 *://*.locales-insee.fr/*
 *://*.localgirl.fun/*
 *://*.localiser-app.fr/*
+*://*.localiser-apple.fr/*
 *://*.localiser-appleid.fr/*
 *://*.localiser-assistance.fr/*
 *://*.localiser-connect.fr/*
@@ -222404,6 +222433,7 @@
 *://*.lonebeglisi.cf/*
 *://*.lonee.fr/*
 *://*.lonehsp.cn/*
+*://*.loneix.info/*
 *://*.lonelegesel.cf/*
 *://*.lonelinessapp.com/*
 *://*.lonelinessboarding.com/*
@@ -222719,7 +222749,6 @@
 *://*.lopezia.site/*
 *://*.lopfulfriruhapcu.tk/*
 *://*.lopgazacneure.gq/*
-*://*.lopgedstian.com/*
 *://*.lophelisa.fr/*
 *://*.lophoraterho.cf/*
 *://*.lopibi.tk/*
@@ -223460,7 +223489,6 @@
 *://*.lowordsoselogpea.ml/*
 *://*.lowpedalhumidity.com/*
 *://*.lowpoliwhirler.com/*
-*://*.lowpriceloomhub.com/*
 *://*.lowr8k.cyou/*
 *://*.lowresemde.tk/*
 *://*.lowretomsibur.tk/*
@@ -225208,7 +225236,6 @@
 *://*.luxefetch.com/*
 *://*.luxelaserspa.com/*
 *://*.luxelunettespascher.fr/*
-*://*.luxemall.link/*
 *://*.luxeparfum.co.uk/*
 *://*.luxeparfumpascher.fr/*
 *://*.luxeparfumreplique.fr/*
@@ -227281,7 +227308,6 @@
 *://*.machedjeeredes.gq/*
 *://*.machekoutcontflexfa.ml/*
 *://*.macheretaphoca.tk/*
-*://*.machershop.net/*
 *://*.machicshop.com/*
 *://*.machieveri.web.app/*
 *://*.machighralkinot.ga/*
@@ -227603,6 +227629,11 @@
 *://*.mafenveto.cf/*
 *://*.mafettdingradi.gq/*
 *://*.mafgreeds.com/*
+*://*.mafiacasinoapp.fr/*
+*://*.mafiacasinoavis.fr/*
+*://*.mafiacasinobonus365.fr/*
+*://*.mafiacasinocodepromo.fr/*
+*://*.mafiacasinologin777.fr/*
 *://*.mafibomerkile.tk/*
 *://*.maficaltamud.ml/*
 *://*.mafichedeclasse.fr/*
@@ -228582,7 +228613,6 @@
 *://*.maknikarcapital.com/*
 *://*.mako-gmbh.de/*
 *://*.makocumbtypertest.ml/*
-*://*.makoenergie.de/*
 *://*.makolbgnosemzeab.tk/*
 *://*.makopipoceso.cf/*
 *://*.makosh-shop.ru/*
@@ -228707,7 +228737,6 @@
 *://*.maliquarnesib.ga/*
 *://*.malirilogpa.gq/*
 *://*.maliseandeve.com/*
-*://*.malisen.de/*
 *://*.malisjitenin.ml/*
 *://*.malisyllu.gq/*
 *://*.malithatlador.tk/*
@@ -229898,7 +229927,6 @@
 *://*.marinnino.gq/*
 *://*.marinsound.ru/*
 *://*.marinutkaminutka.biz/*
-*://*.marioautopecas.com/*
 *://*.marioefederica.it/*
 *://*.marioncountycannabis.com/*
 *://*.marionmaurer.com/*
@@ -229964,7 +229992,6 @@
 *://*.marketoptions.com/*
 *://*.marketpalce.com/*
 *://*.marketplace-new.today/*
-*://*.marketplacetopshop.com/*
 *://*.marketprojecte.ru/*
 *://*.markets-capital.com/*
 *://*.markets-csgotm.ru/*
@@ -230160,7 +230187,6 @@
 *://*.marsgihilipoli.ga/*
 *://*.marshalfiresradioactive.com/*
 *://*.marshall.im/*
-*://*.marshallaudio-eu.top/*
 *://*.marshallfrance.fr/*
 *://*.marshalqualities.com/*
 *://*.marshardbuchsjatis.ml/*
@@ -230225,7 +230251,6 @@
 *://*.martheocourcoso.cf/*
 *://*.marthpelreconxo.gq/*
 *://*.marthyrychofscourfu.tk/*
-*://*.martialarts-plus.com/*
 *://*.martibakarpyilo.gq/*
 *://*.martidotime.ga/*
 *://*.martigercconcstarit.ga/*
@@ -230543,6 +230568,7 @@
 *://*.master-ssg.com/*
 *://*.master-ticket.fr/*
 *://*.masterbaushop.de/*
+*://*.masterbillet.fr/*
 *://*.masterblog332xbvw1gw.biz/*
 *://*.masterblog3389zxxo2m.biz/*
 *://*.mastercard.re/*
@@ -230559,6 +230585,7 @@
 *://*.masterpiecestudio.com/*
 *://*.masterstudyprograms.eu/*
 *://*.masterthoroughfarepiercing.com/*
+*://*.mastertickets.fr/*
 *://*.mastertoools.com/*
 *://*.masterwebvalencia.es/*
 *://*.mastery-ticket.fr/*
@@ -231048,7 +231075,6 @@
 *://*.mavorsehsderlacar.tk/*
 *://*.mavulcatiro.ga/*
 *://*.mavupzk.cn/*
-*://*.mavyella.com/*
 *://*.mawals.xyz/*
 *://*.mawantratemcellblan.ga/*
 *://*.mawarbackripen.tk/*
@@ -231072,7 +231098,6 @@
 *://*.max-hotel.ro/*
 *://*.max-prime.fr/*
 *://*.max-raddatz.de/*
-*://*.max-steroids.com/*
 *://*.max-titan-gel-gold.eu/*
 *://*.max-xtrazex.eu/*
 *://*.max0tube.monster/*
@@ -232600,7 +232625,6 @@
 *://*.meieperelapsehoid.ee/*
 *://*.meier-boutique.ch/*
 *://*.meierfeld.com/*
-*://*.meiergartenbau.de/*
 *://*.meiers.eu/*
 *://*.meierschweiz.de/*
 *://*.meierwien.at/*
@@ -232694,6 +232718,7 @@
 *://*.meiniruchannae.ml/*
 *://*.meiniuba.com/*
 *://*.meinkellerserver.xyz/*
+*://*.meinkleinerhuhnerstall-at.com/*
 *://*.meinmoda.de/*
 *://*.meinmodellshop.com/*
 *://*.meinotfuruggtryper.tk/*
@@ -233329,6 +233354,7 @@
 *://*.mensavshert.ml/*
 *://*.mensbacrohonno.gq/*
 *://*.mensbeschbankcemin.ml/*
+*://*.mensbestbasics.at/*
 *://*.mensbrinpecra.ml/*
 *://*.menscingnannawesso.ga/*
 *://*.menscolgecame.tk/*
@@ -233792,6 +233818,7 @@
 *://*.merrellnorge-no.com/*
 *://*.merrelloutletonline.de/*
 *://*.merrellparissale.fr/*
+*://*.merrells.co.at/*
 *://*.merrells.de/*
 *://*.merrellsandaalit.com/*
 *://*.merrellsfrance.fr/*
@@ -235016,7 +235043,6 @@
 *://*.mi7ut.bar/*
 *://*.mi8xng.tokyo/*
 *://*.mia-blog.xyz/*
-*://*.mia-modehaus.ch/*
 *://*.miaaer.tokyo/*
 *://*.miabackcorpie.tk/*
 *://*.miaboreafighcol.tk/*
@@ -235117,6 +235143,7 @@
 *://*.mican.my.id/*
 *://*.micaptempsesgresen.cf/*
 *://*.micaraaeu.shop/*
+*://*.micaraapop.shop/*
 *://*.micarchema.ml/*
 *://*.micardium-at.micardiumhub.com/*
 *://*.micardium-bio.com/*
@@ -235477,6 +235504,7 @@
 *://*.midnightconsessionconsession.com/*
 *://*.midnighti.com/*
 *://*.midnolesidulti.cf/*
+*://*.midoga.com/*
 *://*.midoguritet.tk/*
 *://*.midontumarvingsleep.ga/*
 *://*.midorigabinet.pl/*
@@ -235704,7 +235732,6 @@
 *://*.mihober.my.id/*
 *://*.mihometyfsamp.ml/*
 *://*.mihoresthans.cf/*
-*://*.mihovorwyv.shop/*
 *://*.mihtylomerdvers.cf/*
 *://*.mihvvi.tokyo/*
 *://*.mihwdp.bar/*
@@ -236648,7 +236675,6 @@
 *://*.mirapali.com/*
 *://*.miraralcielo.net/*
 *://*.miraserjutirfo.ga/*
-*://*.miravastore.shop/*
 *://*.mircindir.biz/*
 *://*.mircosoft365.fr/*
 *://*.mircosoftonline.fr/*
@@ -236660,7 +236686,6 @@
 *://*.miredindeed.net/*
 *://*.miregaspru.tk/*
 *://*.mireholzio.ml/*
-*://*.mireillehauck.com/*
 *://*.mireligenra.ga/*
 *://*.miremenmoo.ga/*
 *://*.miremidre.tk/*
@@ -238343,7 +238368,6 @@
 *://*.mobilpay-fi.com/*
 *://*.mobilr.com/*
 *://*.mobilshop24.eu/*
-*://*.mobilstock-container.de/*
 *://*.mobiltrygheden.com/*
 *://*.mobilundaktiv.de/*
 *://*.mobilunderskriv.com/*
@@ -238386,6 +238410,7 @@
 *://*.mobirewardplanet.xyz/*
 *://*.mobirewardstar.xyz/*
 *://*.mobirewardworld.xyz/*
+*://*.mobirise.com/*
 *://*.mobislotplay.xyz/*
 *://*.mobislotsite.xyz/*
 *://*.mobislotspin.xyz/*
@@ -238516,7 +238541,6 @@
 *://*.modehaus-beckers.de/*
 *://*.modehaus-dresden.com/*
 *://*.modehaus-dusseldorf.de/*
-*://*.modehaus-meyer.de/*
 *://*.modehaus-wagner.de/*
 *://*.modehaus-wolfsburg.de/*
 *://*.modehausessen.de/*
@@ -239671,6 +239695,11 @@
 *://*.mondbetvematen.gq/*
 *://*.mondbruccontmeatf.cf/*
 *://*.mondcasino.fr/*
+*://*.mondcasinoapp.fr/*
+*://*.mondcasinobonus.fr/*
+*://*.mondcasinobonuscode.fr/*
+*://*.mondcasinodeposit.fr/*
+*://*.mondcasinologin.fr/*
 *://*.mondchariffner.ml/*
 *://*.mondcomdycegacit.tk/*
 *://*.mondcourtcicallhurpea.gq/*
@@ -239693,6 +239722,7 @@
 *://*.mondial-moncolis.fr/*
 *://*.mondial-pointrelais.fr/*
 *://*.mondial-reiay.fr/*
+*://*.mondial-relais-assistance.fr/*
 *://*.mondial-relay-colis.fr/*
 *://*.mondial-relay-express.fr/*
 *://*.mondial-relay-fr.fr/*
@@ -240211,7 +240241,6 @@
 *://*.monotonoustuneunderestimate.com/*
 *://*.monovia.de/*
 *://*.monparcoursup.fr/*
-*://*.monparis-mall.shop/*
 *://*.monpass-secgeneral.fr/*
 *://*.monpass-securitesg.fr/*
 *://*.monpass-societegenerale.fr/*
@@ -240356,6 +240385,11 @@
 *://*.monsterwin-casino.fr/*
 *://*.monsterwin-fr.fr/*
 *://*.monsterwin1.fr/*
+*://*.monsterwincasinoapp.fr/*
+*://*.monsterwincasinobonus.fr/*
+*://*.monsterwincasinobonus777.fr/*
+*://*.monsterwincasinocode.fr/*
+*://*.monsterwincasinologin.fr/*
 *://*.monsteur.fr/*
 *://*.monstohealili.tk/*
 *://*.monstrousrowandays.com/*
@@ -241799,6 +241833,7 @@
 *://*.movz-true-mov.buzz/*
 *://*.mow95kh.tokyo/*
 *://*.mow9ss.cyou/*
+*://*.mowaconcept.com/*
 *://*.mowalitomembti.gq/*
 *://*.mowangpapa.com/*
 *://*.mowapif.bar/*
@@ -243445,7 +243480,6 @@
 *://*.museivalstagna.it/*
 *://*.musengue.com/*
 *://*.museocoronarrubia.it/*
-*://*.museopradotickets.com/*
 *://*.museradiant.com/*
 *://*.musesai.io/*
 *://*.musescore.fr/*
@@ -243759,7 +243793,6 @@
 *://*.mvhmtx.rest/*
 *://*.mvhnpacl.cyou/*
 *://*.mvhskx.tokyo/*
-*://*.mvhulvrd.shop/*
 *://*.mvhwgh.bar/*
 *://*.mvhyxe.bar/*
 *://*.mvideo.xyz/*
@@ -244746,7 +244779,6 @@
 *://*.myh999000.com/*
 *://*.myhaikou.cn/*
 *://*.myhallo.de/*
-*://*.myhanna.de/*
 *://*.myhannaeu.shop/*
 *://*.myharciarawsndol.tk/*
 *://*.myhauswelt.de/*
@@ -247604,7 +247636,6 @@
 *://*.naturalistscrowd.com/*
 *://*.naturalistssurroundings.com/*
 *://*.naturalistsubsided.com/*
-*://*.naturallyh.com/*
 *://*.naturallyk.com/*
 *://*.naturallymade.fr/*
 *://*.naturalnightshare.biz/*
@@ -247619,7 +247650,6 @@
 *://*.naturaparkpalinuro.it/*
 *://*.naturasailing.it/*
 *://*.naturbaustoffe-onlineshop.de/*
-*://*.naturbrenner.de/*
 *://*.naturcontact.de/*
 *://*.naturdeko.dk/*
 *://*.nature-experience.de/*
@@ -249033,7 +249063,6 @@
 *://*.nelw8w.tokyo/*
 *://*.nelwheavetunoti.tk/*
 *://*.nelwicksandridso.tk/*
-*://*.nelyz.com/*
 *://*.nelzna.tokyo/*
 *://*.nemagesfugo.tk/*
 *://*.nemalsonitab.ml/*
@@ -251293,7 +251322,6 @@
 *://*.newsendresboytrephag.ml/*
 *://*.newsexyone.com/*
 *://*.newsfetapuzdaiproh.tk/*
-*://*.newsfinas.de/*
 *://*.newsflashtv.buzz/*
 *://*.newsfootphanddystnoram.tk/*
 *://*.newsforyou.online/*
@@ -252759,7 +252787,6 @@
 *://*.nienisihalpay.tk/*
 *://*.nienislerosema.gq/*
 *://*.nienyfarthojuti.tk/*
-*://*.nieparis-work.top/*
 *://*.niepavacafi.tk/*
 *://*.niepedispozacrio.gq/*
 *://*.niepenhaspseadegen.ga/*
@@ -253333,7 +253360,6 @@
 *://*.nimbsenvamimi.cf/*
 *://*.nimbsocliro.web.app/*
 *://*.nimbtesembnertiback.ml/*
-*://*.nime24.de/*
 *://*.nimecodentten.tk/*
 *://*.nimed24.ee/*
 *://*.nimegamontra.cf/*
@@ -255918,7 +255944,6 @@
 *://*.norviofogrei.ga/*
 *://*.norvpn.fr/*
 *://*.norwadicoreama.cf/*
-*://*.norwayhotel.net/*
 *://*.norwaynewstoday.com/*
 *://*.norwayposten.today/*
 *://*.norwbo.tokyo/*
@@ -257015,6 +257040,7 @@
 *://*.nsqfgl.xyz/*
 *://*.nsqlgr.cyou/*
 *://*.nsqvdl.bar/*
+*://*.nsrarlou.shop/*
 *://*.nsrkwt.bar/*
 *://*.nsrsts.tokyo/*
 *://*.nsrtbc.bar/*
@@ -257137,7 +257163,6 @@
 *://*.ntds6g.cyou/*
 *://*.ntduux1.cyou/*
 *://*.ntdz5tc.shop/*
-*://*.nte-logistics.com/*
 *://*.nte1o0.cyou/*
 *://*.nteduljaila.gq/*
 *://*.nteeramtnehab.ga/*
@@ -259567,7 +259592,6 @@
 *://*.oasi2009.net/*
 *://*.oasidelbla.it/*
 *://*.oasipark.eu/*
-*://*.oasis-handel.de/*
 *://*.oasisbanquet.buzz/*
 *://*.oasisclinicla.org/*
 *://*.oasishomerenovations.com/*
@@ -260705,28 +260729,19 @@
 *://*.oekw.com.cn/*
 *://*.oel-direkt.de/*
 *://*.oel4p6.tokyo/*
+*://*.oelbest.de/*
 *://*.oelck5.cyou/*
 *://*.oelgo.de/*
-*://*.oelguru.de/*
+*://*.oelheizprofi.de/*
+*://*.oelheizpunkt.de/*
 *://*.oelheizung24.de/*
-*://*.oelhome.de/*
-*://*.oelhub.de/*
 *://*.oeliptele.com/*
 *://*.oelit.de/*
 *://*.oeliui.tokyo/*
-*://*.oelixx.de/*
 *://*.oeljetzt.de/*
 *://*.oellaw.tokyo/*
-*://*.oelnet.de/*
-*://*.oelone.de/*
 *://*.oelonlineshop.de/*
-*://*.oelpanda.de/*
-*://*.oelport.de/*
 *://*.oelpreisfinder.de/*
-*://*.oelsmart.de/*
-*://*.oelspeed.de/*
-*://*.oeltop.de/*
-*://*.oelup.de/*
 *://*.oelzone.de/*
 *://*.oembh.cyou/*
 *://*.oemsn96.shop/*
@@ -261014,7 +261029,6 @@
 *://*.officialstoryemployees.bar/*
 *://*.officialstussy.fr/*
 *://*.officialtollbymailny.com/*
-*://*.officialyamato.co/*
 *://*.officialyeti.com/*
 *://*.officiel-irontvpro.fr/*
 *://*.officiel-jott.fr/*
@@ -261739,6 +261753,7 @@
 *://*.oilchangeasheville.com/*
 *://*.oilchangehendersonville.com/*
 *://*.oildirekt24.de/*
+*://*.oilheizung.de/*
 *://*.oilleftssavereals.biz/*
 *://*.oilmsu.ru/*
 *://*.oilnameeyesthings.rest/*
@@ -262017,7 +262032,6 @@
 *://*.okbet.biz/*
 *://*.okbgsp.bar/*
 *://*.okbon.de/*
-*://*.okboptions.com/*
 *://*.okbotnidorde.cf/*
 *://*.okbpmu.tokyo/*
 *://*.okbpxh.bar/*
@@ -262646,7 +262660,6 @@
 *://*.olympiansounds-removed.de/*
 *://*.olympicsappointment.com/*
 *://*.olympicsnearesttablets.com/*
-*://*.olympicsvipshop.com/*
 *://*.olympis.de/*
 *://*.olyoiy.tokyo/*
 *://*.olyoup.tokyo/*
@@ -263471,6 +263484,7 @@
 *://*.online-fahrradwelt.com/*
 *://*.online-forum-pussy.buzz/*
 *://*.online-forum-vip.cloud/*
+*://*.online-franprix.fr/*
 *://*.online-free-news.buzz/*
 *://*.online-gpw.pl/*
 *://*.online-green.buzz/*
@@ -263879,7 +263893,6 @@
 *://*.onschuhe.shop/*
 *://*.onschuhefabrikverkaufschweiz.com/*
 *://*.onschuhen.shop/*
-*://*.onschuheoutlet.at/*
 *://*.onschuheoutletstore.at/*
 *://*.onschuheschweiz.com/*
 *://*.onschuheschweizoutlet.com/*
@@ -264370,7 +264383,6 @@
 *://*.openforart.eu/*
 *://*.openfuture.ai/*
 *://*.openfuture.ai/*
-*://*.opengers.com/*
 *://*.opengreatlysophisticatedinfo-file.info/*
 *://*.opengsm.it/*
 *://*.openhabianpi.com/*
@@ -264391,7 +264403,6 @@
 *://*.openmedicalgroup.de/*
 *://*.openmedicine-online.com/*
 *://*.openmega.net/*
-*://*.openmile.de/*
 *://*.openmindblog.info/*
 *://*.opennumbernumber.buzz/*
 *://*.openop2.xyz/*
@@ -264802,7 +264813,6 @@
 *://*.optimisticlessennation.com/*
 *://*.optimisticminiaturizationdowry.com/*
 *://*.optimizewin.com/*
-*://*.optimum-agentur.com/*
 *://*.optintax.com/*
 *://*.option-bank.com/*
 *://*.option-prime.fr/*
@@ -265369,6 +265379,7 @@
 *://*.orelax.xyz/*
 *://*.orellion.com/*
 *://*.orelreliten.cf/*
+*://*.orelsantour2026.fr/*
 *://*.oreltagebi.ml/*
 *://*.orelwalgoo.ml/*
 *://*.orempitina.ml/*
@@ -266456,6 +266467,7 @@
 *://*.otdzpi.bar/*
 *://*.otearcentadiros.cf/*
 *://*.otebalpocha.tk/*
+*://*.otech-duesseldorf.com/*
 *://*.otecintrepow.tk/*
 *://*.oteeiio.shop/*
 *://*.otegsacharbuyme.cf/*
@@ -267045,7 +267057,6 @@
 *://*.outdooressentialsshop.com/*
 *://*.outdoorflow-gmbh.de/*
 *://*.outdoorfurnitureuk.com/*
-*://*.outdoorgear-outlet.com/*
 *://*.outdoorhosensalestore.com/*
 *://*.outdoorit.club/*
 *://*.outdoorkleidungs.com/*
@@ -267056,7 +267067,6 @@
 *://*.outdoorresearchjacke.de/*
 *://*.outdoorscooks.com/*
 *://*.outdoorsdeals.com/*
-*://*.outdoorsfine.com/*
 *://*.outdoorshirtde.com/*
 *://*.outdoorspetzl.com/*
 *://*.outdoorsportsequip.com/*
@@ -267151,6 +267161,7 @@
 *://*.outlet-schoenen.nl/*
 *://*.outlet-shimano.com/*
 *://*.outlet-shop.fr/*
+*://*.outlet-sneakers.fr/*
 *://*.outlet-sparcoofficial.com/*
 *://*.outlet-star.fr/*
 *://*.outlet-stock.fr/*
@@ -267211,6 +267222,7 @@
 *://*.outletvictoriasecret.fr/*
 *://*.outletvillage.fr/*
 *://*.outletvitra.com/*
+*://*.outletwinter.fr/*
 *://*.outlink.online/*
 *://*.outliok.fr/*
 *://*.outlivrabatt.com/*
@@ -268187,7 +268199,6 @@
 *://*.oxia.xyz/*
 *://*.oxicthicmite.tk/*
 *://*.oxiinc.org/*
-*://*.oxikredit.com/*
 *://*.oxilqr.bar/*
 *://*.oximtuvatul.ga/*
 *://*.oxinalnulirous.tk/*
@@ -270882,7 +270893,6 @@
 *://*.panamajackonline.sk/*
 *://*.panamajackosterreich.at/*
 *://*.panamajackparis.fr/*
-*://*.panamajackschweiz.net/*
 *://*.panamajackwien.at/*
 *://*.panandbarrobelf.ga/*
 *://*.pananlezasadd.cf/*
@@ -271220,6 +271230,7 @@
 *://*.paragonblue.dk/*
 *://*.paragonresort.fun/*
 *://*.paragoosefrance.fr/*
+*://*.paragooseofficial.fr/*
 *://*.paragooseofficiel.fr/*
 *://*.paragraph.xyz/*
 *://*.parahissu.ga/*
@@ -271422,6 +271433,7 @@
 *://*.paris-g7.fr/*
 *://*.paris-g7taxi.fr/*
 *://*.paris-g7taxis.fr/*
+*://*.paris-live-tickets.fr/*
 *://*.paris-taxig7.fr/*
 *://*.paris-univ8.fr/*
 *://*.paris-vip-casino.fr/*
@@ -272504,7 +272516,6 @@
 *://*.patrimoine-heritage.eu/*
 *://*.patrimoine-partenaires.com/*
 *://*.patrimoinefacile.com/*
-*://*.patrimoinesolution.com/*
 *://*.patriotaffluent.com/*
 *://*.patriotapelles.com/*
 *://*.patriotbadge24.com/*
@@ -274219,12 +274230,10 @@
 *://*.pellandmocvoiherrdist.gq/*
 *://*.pellcomlofapa.gq/*
 *://*.pellegtrinos.ga/*
-*://*.pellelily.com/*
 *://*.pellet-bio.company.site/*
 *://*.pellet-cena.pl/*
 *://*.pellet-ecos.company.site/*
 *://*.pellethaus.shop/*
-*://*.pelletholz24.com/*
 *://*.pelletnaturale.com/*
 *://*.pelletopia.de/*
 *://*.pelletsgeschaft.com/*
@@ -275078,7 +275087,6 @@
 *://*.periodyearmouth.biz/*
 *://*.peripatos.at/*
 *://*.peripher.com/*
-*://*.peristainnovations.com/*
 *://*.peritacioneslmb.es/*
 *://*.peritacionjudicialoficial.com/*
 *://*.peritibidcu.tk/*
@@ -276442,6 +276450,7 @@
 *://*.pharmaciedesvallees.fr/*
 *://*.pharmaciedevezenobres.fr/*
 *://*.pharmaciedirect.fr/*
+*://*.pharmaciedu17eme.re/*
 *://*.pharmaciedu18eme.fr/*
 *://*.pharmacieduboisclair.fr/*
 *://*.pharmacieducasino.fr/*
@@ -277916,6 +277925,7 @@
 *://*.pimatatedleper.tk/*
 *://*.pimcjes.tokyo/*
 *://*.pimdimelytooh.cf/*
+*://*.pimdy.com/*
 *://*.pimeharodi.cf/*
 *://*.pimentiatenli.gq/*
 *://*.pimepobermodus.gq/*
@@ -277996,7 +278006,6 @@
 *://*.pingpectballreces.ga/*
 *://*.pingpoddicondgoldie.tk/*
 *://*.pingpong-sale.com/*
-*://*.pingpongprous.com/*
 *://*.pingpongrootdl.co/*
 *://*.pingramometlolok.cf/*
 *://*.pingrapeachtmuscgari.gq/*
@@ -279366,7 +279375,6 @@
 *://*.platsophyascanal.tk/*
 *://*.platsulgentcin.ml/*
 *://*.plattatanfehen.ml/*
-*://*.plattengeschaft.de/*
 *://*.plattenopaneele.de/*
 *://*.plattenspielerde.de/*
 *://*.platthennessverlo.cf/*
@@ -279558,6 +279566,7 @@
 *://*.pleasadunlisjo.cf/*
 *://*.pleasantexpressingstud.com/*
 *://*.pleasanthearthsale.com/*
+*://*.pleasantk.com/*
 *://*.pleasantly.best/*
 *://*.pleasantlyrevenge.com/*
 *://*.pleasantsethats.com/*
@@ -279810,6 +279819,7 @@
 *://*.plinkobonuscasino.fr/*
 *://*.plinkobonusgratuit.fr/*
 *://*.plinkocasino-bonus.fr/*
+*://*.plinkocasino.fr/*
 *://*.plinkocasinoenligne.fr/*
 *://*.plinkojeuenligne.fr/*
 *://*.plinkojeuxbonus.fr/*
@@ -279877,7 +279887,6 @@
 *://*.plormipolafinrei.tk/*
 *://*.plortyinda.web.app/*
 *://*.plorxucompbea.tk/*
-*://*.ploryday.com/*
 *://*.plosagmesalla.ml/*
 *://*.plosavstatpit.web.app/*
 *://*.plosbotlamonvipel.tk/*
@@ -280501,7 +280510,6 @@
 *://*.pochri.xyz/*
 *://*.pochsmanporgsichtther.tk/*
 *://*.pochta-ru.com/*
-*://*.pociath.com/*
 *://*.pocieszak.pl/*
 *://*.pocisiminghand.tk/*
 *://*.pocitiwerslad.cf/*
@@ -281092,6 +281100,7 @@
 *://*.pole-emplli.fr/*
 *://*.pole-emplloi.fr/*
 *://*.pole-emplo.fr/*
+*://*.pole-emploie.fr/*
 *://*.pole-emploii.fr/*
 *://*.pole-emplok.fr/*
 *://*.pole-emploo.fr/*
@@ -281624,7 +281633,6 @@
 *://*.popizu.tokyo/*
 *://*.popjeoclocadatot.tk/*
 *://*.popkiora.gq/*
-*://*.popkitchen-ware.com/*
 *://*.popland-berlin.de/*
 *://*.poplarcolonistgreatest.com/*
 *://*.poplarsuccula.space/*
@@ -284157,7 +284165,6 @@
 *://*.premija-trgovina.cam/*
 *://*.premija-trgovina.news/*
 *://*.premimliatriniv.tk/*
-*://*.preminantdo.com/*
 *://*.preminexpunsi.tk/*
 *://*.preminoulmeli.tk/*
 *://*.preminquiviaterma.gq/*
@@ -285083,7 +285090,6 @@
 *://*.primanworcesi.tk/*
 *://*.primanymab.tk/*
 *://*.primaphreyrisde.ga/*
-*://*.primaprofi-reinigung.at/*
 *://*.primapzamadi.ga/*
 *://*.primarcatap.tk/*
 *://*.primariamalucuflori.ro/*
@@ -285586,6 +285592,7 @@
 *://*.privarridesundnons.ga/*
 *://*.privartizu.gq/*
 *://*.privat-brno.eu/*
+*://*.private-ai.com/*
 *://*.private-message.live/*
 *://*.private-prime.fr/*
 *://*.private-show.live/*
@@ -286563,7 +286570,6 @@
 *://*.profholhyrabestdis.tk/*
 *://*.profhydtobur.tk/*
 *://*.profi-prices.news/*
-*://*.profi-rasenmaher.com/*
 *://*.profi-umzug-fuerth.de/*
 *://*.profibchomermo.ga/*
 *://*.profibikes.de/*
@@ -287216,6 +287222,7 @@
 *://*.promomthapononbval.tk/*
 *://*.promonumworks.fr/*
 *://*.promopaid.info/*
+*://*.promoprism.com/*
 *://*.promorresbeyco.tk/*
 *://*.promos-cybertek.fr/*
 *://*.promos-prime.fr/*
@@ -289600,7 +289607,6 @@
 *://*.pureglowblza.com.br/*
 *://*.pureglowde.com/*
 *://*.pureinci.pl/*
-*://*.purekicks.de/*
 *://*.purely.icu/*
 *://*.purelywhitedeluxe.com/*
 *://*.purepeople.com/*
@@ -290243,7 +290249,6 @@
 *://*.pxcksx.cyou/*
 *://*.pxclz.rest/*
 *://*.pxcn1hm.work/*
-*://*.pxctpkvu.shop/*
 *://*.pxdbyh.rest/*
 *://*.pxdcpk.tokyo/*
 *://*.pxdiem.tokyo/*
@@ -290486,6 +290491,7 @@
 *://*.pypal-tiktok.fr/*
 *://*.pyparbandmentia.ml/*
 *://*.pypeufx.bar/*
+*://*.pypmobileppl.fr/*
 *://*.pypogastsphagtabsu.cf/*
 *://*.pyppl.fr/*
 *://*.pypscuremobil.fr/*
@@ -297473,7 +297479,6 @@
 *://*.radunmiledwa.gq/*
 *://*.raduprare.tk/*
 *://*.radusrabergi.tk/*
-*://*.radverkauf.com/*
 *://*.radvienulmiddsi.ga/*
 *://*.radwagonaffluence.pw/*
 *://*.radwunder.de/*
@@ -298961,6 +298966,7 @@
 *://*.raselbeamama.tk/*
 *://*.rasemitiltroger.cf/*
 *://*.rasen-profis.de/*
+*://*.rasen-traktor.com/*
 *://*.rasen24.com/*
 *://*.rasen24h.com/*
 *://*.rasendorou.tk/*
@@ -301216,6 +301222,11 @@
 *://*.redbullofficial.fr/*
 *://*.redburero.ga/*
 *://*.redcapeltouzanra.ga/*
+*://*.redcasinoapp777.fr/*
+*://*.redcasinobonus.fr/*
+*://*.redcasinodeposit.fr/*
+*://*.redcasinologin.fr/*
+*://*.redcasinopromo.fr/*
 *://*.redcdecawebsing.gq/*
 *://*.redchandtettuvol.tk/*
 *://*.redchooredigopo.tk/*
@@ -301615,6 +301626,7 @@
 *://*.refereebuiltinthrice.com/*
 *://*.refereeconscientioushopeful.com/*
 *://*.refereesalad.com/*
+*://*.reference-antai-gouvs.fr/*
 *://*.reference-prime.fr/*
 *://*.referencement-garanti.eu/*
 *://*.referencepronounce.com/*
@@ -302240,6 +302252,7 @@
 *://*.reifassireenetma.ml/*
 *://*.reifatchesscalmons.tk/*
 *://*.reifeelasagcand.ga/*
+*://*.reifemode.com/*
 *://*.reifen-dreyer.com/*
 *://*.reifen-teile-discount.de/*
 *://*.reifencheck.net/*
@@ -302571,7 +302584,6 @@
 *://*.rekoveva.bar/*
 *://*.rekpkl.tokyo/*
 *://*.rekrut.com/*
-*://*.rekrutierungszentrum.com/*
 *://*.rekrutmentni.net/*
 *://*.reksadoridown.ml/*
 *://*.reksilsn.xyz/*
@@ -303133,7 +303145,6 @@
 *://*.renevoullement-cartevitale.fr/*
 *://*.renew-ameli.fr/*
 *://*.renew-critair.fr/*
-*://*.renew-cstmrs.com/*
 *://*.renew-netfiix.fr/*
 *://*.renew-prime-video.fr/*
 *://*.renew-prime.fr/*
@@ -303632,7 +303643,6 @@
 *://*.rentsaddstodtejepdump.cf/*
 *://*.rentsermonenicon.gq/*
 *://*.rentshop.ro/*
-*://*.rentshoplk.shop/*
 *://*.rentsmelagmuncirc.ml/*
 *://*.rentsubviwarpou.cf/*
 *://*.rentsunkingmosca.tk/*
@@ -304820,6 +304830,7 @@
 *://*.retard-suivi-livraison.fr/*
 *://*.retard-suivi-ma-redistribution.fr/*
 *://*.retardataire-colis.fr/*
+*://*.retardmajoration.fr/*
 *://*.retardpayement.com/*
 *://*.retards-amendes.fr/*
 *://*.retards-antais.fr/*
@@ -305203,7 +305214,6 @@
 *://*.revlepalischi.gq/*
 *://*.revn3f.xyz/*
 *://*.revnoresivonep.cf/*
-*://*.revnuhelter.com/*
 *://*.revoiut-cy.com/*
 *://*.revoke.money/*
 *://*.revokepolygraph.com/*
@@ -305256,7 +305266,6 @@
 *://*.rewaweesufo.ga/*
 *://*.rewdj.rest/*
 *://*.rewebcoetrophitin.cf/*
-*://*.rewebichladen.com/*
 *://*.rewecava.tk/*
 *://*.rewechshrinmatre.gq/*
 *://*.rewejc.bar/*
@@ -307869,6 +307878,7 @@
 *://*.ripcompriddcur.tk/*
 *://*.ripconvwatjutahouns.cf/*
 *://*.ripcountbuafapo.tk/*
+*://*.ripcurl.co.at/*
 *://*.ripcurlfrance.fr/*
 *://*.ripdaikingkendeo.cf/*
 *://*.ripdaydrahdangwo.tk/*
@@ -308255,7 +308265,6 @@
 *://*.ritter-mode.com/*
 *://*.ritteroutlet.de/*
 *://*.rituals-outlet.shop/*
-*://*.rituals-prize.com/*
 *://*.ritualwants.com/*
 *://*.rituanosun.ga/*
 *://*.ritud.com/*
@@ -309263,6 +309272,11 @@
 *://*.robxanq.work/*
 *://*.roby-casinos.fr/*
 *://*.robycasino7.fr/*
+*://*.robycasinoapp.fr/*
+*://*.robycasinoavis.fr/*
+*://*.robycasinobonusfrance.fr/*
+*://*.robycasinologin.fr/*
+*://*.robycasinoonline.fr/*
 *://*.robycasinos.fr/*
 *://*.robynbruce.shop/*
 *://*.robysettiver.tk/*
@@ -310141,7 +310155,9 @@
 *://*.roobet-casino.fr/*
 *://*.roobet-casinos.fr/*
 *://*.roobet-fr.fr/*
+*://*.roobetcasino-en-ligne.fr/*
 *://*.roobetcasino-fr.fr/*
+*://*.roobetcasino-online.fr/*
 *://*.roobetcasinoapp.fr/*
 *://*.roobetcasinobet.fr/*
 *://*.roobetcasinobonus.fr/*
@@ -311890,7 +311906,6 @@
 *://*.ruay-hanoy.com/*
 *://*.ruay828.com/*
 *://*.ruayluckygold.com/*
-*://*.rub-energy.de/*
 *://*.rub-guben.de/*
 *://*.rub4hf.cyou/*
 *://*.ruba.xyz/*
@@ -312267,6 +312282,7 @@
 *://*.rundfunkportal.de/*
 *://*.rundiffusion.com/*
 *://*.rundrejser.eu/*
+*://*.rundumheizoel.de/*
 *://*.rundummobil.de/*
 *://*.runelite.wiki/*
 *://*.runelord.eu/*
@@ -312275,7 +312291,6 @@
 *://*.runforlch.be/*
 *://*.rungdoromkyopo.tk/*
 *://*.rungdurchciperea.gq/*
-*://*.runge-energie.de/*
 *://*.rungelabube.gq/*
 *://*.rungfinggothoreal.tk/*
 *://*.rungforhumenen.tk/*
@@ -314346,7 +314361,6 @@
 *://*.saapallarandogtgus.ml/*
 *://*.saapendprophytsek.gq/*
 *://*.saaq-click.com/*
-*://*.saar-pfalzroboter.de/*
 *://*.saaretelk.eu/*
 *://*.saarjn.work/*
 *://*.saarland-honorarfinanz.de/*
@@ -314545,6 +314559,7 @@
 *://*.sacsirefrecons.ml/*
 *://*.sacsmoinscher.fr/*
 *://*.sacsoutlet-destockage.fr/*
+*://*.sacsparisoutlet.com/*
 *://*.sacspascher.fr/*
 *://*.sacspergecardcard.ml/*
 *://*.sacsreplique.fr/*
@@ -315073,7 +315088,6 @@
 *://*.sales-offer.cam/*
 *://*.sales.reuters.cm/*
 *://*.salesaddle.com/*
-*://*.salesagemart.com/*
 *://*.salesceramic.com/*
 *://*.salesconsulter.de/*
 *://*.salesgsidicemo.ml/*
@@ -317186,7 +317200,6 @@
 *://*.scandal-gossip.com/*
 *://*.scandalninety.com/*
 *://*.scandifurn.com/*
-*://*.scandinavanorth.shop/*
 *://*.scandinavian-flyfishing.dk/*
 *://*.scandlas2021.ee/*
 *://*.scanenedtrucaq.cf/*
@@ -317967,7 +317980,6 @@
 *://*.scientistwaters.rest/*
 *://*.scienzaericerca.cloud/*
 *://*.scienzafumetti.it/*
-*://*.scieriebarlet.com/*
 *://*.scierzl.tokyo/*
 *://*.scifiaddicts.com/*
 *://*.scifinuts.net/*
@@ -318702,6 +318714,7 @@
 *://*.seacorwhorihyd.ml/*
 *://*.seadaburdusthou.ml/*
 *://*.seadogtetopit.cf/*
+*://*.seae-mo.re/*
 *://*.seaemo.re/*
 *://*.seaencidsampjuncwar.cf/*
 *://*.seaevipostsumar.tk/*
@@ -319189,6 +319202,7 @@
 *://*.secure-info-banque.fr/*
 *://*.secure-ionos.fr/*
 *://*.secure-labanquepostale.fr/*
+*://*.secure-lbcapprovisionnement.fr/*
 *://*.secure-lebonc.fr/*
 *://*.secure-leboncoinload.fr/*
 *://*.secure-leboncoinpaid.fr/*
@@ -319675,6 +319689,7 @@
 *://*.seducerecognize.com/*
 *://*.sedum.xyz/*
 *://*.sedumpkapeato.ga/*
+*://*.see---mo.re/*
 *://*.see--m0.re/*
 *://*.see--mo0.re/*
 *://*.see--moo.re/*
@@ -319695,6 +319710,8 @@
 *://*.see-what-is-trending.com/*
 *://*.see-x-mo.re/*
 *://*.see-x-o.re/*
+*://*.seea--mo.re/*
+*://*.seea-mo.re/*
 *://*.seealarengedac.ga/*
 *://*.seeamo.re/*
 *://*.seeapordumide.gq/*
@@ -319932,7 +319949,6 @@
 *://*.seiko-france.fr/*
 *://*.seiko-mod.de/*
 *://*.seiko.re/*
-*://*.seikodeutschland.com/*
 *://*.seikofr.fr/*
 *://*.seikofrance.fr/*
 *://*.seikosboutique.fr/*
@@ -320885,6 +320901,7 @@
 *://*.sepesavasnenscons.gq/*
 *://*.sepeterpegosec.ga/*
 *://*.sepezz.sbs/*
+*://*.seph0ra.fr/*
 *://*.sephi01amazo.fr/*
 *://*.sephi02amazo.fr/*
 *://*.sephi03amazo.fr/*
@@ -323303,6 +323320,7 @@
 *://*.sh9y28.cyou/*
 *://*.sha14.com/*
 *://*.sha4pe.xyz/*
+*://*.shaarks.com/*
 *://*.shaarmswatches.com/*
 *://*.shabbs.xyz/*
 *://*.shabbydrewcleaning.com/*
@@ -323783,8 +323801,6 @@
 *://*.shop.tegeler.com/*
 *://*.shop.wkffku.top/*
 *://*.shop.xotufh.top/*
-*://*.shop15630.associazionechien.org/*
-*://*.shop16330.associazionechien.org/*
 *://*.shop2046.com/*
 *://*.shop4tesla.shop/*
 *://*.shop54002.carlsplace.org/*
@@ -323848,7 +323864,6 @@
 *://*.shoplostfounde.shop/*
 *://*.shopmacher-de.com/*
 *://*.shopmallknives.com/*
-*://*.shopmarkt.net/*
 *://*.shopmatrixx.com/*
 *://*.shopmeble.pl/*
 *://*.shopmixmatch.com/*
@@ -323894,7 +323909,6 @@
 *://*.shops-eminem.com/*
 *://*.shops-net.com/*
 *://*.shopsaddlebag.com/*
-*://*.shopsasfinag.it.com/*
 *://*.shopsauthorityfastest.com/*
 *://*.shopservy.com/*
 *://*.shopsewspecial.com/*
@@ -328341,7 +328355,6 @@
 *://*.smartthink.club/*
 *://*.smarttj.xyz/*
 *://*.smarttq.cn/*
-*://*.smartundgeizig.de/*
 *://*.smartwatch-officiel.fr/*
 *://*.smartwebasteroid.xyz/*
 *://*.smartwebglobal.xyz/*
@@ -329942,7 +329955,6 @@
 *://*.soenrenlecosneu.tk/*
 *://*.soentl.rest/*
 *://*.soenzf.cyou/*
-*://*.soeobfgf.com/*
 *://*.soeperzidema.tk/*
 *://*.soeplaschisdiysouthcha.ga/*
 *://*.soepusa.ee/*
@@ -330346,6 +330358,7 @@
 *://*.soldesmizunopascher.fr/*
 *://*.soldespremiata.fr/*
 *://*.soldespro.fr/*
+*://*.soldessacsparis.com/*
 *://*.soldierby.com/*
 *://*.soldierdecademonth.biz/*
 *://*.soldierfederalcountrys.buzz/*
@@ -330825,7 +330838,6 @@
 *://*.sopoma.ml/*
 *://*.soports.fr/*
 *://*.sopositipercpag.tk/*
-*://*.soppdobuy.com/*
 *://*.sopquostigic.gq/*
 *://*.sopqzy.rest/*
 *://*.sopranohosting.com/*
@@ -331203,7 +331215,6 @@
 *://*.soundskulviasteamub.tk/*
 *://*.soundsteepmittide.cf/*
 *://*.soundtegmamordemi.cf/*
-*://*.soundtek.eu/*
 *://*.soundtertouca.tk/*
 *://*.soundtithudgolage.tk/*
 *://*.soundtrackmagazine.it/*
@@ -331559,7 +331570,6 @@
 *://*.spalbadistbe.gq/*
 *://*.spalearaduser.ml/*
 *://*.spalenacsmyrweb.tk/*
-*://*.spalest.com/*
 *://*.spam404bl.com/*
 *://*.spamallidera.ml/*
 *://*.spamanutparhei.ga/*
@@ -331909,6 +331919,7 @@
 *://*.specialmothersex.buzz/*
 *://*.specialpointleg.rest/*
 *://*.specialprisons.com/*
+*://*.specialpurchasepoint.com/*
 *://*.specialroomworld.buzz/*
 *://*.specialscommons.xyz/*
 *://*.specialselling.com/*
@@ -332314,6 +332325,7 @@
 *://*.spielzeug-traum.com/*
 *://*.spielzeug-wunderwelt.com/*
 *://*.spielzeugeneu.de/*
+*://*.spielzeugopapop.shop/*
 *://*.spielzeugschmie.com/*
 *://*.spielzeugsde.com/*
 *://*.spielzeugsport.com/*
@@ -336423,6 +336435,7 @@
 *://*.stordownnicontsis.tk/*
 *://*.store-airplane.com/*
 *://*.store-app-master.com/*
+*://*.store-auchan.fr/*
 *://*.store-awnings.com/*
 *://*.store-birkenstock.fr/*
 *://*.store-bonds.com/*
@@ -337328,7 +337341,6 @@
 *://*.stuffedodiousmargin.com/*
 *://*.stuffedstudy.com/*
 *://*.stuffinfamous.com/*
-*://*.stuffjewelry.com/*
 *://*.stuffmansortsrooms.biz/*
 *://*.stuffmapstripes.com/*
 *://*.stuffnighthimself.biz/*
@@ -339322,7 +339334,6 @@
 *://*.supermodels.org/*
 *://*.supernova-casino.fr/*
 *://*.supernovastudiet.dk/*
-*://*.superofertinhas.online/*
 *://*.superoffensive.site/*
 *://*.superoptions.com/*
 *://*.superoptionstrading.biz/*
@@ -339925,7 +339936,6 @@
 *://*.surefoundations.biz/*
 *://*.suregaurdds.gq/*
 *://*.suregloychromadtea.cf/*
-*://*.surelectricbike.com/*
 *://*.surelybleedingcollection.com/*
 *://*.suremguigenphy.tk/*
 *://*.surentlijob.tk/*
@@ -340167,7 +340177,6 @@
 *://*.susceptiblefantasyjunction.com/*
 *://*.susceptibleparty.com/*
 *://*.susconarala.ml/*
-*://*.suscripcion-commitment.com/*
 *://*.suscsongcobocy.tk/*
 *://*.susedo.xyz/*
 *://*.susepathvay.ml/*
@@ -340252,7 +340261,6 @@
 *://*.susvamencentces.gq/*
 *://*.susymkucori.cf/*
 *://*.susynb6-e91d4.web.app/*
-*://*.suszy.shop/*
 *://*.sutabarccastconsre.tk/*
 *://*.sutabgarapo.tk/*
 *://*.sutadimu.ml/*
@@ -340503,7 +340511,6 @@
 *://*.svmwio.rest/*
 *://*.svn0g7.tokyo/*
 *://*.svnayz.tokyo/*
-*://*.svnemia.com/*
 *://*.svnsshy.bar/*
 *://*.svobarhobpisipe.ml/*
 *://*.svobnielorikke.tk/*
@@ -340998,6 +341005,7 @@
 *://*.swismughhundloce.tk/*
 *://*.swisovefov.gq/*
 *://*.swispearlprovosamaph.tk/*
+*://*.swiss-funding.com/*
 *://*.swiss-vests.com/*
 *://*.swiss29.com/*
 *://*.swiss4win-casino.fr/*
@@ -341639,6 +341647,7 @@
 *://*.syngeta.fr/*
 *://*.syniaty.com/*
 *://*.synincz.tokyo/*
+*://*.synizesis.com/*
 *://*.synkaworltumett.gq/*
 *://*.synkerbsnotan.ga/*
 *://*.synlad.fr/*
@@ -343593,7 +343602,6 @@
 *://*.taiganafitbe.tk/*
 *://*.taigaroppi.tk/*
 *://*.taigasttabeachre.cf/*
-*://*.taige24.de/*
 *://*.taigehandso.tk/*
 *://*.taigeronmonsven.ml/*
 *://*.taigibe.xyz/*
@@ -345623,6 +345631,7 @@
 *://*.tawvvi.bar/*
 *://*.tax--lawyer.com/*
 *://*.tax-binance.com/*
+*://*.tax.crypto.com/*
 *://*.taxbipabeme.tk/*
 *://*.taxbluresphonews.tk/*
 *://*.taxbornchancemoney.biz/*
@@ -348072,7 +348081,6 @@
 *://*.tensijuchigtay.ga/*
 *://*.tensimesa.tk/*
 *://*.tensioro.gq/*
-*://*.tensiostore.com/*
 *://*.tensiverticonni.tk/*
 *://*.tensiwatchdisdu.ga/*
 *://*.tensmasgolfbuslidis.tk/*
@@ -350905,6 +350913,7 @@
 *://*.thegossipsexynews.com/*
 *://*.thegraduateexchange.com/*
 *://*.thegrailed.com/*
+*://*.thegrand-outlet.com/*
 *://*.thegravehthh.info/*
 *://*.thegriforrapa.ml/*
 *://*.thegrimembgireffei.cf/*
@@ -353228,6 +353237,7 @@
 *://*.tickets-loisirs-caf-indre.fr/*
 *://*.tickets-louvre.fr/*
 *://*.tickets-mayhem.fr/*
+*://*.tickets-vibe.fr/*
 *://*.ticketscenterstage.buzz/*
 *://*.ticketseiffel.paris/*
 *://*.ticketselect.fr/*
@@ -353254,6 +353264,7 @@
 *://*.tickmagtairisvi.tk/*
 *://*.tickmaster.fr/*
 *://*.ticknetefootstabre.ga/*
+*://*.tickngo.fr/*
 *://*.tickpiliwingcor.gq/*
 *://*.tickpoundaymanuk.gq/*
 *://*.tickquallinkdream.ga/*
@@ -353786,6 +353797,11 @@
 *://*.tiki-taka-casino.fr/*
 *://*.tikibladaneco.tk/*
 *://*.tikicasino1.fr/*
+*://*.tikicasinoapp.fr/*
+*://*.tikicasinoavis.fr/*
+*://*.tikicasinogame.fr/*
+*://*.tikicasinologin.fr/*
+*://*.tikicasinopromocode.fr/*
 *://*.tikiicasino.fr/*
 *://*.tikilfitagcioni.ml/*
 *://*.tikimest.ga/*
@@ -354202,7 +354218,6 @@
 *://*.timonslipgesa.tk/*
 *://*.timonthcascavana.tk/*
 *://*.timor-leste.de/*
-*://*.timora-wohnen.de/*
 *://*.timosingmind.tk/*
 *://*.timosusbetoffmi.gq/*
 *://*.timotanrebi.tk/*
@@ -356241,6 +356256,7 @@
 *://*.tiywtu.rest/*
 *://*.tiz0iyw.cyou/*
 *://*.tizacanaximar.ml/*
+*://*.tizchmrf.cc/*
 *://*.tizer.xyz/*
 *://*.tizianaceraso.it/*
 *://*.tizidecolea.ga/*
@@ -357941,7 +357957,6 @@
 *://*.toocanhelp.eu/*
 *://*.toocas.xyz/*
 *://*.toocigendcontlu.tk/*
-*://*.tooeut.com/*
 *://*.toogalosadiru.tk/*
 *://*.toohmf.tokyo/*
 *://*.toojoblikelybestudy.biz/*
@@ -358214,6 +358229,7 @@
 *://*.toperreli.gq/*
 *://*.topespresso.si/*
 *://*.topeuropenews.com/*
+*://*.topfahrradzubehor.com/*
 *://*.topfashionista.com/*
 *://*.topfilm.fr/*
 *://*.topfinancenews.xyz/*
@@ -358629,7 +358645,6 @@
 *://*.tos-nsk.ru/*
 *://*.tosabkayto.gq/*
 *://*.tosacampclicovbu.tk/*
-*://*.tosan24.de/*
 *://*.tosangchoolsbattlipho.tk/*
 *://*.toscana-hotel.info/*
 *://*.toscanaceylon.com/*
@@ -359537,7 +359552,6 @@
 *://*.trachpielanveha.ml/*
 *://*.tracht-aporter.com/*
 *://*.trachtafactkit.tk/*
-*://*.trachten-de.shop/*
 *://*.trachten-sale.com/*
 *://*.trachtenmoda.de/*
 *://*.trachtensale.com/*
@@ -359815,7 +359829,6 @@
 *://*.tradenovainvestment.com/*
 *://*.tradenricfuncnirint.tk/*
 *://*.tradense.xyz/*
-*://*.tradeopol.com/*
 *://*.tradepigrifucbo.gq/*
 *://*.tradequicker.com/*
 *://*.trader-ai.cc/*
@@ -359837,7 +359850,6 @@
 *://*.tradeshowyellowpages.buzz/*
 *://*.tradesrighttogethers.buzz/*
 *://*.tradestamebapa.tk/*
-*://*.tradesvisions.co/*
 *://*.tradetodayonline.buzz/*
 *://*.tradetvacul.tk/*
 *://*.tradeviewforex.com/*
@@ -361864,7 +361876,7 @@
 *://*.trikoa.com/*
 *://*.trikotarena.com/*
 *://*.trikotfachshop.com/*
-*://*.trikots-onshop.com/*
+*://*.trikotrabatt.de/*
 *://*.trikotsale.de/*
 *://*.trilacparchia.tk/*
 *://*.trilagnogmapoper.tk/*
@@ -362419,7 +362431,6 @@
 *://*.trophtidenzcertcentpolk.tk/*
 *://*.trophuneveran.ml/*
 *://*.trophuntlogutdo.cf/*
-*://*.tropicai-tech.de/*
 *://*.tropical-dive.de/*
 *://*.tropical-rain-forest.net/*
 *://*.tropical19a570eei.biz/*
@@ -368113,7 +368124,6 @@
 *://*.ulelskomovchat.tk/*
 *://*.ulemenrite.tk/*
 *://*.ulemsrezacnun.cf/*
-*://*.ulends.fr/*
 *://*.uleninel.ga/*
 *://*.ulep01.cyou/*
 *://*.ulerdjosengrav.tk/*
@@ -371452,6 +371462,7 @@
 *://*.urbanminis.ee/*
 *://*.urbanoutletstores.com/*
 *://*.urbansneaker.fr/*
+*://*.urbanstepzone.cfd/*
 *://*.urbanthree.eu/*
 *://*.urbanvillad.ee/*
 *://*.urbanworkoutroma.it/*
@@ -374246,7 +374257,6 @@
 *://*.valimydervintre.ga/*
 *://*.valindlarari.tk/*
 *://*.valinighvire.ml/*
-*://*.valioncap.com/*
 *://*.valizacool.ro/*
 *://*.valkaf-dienst.com/*
 *://*.valkdk.tokyo/*
@@ -374319,7 +374329,6 @@
 *://*.valuerlaserlax.com/*
 *://*.valuesgloryprovocation.com/*
 *://*.valueterms.site/*
-*://*.valuevervehub.com/*
 *://*.valuevortexmart.com/*
 *://*.valuewalletindia.com/*
 *://*.valueweekly.com/*
@@ -374729,7 +374738,6 @@
 *://*.vatosourmada.gq/*
 *://*.vatour-dev.com/*
 *://*.vatpjl.bar/*
-*://*.vatradecoin.net/*
 *://*.vatstca.cn/*
 *://*.vatticuzree.tk/*
 *://*.vatucal.tk/*
@@ -377107,7 +377115,6 @@
 *://*.verbarwcasheyfi.cf/*
 *://*.verbassistance.com/*
 *://*.verbavolantscriptamanent.it/*
-*://*.verbazenkoperss.de/*
 *://*.verbbertawin.tk/*
 *://*.verbblisbeschmistcorsemb.tk/*
 *://*.verbcalmotenkundjab.cf/*
@@ -377653,7 +377660,6 @@
 *://*.versand-ogitoys.de/*
 *://*.versand-rezeptfrei.de/*
 *://*.versandcesimo.ml/*
-*://*.versandhandel-bach.shop/*
 *://*.versandhaus-herrmann.de/*
 *://*.versandoase.de/*
 *://*.versandpharma.com/*
@@ -377676,7 +377682,6 @@
 *://*.versce.com/*
 *://*.verscentsolalide.gq/*
 *://*.verscharnmespieclawla.tk/*
-*://*.verschenkefreu.de/*
 *://*.verscomruopredvasmiss.cf/*
 *://*.versconreparoo.ga/*
 *://*.versconrokanamar.tk/*
@@ -378626,7 +378631,6 @@
 *://*.viaggiinpuglia.it/*
 *://*.viagistcunorbiosei.cf/*
 *://*.viagra-en-pharmacie.com/*
-*://*.viagra-schweiz.com/*
 *://*.viagraed-noprescription.com/*
 *://*.viagrainaustralia.com/*
 *://*.viagramed.fr/*
@@ -379044,6 +379048,7 @@
 *://*.videoworld.cf/*
 *://*.videoxmp3.online/*
 *://*.videpecompgesbio.cf/*
+*://*.vider.fun/*
 *://*.viderheadsmar.cf/*
 *://*.viderstokafee.tk/*
 *://*.videssexpmofte.tk/*
@@ -383020,6 +383025,7 @@
 *://*.virtualhostserver.buzz/*
 *://*.virtualisp.co.uk/*
 *://*.virtuallyk.com/*
+*://*.virtualmall.my/*
 *://*.virtualni-poradce.cz/*
 *://*.virtualpower.org/*
 *://*.virtualschool.ng/*
@@ -383381,7 +383387,6 @@
 *://*.vivahost.host/*
 *://*.vivaiaboutiques.fr/*
 *://*.vivaiabuty.pl/*
-*://*.vivaiacollection.com/*
 *://*.vivaiaparis.fr/*
 *://*.vivaiaschaussures.fr/*
 *://*.vivaiaschuhe.at/*
@@ -384248,7 +384253,6 @@
 *://*.vogtundpartner.de/*
 *://*.vogue-zone.com/*
 *://*.vogueegs.com/*
-*://*.voguefancy.com/*
 *://*.vogueretailus.com/*
 *://*.vogueusshoe.com/*
 *://*.voguewelt.de/*
@@ -384428,7 +384432,6 @@
 *://*.volerenotur.tk/*
 *://*.volerio.de/*
 *://*.volex.io/*
-*://*.volexmart.de/*
 *://*.volfelogretur.gq/*
 *://*.volgbuslijumso.ml/*
 *://*.volgdilatcecospi.cf/*
@@ -384665,7 +384668,6 @@
 *://*.vorstopshandpellma.tk/*
 *://*.vorsxitumprosto.ga/*
 *://*.vortahcsithitchtough.ml/*
-*://*.vortehair.de/*
 *://*.vorts.xyz/*
 *://*.vortuabenjunctucyc.ml/*
 *://*.vortybuthomerro.tk/*
@@ -387244,7 +387246,6 @@
 *://*.wagidulcachungli.tk/*
 *://*.waglutucycnepas.ml/*
 *://*.wagner-mode.com/*
-*://*.wagnerbois.com/*
 *://*.wagnerzurich.ch/*
 *://*.wagnerzurich.com/*
 *://*.wagnichemiglay.cf/*
@@ -387698,7 +387699,6 @@
 *://*.wannaiputhotoma.ga/*
 *://*.wanniya.com/*
 *://*.wannnadoo.fr/*
-*://*.wannounce.com/*
 *://*.wanpartrolunba.cf/*
 *://*.wanqdoo.fr/*
 *://*.wanrededevime.tk/*
@@ -387976,7 +387976,6 @@
 *://*.warmerleave.com/*
 *://*.warmerrestart.com/*
 *://*.warmfercentleswithd.ml/*
-*://*.warmholz.de/*
 *://*.warmilenbesttep.ga/*
 *://*.warmilivipycu.tk/*
 *://*.warmlyvaryassured.com/*
@@ -389189,7 +389188,6 @@
 *://*.wcs6vp.xyz/*
 *://*.wcseou.rest/*
 *://*.wcseubij.xyz/*
-*://*.wcsitzpro.de/*
 *://*.wcsnjo.tokyo/*
 *://*.wcsxoz.bar/*
 *://*.wct168.cn/*
@@ -389611,7 +389609,6 @@
 *://*.web.bossaapp.com/*
 *://*.web.coinhouse.top/*
 *://*.web.legrama.org/*
-*://*.web.lotradecoin.net/*
 *://*.web.novacryptmax.com/*
 *://*.web.xy2.kr/*
 *://*.web131fuck.xyz/*
@@ -389942,6 +389939,7 @@
 *://*.webtcelryriwind.tk/*
 *://*.webtechnet.eu/*
 *://*.webtechuse.net/*
+*://*.webtesthub.de/*
 *://*.webthreepay.com/*
 *://*.webtidal.com/*
 *://*.webtimaxholisuf.cf/*
@@ -390971,7 +390969,6 @@
 *://*.wet8e.space/*
 *://*.wet95z.cyou/*
 *://*.wet9ja2.shop/*
-*://*.wetan24.de/*
 *://*.wetasia.buzz/*
 *://*.wetbifoodsenypa.ml/*
 *://*.wetchubbyporn.com/*
@@ -392067,7 +392064,6 @@
 *://*.wiegerenadelu.ga/*
 *://*.wiegitttewibens.gq/*
 *://*.wieglimenursia.tk/*
-*://*.wiegmann-modehaus.de/*
 *://*.wiehouresti.gq/*
 *://*.wiekacogtocimac.tk/*
 *://*.wiekamanmeddpart.tk/*
@@ -392324,7 +392320,6 @@
 *://*.wildleakpnetreiboots.gq/*
 *://*.wildlifeeventlean.com/*
 *://*.wildlifeinformer.com/*
-*://*.wildling-pt.top/*
 *://*.wildlingch.com/*
 *://*.wildlingnl.com/*
 *://*.wildlingshoes-nl.com/*
@@ -394208,7 +394203,6 @@
 *://*.wmn6ys.tokyo/*
 *://*.wmn6z4.cyou/*
 *://*.wmnc7q.cyou/*
-*://*.wmnclothes.com/*
 *://*.wmotmpk.bar/*
 *://*.wmoyyx.tokyo/*
 *://*.wmozbj.tokyo/*
@@ -394610,9 +394604,7 @@
 *://*.woltn4.cyou/*
 *://*.woltoworthana.tk/*
 *://*.woludisla.ga/*
-*://*.wolverine-berlin.com/*
 *://*.wolverinebootsde.com/*
-*://*.wolverinebootsdeutschland.com/*
 *://*.wolverinelaarzen.com/*
 *://*.wolverineportugal.com/*
 *://*.wolverineschuhes.de/*
@@ -396481,6 +396473,7 @@
 *://*.wrsut8duw.shop/*
 *://*.wrt-telegram.org/*
 *://*.wrt0fw.cyou/*
+*://*.wrtcmme.com/*
 *://*.wrtgkpt.tokyo/*
 *://*.wrtqo8.cyou/*
 *://*.wrtxdh.tokyo/*
@@ -401586,6 +401579,7 @@
 *://*.xn--muta-sant-j4a.fr/*
 *://*.xn--mutuelle-viasant-qqb.fr/*
 *://*.xn--navigo-idf-indemnit-tzb.fr/*
+*://*.xn--navigo-iledefrance-mobilits-0oc.fr/*
 *://*.xn--navigo-indemnit-pnb.fr/*
 *://*.xn--neoliane-sant-nhb.fr/*
 *://*.xn--nescaf-gva.fr/*
@@ -407735,6 +407729,7 @@
 *://*.ying997.com/*
 *://*.ying998.com/*
 *://*.ying999.com/*
+*://*.yinga-vital.de/*
 *://*.yingfeidi.com/*
 *://*.yinghuawang.com/*
 *://*.yingkehz.com/*
@@ -408737,7 +408732,6 @@
 *://*.yolokidsvn.com/*
 *://*.yolz7t9.cyou/*
 *://*.yom8ji6.cyou/*
-*://*.yoma-versand.de/*
 *://*.yomdos.cyou/*
 *://*.yomfwx.shop/*
 *://*.yomkgu.rest/*
@@ -413608,7 +413602,6 @@
 *://*.zalisubtmoordda.tk/*
 *://*.zalkeyblacalalol.ga/*
 *://*.zallona.de/*
-*://*.zalo-web.me/*
 *://*.zaloga-poceni.today/*
 *://*.zaloga-tovarna.news/*
 *://*.zaloga-zbiranje.news/*
@@ -415280,7 +415273,6 @@
 *://*.ziccoo.rest/*
 *://*.zicentconmina.tk/*
 *://*.zicentmermo.tk/*
-*://*.zicklerbrennholz.de/*
 *://*.zicljx.bar/*
 *://*.zicniki.si/*
 *://*.zicogmica.cf/*
@@ -416344,7 +416336,6 @@
 *://*.zoc8n6.cyou/*
 *://*.zocafeksioli.cf/*
 *://*.zocatcombwindsis.gq/*
-*://*.zocdflgy.shop/*
 *://*.zocecbja.cyou/*
 *://*.zochecksubstupegar.tk/*
 *://*.zocifd.tokyo/*
