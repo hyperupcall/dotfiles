@@ -2,6 +2,11 @@
 	"show_edit_predictions": false,
 	"hard_tabs": true,
 	"tab_size": 3,
+	"prettier": {
+		"allowed": true,
+		"singleQuote": true,
+		"semi": false
+	},
 	"languages": {
 		"YAML": {
 			"hard_tabs": false,
@@ -35,11 +40,16 @@
 	},
 	"soft_wrap": "editor_width",
 	"agent": {
+		"always_allow_tool_actions": true,
+  "inline_assistant_model": {
+			"provider": "copilot_chat",
+			"model": "claude-3.5-sonnet"
+		},
 		"default_profile": "write",
 		"play_sound_when_agent_done": true,
 		"default_model": {
-			"provider": "zed.dev",
-			"model": "claude-3-7-sonnet"
+			"provider": "copilot_chat",
+			"model": "claude-sonnet-4"
 		}
 	},
 	"telemetry": {

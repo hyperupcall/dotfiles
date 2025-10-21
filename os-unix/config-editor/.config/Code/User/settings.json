@@ -389,6 +389,8 @@
 	},
 	"java.project.importOnFirstTimeStartup": "automatic",
 	"java.format.onType.enabled": false,
+	"java.format.settings.url": "~/.dotfiles/config/formatter.xml",
+	"java.format.settings.profile": "Kofler",
 
 	//
 	// JULIA
@@ -556,7 +558,7 @@
 	},
 	"autotitle.autoUpdate": false,
 	"[javascript]": {
-		"editor.defaultFormatter": "ms-vsliveshare.vsliveshare"
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
 	"gitlens.ai.model": "vscode",
 	"gitlens.ai.vscode.model": "copilot:gpt-4.1"

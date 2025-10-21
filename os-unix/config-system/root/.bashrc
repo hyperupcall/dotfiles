@@ -1,32 +1,45 @@
 # shellcheck shell=bash
+# Stop execution if bash is non-interactive.
+[[ $- != *i* ]] && [ ! -t 0 ] && return
 
-export VISUAL='kak'
-export EDITOR='ed'
-export PAGER='less'
+# Ensure /etc/profile is read for non-login shells.
+# Bash only reads /etc/profile on interactive, login shells.
+# ! shopt -q login_shell && [ -f /etc/profile ] && source /etc/profile
 
+# Ensure ~/.profile is read for non-login shells.
+# Bash only reads ~/.profile on login shells when invoked as sh.
+[ -f ~/.profile ] && source ~/.profile
+
+# Set shell variables.
+HISTCONTROL=ignoredups:ignorespace
+HISTSIZE='-1'
+HISTFILESIZE='-1'
+
+# Set bash options.
+shopt -s checkwinsize
+shopt -s histappend
+
+# TODO
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# TODO
 [ -f ~/.bashrc-generated-aliases ] && source ~/.bashrc-generated-aliases
 [ -f ~/.bashrc-generated-functions ] && source ~/.bashrc-generated-functions
 
-8Colors() {
-	test "$(tput colors)" -eq 8
-}
-
-256Colors() {
-	test "$(tput colors)" -eq 256
-}
-
-16MillionColors() {
-	test "$COLORTERM" = "truecolor" || test "$COLORTERM" = "24bit"
-}
-
-if 16MillionColors; then
-	PS1="\[\e[38;2;201;42;42m\][\u@\h \w]\[\e[0m\]\$ "
-elif 8Colors || 256Colors; then
-	PS1="\[\e[0;33m\][\u@\h \w]\[\e[0m\]\$ "
+# TODO: good colors
+if [ "$COLORTERM" = "truecolor" ] || [ "$COLORTERM" = "24bit" ]; then
+	PS1="\[\e[38;2;201;42;42m\][\u@\h \w]\[\e[0m\]# "
 else
-	PS1="[\u@\h \w]\$ "
+	_colors=$(tput colors 2>/dev/null)
+	if [ -n "$_colors" ] && (( _colors == 8 || _colors == 256)); then
+		PS1="\[\e[0;33m\][\u@\h \w]\[\e[0m\]# "
+	else
+		PS1="[\u@\h \w]# "
+	fi
+	unset -v _colors
 fi
 
-unset -f 8Colors 256Colors 16MillionColors
-
-[ -f ~/.dir_colors ] && eval "$(dircolors ~/.dir_colors)"
+if  command -v dircolors &>/dev/null && [ -f ~/.dir_colors ]; then
+	eval "$(dircolors ~/.dir_colors)"
+fi

@@ -8,4 +8,12 @@ main() {
 	curl -K "$CURL_CONFIG" https://zed.dev/install.sh | sh
 }
 
+installed() {
+	if command -v zed &>/dev/null && zed --version &>/dev/null; then
+		local output=
+		output=$(zed --version)
+		[[ $output == 'Zed '* ]]
+	fi
+}
+
 util.if_file_sourced || _setup "$@"

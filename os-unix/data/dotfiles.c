@@ -32,6 +32,7 @@ struct Entry {
 		.destination = H ".local/share/" path \
 	}
 // clang-format on
+
 #define DefineEntry(name, obj) static struct Entry name[] = {obj, Done};
 
 #define Done \

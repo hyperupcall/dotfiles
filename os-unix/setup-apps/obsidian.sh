@@ -5,9 +5,7 @@ source ~/.dotfiles/os-unix/data/source.sh
 declare -g g_name='Obsidian'
 
 main() {
-	if ! command -v appimagelauncherd &>/dev/null; then
-		core.print_die "This scripts depends on the installation of AppImageLauncher"
-	fi
+	~/scripts/setup/appimagelauncher.sh
 
 	util.get_latest_github_tag 'obsidianmd/obsidian-releases'
 	local latest_tag="$REPLY"
@@ -19,6 +17,11 @@ main() {
 	chmod +x "$file"
 	core.print_info "Launching Obsidian AppImage in foreground"
 	exec ./"$file"
+}
+
+installed() {
+	local dir=(~/AppImages/Obsidian_*.AppImage)
+	(( ${#dir} > 0 ))
 }
 
 util.if_file_sourced || _setup "$@"

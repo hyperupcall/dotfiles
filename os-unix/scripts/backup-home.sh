@@ -28,13 +28,15 @@ main() {
 			--exclude '**/mise/installs' \
 			--exclude '**/miniforge3/pkgs' \
 			--exclude '**/.miniforge3/pkgs' \
-			--exclude '**/miniconda3/pkgs' \
-			--exclude '**/.miniconda3/pkgs' \
+			--exclude '**/miniforge3/pkgs' \
+			--exclude '**/.miniforge3/pkgs' \
+			--exclude '**/miniconda3/envs' \
+			--exclude '**/.miniconda3/envs' \
 			--exclude '**/pnpm/store' \
 			--exclude '**/__pycache__' \
 			--exclude '**/.npm/_cacache' \
 			--exclude '**/.conan2/p' \
-			--exclude '**/conan2' \
+			--exclude '**/conan2/p' \
 			--exclude '**/node_modules' \
 			--exclude '**/target' \
 			--exclude '**/dist' \
