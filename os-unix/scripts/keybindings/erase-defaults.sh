@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source ~/.dotfiles/os-unix/data/source.sh
+source ~/.dotfiles/os-unix/data/setup.sh
 
 # Erase all defaults
 case $XDG_CURRENT_DESKTOP in

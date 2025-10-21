@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source ~/.dotfiles/os-unix/data/source.sh
+source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='bash-trueline'
 declare -g g_dir="$HOME/.dotfiles/.data/repos/trueline"
