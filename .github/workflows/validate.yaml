@@ -9,6 +9,7 @@ jobs:
     steps:
       - uses: 'actions/checkout@v4'
         with:
+          clean: true
           submodules: 'recursive'
       - uses: 'bats-core/bats-action@3.0.0'
         id: setup-bats
