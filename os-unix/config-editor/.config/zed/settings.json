@@ -48,8 +48,8 @@
 		"default_profile": "write",
 		"play_sound_when_agent_done": true,
 		"default_model": {
-			"provider": "copilot_chat",
-			"model": "claude-sonnet-4"
+			"provider": "google",
+			"model": "gemini-2.5-pro"
 		}
 	},
 	"telemetry": {

@@ -7,6 +7,7 @@ on:
 
 jobs:
   update-and-commit:
+    environment: 'otternaut'
     runs-on: 'ubuntu-latest'
     permissions:
       contents: 'write'
@@ -22,11 +23,16 @@ jobs:
 
       - run: './scripts/compile-blacklist.ts'
 
-      - name: 'Set COMMIT_MESSAGE'
-        run: echo "COMMIT_MESSAGE=$(date '+%Y.%m.%d')" >> $GITHUB_ENV
-
-      - uses: 'EndBug/add-and-commit@v9'
-        with:
-          author_name: 'Otternaut'
-          author_email: '99463792+otternaut-bot@users.noreply.github.com'
-          message: '${{ env.COMMIT_MESSAGE }}'
+      - name: 'Commit'
+        run: |
+          GPG_TTY=$(tty) gpg --batch --yes --pinentry-mode loopback --passphrase-file <(cat <<< '${{ secrets.GPG_PRIVATE_KEY_PASSWORD }}') --import <<< "${{ secrets.GPG_PRIVATE_KEY }}"
+          git add config/ublacklist-compiled.txt
+          git add config/ublockorigin-compiled.txt
+          git \
+            -c user.name='Otternaut' \
+            -c user.email='99463792+otternaut-bot@users.noreply.github.com' \
+            commit \
+            --author='Otternaut <99463792+otternaut-bot@users.noreply.github.com>' \
+            -S0xFB6C155AFD89739C \
+            -m '$(date "+%Y.%m.%d")'
+          git push
