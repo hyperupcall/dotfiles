@@ -30,44 +30,31 @@ if (grep { $_ eq '--fix-symlinks' } @ARGV) {
 	File::Find::find(
 		{
 			wanted => sub {
-				# Only process regular files ending with .gpg
 				return unless -f $_ && /\.gpg$/;
 
-				my $current_file_path = $File::Find::name; # Full path to the current .gpg file
+				my $current_file_path = $File::Find::name;
 
-				# Execute the 'file' command to determine the file type
-				# 2>&1 redirects stderr to stdout, similar to Python's stderr=subprocess.PIPE
 				my $file_command_output = `file \"$current_file_path\" 2>&1`;
 
-				# Check if the output indicates 'ASCII text'
 				if ($file_command_output =~ /ASCII text/) {
-					# Read the entire content of the file
 					open my $fh, '<:encoding(UTF-8)', $current_file_path
 						or warn "Could not open '$current_file_path' for reading: $!\n" and return;
 					my $content = do { local $/; <$fh> }; # Slurp the file content
 					close $fh;
-					chomp $content; # Remove any trailing newline characters
+					chomp $content;
 
 					my $target_link_path;
 
-					# Determine the target path for the symlink
 					if ($content =~ /^\//) { # If content starts with '/' it's an absolute path
 						if ($content eq $pass_store_dir) {
-							# If the content is exactly the PASSWORD_STORE_DIR, the target is '.'
-							# This mimics Python's Path('/a/b').relative_to('/a/b') giving Path('.').
 							$target_link_path = '.';
 						} elsif ($content =~ s/^\Q$pass_store_dir\/\E//) {
-							# If content starts with '$pass_store_dir/', remove that prefix.
-							# \Q...\E quotes any special regex characters in $pass_store_dir.
-							# This makes the path relative to the password store root.
 							$target_link_path = $content;
 						} else {
-							# Warn and skip if the absolute path content is not within or exactly the PASSWORD_STORE_DIR
 							warn "Content '$content' is an absolute path but not within or equal to PASSWORD_STORE_DIR '$pass_store_dir'. Skipping '$current_file_path'.\n";
 							return; # Skip this file as its target is outside the expected store
 						}
 					} else {
-						# If content is not an absolute path, it's already considered a relative target
 						$target_link_path = $content;
 					}
 
@@ -77,11 +64,7 @@ if (grep { $_ eq '--fix-symlinks' } @ARGV) {
 					chomp $user_input;
 
 					if (lc $user_input eq 'y') {
-						# Remove the original file
 						if (unlink $current_file_path) {
-							# Create the symlink: symlink(SOURCE, LINK_NAME)
-							# SOURCE is the path to which the symlink points ($target_link_path)
-							# LINK_NAME is the path of the new symlink ($current_file_path)
 							if (symlink $target_link_path, $current_file_path) {
 								say "Symlink created at $current_file_path, to $target_link_path";
 							} else {
@@ -95,14 +78,17 @@ if (grep { $_ eq '--fix-symlinks' } @ARGV) {
 			},
 			no_chdir => 1,
 		},
-		$pass_store_dir # Start searching from the password store directory
+		$pass_store_dir
 	);
 	exit 0;
 }
 
+
+
 my $password_store_dir = '~/.dotfiles/.home/xdg_data_dir/password-store/';
 my $total_passwords = 0;
 my %property_counts = ();
+my %email_counts;
 
 my %find_args = (
 	wanted => \&wanted,
@@ -172,6 +158,10 @@ sub wanted {
 			return;
 		}
 	}
+	# Print filename if it contains the hardcoded email address
+	if ($pass_content =~ /^email:[ \t]*kofler\.edwin\@gmail\.com$/m) {
+		say "Found email in: $File::Find::name";
+	}
 	$pass_content =~ s/[ \t]+/ /g;
 
 	my $filtered_pass_content = $pass_content =~ s/\s/+/gr;
@@ -205,6 +195,7 @@ sub wanted {
 			$property_counts{'login'} += 1;
 		} elsif ($key =~ /^email$/) {
 			$property_counts{'email'} += 1;
+			$email_counts{$value} += 1;
 		} elsif ($key =~ /^username$/) {
 			$property_counts{'username'} += 1;
 		} elsif ($key =~ /^comment$/) {
@@ -234,4 +225,10 @@ my @keys = sort { $property_counts{$a} <=> $property_counts{$b} } keys(%property
 my @vals = @property_counts{@keys};
 foreach my $key (keys %property_counts) {
 	say("$key: $property_counts{$key}");
+}
+
+say("---");
+say("Email Frequencies:");
+foreach my $email (sort { $email_counts{$b} <=> $email_counts{$a} } keys %email_counts) {
+    say "$email: $email_counts{$email}";
 }

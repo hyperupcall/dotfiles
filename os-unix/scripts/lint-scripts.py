@@ -22,6 +22,7 @@ from typing import Callable, NotRequired, TypedDict
 # Check to ensure all regular expressions are working as intended:
 # $ lint-scripts.py --internal-test-regex
 
+
 class Rule(TypedDict):
 	name: str
 	regex: str
@@ -31,6 +32,7 @@ class Rule(TypedDict):
 	testPositiveMatches: list[str]
 	testNegativeMatches: list[str]
 	found: NotRequired[int]
+
 
 class c:
 	RED = '\033[91m'
@@ -42,14 +44,18 @@ class c:
 	RESET = '\033[0m'
 	BOLD = '\033[1m'
 	UNDERLINE = '\033[4m'
-	LINK: Callable[[str, str], str] = lambda href, text: f'\033]8;;{href}\a{text}\033]8;;\a'
+	LINK: Callable[[str, str], str] = (
+		lambda href, text: f'\033]8;;{href}\a{text}\033]8;;\a'
+	)
+
 
 def utilGetStrs(line: str, m: Match[str]):
 	return (
-		line[0:m.start('match')],
-		line[m.start('match'):m.end('match')],
-		line[m.end('match'):]
+		line[0 : m.start('match')],
+		line[m.start('match') : m.end('match')],
+		line[m.end('match') :],
 	)
+
 
 def lintfile(file: Path, rules: list[Rule], options: dict[str, str]):
 	content_arr = file.read_text().split('\n')
@@ -69,7 +75,9 @@ def lintfile(file: Path, rules: list[Rule], options: dict[str, str]):
 			if found_rule:
 				continue
 			else:
-				print(f'{c.YELLOW}Warning:{c.RESET} Rule "{rule_id}" referenced in lint-ignore, but was not found')
+				print(
+					f'{c.YELLOW}Warning:{c.RESET} Rule "{rule_id}" referenced in lint-ignore, but was not found'
+				)
 
 		if re.search('^\\s*#', line):
 			continue
@@ -77,7 +85,9 @@ def lintfile(file: Path, rules: list[Rule], options: dict[str, str]):
 		for rule in rules:
 			should_run = False
 			if 'sh' in rule['fileTypes']:
-				if file.name.endswith('.sh') or str(file.absolute()).endswith('bin/asdf'):
+				if file.name.endswith('.sh') or str(file.absolute()).endswith(
+					'bin/asdf'
+				):
 					should_run = True
 			if 'bash' in rule['fileTypes']:
 				if file.name.endswith('.bash') or file.name.endswith('.bats'):
@@ -92,13 +102,13 @@ def lintfile(file: Path, rules: list[Rule], options: dict[str, str]):
 			m = re.search(rule['regex'], line)
 			if m is not None and m.group('match') is not None:
 				dir = os.path.relpath(file.resolve(), Path.cwd())
-				prestr = line[0:m.start('match')]
-				midstr = line[m.start('match'):m.end('match')]
-				poststr = line[m.end('match'):]
+				prestr = line[0 : m.start('match')]
+				midstr = line[m.start('match') : m.end('match')]
+				poststr = line[m.end('match') :]
 
 				if options['fix'] and rule['fixerFn'] is not None:
 					fixed_line = rule['fixerFn'](line, m)
-					newmidstr = fixed_line[:-len(poststr)][len(prestr):]
+					newmidstr = fixed_line[: -len(poststr)][len(prestr) :]
 					content_arr[line_i] = fixed_line
 
 				print(f'{c.CYAN}{dir}{c.RESET}:{line_i + 1}')
@@ -113,6 +123,7 @@ def lintfile(file: Path, rules: list[Rule], options: dict[str, str]):
 	if options['fix']:
 		file.write_text('\n'.join(content_arr))
 
+
 def main():
 	rules: list[Rule] = []
 
@@ -123,21 +134,17 @@ def main():
 
 		return f'{prestr}apt-get {poststr}'
 
-	rules.append({
-		'name': 'apt-use-apt-get',
-		'regex': '(?P<match>apt )',
-		'reason': 'Use apt-get',
-		'fileTypes': ['bash', 'sh'],
-		'fixerFn': aptUseAptGet,
-		'testPositiveMatches': [
-			'apt install',
-			' apt update'
-		],
-		'testNegativeMatches': [
-			'apt-get install',
-			' apt-get update'
-		],
-	})
+	rules.append(
+		{
+			'name': 'apt-use-apt-get',
+			'regex': '(?P<match>apt )',
+			'reason': 'Use apt-get',
+			'fileTypes': ['bash', 'sh'],
+			'fixerFn': aptUseAptGet,
+			'testPositiveMatches': ['apt install', ' apt update'],
+			'testNegativeMatches': ['apt-get install', ' apt-get update'],
+		}
+	)
 
 	# Before: apt-get install
 	# After: apt-get -y install
@@ -147,19 +154,17 @@ def main():
 		subcmd = m.group('subcommand')
 		return f'{prestr}apt-get {subcmd} -y{poststr}'
 
-	rules.append({
-		'name': 'apt-must-have-y',
-		'regex': '(?P<match>apt-get (?P<subcommand>install|update|upgrade|remove)(?! -y))',
-		'reason': 'To make sure it is automated',
-		'fileTypes': ['bash', 'sh'],
-		'fixerFn': aptMustHaveY,
-		'testPositiveMatches': [
-			'apt-get install'
-		],
-		'testNegativeMatches': [
-			'apt-get install -y'
-		],
-	})
+	rules.append(
+		{
+			'name': 'apt-must-have-y',
+			'regex': '(?P<match>apt-get (?P<subcommand>install|update|upgrade|remove)(?! -y))',
+			'reason': 'To make sure it is automated',
+			'fileTypes': ['bash', 'sh'],
+			'fixerFn': aptMustHaveY,
+			'testPositiveMatches': ['apt-get install'],
+			'testNegativeMatches': ['apt-get install -y'],
+		}
+	)
 
 	# Before: add-apt-repository install
 	# After: add-apt-repository -y install
@@ -168,19 +173,17 @@ def main():
 
 		return f'{prestr}add-apt-repository -y{poststr}'
 
-	rules.append({
-		'name': 'apt-must-have-y',
-		'regex': '(?P<match>add-apt-repository(?! -y))',
-		'reason': 'To make sure it is automated',
-		'fileTypes': ['bash', 'sh'],
-		'fixerFn': addAptRepositoryMustHaveY,
-		'testPositiveMatches': [
-			'add-apt-repository'
-		],
-		'testNegativeMatches': [
-			'add-apt-repository -y'
-		],
-	})
+	rules.append(
+		{
+			'name': 'apt-must-have-y',
+			'regex': '(?P<match>add-apt-repository(?! -y))',
+			'reason': 'To make sure it is automated',
+			'fileTypes': ['bash', 'sh'],
+			'fixerFn': addAptRepositoryMustHaveY,
+			'testPositiveMatches': ['add-apt-repository'],
+			'testNegativeMatches': ['add-apt-repository -y'],
+		}
+	)
 
 	# Before: dnf install
 	# After: dnf install -y
@@ -190,19 +193,17 @@ def main():
 		subcmd = m.group('subcommand')
 		return f'{prestr}dnf {subcmd} -y{poststr}'
 
-	rules.append({
-		'name': 'dnf-must-have-y',
-		'regex': '(?P<match>dnf (?P<subcommand>install|update|upgrade|remove)(?! -y))',
-		'reason': 'To make sure it is automated',
-		'fileTypes': ['bash', 'sh'],
-		'fixerFn': dnfMustHaveY,
-		'testPositiveMatches': [
-			'dnf install'
-		],
-		'testNegativeMatches': [
-			'dnf install -y'
-		],
-	})
+	rules.append(
+		{
+			'name': 'dnf-must-have-y',
+			'regex': '(?P<match>dnf (?P<subcommand>install|update|upgrade|remove)(?! -y))',
+			'reason': 'To make sure it is automated',
+			'fileTypes': ['bash', 'sh'],
+			'fixerFn': dnfMustHaveY,
+			'testPositiveMatches': ['dnf install'],
+			'testNegativeMatches': ['dnf install -y'],
+		}
+	)
 
 	# Before: zypper install
 	# After: zypper install -y
@@ -212,20 +213,19 @@ def main():
 		subcmd = m.group('subcommand')
 		return f'{prestr}zypper {subcmd} -y{poststr}'
 
-	rules.append({
-		'name': 'zypper-must-have-y',
-		'regex': '(?P<match>zypper (?P<subcommand>install|update|upgrade|remove)(?! -y))',
-		'reason': 'To make sure it is automated',
-		'fileTypes': ['bash', 'sh'],
-		'fixerFn': zypperMustHaveY,
-		'testPositiveMatches': [
-			'zypper install'
-		],
-		'testNegativeMatches': [
-			'zypper install -y'
-		],
-	})
+	rules.append(
+		{
+			'name': 'zypper-must-have-y',
+			'regex': '(?P<match>zypper (?P<subcommand>install|update|upgrade|remove)(?! -y))',
+			'reason': 'To make sure it is automated',
+			'fileTypes': ['bash', 'sh'],
+			'fixerFn': zypperMustHaveY,
+			'testPositiveMatches': ['zypper install'],
+			'testNegativeMatches': ['zypper install -y'],
+		}
+	)
 
+	# TODO: flatpak install -y --user, --from?
 	# Before: flatpak install
 	# After: flatpak install -y
 	def flatpakMustHaveY(line: str, m: Match[str]) -> str:
@@ -234,19 +234,17 @@ def main():
 		subcmd = m.group('subcommand')
 		return f'{prestr}flatpak {subcmd} -y{poststr}'
 
-	rules.append({
-		'name': 'flatpak-must-have-y',
-		'regex': '(?P<match>flatpak (?P<subcommand>install|update|uninstall)(?! -y))',
-		'reason': 'To make sure it is automated',
-		'fileTypes': ['bash', 'sh'],
-		'fixerFn': flatpakMustHaveY,
-		'testPositiveMatches': [
-			'flatpak install'
-		],
-		'testNegativeMatches': [
-			'flatpak install -y'
-		],
-	})
+	rules.append(
+		{
+			'name': 'flatpak-must-have-y',
+			'regex': '(?P<match>flatpak (?P<subcommand>install|update|uninstall)(?! -y))',
+			'reason': 'To make sure it is automated',
+			'fileTypes': ['bash', 'sh'],
+			'fixerFn': flatpakMustHaveY,
+			'testPositiveMatches': ['flatpak install'],
+			'testNegativeMatches': ['flatpak install -y'],
+		}
+	)
 
 	# Before: pacman -S
 	# After: pacman -Syu --noconfirm
@@ -255,20 +253,17 @@ def main():
 
 		return f'{prestr}pacman -Syu --noconfirm{poststr}'
 
-	rules.append({
-		'name': 'pacman-must-noconfirm',
-		'regex': '(?P<match>pacman -S(?!yy)(?!yu --noconfirm)(?: --noconfirm)?)',
-		'reason': 'To make sure it is automated',
-		'fileTypes': ['bash', 'sh'],
-		'fixerFn': pacmanMustNoConfirm,
-		'testPositiveMatches': [
-			'pacman -S pkg',
-			'sudo pacman -S pkg'
-		],
-		'testNegativeMatches': [
-			'pacman -Q'
-		],
-	})
+	rules.append(
+		{
+			'name': 'pacman-must-noconfirm',
+			'regex': '(?P<match>pacman -S(?!yy)(?!yu --noconfirm)(?: --noconfirm)?)',
+			'reason': 'To make sure it is automated',
+			'fileTypes': ['bash', 'sh'],
+			'fixerFn': pacmanMustNoConfirm,
+			'testPositiveMatches': ['pacman -S pkg', 'sudo pacman -S pkg'],
+			'testNegativeMatches': ['pacman -Q'],
+		}
+	)
 
 	# Before: pkcon
 	# After: pkcon -y
@@ -277,20 +272,17 @@ def main():
 
 		return f'{prestr}pkcon -y{poststr}'
 
-	rules.append({
-		'name': 'pkcon-must-yes',
-		'regex': '(?P<match>pkcon (?!-y))',
-		'reason': 'To make sure it is automated',
-		'fileTypes': ['bash', 'sh'],
-		'fixerFn': pkconMustYes,
-		'testPositiveMatches': [
-			'pkcon install git',
-			'sudo pkcon install git'
-		],
-		'testNegativeMatches': [
-			'pkcon -y'
-		],
-	})
+	rules.append(
+		{
+			'name': 'pkcon-must-yes',
+			'regex': '(?P<match>pkcon (?!-y))',
+			'reason': 'To make sure it is automated',
+			'fileTypes': ['bash', 'sh'],
+			'fixerFn': pkconMustYes,
+			'testPositiveMatches': ['pkcon install git', 'sudo pkcon install git'],
+			'testNegativeMatches': ['pkcon -y'],
+		}
+	)
 
 	# Before: sudo yay -S
 	# After: yay -S
@@ -299,19 +291,17 @@ def main():
 
 		return f'{prestr}yay {poststr}'
 
-	rules.append({
-		'name': 'yay-no-sudo',
-		'regex': '(?P<match>(?<=sudo )yay )',
-		'reason': 'yay should not be ran with sudo',
-		'fileTypes': ['bash', 'sh'],
-		'fixerFn': yayNoSudo,
-		'testPositiveMatches': [
-			'sudo yay -S pkg'
-		],
-		'testNegativeMatches': [
-			'yay -S pkg'
-		],
-	})
+	rules.append(
+		{
+			'name': 'yay-no-sudo',
+			'regex': '(?P<match>(?<=sudo )yay )',
+			'reason': 'yay should not be ran with sudo',
+			'fileTypes': ['bash', 'sh'],
+			'fixerFn': yayNoSudo,
+			'testPositiveMatches': ['sudo yay -S pkg'],
+			'testNegativeMatches': ['yay -S pkg'],
+		}
+	)
 
 	# Before: util.install_by_setup
 	# After: N/A
@@ -332,36 +322,40 @@ def main():
 
 	# Before: No banned commands
 	# After: N/A
-	rules.append({
-		'name': 'no-banned-commands',
-		'regex': '(?P<match>yum|snap) ',
-		'reason': 'Function must exist',
-		'fileTypes': ['bash', 'sh'],
-		'fixerFn': None,
-		'testPositiveMatches': [
-			'yum install libtool',
-		],
-		'testNegativeMatches': [
-			'apt-get install libtool',
-		],
-	})
+	rules.append(
+		{
+			'name': 'no-banned-commands',
+			'regex': '(?P<match>yum|snap) ',
+			'reason': 'Function must exist',
+			'fileTypes': ['bash', 'sh'],
+			'fixerFn': None,
+			'testPositiveMatches': [
+				'yum install libtool',
+			],
+			'testNegativeMatches': [
+				'apt-get install libtool',
+			],
+		}
+	)
 
 	# Before: No git clone
 	# After: N/A
-	rules.append({
-		'name': 'no-git-clone',
-		'regex': '(?P<match>git .*?clone) ',
-		'reason': 'Use util.clone instead exist',
-		'fileTypes': ['bash', 'sh'],
-		'fixerFn': None,
-		'testPositiveMatches': [
-			'git clone https://',
-			'git -c key=value clone https://'
-		],
-		'testNegativeMatches': [
-			'util.clone ~/ https://',
-		],
-	})
+	rules.append(
+		{
+			'name': 'no-git-clone',
+			'regex': '(?P<match>git .*?clone) ',
+			'reason': 'Use util.clone instead exist',
+			'fileTypes': ['bash', 'sh'],
+			'fixerFn': None,
+			'testPositiveMatches': [
+				'git clone https://',
+				'git -c key=value clone https://',
+			],
+			'testNegativeMatches': [
+				'util.clone ~/ https://',
+			],
+		}
+	)
 
 	# Before: curl
 	# After: curl
@@ -370,19 +364,17 @@ def main():
 
 		return f'{prestr}curl -K "$CURL_CONFIG" {poststr}'
 
-	rules.append({
-		'name': 'curl-must-have-args',
-		'regex': '(?P<match>curl (?!-K "\\$CURL_CONFIG"))',
-		'reason': 'To ensure curl has the best arguments',
-		'fileTypes': ['bash', 'sh'],
-		'fixerFn': curlMustHaveArgs,
-		'testPositiveMatches': [
-			'curl | sh'
-		],
-		'testNegativeMatches': [
-			'curl -K "$CURL_CONFIG" | sh'
-		],
-	})
+	rules.append(
+		{
+			'name': 'curl-must-have-args',
+			'regex': '(?P<match>curl (?!-K "\\$CURL_CONFIG"))',
+			'reason': 'To ensure curl has the best arguments',
+			'fileTypes': ['bash', 'sh'],
+			'fixerFn': curlMustHaveArgs,
+			'testPositiveMatches': ['curl | sh'],
+			'testNegativeMatches': ['curl -K "$CURL_CONFIG" | sh'],
+		}
+	)
 
 	# Before: ^main "$@"
 	# After: ^util.if_file_sourced || _setup "$@"
@@ -391,41 +383,39 @@ def main():
 
 		return 'util.if_file_sourced || _setup "$@"'
 
-	rules.append({
-		'name': 'scripts-must-have-source-guard',
-		'regex': '(?P<match>^[ \\t]*(?:main|_main) "\\$@")',
-		'reason': 'To ensure source guards exist on all scripts',
-		'fileTypes': ['bash', 'sh'],
-		'fixerFn': scriptsMustHaveSourceGuard,
-		'testPositiveMatches': [
-			'main "$@"',
-			'_main "$@"',
-			' main "$@"'
-		],
-		'testNegativeMatches': [
-			'util.if_file_sourced || _setup "$@"',
-			' util.if_file_sourced || _setup "$@"'
-		],
-	})
+	rules.append(
+		{
+			'name': 'scripts-must-have-source-guard',
+			'regex': '(?P<match>^[ \\t]*(?:main|_main) "\\$@")',
+			'reason': 'To ensure source guards exist on all scripts',
+			'fileTypes': ['bash', 'sh'],
+			'fixerFn': scriptsMustHaveSourceGuard,
+			'testPositiveMatches': ['main "$@"', '_main "$@"', ' main "$@"'],
+			'testNegativeMatches': [
+				'util.if_file_sourced || _setup "$@"',
+				' util.if_file_sourced || _setup "$@"',
+			],
+		}
+	)
 
 	# Before: install.random
 	# After: N/A
-	rules.append({
-		'name': 'install-check-function-exists',
-		'regex': '(?P<match>install\\.(?!arch|debian|any|cachyos|ubuntu|opensuse|fedora|pop|manjaro|neon))(.*?)\\(\\)',
-		'reason': 'Function must exist',
-		'fileTypes': ['bash', 'sh'],
-		'fixerFn': None,
-		'testPositiveMatches': [
-			'install.not_exist()'
-		],
-		'testNegativeMatches': [
-			'install.fedora()',
-			'curl https://mise.jdx.dev/install.sh | sh'
-		],
-	})
+	rules.append(
+		{
+			'name': 'install-check-function-exists',
+			'regex': '(?P<match>install\\.(?!arch|debian|any|cachyos|ubuntu|opensuse|fedora|pop|manjaro|neon))(.*?)\\(\\)',
+			'reason': 'Function must exist',
+			'fileTypes': ['bash', 'sh'],
+			'fixerFn': None,
+			'testPositiveMatches': ['install.not_exist()'],
+			'testNegativeMatches': [
+				'install.fedora()',
+				'curl https://mise.jdx.dev/install.sh | sh',
+			],
+		}
+	)
 
-	[rule.update({ 'found': 0 }) for rule in rules]
+	[rule.update({'found': 0}) for rule in rules]
 
 	parser = argparse.ArgumentParser()
 	parser.add_argument('files', metavar='FILES', nargs='*')
@@ -439,14 +429,18 @@ def main():
 			for positiveMatch in rule['testPositiveMatches']:
 				m = re.search(rule['regex'], positiveMatch)
 				if m is None or m.group('match') is None:
-					print(f'{c.MAGENTA}{rule["name"]}{c.RESET}: Failed {c.CYAN}positive{c.RESET} test:')
+					print(
+						f'{c.MAGENTA}{rule["name"]}{c.RESET}: Failed {c.CYAN}positive{c.RESET} test:'
+					)
 					print(f'=> {positiveMatch}')
 					print()
 
 			for negativeMatch in rule['testNegativeMatches']:
 				m = re.search(rule['regex'], negativeMatch)
 				if m is not None and m.group('match') is not None:
-					print(f'{c.MAGENTA}{rule["name"]}{c.RESET}: Failed {c.YELLOW}negative{c.RESET} test:')
+					print(
+						f'{c.MAGENTA}{rule["name"]}{c.RESET}: Failed {c.YELLOW}negative{c.RESET} test:'
+					)
 					print(f'=> {negativeMatch}')
 					print()
 		print('Done.')
@@ -484,5 +478,6 @@ def main():
 		exit(0)
 	else:
 		exit(2)
+
 
 main()

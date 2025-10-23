@@ -10,8 +10,8 @@ main() {
 		sudo apt-get update -y
 		sudo apt-get install -y obs-studio
 	else
-		flatpak remote-add --if-not-exists flathub 'https://dl.flathub.org/repo/flathub.flatpakrepo'
-		flatpak install -y com.obsproject.Studio
+		flatpak remote-add --if-not-exists --user flathub 'https://dl.flathub.org/repo/flathub.flatpakrepo'
+		flatpak install -y --user com.obsproject.Studio
 	fi
 }
 

@@ -550,7 +550,7 @@
 	"Lua.telemetry.enable": false,
 
 	// OTHER
-	"workbench.colorTheme": "Bearded Theme Milkshake Blueberry",
+	"workbench.colorTheme": "Bearded Theme Milkshake Mango",
 	"editor.cursorBlinking": "smooth",
 	"editor.fontFamily": "'Hack', monospace",
 	"[typescript]": {

@@ -1,0 +1,4 @@
+[format]
+docstring-code-format = true
+quote-style = 'single'
+indent-style = 'tab'

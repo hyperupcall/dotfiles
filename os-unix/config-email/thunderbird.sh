@@ -10,7 +10,7 @@ main() {
 
 install.ubuntu() {
 	# On Ubuntu, by default, the "thunderbird" package uses snap.
-	flatpak install -y org.mozilla.Thunderbird
+	flatpak install -y --user org.mozilla.Thunderbird
 }
 
 install.any() {
