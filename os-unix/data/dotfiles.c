@@ -312,7 +312,7 @@ DefineEntry(hg, Config(CategoryVersionControl, "hg/"));
 DefineEntry(pijul, Config(CategoryVersionControl, "pijul/"));
 DefineEntry(tig, Config(CategoryVersionControl, "tig/"));
 
-struct Entry *configuration[] = {
+static struct Entry *configuration[] = {
 	// albert,
 	// broot,
 	// calcurse,
@@ -483,5 +483,9 @@ struct Entry *configuration[] = {
 	// tig,
 	NULL,
 };
+
+struct Entry **getConfiguration() {
+	return configuration;
+}
 
 #pragma clang diagnostic pop

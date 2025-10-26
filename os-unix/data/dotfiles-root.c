@@ -34,11 +34,15 @@ DefineEntry(bash, File("root/.bashrc"));
 DefineEntry(dircolors, File("root/.dir_colors"));
 DefineEntry(nano, File("root/.nanorc"));
 
-struct Entry *configuration[] = {
+static struct Entry *configuration[] = {
 	bash,
 	dircolors,
 	nano,
 	NULL
 };
+
+struct Entry **getConfiguration() {
+	return configuration;
+}
 
 #pragma clang diagnostic pop

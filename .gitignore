@@ -13,3 +13,4 @@ site/
 node_modules/
 .venv/
 *.pyc
+*.o
