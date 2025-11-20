@@ -1,45 +1,15 @@
 #include <stdbool.h>
 #include <stddef.h>
+#include "d.h"
 
 #pragma clang diagnostic error "-Wunused-variable"
 #pragma clang diagnostic push
 
-struct Entry {
-	char const *category;
-	char const *source;
-	char const *destination;
-};
+// Macros.
+#define Hme CONFIG_HOME
+#define Src Dst ".dotfiles/os-unix/"
+#define Dst Hme
 
-#define H "/home/" Username "/" // lint-ignore
-
-// clang-format off
-#define Home(_category, path) \
-	{ \
-		.category = _category, \
-		.source = H ".dotfiles/os-unix/" _category path, \
-		.destination = H path \
-	}
-#define Config(_category, path) \
-	{ \
-		.category = _category, \
-		.source = H ".dotfiles/os-unix/" _category ".config/" path, \
-		.destination = H ".config/" path \
-	}
-#define Data(_category, path) \
-	{ \
-		.category = _category, \
-		.source = H ".dotfiles/os-unix/" _category ".local/share/" path, \
-		.destination = H ".local/share/" path \
-	}
-// clang-format on
-
-#define DefineEntry(name, obj) static struct Entry name[] = {obj, Done};
-
-#define Done \
-	{ .category = NULL, .source = NULL, .destination = NULL }
-
-// Macros
-#define Username "edwin"
 #define CategoryApplication "config-application/"
 #define CategoryCli "config-cli/"
 #define CategoryDotfileManager "config-dotfile-manager/"
@@ -54,438 +24,457 @@ struct Entry {
 #define CategoryTools "config-tool/"
 #define CategoryVersionControl "config-version-control/"
 
-// Applications
-static struct Entry albert[] = {
-	Config(CategoryApplication, "albert/albert.conf"),
-	Data(CategoryApplication, "albert/python/plugins/"),
+// Applications.
+static Entry albert[] = {
+	Config("albert/albert.conf", CategoryApplication),
+	Data("albert/python/plugins/", CategoryApplication),
 	Done,
 };
-DefineEntry(broot, Config(CategoryApplication, "broot/"));
-DefineEntry(calcurse, Config(CategoryApplication, "calcurse/"));
-DefineEntry(cmus, Config(CategoryApplication, "cmus/rc"));
-DefineEntry(espanso, Config(CategoryApplication, "espanso/"));
-DefineEntry(htop, Config(CategoryApplication, "htop/"));
-DefineEntry(irssi, Config(CategoryApplication, "irssi/"));
-DefineEntry(lazydocker, Config(CategoryApplication, "lazydocker/"));
-DefineEntry(mnemosyne, Config(CategoryApplication, "mnemosyne/config.py"));
-DefineEntry(mpv, Config(CategoryApplication, "mpv/"));
-DefineEntry(nb, Config(CategoryApplication, "nb/"));
-DefineEntry(ncmpcpp, Config(CategoryApplication, "ncmpcpp/"));
-DefineEntry(octave, Config(CategoryApplication, "octave/"));
-DefineEntry(ranger, Config(CategoryApplication, "ranger/"));
-DefineEntry(taskwarrior, Config(CategoryApplication, "taskwarrior/"));
-DefineEntry(viewnior, Config(CategoryApplication, "viewnior/"));
-DefineEntry(vimiv, Config(CategoryApplication, "vimiv/"));
-DefineEntry(wtf, Config(CategoryApplication, "wtf/"));
-DefineEntry(xplr, Config(CategoryApplication, "xplr/"));
-DefineEntry(zathura, Config(CategoryApplication, "zathura/"));
-DefineEntry(llpp, Config(CategoryApplication, "llpp.conf"));
-DefineEntry(blender, Data(CategoryApplication, "applications/FoxBlender.desktop"));
-DefineEntry(gnuplot, Home(CategoryApplication, ".gnuplot"));
-static struct Entry librewolf[] = {
-	Home(CategoryApplication, ".librewolf/librewolf.overrides.cfg"),
-	Home(CategoryApplication, ".librewolf/kpfswkqk.default-default/chrome/userChrome.css"),
-	Home(CategoryApplication, ".librewolf/kpfswkqk.default-default/chrome/userChrome.js"),
-	Done,
-};
-
-// CLIs
-DefineEntry(aria2, Config(CategoryCli, "aria2/"));
-DefineEntry(bat, Config(CategoryCli, "bat/"));
-DefineEntry(ccache, Config(CategoryCli, "ccache/"));
-DefineEntry(sccache, Config(CategoryCli, "sccache/"));
-DefineEntry(cookiecutter, Config(CategoryCli, "cookiecutter/"));
-DefineEntry(neofetch, Config(CategoryCli, "neofetch/"));
-DefineEntry(pgcli, Config(CategoryCli, "pgcli/"));
-DefineEntry(ripgrep, Config(CategoryCli, "ripgrep/"));
-DefineEntry(rtorrent, Config(CategoryCli, "rtorrent/"));
-DefineEntry(wget, Config(CategoryCli, "wget/"));
-DefineEntry(youtubeDl, Config(CategoryCli, "youtube-dl/"));
-DefineEntry(agignore, Home(CategoryCli, ".agignore"));
-DefineEntry(psqlrc, Home(CategoryCli, ".psqlrc"));
-
-// Dotfile Managers
-DefineEntry(chezmoi, Config(CategoryDotfileManager, "chezmoi/"));
-DefineEntry(dotdrop, Config(CategoryDotfileManager, "dotdrop/"));
-DefineEntry(dotgen, Config(CategoryDotfileManager, "dotgen/"));
-DefineEntry(rcrc, Home(CategoryDotfileManager, ".rcrc"));
-
-// Editors
-static struct Entry vscode[] = {
-	Config(CategoryEditor, "Code/User/keybindings.json"),
-	Config(CategoryEditor, "Code/User/settings.json"),
-	Config(CategoryEditor, "Code/User/snippets/"),
+static Entry broot[] = ConfigEntry("broot/", CategoryApplication);
+static Entry calcurse[] = { Config("calcurse/", CategoryApplication), Done };
+static Entry cmus[] = { Config("cmus/rc", CategoryApplication), Done };
+static Entry espanso[] = { Config("espanso/", CategoryApplication), Done };
+static Entry htop[] = { Config("htop/", CategoryApplication), Done };
+static Entry irssi[] = { Config("irssi/", CategoryApplication), Done };
+static Entry lazydocker[] = { Config("lazydocker/", CategoryApplication), Done };
+static Entry mnemosyne[] = { Config("mnemosyne/config.py", CategoryApplication), Done };
+static Entry mpv[] = { Config("mpv/", CategoryApplication), Done };
+static Entry nb[] = { Config("nb/", CategoryApplication), Done };
+static Entry ncmpcpp[] = { Config("ncmpcpp/", CategoryApplication), Done };
+static Entry octave[] = { Config("octave/", CategoryApplication), Done };
+static Entry ranger[] = { Config("ranger/", CategoryApplication), Done };
+static Entry taskwarrior[] = { Config("taskwarrior/", CategoryApplication), Done };
+static Entry viewnior[] = ConfigEntry("viewnior/", CategoryApplication);
+static Entry vimiv[] = ConfigEntry("vimiv/", CategoryApplication);
+static Entry wtf[] = ConfigEntry("wtf/", CategoryApplication);
+static Entry xplr[] = ConfigEntry("xplr/", CategoryApplication);
+static Entry zathura[] = ConfigEntry("zathura/", CategoryApplication);
+static Entry llpp[] = ConfigEntry("llpp.conf", CategoryApplication);
+static Entry blender[] = DataEntry("applications/FoxBlender.desktop", CategoryApplication);
+static Entry gnuplot[] = HomeEntry(".gnuplot", CategoryApplication);
+static Entry librewolf[] = {
+	Home(".librewolf/librewolf.overrides.cfg", CategoryApplication),
+	Home(".librewolf/kpfswkqk.default-default/chrome/userChrome.css", CategoryApplication),
+	Home(".librewolf/kpfswkqk.default-default/chrome/userChrome.js", CategoryApplication),
 	Done,
 };
 
-static struct Entry ossCode[] = {
+// Command Line Interfaces.
+static Entry aria2[] = ConfigEntry("aria2/", CategoryCli);
+static Entry bat[] = ConfigEntry("bat/", CategoryCli);
+static Entry ccache[] = ConfigEntry("ccache/", CategoryCli);
+static Entry sccache[] = ConfigEntry("sccache/", CategoryCli);
+static Entry cookiecutter[] = ConfigEntry("cookiecutter/", CategoryCli);
+static Entry neofetch[] = ConfigEntry("neofetch/", CategoryCli);
+static Entry pgcli[] = ConfigEntry("pgcli/", CategoryCli);
+static Entry ripgrep[] = ConfigEntry("ripgrep/", CategoryCli);
+static Entry rtorrent[] = ConfigEntry("rtorrent/", CategoryCli);
+static Entry wget[] = ConfigEntry("wget/", CategoryCli);
+static Entry youtubeDl[] = ConfigEntry("youtube-dl/", CategoryCli);
+static Entry agignore[] = HomeEntry(".agignore", CategoryCli);
+static Entry psqlrc[] = HomeEntry(".psqlrc", CategoryCli);
+
+// Dotfile Managers.
+static Entry chezmoi[] = ConfigEntry("chezmoi/", CategoryDotfileManager);
+static Entry dotdrop[] = ConfigEntry("dotdrop/", CategoryDotfileManager);
+static Entry dotgen[] = ConfigEntry("dotgen/", CategoryDotfileManager);
+static Entry rcrc[] = HomeEntry(".rcrc", CategoryDotfileManager);
+
+// Editors.
+static Entry vscode[] = {
+	Config("Code/User/keybindings.json", CategoryEditor),
+	Config("Code/User/settings.json", CategoryEditor),
+	Config("Code/User/snippets/", CategoryEditor),
+	Done,
+};
+static Entry ossCode[] = {
 	// clang-format off
 	{
 		.category = CategoryEditor,
-		.source = H ".config/Code/User/keybindings.json",
-		.destination = H ".config/Code - OSS/User/keybindings.json"
+		.source = Hme ".config/Code/User/keybindings.json",
+		.destination = Hme ".config/Code - OSS/User/keybindings.json"
 	},
 	{
 		.category = CategoryEditor,
-		.source = H ".config/Code/User/settings.json",
-		.destination = H ".config/Code - OSS/User/settings.json"
+		.source = Hme ".config/Code/User/settings.json",
+		.destination = Hme ".config/Code - OSS/User/settings.json"
 	},
 	{
 		.category = CategoryEditor,
-		.source = H ".config/Code/User/snippets/",
-		.destination = H ".config/Code - OSS/User/snippets/"
+		.source = Hme ".config/Code/User/snippets/",
+		.destination = Hme ".config/Code - OSS/User/snippets/"
 	},
 	Done
 	// clang-format on
 };
-
-DefineEntry(helix, Config(CategoryEditor, "helix/"));
-DefineEntry(kak, Config(CategoryEditor, "kak/"));
-static struct Entry micro[] = {
-	Config(CategoryEditor, "micro/bindings.json"),
-	Config(CategoryEditor, "micro/settings.json"),
+static Entry helix[] = ConfigEntry("helix/", CategoryEditor);
+static Entry kak[] = ConfigEntry("kak/", CategoryEditor);
+static Entry micro[] = {
+	Config("micro/bindings.json", CategoryEditor),
+	Config("micro/settings.json", CategoryEditor),
 	Done,
 };
-DefineEntry(nano, Config(CategoryEditor, "nano/"));
-DefineEntry(nvim, Config(CategoryEditor, "nvim/"));
-DefineEntry(ox, Config(CategoryEditor, "ox/"));
-static struct Entry sublimeText3[] = {
-	Config(CategoryEditor, "sublime-text-3/Packages/User/Preferences.sublime-settings"),
-	Config(CategoryEditor, "sublime-text-3/Packages/User/Package Control.sublime-settings"),
+static Entry nano[] = ConfigEntry("nano/", CategoryEditor);
+static Entry nvim[] = ConfigEntry("nvim/", CategoryEditor);
+static Entry ox[] = ConfigEntry("ox/", CategoryEditor);
+static Entry sublimeText3[] = {
+	Config("sublime-text-3/Packages/User/Preferences.sublime-settings", CategoryEditor),
+	Config("sublime-text-3/Packages/User/Package Control.sublime-settings", CategoryEditor),
 	Done,
 };
-DefineEntry(vim, Config(CategoryEditor, "vim/"));
-DefineEntry(zed, Config(CategoryEditor, "zed/"));
-DefineEntry(exrc, Home(CategoryEditor, ".exrc"));
+static Entry vim[] = ConfigEntry("vim/", CategoryEditor);
+static Entry zed[] = ConfigEntry("zed/", CategoryEditor);
+static Entry exrc[] = HomeEntry(".exrc", CategoryEditor);
 
-// Email
-static struct Entry aerc[] = {
-	Config(CategoryEmail, "aerc/aerc.conf"),
-	Config(CategoryEmail, "aerc/binds.conf"),
+// Email.
+static Entry aerc[] = {
+	Config("aerc/aerc.conf", CategoryEmail),
+	Config("aerc/binds.conf", CategoryEmail),
 	Done,
 };
-DefineEntry(neomutt, Config(CategoryEmail, "neomutt/"));
-DefineEntry(notmuch, Config(CategoryEmail, "notmuch/"));
+static Entry neomutt[] = ConfigEntry("neomutt/", CategoryEmail);
+static Entry notmuch[] = ConfigEntry("notmuch/", CategoryEmail);
 
-// Language
-DefineEntry(bpython, Config(CategoryLanguage, "bpython/"));
-DefineEntry(cargo, Config(CategoryLanguage, "cargo/"));
-DefineEntry(conda, Config(CategoryLanguage, "conda/"));
-DefineEntry(gdb, Config(CategoryLanguage, "gdb/"));
-DefineEntry(irb, Config(CategoryLanguage, "irb/"));
-DefineEntry(maven, Config(CategoryLanguage, "maven/"));
-DefineEntry(nimble, Config(CategoryLanguage, "nimble/"));
-DefineEntry(npm, Config(CategoryLanguage, "npm/"));
-DefineEntry(please, Config(CategoryLanguage, "please/"));
-DefineEntry(pudb, Config(CategoryLanguage, "pudb/"));
-DefineEntry(pylint, Config(CategoryLanguage, "pylint/"));
-DefineEntry(pypoetry, Config(CategoryLanguage, "pypoetry/"));
-DefineEntry(python, Config(CategoryLanguage, "python/"));
-DefineEntry(yapf, Config(CategoryLanguage, "yapf/"));
-DefineEntry(cpan, Home(CategoryLanguage, ".cpan/CPAN/MyConfig.pm"));
-DefineEntry(sdkman, Data(CategoryLanguage, "sdkman/etc/config"));
+// Language.
+static Entry bpython[] = ConfigEntry("bpython/", CategoryLanguage);
+static Entry cargo[] = ConfigEntry("cargo/", CategoryLanguage);
+static Entry conda[] = ConfigEntry("conda/", CategoryLanguage);
+static Entry gdb[] = ConfigEntry("gdb/", CategoryLanguage);
+static Entry irb[] = ConfigEntry("irb/", CategoryLanguage);
+static Entry maven[] = ConfigEntry("maven/", CategoryLanguage);
+static Entry nimble[] = ConfigEntry("nimble/", CategoryLanguage);
+static Entry npm[] = ConfigEntry("npm/", CategoryLanguage);
+static Entry please[] = ConfigEntry("please/", CategoryLanguage);
+static Entry pudb[] = ConfigEntry("pudb/", CategoryLanguage);
+static Entry pylint[] = ConfigEntry("pylint/", CategoryLanguage);
+static Entry pypoetry[] = ConfigEntry("pypoetry/", CategoryLanguage);
+static Entry python[] = ConfigEntry("python/", CategoryLanguage);
+static Entry yapf[] = ConfigEntry("yapf/", CategoryLanguage);
+static Entry cpan[] = HomeEntry(".cpan/CPAN/MyConfig.pm", CategoryLanguage);
+static Entry sdkman[] = DataEntry("sdkman/etc/config", CategoryLanguage);
 
-// Linux Core
-DefineEntry(curl, Config(CategoryLinuxCore, "curl/"));
-DefineEntry(dircolors, Config(CategoryLinuxCore, "dircolors/"));
-DefineEntry(environmentD, Config(CategoryLinuxCore, "environment.d/"));
-DefineEntry(fontconfig, Config(CategoryLinuxCore, "fontconfig/"));
-DefineEntry(info, Config(CategoryLinuxCore, "info/"));
-DefineEntry(less, Config(CategoryLinuxCore, "less/"));
-DefineEntry(most, Config(CategoryLinuxCore, "most/"));
-DefineEntry(readline, Config(CategoryLinuxCore, "readline/"));
-DefineEntry(userDirsConf, Config(CategoryLinuxCore, "user-dirs.conf"));
-DefineEntry(gnupgDirmngr, Home(CategoryLinuxCore, ".gnupg/dirmngr.conf"));
-DefineEntry(gnupgGpg, Home(CategoryLinuxCore, ".gnupg/gpg.conf"));
-DefineEntry(gnupgGpgAgent, Home(CategoryLinuxCore, ".gnupg/gpg-agent.conf"));
-static struct Entry pamEnvironment[] = {
+// Linux Core.
+static Entry curl[] = ConfigEntry("curl/", CategoryLinuxCore);
+static Entry dircolors[] = ConfigEntry("dircolors/", CategoryLinuxCore);
+static Entry environmentD[] = ConfigEntry("environment.d/", CategoryLinuxCore);
+static Entry fontconfig[] = ConfigEntry("fontconfig/", CategoryLinuxCore);
+static Entry info[] = ConfigEntry("info/", CategoryLinuxCore);
+static Entry less[] = ConfigEntry("less/", CategoryLinuxCore);
+static Entry most[] = ConfigEntry("most/", CategoryLinuxCore);
+static Entry readline[] = ConfigEntry("readline/", CategoryLinuxCore);
+static Entry userDirsConf[] = ConfigEntry("user-dirs.conf", CategoryLinuxCore);
+static Entry gnupgDirmngr[] = HomeEntry(".gnupg/dirmngr.conf", CategoryLinuxCore);
+static Entry gnupgGpg[] = HomeEntry(".gnupg/gpg.conf", CategoryLinuxCore);
+static Entry gnupgGpgAgent[] = HomeEntry(".gnupg/gpg-agent.conf", CategoryLinuxCore);
+static Entry pamEnvironment[] = {
 	{
 		.category = CategoryLinuxCore,
-		.source = (true ? H ".dotfiles/os-unix/" CategoryLinuxCore ".pam_environment/xdg-default.conf"
-							 : H ".pam_environment/xdg-custom.conf"),
-		.destination = H ".pam_environment",
+		.source = (true ? Src CategoryLinuxCore ".pam_environment/xdg-default.conf"
+							 : Dst ".pam_environment/xdg-custom.conf"),
+		.destination = Dst ".pam_environment",
 	 },
 	Done,
 };
-DefineEntry(digrc, Home(CategoryLinuxCore, ".digrc"));
-DefineEntry(hushlogin, Home(CategoryLinuxCore, ".hushlogin"));
+static Entry digrc[] = HomeEntry(".digrc", CategoryLinuxCore);
+static Entry hushlogin[] = HomeEntry(".hushlogin", CategoryLinuxCore);
 
-// Linux Extra
-DefineEntry(ltrace, Config(CategoryLinuxExtra, "ltrace/"));
-DefineEntry(pacman, Config(CategoryLinuxExtra, "pacman/"));
-DefineEntry(paru, Config(CategoryLinuxExtra, "paru/"));
-DefineEntry(toast, Config(CategoryLinuxExtra, "toast/"));
-DefineEntry(udiskie, Config(CategoryLinuxExtra, "udiskie/"));
-DefineEntry(yay, Config(CategoryLinuxExtra, "yay/"));
-DefineEntry(aspell, Home(CategoryLinuxExtra, ".aspell.conf"));
+// Linux Extra.
+static Entry ltrace[] = ConfigEntry("ltrace/", CategoryLinuxExtra);
+static Entry pacman[] = ConfigEntry("pacman/", CategoryLinuxExtra);
+static Entry paru[] = ConfigEntry("paru/", CategoryLinuxExtra);
+static Entry toast[] = ConfigEntry("toast/", CategoryLinuxExtra);
+static Entry udiskie[] = ConfigEntry("udiskie/", CategoryLinuxExtra);
+static Entry yay[] = ConfigEntry("yay/", CategoryLinuxExtra);
+static Entry aspell[] = HomeEntry(".aspell.conf", CategoryLinuxExtra);
 
-// Linux Rice
-DefineEntry(awesome, Config(CategoryLinuxRice, "awesome/"));
-DefineEntry(bspwm, Config(CategoryLinuxRice, "bspwm/"));
-DefineEntry(cava, Config(CategoryLinuxRice, "cava/"));
-DefineEntry(cdm, Config(CategoryLinuxRice, "cdm/"));
-DefineEntry(conky, Config(CategoryLinuxRice, "conky/"));
-DefineEntry(dunst, Config(CategoryLinuxRice, "dunst/"));
-DefineEntry(dxhd, Config(CategoryLinuxRice, "dxhd/"));
-DefineEntry(eww, Config(CategoryLinuxRice, "eww/"));
-DefineEntry(i3, Config(CategoryLinuxRice, "i3/"));
-DefineEntry(i3blocks, Config(CategoryLinuxRice, "i3blocks/"));
-DefineEntry(i3status, Config(CategoryLinuxRice, "i3status/"));
-DefineEntry(i3statusRust, Config(CategoryLinuxRice, "i3status-rust/"));
-DefineEntry(ly, Config(CategoryLinuxRice, "ly/"));
-DefineEntry(mako, Config(CategoryLinuxRice, "mako/config"));
-DefineEntry(mpd, Config(CategoryLinuxRice, "mpd/"));
-DefineEntry(nitrogen, Config(CategoryLinuxRice, "nitrogen/"));
-DefineEntry(openbox, Config(CategoryLinuxRice, "openbox/"));
-DefineEntry(pacmixer, Config(CategoryLinuxRice, "pacmixer/"));
-DefineEntry(picom, Config(CategoryLinuxRice, "picom/"));
-DefineEntry(polybar, Config(CategoryLinuxRice, "polybar/"));
-DefineEntry(rofi, Config(CategoryLinuxRice, "rofi/"));
-DefineEntry(swaylock, Config(CategoryLinuxRice, "swaylock/"));
-DefineEntry(sx, Config(CategoryLinuxRice, "sx/"));
-DefineEntry(sxhkdrc, Config(CategoryLinuxRice, "sxhkdrc/"));
-DefineEntry(taffybar, Config(CategoryLinuxRice, "taffybar/"));
-DefineEntry(twmn, Config(CategoryLinuxRice, "twmn/"));
-DefineEntry(wofi, Config(CategoryLinuxRice, "wofi/"));
-DefineEntry(X11, Config(CategoryLinuxRice, "X11/"));
-DefineEntry(xbindkeys, Config(CategoryLinuxRice, "xbindkeys/"));
-DefineEntry(xkb, Config(CategoryLinuxRice, "xkb/"));
-DefineEntry(xmobar, Config(CategoryLinuxRice, "xmobar/"));
-DefineEntry(xob, Config(CategoryLinuxRice, "xob/"));
-DefineEntry(emptty, Config(CategoryLinuxRice, "emptty"));
-DefineEntry(ncpamixerConf, Config(CategoryLinuxRice, "ncpamixer.conf"));
-DefineEntry(pamixConf, Config(CategoryLinuxRice, "pamix.conf"));
-DefineEntry(pavucontrolIni, Config(CategoryLinuxRice, "pavucontrol.ini"));
-DefineEntry(pulsemixerCfg, Config(CategoryLinuxRice, "pulsemixer.cfg"));
+// Linux Rice.
+static Entry awesome[] = ConfigEntry("awesome/", CategoryLinuxRice);
+static Entry bspwm[] = ConfigEntry("bspwm/", CategoryLinuxRice);
+static Entry cava[] = ConfigEntry("cava/", CategoryLinuxRice);
+static Entry cdm[] = ConfigEntry("cdm/", CategoryLinuxRice);
+static Entry conky[] = ConfigEntry("conky/", CategoryLinuxRice);
+static Entry dunst[] = ConfigEntry("dunst/", CategoryLinuxRice);
+static Entry dxhd[] = ConfigEntry("dxhd/", CategoryLinuxRice);
+static Entry eww[] = ConfigEntry("eww/", CategoryLinuxRice);
+static Entry i3[] = ConfigEntry("i3/", CategoryLinuxRice);
+static Entry i3blocks[] = ConfigEntry("i3blocks/", CategoryLinuxRice);
+static Entry i3status[] = ConfigEntry("i3status/", CategoryLinuxRice);
+static Entry i3statusRust[] = ConfigEntry("i3status-rust/", CategoryLinuxRice);
+static Entry ly[] = ConfigEntry("ly/", CategoryLinuxRice);
+static Entry mako[] = ConfigEntry("mako/config", CategoryLinuxRice);
+static Entry mpd[] = ConfigEntry("mpd/", CategoryLinuxRice);
+static Entry nitrogen[] = ConfigEntry("nitrogen/", CategoryLinuxRice);
+static Entry openbox[] = ConfigEntry("openbox/", CategoryLinuxRice);
+static Entry pacmixer[] = ConfigEntry("pacmixer/", CategoryLinuxRice);
+static Entry picom[] = ConfigEntry("picom/", CategoryLinuxRice);
+static Entry polybar[] = ConfigEntry("polybar/", CategoryLinuxRice);
+static Entry rofi[] = ConfigEntry("rofi/", CategoryLinuxRice);
+static Entry swaylock[] = ConfigEntry("swaylock/", CategoryLinuxRice);
+static Entry sx[] = ConfigEntry("sx/", CategoryLinuxRice);
+static Entry sxhkdrc[] = ConfigEntry("sxhkdrc/", CategoryLinuxRice);
+static Entry taffybar[] = ConfigEntry("taffybar/", CategoryLinuxRice);
+static Entry twmn[] = ConfigEntry("twmn/", CategoryLinuxRice);
+static Entry wofi[] = ConfigEntry("wofi/", CategoryLinuxRice);
+static Entry X11[] = ConfigEntry("X11/", CategoryLinuxRice);
+static Entry xbindkeys[] = ConfigEntry("xbindkeys/", CategoryLinuxRice);
+static Entry xkb[] = ConfigEntry("xkb/", CategoryLinuxRice);
+static Entry xmobar[] = ConfigEntry("xmobar/", CategoryLinuxRice);
+static Entry xob[] = ConfigEntry("xob/", CategoryLinuxRice);
+static Entry emptty[] = ConfigEntry("emptty", CategoryLinuxRice);
+static Entry ncpamixerConf[] = ConfigEntry("ncpamixer.conf", CategoryLinuxRice);
+static Entry pamixConf[] = ConfigEntry("pamix.conf", CategoryLinuxRice);
+static Entry pavucontrolIni[] = ConfigEntry("pavucontrol.ini", CategoryLinuxRice);
+static Entry pulsemixerCfg[] = ConfigEntry("pulsemixer.cfg", CategoryLinuxRice);
 
-// Shell
-DefineEntry(fish, Config(CategoryShell, "fish/"));
-DefineEntry(ion, Config(CategoryShell, "ion/"));
-DefineEntry(liquidprompt, Config(CategoryShell, "liquidprompt/"));
-DefineEntry(nu, Config(CategoryShell, "nu/"));
-DefineEntry(powerline, Config(CategoryShell, "powerline/"));
-DefineEntry(sh, Config(CategoryShell, "sh/"));
-DefineEntry(starship, Config(CategoryShell, "starship/"));
-DefineEntry(zsh, Config(CategoryShell, "zsh/"));
-static struct Entry bash[] = {
+// Shell.
+static Entry fish[] = ConfigEntry("fish/", CategoryShell);
+static Entry ion[] = ConfigEntry("ion/", CategoryShell);
+static Entry liquidprompt[] = ConfigEntry("liquidprompt/", CategoryShell);
+static Entry nu[] = ConfigEntry("nu/", CategoryShell);
+static Entry powerline[] = ConfigEntry("powerline/", CategoryShell);
+static Entry sh[] = ConfigEntry("sh/", CategoryShell);
+static Entry starship[] = ConfigEntry("starship/", CategoryShell);
+static Entry zsh[] = ConfigEntry("zsh/", CategoryShell);
+static Entry bash[] = {
 	// clang-format off
-	Home(CategoryShell, ".bashrc"),
-	Home(CategoryShell, ".bash_profile"),
-	Home(CategoryShell, ".bash_logout"),
-	Config(CategoryShell, "bash/"),
+	Home(".bashrc", CategoryShell),
+	Home(".bash_profile", CategoryShell),
+	Home(".bash_logout", CategoryShell),
+	Config("bash/", CategoryShell),
 	Done
 	// clang-format on
 };
-DefineEntry(cshrc, Home(CategoryShell, ".cshrc"));
-DefineEntry(kshrc, Home(CategoryShell, ".kshrc"));
-DefineEntry(login, Home(CategoryShell, ".login"));
-DefineEntry(mkshrc, Home(CategoryShell, ".mkshrc"));
-DefineEntry(profile, Home(CategoryShell, ".profile"));
-DefineEntry(tcshrc, Home(CategoryShell, ".tcshrc"));
-DefineEntry(zshenv, Home(CategoryShell, ".zshenv"));
+static Entry cshrc[] = HomeEntry(".cshrc", CategoryShell);
+static Entry kshrc[] = HomeEntry(".kshrc", CategoryShell);
+static Entry login[] = HomeEntry(".login", CategoryShell);
+static Entry mkshrc[] = HomeEntry(".mkshrc", CategoryShell);
+static Entry profile[] = HomeEntry(".profile", CategoryShell);
+static Entry tcshrc[] = HomeEntry(".tcshrc", CategoryShell);
+static Entry zshenv[] = HomeEntry(".zshenv", CategoryShell);
 
-// Terminal
-DefineEntry(alacritty, Config(CategoryTerminal, "alacritty/"));
-DefineEntry(kermit, Config(CategoryTerminal, "kermit/"));
-DefineEntry(kitty, Config(CategoryTerminal, "kitty/"));
-DefineEntry(screen, Config(CategoryTerminal, "screen/"));
-DefineEntry(terminator, Config(CategoryTerminal, "terminator/"));
-DefineEntry(termite, Config(CategoryTerminal, "termite/"));
-DefineEntry(tmux, Config(CategoryTerminal, "tmux/"));
-DefineEntry(urxvt, Config(CategoryTerminal, "urxvt/"));
-DefineEntry(gtktermrc, Config(CategoryTerminal, ".gtktermrc"));
-DefineEntry(hyperJs, Home(CategoryTerminal, ".hyper.js"));
+// Terminal.
+static Entry alacritty[] = ConfigEntry("alacritty/", CategoryTerminal);
+static Entry kermit[] = ConfigEntry("kermit/", CategoryTerminal);
+static Entry kitty[] = ConfigEntry("kitty/", CategoryTerminal);
+static Entry screen[] = ConfigEntry("screen/", CategoryTerminal);
+static Entry terminator[] = ConfigEntry("terminator/", CategoryTerminal);
+static Entry termite[] = ConfigEntry("termite/", CategoryTerminal);
+static Entry tmux[] = ConfigEntry("tmux/", CategoryTerminal);
+static Entry urxvt[] = ConfigEntry("urxvt/", CategoryTerminal);
+static Entry gtktermrc[] = ConfigEntry(".gtktermrc", CategoryTerminal);
+static Entry hyperJs[] = HomeEntry(".hyper.js", CategoryTerminal);
 
-// Tools
-DefineEntry(cspell, Config(CategoryTools, "cspell/"));
-DefineEntry(libfsguest, Config(CategoryTools, "libfsguest/"));
-DefineEntry(nvchecker, Config(CategoryTools, "nvchecker/"));
-DefineEntry(osc, Config(CategoryTools, "osc/"));
-DefineEntry(redshift, Config(CategoryTools, "redshift/"));
-DefineEntry(sheldon, Config(CategoryTools, "sheldon/"));
-DefineEntry(urlwatch, Config(CategoryTools, "urlwatch/"));
+// Tools.
+static Entry cspell[] = ConfigEntry("cspell/", CategoryTools);
+static Entry libfsguest[] = ConfigEntry("libfsguest/", CategoryTools);
+static Entry nvchecker[] = ConfigEntry("nvchecker/", CategoryTools);
+static Entry osc[] = ConfigEntry("osc/", CategoryTools);
+static Entry redshift[] = ConfigEntry("redshift/", CategoryTools);
+static Entry sheldon[] = ConfigEntry("sheldon/", CategoryTools);
+static Entry urlwatch[] = ConfigEntry("urlwatch/", CategoryTools);
 
-// Version Control
-DefineEntry(gh, Config(CategoryVersionControl, "gh/config.yml"));
-DefineEntry(git, Config(CategoryVersionControl, "git/"));
-DefineEntry(hg, Config(CategoryVersionControl, "hg/"));
-DefineEntry(pijul, Config(CategoryVersionControl, "pijul/"));
-DefineEntry(tig, Config(CategoryVersionControl, "tig/"));
+// Version Control.
+static Entry gh[] = ConfigEntry("gh/config.yml", CategoryVersionControl);
+static Entry git[] = ConfigEntry("git/", CategoryVersionControl);
+static Entry hg[] = ConfigEntry("hg/", CategoryVersionControl);
+static Entry pijul[] = ConfigEntry("pijul/", CategoryVersionControl);
+static Entry tig[] = ConfigEntry("tig/", CategoryVersionControl);
 
-static struct Entry *configuration[] = {
-	// albert,
-	// broot,
-	// calcurse,
-	// cmus,
-	// espanso,
-	// htop,
-	// irssi,
-	// lazydocker,
-	// mnemosyne,
-	// mpv,
-	// nb,
-	// ncmpcpp,
-	// octave,
-	// taskwarrior,
-	// viewnior,
-	// vimiv,
-	// wtf,
-	// xplr,
-	// zathura,
-	// llpp,
-	// blender,
-	// gnuplot,
-	// aria2,
-	// bat,
-	// ccache,
-	// sccache,
-	// cookiecutter,
-	// neofetch,
-	// pgcli,
-	// ripgrep,
-	// rtorrent,
-	wget,
-	youtubeDl,
-	// agignore,
-	// psqlrc,
-	// chezmoi,
-	// dotdrop,
-	// dotgen,
-	// rcrc,
-	vscode,
-	// ossCode,
-	// helix,
-	// kak,
-	// micro,
-	nano,
-	nvim,
-	// ox,
-	// sublimeText3,
-	vim,
-	zed,
-	// exrc,
-	// aerc,
-	// neomutt,
-	// notmuch,
-	// bpython,
-	// cargo,
-	// conda,
-	// gdb,
-	// irb,
-	// maven,
-	// nimble,
-	npm,
-	// please,
-	// pudb,
-	// pylint,
-	// pypoetry,
-	python,
-	// yapf,
-	// cpan,
-	// sdkman,
-	// curl,
-	dircolors,
-	environmentD,
-	// fontconfig,
-	info,
-	less,
-	// most,
-	readline,
-	// userDirsDirs,
-	userDirsConf,
-	gnupgDirmngr,
-	gnupgGpg,
-	gnupgGpgAgent,
-	// pamEnvironment,
-	// digrc,
-	// hushlogin,
-	// ltrace,
-	// pacman,
-	// paru,
-	// toast,
-	// udiskie,
-	// yay,
-	// aspell,
-	// awesome,
-	// bspwm,
-	// cava,
-	// cdm,
-	// conky,
-	// dunst,
-	// dxhd,
-	// eww,
-	// i3,
-	// i3blocks,
-	// i3status,
-	// i3statusRust,
-	// ly,
-	// mako,
-	// mpd,
-	// nitrogen,
-	// openbox,
-	// pacmixer,
-	// picom,
-	// polybar,
-	// rofi,
-	// swaylock,
-	// sx,
-	// sxhkdrc,
-	// taffybar,
-	// twmn,
-	// wofi,
-	// X11,
-	// xbindkeys,
-	// xkb,
-	// xmobar,
-	// xob,
-	// emptty,
-	// ncpamixerConf,
-	// pamixConf,
-	// pavucontrolIni,
-	// pulsemixerCfg,
-	// fish,
-	// ion,
-	// liquidprompt,
-	// nu,
-	// powerline,
-	sh,
-	// starship,
-	zsh,
-	bash,
-	// cshrc,
-	// kshrc,
-	// login,
-	// mkshrc,
-	profile,
-	// tcshrc,
-	zshenv,
-	alacritty,
-	// kermit,
-	kitty,
-	// screen,
-	// terminator,
-	// termite,
-	// tmux,
-	// urxvt,
-	// gtktermrc,
-	// hyperJs,
-	// cspell,
-	// libfsguest,
-	// nvchecker,
-	// osc,
-	// redshift,
-	// sheldon,
-	// urlwatch,
-	gh,
-	git,
-	// hg,
-	// pijul,
-	// tig,
-	NULL,
+// Groups.
+static Group defaultGroup = {
+	.name = "Default",
+	.entries = (Entry *[]){
+		wget,
+		youtubeDl,
+		vscode,
+		nano,
+		nvim,
+		vim,
+		zed,
+		npm,
+		python,
+		dircolors,
+		environmentD,
+		info,
+		less,
+		readline,
+		userDirsConf,
+		gnupgDirmngr,
+		gnupgGpg,
+		gnupgGpgAgent,
+		sh,
+		zsh,
+		bash,
+		profile,
+		zshenv,
+		alacritty,
+		kitty,
+		gh,
+		git,
+		NULL
+	}
 };
 
-struct Entry **getConfiguration() {
-	return configuration;
+static Group otherGroup = {
+	.name = "Rice",
+	.entries = (Entry *[]){
+		albert,
+		broot,
+		calcurse,
+		cmus,
+		espanso,
+		htop,
+		irssi,
+		lazydocker,
+		mnemosyne,
+		mpv,
+		nb,
+		ncmpcpp,
+		octave,
+		taskwarrior,
+		viewnior,
+		vimiv,
+		wtf,
+		xplr,
+		zathura,
+		llpp,
+		blender,
+		gnuplot,
+		aria2,
+		bat,
+		ccache,
+		sccache,
+		cookiecutter,
+		neofetch,
+		pgcli,
+		ripgrep,
+		rtorrent,
+		agignore,
+		psqlrc,
+		chezmoi,
+		dotdrop,
+		dotgen,
+		rcrc,
+		ossCode,
+		helix,
+		kak,
+		micro,
+		ox,
+		sublimeText3,
+		exrc,
+		aerc,
+		neomutt,
+		notmuch,
+		bpython,
+		cargo,
+		conda,
+		gdb,
+		irb,
+		maven,
+		nimble,
+		please,
+		pudb,
+		pylint,
+		pypoetry,
+		yapf,
+		cpan,
+		sdkman,
+		curl,
+		fontconfig,
+		most,
+		pamEnvironment,
+		digrc,
+		hushlogin,
+		ltrace,
+		pacman,
+		paru,
+		toast,
+		udiskie,
+		yay,
+		aspell,
+		awesome,
+		bspwm,
+		cava,
+		cdm,
+		conky,
+		dunst,
+		dxhd,
+		eww,
+		i3,
+		i3blocks,
+		i3status,
+		i3statusRust,
+		ly,
+		mako,
+		mpd,
+		nitrogen,
+		openbox,
+		pacmixer,
+		picom,
+		polybar,
+		rofi,
+		swaylock,
+		sx,
+		sxhkdrc,
+		taffybar,
+		twmn,
+		wofi,
+		X11,
+		xbindkeys,
+		xkb,
+		xmobar,
+		xob,
+		emptty,
+		ncpamixerConf,
+		pamixConf,
+		pavucontrolIni,
+		pulsemixerCfg,
+		fish,
+		ion,
+		liquidprompt,
+		nu,
+		powerline,
+		starship,
+		cshrc,
+		kshrc,
+		login,
+		mkshrc,
+		tcshrc,
+		kermit,
+		screen,
+		terminator,
+		termite,
+		tmux,
+		urxvt,
+		gtktermrc,
+		hyperJs,
+		cspell,
+		libfsguest,
+		nvchecker,
+		osc,
+		redshift,
+		sheldon,
+		urlwatch,
+		hg,
+		pijul,
+		tig,
+		NULL
+	}
+};
+
+static Group** groups = (Group *[]){
+	&defaultGroup,
+	&otherGroup,
+	NULL
+};
+
+// Symbols with external linkage.
+Group **getGroups() {
+	return groups;
+}
+
+Group *getDefaultGroup() {
+	return &defaultGroup;
 }
 
 #pragma clang diagnostic pop
