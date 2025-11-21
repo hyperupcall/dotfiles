@@ -25,7 +25,7 @@ typedef struct Entry {
 	.source = Src category ".local/share/" path, \
 	.destination = Dst ".local/share/" path \
 }
-#define Done { \
+#define Done (Entry){ \
 	.source = NULL, \
 	.destination = NULL \
 }

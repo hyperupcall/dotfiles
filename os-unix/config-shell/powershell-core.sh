@@ -30,4 +30,12 @@ install.debian() {
 	sudo apt-get -y install powershell
 }
 
+install.ubuntu() {
+	install.debian "$@"
+}
+
+installed() {
+	command -v powershell &>/dev/null
+}
+
 util.if_file_sourced || _setup "$@"

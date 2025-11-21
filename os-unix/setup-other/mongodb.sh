@@ -11,22 +11,31 @@ main() {
 install.debian() {
 	local gpg_file="/etc/apt/keyrings/mongodb.asc"
 	local dist='jammy'
+	local version='8.0'
 
 	pkg.add_apt_key \
-		'https://www.mongodb.org/static/pgp/server-6.0.asc' \
+		"https://pgp.mongodb.com/server-$version.asc" \
 		"$gpg_file"
 
 	pkg.add_apt_repository \
-		'/etc/apt/sources.list.d/mongodb-6.0.sources' "
+		"/etc/apt/sources.list.d/mongodb-$version.sources" "
 			Types: deb
 			URIs: https://repo.mongodb.org/apt/ubuntu
-			Suites: $dist/mongodb-org/6.0
+			Suites: $dist/mongodb-org/$version
 			Components: multiverse
 			Architectures: $(dpkg --print-architecture)
 			signed-by: $gpg_file"
 
 	sudo apt-get -y update
 	sudo apt-get install -y mongodb-org
+}
+
+install.ubuntu() {
+	install.debian "$@"
+}
+
+installed() {
+	command -v &>/dev/null mongod
 }
 
 util.if_file_sourced || _setup "$@"
