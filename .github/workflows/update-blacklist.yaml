@@ -23,9 +23,13 @@ jobs:
 
       - run: './scripts/compile-blacklist.ts'
 
+      - uses: 'crazy-max/ghaction-import-gpg@v6'
+        with:
+          gpg_private_key: '${{ secrets.GPG_PRIVATE_KEY }}'
+          passphrase: '${{ secrets.GPG_PRIVATE_KEY_PASSWORD }}'
+
       - name: 'Commit'
         run: |
-          GPG_TTY=$(tty) gpg --batch --yes --pinentry-mode loopback --passphrase-file <(cat <<< '${{ secrets.GPG_PRIVATE_KEY_PASSWORD }}') --import <<< "${{ secrets.GPG_PRIVATE_KEY }}"
           git add config/ublacklist-compiled.txt
           git add config/ublockorigin-compiled.txt
           git \
