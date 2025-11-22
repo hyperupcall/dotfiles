@@ -32507,7 +32507,6 @@
 ||acceptabledancemixed.com^$document
 ||acceptablefabric.com^$document
 ||acceptablejitterdisgrace.com^$document
-||acceptablt.com^$document
 ||acceptanceathwartwant.com^$document
 ||acceptation-payement-boncoin-ile-france.fr^$document
 ||acceptbusinessget.biz^$document
@@ -34468,6 +34467,7 @@
 ||adminclub.org^$document
 ||administation-fiscale.fr^$document
 ||administercontest.com^$document
+||administration-dgccrf.fr^$document
 ||administration-gendarmerie-idf.fr^$document
 ||administration-impotgouv.fr^$document
 ||administration-pncee.fr^$document
@@ -41143,6 +41143,7 @@
 ||amezabna.tk^$document
 ||amezf.rest^$document
 ||amf-cloudmail.org^$document
+||amf-impots.fr^$document
 ||amf-secure.fr^$document
 ||amf-service-client.fr^$document
 ||amfadarbullbreathun.cf^$document
@@ -41354,10 +41355,13 @@
 ||amonbetcasino.fr^$document
 ||amonbetonline.fr^$document
 ||amonbets.fr^$document
+||amoncasina.fr^$document
 ||amoncasino-france.fr^$document
 ||amoncasinoapp.fr^$document
 ||amoncasinobonus.fr^$document
 ||amoncasinobonus777.fr^$document
+||amoncasinoconexion.fr^$document
+||amoncasinoconnexion.fr^$document
 ||amoncasinodeposit.fr^$document
 ||amoncasinoenligne.fr^$document
 ||amoncasinofr.fr^$document
@@ -41365,6 +41369,7 @@
 ||amoncasinologin.fr^$document
 ||amoncasinoo.fr^$document
 ||amoncasinoo1.fr^$document
+||amoncasinoonline.fr^$document
 ||amoncasinopromo.fr^$document
 ||amoncasinos1.fr^$document
 ||amondo.it^$document
@@ -52086,6 +52091,7 @@
 ||babiwinnotyrlai.cf^$document
 ||babloanetmuhard.ml^$document
 ||bablphish.com^$document
+||babolatfr.fr^$document
 ||babolatfrance.fr^$document
 ||babole.es^$document
 ||babolorlerach.tk^$document
@@ -56348,6 +56354,7 @@
 ||benefac63consult.properties^$document
 ||benefice-prime.fr^$document
 ||beneficiaire-prime.fr^$document
+||beneficialx.com^$document
 ||benefitanna.com^$document
 ||benefitmoneynice.biz^$document
 ||benefitsadvisornetwork.com^$document
@@ -59593,6 +59600,7 @@
 ||billigwohnmobel.com^$document
 ||billigwunder24.de^$document
 ||billionairepascher.fr^$document
+||billionairespin-france.fr^$document
 ||billionairespincasino.fr^$document
 ||billionairetissu.fr^$document
 ||billionquestions.biz^$document
@@ -73962,6 +73970,7 @@
 ||casinowild-sultan.fr^$document
 ||casinowildrobin.fr^$document
 ||casinowildsultan.fr^$document
+||casinowinmachance.fr^$document
 ||casinowonaco.fr^$document
 ||casinozer-bet.fr^$document
 ||casinozer-casinos.fr^$document
@@ -87306,6 +87315,7 @@
 ||compellingperch.com^$document
 ||compellingsubstitute.com^$document
 ||compemimaper.tk^$document
+||compensair.com^$document
 ||compensateearly.com^$document
 ||compensation-navigo.fr^$document
 ||compensationkillingbookshelf.com^$document
@@ -88330,6 +88340,7 @@
 ||confirmation-suivisboncoin.fr^$document
 ||confirmationachatlbc.fr^$document
 ||confirmationachats.fr^$document
+||confirmationlebonrdv-aymane.fr^$document
 ||confirmationlebonrdv-jean-michel.fr^$document
 ||confirmationlebonrdv-latour.fr^$document
 ||confirmationpayment.fr^$document
@@ -91655,7 +91666,6 @@
 ||cp0753.com^$document
 ||cp0m7.tokyo^$document
 ||cp1t6s.shop^$document
-||cp24.pl^$document
 ||cp28qcm.tokyo^$document
 ||cp2ooc.xyz^$document
 ||cp2vfx.cyou^$document
@@ -95576,6 +95586,7 @@
 ||cvlpbib.bar^$document
 ||cvlpzu.tokyo^$document
 ||cvm56vi.cyou^$document
+||cvmaker.de^$document
 ||cvmblm.rest^$document
 ||cvmdrxl.cyou^$document
 ||cvmfoxd.tokyo^$document
@@ -106011,6 +106022,7 @@
 ||direction-generale-fp.fr^$document
 ||direction-interpol.fr^$document
 ||direction.info^$document
+||directionaeth.fr^$document
 ||directioncentralfinancepubliquegouvfr.fr^$document
 ||directiondesaffairesjuridiques.fr^$document
 ||directiongeneralegend.fr^$document
@@ -125103,6 +125115,7 @@
 ||etu-creteil.fr^$document
 ||etu-lille2.fr^$document
 ||etu-nantes.fr^$document
+||etu-paris.fr^$document
 ||etu-parisdescartes.fr^$document
 ||etu-pec.fr^$document
 ||etu-u-pec.fr^$document
@@ -128807,6 +128820,7 @@
 ||facture-orangespace-client.fr^$document
 ||facture-pay.fr^$document
 ||facture-sfr.fr^$document
+||factureavastprimeline.fr^$document
 ||factureorange.fr^$document
 ||facturepaytv.fr^$document
 ||facturepeage-ulys.com^$document
@@ -150077,6 +150091,7 @@
 ||golden-re.com^$document
 ||goldenbayboutiques.com^$document
 ||goldenbet-casino.fr^$document
+||goldenbet-fr.fr^$document
 ||goldenbetcasinos.fr^$document
 ||goldenbetfr.fr^$document
 ||goldenbetscasino.fr^$document
@@ -154239,6 +154254,7 @@
 ||guicerhodosar.cf^$document
 ||guichaptotica.tk^$document
 ||guicheklicakcomp.tk^$document
+||guichet-ants.fr^$document
 ||guichetcartegrise.com^$document
 ||guichristurcaving.cf^$document
 ||guichristurcaving.ga^$document
@@ -167962,6 +167978,7 @@
 ||hugestudentcompany.biz^$document
 ||hugetech.org^$document
 ||hugetimeeyesworld.bar^$document
+||hugetsky.com^$document
 ||hugewins.fr^$document
 ||hugewinscasino.fr^$document
 ||hugfirst.com^$document
@@ -177768,15 +177785,19 @@
 ||instantart.io^$document
 ||instantart.io^$document
 ||instantbiography.com^$document
+||instantcasina.fr^$document
 ||instantcasino-fr.fr^$document
 ||instantcasino-online.fr^$document
 ||instantcasino1.fr^$document
+||instantcasinoconexion.fr^$document
 ||instantcasinoconnexion.fr^$document
 ||instantcasinofr.fr^$document
 ||instantcasinofrance.fr^$document
 ||instantcasinologin.fr^$document
+||instantcasinomoncompte.fr^$document
 ||instantcasinoo.fr^$document
 ||instantcasinoo1.fr^$document
+||instantcasinoonline.fr^$document
 ||instantcasinos1.fr^$document
 ||instantclickflow.com^$document
 ||instantcredit.xyz^$document
@@ -181064,6 +181085,7 @@
 ||ivybetcasinobonus777.fr^$document
 ||ivybetcasinologin.fr^$document
 ||ivybets.fr^$document
+||ivyever.com^$document
 ||ivyglearlesan.ga^$document
 ||ivylxb.tokyo^$document
 ||ivyohe.bar^$document
@@ -183898,6 +183920,7 @@
 ||jellycatkuscheltiere.de^$document
 ||jellycatluxembourg.lu^$document
 ||jellycats-france.fr^$document
+||jellycatsfr.fr^$document
 ||jellycatsoldes.fr^$document
 ||jellycc2.com^$document
 ||jellyhumor.com^$document
@@ -211755,6 +211778,7 @@
 ||luckterreracsi.ml^$document
 ||luckvp.cn^$document
 ||luckwimbwifumangra.tk^$document
+||lucky-31casinos.fr^$document
 ||lucky-8-fr.fr^$document
 ||lucky-8casino.fr^$document
 ||lucky-bonus.fr^$document
@@ -215094,6 +215118,7 @@
 ||magiskzip.net^$document
 ||magius-casino.fr^$document
 ||magiuscasino.fr^$document
+||magiuscasino1.fr^$document
 ||magiuscasinoapp.fr^$document
 ||magiuscasinoavis.fr^$document
 ||magiuscasinofrance777.fr^$document
@@ -219610,9 +219635,12 @@
 ||megawincasina.fr^$document
 ||megawincasino-fr.fr^$document
 ||megawincasino1.fr^$document
+||megawincasinoconexion.fr^$document
+||megawincasinoconnexion.fr^$document
 ||megawincasinofr.fr^$document
 ||megawincasinofrance.fr^$document
 ||megawincasinoo.fr^$document
+||megawincasinoonline.fr^$document
 ||megawincasinos.fr^$document
 ||megawire.de^$document
 ||mege-tech.de^$document
@@ -282631,6 +282659,7 @@
 ||rabnederguiwingsy.tk^$document
 ||rabniakija.tk^$document
 ||rabnirephomou.ga^$document
+||rabona-fr.fr^$document
 ||rabona-online.fr^$document
 ||rabonacasino1.fr^$document
 ||rabonacasinoapp.fr^$document
@@ -293089,6 +293118,7 @@
 ||ripcountbuafapo.tk^$document
 ||ripcurl.co.at^$document
 ||ripcurlfrance.fr^$document
+||ripcurls.fr^$document
 ||ripdaikingkendeo.cf^$document
 ||ripdaydrahdangwo.tk^$document
 ||ripdelassicar.ml^$document
@@ -307090,6 +307120,7 @@
 ||sevbesau.xyz^$document
 ||sevdrr.rest^$document
 ||seveap.tokyo^$document
+||seven-casinos.fr^$document
 ||sevenhowproduce.buzz^$document
 ||sevenloveresponses.buzz^$document
 ||sevenmoto.ca^$document
@@ -310738,6 +310769,7 @@
 ||sioxetinmichar.ml^$document
 ||siozacepsicon.tk^$document
 ||siozdecnosasi.tk^$document
+||sip-regulation-france.fr^$document
 ||sip4h.tokyo^$document
 ||sipadetpeduc.tk^$document
 ||sipalaspewebcrock.cf^$document
@@ -353261,6 +353293,7 @@
 ||unilonevce.tk^$document
 ||unilova.fr^$document
 ||unilpocentsar.tk^$document
+||unilqofrance.fr^$document
 ||unilreireces.ml^$document
 ||uniltatotu.gq^$document
 ||uniltranunon.gq^$document
@@ -385041,6 +385074,7 @@
 ||xn--ulys-page-g4a.fr^$document
 ||xn--unicit-gva.fr^$document
 ||xn--uniscit-hya.fr^$document
+||xn--univ-roun-73a.fr^$document
 ||xn--universit-bordeaux-jwb.fr^$document
 ||xn--universit-nantes-jqb.fr^$document
 ||xn--universit-rennes1-jtb.fr^$document

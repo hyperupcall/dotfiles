@@ -39598,7 +39598,6 @@
 *://*.acceptabledancemixed.com/*
 *://*.acceptablefabric.com/*
 *://*.acceptablejitterdisgrace.com/*
-*://*.acceptablt.com/*
 *://*.acceptanceathwartwant.com/*
 *://*.acceptation-payement-boncoin-ile-france.fr/*
 *://*.acceptbusinessget.biz/*
@@ -41559,6 +41558,7 @@
 *://*.adminclub.org/*
 *://*.administation-fiscale.fr/*
 *://*.administercontest.com/*
+*://*.administration-dgccrf.fr/*
 *://*.administration-gendarmerie-idf.fr/*
 *://*.administration-impotgouv.fr/*
 *://*.administration-pncee.fr/*
@@ -48234,6 +48234,7 @@
 *://*.amezabna.tk/*
 *://*.amezf.rest/*
 *://*.amf-cloudmail.org/*
+*://*.amf-impots.fr/*
 *://*.amf-secure.fr/*
 *://*.amf-service-client.fr/*
 *://*.amfadarbullbreathun.cf/*
@@ -48445,10 +48446,13 @@
 *://*.amonbetcasino.fr/*
 *://*.amonbetonline.fr/*
 *://*.amonbets.fr/*
+*://*.amoncasina.fr/*
 *://*.amoncasino-france.fr/*
 *://*.amoncasinoapp.fr/*
 *://*.amoncasinobonus.fr/*
 *://*.amoncasinobonus777.fr/*
+*://*.amoncasinoconexion.fr/*
+*://*.amoncasinoconnexion.fr/*
 *://*.amoncasinodeposit.fr/*
 *://*.amoncasinoenligne.fr/*
 *://*.amoncasinofr.fr/*
@@ -48456,6 +48460,7 @@
 *://*.amoncasinologin.fr/*
 *://*.amoncasinoo.fr/*
 *://*.amoncasinoo1.fr/*
+*://*.amoncasinoonline.fr/*
 *://*.amoncasinopromo.fr/*
 *://*.amoncasinos1.fr/*
 *://*.amondo.it/*
@@ -59177,6 +59182,7 @@
 *://*.babiwinnotyrlai.cf/*
 *://*.babloanetmuhard.ml/*
 *://*.bablphish.com/*
+*://*.babolatfr.fr/*
 *://*.babolatfrance.fr/*
 *://*.babole.es/*
 *://*.babolorlerach.tk/*
@@ -63439,6 +63445,7 @@
 *://*.benefac63consult.properties/*
 *://*.benefice-prime.fr/*
 *://*.beneficiaire-prime.fr/*
+*://*.beneficialx.com/*
 *://*.benefitanna.com/*
 *://*.benefitmoneynice.biz/*
 *://*.benefitsadvisornetwork.com/*
@@ -66684,6 +66691,7 @@
 *://*.billigwohnmobel.com/*
 *://*.billigwunder24.de/*
 *://*.billionairepascher.fr/*
+*://*.billionairespin-france.fr/*
 *://*.billionairespincasino.fr/*
 *://*.billionairetissu.fr/*
 *://*.billionquestions.biz/*
@@ -81053,6 +81061,7 @@
 *://*.casinowild-sultan.fr/*
 *://*.casinowildrobin.fr/*
 *://*.casinowildsultan.fr/*
+*://*.casinowinmachance.fr/*
 *://*.casinowonaco.fr/*
 *://*.casinozer-bet.fr/*
 *://*.casinozer-casinos.fr/*
@@ -94401,6 +94410,7 @@
 *://*.compellingperch.com/*
 *://*.compellingsubstitute.com/*
 *://*.compemimaper.tk/*
+*://*.compensair.com/*
 *://*.compensateearly.com/*
 *://*.compensation-navigo.fr/*
 *://*.compensationkillingbookshelf.com/*
@@ -95425,6 +95435,7 @@
 *://*.confirmation-suivisboncoin.fr/*
 *://*.confirmationachatlbc.fr/*
 *://*.confirmationachats.fr/*
+*://*.confirmationlebonrdv-aymane.fr/*
 *://*.confirmationlebonrdv-jean-michel.fr/*
 *://*.confirmationlebonrdv-latour.fr/*
 *://*.confirmationpayment.fr/*
@@ -98750,7 +98761,6 @@
 *://*.cp0753.com/*
 *://*.cp0m7.tokyo/*
 *://*.cp1t6s.shop/*
-*://*.cp24.pl/*
 *://*.cp28qcm.tokyo/*
 *://*.cp2ooc.xyz/*
 *://*.cp2vfx.cyou/*
@@ -102671,6 +102681,7 @@
 *://*.cvlpbib.bar/*
 *://*.cvlpzu.tokyo/*
 *://*.cvm56vi.cyou/*
+*://*.cvmaker.de/*
 *://*.cvmblm.rest/*
 *://*.cvmdrxl.cyou/*
 *://*.cvmfoxd.tokyo/*
@@ -113106,6 +113117,7 @@
 *://*.direction-generale-fp.fr/*
 *://*.direction-interpol.fr/*
 *://*.direction.info/*
+*://*.directionaeth.fr/*
 *://*.directioncentralfinancepubliquegouvfr.fr/*
 *://*.directiondesaffairesjuridiques.fr/*
 *://*.directiongeneralegend.fr/*
@@ -132198,6 +132210,7 @@
 *://*.etu-creteil.fr/*
 *://*.etu-lille2.fr/*
 *://*.etu-nantes.fr/*
+*://*.etu-paris.fr/*
 *://*.etu-parisdescartes.fr/*
 *://*.etu-pec.fr/*
 *://*.etu-u-pec.fr/*
@@ -135902,6 +135915,7 @@
 *://*.facture-orangespace-client.fr/*
 *://*.facture-pay.fr/*
 *://*.facture-sfr.fr/*
+*://*.factureavastprimeline.fr/*
 *://*.factureorange.fr/*
 *://*.facturepaytv.fr/*
 *://*.facturepeage-ulys.com/*
@@ -157172,6 +157186,7 @@
 *://*.golden-re.com/*
 *://*.goldenbayboutiques.com/*
 *://*.goldenbet-casino.fr/*
+*://*.goldenbet-fr.fr/*
 *://*.goldenbetcasinos.fr/*
 *://*.goldenbetfr.fr/*
 *://*.goldenbetscasino.fr/*
@@ -161334,6 +161349,7 @@
 *://*.guicerhodosar.cf/*
 *://*.guichaptotica.tk/*
 *://*.guicheklicakcomp.tk/*
+*://*.guichet-ants.fr/*
 *://*.guichetcartegrise.com/*
 *://*.guichristurcaving.cf/*
 *://*.guichristurcaving.ga/*
@@ -175057,6 +175073,7 @@
 *://*.hugestudentcompany.biz/*
 *://*.hugetech.org/*
 *://*.hugetimeeyesworld.bar/*
+*://*.hugetsky.com/*
 *://*.hugewins.fr/*
 *://*.hugewinscasino.fr/*
 *://*.hugfirst.com/*
@@ -184863,15 +184880,19 @@
 *://*.instantart.io/*
 *://*.instantart.io/*
 *://*.instantbiography.com/*
+*://*.instantcasina.fr/*
 *://*.instantcasino-fr.fr/*
 *://*.instantcasino-online.fr/*
 *://*.instantcasino1.fr/*
+*://*.instantcasinoconexion.fr/*
 *://*.instantcasinoconnexion.fr/*
 *://*.instantcasinofr.fr/*
 *://*.instantcasinofrance.fr/*
 *://*.instantcasinologin.fr/*
+*://*.instantcasinomoncompte.fr/*
 *://*.instantcasinoo.fr/*
 *://*.instantcasinoo1.fr/*
+*://*.instantcasinoonline.fr/*
 *://*.instantcasinos1.fr/*
 *://*.instantclickflow.com/*
 *://*.instantcredit.xyz/*
@@ -188159,6 +188180,7 @@
 *://*.ivybetcasinobonus777.fr/*
 *://*.ivybetcasinologin.fr/*
 *://*.ivybets.fr/*
+*://*.ivyever.com/*
 *://*.ivyglearlesan.ga/*
 *://*.ivylxb.tokyo/*
 *://*.ivyohe.bar/*
@@ -190993,6 +191015,7 @@
 *://*.jellycatkuscheltiere.de/*
 *://*.jellycatluxembourg.lu/*
 *://*.jellycats-france.fr/*
+*://*.jellycatsfr.fr/*
 *://*.jellycatsoldes.fr/*
 *://*.jellycc2.com/*
 *://*.jellyhumor.com/*
@@ -218850,6 +218873,7 @@
 *://*.luckterreracsi.ml/*
 *://*.luckvp.cn/*
 *://*.luckwimbwifumangra.tk/*
+*://*.lucky-31casinos.fr/*
 *://*.lucky-8-fr.fr/*
 *://*.lucky-8casino.fr/*
 *://*.lucky-bonus.fr/*
@@ -222189,6 +222213,7 @@
 *://*.magiskzip.net/*
 *://*.magius-casino.fr/*
 *://*.magiuscasino.fr/*
+*://*.magiuscasino1.fr/*
 *://*.magiuscasinoapp.fr/*
 *://*.magiuscasinoavis.fr/*
 *://*.magiuscasinofrance777.fr/*
@@ -226705,9 +226730,12 @@
 *://*.megawincasina.fr/*
 *://*.megawincasino-fr.fr/*
 *://*.megawincasino1.fr/*
+*://*.megawincasinoconexion.fr/*
+*://*.megawincasinoconnexion.fr/*
 *://*.megawincasinofr.fr/*
 *://*.megawincasinofrance.fr/*
 *://*.megawincasinoo.fr/*
+*://*.megawincasinoonline.fr/*
 *://*.megawincasinos.fr/*
 *://*.megawire.de/*
 *://*.mege-tech.de/*
@@ -289729,6 +289757,7 @@
 *://*.rabnederguiwingsy.tk/*
 *://*.rabniakija.tk/*
 *://*.rabnirephomou.ga/*
+*://*.rabona-fr.fr/*
 *://*.rabona-online.fr/*
 *://*.rabonacasino1.fr/*
 *://*.rabonacasinoapp.fr/*
@@ -300187,6 +300216,7 @@
 *://*.ripcountbuafapo.tk/*
 *://*.ripcurl.co.at/*
 *://*.ripcurlfrance.fr/*
+*://*.ripcurls.fr/*
 *://*.ripdaikingkendeo.cf/*
 *://*.ripdaydrahdangwo.tk/*
 *://*.ripdelassicar.ml/*
@@ -314188,6 +314218,7 @@
 *://*.sevbesau.xyz/*
 *://*.sevdrr.rest/*
 *://*.seveap.tokyo/*
+*://*.seven-casinos.fr/*
 *://*.sevenhowproduce.buzz/*
 *://*.sevenloveresponses.buzz/*
 *://*.sevenmoto.ca/*
@@ -317836,6 +317867,7 @@
 *://*.sioxetinmichar.ml/*
 *://*.siozacepsicon.tk/*
 *://*.siozdecnosasi.tk/*
+*://*.sip-regulation-france.fr/*
 *://*.sip4h.tokyo/*
 *://*.sipadetpeduc.tk/*
 *://*.sipalaspewebcrock.cf/*
@@ -360359,6 +360391,7 @@
 *://*.unilonevce.tk/*
 *://*.unilova.fr/*
 *://*.unilpocentsar.tk/*
+*://*.unilqofrance.fr/*
 *://*.unilreireces.ml/*
 *://*.uniltatotu.gq/*
 *://*.uniltranunon.gq/*
@@ -392139,6 +392172,7 @@
 *://*.xn--ulys-page-g4a.fr/*
 *://*.xn--unicit-gva.fr/*
 *://*.xn--uniscit-hya.fr/*
+*://*.xn--univ-roun-73a.fr/*
 *://*.xn--universit-bordeaux-jwb.fr/*
 *://*.xn--universit-nantes-jqb.fr/*
 *://*.xn--universit-rennes1-jtb.fr/*
