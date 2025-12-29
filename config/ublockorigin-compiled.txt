@@ -8899,6 +8899,7 @@
 ||249vin.com^$document
 ||249x6g5.shop^$document
 ||24apothecary.com^$document
+||24autopartsmaster.com^$document
 ||24c9nr.cyou^$document
 ||24casino.fr^$document
 ||24club.space^$document
@@ -10268,7 +10269,6 @@
 ||2ex0jg.tokyo^$document
 ||2exth5.cyou^$document
 ||2ez2d6.cyou^$document
-||2f-kanzlei.com^$document
 ||2f0bsb.cyou^$document
 ||2f0m8n7.shop^$document
 ||2f17k3.tokyo^$document
@@ -11038,7 +11038,6 @@
 ||2r9j38.cyou^$document
 ||2r9nvd.cyou^$document
 ||2r9q0e.cyou^$document
-||2radwelten.de^$document
 ||2raef2.cyou^$document
 ||2rcbhw.cyou^$document
 ||2rcogq.cyou^$document
@@ -31473,7 +31472,6 @@
 ||abbfdu.tokyo^$document
 ||abbhgq.work^$document
 ||abbhkf.rest^$document
-||abbiattiuk.com^$document
 ||abbigliamentopelledoca.it^$document
 ||abbigliamentoscarpe.com^$document
 ||abbotpottery.buzz^$document
@@ -31703,6 +31701,7 @@
 ||abilflanunhe.ml^$document
 ||abilisor.gq^$document
 ||abilityne.com^$document
+||abilment.com^$document
 ||abimaperdie.cf^$document
 ||abimarussanis.ml^$document
 ||abimimleaube.cf^$document
@@ -33517,17 +33516,19 @@
 ||actionalist.buzz^$document
 ||actionautoauction.buzz^$document
 ||actioncamfilms.buzz^$document
-||actiondogsupplies.com^$document
 ||actionenlivraison.fr^$document
 ||actionhygiene.com^$document
 ||actionplus.xyz^$document
 ||actionpourlapaix.be^$document
 ||actionsdgfipgouv.fr^$document
 ||actionsituations.biz^$document
+||actionsolde.fr^$document
+||actionsoldes.fr^$document
 ||actionsourcedeaths.buzz^$document
 ||activ-lyfreception.fr^$document
 ||activate-cvitale.fr^$document
 ||activate-prime.fr^$document
+||activate.win^$document
 ||activation-abonnement.fr^$document
 ||activation-abonnements.fr^$document
 ||activation-ameli.fr^$document
@@ -33717,6 +33718,7 @@
 ||actualisation-sante-france.fr^$document
 ||actualisation-sante.fr^$document
 ||actualisation-service-assure-enligne.fr^$document
+||actualisation-service-orange.fr^$document
 ||actualisation-service-public-ameli.fr^$document
 ||actualisation-service-public.fr^$document
 ||actualisation-service.fr^$document
@@ -34418,6 +34420,7 @@
 ||adkwycq.cyou^$document
 ||adkx5m.cyou^$document
 ||adkyodujaperri.gq^$document
+||adl.fcnqy.shop^$document
 ||adl.jccjm.shop^$document
 ||adl.wiksh.shop^$document
 ||adlamisnighfardo.tk^$document
@@ -34896,6 +34899,7 @@
 ||advdfwvd.tokyo^$document
 ||adveins.xyz^$document
 ||advenkarickwhe.tk^$document
+||advent67.com^$document
 ||adventamour.at^$document
 ||adventamour.de^$document
 ||adventist-home-school.buzz^$document
@@ -35041,7 +35045,6 @@
 ||aegrfs6.work^$document
 ||aegzv.cyou^$document
 ||aeh1jv.xyz^$document
-||aehesis.de^$document
 ||aehjgm.bar^$document
 ||aehtgk.tokyo^$document
 ||aeie5zg.cyou^$document
@@ -36975,7 +36978,6 @@
 ||air-certificate.fr^$document
 ||air-franceklm.fr^$document
 ||air-gov.fr^$document
-||air-jordan4.com^$document
 ||air-jordanpascher.fr^$document
 ||air-max-shop.fr^$document
 ||air-max-vans.info^$document
@@ -37080,7 +37082,6 @@
 ||airmutra.my.id^$document
 ||airnbn.fr^$document
 ||airnbnb.fr^$document
-||airnext.io^$document
 ||airoil.de^$document
 ||airomin.xyz^$document
 ||airoomplanner.com^$document
@@ -37119,6 +37120,7 @@
 ||airto.my.id^$document
 ||airton.my.id^$document
 ||airtqk.bar^$document
+||airtrackshop.de^$document
 ||airup-bottlegreece.com^$document
 ||airup-fr.fr^$document
 ||airup-gr.com^$document
@@ -37295,6 +37297,7 @@
 ||ajigatagujon.tk^$document
 ||ajiqrc.rest^$document
 ||ajirharkisfrance.fr^$document
+||ajirockcreditunion.com^$document
 ||ajivh.yt^$document
 ||ajjhtetv87.com^$document
 ||ajjmlx.tokyo^$document
@@ -37574,9 +37577,9 @@
 ||aktiv-gel.com^$document
 ||aktiv-mit-ms.fr^$document
 ||aktivabenteuer.de^$document
-||aktivall.de^$document
 ||aktivator-windows.net^$document
 ||aktivebilister.dk^$document
+||aktivimfreien.com^$document
 ||aktivstald.dk^$document
 ||aktomerless.cf^$document
 ||aktranliacammouff.ga^$document
@@ -38348,7 +38351,6 @@
 ||ali.me.it^$document
 ||aliams.de^$document
 ||aliands.com^$document
-||alianey-hair.com^$document
 ||aliansconsulting.eu^$document
 ||aliaryan.com^$document
 ||alias-investissement-ehpad.fr^$document
@@ -38788,6 +38790,7 @@
 ||allsportstat.ru^$document
 ||allsprang.com^$document
 ||allstarparis.fr^$document
+||allstickers.org^$document
 ||allsttae.com^$document
 ||allstudentagencys.bar^$document
 ||alltaghero.com^$document
@@ -38820,6 +38823,7 @@
 ||allusioncounselling.com^$document
 ||allusreiglobat.tk^$document
 ||allusubseatekes.cf^$document
+||allvoro.com^$document
 ||allwanderlandstravel.buzz^$document
 ||allweil.net^$document
 ||allwin-store.fr^$document
@@ -39051,6 +39055,7 @@
 ||aloyogasdeutschland.com^$document
 ||aloyogasuomi.net^$document
 ||aloyogaturkey.com.tr^$document
+||alp-aire.com^$document
 ||alp80rg.cyou^$document
 ||alpacafarm.xyz^$document
 ||alpacamining.com^$document
@@ -39076,6 +39081,7 @@
 ||alpellifides.cf^$document
 ||alpelphasalthe.ml^$document
 ||alpenfluss.at^$document
+||alpenkindmode.com^$document
 ||alpenmatileli.gq^$document
 ||alpenrose-mode.com^$document
 ||alpenwolken.de^$document
@@ -39125,6 +39131,7 @@
 ||alpijohhdolu.tk^$document
 ||alpilife.eu^$document
 ||alpinabnonssur.gq^$document
+||alpinamalende.com^$document
 ||alpine-vista.com^$document
 ||alpineelectricak.xyz^$document
 ||alpinemediagroup.buzz^$document
@@ -39360,6 +39367,7 @@
 ||alternativa-skidok.ru^$document
 ||alternativa.dk^$document
 ||alternativamoveisltda.com.br^$document
+||alternativastools.cl^$document
 ||alternative-markets.com^$document
 ||alternativecountry.bar^$document
 ||alternativedance.bar^$document
@@ -41102,7 +41110,6 @@
 ||americalibzqnb.web.app^$document
 ||americameagle.com^$document
 ||american-bulldog-hirn.de^$document
-||american-foods.org^$document
 ||american-overseas.com^$document
 ||americanassociationofrealestateinvestorassociations.com^$document
 ||americancaritascreditunion.com^$document
@@ -41168,7 +41175,6 @@
 ||amextiojoyning.tk^$document
 ||amezabna.tk^$document
 ||amezf.rest^$document
-||amf-cloudmail.org^$document
 ||amf-declaration.fr^$document
 ||amf-impots.fr^$document
 ||amf-secure.fr^$document
@@ -42092,7 +42098,6 @@
 ||andentaifoundmar.gq^$document
 ||andep.es^$document
 ||andeptutorthumb.cf^$document
-||ander-kredit.com^$document
 ||anderdeogando.gq^$document
 ||andersemmen.nl^$document
 ||andersen-lie.dk^$document
@@ -42100,7 +42105,6 @@
 ||andersila.tk^$document
 ||anderson-guyrou9821.web.app^$document
 ||andersonharte.xyz^$document
-||andersonihc.com^$document
 ||anderssens.com^$document
 ||anderstore.fr^$document
 ||andespadewefic.ga^$document
@@ -42345,6 +42349,7 @@
 ||angaratholing.ga^$document
 ||angarmilltapepark.tk^$document
 ||angd7v.cyou^$document
+||angebotekorum.com^$document
 ||angebotshop.com^$document
 ||angebotstools.com^$document
 ||angedocarquono.ml^$document
@@ -42368,6 +42373,7 @@
 ||angelsolutionforyou.com^$document
 ||angelvzde.xyz^$document
 ||angelx5makez.top^$document
+||angelzubehoerladen.com^$document
 ||angenthaaraigorro.tk^$document
 ||angentinedi.tk^$document
 ||angeobreakmicicc.cf^$document
@@ -42426,7 +42432,6 @@
 ||anhaenger-von-thule.de^$document
 ||anhaengerkauf24.com^$document
 ||anhaengermarkt.com^$document
-||anhaengers.online^$document
 ||anhaengerverleih-mania.de^$document
 ||anhagouv.fr^$document
 ||anhamamdiewelna.gq^$document
@@ -42836,6 +42841,7 @@
 ||annuaire-automatique.be^$document
 ||annuaire-mairie.fr^$document
 ||annualfevercaesar.com^$document
+||annulation-agricole.fr^$document
 ||annulation-banquepop.fr^$document
 ||annulation-banquepopulaire.fr^$document
 ||annulation-banquepostale.fr^$document
@@ -42844,12 +42850,14 @@
 ||annulation-creditmutuel.fr^$document
 ||annulation-credmutuel.fr^$document
 ||annulation-darty.fr^$document
+||annulation-dgccrf.fr^$document
 ||annulation-e-sim-sfr.fr^$document
 ||annulation-esim-sfr.fr^$document
 ||annulation-esim.fr^$document
 ||annulation-fraude-sg.fr^$document
 ||annulation-labanquepostale.fr^$document
 ||annulation-lapostebanque.fr^$document
+||annulation-lbp.fr^$document
 ||annulation-postale.fr^$document
 ||annulation-prime.fr^$document
 ||annulation-primevideo.fr^$document
@@ -43827,7 +43835,6 @@
 ||anzjxb.tokyo^$document
 ||anzlqp.shop^$document
 ||anzugeshop.com^$document
-||anzughosensale.com^$document
 ||ao-alkmaar.nl^$document
 ||ao0cbwb.work^$document
 ||ao0tdzl.cyou^$document
@@ -43914,7 +43921,6 @@
 ||aonyfr.tokyo^$document
 ||aoocwn.bar^$document
 ||aoocwn.rest^$document
-||aoohoo.shop^$document
 ||aop7vgf.cyou^$document
 ||aop8pa.cyou^$document
 ||aopbfqj.tokyo^$document
@@ -43960,6 +43966,7 @@
 ||aovvra.tokyo^$document
 ||aowqfu.bar^$document
 ||aoxccalr.xyz^$document
+||aoxji.shop^$document
 ||aoxlc7.tokyo^$document
 ||aoxpbi.bar^$document
 ||aoxpbi.rest^$document
@@ -44439,7 +44446,6 @@
 ||apotheke-rezeptfrei.com^$document
 ||apotheke-schweiz.net^$document
 ||apotheke-windischgarsten.com^$document
-||apotheke.buzz^$document
 ||apotheke24eu.de^$document
 ||apothekedeutschland.com^$document
 ||apothekehilfe.com^$document
@@ -44509,6 +44515,7 @@
 ||app-sg-pro.fr^$document
 ||app-sg.fr^$document
 ||app-shake.com^$document
+||app-societe-generale.fr^$document
 ||app-systeme.fr^$document
 ||app-trader.biz^$document
 ||app-update.site^$document
@@ -44837,7 +44844,6 @@
 ||apritlemanes.ml^$document
 ||aprnqp.bar^$document
 ||aprnqp.rest^$document
-||aprodello.de^$document
 ||apronista.fr^$document
 ||apronstrongly.com^$document
 ||aproroprupt.tk^$document
@@ -45410,7 +45416,6 @@
 ||arcajettrader.com^$document
 ||arcakciabonbu.gq^$document
 ||arcakelusily.tk^$document
-||arcaktuell.de^$document
 ||arcalilitant.tk^$document
 ||arcanesolutions.io^$document
 ||arcanetnomad.ml^$document
@@ -45483,7 +45488,6 @@
 ||arciasubonsmalp.gq^$document
 ||arcinqn.tokyo^$document
 ||arciovinoti.ga^$document
-||arcistock.com^$document
 ||arclays.fr^$document
 ||arcoanticobb.it^$document
 ||arcobeachnebur.tk^$document
@@ -45655,7 +45659,6 @@
 ||areatheirpartalready.pw^$document
 ||areathemselveshome.buzz^$document
 ||areathingsinternational.club^$document
-||areatrading.io^$document
 ||areatrialhomesmoney.de^$document
 ||areatruessimple.rest^$document
 ||areaunitsamongs.buzz^$document
@@ -47189,7 +47192,9 @@
 ||asfinag.live^$document
 ||asfinag.me^$document
 ||asfinag.today^$document
+||asfinsde.com^$document
 ||asfintarg.com^$document
+||asfishop.com^$document
 ||asflnaq.me^$document
 ||asflubenuc.tk^$document
 ||asfolzk.bar^$document
@@ -47223,6 +47228,7 @@
 ||ashasuaconcpork.ml^$document
 ||ashatoslombardini.com^$document
 ||ashavis.xyz^$document
+||ashbergh.com^$document
 ||ashchaussures.fr^$document
 ||ashchaussuresefrance.fr^$document
 ||ashchaussuresfrance.fr^$document
@@ -47281,7 +47287,6 @@
 ||asics-soldes.fr^$document
 ||asics-store.fr^$document
 ||asics-suomi.com^$document
-||asicsat.at^$document
 ||asicsayakkabitr.com^$document
 ||asicscipohungary.com^$document
 ||asicsde.de^$document
@@ -47365,6 +47370,7 @@
 ||askalligence.com^$document
 ||askandroidquestions.com^$document
 ||askara.super.site^$document
+||askariyeh-kh.ir^$document
 ||askatalireri.tk^$document
 ||askautiessios.com^$document
 ||askbotta.com^$document
@@ -48405,6 +48411,7 @@
 ||aszamidprame.tk^$document
 ||aszxuq.cyou^$document
 ||at-setrafimoney.org^$document
+||at.curalise.com^$document
 ||at.esrlive.com^$document
 ||at.gluconv.com^$document
 ||at.ketonaktiv.com^$document
@@ -49536,6 +49543,7 @@
 ||aundetailpres.fr^$document
 ||aunn.cc^$document
 ||aunswgov.xyz^$document
+||auntsunclestassen.com^$document
 ||aunum.my.id^$document
 ||aunuoe.bar^$document
 ||aunvzcy.bar^$document
@@ -49634,6 +49642,7 @@
 ||auseparcels.icu^$document
 ||ausepostrack.com^$document
 ||ausertorino.it^$document
+||ausgewalhtheim.de^$document
 ||ausgnadeeur.shop^$document
 ||aushan.fr^$document
 ||ausipost.today^$document
@@ -50047,6 +50056,7 @@
 ||autopartner-doebert.de^$document
 ||autopartsbandeira.com^$document
 ||autopartsguru.com^$document
+||autopartssave.com^$document
 ||autopartsug.info^$document
 ||autopecapedreira.com^$document
 ||autopecasbeirario.com^$document
@@ -50145,7 +50155,6 @@
 ||autrysoldes.fr^$document
 ||autrystore.net^$document
 ||autryuae.net^$document
-||autryweb.com^$document
 ||autumn-leaves-kerpen.de^$document
 ||autumncamping.com^$document
 ||autumncollationsfootwear.com^$document
@@ -50937,6 +50946,7 @@
 ||axmfirw.work^$document
 ||axmirchabere.ga^$document
 ||axmj1d.shop^$document
+||axmof.de^$document
 ||axnabsz.bar^$document
 ||axniuh0.shop^$document
 ||axntsu.bar^$document
@@ -50961,7 +50971,6 @@
 ||axpefx.shop^$document
 ||axpfpe.bar^$document
 ||axpisxf.rest^$document
-||axpsv.com^$document
 ||axpwec.shop^$document
 ||axqja4.shop^$document
 ||axqri.xyz^$document
@@ -51629,7 +51638,6 @@
 ||b2t9ot.cyou^$document
 ||b2tej.tokyo^$document
 ||b2tlap.cyou^$document
-||b2trades.com^$document
 ||b2v4if.cyou^$document
 ||b2v7zy1.work^$document
 ||b2vfvi.cyou^$document
@@ -52100,6 +52108,7 @@
 ||babara-mode.com^$document
 ||babaroni.de^$document
 ||babarttecbullconsfron.ga^$document
+||babaschmuck.de^$document
 ||babbelphish.com^$document
 ||babbi.xyz^$document
 ||babbleexaminepublisher.com^$document
@@ -52166,8 +52175,8 @@
 ||babyeyeavoidlot.biz^$document
 ||babyfuntoys.com^$document
 ||babygluckde.com^$document
+||babyglueckshop.com^$document
 ||babyhappy.su^$document
-||babyhuboff.com^$document
 ||babyjane.xyz^$document
 ||babykurse-mit-birgit.de^$document
 ||babyliss-pro.fr^$document
@@ -52176,6 +52185,7 @@
 ||babylonia.es^$document
 ||babymamashowerscenev4u.web.app^$document
 ||babymarkt-deshop.com^$document
+||babymarktkauf.com^$document
 ||babymodeneu.com^$document
 ||babymoovdeava.shop^$document
 ||babynose.xyz^$document
@@ -52193,6 +52203,7 @@
 ||babytoysangebote.de^$document
 ||babywarepromo.com^$document
 ||babywearing.xyz^$document
+||babyweltde.com^$document
 ||bac-reunion.fr^$document
 ||bacadullycom.tk^$document
 ||bacagasuwhitse.tk^$document
@@ -52644,6 +52655,7 @@
 ||baddporintack.tk^$document
 ||baddsihica.tk^$document
 ||badduschkopf.com^$document
+||badeanzugeneu.com^$document
 ||badeanzugtreff.de^$document
 ||badebalco.tk^$document
 ||badecoldbullwi.cf^$document
@@ -52659,6 +52671,7 @@
 ||badextspigurstan.tk^$document
 ||badezimmer.xyz^$document
 ||badezimmerfein.com^$document
+||badezimmerstil.com^$document
 ||badfaidriv.cf^$document
 ||badfofernatifo.cf^$document
 ||badgafahzaless.tk^$document
@@ -52843,6 +52856,7 @@
 ||bahismaksat.com^$document
 ||bahistsi.cf^$document
 ||bahisyap.xyz^$document
+||bahiwa.com^$document
 ||bahmaverslycdurf.tk^$document
 ||bahnculaskingbil.tk^$document
 ||bahnhof-apotheke-hersbruck.de^$document
@@ -53794,7 +53808,6 @@
 ||bapefranceshops.fr^$document
 ||bapefrancesoldes.fr^$document
 ||bapefrancestore.fr^$document
-||bapegermany.com^$document
 ||bapeisrael.com^$document
 ||bapejapanonline.com^$document
 ||bapelietuva.com^$document
@@ -53872,7 +53885,6 @@
 ||barbouraustria.at^$document
 ||barbourfr.fr^$document
 ||barbourfranceoutlet.fr^$document
-||barbourgermany.com^$document
 ||barbourofficiel.fr^$document
 ||barbouroutlet.fr^$document
 ||barbovedenpeno.ml^$document
@@ -54003,6 +54015,7 @@
 ||barkeep83finiten.pw^$document
 ||barkeysituli.tk^$document
 ||barkho.com^$document
+||barki-shop.de^$document
 ||barklinoleca.gq^$document
 ||barkmoveribi.ga^$document
 ||barknamaberge.tk^$document
@@ -54106,6 +54119,7 @@
 ||barraiwellgupics.gq^$document
 ||barrakuda.net^$document
 ||barranewsbucol.cf^$document
+||barreaudelyon.fr^$document
 ||barrecoku.ml^$document
 ||barrelcraft.store^$document
 ||barrelecraft.store^$document
@@ -54208,7 +54222,6 @@
 ||barttimbpugorma.ml^$document
 ||barttinimohy.tk^$document
 ||bartusimyperm.tk^$document
-||bartz-anhanger.com^$document
 ||barunkalab.tk^$document
 ||baruri.blog^$document
 ||baruticar.eu^$document
@@ -54355,6 +54368,7 @@
 ||bassmendatisoles.tk^$document
 ||bassplayercenter.com^$document
 ||bassproshop.xyz^$document
+||bassthompson.com^$document
 ||basstivihobelsmag.tk^$document
 ||bassuchating.web.app^$document
 ||bassudinidtank.ml^$document
@@ -54400,6 +54414,7 @@
 ||batchaverf.ga^$document
 ||batchficexriwist.cf^$document
 ||batchfreqanal.tk^$document
+||batchmead.com^$document
 ||batchof.com^$document
 ||batchrusttripicmag.gq^$document
 ||batchsifestli.gq^$document
@@ -54602,6 +54617,7 @@
 ||bausyncblogunmetab.ml^$document
 ||bautconetalinmal.gq^$document
 ||bauteed.ee^$document
+||bauteilegest.com^$document
 ||bautifily.tk^$document
 ||bautylis.com^$document
 ||bauundwerkzeug.com^$document
@@ -54662,6 +54678,7 @@
 ||baydepharug.tk^$document
 ||baydiatherqama.tk^$document
 ||bayer-heizen.at^$document
+||bayerwald-heizoel.de^$document
 ||bayfordispzi.tk^$document
 ||baygemiclimarba.ga^$document
 ||baygenleire.ga^$document
@@ -54775,7 +54792,6 @@
 ||bb8peuz.tokyo^$document
 ||bb8wml.cyou^$document
 ||bb9lpo.tokyo^$document
-||bba-shopify.com^$document
 ||bbaetf.tokyo^$document
 ||bbaitwa.bar^$document
 ||bbajuw.bar^$document
@@ -55051,7 +55067,6 @@
 ||bcs03b.cyou^$document
 ||bcscyb.bar^$document
 ||bcscyb.rest^$document
-||bcseagles.net^$document
 ||bcseeu.tokyo^$document
 ||bcsexr.tokyo^$document
 ||bcsfzbd.tokyo^$document
@@ -55360,7 +55375,6 @@
 ||beanverslika.ga^$document
 ||beapingtipimis.cf^$document
 ||beapvy.tokyo^$document
-||bear-offers.com^$document
 ||beardenviolinshop.biz^$document
 ||beardmiller.com^$document
 ||bearer99blips.faith^$document
@@ -55497,7 +55511,6 @@
 ||beauten.fr^$document
 ||beautertioverg.gq^$document
 ||beauthromeslipa.tk^$document
-||beauticiantraining.lat^$document
 ||beautifulclothes.fr^$document
 ||beautifuleverything.biz^$document
 ||beautifulrightpart.biz^$document
@@ -55520,6 +55533,7 @@
 ||beautyfulphotos.biz^$document
 ||beautygiftsets.com^$document
 ||beautyhausberlin.de^$document
+||beautyketten.com^$document
 ||beautykolor.com^$document
 ||beautyl5.club^$document
 ||beautylicieuse.fr^$document
@@ -55556,7 +55570,6 @@
 ||bebe-plus.fr^$document
 ||bebeautiful.club^$document
 ||bebee.ee^$document
-||beberebornsilicone.com^$document
 ||bebersloparfatt.tk^$document
 ||beboasty.co.in^$document
 ||beboncoin.fr^$document
@@ -55601,7 +55614,6 @@
 ||bechicenzoport.ga^$document
 ||bechotilmuli.tk^$document
 ||becjbt.tokyo^$document
-||beckenfit.net^$document
 ||becker-boutique.com^$document
 ||beckerhannover.de^$document
 ||beckermode.de^$document
@@ -55933,6 +55945,7 @@
 ||beinencalo.ga^$document
 ||beinfit.de^$document
 ||beingguru.xyz^$document
+||beingpick.click^$document
 ||beingsdebark.com^$document
 ||beingsport.fr^$document
 ||beingspromisingpresent.com^$document
@@ -56221,6 +56234,7 @@
 ||belongingsdecency.com^$document
 ||belongnorth.com^$document
 ||belostok-catholic.ru^$document
+||belouu.de^$document
 ||belovedaroma.com^$document
 ||belowarfavea.ga^$document
 ||belowsneakers.fr^$document
@@ -56683,7 +56697,6 @@
 ||berfremilbackbur.ml^$document
 ||berfsuacicenmo.cf^$document
 ||berfticvasonmypun.ml^$document
-||berg-freundeoutlets.shop^$document
 ||bergaminopellet.eu^$document
 ||bergamo-girlsdating.space^$document
 ||bergamosenzafrontiere.it^$document
@@ -56728,6 +56741,7 @@
 ||bergroughsuppca.cf^$document
 ||bergsuvingsnowopsan.gq^$document
 ||bergtisonmattchis.gq^$document
+||bergwalt-mode.com^$document
 ||bergwanderbase.com^$document
 ||bergwanderershop.com^$document
 ||bergwerkpunk.com^$document
@@ -56804,6 +56818,7 @@
 ||berlinessence.com^$document
 ||berlinfog.com^$document
 ||berlinget.com^$document
+||berlinherren.de^$document
 ||berlinite.com^$document
 ||berlinlash.de^$document
 ||berlinlejelejlighed.dk^$document
@@ -57447,18 +57462,15 @@
 ||bestenfahrrad.de^$document
 ||bestenhunde.store^$document
 ||bestenkaufen.com^$document
-||bestenroller.com^$document
 ||besteoccasion.com^$document
 ||besteonlineapotheke.com^$document
 ||bestepargne.com^$document
 ||bestepotenzmittel.com^$document
 ||besterkajak.com^$document
-||besterkauf.com^$document
 ||besterkreditvergleich.top^$document
 ||bestermarkt.com^$document
 ||besters.com.hk^$document
 ||bestesangebot24.de^$document
-||bestesbrennholz.com^$document
 ||besteschlaftabletten.com^$document
 ||besteuhren.io^$document
 ||besteuhren.to^$document
@@ -58088,7 +58100,9 @@
 ||betriotcasinofrance.fr^$document
 ||betrisecapitals.ltd^$document
 ||betritifirbaume.ml^$document
+||betrmode.com^$document
 ||betroom24.fr^$document
+||betrug.law^$document
 ||betsamigo.fr^$document
 ||betsbelorgangbi.ga^$document
 ||betsclic.fr^$document
@@ -58828,6 +58842,7 @@
 ||biamotentianapen.cf^$document
 ||bianamylaradet.ga^$document
 ||bianca-kmiec.top^$document
+||biancatstore.com^$document
 ||bianhua1.com^$document
 ||bianhua2.com^$document
 ||bianhua3.com^$document
@@ -59225,6 +59240,7 @@
 ||bigclash-online.fr^$document
 ||bigclash1.fr^$document
 ||bigclashcasinos.fr^$document
+||bigclashconnexion.fr^$document
 ||bigclashfrance.fr^$document
 ||bigcloudedu.com^$document
 ||bigclub.co.kr^$document
@@ -59249,6 +59265,7 @@
 ||bigglq.bar^$document
 ||bigglq.rest^$document
 ||biggmealsdesomem.gq^$document
+||biggreenegg-france.fr^$document
 ||biggsti.com^$document
 ||bigguitenveti.tk^$document
 ||biggvilrebanphatea.ml^$document
@@ -59439,6 +59456,7 @@
 ||bikechainlockde.com^$document
 ||bikecity.us^$document
 ||bikecomponents24.de^$document
+||bikecomponentsde.com^$document
 ||bikedepe.ga^$document
 ||bikeeinnertubede.com^$document
 ||bikeep.tk^$document
@@ -59447,15 +59465,17 @@
 ||bikeframesde.com^$document
 ||bikehandel.com^$document
 ||bikehosesrabatt.com^$document
+||bikehubde.com^$document
 ||bikelane.ro^$document
 ||bikelightneu.com^$document
-||bikelos.de^$document
 ||bikelovershop.com^$document
 ||bikemarket.com^$document
+||biken-fahrrad.com^$document
 ||bikenabende.com^$document
 ||bikepartonline.com^$document
 ||bikepartsale.com^$document
 ||bikepartsneu.com^$document
+||bikepatchkitprada.com^$document
 ||bikepower.shop^$document
 ||bikeridestore.com^$document
 ||bikerimtapede.com^$document
@@ -59558,6 +59578,7 @@
 ||biljalistu.tk^$document
 ||biljxu.bar^$document
 ||bilkaphowo.tk^$document
+||billa.prizmar.at^$document
 ||billabong-turkiye.com^$document
 ||billabong-us.com^$document
 ||billabong.com.de^$document
@@ -59645,6 +59666,7 @@
 ||billige-sko.dk^$document
 ||billigedyreartikler.dk^$document
 ||billigeforsikringeronline.dk^$document
+||billigelektrofahrrad.com^$document
 ||billiger-heizen.com^$document
 ||billiger-mietwagen.es^$document
 ||billigerkoffer.com^$document
@@ -60688,10 +60710,8 @@
 ||bitcoinalrex.com^$document
 ||bitcoinarchon.com^$document
 ||bitcoinasystem.su^$document
-||bitcoinbankbreaker.com^$document
 ||bitcoinblackfriday.com^$document
 ||bitcoindecode.io^$document
-||bitcoineer.app^$document
 ||bitcoineer.tv^$document
 ||bitcoinera.app^$document
 ||bitcoinevista.com^$document
@@ -60714,6 +60734,7 @@
 ||bitcoinworld.xyz^$document
 ||bitcomet.com^$document
 ||bitconnect.co^$document
+||bitconsulting.com.ve^$document
 ||bitcore-momentum.app^$document
 ||bitcostar.com^$document
 ||bitczdho.tokyo^$document
@@ -62749,6 +62770,7 @@
 ||blyjkp.tokyo^$document
 ||blypaq.cyou^$document
 ||blyqng.tokyo^$document
+||blyss-shop.de^$document
 ||blznq1.tokyo^$document
 ||blzqvc.shop^$document
 ||blzxtw.tokyo^$document
@@ -63256,7 +63278,6 @@
 ||boardersedge.buzz^$document
 ||boardgamearena.fr^$document
 ||boardingarmoryrough.com^$document
-||boardlandia.shop^$document
 ||boardpress-a.online^$document
 ||boardpress-c.online^$document
 ||boardsongswater.buzz^$document
@@ -63312,7 +63333,6 @@
 ||bobbispolestudio.com.au^$document
 ||bobblacksceghagandne.tk^$document
 ||bobblitacomro.tk^$document
-||bobbyananta.com^$document
 ||bobclubs.ie^$document
 ||bobcornhibergbassbest.ga^$document
 ||bobdsq.tokyo^$document
@@ -63647,6 +63667,7 @@
 ||boldchristianity.com^$document
 ||boldforthteverfe.ml^$document
 ||boldkelnaka.ga^$document
+||boldnests.com^$document
 ||boldrovifindebet.cf^$document
 ||boldtabmocenga.tk^$document
 ||boldynimasu.ml^$document
@@ -63655,7 +63676,6 @@
 ||bolebotlesymis.cf^$document
 ||bolehgame.net^$document
 ||bolenpitaklenigth.tk^$document
-||bolenso.de^$document
 ||bolficinfeja.cf^$document
 ||bolfiterkosum.gq^$document
 ||bolgachirenan.tk^$document
@@ -63940,7 +63960,6 @@
 ||bookcchireroti.tk^$document
 ||bookcohnob.web.app^$document
 ||bookcrazystadium.com^$document
-||booken.shop^$document
 ||bookenoelsmagning.dk^$document
 ||bookhatco.web.app^$document
 ||bookhtfyy.web.app^$document
@@ -64097,6 +64116,7 @@
 ||bootslibtockgynu.gq^$document
 ||bootsonlineindia.com^$document
 ||bootspounce.com^$document
+||bootsprofi.com^$document
 ||bootsransmilslowsterp.ml^$document
 ||bootsrobdulghardlynchga.gq^$document
 ||bootstidiscpo.cf^$document
@@ -64324,7 +64344,6 @@
 ||bosscapital.com^$document
 ||bosscrystudious.com^$document
 ||bosseesoroga.tk^$document
-||bossfactoryofficial.de^$document
 ||bossiercountry.buzz^$document
 ||bosskantrenphohypdi.gq^$document
 ||bosslady.london^$document
@@ -65346,6 +65365,7 @@
 ||bradorexgrangess.gq^$document
 ||bradrarcadaco.tk^$document
 ||brady.group^$document
+||brafabfurniture.com^$document
 ||braforests.com^$document
 ||bragadnasichdeotren.ga^$document
 ||bragami.xyz^$document
@@ -65959,7 +65979,6 @@
 ||brennholzstore.de^$document
 ||brennholzweber.de^$document
 ||brennholzwerner.de^$document
-||brennholzwittmann.com^$document
 ||brennholzz.com^$document
 ||brenniskaminholz.shop^$document
 ||brennstoffe-energy.de^$document
@@ -66011,6 +66030,7 @@
 ||bretuarliriluhea.gq^$document
 ||breuer-boutique.de^$document
 ||breuer-zelte.de^$document
+||breuermode.de^$document
 ||breuninger-berlin.de^$document
 ||breuninger-stuttgart.de^$document
 ||brevagbantalcfab.tk^$document
@@ -66219,7 +66239,6 @@
 ||bridwilbglisew.tk^$document
 ||briefin23disqual.men^$document
 ||brieflyenemiesstrongly.com^$document
-||brielers.de^$document
 ||brigadarcar.ml^$document
 ||brigade-moeurs.fr^$document
 ||brigade-nationale-de-la-police-judiciaire.fr^$document
@@ -66249,6 +66268,7 @@
 ||brightlyappliance.com^$document
 ||brightsch.xyz^$document
 ||brightselectronics.com^$document
+||brightsidesavings.com^$document
 ||brightstargold.buzz^$document
 ||brightter-fld.com^$document
 ||brightworkinc91wc2eio.biz^$document
@@ -66324,6 +66344,7 @@
 ||brinicgoedipe.tk^$document
 ||briningamenylp.tk^$document
 ||brinitnadpho.tk^$document
+||brinkmannkanzlei.de^$document
 ||brinmocasmale.ml^$document
 ||brinmokeelighre.tk^$document
 ||brinmustirecoun.ga^$document
@@ -66339,6 +66360,8 @@
 ||brinuted.gq^$document
 ||brinwatchsonroughneb.tk^$document
 ||briodepot.fr^$document
+||briospielzeug.com^$document
+||briospielzeugrabatt.com^$document
 ||bripfx.bar^$document
 ||bripicardie.fr^$document
 ||bripzgr.tokyo^$document
@@ -66715,6 +66738,7 @@
 ||brooks-france.fr^$document
 ||brooks-osterreich.at^$document
 ||brooks-running-shoes.com^$document
+||brooks.co.at^$document
 ||brooksberlin.de^$document
 ||brooksbrothersfrance.fr^$document
 ||brookschaussures.fr^$document
@@ -66857,6 +66881,7 @@
 ||brownin.xyz^$document
 ||brownrabbit.biz^$document
 ||brownsona.com^$document
+||brownspecialadvice.com^$document
 ||brownworthconsulting.com^$document
 ||browolnotorlambdisr.tk^$document
 ||browomdoningcer.ga^$document
@@ -67479,6 +67504,7 @@
 ||bucdadeparcia.tk^$document
 ||bucddjg.tokyo^$document
 ||buce3.cyou^$document
+||buchbasekiste.com^$document
 ||buchberger-innsbruck.com^$document
 ||buchbinderei-klaus-mayer.de^$document
 ||bucher.xyz^$document
@@ -68845,7 +68871,6 @@
 ||buybrilsubpdo.gq^$document
 ||buybuckkogistdi.ml^$document
 ||buybucklipmatap.ml^$document
-||buybuybabysells.com^$document
 ||buybyway.com^$document
 ||buycadiskbemilo.gq^$document
 ||buycatamon.ga^$document
@@ -71881,8 +71906,10 @@
 ||campinglidomiramare.it^$document
 ||campingmarkise.com^$document
 ||campingmobel.com^$document
+||campingneu.com^$document
 ||campings-nederland.eu^$document
 ||campingsgirona.es^$document
+||campingstuhleshop.com^$document
 ||campingsupplybest.com^$document
 ||campingsverkauf.com^$document
 ||campken.xyz^$document
@@ -71914,6 +71941,7 @@
 ||camptaneldena.tk^$document
 ||camptool-shop.com^$document
 ||camptotalerb.tk^$document
+||camptotalneu.com^$document
 ||camptranicreccons.ga^$document
 ||camptrovagypscourso.cf^$document
 ||campus-adidas.fr^$document
@@ -72492,7 +72520,6 @@
 ||capitalfxs.com^$document
 ||capitaliko.com^$document
 ||capitalinvestmentreviews.com^$document
-||capitalmarket24.com^$document
 ||capitalnvst.com^$document
 ||capitalonei.com^$document
 ||capitalpilots.com^$document
@@ -73594,6 +73621,7 @@
 ||casaclothing.de^$document
 ||casacomplpalis.gq^$document
 ||casadchocollat.site^$document
+||casadefieras.co^$document
 ||casadellasalutechiaravallecentrale.it^$document
 ||casadelshirts.com^$document
 ||casadipalma.it^$document
@@ -74443,7 +74471,6 @@
 ||catherinepensiveincomprehensible.com^$document
 ||cathimoundi.ga^$document
 ||cathirdleftsabsya.gq^$document
-||cathkidstonshopuk.com^$document
 ||cathocomcyrap.tk^$document
 ||cathodelowli.ga^$document
 ||catholiccommandment.com^$document
@@ -75234,6 +75261,7 @@
 ||cda0gke.shop^$document
 ||cdabbieri.xyz^$document
 ||cdam-renouvellement.fr^$document
+||cdbczz.com^$document
 ||cdbfqt.bar^$document
 ||cdbjehadcd3.com^$document
 ||cdbokyam.xyz^$document
@@ -75427,6 +75455,7 @@
 ||ce-sanofi.fr^$document
 ||ce-securpass.fr^$document
 ||ce-socap.fr^$document
+||ce-te-leem.fr^$document
 ||ce0260023jac-grenoble.fr^$document
 ||ce0kod.cyou^$document
 ||ce0vaw.xyz^$document
@@ -77054,7 +77083,6 @@
 ||cewdem.tokyo^$document
 ||cewebcieprofon.tk^$document
 ||cewesttertiter.tk^$document
-||cewfoop.com^$document
 ||cewfqh.tokyo^$document
 ||cewhatricorlichar.cf^$document
 ||cewhisopentachant.cf^$document
@@ -77121,7 +77149,6 @@
 ||cfcaps.bar^$document
 ||cfcaps.rest^$document
 ||cfco2013.fr^$document
-||cfd.platformt121-3-3.com^$document
 ||cfd.smart-epargne.com^$document
 ||cfdbrokernsz.web.app^$document
 ||cfddbyf.bar^$document
@@ -77627,6 +77654,7 @@
 ||chakesgoeprojhato.tk^$document
 ||chakllenges.fr^$document
 ||chakpiemachelless.ga^$document
+||chakrarmonia.cl^$document
 ||chakrevallamum.gq^$document
 ||chalaf.xyz^$document
 ||chalenges.fr^$document
@@ -78042,6 +78070,7 @@
 ||charmobedience.com^$document
 ||charmrecouplemo.gq^$document
 ||charmsvision.com^$document
+||charmtoniesde.com^$document
 ||charmwollstepen.tk^$document
 ||charningventhenes.ml^$document
 ||charnizishell.tk^$document
@@ -79646,7 +79675,6 @@
 ||chillretbofilfe.ml^$document
 ||chillrungwasori.tk^$document
 ||chillskins.xyz^$document
-||chillup.at^$document
 ||chillwind.world^$document
 ||chilly-ginger-hundeshop.eu^$document
 ||chillylanguish.com^$document
@@ -82651,6 +82679,7 @@
 ||circtabgeosu.cf^$document
 ||circtourlauhosu.tk^$document
 ||circuitanvil.com^$document
+||circuitclo.eu^$document
 ||circuitsdelegende.fr^$document
 ||circulatem.com^$document
 ||circumferencepercentagefilling.com^$document
@@ -83706,6 +83735,7 @@
 ||classesforradiologytechnician.buzz^$document
 ||classgomewyt.shop^$document
 ||classic-furniture.dk^$document
+||classic-jewelry.de^$document
 ||classica.xyz^$document
 ||classicalearningsauntie.com^$document
 ||classicalguitarnyc.xyz^$document
@@ -84347,7 +84377,6 @@
 ||climbaltillmumbfilsibb.ml^$document
 ||climbarlaphigoxy.tk^$document
 ||climbdestructionverse.com^$document
-||climbersequip.com^$document
 ||climbingsmuggle.com^$document
 ||climchipmelilusma.ml^$document
 ||climdescureter.gq^$document
@@ -84573,7 +84602,6 @@
 ||cllnvb.tokyo^$document
 ||cllrwv.tokyo^$document
 ||cllub-internet.fr^$document
-||cllusatoam.com^$document
 ||cllxpc.rest^$document
 ||clm1xz.cyou^$document
 ||clmccray50.com^$document
@@ -86209,6 +86237,7 @@
 ||coigloometib.ga^$document
 ||coihasandlowc.ml^$document
 ||coiis-chronopost.fr^$document
+||coiis-suivis-reiivraison.fr^$document
 ||coikofatelca.tk^$document
 ||coikuphafu.tk^$document
 ||coilecwyndstiffuy.tk^$document
@@ -86981,6 +87010,7 @@
 ||comeonspurs.com^$document
 ||comephocornsperbo.ml^$document
 ||comepohercoaga.gq^$document
+||comercialandrea.cl^$document
 ||comertteklif.com^$document
 ||comertyavasi.rest^$document
 ||comesbuildscience.biz^$document
@@ -87016,7 +87046,6 @@
 ||comfortfluffyflabbergasted.com^$document
 ||comfsoracul.cf^$document
 ||comfunalinklar.tk^$document
-||comfy-bra.store^$document
 ||comfy.gift^$document
 ||comfy.icu^$document
 ||comfy.org^$document
@@ -87049,6 +87078,7 @@
 ||comia.xyz^$document
 ||comicbook.com^$document
 ||comicbooksprices.org^$document
+||comiccharacters-shop.com^$document
 ||comiciadhoc.it^$document
 ||comicocos.es^$document
 ||comicpencil.com^$document
@@ -87887,6 +87917,7 @@
 ||comptes-client.fr^$document
 ||comptes-clients.fr^$document
 ||comptes-connecte.fr^$document
+||comptes-consultation.fr^$document
 ||comptes-espace.fr^$document
 ||comptes-fr.fr^$document
 ||comptes-id.fr^$document
@@ -88502,6 +88533,7 @@
 ||confirmationlebonrdv-latour.fr^$document
 ||confirmationpayment.fr^$document
 ||confirmationrdv-leboncoin-isabru.fr^$document
+||confirmationrdv-leboncoin-luciano.fr^$document
 ||confirmationrdv-leboncoin.fr^$document
 ||confirmationrdvlebon.fr^$document
 ||confirmations-information.fr^$document
@@ -88872,6 +88904,7 @@
 ||connect-pass-societegenerale.fr^$document
 ||connect-prime.fr^$document
 ||connect-racco.fr^$document
+||connect-reglement.fr^$document
 ||connect1on.re^$document
 ||connectameli.fr^$document
 ||connectcaf.fr^$document
@@ -89246,6 +89279,7 @@
 ||conseiller-creditmutuel.fr^$document
 ||conseiller-sg.fr^$document
 ||conseiller-societegenerale.fr^$document
+||conseiller-support.fr^$document
 ||conseillerbnpppf.fr^$document
 ||conseillers-epargne.fr^$document
 ||conseillersg.fr^$document
@@ -90281,7 +90315,6 @@
 ||converseshoesmalaysia.com^$document
 ||converseshomme.fr^$document
 ||conversesparis.fr^$document
-||conversesrbija.com^$document
 ||conversesuomi.com^$document
 ||conversfrance.fr^$document
 ||conversitym.com^$document
@@ -90354,7 +90387,6 @@
 ||coodepubbmasancre.tk^$document
 ||coodium.xyz^$document
 ||cooffee.de^$document
-||coogle.at^$document
 ||coogpg.tokyo^$document
 ||cooholretatentant.ml^$document
 ||cookanddinesales.com^$document
@@ -91101,6 +91133,7 @@
 ||cosmoscrisp.com^$document
 ||cosmosomos.es^$document
 ||cosmostore.fr^$document
+||cosmozone.de^$document
 ||cosmudasety.tk^$document
 ||cosmuu.tokyo^$document
 ||cosmywindphylmissry.ml^$document
@@ -91826,7 +91859,6 @@
 ||cp0753.com^$document
 ||cp0m7.tokyo^$document
 ||cp1t6s.shop^$document
-||cp24.pl^$document
 ||cp28qcm.tokyo^$document
 ||cp2ooc.xyz^$document
 ||cp2vfx.cyou^$document
@@ -92360,7 +92392,6 @@
 ||crafto.cyou^$document
 ||craftoptools.fr^$document
 ||crafts-sewing.com^$document
-||craftshiny.shop^$document
 ||craftsmanplaintiffwits.com^$document
 ||craftsmanthin.com^$document
 ||craftsplex.net^$document
@@ -92814,6 +92845,7 @@
 ||credinusarex.tk^$document
 ||credit-a-err.fr^$document
 ||credit-agreicole.fr^$document
+||credit-agri-ca.fr^$document
 ||credit-agri-pass.fr^$document
 ||credit-agri-secure.fr^$document
 ||credit-agricole-acces-compte.fr^$document
@@ -93954,6 +93986,7 @@
 ||crueltymiracle.com^$document
 ||crueltyvogue.com^$document
 ||crufskn.cn^$document
+||crugo.de^$document
 ||cruiseadventures.com^$document
 ||cruises-events.eu^$document
 ||cruks.eu^$document
@@ -95039,7 +95072,6 @@
 ||culture-chameleon.com^$document
 ||culture-foi-respect.fr^$document
 ||culture-med.eu^$document
-||culture-theatre.com^$document
 ||culture.tours^$document
 ||cultureassimilate.com^$document
 ||culturecheznousgouv.fr^$document
@@ -95462,6 +95494,7 @@
 ||cusepp.tokyo^$document
 ||cusesubszab.tk^$document
 ||cusettlandta.tk^$document
+||cusewin.cc^$document
 ||cusfiphimasve.ml^$document
 ||cushanddiclabe.gq^$document
 ||cusheapocri.tk^$document
@@ -96294,6 +96327,7 @@
 ||cyberpol-france.fr^$document
 ||cyberpolicegouv.fr^$document
 ||cyberpsn.fr^$document
+||cybersavercentral.com^$document
 ||cybersecguide.com^$document
 ||cybersecurity.mba^$document
 ||cybersecuritybank.com^$document
@@ -96405,7 +96439,6 @@
 ||cyclespascalmichael.fr^$document
 ||cyclgeratetittio.ga^$document
 ||cycling100percent.com^$document
-||cyclingabus.com^$document
 ||cyclingjacketneus.com^$document
 ||cyclingmavic.com^$document
 ||cyclingprostore.com^$document
@@ -98184,6 +98217,7 @@
 ||damelkator.tk^$document
 ||damenmode-1.de^$document
 ||damenmode-quelle.de^$document
+||damenstylerabatt.com^$document
 ||damenuhrenringe.com^$document
 ||damerktungrane.ga^$document
 ||damertiovata.tk^$document
@@ -98287,7 +98321,6 @@
 ||danditerstara.cf^$document
 ||dandlockflatelaq.tk^$document
 ||dandnasusur.tk^$document
-||dando.xyz^$document
 ||dandowngotaro.ml^$document
 ||dandsorkutschepe.tk^$document
 ||dandsungbacktrakmels.tk^$document
@@ -98704,6 +98737,7 @@
 ||dasdoliptomas.ga^$document
 ||dasearch.cc^$document
 ||dasefokyzhars.tk^$document
+||dasegelgeschaft.com^$document
 ||dasembviganan.tk^$document
 ||dasetatga.tk^$document
 ||dasetdersfanuschu.tk^$document
@@ -99056,7 +99090,6 @@
 ||daxerdiotitdoga.tk^$document
 ||daxhzr.tokyo^$document
 ||daxtc.bar^$document
-||day-lees.de^$document
 ||day-sweetgirl.com^$document
 ||day-sweetgirl1.com^$document
 ||day-sweetgirl2.com^$document
@@ -99456,6 +99489,7 @@
 ||dbhcw.com^$document
 ||dbhigs.bar^$document
 ||dbhso0.cyou^$document
+||dbi-edv-handel.de^$document
 ||dbidigk.tokyo^$document
 ||dbirkincouk.xyz^$document
 ||dbiwzb.tokyo^$document
@@ -99883,6 +99917,7 @@
 ||ddyy.fr^$document
 ||ddzexb.tokyo^$document
 ||de-addictedtohandbags.com^$document
+||de-anwalt.website^$document
 ||de-arabic.web.app^$document
 ||de-babywinkel.buzz^$document
 ||de-bbq.com^$document
@@ -99890,6 +99925,7 @@
 ||de-brennholz.com^$document
 ||de-cryptotrade.com^$document
 ||de-escort.info^$document
+||de-fahrradshop.com^$document
 ||de-filter.com^$document
 ||de-finanz.com^$document
 ||de-fuse-nest.works^$document
@@ -99899,8 +99935,11 @@
 ||de-mikoherb.conter-goods.xyz^$document
 ||de-musicshop.com^$document
 ||de-napoleon.com^$document
+||de-noroki.com^$document
 ||de-outdoor.com^$document
 ||de-rimowa.shop^$document
+||de-schmuckens.com^$document
+||de-schuhladen.com^$document
 ||de-smuller.nl^$document
 ||de-telegrcn.org^$document
 ||de-tero.com^$document
@@ -99914,6 +99953,7 @@
 ||de.baerskinhoodie.com^$document
 ||de.bauhausshop.com^$document
 ||de.cardionv.com^$document
+||de.curalise.com^$document
 ||de.emmiol.com^$document
 ||de.fashvia.shop^$document
 ||de.fitlebenberlin.com^$document
@@ -99927,7 +99967,6 @@
 ||de.identitashoes.com^$document
 ||de.jbckj.com^$document
 ||de.justfashionnow.com^$document
-||de.lajondo.com^$document
 ||de.landalv.com^$document
 ||de.landpld.com^$document
 ||de.puppylove.com^$document
@@ -100041,7 +100080,6 @@
 ||dealunique.news^$document
 ||dealviral.de^$document
 ||dealwb.xyz^$document
-||dealwinkelyes.shop^$document
 ||dealzone.eu^$document
 ||dealzsecure.com^$document
 ||deamarustdingfuncgoff.ga^$document
@@ -100243,6 +100281,7 @@
 ||decapage-gommage.fr^$document
 ||decarb.xyz^$document
 ||decarba-mann.de^$document
+||decardport.com^$document
 ||decarejp.xyz^$document
 ||decarripas.gq^$document
 ||decathln.fr^$document
@@ -100606,6 +100645,7 @@
 ||defactor.eu^$document
 ||defacycgui.tk^$document
 ||defahrrad.com^$document
+||defahrradkomponenten.com^$document
 ||defahrrads.com^$document
 ||defahrradzubehor.com^$document
 ||defai-tech.de^$document
@@ -100667,6 +100707,7 @@
 ||defireatciomatchli.ga^$document
 ||defis-metier.fr^$document
 ||defis-metiers.fr^$document
+||defischersport.com^$document
 ||defitchbotnadesu.cf^$document
 ||defiwallet.xyz^$document
 ||defkeecoormitara.ml^$document
@@ -100806,6 +100847,7 @@
 ||dehqurawmortro.gq^$document
 ||dehscxk.cyou^$document
 ||dehsl65.tokyo^$document
+||dehundeeinkauf.com^$document
 ||dehundegeschaft.com^$document
 ||dehypdebtcastlis.ml^$document
 ||dehyrozusapu.gq^$document
@@ -100847,10 +100889,10 @@
 ||deilufatohurt.tk^$document
 ||deimpo.xyz^$document
 ||dein-elektroshop.de^$document
-||dein-gartenheld.de^$document
 ||dein-modehaus.de^$document
 ||dein-rundfunkbeitrag.de^$document
 ||dein-schuhheld.com^$document
+||dein-sicheres-bad.de^$document
 ||dein-tierarzt.info^$document
 ||deinarf.xyz^$document
 ||deinbikeprofi.de^$document
@@ -100956,6 +100998,7 @@
 ||dekotext.com^$document
 ||dekrafrance.fr^$document
 ||dekstophut.com^$document
+||dekucherabatt.com^$document
 ||dekunst.eu^$document
 ||dekupocimima.tk^$document
 ||dekutluroma.ml^$document
@@ -101307,6 +101350,7 @@
 ||demeanourpawsdose.com^$document
 ||demeatoter.cf^$document
 ||demediz.com^$document
+||demedpets.com^$document
 ||demegaternopi.ga^$document
 ||demeginetpa.ga^$document
 ||demeindlshop.com^$document
@@ -101317,7 +101361,6 @@
 ||dementleberdist.cf^$document
 ||demescrovimold.cf^$document
 ||demeseforlu.tk^$document
-||demetramaheras.com^$document
 ||demetvieciptourol.cf^$document
 ||demhamourelesa.cf^$document
 ||demiboprodis.tk^$document
@@ -101328,6 +101371,7 @@
 ||demikops.nl^$document
 ||demilareste.tk^$document
 ||demillcentvicom.tk^$document
+||demirdentalonline.shop^$document
 ||demirilentdisp.gq^$document
 ||demisbelop.tk^$document
 ||demitreninglosri.ga^$document
@@ -101373,7 +101417,6 @@
 ||demoniashoesnorge.com^$document
 ||demoniashopberlin.de^$document
 ||demoniasoldes.fr^$document
-||demoniastiefel.com^$document
 ||demoniastiefel.de^$document
 ||demoniasuomi.com^$document
 ||demonidofi.tk^$document
@@ -102510,6 +102553,7 @@
 ||descharprobbido.tk^$document
 ||deschcamodesme.tk^$document
 ||deschightistni.tk^$document
+||deschuhebillig.com^$document
 ||deschukatesbetf.gq^$document
 ||deschurdhawcont.ga^$document
 ||descinawichsand.tk^$document
@@ -102638,7 +102682,6 @@
 ||designerhome.store^$document
 ||designforce.xyz^$document
 ||designheavynice.buzz^$document
-||designhomeshop.com^$document
 ||designlampentop.com^$document
 ||designlistentest.biz^$document
 ||designmanopenits.biz^$document
@@ -102699,6 +102742,7 @@
 ||deskereededi.gq^$document
 ||deskhandnsatunip.ga^$document
 ||deskhinkkyrrorea.cf^$document
+||desklamplex.com^$document
 ||desklib.com^$document
 ||desklideechild.tk^$document
 ||desklongpulnyadawd.ml^$document
@@ -102889,6 +102933,7 @@
 ||destrecgeileppay.ga^$document
 ||destreclimari.cf^$document
 ||destregowordlotu.cf^$document
+||destrellson.com^$document
 ||destrichowdnons.tk^$document
 ||destronriconsgen.ml^$document
 ||destrorarevesetp.ga^$document
@@ -103125,6 +103170,7 @@
 ||deutsche-osteopathen.de^$document
 ||deutsche-rentenauskunft.de^$document
 ||deutsche-wurst-manufaktur.com^$document
+||deutschechic.de^$document
 ||deutschegrammophoneu-outlets.shop^$document
 ||deutscherheiler.de^$document
 ||deutsches-heizoel.com^$document
@@ -105807,7 +105853,6 @@
 ||dinnewsfidedeag.tk^$document
 ||dinnextssercali.ga^$document
 ||dinnimbventaco.ml^$document
-||dino-cats.com^$document
 ||dino9t.cyou^$document
 ||dinoboxtari.tk^$document
 ||dinocalchete.tk^$document
@@ -106579,7 +106624,6 @@
 ||disdinacon.ml^$document
 ||disdinglagaker.gq^$document
 ||disdiocribbezzduati.gq^$document
-||disdisbuy.com^$document
 ||disdiscstorlistsolu.tk^$document
 ||disdistsenpdandgeartio.tk^$document
 ||disdonaconfe.ml^$document
@@ -107257,7 +107301,6 @@
 ||districtlink-mi.com^$document
 ||districtlink-mn.com^$document
 ||districtlink-nv.com^$document
-||distrilyy.net^$document
 ||distrit55condens.stream^$document
 ||distrivent.es^$document
 ||distrobeltesilo.cf^$document
@@ -108167,6 +108210,7 @@
 ||dmjx.com^$document
 ||dmk6b4.shop^$document
 ||dmlang.tokyo^$document
+||dmlhrhnv.shop^$document
 ||dmlight.fr^$document
 ||dmlyqs.tokyo^$document
 ||dmmknp.tokyo^$document
@@ -108617,6 +108661,7 @@
 ||doctolib-rembousement.fr^$document
 ||doctolib-sante.fr^$document
 ||doctolib-sms.fr^$document
+||doctolib-support.fr^$document
 ||doctolibrendez-vous.fr^$document
 ||doctoliob.fr^$document
 ||doctor.rip^$document
@@ -109273,7 +109318,6 @@
 ||doorglasupppoless.tk^$document
 ||doorgresswindmodi.gq^$document
 ||doorgsoncovatamo.ga^$document
-||doorhardwareus.com^$document
 ||doorheulotpaudo.tk^$document
 ||doorhomeundershuman.biz^$document
 ||doorkbewephele.ml^$document
@@ -109345,7 +109389,6 @@
 ||dopeskijacke.at^$document
 ||dopesneakers.fr^$document
 ||dopesnowsoldes.fr^$document
-||dopesnowswitzerland.com^$document
 ||dopfph.rest^$document
 ||dophartfighlisisubs.cf^$document
 ||dophensaco.cf^$document
@@ -109364,7 +109407,6 @@
 ||doppvervites.ga^$document
 ||dopsigertaco.gq^$document
 ||doptamichura.tk^$document
-||doption24.de^$document
 ||doptirasrefu.tk^$document
 ||dopudelearentplan.ml^$document
 ||dopumpsitaro.cf^$document
@@ -109658,6 +109700,7 @@
 ||douane-suivi.fr^$document
 ||douanechrono.fr^$document
 ||douanechronopost.fr^$document
+||douanefinancesgouv.fr^$document
 ||douanegouv.fr^$document
 ||douaneimport.fr^$document
 ||douanelaposte.fr^$document
@@ -110528,7 +110571,6 @@
 ||drasneuchallofuncdis.cf^$document
 ||drasralrentmenlia.ml^$document
 ||drasthekasermory.cf^$document
-||drationecla.com^$document
 ||draussenfeet.de^$document
 ||dravemelehdub.ml^$document
 ||dravojytwed.cf^$document
@@ -110951,6 +110993,7 @@
 ||drinfirmdansiha.tk^$document
 ||drinituncusa.ml^$document
 ||drinkevolution.shop^$document
+||drinkrelaxo.com^$document
 ||drinksinvoluntary.com^$document
 ||drinksnow.org^$document
 ||drinkwineshop.com^$document
@@ -113234,7 +113277,6 @@
 ||dynamitegolfconductive.com^$document
 ||dynamitewireless.com^$document
 ||dynamobass.dk^$document
-||dynamodeal.de^$document
 ||dynamorphq.nl^$document
 ||dynamos.at^$document
 ||dynaretbawall.ga^$document
@@ -113497,6 +113539,7 @@
 ||dzkhlc.rest^$document
 ||dzkjxxjc.com^$document
 ||dzkjzk.tokyo^$document
+||dzkke7-kh.myshopify.com^$document
 ||dzkmzvhb.cyou^$document
 ||dzkqrrtf.xyz^$document
 ||dzlnht.bar^$document
@@ -114756,6 +114799,7 @@
 ||easyautomobiles-location.fr^$document
 ||easyautoseeds.com^$document
 ||easybike.xyz^$document
+||easybouteque.com^$document
 ||easybuzz.info^$document
 ||easyca.ca^$document
 ||easycarfr.fr^$document
@@ -114800,7 +114844,6 @@
 ||eatgescupecolan.tk^$document
 ||eathacinpropsionass.ml^$document
 ||eathethmuldontlandschol.cf^$document
-||eaticc.com^$document
 ||eatimolleatenmai.gq^$document
 ||eatingmeals.com^$document
 ||eatiops.xyz^$document
@@ -114939,6 +114982,7 @@
 ||ebe1ml1.work^$document
 ||ebe6cr9.cyou^$document
 ||ebeacerqinkau.tk^$document
+||ebeamconnect.com^$document
 ||ebebzj.rest^$document
 ||ebec2009.eu^$document
 ||ebecheterpmarsto.tk^$document
@@ -114985,9 +115029,9 @@
 ||ebifvx.bar^$document
 ||ebihepcorhaineu.cf^$document
 ||ebike-deal.de^$document
-||ebikecenterltd.com^$document
 ||ebikeeu.com^$document
 ||ebikesgeschaft.com^$document
+||ebiketeilekauf.com^$document
 ||ebiketeileverkaufe.com^$document
 ||ebikeyun.com^$document
 ||ebikezubehoer.com^$document
@@ -115276,7 +115320,6 @@
 ||eccomontreal.com^$document
 ||ecconmoticonri.gq^$document
 ||ecconremisra.tk^$document
-||eccooutletsklep.pl^$document
 ||eccorlimisordea.ga^$document
 ||eccoshoesshop.fr^$document
 ||eccoskonorge.com^$document
@@ -115616,7 +115659,6 @@
 ||economiechezvous.com^$document
 ||economischdoorleren.nl^$document
 ||economix.io^$document
-||economizesses.xyz^$document
 ||economyfactplay.biz^$document
 ||economyfriendpeoples.biz^$document
 ||economypsalm.com^$document
@@ -115889,6 +115931,7 @@
 ||edcardaihohdauvast.cf^$document
 ||edcarsorasi.ml^$document
 ||edcasewit.ml^$document
+||edcbyespritrabatt.com^$document
 ||edceparsemin.gq^$document
 ||edcf0w.cyou^$document
 ||edchgo.cn^$document
@@ -115912,6 +115955,7 @@
 ||edealbinrailei.gq^$document
 ||edealsclub.net^$document
 ||edeasniba.tk^$document
+||edebrennholzedgar.com^$document
 ||edecengila.ga^$document
 ||edecideur.fr^$document
 ||edecon.net^$document
@@ -116069,7 +116113,6 @@
 ||edgedeadworkanswer.biz^$document
 ||edgedrugpeoples.biz^$document
 ||edgeeffortseconomy.xyz^$document
-||edgefinance.ltd^$document
 ||edgeslifebutprogram.biz^$document
 ||edgesmanteachfinally.bar^$document
 ||edgetell.com^$document
@@ -116926,7 +116969,6 @@
 ||egdmm.rest^$document
 ||egdrrd.tokyo^$document
 ||egds9d.cyou^$document
-||ege-exquisit.de^$document
 ||egecneracija.tk^$document
 ||egedalmaskincenter.dk^$document
 ||egedflaves.ga^$document
@@ -117034,7 +117076,6 @@
 ||egostm.rest^$document
 ||egoterduclici.tk^$document
 ||egoti6.cyou^$document
-||egotoolshop.com^$document
 ||egoutalenim.tk^$document
 ||egp5m9d.work^$document
 ||egp5quc.cyou^$document
@@ -117469,10 +117510,12 @@
 ||einfachnwh.hubive.click^$document
 ||einigkeit-tettenweis.de^$document
 ||einkaufsbahnhof-bewegt.de^$document
+||eintrachtfrankfurttrikots.de^$document
 ||einv.com^$document
 ||einvitesnow.com^$document
 ||einyf3a.cyou^$document
 ||einytdg.tokyo^$document
+||einzigartigehaustiere.com^$document
 ||einzu.de^$document
 ||eiobhn.cyou^$document
 ||eioew.com^$document
@@ -117506,6 +117549,7 @@
 ||eiselefahrrad.de^$document
 ||eisenbahnzubehorde.com^$document
 ||eisenwarensale-shop.com^$document
+||eishockeyangebot.com^$document
 ||eishoky.de^$document
 ||eislgt.bar^$document
 ||eisnca.bar^$document
@@ -117759,7 +117803,6 @@
 ||ekdpsguz.cyou^$document
 ||eke100.com^$document
 ||ekebjq.tokyo^$document
-||ekehau.com^$document
 ||ekeis.rest^$document
 ||ekeoc0i.shop^$document
 ||ekerobsis.tk^$document
@@ -118134,7 +118177,6 @@
 ||electionorganization.biz^$document
 ||electionpickseye.biz^$document
 ||electionreceive.biz^$document
-||electra-bikes.com^$document
 ||electrabyte.nl^$document
 ||electrdepot.fr^$document
 ||electric-b2c.com^$document
@@ -118145,7 +118187,6 @@
 ||electricgreetings.buzz^$document
 ||electricityhookclumsy.com^$document
 ||electriclicking.com^$document
-||electricmotorteam.com^$document
 ||electricoriginals.news^$document
 ||electrics-appliance.com^$document
 ||electricvehicle.biz^$document
@@ -118235,7 +118276,6 @@
 ||elektro-soforthilfe.at^$document
 ||elektro-stern.com^$document
 ||elektro-titan.de^$document
-||elektro-wunderland.de^$document
 ||elektrobiz.com^$document
 ||elektrodepo.de^$document
 ||elektroenergetika.info^$document
@@ -118244,6 +118284,7 @@
 ||elektrofuralle.de^$document
 ||elektrogenuss.de^$document
 ||elektrogeraterabatt.com^$document
+||elektrohandel-konstanz.de^$document
 ||elektrohandel-schmidt.com^$document
 ||elektrohandelplus.de^$document
 ||elektrohause.com^$document
@@ -118258,13 +118299,13 @@
 ||elektronio.de^$document
 ||elektronischermarkt.de^$document
 ||elektronlinestore.com^$document
-||elektropellets.com^$document
 ||elektropfeifer.de^$document
 ||elektrosautomatika.lt^$document
 ||elektrosensibilitaet.com^$document
 ||elektroservice-24.de^$document
 ||elektrotop-shop.com^$document
 ||elektrovia.de^$document
+||elektrozone24.com^$document
 ||elektrykkafel.pl^$document
 ||elelfeewafan.tk^$document
 ||elemamulkoo.ml^$document
@@ -118493,7 +118534,6 @@
 ||eliteai-t.com^$document
 ||elitecasino.fr^$document
 ||elitecasinofr.fr^$document
-||elitecloth.store^$document
 ||eliteforgetful.com^$document
 ||eliteherald.com^$document
 ||elitelosangeles.biz^$document
@@ -119126,7 +119166,6 @@
 ||embeagcamoti.tk^$document
 ||embeax.work^$document
 ||embedde24joelie.viajes^$document
-||embertime.com^$document
 ||embeto.gq^$document
 ||embezzlementborough.com^$document
 ||embezzlementcocoaobituary.com^$document
@@ -119453,6 +119492,7 @@
 ||emntherthereti.ml^$document
 ||emnxejd.web.app^$document
 ||emobigeled.ga^$document
+||emobilityzubehoer.com^$document
 ||emocapen.tk^$document
 ||emocecef.tk^$document
 ||emocevstudenin.ml^$document
@@ -119619,7 +119659,6 @@
 ||emserreacha.web.app^$document
 ||emsevoltzippe.cf^$document
 ||emsfitnesspro.ru^$document
-||emsilver.de^$document
 ||emsitimrespters.tk^$document
 ||emslavpasotifer.ga^$document
 ||emsleeptibiva.tk^$document
@@ -119688,7 +119727,6 @@
 ||emununforniebe.tk^$document
 ||emupregportre.tk^$document
 ||emupstatbera.ga^$document
-||emuschuhe.at^$document
 ||emutukyget.tk^$document
 ||emuzh3.shop^$document
 ||emv-galabau24.de^$document
@@ -120556,6 +120594,7 @@
 ||enjobsiopicog.tk^$document
 ||enjoyable-luscious.nl^$document
 ||enjoybigslistaround.buzz^$document
+||enjoybooteshop.com^$document
 ||enjoycanadalife.com^$document
 ||enjoycompanysheart.biz^$document
 ||enjoyengland.fr^$document
@@ -122057,7 +122096,6 @@
 ||equitaine.fr^$document
 ||equitycapitals.com^$document
 ||equityevotra.com^$document
-||equitymcapital.net^$document
 ||equityscholarship.com^$document
 ||equivalenh.com^$document
 ||equivalenu.com^$document
@@ -124156,6 +124194,7 @@
 ||espace-connexion-disney.fr^$document
 ||espace-connexion.fr^$document
 ||espace-connexions.fr^$document
+||espace-consultation.fr^$document
 ||espace-contravention.fr^$document
 ||espace-cpam-client.fr^$document
 ||espace-crediit-agricolee.fr^$document
@@ -124674,6 +124713,7 @@
 ||essentialpomegranate.com^$document
 ||essentialssiteofficiel.fr^$document
 ||essentrafinance.com^$document
+||essenundgenuss.com^$document
 ||essenverkauf.com^$document
 ||esserbitefi.gq^$document
 ||esserjustdotosul.gq^$document
@@ -125010,6 +125050,7 @@
 ||etercupapelin.tk^$document
 ||eterfichenoco.cf^$document
 ||eterinarit.tk^$document
+||eternaesfera.com^$document
 ||eternalreverie.info^$document
 ||eternel-vintage.com^$document
 ||eternity-diamond.com^$document
@@ -125496,7 +125537,6 @@
 ||eumafx.bar^$document
 ||eumaillotbasketstore.fr^$document
 ||eumarketstores.com^$document
-||eumartinitoko.de^$document
 ||eumasia.com^$document
 ||eumatip.co^$document
 ||eumeds.net^$document
@@ -125592,6 +125632,7 @@
 ||euroimplant.pl^$document
 ||euroinnov.eu^$document
 ||eurolines.fr^$document
+||eurolottocasino.fr^$document
 ||euromaster-auto.ru^$document
 ||euromaxfinance.com^$document
 ||euromed2015.eu^$document
@@ -125925,7 +125966,6 @@
 ||eventloop.biz^$document
 ||eventmentionhowever.de^$document
 ||eventos-sp.com^$document
-||eventoscerqueira.com^$document
 ||eventproducts.co.uk^$document
 ||eventprofi74.ru^$document
 ||events-pubgmgodzilla.ru^$document
@@ -126105,6 +126145,7 @@
 ||evnoperquiliv.cf^$document
 ||evnorannoachab.tk^$document
 ||evo-bet.fr^$document
+||evo-cleaner.de^$document
 ||evo-house.com^$document
 ||evo-pharmacy.com^$document
 ||evo2wa.cyou^$document
@@ -126115,7 +126156,6 @@
 ||evofrodarfull.gq^$document
 ||evokgv.tokyo^$document
 ||evoldifeasi.tk^$document
-||evolgrafix.de^$document
 ||evolucrossfitmelun.fr^$document
 ||evolumagsas.fr^$document
 ||evolup.fr^$document
@@ -128735,6 +128775,7 @@
 ||fabestiovirew.gq^$document
 ||fabet7.com^$document
 ||fabhabitat.fr^$document
+||fabianbernard.shop^$document
 ||fabianswelt.de^$document
 ||fabibidetemo.ga^$document
 ||fabimassege.ml^$document
@@ -128764,7 +128805,6 @@
 ||fabriwolreter.ml^$document
 ||fabrix.app^$document
 ||fabtapatic.ml^$document
-||fabtechfire.com^$document
 ||fabul.de^$document
 ||fabulaberlin.com^$document
 ||fabulousmelodramatichoop.com^$document
@@ -129591,7 +129631,6 @@
 ||familygroupconference2011.eu^$document
 ||familyhandvotes.biz^$document
 ||familyheremonth.biz^$document
-||familyhistoryjamaica.com^$document
 ||familyinsurance.buzz^$document
 ||familyjobroomscell.bar^$document
 ||familyjobyearrich.rest^$document
@@ -131514,12 +131553,12 @@
 ||fengqiupumps.fr^$document
 ||fenguotuan.com^$document
 ||fengwoxin.com^$document
-||feniciaeletrodomesticos.com^$document
 ||feninipeheart.tk^$document
 ||feniskaya.xyz^$document
 ||fenixoneart.pl^$document
 ||fenkpsychanstipqui.ga^$document
 ||fenksurpripharte.ga^$document
+||fenla-berlin.de^$document
 ||fenlateboosoltvi.ga^$document
 ||fenleiguanggao.xyz^$document
 ||fenlopanfedalu.gq^$document
@@ -131570,7 +131609,6 @@
 ||feolenbelecel.gq^$document
 ||feopittphenpgratac.cf^$document
 ||feopy4.cyou^$document
-||feoruo.com^$document
 ||feparsegigusuf.ga^$document
 ||fepartcorlootus.cf^$document
 ||fepaskepaboost.tk^$document
@@ -133049,6 +133087,7 @@
 ||filmporphocheckcrunja.ml^$document
 ||filmport.ai^$document
 ||filmpurgis.ee^$document
+||filmrabatt.com^$document
 ||filmrearitedel.tk^$document
 ||filmrenriastulotgam.tk^$document
 ||filmreorganizeford.com^$document
@@ -133056,6 +133095,7 @@
 ||filmseaforpifolk.ml^$document
 ||filmstreamingweb.it^$document
 ||filmstueckchen.de^$document
+||filmsuitve.com^$document
 ||filmtecounsittta.tk^$document
 ||filmtuwhiratovi.ga^$document
 ||filmvilag2elozetesek.eu^$document
@@ -133226,7 +133266,6 @@
 ||financieres.com^$document
 ||financites.fr^$document
 ||financo-sav.fr^$document
-||finankredt-sarl.com^$document
 ||finansowylis.pl^$document
 ||finanz-privat.com^$document
 ||finanzarena.pro^$document
@@ -133862,7 +133901,6 @@
 ||fisuteliser.tk^$document
 ||fisworkcotpi.ml^$document
 ||fisyso.rest^$document
-||fit-culture.de^$document
 ||fit-perfect.de^$document
 ||fit2016.eu^$document
 ||fit3zd.cyou^$document
@@ -133935,6 +133973,7 @@
 ||fitishailiaged.tk^$document
 ||fititivimenfu.gq^$document
 ||fitiwelt.com^$document
+||fitliebe.de^$document
 ||fitliferegime.com^$document
 ||fitlinepolska.pl^$document
 ||fitmalingspitnethle.tk^$document
@@ -133945,6 +133984,7 @@
 ||fitnavade.si^$document
 ||fitness-7.de^$document
 ||fitness-altitude.fr^$document
+||fitness-outlet24.de^$document
 ||fitness-solution24.de^$document
 ||fitnessbezogen.com^$document
 ||fitnesscoachingfusco.it^$document
@@ -134525,6 +134565,7 @@
 ||flammarisawvins.gq^$document
 ||flammenfreude.de^$document
 ||flammenkunst.shop^$document
+||flammenwerkde.com^$document
 ||flammesnisuno.cf^$document
 ||flammifer.xyz^$document
 ||flammithope.tk^$document
@@ -134752,7 +134793,6 @@
 ||flavimtaldanafar.tk^$document
 ||flavinmicdacent.gq^$document
 ||flavinnorvensnip.cf^$document
-||flaviorossi.de^$document
 ||flavlannetisuba.tk^$document
 ||flavmicborebe.tk^$document
 ||flavnetminabegnand.tk^$document
@@ -134863,7 +134903,6 @@
 ||fletjumniecalsi.cf^$document
 ||fletomexddoubif.ga^$document
 ||fleurdeselgourmet.com^$document
-||fleuropde.com^$document
 ||flevide.xyz^$document
 ||flewthankpatronize.com^$document
 ||flex-house.de^$document
@@ -136119,6 +136158,7 @@
 ||fokoomall.com^$document
 ||fokovs.tokyo^$document
 ||fokswg.bar^$document
+||foktu.shop^$document
 ||foktup.nl^$document
 ||fokupasdoge.tk^$document
 ||fokusfinanz.com^$document
@@ -136704,7 +136744,6 @@
 ||forestsayempire.com^$document
 ||forestseas.com^$document
 ||forestworld.com^$document
-||foret-mareuillaise.com^$document
 ||foret.xyz^$document
 ||foretastegillsboxoffice.com^$document
 ||foretes.xyz^$document
@@ -137181,7 +137220,6 @@
 ||forsunotojoun.tk^$document
 ||forsyth.xyz^$document
 ||fortagefundsmgmt.com^$document
-||fortaleza-gov-veiculos.com^$document
 ||fortalezamoteis.com.br^$document
 ||fortalpmipomo.tk^$document
 ||fortalustelspenligh.tk^$document
@@ -137396,7 +137434,6 @@
 ||foryou.my.id^$document
 ||foryoudom01.xyz^$document
 ||foryoudom02.xyz^$document
-||foryourwell.com^$document
 ||forzarumtejule.gq^$document
 ||forzedotoura.gq^$document
 ||forzmdq.bar^$document
@@ -137650,6 +137687,7 @@
 ||foxtnibeefsters.tk^$document
 ||foxtrotted.com^$document
 ||foxtvoujunbaver.gq^$document
+||foxverkaufe.com^$document
 ||foxvhcs.bar^$document
 ||foxwolfme.xyz^$document
 ||foxyclothcreations.com^$document
@@ -138283,6 +138321,7 @@
 ||frameworkilluminatedcredulity.com^$document
 ||frameworknephew.com^$document
 ||frameworkprogenybreastfeeding.com^$document
+||framezegame.com^$document
 ||framfaipagerre.cf^$document
 ||framimvaverredif.tk^$document
 ||framinggreeting.com^$document
@@ -138671,6 +138710,7 @@
 ||frassejosile.cf^$document
 ||frast.jp^$document
 ||frastingvamejaci.cf^$document
+||frastischeshop.com^$document
 ||frat-movie.buzz^$document
 ||fratargabelli.gq^$document
 ||fratarglenovfemoons.tk^$document
@@ -138704,6 +138744,7 @@
 ||frauen-aus-rio.eu^$document
 ||frauen-in-gewaltsituationen.de^$document
 ||frauen-union-ov-nu.de^$document
+||frauenleinen.de^$document
 ||frauglerev.site^$document
 ||frauidprevention.com^$document
 ||fraump.xyz^$document
@@ -138816,7 +138857,6 @@
 ||fredperry-france.fr^$document
 ||fredperryfrance.fr^$document
 ||fredperryonlineshop.de^$document
-||fredperryoutletosterreich.com^$document
 ||fredperrysoldes.fr^$document
 ||fredpestesuthor.gq^$document
 ||fredrabattkorymins.tk^$document
@@ -138933,7 +138973,6 @@
 ||free7tit.info^$document
 ||free8459mov.xyz^$document
 ||free9711slut.xyz^$document
-||freeacnevs.xyz^$document
 ||freeacy.com^$document
 ||freeadluterotico.com^$document
 ||freeadvertise.site^$document
@@ -139393,6 +139432,7 @@
 ||frhxim.bar^$document
 ||friboo-de.com^$document
 ||friboo-prada.com^$document
+||fribooangebote.com^$document
 ||fribooverkauf.com^$document
 ||fricbackpampfulmo.tk^$document
 ||fricdataliwoodg.ml^$document
@@ -139497,6 +139537,7 @@
 ||frisbattvicamedeck.tk^$document
 ||frisbionyapromgill.gq^$document
 ||frisch-versand.de^$document
+||frischehaut.com^$document
 ||frischergegenwind.de^$document
 ||frischundklar.de^$document
 ||friscia.xyz^$document
@@ -140898,6 +140939,7 @@
 ||furenniao.com^$document
 ||furenshoes.cn^$document
 ||furfailetalli.gq^$document
+||furfall.com^$document
 ||furgadepopli.cf^$document
 ||furgefi.gq^$document
 ||furgoodplabers.tk^$document
@@ -142708,6 +142750,7 @@
 ||gabooramenhu.gq^$document
 ||gabor-chaussures.fr^$document
 ||gabor-france.fr^$document
+||gabor-schweiz.com^$document
 ||gabor.com.se^$document
 ||gaboraustralia.com^$document
 ||gaborbulgaria.com^$document
@@ -142717,15 +142760,14 @@
 ||gaborfrance.fr^$document
 ||gaborgreece.com^$document
 ||gaborhungary.net^$document
-||gaborisrael.com^$document
 ||gabormontreal.com^$document
 ||gabornilkkurit.com^$document
 ||gabornz.com^$document
+||gaborosterreich.at^$document
 ||gaborparis.fr^$document
 ||gaborpolska.com^$document
 ||gaborportugal.com^$document
 ||gaborsale.com^$document
-||gaborsandalesparis.com^$document
 ||gaborschoenen.com^$document
 ||gaborschuhe-damen.com^$document
 ||gaborschuhe.at^$document
@@ -143254,7 +143296,6 @@
 ||gamebyte.tech^$document
 ||gamecabinen.shop^$document
 ||gamechampions.com^$document
-||gamecityz.com^$document
 ||gamecocksfootballjersey.club^$document
 ||gamecodeshop.de^$document
 ||gamedays2016.de^$document
@@ -143310,7 +143351,6 @@
 ||gamespartmovies.biz^$document
 ||gamespeopleitsnumber.club^$document
 ||gamestools.info^$document
-||gamestop-eu.com^$document
 ||gamestopde.de^$document
 ||gamestopland.com^$document
 ||gamestp.de^$document
@@ -143343,7 +143383,6 @@
 ||gamingdeputy.com^$document
 ||gaminggadgets.dk^$document
 ||gaminggermany.site^$document
-||gamingonline.store^$document
 ||gamingorama.xyz^$document
 ||gamingtoday.org^$document
 ||gamirnewssakith.tk^$document
@@ -143425,7 +143464,6 @@
 ||gangfibdinombmonth.tk^$document
 ||gangfilekeesur.tk^$document
 ||ganggeldita.cf^$document
-||ganggeschenk.com^$document
 ||gangho.tk^$document
 ||ganghuajl.com^$document
 ||ganglireperderab.tk^$document
@@ -143807,9 +143845,9 @@
 ||gartenbaukunster.de^$document
 ||gartenbedarf-ehlers.de^$document
 ||gartenbedarfbillig.com^$document
+||gartenbedarfs-de.com^$document
 ||gartenbillig.com^$document
 ||gartenbnke.com^$document
-||gartenboss.com^$document
 ||gartendo.de^$document
 ||gartenesstisch.com^$document
 ||gartenflamme24.de^$document
@@ -143826,6 +143864,7 @@
 ||gartenmachtshop.de^$document
 ||gartenmaher.com^$document
 ||gartenmaschinen-arbeitsgerate.shop^$document
+||gartenmaschinen24.de^$document
 ||gartenmaschinenpro.de^$document
 ||gartenmaschinenzubehor.com^$document
 ||gartenmotorgerate.com^$document
@@ -143835,6 +143874,7 @@
 ||gartenpflanzende.com^$document
 ||gartenpflegeshop.com^$document
 ||gartenplus24.com^$document
+||gartenquellede.com^$document
 ||gartenrabatt.com^$document
 ||gartensbillig.com^$document
 ||gartenschranke.com^$document
@@ -143864,7 +143904,6 @@
 ||garwoodulinknywhi.tk^$document
 ||garyeco.xyz^$document
 ||gas-ertrag.app^$document
-||gas-ertrag.com^$document
 ||gas-heizung-wasser.at^$document
 ||gas-thermen-zentrum.at^$document
 ||gasandrebirddepi.ga^$document
@@ -145351,6 +145390,7 @@
 ||genereli.fr^$document
 ||generic4all-global.com^$document
 ||generic4allglobal.com^$document
+||genericdoctor.com^$document
 ||genericsbot.com^$document
 ||genericshop-247.eu^$document
 ||generictrademark.com^$document
@@ -145518,7 +145558,6 @@
 ||gentucarveuche.tk^$document
 ||gentvisappprivsound.ml^$document
 ||gentwinkramali.tk^$document
-||genuine-asset.org^$document
 ||genuinelypossibly.com^$document
 ||genuiney.com^$document
 ||genurfeisuppi.gq^$document
@@ -145787,6 +145826,7 @@
 ||geqilmsn.xyz^$document
 ||geqimo.com^$document
 ||geqrsf.tokyo^$document
+||ger.zoibakii.com^$document
 ||ger7jrg.cyou^$document
 ||ger9vx.cyou^$document
 ||geraestec.com.br^$document
@@ -145996,6 +146036,7 @@
 ||gesandtedgi.web.app^$document
 ||gesbudhjourworkhobb.gq^$document
 ||geschaft.genialbest.com^$document
+||geschaftdrachen.com^$document
 ||geschbefiforcchal.tk^$document
 ||geschbelsdibenzca.tk^$document
 ||geschbershipurtiafor.tk^$document
@@ -146009,6 +146050,7 @@
 ||geschdanjerenonpblog.gq^$document
 ||geschdescconrote.ml^$document
 ||geschdesnoiwarpayback.tk^$document
+||geschenkblumen.com^$document
 ||geschenkfreudeeu.shop^$document
 ||geschenkwand.de^$document
 ||geschenkzone.at^$document
@@ -146268,6 +146310,7 @@
 ||get-profit-now12.com^$document
 ||get-rc.to^$document
 ||get-safe-profile.com^$document
+||get-teralin.site^$document
 ||get-thebest-prizes.info^$document
 ||get-things-done.cc^$document
 ||get-yer-rocks-off.nl^$document
@@ -146556,7 +146599,6 @@
 ||getsisalanth.web.app^$document
 ||getslots.fr^$document
 ||getsmoking.ru^$document
-||getsnowsports.com^$document
 ||getsolarnowco.com^$document
 ||getsomnipotentstray.com^$document
 ||getspecial-prizenow.life^$document
@@ -147549,7 +147591,6 @@
 ||giftdtabaran.gq^$document
 ||giftedlux.com^$document
 ||gifthomegoods.com^$document
-||giftigbin.com^$document
 ||giftlesscompferssourme.tk^$document
 ||giftmartshop.com^$document
 ||giftonus.com^$document
@@ -147564,7 +147605,6 @@
 ||giftsourmeani.tk^$document
 ||giftspeach.com^$document
 ||gifttagtw.com^$document
-||giftwarehome.com^$document
 ||gifutp.tokyo^$document
 ||gifxwo.bar^$document
 ||gifzecp.work^$document
@@ -148104,7 +148144,6 @@
 ||girtpiluneedgant.ml^$document
 ||gisbepatocos.tk^$document
 ||gisbizumebunjang.gq^$document
-||giscapital.world^$document
 ||giscarenchaugon.tk^$document
 ||gischestmitucizuf.ga^$document
 ||giscolope.ml^$document
@@ -148697,6 +148736,7 @@
 ||glagcusnopuxyra.tk^$document
 ||glaigloogli.net^$document
 ||glam-bay.de^$document
+||glam-gadgets.de^$document
 ||glam-outlet.fr^$document
 ||glamantibeauty.com^$document
 ||glamaracriplockver.ml^$document
@@ -148814,6 +148854,7 @@
 ||glasvesdipavi.tk^$document
 ||glasvetispohobank.cf^$document
 ||glasvezeltechniek.training^$document
+||glaswarenrabatt.com^$document
 ||glaswebrect.gq^$document
 ||glatolconciope.cf^$document
 ||glatunadaffoo.tk^$document
@@ -149230,6 +149271,7 @@
 ||glorebavthogmatech.gq^$document
 ||glorenotmonla.gq^$document
 ||gloresenrading.ga^$document
+||gloreve.com^$document
 ||gloriafreeway.com^$document
 ||gloriarevealed.com^$document
 ||gloriousdementedmulticultural.com^$document
@@ -149258,6 +149300,7 @@
 ||glosoutampahorgua.tk^$document
 ||glosowteirurta.ga^$document
 ||glosrecguconpe.ml^$document
+||glossise.com^$document
 ||glossymmiddhucremar.tk^$document
 ||glosunalamfae.cf^$document
 ||glosweanivouddardders.ga^$document
@@ -149759,7 +149802,6 @@
 ||gniawet.bar^$document
 ||gniduli.tokyo^$document
 ||gninvest-ag.com^$document
-||gninvestag.com^$document
 ||gnistictercwealthvul.tk^$document
 ||gnitizvalnasys.gq^$document
 ||gniuowhq.cyou^$document
@@ -150450,6 +150492,7 @@
 ||goldrubokilsie.tk^$document
 ||goldsadisnafena.gq^$document
 ||goldscheideanstalt-seit1970.de^$document
+||goldschmiede-alpenglanz.at^$document
 ||goldsicher.net^$document
 ||goldsilverserver.net^$document
 ||goldsonbernti.tk^$document
@@ -150458,7 +150501,6 @@
 ||goldspin.fr^$document
 ||goldspincasino.fr^$document
 ||goldspins.fr^$document
-||goldstein-shop.shop^$document
 ||goldstollen.de^$document
 ||goldstoneindica.shop^$document
 ||goldstyladmerti.tk^$document
@@ -151223,7 +151265,6 @@
 ||gotouhaclereter.tk^$document
 ||gotoyoutube.ml^$document
 ||gotrack01.top^$document
-||gotrax.store^$document
 ||gotrewilrafene.gq^$document
 ||gotrixa.de^$document
 ||gotrustfracleavisi.tk^$document
@@ -152155,7 +152196,6 @@
 ||grandprixfactory.com^$document
 ||grandregistre-banque.fr^$document
 ||grandsoft.uz^$document
-||grandsteamers.com^$document
 ||grandtheftwiki.fr^$document
 ||grandweblab.com^$document
 ||grandwent.com^$document
@@ -152440,6 +152480,7 @@
 ||gratis-sms.dk^$document
 ||gratisenzo.nl^$document
 ||gratisesoutcota.gq^$document
+||gratisgives.com^$document
 ||gratislivecams.eu^$document
 ||gratisspilsiden.dk^$document
 ||gratkoreforsa.tk^$document
@@ -152769,7 +152810,6 @@
 ||greendisloconsvaca.gq^$document
 ||greendoorfbavermalug.tk^$document
 ||greeneadampoigarbson.cf^$document
-||greenearthheatingandair.com^$document
 ||greeneastacambca.ml^$document
 ||greenefflanna.tk^$document
 ||greenelethmunkeares.cf^$document
@@ -152792,7 +152832,6 @@
 ||greenheardownpilatso.gq^$document
 ||greenheavensrl.it^$document
 ||greenhousejugglesenior.com^$document
-||greenhousesshop.com^$document
 ||greenilapretdowbhats.tk^$document
 ||greenimacexour.ml^$document
 ||greenimtermota.tk^$document
@@ -153066,6 +153105,7 @@
 ||grillantalya-detmold.de^$document
 ||grillausrustung.com^$document
 ||grillen-shop.com^$document
+||grillenrabatt.com^$document
 ||grilles.de^$document
 ||grillfleisch-spezialist.de^$document
 ||grillflix.de^$document
@@ -153077,12 +153117,14 @@
 ||grillprofishop.com^$document
 ||grillsandgreens.com^$document
 ||grillscloud.com^$document
+||grillsgeschaft.com^$document
 ||grillspro.shop^$document
 ||grillstore-krefeld.com^$document
 ||grillstorebuchen.com^$document
 ||grillwelten.com^$document
 ||grillwieseava.shop^$document
 ||grillzentrale.shop^$document
+||grillzubehoer-de.com^$document
 ||grilmarkt.com^$document
 ||grilmarktt.com^$document
 ||grilmaslaipaginess.cf^$document
@@ -153340,7 +153382,6 @@
 ||groundiesdamen.de^$document
 ||groundiesdeoutlet.com^$document
 ||groundiesdeutsch.de^$document
-||groundiesgermany.com^$document
 ||groundiesoutletfr.fr^$document
 ||groundiesschoenennederland.com^$document
 ||groundiesshoesuk.com^$document
@@ -153653,13 +153694,13 @@
 ||growelovgourisi.cf^$document
 ||growenmopeapor.cf^$document
 ||growimhawahendsemp.ml^$document
-||growingcat.com^$document
 ||growinglove.cn^$document
 ||growinymunin.ml^$document
 ||growinzarni.ml^$document
 ||growisleddihysan.tk^$document
 ||growledartistic.com^$document
 ||growlightreview.xyz^$document
+||growminds.de^$document
 ||growohisnorto.ga^$document
 ||growomdetga.gq^$document
 ||growosrocira.ml^$document
@@ -154305,7 +154346,6 @@
 ||gudmamulecardo.tk^$document
 ||gudmeheloco.ga^$document
 ||gudrhe.cyou^$document
-||gudrunsjodens-eu.com^$document
 ||gudu-shu.vip^$document
 ||gudumprannelonas.ml^$document
 ||gue-kurser.dk^$document
@@ -154368,7 +154408,6 @@
 ||guenisbipa.web.app^$document
 ||guenlichamnan.tk^$document
 ||guenlineroz.tk^$document
-||guenstig-rezeptfrei.de^$document
 ||guentelsentetor.tk^$document
 ||guenther-scholz.de^$document
 ||guenursethela.tk^$document
@@ -154911,6 +154950,7 @@
 ||gumdwaldfiltbarddua.ml^$document
 ||gumforgum.eu^$document
 ||gumgoldjorbenpru.tk^$document
+||gummikoder.com^$document
 ||gumorlbeu.de^$document
 ||gumpaitopgaawei.cf^$document
 ||gumpfestmanchairot.ml^$document
@@ -154967,7 +155007,6 @@
 ||gunsbandsuro.cf^$document
 ||gunscaricontcomlei.cf^$document
 ||gunsebisde.tk^$document
-||gunservice-inter.com^$document
 ||gunsflexogunpubma.ml^$document
 ||gunshunsilidka.tk^$document
 ||gunskepsekid.ga^$document
@@ -155683,7 +155722,6 @@
 ||gym-shark-france.fr^$document
 ||gym-shark-india.com^$document
 ||gym-sharkgreece.com^$document
-||gym-sharkmexico.com.mx^$document
 ||gym-sharksuomi.com^$document
 ||gym2goshop.de^$document
 ||gymanoi.xyz^$document
@@ -157220,7 +157258,6 @@
 ||halled.xyz^$document
 ||halleisingkegangverb.tk^$document
 ||haller-consulting.net^$document
-||hallfua.store^$document
 ||hallglycrosdaypatem.gq^$document
 ||hallhuberfr.com^$document
 ||hallktansiikayetlerigor.biz^$document
@@ -157237,6 +157274,7 @@
 ||halloweenpopculture.com^$document
 ||halloweens-de.com^$document
 ||halloweenwelt-manufaktur.de^$document
+||halloweenwelt.com^$document
 ||hallpahumse.tk^$document
 ||hallpasdemitheca.ml^$document
 ||hallpubfusslanhau.cf^$document
@@ -157426,6 +157464,7 @@
 ||handborosmafanbai.tk^$document
 ||handbrake.es^$document
 ||handbrake.it^$document
+||handbrausensale.com^$document
 ||handbrausenshop.com^$document
 ||handbuildsdaysborns.biz^$document
 ||handbumbchole.tk^$document
@@ -157647,7 +157686,6 @@
 ||handscaseshowmothers.biz^$document
 ||handscenepretty.xyz^$document
 ||handschellen.deveri.de^$document
-||handschuheshop.com^$document
 ||handscompanysea.biz^$document
 ||handsdiscussgroups.rest^$document
 ||handsecaslomor.tk^$document
@@ -159512,6 +159550,7 @@
 ||hashnet.xyz^$document
 ||hashoj-net.dk^$document
 ||hashoohanmening.tk^$document
+||hashx-capital.com^$document
 ||hasibestsinkhar.tk^$document
 ||hasichardurea.cf^$document
 ||hasimpmeforkoli.tk^$document
@@ -159766,6 +159805,7 @@
 ||haustechnik-muenchen.de^$document
 ||haustechnikmeine.de^$document
 ||haustetekbomotnoo.tk^$document
+||haustier-de.com^$document
 ||haustierbedarfshop.com^$document
 ||haustiererabatt.com^$document
 ||haustiereshop.com^$document
@@ -161176,7 +161216,6 @@
 ||hcamybok.cyou^$document
 ||hcaparadabenti.tk^$document
 ||hcapdeototiderp.tk^$document
-||hcasinogrey.shop^$document
 ||hcayzl.shop^$document
 ||hcb0n7.cyou^$document
 ||hcbhpud.tokyo^$document
@@ -161675,7 +161714,6 @@
 ||healfolotabec.tk^$document
 ||healhbridcircpi.tk^$document
 ||healhtincrepa.ga^$document
-||healing-rock.de^$document
 ||healingheartscounseling.site^$document
 ||healinglightviseum.eu^$document
 ||healingly.xyz^$document
@@ -161984,7 +162022,6 @@
 ||hebamme-sophie.de^$document
 ||hebammesalzburg.at^$document
 ||hebass.xyz^$document
-||hebblyshop.com^$document
 ||hebeiguosu.com^$document
 ||hebergementweb.info^$document
 ||hebergeur-web.info^$document
@@ -162132,7 +162169,6 @@
 ||hei2tjeeeswijk.xyz^$document
 ||heibargiaquidrontodd.tk^$document
 ||heibeadtingpig.tk^$document
-||heibeill.de^$document
 ||heibiohy.tk^$document
 ||heibresraomowen.ml^$document
 ||heicentripergevi.cf^$document
@@ -162221,8 +162257,12 @@
 ||heimoetrespanousday.ml^$document
 ||heimomolocallring.tk^$document
 ||heimprofis.de^$document
+||heimspeichern.com^$document
 ||heimtraum.kmayzm.guru^$document
+||heimvibe.com^$document
 ||heimwerkende.de^$document
+||heimwerkerhelden.com^$document
+||heimwerkzeugesde.com^$document
 ||heimwuq.einfachykfe.cyou^$document
 ||heimyasoisber.tk^$document
 ||heinbutiik.ee^$document
@@ -162318,6 +162358,7 @@
 ||heiziva.de^$document
 ||heizjet.de^$document
 ||heizkessel-sale.com^$document
+||heizkesselstore.com^$document
 ||heizklar.de^$document
 ||heizline.at^$document
 ||heiznow.de^$document
@@ -162334,7 +162375,6 @@
 ||heizoel-held.de^$document
 ||heizoel-jetzt.de^$document
 ||heizoel-kalkulator.de^$document
-||heizoel-kaufen24.com^$document
 ||heizoel-liefern.de^$document
 ||heizoel-portal.de^$document
 ||heizoel-premium.de^$document
@@ -162608,6 +162648,7 @@
 ||help-colissimo.fr^$document
 ||help-compte.fr^$document
 ||help-gouv-amende.fr^$document
+||help-ledger.fr^$document
 ||help-medicines.com^$document
 ||help-netflix.fr^$document
 ||help-netflixfacturation.fr^$document
@@ -162978,6 +163019,7 @@
 ||herelibetabwie.tk^$document
 ||heremanshomewoman.biz^$document
 ||herenpoe.ml^$document
+||herenschuhebillig.com^$document
 ||hereponja.gq^$document
 ||herepornohorny.agency^$document
 ||herepornosexo.agency^$document
@@ -163079,6 +163121,7 @@
 ||herrchrisalotkyara.ga^$document
 ||herren-shop.com^$document
 ||herrenmodeschuhe.com^$document
+||herrenmodestore.com^$document
 ||herrenoase.de^$document
 ||herrenpillen.net^$document
 ||herrestfenikab.tk^$document
@@ -163284,7 +163327,6 @@
 ||heydudechaussures.fr^$document
 ||heydudelife.com^$document
 ||heydudemagasin.fr^$document
-||heydudeschuhereduziert.com^$document
 ||heydudeschuheschweiz.com^$document
 ||heydudeshoesfrance.fr^$document
 ||heydudeshoesparis.fr^$document
@@ -164397,7 +164439,6 @@
 ||hirorog.blog^$document
 ||hiroyukino.blog^$document
 ||hirs4j.cyou^$document
-||hirsch-express.com^$document
 ||hirsch-ille.fr^$document
 ||hirsch-seniorenbetreuung.de^$document
 ||hirsefeltshop.com^$document
@@ -165516,7 +165557,6 @@
 ||hoecruzannarla.tk^$document
 ||hoediganpeniro.ga^$document
 ||hoedmr.tokyo^$document
-||hoeglshoes.com^$document
 ||hoegs-biler.dk^$document
 ||hoehancircmilu.cf^$document
 ||hoehulfawittist.gq^$document
@@ -165638,7 +165678,6 @@
 ||hoitilinicor.tk^$document
 ||hoitragbeneva.ml^$document
 ||hoitramna.tk^$document
-||hoiyon.com^$document
 ||hojavz.bar^$document
 ||hojeras.dk^$document
 ||hojewsdisguardlowol.gq^$document
@@ -165714,7 +165753,7 @@
 ||holapywlent.tk^$document
 ||holara.ai^$document
 ||holara.ai^$document
-||holaten.com^$document
+||holatickets.fr^$document
 ||holatravelalora.es^$document
 ||holazak.it^$document
 ||holbaekantik.dk^$document
@@ -165771,6 +165810,7 @@
 ||hollin.xyz^$document
 ||hollingsworthford.buzz^$document
 ||hollisfvo6.web.app^$document
+||hollister-abercrombiefitch.fr^$document
 ||hollister-co.at^$document
 ||hollister-france.fr^$document
 ||hollister.com.de^$document
@@ -165832,7 +165872,6 @@
 ||holtqel.cn^$document
 ||holty.xyz^$document
 ||holtz-handel.de^$document
-||holtzbrinckventuresgmbh.com^$document
 ||holtzmeyer.eu^$document
 ||holus.xyz^$document
 ||holwsp.tokyo^$document
@@ -165858,9 +165897,7 @@
 ||holzexpress24.eu^$document
 ||holzfursfeuer.de^$document
 ||holzhandelhensel.com^$document
-||holzhandler.com^$document
 ||holzharry.shop^$document
-||holzhaven.de^$document
 ||holzheimersdorf.com^$document
 ||holzheiz.com^$document
 ||holzliefer.com^$document
@@ -165941,13 +165978,13 @@
 ||homefinklers.xyz^$document
 ||homefler.com^$document
 ||homeforrent.xyz^$document
-||homeglobalviews.com^$document
 ||homegoodstotal.com^$document
 ||homegroupquestion.biz^$document
 ||homegymsupply.co.uk^$document
 ||homeheatroomsquestion.buzz^$document
 ||homehomeseasymother.buzz^$document
 ||homehopesstudyfact.pw^$document
+||homehulsta.com^$document
 ||homeideaquestion.bar^$document
 ||homeinformation.biz^$document
 ||homeinturkey.dk^$document
@@ -165994,7 +166031,6 @@
 ||homephysiotherapyexercises.com^$document
 ||homeplacelikelys.de^$document
 ||homeplacesendspeoples.buzz^$document
-||homeplaceshop.com^$document
 ||homeplan.su^$document
 ||homeplans.su^$document
 ||homeplusshopping.com^$document
@@ -166305,6 +166341,7 @@
 ||horecaplaza.be^$document
 ||horeceviqumub.buzz^$document
 ||horefila.tk^$document
+||horencia.com^$document
 ||horeploasu.gq^$document
 ||horerechamking.ga^$document
 ||horezocoter.tk^$document
@@ -166515,7 +166552,6 @@
 ||hoselite.tk^$document
 ||hosenewspapersdepths.com^$document
 ||hosenick.com^$document
-||hosenschritte.de^$document
 ||hosertumorenne.ml^$document
 ||hosetasin.tk^$document
 ||hosfectboons.tk^$document
@@ -166687,6 +166723,8 @@
 ||hot-sex9.xyz^$document
 ||hot-sexy-pussy.buzz^$document
 ||hot-short-clips.com^$document
+||hot-slice-slot.fr^$document
+||hot-slide-casino.fr^$document
 ||hot-true-news.buzz^$document
 ||hot-true-online.agency^$document
 ||hot-video-content.com^$document
@@ -167039,13 +167077,11 @@
 ||housebighomelife.mom^$document
 ||houseblast.com^$document
 ||housecarefullyidiotic.com^$document
-||housecleaningsale.com^$document
 ||houseconnect.dk^$document
 ||housedoctors.ru^$document
 ||housedreamfactory.com^$document
 ||housegardenvenezia.it^$document
 ||householdresponses.com^$document
-||householdunique.com^$document
 ||househomefollow.biz^$document
 ||houseof73frazier.press^$document
 ||houseofcbdeutschland.de^$document
@@ -167054,6 +167090,7 @@
 ||houseofkids.fr^$document
 ||houseofnightseries.co.uk^$document
 ||houseofnordberg.com^$document
+||houseofpinballs.com^$document
 ||houseokguessseeks.de^$document
 ||housepet.top^$document
 ||housephotos.in^$document
@@ -168371,7 +168408,6 @@
 ||hulkdutalelidis.cf^$document
 ||hulkmusclerx.mymusclepay.com^$document
 ||hulkverstotur.ga^$document
-||hulkwheels.com^$document
 ||hullbalfetel.tk^$document
 ||hullbowrenamewild.gq^$document
 ||hullcitytigers.com^$document
@@ -168530,6 +168566,7 @@
 ||hundstanalimdigfi.tk^$document
 ||hundtamoridcates.cf^$document
 ||hundtedandti.ml^$document
+||hundtrockenfutter.com^$document
 ||hundundpfote.de^$document
 ||hunermend.online^$document
 ||hungarian-property.online^$document
@@ -169563,6 +169600,7 @@
 ||hype-handel.de^$document
 ||hype-hoodies.com^$document
 ||hypecorewear.com^$document
+||hypedrip.top^$document
 ||hypelaced.co^$document
 ||hyper-intermarche.fr^$document
 ||hyperbofurakh.tk^$document
@@ -171084,7 +171122,6 @@
 ||icebreaker-france.fr^$document
 ||icebreakerfrance.fr^$document
 ||icebreakerparis.fr^$document
-||icebugfioutlet.com^$document
 ||icebugfrance.fr^$document
 ||icecardonline.com^$document
 ||icecev.tokyo^$document
@@ -171314,6 +171351,7 @@
 ||iconeb.xyz^$document
 ||iconevent.xyz^$document
 ||iconfitness.fr^$document
+||iconiclndn.com^$document
 ||iconmobel.com^$document
 ||iconmobel.de^$document
 ||icono2net2wjbpx8k.biz^$document
@@ -171634,6 +171672,7 @@
 ||idealonsahlwg.top^$document
 ||idealonsahlwi.top^$document
 ||idealpi.net^$document
+||idealstandardbad.com^$document
 ||idealstoreonline.com^$document
 ||idealtypes.tk^$document
 ||idealwebhostyareb27t.biz^$document
@@ -172834,7 +172873,6 @@
 ||ihquvu.tokyo^$document
 ||ihrbdeo.bar^$document
 ||ihrbedarf.com^$document
-||ihreanhanger.com^$document
 ||ihremed.de^$document
 ||ihrepotenzmittel.de^$document
 ||ihrerasenmaher.com^$document
@@ -172977,6 +173015,7 @@
 ||iir8dq1.cyou^$document
 ||iira5o.xyz^$document
 ||iirgcahn.tokyo^$document
+||iiroom.adcreate.website^$document
 ||iirtkql.bar^$document
 ||iiruh0.shop^$document
 ||iisalsw.bar^$document
@@ -175944,7 +175983,6 @@
 ||infeethesudo.gq^$document
 ||inferright.com^$document
 ||infersardine.com^$document
-||inferutmati.com^$document
 ||infexiceba.tk^$document
 ||inffecendragsax.tk^$document
 ||inffenpiscupul.cf^$document
@@ -176259,6 +176297,7 @@
 ||info-vital.fr^$document
 ||info-vitale.fr^$document
 ||info-votre-colis.fr^$document
+||info.kompressify.com^$document
 ||info24eonline.com^$document
 ||infoactivation.fr^$document
 ||infoactivations.fr^$document
@@ -176765,6 +176804,7 @@
 ||infrom.xyz^$document
 ||infukosucbertcu.cf^$document
 ||infunhilu.tk^$document
+||infupa.com^$document
 ||infurkacila.gq^$document
 ||infuserserver.com^$document
 ||infusievzy.site^$document
@@ -177402,6 +177442,7 @@
 ||innecquostorvo.ga^$document
 ||inneesese.ml^$document
 ||innelubhardga.cf^$document
+||innentapete.com^$document
 ||innepammapoga.tk^$document
 ||innerconcept.pl^$document
 ||innerekraft.at^$document
@@ -177644,6 +177685,7 @@
 ||inphetaweek.gq^$document
 ||inphobuckpulna.ml^$document
 ||inphyridumre.ga^$document
+||inpi-contact.fr^$document
 ||inpicbangmispsand.tk^$document
 ||inpigroharterpsteh.cf^$document
 ||inpilnamo.cf^$document
@@ -177904,7 +177946,6 @@
 ||insidenightmisss.biz^$document
 ||insiderbinarybot.xyz^$document
 ||insideriserateper.biz^$document
-||insiderlx.com^$document
 ||insidesales.xyz^$document
 ||insidesdaystate.biz^$document
 ||insideslifepass.buzz^$document
@@ -178038,6 +178079,7 @@
 ||installateur-notdienst-vienna.at^$document
 ||installateur-notdienst24.at^$document
 ||installateur-nothilfe.at^$document
+||installateur-platz1.at^$document
 ||installateur-profis24.at^$document
 ||installateur-top.at^$document
 ||installateur.artpro-24.pro^$document
@@ -178267,6 +178309,7 @@
 ||inteerecotsgard.tk^$document
 ||intefofidhia.gq^$document
 ||integerswallowhumorous.com^$document
+||integisok.com^$document
 ||integmemb.gq^$document
 ||integra-project.eu^$document
 ||integracionacademicaucm.es^$document
@@ -178395,7 +178438,6 @@
 ||interiorai.com^$document
 ||interiorai.com^$document
 ||interiordesign.my.id^$document
-||interiordesignusa.com^$document
 ||interiordome.com^$document
 ||interiorinstyle.com^$document
 ||interiorkr.cf^$document
@@ -178451,6 +178493,7 @@
 ||internorme.fr^$document
 ||internwise.fr^$document
 ||interpameregoo.tk^$document
+||interpellet.at^$document
 ||interpokennjumb.tk^$document
 ||interpol-france.fr^$document
 ||interpol-int.fr^$document
@@ -179595,7 +179638,6 @@
 ||ireland-hostingcll2lqx1.biz^$document
 ||irell.xyz^$document
 ||irenathiswithd.gq^$document
-||ireneackerson.com^$document
 ||ireneelectronicstrangely.com^$document
 ||irenelamnissand.tk^$document
 ||irenenlac.tk^$document
@@ -179704,6 +179746,7 @@
 ||irnp6w.cyou^$document
 ||irnpll.bar^$document
 ||irntommeve.gq^$document
+||irobotfrance.fr^$document
 ||irodolp.web.app^$document
 ||irognewchuck.cf^$document
 ||iroids.nl^$document
@@ -182142,6 +182185,7 @@
 ||izworpephowi.tk^$document
 ||izwzpr.bar^$document
 ||izxgh9.cyou^$document
+||izxinet.com^$document
 ||izxmag.bar^$document
 ||izxsxss.tokyo^$document
 ||izy12p.cyou^$document
@@ -183084,6 +183128,7 @@
 ||jae5de.cyou^$document
 ||jaecounwhoolacarpons.tk^$document
 ||jaedetiselarlift.tk^$document
+||jaeger-brennstoffe.de^$document
 ||jaeger-ra.net^$document
 ||jaegkb.tokyo^$document
 ||jaemangspirlo.cf^$document
@@ -184259,7 +184304,6 @@
 ||jenles.xyz^$document
 ||jenmicounmacaccmit.tk^$document
 ||jennedisele.tk^$document
-||jenniferbehr.shop^$document
 ||jenniferbrooker.com^$document
 ||jenniferclaire.site^$document
 ||jennifermogan.me^$document
@@ -184515,7 +184559,6 @@
 ||jeudisve.cf^$document
 ||jeujeujeux.fr^$document
 ||jeujnl.bar^$document
-||jeulia.de^$document
 ||jeumath.fr^$document
 ||jeumaths.fr^$document
 ||jeumonthresria.ga^$document
@@ -186164,6 +186207,7 @@
 ||jobcy.pl^$document
 ||jobdcmh.work^$document
 ||jobdlrp.cn^$document
+||jobdreamonline.com^$document
 ||jobe.expert^$document
 ||jobellelifdohe.cf^$document
 ||jobestablishcompany.biz^$document
@@ -186275,7 +186319,6 @@
 ||jobsystemareacolor.biz^$document
 ||jobsystemfactarea.rest^$document
 ||jobtagtw.com^$document
-||jobtalentde.online^$document
 ||jobtarena.com^$document
 ||jobtecokaspy.tk^$document
 ||jobteteqhellnibsaa.tk^$document
@@ -186569,7 +186612,6 @@
 ||jomi.com.de^$document
 ||jomidmasultaper.tk^$document
 ||jommob2.work^$document
-||jomosoutlet.shop^$document
 ||jomumg.tokyo^$document
 ||jon8g4.cyou^$document
 ||jonadinexovi.tk^$document
@@ -186619,7 +186661,6 @@
 ||joomlaworks.fr^$document
 ||joomnecypemubil.cf^$document
 ||joondalup.xyz^$document
-||joonixshop.com^$document
 ||joorid.xyz^$document
 ||joovideo.us^$document
 ||jooyip.work^$document
@@ -186638,7 +186679,6 @@
 ||jorazye.bar^$document
 ||jorcewampaterci.gq^$document
 ||jorcylotanvadisp.ga^$document
-||jordan-1s.com^$document
 ||jordan-carver-nude.xyz^$document
 ||jordan-shoes.us.com^$document
 ||jordan1.uk.com^$document
@@ -186654,8 +186694,6 @@
 ||jordanpage.me^$document
 ||jordanpatike.com^$document
 ||jordanph.com^$document
-||jordanretro4.com^$document
-||jordans-shoes.com^$document
 ||jordanshoes.store^$document
 ||jordansoldes.fr^$document
 ||jordansovensko.sk^$document
@@ -188086,6 +188124,7 @@
 ||jupehegeworth.ml^$document
 ||jupicasino.fr^$document
 ||jupiter-ascending-2015-movie.glitch.me^$document
+||jupiter-web3.com^$document
 ||jupmlt.tokyo^$document
 ||jupopetesapo.ga^$document
 ||jupothemin.tk^$document
@@ -189831,10 +189870,10 @@
 ||kaffeehaus-schulz.de^$document
 ||kaffeehaus-wagner.de^$document
 ||kaffeemaschine-de.com^$document
+||kaffeemaschinebillig.com^$document
 ||kaffeemech.myshopify.com^$document
 ||kaffeesnackbar.com^$document
 ||kaffeetime.de^$document
-||kaffeevollautomaten-angebote.com^$document
 ||kaffeevtverkauf.com^$document
 ||kaffeewelt.store^$document
 ||kaffeezone.com^$document
@@ -190125,6 +190164,7 @@
 ||kaminholzmoppel-de.com^$document
 ||kaminholzrhein.shop^$document
 ||kaminmarket.de^$document
+||kaminoland.de^$document
 ||kamisamagha.ga^$document
 ||kamitihacoblect.ml^$document
 ||kammerigurgtod.ml^$document
@@ -190257,6 +190297,7 @@
 ||kanyerest.xyz^$document
 ||kanytv.tokyo^$document
 ||kanzlei-fahlke.eu^$document
+||kanzlei-guehmann.de^$document
 ||kanzlei-meis.de^$document
 ||kanzqbg.tokyo^$document
 ||kao-plast.sn^$document
@@ -190391,7 +190432,6 @@
 ||karima.ee^$document
 ||karimedecmaport.ga^$document
 ||karin-hahn-logopaedie.de^$document
-||karin-selest.com^$document
 ||karin-wagner.de^$document
 ||karina9iqv.web.app^$document
 ||karincaweb.info^$document
@@ -190479,7 +190519,6 @@
 ||kasfspercensaitikcont.tk^$document
 ||kasgobaravern.ml^$document
 ||kash-leone.fr^$document
-||kashefcog.com^$document
 ||kashmiri.org^$document
 ||kashmirmunch.com^$document
 ||kashtanka.mobi^$document
@@ -190598,7 +190637,6 @@
 ||kaucribimblasus.tk^$document
 ||kaudarakardo.ml^$document
 ||kauf-markt.com^$document
-||kaufen-shop.com^$document
 ||kaufen-virium.com^$document
 ||kaufengrillzubehor.com^$document
 ||kaufenhockey.com^$document
@@ -190620,6 +190658,7 @@
 ||kaufmann-modehaus.com^$document
 ||kaufspiel.de^$document
 ||kaufstreetwear.com^$document
+||kauftruhe.com^$document
 ||kaufuniversum.myshoplaza.com^$document
 ||kaufyshop.de^$document
 ||kaujasenmecheju.tk^$document
@@ -190806,6 +190845,7 @@
 ||kbgsos.rest^$document
 ||kbgvdpr.bar^$document
 ||kbhgfg.tokyo^$document
+||kbhome.cl^$document
 ||kbhpsykologen.dk^$document
 ||kbhskak.dk^$document
 ||kbi6zg.cyou^$document
@@ -191830,6 +191870,7 @@
 ||kesrusopalz.tk^$document
 ||kessrefniewhipta.ml^$document
 ||kestcritenas.tk^$document
+||kestintobiaswelpen.de^$document
 ||kestiophalidifma.ga^$document
 ||kestpoonscomppropap.ga^$document
 ||kestruciti.tk^$document
@@ -192218,7 +192259,6 @@
 ||kfffbi.tokyo^$document
 ||kffi67.cyou^$document
 ||kffwrd.tokyo^$document
-||kfg-digital.com^$document
 ||kfg-digital.net^$document
 ||kfghwn.cyou^$document
 ||kfgiyw.tokyo^$document
@@ -193923,6 +193963,7 @@
 ||klanua.tk^$document
 ||klapaq.tokyo^$document
 ||klapkikubota.eu^$document
+||klar-haus.de^$document
 ||klaren.dk^$document
 ||klaria.de^$document
 ||klarinettenorchester-dacapo.de^$document
@@ -193997,6 +194038,7 @@
 ||klehdeoplucballsi.ga^$document
 ||kleider.pw^$document
 ||kleiderweltboutique.com^$document
+||kleidung-prada.com^$document
 ||kleidungangebote.com^$document
 ||kleidungfrilufts.com^$document
 ||klein-shop.de^$document
@@ -194496,7 +194538,6 @@
 ||knifebestech.com^$document
 ||knifeboker.com^$document
 ||knifefqqs.web.app^$document
-||knifemasteroff.com^$document
 ||knifematter.com^$document
 ||knifeyearbookgoodness.com^$document
 ||kniff.xyz^$document
@@ -195285,6 +195326,7 @@
 ||kostkirubikacena.pl^$document
 ||kostolec-ducove.eu^$document
 ||kostpanpoicomchant.cf^$document
+||kostuemfest.com^$document
 ||kostummode.com^$document
 ||kostumparty.com^$document
 ||kostus.tokyo^$document
@@ -195747,8 +195789,8 @@
 ||krathreconmebavi.ml^$document
 ||krathygastesseu.ml^$document
 ||kratizp.bar^$document
-||krausewerkstore.com^$document
 ||krausmode.de^$document
+||krauternobst.com^$document
 ||kravbiolodertertdec.tk^$document
 ||kravmagasiracusa.it^$document
 ||kravoubgamulco.gq^$document
@@ -195786,7 +195828,6 @@
 ||kreatacelattasup.tk^$document
 ||kreative-zukunft.com^$document
 ||krebadlanzaca.tk^$document
-||krebber-juwelier.shop^$document
 ||krecinsuro.tk^$document
 ||krecrenrure.tk^$document
 ||krecwalkrendcosterp.ga^$document
@@ -195796,7 +195837,6 @@
 ||krediidikogukulu.ee^$document
 ||krediitlaen.ee^$document
 ||kredit-1kz-k.rest^$document
-||kredit-der-finanzgruppe.com^$document
 ||kredit-pro.com^$document
 ||kredit-srazy.su^$document
 ||kreditbk.com^$document
@@ -195813,7 +195853,6 @@
 ||kredvousminoti.ml^$document
 ||kredytydlafirm-elblag.pl^$document
 ||kreisreiterbund-vb.de^$document
-||kreisverbandleer.de^$document
 ||krejku.tokyo^$document
 ||krel.xyz^$document
 ||krelel.site^$document
@@ -195988,6 +196027,7 @@
 ||kru8kh.xyz^$document
 ||krudthjornet.dk^$document
 ||kruegertracht.de^$document
+||kruegertrachten.de^$document
 ||krugenalranla.tk^$document
 ||kruger-design.de^$document
 ||kruger-mode.de^$document
@@ -196383,6 +196423,7 @@
 ||kuchamcidiripu.tk^$document
 ||kucheckstylnia.ga^$document
 ||kuchegastroeqpt.com^$document
+||kuchenerkaufe.com^$document
 ||kuchengrill.com^$document
 ||kuchenhaushaltrabatt.com^$document
 ||kucheninseln.de^$document
@@ -196413,11 +196454,9 @@
 ||kudnlj.tokyo^$document
 ||kudo3y.tokyo^$document
 ||kudtoecoggabeancsump.cf^$document
-||kudurun.com^$document
 ||kudyhanvinorth.cf^$document
 ||kueavv.tokyo^$document
 ||kuebolu.my.id^$document
-||kuechenblume.net^$document
 ||kuechesale.com^$document
 ||kuecik.bar^$document
 ||kuecuherechadme.cf^$document
@@ -196427,6 +196466,7 @@
 ||kuenstlerring.buzz^$document
 ||kueprecsireslabu.tk^$document
 ||kuepzs.cyou^$document
+||kuethe-partner.com^$document
 ||kuewo.tokyo^$document
 ||kuexm.tokyo^$document
 ||kufdig.bar^$document
@@ -196450,7 +196490,6 @@
 ||kuhccow.cyou^$document
 ||kuhfpf.rest^$document
 ||kuhinja24.club^$document
-||kuhlecke.de^$document
 ||kuhls2.cyou^$document
 ||kuhnsenneunewer.cf^$document
 ||kuhosderereal.cf^$document
@@ -198159,7 +198198,6 @@
 ||laalimotarvi.ml^$document
 ||laamcom.com^$document
 ||laamenazadelosdioses.com^$document
-||laandingblog.com^$document
 ||laanqj.cyou^$document
 ||laansmart.dk^$document
 ||laarsens-basingstoke.co.uk^$document
@@ -198311,6 +198349,7 @@
 ||laboususimyr.gq^$document
 ||laboutique-sfr.fr^$document
 ||laboutiquedepaul.fr^$document
+||laboutiquedesmaillots.fr^$document
 ||laboutiquedisney.fr^$document
 ||laboutiqueofficiel.fr^$document
 ||labpaminsrkelerun.tk^$document
@@ -199239,6 +199278,7 @@
 ||lampendream.com^$document
 ||lampeplus.de^$document
 ||lampereconwhozac.tk^$document
+||lampespromo.com^$document
 ||lampeverkauf.com^$document
 ||lampfiddrypargia.tk^$document
 ||lampions-bet.fr^$document
@@ -199436,7 +199476,6 @@
 ||landscapek.com^$document
 ||landscaper.pro^$document
 ||landscapesupply.biz^$document
-||landschaft-pellets.com^$document
 ||landscirittai.tk^$document
 ||landsecphycubid.cf^$document
 ||landselumisrio.tk^$document
@@ -199967,6 +200006,7 @@
 ||larestsilive.tk^$document
 ||laretirepomem.cf^$document
 ||larevixinvest-de.com^$document
+||larevuebeaute.marquessa.fr^$document
 ||larevueia.fr^$document
 ||larfolkhydworkwat.ga^$document
 ||largefirmfoetus.com^$document
@@ -200060,7 +200100,6 @@
 ||larretermeenis.ga^$document
 ||larrixiradesp.ga^$document
 ||larrnontscanaldio.tk^$document
-||larrobe.com^$document
 ||larroocondge.tk^$document
 ||larryfuhrer.biz^$document
 ||larrymeadors.com^$document
@@ -200200,6 +200239,7 @@
 ||lasportivamontreal.com^$document
 ||lasportivaoutdoor.com^$document
 ||lasportivaoutlet.fr^$document
+||lasportivas.de^$document
 ||lasportivaschuhe.at^$document
 ||lasportivaworld.com^$document
 ||lasposte.fr^$document
@@ -200339,7 +200379,6 @@
 ||latestdigitals.com^$document
 ||latestlamp-shop.com^$document
 ||latestlotterynumbers.eu^$document
-||latestminuteinvest.com^$document
 ||latestparts.com^$document
 ||latestperfume.com^$document
 ||latestporn.fun^$document
@@ -201694,6 +201733,7 @@
 ||learmesitote.tk^$document
 ||learn-codes.net^$document
 ||learn.atdaslelabor.com^$document
+||learn.kompressify.com^$document
 ||learn.movibaz.us^$document
 ||learnbabbleroyalty.com^$document
 ||learnbatlaykritun.gq^$document
@@ -202070,6 +202110,7 @@
 ||lechos.xyz^$document
 ||lechostcardpoho.tk^$document
 ||lechumbjedouretto.ml^$document
+||lechuzpflanz.com^$document
 ||lecibubiness.tk^$document
 ||lecifasusancsear.tk^$document
 ||leciperretiva.tk^$document
@@ -202143,6 +202184,7 @@
 ||lecresansiobregad.tk^$document
 ||lecreuset-france.fr^$document
 ||lecreusetfrance.fr^$document
+||lecreusets-france.fr^$document
 ||lecreusets.de^$document
 ||lecriaprecru.tk^$document
 ||lecrighjaro.tk^$document
@@ -202438,6 +202480,7 @@
 ||legalkennsalandoors.tk^$document
 ||legallifebitsword.rest^$document
 ||legalmarketing.pl^$document
+||legalnitsche.de^$document
 ||legalsbeautifuls.biz^$document
 ||legalswomanfewmoney.biz^$document
 ||legamvatepo.tk^$document
@@ -202466,11 +202509,11 @@
 ||legensarosivo.gq^$document
 ||legereilweb.web.app^$document
 ||legero-de.com^$document
+||legero-hu.net^$document
 ||legerobulgaria.com^$document
 ||legerocanada.com^$document
 ||legerohungary.com^$document
 ||legeroireland.com^$document
-||legeromilano.it^$document
 ||legerooutletsuomi.com^$document
 ||legeroportugal.com^$document
 ||legeroschuhe.at^$document
@@ -202583,7 +202626,6 @@
 ||leherlidihyn.cf^$document
 ||lehertibubbwor.tk^$document
 ||lehigovtcorn.cf^$document
-||lehmann-holzpellets.com^$document
 ||lehmann-ra.com^$document
 ||lehmann-versand.de^$document
 ||lehmannmode.de^$document
@@ -204096,6 +204138,7 @@
 ||leubenurlaura.gq^$document
 ||leubidlistglidli.cf^$document
 ||leubribmodumbromon.ml^$document
+||leuchtenheim.com^$document
 ||leuchtenmart.com^$document
 ||leuchtenzubehor.com^$document
 ||leucinzimensuppsorp.tk^$document
@@ -205507,6 +205550,8 @@
 ||lidlgroupe.fr^$document
 ||lidlicamigwars.tk^$document
 ||lidlpalace.com^$document
+||lidls-store.fr^$document
+||lidlservices.fr^$document
 ||lidobaducovu.gq^$document
 ||lidongqt.com^$document
 ||lidora.de^$document
@@ -205533,8 +205578,10 @@
 ||liebesaison.de^$document
 ||liebesflockenn.de^$document
 ||liebesfreud.de^$document
+||liebeskind--berlin.com^$document
 ||liebeskleidung.de^$document
 ||liebesta.ga^$document
+||liebeverpackt.com^$document
 ||liebherr-bhb.de^$document
 ||liebiotoughmispahy.ml^$document
 ||liebirvifens.tk^$document
@@ -206155,7 +206202,6 @@
 ||lightspeck.xyz^$document
 ||lightsplaza.com^$document
 ||lightssingright.biz^$document
-||lightstocksfx.com^$document
 ||lightswayroomhomes.rest^$document
 ||lighturkannvi.tk^$document
 ||lightxeditor.com^$document
@@ -208068,7 +208114,6 @@
 ||livinghub.eu^$document
 ||livingluxe.de^$document
 ||livingpartsstore.com^$document
-||livingroom-love.com^$document
 ||livingroomreview.xyz^$document
 ||livingshedhowever.com^$document
 ||livingwallstapeten.com^$document
@@ -208747,7 +208792,6 @@
 ||llowtorklirexop.tk^$document
 ||lloyddeutschland.com^$document
 ||lloydfrance.fr^$document
-||lloydschuhe.at^$document
 ||lloydslovakia.com^$document
 ||llpp3q3.shop^$document
 ||llpqsx.tokyo^$document
@@ -210403,7 +210447,6 @@
 ||lor6ub.tokyo^$document
 ||lora-zurich.com^$document
 ||lorabetcasino.fr^$document
-||loradea.de^$document
 ||loraleca.tk^$document
 ||loramethemes.tk^$document
 ||loramfendnonria.ga^$document
@@ -211026,6 +211069,7 @@
 ||low1sneakersfrance.fr^$document
 ||lowa-chaussures.fr^$document
 ||lowa-de.com^$document
+||lowa-wanderschuhe.com^$document
 ||lowa.co.at^$document
 ||lowa.com.de^$document
 ||lowaapavi.com^$document
@@ -212402,7 +212446,6 @@
 ||lululemonlyon.fr^$document
 ||lululemonlyonvente.fr^$document
 ||lululemonmarseille.fr^$document
-||lululemonosterreich.at^$document
 ||lululemonparisboutique.fr^$document
 ||lululemonparisoutlet.fr^$document
 ||lululemonportugal.net^$document
@@ -212777,6 +212820,7 @@
 ||luturrabas.cf^$document
 ||lutvifimireere.cf^$document
 ||lutz-baumgaertel.de^$document
+||luuckylinen.com^$document
 ||luultqw.rest^$document
 ||luumfy.bar^$document
 ||luumfy.rest^$document
@@ -212832,7 +212876,6 @@
 ||luxedore.com^$document
 ||luxefetch.com^$document
 ||luxelunettespascher.fr^$document
-||luxemall.link^$document
 ||luxeparfum.co.uk^$document
 ||luxeparfumpascher.fr^$document
 ||luxeparfumreplique.fr^$document
@@ -212853,7 +212896,6 @@
 ||luxocasino.fr^$document
 ||luxoeun.tokyo^$document
 ||luxologia.pl^$document
-||luxosmart.uk^$document
 ||luxsapovabnabo.ga^$document
 ||luxtious.com^$document
 ||luxtrust-webassist.com^$document
@@ -212870,6 +212912,7 @@
 ||luxuryliving.xyz^$document
 ||luxuryonward.com^$document
 ||luxurypersian.com^$document
+||luxurypillows.pk^$document
 ||luxuryvetements.com^$document
 ||luxurywatchoutlet.shop^$document
 ||luxus-berlin.de^$document
@@ -213424,6 +213467,7 @@
 ||lyfnzaw.tokyo^$document
 ||lyfnzx.bar^$document
 ||lyforlochalknim.tk^$document
+||lyfpaiement.fr^$document
 ||lyfrecu.fr^$document
 ||lyfwxy.tokyo^$document
 ||lyfx7r.cyou^$document
@@ -214826,6 +214870,7 @@
 ||macarteameli.fr^$document
 ||macarteameli2023.fr^$document
 ||macarteamelietmoi.fr^$document
+||macartecadeau-cher.fr^$document
 ||macarteign.fr^$document
 ||macartesante-vitale.fr^$document
 ||macartesante.fr^$document
@@ -215101,6 +215146,7 @@
 ||madicomfarc.tk^$document
 ||madicounlibela.cf^$document
 ||madikeeljoyga.cf^$document
+||madinp.com^$document
 ||madipasidomi.ga^$document
 ||madipsuricmu.in^$document
 ||madiskeverlavs.ml^$document
@@ -215442,7 +215488,6 @@
 ||magicmaman.com^$document
 ||magicoa.ch^$document
 ||magicode.me^$document
-||magicplayzone.com^$document
 ||magicrea.fr^$document
 ||magicsoninlaw.com^$document
 ||magicstudio.com^$document
@@ -215813,6 +215858,7 @@
 ||maillotside.fr^$document
 ||maillotslbenfica.fr^$document
 ||maillotsnba.fr^$document
+||maillotspack.fr^$document
 ||maillotsparissaintgermain.fr^$document
 ||maillotspro.fr^$document
 ||maillotspsg.fr^$document
@@ -217308,6 +217354,7 @@
 ||marconzept.com^$document
 ||marconzept.de^$document
 ||marcopolo-de.com^$document
+||marcopolorabatt.com^$document
 ||marcoporwhisam.tk^$document
 ||marcosbrito.com^$document
 ||marcosrdac.xyz^$document
@@ -217501,7 +217548,6 @@
 ||maritimecyberrisk.org^$document
 ||maritimeway.com^$document
 ||marits.my.id^$document
-||marivaro.com^$document
 ||marivemocet.xyz^$document
 ||marixihu.gq^$document
 ||mariza-nieruchomosci.pl^$document
@@ -217552,7 +217598,6 @@
 ||marketplace-os2.com^$document
 ||marketprojecte.ru^$document
 ||markets-capital.com^$document
-||markets24.shop^$document
 ||markets365.net^$document
 ||marketsbroker.com^$document
 ||marketshare.today^$document
@@ -217593,7 +217638,6 @@
 ||markswaitingrouge.com^$document
 ||markswoman.best^$document
 ||markt-apo-uelsen.de^$document
-||markt-elektro.com^$document
 ||markt.life^$document
 ||markt010.nl^$document
 ||marktanhanger.de^$document
@@ -218129,7 +218173,6 @@
 ||masteryticket.fr^$document
 ||mastewerklichess.tk^$document
 ||mastewindpenvi.tk^$document
-||masti.store^$document
 ||mastiegerlysys.gq^$document
 ||mastiff-adolfo.dk^$document
 ||mastiffen-angus.dk^$document
@@ -218738,7 +218781,6 @@
 ||mayhem-billetterie.fr^$document
 ||mayhem2025.fr^$document
 ||mayhemeccentric.com^$document
-||mayhemfinancial.com^$document
 ||mayhenhoulesgo.tk^$document
 ||mayhibuvarusjobs.tk^$document
 ||mayhillzriben.ml^$document
@@ -219024,6 +219066,7 @@
 ||mbzwmzub.cyou^$document
 ||mbzwof.tokyo^$document
 ||mc-bau.at^$document
+||mc-brennholz.com^$document
 ||mc-cybertek.fr^$document
 ||mc-do.fr^$document
 ||mc-donalds.fr^$document
@@ -219549,7 +219592,6 @@
 ||mecharbattbarco.tk^$document
 ||mecharcslicqua.tk^$document
 ||mechobulretipu.tk^$document
-||mechtildfiebig.de^$document
 ||mecikijaso.cf^$document
 ||mecinagaforti.cf^$document
 ||mecintigote.cf^$document
@@ -219582,6 +219624,7 @@
 ||mecumisutodis.ga^$document
 ||mecv1f.shop^$document
 ||mecymimatekomp.tk^$document
+||med-direkt.com^$document
 ||med-naturalnyi.ru^$document
 ||medapharma.ro^$document
 ||medatcost.co^$document
@@ -219631,6 +219674,7 @@
 ||media-get.com^$document
 ||media-get.ru^$document
 ||media-ink.buzz^$document
+||media-markt.plumberstore.in^$document
 ||media-prime.fr^$document
 ||media-voigt.de^$document
 ||media-weber.com^$document
@@ -219666,7 +219710,6 @@
 ||medialogi.xyz^$document
 ||mediamarkets.de^$document
 ||mediamarkkinat.com^$document
-||mediamarkt-at.com^$document
 ||mediamarkt-de.com^$document
 ||mediamattei.it^$document
 ||mediamaxi.online^$document
@@ -219795,6 +219838,7 @@
 ||medrmyp.bar^$document
 ||meds-store-24h.com^$document
 ||meds-tabs.com^$document
+||medsaurora.com^$document
 ||medsbartaechewa.tk^$document
 ||medschoolhell.com^$document
 ||medsgafseregalni.gq^$document
@@ -220153,6 +220197,7 @@
 ||meinabalan.tk^$document
 ||meinalroditi.ga^$document
 ||meinangelverein.de^$document
+||meinarbeitsschutz.com^$document
 ||meinautoprofi.at^$document
 ||meindl--schuhe.com^$document
 ||meindl-france.fr^$document
@@ -220195,7 +220240,6 @@
 ||meinsmartshop.com^$document
 ||meinstant.online^$document
 ||meinsystem.xyz^$document
-||meintechnik.de^$document
 ||meintherapiedecken.de^$document
 ||meinverpacker.de^$document
 ||meinwarenhaus.com^$document
@@ -220329,6 +220373,7 @@
 ||melgsuzolitli.tk^$document
 ||melhalfcerking.cf^$document
 ||melheagukingprom.ml^$document
+||melia-co.com^$document
 ||melidazinsiedis.gq^$document
 ||melidechikgeco.tk^$document
 ||melifisantajokijoki.biz^$document
@@ -220370,6 +220415,8 @@
 ||melodiadiety.pl^$document
 ||melodic-worthless-large.xyz^$document
 ||melodiertilsange.dk^$document
+||melodiewerk.de^$document
+||melodigear.com^$document
 ||melodweb.com^$document
 ||melodystudio.net^$document
 ||melodystudio.net^$document
@@ -220514,6 +220561,7 @@
 ||memolti.gq^$document
 ||memomoterni.cf^$document
 ||memonde.fr^$document
+||memonei.com^$document
 ||memoneysperiodlife.rest^$document
 ||memorableundonemama.com^$document
 ||memorandumdescendednormal.com^$document
@@ -223398,6 +223446,7 @@
 ||milltativabcawer.tk^$document
 ||millticomingrine.tk^$document
 ||millvepagewer.ml^$document
+||millwoodshomege.com^$document
 ||milly.xyz^$document
 ||milmayprowdi.tk^$document
 ||milmeferab.tk^$document
@@ -223424,6 +223473,8 @@
 ||milosctotu.pl^$document
 ||milospita.site^$document
 ||milosz.co^$document
+||milouamsterdam.nl^$document
+||milouberlin.de^$document
 ||miloujewelrys.com^$document
 ||milovskepernicky.cz^$document
 ||milozapire.cf^$document
@@ -223787,7 +223838,6 @@
 ||minimique.it^$document
 ||minimizeallegiance.com^$document
 ||minimizem.com^$document
-||minimuem.com^$document
 ||minincedestdefhou.tk^$document
 ||mining-anbieter.de^$document
 ||mining-logix.pw^$document
@@ -223828,7 +223878,6 @@
 ||ministre-justice.fr^$document
 ||ministryofhealthy.com^$document
 ||miniteagast.cf^$document
-||miniwelpenparadies.com^$document
 ||minka.xyz^$document
 ||minkediconsga.tk^$document
 ||minkornvulleke.tk^$document
@@ -225543,6 +225592,7 @@
 ||mobelspeichern.de^$document
 ||mobelsverkauf.com^$document
 ||mobelzauber.com^$document
+||mobelzuhause.com^$document
 ||mobervapondsym.cf^$document
 ||mobesdedavesve.ga^$document
 ||mobevo.fr^$document
@@ -225851,7 +225901,6 @@
 ||mode-lizzy.de^$document
 ||mode-shop-1.de^$document
 ||mode-wunder.de^$document
-||modeackermann.de^$document
 ||modeanaveacheca.cf^$document
 ||modeatelier-weber.de^$document
 ||modebasket.com^$document
@@ -225865,11 +225914,13 @@
 ||modehaus-beckers.de^$document
 ||modehaus-dresden.com^$document
 ||modehaus-dusseldorf.de^$document
+||modehaus-kaiser.de^$document
 ||modehaus-meyer.de^$document
 ||modehaus-valentin.de^$document
 ||modehaus-wagner.de^$document
 ||modehaus-wolfsburg.de^$document
 ||modehausessen.de^$document
+||modehauswieser.myshopify.com^$document
 ||modeish.com^$document
 ||model-banen.dk^$document
 ||model-photo.fr^$document
@@ -225890,6 +225941,7 @@
 ||modellbahnfreunde-voehringen.eu^$document
 ||modellbahnksm.de^$document
 ||modellbahnrabatt.com^$document
+||modellbahnundmehr.com^$document
 ||modellbau-stores.com^$document
 ||modellbaubasis.com^$document
 ||modellbaubillig.com^$document
@@ -225897,6 +225949,7 @@
 ||modelleundlandschaften.com^$document
 ||modellkeller.com^$document
 ||modellsupplystore.com^$document
+||modellwelt24.com^$document
 ||modelo.io^$document
 ||modelogedrepar.tk^$document
 ||modelos.io^$document
@@ -225925,6 +225978,7 @@
 ||moderncasa.com.br^$document
 ||moderncloudinfrastructure.buzz^$document
 ||moderncomputer.net^$document
+||modernegartenmobel.com^$document
 ||modernismebresilien90ans.fr^$document
 ||modernkitchensupplies.com^$document
 ||modernnestliving.shop^$document
@@ -225945,10 +225999,12 @@
 ||modetanadacor.cf^$document
 ||modeteamdiycou.gq^$document
 ||modethermoskanne.com^$document
+||modetraum.com^$document
 ||modetrendhaus.de^$document
 ||modetrends-munchen.com^$document
 ||modevansnamta.gq^$document
 ||modeweltberlin.de^$document
+||modexa.de^$document
 ||modfwg.work^$document
 ||modglasses.xyz^$document
 ||modhaevisilkvifast.tk^$document
@@ -226889,6 +226945,7 @@
 ||moncolis-chrono.fr^$document
 ||moncolis-chronopost.fr^$document
 ||moncolis-info.fr^$document
+||moncolis-livraison.fr^$document
 ||moncolis-mondialrelay.fr^$document
 ||moncolis-suivi.fr^$document
 ||moncolis-track.fr^$document
@@ -227776,6 +227833,7 @@
 ||montecryptoscasino.fr^$document
 ||montecwearfrance.fr^$document
 ||montel.news^$document
+||montela.de^$document
 ||montepaoneviaggi.it^$document
 ||montepashi-banque.fr^$document
 ||montereybio.com^$document
@@ -227911,7 +227969,6 @@
 ||montihyfallie.ga^$document
 ||montimbre.fr^$document
 ||montinafabsingbe.ga^$document
-||montinariers.de^$document
 ||montirex.fr^$document
 ||montivo.de^$document
 ||montjonstemprambide.cf^$document
@@ -228193,7 +228250,6 @@
 ||morganlouedec.fr^$document
 ||morgantinaguide.it^$document
 ||morgemstijingcofal.cf^$document
-||morgencharles.business^$document
 ||morgentau-brautmoden.de^$document
 ||morgloopilockcha.tk^$document
 ||morgmeatekakarli.gq^$document
@@ -229756,6 +229812,7 @@
 ||msetnt.cyou^$document
 ||msetymvintone.tk^$document
 ||msexnq.rest^$document
+||msfashiondesire.company.site^$document
 ||msfdla.cyou^$document
 ||msfe212.cyou^$document
 ||msfgfnuu.tokyo^$document
@@ -229813,6 +229870,7 @@
 ||mslqnd.tokyo^$document
 ||mslqol.tokyo^$document
 ||msmgbg.shop^$document
+||msmmetallindustry.com^$document
 ||msmndlk.bar^$document
 ||msmnnk.com^$document
 ||msmsfr.fr^$document
@@ -230454,7 +230512,6 @@
 ||multibumani.ml^$document
 ||multicadeau.fr^$document
 ||multicadeaux.fr^$document
-||multicoin-invest.com^$document
 ||multifarb.eu^$document
 ||multig.pl^$document
 ||multimaqcomercio.com^$document
@@ -230473,6 +230530,7 @@
 ||multitudeenviable.com^$document
 ||multitudesayingfrequency.com^$document
 ||multuimap.co.uk^$document
+||mulvanni.de^$document
 ||mulvemalplotodist.ml^$document
 ||mulvitelora.ml^$document
 ||mulvoicriszard.gq^$document
@@ -230556,7 +230614,6 @@
 ||municipalk.com^$document
 ||municipio12.it^$document
 ||munifx.tokyo^$document
-||muniloo.com^$document
 ||munitax-group.com^$document
 ||munitionsladen.de^$document
 ||munitontuvo.tk^$document
@@ -230769,7 +230826,6 @@
 ||musikhaus.neumann.de^$document
 ||musikhuset-aps.dk^$document
 ||musikmarkt.info^$document
-||musikpowerboxing.com^$document
 ||musiktilsalg.dk^$document
 ||musikusmensch.de^$document
 ||musimusi.tk^$document
@@ -230942,6 +230998,7 @@
 ||muycva.bar^$document
 ||muynutristconmort.tk^$document
 ||muyrame.com^$document
+||muysale.cn^$document
 ||muyuep.com^$document
 ||muyyyo.bar^$document
 ||muz9t1.tokyo^$document
@@ -231005,7 +231062,6 @@
 ||mvfglcc.tokyo^$document
 ||mvfhgv.tokyo^$document
 ||mvfkiz2.cyou^$document
-||mvfurs.com^$document
 ||mvfvhkk.bar^$document
 ||mvfwffa.tokyo^$document
 ||mvfwjc.tokyo^$document
@@ -232124,7 +232180,6 @@
 ||mymgxmx.xyz^$document
 ||mymicrosoft.fr^$document
 ||mymihathemo.cf^$document
-||mymin24.de^$document
 ||myminimagazine.nl^$document
 ||mymissionariess.shop^$document
 ||mymnfin-paybyweb.com^$document
@@ -232213,6 +232268,7 @@
 ||myonlinedating6.com^$document
 ||myonlyfanslink.com^$document
 ||myonlyshop.de^$document
+||myopaline.com^$document
 ||myopeacerpcygdescne.tk^$document
 ||myopentighsige.gq^$document
 ||myopheraconhorip.cf^$document
@@ -232314,6 +232370,7 @@
 ||myrandstad.fr^$document
 ||myrdsounohundritwoodg.ml^$document
 ||myreeberjawal.cf^$document
+||myrelay-colis.fr^$document
 ||myrelepartse.ml^$document
 ||myrelivraison.fr^$document
 ||myrenewsptfy.com^$document
@@ -232474,6 +232531,7 @@
 ||mytoyota.fr^$document
 ||mytoys-de.com^$document
 ||mytoysde.com^$document
+||mytoystonies.com^$document
 ||mytradeoption.com^$document
 ||mytrcking.com^$document
 ||mytrffc.com^$document
@@ -233507,6 +233565,7 @@
 ||nabmunanorth.tk^$document
 ||nabnatiro.tk^$document
 ||nabnavinquibi.cf^$document
+||nabolu.de^$document
 ||nabonmacomra.tk^$document
 ||naboonline.dk^$document
 ||nabpahosagkotar.tk^$document
@@ -233690,6 +233749,7 @@
 ||naeherdran-leipzig.de^$document
 ||naehmaus-nancy.de^$document
 ||naehservice-bremen.de^$document
+||naehweltflach.com^$document
 ||naejbn.bar^$document
 ||naejbn.rest^$document
 ||naekehardhyse.ml^$document
@@ -234437,6 +234497,7 @@
 ||napoconlehiptu.tk^$document
 ||napokirslacums.tk^$document
 ||napoleonarets.web.app^$document
+||napoleonrabatt.com^$document
 ||napoli-sexysexytime.space^$document
 ||napomreahati.tk^$document
 ||napopfirahe.cf^$document
@@ -234814,6 +234875,7 @@
 ||nattergalens.dk^$document
 ||nattgobobedear.ml^$document
 ||natticogoodma.tk^$document
+||nattoubabyspielzeug.com^$document
 ||nattowntranicaral.ml^$document
 ||natttigessichtsiness.ml^$document
 ||natttulymarwithd.tk^$document
@@ -234860,6 +234922,7 @@
 ||natureetsens73.fr^$document
 ||natureeyepointjobs.buzz^$document
 ||naturefrontiers.com^$document
+||natureglanz.com^$document
 ||naturejunelatitude.com^$document
 ||naturelab.ee^$document
 ||naturelovedeava.shop^$document
@@ -235887,6 +235950,7 @@
 ||nedcomp.org^$document
 ||nedeadwinglesi.ga^$document
 ||nedearcardnexra.tk^$document
+||neded.de^$document
 ||nedeforzeti.cf^$document
 ||nedehambbarnte.gq^$document
 ||nedejanfeeta.tk^$document
@@ -236214,7 +236278,6 @@
 ||nemevorscom.tk^$document
 ||nemibacklutdi.tk^$document
 ||neminghercessrin.tk^$document
-||nemino.net^$document
 ||neminrelate.tk^$document
 ||nemiskihosmae.ml^$document
 ||nemitdiffcardsufin.cf^$document
@@ -237720,6 +237783,7 @@
 ||neueelektrowerkzeug.com^$document
 ||neuelektronik.de^$document
 ||neuemotoren.com^$document
+||neuertm7-vorwerk.com^$document
 ||neueskateboardmode.com^$document
 ||neuespielzeugauto.com^$document
 ||neuesteprodukte.com^$document
@@ -237783,7 +237847,6 @@
 ||neulupasrani.gq^$document
 ||neumann-handel.de^$document
 ||neumann-mobel.de^$document
-||neumann-reifenhandel.com^$document
 ||neumanneosijor.tk^$document
 ||neumanquantz.xyz^$document
 ||neumarechulmi.cf^$document
@@ -237888,6 +237951,7 @@
 ||neurychovermelg.tk^$document
 ||neusandasysre.tk^$document
 ||neuscheepenasnaconf.tk^$document
+||neuschmucken.com^$document
 ||neusearchpiranimi.tk^$document
 ||neuseccaterlobs.cf^$document
 ||neusecnititurnno.tk^$document
@@ -238114,7 +238178,6 @@
 ||newcha.ga^$document
 ||newcha.tokyo^$document
 ||newchrisreeve.com^$document
-||newchristmashome.com^$document
 ||newcolitibal.ml^$document
 ||newcomerecho.com^$document
 ||newcomptidistipe.ml^$document
@@ -238166,7 +238229,6 @@
 ||newgdelapu.tk^$document
 ||newgrahams.com^$document
 ||newgrisingrecbu.tk^$document
-||newhabiliment.com^$document
 ||newhampshirehomeschooling.com^$document
 ||newheenarici.tk^$document
 ||newhostblog.com^$document
@@ -238982,7 +239044,6 @@
 ||nflsocks.com^$document
 ||nflx-facturation.fr^$document
 ||nflxkont.help^$document
-||nflxshop.com^$document
 ||nflzjt.bar^$document
 ||nfmcer.tokyo^$document
 ||nfmstcl.tokyo^$document
@@ -239217,6 +239278,7 @@
 ||ngutjoychegutela.tk^$document
 ||nguya.net^$document
 ||nguyendanh.com.vn^$document
+||nguyenminhnam.com^$document
 ||ngvawcmvb.ga^$document
 ||ngvfhf.rest^$document
 ||ngvkaj.tokyo^$document
@@ -239584,7 +239646,6 @@
 ||niceans.com^$document
 ||nicebigheartedgargle.com^$document
 ||nicebot.website^$document
-||nicechmk.shop^$document
 ||nicecybertek.fr^$document
 ||nicefiboonrato.cf^$document
 ||niceguysales.com^$document
@@ -240313,6 +240374,8 @@
 ||nikerunning.fr^$document
 ||nikeschuhes.de^$document
 ||nikeshoesoutlet.gr^$document
+||nikeshop.fr^$document
+||nikeshops.fr^$document
 ||nikesuomi-fi.com^$document
 ||nikesuomi.com^$document
 ||nikesuomishop.com^$document
@@ -241276,6 +241339,7 @@
 ||nkbevv.bar^$document
 ||nkbyei.bar^$document
 ||nkcxtb.bar^$document
+||nkd-store.com^$document
 ||nkd393.cyou^$document
 ||nkecq8.cyou^$document
 ||nkeepsecchildchulconsca.tk^$document
@@ -242131,7 +242195,6 @@
 ||nofortiasabit.tk^$document
 ||noforworhpeborr.tk^$document
 ||nofruz.bar^$document
-||nofs-fr.com^$document
 ||noftandninglowohl.cf^$document
 ||nofunwipicmesi.gq^$document
 ||nofusonumelux.rest^$document
@@ -242628,6 +242691,7 @@
 ||nookproperty.com.au^$document
 ||noonkanndelnemahdist.gq^$document
 ||nooobflp.my.id^$document
+||noor-hair.com^$document
 ||noorderflow.nl^$document
 ||noorderlichtfilm.buzz^$document
 ||noordhandtathegi.tk^$document
@@ -242735,6 +242799,7 @@
 ||nordkoi.dk^$document
 ||nordkurven-community.de^$document
 ||nordlilongcuticre.cf^$document
+||nordlio.com^$document
 ||nordlocker.fr^$document
 ||nordmetbillconne.tk^$document
 ||nordoutlets.com^$document
@@ -242805,6 +242870,7 @@
 ||norkaureconthern.ga^$document
 ||norkeymentrenada.gq^$document
 ||norlatamreehid.cf^$document
+||norleire.com^$document
 ||norlitegjuli.tk^$document
 ||norlogetippfo.ml^$document
 ||norlurolathe.gq^$document
@@ -242897,7 +242963,6 @@
 ||northeyereadsarea.biz^$document
 ||northfacefr.fr^$document
 ||northfacefrance.fr^$document
-||northfacegreeceshops.com^$document
 ||northfaceoutletstoreus.com^$document
 ||northfaceparis.fr^$document
 ||northfinder.fr^$document
@@ -244147,6 +244212,7 @@
 ||ntatpatvicasti.tk^$document
 ||ntavtmd.tokyo^$document
 ||ntbbdt.bar^$document
+||ntbdiffusion.com^$document
 ||ntbdjsu.bar^$document
 ||ntbdvalve.com^$document
 ||ntbmxw.bar^$document
@@ -244983,6 +245049,7 @@
 ||nutridieta.com^$document
 ||nutriegymjeuvermi.gq^$document
 ||nutriksystem.com^$document
+||nutrimcaps.com^$document
 ||nutrimetic.fr^$document
 ||nutripower.dk^$document
 ||nutripur.com.de^$document
@@ -245087,6 +245154,7 @@
 ||nvcasino-fr.fr^$document
 ||nvcasino.fr^$document
 ||nvcasinofr.fr^$document
+||nvcxa.com^$document
 ||nvdd8uc.cyou^$document
 ||nvdteb.shop^$document
 ||nvege.com^$document
@@ -245554,6 +245622,7 @@
 ||nyfanojylo.gq^$document
 ||nyfehm.tokyo^$document
 ||nyfing.bar^$document
+||nyfolk.de^$document
 ||nyfpjp.cyou^$document
 ||nyfwkv.bar^$document
 ||nyfxwz.rest^$document
@@ -246908,6 +246977,7 @@
 ||obsproicet.net^$document
 ||obssnys.tokyo^$document
 ||obstaclera.xyz^$document
+||obstbaumpflanzen.com^$document
 ||obstbaumwelt.com^$document
 ||obstifsenzaybef.ml^$document
 ||obstinatefreshmanmonitor.com^$document
@@ -247033,7 +247103,6 @@
 ||occasionallyreflectingconnect.com^$document
 ||occasionalstatusbella.com^$document
 ||occasionalwallencroach.com^$document
-||occasionk.com^$document
 ||occasneaks.fr^$document
 ||occat.xyz^$document
 ||occfby.bar^$document
@@ -247865,6 +247934,7 @@
 ||ofen-lederer.de^$document
 ||ofencoecoli.gq^$document
 ||ofendeutschland.com^$document
+||ofengerate.com^$document
 ||ofenhausfuchs.com^$document
 ||ofenneranofact.tk^$document
 ||ofenpasasubs.tk^$document
@@ -248552,7 +248622,6 @@
 ||ohmmr5.tokyo^$document
 ||ohmrv7z.tokyo^$document
 ||ohmstu.tokyo^$document
-||ohmstudio.fr^$document
 ||ohmsuo.bar^$document
 ||ohmw.xyz^$document
 ||ohmycase.fr^$document
@@ -249374,7 +249443,6 @@
 ||olivespielzeug.com^$document
 ||olivia.tokyo^$document
 ||oliviacharms.xyz^$document
-||oliviachic.com^$document
 ||oliviamoreau.de^$document
 ||oliviaresto.ee^$document
 ||olivierandrieu.fr^$document
@@ -249574,6 +249642,7 @@
 ||olxn2e.cyou^$document
 ||olxsku.rest^$document
 ||olxygloderes.cf^$document
+||olyava.com^$document
 ||olybet-casino.fr^$document
 ||olybetcasino.fr^$document
 ||olybetcasinos.fr^$document
@@ -250773,6 +250842,7 @@
 ||onrunning.fr^$document
 ||onrunning001.myshoplaza.com^$document
 ||onrunningfrance.fr^$document
+||onrunningon.myshoplaza.com^$document
 ||onrunningoutlet.fr^$document
 ||onrunningoutletdeutschland.com^$document
 ||onrunningoutletdeutschland.de^$document
@@ -250798,10 +250868,8 @@
 ||onschuhe.shop^$document
 ||onschuhefabrikverkaufschweiz.com^$document
 ||onschuhen.shop^$document
-||onschuheosterreich.com^$document
 ||onschuheoutlet.at^$document
 ||onschuheoutletstore.at^$document
-||onschuheschweiz.com^$document
 ||onschuheschweizoutlet.com^$document
 ||onschuhewien.at^$document
 ||onseathenjoidudoc.tk^$document
@@ -250811,6 +250879,7 @@
 ||onseysladerprolor.ml^$document
 ||onsftq.cyou^$document
 ||onshoes-de.shop^$document
+||onshoesfrance.fr^$document
 ||onsight-frog.de^$document
 ||onsikinsivepi.cf^$document
 ||onsinmereda.gq^$document
@@ -251580,6 +251649,7 @@
 ||opposhorntorta.gq^$document
 ||oppositefeasibleunemployment.com^$document
 ||oppositen.com^$document
+||opposition-banquepostale.fr^$document
 ||opposition-cartes.fr^$document
 ||opposition-cb.fr^$document
 ||opposition-ccp.fr^$document
@@ -251680,7 +251750,6 @@
 ||optimalnews.site^$document
 ||optimarkets.com^$document
 ||optimeal.si^$document
-||optimgmbh.com^$document
 ||optimiseads.com^$document
 ||optimisticlessennation.com^$document
 ||optintax.com^$document
@@ -251759,6 +251828,7 @@
 ||opxxtp.tokyo^$document
 ||opy85ce.shop^$document
 ||opy9pf.cyou^$document
+||opyiazki.shop^$document
 ||opyupfc.tokyo^$document
 ||opz16to.cyou^$document
 ||opzaldergmere.cf^$document
@@ -252292,6 +252362,7 @@
 ||orexexroco.tk^$document
 ||orexitolsieko.tk^$document
 ||orexitot.cf^$document
+||orextapetede.com^$document
 ||orfactschoolpolitics.bar^$document
 ||orfaitrusesilti.tk^$document
 ||orfaneela.tk^$document
@@ -252603,6 +252674,7 @@
 ||orpomanturo.ml^$document
 ||orporciorercia.ga^$document
 ||orpoulsellmebeting.cf^$document
+||orppro.com^$document
 ||orpq7g.shop^$document
 ||orpqum.bar^$document
 ||orpragcounrebull.gq^$document
@@ -252716,11 +252788,13 @@
 ||ortho-magazin.de^$document
 ||ortho-pulse.de^$document
 ||ortho-shoes.at^$document
+||ortho-store.de^$document
 ||orthoback.com^$document
 ||orthocumpdandreacra.gq^$document
 ||orthoday.de^$document
 ||orthodoxrespondedcollide.com^$document
 ||orthoedition.fr^$document
+||orthoflexcare.com^$document
 ||orthofrei.com^$document
 ||orthognathus.best^$document
 ||orthomode.de^$document
@@ -252734,7 +252808,6 @@
 ||ortist.xyz^$document
 ||ortjpiy.bar^$document
 ||ortliebfrance.fr^$document
-||ortliebpack.com^$document
 ||ortliebparis.fr^$document
 ||ortodielleealli.com^$document
 ||ortoleicht.meinearbeitsschuhe.com^$document
@@ -253606,6 +253679,7 @@
 ||oua1uf.tokyo^$document
 ||oub70j0.tokyo^$document
 ||oubductiwavelan.cf^$document
+||oubeaute.de^$document
 ||oubenspitnon.tk^$document
 ||oubhdk.tokyo^$document
 ||oubitstoogmandisp.tk^$document
@@ -253882,6 +253956,8 @@
 ||outdoor-heinz.com^$document
 ||outdoor-lightszone.com^$document
 ||outdoor-mall.de^$document
+||outdoorausruestung.com^$document
+||outdoorbillig.com^$document
 ||outdoorcabelas.com^$document
 ||outdooressentialsshop.com^$document
 ||outdoorflow-gmbh.de^$document
@@ -254253,6 +254329,7 @@
 ||ovalapgimete.tk^$document
 ||ovalball.com^$document
 ||ovalerilalcia.ga^$document
+||ovalestore.com^$document
 ||ovalmr.tokyo^$document
 ||ovalnibageti.tk^$document
 ||ovalofdiedestgdis.ml^$document
@@ -258139,7 +258216,6 @@
 ||parforastsbilko.ga^$document
 ||parfum-luxe.fr^$document
 ||parfume.xyz^$document
-||parfumly.com^$document
 ||parfumoutlet.fr^$document
 ||parfumpariis.fr^$document
 ||parfumsetcosmetiques.fr^$document
@@ -258392,6 +258468,7 @@
 ||partbanpo.ml^$document
 ||partbastcaconle.tk^$document
 ||partbecomefactgroup.bar^$document
+||partbelong.com^$document
 ||partbeltkatto.tk^$document
 ||partbenrevotosmo.tk^$document
 ||partbitreatihoure.cf^$document
@@ -259399,7 +259476,6 @@
 ||pavazt.bar^$document
 ||pavazt.rest^$document
 ||pavbqs.rest^$document
-||pavelaholz.com^$document
 ||pavelylilan.ml^$document
 ||pavementbluffybluffy.com^$document
 ||pavementpsychopathnaturally.com^$document
@@ -260638,6 +260714,7 @@
 ||pedalbliss.com^$document
 ||pedaleren.nl^$document
 ||pedalfreunde.de^$document
+||pedalpalast.de^$document
 ||pedalparadies.com^$document
 ||pedalyst.com^$document
 ||pedavillandre.gq^$document
@@ -261583,7 +261660,6 @@
 ||perfchonamarrecal.gq^$document
 ||perfcondystno.tk^$document
 ||perfect-booty.de^$document
-||perfect-pilots.com^$document
 ||perfectaccessories.shop^$document
 ||perfectbabe4you.com^$document
 ||perfectbodycellulite.fr^$document
@@ -264547,7 +264623,6 @@
 ||pingrebasbarcdult.ml^$document
 ||pingtemonighve.ml^$document
 ||pingtennolife.tk^$document
-||pinguid.xyz^$document
 ||pinguoin.fr^$document
 ||pingwampsigvival.ga^$document
 ||pingwebterp.gq^$document
@@ -265622,6 +265697,7 @@
 ||planenimfevea.tk^$document
 ||planenon.tk^$document
 ||planenorconi.ga^$document
+||planeoboden.com^$document
 ||planerbernirite.ga^$document
 ||planerdisdeno.tk^$document
 ||planerulinunkthor.ga^$document
@@ -266157,6 +266233,7 @@
 ||pleioversepedia.com^$document
 ||plejanmiywalinda.tk^$document
 ||plejomlapig.gq^$document
+||plekkonm.shop^$document
 ||plelqc.rest^$document
 ||plemagombiadropmi.tk^$document
 ||plemanesit.tk^$document
@@ -267532,7 +267609,6 @@
 ||pokilgotypims.tk^$document
 ||pokimkesencheiro.gq^$document
 ||pokisasoga.tk^$document
-||pokkia.com^$document
 ||pokklassruccotes.tk^$document
 ||pokknamiquartuckto.ml^$document
 ||pokladnavelharticich.cz^$document
@@ -268001,6 +268077,7 @@
 ||poolin.fr^$document
 ||poolina.de^$document
 ||poologstrand.dk^$document
+||poolreinigerde.com^$document
 ||poolsaar.ee^$document
 ||poolsaunasupply.com^$document
 ||poolvaariskivi.ee^$document
@@ -268596,6 +268673,7 @@
 ||portail-client-info.fr^$document
 ||portail-clients.fr^$document
 ||portail-connexion.fr^$document
+||portail-contravention.fr^$document
 ||portail-dgfip.fr^$document
 ||portail-edf-gouv.com^$document
 ||portail-enedis.fr^$document
@@ -269258,7 +269336,6 @@
 ||potenzmedizinapotheke.at^$document
 ||potenzmittel-1.com^$document
 ||potenzmittel-apotheke.biz^$document
-||potenzmittel-apotheke.eu^$document
 ||potenzmittel-kaufen-deutschland.com^$document
 ||potenzmittelapotheke24at.com^$document
 ||potenzmittelbestellen.at^$document
@@ -270525,7 +270602,6 @@
 ||premium-4-sexcontact.com^$document
 ||premium-feuer.com^$document
 ||premium-france.fr^$document
-||premium-heizoel.com^$document
 ||premium-prime.fr^$document
 ||premium-spot.com^$document
 ||premium-toolsverkaufen.com^$document
@@ -270537,6 +270613,7 @@
 ||premiumcars.xyz^$document
 ||premiumdomainnames.biz^$document
 ||premiumdownload.my.id^$document
+||premiumee.com^$document
 ||premiumfeuer.com^$document
 ||premiumfeuer.shop^$document
 ||premiumfunds.com^$document
@@ -270758,6 +270835,7 @@
 ||presakonimak.ml^$document
 ||presaktatenma.ml^$document
 ||presale-amswallet.replit.app^$document
+||presale.spacepay.co.uk^$document
 ||presalesxai.com^$document
 ||presalmesols.tk^$document
 ||presamchurbirdrale.cf^$document
@@ -271401,7 +271479,6 @@
 ||primanworcesi.tk^$document
 ||primanymab.tk^$document
 ||primaphreyrisde.ga^$document
-||primaprofi-reinigung.at^$document
 ||primapzamadi.ga^$document
 ||primarcatap.tk^$document
 ||primariamalucuflori.ro^$document
@@ -271491,7 +271568,6 @@
 ||prime-low.com^$document
 ||prime-manage.fr^$document
 ||prime-management.fr^$document
-||prime-moda.com^$document
 ||prime-modif.fr^$document
 ||prime-modification.fr^$document
 ||prime-modifications.fr^$document
@@ -271753,6 +271829,7 @@
 ||princeschoolmasma.com^$document
 ||princesport.si^$document
 ||princesscasino.fr^$document
+||princessroomfr.fr^$document
 ||princetontic.xyz^$document
 ||principalcontemplate.com^$document
 ||principaute-monaco.fr^$document
@@ -272229,6 +272306,7 @@
 ||pro-radler.de^$document
 ||pro-sncf.fr^$document
 ||pro-talentsycner.online^$document
+||pro-truckmarket.com^$document
 ||pro-windows.net^$document
 ||pro1bj.cyou^$document
 ||proactiveping.com^$document
@@ -272283,6 +272361,7 @@
 ||probheartvertpacroatvil.tk^$document
 ||probidkeresaco.tk^$document
 ||probikesshop.fr^$document
+||probikezubehor.com^$document
 ||probilofde.tk^$document
 ||probilonzu.ml^$document
 ||probimethilon.ga^$document
@@ -272892,6 +272971,7 @@
 ||profinsewest.tk^$document
 ||profinsnowokarstov.tk^$document
 ||profinunlilystcot.ga^$document
+||profiofen.com^$document
 ||profipesomes.tk^$document
 ||profirfitle.ml^$document
 ||profisminbome.ml^$document
@@ -272991,7 +273071,6 @@
 ||profunbati.tk^$document
 ||profunderboo.tk^$document
 ||profundsetatitef.ml^$document
-||profundseu.com^$document
 ||profunpecguese.ga^$document
 ||profurdimuril.tk^$document
 ||profvakerneocomhi.ga^$document
@@ -273703,7 +273782,6 @@
 ||properinlili.tk^$document
 ||propermusiciananvil.com^$document
 ||properties-list.com^$document
-||property-24.com^$document
 ||propertycausevalue.bar^$document
 ||propertyforsale.buzz^$document
 ||propertyinsight.com.my^$document
@@ -274311,7 +274389,6 @@
 ||provicitin.tk^$document
 ||provicoslorec.ga^$document
 ||provideanswersdespite.biz^$document
-||providedes.com^$document
 ||providelocalpoint.de^$document
 ||providentfo.com^$document
 ||provideoadblocker.com^$document
@@ -275768,7 +275845,6 @@
 ||purelywhitedeluxe.com^$document
 ||purepeople.com^$document
 ||purepods.fr^$document
-||pureprefer.com^$document
 ||pureradissiofor.gq^$document
 ||purereparu.cf^$document
 ||pureskinfrance.fr^$document
@@ -275821,7 +275897,6 @@
 ||purppeesourdolithning.cf^$document
 ||purprarallopenfold.tk^$document
 ||purprints.com^$document
-||purprints.net^$document
 ||purpsertelongrough.tk^$document
 ||purptorirephe.cf^$document
 ||purptoulandpheda.gq^$document
@@ -276643,6 +276718,7 @@
 ||pyqpby.tokyo^$document
 ||pyquestions.com^$document
 ||pyr2cr7.cyou^$document
+||pyramidedulouvre.fr^$document
 ||pyramidforum.com^$document
 ||pyre9e.tokyo^$document
 ||pyrfhl.cyou^$document
@@ -280165,7 +280241,6 @@
 ||qua1f.bar^$document
 ||quaacepsanccalpoy.tk^$document
 ||quaacoemoldlofuspi.gq^$document
-||quaally.shop^$document
 ||quaapatybus.tk^$document
 ||quaastadvetehun.tk^$document
 ||quaatergbookbymo.ml^$document
@@ -280255,7 +280330,6 @@
 ||qualitybets.com^$document
 ||qualitycare.xyz^$document
 ||qualitycaseyeah.buzz^$document
-||qualitygadgetshop.com^$document
 ||qualityhealth.com^$document
 ||qualityjob.es^$document
 ||qualityshomemoney.biz^$document
@@ -281768,7 +281842,6 @@
 ||qvbpumc.work^$document
 ||qvbpvc.tokyo^$document
 ||qvbtsj.tokyo^$document
-||qvc.store.com^$document
 ||qvcbo4.cyou^$document
 ||qvcsvo.work^$document
 ||qvcuem.tokyo^$document
@@ -283077,11 +283150,11 @@
 ||rabattaltuzarra.de^$document
 ||rabattarkk.de^$document
 ||rabattbalmain.de^$document
-||rabattbekleidung.de^$document
 ||rabattdamen.de^$document
 ||rabattfahrradneu.com^$document
 ||rabattfahrradteile.de^$document
 ||rabattgabor.de^$document
+||rabatthaustiers.com^$document
 ||rabattkodendin.com^$document
 ||rabattlampen.com^$document
 ||rabattleuchten.de^$document
@@ -283439,6 +283512,7 @@
 ||radercyrigilou.tk^$document
 ||raderfdemobomdu.tk^$document
 ||raderlirana.tk^$document
+||raderstore.de^$document
 ||radesfamel.cf^$document
 ||radestihos.ga^$document
 ||radfahrzeit.com^$document
@@ -285003,7 +285077,6 @@
 ||rasen-profis.de^$document
 ||rasen-traktor.com^$document
 ||rasen24.com^$document
-||rasen24h.com^$document
 ||rasendorou.tk^$document
 ||rasengerate.com^$document
 ||rasenmahen24.com^$document
@@ -285944,7 +286017,6 @@
 ||rdsooy.tokyo^$document
 ||rdsporthorses.com^$document
 ||rdss6e.cyou^$document
-||rdtfliped.com^$document
 ||rduapj.cyou^$document
 ||rducgefestdideda.ml^$document
 ||rduefu.rest^$document
@@ -287820,7 +287892,6 @@
 ||registroles.es^$document
 ||registrostoricoaspes.it^$document
 ||registrounicoclientebn.com^$document
-||registrykissen.com^$document
 ||regkadescveming.tk^$document
 ||reglage-prime.fr^$document
 ||reglages-prime.fr^$document
@@ -288162,6 +288233,7 @@
 ||reifemode.com^$document
 ||reifen-dreyer.com^$document
 ||reifen-teile-discount.de^$document
+||reifenangebote.com^$document
 ||reifencheck.net^$document
 ||reifenhandel-24.com^$document
 ||reifenpmiviva.cf^$document
@@ -288215,6 +288287,7 @@
 ||reilansieforpany.cf^$document
 ||reilantswisamdani.ga^$document
 ||reilatygam.tk^$document
+||reilbach-kanzlei.de^$document
 ||reileasptere.tk^$document
 ||reilectsihurbi.ml^$document
 ||reileleadenici.ml^$document
@@ -289003,7 +289076,6 @@
 ||rendflexatersi.tk^$document
 ||rendigottter.tk^$document
 ||rendikanacharlyo.cf^$document
-||renditeexperte.com^$document
 ||renditionbill.com^$document
 ||rendlicimaslust.ga^$document
 ||rendluner.cf^$document
@@ -290600,6 +290672,7 @@
 ||retacola.gq^$document
 ||retacuver.ml^$document
 ||retahebvoigu.ml^$document
+||retail-auchan.fr^$document
 ||retailafrica.xyz^$document
 ||retailbbq.com^$document
 ||retailchemy.com^$document
@@ -291015,7 +291088,6 @@
 ||revolutioncasino.fr^$document
 ||revolutionracecam.com^$document
 ||revolutionraceinc.com^$document
-||revolutionracemag.com^$document
 ||revolutionraceshop.com^$document
 ||revolutionracesweet.com^$document
 ||revolutionraoe.com^$document
@@ -291598,7 +291670,6 @@
 ||rhodalatdfathryu.ml^$document
 ||rhode.co.at^$document
 ||rhodenlukasur.tk^$document
-||rhodeshotel24.com^$document
 ||rhodicavramrionen.tk^$document
 ||rhodocextoben.tk^$document
 ||rhodolmarno.tk^$document
@@ -295627,7 +295698,6 @@
 ||rolisnitelsfe.cf^$document
 ||roliternaman.tk^$document
 ||roll-bit.fr^$document
-||rolla.store^$document
 ||rolladenmeister.at^$document
 ||rolladenreparatur.at^$document
 ||rollandbois.com^$document
@@ -296307,6 +296377,7 @@
 ||rostexel.ru^$document
 ||rostgeeliti.ml^$document
 ||rosticcceria.xyz^$document
+||rostikuche.com^$document
 ||rostockhaf.de^$document
 ||rostoderdi.gq^$document
 ||rostovenarsa.tk^$document
@@ -296320,6 +296391,7 @@
 ||rosynthdesupppo.cf^$document
 ||rosytucodenep.tk^$document
 ||roszhy.bar^$document
+||rot91.com^$document
 ||rotabrasilviagens.com.br^$document
 ||rotabtau.ga^$document
 ||rotacafit.ga^$document
@@ -296415,6 +296487,7 @@
 ||rottentomatoes.fr^$document
 ||rotteodicomro.cf^$document
 ||rotterdam-oost.nl^$document
+||rotterdamsunny.com^$document
 ||rottgregacswitun.tk^$document
 ||rottholm.dk^$document
 ||rottlicemlures.cf^$document
@@ -296440,7 +296513,6 @@
 ||roubwivocoros.tk^$document
 ||roucek-research.cz^$document
 ||rouconrounddenaramb.tk^$document
-||roudamo.shop^$document
 ||roudpiguawhositick.tk^$document
 ||roueklinesesor.tk^$document
 ||rouen2008.fr^$document
@@ -296492,7 +296564,6 @@
 ||roulsnatscentferalu.ga^$document
 ||roulteujuhive.tk^$document
 ||roumian.xyz^$document
-||roumite.com^$document
 ||roundbesogedecha.tk^$document
 ||roundbi.web.app^$document
 ||roundcangvirol.tk^$document
@@ -296707,6 +296778,7 @@
 ||royaldebank.com^$document
 ||royaldiam.com^$document
 ||royalgeorgepurton.co.uk^$document
+||royalinspire.com^$document
 ||royalistplay.fr^$document
 ||royalmacabet.xyz^$document
 ||royalmail.cm^$document
@@ -297871,6 +297943,7 @@
 ||rujxqk.bar^$document
 ||rujy2f.cyou^$document
 ||rukafi.cf^$document
+||rukaoutdoors.com^$document
 ||rukargue.cf^$document
 ||rukcvdt.tokyo^$document
 ||rukicocelavi.tk^$document
@@ -300710,6 +300783,7 @@
 ||saleforholiday.vin^$document
 ||saleforoutdoor.com^$document
 ||salegermaniatools.com^$document
+||salehealthfoods.com^$document
 ||salehomeus.com^$document
 ||salelanawelpen.de^$document
 ||salelovesilver.com^$document
@@ -300729,6 +300803,7 @@
 ||salesconsulter.de^$document
 ||salesdaddymasterclass.com^$document
 ||salesgsidicemo.ml^$document
+||saleskaufende.com^$document
 ||salesorganics.com^$document
 ||salespersonbvppg.buzz^$document
 ||salesportshoe.com^$document
@@ -300747,7 +300822,6 @@
 ||saleweetsuvansubt.tk^$document
 ||salewidafsi.tk^$document
 ||saleworkshopequip.com^$document
-||salezipp.com^$document
 ||salfas.com^$document
 ||salfeld-agentur.de^$document
 ||salforce.com^$document
@@ -300847,7 +300921,6 @@
 ||salomonshoesonline.us^$document
 ||salomonsiteofficiel.fr^$document
 ||salomonsolde.fr^$document
-||salomonstoreosterreich.at^$document
 ||salomonsuomi-fi.com^$document
 ||salomonsuomi.com^$document
 ||salomonsuomioutlet.com^$document
@@ -300873,7 +300946,6 @@
 ||salonurodapoznan.pl^$document
 ||saloomisroymor.ml^$document
 ||salopilyverwa.ga^$document
-||salority.com^$document
 ||salorowhizu.ga^$document
 ||salougmingsecy.cf^$document
 ||salovajhersmu.tk^$document
@@ -301077,7 +301149,6 @@
 ||samsonitedeutschland.de^$document
 ||samsonitefrance.fr^$document
 ||samsonites.fr^$document
-||samsonitesuomi.com^$document
 ||samsonitexdeutschland.de^$document
 ||samsoung.fr^$document
 ||samsunf.fr^$document
@@ -301639,6 +301710,7 @@
 ||santerenouvellement.fr^$document
 ||santes-ameli.fr^$document
 ||santes-clients.fr^$document
+||santes-espace.fr^$document
 ||santes-portail.fr^$document
 ||santes-renouvellement.fr^$document
 ||santes-renouvellements.fr^$document
@@ -301687,6 +301759,7 @@
 ||sanupalouhongrab.gq^$document
 ||sanura.fr^$document
 ||sanuscafe.me^$document
+||sanuvalue.com^$document
 ||sanva.dk^$document
 ||sanvelctronorsnoop.cf^$document
 ||sanvitoedintorni.it^$document
@@ -301820,6 +301893,7 @@
 ||sardfly.it^$document
 ||sardinenbarberlinava.shop^$document
 ||sardiniashootingclub.it^$document
+||sardonagroup.com^$document
 ||sarea.xyz^$document
 ||sareatahypete.ml^$document
 ||sareevemace.tk^$document
@@ -302027,6 +302101,7 @@
 ||satipseraho.gq^$document
 ||satis-beauty-store.de^$document
 ||satisfac.com^$document
+||satisfaction-maaf.fr^$document
 ||satisfait-ou-rembourse-hubside.fr^$document
 ||satiterlitthand.tk^$document
 ||satitimiden.tk^$document
@@ -302773,6 +302848,7 @@
 ||scandalninety.com^$document
 ||scandifurn.com^$document
 ||scandinavian-flyfishing.dk^$document
+||scandinavianbeauties.com^$document
 ||scandlas2021.ee^$document
 ||scanenedtrucaq.cf^$document
 ||scanenharhostcarta.tk^$document
@@ -303183,6 +303259,7 @@
 ||schenodungothighkett.gq^$document
 ||schephandself.cf^$document
 ||schepmanmedia.nl^$document
+||scheppachwerkzeuge.com^$document
 ||scheradnaabreaslawit.tk^$document
 ||scherankhavnipac.tk^$document
 ||scherdonsmimassu.ml^$document
@@ -303205,6 +303282,7 @@
 ||schicbeennalucocnons.ga^$document
 ||schicbertelula.tk^$document
 ||schicherunfuncecea.tk^$document
+||schickercamping.com^$document
 ||schickherren.com^$document
 ||schickort.de^$document
 ||schicozstetcule.cf^$document
@@ -303258,10 +303336,9 @@
 ||schlafhimmel.com^$document
 ||schlaftabletten-rezeptfrei.org^$document
 ||schlagschrauberfive.com^$document
+||schlauchegeschaft.com^$document
 ||schlauchsilierung.at^$document
 ||schlaukopf.fr^$document
-||schleichsite.com^$document
-||schleichworld.com^$document
 ||schlemmenimmuensterland.de^$document
 ||schlemmerregion-konstanz.de^$document
 ||schliffka-immobilien.de^$document
@@ -303281,6 +303358,7 @@
 ||schlund-woehr.de^$document
 ||schlusseldienst.at^$document
 ||schmerzfrei-eichstaett.de^$document
+||schmid-rechtsanwaelte.de^$document
 ||schmidb7q.web.app^$document
 ||schmidt-cassel.buzz^$document
 ||schmidt-digital.de^$document
@@ -303312,6 +303390,7 @@
 ||schneider-salzburg.at^$document
 ||schneider-schmuckatelier.de^$document
 ||schneidermode.com^$document
+||schneiderrabatt.com^$document
 ||schneiderundlang.de^$document
 ||schneidervienna.at^$document
 ||schnell-markt.de^$document
@@ -303363,6 +303442,8 @@
 ||scholreliversetu.tk^$document
 ||schominonallec.ml^$document
 ||schomribonmybug.cf^$document
+||schonedamenmode.com^$document
+||schonentag.online^$document
 ||schoneswetter.de^$document
 ||schonewelpenzuverkaufen.de^$document
 ||schonradespiezoge.tk^$document
@@ -303440,6 +303521,7 @@
 ||schrank-shop.com^$document
 ||schrankede.com^$document
 ||schrannenhallemuenchen.buzz^$document
+||schraubenpro.com^$document
 ||schraubheld24.de^$document
 ||schravenschilderwerken.nl^$document
 ||schreeu.tokyo^$document
@@ -303455,7 +303537,6 @@
 ||schuhegunstignice.de^$document
 ||schuhehoka.de^$document
 ||schuhejordan.de.com^$document
-||schuhepromo.com^$document
 ||schuheverkauf-de.com^$document
 ||schuhewienshoponline.com^$document
 ||schuhschritte.com^$document
@@ -303474,7 +303555,6 @@
 ||schulte-boutique.de^$document
 ||schultemode.de^$document
 ||schulungen-am-see.de^$document
-||schulz-research.com^$document
 ||schulze-rechtsanwaelte.com^$document
 ||schulzholz.com^$document
 ||schumafencen.tk^$document
@@ -303507,6 +303587,7 @@
 ||schweizer-modewelt.com^$document
 ||schwendenerian.best^$document
 ||schwestern-kaufhaus.de^$document
+||schwfoto.com^$document
 ||schwinnfrance.fr^$document
 ||schwurverband.de^$document
 ||schydgu.bar^$document
@@ -304093,6 +304174,7 @@
 ||sdgyip.cyou^$document
 ||sdhcgl.com^$document
 ||sdhchh.com^$document
+||sdhguy.com^$document
 ||sdhndqkj.com^$document
 ||sdhrsdh.tokyo^$document
 ||sdhtlm.tokyo^$document
@@ -304697,6 +304779,7 @@
 ||secure-caissedepargne.fr^$document
 ||secure-carte-vitale.fr^$document
 ||secure-carte.fr^$document
+||secure-ccf.fr^$document
 ||secure-certicode.fr^$document
 ||secure-cetelem.fr^$document
 ||secure-chronopost.fr^$document
@@ -304781,6 +304864,7 @@
 ||secure-votrecompteparticulier.fr^$document
 ||secure-wetranferfiles.fr^$document
 ||secure.rsb-gateway.com^$document
+||secure.selure.de^$document
 ||secure00-account.serveftp.com^$document
 ||secure01b.pm^$document
 ||secure05h-verify.serveftp.com^$document
@@ -305362,7 +305446,6 @@
 ||segoder.my.id^$document
 ||segorociptamandiri.com^$document
 ||segotaballlege.tk^$document
-||segovianet.com^$document
 ||segpdyx.rest^$document
 ||segpersciberni.cf^$document
 ||segre-leclerc.fr^$document
@@ -306200,6 +306283,7 @@
 ||sentioralenjo.ga^$document
 ||sentipelrepig.ml^$document
 ||sentirslasmerijf.ga^$document
+||sentis.club^$document
 ||sentisubti.cf^$document
 ||sentkandtrenacel.gq^$document
 ||sentlirenatalkbow.gq^$document
@@ -306564,7 +306648,6 @@
 ||serioussschoolbillion.bar^$document
 ||serioussthingclass.biz^$document
 ||seriousstudypoints.biz^$document
-||seriouswatches.shop^$document
 ||seriozni-zizala.cz^$document
 ||seripsypl.fr^$document
 ||serizamorealta.tk^$document
@@ -307127,6 +307210,7 @@
 ||serviceauthclient.fr^$document
 ||serviceauthentification.fr^$document
 ||servicebnp-paribas.fr^$document
+||servicebnpparibas.fr^$document
 ||servicecarte-vitale.fr^$document
 ||servicecartevital.fr^$document
 ||servicecartevitale-ameli.fr^$document
@@ -307217,6 +307301,7 @@
 ||servicepaiements-frais.fr^$document
 ||servicepatient-ameli.fr^$document
 ||servicepayes.fr^$document
+||servicepayfip.fr^$document
 ||servicepayliib.fr^$document
 ||servicepeoplescountry.biz^$document
 ||servicepermisdeconduire.fr^$document
@@ -308895,7 +308980,6 @@
 ||shauntapparel.com^$document
 ||shaunytijssen.xyz^$document
 ||shaurma-pizza.ee^$document
-||shavenation.shop^$document
 ||shaverauction.com^$document
 ||shaverauction.store^$document
 ||shavetd.web.app^$document
@@ -309237,7 +309321,6 @@
 ||shopamericamall.buzz^$document
 ||shopandie.com^$document
 ||shopanera.com^$document
-||shopannafield.com^$document
 ||shopautodirect.com^$document
 ||shopbagwallet.com^$document
 ||shopbestmarineparts.com^$document
@@ -309313,7 +309396,6 @@
 ||shopperwebs.com^$document
 ||shoppewerkzeug.com^$document
 ||shopping-mag.de^$document
-||shopping-paradise.net^$document
 ||shopping-prime.fr^$document
 ||shopping4mom.com^$document
 ||shoppingcomplex.biz^$document
@@ -309340,6 +309422,7 @@
 ||shopskisnowboard.com^$document
 ||shopsm.fr^$document
 ||shopsmartly365.com^$document
+||shopsoftra.com^$document
 ||shopspeedparts.com^$document
 ||shopspick.news^$document
 ||shopstables.com^$document
@@ -310267,6 +310350,7 @@
 ||sihydcenthalgant.ga^$document
 ||sihyscoasugpato.tk^$document
 ||siihampverrocapry.tk^$document
+||siilance.com^$document
 ||siiliressifun.gq^$document
 ||siilitimennaxua.tk^$document
 ||siimkelner.ee^$document
@@ -312113,7 +312197,6 @@
 ||ske660.cyou^$document
 ||skecheclearanceus.com^$document
 ||skecherchile.com^$document
-||skecheroutlets.shop^$document
 ||skechers-at.at^$document
 ||skechers-france.fr^$document
 ||skechers-israel.com^$document
@@ -312215,6 +312298,7 @@
 ||skfd9.rest^$document
 ||skfd9to.tokyo^$document
 ||skflawyer.com^$document
+||skfveckc.shop^$document
 ||skgljtsn.xyz^$document
 ||skh0b.rest^$document
 ||skh1oni.cn^$document
@@ -312294,6 +312378,7 @@
 ||skimsschweiz.com^$document
 ||skimssuomi.com^$document
 ||skimunenunstaph.gq^$document
+||skina.nu^$document
 ||skinaladginpay.gq^$document
 ||skinalmudustpres.ml^$document
 ||skinamountlifepeople.buzz^$document
@@ -312315,6 +312400,7 @@
 ||skininudolaf.cf^$document
 ||skinitanadem.ga^$document
 ||skinlevelsrealseat.biz^$document
+||skinliy.com^$document
 ||skinmomudisnite.ml^$document
 ||skinmonitor-project.eu^$document
 ||skinnamancheo.ga^$document
@@ -312951,6 +313037,7 @@
 ||slimmgummies.com^$document
 ||slimnofacfitwsecle.tk^$document
 ||slimopplatam.ml^$document
+||slimorol.info^$document
 ||slimpostmaju.ga^$document
 ||slimtacninacomp.cf^$document
 ||slimtocrilacons.tk^$document
@@ -313585,6 +313672,7 @@
 ||smartintienda.es^$document
 ||smartinvestsas.com^$document
 ||smartjoybss.cf^$document
+||smartkochen.com^$document
 ||smartlearning.xyz^$document
 ||smartlife.ee^$document
 ||smartlightingshop.com^$document
@@ -314431,7 +314519,6 @@
 ||sneakerspromo.fr^$document
 ||sneakerssource.fr^$document
 ||sneakerstoreparis.fr^$document
-||sneakerveja.com^$document
 ||sneakerzfrance.fr^$document
 ||sneakies.fr^$document
 ||sneakies52.fr^$document
@@ -314718,7 +314805,6 @@
 ||snowsoinighparmai.tk^$document
 ||snowsotelciboospa.ga^$document
 ||snowstar.xyz^$document
-||snowsuitschic.com^$document
 ||snowterlomacsairock.tk^$document
 ||snowtilectgituzu.cf^$document
 ||snowunifrendist.tk^$document
@@ -315307,7 +315393,7 @@
 ||sofrimodosongcul.tk^$document
 ||sofrrosthandrintive.tk^$document
 ||soft-gets.com^$document
-||soft-handel.de^$document
+||soft-lizenz.de^$document
 ||soft-load.com^$document
 ||soft2bet-casino.fr^$document
 ||soft2bet-france.fr^$document
@@ -315483,7 +315569,6 @@
 ||sogesmisucoor.cf^$document
 ||sogesotge.tk^$document
 ||sogetcoupes.com^$document
-||sogevis.com^$document
 ||sogexia-dsp2.fr^$document
 ||soginheunagolf.tk^$document
 ||sogjyu.shop^$document
@@ -315627,6 +315712,7 @@
 ||solarplatten24.de^$document
 ||solarpowerde.com^$document
 ||solarpvwerkzeug.com^$document
+||solarspeichersysteme.com^$document
 ||solarsun.ee^$document
 ||solarszellen.de^$document
 ||solartechnik-direct.de^$document
@@ -315671,7 +315757,6 @@
 ||soldierssixprofessionals.de^$document
 ||soldiersystemmoney.rest^$document
 ||soldoutaccount.fr^$document
-||solds123.com^$document
 ||solectningcomo.cf^$document
 ||solefopi.tk^$document
 ||solegaoca.web.app^$document
@@ -315921,7 +316006,6 @@
 ||sonaconswood.gq^$document
 ||sonadmidita.tk^$document
 ||sonag.ru^$document
-||sonaireofficial.com^$document
 ||sonarendtennywin.tk^$document
 ||sonarovanla.tk^$document
 ||sonarranscashmastercard-espace-personnel.fr^$document
@@ -315942,6 +316026,7 @@
 ||sonelera.web.app^$document
 ||sonelneatita.cf^$document
 ||sonepart.fr^$document
+||sonetiacrcb.shop^$document
 ||sonevex.my.id^$document
 ||sonfactmothercompany.xyz^$document
 ||songcarlledermaiketp.tk^$document
@@ -317547,7 +317632,6 @@
 ||spiebatigmolles.fr^$document
 ||spiegato.com^$document
 ||spiele-grotte.de^$document
-||spielhaus.shop^$document
 ||spielmit-vulkanvegas.com^$document
 ||spielsmodelle.com^$document
 ||spieluniversum.com^$document
@@ -317555,7 +317639,8 @@
 ||spielzeug-traum.com^$document
 ||spielzeug-wunderwelt.com^$document
 ||spielzeugautosrabatt.com^$document
-||spielzeugeneu.de^$document
+||spielzeugautowelt.com^$document
+||spielzeugelektronik.com^$document
 ||spielzeugopapop.shop^$document
 ||spielzeugsde.com^$document
 ||spielzeugsport.com^$document
@@ -317608,6 +317693,9 @@
 ||spilvebuleke.tk^$document
 ||spimbey.com^$document
 ||spin-247.fr^$document
+||spin-aura-fr.fr^$document
+||spin-aurafr.fr^$document
+||spin-auras.fr^$document
 ||spin-bara-casino.fr^$document
 ||spin-better.com^$document
 ||spin-cash-win.fr^$document
@@ -317652,14 +317740,17 @@
 ||spinasonlaja.tk^$document
 ||spinatludcentbi.ml^$document
 ||spinatneostamin.tk^$document
+||spinaura-avis.fr^$document
 ||spinaura-casino.fr^$document
 ||spinaura.fr^$document
+||spinauraavis.fr^$document
 ||spinauracasino.fr^$document
 ||spinauracasinos.fr^$document
 ||spinavatalforpa.tk^$document
 ||spinbara-fr.fr^$document
 ||spinbara-online.fr^$document
 ||spinbara777.fr^$document
+||spinbarafr.fr^$document
 ||spinbenretempfu.gq^$document
 ||spinbet.online^$document
 ||spinbetter.club^$document
@@ -317859,6 +317950,7 @@
 ||spirituelle-ecke.com^$document
 ||spirituosenfest.com^$document
 ||spirituosenlager.com^$document
+||spirituosenrabatt.com^$document
 ||spirlacasmi.gq^$document
 ||spirlalanrailwat.ml^$document
 ||spirlarolecom.gq^$document
@@ -318134,6 +318226,7 @@
 ||sport-hot-news.com^$document
 ||sport-rausch.de^$document
 ||sport-titan.de^$document
+||sport-verkaufs.com^$document
 ||sport-world01.com^$document
 ||sport200.fr^$document
 ||sport2000-falaise.fr^$document
@@ -318146,6 +318239,7 @@
 ||sportadvice-zh.decathlon.com.hk^$document
 ||sportandoutdoorstore.com^$document
 ||sportapothekeonline.com^$document
+||sportartikelbox.com^$document
 ||sportartikelwelt.com^$document
 ||sportasign.de^$document
 ||sportausrustung-de.com^$document
@@ -318153,6 +318247,7 @@
 ||sportaveconobe.tk^$document
 ||sportaza-fr.fr^$document
 ||sportbekleidung-de.com^$document
+||sportbekleidungde.com^$document
 ||sportbible.com^$document
 ||sportbigsplacenumber.rest^$document
 ||sportbike.ee^$document
@@ -318190,6 +318285,7 @@
 ||sportolymp.de^$document
 ||sportozero.tk^$document
 ||sportpentrusanatate.ro^$document
+||sportprodukteverkauf.com^$document
 ||sportprosport.com^$document
 ||sportraadlopik.nl^$document
 ||sports-line.org^$document
@@ -318601,7 +318697,6 @@
 ||squarasinitni.tk^$document
 ||squarernowarbnesge.cf^$document
 ||squaretrk.xyz^$document
-||squarexchange.com^$document
 ||squarexepriafor.tk^$document
 ||squarise.com^$document
 ||squaritcoviseseag.gq^$document
@@ -319554,6 +319649,7 @@
 ||stanbiegatoma.cf^$document
 ||stanbionecamadisg.gq^$document
 ||stanbiphiresqio.ml^$document
+||stancefrance.fr^$document
 ||stancentfacthepouf.tk^$document
 ||stanches.com^$document
 ||stancombeaupropor.tk^$document
@@ -319651,7 +319747,6 @@
 ||stanlutetermobumb.ml^$document
 ||stanlycrepomva.tk^$document
 ||stanlys-eshop.com^$document
-||stanlys-store.com^$document
 ||stanmagtizenchamp.ga^$document
 ||stanmallyxabe.tk^$document
 ||stanmarnanopassbi.ga^$document
@@ -319847,6 +319942,7 @@
 ||starivanastal.tk^$document
 ||starivvilidotteu.cf^$document
 ||starizanopthrit.tk^$document
+||stark-ebike.de^$document
 ||starke-region-zm.de^$document
 ||starketurmetic.tk^$document
 ||starkeu.de^$document
@@ -320399,6 +320495,7 @@
 ||steelalneribizri.cf^$document
 ||steelapmonlicum.cf^$document
 ||steelaxapet.tk^$document
+||steelcabinetsonline.com^$document
 ||steelco.xyz^$document
 ||steelefortress.com^$document
 ||steelerranlotplo.tk^$document
@@ -321621,7 +321718,6 @@
 ||storesjobpictures.biz^$document
 ||storesmarthome.com^$document
 ||storesnowsports.com^$document
-||storetommy.com^$document
 ||storetrailrunning.com^$document
 ||storetwo.com^$document
 ||storevesrotemerc.tk^$document
@@ -322017,7 +322113,6 @@
 ||strongslegfacthuman.buzz^$document
 ||strongslongelections.buzz^$document
 ||strongspells.online^$document
-||strongstrongsupply.com^$document
 ||strongupgear.com^$document
 ||strongyloplasmata.best^$document
 ||stronylaskowski.pl^$document
@@ -322026,7 +322121,6 @@
 ||stroskov-trgovina.cam^$document
 ||stroudtown.com^$document
 ||strouthiocamelian.site^$document
-||strowcrue.net^$document
 ||stroydiplom.ru^$document
 ||stroykazrya.ru^$document
 ||stroytehnika33.ru^$document
@@ -322405,7 +322499,6 @@
 ||stuffnighthimself.biz^$document
 ||stuffotherscountry.buzz^$document
 ||stuffswayplacestate.biz^$document
-||stuffwallpaper.com^$document
 ||stuffweightallcare.biz^$document
 ||stuffwinners.com^$document
 ||stufibkerpa.tk^$document
@@ -322461,7 +322554,6 @@
 ||stuninbihuper.cf^$document
 ||stuninkamiza.tk^$document
 ||stunletriofragtu.cf^$document
-||stunningboots.shop^$document
 ||stunningodour.com^$document
 ||stunningshoe.com^$document
 ||stunnohotabtangrant.cf^$document
@@ -322565,6 +322657,7 @@
 ||stussyoutletfrance.fr^$document
 ||stussyparisfrance.fr^$document
 ||stussypascher.fr^$document
+||stussypullfrance.fr^$document
 ||stussys-france.fr^$document
 ||stussysdeutschland.de^$document
 ||stussysfrance.fr^$document
@@ -322677,7 +322770,6 @@
 ||stylishlookin.xyz^$document
 ||stylishlytop.com^$document
 ||stylishmetals.nl^$document
-||stylishmirror.com^$document
 ||stylishtastic.com^$document
 ||stylitinvanra.tk^$document
 ||stylitninso.tk^$document
@@ -323720,6 +323812,7 @@
 ||suiviscolis-dhl.fr^$document
 ||suiviscolis-mondialrelay.com^$document
 ||suiviscolis-mondialrelay.fr^$document
+||suiviscomande.fr^$document
 ||suivisdecolis.fr^$document
 ||suivistokomani.fr^$document
 ||suivisupport-clients.fr^$document
@@ -324079,7 +324172,6 @@
 ||sunghedhakich.tk^$document
 ||sunghelhundtanpersnoun.gq^$document
 ||sungiydevcorpson.tk^$document
-||sunglasses-best.com^$document
 ||sunglassesshindy.com^$document
 ||sunglowshade.com^$document
 ||sungmafecheho.cf^$document
@@ -324113,7 +324205,6 @@
 ||sunlighthoot.com^$document
 ||sunlingsardenews.ga^$document
 ||sunlitesa.cf^$document
-||sunlitstyles.com^$document
 ||sunlive.com^$document
 ||sunlocu.cf^$document
 ||sunlogic.fr^$document
@@ -324354,7 +324445,6 @@
 ||supermodels.org^$document
 ||supernova-casino.fr^$document
 ||supernovastudiet.dk^$document
-||superofertinhas.online^$document
 ||superoffensive.site^$document
 ||superoptions.com^$document
 ||superoptionstrading.biz^$document
@@ -324843,6 +324933,7 @@
 ||suppringfornadi.tk^$document
 ||suppripprisgomen.tk^$document
 ||supprocacterpcraf.cf^$document
+||supprofi.com^$document
 ||supps-for-life.to^$document
 ||suppsafema.cf^$document
 ||suppsanlysynlege.ml^$document
@@ -325451,6 +325542,7 @@
 ||svetitidgucne.gq^$document
 ||svetleaculviorybe.cf^$document
 ||svetnesthalblogee.tk^$document
+||svetozar.org^$document
 ||svetsebgelandma.tk^$document
 ||svetu-sveze.cam^$document
 ||sveze-vrh.cyou^$document
@@ -325973,10 +326065,8 @@
 ||swiss-cleaner.de^$document
 ||swiss-funding.com^$document
 ||swiss-vests.com^$document
-||swiss29.com^$document
 ||swiss4win-casino.fr^$document
 ||swissbitcoins.com^$document
-||swisscoinco.com^$document
 ||swissdirectimport.com^$document
 ||swisse-pro.fr^$document
 ||swissedgponbipyt.gq^$document
@@ -329127,6 +329217,7 @@
 ||takinganybody.com^$document
 ||takirecnires.ml^$document
 ||tako-gecko.de^$document
+||takones.cl^$document
 ||takotech.it^$document
 ||takphisavirsepas.tk^$document
 ||takqul.tokyo^$document
@@ -329763,6 +329854,7 @@
 ||tanwoeju.xyz^$document
 ||tanxrf.tokyo^$document
 ||tanyacampos.shop^$document
+||tanzbienen.de^$document
 ||tanziheadsu.tk^$document
 ||tanzkurq.de^$document
 ||taochenyan.xyz^$document
@@ -330482,7 +330574,6 @@
 ||tavkghpb.cyou^$document
 ||tavlyk.tokyo^$document
 ||tavolacaldadagino.it^$document
-||tavolini.shop^$document
 ||tavoloni.myshopify.com^$document
 ||tavolpamotadit.tk^$document
 ||tavorn.ru^$document
@@ -330840,7 +330931,6 @@
 ||tchasemer.com.au^$document
 ||tchasexblogfusup.tk^$document
 ||tchfq1.cyou^$document
-||tchibooo-de.shop^$document
 ||tchihu.tokyo^$document
 ||tchinalverpaubea.ml^$document
 ||tchinazwebwa.gq^$document
@@ -331367,13 +331457,12 @@
 ||techguru.fr^$document
 ||techhelpnotes.com^$document
 ||techhojai.xyz^$document
-||techhouse.store^$document
 ||techicalguruji.xyz^$document
 ||techiescientist.com^$document
 ||techify.it^$document
+||techilabs.com^$document
 ||techinplanet.com^$document
 ||techit.xyz^$document
-||techitel.de^$document
 ||techjeevaraj.com^$document
 ||techjophosto.tk^$document
 ||techk.xyz^$document
@@ -332396,6 +332485,7 @@
 ||telthiporamiltio.ml^$document
 ||teltilefipentemp.ml^$document
 ||teltisupunchdaper.tk^$document
+||teltow-apotheke-berlin.de^$document
 ||teltowanrockten.ga^$document
 ||teltoweginpy.cf^$document
 ||teltrinecfi.ga^$document
@@ -333134,6 +333224,7 @@
 ||teragonseless.gq^$document
 ||teraheasorkann.ml^$document
 ||teraleti.tk^$document
+||teralin-de.store^$document
 ||teramovies.fun^$document
 ||terange.com^$document
 ||teranning.cf^$document
@@ -334243,7 +334334,6 @@
 ||tetgueguimensredpyo.tk^$document
 ||tethelchiwaza.tk^$document
 ||tethenatolor.ml^$document
-||tether-group.com^$document
 ||tetherc.com^$document
 ||tethermotebe.ga^$document
 ||tetherntergidogolf.tk^$document
@@ -334306,7 +334396,6 @@
 ||teudrapunno.tk^$document
 ||teue7k.cyou^$document
 ||teufacra.ga^$document
-||teufel-eu.shop^$document
 ||teufel.discounts.it.com^$document
 ||teufel.sa.com^$document
 ||teugedheamola.gq^$document
@@ -335667,7 +335756,6 @@
 ||thehookup.nyc^$document
 ||thehospitalitypartner.it^$document
 ||thehotpcophysub.cf^$document
-||thehuggy.de^$document
 ||thehughaven.com^$document
 ||thehungerfirstblood.com^$document
 ||theibirthkuningcete.tk^$document
@@ -335950,6 +336038,7 @@
 ||theoraslicelva.ga^$document
 ||theoravadera.gq^$document
 ||theordinarys.at^$document
+||theordinarys.de^$document
 ||theoreaddara.xyz^$document
 ||theoredizega.ml^$document
 ||theoremglobal.site^$document
@@ -336605,7 +336694,6 @@
 ||thinkdiffusion.com^$document
 ||thinkdiffusion.com^$document
 ||thinkdiscspoonatelun.tk^$document
-||thinking.otemo.shop^$document
 ||thinkingbit.xyz^$document
 ||thinkingledger.com^$document
 ||thinknufesdi.tk^$document
@@ -337847,6 +337935,7 @@
 ||ticket-fft.fr^$document
 ||ticket-flow.fr^$document
 ||ticket-gold.fr^$document
+||ticket-ledger.fr^$document
 ||ticket-mania.fr^$document
 ||ticket-master.fr^$document
 ||ticket-masters.fr^$document
@@ -337868,9 +337957,11 @@
 ||ticketgate.fr^$document
 ||ticketjoparis2024.fr^$document
 ||ticketjul.fr^$document
+||ticketledeger.fr^$document
 ||ticketlegend.fr^$document
 ||ticketlegende.fr^$document
 ||ticketmadter.fr^$document
+||ticketmall.fr^$document
 ||ticketmania.fr^$document
 ||ticketmast.fr^$document
 ||ticketmaste.fr^$document
@@ -338697,7 +338788,6 @@
 ||timebecausefacts.biz^$document
 ||timebecausesgroup.biz^$document
 ||timebestsactivitys.rest^$document
-||timebinary.com^$document
 ||timebusinessshes.biz^$document
 ||timebyyeargroups.biz^$document
 ||timecardworldthing.buzz^$document
@@ -338865,7 +338955,6 @@
 ||timosusbetoffmi.gq^$document
 ||timotanrebi.tk^$document
 ||timoteomilano.it^$document
-||timothyleahy.shop^$document
 ||timoufeali.cf^$document
 ||timpco.xyz^$document
 ||timpcurneupromethdaph.ml^$document
@@ -340729,6 +340818,7 @@
 ||titkazaverfi.ga^$document
 ||titkemilahighpul.cf^$document
 ||titlaretibisun.gq^$document
+||titleistrabatt.com^$document
 ||titlix.xyz^$document
 ||titlwave.com^$document
 ||titmaroonafar.ml^$document
@@ -341408,6 +341498,7 @@
 ||tm4jrji.cyou^$document
 ||tm5518u.tokyo^$document
 ||tm6fih.xyz^$document
+||tm7-vorwerk.com^$document
 ||tm7jq4.cyou^$document
 ||tm8widi.tokyo^$document
 ||tm9hup2.tokyo^$document
@@ -341714,6 +341805,7 @@
 ||tns.world^$document
 ||tns1tx1.tokyo^$document
 ||tnslir.tokyo^$document
+||tnsneaker.fr^$document
 ||tnsnzr.cyou^$document
 ||tnsportsradio.com^$document
 ||tnsquba.bar^$document
@@ -341925,7 +342017,6 @@
 ||todaydesignspeople.de^$document
 ||todaydownload.xyz^$document
 ||todaynumbermove.biz^$document
-||todayoffer.info^$document
 ||todayoffer.net^$document
 ||todayprizes-best3.info^$document
 ||todaysbackcamera.biz^$document
@@ -342335,7 +342426,6 @@
 ||tommobasiderba.ml^$document
 ||tommy--hilfiger.fr^$document
 ||tommybanks.info^$document
-||tommyfinland.com^$document
 ||tommyfrance.fr^$document
 ||tommyhilfiger-frace.fr^$document
 ||tommyhilfigerbunda.sk^$document
@@ -342463,10 +342553,13 @@
 ||toni-greif.de^$document
 ||tonibutse.cf^$document
 ||tonickportatabsynch.ga^$document
+||tonies-geschaft.com^$document
 ||tonies-rabattpreis.com^$document
 ||tonies-sonderangebot.com^$document
 ||tonies-spezialangebot.com^$document
+||toniesbesttoys.com^$document
 ||toniesosterreich.at^$document
+||toniesrabatt.com^$document
 ||toniesshop-de.com^$document
 ||toniesverkauf-de.com^$document
 ||tonightnoteoften.bar^$document
@@ -342583,7 +342676,6 @@
 ||toolsadvisor.org^$document
 ||toolsadvisor.org^$document
 ||toolsahoulofd.info^$document
-||toolsde.com^$document
 ||toolseer.com^$document
 ||toolsempower.com^$document
 ||toolsforhumans.ai^$document
@@ -342880,6 +342972,7 @@
 ||topmodeltoys.com^$document
 ||topmoneysurvey.com^$document
 ||topmontprestainui.cf^$document
+||topmotorcycleparts.com^$document
 ||topmracperclowcupunc.ga^$document
 ||topnaapaimado.ml^$document
 ||topnailsandspa.co^$document
@@ -343624,7 +343717,6 @@
 ||toyclasinetniestar.ga^$document
 ||toyconxaiblacti.cf^$document
 ||toydsc.cyou^$document
-||toyevs.store^$document
 ||toyfluvemdera.cf^$document
 ||toyforsale.com^$document
 ||toyfuel.myshopify.com^$document
@@ -343723,7 +343815,6 @@
 ||tpbpvp.tokyo^$document
 ||tpc02d.cyou^$document
 ||tpchan.xyz^$document
-||tpcinvest.com^$document
 ||tpcnskn.tk^$document
 ||tpcycf.tokyo^$document
 ||tpczc.com^$document
@@ -345809,7 +345900,6 @@
 ||trend-sex-hd.agency^$document
 ||trend-sexo-hd.xyz^$document
 ||trend-sexo-movs.xyz^$document
-||trend-shop.net^$document
 ||trend-slut-mag.buzz^$document
 ||trend-time.de^$document
 ||trend-top-porn.buzz^$document
@@ -346567,7 +346657,6 @@
 ||tritofsonrevisve.tk^$document
 ||tritomapoutriten.ml^$document
 ||triton-online.com^$document
-||tritoncapitalmarkets.com^$document
 ||tritonsat.buzz^$document
 ||tritunpemedsound.cf^$document
 ||tritworkcagybme.cf^$document
@@ -347408,6 +347497,7 @@
 ||tryglycogenplus.com^$document
 ||trygothqryzpobbits.tk^$document
 ||tryhar.my.id^$document
+||tryhavenmere.com^$document
 ||tryhologram.art^$document
 ||tryhologram.art^$document
 ||tryit.guru^$document
@@ -347415,6 +347505,7 @@
 ||trylaxativecoil.com^$document
 ||tryleap.ai^$document
 ||trylotcountrycontain.de^$document
+||trylumivera.com^$document
 ||tryly.bar^$document
 ||tryly.rest^$document
 ||trymaverick.com^$document
@@ -348093,6 +348184,7 @@
 ||tucisirecoforp.gq^$document
 ||tucisugebfines.cf^$document
 ||tucitherndibale.gq^$document
+||tuckerandwelch.com^$document
 ||tucking.com^$document
 ||tuckmabetimo.tk^$document
 ||tucnaciselo.cf^$document
@@ -348486,10 +348578,8 @@
 ||tuporhuetragcarli.cf^$document
 ||tuposlinksigtio.ml^$document
 ||tuposyngeroubkai.ml^$document
-||tupperware-uaeonline.com^$document
 ||tupperwarefrance.fr^$document
 ||tupperwaresales-us.com^$document
-||tupperwarestore-us.com^$document
 ||tupperwarestores.com^$document
 ||tupperwarseonline.com^$document
 ||tuppovoumica.ga^$document
@@ -349709,6 +349799,7 @@
 ||typepartsbeyond.bar^$document
 ||typesbluesystems.biz^$document
 ||typescasescountry.de^$document
+||typesoflampe.com^$document
 ||typewriter.fr^$document
 ||typhidehe.ga^$document
 ||typhy.xyz^$document
@@ -353745,7 +353836,6 @@
 ||ungfororinham.ml^$document
 ||unghiestyle.it^$document
 ||unghourbestpromis.tk^$document
-||ungi-analytics.de^$document
 ||ungicalwillki.tk^$document
 ||ungifrosamon.tk^$document
 ||ungiobelrindrea.ml^$document
@@ -353831,7 +353921,9 @@
 ||unibeg.fr^$document
 ||unibesrelotda.ml^$document
 ||unibet-fr.fr^$document
+||unibet-login.fr^$document
 ||unibetfr.fr^$document
+||unibetlogin.fr^$document
 ||unibey.fr^$document
 ||unibinelov.gq^$document
 ||unibresacobamb.tk^$document
@@ -354072,7 +354164,9 @@
 ||unitymusicfestival.ca^$document
 ||unitywait.com^$document
 ||univ-aix-provence.fr^$document
+||univ-allier.fr^$document
 ||univ-amiens.fr^$document
+||univ-antille.fr^$document
 ||univ-antllies.fr^$document
 ||univ-anu.fr^$document
 ||univ-avginon.fr^$document
@@ -354174,6 +354268,7 @@
 ||universalpacoche.es^$document
 ||universalprotection.de^$document
 ||universalstudioshollywood.fr^$document
+||universdumaillot.fr^$document
 ||universeshop.eu^$document
 ||universfoot.fr^$document
 ||universita-corsica.fr^$document
@@ -358860,6 +358955,7 @@
 ||vasacap.my.id^$document
 ||vasafirareto.tk^$document
 ||vasagleangebote.de^$document
+||vasagleaugeschaft.com^$document
 ||vasaglede.com^$document
 ||vasagulfkendra.ga^$document
 ||vasantiberta.tk^$document
@@ -360481,7 +360577,6 @@
 ||vdd8k.rest^$document
 ||vdd96.rest^$document
 ||vddae.pro^$document
-||vddeals.com^$document
 ||vddpjla.bar^$document
 ||vddqzs.tokyo^$document
 ||vddr.cc^$document
@@ -360938,6 +361033,7 @@
 ||velebruar.gq^$document
 ||veleda.fr^$document
 ||veledogthankfe.tk^$document
+||velencia.de^$document
 ||velerngo.my.id^$document
 ||velesmuijacweaba.ga^$document
 ||velidenbuzzlockpo.ml^$document
@@ -360992,6 +361088,7 @@
 ||velucrafounquikind.gq^$document
 ||velugasebir.tk^$document
 ||veluncwawhowalri.tk^$document
+||velvacosmetics.com^$document
 ||velvet-mode.store^$document
 ||velvetparfumde.com^$document
 ||velvezev.ru^$document
@@ -361252,7 +361349,6 @@
 ||venuso.shop^$document
 ||venusto.de^$document
 ||venusulong.tk^$document
-||venusveil.net^$document
 ||venuszombypotential.com^$document
 ||venvagerstranexed.tk^$document
 ||venvor.fr^$document
@@ -361312,6 +361408,7 @@
 ||veqwwe.cn^$document
 ||vera-blog.xyz^$document
 ||vera-mode.com^$document
+||vera-modehaus.com^$document
 ||veracbontgerfeza.ml^$document
 ||verackprotte.cf^$document
 ||veradam.com^$document
@@ -362845,7 +362942,6 @@
 ||viarecasa.tk^$document
 ||viarerapdiara.cf^$document
 ||viasaderburccosry.ml^$document
-||viasalutis.de^$document
 ||viaseisoftforstenre.ga^$document
 ||viasisransgef.ga^$document
 ||viasneetminigall.tk^$document
@@ -363477,6 +363573,7 @@
 ||vierinoforle.tk^$document
 ||vieriranesssubp.ga^$document
 ||vieriscovecartcir.tk^$document
+||vierjahreszeitengarten.com^$document
 ||vieromde.ml^$document
 ||vieroodungent.tk^$document
 ||vierowstofdebome.ga^$document
@@ -363699,6 +363796,7 @@
 ||viking-cnc.com^$document
 ||viking-luck-casino.fr^$document
 ||viking-solutions.com^$document
+||vikingchic.de^$document
 ||vikingegryden.dk^$document
 ||viko.xyz^$document
 ||vikocasegasul.tk^$document
@@ -363792,6 +363890,7 @@
 ||villentocasinos.fr^$document
 ||villepariis.fr^$document
 ||villepinnet.fr^$document
+||villeroy-outlets.shop^$document
 ||villeroyboch-eu.shop^$document
 ||villetteaschiera.perugia.it^$document
 ||villiarisgixavi.cf^$document
@@ -366757,7 +366856,6 @@
 ||vinstetiturnthers.ml^$document
 ||vint3d.fr^$document
 ||vint4d.fr^$document
-||vinta-series.shop^$document
 ||vintagegloveprior.com^$document
 ||vintageladies.de^$document
 ||vintageledger.fr^$document
@@ -367456,6 +367554,7 @@
 ||vitalnfo.fr^$document
 ||vitalprime.fr^$document
 ||vitals-formulairs.fr^$document
+||vitalwelt-apotheken.de^$document
 ||vitamin-ss.xyz^$document
 ||vitaminizingfrshc.buzz^$document
 ||vitaminz.si^$document
@@ -367522,7 +367621,6 @@
 ||viuzdc.tokyo^$document
 ||viv.im^$document
 ||viva-design56.ru^$document
-||viva-markets.com^$document
 ||vivaboosts.com^$document
 ||vivaciousprinter.com^$document
 ||vivad.in^$document
@@ -367587,7 +367685,6 @@
 ||vivobarefoot.com.de^$document
 ||vivobarefootbordeaux.fr^$document
 ||vivobarefootbrasil.net^$document
-||vivobarefootde.com^$document
 ||vivobarefootgermany.de^$document
 ||vivobarefootmarseille.fr^$document
 ||vivobarefootosterreich.at^$document
@@ -367596,9 +367693,7 @@
 ||vivobarefootschweiz.com^$document
 ||vivobarefootshoesparis.fr^$document
 ||vivobarefootshopberlin.de^$document
-||vivobarefootsuomi.com^$document
 ||vivobarefootwien.at^$document
-||vivobareshop.com^$document
 ||vivomadstisur.tk^$document
 ||vivoshoesfrance.fr^$document
 ||vivotulyqyjo.gq^$document
@@ -367956,7 +368051,6 @@
 ||vlink6.com^$document
 ||vlip-ontarget.lv^$document
 ||vlixbfa.tokyo^$document
-||vlizo-berlin.de^$document
 ||vlizo-modehaus.de^$document
 ||vlizo-modehaus.shop^$document
 ||vlj7sv.xyz^$document
@@ -368396,6 +368490,7 @@
 ||vogueretailus.com^$document
 ||vogueusshoe.com^$document
 ||voguewelt.de^$document
+||voguezeitberlin.store^$document
 ||vogylfimunte.cf^$document
 ||vohahunore.tk^$document
 ||vohasaggmentla.cf^$document
@@ -368616,7 +368711,6 @@
 ||volleytornei.ch^$document
 ||vollkommen-heit.de^$document
 ||vollmer-handel.de^$document
-||vollmer-replica.com^$document
 ||vollmers.es^$document
 ||vollnaposuncons.ga^$document
 ||vollpingmentiogran.cf^$document
@@ -368666,7 +368760,6 @@
 ||voltmarcutuca.ga^$document
 ||voltmotposaggper.cf^$document
 ||voltocakonra.ga^$document
-||voltryzapex.app^$document
 ||voltryzapex.at^$document
 ||voltsbikeshop.com^$document
 ||volture.de^$document
@@ -368713,6 +368806,7 @@
 ||vonlidipsa.tk^$document
 ||vonngallery.com^$document
 ||vonqsda.bar^$document
+||vonscarberry.com^$document
 ||vonsilds-slaegter.dk^$document
 ||vonxan.cyou^$document
 ||vonyobanfa.dk^$document
@@ -368820,6 +368914,7 @@
 ||vorweck.fr^$document
 ||vorwerk-com.de^$document
 ||vorwerk-deutschland.de^$document
+||vorwerk-tm7.at^$document
 ||vorwerk-tm7.de^$document
 ||vorzeltede.com^$document
 ||vos-abonnement.fr^$document
@@ -371535,10 +371630,10 @@
 ||waldepomarsi.ml^$document
 ||waldfeuerholz.de^$document
 ||waldgewandt.de^$document
-||waldholz.net^$document
 ||waldidownpers.gq^$document
 ||waldnerhof.it^$document
 ||waldogeneralholdings.com^$document
+||waldorfmode.com^$document
 ||waldorfski-vrtec-celje.si^$document
 ||waldseeclub.de^$document
 ||waldundfeld.myshopify.com^$document
@@ -371808,7 +371903,6 @@
 ||wanreparorimo.tk^$document
 ||wanrogamebureg.tk^$document
 ||wansbelttivamuli.ga^$document
-||wanster.shop^$document
 ||want-s0me-push.com^$document
 ||want-some-psh.com^$document
 ||want-some-psh.net^$document
@@ -372029,6 +372123,7 @@
 ||warenwelt-eu.com^$document
 ||warepapermices.cf^$document
 ||warereterp.ml^$document
+||waresco.com^$document
 ||warevo.de^$document
 ||warfarmdelllagastdi.tk^$document
 ||warframecn.com^$document
@@ -372075,9 +372170,7 @@
 ||warmonsserfaegesro.tk^$document
 ||warmovie.xyz^$document
 ||warmringbangslican.tk^$document
-||warmsettle.com^$document
 ||warmstorinfogi.cf^$document
-||warmtepompe.com^$document
 ||warmthelapse.com^$document
 ||warmthless.best^$document
 ||warmtistpharnidula.cf^$document
@@ -372572,6 +372665,7 @@
 ||watchtherehandman.biz^$document
 ||watchturreto.tk^$document
 ||watchverified.fr^$document
+||watchvestvermittlung.com^$document
 ||watchworklittle.rest^$document
 ||watchwrestlings.net^$document
 ||watchxxxcams.xyz^$document
@@ -373535,7 +373629,6 @@
 ||wearline.co^$document
 ||wearnwatt.de^$document
 ||wearonoffers.news^$document
-||wearowner.com^$document
 ||wearshisitselfmans.biz^$document
 ||wearshyritocu.tk^$document
 ||wearsstudelrefqui.tk^$document
@@ -373786,7 +373879,6 @@
 ||weber-werkstatt.com^$document
 ||weberelektronik.de^$document
 ||webermode.com^$document
-||weberoutlet.com^$document
 ||webersalzburg.at^$document
 ||weberstyle.de^$document
 ||weberundalbrecht.de^$document
@@ -374374,7 +374466,6 @@
 ||weimultiphabala.tk^$document
 ||weimuvizele.ga^$document
 ||wein-deluxe.eu^$document
-||wein-svip.shop^$document
 ||weinabrelorla.ml^$document
 ||weinachtsgeschenke.com^$document
 ||weinacouhealhymelk.ga^$document
@@ -374575,6 +374666,7 @@
 ||wellnessreviews.de^$document
 ||wellnessunlife.it^$document
 ||wellnet.fr^$document
+||wellott.com^$document
 ||wellparfatillhind.tk^$document
 ||wellpensmanmoti.ml^$document
 ||wellrabpodersber.ga^$document
@@ -374621,7 +374713,6 @@
 ||welpafahituphen.ga^$document
 ||welpaivenleatater.tk^$document
 ||welpaylrecbafur.tk^$document
-||welpenderliebe.com^$document
 ||welpenhimmel.de^$document
 ||welpenkaufen.at^$document
 ||welpococeromi.gq^$document
@@ -374648,6 +374739,7 @@
 ||weltsessmaredri.ml^$document
 ||weltshop24.com^$document
 ||weltsweetsoursawa.ml^$document
+||weltteppiche.com^$document
 ||welttingsomoke.tk^$document
 ||weltvirearthca.tk^$document
 ||weltweit-akkus.de^$document
@@ -374755,16 +374847,17 @@
 ||werisksbeyondlifes.biz^$document
 ||werisu.xyz^$document
 ||werk-garten.de^$document
+||werk-werkzeuge.com^$document
 ||werkbank-klappbar.de^$document
 ||werkbankli.tk^$document
 ||werkboxpro.com^$document
 ||werkcakejuncma.ga^$document
 ||werkesesneopor.gq^$document
+||werkgeist.com^$document
 ||werkvoorraden.com^$document
-||werkzeug-haus.de^$document
 ||werkzeug-salesshop.com^$document
-||werkzeugangebot.shop^$document
 ||werkzeugausrustung.com^$document
+||werkzeuge-maschinen.com^$document
 ||werkzeugebefestigung.com^$document
 ||werkzeugebillig.com^$document
 ||werkzeugebohrer.de^$document
@@ -374787,6 +374880,7 @@
 ||wermidirecathimb.cf^$document
 ||wermiosposas.web.app^$document
 ||wermivisowea.tk^$document
+||werner-handel24.de^$document
 ||werner-lederer.de^$document
 ||werner-mode.de^$document
 ||werners24.de^$document
@@ -374928,6 +375022,7 @@
 ||westkursinerli.ga^$document
 ||westkurveretro.futbol^$document
 ||westlafarmersmarket.info^$document
+||westlando.de^$document
 ||westlenwentdesil.tk^$document
 ||westlosucappaver.cf^$document
 ||westlozxaresoun.cf^$document
@@ -376163,7 +376258,6 @@
 ||wiiralt.ee^$document
 ||wiiselfdiscla.ga^$document
 ||wiisumehxandka.tk^$document
-||wiitrader.com^$document
 ||wiiwijustfreepmin.cf^$document
 ||wiixin.com^$document
 ||wiiyeyd.tokyo^$document
@@ -376321,6 +376415,7 @@
 ||wildrobin-fr.fr^$document
 ||wildrosiwifichea.tk^$document
 ||wildsadophiphepe.tk^$document
+||wildschlaf.com^$document
 ||wildsino-casino.fr^$document
 ||wildsinocasino1.fr^$document
 ||wildsinojouer.fr^$document
@@ -376936,6 +377031,7 @@
 ||winbest-prizesbox9.life^$document
 ||winbet-casino.fr^$document
 ||winbet-fr.fr^$document
+||winbet.pm^$document
 ||winbipindono.tk^$document
 ||winbotagooskuni.tk^$document
 ||winbuinnerchithy.tk^$document
@@ -377303,7 +377399,6 @@
 ||wintercitizen.xyz^$document
 ||winterfallkits.de^$document
 ||wintergirlz.com^$document
-||winterheizung.de^$document
 ||winterholt.com^$document
 ||winterier.com^$document
 ||winterjacken-saleshop.com^$document
@@ -377443,6 +377538,7 @@
 ||wisawi.bar^$document
 ||wisconsinestateandtaxblog.com^$document
 ||wisconsinwaste.com^$document
+||wisdomandprudence.net^$document
 ||wisdomofwo.xyz^$document
 ||wise-bank.fr^$document
 ||wise-developpement.fr^$document
@@ -377450,7 +377546,6 @@
 ||wise420.xyz^$document
 ||wisebanc.com^$document
 ||wisebocogbundva.cf^$document
-||wisecapitalx.com^$document
 ||wisecountyissues.com^$document
 ||wiselyelemental.com^$document
 ||wiseowlcomputers.buzz^$document
@@ -378347,7 +378442,6 @@
 ||wobbsurethe.tk^$document
 ||wobbtikedrovsnan.tk^$document
 ||wobeeh0.cyou^$document
-||wobeg.com^$document
 ||wobida.cn^$document
 ||wobm.com^$document
 ||wobysb.tokyo^$document
@@ -378408,6 +378502,7 @@
 ||wohngartenshop.de^$document
 ||wohnkuchede.com^$document
 ||wohnlicht.rarnsn.top^$document
+||wohnliebe-berlin.de^$document
 ||wohnlinpamp.ml^$document
 ||wohnnensrintose.cf^$document
 ||wohnpomorcaran.tk^$document
@@ -378491,6 +378586,7 @@
 ||wolftowscgiserdar.cf^$document
 ||wolfvpn.ru^$document
 ||wolfwestvercadamo.tk^$document
+||wolfytienda.cl^$document
 ||wolfzorciogreasar.ga^$document
 ||woljtuxo.tokyo^$document
 ||wolk.si^$document
@@ -378629,6 +378725,7 @@
 ||womanyearsknowrealizes.biz^$document
 ||womanyearspecific.bar^$document
 ||womatudescicc.cf^$document
+||wombatscityhostelviennathelounge.at-austria.com^$document
 ||wombo.art^$document
 ||wombo.art^$document
 ||wombvk.tokyo^$document
@@ -380804,7 +380901,6 @@
 ||wunderladen.store^$document
 ||wunderprima.com^$document
 ||wundershark.de^$document
-||wunderwild.de^$document
 ||wuneqik.rest^$document
 ||wuney.xyz^$document
 ||wunmgt.bar^$document
@@ -381106,6 +381202,7 @@
 ||wwlcl.fr^$document
 ||wwlkxa.rest^$document
 ||wwll88.com^$document
+||wwllan.com^$document
 ||wwlouo.tokyo^$document
 ||wwlpgg.bar^$document
 ||wwmapf.tokyo^$document
@@ -384921,7 +385018,6 @@
 ||xmoaxq.bar^$document
 ||xmod3b.cyou^$document
 ||xmoevgf.tokyo^$document
-||xmonetatrading.com^$document
 ||xmopo1m.cyou^$document
 ||xmore.rest^$document
 ||xmos4oy.shop^$document
@@ -385434,6 +385530,7 @@
 ||xn--mtisafpa-b1a.fr^$document
 ||xn--mtorama-byab.fr^$document
 ||xn--mtsu25by8oh1u.wang^$document
+||xn--musedulouvre-deb.fr^$document
 ||xn--muta-sant-j4a.fr^$document
 ||xn--mutuelle-viasant-qqb.fr^$document
 ||xn--navigo-idf-indemnit-tzb.fr^$document
@@ -392528,7 +392625,6 @@
 ||yojwzt.bar^$document
 ||yojy6k.shop^$document
 ||yok0ku.xyz^$document
-||yokee.de^$document
 ||yokeea.web.app^$document
 ||yokemart.com^$document
 ||yokofashionswitzerland.com^$document
@@ -392581,6 +392677,7 @@
 ||yoomeeru.xyz^$document
 ||yoopum.tokyo^$document
 ||yoorio.tokyo^$document
+||yooso.de^$document
 ||yoota.fr^$document
 ||yootg.com^$document
 ||yooxey.shop^$document
@@ -392652,6 +392749,7 @@
 ||youcareershowwonders.bar^$document
 ||youceff.com^$document
 ||youcgta.bar^$document
+||youdenovahome.shop^$document
 ||youdesign.pl^$document
 ||youdi8.com^$document
 ||youdns13.com^$document
@@ -392688,7 +392786,6 @@
 ||younggeeks.in^$document
 ||younginnocence.buzz^$document
 ||youngla-france.fr^$document
-||youngla-suomi.com^$document
 ||younglafrance-eu.fr^$document
 ||younglafrance.fr^$document
 ||younglafranceeurope.fr^$document
@@ -393528,7 +393625,6 @@
 ||yourfirst-bestprize9.life^$document
 ||yourfun.club^$document
 ||yourgetdating.com^$document
-||yourgiftshopping.com^$document
 ||yourglobal-profit1.com^$document
 ||yourglobalprofits.com^$document
 ||yourglobalprofits.life^$document
@@ -395221,6 +395317,7 @@
 ||yylidbn.bar^$document
 ||yylomy.tokyo^$document
 ||yyltka.bar^$document
+||yyluckbb.com^$document
 ||yymeql.tokyo^$document
 ||yymnej.rest^$document
 ||yymscqn.work^$document
@@ -397359,6 +397456,7 @@
 ||zakoazi.tokyo^$document
 ||zakokr.tokyo^$document
 ||zaktkll.tokyo^$document
+||zaladowintersale.shop^$document
 ||zalanado.fr^$document
 ||zalando-ptive.fr^$document
 ||zalandode.com^$document
@@ -397373,7 +397471,6 @@
 ||zalewadev.pl^$document
 ||zalicheapmobava.gq^$document
 ||zalidydughalf.gq^$document
-||zalieroo.de^$document
 ||zalinkdesdeufe.ga^$document
 ||zalisubtmoordda.tk^$document
 ||zalkeyblacalalol.ga^$document
@@ -397382,6 +397479,7 @@
 ||zaloga-tovarna.news^$document
 ||zaloga-zbiranje.news^$document
 ||zalolinohec.tk^$document
+||zalori.de^$document
 ||zalotcontcagbi.tk^$document
 ||zaloweb.pro^$document
 ||zalsivibilis.tk^$document
@@ -398137,6 +398235,7 @@
 ||zeigaileribire.cf^$document
 ||zeigalderscomsemo.tk^$document
 ||zeigdeinbein.de^$document
+||zeigstil.com^$document
 ||zeihagirombesch.ml^$document
 ||zeikeutinghutchprog.ga^$document
 ||zeikutaleshetec.tk^$document
@@ -398217,6 +398316,7 @@
 ||zelterabatt.com^$document
 ||zeltkinggear.com^$document
 ||zelttoo.de^$document
+||zeltundschlaf.com^$document
 ||zemacriasmaren.tk^$document
 ||zembdawagough.ml^$document
 ||zembnogalidfunu.ga^$document
@@ -398254,6 +398354,7 @@
 ||zenmate.com^$document
 ||zenmeta.com^$document
 ||zenne.xyz^$document
+||zeno-paris.shop^$document
 ||zenova-shop.de^$document
 ||zenovaa.store^$document
 ||zenpool.eu^$document
@@ -398448,6 +398549,7 @@
 ||zezhouhong.com^$document
 ||zezrdc.tokyo^$document
 ||zezymoqodifo.tk^$document
+||zezzo.de^$document
 ||zf1ihbg.cyou^$document
 ||zf22mt.tokyo^$document
 ||zf32fr.cyou^$document
@@ -399109,6 +399211,7 @@
 ||zigcynacomta.tk^$document
 ||zigggastclapavexib.tk^$document
 ||ziggssanchintvani.tk^$document
+||zigoff.de^$document
 ||zigoko.bar^$document
 ||zigora.tokyo^$document
 ||zigsai.bar^$document
@@ -399179,6 +399282,7 @@
 ||zimkamuldovsneck.ml^$document
 ||zimmermann-design.eu^$document
 ||zimmermannparis.fr^$document
+||zimmerpflanzens.com^$document
 ||zimmerpikk.sicherkamt.click^$document
 ||zimnevalothis.gq^$document
 ||zimqozx.bar^$document
@@ -399895,7 +399999,6 @@
 ||zmqqyp.tokyo^$document
 ||zmqyyt.tokyo^$document
 ||zmqzyd.tokyo^$document
-||zmr-handel.de^$document
 ||zmrmxcu.cyou^$document
 ||zmrp27k.cyou^$document
 ||zmrtso.tokyo^$document
@@ -401109,7 +401212,6 @@
 ||zubairafridi.xyz^$document
 ||zubdzh.cyou^$document
 ||zubehorfahrrad.com^$document
-||zubehorgeschaft.com^$document
 ||zubehousechi.ga^$document
 ||zubfdm.tokyo^$document
 ||zubjxcg.bar^$document
