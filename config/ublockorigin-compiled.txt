@@ -134,6 +134,7 @@
 *://*.neuronvm.com/docs/*
 *://*.eatmorebutter.com/*
 *://*.numberanalytics.com/blog/*
+*://*.gametierlist.com/*
 
 # ---------- Misleading Ad Websites (Articles made to sell products, etc)
 
@@ -32112,6 +32113,7 @@
 ||absolutehistory.com^$document
 ||absolutelk.com^$document
 ||absolutelya.xyz^$document
+||absolutelyn.com^$document
 ||absoluteo.com^$document
 ||absolutequalitylimo.buzz^$document
 ||absoluteshopping.news^$document
@@ -46354,7 +46356,6 @@
 ||arprodinraphil.tk^$document
 ||arpropvotrenttersde.cf^$document
 ||arprovunensa.tk^$document
-||arptrade.com^$document
 ||arpucacuni.ga^$document
 ||arpukpennthernsaga.tk^$document
 ||arpulijami.gq^$document
@@ -51433,7 +51434,6 @@
 ||b-o-p.xyz^$document
 ||b-palatine.fr^$document
 ||b-populaire-mediterannee.fr^$document
-||b-tinvest.com^$document
 ||b-und-h.com^$document
 ||b-y.by^$document
 ||b.tc^$document
@@ -60763,7 +60763,6 @@
 ||bitideloma.tk^$document
 ||bitiflighcalti.tk^$document
 ||bitigy.xyz^$document
-||bitiq.app^$document
 ||bitis.dk^$document
 ||bititet.xyz^$document
 ||bitjapan.web.app^$document
@@ -72505,7 +72504,6 @@
 ||capidhouser.medium.com^$document
 ||capidhouser.mobi^$document
 ||capigeon.info^$document
-||capital-coins.com^$document
 ||capital-diamond.com^$document
 ||capital-epargne.com^$document
 ||capital-rvg.com^$document
@@ -84024,6 +84022,7 @@
 ||clenvekealsire.tk^$document
 ||cleo-capital.com^$document
 ||cleoberlin.de^$document
+||cleobetrafr.fr^$document
 ||cleocaffe.it^$document
 ||cleoraqpk.web.app^$document
 ||clepasosimme.ml^$document
@@ -84602,6 +84601,7 @@
 ||cllnvb.tokyo^$document
 ||cllrwv.tokyo^$document
 ||cllub-internet.fr^$document
+||cllusatoam.com^$document
 ||cllxpc.rest^$document
 ||clm1xz.cyou^$document
 ||clmccray50.com^$document
@@ -91859,6 +91859,7 @@
 ||cp0753.com^$document
 ||cp0m7.tokyo^$document
 ||cp1t6s.shop^$document
+||cp24.pl^$document
 ||cp28qcm.tokyo^$document
 ||cp2ooc.xyz^$document
 ||cp2vfx.cyou^$document
@@ -91893,6 +91894,7 @@
 ||cpam-amelie-vitale.fr^$document
 ||cpam-amelifr.fr^$document
 ||cpam-amilie-renouvellement.fr^$document
+||cpam-angouleme.fr^$document
 ||cpam-assurancemaladie.fr^$document
 ||cpam-bourgenbresse.fr^$document
 ||cpam-carte-vitale.fr^$document
@@ -110571,6 +110573,7 @@
 ||drasneuchallofuncdis.cf^$document
 ||drasralrentmenlia.ml^$document
 ||drasthekasermory.cf^$document
+||drationecla.com^$document
 ||draussenfeet.de^$document
 ||dravemelehdub.ml^$document
 ||dravojytwed.cf^$document
@@ -112068,6 +112071,8 @@
 ||dudenulnessmi.tk^$document
 ||dudescarpeitalia.com^$document
 ||dudeschuhegermany.com^$document
+||dudespin-france.fr^$document
+||dudespin-officiel.fr^$document
 ||dudespincasino.fr^$document
 ||dudesypod.com^$document
 ||dudk7t.tokyo^$document
@@ -119084,6 +119089,7 @@
 ||emailconverts.info^$document
 ||emailcreditlyonnais.fr^$document
 ||emailinfoascces.fr^$document
+||emailing-ameli.fr^$document
 ||emailmarketingservices.xyz^$document
 ||emailnotifications-ca.fr^$document
 ||emailorange.fr^$document
@@ -138439,6 +138445,7 @@
 ||france24-7.fr^$document
 ||france24actus.fr^$document
 ||france3-lyon.ovh^$document
+||france3-regions.fr^$document
 ||franceactuelle.fr^$document
 ||franceactuweb.fr^$document
 ||franceairfreight.fr^$document
@@ -175983,6 +175990,7 @@
 ||infeethesudo.gq^$document
 ||inferright.com^$document
 ||infersardine.com^$document
+||inferutmati.com^$document
 ||infexiceba.tk^$document
 ||inffecendragsax.tk^$document
 ||inffenpiscupul.cf^$document
@@ -187894,6 +187902,7 @@
 ||jul-store.fr^$document
 ||julbillet.fr^$document
 ||julconcert.fr^$document
+||julconcertfrance.fr^$document
 ||julconcerts.fr^$document
 ||julekurve.dk^$document
 ||julia-alea.de^$document
@@ -199609,6 +199618,9 @@
 ||laninerraterde.tk^$document
 ||lanira.cf^$document
 ||lanisgeigrac.ga^$document
+||lanista-casino.fr^$document
+||lanista-france.fr^$document
+||lanista-officiel.fr^$document
 ||lanistacasino.fr^$document
 ||lanka2020.com^$document
 ||lankantunes.com^$document
@@ -202008,6 +202020,7 @@
 ||leboncoins.fr^$document
 ||leboncoinsecure.fr^$document
 ||leboncoinsecurepaiement.fr^$document
+||leboncoinsecurise.fr^$document
 ||leboncoinsecurisepaiement.fr^$document
 ||leboncoinsecurite.fr^$document
 ||leboncoinsequestre.fr^$document
@@ -217632,6 +217645,7 @@
 ||markprom.ru^$document
 ||markrestsimpsandreg.cf^$document
 ||marksandspencerparis.fr^$document
+||marksandspencers.fr^$document
 ||marksawsmissodisfau.ga^$document
 ||markspigroasting.com^$document
 ||marksurdilookse.ga^$document
@@ -220373,7 +220387,6 @@
 ||melgsuzolitli.tk^$document
 ||melhalfcerking.cf^$document
 ||melheagukingprom.ml^$document
-||melia-co.com^$document
 ||melidazinsiedis.gq^$document
 ||melidechikgeco.tk^$document
 ||melifisantajokijoki.biz^$document
@@ -227106,6 +227119,7 @@
 ||mondial-relay-colis.fr^$document
 ||mondial-relay-express.fr^$document
 ||mondial-relay-fr.fr^$document
+||mondial-relay-info.fr^$document
 ||mondial-relay-livraison.fr^$document
 ||mondial-relay-livraisons.fr^$document
 ||mondial-relay-pickup.fr^$document
@@ -243023,7 +243037,6 @@
 ||norviofogrei.ga^$document
 ||norvpn.fr^$document
 ||norwadicoreama.cf^$document
-||norwayhotel.net^$document
 ||norwaynewstoday.com^$document
 ||norwbo.tokyo^$document
 ||norwichsunbeds.eu^$document
@@ -250653,6 +250666,7 @@
 ||only-pizza.com^$document
 ||only-sexy-girls.com^$document
 ||only-shoes.fr^$document
+||only-spin.fr^$document
 ||only2leaked.co^$document
 ||only4leaked.co^$document
 ||onlyappearareamarket.buzz^$document
@@ -250710,6 +250724,7 @@
 ||onlysexualstills.rest^$document
 ||onlyslotmakesquestion.biz^$document
 ||onlysonsde.com^$document
+||onlyspinsfr.fr^$document
 ||onlywaifus.ai^$document
 ||onlywaifus.ai^$document
 ||onlywatersitfinancial.biz^$document
@@ -288334,6 +288349,7 @@
 ||reineygultuilos.ga^$document
 ||reinholdmetall.ee^$document
 ||reinholdrasenmaher.com^$document
+||reinholzexpress.com^$document
 ||reinigung-experten.at^$document
 ||reinigungszubehor.com^$document
 ||reinirkens-handel.de^$document
@@ -291670,6 +291686,7 @@
 ||rhodalatdfathryu.ml^$document
 ||rhode.co.at^$document
 ||rhodenlukasur.tk^$document
+||rhodeshotel24.com^$document
 ||rhodicavramrionen.tk^$document
 ||rhodocextoben.tk^$document
 ||rhodolmarno.tk^$document
@@ -294798,6 +294815,7 @@
 ||rnmlrz8.work^$document
 ||rnnxz.cyou^$document
 ||rnomji.bar^$document
+||rnondialrelay.fr^$document
 ||rnonopd.work^$document
 ||rnooab.work^$document
 ||rnowoz.cyou^$document
@@ -305084,6 +305102,7 @@
 ||securisationenligne.fr^$document
 ||securisationmajpay.fr^$document
 ||securisationpay.fr^$document
+||securisationsservice.fr^$document
 ||securise-ameli.fr^$document
 ||securise-latoile-connexion-n26.fr^$document
 ||securise-moncompte-orange.fr^$document
@@ -307376,6 +307395,8 @@
 ||services-maladies.fr^$document
 ||services-netflix-abonnement.fr^$document
 ||services-netflix.fr^$document
+||services-opposition.fr^$document
+||services-oppositions.fr^$document
 ||services-paiements-amendes.fr^$document
 ||services-paypal.fr^$document
 ||services-paypl.fr^$document
@@ -332628,6 +332649,7 @@
 ||tempkommangpubburg.cf^$document
 ||tempkz.xyz^$document
 ||templar.network^$document
+||template.pro^$document
 ||templed.website^$document
 ||templetegifga.tk^$document
 ||templeternorrco.cf^$document
@@ -336529,6 +336551,7 @@
 ||thiathracadexic.cf^$document
 ||thiaverbirthrepki.tk^$document
 ||thiavervirove.tk^$document
+||thibautforte.fr^$document
 ||thibiseattvervoso.tk^$document
 ||thibjb.tokyo^$document
 ||thicceibenrent.tk^$document
@@ -360993,6 +361016,7 @@
 ||vejashoesuk.com^$document
 ||vejashop.fr^$document
 ||vejaslovenia.com^$document
+||vejasoldes.fr^$document
 ||vejasparis.fr^$document
 ||vejastorefrance.fr^$document
 ||vejasuomi.net^$document
@@ -368619,6 +368643,7 @@
 ||voitremhamrocho.ml^$document
 ||voitrucburgcallitu.cf^$document
 ||voiture-leboncoin.fr^$document
+||voitureboost.com^$document
 ||voiturepaschers.fr^$document
 ||voiuwu.tokyo^$document
 ||voivagaler.ga^$document
@@ -380681,7 +380706,6 @@
 ||wtazeja.tokyo^$document
 ||wtb4cp.cyou^$document
 ||wtbgjpl.work^$document
-||wtcentral.com^$document
 ||wtcgroup.com.cn^$document
 ||wtchersweb.com^$document
 ||wtchin.xyz^$document
@@ -386944,7 +386968,6 @@
 ||xtqlkq.tokyo^$document
 ||xtraconinvitechess2020.dk^$document
 ||xtrade.org.uk^$document
-||xtrader365.com^$document
 ||xtraservice.dk^$document
 ||xtrash-tarck.com^$document
 ||xtremereptiles.xyz^$document
@@ -402270,8 +402293,11 @@
 ||arsalan-academy.com/blogs^$document
 ||ass-security.fr/blog^$document
 ||atys-concept.com/blog-de-la-performance^$document
+||auto-doc.fr/info^$document
+||auto-doc.fr/magazin^$document
 ||auvik.com/*/blog^$document
 ||auxptitscadeaux.com/blogs^$document
+||avatacar.com/blog^$document
 ||avg.com/*/signal^$document
 ||avizio.fr/blog^$document
 ||avizio.fr/metier^$document
@@ -402303,6 +402329,7 @@
 ||capcar.fr/blog^$document
 ||capelstore.fr/blog^$document
 ||carreblanc.com/magazine^$document
+||carter-cash.com/blog^$document
 ||castorama.fr/idees-et-conseils^$document
 ||cbd-discounter.fr/blog^$document
 ||cbdshopfrance.fr/blog^$document
@@ -402540,6 +402567,8 @@
 ||mikrocloud.com/blog^$document
 ||minitool.com/news^$document
 ||missnumerique.com/blog^$document
+||mister-auto.com/blog^$document
+||mister-auto.com/conseils-entretien^$document
 ||mistertee.fr/blog^$document
 ||miumlab.eu/pages^$document
 ||mma.fr/zeroblabla^$document
@@ -402637,6 +402666,7 @@
 ||regal-basse-cour.com/conseils^$document
 ||remorques-discount.com/content^$document
 ||restlessbike.com/*/blog^$document
+||roadstr.fr/blog^$document
 ||ronaldjamesgroup.com/article^$document
 ||ronaldjamesgroup.com/blog^$document
 ||rueducommerce.fr/conseil^$document
@@ -402663,6 +402693,7 @@
 ||spacelift.io/blog^$document
 ||sparwan.com/*/blogs^$document
 ||spectrum.com/resources^$document
+||spheretech-europe.com/blog/^$document
 ||starofservice.com/blog^$document
 ||startselect.com/*/blog^$document
 ||steelcase.com/blogs^$document

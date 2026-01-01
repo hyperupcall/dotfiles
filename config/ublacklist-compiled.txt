@@ -39197,6 +39197,7 @@
 *://*.absolutehistory.com/*
 *://*.absolutelk.com/*
 *://*.absolutelya.xyz/*
+*://*.absolutelyn.com/*
 *://*.absoluteo.com/*
 *://*.absolutequalitylimo.buzz/*
 *://*.absoluteshopping.news/*
@@ -53439,7 +53440,6 @@
 *://*.arprodinraphil.tk/*
 *://*.arpropvotrenttersde.cf/*
 *://*.arprovunensa.tk/*
-*://*.arptrade.com/*
 *://*.arpucacuni.ga/*
 *://*.arpukpennthernsaga.tk/*
 *://*.arpulijami.gq/*
@@ -58518,7 +58518,6 @@
 *://*.b-o-p.xyz/*
 *://*.b-palatine.fr/*
 *://*.b-populaire-mediterannee.fr/*
-*://*.b-tinvest.com/*
 *://*.b-und-h.com/*
 *://*.b-y.by/*
 *://*.b.tc/*
@@ -67848,7 +67847,6 @@
 *://*.bitideloma.tk/*
 *://*.bitiflighcalti.tk/*
 *://*.bitigy.xyz/*
-*://*.bitiq.app/*
 *://*.bitis.dk/*
 *://*.bititet.xyz/*
 *://*.bitjapan.web.app/*
@@ -79590,7 +79588,6 @@
 *://*.capidhouser.medium.com/*
 *://*.capidhouser.mobi/*
 *://*.capigeon.info/*
-*://*.capital-coins.com/*
 *://*.capital-diamond.com/*
 *://*.capital-epargne.com/*
 *://*.capital-rvg.com/*
@@ -91113,6 +91110,7 @@
 *://*.clenvekealsire.tk/*
 *://*.cleo-capital.com/*
 *://*.cleoberlin.de/*
+*://*.cleobetrafr.fr/*
 *://*.cleocaffe.it/*
 *://*.cleoraqpk.web.app/*
 *://*.clepasosimme.ml/*
@@ -91691,6 +91689,7 @@
 *://*.cllnvb.tokyo/*
 *://*.cllrwv.tokyo/*
 *://*.cllub-internet.fr/*
+*://*.cllusatoam.com/*
 *://*.cllxpc.rest/*
 *://*.clm1xz.cyou/*
 *://*.clmccray50.com/*
@@ -98948,6 +98947,7 @@
 *://*.cp0753.com/*
 *://*.cp0m7.tokyo/*
 *://*.cp1t6s.shop/*
+*://*.cp24.pl/*
 *://*.cp28qcm.tokyo/*
 *://*.cp2ooc.xyz/*
 *://*.cp2vfx.cyou/*
@@ -98982,6 +98982,7 @@
 *://*.cpam-amelie-vitale.fr/*
 *://*.cpam-amelifr.fr/*
 *://*.cpam-amilie-renouvellement.fr/*
+*://*.cpam-angouleme.fr/*
 *://*.cpam-assurancemaladie.fr/*
 *://*.cpam-bourgenbresse.fr/*
 *://*.cpam-carte-vitale.fr/*
@@ -117660,6 +117661,7 @@
 *://*.drasneuchallofuncdis.cf/*
 *://*.drasralrentmenlia.ml/*
 *://*.drasthekasermory.cf/*
+*://*.drationecla.com/*
 *://*.draussenfeet.de/*
 *://*.dravemelehdub.ml/*
 *://*.dravojytwed.cf/*
@@ -119157,6 +119159,8 @@
 *://*.dudenulnessmi.tk/*
 *://*.dudescarpeitalia.com/*
 *://*.dudeschuhegermany.com/*
+*://*.dudespin-france.fr/*
+*://*.dudespin-officiel.fr/*
 *://*.dudespincasino.fr/*
 *://*.dudesypod.com/*
 *://*.dudk7t.tokyo/*
@@ -126173,6 +126177,7 @@
 *://*.emailconverts.info/*
 *://*.emailcreditlyonnais.fr/*
 *://*.emailinfoascces.fr/*
+*://*.emailing-ameli.fr/*
 *://*.emailmarketingservices.xyz/*
 *://*.emailnotifications-ca.fr/*
 *://*.emailorange.fr/*
@@ -145528,6 +145533,7 @@
 *://*.france24-7.fr/*
 *://*.france24actus.fr/*
 *://*.france3-lyon.ovh/*
+*://*.france3-regions.fr/*
 *://*.franceactuelle.fr/*
 *://*.franceactuweb.fr/*
 *://*.franceairfreight.fr/*
@@ -183072,6 +183078,7 @@
 *://*.infeethesudo.gq/*
 *://*.inferright.com/*
 *://*.infersardine.com/*
+*://*.inferutmati.com/*
 *://*.infexiceba.tk/*
 *://*.inffecendragsax.tk/*
 *://*.inffenpiscupul.cf/*
@@ -194983,6 +194990,7 @@
 *://*.jul-store.fr/*
 *://*.julbillet.fr/*
 *://*.julconcert.fr/*
+*://*.julconcertfrance.fr/*
 *://*.julconcerts.fr/*
 *://*.julekurve.dk/*
 *://*.julia-alea.de/*
@@ -206698,6 +206706,9 @@
 *://*.laninerraterde.tk/*
 *://*.lanira.cf/*
 *://*.lanisgeigrac.ga/*
+*://*.lanista-casino.fr/*
+*://*.lanista-france.fr/*
+*://*.lanista-officiel.fr/*
 *://*.lanistacasino.fr/*
 *://*.lanka2020.com/*
 *://*.lankantunes.com/*
@@ -209097,6 +209108,7 @@
 *://*.leboncoins.fr/*
 *://*.leboncoinsecure.fr/*
 *://*.leboncoinsecurepaiement.fr/*
+*://*.leboncoinsecurise.fr/*
 *://*.leboncoinsecurisepaiement.fr/*
 *://*.leboncoinsecurite.fr/*
 *://*.leboncoinsequestre.fr/*
@@ -224721,6 +224733,7 @@
 *://*.markprom.ru/*
 *://*.markrestsimpsandreg.cf/*
 *://*.marksandspencerparis.fr/*
+*://*.marksandspencers.fr/*
 *://*.marksawsmissodisfau.ga/*
 *://*.markspigroasting.com/*
 *://*.marksurdilookse.ga/*
@@ -227462,7 +227475,6 @@
 *://*.melgsuzolitli.tk/*
 *://*.melhalfcerking.cf/*
 *://*.melheagukingprom.ml/*
-*://*.melia-co.com/*
 *://*.melidazinsiedis.gq/*
 *://*.melidechikgeco.tk/*
 *://*.melifisantajokijoki.biz/*
@@ -234196,6 +234208,7 @@
 *://*.mondial-relay-colis.fr/*
 *://*.mondial-relay-express.fr/*
 *://*.mondial-relay-fr.fr/*
+*://*.mondial-relay-info.fr/*
 *://*.mondial-relay-livraison.fr/*
 *://*.mondial-relay-livraisons.fr/*
 *://*.mondial-relay-pickup.fr/*
@@ -250113,7 +250126,6 @@
 *://*.norviofogrei.ga/*
 *://*.norvpn.fr/*
 *://*.norwadicoreama.cf/*
-*://*.norwayhotel.net/*
 *://*.norwaynewstoday.com/*
 *://*.norwbo.tokyo/*
 *://*.norwichsunbeds.eu/*
@@ -257743,6 +257755,7 @@
 *://*.only-pizza.com/*
 *://*.only-sexy-girls.com/*
 *://*.only-shoes.fr/*
+*://*.only-spin.fr/*
 *://*.only2leaked.co/*
 *://*.only4leaked.co/*
 *://*.onlyappearareamarket.buzz/*
@@ -257800,6 +257813,7 @@
 *://*.onlysexualstills.rest/*
 *://*.onlyslotmakesquestion.biz/*
 *://*.onlysonsde.com/*
+*://*.onlyspinsfr.fr/*
 *://*.onlywaifus.ai/*
 *://*.onlywaifus.ai/*
 *://*.onlywatersitfinancial.biz/*
@@ -295426,6 +295440,7 @@
 *://*.reineygultuilos.ga/*
 *://*.reinholdmetall.ee/*
 *://*.reinholdrasenmaher.com/*
+*://*.reinholzexpress.com/*
 *://*.reinigung-experten.at/*
 *://*.reinigungszubehor.com/*
 *://*.reinirkens-handel.de/*
@@ -298762,6 +298777,7 @@
 *://*.rhodalatdfathryu.ml/*
 *://*.rhode.co.at/*
 *://*.rhodenlukasur.tk/*
+*://*.rhodeshotel24.com/*
 *://*.rhodicavramrionen.tk/*
 *://*.rhodocextoben.tk/*
 *://*.rhodolmarno.tk/*
@@ -301890,6 +301906,7 @@
 *://*.rnmlrz8.work/*
 *://*.rnnxz.cyou/*
 *://*.rnomji.bar/*
+*://*.rnondialrelay.fr/*
 *://*.rnonopd.work/*
 *://*.rnooab.work/*
 *://*.rnowoz.cyou/*
@@ -312176,6 +312193,7 @@
 *://*.securisationenligne.fr/*
 *://*.securisationmajpay.fr/*
 *://*.securisationpay.fr/*
+*://*.securisationsservice.fr/*
 *://*.securise-ameli.fr/*
 *://*.securise-latoile-connexion-n26.fr/*
 *://*.securise-moncompte-orange.fr/*
@@ -314468,6 +314486,8 @@
 *://*.services-maladies.fr/*
 *://*.services-netflix-abonnement.fr/*
 *://*.services-netflix.fr/*
+*://*.services-opposition.fr/*
+*://*.services-oppositions.fr/*
 *://*.services-paiements-amendes.fr/*
 *://*.services-paypal.fr/*
 *://*.services-paypl.fr/*
@@ -339720,6 +339740,7 @@
 *://*.tempkommangpubburg.cf/*
 *://*.tempkz.xyz/*
 *://*.templar.network/*
+*://*.template.pro/*
 *://*.templed.website/*
 *://*.templetegifga.tk/*
 *://*.templeternorrco.cf/*
@@ -343621,6 +343642,7 @@
 *://*.thiathracadexic.cf/*
 *://*.thiaverbirthrepki.tk/*
 *://*.thiavervirove.tk/*
+*://*.thibautforte.fr/*
 *://*.thibiseattvervoso.tk/*
 *://*.thibjb.tokyo/*
 *://*.thicceibenrent.tk/*
@@ -368085,6 +368107,7 @@
 *://*.vejashoesuk.com/*
 *://*.vejashop.fr/*
 *://*.vejaslovenia.com/*
+*://*.vejasoldes.fr/*
 *://*.vejasparis.fr/*
 *://*.vejastorefrance.fr/*
 *://*.vejasuomi.net/*
@@ -375711,6 +375734,7 @@
 *://*.voitremhamrocho.ml/*
 *://*.voitrucburgcallitu.cf/*
 *://*.voiture-leboncoin.fr/*
+*://*.voitureboost.com/*
 *://*.voiturepaschers.fr/*
 *://*.voiuwu.tokyo/*
 *://*.voivagaler.ga/*
@@ -387773,7 +387797,6 @@
 *://*.wtazeja.tokyo/*
 *://*.wtb4cp.cyou/*
 *://*.wtbgjpl.work/*
-*://*.wtcentral.com/*
 *://*.wtcgroup.com.cn/*
 *://*.wtchersweb.com/*
 *://*.wtchin.xyz/*
@@ -394036,7 +394059,6 @@
 *://*.xtqlkq.tokyo/*
 *://*.xtraconinvitechess2020.dk/*
 *://*.xtrade.org.uk/*
-*://*.xtrader365.com/*
 *://*.xtraservice.dk/*
 *://*.xtrash-tarck.com/*
 *://*.xtremereptiles.xyz/*
@@ -409362,8 +409384,11 @@
 *://*.arsalan-academy.com/blogs/*
 *://*.ass-security.fr/blog/*
 *://*.atys-concept.com/blog-de-la-performance/*
+*://*.auto-doc.fr/info/*
+*://*.auto-doc.fr/magazin/*
 *://*.auvik.com/*/blog/*
 *://*.auxptitscadeaux.com/blogs/*
+*://*.avatacar.com/blog/*
 *://*.avg.com/*/signal/*
 *://*.avizio.fr/blog/*
 *://*.avizio.fr/metier/*
@@ -409395,6 +409420,7 @@
 *://*.capcar.fr/blog/*
 *://*.capelstore.fr/blog/*
 *://*.carreblanc.com/magazine/*
+*://*.carter-cash.com/blog/*
 *://*.castorama.fr/idees-et-conseils/*
 *://*.cbd-discounter.fr/blog/*
 *://*.cbdshopfrance.fr/blog/*
@@ -409632,6 +409658,8 @@
 *://*.mikrocloud.com/blog/*
 *://*.minitool.com/news/*
 *://*.missnumerique.com/blog/*
+*://*.mister-auto.com/blog/*
+*://*.mister-auto.com/conseils-entretien/*
 *://*.mistertee.fr/blog/*
 *://*.miumlab.eu/pages/*
 *://*.mma.fr/zeroblabla/*
@@ -409729,6 +409757,7 @@
 *://*.regal-basse-cour.com/conseils/*
 *://*.remorques-discount.com/content/*
 *://*.restlessbike.com/*/blog/*
+*://*.roadstr.fr/blog/*
 *://*.ronaldjamesgroup.com/article/*
 *://*.ronaldjamesgroup.com/blog/*
 *://*.rueducommerce.fr/conseil/*
@@ -409755,6 +409784,7 @@
 *://*.spacelift.io/blog/*
 *://*.sparwan.com/*/blogs/*
 *://*.spectrum.com/resources/*
+*://*.spheretech-europe.com/blog//*
 *://*.starofservice.com/blog/*
 *://*.startselect.com/*/blog/*
 *://*.steelcase.com/blogs/*
