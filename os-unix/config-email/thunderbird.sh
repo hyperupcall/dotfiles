@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-source ~/.dotfiles/os-unix/data/setup.sh
+source ~/.dotfiles/vendor/setup.sh/setup.sh
 
 declare -g g_name='Thunderbird'
 

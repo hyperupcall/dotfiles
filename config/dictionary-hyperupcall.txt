@@ -193,6 +193,7 @@ tput
 trpc
 typecheck
 ublacklist
+UCSD
 uefi
 UEFI
 underutilization

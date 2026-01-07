@@ -1,6 +1,7 @@
 # 1. Great quality (recommended color: #ebfbee)
 # 2. Possibly good, possibly bad (recommended color: #fffbe7)
 # 3. Bad quality, SEO spam but "useful" website (recommended color: #fff0f6)
+# 4. Other (manual review)
 
 # General
 @1*://*.wikipedia.org/*
@@ -63,6 +64,8 @@
 @3*://*.quora.com/*
 @3*://*.nilebits.com/*
 @3*://*.geeksforgeeks.org/*
+@3*://*.w3schools.com/*
+@3*://*.tutorialspoint.com/*
 @3*://*.blog.hubspot.com/*
 @3*://*.builtin.com/*
 @3*://*.wpoven.com/blog/*
@@ -70,20 +73,19 @@
 @3*://*.elementor.com/*
 @3*://*.frontendshape.com/*
 @3*://*.celonis.com/blog/*
+@3*://*.peerlist.io/*
 
 @3*://*.thoughtco.com/*
 
 
-*://*.tutorialspoint.com/*
 *://*.w3resource.com/*
-*://*.w3schools.com/*
 *://*.w3docs.com/*
 *://*.pythonguides.com/*
 *://*.zetcode.com/*
 *://*.pythoncentral.io/*
 *://*.datagy.io/*
 
-
+# AI
 *://*.markaicode.com/*
 *://*.twoorbits.com/*
 *://*.thepoorcoder.com/*

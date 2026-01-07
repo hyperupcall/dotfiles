@@ -1,8 +1,8 @@
 # shellcheck shell=bash
 
 task.init() {
-	git config set --local filter.npmrc-clean.clean './os-unix/config-language/.config/npm/npmrc-clean.sh'
-	git config set --local filter.oscrc-clean.clean './os-unix/config-tools/.config/osc/oscrc-clean.sh'
+	git config set --local filter.npmrc.clean './os-unix/config-language/.config/npm/npmrc-clean.sh'
+	git config set --local filter.oscrc.clean './os-unix/config-tools/.config/osc/oscrc-clean.sh'
 }
 
 task.build() {

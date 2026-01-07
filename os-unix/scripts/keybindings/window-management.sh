@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source ~/.dotfiles/os-unix/data/setup.sh
+source ~/.dotfiles/vendor/setup.sh/setup.sh
 
 {
 	# Behavior: Move between windows (popup)

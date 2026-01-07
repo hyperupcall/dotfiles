@@ -1,0 +1,3 @@
+@4*://*.lifeincoding.com/
+@4*://*.tutorialized.com/
+@4*://*.tutorialdeep.com/

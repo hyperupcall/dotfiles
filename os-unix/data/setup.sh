@@ -20,7 +20,7 @@
 		~/.dotfiles/vendor/bash-term/pkg/**/*.sh; \
 	do
 		source "$_f"
-	done
+	done; unset -v _f
 
 	if [ -n "${DEBUG+x}" ]; then
 		err_handler() {

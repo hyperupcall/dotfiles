@@ -1,68 +1,78 @@
 {
+	"project_panel": {
+		"git_status": true,
+		"file_icons": true,
+		"hide_root": true,
+		"hide_gitignore": false,
+		"hide_hidden": false,
+	},
+	"file_types": {
+		"HTML": ["**/*.ejs"],
+	},
 	"show_edit_predictions": false,
 	"hard_tabs": true,
 	"tab_size": 3,
 	"prettier": {
 		"allowed": true,
 		"singleQuote": true,
-		"semi": false
+		"semi": false,
 	},
 	"languages": {
 		"YAML": {
 			"hard_tabs": false,
-			"tab_size": 2
+			"tab_size": 2,
 		},
 		"C": {
-			"format_on_save": "on"
+			"format_on_save": "on",
 		},
 		"C++": {
-			"format_on_save": "on"
-		}
+			"format_on_save": "on",
+		},
 	},
 	"lsp": {
 		"texlab": {
 			"settings": {
 				"texlab": {
 					"build": {
-						"onSave": false
-					}
-				}
-			}
-		}
+						"onSave": false,
+					},
+				},
+			},
+		},
 	},
 	"features": {
-		"edit_prediction_provider": "zed"
+		"edit_prediction_provider": "zed",
 	},
 	"terminal": {
 		// https://github.com/zed-industries/zed/issues/14543#issuecomment-2260593838
 		// https://github.com/zed-industries/zed/issues/21387
-		"dock": "right",
-  "option_as_meta": true
+		"dock": "bottom",
+		"option_as_meta": true,
 	},
 	"soft_wrap": "editor_width",
 	"agent": {
 		"always_allow_tool_actions": true,
-  "inline_assistant_model": {
+		"inline_assistant_model": {
 			"provider": "copilot_chat",
-			"model": "claude-3.5-sonnet"
+			"model": "claude-3.5-sonnet",
 		},
 		"default_profile": "write",
 		"play_sound_when_agent_done": true,
 		"default_model": {
 			"provider": "copilot_chat",
-			"model": "claude-sonnet-4"
-		}
+			"model": "claude-sonnet-4",
+		},
 	},
 	"telemetry": {
 		"diagnostics": false,
-		"metrics": false
+		"metrics": false,
 	},
 	"buffer_font_family": "Hack",
 	"ui_font_size": 16,
 	"buffer_font_size": 16,
 	"theme": {
 		"mode": "system",
-		"light": "Ayu Light",
-		"dark": "One Dark"
-	}
+		"light": "One Light",
+		"dark": "One Dark",
+	},
 }

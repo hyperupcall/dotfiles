@@ -7,3 +7,6 @@
 [submodule "vendor/bats-all"]
 	path = vendor/bats-all
 	url = https://github.com/bash-bastion/bats-all
+[submodule "vendor/setup.sh"]
+	path = vendor/setup.sh
+	url = https://github.com/hyperupcall-projects/setup.sh

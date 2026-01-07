@@ -12,3 +12,5 @@
 [user]
 	name = Edwin Kofler
 	email = edwin@kofler.dev
+[advice]
+	addIgnoredFile = false

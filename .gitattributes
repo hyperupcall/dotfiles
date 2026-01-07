@@ -2,5 +2,5 @@
 bake linguist-generated
 config/ublacklist.txt linguist-language=AdBlock linguist-detectable
 
-os-unix/config-language/.config/npm/npmrc filter=npmrc-clean
-os-unix/config-tools/.config/osc/oscrc filter=oscrc-clean
+os-unix/config-language/.config/npm/npmrc filter=npmrc
+os-unix/config-tools/.config/osc/oscrc filter=oscrc

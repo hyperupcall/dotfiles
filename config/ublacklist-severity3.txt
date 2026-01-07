@@ -1,0 +1,2 @@
+@3*://docs.w3cub.com/*
+@3*://*.thelinuxcode.com/

@@ -91,21 +91,6 @@ iscmd() {
 }
 
 updatesystem() {
-	(
-		. /etc/os-release
-		if [ "$ID" = 'neon' ]; then
-			sudo apt-get -y update
-			sudo apt-get -y install apt-transport-https
-			if sudo pkcon -y update; then :; else
-				# Exit code for "Nothing useful was done".
-				if (($? != 5)); then
-					die "Failed to run 'pkgcon'"
-				fi
-			fi
-			sudo apt-get -y autoremove
-		fi
-	)
-
 	if iscmd 'pacman'; then
 		sudo pacman -Syyu --noconfirm
 		orphaned_deps=$(pacman -Qdtq)
@@ -116,7 +101,19 @@ updatesystem() {
 	elif iscmd 'apt-get'; then
 		sudo apt-get -y update
 		sudo apt-get -y install apt-transport-https
-		sudo apt-get -y upgrade
+		(
+			. /etc/os-release
+			if [ "$ID" = 'neon' ]; then
+				if sudo pkcon -y update; then :; else
+					# Exit code for "Nothing useful was done".
+					if (($? != 5)); then
+						die "Failed to run 'pkgcon'"
+					fi
+				fi
+			else
+				sudo apt-get -y upgrade
+			fi
+		)
 		sudo apt-get -y autoremove
 	elif iscmd 'dnf'; then
 		sudo dnf -y update

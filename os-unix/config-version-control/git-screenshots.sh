@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-source ~/.dotfiles/os-unix/data/setup.sh
+source ~/.dotfiles/vendor/setup.sh/setup.sh
 
 main() {
 	git init
