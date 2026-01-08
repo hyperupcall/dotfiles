@@ -6,7 +6,7 @@
 #pragma clang diagnostic push
 
 // Macros.
-#define Hme CONFIG_HOME
+#define Hme CONFIG_HOME "/"
 #define Src Dst ".dotfiles/os-unix/"
 #define Dst Hme
 

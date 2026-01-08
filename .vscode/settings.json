@@ -1,4 +1,5 @@
 {
+	"window.title": "${folderName} ${separator}${activeRepositoryBranchName}${separator}${remoteName} (nodejs)",
 	"shellcheck.ignorePatterns": {
 		"**/.git/**": true,
 		"**/.home/**": true,

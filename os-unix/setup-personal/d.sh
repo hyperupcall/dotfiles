@@ -26,9 +26,8 @@ main() {
 	local dir="$HOME/.dotfiles/.data/repos/d"
 	util.clone "$dir" git@github.com:fox-incubating/d
 	cd ~/.dotfiles/.data/repos/d
-	./bake build "\"$HOME/.dotfiles/os-unix/data\""
+	./bake build "$HOME/.dotfiles/os-unix/data/dotfiles.c"
 	ln -fs "$PWD/d" ~/.local/bin/d
-	~/.local/bin/d compile
 	~/.local/bin/d deploy
 }
 

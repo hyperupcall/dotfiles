@@ -58,6 +58,19 @@ main() {
 	for file in ~/.dotfiles/os-unix/bin/*; do
 		ln -sf "$file" ~/.local/bin
 	done; unset -v file
+	for file in ~/scripts/*; do
+		if [ -d "$file" ]; then
+			core.shopt_push -s globstar
+			for file in "$file"/**; do
+				if [ -f "$file" ]; then
+					chmod +x "$file"
+				fi
+			done
+			core.shopt_pop
+		else
+			chmod +x "$file"
+		fi
+	done
 	mkdir -p ~/scripts/setup
 	for file in ~/.dotfiles/os-unix/{config,setup}-*/*; do
 		if [ -d "$file" ]; then
@@ -280,13 +293,20 @@ main() {
 		case $file in
 		*.ott)
 			core.print_info "Creating instance of template \"${file##*/}\""
-			libreoffice --headless --convert-to odt --outdir ~/Other/Templates "$file" ;;
+			if ! output=$(libreoffice --headless --convert-to odt --outdir ~/Other/Templates "$file"); then
+				printf '%s\n' "$output"
+			fi
+			;;
 		*.ots)
 			core.print_info "Creating instance of template \"${file##*/}\""
-			libreoffice --headless --convert-to ods --outdir ~/Other/Templates "$file" ;;
+			if ! output=$(libreoffice --headless --convert-to ods --outdir ~/Other/Templates "$file"); then
+				printf '%s\n' "$output"
+			fi
+			;;
 		*)
 			core.print_info "Skipping template file \"${file##*/}\"" ;;
 		esac
+		unset -v output
 	done
 	core.shopt_pop
 	unset -v file
