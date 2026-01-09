@@ -179,20 +179,11 @@ sub wanted {
         File::Spec->catfile( File::Basename::dirname($File::Find::name),
          $symlink_content );
       if ( -f $maybe_file ) {
-         say "File has invalid PGP data: \"$File::Find::name\"";
-         say "But, file does have content: \"$symlink_content\"";
-         print "Remove the invalid file, and replace it with a symlink? ";
-         $| = 1;
-         my $input = <STDIN>;
-         chomp $input;
-         if ( $input =~ /^[yY]/ ) {
-            unlink $File::Find::name or die "Failed to remove file: $!";
-            symlink( $symlink_content, $File::Find::name )
-              or die "Failed to symlink file: $!";
-         }
-         else {
-            say "Skipping...";
-         }
+         say "File \"$File::Find::name\" is supposed to be a symlink to \"$symlink_content\". Replacing.";
+         unlink $File::Find::name or die "Failed to remove file: $!";
+         symlink( $symlink_content, $File::Find::name )
+            or die "Failed to symlink file: $!";
+
       }
       else {
          say( STDERR "No valid GPG data found: \"$File::Find::name\"" );

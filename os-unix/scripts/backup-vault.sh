@@ -25,6 +25,7 @@ main() {
 
 		borg create \
 			--show-version --show-rc --verbose --stats --progress \
+			--exclude '**/Records/Backups/**' \
 			"$backup_dir"::'backup-{now}-{hostname}' \
 			"${save_dirs[@]}"
 	fi

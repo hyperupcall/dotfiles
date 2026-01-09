@@ -1,0 +1,16 @@
+[Unit]
+Description=Hydroxide ProtonMail Bridge IMAP Service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=%h/Documents/Computing/Upstream/hydroxide/hydroxide -imap-port 7017 imap
+WorkingDirectory=%h/Documents/Computing/Upstream/hydroxide
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target
