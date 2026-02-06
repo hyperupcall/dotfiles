@@ -1,4 +1,6 @@
 # shellcheck shell=bash
+shopt -s globstar
+
 # Source libraries.
 source ~/.dotfiles/os-unix/data/xdg.sh
 for _f in \

@@ -1,6 +1,5 @@
 #!/usr/bin/env zsh
-
-source ~/.dotfiles/vendor/setup.sh/setup.sh
+source ~/.dotfiles/os-unix/data/setup.sh
 
 main() {
 	local url="$1"

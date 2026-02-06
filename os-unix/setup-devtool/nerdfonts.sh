@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-
-source ~/.dotfiles/vendor/setup.sh/setup.sh
+source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='NerdFonts'
 

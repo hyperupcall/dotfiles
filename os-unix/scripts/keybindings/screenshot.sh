@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-
-source ~/.dotfiles/vendor/setup.sh/setup.sh
+source ~/.dotfiles/os-unix/data/setup.sh
 
 # Behavior: Take a screenshot
 case $XDG_CURRENT_DESKTOP in
