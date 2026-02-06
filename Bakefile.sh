@@ -28,6 +28,6 @@ task.test() {
 
 task.commit() {
 	local date=
-	date=$(date '+%Y.%m.%d')
+	date=$(date '+%Y-%m-%d')
 	git commit -m "$date" "$@"
 }

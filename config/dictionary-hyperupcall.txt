@@ -12,6 +12,8 @@ autotools
 avalonia
 bashisms
 Bashisms
+bertscore
+bertscores
 bibtex
 bpython
 builtins
@@ -133,6 +135,7 @@ nullglob
 nullptr
 nushell
 nvim
+ollama
 Otternaut
 overconstraint
 ovsx

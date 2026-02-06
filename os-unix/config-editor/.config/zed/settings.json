@@ -1,5 +1,8 @@
 {
-	"project_panel": {
+	"edit_predictions": {
+  "provider": "zed"
+ },
+ "project_panel": {
 		"git_status": true,
 		"file_icons": true,
 		"hide_root": true,
@@ -8,6 +11,7 @@
 	},
 	"file_types": {
 		"HTML": ["**/*.ejs"],
+		"JSONC": ["**/*.code-workspaces"],
 	},
 	"show_edit_predictions": false,
 	"hard_tabs": true,
@@ -40,9 +44,6 @@
 			},
 		},
 	},
-	"features": {
-		"edit_prediction_provider": "zed",
-	},
 	"terminal": {
 		// https://github.com/zed-industries/zed/issues/14543#issuecomment-2260593838
 		// https://github.com/zed-industries/zed/issues/21387
@@ -60,7 +61,7 @@
 		"play_sound_when_agent_done": true,
 		"default_model": {
 			"provider": "copilot_chat",
-			"model": "claude-sonnet-4",
+			"model": "gpt-5.1",
 		},
 	},
 	"telemetry": {

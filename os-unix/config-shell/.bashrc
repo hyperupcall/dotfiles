@@ -99,3 +99,4 @@ _util_source_dir "$XDG_CONFIG_HOME/bash/modules"
 _util_source_dir "$XDG_CONFIG_HOME/bash/bash.d"
 
 # ---
+
