@@ -17,11 +17,11 @@ chr() {
 	sudo mount -o bind -t tmpfs /run "$1/run"
 	sudo mount -o bind -t devtmpfs /dev "$1/dev"
 
-	if [ "$TERM" = xterm-kitty ]; then
-		TERM="xterm-256color" sudo chroot "$@"
-	else
-		sudo chroot "$@"
+	if [ "$TERM" = 'xterm-kitty' ]; then
+		TERM='xterm-256color'
 	fi
+
+	sudo chroot "$@"
 }
 
 unchr() {

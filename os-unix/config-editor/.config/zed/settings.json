@@ -1,8 +1,8 @@
 {
 	"edit_predictions": {
-  "provider": "zed"
- },
- "project_panel": {
+		"provider": "zed",
+	},
+	"project_panel": {
 		"git_status": true,
 		"file_icons": true,
 		"hide_root": true,

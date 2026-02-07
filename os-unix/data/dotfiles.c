@@ -2,7 +2,7 @@
 #include <stddef.h>
 #include "d.h"
 
-#pragma clang diagnostic error "-Wunused-variable"
+#pragma clang diagnostic warning "-Wunused-variable"
 #pragma clang diagnostic push
 
 // Macros.
@@ -31,19 +31,19 @@ static Entry albert[] = {
 	Done,
 };
 static Entry broot[] = ConfigEntry("broot/", CategoryApplication);
-static Entry calcurse[] = { Config("calcurse/", CategoryApplication), Done };
-static Entry cmus[] = { Config("cmus/rc", CategoryApplication), Done };
-static Entry espanso[] = { Config("espanso/", CategoryApplication), Done };
-static Entry htop[] = { Config("htop/", CategoryApplication), Done };
-static Entry irssi[] = { Config("irssi/", CategoryApplication), Done };
-static Entry lazydocker[] = { Config("lazydocker/", CategoryApplication), Done };
-static Entry mnemosyne[] = { Config("mnemosyne/config.py", CategoryApplication), Done };
-static Entry mpv[] = { Config("mpv/", CategoryApplication), Done };
-static Entry nb[] = { Config("nb/", CategoryApplication), Done };
-static Entry ncmpcpp[] = { Config("ncmpcpp/", CategoryApplication), Done };
-static Entry octave[] = { Config("octave/", CategoryApplication), Done };
-static Entry ranger[] = { Config("ranger/", CategoryApplication), Done };
-static Entry taskwarrior[] = { Config("taskwarrior/", CategoryApplication), Done };
+static Entry calcurse[] = ConfigEntry("calcurse/", CategoryApplication);
+static Entry cmus[] = ConfigEntry("cmus/rc", CategoryApplication);
+static Entry espanso[] = ConfigEntry("espanso/", CategoryApplication);
+static Entry htop[] = ConfigEntry("htop/", CategoryApplication);
+static Entry irssi[] = HomeEntry(".irssi/", CategoryApplication);
+static Entry lazydocker[] = ConfigEntry("lazydocker/", CategoryApplication);
+static Entry mnemosyne[] = ConfigEntry("mnemosyne/config.py", CategoryApplication);
+static Entry mpv[] = ConfigEntry("mpv/", CategoryApplication);
+static Entry nb[] = ConfigEntry("nb/", CategoryApplication);
+static Entry ncmpcpp[] = ConfigEntry("ncmpcpp/", CategoryApplication);
+static Entry octave[] = ConfigEntry("octave/", CategoryApplication);
+static Entry ranger[] = ConfigEntry("ranger/", CategoryApplication);
+static Entry taskwarrior[] = ConfigEntry("taskwarrior/", CategoryApplication);
 static Entry viewnior[] = ConfigEntry("viewnior/", CategoryApplication);
 static Entry vimiv[] = ConfigEntry("vimiv/", CategoryApplication);
 static Entry wtf[] = ConfigEntry("wtf/", CategoryApplication);
@@ -69,7 +69,7 @@ static Entry neofetch[] = ConfigEntry("neofetch/", CategoryCli);
 static Entry pgcli[] = ConfigEntry("pgcli/", CategoryCli);
 static Entry ripgrep[] = ConfigEntry("ripgrep/", CategoryCli);
 static Entry rtorrent[] = ConfigEntry("rtorrent/", CategoryCli);
-static Entry wget[] = ConfigEntry("wget/", CategoryCli);
+static Entry wget[] = HomeEntry(".wgetrc", CategoryCli);
 static Entry youtubeDl[] = ConfigEntry("youtube-dl/", CategoryCli);
 static Entry agignore[] = HomeEntry(".agignore", CategoryCli);
 static Entry psqlrc[] = HomeEntry(".psqlrc", CategoryCli);
@@ -141,7 +141,6 @@ static Entry cargo[] = ConfigEntry("cargo/", CategoryLanguage);
 static Entry conda[] = ConfigEntry("conda/", CategoryLanguage);
 static Entry gdb[] = ConfigEntry("gdb/", CategoryLanguage);
 static Entry irb[] = ConfigEntry("irb/", CategoryLanguage);
-static Entry maven[] = ConfigEntry("maven/", CategoryLanguage);
 static Entry nimble[] = ConfigEntry("nimble/", CategoryLanguage);
 static Entry npm[] = ConfigEntry("npm/", CategoryLanguage);
 static Entry please[] = ConfigEntry("please/", CategoryLanguage);
@@ -161,7 +160,7 @@ static Entry fontconfig[] = ConfigEntry("fontconfig/", CategoryLinuxCore);
 static Entry info[] = ConfigEntry("info/", CategoryLinuxCore);
 static Entry less[] = ConfigEntry("less/", CategoryLinuxCore);
 static Entry most[] = ConfigEntry("most/", CategoryLinuxCore);
-static Entry readline[] = ConfigEntry("readline/", CategoryLinuxCore);
+static Entry readline[] = HomeEntry(".inputrc", CategoryLinuxCore);
 static Entry userDirsConf[] = ConfigEntry("user-dirs.conf", CategoryLinuxCore);
 static Entry gnupgDirmngr[] = HomeEntry(".gnupg/dirmngr.conf", CategoryLinuxCore);
 static Entry gnupgGpg[] = HomeEntry(".gnupg/gpg.conf", CategoryLinuxCore);
@@ -370,7 +369,6 @@ static Group otherGroup = {
 		conda,
 		gdb,
 		irb,
-		maven,
 		nimble,
 		please,
 		pudb,
@@ -462,13 +460,12 @@ static Group otherGroup = {
 	}
 };
 
-static Group** groups = (Group *[]){
+static Group* groups[] = {
 	&defaultGroup,
 	&otherGroup,
 	NULL
 };
 
-// Symbols with external linkage.
 Group **getGroups() {
 	return groups;
 }

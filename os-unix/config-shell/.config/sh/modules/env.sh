@@ -1,20 +1,32 @@
 # shellcheck shell=sh
-
 # GENERAL.
 # export NAME='Edwin Kofler'
 export EMAIL='edwin@kofler.com'
+export BROWSER='librewolf'
 
 export LANG="${LANG:-en_US.UTF-8}"
 export LANGUAGE="${LANGUAGE:-"$LANG"}"
 export LC_ALL="${LC_ALL:-"$LANG"}"
-export VISUAL='nvim'
 export EDITOR='nvim'
+export VISUAL='nvim'
 export DIFFPROG='vim -d'
 export PAGER='less'
 # export MANPAGER='vim +MANPAGER --not-a-term -u /dev/null -'
 export MANPAGER='less'
 
+
 # PROGRAM.
+# Android
+export ANDROID_HOME="$XDG_STATE_HOME/Android/Sdk"
+_util_path_prepend "$ANDROID_HOME/tools"
+_util_path_prepend "$ANDROID_HOME/tools/bin"
+_util_path_prepend "$ANDROID_HOME/platform-tools"
+export ANDROID_USER_HOME="$XDG_STATE_HOME/Android/User"
+
+# bash-completion
+export BASH_COMPLETION_USER_DIR="$XDG_CONFIG_HOME/bash"
+export BASH_COMPLETION_USER_FILE="$XDG_CONFIG_HOME/bash/bash_completion.sh"
+
 # fzf
 export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
 export FZF_DEFAULT_OPTS="--history \"$XDG_STATE_HOME/history/fzf_history\" --history-size=10000"
@@ -53,9 +65,23 @@ export NNN_DE_FILE_MANAGER='nautilus'
 export CHECKPOINT_DISABLE='1'
 
 # pass
+export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
 export PASSWORD_STORE_CLIP_TIME='15'
 export PASSWORD_STORE_ENABLE_EXTENSIONS='true'
 export PASSWORD_STORE_GENERATED_LENGTH='40'
+
+# Perl
+export PERL_LOCAL_LIB_ROOT="$XDG_DATA_HOME/perl5"
+export PERL_MB_OPT="--install_base \"$PERL_LOCAL_LIB_ROOT\""
+export PERL_MM_OPT="INSTALL_BASE=\"$PERL_LOCAL_LIB_ROOT\""
+_util_path_prepend "$PERL_LOCAL_LIB_ROOT/bin"
+_util_path_prepend PERL5LIB "$PERL_LOCAL_LIB_ROOT/lib/perl5"
+
+# Poetry
+_util_path_prepend "$XDG_DATA_HOME/pypoetry/bin"
+
+# pipx
+export PIPX_BIN_DIR="$XDG_STATE_HOME/pipx/bin"
 
 # pnpm
 export PNPM_HOME="$XDG_DATA_HOME/pnpm"
@@ -64,11 +90,17 @@ _util_path_prepend "$PNPM_HOME"
 # ps
 export CMD_ENV='linux'
 
+# Python
+export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc.py" # https://github.com/python/cpython/pull/13208
+
 # qt
 export QT_ACCESSIBILITY='1'
 
-# ranger
-# export RANGER_LOAD_DEFAULT_RC='FALSE'
+# ripgrep
+export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/config"
+
+# Rust
+_util_path_prepend "${CARGO_HOME:-$HOME/.cargo}/bin"
 
 # ssh
 # export SSH_ASKPASS=/usr/bin/ksshaskpass
@@ -89,6 +121,15 @@ export SYSTEMD_PAGERSECURE=false
 # vim
 export VIMINIT="if has('nvim') | source $XDG_CONFIG_HOME/nvim/init.lua | else | source $XDG_CONFIG_HOME/vim/vimrc | endif"
 
+# Wasmer
+[ -f "${WASMER_DIR:-$HOME/.wasmer}/wasmer.sh" ] && source "${WASMER_DIR:-$HOME/.wasmer}/wasmer.sh"
+
+# Wasmtime
+_util_path_prepend "${WASMTIME_HOME:-$HOME/.wasmtime}/bin"
+
+# Yarn
+_util_path_prepend "$HOME/.yarn/bin"
+
 # zsh
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
@@ -100,3 +141,36 @@ export ZFS_COLOR=
 
 # zplug
 export ZPLUG_HOME="$HOME/.dotfiles/.data/repos/zplug"
+
+
+# HISTORY.
+# IRB
+export IRBRC="$XDG_STATE_HOME/history/irbrc_history"
+
+# GDB
+export GDBHISTFILE="$XDG_STATE_HOME/history/gdb_history"
+
+# GNU Octave
+export OCTAVE_HISTFILE="$XDG_STATE_HOME/history/octave-history"
+
+# Julia
+export JULIA_HISTORY="$XDG_STATE_HOME/history/julia_history"
+
+# MySQL
+export MYSQL_HISTFILE="$XDG_STATE_HOME/history/mysql_history"
+
+# Node.js
+export NODE_REPL_HISTORY="$XDG_STATE_HOME/history/node_repl_history"
+export TS_NODE_HISTORY="$XDG_STATE_HOME/history/ts_node_repl_history"
+
+# PostgreSQL
+export PSQL_HISTORY="$XDG_STATE_HOME/history/psql_history"
+
+# Redis
+export REDISCLI_HISTFILE="$XDG_STATE_HOME/history/redis_history"
+
+# rlwrap
+export RLWRAP_HOME="$XDG_STATE_HOME/history"
+
+# SQLite
+export SQLITE_HISTORY="$XDG_STATE_HOME/history/sqlite_history"

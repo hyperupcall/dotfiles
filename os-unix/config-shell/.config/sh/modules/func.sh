@@ -1,10 +1,10 @@
 # shellcheck shell=sh
 
 cls() {
-	# assume hardware is not real (not 'reset')
+	# Assume hardware is not real (not 'reset').
 	tput reset
 
-	# this uses our 'stty' function
+	# This uses our custom 'stty' function.
 	stty sane
 }
 

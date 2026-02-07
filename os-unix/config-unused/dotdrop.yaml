@@ -243,9 +243,6 @@ dotfiles:
   '.config/irb':
     src: '{{@@ cfg_src @@}}/irb'
     dst: '{{@@ cfg_dst @@}}/irb'
-  '.config/irssi':
-    src: '{{@@ cfg_src @@}}/irssi'
-    dst: '{{@@ cfg_dst @@}}/irssi'
   '.config/kak':
     src: '{{@@ cfg_src @@}}/kak'
     dst: '{{@@ cfg_dst @@}}/kak'
@@ -279,9 +276,6 @@ dotfiles:
   '.config/ly':
     src: '{{@@ cfg_src @@}}/ly'
     dst: '{{@@ cfg_dst @@}}/ly'
-  '.config/maven':
-    src: '{{@@ cfg_src @@}}/maven'
-    dst: '{{@@ cfg_dst @@}}/maven'
   '.config/micro/bindings.json':
     src: '{{@@ cfg_src @@}}/micro/bindings.json'
     dst: '{{@@ cfg_dst @@}}/micro/bindings.json'

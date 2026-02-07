@@ -142,13 +142,12 @@ main() {
 	must.dir "$XDG_STATE_HOME/Android/Sdk"
 	must.dir "$XDG_STATE_HOME/history"
 	must.dir "$XDG_STATE_HOME/nano/backups"
-	must.dir "$XDG_DATA_HOME/maven"
 	must.dir "$XDG_DATA_HOME/tig"
 	must.dir "$XDG_CONFIG_HOME/sage" # For $DOT_SAGE.
 	must.dir "$XDG_CONFIG_HOME/Code - OSS/User"
 	must.dir "$XDG_CONFIG_HOME/spacemacs"
 	must.dir "$XDG_DATA_HOME/sonarlint" # For $SONARLINT_USER_HOME.
-	must.dir "$HOME/.dotfiles/.home/Documents/AppImages"
+	must.dir "$HOME/.dotfiles/.home/AppImages"
 	must.file "$XDG_STATE_HOME/tig/history"
 	must.file "$XDG_STATE_HOME/history/zsh_history" For # For ZSH $HISTFILE.
 	must.user_in_group "$USER" 'docker'
@@ -159,12 +158,8 @@ main() {
 
 	# Remove default dotfiles. These are customized with environment variables.
 	must.rm ~/.bash_history
-	must.rm ~/.flutter
-	must.rm ~/.flutter_tool_state
 	must.rm ~/.gitconfig
 	must.rm ~/.gmrun_history
-	must.rm ~/.inputrc
-	must.rm ~/.lesshst
 	must.rm ~/.mkshrc
 	must.rm ~/.pythonhist
 	must.rm ~/.sh_history
