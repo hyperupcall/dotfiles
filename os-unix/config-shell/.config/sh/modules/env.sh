@@ -1,7 +1,8 @@
 # shellcheck shell=sh
+
 # GENERAL.
 # export NAME='Edwin Kofler'
-export EMAIL='edwin@kofler.com'
+# export EMAIL='edwin@kofler.com'
 export BROWSER='librewolf'
 
 export LANG="${LANG:-en_US.UTF-8}"
@@ -34,9 +35,6 @@ export FZF_DEFAULT_OPTS="--history \"$XDG_STATE_HOME/history/fzf_history\" --his
 # gnupg
 # export GPG_TTY; GPG_TTY=$(tty)
 
-# guile
-export GUILE_HISTORY="$XDG_STATE_HOME/history/guile_history"
-
 # hstr
 export HSTR_CONFIG='hicolor'
 
@@ -60,9 +58,6 @@ export MORE='-l'
 # nnn
 export NNN_FALLBACK_OPENER='xdg-open'
 export NNN_DE_FILE_MANAGER='nautilus'
-
-# packer
-export CHECKPOINT_DISABLE='1'
 
 # pass
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
@@ -91,10 +86,7 @@ _util_path_prepend "$PNPM_HOME"
 export CMD_ENV='linux'
 
 # Python
-export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc.py" # https://github.com/python/cpython/pull/13208
-
-# qt
-export QT_ACCESSIBILITY='1'
+export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc.py"
 
 # ripgrep
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/config"
@@ -137,7 +129,7 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export ZINIT_HOME="$XDG_DATA_HOME/zinit/zinit.git"
 
 # zfs
-export ZFS_COLOR=
+export ZFS_COLOR=1
 
 # zplug
 export ZPLUG_HOME="$HOME/.dotfiles/.data/repos/zplug"
@@ -152,6 +144,9 @@ export GDBHISTFILE="$XDG_STATE_HOME/history/gdb_history"
 
 # GNU Octave
 export OCTAVE_HISTFILE="$XDG_STATE_HOME/history/octave-history"
+
+# Guile
+export GUILE_HISTORY="$XDG_STATE_HOME/history/guile_history"
 
 # Julia
 export JULIA_HISTORY="$XDG_STATE_HOME/history/julia_history"

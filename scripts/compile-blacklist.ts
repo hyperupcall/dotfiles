@@ -1,4 +1,5 @@
-#!/usr/bin/env -S deno run --allow-net --allow-write
+#!/usr/bin/env -S deno run --allow-env --allow-net --allow-read --allow-write
+import * as path from "jsr:@std/path";
 
 // deno-fmt-ignore
 const blocklists: { link: string, type: 'ublockorigin' | 'ublacklist' }[] = [
@@ -20,8 +21,8 @@ const blocklists: { link: string, type: 'ublockorigin' | 'ublacklist' }[] = [
 	{ type: 'ublockorigin', link: 'https://raw.githubusercontent.com/NotaInutilis/Super-SEO-Spam-Suppressor/main/adblock.txt' },
 
 	// https://codeberg.org/legendary_creeper/safebrowsing-for-minecrafters
-	{ type: 'ublockorigin', link: 'https://codeberg.org/legendary_creeper/safebrowsing-for-minecrafters/raw/branch/main/safebrowsing-for-minecrafters.txt' },
-	{ type: 'ublacklist', link: 'https://codeberg.org/legendary_creeper/safebrowsing-for-minecrafters/raw/branch/main/safebrowsing-for-minecrafters-ublacklist.txt' },
+	{ type: 'ublockorigin', link: 'https://codeberg.org/legendary_creeper/mc-safebrowsing/raw/branch/main/mc-sb.txt' },
+	{ type: 'ublacklist', link: 'https://codeberg.org/legendary_creeper/mc-safebrowsing/raw/branch/main/mc-sb-ublacklist.txt' },
 
 	// https://github.com/franga2000/aliexpress-fake-sites
 	{ type: 'ublacklist', link: 'https://raw.githubusercontent.com/franga2000/aliexpress-fake-sites/main/domains_uBlacklist.txt' },
@@ -36,17 +37,38 @@ const blocklists: { link: string, type: 'ublockorigin' | 'ublacklist' }[] = [
 	{ type: 'ublacklist', link: 'https://raw.githubusercontent.com/rjaus/ublacklist-pinterest/main/ublacklist-pinterest-ext-ovk.txt' }
 ]
 
+const ignoreFile = path.join(
+	Deno.env.get("HOME"),
+	`.dotfiles/config/ublacklist-ignored.txt`,
+);
+const ignoreSet = new Set(
+	Deno.readTextFileSync(ignoreFile).split("\n").map((item) =>
+		`*://*.${item}/*`
+	),
+);
+
 await Promise.all(["ublockorigin", "ublacklist"].map(async (appName) => {
 	const data = (await Promise.all(
 		blocklists.filter(({ type }) => type === appName).map(
 			async ({ link, type }) => {
 				const comment = type === "ublacklist" ? "#" : "!";
-				let content = await (await fetch(link)).text();
+				const res = await fetch(link);
+				if (!res.ok) {
+					throw new Error(`Failed to fetch content from: ${link}`);
+				}
+				let content = await res.text();
 				content = content.replace(/^---.*?\n---\n/s, "");
-				content = content.replaceAll(
-					/\|\|(?:mistral\.ai|chatgpt\.com|proton\.me|protonmail\.com|claude\.ai).*\n/g,
-					"",
-				);
+
+				const arr = content.split("\n");
+				for (let i = 0; i < arr.length; i += 1) {
+					if (
+						ignoreSet.has(arr[i]) &&
+						!arr[i].startsWith("#")
+					) {
+						arr[i] = `${comment}${arr[i]} ${comment} Ignored.`;
+					}
+				}
+				content = arr.join("\n");
 
 				let text = "";
 				text += `${comment} ${

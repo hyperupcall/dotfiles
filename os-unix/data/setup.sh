@@ -1,5 +1,7 @@
 # shellcheck shell=bash
-shopt -s globstar
+if [ -n "$BASH_VERSION" ]; then
+	shopt -s globstar
+fi
 
 # Source libraries.
 source ~/.dotfiles/os-unix/data/xdg.sh

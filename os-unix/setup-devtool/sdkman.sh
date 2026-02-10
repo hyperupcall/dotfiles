@@ -8,13 +8,13 @@ main() {
 }
 
 installed() {
-	[ -d "$SDKMAN_DIR" ]
+	[ -d "${SDKMAN_DIR:-$HOME/.sdkman}" ]
 }
 
 configure() {
 	util.write_shellfile 'sdkman' \
-		--bash 'source "$SDKMAN_DIR/bin/sdkman-init.sh"' \
-		--zsh 'source "$SDKMAN_DIR/bin/sdkman-init.sh"'
+		--bash 'source "${SDKMAN_DIR:-$HOME/.sdkman}/bin/sdkman-init.sh"' \
+		--zsh 'source "${SDKMAN_DIR:-$HOME/.sdkman}/bin/sdkman-init.sh"'
 }
 
 util.if_file_sourced || _setup "$@"
