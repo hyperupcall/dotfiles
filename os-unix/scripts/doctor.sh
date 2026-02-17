@@ -93,8 +93,24 @@ main() {
 	done; unset -v file
 	core.print_info 'Created necessary symlinks in ~/scripts'
 
+	# Set current computer profile.
+	if [ -f ~/.dotfiles/.data/profile ]; then
+		core.print_info 'Already set computer profile'
+	else
+		local cur=
+		local options='desktop|laptop|other'
+		while [[ $cur != @($options) ]]; do
+			printf '%s' "Computer profile? ($options): "
+			read -er cur
+		done
+		mkdir -p ~/.dotfiles/.data
+		printf '%s\n' "$cur" > ~/.dotfiles/.data/profile
+	fi
+	local computer_profile=
+	computer_profile=$(<~/.dotfiles/.data/profile)
+
 	# Set XDG user directories.
-	{
+	if [[ $computer_profile == @(desktop|laptop) ]]; then
 		xdg-user-dirs-update --set DESKTOP ~/Other/Desktop
 		xdg-user-dirs-update --set DOWNLOAD ~/Downloads
 		xdg-user-dirs-update --set TEMPLATES ~/Other/Templates
@@ -103,11 +119,17 @@ main() {
 		xdg-user-dirs-update --set MUSIC ~/Music
 		xdg-user-dirs-update --set PICTURES ~/Pictures
 		xdg-user-dirs-update --set VIDEOS ~/Videos
-	}
+	fi
+	if [[ $computer_profile == @(desktop|laptop) ]]; then
+		must.link "$HOME/Other/AppImages" "$HOME/.dotfiles/.home/AppImages"
+	else
+		must.link "$HOME/AppImages" "$HOME/.dotfiles/.home/AppImages"
+	fi
 
 	# Symlink XDG base and user directories.
 	(
 		source "$XDG_CONFIG_HOME/user-dirs.dirs"
+		mkdir -p "$HOME/.dotfiles/.home"
 
 		must.link "$XDG_DESKTOP_DIR" "$HOME/.dotfiles/.home/Desktop"
 		must.link "$XDG_DOWNLOAD_DIR" "$HOME/.dotfiles/.home/Downloads"
@@ -123,6 +145,11 @@ main() {
 		must.link "$XDG_STATE_HOME" "$HOME/.dotfiles/.home/xdg_state_dir"
 		must.link "$XDG_DATA_HOME" "$HOME/.dotfiles/.home/xdg_data_dir"
 
+		must.dir "$XDG_CACHE_HOME"
+		must.dir "$XDG_CONFIG_HOME"
+		must.dir "$XDG_STATE_HOME"
+		must.dir "$XDG_DATA_HOME"
+
 		for f in "$HOME/.dotfiles/.home"/*; do
 			if [ -L "$f" ] && [ ! -e "$f" ]; then
 				unlink "$f"
@@ -135,19 +162,12 @@ main() {
 	must.dir ~/.dotfiles/.data/{bin,repos}
 	must.dir ~/.dotfiles/.{data,home}
 	must.dir ~/.local/bin
-	must.dir "$XDG_CONFIG_HOME"
-	must.dir "$XDG_DATA_HOME"
-	must.dir "$XDG_STATE_HOME"
-	must.dir "$XDG_CACHE_HOME"
 	must.dir "$XDG_STATE_HOME/Android/Sdk"
 	must.dir "$XDG_STATE_HOME/history"
 	must.dir "$XDG_STATE_HOME/nano/backups"
 	must.dir "$XDG_DATA_HOME/tig"
-	must.dir "$XDG_CONFIG_HOME/sage" # For $DOT_SAGE.
 	must.dir "$XDG_CONFIG_HOME/Code - OSS/User"
 	must.dir "$XDG_CONFIG_HOME/spacemacs"
-	must.dir "$XDG_DATA_HOME/sonarlint" # For $SONARLINT_USER_HOME.
-	must.dir "$HOME/.dotfiles/.home/AppImages"
 	must.file "$XDG_STATE_HOME/tig/history"
 	must.file "$XDG_STATE_HOME/history/zsh_history" For # For ZSH $HISTFILE.
 	must.user_in_group "$USER" 'docker'
@@ -157,36 +177,24 @@ main() {
 	must.user_in_group "$USER" 'input'
 
 	# Remove default dotfiles. These are customized with environment variables.
-	must.rm ~/.bash_history
-	must.rm ~/.gitconfig
-	must.rm ~/.gmrun_history
-	must.rm ~/.mkshrc
-	must.rm ~/.pythonhist
-	must.rm ~/.sh_history
-	must.rm ~/.sqlite_history
-	must.rm ~/.sudo_as_admin_successful
-	must.rm ~/.viminfo
-	must.rm ~/.wget-hsts
-	must.rm ~/.xsession-errors
-	must.rm ~/.zlogin
-	must.rm ~/.zshenv
-	must.rm ~/.zshrc
-	must.rm ~/.zprofile
-	must.rm ~/.zcompdump
-	must.rm "${ZDOTDIR-"$HOME"}/.zcompdump"
-
-	# Set current system profile.
-	if [ -f ~/.dotfiles/.data/profile ]; then
-		core.print_info 'Already set system profile'
-	else
-		local cur=
-		local options='desktop|laptop'
-		while [[ $cur != @($options) ]]; do
-			printf '%s' "System profile? ($options): "
-			read -er cur
-		done
-		mkdir -p ~/.dotfiles/.data
-		printf '%s\n' "$cur" > ~/.dotfiles/.data/profile
+	if [[ $computer_profile == @(desktop|laptop) ]]; then
+		must.rm ~/.bash_history
+		must.rm ~/.gitconfig
+		must.rm ~/.gmrun_history
+		must.rm ~/.mkshrc
+		must.rm ~/.pythonhist
+		must.rm ~/.sh_history
+		must.rm ~/.sqlite_history
+		must.rm ~/.sudo_as_admin_successful
+		must.rm ~/.viminfo
+		must.rm ~/.wget-hsts
+		must.rm ~/.xsession-errors
+		must.rm ~/.zlogin
+		must.rm ~/.zshenv
+		must.rm ~/.zshrc
+		must.rm ~/.zprofile
+		must.rm ~/.zcompdump
+		must.rm "${ZDOTDIR-"$HOME"}/.zcompdump"
 	fi
 
 	# Fetch GithHub authorization tokens.

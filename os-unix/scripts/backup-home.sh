@@ -36,10 +36,12 @@ main() {
 			--exclude '**/cargo/registry' \
 			--exclude '**/mise/installs' \
 			--exclude '**/miniforge3/pkgs' \
-			--exclude '**/.miniforge3/pkgs' \
-			--exclude '**/miniforge3/pkgs' \
-			--exclude '**/.miniforge3/pkgs' \
+			--exclude '**/miniforge3/envs' \
+			--exclude '**/miniconda3/pkgs' \
 			--exclude '**/miniconda3/envs' \
+			--exclude '**/.miniforge3/pkgs' \
+			--exclude '**/.miniforge3/envs' \
+			--exclude '**/.miniconda3/pkgs' \
 			--exclude '**/.miniconda3/envs' \
 			--exclude '**/__pycache__' \
 			--exclude '**/.conan2/p' \

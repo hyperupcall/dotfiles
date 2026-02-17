@@ -93,7 +93,7 @@ iscmd() {
 updatesystem() {
 	if iscmd 'pacman'; then
 		sudo pacman -Syyu --noconfirm
-		orphaned_deps=$(pacman -Qdtq)
+		orphaned_deps=$(pacman -Qdtq || :)
 		if [ -n "$orphaned_deps" ]; then
 			sudo pacman -R $orphaned_deps
 		fi

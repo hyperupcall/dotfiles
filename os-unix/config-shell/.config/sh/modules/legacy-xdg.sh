@@ -224,7 +224,7 @@ export_xdg_vars() {
 	export RUBY_BUILD_CACHE_PATH="$XDG_CACHE_HOME/ruby-build"
 
 	# Sage
-	export DOT_SAGE="$XDG_CONFIG_HOME/sage"
+	export DOT_SAGE="$XDG_CONFIG_HOME/sage" # Requires directory to be created.
 
 	# SDKMAN!
 	export SDKMAN_DIR="$XDG_STATE_HOME/sdkman"
@@ -236,7 +236,7 @@ export_xdg_vars() {
 	export SPACEMACSDIR="$XDG_CONFIG_HOME/spacemacs"
 
 	# SonarLint
-	export SONARLINT_USER_HOME="$XDG_DATA_HOME/sonarlint"
+	export SONARLINT_USER_HOME="$XDG_DATA_HOME/sonarlint" # Requires directory to be created.
 
 	# SQLite
 
