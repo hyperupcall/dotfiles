@@ -19,7 +19,7 @@ main() {
 }
 
 installed() {
-	local dir=(~/AppImages/Obsidian_*.AppImage)
+	local dir=(~/.dotfiles/.home/AppImages/Obsidian_*.AppImage)
 	(( ${#dir} > 0 ))
 }
 

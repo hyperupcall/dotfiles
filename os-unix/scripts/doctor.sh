@@ -119,10 +119,21 @@ main() {
 		xdg-user-dirs-update --set MUSIC ~/Music
 		xdg-user-dirs-update --set PICTURES ~/Pictures
 		xdg-user-dirs-update --set VIDEOS ~/Videos
+	else
+		xdg-user-dirs-update --set DESKTOP ~/Desktop
+		xdg-user-dirs-update --set DOWNLOAD ~/Downloads
+		xdg-user-dirs-update --set TEMPLATES ~/Templates
+		xdg-user-dirs-update --set PUBLICSHARE ~/Public
+		xdg-user-dirs-update --set DOCUMENTS ~/Documents
+		xdg-user-dirs-update --set MUSIC ~/Music
+		xdg-user-dirs-update --set PICTURES ~/Pictures
+		xdg-user-dirs-update --set VIDEOS ~/Videos
 	fi
 	if [[ $computer_profile == @(desktop|laptop) ]]; then
+		must.dir "$HOME/Other/AppImages"
 		must.link "$HOME/Other/AppImages" "$HOME/.dotfiles/.home/AppImages"
 	else
+		must.dir "$HOME/AppImages"
 		must.link "$HOME/AppImages" "$HOME/.dotfiles/.home/AppImages"
 	fi
 
@@ -231,15 +242,17 @@ main() {
 		fi
 		must.strict_permissions ~/.gnupg/ ~/.gnupg/*
 
-		if gpg --list-keys 0x2FB93BF35E14E7C4 &>/dev/null; then
-			core.print_info "Has gpg key \"Edwin Kofler (FOR PASSWORDS ONLY) <edwin@kofler.dev>\""
-		else
-			core.print_info "Does not have gpg key \"Edwin Kofler (FOR PASSWORDS ONLY) <edwin@kofler.dev>\""
-		fi
-		if gpg --list-keys 0x3851E5FD042C7C6C &>/dev/null; then
-			core.print_info "Has gpg key \"Edwin Kofler <edwin@kofler.dev>\""
-		else
-			core.print_die "Does not have gpg key \"Edwin Kofler <edwin@kofler.dev>\""
+		if [[ $computer_profile == @(desktop|laptop) ]]; then
+			if gpg --list-keys 0x2FB93BF35E14E7C4 &>/dev/null; then
+				core.print_info "Has gpg key \"Edwin Kofler (FOR PASSWORDS ONLY) <edwin@kofler.dev>\""
+			else
+				core.print_info "Does not have gpg key \"Edwin Kofler (FOR PASSWORDS ONLY) <edwin@kofler.dev>\""
+			fi
+			if gpg --list-keys 0x3851E5FD042C7C6C &>/dev/null; then
+				core.print_info "Has gpg key \"Edwin Kofler <edwin@kofler.dev>\""
+			else
+				core.print_die "Does not have gpg key \"Edwin Kofler <edwin@kofler.dev>\""
+			fi
 		fi
 	}
 

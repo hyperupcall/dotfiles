@@ -1,0 +1,44 @@
+trees:
+  scripts-nodejs:
+    url: git@github.com:hyperupcall-self/scripts-nodejs
+    default-remote: 'me'
+
+  prettier-config:
+    url: git@github.com:hyperupcall-self/prettier-config
+    default-remote: 'me'
+
+  prettier-plugin:
+    url: git@github.com:hyperupcall-self/prettier-plugin
+    default-remote: 'me'
+
+  eslint-config:
+    url: git@github.com:hyperupcall-self/eslint-config
+    default-remote: 'me'
+
+  eslint-plugin:
+    url: git@github.com:hyperupcall-self/eslint-plugin
+    default-remote: 'me'
+
+  stylelint-config:
+    url: git@github.com:hyperupcall-self/stylelint-config
+    default-remote: 'me'
+
+  stylelint-plugin:
+    url: git@github.com:hyperupcall-self/stylelint-plugin
+    default-remote: 'me'
+
+  markdownlint-config:
+    url: git@github.com:hyperupcall-self/markdownlint-config
+    default-remote: 'me'
+
+  config-utils:
+    url: git@github.com:hyperupcall-self/config-utils
+    default-remote: 'me'
+
+  lefthook-config:
+    url: git@github.com:hyperupcall-self/lefthook-config
+    default-remote: 'me'
+
+  hyperupcall-action:
+    url: git@github.com:hyperupcall-self/hyperupcall-action
+    default-remote: 'me'

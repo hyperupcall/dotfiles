@@ -151,6 +151,10 @@ unlink() {
 
 	_exit_code=0
 	for _file; do
+		if [ ! -h "$_file" ]; then
+			_util_log_warn "Skipping non-symbolic link: \"$_file\""
+			continue
+		fi
 		command unlink "${_file%/}"
 		_code=$?
 		if (($_code > 0)); then

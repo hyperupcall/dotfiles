@@ -1,0 +1,12 @@
+trees:
+  tree-sitter-digrc:
+    url: git@github.com:hyperupcall-experiments/tree-sitter-digrc
+    default-remote: 'me'
+
+  tree-sitter-icalendar:
+    url: git@github.com:hyperupcall-experiments/tree-sitter-icalendar
+    default-remote: 'me'
+
+  zed-assorted-languages:
+    url: git@github.com:hyperupcall-experiments/zed-assorted-languages
+    default-remote: 'me'

@@ -271,6 +271,8 @@ static Entry osc[] = ConfigEntry("osc/", CategoryTools);
 static Entry redshift[] = ConfigEntry("redshift/", CategoryTools);
 static Entry sheldon[] = ConfigEntry("sheldon/", CategoryTools);
 static Entry urlwatch[] = ConfigEntry("urlwatch/", CategoryTools);
+static Entry garden[] = ConfigEntry("garden/", CategoryTools);
+
 
 // Version Control.
 static Entry gh[] = ConfigEntry("gh/config.yml", CategoryVersionControl);
@@ -309,6 +311,7 @@ static Group defaultGroup = {
 		alacritty,
 		kitty,
 		gh,
+		garden,
 		git,
 		NULL
 	}
@@ -453,6 +456,7 @@ static Group otherGroup = {
 		redshift,
 		sheldon,
 		urlwatch,
+		garden,
 		hg,
 		pijul,
 		tig,

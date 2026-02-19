@@ -1,0 +1,80 @@
+trees:
+  .github:
+    url: 'git@github.com:bash-bastion/.github'
+    path: '.github'
+    default-remote: 'me'
+
+  basalt:
+    url: 'git@github.com:bash-bastion/basalt'
+    path: 'basalt'
+    default-remote: 'me'
+
+  bash-term:
+    url: 'git@github.com:bash-bastion/bash-term'
+    path: 'bash-term'
+    default-remote: 'me'
+
+  bash-object:
+    url: 'git@github.com:bash-bastion/bash-object'
+    path: 'bash-object'
+    default-remote: 'me'
+
+  bash-json:
+    url: 'git@github.com:bash-bastion/bash-json'
+    path: 'bash-json'
+    default-remote: 'me'
+
+  bash-toml:
+    url: 'git@github.com:bash-bastion/bash-toml'
+    path: 'bash-toml'
+    default-remote: 'me'
+
+  bash-args:
+    url: 'git@github.com:bash-bastion/bash-args'
+    path: 'bash-args'
+    default-remote: 'me'
+
+  bash-algo:
+    url: 'git@github.com:bash-bastion/bash-algo'
+    path: 'bash-algo'
+    default-remote: 'me'
+
+  bash-core:
+    url: 'git@github.com:bash-bastion/bash-core'
+    path: 'bash-core'
+    default-remote: 'me'
+
+  bash-tui:
+    url: 'git@github.com:bash-bastion/bash-tui'
+    path: 'bash-tui'
+    default-remote: 'me'
+
+  bash-utility:
+    url: 'git@github.com:bash-bastion/bash-utility'
+    path: 'bash-utility'
+    default-remote: 'me'
+
+  bash_config:
+    url: 'git@github.com:bash-bastion/bash_config'
+    path: 'bash_config'
+    default-remote: 'me'
+
+  shelld:
+    url: 'git@github.com:bash-bastion/shelld'
+    path: 'shelld'
+    default-remote: 'me'
+
+  awesome-basalt:
+    url: 'git@github.com:bash-bastion/awesome-basalt'
+    path: 'awesome-basalt'
+    default-remote: 'me'
+
+  bats-all:
+    url: 'git@github.com:bash-bastion/bats-all'
+    path: 'bats-all'
+    default-remote: 'me'
+
+  shelltest:
+    url: 'git@github.com:bash-bastion/shelltest'
+    path: 'shelltest'
+    default-remote: 'me'
