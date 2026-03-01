@@ -52,10 +52,8 @@
 	},
 	"soft_wrap": "editor_width",
 	"agent": {
-		"tool_permissions": {
-   "default": "allow"
-  },
-  "inline_assistant_model": {
+		"always_allow_tool_actions": true,
+		"inline_assistant_model": {
 			"provider": "copilot_chat",
 			"model": "claude-3.5-sonnet",
 		},

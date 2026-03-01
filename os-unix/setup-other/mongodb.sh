@@ -10,7 +10,7 @@ main() {
 install.debian() {
 	local gpg_file="/etc/apt/keyrings/mongodb.asc"
 	local dist='jammy'
-	local version='8.0'
+	local version='8.2'
 
 	pkg.add_apt_key \
 		"https://pgp.mongodb.com/server-$version.asc" \

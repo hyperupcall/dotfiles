@@ -1,0 +1,51 @@
+---
+garden:
+  root: '${GARDEN_CONFIG_DIR}'
+
+grafts:
+  graft-bash-bastion:
+    config: './graft-bash-bastion.yaml'
+    root: '${organizationsDir}/bash-bastion'
+  graft-hyperupcall-self:
+    config: './graft-hyperupcall-self.yaml'
+    root: '${organizationsDir}/hyperupcall-self'
+  graft-tree-sitter:
+    config: './graft-tree-sitter.yaml'
+    root: '${organizationsDir}/hyperupcall-self'
+
+groups:
+  bash-bastion:
+    - 'graft-bash-bastion::.github'
+    - 'graft-bash-bastion::basalt'
+    - 'graft-bash-bastion::bash-term'
+    - 'graft-bash-bastion::bash-object'
+    - 'graft-bash-bastion::bash-json'
+    - 'graft-bash-bastion::bash-toml'
+    - 'graft-bash-bastion::bash-args'
+    - 'graft-bash-bastion::bash-algo'
+    - 'graft-bash-bastion::bash-core'
+    - 'graft-bash-bastion::bash-str'
+    - 'graft-bash-bastion::bash-tui'
+    - 'graft-bash-bastion::bash-utility'
+    - 'graft-bash-bastion::bash_config'
+    - 'graft-bash-bastion::shelld'
+    - 'graft-bash-bastion::awesome-basalt'
+    - 'graft-bash-bastion::bats-all'
+    - 'graft-bash-bastion::shelltest'
+
+  hyperupcall-self:
+    - 'graft-hyperupcall-self::scripts-nodejs'
+    - 'graft-hyperupcall-self::prettier-config'
+    - 'graft-hyperupcall-self::eslint-config'
+    - 'graft-hyperupcall-self::eslint-plugin'
+    - 'graft-hyperupcall-self::stylelint-config'
+    - 'graft-hyperupcall-self::stylelint-plugin'
+    - 'graft-hyperupcall-self::markdownlint-config'
+    - 'graft-hyperupcall-self::config-utils'
+    - 'graft-hyperupcall-self::lefthook-config'
+    - 'graft-hyperupcall-self::hyperupcall-action'
+
+  tree-sitter:
+    - 'graft-tree-sitter::tree-sitter-digrc'
+    - 'graft-tree-sitter::tree-sitter-icalendar'
+    - 'graft-tree-sitter::zed-assorted-languages'
