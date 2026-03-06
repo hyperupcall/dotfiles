@@ -2,16 +2,34 @@
 garden:
   root: '${GARDEN_CONFIG_DIR}'
 
+variables:
+  applicationsDir: '$ printf "%s" ~/.dotfiles/.home/Documents/Computing/Applications'
+
 grafts:
   graft-bash-bastion:
     config: './graft-bash-bastion.yaml'
-    root: '${organizationsDir}/bash-bastion'
-  graft-hyperupcall-self:
-    config: './graft-hyperupcall-self.yaml'
-    root: '${organizationsDir}/hyperupcall-self'
+    root: '${applicationsDir}/bash-bastion'
+  graft-contributing-to:
+    config: './graft-contributing-to.yaml'
+    root: '${applicationsDir}/contributing-to'
+  graft-hard-forks:
+    config: './graft-hard-forks.yaml'
+    root: '${applicationsDir}/hard-forks'
+  graft-maintaining:
+    config: './graft-maintaining.yaml'
+    root: '${applicationsDir}/maintaining'
+  graft-nocategory:
+    config: './graft-nocategory.yaml'
+    root: '${applicationsDir}/nocategory'
+  graft-self:
+    config: './graft-self.yaml'
+    root: '${applicationsDir}/self'
   graft-tree-sitter:
     config: './graft-tree-sitter.yaml'
-    root: '${organizationsDir}/hyperupcall-self'
+    root: '${applicationsDir}/tree-sitter'
+  graft-version-manager:
+    config: './graft-version-manager.yaml'
+    root: '${applicationsDir}/version-manager'
 
 groups:
   bash-bastion:
@@ -24,7 +42,6 @@ groups:
     - 'graft-bash-bastion::bash-args'
     - 'graft-bash-bastion::bash-algo'
     - 'graft-bash-bastion::bash-core'
-    - 'graft-bash-bastion::bash-str'
     - 'graft-bash-bastion::bash-tui'
     - 'graft-bash-bastion::bash-utility'
     - 'graft-bash-bastion::bash_config'
@@ -33,19 +50,69 @@ groups:
     - 'graft-bash-bastion::bats-all'
     - 'graft-bash-bastion::shelltest'
 
-  hyperupcall-self:
-    - 'graft-hyperupcall-self::scripts-nodejs'
-    - 'graft-hyperupcall-self::prettier-config'
-    - 'graft-hyperupcall-self::eslint-config'
-    - 'graft-hyperupcall-self::eslint-plugin'
-    - 'graft-hyperupcall-self::stylelint-config'
-    - 'graft-hyperupcall-self::stylelint-plugin'
-    - 'graft-hyperupcall-self::markdownlint-config'
-    - 'graft-hyperupcall-self::config-utils'
-    - 'graft-hyperupcall-self::lefthook-config'
-    - 'graft-hyperupcall-self::hyperupcall-action'
+  contributing-to:
+    - 'graft-contributing-to::bash-it'
+    - 'graft-contributing-to::OED'
+
+  hard-forks:
+    - 'graft-hard-forks::kpublish-vscode-extension'
+    - 'graft-hard-forks::kroofpig'
+    - 'graft-hard-forks::knotie'
+    - 'graft-hard-forks::webextension-kjsonviewer'
+    - 'graft-hard-forks::kpell'
+
+  maintaining:
+    - 'graft-maintaining::autoenv'
+    - 'graft-maintaining::bake'
+    - 'graft-maintaining::git-extras'
+    - 'graft-maintaining::awesome-bash'
+    - 'graft-maintaining::awesome-mastodon'
+
+  nocategory:
+    - 'graft-nocategory::babel-improved-piped-pipelines'
+    - 'graft-nocategory::book-organizer'
+    - 'graft-nocategory::bratwurst'
+    - 'graft-nocategory::d'
+    - 'graft-nocategory::event-horizon'
+    - 'graft-nocategory::fox-css'
+    - 'graft-nocategory::jsonschema-extractor'
+    - 'graft-nocategory::metamake-lang'
+    - 'graft-nocategory::pick-sticker'
+    - 'graft-nocategory::sauerkraut'
+    - 'graft-nocategory::setup'
+    - 'graft-nocategory::slides'
+    - 'graft-nocategory::vscode-assorted-languages'
+    - 'graft-nocategory::vscode-hyperupcall-packs'
+    - 'graft-nocategory::vscode-link-handler'
+    - 'graft-nocategory::webext-old-reddit-redirect'
+    - 'graft-nocategory::webext-ublacklist-helper'
+    - 'graft-nocategory::xdgbasedirectoryspecification.com'
+
+  self:
+    - 'graft-self::hyperupcall'
+    - 'graft-self::edwinkofler.com'
+    - 'graft-self::scripts-nodejs'
+    - 'graft-self::prettier-config'
+    - 'graft-self::eslint-config'
+    - 'graft-self::eslint-plugin'
+    - 'graft-self::stylelint-config'
+    - 'graft-self::stylelint-plugin'
+    - 'graft-self::markdownlint-config'
+    - 'graft-self::config-utils'
+    - 'graft-self::lefthook-config'
+    - 'graft-self::hyperupcall-action'
+    - 'graft-self::webext-hyperupcall'
+    - 'graft-self::npm-package-json-lint-config'
 
   tree-sitter:
+    - 'graft-tree-sitter::zed-assorted-languages'
     - 'graft-tree-sitter::tree-sitter-digrc'
     - 'graft-tree-sitter::tree-sitter-icalendar'
-    - 'graft-tree-sitter::zed-assorted-languages'
+    - 'graft-tree-sitter::tree-sitter-tcsh'
+
+  version-manager:
+    - 'graft-version-manager::woof'
+    - 'graft-version-manager::documents'
+    - 'graft-version-manager::woof-plugin-ancillary'
+    - 'graft-version-manager::woof-plugin-core'
+    - 'graft-version-manager::woof-plugin-hashicorp'

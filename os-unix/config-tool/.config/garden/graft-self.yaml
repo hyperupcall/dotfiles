@@ -1,0 +1,56 @@
+trees:
+  hyperupcall:
+    url: git@github.com:hyperupcall-projects/hyperupcall
+    default-remote: 'me'
+
+  edwinkofler.com:
+    url: git@github.com:hyperupcall-projects/edwinkofler.com
+    default-remote: 'me'
+
+  scripts-nodejs:
+    url: git@github.com:hyperupcall-projects/scripts-nodejs
+    default-remote: 'me'
+
+  prettier-config:
+    url: git@github.com:hyperupcall-projects/prettier-config
+    default-remote: 'me'
+
+  eslint-config:
+    url: git@github.com:hyperupcall-projects/eslint-config
+    default-remote: 'me'
+
+  eslint-plugin:
+    url: git@github.com:hyperupcall-projects/eslint-plugin
+    default-remote: 'me'
+
+  stylelint-config:
+    url: git@github.com:hyperupcall-projects/stylelint-config
+    default-remote: 'me'
+
+  stylelint-plugin:
+    url: git@github.com:hyperupcall-projects/stylelint-plugin
+    default-remote: 'me'
+
+  markdownlint-config:
+    url: git@github.com:hyperupcall-projects/markdownlint-config
+    default-remote: 'me'
+
+  config-utils:
+    url: git@github.com:hyperupcall-projects/config-utils
+    default-remote: 'me'
+
+  lefthook-config:
+    url: git@github.com:hyperupcall-projects/lefthook-config
+    default-remote: 'me'
+
+  hyperupcall-action:
+    url: git@github.com:hyperupcall-projects/hyperupcall-action
+    default-remote: 'me'
+
+  webext-hyperupcall:
+    url: git@github.com:hyperupcall-projects/webext-hyperupcall
+    default-remote: 'me'
+
+  npm-package-json-lint-config:
+    url: git@github.com:hyperupcall-projects/npm-package-json-lint-config
+    default-remote: 'me'

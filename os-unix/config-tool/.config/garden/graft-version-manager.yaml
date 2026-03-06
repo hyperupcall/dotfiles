@@ -1,0 +1,20 @@
+trees:
+  woof:
+    url: git@github.com:version-manager/woof
+    default-remote: 'me'
+
+  documents:
+    url: git@github.com:version-manager/documents
+    default-remote: 'me'
+
+  woof-plugin-ancillary:
+    url: git@github.com:version-manager/woof-plugin-ancillary
+    default-remote: 'me'
+
+  woof-plugin-core:
+    url: git@github.com:version-manager/woof-plugin-core
+    default-remote: 'me'
+
+  woof-plugin-hashicorp:
+    url: git@github.com:version-manager/woof-plugin-hashicorp
+    default-remote: 'me'

@@ -2,8 +2,8 @@
 source ~/.dotfiles/os-unix/data/setup.sh
 
 main() {
-	local save_dir="$HOME"
-	local backup_dir='/storage/vault/Records/Backups/home'
+	local save_dir="$_private_backup_home_source"
+	local backup_dir="$_private_backup_home_dest"
 
 	printf "Backing up\n  from: %s\n  to:   %s\n" "$save_dir" "$backup_dir"
 	if util.confirm; then

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# TODO: Delete all of these or vibe code to GUI app
 source ~/.dotfiles/os-unix/data/setup.sh
 
 # Behavior: Show desktop menu / home

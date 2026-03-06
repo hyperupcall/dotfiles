@@ -1,0 +1,8 @@
+trees:
+  bash-it:
+    url: git@github.com:Bash-it/bash-it
+    default-remote: 'me'
+
+  OED:
+    url: git@github.com:OpenEnergyDashboard/OED
+    default-remote: 'me'

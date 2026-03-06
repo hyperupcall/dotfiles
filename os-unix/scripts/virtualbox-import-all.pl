@@ -3,9 +3,12 @@ use strict;
 use warnings;
 
 use File::Which;
+use File::Basename qw(dirname);
 use feature 'say';
 
-my $virtualbox_dir = '/storage/bigfiles/VirtualBox_Machines';
+my $script_dir = dirname(__FILE__);
+my $config = do "$script_dir/../../data/setup-private.pl" or die "Failed to load setup-private.pl: $!";
+my $virtualbox_dir = $config->{_private_virtualbox_dir};
 
 if (defined which('VBoxManage')) {
 	`VBoxManage setproperty machinefolder "$virtualbox_dir"`;

@@ -1,0 +1,20 @@
+trees:
+  autoenv:
+    url: git@github.com:hyperupcall/autoenv
+    default-remote: 'me'
+
+  bake:
+    url: git@github.com:hyperupcall/bake
+    default-remote: 'me'
+
+  git-extras:
+    url: git@github.com:tj/git-extras
+    default-remote: 'me'
+
+  awesome-bash:
+    url: git@github.com:awesome-lists/awesome-bash
+    default-remote: 'me'
+
+  awesome-mastodon:
+    url: git@github.com:hyperupcall/awesome-mastodon
+    default-remote: 'me'

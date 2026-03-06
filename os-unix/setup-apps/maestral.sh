@@ -68,8 +68,8 @@ EOF
 	chmod +x ~/.dotfiles/.data/bin/maestral
 
 	maestral auth link
-	mkdir -p ~/Documents/Dropbox
-	maestral config set path ~/Documents/Dropbox
+	mkdir -p ~/.dotfiles/.home/Documents/Dropbox
+	maestral config set path ~/.dotfiles/.home/Documents/Dropbox
 	maestral autostart --yes
 	maestral start
 }

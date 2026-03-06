@@ -59,7 +59,7 @@
 			"provider": "copilot_chat",
 			"model": "claude-3.5-sonnet",
 		},
-		"default_profile": "ask",
+		"default_profile": "write",
 		"play_sound_when_agent_done": true,
 		"default_model": {
 			"provider": "copilot_chat",

@@ -2,9 +2,6 @@
 source ~/.dotfiles/os-unix/data/setup.sh
 
 main() {
-	local save_dir="$HOME"
-	local backup_dir='/storage/vault/Records/Backups/home'
-
 	local dir=
 	for dir in ~/.dev ~/.dotfiles "$XDG_DATA_HOME/password-store"; do
 		if [ ! -d "$dir" ]; then

@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-import re
-from re import Match
-import os
 import argparse
+import os
+import re
 from pathlib import Path
+from re import Match
 from typing import Callable, NotRequired, TypedDict
 
 # This file checks Bash and Shell scripts for violations not found with
@@ -44,8 +44,8 @@ class c:
 	RESET = '\033[0m'
 	BOLD = '\033[1m'
 	UNDERLINE = '\033[4m'
-	LINK: Callable[[str, str], str] = (
-		lambda href, text: f'\033]8;;{href}\a{text}\033]8;;\a'
+	LINK: Callable[[str, str], str] = lambda href, text: (
+		f'\033]8;;{href}\a{text}\033]8;;\a'
 	)
 
 
@@ -403,7 +403,7 @@ def main():
 	rules.append(
 		{
 			'name': 'install-check-function-exists',
-			'regex': '(?P<match>install\\.(?!arch|debian|any|cachyos|ubuntu|opensuse|fedora|pop|manjaro|neon))(.*?)\\(\\)',
+			'regex': '(?P<match>install\\.(?!any|source|arch|debian|cachyos|ubuntu|opensuse|fedora|pop|manjaro|neon))(.*?)\\(\\)',
 			'reason': 'Function must exist',
 			'fileTypes': ['bash', 'sh'],
 			'fixerFn': None,

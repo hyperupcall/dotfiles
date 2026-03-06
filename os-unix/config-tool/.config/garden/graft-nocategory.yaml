@@ -1,0 +1,72 @@
+trees:
+  babel-improved-piped-pipelines:
+    url: git@github.com:hyperupcall-projects/babel-improved-piped-pipelines
+    default-remote: 'me'
+
+  book-organizer:
+    url: git@github.com:hyperupcall-projects/book-organizer
+    default-remote: 'me'
+
+  bratwurst:
+    url: git@github.com:hyperupcall-projects/bratwurst
+    default-remote: 'me'
+
+  d:
+    url: git@github.com:hyperupcall-projects/d
+    default-remote: 'me'
+
+  event-horizon:
+    url: git@github.com:hyperupcall-projects/event-horizon
+    default-remote: 'me'
+
+  fox-css:
+    url: git@github.com:hyperupcall-projects/fox-css
+    default-remote: 'me'
+
+  jsonschema-extractor:
+    url: git@github.com:hyperupcall-projects/jsonschema-extractor
+    default-remote: 'me'
+
+  metamake-lang:
+    url: git@github.com:hyperupcall-projects/metamake-lang
+    default-remote: 'me'
+
+  pick-sticker:
+    url: git@github.com:hyperupcall-projects/pick-sticker
+    default-remote: 'me'
+
+  sauerkraut:
+    url: git@github.com:hyperupcall-projects/sauerkraut
+    default-remote: 'me'
+
+  setup:
+    url: git@github.com:hyperupcall-projects/setup
+    default-remote: 'me'
+
+  slides:
+    url: git@github.com:hyperupcall-projects/slides
+    default-remote: 'me'
+
+  vscode-assorted-languages:
+    url: git@github.com:hyperupcall-projects/vscode-assorted-languages
+    default-remote: 'me'
+
+  vscode-hyperupcall-packs:
+    url: git@github.com:hyperupcall-projects/vscode-hyperupcall-packs
+    default-remote: 'me'
+
+  vscode-link-handler:
+    url: git@github.com:hyperupcall-projects/vscode-link-handler
+    default-remote: 'me'
+
+  webext-old-reddit-redirect:
+    url: git@github.com:hyperupcall-projects/webext-old-reddit-redirect
+    default-remote: 'me'
+
+  webext-ublacklist-helper:
+    url: git@github.com:hyperupcall-projects/webext-ublacklist-helper
+    default-remote: 'me'
+
+  xdgbasedirectoryspecification.com:
+    url: git@github.com:hyperupcall-projects/xdgbasedirectoryspecification.com
+    default-remote: 'me'

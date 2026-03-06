@@ -54,7 +54,7 @@ installed() {
 }
 
 configure() {
-	VBoxManage setproperty machinefolder '/storage/bigfiles/VirtualBox_Machines'
+	VBoxManage setproperty machinefolder "$_private_virtualbox_dir"
 }
 
 util.if_file_sourced || _setup "$@"

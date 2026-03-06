@@ -15,4 +15,5 @@ done; unset -v _f
 GITHUB_TOKEN="$(<~/.dotfiles/.data/github_token)"
 CURL_CONFIG="$HOME/.dotfiles/os-unix/data/curl_config.conf"
 
+source ~/.dotfiles/os-unix/data/setup-private.sh
 source ~/.dotfiles/vendor/setup.sh/setup.sh

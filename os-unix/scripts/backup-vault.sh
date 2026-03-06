@@ -2,21 +2,16 @@
 source ~/.dotfiles/os-unix/data/setup.sh
 
 main() {
-	local save_dirs=(
-		'/storage/vault/_Data'
-		'/storage/vault/Applications'
-		'/storage/vault/Computing'
-		'/storage/vault/Documents & Resources'
-		'/storage/vault/Gaming'
-		'/storage/vault/Pictures & Videos'
-		'/storage/vault/Reading - Books'
-		'/storage/vault/Reading - Papers'
-		'/storage/vault/Reading - Specifications'
-		'/storage/vault/Records'
-	)
-	local backup_dir='/storage/secondary/Backups/vault'
+	local -n save_dirs='_private_save_dirs'
+	local backup_dir="$_private_backup_vault_dest"
 
-	printf "Backing up various directories in '/storage/vault' to '%s'\n" "$backup_dir"
+	# Build array with -e before each directory
+	local dirs_with_flags=()
+	for dir in "${save_dirs[@]}"; do
+		dirs_with_flags+=(-e "$dir")
+	done
+
+	printf "Backing up various directories in '$_private_backup_vault_source' to '%s'\n" "$backup_dir"
 	if util.confirm; then
 		if [ ! -d "$backup_dir" ]; then
 			core.print_die "Backup directory does not exist"
@@ -25,8 +20,13 @@ main() {
 		borg create \
 			--show-version --show-rc --verbose --stats --progress \
 			--exclude '**/Records/Backups/**' \
+			--exclude '**/*.git' \
+			--exclude '**/*.hg' \
+			--exclude '**/*.svn' \
+			--exclude '**/node_modules' \
+			--exclude '**/target' \
 			"$backup_dir"::'backup-{now}-{hostname}' \
-			"${save_dirs[@]}"
+			"${dirs_with_flags[@]}"
 	fi
 }
 

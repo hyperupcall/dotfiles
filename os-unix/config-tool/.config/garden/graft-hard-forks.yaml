@@ -1,0 +1,20 @@
+trees:
+  kpublish-vscode-extension:
+    url: 'git@github.com:hyperupcall-projects/kpublish-vscode-extension'
+    default-remote: 'me'
+
+  kroofpig:
+    url: 'git@github.com:hyperupcall-projects/kroofpig'
+    default-remote: 'me'
+
+  knotie:
+    url: 'git@github.com:hyperupcall-projects/knotie'
+    default-remote: 'me'
+
+  webextension-kjsonviewer:
+    url: 'git@github.com:hyperupcall-projects/webextension-kjsonviewer'
+    default-remote: 'me'
+
+  kpell:
+    url: 'git@github.com:hyperupcall-projects/kpell'
+    default-remote: 'me'

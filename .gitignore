@@ -2,12 +2,13 @@
 .data/
 .home/
 os-unix/scripts/setup/
+os-unix/data/setup-private.*
 **/bash/bash.d/
 **/sh/shell.d/
 **/zsh/zsh.d/
 .zcompcache/
 .zcompdump
-
+.clangd
 site/
 *.env
 node_modules/
