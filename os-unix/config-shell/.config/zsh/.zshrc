@@ -52,7 +52,7 @@ setopt hist_expire_dups_first
 setopt hist_ignore_space
 setopt hist_reduce_blanks
 setopt hist_verify
-unsetopt inc_append_history
+setopt inc_append_history
 setopt share_history
 
 unsetopt dvorak

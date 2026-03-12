@@ -73,7 +73,7 @@ if [ "$COLORTERM" = "truecolor" ] || [ "$COLORTERM" = "24bit" ]; then
 		PS1="[\u@\h \w]\$ "
 		# shellcheck disable=SC3046
 		if ! eval "$(
-			if ! starship init bash; then # TODO: default
+			if ! print_shell_prompt_eval_string bash ksbp; then
 				printf '%s\n' 'false' # Propagate error.
 			fi
 		)"; then

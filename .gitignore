@@ -3,6 +3,7 @@
 .home/
 os-unix/scripts/setup/
 os-unix/data/setup-private.*
+scripts-hidden/
 **/bash/bash.d/
 **/sh/shell.d/
 **/zsh/zsh.d/

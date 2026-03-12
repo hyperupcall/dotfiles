@@ -7,6 +7,10 @@ main() {
 	util.install_by_setup "$@"
 }
 
+install.any() {
+	basalt global add version-manager/woof
+}
+
 install.source() {
 	local repo_dir="$_private_woof_dir"
 	if [ ! -d "$repo_dir" ]; then
@@ -14,10 +18,6 @@ install.source() {
 	fi
 	cd "$repo_dir"
 	ln -sf "$PWD/pkg/bin/woof" ~/.local/bin/woof
-}
-
-install.any() {
-	basalt global add version-manager/woof
 }
 
 installed() {

@@ -8,8 +8,13 @@ main() {
 	util.clone "$g_dir" 'https://github.com/petobens/trueline'
 }
 
-launch() {
-	cat "$g_dir/trueline.sh"
+configure() {
+	util.write_promptfile 'trueline' \
+		--bash "$(<"$g_dir/trueline.sh")"
+}
+
+installed() {
+	[ -d "$g_dir" ]
 }
 
 util.if_file_sourced || _setup "$@"

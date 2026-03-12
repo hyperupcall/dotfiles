@@ -19,15 +19,7 @@ HISTFILESIZE='-1'
 shopt -s checkwinsize
 shopt -s histappend
 
-# TODO
-# make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-# TODO
-[ -f ~/.bashrc-generated-aliases ] && source ~/.bashrc-generated-aliases
-[ -f ~/.bashrc-generated-functions ] && source ~/.bashrc-generated-functions
-
-# TODO: good colors
+# PS1.
 if [ "$COLORTERM" = "truecolor" ] || [ "$COLORTERM" = "24bit" ]; then
 	PS1="\[\e[38;2;201;42;42m\][\u@\h \w]\[\e[0m\]# "
 else
@@ -40,6 +32,7 @@ else
 	unset -v _colors
 fi
 
+# Additional customizations.
 if  command -v dircolors &>/dev/null && [ -f ~/.dir_colors ]; then
 	eval "$(dircolors ~/.dir_colors)"
 fi

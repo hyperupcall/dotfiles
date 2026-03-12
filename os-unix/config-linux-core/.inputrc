@@ -1,5 +1,6 @@
 $include /etc/inputrc
 
+# Set options.
 set bell-style none
 set bind-tty-special-chars off
 set blink-matching-paren off
@@ -21,24 +22,7 @@ set skip-completed-text on
 set output-meta on
 set visible-stats on
 
-"\C- r": re-read-init-file
-"\C- p": previous-screen-line
-"\C- n": next-screen-line
-"\C- w": redraw-current-line
-"\C- r": reverse-search-history
-"\C- s": forward-search-history
-"\C- p": print-last-kbd-macro
-
-"C-w": backward-kill-word
-
-"\eq": menu-complete
-"\ew": menu-complete
-"\e;": redraw-current-line
-
-# Typing "!!<space>" replaces "1!!" with the last command.
-# Space: magic-space
-
-# Ctrl-left-arrow, Ctrl-right-arrow etc. to move across words.
+# Enable use of arrow keys with control
 "\e[1;5C": forward-word
 "\e[1;5D": backward-word
 "\e[5C": forward-word
@@ -46,20 +30,38 @@ set visible-stats on
 "\e\e[C": forward-word
 "\e\e[D": backward-word
 
+# Enable use of Home/End keys
+"\e[1~": beginning-of-line
+"\e[4~": end-of-line
+
+# Enable use of Delete/Insert keys
+"\e[3~": delete-char
+"\e[2~": quoted-insert
+
+# Custom shortcuts.
+"\C-." re-read-init-file
+Meta-k: previous-screen-line
+Meta-j: next-screen-line
+Meta-r: non-incremental-reverse-search-history
+Meta-s: non-incremental-forward-search-history
+
+# Automatically perform history expansion.
+Space: magic-space
+
 # Templates.
 "\C-lt": "\C-awhile true;do \C-e ;done " # Infinite loop.
 "\C-lw": " | while IFS= read -r line;do \"$line\" ;done\eb\eb\eb\ef " # Loop over standard input.
 
 $if mode=vi
-	set keymap vi-command
-	"gg": beginning-of-history
-	"G": end-of-history
+set keymap vi-command
+"gg": beginning-of-history
+"G": end-of-history
 
-	set keymap vi-insert
-	"jj": vi-movement-mode
-	"\C-p": history-search-backward
-	Control-l: clear-screen
+set keymap vi-insert
+"jj": vi-movement-mode
+"\C-p": history-search-backward
+Control-l: clear-screen
 
-	TAB: menu-complete
-	"\e[Z": menu-complete-backward
+TAB: menu-complete
+"\e[Z": menu-complete-backward
 $endif

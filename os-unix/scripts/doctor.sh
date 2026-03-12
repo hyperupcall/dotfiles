@@ -28,7 +28,7 @@ main() {
 	core.print_info 'Removed broken symlinks'
 
 	# Remove distribution-specific dotfiles.
-	mkdir -p ~/.bootstrap/distro-dotfiles
+	must.dir ~/.bootstrap/distro-dotfiles
 	for file in ~/.bash_login ~/.bash_logout ~/.bash_profile ~/.bashrc ~/.profile .dir_colors .dircolors; do
 		if [[ ! -L "$file" && -f "$file" ]]; then
 			mv "$file" ~/.bootstrap/distro-dotfiles
@@ -55,12 +55,26 @@ main() {
 	done; unset -v file
 	core.print_info 'Cleaned shell dotfiles'
 
-	# Create necessary symlinks.
-	must.link ~/.dotfiles/os-unix/scripts ~/scripts
-	mkdir -p ~/.local/bin
-	for file in ~/.dotfiles/os-unix/bin/*; do
-		ln -sf "$file" ~/.local/bin
+	# Create necessary symlinks in ~/scripts.
+	must.dir ~/.dotfiles/.data/scripts
+	must.link ~/.dotfiles/.data/scripts ~/scripts
+	for file in ~/.dotfiles/os-unix/scripts/*; do
+		ln -sf "$file" ~/scripts
 	done; unset -v file
+	if [ -d ~/.dotfiles/os-unix/scripts-hidden ]; then
+		for file in ~/.dotfiles/os-unix/scripts-hidden/*; do
+			ln -sf "$file" ~/scripts
+		done; unset -v file
+	fi
+
+	# Create necessary symlinks in ~/.local/bin.
+	must.dir ~/.local/bin
+	for file in ~/.dotfiles/os-unix/bin/*; do
+		if [ -x "$file" ]; then
+			ln -sf "$file" ~/.local/bin
+		fi
+	done; unset -v file
+
 	for file in ~/scripts/*; do
 		if [ -d "$file" ]; then
 			core.shopt_push -s globstar
@@ -74,7 +88,7 @@ main() {
 			chmod +x "$file"
 		fi
 	done
-	mkdir -p ~/scripts/setup
+	must.dir ~/scripts/setup
 	for file in ~/.dotfiles/os-unix/{config,setup}-*/*; do
 		if [ -d "$file" ]; then
 			local dir="$file"
@@ -107,7 +121,7 @@ main() {
 			printf '%s' "Computer profile? ($options): "
 			read -er cur
 		done
-		mkdir -p ~/.dotfiles/.data
+		must.dir ~/.dotfiles/.data
 		printf '%s\n' "$cur" > ~/.dotfiles/.data/profile
 	fi
 	local computer_profile=
@@ -145,6 +159,7 @@ main() {
 	# Symlink XDG base and user directories.
 	(
 		source "$XDG_CONFIG_HOME/user-dirs.dirs"
+		must.dir "$HOME/.dotfiles/.home"
 
 		must.link "$XDG_DESKTOP_DIR" "$HOME/.dotfiles/.home/Desktop"
 		must.link "$XDG_DOWNLOAD_DIR" "$HOME/.dotfiles/.home/Downloads"
@@ -265,18 +280,7 @@ main() {
 	~/scripts/setup/mise.sh
 	~/scripts/setup/cmake.sh
 	~/scripts/setup/lefthook.sh
-	(
-		if ! mise trust --cd ~/.dotfiles --show mise | grep -q '~/.dotfiles: trusted'; then
-			local output=
-			if ! output=$(mise trust ~/.dotfiles/.mise.toml 2>&1); then
-				printf '%s\n' "$output"
-			fi
-		fi
-		cd ~/.dotfiles
-		if [ ! -f ./.git/info/lefthook.checksum ]; then
-			lefthook install
-		fi
-	)
+	~/.dotfiles/bake init # Depends on mise and lefthook.
 	~/scripts/setup/git.sh
 	~/scripts/setup/neovim.sh
 	~/scripts/setup/pass.sh
@@ -287,6 +291,7 @@ main() {
 	~/scripts/setup/vscode.sh
 	~/scripts/setup/thunderbird.sh
 
+	~/scripts/setup/notify-send.sh
 	~/scripts/setup/gh.sh
 	~/scripts/setup/bats.sh
 	~/scripts/setup/less.sh

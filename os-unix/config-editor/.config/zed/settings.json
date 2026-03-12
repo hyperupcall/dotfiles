@@ -1,4 +1,12 @@
 {
+	"context_servers": {
+		"anki-mcp-server": {
+			"enabled": true,
+			"remote": false,
+			"command": "node",
+			"env": {},
+		},
+	},
 	"edit_predictions": {
 		"provider": "zed",
 	},
@@ -27,9 +35,11 @@
 			"tab_size": 2,
 		},
 		"C": {
+			"formatter": "language_server",
 			"format_on_save": "on",
 		},
 		"C++": {
+			"formatter": "language_server",
 			"format_on_save": "on",
 		},
 	},
@@ -53,15 +63,16 @@
 	"soft_wrap": "editor_width",
 	"agent": {
 		"tool_permissions": {
-   "default": "allow"
-  },
-  "inline_assistant_model": {
+			"default": "allow",
+		},
+		"inline_assistant_model": {
 			"provider": "copilot_chat",
 			"model": "claude-3.5-sonnet",
 		},
 		"default_profile": "write",
 		"play_sound_when_agent_done": true,
 		"default_model": {
+			"enable_thinking": false,
 			"provider": "copilot_chat",
 			"model": "claude-sonnet-4.5",
 		},

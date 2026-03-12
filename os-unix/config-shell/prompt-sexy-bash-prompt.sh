@@ -8,8 +8,13 @@ main() {
 	util.clone "$g_dir" 'https://github.com/twolfson/sexy-bash-prompt'
 }
 
-launch() {
-	cat "$g_dir/.bash_prompt"
+configure() {
+	util.write_promptfile 'sexy-bash-prompt' \
+		--bash "$(<"$g_dir/.bash_prompt")"
+}
+
+installed() {
+	[ -d "$g_dir" ]
 }
 
 util.if_file_sourced || _setup "$@"

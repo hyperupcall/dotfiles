@@ -8,8 +8,13 @@ main() {
 	util.clone "$g_dir" 'https://github.com/chris-marsh/pureline'
 }
 
-launch() {
-	cat "$g_dir/pureline"
+configure() {
+	util.write_promptfile 'pureline' \
+		--bash "$(<"$g_dir/pureline")"
+}
+
+installed() {
+	[ -d "$g_dir" ]
 }
 
 util.if_file_sourced || _setup "$@"

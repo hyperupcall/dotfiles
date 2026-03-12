@@ -41,13 +41,6 @@ else {
    die "ERROR: Config file not found at $config_file\n";
 }
 
-# TODO
-# - order q_ keys last
-# - if has login key, check it is on second line
-# - error on invalid email addresses
-# - $+{Key} is [a-z][A-Z][0-9]_ only
-# - cleanup
-
 if ( grep { $_ eq '--fix-symlinks' } @ARGV ) {
    say "FILES WITH ASCII TEXT";
 
@@ -207,6 +200,11 @@ sub wanted {
       if ( !grep( /^$pass_name$/, @ignore_list ) ) {
          say( STDERR "Should have the \"login\" field: $pass_name" );
       }
+
+      my @lines = split( /\n/, $pass_content );
+      if ( @lines >= 2 && $lines[1] !~ /^login:/ ) {
+     		say( STDERR "The \"login\" field must be on the second line: $pass_name" );
+      }
    }
 
    # Extra newline appended from run command.
@@ -261,7 +259,7 @@ sub wanted {
    }
 }
 
-say("---");
+say("\nKEY SUMMARY:");
 say("Total passwords: $total_passwords");
 my @keys =
   sort { $property_counts{$a} <=> $property_counts{$b} } keys(%property_counts);
@@ -270,8 +268,7 @@ foreach my $key ( keys %property_counts ) {
    say("$key: $property_counts{$key}");
 }
 
-say("---");
-say("Email Frequencies:");
+say("\nEMAIL SUMMARY:");
 foreach my $email ( sort { $email_counts{$b} <=> $email_counts{$a} }
    keys %email_counts )
 {

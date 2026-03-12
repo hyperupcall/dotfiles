@@ -130,6 +130,19 @@ pbake() {
 	fi
 }
 
+print_shell_prompt_eval_string() {
+	_file="${XDG_STATE_HOME:-${HOME:?}/.local/state}/dotfiles-shell-prompts/${1:-bash}/_${2:-starship}.txt"
+
+	if [ -f "$_file" ]; then
+		cat "$_file"
+	else
+		printf 'false\n'
+		return 1
+	fi
+
+	unset -v _file
+}
+
 qe() {
 	filterList="BraveSoftware code tetrio-desktop obsidian discord sublime-text Ryujinx unity3d hmcl hdlauncher TabNine zettlr Zettlr Google lunarclient libreoffice VirtualBox configstore pulse obs-studio eDEX-UI 1Password kde.org sublime-text-3 gdlauncher gdlauncher_next launcher-main gitify QtProject GIMP r2modman r2modmanPlus-local Code plover GitKraken Electron bonsai-browser sidekick Insomnia Typora wavebox microsoft-edge evolution chromium"
 

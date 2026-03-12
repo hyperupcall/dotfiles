@@ -243,6 +243,7 @@ static Entry bash[] = {
 	Done
 	// clang-format on
 };
+static Entry sbp[] = ConfigEntry("sbp/", CategoryShell);
 static Entry cshrc[] = HomeEntry(".cshrc", CategoryShell);
 static Entry kshrc[] = HomeEntry(".kshrc", CategoryShell);
 static Entry login[] = HomeEntry(".login", CategoryShell);
@@ -278,6 +279,7 @@ static Entry garden[] = ConfigEntry("garden/", CategoryTools);
 static Entry gh[] = ConfigEntry("gh/config.yml", CategoryVersionControl);
 static Entry git[] = ConfigEntry("git/", CategoryVersionControl);
 static Entry hg[] = ConfigEntry("hg/", CategoryVersionControl);
+static Entry jj[] = ConfigEntry("jj/", CategoryVersionControl);
 static Entry pijul[] = ConfigEntry("pijul/", CategoryVersionControl);
 static Entry tig[] = ConfigEntry("tig/", CategoryVersionControl);
 
@@ -306,6 +308,7 @@ static Group defaultGroup = {
 		sh,
 		zsh,
 		bash,
+		sbp,
 		profile,
 		zshenv,
 		alacritty,
@@ -313,6 +316,7 @@ static Group defaultGroup = {
 		gh,
 		garden,
 		git,
+		jj,
 		NULL
 	}
 };
@@ -458,6 +462,7 @@ static Group otherGroup = {
 		urlwatch,
 		garden,
 		hg,
+		jj,
 		pijul,
 		tig,
 		NULL

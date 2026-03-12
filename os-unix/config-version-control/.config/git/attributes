@@ -1,10 +1,1 @@
 * text=auto eol=lf
-
-package-lock.json merge=npm-merge-driver
-npm-shrinkwrap.json merge=npm-merge-driver
-yarn.lock merge=yarn-merge-driver
-
-*.png  diff=spaceman-diff
-*.jpg  diff=spaceman-diff
-*.jpeg diff=spaceman-diff
-*.gif  diff=spaceman-diff

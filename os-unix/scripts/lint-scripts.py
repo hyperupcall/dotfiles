@@ -106,15 +106,16 @@ def lintfile(file: Path, rules: list[Rule], options: dict[str, str]):
 				midstr = line[m.start('match') : m.end('match')]
 				poststr = line[m.end('match') :]
 
-				if options['fix'] and rule['fixerFn'] is not None:
+				if rule['fixerFn'] is not None:
 					fixed_line = rule['fixerFn'](line, m)
 					newmidstr = fixed_line[: -len(poststr)][len(prestr) :]
-					content_arr[line_i] = fixed_line
+					if options['fix']:
+						content_arr[line_i] = fixed_line
 
 				print(f'{c.CYAN}{dir}{c.RESET}:{line_i + 1}')
 				print(f'{c.MAGENTA}{rule["name"]}{c.RESET}: {rule["reason"]}')
 				print(f'{prestr}{c.RED}{midstr}{c.RESET}{poststr}')
-				if options['fix'] and rule['fixerFn'] is not None:
+				if rule['fixerFn'] is not None:
 					print(f'{prestr}{c.GREEN}{newmidstr}{c.RESET}{poststr}')
 				print()
 
@@ -225,24 +226,65 @@ def main():
 		}
 	)
 
-	# TODO: flatpak install -y --user, --from?
-	# Before: flatpak install
-	# After: flatpak install -y
-	def flatpakMustHaveY(line: str, m: Match[str]) -> str:
+	# TODO: This doesn't seem to work. Should make sure cargo install has --frozen?
+	# Before: flatpak remote-add
+	# After: flatpak remote-add --if-not-exists --user
+	def flatpakRemoteAddMustHaveFlags(line: str, m: Match[str]) -> str:
 		prestr, _, poststr = utilGetStrs(line, m)
-
-		subcmd = m.group('subcommand')
-		return f'{prestr}flatpak {subcmd} -y{poststr}'
+		flags = ''
+		if '--if-not-exists' not in line:
+			flags += '--if-not-exists '
+		if '--user' not in line:
+			flags += '--user '
+		flags = flags.rstrip()
+		return f'{prestr}flatpak remote-add {flags}{poststr}'
 
 	rules.append(
 		{
-			'name': 'flatpak-must-have-y',
-			'regex': '(?P<match>flatpak (?P<subcommand>install|update|uninstall)(?! -y))',
-			'reason': 'To make sure it is automated',
+			'name': 'flatpak-remote-add-must-have-flags',
+			'regex': '(?P<match>flatpak remote-add(?!.*(--if-not-exists.*--user|--user.*--if-not-exists)))',
+			'reason': 'flatpak remote-add must have --if-not-exists and --user',
 			'fileTypes': ['bash', 'sh'],
-			'fixerFn': flatpakMustHaveY,
-			'testPositiveMatches': ['flatpak install'],
-			'testNegativeMatches': ['flatpak install -y'],
+			'fixerFn': flatpakRemoteAddMustHaveFlags,
+			'testPositiveMatches': [
+				'flatpak remote-add flathub https://flathub.org/repo/flathub.flatpakrepo',
+				'flatpak remote-add --if-not-exists flathub https://example.com',
+			],
+			'testNegativeMatches': [
+				'flatpak remote-add --if-not-exists --user flathub https://example.com',
+				'flatpak remote-add --user --if-not-exists flathub https://example.com',
+			],
+		}
+	)
+
+	# Before: flatpak install
+	# After: flatpak install -y --user
+	def flatpakInstallMustHaveFlags(line: str, m: Match[str]) -> str:
+		prestr, _, poststr = utilGetStrs(line, m)
+		subcmd = m.group('subcommand')
+		flags = ''
+		if '-y' not in line and '--assumeyes' not in line:
+			flags += '-y '
+		if '--user' not in line:
+			flags += '--user '
+		flags = flags.rstrip()
+		return f'{prestr}flatpak {subcmd} {flags}{poststr}'
+
+	rules.append(
+		{
+			'name': 'flatpak-install-must-have-flags',
+			'regex': '(?P<match>flatpak (?P<subcommand>install|update|uninstall)(?!.*(-y.*--user|--user.*-y)))',
+			'reason': 'flatpak install/update/uninstall must have -y and --user',
+			'fileTypes': ['bash', 'sh'],
+			'fixerFn': flatpakInstallMustHaveFlags,
+			'testPositiveMatches': [
+				'flatpak install flathub org.mozilla.firefox',
+				'flatpak install -y flathub org.mozilla.firefox',
+			],
+			'testNegativeMatches': [
+				'flatpak install -y --user flathub org.mozilla.firefox',
+				'flatpak install --user -y flathub org.mozilla.firefox',
+			],
 		}
 	)
 

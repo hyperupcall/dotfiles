@@ -3,7 +3,7 @@
 # Get the most recent file in a directory.
 _mkt_util_get_latest_file() {
 	find . -ignore_readdir_race -mindepth 1 -maxdepth 1 -type f -printf "%T@\t%p\0" \
-			| sort -zn | cut -z -f2- | tail -z -n1 | tr -d '\000'
+		| sort -zn | cut -z -f2- | tail -z -n1 | tr -d '\000'
 }
 
 # cd into the most recently created directory.

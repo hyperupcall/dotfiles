@@ -42,6 +42,23 @@ installed() {
 	command -v appimagelauncherd &>/dev/null
 }
 
+install.source() {
+	sudo apt-get install -y make cmake libglib2.0-dev libcairo2-dev librsvg2-dev libfuse-dev libarchive-dev libxpm-dev libcurl4-openssl-dev libboost-all-dev qtbase5-dev qtdeclarative5-dev qttools5-dev-tools patchelf libc6-dev libc6-dev gcc-multilib g++-multilib
+
+	local dir="$HOME/.dotfiles/.data/repos/AppImageLauncher"
+	util.clone "$dir" git@github.com:TheAssassin/AppImageLauncher
+	cd "$dir"
+
+	git submodule update --init --recursive
+	mkdir build
+	cd build
+
+	cmake .. -DCMAKE_INSTALL_PREFIX="$PREFIX" -DUSE_SYSTEM_BOOST=true
+	make libappimage libappimageupdate libappimageupdate-qt
+	cmake .
+	make
+}
+
 get_appimagelauncher_release_file() {
 	local ext="$1"
 
@@ -71,24 +88,6 @@ get_appimagelauncher_release_file() {
 	if [ -z "$REPLY" ]; then
 		core.print_die "Unable to find release file"
 	fi
-}
-
-# TODO
-build_from_source() {
-	sudo apt-get install -y make cmake libglib2.0-dev libcairo2-dev librsvg2-dev libfuse-dev libarchive-dev libxpm-dev libcurl4-openssl-dev libboost-all-dev qtbase5-dev qtdeclarative5-dev qttools5-dev-tools patchelf libc6-dev libc6-dev gcc-multilib g++-multilib
-
-	local dir="$HOME/.dotfiles/.data/repos/AppImageLauncher"
-	util.clone "$dir" git@github.com:TheAssassin/AppImageLauncher
-	cd "$dir"
-
-	git submodule update --init --recursive
-	mkdir build
-	cd build
-
-	cmake .. -DCMAKE_INSTALL_PREFIX="$PREFIX" -DUSE_SYSTEM_BOOST=true
-	make libappimage libappimageupdate libappimageupdate-qt
-	cmake .
-	make
 }
 
 util.if_file_sourced || _setup "$@"

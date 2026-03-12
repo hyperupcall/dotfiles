@@ -8,8 +8,13 @@ main() {
 	util.clone "$g_dir" 'https://github.com/agkozak/polyglot'
 }
 
-launch() {
-	cat "$g_dir/polyglot.sh"
+configure() {
+	util.write_promptfile 'polyglot' \
+		--bash "$(<"$g_dir/polyglot.sh")"
+}
+
+installed() {
+	[ -d "$g_dir" ]
 }
 
 util.if_file_sourced || _setup "$@"

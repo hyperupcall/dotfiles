@@ -1,0 +1,3 @@
+#:schema https://docs.jj-vcs.dev/latest/config-schema.json
+[ui]
+default-command = "log"

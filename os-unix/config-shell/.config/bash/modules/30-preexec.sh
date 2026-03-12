@@ -10,4 +10,7 @@ precmd() {
 	# For cdp().
 	# shellcheck disable=SC2034
 	_shell_cdp_dir="$PWD"
+
+	# Update history file before running each command.
+	history -a
 }

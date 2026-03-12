@@ -15,10 +15,21 @@ EOF
 	if ! grep -q '.clangd' .git/info/exclude; then
 		printf '%s\n' '.clangd' >> .git/info/exclude
 	fi
+
+	if ! mise trust --cd ~/.dotfiles --show mise | grep -q '~/.dotfiles: trusted'; then
+		if ! output=$(mise trust ~/.dotfiles/.mise.toml 2>&1); then
+			printf '%s\n' "$output"
+		fi
+	fi
+	if [ ! -f ./.git/info/lefthook.checksum ]; then
+		lefthook install
+	fi
 }
 
 task.build() {
-	# grep '-P' does not with with multiple arguments using '-e'.
+	./os-unix/scripts/lint-scripts.py --internal-test-regex
+
+	# grep '-P' not compatible with with multiple arguments using '-e'.
 	for pattern in "${_private_forbidden_patterns[@]}"; do
 		if grep -IPr --exclude setup-private.* --exclude .clangd --exclude-dir node_modules --exclude-dir .data --exclude-dir vendor --color=always "$pattern" ./ | grep -Ev '(#|//|") lint-ignore'; then
 			bake.die "Expected to find no matches for '$pattern'"

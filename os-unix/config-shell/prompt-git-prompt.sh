@@ -8,9 +8,15 @@ main() {
 	util.clone "$g_dir" 'https://github.com/magicmonty/bash-git-prompt'
 }
 
-launch() { # TODO
-	printf '%s\n' "__GIT_PROMPT_DIR=\"$g_dir\""
-	cat "$g_dir/gitprompt.sh"
+configure() {
+	util.write_promptfile 'git-prompt' \
+		--bash "
+			__GIT_PROMPT_DIR=\"$g_dir\"
+			$(<"$g_dir/gitprompt.sh")"
+}
+
+installed() {
+	[ -d "$g_dir" ]
 }
 
 util.if_file_sourced || _setup "$@"

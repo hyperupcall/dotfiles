@@ -7,8 +7,13 @@ main() {
 	cargo install pista
 }
 
-launch() {
-	printf '%s\n' "PS1='$(pista -m)'"
+configure() {
+	util.write_promptfile 'pista' \
+		--bash "PS1='$(pista -m)'"
+}
+
+installed() {
+	command -v pista &>/dev/null
 }
 
 util.if_file_sourced || _setup "$@"
