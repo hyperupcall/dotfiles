@@ -12,7 +12,7 @@ install.debian() {
 }
 
 install.ubuntu() {
-	install.debuan "$@"
+	install.debian "$@"
 }
 
 installed() {

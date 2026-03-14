@@ -2,21 +2,20 @@
 source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='pass'
+declare -g g_password_store_dir="${PASSWORD_STORE_DIR:-$HOME/.password-store}"
 
 main() {
 	util.install_by_setup "$@"
 
 	if util.confirm 'Clone password repository?'; then
-		local dir="${PASSWORD_STORE_DIR:-$HOME/.password-store}"
-
-		if [ -d "$dir" ]; then
-			if [ -d "$dir/.git" ]; then
+		if [ -d "$g_password_store_dir" ]; then
+			if [ -d "$g_password_store_dir" ]; then
 				core.print_info "Secrets repository already cloned"
 			else
 				core.print_die "Non-git directory already exists in place of secrets dir. Please remove manually"
 			fi
 		else
-			util.clone "$dir" 'ssh://git@codeberg.org/hyperupcall/secrets.git'
+			util.clone "$g_password_store_dir" 'ssh://git@codeberg.org/hyperupcall/secrets.git'
 		fi
 	fi
 
@@ -87,7 +86,7 @@ install_native_extension() {
 }
 
 installed() {
-	command -v pass &>/dev/null
+	command -v pass &>/dev/null && [ -d "$g_password_store_dir" ]
 }
 
 util.if_file_sourced || _setup "$@"

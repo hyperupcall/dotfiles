@@ -47,7 +47,7 @@ export NAME='Edwin Kofler'
 export EMAIL='edwin@kofler.dev'
 export EDITOR='vim'
 export VISUAL="\$EDITOR"
-export PATH="\$HOME/.dotfiles/.data/bin:\$PATH"
+export PATH="\$HOME/.dotfiles/.data/bin:\$HOME/.local/bin:\$PATH"
 
 if [ -f ~/.dotfiles/os-unix/data/xdg.sh ]; then
 	. ~/.dotfiles/os-unix/data/xdg.sh

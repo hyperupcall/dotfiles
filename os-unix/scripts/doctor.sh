@@ -7,10 +7,14 @@ main() {
 		core.print_die "Invalid argument: \"$arg\"" ;;
 	esac done; unset -v arg
 
+	# Create necessary directories.
+	must.dir ~/.dotfiles/.{data,home}
+	must.dir ~/.dotfiles/.data/{bin,repos}
+	must.dir ~/.local/bin
+
 	# Install required dependencies.
 	if [ ! -f ~/.dotfiles/.data/finished_bootstrap ]; then
 		install_required_dependencies
-		mkdir -p ~/.dotfiles/.data
 		touch ~/.dotfiles/.data/finished_bootstrap
 		core.print_info "Installed required dependencies"
 	fi
@@ -111,6 +115,7 @@ main() {
 
 	# Set XDG user directories.
 	if [[ $computer_profile == @(desktop|laptop) ]]; then
+		must.dir ~/Other/{Desktop,Templates,Public}
 		xdg-user-dirs-update --set DESKTOP ~/Other/Desktop
 		xdg-user-dirs-update --set DOWNLOAD ~/Downloads
 		xdg-user-dirs-update --set TEMPLATES ~/Other/Templates
@@ -140,7 +145,6 @@ main() {
 	# Symlink XDG base and user directories.
 	(
 		source "$XDG_CONFIG_HOME/user-dirs.dirs"
-		mkdir -p "$HOME/.dotfiles/.home"
 
 		must.link "$XDG_DESKTOP_DIR" "$HOME/.dotfiles/.home/Desktop"
 		must.link "$XDG_DOWNLOAD_DIR" "$HOME/.dotfiles/.home/Downloads"
@@ -170,9 +174,6 @@ main() {
 	core.print_info 'Set and symlink XDG base and user directories'
 
 	# Create necessary directories, files, and groups.
-	must.dir ~/.dotfiles/.data/{bin,repos}
-	must.dir ~/.dotfiles/.{data,home}
-	must.dir ~/.local/bin
 	must.dir "$XDG_STATE_HOME/Android/Sdk"
 	must.dir "$XDG_STATE_HOME/history"
 	must.dir "$XDG_STATE_HOME/nano/backups"
@@ -256,6 +257,8 @@ main() {
 		fi
 	}
 
+	~/scripts/setup/rust.sh
+
 	~/scripts/setup/pass.sh
 	~/scripts/setup/dev.sh
 	~/scripts/setup/d.sh
@@ -322,9 +325,10 @@ main() {
 			core.print_info "Skipping template file \"${file##*/}\"" ;;
 		esac
 		unset -v output
-	done
+	done; unset -v file
 	core.shopt_pop
-	unset -v file
+
+	echo 'Done.'
 }
 
 must.rm() {
@@ -532,6 +536,14 @@ install_required_dependencies() {
 		packages+=(base-devl lvm2 openssl yay)
 
 		sudo pacman -Syu --noconfirm "${packages[@]}"
+	}
+	dependencies.installed() {
+		:
+		# TODO exit code when not installed
+		# TODO fix showing Info: File "" has not function "installed"
+		# TODO: ~/.config/npm does not exist in ~/.dotfiles
+		# TODO: install zsh before running any setup scripts
+		# TODO: install python earliest
 	}
 
 	util.update_system
