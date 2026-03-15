@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name        Improved Canvas Styles
+// @name        Improved Canvas
 // @namespace   Violentmonkey Scripts
 // @match       https://*.instructure.com/*
 // @grant       none
-// @version     0.1.0
+// @version     0.1
 // @author      Edwin Kofler
 // @description 7/20/2025, 10:14:51 AM
 // ==/UserScript==

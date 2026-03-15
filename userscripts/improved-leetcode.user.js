@@ -3,7 +3,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       https://leetcode.com/*
 // @grant       none
-// @version     0.1.0
+// @version     0.1
 // @author      Edwin Kofler
 // @description 7/17/2025, 5:12:51 PM
 // ==/UserScript==

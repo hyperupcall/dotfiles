@@ -3,7 +3,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       https://my.csumb.edu/dashboard*
 // @grant       none
-// @version     0.1.0
+// @version     0.1
 // @author      Edwin Kofler
 // @description 8/21/2025, 9:40:32 PM
 // ==/UserScript==

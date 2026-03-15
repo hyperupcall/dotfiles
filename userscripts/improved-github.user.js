@@ -3,7 +3,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       https://github.com/*
 // @grant       none
-// @version     0.1.0
+// @version     0.1
 // @author      Edwin Kofler
 // @description 6/27/2025, 6:41:56 PM
 // @icon        https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png
