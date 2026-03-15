@@ -1,4 +1,4 @@
-name: 'Update Website Blacklist'
+name: 'Update Website Denylist'
 
 on:
   schedule:
