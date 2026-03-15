@@ -38,8 +38,8 @@ const blocklists: { link: string, type: 'ublockorigin' | 'ublacklist' }[] = [
 ]
 
 const ignoreFile = path.join(
-	Deno.env.get("HOME"),
-	`.dotfiles/config/ublacklist-ignored.txt`,
+	import.meta.dirname,
+	"../config/ublacklist-ignored.txt",
 );
 const ignoreSet = new Set(
 	Deno.readTextFileSync(ignoreFile).split("\n").map((item) =>
