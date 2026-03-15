@@ -23,11 +23,11 @@ unset -v EXECIGNORE
 export FCEDIT="$EDITOR"
 unset -v FIGNORE
 unset -v GLOBIGNORE
-export HISTCONTROL='ignorespace:ignoredups'
+export HISTCONTROL='ignorespace:ignoredups' # Overriden by bash-preexec.
 export HISTFILE="$XDG_STATE_HOME/history/bash_history"
 export HISTSIZE='-1'
 export HISTFILESIZE='-1'
-export HISTIGNORE='ls:dir|vdir|[bf]g:pwd:clear*:exit*:mkcd*:mkt*'
+export HISTIGNORE='ls:dir|vdir|[bf]g:pwd:clear*:exit*:mkcd*:mkt*: *'
 export HISTTIMEFORMAT='%F %T ' # ISO 8601
 export TIMEFORMAT=$'real    %3lR\nuser    %3lU\nsystem  %3lS\npercent %P'
 export PROMPT_DIRTRIM='6'

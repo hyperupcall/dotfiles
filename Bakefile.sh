@@ -1,7 +1,9 @@
 # shellcheck shell=bash
 
 init() {
-	source ~/.dotfiles/os-unix/data/setup-private.sh
+	if [ -f ~/.dotfiles/os-unix/data/setup-private.sh ]; then
+		source ~/.dotfiles/os-unix/data/setup-private.sh
+	fi
 }
 
 task.init() {
