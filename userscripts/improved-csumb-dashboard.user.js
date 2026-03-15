@@ -3,13 +3,12 @@
 // @namespace   Violentmonkey Scripts
 // @match       https://my.csumb.edu/dashboard*
 // @grant       none
-// @version     0.1
+// @version     0.2
 // @author      Edwin Kofler
 // @description 8/21/2025, 9:40:32 PM
 // ==/UserScript==
-document.querySelector("head").append(
-	document.createRange().createContextualFragment(`
-<style>
+const sheet = new CSSStyleSheet();
+sheet.replaceSync(`
   .dashboard-node .node-leaf {
 	 max-width: 1400px !important;
   }
@@ -17,6 +16,5 @@ document.querySelector("head").append(
   widget-container.dashboard-widgets .card.widget {
 	 margin: 4px !important;
   }
-</style>
-`),
-);
+`);
+document.adoptedStyleSheets.push(sheet);
