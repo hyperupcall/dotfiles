@@ -1,3 +1,8 @@
+---
+layout: page
+title: Notable
+---
+
 # Notables
 
 The following scripts are notable and may be helpful to others:

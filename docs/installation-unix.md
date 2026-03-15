@@ -1,3 +1,8 @@
+---
+layout: page
+title: Installation (Unix)
+---
+
 # Installation
 
 ## Prerequisites

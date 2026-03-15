@@ -1,3 +1,8 @@
+---
+layout: home
+title: Dotfiles
+---
+
 # dotfiles
 
 My Dotfiles!
