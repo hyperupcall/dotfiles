@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - name: 'Checkout repository'
-        uses: 'actions/checkout@v4'
+        uses: 'actions/checkout@v6'
 
       - name: 'Setup Deno'
         uses: 'denoland/setup-deno@v2'
@@ -23,7 +23,7 @@ jobs:
 
       - run: './scripts/compile-blacklist.ts'
 
-      - uses: 'crazy-max/ghaction-import-gpg@v6'
+      - uses: 'crazy-max/ghaction-import-gpg@v7'
         with:
           gpg_private_key: '${{ secrets.GPG_PRIVATE_KEY }}'
           passphrase: '${{ secrets.GPG_PRIVATE_KEY_PASSWORD }}'
