@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name        Improved GitHub Styles
+// @name        Improved GitHub
 // @namespace   Violentmonkey Scripts
 // @match       https://github.com/*
 // @grant       none

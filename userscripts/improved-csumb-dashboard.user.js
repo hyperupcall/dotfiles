@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name        Improved CSUMB Dashboard Styles
+// @name        Improved CSUMB Dashboard
 // @namespace   Violentmonkey Scripts
 // @match       https://my.csumb.edu/dashboard*
 // @grant       none

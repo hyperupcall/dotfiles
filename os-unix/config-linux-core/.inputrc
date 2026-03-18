@@ -39,14 +39,15 @@ set visible-stats on
 "\e[2~": quoted-insert
 
 # Custom shortcuts.
-"\C-." re-read-init-file
 Meta-k: previous-screen-line
 Meta-j: next-screen-line
 Meta-r: non-incremental-reverse-search-history
 Meta-s: non-incremental-forward-search-history
 
 # Automatically perform history expansion.
+$if Bash
 Space: magic-space
+$endif
 
 # Templates.
 "\C-lt": "\C-awhile true;do \C-e ;done " # Infinite loop.

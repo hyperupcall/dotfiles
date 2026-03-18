@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Improved Kattis
-// @namespace    http://tampermonkey.net/
-// @version      0.3
+// @namespace    Violentmonkey Scripts
+// @version      0.4
 // @match        https://open.kattis.com/problems/*
 // @grant        GM_setClipboard
 // @grant        GM_registerMenuCommand
@@ -37,12 +37,7 @@ public class ${slug} {
 	Python: {
 		ext: "py",
 		template: `import sys
-
-def main():
-    pass
-
-if __name__ == "__main__":
-    main()`,
+`,
 	},
 };
 
@@ -203,48 +198,45 @@ function buildScript(
 }
 
 function createButton() {
-	const btn = document.createElement("button");
-	btn.textContent = "Create Files";
-	btn.style.cssText = `
-      display: inline-block;
-      margin-bottom: 10px;
-      padding: 8px 18px;
-      background: #1b6ec2;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      font-size: 14px;
-      font-weight: bold;
+	const wrapper = document.createElement("div");
+	wrapper.style.cssText = `
+      position: absolute;
+      top: 44px;
+      left: 21px;
       cursor: pointer;
-      font-family: sans-serif;
+      white-space: nowrap;
+      font-size: var(--font-xlarge);
+      color: var(--background-gradient-start);
     `;
 
-	btn.addEventListener(
-		"mouseenter",
-		() => (btn.style.background = "#145ea8"),
-	);
-	btn.addEventListener(
-		"mouseleave",
-		() => (btn.style.background = "#1b6ec2"),
-	);
+	const btn = document.createElement("i");
+	btn.className = "fa fa-copy";
+	btn.title = "Create Files";
 
 	btn.addEventListener("click", () => {
 		const samples = getSamples();
 		const script = buildScript(samples);
 		GM_setClipboard(script, "text");
 
-		btn.textContent = "✓ Copied!";
-		btn.style.background = "#2e7d32";
+		const originalClass = btn.className;
+		btn.className = "fa fa-check";
+		btn.style.color = "#2e7d32";
 		setTimeout(() => {
-			btn.textContent = "Create Files";
-			btn.style.background = "#1b6ec2";
+			btn.className = originalClass;
+			btn.style.color = "unset";
 		}, 2000);
 	});
 
+	wrapper.appendChild(btn);
+
+	const favouriteBtn = document.querySelector("#favourite-btn");
+	if (favouriteBtn) {
+		favouriteBtn.after(wrapper);
+		return;
+	}
+
 	const firstTable = document.querySelector("table.sample");
 	if (firstTable) {
-		const wrapper = document.createElement("div");
-		wrapper.appendChild(btn);
 		firstTable.before(wrapper);
 		return;
 	}
@@ -259,8 +251,6 @@ function createButton() {
 		if (/sample input 1/i.test(node.textContent.trim())) {
 			/** @type {HTMLElement} */
 			const target = node.parentElement;
-			const wrapper = document.createElement("div");
-			wrapper.appendChild(btn);
 			target.before(wrapper);
 			return;
 		}
@@ -268,8 +258,6 @@ function createButton() {
 
 	const problemBody = document.querySelector(".problembody");
 	if (problemBody) {
-		const wrapper = document.createElement("div");
-		wrapper.appendChild(btn);
 		problemBody.after(wrapper);
 		return;
 	}
@@ -277,7 +265,7 @@ function createButton() {
 	const main = document.querySelector(
 		"#problem-text, main, .problem-statement, article",
 	);
-	if (main) main.prepend(btn);
+	if (main) main.prepend(wrapper);
 }
 
 if (document.readyState === "loading") {

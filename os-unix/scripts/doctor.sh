@@ -22,7 +22,7 @@ main() {
 	# Remove broken symlinks.
 	for f in "$HOME"/*; do
 		if [ -L "$f" ] && [ ! -e "$f" ]; then
-			unlink "$f"
+			must.unlink "$f"
 		fi
 	done
 	core.print_info 'Removed broken symlinks'
@@ -76,6 +76,10 @@ main() {
 	done; unset -v file
 
 	for file in ~/scripts/*; do
+		if [ -L "$file" ] && [ ! -e "$file" ]; then
+			must.unlink "$file"
+			continue
+		fi
 		if [ -d "$file" ]; then
 			core.shopt_push -s globstar
 			for file in "$file"/**; do
@@ -182,7 +186,7 @@ main() {
 
 		for f in "$HOME/.dotfiles/.home"/*; do
 			if [ -L "$f" ] && [ ! -e "$f" ]; then
-				unlink "$f"
+				must.unlink "$f"
 			fi
 		done; unset -v f
 	)
@@ -313,6 +317,7 @@ main() {
 
 	core.shopt_push -s nullglob
 	for file in "$XDG_CONFIG_HOME"/libreoffice/4/user/template/*; do
+		local output=
 		case $file in
 		*.ott)
 			core.print_info "Creating instance of template \"${file##*/}\""
@@ -347,6 +352,7 @@ must.rm() {
 			core.print_warn "Failed to remove file '$file'"
 			printf '  -> %s\n' "$output"
 		fi
+		unset -v output
 	fi
 }
 
@@ -361,6 +367,7 @@ must.rmdir() {
 			core.print_warn "Failed to remove directory '$dir'"
 			printf '  -> %s\n' "$output"
 		fi
+		unset -v output
 	elif [ -e "$dir" ]; then
 		core.print_fatal "Not a directory: \"$dir\""
 	fi
@@ -377,6 +384,7 @@ must.dir() {
 				core.print_warn "Failed to create directory '$dir'"
 				printf '  -> %s\n' "$output"
 			fi
+			unset -v output
 		fi
 	done; unset -v dir
 }
@@ -392,6 +400,7 @@ must.file() {
 			core.print_warn "Failed to create file '$file'"
 			printf '  -> %s\n' "$output"
 		fi
+		unset -v output
 	fi
 }
 
@@ -431,6 +440,25 @@ must.link() {
 		core.print_warn "Failed to symlink from '$src' to '$target'"
 		printf '  -> %s\n' "$output"
 	fi
+	unset -v output
+}
+
+must.unlink() {
+	local file="$1"
+
+	if [ -e "$file" ] && [ ! -L "$file" ]; then
+		_util_log_warn "Skipping non-symbolic link: \"$file\""
+		return
+	fi
+
+	local output=
+	if output=$(unlink "${file%/}" 2>&1); then
+		core.print_info "Unsymlinking \"$file\""
+	else
+		core.print_warn "Failed to unsymlink \"$file\""
+		printf '  -> %s\n' "$output"
+	fi
+	unset -v output
 }
 
 must.user_in_group() {
@@ -451,6 +479,7 @@ must.user_in_group() {
 			printf '%s\n' "  -> $output"
 		fi
 	fi
+	unset -v output
 
 	if sudo usermod -aG "$group" "$user"; then
 		core.print_info "Added user \"$user\" to group \"$group\""
