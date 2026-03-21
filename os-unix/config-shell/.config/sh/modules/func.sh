@@ -133,12 +133,12 @@ pbake() {
 print_shell_prompt_eval_string() {
 	_file="${XDG_STATE_HOME:-${HOME:?}/.local/state}/dotfiles-shell-prompts/${1:-bash}/_${2:-starship}.txt"
 
-	if [ -f "$_file" ]; then
-		cat "$_file"
-	else
+	if [ ! -f "$_file" ]; then
 		printf 'false\n'
 		return 1
 	fi
+
+	cat "$_file"
 
 	unset -v _file
 }

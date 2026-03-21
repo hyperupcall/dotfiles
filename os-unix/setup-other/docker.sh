@@ -2,6 +2,7 @@
 source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='Docker'
+declare -g g_sources_file='/etc/apt/sources.list.d/docker.sources'
 
 main() {
 	util.install_by_setup "$@"
@@ -14,7 +15,8 @@ install.ubuntu() {
 		lsb-release \
 		curl # lint-ignore
 
-	local dist='focal'
+	local dist=
+	dist=$(lsb_release --codename --short)
 	local gpg_file="/etc/apt/keyrings/docker.asc"
 
 	pkg.add_apt_key \
@@ -22,7 +24,7 @@ install.ubuntu() {
 		"$gpg_file"
 
 	pkg.add_apt_repository \
-		'/etc/apt/sources.list.d/docker.sources' "
+		"$g_sources_file" "
 			Types: deb
 			URIs: https://download.docker.com/linux/ubuntu
 			Suites: $dist
@@ -37,7 +39,7 @@ install.ubuntu() {
 }
 
 installed() {
-	command -v docker &>/dev/null
+	[ -f "$g_sources_file" ] && command -v docker &>/dev/null
 }
 
 util.if_file_sourced || _setup "$@"

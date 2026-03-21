@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 source ~/.dotfiles/os-unix/data/setup.sh
 
+declare -g g_name='Surface Kernel'
+declare -g g_sources_file='/etc/apt/sources.list.d/linux-surface.sources'
+
 main() {
 	if ! util.confirm "Are all your kernel modules installed as DKMS?"; then
 		exit 0
 	fi
 
-	util.install_by_setup 'Surface Kernel' "$@"
+	util.install_by_setup "$@"
 }
 
 install.debian() {
@@ -17,7 +20,7 @@ install.debian() {
 		"$gpg_file"
 
 	pkg.add_apt_repository \
-		'/etc/apt/sources.list.d/linux-surface.sources' "
+		"$g_sources_file" "
 			Types: deb
 			URIs: https://pkg.surfacelinux.com/debian
 			Suites: release
@@ -33,6 +36,10 @@ install.debian() {
 
 install.ubuntu() {
 	install.debian "$@"
+}
+
+installed() {
+	[ -f "$g_sources_file" ] && command -v linux-surface &>/dev/null
 }
 
 util.if_file_sourced || _setup "$@"

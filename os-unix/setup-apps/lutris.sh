@@ -2,6 +2,7 @@
 source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='Lutris'
+declare -g g_sources_file='/etc/apt/sources.list.d/lutris.sources'
 
 main() {
 	util.install_by_setup "$@"
@@ -24,7 +25,7 @@ install.debian() {
 		"$gpg_file"
 
 	pkg.add_apt_repository \
-		'/etc/apt/sources.list.d/lutris.sources' "
+		"$g_sources_file" "
 			Types: deb
 			URIs: https://download.opensuse.org/repositories/home:/strycore/Debian_12/
 			Suites: ./
@@ -45,7 +46,7 @@ install.arch() {
 }
 
 installed() {
-	command -v lutris &>/dev/null
+	[ -f "$g_sources_file" ] && command -v lutris &>/dev/null
 }
 
 util.if_file_sourced || _setup "$@"

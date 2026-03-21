@@ -2,6 +2,9 @@
 source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='Brave'
+declare -g g_sources_file_release='/etc/apt/sources.list.d/brave-browser-release.sources'
+declare -g g_sources_file_beta='/etc/apt/sources.list.d/brave-browser-beta.sources'
+declare -g g_sources_file_nightly='/etc/apt/sources.list.d/brave-browser-nightly.sources'
 
 main() {
 	util.install_by_setup "$@"
@@ -23,7 +26,7 @@ install.debian() {
 		"$gpg_file_nightly"
 
 	pkg.add_apt_repository \
-		'/etc/apt/sources.list.d/brave-browser-release.sources' "
+		"$g_sources_file_release" "
 			Types: deb
 			URIs: https://brave-browser-apt-release.s3.brave.com/
 			Suites: stable
@@ -32,7 +35,7 @@ install.debian() {
 			signed-by: $gpg_file_release"
 
 	pkg.add_apt_repository \
-		'/etc/apt/sources.list.d/brave-browser-beta.sources' "
+		"$g_sources_file_beta" "
 			Types: deb
 			URIs: https://brave-browser-apt-beta.s3.brave.com/
 			Suites: stable
@@ -41,7 +44,7 @@ install.debian() {
 			signed-by: $gpg_file_beta"
 
 	pkg.add_apt_repository \
-		'/etc/apt/sources.list.d/brave-browser-nightly.sources' "
+		"$g_sources_file_nightly" "
 			Types: deb
 			URIs: https://brave-browser-apt-nightly.s3.brave.com/
 			Suites: stable
@@ -85,7 +88,7 @@ install.arch() {
 }
 
 installed() {
-	command -v brave-browser &>/dev/null && command -v brave-browser-beta &>/dev/null
+	[ -f "$g_sources_file_release" ] && [ -f "$g_sources_file_beta" ] && command -v brave-browser &>/dev/null && command -v brave-browser-beta &>/dev/null
 }
 
 util.if_file_sourced || _setup "$@"

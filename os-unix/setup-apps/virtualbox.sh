@@ -2,13 +2,15 @@
 source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='VirtualBox'
+declare -g g_sources_file='/etc/apt/sources.list.d/virtualbox.sources'
 
 main() {
 	util.install_by_setup "$@"
 }
 
 install.debian() {
-	local dist='jammy'
+	local dist=
+	dist=$(lsb_release --codename --short)
 	local gpg_file="/etc/apt/keyrings/oracle-virtualbox-2016.asc"
 
 	pkg.add_apt_key \
@@ -16,7 +18,7 @@ install.debian() {
 		"$gpg_file"
 
 	pkg.add_apt_repository \
-		'/etc/apt/sources.list.d/virtualbox.sources' "
+		"$g_sources_file" "
 			Types: deb
 			URIs: https://download.virtualbox.org/virtualbox/debian
 			Suites: $dist
@@ -29,7 +31,8 @@ install.debian() {
 }
 
 install.ubuntu() {
-	local dist='noble'
+	local dist=
+	dist=$(lsb_release --codename --short)
 	local gpg_file="/etc/apt/keyrings/oracle-virtualbox-2016.asc"
 
 	pkg.add_apt_key \
@@ -37,7 +40,7 @@ install.ubuntu() {
 		"$gpg_file"
 
 	pkg.add_apt_repository \
-		'/etc/apt/sources.list.d/virtualbox.sources' "
+		"$g_sources_file" "
 			Types: deb
 			URIs: https://download.virtualbox.org/virtualbox/debian
 			Suites: $dist
@@ -45,16 +48,17 @@ install.ubuntu() {
 			Architectures: $(dpkg --print-architecture)
 			signed-by: $gpg_file"
 
-	# sudo apt-get update -y
-	# sudo apt-get install -y virtualbox virtualbox-guest-additions-iso
+	sudo apt-get update -y
+	sudo apt-get install -y virtualbox virtualbox-guest-additions-iso
 }
 
 installed() {
-	command -v VirtualBox &>/dev/null
+	[ -f "$g_sources_file" ] && command -v VirtualBox &>/dev/null
 }
 
 configure() {
-	VBoxManage setproperty machinefolder "$_private_virtualbox_dir"
+	# VBoxManage setproperty machinefolder "$_private_virtualbox_dir"
+	:
 }
 
 util.if_file_sourced || _setup "$@"

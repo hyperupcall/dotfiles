@@ -277,6 +277,9 @@ main() {
 	}
 
 	~/scripts/setup/rust.sh
+	~/scripts/setup/zsh.sh
+	~/scripts/setup/ksh.sh
+	~/scripts/setup/notify-send.sh
 
 	~/scripts/setup/pass.sh
 	~/scripts/setup/dev.sh
@@ -295,22 +298,17 @@ main() {
 	~/scripts/setup/vscode.sh
 	~/scripts/setup/thunderbird.sh
 
-	~/scripts/setup/notify-send.sh
 	~/scripts/setup/gh.sh
 	~/scripts/setup/bats.sh
 	~/scripts/setup/less.sh
 	~/scripts/setup/latex.sh
 	~/scripts/setup/fish.sh
-	~/scripts/setup/my-tools.sh
 	~/scripts/setup/miscellaneous.sh
 
 	~/scripts/setup/llvm.sh
-	~/scripts/setup/zsh.sh
-	~/scripts/setup/ksh.sh
 	~/scripts/setup/bake.sh
 	~/scripts/setup/basalt.sh
 	~/scripts/setup/woof.sh
-	~/scripts/setup/notify-send.sh
 	~/scripts/setup/pre-commit.sh
 	~/scripts/setup/homebrew.sh
 	~/scripts/setup/nerdfonts.sh

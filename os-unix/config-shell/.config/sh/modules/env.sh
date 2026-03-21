@@ -87,6 +87,7 @@ export CMD_ENV='linux'
 
 # Python
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc.py"
+export PYTHON_HISTORY="$XDG_STATE_HOME/history/python_history"
 
 # ripgrep
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/config"

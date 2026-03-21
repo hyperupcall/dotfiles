@@ -3,15 +3,23 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='OBS'
 
-main() {
-	if command -v 'apt' &>/dev/null; then
-		sudo add-apt-repository -y ppa:obsproject/obs-studio
-		sudo apt-get update -y
-		sudo apt-get install -y obs-studio
-	else
-		flatpak remote-add --if-not-exists --user flathub 'https://dl.flathub.org/repo/flathub.flatpakrepo'
-		flatpak install -y --user com.obsproject.Studio
-	fi
+install.debian() {
+	sudo add-apt-repository -y ppa:obsproject/obs-studio
+	sudo apt-get update -y
+	sudo apt-get install -y obs-studio
+}
+
+install.ubuntu() {
+	install.debian "$@"
+}
+
+install.fedora() {
+	flatpak remote-add --if-not-exists --user flathub 'https://dl.flathub.org/repo/flathub.flatpakrepo'
+	flatpak install -y --user com.obsproject.Studio
+}
+
+install.opensuse() {
+	install.fedora "$@"
 }
 
 installed() {

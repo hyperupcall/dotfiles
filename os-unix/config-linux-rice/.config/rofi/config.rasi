@@ -4,7 +4,7 @@ configuration {
 	cycle: true;
 	show-icons: true;
 	matching: "fuzzy";
-	terminal: "fox-default launch terminal-emulator";
+	terminal: "alacritty";
 
 	/* hide-scrollbar: true;
 	disable-history: true;
@@ -15,4 +15,3 @@ configuration {
 	display-window: "";
 	columns: 3; */
 }
-

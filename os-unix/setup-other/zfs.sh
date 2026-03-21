@@ -2,6 +2,7 @@
 source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='ZFS'
+declare -g g_sources_file='/etc/apt/sources.list.d/bookworm-backports.sources'
 
 main() {
 	util.install_by_setup "$@"
@@ -19,7 +20,7 @@ install.debian() {
 
 	local gpg_file='/usr/share/keyrings/debian-archive-keyring.gpg'
 	pkg.add_apt_repository \
-		'/etc/apt/sources.list.d/bookworm-backports.sources' "
+		"$g_sources_file" "
 			Types: deb deb-src
 			URIs: https://deb.debian.org/debian
 			Suites: bookworm-backports
@@ -70,6 +71,10 @@ install.arch() {
 
 install.cachyos() {
 	sudo pacman -Syu --noconfirm cachyos-v3/linux-cachyos-zfs cachyos-v3/linux-cachyos-lto-zfs
+}
+
+installed() {
+	[ -f "$g_sources_file" ] && command -v zfs &>/dev/null
 }
 
 util.if_file_sourced || _setup "$@"

@@ -2,6 +2,7 @@
 source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='PostgreSQL Anonymizer'
+declare -g g_sources_file='/etc/apt/sources.list.d/dalibo-labs.sources'
 
 main() {
 	util.install_by_setup "$@"
@@ -14,7 +15,7 @@ install.ubuntu() {
 		"$gpg_file"
 
 	pkg.add_apt_repository \
-		'/etc/apt/sources.list.d/dalibo-labs.sources' "
+		"$g_sources_file" "
 			Types: deb
 			URIs: http://apt.dalibo.org/labs
 			Suites: $(lsb_release -cs)-dalibo
@@ -27,7 +28,7 @@ install.ubuntu() {
 }
 
 installed() {
-	[ -d /usr/lib/postgresql ]
+	[ -f "$g_sources_file" ] && [ -d /usr/lib/postgresql ]
 }
 
 util.if_file_sourced || _setup "$@"

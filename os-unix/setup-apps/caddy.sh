@@ -2,6 +2,7 @@
 source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='Caddy'
+declare -g g_sources_file='/etc/apt/sources.list.d/caddy-stable.sources'
 
 main() {
 	util.install_by_setup "$@"
@@ -16,7 +17,7 @@ install.debian() {
 		"$gpg_file"
 
 	pkg.add_apt_repository \
-		'/etc/apt/sources.list.d/caddy-stable.sources' "
+		"$g_sources_file" "
 			Types: deb deb-src
 			URIs: https://dl.cloudsmith.io/public/caddy/stable/deb/debian
 			Suites: any-version
@@ -26,6 +27,10 @@ install.debian() {
 
 	sudo apt-get update -y
 	sudo apt-get install -y caddy
+}
+
+installed() {
+	[ -f "$g_sources_file" ] && command -v caddy &>/dev/null
 }
 
 util.if_file_sourced || _setup "$@"

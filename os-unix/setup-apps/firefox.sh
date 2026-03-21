@@ -2,6 +2,7 @@
 source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='Firefox'
+declare -g g_sources_file='/etc/apt/sources.list.d/mozilla.sources'
 
 main() {
 	util.install_by_setup "$@"
@@ -20,7 +21,7 @@ install.ubuntu() {
 		"$gpg_file"
 
 	pkg.add_apt_repository \
-		'/etc/apt/sources.list.d/mozilla.sources' "
+		"$g_sources_file" "
 			Types: deb
 			URIs: https://packages.mozilla.org/apt
 			Suites: mozilla
@@ -48,7 +49,7 @@ install.opensuse() {
 }
 
 installed() {
-	command -v firefox &>/dev/null
+	[ -f "$g_sources_file" ] && command -v firefox &>/dev/null
 }
 
 util.if_file_sourced || _setup "$@"

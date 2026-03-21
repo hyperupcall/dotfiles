@@ -2,6 +2,7 @@
 source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='MongoDB'
+declare -g g_sources_file='/etc/apt/sources.list.d/mongodb-8.2.sources'
 
 main() {
 	util.install_by_setup "$@"
@@ -9,7 +10,8 @@ main() {
 
 install.debian() {
 	local gpg_file="/etc/apt/keyrings/mongodb.asc"
-	local dist='jammy'
+	local dist=
+	dist=$(lsb_release --codename --short)
 	local version='8.2'
 
 	pkg.add_apt_key \
@@ -17,7 +19,7 @@ install.debian() {
 		"$gpg_file"
 
 	pkg.add_apt_repository \
-		"/etc/apt/sources.list.d/mongodb-$version.sources" "
+		"$g_sources_file" "
 			Types: deb
 			URIs: https://repo.mongodb.org/apt/ubuntu
 			Suites: $dist/mongodb-org/$version
@@ -34,7 +36,7 @@ install.ubuntu() {
 }
 
 installed() {
-	command -v &>/dev/null mongod
+	[ -f "$g_sources_file" ] && command -v mongod &>/dev/null
 }
 
 util.if_file_sourced || _setup "$@"

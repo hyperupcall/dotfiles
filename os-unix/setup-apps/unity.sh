@@ -2,6 +2,7 @@
 source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='Unity Hub'
+declare -g g_sources_file='/etc/apt/sources.list.d/unityhub.sources'
 
 main() {
 	util.install_by_setup "$@"
@@ -15,7 +16,7 @@ install.debian() {
 		"$gpg_file"
 
 	pkg.add_apt_repository \
-		'/etc/apt/sources.list.d/unityhub.sources' "
+		"$g_sources_file" "
 			Types: deb
 			URIs: https://hub.unity3d.com/linux/repos/deb
 			Suites: stable
@@ -25,6 +26,10 @@ install.debian() {
 
 	sudo apt-get update -y
 	sudo apt-get install -y unityhub
+}
+
+installed() {
+	[ -f "$g_sources_file" ] && command -v unityhub &>/dev/null
 }
 
 util.if_file_sourced || _setup "$@"

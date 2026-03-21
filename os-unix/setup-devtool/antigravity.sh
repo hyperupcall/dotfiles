@@ -2,6 +2,7 @@
 source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='Antigravity'
+declare -g g_sources_file='/etc/apt/sources.list.d/antigravity.sources'
 
 main() {
 	util.install_by_setup "$@"
@@ -14,7 +15,7 @@ install.ubuntu() {
 		"$gpg_file"
 
 	pkg.add_apt_repository \
-		'/etc/apt/sources.list.d/antigravity.sources' "
+		"$g_sources_file" "
 			Types: deb
 			URIs: https://us-central1-apt.pkg.dev/projects/antigravity-auto-updater-dev/
 			Suites: antigravity-debian
@@ -27,7 +28,7 @@ install.ubuntu() {
 }
 
 installed() {
-	command -v antigravity &>/dev/null
+	[ -f "$g_sources_file" ] && command -v antigravity &>/dev/null
 }
 
 util.if_file_sourced || _setup "$@"

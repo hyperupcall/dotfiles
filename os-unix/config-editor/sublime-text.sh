@@ -2,6 +2,7 @@
 source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='Sublime Text'
+declare -g g_sources_file='/etc/apt/sources.list.d/sublime-text.sources'
 
 main() {
 	util.install_by_setup "$@"
@@ -15,7 +16,7 @@ install.debian() {
 		"$gpg_file"
 
 	pkg.add_apt_repository \
-		'/etc/apt/sources.list.d/sublime-text.sources' "
+		"$g_sources_file" "
 			Types: deb
 			URIs: https://download.sublimetext.com/
 			Suites: apt/stable/
@@ -32,7 +33,7 @@ install.ubuntu() {
 }
 
 installed() {
-	command -v subl &>/dev/null
+	[ -f "$g_sources_file" ] && command -v subl &>/dev/null
 }
 
 util.if_file_sourced || _setup "$@"

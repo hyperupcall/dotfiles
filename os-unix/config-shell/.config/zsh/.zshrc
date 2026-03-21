@@ -85,7 +85,7 @@ if [ "$COLORTERM" = "truecolor" ] || [ "$COLORTERM" = "24bit" ]; then
 	else
 		PS1="%{$fg[red]%}[%n@%M %~]$%{$reset_color%} "
 		if ! eval "$(
-			if ! default launch shell-prompt-zsh; then
+			if ! print_shell_prompt_eval_string zsh starship; then
 				printf '%s\n' 'false' # Propagate error.
 			fi
 		)"; then
@@ -108,6 +108,6 @@ fi
 
 # Modules.
 _util_source_dir "$XDG_CONFIG_HOME/zsh/modules"
-_util_source_dir "$XDG_CONFIG_HOME/zsh/zsh.d"
+# _util_source_dir "$XDG_CONFIG_HOME/zsh/zsh.d"
 
 # ---

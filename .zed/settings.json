@@ -1,32 +1,101 @@
 {
-	"lsp": {
-		"deno": {
-			"settings": {
-				"deno": {
-					"enable": true,
-				},
-			},
-		},
-	},
-	"languages": {
-		"JavaScript": {
-			"language_servers": ["deno", "!typescript-language-server", "!vtsls", "!eslint"],
-			"formatter": "language_server",
-		},
-		"TypeScript": {
-			"language_servers": ["deno", "!typescript-language-server", "!vtsls", "!eslint"],
-			"formatter": "language_server",
-		},
-		"TSX": {
-			"language_servers": ["deno", "!typescript-language-server", "!vtsls", "!eslint"],
-			"formatter": "language_server",
-		},
-	},
-	"file_scan_exclusions": [
-		"**/.git",
-		"os-unix/scripts/setup",
-		".home",
-		"**/.venv/",
-		"**/node_modules/",
+	"format_on_save": "on",
+	"formatter": [
+		{
+			"code_action": "source.fixAll.eslint"
+		}
 	],
+	"languages": {
+		"HTML": {
+			"language_servers": [
+				"eslint"
+			]
+		},
+		"Markdown": {
+			"language_servers": [
+				"eslint"
+			]
+		},
+		"JSON": {
+			"language_servers": [
+				"eslint"
+			]
+		},
+		"JSONC": {
+			"language_servers": [
+				"eslint"
+			]
+		},
+		"YAML": {
+			"language_servers": [
+				"eslint"
+			]
+		},
+		"CSS": {
+			"language_servers": [
+				"eslint"
+			]
+		}
+	},
+	"lsp": {
+		"eslint": {
+			"settings": {
+				"experimental": {
+					"useFlatConfig": false
+				},
+				"rulesCustomizations": [
+					{
+						"rule": "style/*",
+						"severity": "off",
+						"fixable": true
+					},
+					{
+						"rule": "format/*",
+						"severity": "off",
+						"fixable": true
+					},
+					{
+						"rule": "*-indent",
+						"severity": "off",
+						"fixable": true
+					},
+					{
+						"rule": "*-spacing",
+						"severity": "off",
+						"fixable": true
+					},
+					{
+						"rule": "*-spaces",
+						"severity": "off",
+						"fixable": true
+					},
+					{
+						"rule": "*-order",
+						"severity": "off",
+						"fixable": true
+					},
+					{
+						"rule": "*-dangle",
+						"severity": "off",
+						"fixable": true
+					},
+					{
+						"rule": "*-newline",
+						"severity": "off",
+						"fixable": true
+					},
+					{
+						"rule": "*quotes",
+						"severity": "off",
+						"fixable": true
+					},
+					{
+						"rule": "*semi",
+						"severity": "off",
+						"fixable": true
+					}
+				]
+			}
+		}
+	}
 }
