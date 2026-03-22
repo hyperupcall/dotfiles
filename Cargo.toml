@@ -1,0 +1,9 @@
+[package]
+name = '_'
+edition = '2024'
+
+[dependencies]
+
+[[bin]]
+name = 'cptest'
+path = 'os-unix/bin/cptest.rs'

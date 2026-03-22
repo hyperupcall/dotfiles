@@ -1,8 +1,9 @@
 // ==UserScript==
 // @name         Improved Kattis
 // @namespace    Violentmonkey Scripts
-// @version      0.4
+// @version      0.5
 // @match        https://open.kattis.com/problems/*
+// @match        https://open.kattis.com/challenge/*
 // @grant        GM_setClipboard
 // @grant        GM_registerMenuCommand
 // @grant        GM_unregisterMenuCommand
@@ -10,7 +11,8 @@
 // @grant        GM_setValue
 // ==/UserScript==
 
-const slug = location.pathname.split("/problems/")[1]?.split("/")[0];
+const isChallenge = location.pathname.includes("/challenge/");
+const slug = isChallenge ? "_challenge" : location.pathname.split("/problems/")[1]?.split("/")[0];
 if (!slug) return;
 
 const LANGUAGES = {

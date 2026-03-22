@@ -3,392 +3,382 @@ use std::fs;
 use std::io::Write;
 use std::os::unix::process::CommandExt;
 use std::path::Path;
-use std::process::{Command, Stdio, exit};
+use std::process::{exit, Command, Stdio};
 
 fn find_source_file() -> Result<String, String> {
-    // Check for OCaml files.
-    let ocaml_files: Vec<_> = fs::read_dir(".")
-        .map_err(|e| e.to_string())?
-        .filter_map(|entry| entry.ok())
-        .map(|entry| entry.path())
-        .filter(|path| path.extension().and_then(|s| s.to_str()) == Some("ml"))
-        .collect();
-    if !ocaml_files.is_empty() {
-        if ocaml_files.len() > 1 {
-            return Err("Error: Multiple OCaml files found".to_string());
-        }
-        return Ok(ocaml_files[0].to_string_lossy().to_string());
-    }
+	// Check for OCaml files.
+	let ocaml_files: Vec<_> = fs::read_dir(".")
+		.map_err(|e| e.to_string())?
+		.filter_map(|entry| entry.ok())
+		.map(|entry| entry.path())
+		.filter(|path| path.extension().and_then(|s| s.to_str()) == Some("ml"))
+		.collect();
+	if !ocaml_files.is_empty() {
+		if ocaml_files.len() > 1 {
+			return Err("Error: Multiple OCaml files found".to_string());
+		}
+		return Ok(ocaml_files[0].to_string_lossy().to_string());
+	}
 
-    // Check for C++ files.
-    let cpp_files: Vec<_> = fs::read_dir(".")
-        .map_err(|e| e.to_string())?
-        .filter_map(|entry| entry.ok())
-        .map(|entry| entry.path())
-        .filter(|path| path.extension().and_then(|s| s.to_str()) == Some("cpp"))
-        .collect();
-    if !cpp_files.is_empty() {
-        if cpp_files.len() > 1 {
-            return Err("Error: Multiple C++ files found".to_string());
-        }
-        return Ok(cpp_files[0].to_string_lossy().to_string());
-    }
+	// Check for C++ files.
+	let cpp_files: Vec<_> = fs::read_dir(".")
+		.map_err(|e| e.to_string())?
+		.filter_map(|entry| entry.ok())
+		.map(|entry| entry.path())
+		.filter(|path| path.extension().and_then(|s| s.to_str()) == Some("cpp"))
+		.collect();
+	if !cpp_files.is_empty() {
+		if cpp_files.len() > 1 {
+			return Err("Error: Multiple C++ files found".to_string());
+		}
+		return Ok(cpp_files[0].to_string_lossy().to_string());
+	}
 
-    // Check for Java files.
-    let java_files: Vec<_> = fs::read_dir(".")
-        .map_err(|e| e.to_string())?
-        .filter_map(|entry| entry.ok())
-        .map(|entry| entry.path())
-        .filter(|path| path.extension().and_then(|s| s.to_str()) == Some("java"))
-        .collect();
-    if !java_files.is_empty() {
-        if java_files.len() > 1 {
-            return Err("Error: Multiple Java files found".to_string());
-        }
-        return Ok(java_files[0].to_string_lossy().to_string());
-    }
+	// Check for Java files.
+	let java_files: Vec<_> = fs::read_dir(".")
+		.map_err(|e| e.to_string())?
+		.filter_map(|entry| entry.ok())
+		.map(|entry| entry.path())
+		.filter(|path| path.extension().and_then(|s| s.to_str()) == Some("java"))
+		.collect();
+	if !java_files.is_empty() {
+		if java_files.len() > 1 {
+			return Err("Error: Multiple Java files found".to_string());
+		}
+		return Ok(java_files[0].to_string_lossy().to_string());
+	}
 
-    // Check for Python files.
-    let py_files: Vec<_> = fs::read_dir(".")
-        .map_err(|e| e.to_string())?
-        .filter_map(|entry| entry.ok())
-        .map(|entry| entry.path())
-        .filter(|path| path.extension().and_then(|s| s.to_str()) == Some("py"))
-        .collect();
-    if !py_files.is_empty() {
-        if py_files.len() > 1 {
-            return Err("Error: Multiple Python files found".to_string());
-        }
-        return Ok(py_files[0].to_string_lossy().to_string());
-    }
+	// Check for Python files.
+	let py_files: Vec<_> = fs::read_dir(".")
+		.map_err(|e| e.to_string())?
+		.filter_map(|entry| entry.ok())
+		.map(|entry| entry.path())
+		.filter(|path| path.extension().and_then(|s| s.to_str()) == Some("py"))
+		.collect();
+	if !py_files.is_empty() {
+		if py_files.len() > 1 {
+			return Err("Error: Multiple Python files found".to_string());
+		}
+		return Ok(py_files[0].to_string_lossy().to_string());
+	}
 
-    Err("Error: No source file found".to_string())
+	Err("Error: No source file found".to_string())
 }
 
 fn compile_file(filepath: &str, debug: bool) -> Result<(), String> {
-    let path = Path::new(filepath);
-    let ext = path.extension().and_then(|s| s.to_str()).unwrap_or("");
-    let exe_name = path.file_stem().and_then(|s| s.to_str()).unwrap_or("a.out");
+	let path = Path::new(filepath);
+	let ext = path.extension().and_then(|s| s.to_str()).unwrap_or("");
+	let exe_name = path.file_stem().and_then(|s| s.to_str()).unwrap_or("a.out");
 
-    match ext {
-        "ml" => {
-            let mut args = vec!["-o", exe_name, filepath];
-            if debug {
-                args.insert(0, "-g");
-            }
-            let status = Command::new("ocamlopt")
-                .args(&args)
-                .status()
-                .map_err(|e| format!("Failed to execute ocamlopt: {}", e))?;
+	match ext {
+		"ml" => {
+			let mut args = vec!["-o", exe_name, filepath];
+			if debug {
+				args.insert(0, "-g");
+			}
+			let status = Command::new("ocamlopt")
+				.args(&args)
+				.status()
+				.map_err(|e| format!("Failed to execute ocamlopt: {}", e))?;
 
-            if status.success() {
-                Ok(())
-            } else {
-                Err("OCaml compilation failed".to_string())
-            }
-        }
-        "cpp" => {
-            let mut args = vec!["-x", "c++", "-O2", "-std=gnu++20", "-static"];
-            if debug {
-                args.push("-g");
-                args.push("-fsanitize=address,undefined");
-            }
-            args.push(filepath);
-            args.push("-o");
-            args.push(exe_name);
+			if status.success() {
+				Ok(())
+			} else {
+				Err("OCaml compilation failed".to_string())
+			}
+		}
+		"cpp" => {
+			let mut args = vec!["-x", "c++", "-O2", "-std=gnu++20"];
+			if debug {
+				args.push("-g");
+				args.push("-fsanitize=address,undefined");
+			} else {
+				args.push("-static");
+			}
+			args.push(filepath);
+			args.push("-o");
+			args.push(exe_name);
 
-            let status = Command::new("g++")
-                .args(&args)
-                .status()
-                .map_err(|e| format!("Failed to execute gcc: {}", e))?;
+			let status = Command::new("g++")
+				.args(&args)
+				.status()
+				.map_err(|e| format!("Failed to execute gcc: {}", e))?;
 
-            if status.success() {
-                Ok(())
-            } else {
-                Err("C++ compilation failed".to_string())
-            }
-        }
-        "java" => {
-            let mut args = vec![
-                "--source",
-                "21",
-                "-encoding",
-                "UTF-8",
-                "-sourcepath",
-                ".",
-                "-d",
-                ".",
-            ];
-            if debug {
-                args.push("-g");
-            }
-            args.push(filepath);
+			if status.success() {
+				Ok(())
+			} else {
+				Err("C++ compilation failed".to_string())
+			}
+		}
+		"java" => {
+			let mut args = vec![
+				"--source",
+				"21",
+				"-encoding",
+				"UTF-8",
+				"-sourcepath",
+				".",
+				"-d",
+				".",
+			];
+			if debug {
+				args.push("-g");
+			}
+			args.push(filepath);
 
-            let status = Command::new("javac")
-                .args(&args)
-                .status()
-                .map_err(|e| format!("Failed to execute javac: {}", e))?;
+			let status = Command::new("javac")
+				.args(&args)
+				.status()
+				.map_err(|e| format!("Failed to execute javac: {}", e))?;
 
-            if status.success() {
-                Ok(())
-            } else {
-                Err("Java compilation failed".to_string())
-            }
-        }
-        "py" => Ok(()),
-        _ => Err(format!("Error: Unknown file type: .{}", ext)),
-    }
+			if status.success() {
+				Ok(())
+			} else {
+				Err("Java compilation failed".to_string())
+			}
+		}
+		"py" => Ok(()),
+		_ => Err(format!("Error: Unknown file type: .{}", ext)),
+	}
 }
 
 fn find_test_files() -> Vec<(String, String)> {
-    let mut tests = Vec::new();
+	let mut tests = Vec::new();
 
-    if let Ok(entries) = fs::read_dir(".") {
-        let mut inputs: Vec<String> = entries
-            .filter_map(|entry| entry.ok())
-            .map(|entry| entry.file_name().to_string_lossy().to_string())
-            .filter(|name| name.starts_with("~input") && name.ends_with(".txt"))
-            .collect();
+	if let Ok(entries) = fs::read_dir(".") {
+		let mut inputs: Vec<String> = entries
+			.filter_map(|entry| entry.ok())
+			.map(|entry| entry.file_name().to_string_lossy().to_string())
+			.filter(|name| name.starts_with("~input") && name.ends_with(".txt"))
+			.collect();
 
-        inputs.sort();
+		inputs.sort();
 
-        for input in inputs {
-            let output = input.replace("~input", "~output");
-            if Path::new(&output).exists() {
-                tests.push((input, output));
-            }
-        }
-    }
+		for input in inputs {
+			let output = input.replace("~input", "~output");
+			if Path::new(&output).exists() {
+				tests.push((input, output));
+			}
+		}
+	}
 
-    tests
+	tests
 }
 
 fn run_tests(filepath: &str) -> Result<(), String> {
-    let path = Path::new(filepath);
-    let ext = path.extension().and_then(|s| s.to_str()).unwrap_or("");
-    let exe_name = path.file_stem().and_then(|s| s.to_str()).unwrap_or("a.out");
-    let exe_path = format!("./{}", exe_name);
+	let path = Path::new(filepath);
+	let ext = path.extension().and_then(|s| s.to_str()).unwrap_or("");
+	let exe_name = path.file_stem().and_then(|s| s.to_str()).unwrap_or("a.out");
+	let exe_path = format!("./{}", exe_name);
 
-    let tests = find_test_files();
+	let tests = find_test_files();
 
-    if tests.is_empty() {
-        println!("No test files found (looking for ~input*.txt and ~output*.txt)");
-        return Ok(());
-    }
+	if tests.is_empty() {
+		println!("No test files found (looking for ~input*.txt and ~output*.txt)");
+		return Ok(());
+	}
 
-    println!(
-        "Running {} {}\n",
-        tests.len(),
-        if tests.len() == 1 { "test" } else { "tests" }
-    );
-    for (test_num, (input_file, output_file)) in tests.iter().enumerate() {
-        let input_data =
-            fs::read(&input_file).map_err(|e| format!("Failed to read {}: {}", input_file, e))?;
-        let expected_output = fs::read_to_string(&output_file)
-            .map_err(|e| format!("Failed to read {}: {}", output_file, e))?;
+	println!(
+		"Running {} {}\n",
+		tests.len(),
+		if tests.len() == 1 { "test" } else { "tests" }
+	);
+	for (test_num, (input_file, output_file)) in tests.iter().enumerate() {
+		let input_data =
+			fs::read(&input_file).map_err(|e| format!("Failed to read {}: {}", input_file, e))?;
+		let expected_output = fs::read_to_string(&output_file)
+			.map_err(|e| format!("Failed to read {}: {}", output_file, e))?;
 
-        let output = match ext {
-            "ml" | "cpp" => {
-                let mut child = Command::new(&exe_path)
-                    .stdin(Stdio::piped())
-                    .stdout(Stdio::piped())
-                    .spawn()
-                    .map_err(|e| format!("Failed to execute {}: {}", exe_name, e))?;
+		let output = match ext {
+			"ml" | "cpp" => {
+				let mut child = Command::new(&exe_path)
+					.stdin(Stdio::piped())
+					.stdout(Stdio::piped())
+					.spawn()
+					.map_err(|e| format!("Failed to execute {}: {}", exe_name, e))?;
 
-                if let Some(mut stdin) = child.stdin.take() {
-                    stdin
-                        .write_all(&input_data)
-                        .map_err(|e| format!("Failed to write to stdin: {}", e))?;
-                }
+				if let Some(mut stdin) = child.stdin.take() {
+					stdin
+						.write_all(&input_data)
+						.map_err(|e| format!("Failed to write to stdin: {}", e))?;
+				}
 
-                let output = child
-                    .wait_with_output()
-                    .map_err(|e| format!("Failed to wait for {}: {}", exe_name, e))?;
+				let output = child
+					.wait_with_output()
+					.map_err(|e| format!("Failed to wait for {}: {}", exe_name, e))?;
 
-                String::from_utf8_lossy(&output.stdout).to_string()
-            }
-            "java" => {
-                let classname = path
-                    .file_stem()
-                    .and_then(|s| s.to_str())
-                    .ok_or("Invalid Java filename")?;
+				String::from_utf8_lossy(&output.stdout).to_string()
+			}
+			"java" => {
+				let classname = path
+					.file_stem()
+					.and_then(|s| s.to_str())
+					.ok_or("Invalid Java filename")?;
 
-                let mut child = Command::new("java")
-                    .args(&[
-                        "-Dfile.encoding=UTF-8",
-                        "-XX:+UseSerialGC",
-                        "-Xss64m",
-                        classname,
-                    ])
-                    .stdin(Stdio::piped())
-                    .stdout(Stdio::piped())
-                    .spawn()
-                    .map_err(|e| format!("Failed to execute java: {}", e))?;
+				let mut child = Command::new("java")
+					.args(&[
+						"-Dfile.encoding=UTF-8",
+						"-XX:+UseSerialGC",
+						"-Xss64m",
+						classname,
+					])
+					.stdin(Stdio::piped())
+					.stdout(Stdio::piped())
+					.spawn()
+					.map_err(|e| format!("Failed to execute java: {}", e))?;
 
-                if let Some(mut stdin) = child.stdin.take() {
-                    stdin
-                        .write_all(&input_data)
-                        .map_err(|e| format!("Failed to write to stdin: {}", e))?;
-                }
+				if let Some(mut stdin) = child.stdin.take() {
+					stdin
+						.write_all(&input_data)
+						.map_err(|e| format!("Failed to write to stdin: {}", e))?;
+				}
 
-                let output = child
-                    .wait_with_output()
-                    .map_err(|e| format!("Failed to wait for java: {}", e))?;
+				let output = child
+					.wait_with_output()
+					.map_err(|e| format!("Failed to wait for java: {}", e))?;
 
-                String::from_utf8_lossy(&output.stdout).to_string()
-            }
-            "py" => {
-                let mut child = Command::new("pypy3")
-                    .arg(filepath)
-                    .stdin(Stdio::piped())
-                    .stdout(Stdio::piped())
-                    .spawn()
-                    .map_err(|e| format!("Failed to execute pypy3: {}", e))?;
+				String::from_utf8_lossy(&output.stdout).to_string()
+			}
+			"py" => {
+				let mut child = Command::new("pypy3")
+					.arg(filepath)
+					.stdin(Stdio::piped())
+					.stdout(Stdio::piped())
+					.spawn()
+					.map_err(|e| format!("Failed to execute pypy3: {}", e))?;
 
-                if let Some(mut stdin) = child.stdin.take() {
-                    stdin
-                        .write_all(&input_data)
-                        .map_err(|e| format!("Failed to write to stdin: {}", e))?;
-                }
+				if let Some(mut stdin) = child.stdin.take() {
+					stdin
+						.write_all(&input_data)
+						.map_err(|e| format!("Failed to write to stdin: {}", e))?;
+				}
 
-                let output = child
-                    .wait_with_output()
-                    .map_err(|e| format!("Failed to wait for pypy3: {}", e))?;
+				let output = child
+					.wait_with_output()
+					.map_err(|e| format!("Failed to wait for pypy3: {}", e))?;
 
-                String::from_utf8_lossy(&output.stdout).to_string()
-            }
-            _ => return Err(format!("Error: Cannot execute file type: .{}", ext)),
-        };
+				String::from_utf8_lossy(&output.stdout).to_string()
+			}
+			_ => return Err(format!("Error: Cannot execute file type: .{}", ext)),
+		};
 
-        let actual_trimmed = output.trim_end();
-        let expected_trimmed = expected_output.trim_end();
+		println!("--- \x1B[1mTEST {}\x1B[0m", test_num + 1);
+		println!("{}", expected_output.trim_end());
+		println!("---");
+		println!("{}", output.trim_end());
+		println!("---");
 
-        if actual_trimmed == expected_trimmed {
-            println!("✓ PASS TEST {}", test_num + 1);
-            println!("{}", actual_trimmed);
-        } else {
-            println!("✗ FAIL TEST {}", test_num + 1);
-            println!("--- INPUT ---");
-            println!("{}", String::from_utf8_lossy(&input_data).trim_end());
-            println!("\n--- EXPECTED ---");
-            println!("{}", expected_trimmed);
-            println!("\n--- ACTUAL ---");
-            println!("{}", actual_trimmed);
-        }
+		if test_num != tests.len() - 1 {
+			println!();
+		}
+	}
 
-        if test_num != tests.len() - 1 {
-            println!();
-        }
-    }
-
-    Ok(())
+	Ok(())
 }
 
 fn main() {
-    let args: Vec<String> = env::args().collect();
-    let mut test = false;
-    let mut execute = false;
-    let mut debug = false;
-    let mut filepath: Option<String> = None;
-    for arg in args.iter().skip(1) {
-        match arg.as_str() {
-            "-h" | "--help" => {
-                println!("Usage: test [OPTIONS] [FILE]");
-                println!();
-                println!(
-                    "Compile and optionally test or execute competitive programming solutions."
-                );
-                println!();
-                println!("OPTIONS:");
-                println!(
-                    "  -d          Compile with debug flags (-g -fsanitize=address,undefined)"
-                );
-                println!("  -t          Run all tests (~input*.txt / ~output*.txt files)");
-                println!("  -x          Execute the compiled program (replaces current process)");
-                println!("  -h, --help  Show this help message");
-                println!();
-                println!("FILE:");
-                println!("  Source file to compile (auto-detected if not specified)");
-                println!("  Supports: .cpp, .ml, .java, .py");
-                exit(0);
-            }
-            "-t" => test = true,
-            "-x" => execute = true,
-            "-d" => debug = true,
-            s if !s.starts_with('-') => {
-                if filepath.is_none() {
-                    filepath = Some(s.to_string());
-                }
-            }
-            _ => {}
-        }
-    }
+	let args: Vec<String> = env::args().collect();
+	let mut test = false;
+	let mut execute = false;
+	let mut debug = false;
+	let mut filepath: Option<String> = None;
+	for arg in args.iter().skip(1) {
+		match arg.as_str() {
+			"-h" => {
+				println!("Usage: cptest [OPTIONS] [FILE]");
+				println!();
+				println!("OPTIONS:");
+				println!("  -d    Compile with debug flags");
+				println!("  -t    Run all tests");
+				println!("  -x    Execute the compiled program");
+				println!("  -h    Show this help message");
+				println!();
+				println!("FILE:");
+				println!("  Source file to compile (auto-detected if not specified)");
+				println!("  Supports C++, Java, Python, and OCaml");
+				exit(0);
+			}
+			"-t" => test = true,
+			"-x" => execute = true,
+			"-d" => debug = true,
+			s if !s.starts_with('-') => {
+				if filepath.is_none() {
+					filepath = Some(s.to_string());
+				}
+			}
+			unknown => {
+				eprintln!("Error: Unrecognized argument: {}", unknown);
+				eprintln!("Use -h for usage information.");
+				exit(1);
+			}
+		}
+	}
 
-    if test && execute {
-        eprintln!("Error: Cannot use both -t and -x flags together");
-        exit(1);
-    }
+	if test && execute {
+		eprintln!("Error: Cannot use both -t and -x flags together");
+		exit(1);
+	}
 
-    let filepath = match filepath {
-        Some(f) => f,
-        None => match find_source_file() {
-            Ok(f) => f,
-            Err(e) => {
-                eprintln!("{}", e);
-                exit(1);
-            }
-        },
-    };
+	let filepath = match filepath {
+		Some(f) => f,
+		None => match find_source_file() {
+			Ok(f) => f,
+			Err(e) => {
+				eprintln!("{}", e);
+				exit(1);
+			}
+		},
+	};
 
-    if !Path::new(&filepath).exists() {
-        eprintln!("Error: File not found: {}", filepath);
-        exit(1);
-    }
+	if !Path::new(&filepath).exists() {
+		eprintln!("Error: File not found: {}", filepath);
+		exit(1);
+	}
 
-    println!("Compiling {}", filepath);
-    if let Err(e) = compile_file(&filepath, debug) {
-        eprintln!("{}", e);
-        exit(1);
-    }
+	println!("Compiling {}", filepath);
+	if let Err(e) = compile_file(&filepath, debug) {
+		eprintln!("{}", e);
+		exit(1);
+	}
 
-    if test {
-        if let Err(e) = run_tests(&filepath) {
-            eprintln!("{}", e);
-            exit(1);
-        }
-    }
+	if test {
+		if let Err(e) = run_tests(&filepath) {
+			eprintln!("{}", e);
+			exit(1);
+		}
+	}
 
-    if execute {
-        println!("Executing {}", filepath);
-        println!("\u{2E3B}");
+	if execute {
+		println!("Executing {}", filepath);
+		println!("---");
 
-        let path = Path::new(&filepath);
-        let ext = path.extension().and_then(|s| s.to_str()).unwrap_or("");
-        let exe_name = path.file_stem().and_then(|s| s.to_str()).unwrap_or("a.out");
-        let exe_path = format!("./{}", exe_name);
+		let path = Path::new(&filepath);
+		let ext = path.extension().and_then(|s| s.to_str()).unwrap_or("");
+		let exe_name = path.file_stem().and_then(|s| s.to_str()).unwrap_or("a.out");
+		let exe_path = format!("./{}", exe_name);
 
-        let err = match ext {
-            "ml" | "cpp" => Command::new(&exe_path).exec(),
-            "java" => {
-                let classname = path.file_stem().and_then(|s| s.to_str()).unwrap_or("Main");
+		let err = match ext {
+			"ml" | "cpp" => Command::new(&exe_path).exec(),
+			"java" => {
+				let classname = path.file_stem().and_then(|s| s.to_str()).unwrap_or("Main");
 
-                Command::new("java")
-                    .args(&[
-                        "-Dfile.encoding=UTF-8",
-                        "-XX:+UseSerialGC",
-                        "-Xss64m",
-                        classname,
-                    ])
-                    .exec()
-            }
-            "py" => Command::new("pypy3").arg(&filepath).exec(),
-            _ => {
-                eprintln!("Error: Cannot execute file type: .{}", ext);
-                exit(1);
-            }
-        };
+				Command::new("java")
+					.args(&[
+						"-Dfile.encoding=UTF-8",
+						"-XX:+UseSerialGC",
+						"-Xss64m",
+						classname,
+					])
+					.exec()
+			}
+			"py" => Command::new("pypy3").arg(&filepath).exec(),
+			_ => {
+				eprintln!("Error: Cannot execute file type: .{}", ext);
+				exit(1);
+			}
+		};
 
-        eprintln!("Failed to exec: {}", err);
-        exit(1);
-    }
+		eprintln!("Failed to exec: {}", err);
+		exit(1);
+	}
 }
