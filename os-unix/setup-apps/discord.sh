@@ -3,8 +3,10 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='Discord'
 
-main() {
-	util.install_by_setup "$@"
+install.any() {
+	curl -K "$CURL_CONFIG" -o './discord.tar.gz' 'https://discord.com/api/download?platform=linux&format=tar.gz'
+	tar xf './discord.tar.gz'
+	core.print_warn 'Do not know how to handle tarball on non-deb Linux'
 }
 
 install.debian() {
@@ -13,10 +15,8 @@ install.debian() {
 	rm -f ./discord.deb
 }
 
-install.any() {
-	curl -K "$CURL_CONFIG" -o './discord.tar.gz' 'https://discord.com/api/download?platform=linux&format=tar.gz'
-	tar xf './discord.tar.gz'
-	core.print_warn 'Do not know how to handle tarball on non-deb Linux'
+installed() {
+	command -v discord &>/dev/null
 }
 
 util.if_file_sourced || _setup "$@"

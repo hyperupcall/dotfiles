@@ -4,7 +4,7 @@ source ~/.dotfiles/os-unix/data/setup.sh
 declare -g g_name='ZFS'
 declare -g g_sources_file='/etc/apt/sources.list.d/bookworm-backports.sources'
 
-main() {
+install.any() {
 	util.install_by_setup "$@"
 
 	if ! sudo zpool status vault &>/dev/null; then

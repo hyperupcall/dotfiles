@@ -3,13 +3,9 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='LaTeX (Tex Live)'
 
-main() {
-	util.install_by_setup "$@"
-	cargo install --locked tex-fmt
-}
-
 install.debian() {
 	sudo apt-get -y install texlive-full
+	install_textfmt
 }
 
 install.ubuntu() {
@@ -18,6 +14,10 @@ install.ubuntu() {
 
 installed() {
 	command -v pdftex &>/dev/null && command -v tex-fmt &>/dev/null
+}
+
+install_textfmt() {
+	cargo install --locked tex-fmt
 }
 
 util.if_file_sourced || _setup "$@"

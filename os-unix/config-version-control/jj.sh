@@ -3,7 +3,7 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='jj'
 
-main() {
+install.any() {
 	~/scripts/setup/rust.sh --no-confirm
 	cargo binstall --strategies crate-meta-data jj-cli
 }

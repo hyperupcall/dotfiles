@@ -2,7 +2,7 @@
 # --ignore-errors
 
 ## Filesystem Options ##
-# -o "~/.dotfiles/.home/Documents/Music/%(channel)s/%(playlist_title)s/%(playlist_index)s - %(title)s.%(ext)s"
+# -o "~/.home/Documents/Music/%(channel)s/%(playlist_title)s/%(playlist_index)s - %(title)s.%(ext)s"
 -o "%(channel)s-%(title)s.%(ext)s"
 --no-mtime
 # --write-description

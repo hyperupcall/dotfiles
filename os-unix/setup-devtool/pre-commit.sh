@@ -3,7 +3,7 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='pre-commit'
 
-main() {
+install.any() {
 	pipx install pre-commit
 }
 

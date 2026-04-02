@@ -3,7 +3,7 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='Conan'
 
-main() {
+install.any() {
 	pipx ensurepath
 	pipx install conan
 }

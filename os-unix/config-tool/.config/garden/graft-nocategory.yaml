@@ -1,6 +1,14 @@
 trees:
+  proposal-string-remove-prefix-suffix:
+    url: git@github.com:hyperupcall-projects/proposal-string-remove-prefix-suffix
+    default-remote: 'me'
+
   babel-improved-piped-pipelines:
     url: git@github.com:hyperupcall-projects/babel-improved-piped-pipelines
+    default-remote: 'me'
+
+  babel-plugin-improved-gulp-pipelines:
+    url: git@github.com:hyperupcall-projects/babel-plugin-improved-gulp-pipelines
     default-remote: 'me'
 
   book-organizer:
@@ -19,6 +27,10 @@ trees:
     url: git@github.com:hyperupcall-projects/event-horizon
     default-remote: 'me'
 
+  font-finder:
+    url: git@github.com:hyperupcall-projects/font-finder
+    default-remote: 'me'
+
   fox-css:
     url: git@github.com:hyperupcall-projects/fox-css
     default-remote: 'me'
@@ -27,12 +39,8 @@ trees:
     url: git@github.com:hyperupcall-projects/jsonschema-extractor
     default-remote: 'me'
 
-  metamake-lang:
-    url: git@github.com:hyperupcall-projects/metamake-lang
-    default-remote: 'me'
-
-  pick-sticker:
-    url: git@github.com:hyperupcall-projects/pick-sticker
+  makelang:
+    url: git@github.com:hyperupcall-projects/makelang
     default-remote: 'me'
 
   sauerkraut:

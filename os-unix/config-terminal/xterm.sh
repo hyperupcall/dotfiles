@@ -1,14 +1,8 @@
 #!/usr/bin/env bash
 source ~/.dotfiles/os-unix/data/setup.sh
 
-declare -g g_name='xterm'
-
 main() {
-	util.install_by_setup_distro_package 'xterm' 'xterm'
+	util.install_by_setup_distro_package 'XTerm' 'xterm' 'xterm' "$@"
 }
 
-installed() {
-	command -v 'xterm' &>/dev/null
-}
-
-util.if_file_sourced || _setup "$@"
+util.if_file_sourced || _main "$@"

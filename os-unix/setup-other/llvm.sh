@@ -3,10 +3,6 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='LLVM'
 
-main() {
-	util.install_by_setup "$@"
-}
-
 install.debian() {
 	sudo apt-get install -y clang clang-format clang-tidy
 }

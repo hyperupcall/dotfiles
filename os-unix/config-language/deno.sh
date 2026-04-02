@@ -3,12 +3,12 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='Deno'
 
-main() {
+install.any() {
 	curl -K "$CURL_CONFIG" https://deno.land/install.sh | DENO_INSTALL="$PWD" sh
 }
 
 installed() {
-	command -v deno
+	command -v deno &>/dev/null
 }
 
 util.if_file_sourced || _setup "$@"

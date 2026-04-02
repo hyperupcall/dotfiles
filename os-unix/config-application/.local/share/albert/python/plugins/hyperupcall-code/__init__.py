@@ -48,7 +48,7 @@ class Plugin(PluginInstance, TriggerQueryHandler):
 		]
 
 	def handleTriggerQuery(self, query):
-		org_dir = os.path.expanduser("~/.dotfiles/.home/Documents/Projects/Programming/Organizations")
+		org_dir = os.path.expanduser("~/.home/Documents/Projects/Programming/Organizations")
 
 		paths = []
 		if query.string.strip():

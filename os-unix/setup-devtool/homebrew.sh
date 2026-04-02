@@ -3,7 +3,7 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='Homebrew'
 
-main() {
+install.any() {
 	bash -c "$(curl -K "$CURL_CONFIG" https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 }
 

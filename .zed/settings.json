@@ -5,6 +5,13 @@
 			"code_action": "source.fixAll.eslint"
 		}
 	],
+	"file_scan_exclusions": [
+		"**/.git/**",
+		"**/.venv/**",
+		"bake",
+		"os-unix/config-shell/.config/bash/frameworks/bash-it.sh",
+		"vendor/**",
+	],
 	"languages": {
 		"HTML": {
 			"language_servers": [

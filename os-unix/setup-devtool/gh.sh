@@ -3,7 +3,7 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='gh'
 
-main() {
+install.any() {
 	util.get_latest_github_tag 'cli/cli'
 	local version="$REPLY"
 	version=${version#v}

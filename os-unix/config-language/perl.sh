@@ -3,7 +3,7 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='Perl'
 
-main() {
+install.any() {
 	# https://github.com/regnarg/urxvt-config-reload
 	cpan -i App::cpanminus
 
@@ -12,6 +12,11 @@ main() {
 
 	pkgs=(AnyEvent Linux::FD common::sense)
 	cpanm "${pkgs[@]}"
+}
+
+installed() {
+	# TODO
+	false
 }
 
 util.if_file_sourced || _setup "$@"

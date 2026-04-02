@@ -4,8 +4,8 @@ source ~/.dotfiles/os-unix/data/setup.sh
 main() {
 	local url="$1"
 
-	mkdir -p ~/.dotfiles/.home/Downloads/Temporary_Music
-	cd ~/.dotfiles/.home/Downloads/Temporary_Music
+	mkdir -p ~/.home/Downloads/Temporary_Music
+	cd ~/.home/Downloads/Temporary_Music
 
 	# yt-dlp --ignore-config --no-write-thumbnail -o "%(title)s.%(ext)s" --no-mtime --no-call-home --audio-quality 0 --extract-audio --embed-subs "$url"
 

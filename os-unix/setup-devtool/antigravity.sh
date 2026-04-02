@@ -4,10 +4,6 @@ source ~/.dotfiles/os-unix/data/setup.sh
 declare -g g_name='Antigravity'
 declare -g g_sources_file='/etc/apt/sources.list.d/antigravity.sources'
 
-main() {
-	util.install_by_setup "$@"
-}
-
 install.ubuntu() {
 	local gpg_file="/etc/apt/keyrings/antigravity-repo-key.asc"
 

@@ -2,7 +2,7 @@
 # set -U __done_min_cmd_duration 10000
 
 # oh-my-fish/plugin-foreign-env
-# source ~/.dotfiles/.home/xdg_config_dir/fish/functions/fenv.fish
+# source ~/.home/xdg_config_dir/fish/functions/fenv.fish
 # fenv source ~/.profile
 # direnv hook fish | source
 

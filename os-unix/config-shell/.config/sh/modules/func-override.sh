@@ -54,13 +54,32 @@ code() {
 	done
 	unset -v _arg _dir
 
-	node -e "
-		import { getEcosystems } from '.dev/devutils/index.ts'
+	_code_flags=$(node -e "
+		import path from 'node:path'
+		import os from 'node:os'
+		import { getEcosystems } from '$HOME/.dev/devutils/index.ts'
+		const ecosystemsMap = {
+			'deno': 'web',
+			'nodejs': 'web',
+			'c': 'cpp',
+		}
 		const ecosystems = await getEcosystems('$PWD')
-		console.log('Ecosystem: ' + ecosystems + ' (not launching with it though)')
-	"
+		const extdir = path.join(os.homedir(), '.dotfiles/.data/vscode-extensions')
+		const datadir = path.join(os.homedir(), '.dotfiles/.data/vscode-datadirs')
+		let id = ecosystems[0]
+		if (ecosystems?.[0] in ecosystemsMap) {
+			id = ecosystemsMap[ecosystems[0]]
+		}
+		if (id) {
+			console.error('Using ecosystem: ' + id)
+			console.log(\`--user-data-dir \${path.join(datadir, 'hyperupcall-pack-' + id)} --extensions-dir \${path.join(extdir, 'hyperupcall-pack-' + id)}\`)
+		} else {
+			console.error('Not using an ecosystem')
+		}
+	")
 
-	command code "$@"
+	command code $_code_flags "$@"
+	unset -f _code_flags
 }
 
 curl() {
@@ -111,8 +130,9 @@ ping() {
 	fi
 }
 
-# Save tty modifications that were made on shell startup. This assumes that the modifications already happened.
-# They are saved so "stty sane" resets the tty to the custom defaults that are set during initialization.
+# Save tty modifications that were made on shell startup. This assumes that the modifications
+# already happened. They are saved so "stty sane" resets the tty to the custom defaults that
+# are set during initialization.
 _stty_saved_settings=
 [ -t 0 ] && stty_saved_settings=$(stty -g)
 stty() {
@@ -166,10 +186,8 @@ unlink() {
 	return $_exit_code
 }
 
+# Fix for OpenSUSE Tumbleweed where 'less' is a function that opens "xdg-open".
 less() {
-	# On OpenSUSE (Tumbleweed), 'less' is a function that opens "xdg-open".
-	# This overrides that.
-
 	if [ -n "$ZSH_VERSION" ]; then
 		if ! _less_cmd=$(whence -p less); then
 			_util_log_error 'Failed to find absolute path to less command'

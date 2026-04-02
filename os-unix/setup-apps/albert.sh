@@ -3,7 +3,7 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='Albert'
 
-main() {
+install.any() {
 	dependencies.debian() {
 		sudo apt-get install -y libarchive-dev autoconf
 		sudo apt-get install -y intltool libtool libgmp-dev libmpfr-dev libcurl4-openssl-dev libicu-dev libxml2-dev # pybind11
@@ -73,6 +73,10 @@ install_albert() {
 	sudo cmake --install build
 }
 
+installed() {
+	command -v albert &>/dev/null
+}
+
 configure() {
 	mkdir -p "$XDG_CONFIG_HOME/autostart"
 	cat <<EOF > "$XDG_CONFIG_HOME/autostart/albert.desktop"
@@ -90,10 +94,6 @@ Version=1.0
 X-GNOME-Autostart-Delay=3
 EOF
 
-}
-
-installed() {
-	command -v albert &>/dev/null
 }
 
 util.if_file_sourced || _setup "$@"

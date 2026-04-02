@@ -3,7 +3,7 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='XPPen Driver'
 
-main() {
+install.any() {
 	core.print_info 'Downloading'
 	curl -K "$CURL_CONFIG" -o './xp-pen.tar.gz' 'https://www.xp-pen.com/download/file/id/1936/pid/421/ext/gz.html'
 

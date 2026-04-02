@@ -4,10 +4,6 @@ source ~/.dotfiles/os-unix/data/setup.sh
 declare -g g_name='PowerShell Core'
 declare -g g_sources_file='/etc/apt/sources.list.d/microsoft.sources'
 
-main() {
-	util.install_by_setup "$@"
-}
-
 install.debian() {
 	local gpg_file="/etc/apt/keyrings/microsoft.asc"
 	local dist='bullseye'

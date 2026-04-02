@@ -3,7 +3,7 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='Adminer'
 
-main() {
+install.any() {
 	util.get_latest_github_tag 'vrana/adminer'
 	local version="$REPLY"
 

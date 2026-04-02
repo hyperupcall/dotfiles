@@ -3,7 +3,7 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='git-split-diffs'
 
-main() {
+install.any() {
 	pnpm install -g git-split-diffs
 }
 

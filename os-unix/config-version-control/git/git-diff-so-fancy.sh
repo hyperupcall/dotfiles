@@ -3,7 +3,7 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='diff-so-fancy'
 
-main() {
+install.any() {
 	util.get_latest_github_tag 'so-fancy/diff-so-fancy'
 	local latest_tag=$REPLY
 

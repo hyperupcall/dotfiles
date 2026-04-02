@@ -3,7 +3,7 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='bats'
 
-main() {
+install.any() {
 	local dir="$HOME/.dotfiles/.data/repos/bash-core"
 	util.clone "$dir" https://github.com/bats-core/bats-core.git
 	cd "$dir"

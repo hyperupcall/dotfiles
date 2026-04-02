@@ -3,18 +3,6 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='AppImageLauncher'
 
-main() {
-	util.install_by_setup "$@"
-}
-
-install.arch() {
-	yay -S appimagelauncher
-}
-
-install.manjaro() {
-	: # Installed by default.
-}
-
 install.debian() {
 	get_appimagelauncher_release_file 'deb'
 
@@ -36,6 +24,14 @@ install.fedora() {
 
 install.opensuse() {
 	install.fedora "$@"
+}
+
+install.arch() {
+	yay -S appimagelauncher
+}
+
+install.manjaro() {
+	: # Installed by default.
 }
 
 installed() {

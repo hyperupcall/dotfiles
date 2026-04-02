@@ -4,8 +4,12 @@ source ~/.dotfiles/os-unix/data/setup.sh
 declare -g g_name='bash-gitstatus'
 declare -g g_dir="$HOME/.dotfiles/.data/repos/gitstatus"
 
-main() {
+install.any() {
 	util.clone "$g_dir" 'https://github.com/romkatv/gitstatus'
+}
+
+installed() {
+	[ -d "$g_dir" ]
 }
 
 configure() {
@@ -13,10 +17,6 @@ configure() {
 		--bash "
 			export GITSTATUS_DIR=\"$g_dir/gitstatus.plugin.sh\"
 			$(<"$g_dir/gitstatus.prompt.sh")"
-}
-
-installed() {
-	[ -d "$g_dir" ]
 }
 
 util.if_file_sourced || _setup "$@"

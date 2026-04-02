@@ -3,7 +3,7 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='Firefox Extensions'
 
-main() {
+install.any() {
 	util.get_latest_github_tag 'gorhill/uBlock'
 	local latest_tag="$REPLY"
 	util.install_by_setup "https://github.com/gorhill/uBlock/releases/download/$latest_tag/uBlock0_$latest_tag.firefox.signed.xpi"
@@ -26,6 +26,11 @@ util.install_by_setup() {
 	rm -f './extension.xpi'
 	curl -K "$CURL_CONFIG" -o './extension.xpi' "$url"
 	firefox -install -extension ./extension.xpi
+}
+
+installed() {
+	# TODO
+	false
 }
 
 util.if_file_sourced || _setup "$@"

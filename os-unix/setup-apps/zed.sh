@@ -3,7 +3,7 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='Zed'
 
-main() {
+install.any() {
 	curl -K "$CURL_CONFIG" https://zed.dev/install.sh | sh
 }
 

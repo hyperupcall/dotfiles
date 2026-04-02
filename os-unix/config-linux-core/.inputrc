@@ -22,7 +22,7 @@ set skip-completed-text on
 set output-meta on
 set visible-stats on
 
-# Enable use of arrow keys with control
+# Enable use of arrow keys with control.
 "\e[1;5C": forward-word
 "\e[1;5D": backward-word
 "\e[5C": forward-word
@@ -30,11 +30,11 @@ set visible-stats on
 "\e\e[C": forward-word
 "\e\e[D": backward-word
 
-# Enable use of Home/End keys
+# Enable use of Home/End keys.
 "\e[1~": beginning-of-line
 "\e[4~": end-of-line
 
-# Enable use of Delete/Insert keys
+# Enable use of Delete/Insert keys.
 "\e[3~": delete-char
 "\e[2~": quoted-insert
 
@@ -44,14 +44,14 @@ Meta-j: next-screen-line
 Meta-r: non-incremental-reverse-search-history
 Meta-s: non-incremental-forward-search-history
 
-# Automatically perform history expansion.
+# Automatically !perform history expansion.
 $if Bash
 Space: magic-space
 $endif
 
 # Templates.
-"\C-lt": "\C-awhile true;do \C-e ;done " # Infinite loop.
-"\C-lw": " | while IFS= read -r line;do \"$line\" ;done\eb\eb\eb\ef " # Loop over standard input.
+"\emt": "\C-awhile true;do \C-e ;done " # Infinite loop.
+"\emw": " | while IFS= read -r line;do \"$line\" ;done\eb\eb\eb\ef " # Loop over standard input.
 
 $if mode=vi
 set keymap vi-command

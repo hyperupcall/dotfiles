@@ -3,10 +3,6 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='Ninja'
 
-main() {
-	util.install_by_setup "$@"
-}
-
 install.ubuntu() {
 	sudo apt-get -y install ninja-build
 }

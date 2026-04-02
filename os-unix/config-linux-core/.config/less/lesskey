@@ -5,7 +5,7 @@
 #env
 LESS =-RQ # Common Flags: -F,-I,-M,-R,-Q
 LESS_ADVANCED_PREPROCESSOR = 1
-LESSOPEN = | ~/.dotfiles/.home/xdg_config_dir/less/lessopen.sh %s
-LESSCLOSE = ~/.dotfiles/.home/xdg_config_dir/less/lessclose.sh %s %s
+LESSOPEN = | ~/.home/xdg_config_dir/less/lessopen.sh %s
+LESSCLOSE = ~/.home/xdg_config_dir/less/lessclose.sh %s %s
 LESSHISTSIZE = 32768
 LESSHISTFILE = .dotfiles/.home/xdg_state_dir/history/less_history

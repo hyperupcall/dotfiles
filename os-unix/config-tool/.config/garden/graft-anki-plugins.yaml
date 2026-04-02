@@ -1,0 +1,20 @@
+trees:
+  anki-advanced-browser:
+    url: 'git@github.com:hyperupcall-projects/anki-advanced-browser'
+    default-remote: 'me'
+
+  anki-fastbar:
+    url: 'git@github.com:hyperupcall-projects/anki-fastbar'
+    default-remote: 'me'
+
+  anki-image-occlusion-enhanced:
+    url: 'git@github.com:hyperupcall-projects/anki-image-occlusion-enhanced'
+    default-remote: 'me'
+
+  anki-review-heatmap:
+    url: 'git@github.com:hyperupcall-projects/anki-review-heatmap'
+    default-remote: 'me'
+
+  anki-cloze-overlapper:
+    url: 'git@github.com:hyperupcall-projects/anki-cloze-overlapper'
+    default-remote: 'me'

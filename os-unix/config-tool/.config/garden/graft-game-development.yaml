@@ -1,0 +1,8 @@
+trees:
+  cloud-tic-tac-toe:
+    url: git@github.com:hyperupcall-projects/cloud-tic-tac-toe
+    default-remote: 'me'
+
+  demon-dodger:
+    url: git@github.com:hyperupcall-projects/demon-dodger
+    default-remote: 'me'

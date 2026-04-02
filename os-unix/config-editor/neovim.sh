@@ -2,15 +2,6 @@
 source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='Neovim'
-
-main() {
-	util.install_by_setup "$@"
-}
-
-install.arch() {
-	yay -S --noconfirm neovim
-}
-
 install.any() {
 	dependencies.debian() {
 		sudo apt-get -y install gettext
@@ -52,6 +43,10 @@ install.any() {
 	make deps
 	make CMAKE_BUILD_TYPE=Release
 	sudo make install
+}
+
+install.arch() {
+	yay -S --noconfirm neovim
 }
 
 installed() {

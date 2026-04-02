@@ -3,7 +3,7 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='shfmt'
 
-main() {
+install.any() {
 	util.get_latest_github_tag 'mvdan/sh'
 	local version="$REPLY"
 

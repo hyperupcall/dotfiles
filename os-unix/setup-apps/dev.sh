@@ -3,7 +3,7 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='dev'
 
-main() {
+install.any() {
 	local nodejs_version='24.7.0'
 
 	# Download and install NodeJS runtime.

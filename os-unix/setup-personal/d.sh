@@ -3,7 +3,7 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='d'
 
-main() {
+install.any() {
 	dependencies.debian() {
 		sudo apt-get -y install bear
 	}

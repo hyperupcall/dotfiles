@@ -3,10 +3,6 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='Maestral'
 
-main() {
-	util.install_by_setup "$@"
-}
-
 install.debian() {
 	sudo apt-get install -y python3-dev python3-venv cython libsystemd-dev pkg-config qt5-default
 	sudo apt-get install -y libxcb-cursor0 # maestral gui
@@ -68,8 +64,8 @@ EOF
 	chmod +x ~/.dotfiles/.data/bin/maestral
 
 	maestral auth link
-	mkdir -p ~/.dotfiles/.home/Documents/Dropbox
-	maestral config set path ~/.dotfiles/.home/Documents/Dropbox
+	mkdir -p ~/.home/Documents/Dropbox
+	maestral config set path ~/.home/Documents/Dropbox
 	maestral autostart --yes
 	maestral start
 }

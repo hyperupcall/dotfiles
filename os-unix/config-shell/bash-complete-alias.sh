@@ -3,10 +3,6 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='complete-alias'
 
-main() {
-	util.install_by_setup "$@"
-}
-
 configure() {
 	util.write_shellfile 'bash-complete-alias' \
 		--bash \

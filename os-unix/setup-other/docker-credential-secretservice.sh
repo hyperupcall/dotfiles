@@ -3,7 +3,7 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='docker secretservice credential store'
 
-main() {
+install.any() {
 	util.get_latest_github_tag 'docker/docker-credential-helpers'
 	local version="$REPLY"
 	echo "$version"

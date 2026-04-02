@@ -3,15 +3,6 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='Thunderbird'
 
-main() {
-	util.install_by_setup "$@"
-}
-
-install.ubuntu() {
-	# On Ubuntu, by default, the "thunderbird" package uses snap.
-	flatpak install -y --user org.mozilla.Thunderbird
-}
-
 install.any() {
 	cd ~/.dotfiles/.data
 	if [ ! -d './thunderbird' ]; then
@@ -61,6 +52,11 @@ Name=Contacts
 Exec=thunderbird -addressbook
 OnlyShowIn=Messaging Menu;Unity;
 EOF
+}
+
+install.ubuntu() {
+	# On Ubuntu, by default, the "thunderbird" package uses snap.
+	flatpak install -y --user org.mozilla.Thunderbird
 }
 
 installed() {

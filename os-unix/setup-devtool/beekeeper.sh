@@ -4,10 +4,6 @@ source ~/.dotfiles/os-unix/data/setup.sh
 declare -g g_name='Beekeeper Studio'
 declare -g g_sources_file='/etc/apt/sources.list.d/beekeeper-studio-app.sources'
 
-main() {
-	util.install_by_setup "$@"
-}
-
 install.ubuntu() {
 	local gpg_file='/usr/share/keyrings/beekeeper.asc'
 

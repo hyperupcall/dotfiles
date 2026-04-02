@@ -6,10 +6,6 @@ declare -g g_sources_file_release='/etc/apt/sources.list.d/brave-browser-release
 declare -g g_sources_file_beta='/etc/apt/sources.list.d/brave-browser-beta.sources'
 declare -g g_sources_file_nightly='/etc/apt/sources.list.d/brave-browser-nightly.sources'
 
-main() {
-	util.install_by_setup "$@"
-}
-
 install.debian() {
 	local gpg_file_release="/etc/apt/keyrings/brave-browser-release.gpg"
 	local gpg_file_beta="/etc/apt/keyrings/brave-browser-beta.gpg"

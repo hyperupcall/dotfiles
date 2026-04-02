@@ -3,7 +3,7 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='sdkman'
 
-main() {
+install.any() {
 	curl -K "$CURL_CONFIG" "https://get.sdkman.io" | bash
 }
 

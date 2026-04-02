@@ -3,7 +3,7 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='Rust'
 
-main() {
+install.any() {
 	core.print_info "Installing rustup"
 	curl -K "$CURL_CONFIG" https://sh.rustup.rs | sh -s -- --default-toolchain nightly -y
 
@@ -17,7 +17,7 @@ main() {
 }
 
 installed() {
-	command -v rustup &>/dev/null
+	command -v rustup help &>/dev/null
 }
 
 util.if_file_sourced || _setup "$@"

@@ -3,12 +3,13 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='Dotnet'
 
-main() {
-	util.install_by_setup "$@"
+install.ubuntu() {
+	# TODO
+	sudo add-apt-repository -y 'ppa:dotnet/backports'
 }
 
-install.ubuntu() {
-	sudo add-apt-repository -y 'ppa:dotnet/backports'
+installed() {
+	command -v dotnet &>/dev/null
 }
 
 util.if_file_sourced || _setup "$@"

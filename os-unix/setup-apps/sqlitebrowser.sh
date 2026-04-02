@@ -3,10 +3,6 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='sqlitebrowser'
 
-main() {
-	util.install_by_setup "$@"
-}
-
 install.ubuntu() {
 	sudo add-apt-repository -y ppa:linuxgndu/sqlitebrowser
 	sudo apt-get update -y

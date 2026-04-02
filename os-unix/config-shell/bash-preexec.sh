@@ -4,7 +4,7 @@ source ~/.dotfiles/os-unix/data/setup.sh
 declare -g g_name='bash-preexec'
 declare -g g_dir="$HOME/.dotfiles/.data/repos/bash-preexec"
 
-main() {
+install.any() {
 	util.clone "$g_dir" 'https://github.com/rcaloras/bash-preexec'
 }
 

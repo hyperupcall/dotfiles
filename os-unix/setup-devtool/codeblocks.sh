@@ -3,10 +3,6 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='Code::Blocks'
 
-main() {
-	util.install_by_setup "$@"
-}
-
 install.ubuntu() {
 	sudo add-apt-repository -y ppa:x-psoud/cbreleases
 	sudo apt-get update -y

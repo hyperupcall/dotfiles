@@ -4,7 +4,7 @@ source ~/.dotfiles/os-unix/data/setup.sh
 declare -g g_name='bash-ble'
 declare -g g_dir="$HOME/.dotfiles/.data/repos/bash-ble"
 
-main() {
+install.any() {
 	util.clone "$g_dir" 'https://github.com/akinomyoga/ble.sh'
 }
 

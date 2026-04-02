@@ -3,10 +3,6 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='Borg'
 
-main() {
-	util.install_by_setup "$@"
-}
-
 install.debian() {
 	sudo apt-get install -y borgbackup
 }
@@ -25,6 +21,10 @@ install.opensuse() {
 
 install.arch() {
 	sudo pacman -Syu --noconfirm borgbackup
+}
+
+installed() {
+	command -v borg &>/dev/null
 }
 
 util.if_file_sourced || _setup "$@"

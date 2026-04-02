@@ -3,10 +3,6 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='PostgreSQL'
 
-main() {
-	util.install_by_setup "$@"
-}
-
 install.ubuntu() {
 	sudo apt-get install -y postgresql-common
 	sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh

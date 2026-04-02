@@ -3,10 +3,6 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='Git'
 
-main() {
-	util.install_by_setup "$@"
-}
-
 install.debian() {
 	sudo add-apt-repository -y ppa:git-core/ppa
 	sudo apt-get update -y

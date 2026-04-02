@@ -1,14 +1,8 @@
 #!/usr/bin/env bash
 source ~/.dotfiles/os-unix/data/setup.sh
 
-declare -g g_name='alacritty'
-
 main() {
-	util.install_by_setup_distro_package 'alacritty' 'alacritty'
+	util.install_by_setup_distro_package 'Alacritty' 'alacritty' 'alacritty' "$@"
 }
 
-installed() {
-	command -v 'alacritty' &>/dev/null
-}
-
-util.if_file_sourced || _setup "$@"
+util.if_file_sourced || _main "$@"

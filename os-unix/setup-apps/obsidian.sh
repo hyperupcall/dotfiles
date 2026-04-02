@@ -3,7 +3,7 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='Obsidian'
 
-main() {
+install.any() {
 	~/scripts/setup/appimagelauncher.sh
 
 	util.get_latest_github_tag 'obsidianmd/obsidian-releases'
@@ -19,7 +19,7 @@ main() {
 }
 
 installed() {
-	local dir=(~/.dotfiles/.home/AppImages/Obsidian_*.AppImage)
+	local dir=(~/.home/AppImages/Obsidian_*.AppImage)
 	(( ${#dir} > 0 ))
 }
 

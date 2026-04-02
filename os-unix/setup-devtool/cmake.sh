@@ -3,7 +3,7 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='cmake'
 
-main() {
+install.any() {
 	mise install cmake@latest
 	mise use -g cmake@latest
 }

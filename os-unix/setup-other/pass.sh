@@ -4,7 +4,7 @@ source ~/.dotfiles/os-unix/data/setup.sh
 declare -g g_name='pass'
 declare -g g_password_store_dir="${PASSWORD_STORE_DIR:-$HOME/.password-store}"
 
-main() {
+install.any() {
 	util.install_by_setup "$@"
 
 	if util.confirm 'Clone password repository?'; then

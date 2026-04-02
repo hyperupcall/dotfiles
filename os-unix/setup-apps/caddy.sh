@@ -4,10 +4,6 @@ source ~/.dotfiles/os-unix/data/setup.sh
 declare -g g_name='Caddy'
 declare -g g_sources_file='/etc/apt/sources.list.d/caddy-stable.sources'
 
-main() {
-	util.install_by_setup "$@"
-}
-
 install.debian() {
 	sudo apt-get install -y debian-keyring debian-archive-keyring apt-transport-https curl
 	local gpg_file="/etc/apt/keyrings/caddy-stable.asc"

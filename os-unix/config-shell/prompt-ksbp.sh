@@ -4,8 +4,12 @@ source ~/.dotfiles/os-unix/data/setup.sh
 declare -g g_name='bash-sbp'
 declare -g g_dir="$HOME/.dotfiles/.data/repos/ksbp"
 
-main() {
+install.any() {
 	util.clone "$g_dir" 'https://github.com/hyperupcall-projects/ksbp'
+}
+
+installed() {
+	[ -d "$g_dir" ]
 }
 
 configure() {
@@ -13,10 +17,6 @@ configure() {
 		--bash "
 			SBP_PATH=\"$g_dir\"
 			source \$SBP_PATH/sbp.bash"
-}
-
-installed() {
-	[ -d "$g_dir" ]
 }
 
 util.if_file_sourced || _setup "$@"

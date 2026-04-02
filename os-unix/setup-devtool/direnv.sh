@@ -3,9 +3,13 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='direnv'
 
-main() {
-	mise install cmake@latest
-	mise use -g cmake@latest
+install.any() {
+	mise install direnv@latest
+	mise use -g direnv@latest
+}
+
+installed() {
+	command -v direnv &>/dev/null
 }
 
 configure() {

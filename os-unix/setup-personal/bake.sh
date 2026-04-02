@@ -3,7 +3,7 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='Bake'
 
-main() {
+install.any() {
 	util.get_latest_github_tag 'hyperupcall/bake'
 	local version="$REPLY"
 

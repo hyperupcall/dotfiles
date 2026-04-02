@@ -3,10 +3,6 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='pgModeler'
 
-main() {
-	util.install_by_setup "$@"
-}
-
 install.ubuntu() {
 	sudo apt-get update -y
 	sudo apt-get install -y pgmodeler

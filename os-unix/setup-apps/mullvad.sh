@@ -4,10 +4,6 @@ source ~/.dotfiles/os-unix/data/setup.sh
 declare -g g_name='MullvadVPN'
 declare -g g_sources_file='/etc/apt/sources.list.d/mullvad.sources'
 
-main() {
-	util.install_by_setup "$@"
-}
-
 install.debian() {
 	local gpg_file='/usr/share/keyrings/mullvad.asc'
 

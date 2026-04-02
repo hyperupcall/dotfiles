@@ -4,7 +4,7 @@ source ~/.dotfiles/os-unix/data/setup.sh
 declare -g g_name='Surface Kernel'
 declare -g g_sources_file='/etc/apt/sources.list.d/linux-surface.sources'
 
-main() {
+install.any() {
 	if ! util.confirm "Are all your kernel modules installed as DKMS?"; then
 		exit 0
 	fi

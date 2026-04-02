@@ -3,7 +3,7 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='Basalt'
 
-main() {
+install.any() {
 	curl -K "$CURL_CONFIG" https://raw.githubusercontent.com/bash-bastion/basalt/main/scripts/install.sh | sh
 
 	ln -fs ~/.local/share/basalt/source/pkg/bin/basalt ~/.local/bin/basalt >/dev/null

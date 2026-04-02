@@ -4,10 +4,6 @@ source ~/.dotfiles/os-unix/data/setup.sh
 declare -g g_name='Firefox'
 declare -g g_sources_file='/etc/apt/sources.list.d/mozilla.sources'
 
-main() {
-	util.install_by_setup "$@"
-}
-
 install.debian() {
 	sudo apt-get install -y firefox
 }
@@ -40,12 +36,12 @@ install.fedora() {
 	sudo dnf -y install firefox
 }
 
-install.arch() {
-	sudo pacman -Syu --noconfirm firefox
-}
-
 install.opensuse() {
 	sudo zypper -n install firefox
+}
+
+install.arch() {
+	sudo pacman -Syu --noconfirm firefox
 }
 
 installed() {

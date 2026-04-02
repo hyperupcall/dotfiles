@@ -3,7 +3,7 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='Go'
 
-main() {
+install.any() {
 	mise install go@latest
 	mise use -g go@latest
 
@@ -12,6 +12,10 @@ main() {
 	go install golang.org/x/tools/cmd/goimports@latest
 
 	go install github.com/x-motemen/gore/cmd/gore@latest
+}
+
+installed() {
+	command -v go &>/dev/null
 }
 
 util.if_file_sourced || _setup "$@"

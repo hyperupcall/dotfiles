@@ -2,26 +2,24 @@
 source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='Woof'
-
-main() {
-	util.install_by_setup "$@"
-}
+declare -g g_dir="$HOME/.dotfiles/.data/repos/woof"
 
 install.any() {
 	basalt global add version-manager/woof
 }
 
 install.source() {
-	local repo_dir="$_private_woof_dir"
-	if [ ! -d "$repo_dir" ]; then
-		core.print_error "Failed to find directory: $repo_dir"
-	fi
-	cd "$repo_dir"
-	ln -sf "$PWD/pkg/bin/woof" ~/.local/bin/woof
+	util.clone "$g_dir" 'https://github.com/version-manager/woof'
+	cd "$g_dir"
+	basalt install
+
+	local prefix="$HOME/.local"
+	mkdir -p "$prefix/bin"
+	ln -sf "$PWD/pkg/bin/woof" "$prefix/bin/woof"
 }
 
 installed() {
-	command -v woof &>/dev/null
+	[ -L ~/.local/bin/woof ]
 }
 
 configure() {

@@ -4,10 +4,6 @@ source ~/.dotfiles/os-unix/data/setup.sh
 declare -g g_name='Docker'
 declare -g g_sources_file='/etc/apt/sources.list.d/docker.sources'
 
-main() {
-	util.install_by_setup "$@"
-}
-
 install.ubuntu() {
 	sudo apt-get -y install \
 		ca-certificates \

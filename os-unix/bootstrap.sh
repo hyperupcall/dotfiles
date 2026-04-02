@@ -30,6 +30,7 @@ main() {
 	installcmd 'curl' 'curl'
 	installcmd 'git' 'git'
 	installcmd 'vim' 'vim'
+	installcmd 'zsh' 'zsh'
 
 	# Install hyperupcall/dotfiles.
 	clonerepo 'https://github.com/hyperupcall/dotfiles' ~/.dotfiles

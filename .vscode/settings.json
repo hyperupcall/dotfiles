@@ -2,47 +2,36 @@
 	"window.title": "${folderName} ${separator}${activeRepositoryBranchName}${separator}${remoteName} (nodejs)",
 	"shellcheck.ignorePatterns": {
 		"**/.git/**": true,
-		"**/.home/**": true,
 		"**/.venv/**": true,
 		"**/node_modules/**": true,
 	},
 	"search.exclude": {
 		"**/.git/**": true,
-		"**/.home/**": true,
 		"**/.venv/**": true,
-		"os-unix/config-shell/.config/bash/frameworks/bash-it.sh": false,
+		"**/vendor": true,
+		"os-unix/config-shell/.config/bash/frameworks/bash-it.sh": true,
 	},
 	"npm.exclude": "**/.*",
 	"files.watcherExclude": {
 		"**/.git/**": true,
-		"**/.home/**": true,
 		"**/.venv/**": true,
 		"**/node_modules/**": true,
 	},
 	"explorer.excludeGitIgnore": true,
 	"errorLens.excludePatterns": [
 		"**/.git/**",
-		"**/.home/**",
 		"**/.venv/**",
 		"**/node_modules/**",
 	],
 	"todo-tree.filtering.excludeGlobs": [
 		"**/.git/**",
-		"**/.home/**",
 		"**/.venv/**",
 		"**/node_modules/**",
 	],
 	"workbench.localHistory.exclude": {
 		"**/.git/**": true,
-		"**/.home/**": true,
 		"**/.venv/**": true,
 		"**/node_modules/**": true,
-	},
-	"prettier.enable": false,
-	"editor.formatOnSave": false,
-	"editor.codeActionsOnSave": {
-		"source.fixAll.eslint": "explicit",
-		"source.organizeImports": "never"
 	},
 	"eslint.rules.customizations": [
 		{

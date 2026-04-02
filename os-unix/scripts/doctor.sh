@@ -14,7 +14,8 @@ main() {
 
 	# Install required dependencies.
 	if [ ! -f ~/.dotfiles/.data/finished_bootstrap ]; then
-		install_required_dependencies
+		util.update_system
+		util.install_by_setup --fn-prefix=dependencies 'Bootstrap'
 		touch ~/.dotfiles/.data/finished_bootstrap
 		core.print_info "Installed required dependencies"
 	fi
@@ -154,37 +155,37 @@ main() {
 	fi
 	if [[ $computer_profile == @(desktop|laptop) ]]; then
 		must.dir "$HOME/Other/AppImages"
-		must.link "$HOME/Other/AppImages" "$HOME/.dotfiles/.home/AppImages"
+		must.link "$HOME/Other/AppImages" ~/.home/AppImages
 	else
 		must.dir "$HOME/AppImages"
-		must.link "$HOME/AppImages" "$HOME/.dotfiles/.home/AppImages"
+		must.link "$HOME/AppImages" ~/.home/AppImages
 	fi
 
 	# Symlink XDG base and user directories.
 	(
 		source "$XDG_CONFIG_HOME/user-dirs.dirs"
-		must.dir "$HOME/.dotfiles/.home"
+		must.dir ~/.home
 
-		must.link "$XDG_DESKTOP_DIR" "$HOME/.dotfiles/.home/Desktop"
-		must.link "$XDG_DOWNLOAD_DIR" "$HOME/.dotfiles/.home/Downloads"
-		must.link "$XDG_TEMPLATES_DIR" "$HOME/.dotfiles/.home/Templates"
-		must.link "$XDG_PUBLICSHARE_DIR" "$HOME/.dotfiles/.home/Public"
-		must.link "$XDG_DOCUMENTS_DIR" "$HOME/.dotfiles/.home/Documents"
-		must.link "$XDG_MUSIC_DIR" "$HOME/.dotfiles/.home/Music"
-		must.link "$XDG_PICTURES_DIR" "$HOME/.dotfiles/.home/Pictures"
-		must.link "$XDG_VIDEOS_DIR" "$HOME/.dotfiles/.home/Videos"
+		must.link "$XDG_DESKTOP_DIR" ~/.home/Desktop
+		must.link "$XDG_DOWNLOAD_DIR" ~/.home/Downloads
+		must.link "$XDG_TEMPLATES_DIR" ~/.home/Templates
+		must.link "$XDG_PUBLICSHARE_DIR" ~/.home/Public
+		must.link "$XDG_DOCUMENTS_DIR" ~/.home/Documents
+		must.link "$XDG_MUSIC_DIR" ~/.home/Music
+		must.link "$XDG_PICTURES_DIR" ~/.home/Pictures
+		must.link "$XDG_VIDEOS_DIR" ~/.home/Videos
 
-		must.link "$XDG_CACHE_HOME" "$HOME/.dotfiles/.home/xdg_cache_dir"
-		must.link "$XDG_CONFIG_HOME" "$HOME/.dotfiles/.home/xdg_config_dir"
-		must.link "$XDG_STATE_HOME" "$HOME/.dotfiles/.home/xdg_state_dir"
-		must.link "$XDG_DATA_HOME" "$HOME/.dotfiles/.home/xdg_data_dir"
+		must.link "$XDG_CACHE_HOME" ~/.home/xdg_cache_dir
+		must.link "$XDG_CONFIG_HOME" ~/.home/xdg_config_dir
+		must.link "$XDG_STATE_HOME" ~/.home/xdg_state_dir
+		must.link "$XDG_DATA_HOME" ~/.home/xdg_data_dir
 
 		must.dir "$XDG_CACHE_HOME"
 		must.dir "$XDG_CONFIG_HOME"
 		must.dir "$XDG_STATE_HOME"
 		must.dir "$XDG_DATA_HOME"
 
-		for f in "$HOME/.dotfiles/.home"/*; do
+	for f in ~/.home/*; do
 			if [ -L "$f" ] && [ ! -e "$f" ]; then
 				must.unlink "$f"
 			fi
@@ -276,15 +277,15 @@ main() {
 		fi
 	}
 
-	~/scripts/setup/rust.sh
 	~/scripts/setup/zsh.sh
 	~/scripts/setup/ksh.sh
+	~/scripts/setup/rust.sh
+	~/scripts/setup/mise.sh
 	~/scripts/setup/notify-send.sh
 
 	~/scripts/setup/pass.sh
 	~/scripts/setup/dev.sh
 	~/scripts/setup/d.sh
-	~/scripts/setup/mise.sh
 	~/scripts/setup/cmake.sh
 	~/scripts/setup/lefthook.sh
 	~/.dotfiles/bake init # Depends on mise and lefthook.
@@ -534,52 +535,44 @@ must.strict_permissions() {
 	fi
 }
 
-install_required_dependencies() {
-	dependencies.debian() {
-		local packages=()
-		packages+=(apt-transport-https build-essential)
-		packages+=(bash-completion curl rsync cmake ccache vim nano jq lvm2) # lint-ignore:curl-must-have-args
-		packages+=(pkg-config libssl-dev) # For starship
+dependencies.debian() {
+	local packages=()
+	packages+=(apt-transport-https build-essential)
+	packages+=(bash-completion curl rsync cmake ccache vim nano jq lvm2) # lint-ignore:curl-must-have-args
+	packages+=(pkg-config libssl-dev) # For starship
 
-		sudo apt-get -y install "${packages[@]}"
-	}
-	dependencies.ubuntu() {
-		dependencies.debian "$@"
-	}
-	dependencies.fedora() {
-		local packages=()
-		packages+=(@development-tools)
-		packages+=(bash-completion curl rsync cmake ccache vim nano jq lvm2) # lint-ignore:curl-must-have-args
-		packages+=(pkg-config openssl-devel) # For starship
-		packages+=(dnf-plugins-core) # For at least Brave
+	sudo apt-get -y install "${packages[@]}"
+}
+dependencies.ubuntu() {
+	dependencies.debian "$@"
+}
+dependencies.fedora() {
+	local packages=()
+	packages+=(@development-tools)
+	packages+=(bash-completion curl rsync cmake ccache vim nano jq lvm2) # lint-ignore:curl-must-have-args
+	packages+=(pkg-config openssl-devel) # For starship
+	packages+=(dnf-plugins-core) # For at least Brave
 
-		sudo dnf -y install "${packages[@]}"
-	}
-	dependencies.opensuse() {
-		local packages=()
-		packages+=(bash-completion curl rsync cmake ccache vim nano jq lvm2) # lint-ignore:curl-must-have-args
-		packages+=(pkg-config openssl-devel) # For starship
+	sudo dnf -y install "${packages[@]}"
+}
+dependencies.opensuse() {
+	local packages=()
+	packages+=(bash-completion curl rsync cmake ccache vim nano jq lvm2) # lint-ignore:curl-must-have-args
+	packages+=(pkg-config openssl-devel) # For starship
 
-		sudo zypper -n install -t pattern devel_basis
-		sudo zypper -n install "${packages[@]}"
-	}
-	dependencies.arch() {
-		local packages=()
-		packages+=(base-devl lvm2 openssl yay)
+	sudo zypper -n install -t pattern devel_basis
+	sudo zypper -n install "${packages[@]}"
+}
+dependencies.arch() {
+	local packages=()
+	packages+=(base-devl lvm2 openssl yay)
 
-		sudo pacman -Syu --noconfirm "${packages[@]}"
-	}
-	dependencies.installed() {
-		:
-		# TODO exit code when not installed
-		# TODO fix showing Info: File "" has not function "installed"
-		# TODO: ~/.config/npm does not exist in ~/.dotfiles
-		# TODO: install zsh before running any setup scripts
-		# TODO: install python earliest
-	}
-
-	util.update_system
-	util.install_by_setup --fn-prefix=dependencies 'Bootstrap' "$@"
+	sudo pacman -Syu --noconfirm "${packages[@]}"
+}
+installed() {
+	:
+	# TODO exit code when not installed
+	# TODO fix showing Info: File "" has not function "installed"
 }
 
 util.if_file_sourced || _main "$@"

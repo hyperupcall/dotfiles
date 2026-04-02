@@ -3,18 +3,18 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='starship'
 
-main() {
+install.any() {
 	cargo install starship
+}
+
+installed() {
+	command -v starship &>/dev/null
 }
 
 configure() {
 	util.write_promptfile 'starship' \
 		--bash "$(starship init bash --print-full-init)" \
 		--zsh "$(starship init zsh --print-full-init)"
-}
-
-installed() {
-	command -v starship &>/dev/null
 }
 
 util.if_file_sourced || _setup "$@"

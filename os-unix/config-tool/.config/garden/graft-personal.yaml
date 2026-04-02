@@ -51,6 +51,38 @@ trees:
     url: git@github.com:hyperupcall-projects/webext-hyperupcall
     default-remote: 'me'
 
+  vscode-hyperupcall:
+    url: git@github.com:hyperupcall-projects/vscode-hyperupcall
+    default-remote: 'me'
+
+  sublime-hyperupcall:
+    url: git@github.com:hyperupcall-projects/sublime-hyperupcall
+    default-remote: 'me'
+
   npm-package-json-lint-config:
     url: git@github.com:hyperupcall-projects/npm-package-json-lint-config
+    default-remote: 'me'
+
+  containers:
+    url: git@github.com:hyperupcall-projects/containers
+    default-remote: 'me'
+
+  devcontainers:
+    url: git@github.com:hyperupcall-projects/devcontainers
+    default-remote: 'me'
+
+  virtual-machines:
+    url: git@github.com:hyperupcall-projects/virtual-machines
+    default-remote: 'me'
+
+  pkgbuilds:
+    url: git@github.com:hyperupcall-projects/pkgbuilds
+    default-remote: 'me'
+
+  slides:
+    url: git@github.com:hyperupcall-projects/slides
+    default-remote: 'me'
+
+  stars:
+    url: git@github.com:hyperupcall-projects/stars
     default-remote: 'me'

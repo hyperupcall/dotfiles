@@ -3,15 +3,22 @@ garden:
   root: '${GARDEN_CONFIG_DIR}'
 
 variables:
-  applicationsDir: '$ printf "%s" ~/.dotfiles/.home/Documents/Computing/Applications'
+  applicationsDir: '$ ~/.dotfiles/os-unix/data/setup-private-exec.sh programs-dir'
+  gameDevelopmentDir: '$ ~/.dotfiles/os-unix/data/setup-private-exec.sh game-development-dir'
 
 grafts:
+  graft-anki-plugins:
+    config: './graft-anki-plugins.yaml'
+    root: '${applicationsDir}/anki-plugins'
   graft-bash-bastion:
     config: './graft-bash-bastion.yaml'
     root: '${applicationsDir}/bash-bastion'
   graft-contributing-to:
     config: './graft-contributing-to.yaml'
     root: '${applicationsDir}/contributing-to'
+  graft-game-development:
+    config: './graft-game-development.yaml'
+    root: '${gameDevelopmentDir}'
   graft-hard-forks:
     config: './graft-hard-forks.yaml'
     root: '${applicationsDir}/hard-forks'
@@ -21,9 +28,9 @@ grafts:
   graft-nocategory:
     config: './graft-nocategory.yaml'
     root: '${applicationsDir}/nocategory'
-  graft-self:
-    config: './graft-self.yaml'
-    root: '${applicationsDir}/self'
+  graft-personal:
+    config: './graft-personal.yaml'
+    root: '${applicationsDir}/personal'
   graft-tree-sitter:
     config: './graft-tree-sitter.yaml'
     root: '${applicationsDir}/tree-sitter'
@@ -32,6 +39,13 @@ grafts:
     root: '${applicationsDir}/version-manager'
 
 groups:
+  anki-plugins:
+    - 'graft-anki-plugins::anki-advanced-browser'
+    - 'graft-anki-plugins::anki-fastbar'
+    - 'graft-anki-plugins::anki-image-occlusion-enhanced'
+    - 'graft-anki-plugins::anki-review-heatmap'
+    - 'graft-anki-plugins::anki-cloze-overlapper'
+
   bash-bastion:
     - 'graft-bash-bastion::.github'
     - 'graft-bash-bastion::basalt'
@@ -54,6 +68,10 @@ groups:
     - 'graft-contributing-to::bash-it'
     - 'graft-contributing-to::OED'
 
+  game-development:
+    - 'graft-game-development::cloud-tic-tac-toe'
+    - 'graft-game-development::damon-dodger'
+
   hard-forks:
     - 'graft-hard-forks::kpublish-vscode-extension'
     - 'graft-hard-forks::kroofpig'
@@ -67,19 +85,23 @@ groups:
     - 'graft-maintaining::git-extras'
     - 'graft-maintaining::awesome-bash'
     - 'graft-maintaining::awesome-mastodon'
+    - 'graft-maintaining::obsidian-emoji-tools'
+    - 'graft-maintaining::ajv-formats-draft2019'
 
   nocategory:
+    - 'graft-nocategory::proposal-string-remove-prefix-suffix'
     - 'graft-nocategory::babel-improved-piped-pipelines'
+    - 'graft-nocategory::babel-plugin-improved-gulp-pipelines'
     - 'graft-nocategory::book-organizer'
     - 'graft-nocategory::bratwurst'
     - 'graft-nocategory::d'
     - 'graft-nocategory::event-horizon'
+    - 'graft-nocategory::font-finder'
     - 'graft-nocategory::fox-css'
     - 'graft-nocategory::jsonschema-extractor'
-    - 'graft-nocategory::metamake-lang'
-    - 'graft-nocategory::pick-sticker'
+    - 'graft-nocategory::makelang'
     - 'graft-nocategory::sauerkraut'
-    - 'graft-nocategory::setup'
+    - 'graft-nocategory::setup.sh'
     - 'graft-nocategory::slides'
     - 'graft-nocategory::vscode-assorted-languages'
     - 'graft-nocategory::vscode-hyperupcall-packs'
@@ -88,21 +110,29 @@ groups:
     - 'graft-nocategory::webext-ublacklist-helper'
     - 'graft-nocategory::xdgbasedirectoryspecification.com'
 
-  self:
-    - 'graft-self::hyperupcall'
-    - 'graft-self::edwinkofler.com'
-    - 'graft-self::scripts-nodejs'
-    - 'graft-self::prettier-config'
-    - 'graft-self::eslint-config'
-    - 'graft-self::eslint-plugin'
-    - 'graft-self::stylelint-config'
-    - 'graft-self::stylelint-plugin'
-    - 'graft-self::markdownlint-config'
-    - 'graft-self::config-utils'
-    - 'graft-self::lefthook-config'
-    - 'graft-self::hyperupcall-action'
-    - 'graft-self::webext-hyperupcall'
-    - 'graft-self::npm-package-json-lint-config'
+  personal:
+    - 'graft-personal::hyperupcall'
+    - 'graft-personal::edwinkofler.com'
+    - 'graft-personal::scripts-nodejs'
+    - 'graft-personal::prettier-config'
+    - 'graft-personal::eslint-config'
+    - 'graft-personal::eslint-plugin'
+    - 'graft-personal::stylelint-config'
+    - 'graft-personal::stylelint-plugin'
+    - 'graft-personal::markdownlint-config'
+    - 'graft-personal::config-utils'
+    - 'graft-personal::lefthook-config'
+    - 'graft-personal::hyperupcall-action'
+    - 'graft-personal::webext-hyperupcall'
+    - 'graft-personal::vscode-hyperupcall'
+    - 'graft-personal::sublime-hyperupcall'
+    - 'graft-personal::npm-package-json-lint-config'
+    - 'graft-personal::containers'
+    - 'graft-personal::devcontainers'
+    - 'graft-personal::virtual-machines'
+    - 'graft-personal::pkgbuilds'
+    - 'graft-personal::slides'
+    - 'graft-personal::stars'
 
   tree-sitter:
     - 'graft-tree-sitter::zed-assorted-languages'

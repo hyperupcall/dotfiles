@@ -18,3 +18,11 @@ trees:
   awesome-mastodon:
     url: git@github.com:hyperupcall/awesome-mastodon
     default-remote: 'me'
+
+  obsidian-emoji-tools:
+    url: git@github.com:hyperupcall-projects/obsidian-emoji-tools
+    default-remote: 'me'
+
+  ajv-formats-draft2019:
+    url: git@github.com:hyperupcall-projects/ajv-formats-draft2019
+    default-remote: 'me'

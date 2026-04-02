@@ -1,15 +1,9 @@
 #!/usr/bin/env bash
 source ~/.dotfiles/os-unix/data/setup.sh
 
-declare -g g_name='Zoxide'
-
 main() {
 	~/scripts/setup/fzf.sh
-	util.install_by_setup_distro_package 'zoxide' 'zoxide'
-}
-
-installed() {
-	command -v 'zoxide' &>/dev/null
+	util.install_by_setup_distro_package 'Zoxide' 'zoxide' 'zoxide' "$@"
 }
 
 configure() {
@@ -21,4 +15,4 @@ configure() {
 		--elvish 'eval (zoxide init elvish | slurp)'
 }
 
-util.if_file_sourced || _setup "$@"
+util.if_file_sourced || _main "$@"

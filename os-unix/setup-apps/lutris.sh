@@ -4,19 +4,6 @@ source ~/.dotfiles/os-unix/data/setup.sh
 declare -g g_name='Lutris'
 declare -g g_sources_file='/etc/apt/sources.list.d/lutris.sources'
 
-main() {
-	util.install_by_setup "$@"
-}
-
-install.ubuntu() {
-	util.get_latest_github_tag 'lutris/lutris'
-	local version="$REPLY"
-	version=${version#v}
-
-	curl -K "$CURL_CONFIG" -o 'lutris.deb' "https://github.com/lutris/lutris/releases/download/v${version}/lutris_${version}_all.deb"
-	sudo apt-get install -y './lutris.deb'
-}
-
 install.debian() {
 	local gpg_file="/etc/apt/keyrings/lutris.asc"
 
@@ -31,6 +18,15 @@ install.debian() {
 			Suites: ./
 			Architectures: $(dpkg --print-architecture)
 			signed-by: $gpg_file"
+}
+
+install.ubuntu() {
+	util.get_latest_github_tag 'lutris/lutris'
+	local version="$REPLY"
+	version=${version#v}
+
+	curl -K "$CURL_CONFIG" -o 'lutris.deb' "https://github.com/lutris/lutris/releases/download/v${version}/lutris_${version}_all.deb"
+	sudo apt-get install -y './lutris.deb'
 }
 
 install.fedora() {

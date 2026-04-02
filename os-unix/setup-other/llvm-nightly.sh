@@ -4,10 +4,6 @@ source ~/.dotfiles/os-unix/data/setup.sh
 declare -g g_name='LLVM'
 declare -g g_sources_file='/etc/apt/sources.list.d/llvm.sources'
 
-main() {
-	util.install_by_setup "$@"
-}
-
 install.debian() {
 	local dist=
 	dist=$(lsb_release --codename --short)

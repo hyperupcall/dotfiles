@@ -3,7 +3,7 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='NerdFonts'
 
-main() {
+install.any() {
 	brew install --cask \
 		font-0xproto{,-nerd-font} \
 		font-adwaita{,-mono-nerd-font} \

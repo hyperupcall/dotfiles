@@ -3,10 +3,6 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='podman'
 
-main() {
-	util.install_by_setup "$@"
-}
-
 install.debian() {
 	sudo apt-get install -y podman
 	flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo

@@ -4,10 +4,6 @@ source ~/.dotfiles/os-unix/data/setup.sh
 declare -g g_name='Sublime Text'
 declare -g g_sources_file='/etc/apt/sources.list.d/sublime-text.sources'
 
-main() {
-	util.install_by_setup "$@"
-}
-
 install.debian() {
 	local gpg_file="/etc/apt/keyrings/sublimehq-archive.asc"
 

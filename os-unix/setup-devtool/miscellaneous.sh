@@ -3,7 +3,7 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='Miscellaneous Devtools'
 
-main() {
+install.any() {
 	if ! command -v file_server &>/dev/null; then
 		if command -v deno &>/dev/null; then
 			deno install --allow-net --allow-read https://deno.land/std@0.145.0/http/file_server.ts

@@ -3,7 +3,7 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='Garden'
 
-main() {
+install.any() {
 	cargo install garden-tools garden-gui
 }
 

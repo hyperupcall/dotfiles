@@ -3,7 +3,7 @@ source ~/.dotfiles/os-unix/data/setup.sh
 
 declare -g g_name='delta'
 
-main() {
+install.any() {
 	cargo install --force git-delta
 }
 

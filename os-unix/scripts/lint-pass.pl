@@ -112,7 +112,7 @@ if ( grep { $_ eq '--fix-symlinks' } @ARGV ) {
    exit 0;
 }
 
-my $password_store_dir = '~/.dotfiles/.home/xdg_data_dir/password-store/';
+my $password_store_dir = '~/.home/xdg_data_dir/password-store/';
 my $total_passwords    = 0;
 my %property_counts    = ();
 my %email_counts;

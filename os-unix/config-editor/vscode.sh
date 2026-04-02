@@ -4,14 +4,6 @@ source ~/.dotfiles/os-unix/data/setup.sh
 declare -g g_name='VSCode and VSCode Insiders'
 declare -g g_sources_file='/etc/apt/sources.list.d/vscode.sources'
 
-main() {
-	util.install_by_setup "$@"
-}
-
-install.arch() {
-	yay -S visual-studio-code-bin visual-studio-code-insiders-bin
-}
-
 install.debian() {
 	local gpg_file="/etc/apt/keyrings/microsoft.asc"
 
@@ -52,6 +44,10 @@ install.opensuse() {
 
 	sudo zypper refresh
 	sudo zypper -n install code code-insiders
+}
+
+install.arch() {
+	yay -S visual-studio-code-bin visual-studio-code-insiders-bin
 }
 
 installed() {
