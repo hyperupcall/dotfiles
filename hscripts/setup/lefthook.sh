@@ -1,0 +1,1 @@
+/home/edwin/.dotfiles/setup-devtool/lefthook.sh

@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+source ~/.dotfiles/data/setup.sh
+
+declare -g g_name='Python Tools'
+
+install.any() {
+	python3 -m ensurepip --upgrade
+	python3 -m pip install --upgrade pip
+	python3 -m pip install --upgrade wheel
+	python3 -m pip install --user pipx
+	python3 -m pipx ensurepath
+}
+
+installed() {
+	[ -f "$XDG_CONFIG_HOME/bash/bash.d/_pipx.bash" ]
+}
+
+configure() {
+	util.write_shellfile 'pipx' \
+		--bash 'eval "$(register-python-argcomplete pipx)"' \
+		--zsh 'eval "$(register-python-argcomplete pipx)"' \
+		--tcsh 'eval `register-python-argcomplete --shell tcsh pipx`'
+}
+
+util.if_file_sourced || _setup "$@"

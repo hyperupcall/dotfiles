@@ -28,25 +28,25 @@ systemctl enable --now systemd-{network,resolve}d
 
 ## Bootstrap
 
-Download and execute `bootstrap.sh` to begin the bootstrap process:
+Download and execute `bootstrap-linux.sh` to begin the bootstrap process:
 
 ```sh
 mkdir -p ~/.bootstrap
-curl -#fsSLo ~/.bootstrap/bootstrap.sh 'https://raw.githubusercontent.com/hyperupcall/dotfiles/trunk/os-unix/bootstrap.sh'
+curl -#fsSLo ~/.bootstrap/bootstrap.sh 'https://raw.githubusercontent.com/hyperupcall/dotfiles/trunk/bootstrap-linux.sh'
 chmod +x ~/.bootstrap/bootstrap.sh
 ~/.bootstrap/bootstrap.sh
 ```
 
-The `bootstrap.sh` script performs the following steps:
+The bootstrap script performs the following steps:
 
 - Installs Homebrew on macOS
 - Installs cURL, Git and Vim
 - Clones `hyperupcall/dotfiles` to `~/.dotfiles`
-- Symlinks `~/scripts` to `~/.dotfiles/os-unix/scripts`
+- Symlinks `~/scripts` to `~/.dotfiles/scripts`
 - Creates `~/.bootstrap/bootstrap-out.sh`. Sourcing it:
   - Sets `NAME`, `EMAIL`, `EDITOR`, and `VISUAL`
   - Prepends `$HOME/.dotfiles/.data/bin` to `PATH`
-  - Sources `~/.dotfiles/os-unix/data/xdg.sh`, if it exists
+  - Sources `~/.dotfiles/data/xdg.sh`, if it exists
 
 ## Next Steps
 

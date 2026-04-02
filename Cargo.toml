@@ -6,4 +6,4 @@ edition = '2024'
 
 [[bin]]
 name = 'cptest'
-path = 'os-unix/bin/cptest.rs'
+path = 'bin/cptest.rs'

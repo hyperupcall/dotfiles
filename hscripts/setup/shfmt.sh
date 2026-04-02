@@ -1,0 +1,1 @@
+/home/edwin/.dotfiles/config-shell/shfmt.sh

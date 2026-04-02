@@ -1,0 +1,1 @@
+/home/edwin/.dotfiles/config-terminal/tilix.sh

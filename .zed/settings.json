@@ -9,7 +9,7 @@
 		"**/.git/**",
 		"**/.venv/**",
 		"bake",
-		"os-unix/config-shell/.config/bash/frameworks/bash-it.sh",
+		"config-shell/.config/bash/frameworks/bash-it.sh",
 		"vendor/**",
 	],
 	"languages": {

@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+source ~/.dotfiles/data/setup.sh
+
+declare -g g_name='jj'
+
+install.any() {
+	~/scripts/setup/rust.sh --no-confirm
+	cargo binstall --strategies crate-meta-data jj-cli
+}
+
+installed() {
+	command -v jj &>/dev/null
+}
+
+util.if_file_sourced || _setup "$@"

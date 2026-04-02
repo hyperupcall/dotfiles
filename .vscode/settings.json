@@ -9,7 +9,7 @@
 		"**/.git/**": true,
 		"**/.venv/**": true,
 		"**/vendor": true,
-		"os-unix/config-shell/.config/bash/frameworks/bash-it.sh": true,
+		"config-shell/.config/bash/frameworks/bash-it.sh": true,
 	},
 	"npm.exclude": "**/.*",
 	"files.watcherExclude": {

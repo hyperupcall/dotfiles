@@ -1,0 +1,1 @@
+/home/edwin/.dotfiles/setup-other/docker-credential-secretservice.sh

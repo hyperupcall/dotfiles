@@ -7,7 +7,7 @@ title: Notable
 
 The following scripts are notable and may be helpful to others:
 
-## [`readline.sh`](/os-unix/config-shell/.config/bash/modules)
+## [`readline.sh`](/config-shell/.config/bash/modules)
 
 Special Bash readline bindings that includes many convenient functionality that include:
 
@@ -19,9 +19,9 @@ Special Bash readline bindings that includes many convenient functionality that 
 - <kbd>Alt+/</kbd> to toggle comment
 - <kbd>Alt+\</kbd> to toggle backslash
 
-It calls more general functions that can be found at [`line-editing.sh`](/os-unix/config-shell/.config/sh/modules/line-editing.sh).
+It calls more general functions that can be found at [`line-editing.sh`](/config-shell/.config/sh/modules/line-editing.sh).
 
-## [`mkt.sh`](/os-unix/config-shell/.config/sh/modules/func-mkt.sh)
+## [`mkt.sh`](/config-shell/.config/sh/modules/func-mkt.sh)
 
 Quick command to automatically do something in a temporary space. Based on the first argument, it will:
 

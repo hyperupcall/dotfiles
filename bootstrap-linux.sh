@@ -1,0 +1,172 @@
+#!/usr/bin/env sh
+set -e
+
+# shellcheck disable=SC3028,SC3054,SC2039
+if [ -n "$BASH" ] && [ "${BASH_SOURCE[0]}" != "$0" ]; then
+	printf '%s\n' "Error: This file should not be sourced"
+	return 1
+fi
+
+main() {
+	if ! iscmd 'sudo'; then
+		die "Please install 'sudo' before running this script"
+	fi
+
+	run mkdir -p ~/.bootstrap
+
+	# Install essential commands.
+	case $(uname) in Darwin*)
+		PATH="/opt/homebrew/bin:$PATH"
+		if iscmd 'brew'; then
+			log "Already installed Homebrew"
+		else
+			log 'Installing Homebrew'
+			run curl -fsSLo ~/.bootstrap/install-brew.sh 'https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh'
+			run bash ~/.bootstrap/install-brew.sh
+		fi
+		run brew install bash
+	esac
+	updatesystem
+	installcmd 'curl' 'curl'
+	installcmd 'git' 'git'
+	installcmd 'vim' 'vim'
+	installcmd 'zsh' 'zsh'
+
+	# Install hyperupcall/dotfiles.
+	clonerepo 'https://github.com/hyperupcall/dotfiles' ~/.dotfiles
+	run git -C ~/.dotfiles remote set-url me 'git@github.com:hyperupcall/dotfiles'
+	run ~/.dotfiles/bake init
+
+	# Symlink ~/scripts.
+	run ln -fs ~/.dotfiles/scripts ~/
+
+	# Export variables.
+	cat > ~/.bootstrap/bootstrap-out.sh <<EOF
+# shellcheck shell=sh
+
+export NAME='Edwin Kofler'
+export EMAIL='edwin@kofler.dev'
+export EDITOR='vim'
+export VISUAL="\$EDITOR"
+export PATH="\$HOME/.dotfiles/.data/bin:\$HOME/.local/bin:\$PATH"
+
+if [ -f ~/.dotfiles/data/xdg.sh ]; then
+	. ~/.dotfiles/data/xdg.sh
+else
+	printf '%s\n' 'Error: ~/.dotfiles/data/xdg.sh not found'
+	return 1
+fi
+EOF
+}
+
+die() {
+	error "$@"
+	printf "=> Exiting\n" >&2
+	exit 1
+}
+
+error() {
+	printf "=> Error: %s\n" "$1" >&2
+}
+
+log() {
+	printf "=> Info: %s\n" "$1"
+}
+
+run() {
+	if "$@"; then :; else
+		error "Failed to run command (code $?)"
+		printf '%s\n' "  => Command: $*" >&2
+		exit 1
+	fi
+}
+
+iscmd() {
+	if command -v "$1" >/dev/null 2>&1; then
+		return $?
+	else
+		return $?
+	fi
+}
+
+updatesystem() {
+	if iscmd 'pacman'; then
+		sudo pacman -Syyu --noconfirm
+		orphaned_deps=$(pacman -Qdtq || :)
+		if [ -n "$orphaned_deps" ]; then
+			sudo pacman -R $orphaned_deps
+		fi
+		unset -v orphaned_deps
+	elif iscmd 'apt-get'; then
+		sudo apt-get -y update
+		sudo apt-get -y install apt-transport-https
+		(
+			. /etc/os-release
+			if [ "$ID" = 'neon' ]; then
+				if sudo pkcon -y update; then :; else
+					# Exit code for "Nothing useful was done".
+					if (($? != 5)); then
+						die "Failed to run 'pkgcon'"
+					fi
+				fi
+			else
+				sudo apt-get -y upgrade
+			fi
+		)
+		sudo apt-get -y autoremove
+	elif iscmd 'dnf'; then
+		sudo dnf -y update
+		sudo dnf -y autoremove
+	elif iscmd 'zypper'; then
+		sudo zypper -n update
+  	elif iscmd 'brew'; then
+   		brew update
+	else
+		die 'Failed to determine package manager'
+	fi
+}
+
+installcmd() {
+	if iscmd "$1"; then
+		log "Already installed $1"
+	else
+		log "Installing $1"
+
+		if iscmd 'pacman'; then
+			run sudo pacman -S --noconfirm "$2"
+		elif iscmd 'apt-get'; then
+			run sudo apt-get -y install "$2"
+		elif iscmd 'dnf'; then
+			run sudo dnf -y install "$2"
+		elif iscmd 'zypper'; then
+			run sudo zypper -n install "$2"
+		elif iscmd 'eopkg'; then
+			run sudo eopkg -y install "$2"
+		elif iscmd 'brew'; then
+			run brew install "$2"
+		else
+			die 'Failed to determine package manager'
+		fi
+
+		if ! iscmd "$1"; then
+			die "Automatic installation of $1 failed"
+		fi
+	fi
+}
+
+clonerepo() {
+	if [ -d "$2" ]; then
+		log "Already cloned $1"
+	else
+		log "Cloning $1"
+		run git clone --quiet "$1" "$2" --recurse-submodules
+
+		git_remote=$(run git -C "$2" remote)
+		if [ "$git_remote" = 'origin' ]; then
+			run git -C "$2" remote rename origin me
+		fi
+		unset -v git_remote
+	fi
+}
+
+main "$@"

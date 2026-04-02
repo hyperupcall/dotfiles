@@ -1,0 +1,1 @@
+/home/edwin/.dotfiles/config-editor/vscode.sh

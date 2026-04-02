@@ -1,0 +1,1 @@
+/home/edwin/.dotfiles/config-version-control/git/git-difftastic.sh

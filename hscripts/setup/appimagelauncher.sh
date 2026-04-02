@@ -1,0 +1,1 @@
+/home/edwin/.dotfiles/setup-apps/appimagelauncher.sh

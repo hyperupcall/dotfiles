@@ -1,0 +1,1 @@
+/home/edwin/.dotfiles/setup-devtool/postgresql-anonymizer.sh

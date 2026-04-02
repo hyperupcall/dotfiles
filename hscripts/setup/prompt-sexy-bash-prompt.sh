@@ -1,0 +1,1 @@
+/home/edwin/.dotfiles/config-shell/prompt-sexy-bash-prompt.sh
