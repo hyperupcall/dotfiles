@@ -1,0 +1,59 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json
+version: "0.2"
+language: "en"
+dictionaryDefinitions:
+  - "name": "hyperupcall"
+    "path": "./config/dictionary-hyperupcall.txt"
+    "addWords": true
+  - "name": "My Bash"
+    "path": "./config/dictionary-bash.txt"
+  - "name": "My Linux"
+    "path": "./config/dictionary-linux.txt"
+    "addWords": true
+  - "name": "My CSS"
+    "path": "./config/dictionary-css.txt"
+    "addWords": true
+dictionaries:
+  - "hyperupcall"
+  - 'bash'
+  - "My Bash"
+  - 'My Linux'
+  - 'css'
+  - 'My CSS'
+  - 'python'
+  - 'win32'
+  - 'latex'
+  - 'makefile'
+  - 'lua'
+  - 'html'
+  - 'data-science'
+  - 'node'
+  - 'npm'
+  - shell'
+  - 'typescript'
+# Paths are relative to the ".cspell.yaml" file.
+ignorePaths:
+  - "config/ublacklist*.txt"
+  - "config/ublockorigin*.txt"
+  - "**/target/"
+  - "**/vendor/"
+  - "**/config/formatter"
+  - '**/pnpm-lock.yaml'
+  - '**/docs/_site'
+  - '**/bake'
+  - '**/vendor'
+  - '**/build'
+  - '**/node_modules'
+  - '**/static'
+  - '**/dist'
+  - '**/go.mod'
+  - '**/go.sum'
+  # TODO: deal with
+  - '**/stars/README.md'
+  - '**/data/{dates,pull_requests,commits,repositories}.json'
+  - '**/hyperupcall/contributions.md'
+  - '**/webext-hyperupcall'
+  - '**/edwinkofler.com/content/pages/test'
+  - '**/anki-plugins'
+  - '**/contributing-to/'
+  - '**/maintaining/schemastore'

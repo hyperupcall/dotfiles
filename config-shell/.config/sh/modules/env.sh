@@ -35,6 +35,9 @@ export FZF_DEFAULT_OPTS="--history \"$XDG_STATE_HOME/history/fzf_history\" --his
 # gnupg
 # export GPG_TTY; GPG_TTY=$(tty)
 
+# Homebrew
+export HOMEBREW_NO_ENV_HINTS=1
+
 # hstr
 export HSTR_CONFIG='hicolor'
 

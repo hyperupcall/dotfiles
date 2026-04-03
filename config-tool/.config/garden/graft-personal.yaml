@@ -1,6 +1,6 @@
 trees:
   hyperupcall:
-    url: git@github.com:hyperupcall-projects/hyperupcall
+    url: git@github.com:hyperupcall/hyperupcall
     default-remote: 'me'
 
   edwinkofler.com:

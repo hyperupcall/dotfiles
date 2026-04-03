@@ -4,6 +4,7 @@ use std::io::Write;
 use std::os::unix::process::CommandExt;
 use std::path::Path;
 use std::process::{exit, Command, Stdio};
+use std::io;
 
 fn find_source_file() -> Result<String, String> {
 	// Check for OCaml files.
@@ -184,6 +185,8 @@ fn run_tests(filepath: &str) -> Result<(), String> {
 		if tests.len() == 1 { "test" } else { "tests" }
 	);
 	for (test_num, (input_file, output_file)) in tests.iter().enumerate() {
+		println!("--- \x1B[1mTEST {}\x1B[0m", test_num + 1);
+
 		let input_data =
 			fs::read(&input_file).map_err(|e| format!("Failed to read {}: {}", input_file, e))?;
 		let expected_output = fs::read_to_string(&output_file)
@@ -262,10 +265,18 @@ fn run_tests(filepath: &str) -> Result<(), String> {
 			_ => return Err(format!("Error: Cannot execute file type: .{}", ext)),
 		};
 
-		println!("--- \x1B[1mTEST {}\x1B[0m", test_num + 1);
+		io::stderr().flush().unwrap();
+		io::stdout().flush().unwrap();
+
+		let trimmed_output = output.trim_end();
+		println!("---");
 		println!("{}", expected_output.trim_end());
 		println!("---");
-		println!("{}", output.trim_end());
+		if trimmed_output.is_empty() {
+			println!("\x1b[3mN/A\x1b[0m");
+		} else {
+			println!("{}", trimmed_output);
+		}
 		println!("---");
 
 		if test_num != tests.len() - 1 {

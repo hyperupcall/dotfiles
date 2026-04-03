@@ -15,31 +15,37 @@
 	"languages": {
 		"HTML": {
 			"language_servers": [
+				"...",
 				"eslint"
 			]
 		},
 		"Markdown": {
 			"language_servers": [
+				"...",
 				"eslint"
 			]
 		},
 		"JSON": {
 			"language_servers": [
+				"...",
 				"eslint"
 			]
 		},
 		"JSONC": {
 			"language_servers": [
+				"...",
 				"eslint"
 			]
 		},
 		"YAML": {
 			"language_servers": [
+				"...",
 				"eslint"
 			]
 		},
 		"CSS": {
 			"language_servers": [
+				"...",
 				"eslint"
 			]
 		}
@@ -47,9 +53,6 @@
 	"lsp": {
 		"eslint": {
 			"settings": {
-				"experimental": {
-					"useFlatConfig": false
-				},
 				"rulesCustomizations": [
 					{
 						"rule": "style/*",
@@ -102,6 +105,15 @@
 						"fixable": true
 					}
 				]
+			}
+		},
+		"yaml-language-server": {
+			"settings": {
+				"yaml": {
+					"format": {
+						"enable": true
+					}
+				}
 			}
 		}
 	}

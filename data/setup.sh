@@ -29,7 +29,6 @@ if [ -z "$XDG_STATE_HOME" ]; then
 	exit 1
 fi
 
-unset -v CURL_CONFIG
 CURL_CONFIG="$HOME/.dotfiles/data/curl_config.conf"
 
 source ~/.dotfiles/data/setup-private.sh

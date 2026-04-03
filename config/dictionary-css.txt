@@ -1,0 +1,6 @@
+lightpink
+papayawhip
+bordercolor
+borderopacity
+bulma
+darkgray
