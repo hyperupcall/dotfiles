@@ -1,1 +1,0 @@
-/home/edwin/.dotfiles/config-language/ghc.sh

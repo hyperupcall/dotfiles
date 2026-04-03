@@ -316,6 +316,7 @@ static Group defaultGroup = {
 		gh,
 		garden,
 		git,
+		gdb,
 		jj,
 		NULL
 	}

@@ -1,1 +1,0 @@
-/home/edwin/.dotfiles/config-version-control/jj.sh

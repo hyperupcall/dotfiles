@@ -1,1 +1,0 @@
-/home/edwin/.dotfiles/config-editor/neovim.sh

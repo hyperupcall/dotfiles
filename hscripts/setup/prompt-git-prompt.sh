@@ -1,1 +1,0 @@
-/home/edwin/.dotfiles/config-shell/prompt-git-prompt.sh

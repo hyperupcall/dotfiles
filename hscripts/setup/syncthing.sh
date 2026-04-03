@@ -1,1 +1,0 @@
-/home/edwin/.dotfiles/setup-apps/syncthing.sh

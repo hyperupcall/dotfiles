@@ -89,11 +89,12 @@ fn compile_file(filepath: &str, debug: bool) -> Result<(), String> {
 			}
 		}
 		"cpp" => {
-			let mut args = vec!["-x", "c++", "-O2", "-std=gnu++20"];
+			let mut args = vec!["-x", "c++", "-std=gnu++20"];
 			if debug {
 				args.push("-g");
 				args.push("-fsanitize=address,undefined");
 			} else {
+				args.push("-O2");
 				args.push("-static");
 			}
 			args.push(filepath);

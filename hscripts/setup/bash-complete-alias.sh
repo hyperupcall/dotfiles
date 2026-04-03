@@ -1,1 +1,0 @@
-/home/edwin/.dotfiles/config-shell/bash-complete-alias.sh

@@ -1,1 +1,0 @@
-/home/edwin/.dotfiles/setup-other/pass.sh

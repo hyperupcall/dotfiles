@@ -1,6 +1,6 @@
 .bin/
 .data/
-scripts/setup/
+hscripts/setup/
 data/setup-private*
 scripts-hidden/
 **/bash/bash.d/

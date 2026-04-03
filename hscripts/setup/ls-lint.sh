@@ -1,1 +1,0 @@
-/home/edwin/.dotfiles/setup-devtool/ls-lint.sh
