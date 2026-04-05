@@ -83,9 +83,9 @@ main() {
 		fi
 		if [ -d "$file" ]; then
 			core.shopt_push -s globstar
-			for file in "$file"/**; do
-				if [ -f "$file" ]; then
-					chmod +x "$file"
+			for file2 in "$file"/**; do
+				if [ -f "$file2" ]; then
+					chmod +x "$file2"
 				fi
 			done
 			core.shopt_pop
@@ -101,9 +101,9 @@ main() {
 			core.shopt_push -s nullglob
 			local -a files=("$dir"/"$dirname"@(|-*).sh)
 			core.shopt_pop
-			for file in "${files[@]}"; do
-				chmod +x "$file"
-				ln -sf "$file" ~/scripts/setup/"${file##*/}"
+			for file2 in "${files[@]}"; do
+				chmod +x "$file2"
+				ln -sf "$file2" ~/scripts/setup/"${file2##*/}"
 			done
 		else
 
@@ -408,7 +408,8 @@ must.link() {
 	local target="$2"
 
 	# Skip if symlink is already correct.
-	local target_full=$(readlink "$target")
+	local target_full
+	target_full=$(readlink "$target")
 	if [ -L "$target" ] && [ "$target_full" = "$src" ]; then
 		return
 	fi
@@ -498,7 +499,7 @@ must.strict_permissions() {
 		local perms=${result%% *}
 		local group=${result#* }; group=${group% *}
 		local user=${result##* }
-		local file_pretty=~${file#$HOME}
+		local file_pretty=~${file#"$HOME"}
 		if [ -d "$file" ]; then
 			if [ "$perms" != '700' ]; then
 				core.print_warn "Expected permissions of \"600\" instead of \"$perms\" on file \"$file_pretty\""

@@ -2,7 +2,7 @@
 	"type": "commonjs",
 	"prettier": "@hyperupcall/scripts-nodejs/config-prettier.js",
 	"devDependencies": {
-		"@hyperupcall/scripts-nodejs": "0.8.0"
+		"@hyperupcall/scripts-nodejs": "0.9.0"
 	},
 	"markdownlint-cli2": {
 		"extends": "./node_modules/@hyperupcall/markdownlint-config/.markdownlint.json"

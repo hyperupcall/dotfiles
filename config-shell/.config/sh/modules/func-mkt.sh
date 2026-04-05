@@ -15,15 +15,15 @@ _mkt_util_cd_latest_dir() {
 
 	if [ -n "$_mkt_latest_dir" ]; then
 		if ! _mkt_util_cd "$_mkt_latest_dir"; then
-			unset _mkt_latest_dir
+			unset -v _mkt_latest_dir
 			return 1
 		fi
 	else
-		unset _mkt_latest_dir
+		unset -v _mkt_latest_dir
 		return 1
 	fi
 
-	unset _mkt_latest_dir
+	unset -v _mkt_latest_dir
 }
 
 _mkt_util_cd() {
@@ -80,7 +80,7 @@ mkt() {
 	*)
 		_mkt_arg=$arg
 		;;
-	esac done; unset arg
+	esac done; unset -v arg
 
 	_mkt_old_pwd=$PWD
 
@@ -92,19 +92,6 @@ mkt() {
 		_mkt_util_cd "$_mkt_dir" || return
 		_mkt_util_log "$1"
 		;;
-	# Git repository.
-	*.git)
-		_mkt_id=$(printf '%s\n' "$1" | rev | cut -d/ -f1 | rev)
-		_mkt_dir=$(mktemp -d --suffix "-$_mkt_id")
-		_mkt_util_cd "$_mkt_dir" || return
-		_mkt_util_log "$1"
-		unset _mkt_id
-
-		_mkt_util_git_clone "$1" || return
-
-		_mkt_util_cd_latest_dir || return
-		_util_ls
-		;;
 	# Remote files.
 	https://*/*.*)
 		_mkt_dir=$(mktemp -d)
@@ -115,14 +102,14 @@ mkt() {
 		_mkt_latest_file=$(_mkt_util_get_latest_file)
 		if file "$_mkt_latest_file" | grep -Eq '(compressed|archive)'; then
 			if command -v aunpack >/dev/null hyperupcall>&1; then
-				command aunpack "$_mkt_latest_file" # uncompress if compressed
+				command aunpack "$_mkt_latest_file" # Uncompress if compressed.
 			else
 				_util_ls
 				_util_log_error "mkt: Command aunpack not found"
 				return 1
 			fi
 		fi
-		unset _mkt_latest_file
+		unset -v _mkt_latest_file
 
 		_mkt_util_cd_latest_dir || return
 		_util_ls
@@ -133,7 +120,7 @@ mkt() {
 		_mkt_dir=$(mktemp -d --suffix "-$_mkt_id")
 		_mkt_util_cd "$_mkt_dir" || return
 		_mkt_util_log "$1"
-		unset _mkt_id
+		unset -v _mkt_id
 
 		_mkt_util_git_clone "$1" || return
 
@@ -160,7 +147,7 @@ mkt() {
 		_mkt_dir=$(mktemp -d --suffix "-$_mkt_id")
 		_mkt_util_cd "$_mkt_dir" || return
 		_mkt_util_log "$1"
-		unset _mkt_id
+		unset -v _mkt_id
 
 		_mkt_util_git_clone "https://github.com/$1" || return
 

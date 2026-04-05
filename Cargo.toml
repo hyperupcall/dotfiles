@@ -1,6 +1,7 @@
 [package]
 name = '_'
 edition = '2024'
+publish = false
 
 [dependencies]
 

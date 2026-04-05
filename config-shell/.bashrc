@@ -35,6 +35,9 @@ unset -v MAIL
 unset -v MAILCHECK
 unset -v MAILPATH
 
+# Set options.
+set -o physical
+
 # Set bash options.
 shopt -s autocd
 shopt -s cdable_vars
@@ -95,6 +98,7 @@ else
 fi
 
 # Modules.
+_util_source_file "$XDG_CONFIG_HOME/sh/line-editing.sh"
 _util_source_dir "$XDG_CONFIG_HOME/bash/modules"
 _util_source_dir "$XDG_CONFIG_HOME/bash/bash.d"
 

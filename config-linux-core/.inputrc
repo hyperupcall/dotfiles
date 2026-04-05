@@ -50,8 +50,8 @@ Space: magic-space
 $endif
 
 # Templates.
-"\emt": "\C-awhile true;do \C-e ;done " # Infinite loop.
-"\emw": " | while IFS= read -r line;do \"$line\" ;done\eb\eb\eb\ef " # Loop over standard input.
+#"\emt": "\C-awhile true;do \C-e ;done " # Infinite loop.
+#"\emw": " | while IFS= read -r line;do \"$line\" ;done\eb\eb\eb\ef " # Loop over standard input.
 
 $if mode=vi
 set keymap vi-command

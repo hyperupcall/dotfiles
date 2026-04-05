@@ -21,7 +21,7 @@ from typing import Callable, NotRequired, TypedDict
 #
 # Check to ensure all regular expressions are working as intended:
 # $ lint-scripts.py --internal-test-regex
-
+# TODO: zsh, ksh
 
 class Rule(TypedDict):
 	name: str
@@ -457,6 +457,27 @@ def main():
 		}
 	)
 
+	# Before: Architectures:
+	# After: N/A
+	rules.append(
+		{
+			'name': 'architectures-must-use-dpkg',
+			'regex': r'(?P<match>[aA]rchitectures: (?!\$\(dpkg --print-architecture\))[^\s"]+)',
+			'reason': 'Architectures must use $(dpkg --print-architecture)',
+			'fileTypes': ['bash', 'sh'],
+			'fixerFn': None,
+			'testPositiveMatches': [
+				'Architectures: amd64',
+				'architectures: arm64',
+				'  Architectures: all',
+			],
+			'testNegativeMatches': [
+				'Architectures: $(dpkg --print-architecture)',
+				'architectures: $(dpkg --print-architecture)',
+			],
+		}
+	)
+
 	[rule.update({'found': 0}) for rule in rules]
 
 	parser = argparse.ArgumentParser()
@@ -500,12 +521,20 @@ def main():
 			if p.is_file():
 				lintfile(p, rules, options)
 	else:
-		for file in Path(os.path.expanduser('~/scripts')).rglob('*'):
-			if '.git' in str(file.absolute()):
-				continue
+		for pattern in ['config-*', 'scripts*', 'setup*']:
+			for directory in Path('.').glob(pattern):
+				# TODO
+				if 'config-shell' in str(directory.absolute):
+					continue
 
-			if file.is_file():
-				lintfile(file, rules, options)
+				for file in directory.rglob('*'):
+					if '.git' in str(file.absolute()):
+						continue
+					if file.suffix not in ['.sh', '.bash', '.bats']:
+						continue
+
+					if file.is_file():
+						lintfile(file, rules, options)
 
 	# Print final results.
 	print(f'{c.UNDERLINE}TOTAL ISSUES{c.RESET}')

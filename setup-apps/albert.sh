@@ -49,7 +49,7 @@ install_albert() {
 		python3 -m pip --require-virtualenv install --upgrade pip
 		python3 -m pip --require-virtualenv install -r tests/requirements.txt
 		cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DDOWNLOAD_CATCH=ON -DDOWNLOAD_EIGEN=ON
-		cmake --build build -j$(nproc)
+		cmake --build build -j"$(nproc)"
 		sudo cmake --install build
 	)
 

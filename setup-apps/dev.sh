@@ -7,23 +7,20 @@ install.any() {
 	local nodejs_version='24.7.0'
 
 	# Download and install NodeJS runtime.
-	local dir=(~/.dotfiles/.data/node-v*/)
-	dir=${dir%/}
-	if [[ "${dir}" == *\* ]]; then
-		dir=
-	fi
-	local old_nodejs_version="${dir[0]##*/}"
+	local dirs=(~/.dotfiles/.data/node-v*/)
+	dirs=("${dirs[@]%/}")
+	local old_nodejs_version="${dirs[0]##*/}"
 	old_nodejs_version=${old_nodejs_version#node-v}
 	old_nodejs_version=${old_nodejs_version%%-*}
-	if [ -d "${dir[0]}" ] && [ "$old_nodejs_version" = "$nodejs_version" ]; then
-		local dir_pretty="~${dir[0]#$HOME}"
+	if [ -d "${dirs[0]}" ] && [ "$old_nodejs_version" = "$nodejs_version" ]; then
+		local dir_pretty="~${dirs[0]#$HOME}"
 		core.print_info "Already installed NodeJS to $dir_pretty"
 	else
 		pushd ~/.dotfiles/.data >/dev/null
 		local file="./node-v$nodejs_version.tar.xz"
 		if [ "$old_nodejs_version" != "$nodejs_version" ] && [ -n "$old_nodejs_version" ]; then
 			core.print_info "Removing outdated NodeJS v$old_nodejs_version"
-			rm -rf "${dir[0]}"
+			rm -rf "${dirs[0]}"
 		fi
 		core.print_info "Downloading NodeJS v$nodejs_version"
 		curl -K "$CURL_CONFIG" -o "$file" "https://nodejs.org/dist/v$nodejs_version/node-v$nodejs_version-linux-x64.tar.xz"

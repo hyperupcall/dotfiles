@@ -6,7 +6,7 @@ declare -g g_dir="$HOME/.dotfiles/.data/repos/arch-install-scripts"
 
 install.any() {
 	util.clone "$g_dir" https://github.com/archlinux/arch-install-scripts
-	cd "$dir"
+	cd "$g_dir"
 
 	make arch-chroot
 	cp ./arch-chroot ~/.local/bin

@@ -48,10 +48,10 @@ options="$yes_text\n$no_text"
 
 chosen="$(echo -e "$options" | $rofi_command -p "$query" -dmenu -selected-row 1)"
 case $chosen in
-    $yes_text)
+    "$yes_text")
         eval "$yes_command"
     ;;
-    $no_text)
+    "$no_text")
         eval "$no_command"
     ;;
 esac

@@ -8,8 +8,8 @@ install.any() {
 	local version="$REPLY"
 
 	mkdir -p ~/.dotfiles/.data/{adminer,binexec}
-	curl -K "$CURL_CONFIG" -o ./adminer-${version#v}.php "https://github.com/vrana/adminer/releases/download/$version/adminer-${version#v}.php"
-	mv ./adminer-${version#v}.php ~/.dotfiles/.data/adminer/adminer-${version#v}.php
+	curl -K "$CURL_CONFIG" -o ./adminer-"${version#v}".php "https://github.com/vrana/adminer/releases/download/$version/adminer-${version#v}.php"
+	mv ./adminer-"${version#v}".php ~/.dotfiles/.data/adminer/adminer-"${version#v}".php
 	cat > ~/.dotfiles/.data/binexec/adminer <<EOF
 #!/bin/sh
 if ! pgrep -f "php -S localhost:9095 adminer-*.php"; then

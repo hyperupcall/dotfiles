@@ -4,7 +4,7 @@ source ~/.dotfiles/data/setup.sh
 declare -g g_name='uv'
 
 install.any() {
-	curl -LsSf https://astral.sh/uv/install.sh | sh
+	curl -K "$CURL_CONFIG" https://astral.sh/uv/install.sh | sh
 }
 
 installed() {

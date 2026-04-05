@@ -24,13 +24,12 @@ fi
 # Set options.
 set +o noclobber
 set -o notify
-set -o physical
 
 # Add custom functions and PATH.
-source "$XDG_CONFIG_HOME/sh/util.sh"
+. "$XDG_CONFIG_HOME/sh/util.sh"
 _util_path_prepend "$HOME/.dotfiles/.data/bin"
-_util_path_prepend "$HOME/.local/bin"
+_util_path_prepend "$HOME/.local/bin" # TODO: path_prepend a repeat?
 _util_path_prepend "$XDG_STATE_HOME/pipx/bin"
 _util_source_dir "$XDG_CONFIG_HOME/sh/modules"
-_util_source_dir "$XDG_CONFIG_HOME/sh/shell.d"
+#_util_source_dir "$XDG_CONFIG_HOME/sh/shell.d"
 # ---

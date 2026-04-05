@@ -94,6 +94,7 @@ updatesystem() {
 		sudo pacman -Syyu --noconfirm
 		orphaned_deps=$(pacman -Qdtq || :)
 		if [ -n "$orphaned_deps" ]; then
+			# shellcheck disable=SC2086
 			sudo pacman -R $orphaned_deps
 		fi
 		unset -v orphaned_deps
@@ -105,7 +106,7 @@ updatesystem() {
 			if [ "$ID" = 'neon' ]; then
 				if sudo pkcon -y update; then :; else
 					# Exit code for "Nothing useful was done".
-					if (($? != 5)); then
+					if [ $? -ne 5 ]; then
 						die "Failed to run 'pkgcon'"
 					fi
 				fi

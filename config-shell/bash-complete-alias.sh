@@ -10,7 +10,7 @@ configure() {
 		alias -p | while IFS= read -r line; do
 			line="${line#alias }"
 			line="${line%%=*}"
-			printf '%s\n' "$line"
+			printf "%s\n" "$line"
 		done
 	); do
 		complete -F _complete_alias "$alias_name"

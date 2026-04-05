@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 source "$XDG_DATA_HOME"/basalt/store/packages/github.com/rcaloras/bash-preexec\@*/bash-preexec.sh
 
 # Executes after command is read, but before command execution.

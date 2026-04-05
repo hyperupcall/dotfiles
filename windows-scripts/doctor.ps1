@@ -1,5 +1,5 @@
 #Requires -Version 5.1
-. ~/.dotfiles/os-windows/data/source.ps1
+. ~/.dotfiles/windows-data/source.ps1
 
 function main {
 	# Ensure developer mode is enabled.
@@ -88,7 +88,7 @@ function Symlink-RelativePath {
 	)
 
 	$symlinkFile = Join-Path -Path "$HOME" -ChildPath "$relativePath"
-	$targetFile = Join-Path -Path "$HOME/.dotfiles/os-windows/user" -ChildPath "$relativePath"
+	$targetFile = Join-Path -Path "$HOME/.dotfiles/windows-user" -ChildPath "$relativePath"
 
 	# Symlink file must either not exist or be a symlink link. With the original dotfox code, this
 	# is handled in a more elegant way, but here we just fail. Not worth the trouble for Windows

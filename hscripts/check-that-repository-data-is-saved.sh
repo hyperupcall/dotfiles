@@ -18,7 +18,7 @@ main() {
 		fi
 
 		local upstream_ref= unpushed_count=
-		upstream_ref=$(git rev-parse --abbrev-ref --symbolic-full-name @{u} 2>/dev/null)
+		upstream_ref=$(git rev-parse --abbrev-ref --symbolic-full-name '@{u}' 2>/dev/null)
 		unpushed_count=$(git rev-list --count "$upstream_ref..HEAD")
 		if (( unpushed_count )); then
 			core.print_error "Expected all commits to be be pushed, but found $unpushed_count extra local commits"

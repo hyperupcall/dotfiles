@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source $HOME/.owl4ce_var
+source "$HOME/.owl4ce_var"
 
 rofi_command="rofi -theme themes/sidebar/three-$CHK_ROFI_MOD.rasi"
 
@@ -13,13 +13,13 @@ options="$screen\n$area\n$timer"
 
 chosen="$(echo -e "$options" | $rofi_command -dmenu -selected-row 1)"
 case $chosen in
-    $screen)
+    "$screen")
         $SS_NOW delay
     ;;
-    $area)
+    "$area")
         $SS_DRAW
     ;;
-    $timer)
+    "$timer")
         $SS_TIMER
     ;;
 esac

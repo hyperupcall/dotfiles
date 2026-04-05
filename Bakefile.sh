@@ -94,7 +94,7 @@ EOF
 
 	# grep '-P' not compatible with with multiple arguments using '-e'.
 	for pattern in "${_private_forbidden_patterns[@]}"; do
-		if grep -IPr --exclude setup-private.* --exclude .clangd --exclude-dir node_modules --exclude-dir .data --exclude-dir vendor --exclude-dir target --exclude-dir .jekyll-cache --color=always "$pattern" ./ | grep -Ev '(#|//|") lint-ignore'; then
+		if grep -IPr --exclude 'setup-private.*' --exclude .clangd --exclude-dir node_modules --exclude-dir .data --exclude-dir vendor --exclude-dir target --exclude-dir .jekyll-cache --color=always "$pattern" ./ | grep -Ev '(#|//|") lint-ignore'; then
 			printf 'Expected to find no matches for: %s\n' "$pattern"
 			err=1
 		fi

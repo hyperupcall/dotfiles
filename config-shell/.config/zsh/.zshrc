@@ -107,6 +107,7 @@ else
 fi
 
 # Modules.
+_util_source_file "$XDG_CONFIG_HOME/sh/line-editing.sh"
 _util_source_dir "$XDG_CONFIG_HOME/zsh/modules"
 # _util_source_dir "$XDG_CONFIG_HOME/zsh/zsh.d"
 

@@ -7,11 +7,11 @@ declare -g g_dir="$HOME/.dev/.data/installed-repositories/sauerkraut"
 main() {
 	util.clone "$g_dir" git@github.com:hyperupcall/autoenv
 
-	cd "$install_dir"
+	cd "$g_dir"
 	pnpm install
 
 	mkdir -p ~/.dotfiles/.data/bin
-	ln -sf "$install_dir/bin/sauerkraut.js" ~/.dotfiles/.data/bin/sauerkraut
+	ln -sf "$g_dir/bin/sauerkraut.js" ~/.dotfiles/.data/bin/sauerkraut
 
 	mkdir -p ~/.local/share/systemd/user
 	cat > ~/.local/share/systemd/user/brain.service << 'EOF'

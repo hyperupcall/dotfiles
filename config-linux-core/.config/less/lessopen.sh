@@ -4,7 +4,7 @@ if [ "$COLORTERM" = "truecolor" ] || [ "$COLORTERM" = "24bit" ]; then
 	esc='esc256'
 else
 	colors=$(tput colors)
-	if ((colors -eq 256)); then
+	if [ "$colors" -eq 256 ]; then
 		esc='esc256'
 	fi
 fi

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source $HOME/.owl4ce_var
+source "$HOME/.owl4ce_var"
 
 rofi_command="rofi -theme themes/sidebar/five-$CHK_ROFI_MOD.rasi"
 
@@ -30,21 +30,22 @@ if [[ -z "$current" ]]; then
 fi
 
 # Spawn the spotify menu with the "Play / Pause" entry selected by default
+# shellcheck disable=SC2086
 chosen="$(echo -e "$options" | $rofi_command -dmenu $active $urgent -selected-row 1)"
 case $chosen in
-    $previous)
+    "$previous")
         $MUSIC_CONTROLLER prev
     ;;
-    $play_pause)
+    "$play_pause")
         $MUSIC_CONTROLLER toggle
     ;;
-    $stop)
+    "$stop")
         $MUSIC_CONTROLLER stop
     ;;
-    $next)
-        $MUSIC_CONTROLLER next
+    "$next")
+        "$MUSIC_CONTROLLER" next
     ;;
-    $tog_stream)
-        $MUSIC_CONTROLLER switchpl
+    "$tog_stream")
+        "$MUSIC_CONTROLLER" switchpl
     ;;
 esac

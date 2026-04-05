@@ -60,11 +60,11 @@ edit() {
 	_edit_file="$(printf '%s\n' "$_edit_grep_result" | awk -F ':' '{ print $1 }')"
 	_edit_line="$(printf '%s\n' "$_edit_grep_result" | awk -F ':' '{ print $2 }')"
 
-	if command -v 'nvim' &>/dev/null; then
+	if command -v 'nvim' >/dev/null 2>&1; then
 		nvim "+$_edit_line" "$_edit_file"
-	elif command -v 'vim' &>/dev/null; then
+	elif command -v 'vim' >/dev/null 2>&1; then
 		vim "+$_edit_line" "$_edit_file"
-	elif command -v 'nano' &>/dev/null; then
+	elif command -v 'nano' >/dev/null 2>&1; then
 		nano "+$_edit_line" "$_edit_file"
 	else
 		_util_log_error "edit: Editor not found"

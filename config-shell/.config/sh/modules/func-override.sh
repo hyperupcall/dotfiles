@@ -78,6 +78,7 @@ code() {
 		}
 	")
 
+	# shellcheck disable=SC2086
 	command code $_code_flags "$@"
 	unset -f _code_flags
 }
@@ -176,7 +177,7 @@ unlink() {
 		fi
 		command unlink "${_file%/}"
 		_code=$?
-		if (($_code > 0)); then
+		if [ "$_code" -gt 0 ]; then
 			_exit_code=$_code
 		fi
 		unset -v _code
@@ -188,14 +189,20 @@ unlink() {
 
 # Fix for OpenSUSE Tumbleweed where 'less' is a function that opens "xdg-open".
 less() {
-	if [ -n "$ZSH_VERSION" ]; then
+	if [ -n "$ZSH_VERSION" ] || [ -n "$KSH_VERSION" ]; then
 		if ! _less_cmd=$(whence -p less); then
-			_util_log_error 'Failed to find absolute path to less command'
+			_less_cmd='/usr/bin/less'
+			_util_log_warn "Assuming less is at $_less_cmd"
+		fi
+	elif [ -n "$BASH_VERSION" ]; then
+		# shellcheck disable=SC3045
+		if ! _less_cmd=$(type -fp less); then
+			_less_cmd='/usr/bin/less'
+			_util_log_warn "Assuming less is at $_less_cmd"
 		fi
 	else
-		if ! _less_cmd=$(type -fp less); then
-			_util_log_error 'Failed to find absolute path to less command'
-		fi
+		_less_cmd='/usr/bin/less'
+		_util_log_warn "Assuming less is at $_less_cmd"
 	fi
 
 	"$_less_cmd" "$@"

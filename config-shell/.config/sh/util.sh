@@ -4,11 +4,13 @@
 _util_path_prepend() {
 	if [ -n "$2" ]; then
 		if [ -n "$BASH_VERSION" ]; then
+			# shellcheck disable=SC3043
 			local -n _path="$1"
 			case ":$_path:" in
 				*":$2:"*) :;;
-				*) export $1="$2${_path:+":$_path"}"
+				*) export "$1=$2${_path:+":$_path"}"
 			esac
+			# shellcheck disable=SC3045
 			unset -vn _path
 		else
 			case :$(eval "printf '%s' \"\$$1\""): in
@@ -28,11 +30,13 @@ _util_path_prepend() {
 _util_path_append() {
 	if [ -n "$2" ]; then
 		if [ -n "$BASH_VERSION" ]; then
+			# shellcheck disable=SC3043
 			local -n _path="$1"
 			case ":$_path:" in
 				*":$2:"*) :;;
-				*) export $1="${_path:+":$_path"}$2"
+				*) export "$1=${_path:+":$_path"}$2"
 			esac
+			# shellcheck disable=SC3045
 			unset -vn _path
 		else
 			case :$(eval "printf '%s' \"\$$1\""): in
@@ -49,14 +53,19 @@ _util_path_append() {
 	esac
 }
 
+_util_source_file() {
+	. "$1"
+	# shellcheck disable=SC2181
+	[ $? -ne 0 ] && _util_print_source_error "$1"
+}
+
 _util_source_dir() {
 	for _dir; do
 		_dir=${_dir%/}
 		if [ -d "$_dir" ]; then
 			for _file in "$_dir"/*; do
 				if [ -f "$_file" ]; then
-					. "$_file"
-					(($? != 0 )) && _util_print_source_error "$_file"
+					_util_source_file "$_file"
 				fi
 			done
 			unset -v _file
@@ -68,23 +77,27 @@ _util_source_dir() {
 }
 
 _util_confirm() {
-	local message=${1:-Confirm?}
-	local args=('-rN1')
+	_message=${1:-Confirm?}
+	_args='-rN1'
 	if [ -n "$ZSH_VERSION" ]; then
-		args=('-rsk')
+		_args='-rsk'
 	fi
 
-	local input=
-	until [[ $input =~ ^[yYnN]$ ]]; do
-		printf '%s' "$message "
-		read "${args[@]}"
-		input=$REPLY
+	_input=
+	until [ "$_input" = y ] || [ "$_input" = Y ] || [ "$_input" = n ] || [ "$_input" = N ]; do
+		printf '%s' "$_message "
+		# shellcheck disable=SC2086
+		read -r ${_args?}
+		_input=$REPLY
 		printf '\n'
 	done
 
-	if [[ $input =~ ^[yY]$ ]]; then
+	unset -v _message _args
+	if [ "$_input" = y ] || [ "$_input" = Y ]; then
+		unset -v _input
 		return 0
 	else
+		unset -v _input
 		return 1
 	fi
 }

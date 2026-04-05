@@ -118,7 +118,7 @@ export SYSTEMD_PAGERSECURE=false
 export VIMINIT="if has('nvim') | source $XDG_CONFIG_HOME/nvim/init.lua | else | source $XDG_CONFIG_HOME/vim/vimrc | endif"
 
 # Wasmer
-[ -f "${WASMER_DIR:-$HOME/.wasmer}/wasmer.sh" ] && source "${WASMER_DIR:-$HOME/.wasmer}/wasmer.sh"
+[ -f "${WASMER_DIR:-$HOME/.wasmer}/wasmer.sh" ] && . "${WASMER_DIR:-$HOME/.wasmer}/wasmer.sh"
 
 # Wasmtime
 _util_path_prepend "${WASMTIME_HOME:-$HOME/.wasmtime}/bin"

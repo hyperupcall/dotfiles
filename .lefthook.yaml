@@ -1,6 +1,24 @@
 ---
 assert_lefthook_installed: true
+commit-msg:
+  commands:
+    checkcommitmsg:
+      run: 'pnpx commitlint --edit "$1"'
 pre-commit:
   commands:
     build-and-test:
       run: './bake build && ./bake test'
+    check-spelling:
+      run: cspell-cli lint .
+    check-formatting:
+      run: ./node_modules/.bin/prettier --check .
+    check-linting:
+      run: ./node_modules/.bin/eslint .
+    lint-shellfiles:
+      run: find . \( -name vendor -prune \) -o \( -name .git -prune \) -o \( -name .data -prune \) -o \( -name shell.d -prune \) -o -name '*.sh' -exec shellcheck --format gcc {} + | grep -v '\(g_disable\|_shell_original_path\|_private\).*SC2154'
+    lint-yamlfiles:
+      run: find . -name '*.yaml' -o -name '*.yml' -exec yamllint {} +
+    format-yamlfiles:
+      run: yamlfmt -lint .
+    check-actions:
+      ruN: 'zizmor .github'

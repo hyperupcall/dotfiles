@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source $HOME/.owl4ce_var
+source "$HOME/.owl4ce_var"
 
 rofi_command="rofi -theme themes/sidebar/six-$CHK_ROFI_MOD.rasi"
 
@@ -33,31 +33,32 @@ tog_stream=""
 options="$previous\n$play_pause\n$stop\n$next\n$tog_repeat\n$tog_stream"
 
 # Get the current playing song
-current="$($MUSIC_CONTROLLER title)"
+current="$("$MUSIC_CONTROLLER" title)"
 # If mpd isn't running it will return an empty string, we don't want to display that
 if [[ -z "$current" ]]; then
     current="-"
 fi
 
 # Spawn the mpd menu with the "Play / Pause" entry selected by default
+# shellcheck disable=SC2086
 chosen="$(echo -e "$options" | $rofi_command -dmenu $active $urgent -selected-row 1)"
 case $chosen in
-    $previous)
-        $MUSIC_CONTROLLER prev
+    "$previous")
+        "$MUSIC_CONTROLLER" prev
     ;;
-    $play_pause)
-        $MUSIC_CONTROLLER toggle
+    "$play_pause")
+        "$MUSIC_CONTROLLER" toggle
     ;;
-    $stop)
-        $MUSIC_CONTROLLER stop
+    "$stop")
+        "$MUSIC_CONTROLLER" stop
     ;;
-    $next)
-        $MUSIC_CONTROLLER next
+    "$next")
+        "$MUSIC_CONTROLLER" next
     ;;
-    $tog_repeat)
+    "$tog_repeat")
         mpc -q single
     ;;
-    $tog_stream)
-        $MUSIC_CONTROLLER switchpl
+    "$tog_stream")
+        "$MUSIC_CONTROLLER" switchpl
     ;;
 esac
