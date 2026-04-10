@@ -5,7 +5,7 @@ declare -g g_name='darktable'
 
 main() {
 	flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-	flatpak install -y --user org.darktable.Darktable
+	flatpak install -y org.darktable.Darktable
 }
 
 installed() {

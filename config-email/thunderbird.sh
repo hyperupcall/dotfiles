@@ -4,6 +4,19 @@ source ~/.dotfiles/data/setup.sh
 declare -g g_name='Thunderbird'
 
 install.any() {
+	for f in $(snap list | awk 'NR>1 {print $1}'); do
+		sudo snap remove "$f"
+	done
+
+
+	# TODO: Should have a "cleanup" for distros that do this.
+	if command -v snap &>/dev/null; then
+		if snap info thunderbird &>/dev/null; then
+			sudo snap remove thunderbird
+		fi
+	fi
+
+	# TODO: put in commented function at bottom
 	cd ~/.dotfiles/.data
 	if [ ! -d './thunderbird' ]; then
 		core.print_info 'Downloading Thunderbird...'
@@ -55,8 +68,7 @@ EOF
 }
 
 install.ubuntu() {
-	# On Ubuntu, by default, the "thunderbird" package uses snap.
-	flatpak install -y --user org.mozilla.Thunderbird
+	flatpak install -y org.mozilla.Thunderbird
 }
 
 installed() {

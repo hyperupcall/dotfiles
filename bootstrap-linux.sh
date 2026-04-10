@@ -38,7 +38,7 @@ main() {
 	run ~/.dotfiles/bake init
 
 	# Symlink ~/scripts.
-	run ln -fs ~/.dotfiles/scripts ~/
+	run ln -fs ~/.dotfiles/hscripts ~/
 
 	# Export variables.
 	cat > ~/.bootstrap/bootstrap-out.sh <<EOF

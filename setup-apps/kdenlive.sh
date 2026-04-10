@@ -5,7 +5,7 @@ declare -g g_name='Kdenlive'
 
 main() {
 	flatpak remote-add --if-not-exists --user flathub 'https://dl.flathub.org/repo/flathub.flatpakrepo'
-	flatpak install -y --user org.kde.kdenlive
+	flatpak install -y org.kde.kdenlive
 }
 
 installed() {

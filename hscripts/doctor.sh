@@ -8,7 +8,7 @@ main() {
 	esac done; unset -v arg
 
 	# Create necessary directories.
-	must.dir ~/.dotfiles/.{data,home}
+	must.dir ~/.home
 	must.dir ~/.dotfiles/.data/{bin,repos}
 	must.dir ~/.local/bin
 
@@ -277,27 +277,41 @@ main() {
 		fi
 	}
 
+	# Install the most paramount tools.
 	~/scripts/setup/zsh.sh
 	~/scripts/setup/ksh.sh
 	~/scripts/setup/rust.sh
 	~/scripts/setup/mise.sh
-	~/scripts/setup/notify-send.sh
 
+	# Install personal tools.
+	~/scripts/setup/npm.sh
 	~/scripts/setup/pass.sh
 	~/scripts/setup/dev.sh
 	~/scripts/setup/d.sh
+	# ~/scripts/setup/sauerkraut.sh # TODO
+	~/scripts/setup/basalt.sh
+	~/scripts/setup/woof.sh
+
+	# Install other important tools.
+	~/scripts/setup/flatpak.sh
+	# ~/scripts/setup/appimagelauncher.sh # TODO
+	~/scripts/setup/notify-send.sh	
 	~/scripts/setup/cmake.sh
 	~/scripts/setup/lefthook.sh
 	~/.dotfiles/bake init # Depends on mise and lefthook.
 	~/scripts/setup/git.sh
-	~/scripts/setup/neovim.sh
-	~/scripts/setup/pass.sh
 
+	# Install applications.
+	~/scripts/setup/neovim.sh
 	~/scripts/setup/firefox.sh
+	~/scripts/setup/librewolf.sh
 	~/scripts/setup/brave.sh
 	~/scripts/setup/maestral.sh
 	~/scripts/setup/vscode.sh
 	~/scripts/setup/thunderbird.sh
+	~/scripts/setup/obsidian.sh
+	~/scripts/setup/kitty.sh
+	~/scripts/setup/git-diff-so-fancy.sh
 
 	~/scripts/setup/gh.sh
 	~/scripts/setup/bats.sh
@@ -308,11 +322,25 @@ main() {
 
 	~/scripts/setup/llvm.sh
 	~/scripts/setup/bake.sh
-	~/scripts/setup/basalt.sh
-	~/scripts/setup/woof.sh
 	~/scripts/setup/pre-commit.sh
 	~/scripts/setup/homebrew.sh
 	~/scripts/setup/nerdfonts.sh
+
+	# TODO:
+	# ~/scripts/setup/blender.sh
+	~/scripts/setup/borg.sh
+	~/scripts/setup/darktable.sh
+	~/scripts/setup/anki.sh
+	~/scripts/setup/sqlitebrowser.sh
+	# ~/scripts/setup/virtualbox.sh
+	~/scripts/setup/zed.sh
+	~/scripts/setup/syncthing.sh
+	~/scripts/setup/mullvad.sh
+	~/scripts/setup/kdenlive.sh
+	~/scripts/setup/bats.sh
+	~/scripts/setup/btrfs.sh
+	~/scripts/setup/zfs.sh
+	~/scripts/setup/yt-dlp.sh
 
 	core.shopt_push -s nullglob
 	for file in "$XDG_CONFIG_HOME"/libreoffice/4/user/template/*; do
@@ -409,9 +437,10 @@ must.link() {
 
 	# Skip if symlink is already correct.
 	local target_full
-	target_full=$(readlink "$target")
-	if [ -L "$target" ] && [ "$target_full" = "$src" ]; then
-		return
+	if target_full=$(readlink "$target"); then
+		if [ -L "$target" ] && [ "$target_full" = "$src" ]; then
+			return
+		fi
 	fi
 
 	if [ ! -e "$src" ]; then

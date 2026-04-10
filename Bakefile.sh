@@ -48,7 +48,7 @@ task.build() {
 	done < <(find . \( -name '*.sh' -not -name 'Bakefile.sh' \) -type f)
 
 	# Should have proper ordering of functions.
-	node --input-type=module <<'EOF'
+	~/.dotfiles/.data/binexec/node --input-type=module <<'EOF'
 	import { readFileSync } from 'fs'
 	import { glob } from 'fs/promises'
 

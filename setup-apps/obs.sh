@@ -15,7 +15,7 @@ install.ubuntu() {
 
 install.fedora() {
 	flatpak remote-add --if-not-exists --user flathub 'https://dl.flathub.org/repo/flathub.flatpakrepo'
-	flatpak install -y --user com.obsproject.Studio
+	flatpak install -y com.obsproject.Studio
 }
 
 install.opensuse() {

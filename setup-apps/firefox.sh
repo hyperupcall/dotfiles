@@ -9,7 +9,13 @@ install.debian() {
 }
 
 install.ubuntu() {
-	# On Ubuntu, by default, the "thunderbird" package uses snap.
+	# TODO: Should have a "cleanup" for distros that do this.
+	if command -v snap &>/dev/null; then
+		if snap info firefox &>/dev/null; then
+			sudo snap remove firefox
+		fi
+	fi
+
 	local gpg_file='/etc/apt/keyrings/mozilla.asc'
 
 	pkg.add_apt_key \

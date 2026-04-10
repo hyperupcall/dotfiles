@@ -558,4 +558,5 @@
 		},
 	],
 	"workbench.iconTheme": "bearded-icons",
+	"window.autoDetectColorScheme": true
 }

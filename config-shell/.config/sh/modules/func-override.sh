@@ -54,7 +54,7 @@ code() {
 	done
 	unset -v _arg _dir
 
-	_code_flags=$(node -e "
+	_code_flags=$(~/.dotfiles/.data/binexec/node -e "
 		import path from 'node:path'
 		import os from 'node:os'
 		import { getEcosystems } from '$HOME/.dev/devutils/index.ts'

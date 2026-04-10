@@ -4,7 +4,7 @@ source ~/.dotfiles/data/setup.sh
 declare -g g_name='Sauerkraut'
 declare -g g_dir="$HOME/.dev/.data/installed-repositories/sauerkraut"
 
-main() {
+install.any() {
 	util.clone "$g_dir" git@github.com:hyperupcall/autoenv
 
 	cd "$g_dir"
@@ -22,7 +22,7 @@ ConditionPathIsDirectory=%h/.dev/.data/installed-repositories/sauerkraut/
 [Service]
 Type=simple
 WorkingDirectory=%h/Documents/BrainSite
-ExecStart=%h/.dotfiles/.data/node %h/.dev/.data/installed-repositories/sauerkraut/bin/sauerkraut.js serve
+ExecStart=%h/.dotfiles/.data/binexec/node %h/.dev/.data/installed-repositories/sauerkraut/bin/sauerkraut.js serve
 Environment=PORT=52001
 Restart=on-failure
 
@@ -38,4 +38,4 @@ installed() {
 	[ -d "$g_dir" ] && [ -f ~/.dotfiles/.data/bin/sauerkraut ]
 }
 
-util.if_file_sourced || _main "$@"
+util.if_file_sourced || _setup "$@"

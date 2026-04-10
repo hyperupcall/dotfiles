@@ -9,6 +9,7 @@ install.any() {
 	ln -fs ~/.local/share/basalt/source/pkg/bin/basalt ~/.local/bin/basalt >/dev/null
 	ln -fs ~/.local/share/basalt/source/pkg/bin/basalt-package-init ~/.local/bin/basalt-package-init >/dev/null
 
+	eval "$(basalt global init bash)"
 	basalt global add \
 		hyperupcall/autoenv \
 		hyperupcall/bake

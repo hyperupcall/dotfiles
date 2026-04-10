@@ -15,7 +15,7 @@ install.any() {
 				core.print_die "Non-git directory already exists in place of secrets dir. Please remove manually"
 			fi
 		else
-			util.clone "$g_password_store_dir" 'ssh://git@codeberg.org/hyperupcall/secrets.git'
+			util.clone "$g_password_store_dir" "$_private_password_remote"
 		fi
 	fi
 
