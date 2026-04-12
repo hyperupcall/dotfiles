@@ -1,0 +1,14 @@
+# Requires clang-format 22?
+BasedOnStyle: LLVM
+UseTab: Never
+IndentWidth: 3
+TabWidth: 3
+ContinuationIndentWidth: 3
+AlignAfterOpenBracket: BlockIndent
+AlignEscapedNewlines: LeftWithLastLine
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: WithoutElse
+AllowShortLoopsOnASingleLine: false
+AllowShortBlocksOnASingleLine: Never
+BreakTemplateDeclarations: MultiLine
+ColumnLimit: 120

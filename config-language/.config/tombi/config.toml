@@ -1,0 +1,24 @@
+[format]
+[format.rules]
+array-bracket-space-width = 0  # Default.
+array-comma-space-width = 1  # Default.
+date-time-delimiter = 'space'
+indent-style = 'tab'
+indent-sub-tables = false  # Default.
+indent-table-key-value-pairs = false  # Default.
+indent-width = 3
+inline-table-brace-space-width = 1  # Default.
+inline-table-comma-space-width = 1  # Default.
+key-value-equals-sign-alignment = false  # Default.
+key-value-equals-sign-space-width = 1  # Default.
+line-ending = 'lf'  # Default.
+line-width = 90
+string-quote-style = 'single'
+trailing-comment-alignment = false  # Default.
+trailing-comment-space-width = 2  # Default.
+
+[lint]
+[lint.rules]
+dotted-keys-out-of-order = 'warn'
+key-empty = 'warn'
+tables-out-of-order = 'warn'

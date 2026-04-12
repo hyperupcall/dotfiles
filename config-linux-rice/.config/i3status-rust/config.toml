@@ -1,28 +1,28 @@
 [[block]]
-block = "cpu"
+block = 'cpu'
 interval = 1
-format = "{barchart} {utilization} {frequency}"
+format = '{barchart} {utilization} {frequency}'
 
 [[block]]
-block = "disk_space"
-path = "/"
-info_type = "used"
-format = "{icon} {used}/{total} ({available} free)"
+block = 'disk_space'
+path = '/'
+info_type = 'used'
+format = '{icon} {used}/{total} ({available} free)'
 alert_absolute = true
-unit = "GB"
+unit = 'GB'
 alert = 2
 warning = 5
 
 [[block]]
-block = "keyboard_layout"
-driver = "setxkbmap"
+block = 'keyboard_layout'
+driver = 'setxkbmap'
 interval = 15
 
 [[block]]
-block = "memory"
-format_mem = "{mem_used}/{mem_total}({mem_used_percents})"
-format_swap = "{swap_used}/{swap_total}({swap_used_percents})"
-display_type = "memory"
+block = 'memory'
+format_mem = '{mem_used}/{mem_total}({mem_used_percents})'
+format_swap = '{swap_used}/{swap_total}({swap_used_percents})'
+display_type = 'memory'
 icons = true
 clickable = true
 interval = 5
@@ -32,29 +32,28 @@ critical_mem = 95
 critical_swap = 95
 
 [[block]]
-block = "music"
-player = "spotify"
-buttons = ["play", "next"]
+block = 'music'
+player = 'spotify'
+buttons = ['play', 'next']
 
 [[block]]
-block = "net"
-device = "wlp2s0"
-format = "{ssid} {signal_strength} {ip} {speed_down;K*b} {graph_down;K*b}"
+block = 'net'
+device = 'wlp2s0'
+format = '{ssid} {signal_strength} {ip} {speed_down;K*b} {graph_down;K*b}'
 interval = 5
 
 [[block]]
-block = "nvidia_gpu"
+block = 'nvidia_gpu'
 show_memory = false
 show_clocks = true
 interval = 1
 
 [[block]]
-block = "sound"
-format = "{output_description} {volume}"
+block = 'sound'
+format = '{output_description} {volume}'
 
 [[block]]
-block = "time"
+block = 'time'
 # format = "%a %d/%m %R"
-format = "%b (%m) %d, %A %I:%M:%S"
+format = '%b (%m) %d, %A %I:%M:%S'
 interval = 60
-

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 source ~/.dotfiles/data/setup.sh
 
-declare -g g_name='LLVM'
+declare -g g_name='LLVM Nightly'
 declare -g g_sources_file='/etc/apt/sources.list.d/llvm.sources'
 
 install.debian() {
@@ -28,7 +28,7 @@ install.debian() {
 			signed-by: $gpg_file"
 
 	sudo apt-get -y update
-	sudo apt-get -y install clang-17
+	sudo apt-get -y install clang-22 clangd-22 clang-format-22 clang-tidy-22
 }
 
 install.ubuntu() {

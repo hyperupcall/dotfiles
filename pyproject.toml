@@ -1,14 +1,14 @@
+[build-system]
+requires = ['poetry-core']
+build-backend = 'poetry.core.masonry.api'
+
 [tool.poetry]
-name = "dotfiles"
+name = 'dotfiles'
 package-mode = false
-version = "0.1.0"
-description = ""
-authors = ["Edwin Kofler <edwin@kofler.dev>"]
+version = '0.1.0'
+description = ''
+authors = ['Edwin Kofler <edwin@kofler.dev>']
 
 [tool.poetry.dependencies]
-python = "^3.12"
-yamllint = "^1.37.1"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+python = '^3.12'
+yamllint = '^1.37.1'

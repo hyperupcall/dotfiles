@@ -14,11 +14,17 @@ pre-commit:
       run: ./node_modules/.bin/prettier --check .
     check-linting:
       run: ./node_modules/.bin/eslint .
-    lint-shellfiles:
+    check-shellscript-format:
+      run: shfmt
+    check-shellscript-lint:
       run: find . \( -name vendor -prune \) -o \( -name .git -prune \) -o \( -name .data -prune \) -o \( -name shell.d -prune \) -o -name '*.sh' -exec shellcheck --format gcc {} + | grep -v '\(g_disable\|_shell_original_path\|_private\).*SC2154'
-    lint-yamlfiles:
-      run: find . -name '*.yaml' -o -name '*.yml' -exec yamllint {} +
-    format-yamlfiles:
-      run: yamlfmt -lint .
-    check-actions:
-      ruN: 'zizmor .github'
+    check-yaml-format:
+      run: find . \( -name vendor -prune \) -o \( -name .git -prune \) -o \( -name .data -prune \) -o \( -name shell.d -prune \) -o -name '*.yaml' -o -name '*.yml' -exec yamlfmt -lint {} +
+    check-yaml-lint:
+      run: find . \( -name vendor -prune \) -o \( -name .git -prune \) -o \( -name .data -prune \) -o \( -name shell.d -prune \) -o -name '*.yaml' -o -name '*.yml' -exec yamllint --strict {} +
+    check-github-actions-lint:
+      run: 'zizmor --strict-collection --min-confidence=low --min-severity=informational --persona=pedantic --config <(printf "rules:\n  anonymous-definition:\n    disable: true\n  undocumented-permissions:\n    disable: true\n") .github'
+    check-toml-format:
+      run: 'tombi format --check'
+    check-toml-lint:
+       run: 'tombi lint --error-on-warnings'

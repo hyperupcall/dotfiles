@@ -23,7 +23,7 @@ unset -v EXECIGNORE
 export FCEDIT="$EDITOR"
 unset -v FIGNORE
 unset -v GLOBIGNORE
-export HISTCONTROL='ignorespace:ignoredups' # Overriden by bash-preexec.
+export HISTCONTROL='ignorespace' # Overriden by bash-preexec.
 export HISTFILE="$XDG_STATE_HOME/history/bash_history"
 export HISTSIZE='-1'
 export HISTFILESIZE='-1'
@@ -76,7 +76,7 @@ if [ "$COLORTERM" = "truecolor" ] || [ "$COLORTERM" = "24bit" ]; then
 		PS1="[\u@\h \w]\$ "
 		# shellcheck disable=SC3046
 		if ! eval "$(
-			if ! print_shell_prompt_eval_string bash ksbp; then
+			if ! print_shell_prompt_eval_string bash kpolyglot; then
 				printf '%s\n' 'false' # Propagate error.
 			fi
 		)"; then

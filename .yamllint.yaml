@@ -1,9 +1,0 @@
-extends: 'default'
-rules:
-  document-start: 'disable'
-ignore:
-  - '.data/'
-  - 'vendor/'
-  - 'node_modules/'
-  - 'pnpm-lock.yaml'
-  - '.venv'

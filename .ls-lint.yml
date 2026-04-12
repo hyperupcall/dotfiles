@@ -27,5 +27,5 @@ ls:
     .tmLanguage.json: 'kebab-case'
 
 ignore:
-  - 'node_modules'
-  - '.git'
+- 'node_modules'
+- '.git'

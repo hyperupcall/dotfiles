@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+source ~/.dotfiles/data/setup.sh
+
+declare -g g_name='kbash-pureline'
+declare -g g_dir="$HOME/.dotfiles/.data/repos/kbash-pureline"
+
+install.any() {
+	util.clone "$g_dir" 'https://github.com/hyperupcall-projects/kbash-pureline'
+}
+
+installed() {
+	[ -d "$g_dir" ]
+}
+
+configure() {
+	util.write_promptfile 'kbash-pureline' \
+		--bash "$(<"$g_dir/pureline")"
+}
+
+util.if_file_sourced || _setup "$@"

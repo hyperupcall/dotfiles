@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 source ~/.dotfiles/data/setup.sh
 
-declare -g g_name='bash-polyglot'
-declare -g g_dir="$HOME/.dotfiles/.data/repos/polyglot"
+declare -g g_name='kpolyglot'
+declare -g g_dir="$HOME/.dotfiles/.data/repos/kpolyglot"
 
 install.any() {
-	util.clone "$g_dir" 'https://github.com/agkozak/polyglot'
+	util.clone "$g_dir" 'https://github.com/hyperupcall-projects/kpolyglot'
 }
 
 installed() {
@@ -13,7 +13,7 @@ installed() {
 }
 
 configure() {
-	util.write_promptfile 'polyglot' \
+	util.write_promptfile 'kpolyglot' \
 		--bash "$(<"$g_dir/polyglot.sh")"
 }
 

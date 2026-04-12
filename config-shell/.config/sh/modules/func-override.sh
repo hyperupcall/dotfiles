@@ -52,7 +52,7 @@ code() {
 			*) _dir=$_arg ;;
 		esac
 	done
-	unset -v _arg _dir
+	unset -v _arg
 
 	_code_flags=$(~/.dotfiles/.data/binexec/node -e "
 		import path from 'node:path'
@@ -63,7 +63,7 @@ code() {
 			'nodejs': 'web',
 			'c': 'cpp',
 		}
-		const ecosystems = await getEcosystems('$PWD')
+		const ecosystems = await getEcosystems('$_dir')
 		const extdir = path.join(os.homedir(), '.dotfiles/.data/vscode-extensions')
 		const datadir = path.join(os.homedir(), '.dotfiles/.data/vscode-datadirs')
 		let id = ecosystems[0]

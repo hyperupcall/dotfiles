@@ -106,7 +106,6 @@ main() {
 				ln -sf "$file2" ~/scripts/setup/"${file2##*/}"
 			done
 		else
-
 			local filename=${file##*/}
 			if [[ "$filename" =~ ^[[:alnum:]-]+.sh$ ]]; then
 				chmod +x "$file"
@@ -295,7 +294,7 @@ main() {
 	# Install other important tools.
 	~/scripts/setup/flatpak.sh
 	# ~/scripts/setup/appimagelauncher.sh # TODO
-	~/scripts/setup/notify-send.sh	
+	~/scripts/setup/notify-send.sh
 	~/scripts/setup/cmake.sh
 	~/scripts/setup/lefthook.sh
 	~/.dotfiles/bake init # Depends on mise and lefthook.
@@ -314,6 +313,8 @@ main() {
 	~/scripts/setup/git-diff-so-fancy.sh
 
 	~/scripts/setup/gh.sh
+	~/scripts/setup/shfmt.sh
+	~/scripts/setup/shellcheck.sh
 	~/scripts/setup/bats.sh
 	~/scripts/setup/less.sh
 	~/scripts/setup/latex.sh

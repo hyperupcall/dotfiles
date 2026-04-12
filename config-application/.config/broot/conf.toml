@@ -1,6 +1,5 @@
-default_flags = "ihp"
+default_flags = 'ihp'
 
-###############################################################
 # Special paths
 # If some paths must be handled specially, uncomment (and change
 # this section as per the examples
@@ -10,7 +9,6 @@ default_flags = "ihp"
 # "/home/user/useless" = "hide"
 # "/home/user/my-link-I-want-to-explore" = "enter"
 
-###############################################################
 # Date/Time format
 # If you want to change the format for date/time, uncomment the
 # following line and change it according to
@@ -18,12 +16,10 @@ default_flags = "ihp"
 #
 # date_time_format = "%Y/%m/%d %R"
 
-###############################################################
 # Whether to mark the selected line with a triangle
 #
 # show_selection_mark = true
 
-###############################################################
 # Column order
 # cols_order, if specified, must be a permutation of the following
 # array. You should keep the name at the end as it has a variable
@@ -42,7 +38,6 @@ default_flags = "ihp"
 
 true_colors = true
 
-###############################################################
 # Verbs and shortcuts
 # You can define your own commands which would be applied to
 # the selection.
@@ -71,22 +66,22 @@ true_colors = true
 #  execution = "/usr/bin/nvim +{line} {file}"
 
 [[verbs]]
-invocation = "edit"
-key = "F2"
-shortcut = "e"
-execution = "$EDITOR {file}"
+invocation = 'edit'
+key = 'F2'
+shortcut = 'e'
+execution = '$EDITOR {file}'
 leave_broot = false
 
 [[verbs]]
-invocation = "create {subpath}"
-execution = "$EDITOR {directory}/{subpath}"
+invocation = 'create {subpath}'
+execution = '$EDITOR {directory}/{subpath}'
 leave_broot = false
 
 [[verbs]]
-invocation = "git_diff"
-shortcut = "gd"
+invocation = 'git_diff'
+shortcut = 'gd'
 leave_broot = false
-execution = "git difftool -y {file}"
+execution = 'git difftool -y {file}'
 
 # If $PAGER isn't set on your computer, you should either set it
 #  or just replace it with your viewer of choice in the 'execution'
@@ -94,9 +89,9 @@ execution = "git difftool -y {file}"
 # Example:
 #  execution = "less {file}"
 [[verbs]]
-name = "view"
-invocation = "view"
-execution = "$PAGER {file}"
+name = 'view'
+invocation = 'view'
+execution = '$PAGER {file}'
 leave_broot = false
 
 # uncomment if you want to launch a terminal on ctrl-T
@@ -155,8 +150,6 @@ leave_broot = false
 # key = "F6"
 # execution = ":move_to_panel"
 
-
-###############################################################
 # Skin
 # If you want to change the colors of broot,
 # uncomment the following bloc and start messing
@@ -228,8 +221,6 @@ leave_broot = false
 #  https://dystroy.org/broot/skins
 # for example a skin suitable for white backgrounds
 
-
-###############################################################
 # File Extension Colors
 #
 # uncomment and modify the next section if you want to color

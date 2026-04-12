@@ -1,3 +1,2 @@
 add_newline = true
 command_timeout = 200
-format = "$all"

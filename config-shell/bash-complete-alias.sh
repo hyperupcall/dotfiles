@@ -3,6 +3,7 @@ source ~/.dotfiles/data/setup.sh
 
 declare -g g_name='complete-alias'
 
+# TODO
 configure() {
 	util.write_shellfile 'bash-complete-alias' \
 		--bash \

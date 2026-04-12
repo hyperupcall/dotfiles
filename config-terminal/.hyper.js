@@ -82,7 +82,7 @@ module.exports = {
 		'hyper-pane',
 		'hyperline',
 		'hyper-tabs-enhanced',
-		'hyper-statusline'
+		'hyper-statusline',
 		'hyperpower',
 		'hyper-solarized-dark',
 		// 'hyperterm-base-16-ocean',

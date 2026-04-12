@@ -109,6 +109,7 @@ static Entry ossCode[] = {
 };
 static Entry helix[] = ConfigEntry("helix/", CategoryEditor);
 static Entry kak[] = ConfigEntry("kak/", CategoryEditor);
+static Entry kate[] = ConfigEntry("kate/formatting/settings.json", CategoryEditor);
 static Entry micro[] = {
 	Config("micro/bindings.json", CategoryEditor),
 	Config("micro/settings.json", CategoryEditor),
@@ -138,6 +139,7 @@ static Entry notmuch[] = ConfigEntry("notmuch/", CategoryEmail);
 // Language.
 static Entry bpython[] = ConfigEntry("bpython/", CategoryLanguage);
 static Entry cargo[] = ConfigEntry("cargo/", CategoryLanguage);
+static Entry clangFormat[] = HomeEntry(".clang-format", CategoryLanguage);
 static Entry conda[] = ConfigEntry("conda/", CategoryLanguage);
 static Entry gdb[] = ConfigEntry("gdb/", CategoryLanguage);
 static Entry irb[] = ConfigEntry("irb/", CategoryLanguage);
@@ -148,9 +150,12 @@ static Entry pudb[] = ConfigEntry("pudb/", CategoryLanguage);
 static Entry pylint[] = ConfigEntry("pylint/", CategoryLanguage);
 static Entry pypoetry[] = ConfigEntry("pypoetry/", CategoryLanguage);
 static Entry python[] = ConfigEntry("python/", CategoryLanguage);
+static Entry tombi[] = ConfigEntry("tombi/", CategoryLanguage);
 static Entry yapf[] = ConfigEntry("yapf/", CategoryLanguage);
 static Entry cpan[] = HomeEntry(".cpan/CPAN/MyConfig.pm", CategoryLanguage);
 static Entry sdkman[] = DataEntry("sdkman/etc/config", CategoryLanguage);
+static Entry yamlfmt[] = ConfigEntry("yamlfmt/", CategoryLanguage);
+static Entry yamllint[] = ConfigEntry("yamllint/", CategoryLanguage);
 
 // Linux Core.
 static Entry curl[] = ConfigEntry("curl/", CategoryLinuxCore);
@@ -290,10 +295,15 @@ static Group defaultGroup = {
 		wget,
 		youtubeDl,
 		vscode,
+		kate,
 		nano,
 		nvim,
 		vim,
+		clangFormat,
+		tombi,
 		zed,
+		yamlfmt,
+		yamllint,
 		npm,
 		python,
 		dircolors,

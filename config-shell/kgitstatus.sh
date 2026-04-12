@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 source ~/.dotfiles/data/setup.sh
 
-declare -g g_name='bash-gitstatus'
-declare -g g_dir="$HOME/.dotfiles/.data/repos/gitstatus"
+declare -g g_name='kgitstatus'
+declare -g g_dir="$HOME/.dotfiles/.data/repos/kgitstatus"
 
 install.any() {
-	util.clone "$g_dir" 'https://github.com/romkatv/gitstatus'
+	util.clone "$g_dir" 'https://github.com/hyperupcall-projects/kgitstatus'
 }
 
 installed() {
@@ -13,7 +13,7 @@ installed() {
 }
 
 configure() {
-	util.write_promptfile 'gitstatus' \
+	util.write_promptfile 'kgitstatus' \
 		--bash "
 			export GITSTATUS_DIR=\"$g_dir/gitstatus.plugin.sh\"
 			$(<"$g_dir/gitstatus.prompt.sh")"

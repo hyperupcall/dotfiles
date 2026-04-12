@@ -1,58 +1,7 @@
 # shellcheck shell=bash
 # Common functions for both Bash-configured GNU Readline and Zsh's Zle.
 
-_lineediting_action_x_discard() {
-	local buf="$1"
-	local pos="$2"
-
-	xclip -selection clipboard <<< "${buf:0:$pos}"
-	buf=${buf:$pos}
-	pos=0
-
-	# shellcheck disable=SC2034
-	REPLY1=$buf
-	# shellcheck disable=SC2034
-	REPLY2=$pos
-}
-
-_lineediting_action_x_kill() {
-	local buf="$1"
-	local pos="$2"
-
-	xclip -selection clipboard <<< "${buf:$pos}"
-	buf="${buf:0:$pos}"
-
-	# shellcheck disable=SC2034
-	REPLY1=$buf
-	# shellcheck disable=SC2034
-	REPLY2=$pos
-}
-
-_lineediting_action_x_yank() {
-	local buf="$1"
-	local pos="$2"
-
-	buf="${buf:0:$pos}$(xclip -selection clipboard -o)${buf:$pos}"
-
-	# shellcheck disable=SC2034
-	REPLY1=$buf
-	# shellcheck disable=SC2034
-	REPLY2=$pos
-}
-
-_lineediting_action_x_paste() {
-	local buf="$1"
-	local pos="$2"
-
-	buf="$(xclip -selection clipboard -o &>/dev/null)"
-
-	# shellcheck disable=SC2034
-	REPLY1=$buf
-	# shellcheck disable=SC2034
-	REPLY2=$pos
-}
-
-# @description Print the help text for the currently-edited command on the
+# Print the help text for the currently-edited command on the
 # readline-buffer. It reads aliases and checks for docker, style help page
 # systems. This assumes that any errors with 'man' are due to not finding
 # man pages (exit code 16)
@@ -68,7 +17,7 @@ _lineediting_action_show_help() {
 	_readline_util_get_cmd "$line"
 	cmd="$REPLY"
 	if [ "$(type -t "$cmd")" = 'builtin' ]; then
-		help "$cmd"
+		help "$cmd" | less
 		return
 	fi
 
@@ -137,19 +86,6 @@ _lineediting_action_show_man() {
 	IFS=$oldIFS
 }
 
-_lineediting_action_show_tldr() {
-	local line cmd
-
-	_readline_util_get_line "$1"
-	_readline_util_expand_alias "$REPLY"
-	line="$REPLY"
-	_readline_util_get_cmd "$line"
-	cmd="$REPLY"
-	[ -z "$cmd" ] && return
-
-	tldr "$cmd"
-}
-
 _lineediting_action_toggle_sudo() {
 	local buf="$1"
 	local pos="$2"
@@ -174,42 +110,6 @@ _lineediting_action_toggle_sudo() {
 	REPLY2="$pos"
 }
 
-_lineediting_action_toggle_backslash() {
-	local buf="$1"
-	local pos="$2"
-
-	if [ "${buf:0:1}" = "\\" ]; then
-		buf="${buf:1}"
-		pos=$((pos-1))
-	else
-		buf="\\$buf"
-		pos=$((pos+1))
-	fi
-
-	# shellcheck disable=SC2034
-	REPLY1="$buf"
-	# shellcheck disable=SC2034
-	REPLY2="$pos"
-}
-
-_lineediting_action_toggle_comment() {
-	local buf="$1"
-	local pos="$2"
-
-	if [ "${buf:0:1}" = "#" ]; then
-		buf="${buf:1}"
-		pos=$((pos-1))
-	else
-		buf="#$buf"
-		pos=$((pos+1))
-	fi
-
-	# shellcheck disable=SC2034
-	REPLY1=$buf
-	# shellcheck disable=SC2034
-	REPLY2=$pos
-}
-
 _lineediting_action_trim_whitespace() {
 	local string="$1"
 
@@ -219,12 +119,7 @@ _lineediting_action_trim_whitespace() {
 	REPLY=$string
 }
 
-# -------------------------------------------------------- #
-#                     Utility Functions                    #
-# -------------------------------------------------------- #
-
-# @description Removes sudo, ', ", and extra whitespaces
-# @arg $1 string Line to manipulate
+# Removes sudo, ', ", and extra whitespaces
 _readline_util_get_line() {
 	REPLY=
 	local line="$1"
@@ -252,8 +147,6 @@ _readline_util_get_line() {
 	REPLY=$line
 }
 
-# @description Expands an alias to its longform
-# @arg $1 string Name of alias
 _readline_util_expand_alias() {
 	unset -v REPLY; REPLY=
 	local line="$1"
@@ -295,7 +188,7 @@ _readline_util_try_show_help() {
 		fi
 	fi
 
-	printf '%s\n' "$helpText"
+	printf '%s\n' "$helpText" | less
 	return
 }
 
