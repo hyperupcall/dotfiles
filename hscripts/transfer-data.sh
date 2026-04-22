@@ -30,9 +30,11 @@ main() {
 		' 2>&1
 	)
 
-	local mnt_index=${#options[@]}
 	options+=('/mnt/_temp')
-	printf '#%d\n  MOUNTPOINT: %s\n' "$mnt_index" "${options[${#options[@]}-1]}"
+	printf '#%d\n  MOUNTPOINT: %s\n' "${#options[@]}" "${options[${#options[@]}-1]}"
+
+	options+=('__manual__')
+	printf '#%d\n  MOUNTPOINT: (specify manually)\n' "${#options[@]}"
 
 	local answer=
 	while :; do
@@ -43,6 +45,9 @@ main() {
 	done
 
 	local device_path="${options[$answer]}"
+	if [ "$device_path" = '__manual__' ]; then
+		read -re -p 'Enter directory path: ' device_path
+	fi
 	local -A dirs_encrypt=(
 		[gnupg]="$HOME/.gnupg"
 		[ssh]="$HOME/.ssh"
