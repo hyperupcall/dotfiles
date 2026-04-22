@@ -7,23 +7,23 @@ _util_path_prepend() {
 			# shellcheck disable=SC3043
 			local -n _path="$1"
 			case ":$_path:" in
-				*":$2:"*) :;;
-				*) export "$1=$2${_path:+":$_path"}"
+			*":$2:"*) : ;;
+			*) export "$1=$2${_path:+":$_path"}" ;;
 			esac
 			# shellcheck disable=SC3045
 			unset -vn _path
 		else
 			case :$(eval "printf '%s' \"\$$1\""): in
-				*":$2:"*) :;;
-				*) eval "export $1=$2\${$1:+\":\$$1\"}" ;;
+			*":$2:"*) : ;;
+			*) eval "export $1=$2\${$1:+\":\$$1\"}" ;;
 			esac
 		fi
 		return
 	fi
 
 	case ":$PATH:" in
-		*":$1:"*) :;;
-		*) export PATH="$1${PATH:+":$PATH"}"
+	*":$1:"*) : ;;
+	*) export PATH="$1${PATH:+":$PATH"}" ;;
 	esac
 }
 
@@ -33,23 +33,23 @@ _util_path_append() {
 			# shellcheck disable=SC3043
 			local -n _path="$1"
 			case ":$_path:" in
-				*":$2:"*) :;;
-				*) export "$1=${_path:+":$_path"}$2"
+			*":$2:"*) : ;;
+			*) export "$1=${_path:+":$_path"}$2" ;;
 			esac
 			# shellcheck disable=SC3045
 			unset -vn _path
 		else
 			case :$(eval "printf '%s' \"\$$1\""): in
-				*":$2:"*) :;;
-				*) eval "export $1=\${$1:+\"\$$1:\"}$2" ;;
+			*":$2:"*) : ;;
+			*) eval "export $1=\${$1:+\"\$$1:\"}$2" ;;
 			esac
 		fi
 		return
 	fi
 
 	case ":$PATH:" in
-		*":$1:"*) :;;
-		*) export PATH="${PATH:+"$PATH:"}$1"
+	*":$1:"*) : ;;
+	*) export PATH="${PATH:+"$PATH:"}$1" ;;
 	esac
 }
 
@@ -146,8 +146,8 @@ _util_should_print_color() {
 	fi
 
 	case $FORCE_COLOR in
-		1|2|3) return 0 ;;
-		0) return 1 ;;
+	1 | 2 | 3) return 0 ;;
+	0) return 1 ;;
 	esac
 
 	if [ "$TERM" = 'dumb' ]; then

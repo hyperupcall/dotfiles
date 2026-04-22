@@ -49,29 +49,29 @@ install.any() {
 	fi
 	mkdir -p "$dir/.data"
 	if [ ! -f ~/.dotfiles/.data/bin/dev ]; then
-		cat <<-EOF > ~/.dotfiles/.data/bin/dev
-		#!/usr/bin/env sh
-		set -e
-		PATH="\$HOME/.dotfiles/.data/binexec:\$PATH" ~/.dev/bin/dev.ts "\$@"
+		cat <<-EOF >~/.dotfiles/.data/bin/dev
+			#!/usr/bin/env sh
+			set -e
+			PATH="\$HOME/.dotfiles/.data/binexec:\$PATH" ~/.dev/bin/dev.ts "\$@"
 		EOF
 		chmod +x ~/.dotfiles/.data/bin/dev
 	fi
 	mkdir -p "$XDG_DATA_HOME/systemd/user"
-	cat > "$XDG_DATA_HOME/systemd/user/dev.service" <<-'EOF'
-[Unit]
-Description=Dev
-ConditionPathIsDirectory=%h/.dev
+	cat >"$XDG_DATA_HOME/systemd/user/dev.service" <<-'EOF'
+		[Unit]
+		Description=Dev
+		ConditionPathIsDirectory=%h/.dev
 
-[Service]
-Type=simple
-WorkingDirectory=%h/.dev
-ExecStart=%h/.dotfiles/.data/binexec/deno --allow-all %h/.dev/bin/dev.ts start-dev-server
-Environment=PORT=40008
-Restart=on-failure
+		[Service]
+		Type=simple
+		WorkingDirectory=%h/.dev
+		ExecStart=%h/.dotfiles/.data/binexec/deno --allow-all %h/.dev/bin/dev.ts start-dev-server
+		Environment=PORT=40008
+		Restart=on-failure
 
-[Install]
-WantedBy=default.target
-EOF
+		[Install]
+		WantedBy=default.target
+	EOF
 	systemctl --user daemon-reload
 	systemctl --user enable --now dev.service
 }

@@ -11,7 +11,7 @@ install.ubuntu() {
 		"$gpg_file"
 
 	pkg.add_apt_repository \
-	"$g_sources_file" "
+		"$g_sources_file" "
 		Types: deb
 		URIs: https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release --short --codename)
 		Suites: pgadmin4

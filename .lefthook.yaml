@@ -15,7 +15,7 @@ pre-commit:
     check-linting:
       run: ./node_modules/.bin/eslint .
     check-shellscript-format:
-      run: shfmt
+      run: find . \( -name vendor -prune \) -o \( -name .git -prune \) -o \( -name .data -prune \) -o \( -name shell.d -prune \) -o -name '*.sh' -exec shfmt --write --language-dialect bash --binary-next-line {} +
     check-shellscript-lint:
       run: find . \( -name vendor -prune \) -o \( -name .git -prune \) -o \( -name .data -prune \) -o \( -name shell.d -prune \) -o -name '*.sh' -exec shellcheck --format gcc {} + | grep -v '\(g_disable\|_shell_original_path\|_private\).*SC2154'
     check-yaml-format:

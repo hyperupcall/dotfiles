@@ -23,11 +23,11 @@ for file; do
 	esac
 
 	case $file in
-	*.zip|*.tar|*.tgz|*.gz|*.bz2|*.xz)
+	*.zip | *.tar | *.tgz | *.gz | *.bz2 | *.xz)
 		lesspipe "$file"
 		;;
 	*)
 		lesspipe "$file" | $cmd --infer-lang -i "$file"
 		;;
-   esac
+	esac
 done

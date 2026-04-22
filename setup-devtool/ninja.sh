@@ -8,7 +8,7 @@ install.ubuntu() {
 }
 
 installed() {
-	command -v &>/dev/null ninja
+	command -v ninja &>/dev/null
 }
 
 util.if_file_sourced || _setup "$@"

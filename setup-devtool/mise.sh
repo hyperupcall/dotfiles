@@ -18,7 +18,8 @@ installed() {
 configure() {
 	util.write_shellfile 'mise' \
 		--bash 'eval "$("$HOME/.local/bin/mise" activate bash)"' \
-		--zsh 'eval "$("$HOME/.local/bin/mise" activate zsh)"'
+		--zsh 'eval "$("$HOME/.local/bin/mise" activate zsh)"' \
+		--fish 'eval "$("$HOME/.local/bin/mise" activate fish)"'
 }
 
 util.if_file_sourced || _setup "$@"

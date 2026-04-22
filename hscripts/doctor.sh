@@ -3,9 +3,11 @@ source ~/.dotfiles/data/setup.sh
 
 main() {
 	for arg; do case $arg in
-	*)
-		core.print_die "Invalid argument: \"$arg\"" ;;
-	esac done; unset -v arg
+		*)
+			core.print_die "Invalid argument: \"$arg\""
+			;;
+		esac done
+	unset -v arg
 
 	# Create necessary directories.
 	must.dir ~/.home
@@ -49,11 +51,13 @@ main() {
 			if [[ "$line" == '# ---' ]]; then
 				break
 			fi
-		done < "$file"; unset -v line
+		done <"$file"
+		unset -v line
 
-		printf '%s' "$file_string" > "$file"
+		printf '%s' "$file_string" >"$file"
 		unset -v file_string
-	done; unset -v file
+	done
+	unset -v file
 	core.print_info 'Cleaned shell dotfiles'
 
 	# Create necessary symlinks in ~/scripts.
@@ -61,11 +65,13 @@ main() {
 	must.link ~/.dotfiles/.data/scripts ~/scripts
 	for file in ~/.dotfiles/hscripts/*; do
 		ln -sf "$file" ~/scripts
-	done; unset -v file
-	if [ -d ~/.dotfiles/scripts-hidden ]; then
-		for file in ~/.dotfiles/scripts-hidden/*; do
+	done
+	unset -v file
+	if [ -d "$_private_scripts_hidden" ]; then
+		for file in "$_private_scripts_hidden"/*; do
 			ln -sf "$file" ~/scripts
-		done; unset -v file
+		done
+		unset -v file
 	fi
 
 	# Create necessary symlinks in ~/.local/bin.
@@ -74,7 +80,8 @@ main() {
 		if [ -x "$file" ]; then
 			ln -sf "$file" ~/.local/bin
 		fi
-	done; unset -v file
+	done
+	unset -v file
 
 	for file in ~/scripts/*; do
 		if [ -L "$file" ] && [ ! -e "$file" ]; then
@@ -112,7 +119,8 @@ main() {
 				ln -sf "$file" ~/scripts/setup/"$filename"
 			fi
 		fi
-	done; unset -v file
+	done
+	unset -v file
 	core.print_info 'Created necessary symlinks in ~/scripts'
 
 	# Set current computer profile.
@@ -126,7 +134,7 @@ main() {
 			read -er cur
 		done
 		must.dir ~/.dotfiles/.data
-		printf '%s\n' "$cur" > ~/.dotfiles/.data/profile
+		printf '%s\n' "$cur" >~/.dotfiles/.data/profile
 	fi
 	local computer_profile=
 	computer_profile=$(<~/.dotfiles/.data/profile)
@@ -184,11 +192,12 @@ main() {
 		must.dir "$XDG_STATE_HOME"
 		must.dir "$XDG_DATA_HOME"
 
-	for f in ~/.home/*; do
+		for f in ~/.home/*; do
 			if [ -L "$f" ] && [ ! -e "$f" ]; then
 				must.unlink "$f"
 			fi
-		done; unset -v f
+		done
+		unset -v f
 	)
 	core.print_info 'Set and symlink XDG base and user directories'
 
@@ -238,7 +247,7 @@ main() {
 		read -erp "Paste token: "
 
 		local token="$REPLY"
-		printf '%s\n' "$token" > ~/.dotfiles/.data/github_token
+		printf '%s\n' "$token" >~/.dotfiles/.data/github_token
 	fi
 
 	# Check SSH files.
@@ -320,6 +329,7 @@ main() {
 	~/scripts/setup/latex.sh
 	~/scripts/setup/fish.sh
 	~/scripts/setup/miscellaneous.sh
+	~/scripts/setup/direnv.sh
 
 	~/scripts/setup/llvm.sh
 	~/scripts/setup/bake.sh
@@ -360,10 +370,12 @@ main() {
 			fi
 			;;
 		*)
-			core.print_info "Skipping template file \"${file##*/}\"" ;;
+			core.print_info "Skipping template file \"${file##*/}\""
+			;;
 		esac
 		unset -v output
-	done; unset -v file
+	done
+	unset -v file
 	core.shopt_pop
 
 	echo 'Done.'
@@ -414,7 +426,8 @@ must.dir() {
 			fi
 			unset -v output
 		fi
-	done; unset -v dir
+	done
+	unset -v dir
 }
 
 must.file() {
@@ -454,7 +467,7 @@ must.link() {
 	if [ -d "$target" ] && [ ! -L "$target" ]; then
 		local children=
 		children=("$target"/*)
-		if (( ${#children[@]} == 0)); then
+		if ((${#children[@]} == 0)); then
 			rmdir "$target"
 		else
 			core.print_warn "Skipping symlink from '$src' to '$target' (target a non-empty directory)"
@@ -527,7 +540,8 @@ must.strict_permissions() {
 
 		result=$(stat -L -c '%a %G %U' "$file")
 		local perms=${result%% *}
-		local group=${result#* }; group=${group% *}
+		local group=${result#* }
+		group=${group% *}
 		local user=${result##* }
 		local file_pretty=~${file#"$HOME"}
 		if [ -d "$file" ]; then
@@ -570,7 +584,7 @@ dependencies.debian() {
 	local packages=()
 	packages+=(apt-transport-https build-essential)
 	packages+=(bash-completion curl rsync cmake ccache vim nano jq lvm2) # lint-ignore:curl-must-have-args
-	packages+=(pkg-config libssl-dev) # For starship
+	packages+=(pkg-config libssl-dev)                                    # For starship
 
 	sudo apt-get -y install "${packages[@]}"
 }
@@ -581,15 +595,15 @@ dependencies.fedora() {
 	local packages=()
 	packages+=(@development-tools)
 	packages+=(bash-completion curl rsync cmake ccache vim nano jq lvm2) # lint-ignore:curl-must-have-args
-	packages+=(pkg-config openssl-devel) # For starship
-	packages+=(dnf-plugins-core) # For at least Brave
+	packages+=(pkg-config openssl-devel)                                 # For starship
+	packages+=(dnf-plugins-core)                                         # For at least Brave
 
 	sudo dnf -y install "${packages[@]}"
 }
 dependencies.opensuse() {
 	local packages=()
 	packages+=(bash-completion curl rsync cmake ccache vim nano jq lvm2) # lint-ignore:curl-must-have-args
-	packages+=(pkg-config openssl-devel) # For starship
+	packages+=(pkg-config openssl-devel)                                 # For starship
 
 	sudo zypper -n install -t pattern devel_basis
 	sudo zypper -n install "${packages[@]}"

@@ -31,5 +31,5 @@ _util_path_prepend "$HOME/.dotfiles/.data/bin"
 _util_path_prepend "$HOME/.local/bin" # TODO: path_prepend a repeat?
 _util_path_prepend "$XDG_STATE_HOME/pipx/bin"
 _util_source_dir "$XDG_CONFIG_HOME/sh/modules"
-#_util_source_dir "$XDG_CONFIG_HOME/sh/shell.d"
+#_util_source_dir "$XDG_CONFIG_HOME/sh/shell.d" TODO
 # ---

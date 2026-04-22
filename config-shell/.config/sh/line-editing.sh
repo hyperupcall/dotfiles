@@ -25,20 +25,22 @@ _lineediting_action_show_help() {
 	local arg=
 	for arg in $line; do
 		case $arg in
-			-*) flagList+=("$arg") ;;
-			*) argList+=("$arg") ;;
+		-*) flagList+=("$arg") ;;
+		*) argList+=("$arg") ;;
 		esac
-	done; unset -v arg
+	done
+	unset -v arg
 
 	# For the command line (with flags removed), append help
 	# If a help menu was successfuly shown, return; if not, then
 	# chop off a subcommand and try again
 	local i=
-	for ((i=0; i<${#argList}; i++)); do
+	for ((i = 0; i < ${#argList}; i++)); do
 		_readline_util_try_show_help "${argList[*]}" && return
 
 		unset 'argList[${#argList[@]}-1]'
-	done; unset -v i
+	done
+	unset -v i
 }
 
 # Get the man page for the currently-edited command on the
@@ -57,10 +59,11 @@ _lineediting_action_show_man() {
 	local arg=
 	for arg in $line; do
 		case $arg in
-			-*) ;;
-			[a-zA-Z]*) argList+=("$arg") ;;
+		-*) ;;
+		[a-zA-Z]*) argList+=("$arg") ;;
 		esac
-	done; unset -v arg
+	done
+	unset -v arg
 
 	# For the command line (with flags removed), invoke the command command.
 	# If a man page was successfully shown, return; if not, then chop off
@@ -68,14 +71,15 @@ _lineediting_action_show_man() {
 	local oldIFS="$IFS"
 	IFS='-'
 	local i=
-	for ((i=0; i<${#argList}; i++)); do
+	for ((i = 0; i < ${#argList}; i++)); do
 		if _readline_util_try_show_man "${argList[*]}"; then
 			IFS="$oldIFS"
 			return
 		fi
 
 		unset 'argList[${#argList[@]}-1]'
-	done; unset -v i
+	done
+	unset -v i
 	IFS=$oldIFS
 
 	manual="${line%%-*}"
@@ -92,16 +96,16 @@ _lineediting_action_toggle_sudo() {
 
 	if [ "${buf:0:4}" = 'sudo' ]; then
 		buf="${buf:5}"
-		pos=$((pos-5))
+		pos=$((pos - 5))
 	elif [ "${buf:0:5}" = ' sudo' ]; then
 		buf=" ${buf:6}"
-		pos=$((pos-5))
+		pos=$((pos - 5))
 	elif [ "${buf:0:1}" = ' ' ]; then
 		buf=" sudo$buf"
-		pos=$((pos+5))
+		pos=$((pos + 5))
 	else
 		buf="sudo $buf"
-		pos=$((pos+5))
+		pos=$((pos + 5))
 	fi
 
 	# shellcheck disable=SC2034
@@ -148,7 +152,8 @@ _readline_util_get_line() {
 }
 
 _readline_util_expand_alias() {
-	unset -v REPLY; REPLY=
+	unset -v REPLY
+	REPLY=
 	local line="$1"
 
 	local cmd="${line%% *}"
@@ -162,7 +167,8 @@ _readline_util_expand_alias() {
 }
 
 _readline_util_get_cmd() {
-	unset -v REPLY; REPLY=
+	unset -v REPLY
+	REPLY=
 	# shellcheck disable=SC1007
 	local line= cmd=
 

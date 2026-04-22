@@ -31,6 +31,9 @@ grafts:
   graft-personal:
     config: './graft-personal.yaml'
     root: '${applicationsDir}/personal'
+  graft-thunderbird-addons:
+    config: './graft-thunderbird-addons.yaml'
+    root: '${applicationsDir}/thunderbird-addons'
   graft-tree-sitter:
     config: './graft-tree-sitter.yaml'
     root: '${applicationsDir}/tree-sitter'
@@ -133,6 +136,9 @@ groups:
     - 'graft-personal::pkgbuilds'
     - 'graft-personal::slides'
     - 'graft-personal::stars'
+
+  thunderbird-addons:
+    - 'graft-thunderbird-addons::thunderbird-quickmove'
 
   tree-sitter:
     - 'graft-tree-sitter::zed-assorted-languages'

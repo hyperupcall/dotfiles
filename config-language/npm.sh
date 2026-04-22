@@ -11,7 +11,7 @@ install.any() {
 
 installed() {
 	command -v pnpm &>/dev/null
-	
+
 	pnpm list --parseable -g --depth=0 | awk -v deps="${g_dependencies[*]}" '
 		BEGIN {
 			n = split(deps, arr, " ")

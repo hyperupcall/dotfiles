@@ -21,7 +21,6 @@ install.debian() {
 			Architectures: $(dpkg --print-architecture)
 			signed-by: $gpg_file"
 
-
 	sudo apt-get -y update
 	sudo apt-get -y install powershell
 }

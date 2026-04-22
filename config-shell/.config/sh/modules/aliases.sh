@@ -42,12 +42,10 @@ alias tree='tree -a --dirsfirst'
 alias vdir='vdir --color=auto'
 alias xz='xz -k'
 
-
 # Git.
 alias g='git'
 alias ginit='git init'
 alias gclone='git clone'
-
 
 # systemctl.
 alias sl='systemctl --system'
@@ -107,12 +105,10 @@ alias sluenable='systemctl --user enable'
 alias slud='systemctl --user disable'
 alias slue='systemctl --user edit --full'
 
-
 # journalctl.
 alias jl='journalctl'
 alias jlu='journalctl --user'
 alias jls='journalctl --system'
-
 
 # Other "control" commands.
 alias bctl='busctl'
@@ -127,13 +123,11 @@ alias pctl='portablectl'
 alias rctl='resolvectl'
 alias tdctl='timedatectl'
 
-
 # Shell-related.
 alias sop='. ~/.profile'
 alias sob='. ~/.bashrc'
 alias edp='"$EDITOR" ~/.profile'
 alias edb='"$EDITOR" ~/.bashrc'
-
 
 # apt.
 alias aptup='sudo apt update'
@@ -147,7 +141,6 @@ alias aptp='sudo apt purge'
 alias aptse='apt search'
 alias aptsh='apt show'
 alias aptl='apt list'
-
 
 # Miscellaneous.
 alias b='bukdu --suggest'

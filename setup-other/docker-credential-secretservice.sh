@@ -13,7 +13,7 @@ install.any() {
 
 	if [ ! -f "$XDG_CONFIG_HOME/docker/config.json" ]; then
 		mkdir -p "$XDG_CONFIG_HOME/docker"
-		printf '%s\n' '{}' > "$XDG_CONFIG_HOME/docker/config.json"
+		printf '%s\n' '{}' >"$XDG_CONFIG_HOME/docker/config.json"
 	fi
 
 	python -c "import json

@@ -12,7 +12,7 @@ install.any() {
 	unzip './godot.zip'
 	mv ./Godot_* ~/.local/bin/godot
 	mkdir -p ~/.local/share/applications
-	cat > ~/.local/share/applications/godot.desktop <<"EOF"
+	cat >~/.local/share/applications/godot.desktop <<"EOF"
 [Desktop Entry]
 Name=Godot Engine
 GenericName=Libre game engine
@@ -25,7 +25,7 @@ MimeType=application/x-godot-project;
 Categories=Development;IDE;
 EOF
 	mkdir -p ~/.local/share/icons/hicolor/scalable/apps
-	cat > ~/.local/share/icons/hicolor/scalable/apps/godot.svg <<"EOF"
+	cat >~/.local/share/icons/hicolor/scalable/apps/godot.svg <<"EOF"
 	<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -166,7 +166,7 @@ EOF
 </svg>
 EOF
 	mkdir -p ~/.local/share/mime/packages
-	cat > ~/.local/share/mime/packages/godot.xml <<"EOF"
+	cat >~/.local/share/mime/packages/godot.xml <<"EOF"
 <?xml version="1.0"?>
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
   <mime-type type="application/x-godot-project">

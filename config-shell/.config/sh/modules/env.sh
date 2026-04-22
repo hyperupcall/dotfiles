@@ -15,7 +15,6 @@ export PAGER='less'
 # export MANPAGER='vim +MANPAGER --not-a-term -u /dev/null -'
 export MANPAGER='less'
 
-
 # PROGRAM.
 # Android
 export ANDROID_HOME="$XDG_STATE_HOME/Android/Sdk"
@@ -45,14 +44,14 @@ export HSTR_CONFIG='hicolor'
 # shellcheck disable=SC3003
 {
 	export LESSKEYIN="$XDG_CONFIG_HOME/less/lesskey"
-	export LESS_TERMCAP_mb=$'\e[1;31m' # Start blink.
-	export LESS_TERMCAP_md=$'\e[1;36m' # Start bold.
-	export LESS_TERMCAP_me=$'\e[0m' # End all.
+	export LESS_TERMCAP_mb=$'\e[1;31m'     # Start blink.
+	export LESS_TERMCAP_md=$'\e[1;36m'     # Start bold.
+	export LESS_TERMCAP_me=$'\e[0m'        # End all.
 	export LESS_TERMCAP_so=$'\e[01;44;33m' # Start reverse video.
-	export LESS_TERMCAP_se=$'\e[0m' # End reverse video.
-	export LESS_TERMCAP_us=$'\e[1;32m' # Start underline.
-	export LESS_TERMCAP_ue=$'\e[0m' # End underline.
-	export LESS_TERMCAP_us=$'\e[1;32m' # Start underline.
+	export LESS_TERMCAP_se=$'\e[0m'        # End reverse video.
+	export LESS_TERMCAP_us=$'\e[1;32m'     # Start underline.
+	export LESS_TERMCAP_ue=$'\e[0m'        # End underline.
+	export LESS_TERMCAP_us=$'\e[1;32m'     # Start underline.
 }
 
 # more
@@ -137,7 +136,6 @@ export ZFS_COLOR=1
 
 # zplug
 export ZPLUG_HOME="$HOME/.dotfiles/.data/repos/zplug"
-
 
 # HISTORY.
 # IRB

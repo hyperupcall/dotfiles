@@ -7,10 +7,10 @@ fi
 source ~/.dotfiles/data/xdg.sh
 for _f in \
 	~/.dotfiles/vendor/bash-core/pkg/**/*.sh \
-	~/.dotfiles/vendor/bash-term/pkg/**/*.sh; \
-do
+	~/.dotfiles/vendor/bash-term/pkg/**/*.sh; do
 	source "$_f"
-done; unset -v _f
+done
+unset -v _f
 
 GITHUB_TOKEN="$(<~/.dotfiles/.data/github_token)"
 

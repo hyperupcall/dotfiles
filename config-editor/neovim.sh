@@ -56,8 +56,8 @@ installed() {
 		nvim_version=${nvim_version%%$'\n'*}
 		nvim_version=${nvim_version#NVIM v}
 		nvim_version=${nvim_version%%-*}
-		IFS='.' read -ra nvim_version_arr <<< "$nvim_version"
-		(( nvim_version_arr[0] >= 1 || (nvim_version_arr[0] == 0 && nvim_version_arr[1] >= 10) ))
+		IFS='.' read -ra nvim_version_arr <<<"$nvim_version"
+		((nvim_version_arr[0] >= 1 || (nvim_version_arr[0] == 0 && nvim_version_arr[1] >= 10)))
 	}
 
 	command -v nvim &>/dev/null && neovim_version_check

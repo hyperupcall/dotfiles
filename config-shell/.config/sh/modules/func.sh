@@ -16,7 +16,7 @@ cdp() {
 
 	_shell_cdp_current_dir="$_shell_cdp_dir"
 	while [ ! -d "$_shell_cdp_current_dir" ] && [ "$PWD" != / ]; do
-			_shell_cdp_current_dir="$(dirname "$_shell_cdp_current_dir")"
+		_shell_cdp_current_dir="$(dirname "$_shell_cdp_current_dir")"
 	done
 
 	# shellcheck disable=SC2164
@@ -26,8 +26,8 @@ cdp() {
 dataurl() {
 	mimeType=$(file -b --mime-type "$1")
 	case $mimeType in
-		text/*)
-			mimeType="${mimeType};charset=utf-8"
+	text/*)
+		mimeType="${mimeType};charset=utf-8"
 		;;
 	esac
 
@@ -50,8 +50,8 @@ dg() {
 edit() {
 	_edit_grep_result="$(grep -nR "^$1() {$" "$XDG_CONFIG_HOME"/sh | head -1)"
 	if [ -z "$_edit_grep_result" ]; then
-			_edit_grep_result="$(grep -nR "^alias $1=" "$XDG_CONFIG_HOME"/sh)"
-			if [ -z "$_edit_grep_result" ]; then
+		_edit_grep_result="$(grep -nR "^alias $1=" "$XDG_CONFIG_HOME"/sh)"
+		if [ -z "$_edit_grep_result" ]; then
 			_util_log_error "edit: Function or alias '$1' not found"
 			return 1
 		fi
@@ -94,7 +94,7 @@ kkexec() {
 }
 
 nh() {
-	nohup "$@" > /dev/null 2>&1 &
+	nohup "$@" >/dev/null 2>&1 &
 }
 
 pbake() {
@@ -147,7 +147,10 @@ qe() {
 	filterList="BraveSoftware code tetrio-desktop obsidian discord sublime-text Ryujinx unity3d hmcl hdlauncher TabNine zettlr Zettlr Google lunarclient libreoffice VirtualBox configstore pulse obs-studio eDEX-UI 1Password kde.org sublime-text-3 gdlauncher gdlauncher_next launcher-main gitify QtProject GIMP r2modman r2modmanPlus-local Code plover GitKraken Electron bonsai-browser sidekick Insomnia Typora wavebox microsoft-edge evolution chromium"
 
 	_qe_file=$(
-		cd -- "$XDG_CONFIG_HOME" || { _util_log_error "qe: Could not cd"; exit 1; }
+		cd -- "$XDG_CONFIG_HOME" || {
+			_util_log_error "qe: Could not cd"
+			exit 1
+		}
 		filterArgs=
 		for file in $filterList; do
 			filterArgs="$filterArgs -o -name $file"
@@ -162,10 +165,13 @@ qe() {
 			-o -path ./kak/plugins \
 			-o -path ./kak/autoload \
 			-o -path ./cookiecutter/cookiecutters \
-		\) -prune -o -print | fzf
+			\) -prune -o -print | fzf
 	)
 
-	[ -z "$_qe_file" ] && { _util_log_error "qe: Chosen file empty"; return 1; }
+	[ -z "$_qe_file" ] && {
+		_util_log_error "qe: Chosen file empty"
+		return 1
+	}
 
 	_qe_file="$XDG_CONFIG_HOME/$(printf "%s" "$_qe_file" | cut -c3-)"
 	v "$_qe_file"

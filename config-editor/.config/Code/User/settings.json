@@ -434,6 +434,7 @@
 	"gitlens.advanced.maxSearchItems": 300,
 	"gitlens.codeLens.includeSingleLineSymbols": true,
 	"gitlens.codeLens.enabled": false,
+	"gitlens.rebaseEditor.openOnPausedRebase": false,
 
 	//
 	// UNSORTED EDITOR
@@ -557,5 +558,5 @@
 		},
 	],
 	"workbench.iconTheme": "icons",
-	"window.autoDetectColorScheme": true
+	"window.autoDetectColorScheme": true,
 }

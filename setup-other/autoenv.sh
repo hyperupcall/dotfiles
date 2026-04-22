@@ -15,9 +15,17 @@ installed() {
 configure() {
 	util.write_shellfile 'autoenv' \
 		--sh \
-	'AUTOENV_PRESERVE_CD=yes
-	. ~/.dotfiles/.data/repos/autoenv/activate.sh
-	unset -v AUTOENV_PRESERVE_CD'
+			'AUTOENV_PRESERVE_CD=yes
+			. ~/.dotfiles/.data/repos/autoenv/activate.sh
+			unset -v AUTOENV_PRESERVE_CD' \
+		--bash \
+			'AUTOENV_PRESERVE_CD=yes
+			. ~/.dotfiles/.data/repos/autoenv/activate.sh
+			unset -v AUTOENV_PRESERVE_CD' \
+		--zsh \
+			'AUTOENV_PRESERVE_CD=yes
+			. ~/.dotfiles/.data/repos/autoenv/activate.sh
+			unset -v AUTOENV_PRESERVE_CD'
 }
 
 util.if_file_sourced || _setup "$@"

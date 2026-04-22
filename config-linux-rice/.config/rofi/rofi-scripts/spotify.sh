@@ -7,9 +7,9 @@ rofi_command="rofi -theme themes/sidebar/five-$CHK_ROFI_MOD.rasi"
 status="$($MUSIC_CONTROLLER status)"
 # Defines the Play / Pause option content
 if [[ $status = *"laying"* ]]; then
-    play_pause=""
+	play_pause=""
 else
-    play_pause=""
+	play_pause=""
 fi
 active=""
 urgent=""
@@ -26,26 +26,26 @@ options="$previous\n$play_pause\n$stop\n$next\n$tog_stream"
 current="$($MUSIC_CONTROLLER title)"
 # If spotify isn't running it will return an empty string, we don't want to display that
 if [[ -z "$current" ]]; then
-    current="-"
+	current="-"
 fi
 
 # Spawn the spotify menu with the "Play / Pause" entry selected by default
 # shellcheck disable=SC2086
 chosen="$(echo -e "$options" | $rofi_command -dmenu $active $urgent -selected-row 1)"
 case $chosen in
-    "$previous")
-        $MUSIC_CONTROLLER prev
-    ;;
-    "$play_pause")
-        $MUSIC_CONTROLLER toggle
-    ;;
-    "$stop")
-        $MUSIC_CONTROLLER stop
-    ;;
-    "$next")
-        "$MUSIC_CONTROLLER" next
-    ;;
-    "$tog_stream")
-        "$MUSIC_CONTROLLER" switchpl
-    ;;
+"$previous")
+	$MUSIC_CONTROLLER prev
+	;;
+"$play_pause")
+	$MUSIC_CONTROLLER toggle
+	;;
+"$stop")
+	$MUSIC_CONTROLLER stop
+	;;
+"$next")
+	"$MUSIC_CONTROLLER" next
+	;;
+"$tog_stream")
+	"$MUSIC_CONTROLLER" switchpl
+	;;
 esac

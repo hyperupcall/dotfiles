@@ -8,7 +8,7 @@ install.ubuntu() {
 	sudo apt-get install -y pgmodeler
 
 	mkdir -p ~/.local/share/applications
-	cat > ~/.local/share/applications/pgmodeler.desktop <<EOF
+	cat >~/.local/share/applications/pgmodeler.desktop <<EOF
 [Desktop Entry]
 Name=pgModeler
 Comment=PostgreSQL Database Modeler

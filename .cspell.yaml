@@ -57,3 +57,8 @@ ignorePaths:
   - '**/anki-plugins'
   - '**/contributing-to/'
   - '**/maintaining/schemastore'
+ignoreWords:
+  - kbash
+  - kpolyglot
+  - FiloSottile
+  - kgitstatus

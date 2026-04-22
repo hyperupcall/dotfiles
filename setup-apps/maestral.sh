@@ -55,7 +55,7 @@ install_maestral() {
 	python3 -m pip --require-virtualenv install --upgrade 'maestral[syslog]' # May fail
 
 	mkdir -p ~/.dotfiles/.data/bin
-	cat <<'EOF' > ~/.dotfiles/.data/bin/maestral
+	cat <<'EOF' >~/.dotfiles/.data/bin/maestral
 #!/usr/bin/env sh
 set -e
 . ~/.dotfiles/.data/maestral/venv/bin/activate

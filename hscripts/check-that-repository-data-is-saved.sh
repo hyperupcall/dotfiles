@@ -12,15 +12,15 @@ main() {
 		local output=
 		output=$(git -C "$dir" status --porcelain)
 		if [ -n "$output" ]; then
-		  core.print_error "Expected working tree for \"$dir\" to be clean, but is not"
-		  printf '%s' "$output" >&2
-		  exit 1
+			core.print_error "Expected working tree for \"$dir\" to be clean, but is not"
+			printf '%s\n' "$output" >&2
+			exit 1
 		fi
 
 		local upstream_ref= unpushed_count=
 		upstream_ref=$(git rev-parse --abbrev-ref --symbolic-full-name '@{u}' 2>/dev/null)
 		unpushed_count=$(git rev-list --count "$upstream_ref..HEAD")
-		if (( unpushed_count )); then
+		if ((unpushed_count)); then
 			core.print_error "Expected all commits to be be pushed, but found $unpushed_count extra local commits"
 			git log --oneline "$unpushed_count..HEAD" >&2
 			exit 1

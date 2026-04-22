@@ -7,19 +7,19 @@ install.any() {
 	dependencies.debian() {
 		sudo apt-get install -y libarchive-dev autoconf
 		sudo apt-get install -y intltool libtool libgmp-dev libmpfr-dev libcurl4-openssl-dev libicu-dev libxml2-dev # pybind11
-		sudo apt-get install -y qt6-base-dev qt6-tools-dev qt6-5compat-dev libqt6svg6-dev qt6-scxml # albert
+		sudo apt-get install -y qt6-base-dev qt6-tools-dev qt6-5compat-dev libqt6svg6-dev qt6-scxml                 # albert
 	}
 	dependencies.ubuntu() {
 		dependencies.debian "$@"
 	}
 	dependencies.fedora() {
 		sudo dnf install -y libarchive-devel autoconf
-		sudo dnf install -y intltool libtool libcurl-devel gmp-devel mpfr-devel libicu-devel # pybind11
+		sudo dnf install -y intltool libtool libcurl-devel gmp-devel mpfr-devel libicu-devel                   # pybind11
 		sudo dnf install -y qt6-qtbase-devel qt6-qttools-devel qt6-qt5compat-devel qt6-qtsvg-devel qt6-qtscxml # albert
 	}
 	dependencies.arch() {
 		sudo pacman -Syu --noconfirm libarchive autoconf
-		sudo pacman -Syu --noconfirm intltool # pybind11
+		sudo pacman -Syu --noconfirm intltool                                 # pybind11
 		sudo pacman -Syu --noconfirm qt6-base qt6-tools qt6-5compat qt6-scxml # albert
 	}
 
@@ -79,7 +79,7 @@ installed() {
 
 configure() {
 	mkdir -p "$XDG_CONFIG_HOME/autostart"
-	cat <<EOF > "$XDG_CONFIG_HOME/autostart/albert.desktop"
+	cat <<EOF >"$XDG_CONFIG_HOME/autostart/albert.desktop"
 [Desktop Entry]
 Categories=Utility;
 Comment=A desktop agnostic launcher

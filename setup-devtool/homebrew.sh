@@ -13,8 +13,9 @@ installed() {
 
 configure() {
 	util.write_shellfile 'homebrew' \
-		--sh 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"'
-
+		--sh 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' \
+		--bash 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' \
+		--zsh 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"'
 }
 
 util.if_file_sourced || _setup "$@"

@@ -66,7 +66,7 @@ install.opensuse() {
 }
 
 install.arch() {
-	 sudo pacman -Syu --noconfirm zfs-linux zfs-linux-lts zfs-dkms
+	sudo pacman -Syu --noconfirm zfs-linux zfs-linux-lts zfs-dkms
 }
 
 install.cachyos() {

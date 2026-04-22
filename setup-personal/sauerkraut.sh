@@ -14,7 +14,7 @@ install.any() {
 	ln -sf "$g_dir/bin/sauerkraut.js" ~/.dotfiles/.data/bin/sauerkraut
 
 	mkdir -p ~/.local/share/systemd/user
-	cat > ~/.local/share/systemd/user/brain.service << 'EOF'
+	cat >~/.local/share/systemd/user/brain.service <<'EOF'
 [Unit]
 Description=Brain
 ConditionPathIsDirectory=%h/.dev/.data/installed-repositories/sauerkraut/

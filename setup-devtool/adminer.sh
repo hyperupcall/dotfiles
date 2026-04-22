@@ -10,7 +10,7 @@ install.any() {
 	mkdir -p ~/.dotfiles/.data/{adminer,binexec}
 	curl -K "$CURL_CONFIG" -o ./adminer-"${version#v}".php "https://github.com/vrana/adminer/releases/download/$version/adminer-${version#v}.php"
 	mv ./adminer-"${version#v}".php ~/.dotfiles/.data/adminer/adminer-"${version#v}".php
-	cat > ~/.dotfiles/.data/binexec/adminer <<EOF
+	cat >~/.dotfiles/.data/binexec/adminer <<EOF
 #!/bin/sh
 if ! pgrep -f "php -S localhost:9095 adminer-*.php"; then
 	/usr/bin/php -S localhost:9095 ~/.dotfiles/.data/adminer/adminer-${version#v}.php &
@@ -20,7 +20,7 @@ if ! xdg-open http://localhost:9095; then
 fi
 EOF
 	chmod +x ~/.dotfiles/.data/binexec/adminer
-	cat > "$XDG_DATA_HOME/applications/adminer.desktop" <<EOF
+	cat >"$XDG_DATA_HOME/applications/adminer.desktop" <<EOF
 [Desktop Entry]
 Name=Adminer
 Comment=Run adminer ${version}

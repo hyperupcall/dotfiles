@@ -10,7 +10,7 @@ _mkt_util_get_latest_file() {
 _mkt_util_cd_latest_dir() {
 	_mkt_latest_dir=$(
 		find . -mindepth 1 -maxdepth 1 -type d -printf "%T@\t%p\0" \
-				| sort -zn | cut -z -f2- | tail -z -n1 | tr -d '\000'
+			| sort -zn | cut -z -f2- | tail -z -n1 | tr -d '\000'
 	)
 
 	if [ -n "$_mkt_latest_dir" ]; then
@@ -57,30 +57,31 @@ _mkt_util_git_clone() {
 }
 
 _mkt_util_log() {
-	printf "%s\n" "$(date '+%Y.%m.%d - %I:%M:%S') | $_mkt_dir | $1" >> "${XDG_STATE_HOME:-$HOME/.local/state}/history/mkt_history"
+	printf "%s\n" "$(date '+%Y.%m.%d - %I:%M:%S') | $_mkt_dir | $1" >>"${XDG_STATE_HOME:-$HOME/.local/state}/history/mkt_history"
 }
 
 mkt() {
 	for arg; do case $arg in
-	--help)
-		cat <<-EOF
-		mkt
+		--help)
+			cat <<-EOF
+				mkt
 
-		Examples:
-		  mkt https://github.com/hyperupcall/dotfiles
-		  mkt hyperupcall/dotfiles
-		  mkt https://example.com/archive.zip
-		EOF
-		return
-		;;
-	-*)
-		_util_log_error "mkt: Flag '$arg' not recognized"
-		return 1
-		;;
-	*)
-		_mkt_arg=$arg
-		;;
-	esac done; unset -v arg
+				Examples:
+				  mkt https://github.com/hyperupcall/dotfiles
+				  mkt hyperupcall/dotfiles
+				  mkt https://example.com/archive.zip
+			EOF
+			return
+			;;
+		-*)
+			_util_log_error "mkt: Flag '$arg' not recognized"
+			return 1
+			;;
+		*)
+			_mkt_arg=$arg
+			;;
+		esac done
+	unset -v arg
 
 	_mkt_old_pwd=$PWD
 
@@ -98,10 +99,13 @@ mkt() {
 		_mkt_util_cd "$_mkt_dir" || return
 		_mkt_util_log "$1"
 
-		command curl -fLO "$1" || { _util_log_error "mkt: Could not fetch resource with cURL"; return 1; }
+		command curl -fLO "$1" || {
+			_util_log_error "mkt: Could not fetch resource with cURL"
+			return 1
+		}
 		_mkt_latest_file=$(_mkt_util_get_latest_file)
 		if file "$_mkt_latest_file" | grep -Eq '(compressed|archive)'; then
-			if command -v aunpack >/dev/null hyperupcall>&1; then
+			if command -v aunpack hyperupcall >/dev/null >&1; then
 				command aunpack "$_mkt_latest_file" # Uncompress if compressed.
 			else
 				_util_ls
@@ -115,7 +119,7 @@ mkt() {
 		_util_ls
 		;;
 	# Git repository.
-	git@*|git://*|*.git|https://github.com/*|https://gitlab.com/*|https://git.sr.ht/*|https://*@bitbucket.org/*|https://invent.kde.org/*)
+	git@* | git://* | *.git | https://github.com/* | https://gitlab.com/* | https://git.sr.ht/* | https://*@bitbucket.org/* | https://invent.kde.org/*)
 		_mkt_id=$(printf '%s\n' "$1" | rev | cut -d/ -f1 | rev)
 		_mkt_dir=$(mktemp -d --suffix "-$_mkt_id")
 		_mkt_util_cd "$_mkt_dir" || return
@@ -128,7 +132,7 @@ mkt() {
 		_util_ls
 		;;
 	# File path.
-	/*|./*)
+	/* | ./*)
 		_mkt_id=$(printf '%s\n' "$1" | rev | cut -d/ -f1 | rev)
 		_mkt_dir=$(mktemp -d --suffix "-$_mkt_id")
 		_mkt_util_cd "$_mkt_dir" || return

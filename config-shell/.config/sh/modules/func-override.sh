@@ -1,9 +1,11 @@
 # shellcheck shell=sh
 
 bash() {
-	if { [ "$1" = --noprofile ] && [ "$2" = --norc ]; } \
-		|| { [ "$1" = --norc ] && [ "$2" = --noprofile ]; }
-	then
+	if {
+		[ "$1" = --noprofile ] && [ "$2" = --norc ]
+	} || {
+		[ "$1" = --norc ] && [ "$2" = --noprofile ]
+	}; then
 		_util_log_info "Additionally resetting path to its initial value"
 		PATH="$_shell_original_path" command bash "$@"
 	else
@@ -35,7 +37,7 @@ cd() {
 	for arg; do case $arg in
 		-*) ;;
 		*) _shell_dir=$arg ;;
-	esac done
+		esac done
 
 	builtin cd -P "$@"
 	_exit_code=$?
@@ -48,8 +50,8 @@ code() {
 	_dir=
 	for _arg in "$@"; do
 		case $_arg in
-			-*|tunnel|serve-web) ;;
-			*) _dir=$_arg ;;
+		-* | tunnel | serve-web) ;;
+		*) _dir=$_arg ;;
 		esac
 	done
 	unset -v _arg
@@ -94,10 +96,12 @@ curl() {
 _lsblk_can_mountpoints=no
 if [ -z "$_lsblk_can_mountpoints" ]; then
 	_lsblk_tmp=$(command lsblk --version)
-	_lsblk_major_num=${_lsblk_tmp##* }; _lsblk_major_num=${_lsblk_major_num%%.*}
-	_lsblk_minor_num=${_lsblk_tmp##*.}; _lsblk_minor_num=${_lsblk_minor_num%%.*}
-	if [ "$_lsblk_major_num" -ge 3 ] || \
-		{ [ "$_lsblk_major_num" -eq 2 ] && [ "$_lsblk_minor_num" -ge 37 ]; }; then
+	_lsblk_major_num=${_lsblk_tmp##* }
+	_lsblk_major_num=${_lsblk_major_num%%.*}
+	_lsblk_minor_num=${_lsblk_tmp##*.}
+	_lsblk_minor_num=${_lsblk_minor_num%%.*}
+	if [ "$_lsblk_major_num" -ge 3 ] \
+		|| { [ "$_lsblk_major_num" -eq 2 ] && [ "$_lsblk_minor_num" -ge 37 ]; }; then
 		__lsblk_can_mountpoints=yes
 	fi
 	unset -v _lsblk_tmp _lsblk_major_num _lsblk_minor_num
@@ -162,7 +166,7 @@ stty() {
 unlink() {
 	for _arg; do
 		case $_arg in
-		--help|--version)
+		--help | --version)
 			command unlink "$@"
 			return
 			;;

@@ -8,7 +8,8 @@ if [ -f /etc/os-release ]; then
 			_value=${_value%\"}
 			_xdg_distro_id=$_value
 		fi
-	done < /etc/os-release; unset -v _key _value
+	done </etc/os-release
+	unset -v _key _value
 else
 	printf '%s\n' "Error: xdg.sh: File /etc/os-release not found. Exiting" >&2
 	return 1

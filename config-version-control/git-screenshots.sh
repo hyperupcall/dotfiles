@@ -3,7 +3,7 @@ source ~/.dotfiles/data/setup.sh
 
 main() {
 	git init
-	cat > file.js <<EOF
+	cat >file.js <<EOF
 console.log('Print statement')
 
 if (true) {
@@ -12,7 +12,7 @@ if (true) {
 EOF
 	git add ./file.js
 	git commit -m 'commit 1'
-	cat > file.js <<EOF
+	cat >file.js <<EOF
 console.log('Print something')
 
 if (false) {
@@ -25,7 +25,7 @@ EOF
 	git add ./file.js
 	git commit -m 'commit 2'
 
-	cat > kitty.conf <<EOF
+	cat >kitty.conf <<EOF
 remember_window_size no
 initial_window_width 640
 initial_window_height 400
@@ -39,7 +39,7 @@ EOF
 
 	export GIT_CONFIG_GLOBAL="$PWD/git-split-diffs.conf"
 
-	cat > ./script.sh <<EOF
+	cat >./script.sh <<EOF
 #!/usr/bin/env bash
 GIT_CONFIG_NOSYSTEM=1 git diff HEAD~ -- ./file.js &
 sleep 0.1 # For git-split-diffs.

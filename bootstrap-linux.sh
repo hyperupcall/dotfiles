@@ -25,6 +25,7 @@ main() {
 			run bash ~/.bootstrap/install-brew.sh
 		fi
 		run brew install bash
+		;;
 	esac
 	updatesystem
 	installcmd 'curl' 'curl'
@@ -41,7 +42,7 @@ main() {
 	run ln -fs ~/.dotfiles/hscripts ~/
 
 	# Export variables.
-	cat > ~/.bootstrap/bootstrap-out.sh <<EOF
+	cat >~/.bootstrap/bootstrap-out.sh <<EOF
 # shellcheck shell=sh
 
 export NAME='Edwin Kofler'
@@ -120,8 +121,8 @@ updatesystem() {
 		sudo dnf -y autoremove
 	elif iscmd 'zypper'; then
 		sudo zypper -n update
-  	elif iscmd 'brew'; then
-   		brew update
+	elif iscmd 'brew'; then
+		brew update
 	else
 		die 'Failed to determine package manager'
 	fi

@@ -25,7 +25,7 @@ installed() {
 }
 
 configure() {
-	util.write_shellfile 'direnv' \
+	util.write_shellfile 'basalt' \
 		--bash 'eval "$(basalt global init bash)"' \
 		--zsh 'eval "$(basalt global init zsh)"' \
 		--sh 'eval "$(basalt global init sh)"' \

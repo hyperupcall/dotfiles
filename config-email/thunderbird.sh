@@ -8,7 +8,6 @@ install.any() {
 		sudo snap remove "$f"
 	done
 
-
 	# TODO: Should have a "cleanup" for distros that do this.
 	if command -v snap &>/dev/null; then
 		if snap info thunderbird &>/dev/null; then
@@ -38,7 +37,7 @@ install.any() {
 	ln -sf ~/.dotfiles/.data/thunderbird/chrome/icons/default/default46.png ~/.local/share/icons/hicolor/48x48/apps/thunderbird.png
 	xdg-desktop-menu forceupdate
 
-cat <<EOF > ~/.local/share/applications/thunderbird.desktop
+	cat <<EOF >~/.local/share/applications/thunderbird.desktop
 [Desktop Entry]
 Encoding=UTF-8
 Name=Thunderbird Mail

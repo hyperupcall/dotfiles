@@ -65,11 +65,12 @@ get_appimagelauncher_release_file() {
 	token="$(<~/.dotfiles/.data/github_token)"
 
 	local filenames=
-	filenames=$(curl -K "$CURL_CONFIG" \
-		-H "Accept: application/vnd.github+json" \
-		-H "Authorization: Bearer $token" \
-		-H "X-GitHub-Api-Version: 2022-11-28" \
-		"https://api.github.com/repos/TheAssassin/AppImageLauncher/releases/tags/$latest_tag" \
+	filenames=$(
+		curl -K "$CURL_CONFIG" \
+			-H "Accept: application/vnd.github+json" \
+			-H "Authorization: Bearer $token" \
+			-H "X-GitHub-Api-Version: 2022-11-28" \
+			"https://api.github.com/repos/TheAssassin/AppImageLauncher/releases/tags/$latest_tag" \
 			| jq -r '.assets[] | .name'
 	)
 
@@ -79,7 +80,7 @@ get_appimagelauncher_release_file() {
 		if [[ $filename == *_@(x86_64|amd64)."$ext" ]]; then
 			REPLY="https://github.com/TheAssassin/AppImageLauncher/releases/download/$latest_tag/$filename"
 		fi
-	done <<< "$filenames"
+	done <<<"$filenames"
 
 	if [ -z "$REPLY" ]; then
 		core.print_die "Unable to find release file"

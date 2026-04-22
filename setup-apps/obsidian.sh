@@ -20,7 +20,7 @@ install.any() {
 
 installed() {
 	local dir=(~/.home/AppImages/Obsidian_*.AppImage)
-	(( ${#dir} > 0 ))
+	((${#dir} > 0))
 }
 
 util.if_file_sourced || _setup "$@"

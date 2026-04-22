@@ -13,14 +13,17 @@ install.ubuntu() {
 	install.debian
 }
 
+# TODO: Make "installed" good with versions and print version differences
 installed() {
 	# Version must be at least 2.37.0 to support "push.autoSetupRemote".
+	# Version must be at least 2.52.0 to support "git repo".
+	# Version must be at least 2.54.0 to support "git history".
 	git_version_check() {
 		local -a git_version_arr
 		git_version=$(git version)
 		git_version=${git_version#git version }
-		IFS='.' read -ra git_version_arr <<< "$git_version"
-		(( git_version_arr[0] >= 3 || (git_version_arr[0] == 2 && git_version_arr[1] >= 37) ))
+		IFS='.' read -ra git_version_arr <<<"$git_version"
+		((git_version_arr[0] >= 3 || (git_version_arr[0] == 2 && git_version_arr[1] >= 54)))
 	}
 
 	command -v git &>/dev/null && git_version_check

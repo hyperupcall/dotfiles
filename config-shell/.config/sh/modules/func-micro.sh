@@ -15,7 +15,8 @@ r() {
 		else
 			command rm "$_file"
 		fi
-	done; unset -v _file
+	done
+	unset -v _file
 }
 
 t() {
@@ -27,7 +28,8 @@ t() {
 	for _file; do
 		mkdir -p "${_file%/*}"
 		command touch "$_file"
-	done; unset -v _file
+	done
+	unset -v _file
 }
 
 v() {
