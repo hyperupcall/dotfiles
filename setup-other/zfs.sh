@@ -5,7 +5,7 @@ declare -g g_name='ZFS'
 declare -g g_sources_file='/etc/apt/sources.list.d/bookworm-backports.sources'
 
 install.any() {
-	util.install_by_setup "$@"
+	util.install_by_setup "$@" # TODO
 
 	if ! sudo zpool status vault &>/dev/null; then
 		sudo zpool import -f vault

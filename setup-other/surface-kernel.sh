@@ -9,7 +9,7 @@ install.any() {
 		exit 0
 	fi
 
-	util.install_by_setup "$@"
+	util.install_by_setup "$@" # TODO
 }
 
 install.debian() {

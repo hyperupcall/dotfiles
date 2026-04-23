@@ -17,7 +17,7 @@ main() {
 	# Install required dependencies.
 	if [ ! -f ~/.dotfiles/.data/finished_bootstrap ]; then
 		util.update_system
-		util.install_by_setup --fn-prefix=dependencies 'Bootstrap'
+		util.install_by_setup --fn-prefix=dependencies 'Bootstrap' # TODO
 		touch ~/.dotfiles/.data/finished_bootstrap
 		core.print_info "Installed required dependencies"
 	fi
@@ -286,16 +286,16 @@ main() {
 	}
 
 	# Install the most paramount tools.
+	~/scripts/setup/d.sh
 	~/scripts/setup/zsh.sh
 	~/scripts/setup/ksh.sh
 	~/scripts/setup/rust.sh
 	~/scripts/setup/mise.sh
 
 	# Install personal tools.
-	~/scripts/setup/npm.sh
+	#~/scripts/setup/npm.sh
 	~/scripts/setup/pass.sh
 	~/scripts/setup/dev.sh
-	~/scripts/setup/d.sh
 	# ~/scripts/setup/sauerkraut.sh # TODO
 	~/scripts/setup/basalt.sh
 	~/scripts/setup/woof.sh

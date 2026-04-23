@@ -2,11 +2,9 @@
 source ~/.dotfiles/data/setup.sh
 
 declare -g g_name='pass'
-declare -g g_password_store_dir="${PASSWORD_STORE_DIR:-$HOME/.password-store}"
+declare -g g_password_store_dir="${PASSWORD_STORE_DIR:-"$HOME/.password-store"}"
 
 install.any() {
-	util.install_by_setup "$@"
-
 	if util.confirm 'Clone password repository?'; then
 		if [ -d "$g_password_store_dir" ]; then
 			if [ -d "$g_password_store_dir" ]; then
@@ -24,14 +22,15 @@ install.any() {
 	fi
 }
 
-install.debian() {
-	sudo apt-get -y update
-	sudo apt-get -y install pass
-}
+# TODO
+#install.debian() {
+#	sudo apt-get -y update
+#	sudo apt-get -y install pass
+#}
 
-install.ubuntu() {
-	install.debian "$@"
-}
+#install.ubuntu() {
+#	install.debian "$@"
+#}
 
 install.fedora() {
 	sudo dnf -y update
@@ -54,12 +53,12 @@ install_native_extension() {
 	local install_dir='/usr/local'
 	local app_id='com.github.browserpass.native.json'
 
-	core.print_info "Installing browserpass-native version '$version'"
+	core.print_info "Installing browserpass-native version $version"
 
-	local url="https://github.com/browserpass/browserpass-native/releases/download/$version/browserpass-$system-$version.tar.gz"
+	local url="https://github.com/browserpass/browserpass-native/releases/download/$version/browserpass-$system-${version#v}.tar.gz"
 	curl -K "$CURL_CONFIG" -o ./browserpass.tar.gz "$url"
 	tar xf ./browserpass.tar.gz
-	cd "./browserpass-linux64-$version"
+	cd "./browserpass-linux64-${version#v}"
 
 	make BIN="browserpass-$system" PREFIX="$install_dir" configure
 	sudo make BIN="browserpass-$system" PREFIX="$install_dir" install

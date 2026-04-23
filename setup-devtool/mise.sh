@@ -6,6 +6,8 @@ declare -g g_name='Mise'
 install.any() {
 	curl -K "$CURL_CONFIG" https://mise.jdx.dev/install.sh | sh
 
+# TODO: util.source_shellfile
+
 	mise -C ~/.dotfiles install
 	mise install node@25 python@3.14
 	mise use -g node@25 python@3.14

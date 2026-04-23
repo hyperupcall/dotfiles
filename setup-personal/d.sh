@@ -20,14 +20,15 @@ install.any() {
 		yay -Syu --noconfirm bear
 	}
 
-	util.install_by_setup --fn-prefix=dependencies "$@"
+	util.install_by_setup --fn-prefix=dependencies --no-confirm --no-install-check "$@"
 
+	# TODO: g_dir
 	local dir="$HOME/.dotfiles/.data/repos/d"
-	util.clone "$dir" git@github.com:fox-incubating/d
+	util.clone "$dir" git@github.com:fox-incubating/d # TODO: names
 	cd ~/.dotfiles/.data/repos/d
 	./bake build "$HOME/.dotfiles/data/dotfiles.c"
 	ln -fs "$PWD/d" ~/.local/bin/d
-	~/.local/bin/d deploy
+	DEBUG= ~/.local/bin/d deploy
 }
 
 installed() {

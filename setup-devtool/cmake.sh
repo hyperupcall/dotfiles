@@ -5,6 +5,7 @@ declare -g g_name='cmake'
 
 install.any() {
 	mise install cmake@latest
+	# TODO: cmake and lefthook, error when installing since not in path.
 	mise use -g cmake@latest
 }
 

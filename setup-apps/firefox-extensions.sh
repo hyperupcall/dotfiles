@@ -20,6 +20,7 @@ install.any() {
 	read -rp 'Press ENTER to continue...'
 }
 
+# TODO
 util.install_by_setup() {
 	local url="$1"
 

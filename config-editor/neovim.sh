@@ -19,7 +19,7 @@ install.any() {
 		sudo pacman -Syu --noconfirm gettext
 	}
 
-	util.install_by_setup --fn-prefix=dependencies 'Dependencies'
+	util.install_by_setup --fn-prefix=dependencies --no-confirm 'Dependencies'
 
 	local dir="$HOME/.dotfiles/.data/repos/neovim"
 	util.clone "$dir" 'https://github.com/neovim/neovim'
