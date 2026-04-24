@@ -46,7 +46,7 @@ The bootstrap script performs the following steps:
 - Creates `~/.bootstrap/bootstrap-out.sh`. Sourcing it:
   - Sets `NAME`, `EMAIL`, `EDITOR`, and `VISUAL`
   - Prepends `$HOME/.dotfiles/.data/bin` to `PATH`
-  - Sources `~/.dotfiles/data/xdg.sh`, if it exists
+  - Sources `~/.dotfiles/config/xdg.sh`, if it exists
 
 ## Next Steps
 

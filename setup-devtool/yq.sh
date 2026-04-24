@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-source ~/.dotfiles/data/setup.sh
+source ~/.dotfiles/config/setup.sh
 
 declare -g g_name='yq'
 
 install.any() {
-	util.get_latest_github_tag 'mikefarah/yq'
+	util.get_latest_github_release 'mikefarah/yq'
 	local version="$REPLY"
 
 	curl -K "$CURL_CONFIG" -o ./yq.tar.gz "https://github.com/mikefarah/yq/releases/download/$version/yq_linux_amd64.tar.gz"

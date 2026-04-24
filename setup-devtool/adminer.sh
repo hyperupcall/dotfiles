@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-source ~/.dotfiles/data/setup.sh
+source ~/.dotfiles/config/setup.sh
 
 declare -g g_name='Adminer'
 
 install.any() {
-	util.get_latest_github_tag 'vrana/adminer'
+	util.get_latest_github_release 'vrana/adminer'
 	local version="$REPLY"
 
 	mkdir -p ~/.dotfiles/.data/{adminer,binexec}
@@ -26,7 +26,7 @@ Name=Adminer
 Comment=Run adminer ${version}
 GenericName=Database Manager
 Exec=~/.dotfiles/.data/binexec/adminer
-Icon=~/.dotfiles/data/adminer-logo.png
+Icon=~/.devresources/adminer-logo.png
 Type=Application
 StartupNotify=false
 StartupWMClass=Adminer

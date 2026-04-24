@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-source ~/.dotfiles/data/setup.sh
+source ~/.dotfiles/config/setup.sh
 
 declare -g g_name='ls-lint'
 
 install.any() {
-	util.get_latest_github_tag 'loeffel-io/ls-lint'
+	util.get_latest_github_release 'loeffel-io/ls-lint'
 	local version="$REPLY"
 
 	curl -K "$CURL_CONFIG" -o ./ls-lint.tar.gz "https://github.com/loeffel-io/ls-lint/releases/download/$version/ls-lint-linux-amd64.tar.gz"

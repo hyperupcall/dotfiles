@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-source ~/.dotfiles/data/setup.sh
+source ~/.dotfiles/config/setup.sh
 
 declare -g g_name='shellcheck'
 
 install.any() {
-	util.get_latest_github_tag 'koalaman/shellcheck'
+	util.get_latest_github_release 'koalaman/shellcheck'
 	local version="$REPLY"
 
 	curl -K "$CURL_CONFIG" -o ./shellcheck.tar.xz "https://github.com/koalaman/shellcheck/releases/download/$version/shellcheck-$version.linux.x86_64.tar.xz"

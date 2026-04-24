@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-source ~/.dotfiles/data/setup.sh
+source ~/.dotfiles/config/setup.sh
 
 declare -g g_name='gh'
 
 install.any() {
-	util.get_latest_github_tag 'cli/cli'
+	util.get_latest_github_release 'cli/cli'
 	local version="$REPLY"
 	version=${version#v}
 

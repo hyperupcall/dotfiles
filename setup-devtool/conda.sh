@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-source ~/.dotfiles/data/setup.sh
+source ~/.dotfiles/config/setup.sh
 
 declare -g g_name='Conda'
 
 install.any() {
-	util.get_latest_github_tag 'conda-forge/miniforge'
+	util.get_latest_github_release 'conda-forge/miniforge'
 	local version="$REPLY"
 
 	curl -K "$CURL_CONFIG" -o './miniforge.sh' "https://github.com/conda-forge/miniforge/releases/download/$version/Miniforge3-${version}-Linux-x86_64.sh"

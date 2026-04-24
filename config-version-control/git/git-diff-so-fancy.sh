@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-source ~/.dotfiles/data/setup.sh
+source ~/.dotfiles/config/setup.sh
 
 declare -g g_name='diff-so-fancy'
 
 install.any() {
-	util.get_latest_github_tag 'so-fancy/diff-so-fancy'
+	util.get_latest_github_release 'so-fancy/diff-so-fancy'
 	local latest_tag=$REPLY
 
 	curl -K "$CURL_CONFIG" -o ~/.local/bin/diff-so-fancy "https://github.com/so-fancy/diff-so-fancy/releases/download/$latest_tag/diff-so-fancy"

@@ -468,17 +468,17 @@
 	"cSpell.dictionaryDefinitions": [
 		{
 			"name": "Personal",
-			"path": "~/.dotfiles/config/dictionary-hyperupcall.txt",
+			"path": "~/.devresources/dictionary-hyperupcall.txt",
 			"addWords": true,
 		},
 		{
 			"name": "My Bash",
-			"path": "~/.dotfiles/config/dictionary-bash.txt",
+			"path": "~/.devresources/dictionary-bash.txt",
 			"addWords": true,
 		},
 		{
 			"name": "My Linux",
-			"path": "~/.dotfiles/config/dictionary-linux.txt",
+			"path": "~/.devresources/dictionary-linux.txt",
 			"addWords": true,
 		},
 	],

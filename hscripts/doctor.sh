@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source ~/.dotfiles/data/setup.sh
+source ~/.dotfiles/config/setup.sh
 
 main() {
 	for arg; do case $arg in
@@ -39,7 +39,7 @@ main() {
 	done
 
 	# Remove auto-appended lines in shell startup files.
-	for file in ~/.profile ~/.bashrc ~/.bash_profile "${ZDOTDIR:-$HOME}/.zshrc" "${ZDOTDIR:-$HOME}/.zshenv" "$XDG_CONFIG_HOME/fish/config.fish"; do
+	for file in ~/.profile ~/.bashrc ~/.bash_profile "${ZDOTDIR:-"$HOME"}/.zshrc" "${ZDOTDIR:-"$HOME"}/.zshenv" "$XDG_CONFIG_HOME/fish/config.fish"; do
 		if [ ! -f "$file" ]; then
 			continue
 		fi
@@ -346,7 +346,6 @@ main() {
 	# ~/scripts/setup/virtualbox.sh
 	~/scripts/setup/zed.sh
 	~/scripts/setup/syncthing.sh
-	~/scripts/setup/mullvad.sh
 	~/scripts/setup/kdenlive.sh
 	~/scripts/setup/bats.sh
 	~/scripts/setup/btrfs.sh

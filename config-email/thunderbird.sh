@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
-source ~/.dotfiles/data/setup.sh
+source ~/.dotfiles/config/setup.sh
 
 declare -g g_name='Thunderbird'
 

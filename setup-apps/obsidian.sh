@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-source ~/.dotfiles/data/setup.sh
+source ~/.dotfiles/config/setup.sh
 
 declare -g g_name='Obsidian'
 
 install.any() {
 	~/scripts/setup/appimagelauncher.sh
 
-	util.get_latest_github_tag 'obsidianmd/obsidian-releases'
+	util.get_latest_github_release 'obsidianmd/obsidian-releases'
 	local latest_tag="$REPLY"
 
 	core.print_info 'Downloading and Installing Obsidian AppImage'

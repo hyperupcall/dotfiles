@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source ~/.dotfiles/data/setup.sh
+source ~/.dotfiles/config/setup.sh
 
 declare -g g_name='pgModeler'
 
@@ -14,7 +14,7 @@ Name=pgModeler
 Comment=PostgreSQL Database Modeler
 GenericName=Database Modeler
 Exec=pgmodeler
-Icon=~/.dotfiles/data/pgmodeler-logo.png
+Icon=~/.devresources/pgmodeler-logo.png
 Terminal=false
 Type=Application
 Categories=Development;Database;

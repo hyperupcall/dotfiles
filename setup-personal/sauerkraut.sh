@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source ~/.dotfiles/data/setup.sh
+source ~/.dotfiles/config/setup.sh
 
 declare -g g_name='Sauerkraut'
 declare -g g_dir="$HOME/.dev/.data/installed-repositories/sauerkraut"

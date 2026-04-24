@@ -2,7 +2,7 @@
 	"dictionaryDefinitions": [
 		{
 			"name": "hyperupcall",
-			"path": "~/.dotfiles/config/dictionary-hyperupcall.txt",
+			"path": "~/.devresources/dictionary-hyperupcall.txt",
 			"addWords": true
 		}
 	],

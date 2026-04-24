@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source ~/.dotfiles/data/setup.sh
+source ~/.dotfiles/config/setup.sh
 
 declare -g g_name='pass'
 declare -g g_password_store_dir="${PASSWORD_STORE_DIR:-"$HOME/.password-store"}"
@@ -47,7 +47,7 @@ install.arch() {
 }
 
 install_native_extension() {
-	util.get_latest_github_tag 'browserpass/browserpass-native'
+	util.get_latest_github_release 'browserpass/browserpass-native'
 	local version="$REPLY"
 	local system='linux64'
 	local install_dir='/usr/local'

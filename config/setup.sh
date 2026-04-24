@@ -1,10 +1,10 @@
 # shellcheck shell=bash
-if [ -n "$BASH_VERSION" ]; then
+if [ -n "${BASH_VERSION:-}" ]; then
 	shopt -s globstar
 fi
 
 # Source libraries.
-source ~/.dotfiles/data/xdg.sh
+source ~/.dotfiles/config/xdg.sh
 for _f in \
 	~/.dotfiles/vendor/bash-core/pkg/**/*.sh \
 	~/.dotfiles/vendor/bash-term/pkg/**/*.sh; do
@@ -29,6 +29,6 @@ if [ -z "$XDG_STATE_HOME" ]; then
 	exit 1
 fi
 
-CURL_CONFIG="$HOME/.dotfiles/data/curl_config.conf"
+CURL_CONFIG="$HOME/.dotfiles/config/curl_config.conf"
 
-source ~/.dotfiles/data/setup-private.sh
+source ~/.dotfiles/config/setup-private.sh

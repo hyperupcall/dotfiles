@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source ~/.dotfiles/data/setup.sh
+source ~/.dotfiles/config/setup.sh
 
 declare -g g_name='Docker'
 declare -g g_sources_file='/etc/apt/sources.list.d/docker.sources'

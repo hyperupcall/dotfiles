@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-source ~/.dotfiles/data/setup.sh
+source ~/.dotfiles/config/setup.sh
 
 declare -g g_name='Anki'
 
 install.any() {
-	util.get_latest_github_tag 'ankitects/anki'
+	util.get_latest_github_release 'ankitects/anki'
 	local version="$REPLY"
 	version='25.09' # TODO
 

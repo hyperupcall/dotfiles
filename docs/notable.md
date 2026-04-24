@@ -21,7 +21,7 @@ Special Bash readline bindings that includes many convenient functionality that 
 
 It calls more general functions that can be found at [`line-editing.sh`](/config-shell/.config/sh/line-editing.sh).
 
-## [`mkt.sh`](/config-shell/.config/sh/func-mkt.sh)
+## [`mkt`](/config-shell/.config/sh/modules/func.sh)
 
 Quick command to automatically do something in a temporary space. Based on the first argument, it will:
 

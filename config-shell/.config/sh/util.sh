@@ -3,7 +3,7 @@
 # https://superuser.com/questions/39751/add-directory-to-path-if-its-not-already-there/1644866#1644866
 _util_path_prepend() {
 	if [ -n "$2" ]; then
-		if [ -n "$BASH_VERSION" ]; then
+		if [ -n "${BASH_VERSION:-}" ]; then
 			# shellcheck disable=SC3043
 			local -n _path="$1"
 			case ":$_path:" in
@@ -29,7 +29,7 @@ _util_path_prepend() {
 
 _util_path_append() {
 	if [ -n "$2" ]; then
-		if [ -n "$BASH_VERSION" ]; then
+		if [ -n "${BASH_VERSION:-}" ]; then
 			# shellcheck disable=SC3043
 			local -n _path="$1"
 			case ":$_path:" in
@@ -79,7 +79,7 @@ _util_source_dir() {
 _util_confirm() {
 	_message=${1:-Confirm?}
 	_args='-rN1'
-	if [ -n "$ZSH_VERSION" ]; then
+	if [ -n "${ZSH_VERSION:-}" ]; then
 		_args='-rsk'
 	fi
 

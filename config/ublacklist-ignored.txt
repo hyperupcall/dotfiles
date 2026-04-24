@@ -1,7 +1,0 @@
-perplexity.ai
-mistral.ai
-chatgpt.com
-proton.me
-protonmail.com
-claude.ai
-openai.com

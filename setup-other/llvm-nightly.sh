@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source ~/.dotfiles/data/setup.sh
+source ~/.dotfiles/config/setup.sh
 
 declare -g g_name='LLVM Nightly'
 declare -g g_sources_file='/etc/apt/sources.list.d/llvm.sources'
@@ -8,7 +8,7 @@ install.debian() {
 	local dist=
 	dist=$(lsb_release --codename --short)
 
-	util.get_latest_github_tag 'llvm/llvm-project'
+	util.get_latest_github_release 'llvm/llvm-project'
 	local version=$REPLY
 	version=${version#llvmorg-}
 	version=${version%%.*}
@@ -36,7 +36,7 @@ install.ubuntu() {
 }
 
 installed() {
-	[ -f "$g_sources_file" ] && command -v clang &>/dev/null
+	[ -f "$g_sources_file" ] && command -v clang &>/dev/null && command -v clangd &>/dev/null && command -v clang-format &>/dev/null && command -v clang-tidy &>/dev/null
 }
 
 util.if_file_sourced || _setup "$@"

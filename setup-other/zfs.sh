@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source ~/.dotfiles/data/setup.sh
+source ~/.dotfiles/config/setup.sh
 
 declare -g g_name='ZFS'
 declare -g g_sources_file='/etc/apt/sources.list.d/bookworm-backports.sources'
@@ -74,7 +74,7 @@ install.cachyos() {
 }
 
 installed() {
-	[ -f "$g_sources_file" ] && command -v zfs &>/dev/null
+	command -v zfs &>/dev/null
 }
 
 util.if_file_sourced || _setup "$@"

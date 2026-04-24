@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source ~/.dotfiles/data/setup.sh
+source ~/.dotfiles/config/setup.sh
 
 main() {
 	local mode=
@@ -30,11 +30,8 @@ main() {
 		' 2>&1
 	)
 
-	options+=('/mnt/_temp')
-	printf '#%d\n  MOUNTPOINT: %s\n' "${#options[@]}" "${options[${#options[@]}-1]}"
-
 	options+=('__manual__')
-	printf '#%d\n  MOUNTPOINT: (specify manually)\n' "${#options[@]}"
+	printf '#%d\n  MOUNTPOINT: (specify manually)\n' $((${#options[@]}-1))
 
 	local answer=
 	while :; do
@@ -44,32 +41,40 @@ main() {
 		fi
 	done
 
-	local device_path="${options[$answer]}"
+	local device_path_is_manual=false device_path="${options[$answer]}"
 	if [ "$device_path" = '__manual__' ]; then
+		device_path_is_manual=true
 		read -re -p 'Enter directory path: ' device_path
 	fi
-	local -A dirs_encrypt=(
-		[gnupg]="$HOME/.gnupg"
-		[ssh]="$HOME/.ssh"
-		[history]="$XDG_STATE_HOME/history"
-		[borgkeys]="$XDG_CONFIG_HOME/borg/keys"
-	)
-	local -A dirs=(
+	device_path=${device_path%/}
+	local -A paths=(
 		[libreoffice]="$XDG_CONFIG_HOME/libreoffice/4/user"
 		[fonts]="$XDG_DATA_HOME/fonts"
 		[dbeaver]="$XDG_DATA_HOME/DBeaverData/workspace6/General/Scripts"
-		[scripts-hidden]="$_private_scripts_hidden"
 		[ankiuserdata]="$XDG_DATA_HOME/Anki2/Default User"
 		[ankiaddons]="$XDG_DATA_HOME/Anki2/addons21"
 		[applicationsdir]="$HOME/Other/Application Data"
 		[devresources]="$HOME/.devresources"
 	)
+	local -A paths_encrypt=(
+		[gnupg]="$HOME/.gnupg"
+		[ssh]="$HOME/.ssh"
+		[history]="$XDG_STATE_HOME/history"
+		[borgkeys]="$XDG_CONFIG_HOME/borg/keys"
+		[basalt_token]="$XDG_CONFIG_HOME/basalt/token"
+		[woof_token]="$XDG_DATA_HOME/woof/token"
+		[scripts_hidden]="$_private_scripts_hidden"
+		[setup_private_exec_sh]="$HOME/.dotfiles/config/setup-private-exec.sh"
+		[setup_private_pl]="$HOME/.dotfiles/config/setup-private.pl"
+		[setup_private_sh]="$HOME/.dotfiles/config/setup-private.sh"
+		[dotfiles_git_exclude]="$HOME/.dotfiles/.git/info/exclude"
+	)
 
 	if [ "$mode" = save ]; then
-		if [ "$device_path" = '/mnt/_temp' ]; then
-			sudo rm -rf "$device_path"
-			sudo mkdir -p "$device_path"
-			sudo chown "$USER:$USER" "$device_path"
+		if [ "$device_path_is_manual" = true ]; then
+			sudo rm -rf "$device_path/_data"
+			sudo mkdir -p "$device_path/_data"
+			sudo chown "$USER:$USER" "$device_path/_data"
 		fi
 
 		local password= temp_gnupg=
@@ -78,39 +83,53 @@ main() {
 		mkdir -p "$temp_gnupg"
 		core.print_info "Password: $password"
 
-		for name in "${!dirs_encrypt[@]}"; do
-			local dir="${dirs_encrypt[$name]}"
+		local save_pw_answer=
+		read -rN1 -p 'Save password to _data/pw.txt? [y/n] ' save_pw_answer
+		printf '\n'
+		if [[ $save_pw_answer =~ ^[Yy] ]]; then
+			mkdir -p "$device_path/_data"
+			printf '%s\n' "$password" >"$device_path/_data/pw.txt"
+			core.print_info "Password written to $device_path/_data/pw.txt"
+		fi
+
+		for name in "${!paths_encrypt[@]}"; do
+			local dir="${paths_encrypt[$name]}"
 			local encrypted_file="$device_path/_data/$name.asc"
 
-			core.print_info "Encrypting \"$dir\" to \"$encrypted_file\""
+			core.print_info "Encrypting $dir to $encrypted_file"
 			mkdir -p "${encrypted_file%/*}"
-			tar -C "${dir%/*}" -c "./${dir##*/}/" \
+			tar -C "${dir%/*}" -c "./${dir##*/}" \
 				| gpg --homedir "$temp_gnupg" --no-keyring --batch --yes --pinentry-mode loopback --passphrase-fd 3 --cipher-algo AES256 --no-symkey-cache --armor --symmetric 3<<<"$password" \
 				| cat >"$encrypted_file"
 		done
 
-		for name in "${!dirs[@]}"; do
-			local dir="${dirs[$name]}"
-			local dest="$device_path/_dirs/$name"
+		for name in "${!paths[@]}"; do
+			local dir="${paths[$name]}"
+			local dest="$device_path/_data/$name"
 
-			core.print_info "Copying \"$dir\" to \"$dest\""
+			core.print_info "Copying $dir to $dest"
 			mkdir -p "${dest%/*}"
 			cp -rT "$dir" "$dest"
 		done
 
 	elif [ "$mode" = restore ]; then
-		local password=
-		read -re -p 'Password? ' password
+		local password= pw_file="$device_path/_data/pw.txt"
+		if [ -f "$pw_file" ]; then
+			password=$(<"$pw_file")
+			core.print_info "Using password from $pw_file"
+		else
+			read -re -p 'Password? ' password
+		fi
 
 		local temp_gnupg=
 		temp_gnupg=$(mktemp -d --suffix '-gnupg')
 
-		for name in "${!dirs_encrypt[@]}"; do
-			local dir="${dirs_encrypt[$name]}"
+		for name in "${!paths_encrypt[@]}"; do
+			local dir="${paths_encrypt[$name]}"
 			local encrypted_file="$device_path/_data/$name.asc"
 
 			if [ -e "$dir" ]; then
-				core.print_warn "File or directory \"$dir\" already exists"
+				core.print_warn "File or directory $dir already exists"
 				read -rN1 -p 'Remove? [y/n] ' answer
 				printf '\n'
 				if [[ $answer =~ ^[Yy] ]]; then
@@ -120,29 +139,29 @@ main() {
 				fi
 			fi
 
-			core.print_info "Decrypting \"$encrypted_file\" to \"$dir\""
+			core.print_info "Decrypting $encrypted_file to $dir"
+			mkdir -p "${dir%/*}"
 			cat "$encrypted_file" \
 				| gpg --homedir "$temp_gnupg" --no-keyring --batch --yes --pinentry-mode loopback --passphrase-fd 3 --cipher-algo AES256 --no-symkey-cache --armor --decrypt 3<<<"$password" \
 				| tar -C "${dir%/*}" -x
 
 			# Ensure that no broken symlinks are copied over.
-			local file=
-			for file in "$dir"/*; do
-				if [ -L "$file" ] && [ ! -e "$file" ]; then
-					unlink "$file"
-				fi
-			done
-
-			rm "$encrypted_file"
+			if [ -d "$dir" ]; then
+				local file=
+				for file in "$dir"/*; do
+					if [ -L "$file" ] && [ ! -e "$file" ]; then
+						unlink "$file"
+					fi
+				done
+			fi
 		done
-		rmdir "${encrypted_file%/*}"
 
-		for name in "${!dirs[@]}"; do
-			local dir="${dirs[$name]}"
-			local src="$device_path/_dirs/$name"
+		for name in "${!paths[@]}"; do
+			local dir="${paths[$name]}"
+			local src="$device_path/_data/$name"
 
 			if [ -e "$dir" ]; then
-				core.print_warn "File or directory \"$dir\" already exists"
+				core.print_warn "File or directory $dir already exists"
 				read -rN1 -p 'Remove? [y/n] ' answer
 				printf '\n'
 				if [[ $answer =~ ^[Yy] ]]; then
@@ -152,17 +171,15 @@ main() {
 				fi
 			fi
 
-			core.print_info "Copying \"$src\" to \"$dir\""
+			core.print_info "Copying $src to $dir"
 			mkdir -p "${dir%/*}"
 			cp -rT "$src" "$dir"
 		done
-
-		if [ "$device_path" = '/mnt/_temp' ]; then
-			sudo rmdir "$device_path"
-		fi
 	else
-		core.print_die "Invalid mode: \"$mode\""
+		core.print_die "Invalid mode: $mode"
 	fi
+
+	core.print_info 'Done! You may need to remove the source directory'
 }
 
 util.if_file_sourced || _main "$@"

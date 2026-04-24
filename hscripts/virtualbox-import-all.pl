@@ -7,7 +7,7 @@ use File::Basename qw(dirname);
 use feature 'say';
 
 my $script_dir = dirname(__FILE__);
-my $config = do "$script_dir/../data/setup-private.pl" or die "Failed to load setup-private.pl: $!";
+my $config = do "$script_dir/../config/setup-private.pl" or die "Failed to load setup-private.pl: $!";
 my $virtualbox_dir = $config->{_private_virtualbox_dir};
 
 if (defined which('VBoxManage')) {

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source ~/.dotfiles/data/setup.sh
+source ~/.dotfiles/config/setup.sh
 
 declare -g g_name='Basalt'
 
@@ -28,8 +28,7 @@ configure() {
 	util.write_shellfile 'basalt' \
 		--bash 'eval "$(basalt global init bash)"' \
 		--zsh 'eval "$(basalt global init zsh)"' \
-		--sh 'eval "$(basalt global init sh)"' \
-		--tcsh 'basalt global init fish | source'
+		--sh 'eval "$(basalt global init sh)"'
 }
 
 util.if_file_sourced || _setup "$@"

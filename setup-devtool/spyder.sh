@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-source ~/.dotfiles/data/setup.sh
+source ~/.dotfiles/config/setup.sh
 
 declare -g g_name='Spyder'
 
 install.any() {
-	util.get_latest_github_tag 'spyder-ide/spyder'
+	util.get_latest_github_release 'spyder-ide/spyder'
 	local version="$REPLY"
 
 	curl -K "$CURL_CONFIG" -o Spyder-Linux-x86_64.sh "https://github.com/spyder-ide/spyder/releases/download/$version/Spyder-Linux-x86_64.sh"

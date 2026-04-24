@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-source ~/.dotfiles/data/setup.sh
+source ~/.dotfiles/config/setup.sh
 
 declare -g g_name='shfmt'
 
 install.any() {
-	util.get_latest_github_tag 'mvdan/sh'
+	util.get_latest_github_release 'mvdan/sh'
 	local version="$REPLY"
 
 	curl -K "$CURL_CONFIG" -o ./shfmt "https://github.com/mvdan/sh/releases/download/$version/shfmt_${version}_linux_amd64"

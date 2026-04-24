@@ -36,7 +36,7 @@ main() {
 	# Install hyperupcall/dotfiles.
 	clonerepo 'https://github.com/hyperupcall/dotfiles' ~/.dotfiles
 	run git -C ~/.dotfiles remote set-url me 'git@github.com:hyperupcall/dotfiles'
-	run ~/.dotfiles/bake init
+	run ~/.dotfiles/bake bootstrap
 
 	# Symlink ~/scripts.
 	run ln -fs ~/.dotfiles/hscripts ~/
@@ -51,10 +51,10 @@ export EDITOR='vim'
 export VISUAL="\$EDITOR"
 export PATH="\$HOME/.dotfiles/.data/bin:\$HOME/.local/bin:\$PATH"
 
-if [ -f ~/.dotfiles/data/xdg.sh ]; then
-	. ~/.dotfiles/data/xdg.sh
+if [ -f ~/.dotfiles/config/xdg.sh ]; then
+	. ~/.dotfiles/config/xdg.sh
 else
-	printf '%s\n' 'Error: ~/.dotfiles/data/xdg.sh not found'
+	printf '%s\n' 'Error: ~/.dotfiles/config/xdg.sh not found'
 	return 1
 fi
 EOF

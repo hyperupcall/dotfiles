@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-source ~/.dotfiles/data/setup.sh
+source ~/.dotfiles/config/setup.sh
 
 declare -g g_name='Godot'
 
 install.any() {
-	util.get_latest_github_tag 'godotengine/godot'
+	util.get_latest_github_release 'godotengine/godot'
 	local version="$REPLY"
 	version=${version#v}
 

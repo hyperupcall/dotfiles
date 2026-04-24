@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source ~/.dotfiles/data/setup.sh
+source ~/.dotfiles/config/setup.sh
 
 declare -g g_name='pnpm dependencies'
 declare -g g_dependencies=(yarn ovsx @vscode/vsce)

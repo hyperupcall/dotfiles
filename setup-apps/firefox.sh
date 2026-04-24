@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source ~/.dotfiles/data/setup.sh
+source ~/.dotfiles/config/setup.sh
 
 declare -g g_name='Firefox'
 declare -g g_sources_file='/etc/apt/sources.list.d/mozilla.sources'
@@ -9,6 +9,8 @@ install.debian() {
 }
 
 install.ubuntu() {
+	# TODO: color picker cannot be set
+	# TODO: xdg-desktop-portal-kde
 	# TODO: Should have a "cleanup" for distros that do this.
 	if command -v snap &>/dev/null; then
 		if snap info firefox &>/dev/null; then

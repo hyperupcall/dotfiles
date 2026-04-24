@@ -1,0 +1,4 @@
+trees:
+  webextension-new-tab-override:
+    url: git@github.com:hyperupcall-projects/webextension-new-tab-override
+    default-remote: 'me'

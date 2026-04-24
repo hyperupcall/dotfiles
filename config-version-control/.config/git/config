@@ -1,8 +1,6 @@
 [include]
-	path = include/alias.conf
-	path = include/diff.conf
-	path = include/main.conf
-	path = include/url.conf
+	path = config-alias.conf
+	path = config-main.conf
 [mergetool]
 	keepBackup = false
 [merge]

@@ -1,11 +1,11 @@
 # shellcheck shell=bash
 init() {
-	if [ -f ~/.dotfiles/data/setup-private.sh ]; then
-		source ~/.dotfiles/data/setup-private.sh
+	if [ -f ~/.dotfiles/config/setup-private.sh ]; then
+		source ~/.dotfiles/config/setup-private.sh
 	fi
 }
 
-# TODO
+# Ran in `bootstrap-linux.sh`.
 task.bootstrap() {
 	git config set --local filter.npmrc.clean './scripts/npmrc-clean.sh'
 	git config set --local filter.oscrc.clean './scripts/oscrc-clean.sh'

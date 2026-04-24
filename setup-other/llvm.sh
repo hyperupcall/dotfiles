@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-source ~/.dotfiles/data/setup.sh
+source ~/.dotfiles/config/setup.sh
 
 declare -g g_name='LLVM'
 
 install.debian() {
-	sudo apt-get install -y clang clang-format clang-tidy
+	sudo apt-get install -y clang clangd clang-format clang-tidy
 }
 
 install.ubuntu() {
@@ -12,7 +12,7 @@ install.ubuntu() {
 }
 
 installed() {
-	command -v clang &>/dev/null && command -v clang-format &>/dev/null && command -v clang-tidy &>/dev/null
+	command -v clang &>/dev/null && command -v clangd &>/dev/null && command -v clang-format &>/dev/null && command -v clang-tidy &>/dev/null
 }
 
 util.if_file_sourced || _setup "$@"

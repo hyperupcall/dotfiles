@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source ~/.dotfiles/data/setup.sh
+source ~/.dotfiles/config/setup.sh
 
 declare -g g_name='Woof'
 declare -g g_dir="$HOME/.dotfiles/.data/repos/woof"
@@ -9,7 +9,7 @@ install.any() {
 }
 
 install.source() {
-	util.clone "$g_dir" 'https://github.com/version-manager/woof'
+	util.clone "$g_dir" 'git@github.com:version-manager/woof'
 	cd "$g_dir"
 	basalt install
 
@@ -24,6 +24,7 @@ installed() {
 
 configure() {
 	util.write_shellfile 'woof' \
+		--sh 'eval "$(woof init --no-cd sh)"' \
 		--bash 'eval "$(woof init --no-cd bash)"' \
 		--zsh 'eval "$(woof init --no-cd zsh)"'
 }

@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
-source ~/.dotfiles/data/setup.sh
+source ~/.dotfiles/config/setup.sh
 
 declare -g g_name='d'
+declare -g g_dir="$HOME/.dotfiles/.data/repos/d"
 
 install.any() {
 	dependencies.debian() {
@@ -22,17 +23,15 @@ install.any() {
 
 	util.install_by_setup --fn-prefix=dependencies --no-confirm --no-install-check "$@"
 
-	# TODO: g_dir
-	local dir="$HOME/.dotfiles/.data/repos/d"
-	util.clone "$dir" git@github.com:fox-incubating/d # TODO: names
-	cd ~/.dotfiles/.data/repos/d
+	util.clone "$g_dir" git@github.com:fox-incubating/d # TODO: names
+	cd "$g_dir"
 	./bake build "$HOME/.dotfiles/data/dotfiles.c"
 	ln -fs "$PWD/d" ~/.local/bin/d
 	DEBUG= ~/.local/bin/d deploy
 }
 
 installed() {
-	command -v d &>/dev/null
+	[ -d "$g_dir" ] && command -v d &>/dev/null
 }
 
 util.if_file_sourced || _setup "$@"

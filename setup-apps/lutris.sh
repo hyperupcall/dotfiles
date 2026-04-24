@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source ~/.dotfiles/data/setup.sh
+source ~/.dotfiles/config/setup.sh
 
 declare -g g_name='Lutris'
 declare -g g_sources_file='/etc/apt/sources.list.d/lutris.sources'
@@ -21,7 +21,7 @@ install.debian() {
 }
 
 install.ubuntu() {
-	util.get_latest_github_tag 'lutris/lutris'
+	util.get_latest_github_release 'lutris/lutris'
 	local version="$REPLY"
 	version=${version#v}
 

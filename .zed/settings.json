@@ -10,7 +10,7 @@
 		"**/.venv/**",
 		"bake",
 		"config-shell/.config/bash/frameworks/bash-it.sh",
-		"vendor/**",
+		"vendor/**"
 	],
 	"languages": {
 		"HTML": {

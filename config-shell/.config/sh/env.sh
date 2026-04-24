@@ -41,18 +41,33 @@ export HOMEBREW_NO_ENV_HINTS=1
 export HSTR_CONFIG='hicolor'
 
 # less
+export LESSKEYIN="$XDG_CONFIG_HOME/less/lesskey"
 # shellcheck disable=SC3003
-{
-	export LESSKEYIN="$XDG_CONFIG_HOME/less/lesskey"
-	export LESS_TERMCAP_mb=$'\e[1;31m'     # Start blink.
-	export LESS_TERMCAP_md=$'\e[1;36m'     # Start bold.
-	export LESS_TERMCAP_me=$'\e[0m'        # End all.
-	export LESS_TERMCAP_so=$'\e[01;44;33m' # Start reverse video.
-	export LESS_TERMCAP_se=$'\e[0m'        # End reverse video.
-	export LESS_TERMCAP_us=$'\e[1;32m'     # Start underline.
-	export LESS_TERMCAP_ue=$'\e[0m'        # End underline.
-	export LESS_TERMCAP_us=$'\e[1;32m'     # Start underline.
-}
+if [ -n "${BASH_VERSION:-}" ] || [ -n "${ZSH_VERSION:-}" ] || [ -n "${KSH_VERSION:-}" ]; then
+    _tc_mb=$'\e[1;31m'
+    _tc_md=$'\e[1;36m'
+    _tc_me=$'\e[0m'
+    _tc_so=$'\e[01;44;33m'
+    _tc_se=$'\e[0m'
+    _tc_us=$'\e[1;32m'
+    _tc_ue=$'\e[0m'
+else
+    _tc_mb=$(printf '\033[1;31m')
+    _tc_md=$(printf '\033[1;36m')
+    _tc_me=$(printf '\033[0m')
+    _tc_so=$(printf '\033[01;44;33m')
+    _tc_se=$(printf '\033[0m')
+    _tc_us=$(printf '\033[1;32m')
+    _tc_ue=$(printf '\033[0m')
+fi
+export LESS_TERMCAP_mb="$_tc_mb" # Start blink.
+export LESS_TERMCAP_md="$_tc_md" # Start bold.
+export LESS_TERMCAP_me="$_tc_me" # End all.
+export LESS_TERMCAP_so="$_tc_so" # Start reverse video.
+export LESS_TERMCAP_se="$_tc_se" # End reverse video.
+export LESS_TERMCAP_us="$_tc_us" # Start underline.
+export LESS_TERMCAP_ue="$_tc_ue" # End underline.
+unset -v _tc_mb _tc_md _tc_me _tc_so _tc_se _tc_us _tc_ue
 
 # more
 export MORE='-l'

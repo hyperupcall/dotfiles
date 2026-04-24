@@ -97,9 +97,73 @@ else
 	unset -v _colors
 fi
 
+# Load bash-preexec.
+source "$XDG_DATA_HOME"/basalt/store/packages/github.com/rcaloras/bash-preexec\@*/bash-preexec.sh
+
+# Executes after command is read, but before command execution.
+preexec() {
+	:
+}
+
+# Executes before each prompt.
+precmd() {
+	# For cdp().
+	# shellcheck disable=SC2034
+	_shell_cdp_dir="$PWD"
+
+	# Update history file before running each command.
+	history -a
+}
+
+_debug_completion() {
+	echo
+	echo "----- debug start -----"
+	echo "#COMP_WORDS=${#COMP_WORDS[@]}"
+	echo "COMP_WORDS=("
+	for x in "${COMP_WORDS[@]}"; do
+		echo "  '$x'"
+	done
+	echo ")"
+	echo "COMP_CWORD=${COMP_CWORD}"
+	echo "COMP_LINE='${COMP_LINE}'"
+	echo "COMP_POINT=${COMP_POINT}"
+	echo "cur: '${COMP_WORDS[COMP_CWORD]}'"
+	echo "COMP_KEY=${COMP_KEY}"
+	echo "COMP_TYPE=${COMP_TYPE}"
+	echo "----- debug end -----"
+}
+
+# With BASH_COMPLETION_USER_DIR and BASH_COMPLETION_USER_FILE now set,
+# source bash_completion.
+[ -f /usr/share/bash-completion/bash_completion ] && source /usr/share/bash-completion/bash_completion
+
+# Readline customization.
+_readline_show_help() {
+	_lineediting_action_show_help "$READLINE_LINE"
+}
+_readline_show_man() {
+	_lineediting_action_show_man "$READLINE_LINE"
+}
+_readline_toggle_sudo() {
+	_lineediting_action_toggle_sudo "$READLINE_LINE" "$READLINE_POINT"
+	READLINE_LINE=$REPLY1
+	READLINE_POINT=$REPLY2
+}
+_readline_trim_whitespace() {
+	_lineediting_action_trim_whitespace "$READLINE_LINE"
+	READLINE_LINE=$REPLY
+}
+_readline_ls() {
+	_util_ls
+}
+bind -x '"\eh": _readline_show_help'
+bind -x '"\em": _readline_show_man'
+bind -x '"\es": _readline_toggle_sudo'
+bind -x '"\ei": _readline_trim_whitespace'
+bind -x '"\el": _readline_ls'
+
 # Modules.
 _util_source_file "$XDG_CONFIG_HOME/sh/line-editing.sh"
-_util_source_dir "$XDG_CONFIG_HOME/bash/modules"
 _util_source_dir "$XDG_CONFIG_HOME/bash/bash.d"
 
 # ---

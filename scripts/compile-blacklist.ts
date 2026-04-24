@@ -39,7 +39,7 @@ const blocklists: { link: string, type: 'ublockorigin' | 'ublacklist' }[] = [
 
 const ignoreFile = path.join(
 	import.meta.dirname,
-	"../config/ublacklist-ignored.txt",
+	"~/.devresources/ublacklist-ignored.txt",
 );
 const ignoreSet = new Set(
 	Deno.readTextFileSync(ignoreFile).split("\n").map((item) =>
@@ -84,5 +84,5 @@ await Promise.all(["ublockorigin", "ublacklist"].map(async (appName) => {
 			},
 		),
 	)).join("");
-	await Deno.writeTextFile(`./config/${appName}-compiled.txt`, data);
+	await Deno.writeTextFile(`~/.devresources/${appName}-compiled.txt`, data);
 }));

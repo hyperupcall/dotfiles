@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-source ~/.dotfiles/data/setup.sh
+source ~/.dotfiles/config/setup.sh
 
 declare -g g_name='docker secretservice credential store'
 
 install.any() {
-	util.get_latest_github_tag 'docker/docker-credential-helpers'
+	util.get_latest_github_release 'docker/docker-credential-helpers'
 	local version="$REPLY"
 	echo "$version"
 	curl -K "$CURL_CONFIG" -o 'docker-credential-secretservice' "https://github.com/docker/docker-credential-helpers/releases/download/$version/docker-credential-secretservice-$version.linux-amd64"

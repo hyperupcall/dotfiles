@@ -1,2 +1,2 @@
-dotfiles.o
-libdotfiles.so
+*.so
+*.o

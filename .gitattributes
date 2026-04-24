@@ -1,6 +1,5 @@
 * text=auto eol=lf
 bake linguist-generated
-config/ublacklist.txt linguist-language=AdBlock linguist-detectable
 
 config-language/.config/npm/npmrc filter=npmrc
 config-tools/.config/osc/oscrc filter=oscrc

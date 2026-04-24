@@ -3,8 +3,8 @@ garden:
   root: '${GARDEN_CONFIG_DIR}'
 
 variables:
-  applicationsDir: '$ ~/.dotfiles/data/setup-private-exec.sh programs-dir'
-  gameDevelopmentDir: '$ ~/.dotfiles/data/setup-private-exec.sh game-development-dir'
+  applicationsDir: '$ ~/.dotfiles/config/setup-private-exec.sh programs-dir'
+  gameDevelopmentDir: '$ ~/.dotfiles/config/setup-private-exec.sh game-development-dir'
 
 grafts:
   graft-anki-plugins:
@@ -40,6 +40,9 @@ grafts:
   graft-version-manager:
     config: './graft-version-manager.yaml'
     root: '${applicationsDir}/version-manager'
+  graft-webextensions:
+    config: './graft-webextensions.yaml'
+    root: '${applicationsDir}/webextensions'
 
 groups:
   anki-plugins:
@@ -152,3 +155,6 @@ groups:
     - 'graft-version-manager::woof-plugin-ancillary'
     - 'graft-version-manager::woof-plugin-core'
     - 'graft-version-manager::woof-plugin-hashicorp'
+
+  webextensions:
+    - 'graft-webextensions::webextension-new-tab-override'

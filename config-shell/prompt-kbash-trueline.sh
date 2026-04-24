@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source ~/.dotfiles/data/setup.sh
+source ~/.dotfiles/config/setup.sh
 
 declare -g g_name='kbash-trueline'
 declare -g g_dir="$HOME/.dotfiles/.data/repos/kbash-trueline"

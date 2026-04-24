@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-source ~/.dotfiles/data/setup.sh
+source ~/.dotfiles/config/setup.sh
 
 declare -g g_name='age'
 
 install.any() {
-	util.get_latest_github_tag 'FiloSottile/age'
+	util.get_latest_github_release 'FiloSottile/age'
 	local version="$REPLY"
 
 	curl -K "$CURL_CONFIG" -o 'age.tar.gz' "https://github.com/FiloSottile/age/releases/download/$version/age-$version-linux-amd64.tar.gz"

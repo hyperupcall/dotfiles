@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source ~/.dotfiles/data/setup.sh
+source ~/.dotfiles/config/setup.sh
 
 declare -g g_name='AppImageLauncher'
 
@@ -58,7 +58,7 @@ install.source() {
 get_appimagelauncher_release_file() {
 	local ext="$1"
 
-	util.get_latest_github_tag 'TheAssassin/AppImageLauncher'
+	util.get_latest_github_release 'TheAssassin/AppImageLauncher'
 	local latest_tag=$REPLY
 
 	local token=

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source ~/.dotfiles/data/setup.sh
+source ~/.dotfiles/config/setup.sh
 
 declare -g g_name='dev'
 
@@ -13,7 +13,7 @@ install.any() {
 	old_nodejs_version=${old_nodejs_version#node-v}
 	old_nodejs_version=${old_nodejs_version%%-*}
 	if [ -d "${dirs[0]}" ] && [ "$old_nodejs_version" = "$nodejs_version" ]; then
-		local dir_pretty="~${dirs[0]#$HOME}"
+		local dir_pretty="~${dirs[0]#"$HOME"}"
 		core.print_info "Already installed NodeJS to $dir_pretty"
 	else
 		pushd ~/.dotfiles/.data >/dev/null
