@@ -1,6 +1,38 @@
 #!/usr/bin/env sh
 set -e
 
+installcmd() {
+	if iscmd "$1"; then
+		log "Already installed $1"
+	else
+		log "Installing $1"
+
+		if iscmd 'pacman'; then
+			run sudo pacman -S --noconfirm "$2"
+		elif iscmd 'apt-get'; then
+			run sudo apt-get -y install "$2"
+		elif iscmd 'dnf'; then
+			run sudo dnf -y install "$2"
+		elif iscmd 'zypper'; then
+			run sudo zypper -n install "$2"
+		elif iscmd 'eopkg'; then
+			run sudo eopkg -y install "$2"
+		elif iscmd 'brew'; then
+			run brew install "$2"
+		else
+			die 'Failed to determine package manager'
+		fi
+
+		if ! iscmd "$1"; then
+			die "Automatic installation of $1 failed"
+		fi
+	fi
+}
+
+if [ -n "$FORCE_SOURCE" ]; then
+	return 0
+fi
+
 # shellcheck disable=SC3028,SC3054,SC2039
 if [ -n "$BASH" ] && [ "${BASH_SOURCE[0]}" != "$0" ]; then
 	printf '%s\n' "Error: This file should not be sourced"
@@ -39,7 +71,9 @@ main() {
 	run ~/.dotfiles/bake bootstrap
 
 	# Symlink ~/scripts.
-	run ln -fs ~/.dotfiles/hscripts ~/
+	if [ ! -d ~/scripts ]; then
+		run ln -sf ~/.dotfiles/hscripts ~/scripts
+	fi
 
 	# Export variables.
 	cat >~/.bootstrap/bootstrap-out.sh <<EOF
@@ -125,34 +159,6 @@ updatesystem() {
 		brew update
 	else
 		die 'Failed to determine package manager'
-	fi
-}
-
-installcmd() {
-	if iscmd "$1"; then
-		log "Already installed $1"
-	else
-		log "Installing $1"
-
-		if iscmd 'pacman'; then
-			run sudo pacman -S --noconfirm "$2"
-		elif iscmd 'apt-get'; then
-			run sudo apt-get -y install "$2"
-		elif iscmd 'dnf'; then
-			run sudo dnf -y install "$2"
-		elif iscmd 'zypper'; then
-			run sudo zypper -n install "$2"
-		elif iscmd 'eopkg'; then
-			run sudo eopkg -y install "$2"
-		elif iscmd 'brew'; then
-			run brew install "$2"
-		else
-			die 'Failed to determine package manager'
-		fi
-
-		if ! iscmd "$1"; then
-			die "Automatic installation of $1 failed"
-		fi
 	fi
 }
 

@@ -1,7 +1,20 @@
 #!/usr/bin/env bash
-source ~/.dotfiles/config/setup.sh
+# DO NOT source setup.sh here. Otherwise, "_private" variables
+# cannot be accessed. This needs to be standalone and work before
+# running "doctor.sh".
 
 main() {
+	FORCE_SOURCE=1 source ~/.dotfiles/bootstrap-linux.sh
+	installcif [ -n "$FORCE_SOURCE" ]; then
+		return 0
+fi
+
+# shellcheck disable=SC3028,SC3054,SC2039
+if [ -n "$BASH" ] && [ "${BASH_SOURCE[0]}" != "$0" ]; then
+		printf '%s\n' "Error: This file should not be sourced"
+		return 1
+fimd 'jq'
+
 	local mode=
 	while :; do
 		local options='save|restore'
@@ -35,8 +48,8 @@ main() {
 
 	local answer=
 	while :; do
-		read -re -p 'Choose directory to put temporary file: ' answer
-		if [[ $answer =~ [0-9]+ ]] && ((answer >= 0)) && ((answer < ${#options[@]})); then
+		read -re -p 'Choose directory for temporary files: ' answer
+		if [[ $answer =~ ^[0-9]+$ ]] && ((answer >= 0)) && ((answer < ${#options[@]})); then
 			break
 		fi
 	done
@@ -47,15 +60,12 @@ main() {
 		read -re -p 'Enter directory path: ' device_path
 	fi
 	device_path=${device_path%/}
-	local -A paths=(
-		[libreoffice]="$XDG_CONFIG_HOME/libreoffice/4/user"
-		[fonts]="$XDG_DATA_HOME/fonts"
-		[dbeaver]="$XDG_DATA_HOME/DBeaverData/workspace6/General/Scripts"
-		[ankiuserdata]="$XDG_DATA_HOME/Anki2/Default User"
-		[ankiaddons]="$XDG_DATA_HOME/Anki2/addons21"
-		[applicationsdir]="$HOME/Other/Application Data"
-		[devresources]="$HOME/.devresources"
-	)
+
+	local tmp_gnupg_dir=$(mktemp -d --suffix='-gnupg')
+	gpg --homedir "$tmp_gnupg_dir" --no-keyring --batch --yes --pinentry-mode loopback --passphrase-fd 3 --no-symkey-cache --decrypt "$device_path/_data/setup_private_sh.asc" 3<<<$(cat "$device_path/_data/pw.txt") | tar -xO > "$HOME/.dotfiles/config/setup-private.sh"
+
+	source ~/.dotfiles/config/setup.sh
+
 	local -A paths_encrypt=(
 		[gnupg]="$HOME/.gnupg"
 		[ssh]="$HOME/.ssh"
@@ -69,6 +79,15 @@ main() {
 		[setup_private_sh]="$HOME/.dotfiles/config/setup-private.sh"
 		[dotfiles_git_exclude]="$HOME/.dotfiles/.git/info/exclude"
 	)
+	local -A paths=(
+		[libreoffice]="$XDG_CONFIG_HOME/libreoffice/4/user"
+		[fonts]="$XDG_DATA_HOME/fonts"
+		[dbeaver]="$XDG_DATA_HOME/DBeaverData/workspace6/General/Scripts"
+		[ankiuserdata]="$XDG_DATA_HOME/Anki2/Default User"
+		[ankiaddons]="$XDG_DATA_HOME/Anki2/addons21"
+		[applicationsdir]="$HOME/Other/Application Data"
+		[devresources]="$HOME/.devresources"
+	)
 
 	if [ "$mode" = save ]; then
 		if [ "$device_path_is_manual" = true ]; then
@@ -79,7 +98,7 @@ main() {
 
 		local password= temp_gnupg=
 		password=$(LC_ALL=C tr -dc '[:graph:]' </dev/urandom | head -c 14)
-		temp_gnupg=$(mktemp -d --suffix '-gnupg')
+		temp_gnupg=$(mktemp -d --suffix='-gnupg')
 		mkdir -p "$temp_gnupg"
 		core.print_info "Password: $password"
 
@@ -112,7 +131,7 @@ main() {
 			cp -rT "$dir" "$dest"
 		done
 
-	elif [ "$mode" = restore ]; then
+	elif [ "$mode" = resto~/scripts/doctor.sh re ]; then
 		local password= pw_file="$device_path/_data/pw.txt"
 		if [ -f "$pw_file" ]; then
 			password=$(<"$pw_file")
@@ -122,7 +141,7 @@ main() {
 		fi
 
 		local temp_gnupg=
-		temp_gnupg=$(mktemp -d --suffix '-gnupg')
+		temp_gnupg=$(mktemp -d --suffix='-gnupg')
 
 		for name in "${!paths_encrypt[@]}"; do
 			local dir="${paths_encrypt[$name]}"
@@ -179,7 +198,7 @@ main() {
 		core.print_die "Invalid mode: $mode"
 	fi
 
-	core.print_info 'Done! You may need to remove the source directory'
+	core.print_info 'Done! You may want to remove $device_path/_data'
 }
 
 util.if_file_sourced || _main "$@"

@@ -16,6 +16,7 @@ main() {
 			--exclude '**/Steam/steamapps' \
 			--exclude '**/Steam/ubuntu12_32' \
 			--exclude '**/Steam/ubuntu12_64' \
+			--exclude '**/Steam/appcache' \
 			--exclude '**/*.git' \
 			--exclude '**/*.hg' \
 			--exclude '**/*.svn' \
@@ -23,6 +24,7 @@ main() {
 			--exclude '**/brave-browser*' \
 			--exclude '**/chromium*' \
 			--exclude '**/firefox*' \
+			--exclude '**/mozilla-unified*' \
 			--exclude '**/llvm-project*' \
 			--exclude '**/gcc*' \
 			--exclude '**/android*' \
@@ -32,8 +34,12 @@ main() {
 			--exclude '**/node_modules' \
 			--exclude '**/.npm/_cacache' \
 			--exclude '**/pnpm/store' \
+			--exclude '**/.rustup/toolchains' \
 			--exclude '**/rustup/toolchains' \
+			--exclude '**/.cargo/registry' \
 			--exclude '**/cargo/registry' \
+			--exclude "$HOME/go" \
+			--exclude "$HOME/.gopath" \
 			--exclude '**/mise/installs' \
 			--exclude '**/miniforge3/pkgs' \
 			--exclude '**/miniforge3/envs' \
@@ -50,6 +56,9 @@ main() {
 			--exclude "$XDG_DATA_HOME/gradle/jdks" \
 			--exclude "$XDG_DATA_HOME/flatpak/repo/objects" \
 			--exclude "$XDG_DATA_HOME/flatpak/runtime" \
+			--exclude "$XDG_DATA_HOME/flatpak/appstream" \
+			--exclude "$XDG_DATA_HOME/Jan" \
+			--exclude "$XDG_DATA_HOME/uv" \
 			--exclude '**/target' \
 			--exclude '**/target-*' \
 			--exclude '**/dist' \
@@ -65,7 +74,7 @@ main() {
 			--exclude '**/youtube-dl' \
 			--exclude '**/.cache' \
 			--exclude '**/*.iso' \
-			"$backup_dir"::'backup-{now}-{hostname}' \
+			"$backup_dir"::'backup-{now:%Y-%m-%d_%H:%M:%S}-{hostname}' \
 			"$save_dir"
 	fi
 }

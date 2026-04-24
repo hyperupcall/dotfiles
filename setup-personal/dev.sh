@@ -34,18 +34,10 @@ install.any() {
 		ln -sf ~/.dotfiles/.data/node-v*/bin/node ~/.dotfiles/.data/binexec/node
 	fi
 
-	# Download and install Deno runtime.
-	if [ -x ~/.dotfiles/.data/binexec/deno ]; then
-		core.print_info "Already installed NodeJS to ~/.dotfiles/.data/binexec/deno"
-	else
-		curl -K "$CURL_CONFIG" https://deno.land/install.sh | DENO_INSTALL="$PWD" CI=1 sh
-		mv './bin/deno' ~/.dotfiles/.data/binexec/deno
-	fi
-
 	# Download and install "dev".
 	local dir="$HOME/.dev"
 	if [ ! -d "$dir" ]; then
-		util.clone "$dir" git@github.com:fox-incubating/dev
+		util.clone "$dir" git@github.com:fox-incubating/dev # TODO: Update references
 	fi
 	mkdir -p "$dir/.data"
 	if [ ! -f ~/.dotfiles/.data/bin/dev ]; then
@@ -56,28 +48,19 @@ install.any() {
 		EOF
 		chmod +x ~/.dotfiles/.data/bin/dev
 	fi
-	mkdir -p "$XDG_DATA_HOME/systemd/user"
-	cat >"$XDG_DATA_HOME/systemd/user/dev.service" <<-'EOF'
-		[Unit]
-		Description=Dev
-		ConditionPathIsDirectory=%h/.dev
 
-		[Service]
-		Type=simple
-		WorkingDirectory=%h/.dev
-		ExecStart=%h/.dotfiles/.data/binexec/deno --allow-all %h/.dev/bin/dev.ts start-dev-server
-		Environment=PORT=40008
-		Restart=on-failure
-
-		[Install]
-		WantedBy=default.target
-	EOF
-	systemctl --user daemon-reload
-	systemctl --user enable --now dev.service
+	if util.is_in_container_or_chroot; then
+		core.print_warn 'Skipping installing and running dev.service since in container or chroot'
+	else
+		mkdir -p "$XDG_DATA_HOME/systemd/user"
+		cp ~/.dev/config/dev.service "$XDG_DATA_HOME/systemd/user/dev.service"
+		systemctl --user daemon-reload
+		systemctl --user enable --now dev.service
+	fi
 }
 
 installed() {
-	[ -f "$XDG_DATA_HOME/systemd/user/dev.service" ] && [ -f ~/.dotfiles/.data/binexec/node ] && [ -f ~/.dotfiles/.data/binexec/deno ]
+	[ -f "$XDG_DATA_HOME/systemd/user/dev.service" ] && [ -f ~/.dotfiles/.data/binexec/node ]
 }
 
 util.if_file_sourced || _setup "$@"

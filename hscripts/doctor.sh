@@ -272,18 +272,20 @@ main() {
 		must.strict_permissions ~/.gnupg/ ~/.gnupg/*
 
 		if [[ $computer_profile == @(desktop|laptop) ]]; then
-			if gpg --list-keys 0x2FB93BF35E14E7C4 &>/dev/null; then
-				core.print_info "Has gpg key \"Edwin Kofler (FOR PASSWORDS ONLY) <edwin@kofler.dev>\""
+			if gpg --list-keys "$_private_gpgkey1_id" &>/dev/null; then
+				core.print_info "Has gpg key \"$_private_gpgkey1_user\""
 			else
-				core.print_info "Does not have gpg key \"Edwin Kofler (FOR PASSWORDS ONLY) <edwin@kofler.dev>\""
+				core.print_info "Does not have gpg key \"$_private_gpgkey1_user\""
 			fi
-			if gpg --list-keys 0x3851E5FD042C7C6C &>/dev/null; then
-				core.print_info "Has gpg key \"Edwin Kofler <edwin@kofler.dev>\""
+			if gpg --list-keys "$_private_gpgkey2_id" &>/dev/null; then
+				core.print_info "Has gpg key \"$_private_gpgkey2_user\""
 			else
-				core.print_die "Does not have gpg key \"Edwin Kofler <edwin@kofler.dev>\""
+				core.print_die "Does not have gpg key \"$_private_gpgkey2_user\""
 			fi
 		fi
 	}
+
+	~/scripts/setup/juno-computers.sh
 
 	# Install the most paramount tools.
 	~/scripts/setup/d.sh
@@ -291,6 +293,8 @@ main() {
 	~/scripts/setup/ksh.sh
 	~/scripts/setup/rust.sh
 	~/scripts/setup/mise.sh
+	~/scripts/setup/neovim.sh
+
 
 	# Install personal tools.
 	#~/scripts/setup/npm.sh
@@ -310,7 +314,6 @@ main() {
 	~/scripts/setup/git.sh
 
 	# Install applications.
-	~/scripts/setup/neovim.sh
 	~/scripts/setup/firefox.sh
 	~/scripts/setup/librewolf.sh
 	~/scripts/setup/brave.sh
@@ -581,6 +584,7 @@ must.strict_permissions() {
 
 dependencies.debian() {
 	local packages=()
+	packages+=(xdg-user-dirs)
 	packages+=(apt-transport-https build-essential)
 	packages+=(bash-completion curl rsync cmake ccache vim nano jq lvm2) # lint-ignore:curl-must-have-args
 	packages+=(pkg-config libssl-dev)                                    # For starship
@@ -592,6 +596,7 @@ dependencies.ubuntu() {
 }
 dependencies.fedora() {
 	local packages=()
+	packages+=(xdg-user-dirs)
 	packages+=(@development-tools)
 	packages+=(bash-completion curl rsync cmake ccache vim nano jq lvm2) # lint-ignore:curl-must-have-args
 	packages+=(pkg-config openssl-devel)                                 # For starship
@@ -601,6 +606,7 @@ dependencies.fedora() {
 }
 dependencies.opensuse() {
 	local packages=()
+	packages+=(xdg-user-dirs)
 	packages+=(bash-completion curl rsync cmake ccache vim nano jq lvm2) # lint-ignore:curl-must-have-args
 	packages+=(pkg-config openssl-devel)                                 # For starship
 
@@ -609,6 +615,7 @@ dependencies.opensuse() {
 }
 dependencies.arch() {
 	local packages=()
+	packages+=(xdg-user-dirs)
 	packages+=(base-devl lvm2 openssl yay)
 
 	sudo pacman -Syu --noconfirm "${packages[@]}"
