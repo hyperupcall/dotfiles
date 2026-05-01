@@ -10,6 +10,7 @@ task.bootstrap() {
 	git config set --local filter.npmrc.clean './scripts/npmrc-clean.sh'
 	git config set --local filter.oscrc.clean './scripts/oscrc-clean.sh'
 	git config set --local filter.homedir.clean './scripts/homedir-clean.sh'
+	git config set --local filter.homedir.smudge './scripts/homedir-smudge.sh'
 	git config set --local filter.npmrc.required true
 	git config set --local filter.oscrc.required true
 	git config set --local filter.homedir.required true

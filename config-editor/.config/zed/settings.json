@@ -5,6 +5,7 @@
 			"remote": false,
 			"command": "node",
 			"args": [
+				"/"
 			],
 			"env": {},
 		},
