@@ -97,8 +97,16 @@ else
 	unset -v _colors
 fi
 
+# Source other files.
+_util_source_file "$XDG_CONFIG_HOME/sh/line-editing.sh"
+_util_source_dir "$XDG_CONFIG_HOME/bash/bash.d"
+
 # Load bash-preexec.
-source "$XDG_DATA_HOME"/basalt/store/packages/github.com/rcaloras/bash-preexec\@*/bash-preexec.sh
+if [ -d "$XDG_DATA_HOME/basalt/store/packages/github.com/rcaloras" ]; then
+	source "$XDG_DATA_HOME"/basalt/store/packages/github.com/rcaloras/bash-preexec\@*/bash-preexec.sh
+else
+	_util_log_warn 'Not sourcing rcaloras/bash-preexec'
+fi
 
 # Executes after command is read, but before command execution.
 preexec() {
@@ -161,9 +169,5 @@ bind -x '"\em": _readline_show_man'
 bind -x '"\es": _readline_toggle_sudo'
 bind -x '"\ei": _readline_trim_whitespace'
 bind -x '"\el": _readline_ls'
-
-# Modules.
-_util_source_file "$XDG_CONFIG_HOME/sh/line-editing.sh"
-_util_source_dir "$XDG_CONFIG_HOME/bash/bash.d"
 
 # ---

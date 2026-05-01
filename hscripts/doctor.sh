@@ -13,6 +13,9 @@ main() {
 	must.dir ~/.home
 	must.dir ~/.dotfiles/.data/{bin,repos}
 	must.dir ~/.local/bin
+	must.dir "$XDG_CONFIG_HOME/bash/bash.d"
+	must.dir "$XDG_CONFIG_HOME/zsh/zsh.d"
+	must.dir "$XDG_CONFIG_HOME/sh/shell.d"
 
 	# Install required dependencies.
 	if [ ! -f ~/.dotfiles/.data/finished_bootstrap ]; then
@@ -238,7 +241,7 @@ main() {
 	fi
 
 	# Fetch GithHub authorization tokens.
-	if [ -f ~/.dotfiles/.data/github_token ]; then
+	if [ -s ~/.dotfiles/.data/github_token ]; then
 		core.print_info 'Already downloaded GitHub token'
 	else
 		local hostname=$HOSTNAME
@@ -285,19 +288,21 @@ main() {
 		fi
 	}
 
-	~/scripts/setup/juno-computers.sh
+	# Install necessary drivers.
+	~/scripts/setup/juno-computers.sh # TODO: read profile
 
 	# Install the most paramount tools.
 	~/scripts/setup/d.sh
+	# TOOD: Install prompt
 	~/scripts/setup/zsh.sh
 	~/scripts/setup/ksh.sh
 	~/scripts/setup/rust.sh
 	~/scripts/setup/mise.sh
 	~/scripts/setup/neovim.sh
-
+	~/scripts/setup/less.sh
+	~/scripts/setup/git-diff-so-fancy.sh
 
 	# Install personal tools.
-	#~/scripts/setup/npm.sh
 	~/scripts/setup/pass.sh
 	~/scripts/setup/dev.sh
 	# ~/scripts/setup/sauerkraut.sh # TODO
@@ -305,51 +310,52 @@ main() {
 	~/scripts/setup/woof.sh
 
 	# Install other important tools.
+	~/scripts/setup/npm.sh
 	~/scripts/setup/flatpak.sh
-	# ~/scripts/setup/appimagelauncher.sh # TODO
 	~/scripts/setup/notify-send.sh
-	~/scripts/setup/cmake.sh
 	~/scripts/setup/lefthook.sh
 	~/.dotfiles/bake init # Depends on mise and lefthook.
 	~/scripts/setup/git.sh
 
 	# Install applications.
-	~/scripts/setup/firefox.sh
+	# ~/scripts/setup/appimagelauncher.sh # TODO
 	~/scripts/setup/librewolf.sh
 	~/scripts/setup/brave.sh
-	~/scripts/setup/maestral.sh
-	~/scripts/setup/vscode.sh
+	~/scripts/setup/remove-snap.sh # Remove snap after installing a
+	~/scripts/setup/firefox.sh
 	~/scripts/setup/thunderbird.sh
+	~/scripts/setup/zed.sh
+	~/scripts/setup/vscode.sh
 	~/scripts/setup/obsidian.sh
 	~/scripts/setup/kitty.sh
-	~/scripts/setup/git-diff-so-fancy.sh
-
+	~/scripts/setup/yakuake.sh
 	~/scripts/setup/gh.sh
 	~/scripts/setup/shfmt.sh
 	~/scripts/setup/shellcheck.sh
 	~/scripts/setup/bats.sh
-	~/scripts/setup/less.sh
 	~/scripts/setup/latex.sh
 	~/scripts/setup/fish.sh
 	~/scripts/setup/miscellaneous.sh
 	~/scripts/setup/direnv.sh
 
 	~/scripts/setup/llvm.sh
+	~/scripts/setup/llvm-nightly.sh
 	~/scripts/setup/bake.sh
 	~/scripts/setup/pre-commit.sh
 	~/scripts/setup/homebrew.sh
 	~/scripts/setup/nerdfonts.sh
 
 	# TODO:
+	~/scripts/setup/kwrite.sh
 	# ~/scripts/setup/blender.sh
 	~/scripts/setup/borg.sh
 	~/scripts/setup/darktable.sh
 	~/scripts/setup/anki.sh
 	~/scripts/setup/sqlitebrowser.sh
 	# ~/scripts/setup/virtualbox.sh
-	~/scripts/setup/zed.sh
 	~/scripts/setup/syncthing.sh
 	~/scripts/setup/kdenlive.sh
+	~/scripts/setup/merkuro.sh
 	~/scripts/setup/bats.sh
 	~/scripts/setup/btrfs.sh
 	~/scripts/setup/zfs.sh

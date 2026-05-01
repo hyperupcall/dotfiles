@@ -6,7 +6,7 @@ declare -g g_name='podman'
 install.debian() {
 	sudo apt-get install -y podman
 	flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
-	flatpak install -y flathub io.podman_desktop.PodmanDesktop
+	flatpak install -y --user flathub io.podman_desktop.PodmanDesktop
 }
 
 install.ubuntu() {
@@ -16,13 +16,13 @@ install.ubuntu() {
 install.fedora() {
 	sudo dnf -y install podman
 	flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
-	flatpak install -y flathub io.podman_desktop.PodmanDesktop
+	flatpak install -y --user flathub io.podman_desktop.PodmanDesktop
 }
 
 install.opensuse() {
 	sudo zypper -n install podman
 	flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
-	flatpak install -y flathub io.podman_desktop.PodmanDesktop
+	flatpak install -y --user flathub io.podman_desktop.PodmanDesktop
 }
 
 installed() {

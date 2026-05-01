@@ -11,6 +11,8 @@ install.ubuntu() {
 	sudo apt-get install -y juno-installer
 
 	juno-installer
+
+	sudo chown "$USER:$USER" "$XDG_DATA_HOME/share/icons"
 }
 
 installed() {

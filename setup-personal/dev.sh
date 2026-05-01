@@ -48,6 +48,11 @@ install.any() {
 		EOF
 		chmod +x ~/.dotfiles/.data/bin/dev
 	fi
+	mise trust ~/.dev
+	pushd ~/.dev
+	pnpm install
+	node --run build
+	popd ~/.dev
 
 	if util.is_in_container_or_chroot; then
 		core.print_warn 'Skipping installing and running dev.service since in container or chroot'

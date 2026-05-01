@@ -1,6 +1,6 @@
 * text=auto eol=lf
 bake linguist-generated
 
-config-language/.config/npm/npmrc filter=npmrc
+config-language/.npmrc filter=npmrc
 config-tools/.config/osc/oscrc filter=oscrc
 config-editor/.config/zed/settings.json filter=homedir

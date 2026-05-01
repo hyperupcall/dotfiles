@@ -1,1 +1,1 @@
-require('profiles.everything')
+require('hyperupcall')

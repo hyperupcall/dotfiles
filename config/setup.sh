@@ -35,7 +35,7 @@ source ~/.dotfiles/config/setup-private.sh
 
 util.is_in_container_or_chroot() {
 	if command -v systemd-detect-virt &>/dev/null; then
-		systemd-detect-virt --quiet --container || systemd-detect-virt --quiet --chroot
+		systemd-detect-virt --quiet --container # TODO: chroot
 	else
 		local stat1= stat2=
 		stat1=$(stat -c %i /)

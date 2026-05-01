@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 source ~/.dotfiles/config/setup.sh
 
-declare -g g_name='Conda'
+declare -g g_name='Miniforge'
 
 install.any() {
 	util.get_latest_github_release 'conda-forge/miniforge'

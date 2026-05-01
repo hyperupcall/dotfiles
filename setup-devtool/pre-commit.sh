@@ -4,6 +4,7 @@ source ~/.dotfiles/config/setup.sh
 declare -g g_name='pre-commit'
 
 install.any() {
+	# TODO: pipx
 	pipx install pre-commit
 }
 

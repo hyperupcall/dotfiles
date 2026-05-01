@@ -1,4 +1,4 @@
-local lsp = require('lsp-zero')
+-- local lsp = require('lsp-zero')
 
 -- lsp.preset('recommended')
 -- lsp.ensure_installed({
@@ -8,4 +8,4 @@ local lsp = require('lsp-zero')
 -- 	'rust_analyzer'
 -- })
 
-lsp.setup()
+-- lsp.setup()

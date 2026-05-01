@@ -2,19 +2,9 @@
 # DO NOT source setup.sh here. Otherwise, "_private" variables
 # cannot be accessed. This needs to be standalone and work before
 # running "doctor.sh".
+source ~/.dotfiles/config/setup.sh # TODO
 
 main() {
-	FORCE_SOURCE=1 source ~/.dotfiles/bootstrap-linux.sh
-	installcif [ -n "$FORCE_SOURCE" ]; then
-		return 0
-fi
-
-# shellcheck disable=SC3028,SC3054,SC2039
-if [ -n "$BASH" ] && [ "${BASH_SOURCE[0]}" != "$0" ]; then
-		printf '%s\n' "Error: This file should not be sourced"
-		return 1
-fimd 'jq'
-
 	local mode=
 	while :; do
 		local options='save|restore'
@@ -131,7 +121,7 @@ fimd 'jq'
 			cp -rT "$dir" "$dest"
 		done
 
-	elif [ "$mode" = resto~/scripts/doctor.sh re ]; then
+	elif [ "$mode" = restore ]; then
 		local password= pw_file="$device_path/_data/pw.txt"
 		if [ -f "$pw_file" ]; then
 			password=$(<"$pw_file")
@@ -198,7 +188,7 @@ fimd 'jq'
 		core.print_die "Invalid mode: $mode"
 	fi
 
-	core.print_info 'Done! You may want to remove $device_path/_data'
+	core.print_info "Done! You may want to remove $device_path/_data"
 }
 
 util.if_file_sourced || _main "$@"
