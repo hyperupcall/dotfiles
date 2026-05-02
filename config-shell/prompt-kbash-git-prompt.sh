@@ -8,11 +8,11 @@ install.any() {
 	util.clone "$g_dir" 'https://github.com/hyperupcall-projects/kbash-git-prompt'
 }
 
-installed() {
+install.installed() {
 	[ -d "$g_dir" ]
 }
 
-configure() {
+install.configure() {
 	util.write_promptfile 'kbash-git-prompt' \
 		--bash "
 			__GIT_PROMPT_DIR=\"$g_dir\"

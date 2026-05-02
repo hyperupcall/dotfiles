@@ -12,7 +12,7 @@ install.any() {
 	mv ./shfmt ~/.local/bin/shfmt
 }
 
-installed() {
+install.installed() {
 	command -v shfmt &>/dev/null
 }
 

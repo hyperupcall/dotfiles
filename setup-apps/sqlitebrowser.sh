@@ -26,7 +26,7 @@ install.arch() {
 	sudo pacman -Syu --noconfirm sqlitebrowser
 }
 
-installed() {
+install.installed() {
 	command -v sqlitebrowser &>/dev/null
 }
 

@@ -7,11 +7,11 @@ install.any() {
 	curl -K "$CURL_CONFIG" "https://get.sdkman.io" | bash
 }
 
-installed() {
+install.installed() {
 	[ -d "${SDKMAN_DIR:-$HOME/.sdkman}" ]
 }
 
-configure() {
+install.configure() {
 	util.write_shellfile 'sdkman' \
 		--bash 'source "${SDKMAN_DIR:-$HOME/.sdkman}/bin/sdkman-init.sh"' \
 		--zsh 'source "${SDKMAN_DIR:-$HOME/.sdkman}/bin/sdkman-init.sh"'

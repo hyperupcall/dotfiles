@@ -2,3 +2,15 @@ trees:
   webextension-new-tab-override:
     url: git@github.com:hyperupcall-projects/webextension-new-tab-override
     default-remote: 'me'
+
+  webextension-kjsonviewer:
+    url: 'git@github.com:hyperupcall-projects/webextension-kjsonviewer'
+    default-remote: 'me'
+
+  webext-old-reddit-redirect:
+    url: git@github.com:hyperupcall-projects/webext-old-reddit-redirect
+    default-remote: 'me'
+
+  webext-ublacklist-helper:
+    url: git@github.com:hyperupcall-projects/webext-ublacklist-helper
+    default-remote: 'me'

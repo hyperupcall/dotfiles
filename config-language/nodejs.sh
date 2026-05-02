@@ -3,11 +3,11 @@ source ~/.dotfiles/config/setup.sh
 
 declare -g g_name='NodeJS'
 
-installed() {
+install.installed() {
 	command -v node &>/dev/null
 }
 
-configure() {
+install.configure() {
 	util.write_shellfile 'nodejs' \
 		--bash 'source <(node --completion-bash)'
 }

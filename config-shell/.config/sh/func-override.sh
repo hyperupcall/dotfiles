@@ -139,6 +139,7 @@ ping() {
 # already happened. They are saved so "stty sane" resets the tty to the custom defaults that
 # are set during initialization.
 _stty_saved_settings=
+# shellcheck disable=SC2218
 [ -t 0 ] && stty_saved_settings=$(stty -g)
 stty() {
 	if [ $# -eq 1 ] && [ "$1" = 'sane' ]; then

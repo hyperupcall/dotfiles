@@ -7,7 +7,7 @@ install.ubuntu() {
 	sudo apt-get -y install ninja-build
 }
 
-installed() {
+install.installed() {
 	command -v ninja &>/dev/null
 }
 

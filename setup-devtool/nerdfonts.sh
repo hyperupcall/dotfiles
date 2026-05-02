@@ -20,7 +20,7 @@ install.any() {
 		font-source-code-pro
 }
 
-installed() {
+install.installed() {
 	[ -f ~/.local/share/fonts/UbuntuMono-Regular.ttf ]
 }
 

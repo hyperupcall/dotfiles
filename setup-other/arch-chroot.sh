@@ -12,7 +12,7 @@ install.any() {
 	cp ./arch-chroot ~/.local/bin
 }
 
-installed() {
+install.installed() {
 	[ -d "$g_dir" ]
 }
 

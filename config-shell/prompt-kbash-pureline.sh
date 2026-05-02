@@ -8,11 +8,11 @@ install.any() {
 	util.clone "$g_dir" 'https://github.com/hyperupcall-projects/kbash-pureline'
 }
 
-installed() {
+install.installed() {
 	[ -d "$g_dir" ]
 }
 
-configure() {
+install.configure() {
 	util.write_promptfile 'kbash-pureline' \
 		--bash "$(<"$g_dir/pureline")"
 }

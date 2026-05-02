@@ -7,7 +7,7 @@ install.any() {
 	curl -K "$CURL_CONFIG" https://tailscale.com/install.sh | sh
 }
 
-installed() {
+install.installed() {
 	command -v tailscale &>/dev/null
 }
 

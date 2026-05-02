@@ -15,7 +15,7 @@ install.debian() {
 	rm -f ./discord.deb
 }
 
-installed() {
+install.installed() {
 	command -v discord &>/dev/null
 }
 

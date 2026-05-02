@@ -8,11 +8,11 @@ install.any() {
 	util.clone "$g_dir" 'https://github.com/liquidprompt/liquidprompt'
 }
 
-installed() {
+install.installed() {
 	[ -d "$g_dir" ]
 }
 
-configure() {
+install.configure() {
 	util.write_promptfile 'liquidprompt' \
 		--bash "$(<"$g_dir/liquidprompt")"
 }

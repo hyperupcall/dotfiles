@@ -8,11 +8,11 @@ install.any() {
 	util.clone "$g_dir" 'https://github.com/hyperupcall-projects/kgitstatus'
 }
 
-installed() {
+install.installed() {
 	[ -d "$g_dir" ]
 }
 
-configure() {
+install.configure() {
 	util.write_promptfile 'kgitstatus' \
 		--bash "
 			export GITSTATUS_DIR=\"$g_dir/gitstatus.plugin.sh\"

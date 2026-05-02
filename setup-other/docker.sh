@@ -34,7 +34,7 @@ install.ubuntu() {
 	sudo usermod -aG docker "$USER"
 }
 
-installed() {
+install.installed() {
 	[ -f "$g_sources_file" ] && command -v docker &>/dev/null
 }
 

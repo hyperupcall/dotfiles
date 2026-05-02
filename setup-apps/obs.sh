@@ -22,7 +22,7 @@ install.opensuse() {
 	install.fedora "$@"
 }
 
-installed() {
+install.installed() {
 	command -v obs &>/dev/null
 }
 

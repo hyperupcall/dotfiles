@@ -6,7 +6,7 @@
     "clang-format": {
         "command": [
             "/usr/bin/clang-format-22",
-            "--style=file:/home/edwin/.dev/config/.clang-format-global"
+            "--style=file:~~~/.dev/config/.clang-format-global"
         ],
         "formatOnSave": true
     },
@@ -89,7 +89,7 @@
         "command": [
             "yamlfmt",
             "-conf",
-	 "/home/edwin/.dev/config/.yamlfmt.yaml",
+	 "~~~/.dev/config/.yamlfmt.yaml",
 	  "-in"
         ]
     },

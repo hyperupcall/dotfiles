@@ -8,11 +8,11 @@ install.any() {
 	util.clone "$g_dir" 'https://github.com/hyperupcall-projects/kpolyglot'
 }
 
-installed() {
+install.installed() {
 	[ -d "$g_dir" ]
 }
 
-configure() {
+install.configure() {
 	util.write_promptfile 'kpolyglot' \
 		--bash "$(<"$g_dir/polyglot.sh")"
 }

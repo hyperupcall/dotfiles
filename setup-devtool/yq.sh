@@ -17,7 +17,7 @@ install.any() {
 	cp yq.1 ~/.local/share/man/man1
 }
 
-installed() {
+install.installed() {
 	command -v yq &>/dev/null
 }
 

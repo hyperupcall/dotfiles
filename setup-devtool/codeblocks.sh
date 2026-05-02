@@ -9,7 +9,7 @@ install.ubuntu() {
 	sudo apt-get install -y codeblocks
 }
 
-installed() {
+install.installed() {
 	command -v codeblocks &>/dev/null
 }
 

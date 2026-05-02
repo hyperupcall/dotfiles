@@ -29,7 +29,7 @@ install.ubuntu() {
 	install.debian "$@"
 }
 
-installed() {
+install.installed() {
 	[ -f "$g_sources_file" ] && command -v powershell &>/dev/null
 }
 

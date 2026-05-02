@@ -8,24 +8,20 @@ install.any() {
 	util.clone "$g_dir" git@github.com:hyperupcall/autoenv
 }
 
-installed() {
+install.installed() {
 	[ -d "$g_dir" ]
 }
 
-configure() {
+install.configure() {
 	util.write_shellfile 'autoenv' \
-		--sh \
-			'AUTOENV_PRESERVE_CD=yes
+		--sh '
+			AUTOENV_PRESERVE_CD=yes
 			. ~/.dotfiles/.data/repos/autoenv/activate.sh
 			unset -v AUTOENV_PRESERVE_CD' \
-		--bash \
-			'AUTOENV_PRESERVE_CD=yes
-			. ~/.dotfiles/.data/repos/autoenv/activate.sh
-			unset -v AUTOENV_PRESERVE_CD' \
-		--zsh \
-			'AUTOENV_PRESERVE_CD=yes
-			. ~/.dotfiles/.data/repos/autoenv/activate.sh
-			unset -v AUTOENV_PRESERVE_CD'
+		--bash '
+			AUTOENV_PRESERVE_CD=yes . ~/.dotfiles/.data/repos/autoenv/activate.sh' \
+		--zsh '
+			AUTOENV_PRESERVE_CD=yes. ~/.dotfiles/.data/repos/autoenv/activate.sh'
 }
 
 util.if_file_sourced || _setup "$@"

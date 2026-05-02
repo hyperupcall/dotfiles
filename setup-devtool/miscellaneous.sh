@@ -13,7 +13,7 @@ install.any() {
 	fi
 }
 
-installed() {
+install.installed() {
 	command -v lefthook &>/dev/null
 }
 

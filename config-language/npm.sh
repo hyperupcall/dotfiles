@@ -9,7 +9,7 @@ install.any() {
 	pnpm i -g "${g_dependencies[@]}"
 }
 
-installed() {
+install.installed() {
 	command -v pnpm &>/dev/null
 
 	pnpm list --parseable -g --depth=0 | awk -v deps="${g_dependencies[*]}" '

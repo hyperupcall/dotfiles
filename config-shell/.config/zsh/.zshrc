@@ -7,12 +7,22 @@
 
 # Ensure ~/.zprofile is read for non-login shells
 # Zsh only reads ~/.zprofile on login shells
-[ -f "$ZDOTDIR/.zprofile" ] && source "$ZDOTDIR/.zprofile"
+[ -f "${ZDOTDIR:-"$HOME"}/.zprofile" ] && source "${ZDOTDIR:-"$HOME"}/.zprofile"
 (( $? != 0 )) && _util_print_source_error '~/.profile'
+
+# TODO
+ZSH_DISABLE_COMPFIX=true
+fpath=(
+  /usr/share/zsh/functions
+  /usr/share/zsh/site-functions
+  /usr/share/zsh/vendor-completions
+  /usr/local/share/zsh/site-functions
+  $fpath
+)
 
 # Use frameworks.
 # See performance: https://github.com/romkatv/zsh-bench
-# source "$ZDOTDIR/frameworks/zinit.zsh"
+# source "${ZDOTDIR:-"$HOME"}/frameworks/zinit.zsh"
 # source "$ZDOTDIR/frameworks/zplug.zsh"
 
 # Set shell variables.
@@ -145,7 +155,7 @@ fi
 # [[ -n "${key[Control-Left]}" ]] && bindkey -- "${key[Control-Left]}" backward-word
 # [[ -n "${key[Control-Right]}" ]] && bindkey -- "${key[Control-Right]}" forward-word
 #
-# _zle_show_help() {
+_zle_show_help() {
 	_lineediting_action_show_help "$BUFFER"
 }
 _zle_show_man() {
@@ -255,10 +265,9 @@ alias help='run-help'
 
 
 # SAVEHIST=2147483647
-# autoload -Uz compinit
-# compinit -d ~/.cache/zcompdump
+autoload -Uz compinit
+compinit -d ~/.cache/zcompdump
 
-HISTFILE="$XDG_STATE_HOME/history/zsh_history"
 # HISTSIZE=10000
 # SAVEHIST=10000
 # setopt appendhistory

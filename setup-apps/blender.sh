@@ -23,7 +23,7 @@ install.arch() {
 	sudo pacman -Syu --noconfirm blender
 }
 
-installed() {
+install.installed() {
 	command -v blender &>/dev/null
 }
 

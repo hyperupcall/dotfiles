@@ -19,7 +19,7 @@ install.arch() {
 	sudo pacman -Syu --noconfirm librewolf-bin
 }
 
-installed() {
+install.installed() {
 	command -v librewolf &>/dev/null
 }
 

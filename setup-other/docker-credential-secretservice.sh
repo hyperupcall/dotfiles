@@ -27,7 +27,7 @@ obj['credsStore'] = 'secretservice'
 file.write_text(json.dumps(obj, indent='\t'))"
 }
 
-installed() {
+install.installed() {
 	[ -f "$HOME/.local/bin/docker-credential-secretservice" ]
 }
 

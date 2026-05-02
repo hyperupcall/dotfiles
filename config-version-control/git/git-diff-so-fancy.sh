@@ -11,7 +11,7 @@ install.any() {
 	chmod +x ~/.local/bin/diff-so-fancy
 }
 
-installed() {
+install.installed() {
 	command -v diff-so-fancy &>/dev/null
 }
 

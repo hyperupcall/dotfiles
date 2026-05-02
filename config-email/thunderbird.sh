@@ -3,8 +3,15 @@ source ~/.dotfiles/config/setup.sh
 
 declare -g g_name='Thunderbird'
 
-install.any() {
-	# TODO: put in commented function at bottom
+install.ubuntu() {
+	flatpak install -y --user org.mozilla.Thunderbird
+}
+
+install.installed() {
+	command -v thunderbird &>/dev/null || { command -v flatpak &>/dev/null && flatpak info org.mozilla.Thunderbird &>/dev/null; }
+}
+
+_old_install_thunderbird() {
 	cd ~/.dotfiles/.data
 	if [ ! -d './thunderbird' ]; then
 		core.print_info 'Downloading Thunderbird...'
@@ -53,14 +60,6 @@ Name=Contacts
 Exec=thunderbird -addressbook
 OnlyShowIn=Messaging Menu;Unity;
 EOF
-}
-
-install.ubuntu() {
-	flatpak install -y org.mozilla.Thunderbird
-}
-
-installed() {
-	command -v thunderbird &>/dev/null || { command -v flatpak &>/dev/null && flatpak info org.mozilla.Thunderbird &>/dev/null; }
 }
 
 util.if_file_sourced || _setup "$@"

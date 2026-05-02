@@ -5,8 +5,7 @@ declare -g g_name='Sauerkraut'
 declare -g g_dir="$HOME/.dev/.data/installed-repositories/sauerkraut"
 
 install.any() {
-	util.clone "$g_dir" git@github.com:hyperupcall/autoenv
-
+	util.clone "$g_dir" git@github.com:hyperupcall-projects/sauerkraut
 	cd "$g_dir"
 	pnpm install
 
@@ -34,7 +33,7 @@ EOF
 	systemctl --user start brain.service
 }
 
-installed() {
+install.installed() {
 	[ -d "$g_dir" ] && [ -f ~/.dotfiles/.data/bin/sauerkraut ]
 }
 

@@ -11,7 +11,7 @@ install.any() {
 	curl -K "$CURL_CONFIG" 'https://get.haskellstack.org' | sh
 }
 
-installed() {
+install.installed() {
 	command -v ghcup &>/dev/null && command -v stack &>/dev/null
 }
 

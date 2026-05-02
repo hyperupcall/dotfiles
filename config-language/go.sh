@@ -14,7 +14,7 @@ install.any() {
 	go install github.com/x-motemen/gore/cmd/gore@latest
 }
 
-installed() {
+install.installed() {
 	command -v go &>/dev/null
 }
 

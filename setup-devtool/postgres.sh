@@ -10,7 +10,7 @@ install.ubuntu() {
 	sudo apt-get install -y postgresql-17 postgresql-doc-17
 }
 
-installed() {
+install.installed() {
 	[ -d /usr/lib/postgresql ]
 }
 

@@ -7,7 +7,7 @@ install.any() {
 	pnpm install -g git-split-diffs
 }
 
-installed() {
+install.installed() {
 	command -v git-split-diffs &>/dev/null
 }
 

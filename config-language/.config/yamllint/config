@@ -52,7 +52,7 @@ rules:
     forbid-explicit-octal: false
   quoted-strings:
     quote-type: 'single'
-    required: false # TODO?
+    required: false
   trailing-spaces: 'disable'
   truthy:
     allowed-values: ['true', 'false']

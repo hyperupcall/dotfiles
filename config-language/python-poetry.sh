@@ -7,7 +7,7 @@ install.any() {
 	curl -K "$CURL_CONFIG" https://install.python-poetry.org | python3 -
 }
 
-installed() {
+install.installed() {
 	command -v poetry &>/dev/null
 }
 

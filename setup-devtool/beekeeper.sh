@@ -23,7 +23,7 @@ install.ubuntu() {
 	sudo apt-get install -y beekeeper-studio
 }
 
-installed() {
+install.installed() {
 	[ -f "$g_sources_file" ] && command -v beekeeper-studio &>/dev/null
 }
 

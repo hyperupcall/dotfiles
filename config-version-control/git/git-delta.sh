@@ -7,7 +7,7 @@ install.any() {
 	cargo install --force git-delta
 }
 
-installed() {
+install.installed() {
 	command -v delta &>/dev/null
 	local delta_version=
 	delta_version=$(delta --version)

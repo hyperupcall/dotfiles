@@ -8,7 +8,7 @@ install.any() {
 	chmod +x ~/.local/bin/yt-dlp
 }
 
-installed() {
+install.installed() {
 	command -v yt-dlp &>/dev/null
 }
 

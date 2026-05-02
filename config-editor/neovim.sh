@@ -49,7 +49,7 @@ install.arch() {
 	yay -S --noconfirm neovim
 }
 
-installed() {
+install.installed() {
 	neovim_version_check() {
 		local -a nvim_version_arr
 		nvim_version=$(nvim --version)

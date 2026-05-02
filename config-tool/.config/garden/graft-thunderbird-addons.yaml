@@ -1,5 +1,10 @@
 trees:
-  # TODO: Add the rest. Other 2 is in downloads
   thunderbird-quickmove:
     url: 'git@github.com:hyperupcall-projects/thunderbird-quickmove'
+    default-remote: 'me'
+  thunderbird-gmail-labels:
+    url: 'git@github.com:hyperupcall-projects/thunderbird-gmail-labels'
+    default-remote: 'me'
+  thunderbird-cardbook:
+    url: 'git@github.com:hyperupcall-projects/thunderbird-cardbook'
     default-remote: 'me'

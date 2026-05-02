@@ -24,7 +24,7 @@ install.debian() {
 	sudo apt-get install -y unityhub
 }
 
-installed() {
+install.installed() {
 	[ -f "$g_sources_file" ] && command -v unityhub &>/dev/null
 }
 

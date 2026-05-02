@@ -8,11 +8,11 @@ install.any() {
 	util.clone "$g_dir" 'https://github.com/hyperupcall-projects/kbash-sexy-prompt'
 }
 
-installed() {
+install.installed() {
 	[ -d "$g_dir" ]
 }
 
-configure() {
+install.configure() {
 	util.write_promptfile 'kbash-sexy-prompt' \
 		--bash "$(<"$g_dir/.bash_prompt")"
 }

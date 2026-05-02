@@ -23,7 +23,7 @@ install.ubuntu() {
 	sudo apt-get install -y pgadmin4-desktop
 }
 
-installed() {
+install.installed() {
 	[ -f "$g_sources_file" ] && [ -d /usr/pgadmin4 ]
 }
 

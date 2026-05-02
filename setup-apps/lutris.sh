@@ -41,7 +41,7 @@ install.arch() {
 	sudo pacman -Syu --noconfirm lutris
 }
 
-installed() {
+install.installed() {
 	[ -f "$g_sources_file" ] && command -v lutris &>/dev/null
 }
 

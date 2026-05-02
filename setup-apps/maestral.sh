@@ -70,7 +70,7 @@ EOF
 	maestral start
 }
 
-installed() {
+install.installed() {
 	command -v maestral &>/dev/null
 }
 

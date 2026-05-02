@@ -23,7 +23,7 @@ install.any() {
 		sudo pacman -Syu --noconfirm qt6-base qt6-tools qt6-5compat qt6-scxml # albert
 	}
 
-	util.install_by_setup --fn-prefix=dependencies --force 'Albert' "$@" # TODO
+	util.install_by_setup --fn-prefix=dependencies --no-install-check --force 'Albert' "$@"
 	install_albert
 }
 
@@ -73,11 +73,11 @@ install_albert() {
 	sudo cmake --install build
 }
 
-installed() {
+install.installed() {
 	command -v albert &>/dev/null
 }
 
-configure() {
+install.configure() {
 	mkdir -p "$XDG_CONFIG_HOME/autostart"
 	cat <<EOF >"$XDG_CONFIG_HOME/autostart/albert.desktop"
 [Desktop Entry]

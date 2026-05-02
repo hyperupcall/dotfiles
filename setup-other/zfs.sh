@@ -4,16 +4,6 @@ source ~/.dotfiles/config/setup.sh
 declare -g g_name='ZFS'
 declare -g g_sources_file='/etc/apt/sources.list.d/bookworm-backports.sources'
 
-install.any() {
-	util.install_by_setup "$@" # TODO
-
-	if ! sudo zpool status vault &>/dev/null; then
-		sudo zpool import -f vault
-	fi
-	sudo zpool set cachefile=/etc/zfs/zpool.cache vault
-	sudo systemctl enable --now zfs-import-cache.service zfs.target zfs-import.target zfs-mount.service
-}
-
 install.debian() {
 	sudo apt-get update -y
 	sudo apt-get install -y debian-archive-keyring
@@ -36,10 +26,12 @@ Pin-Priority: 990" | sudo tee "$dest_file" >/dev/null
 	sudo apt-get update -y
 	sudo apt-get install -y dpkg-dev linux-headers-generic linux-image-generic
 	sudo apt-get install -y zfs-dkms zfsutils-linux
+
+	import_vault
 }
 
 install.ubuntu() {
-	sudo apt-get install -y zfsutils-linux
+	:
 }
 
 install.fedora() {
@@ -50,6 +42,8 @@ install.fedora() {
 	sudo modprobe zfs
 	printf '%s\n' zfs | sudo tee /etc/modules-load.d/zfs.conf >/dev/null
 	printf '%s\n' zfs | sudo tee /etc/dnf/protected.d/zfs.conf >/dev/null
+
+	import_vault
 }
 
 install.opensuse() {
@@ -63,18 +57,33 @@ install.opensuse() {
 	else
 		core.print_die "Not implemented"
 	fi
+
+	import_vault
 }
 
 install.arch() {
 	sudo pacman -Syu --noconfirm zfs-linux zfs-linux-lts zfs-dkms
+
+	import_vault
 }
 
 install.cachyos() {
 	sudo pacman -Syu --noconfirm cachyos-v3/linux-cachyos-zfs cachyos-v3/linux-cachyos-lto-zfs
+
+	import_vault
 }
 
-installed() {
+install.installed() {
+	# TODO: check that the cachefile is setup
 	command -v zfs &>/dev/null
+}
+
+import_vault() {
+	if ! sudo zpool status vault &>/dev/null; then
+		sudo zpool import -f vault
+	fi
+	sudo zpool set cachefile=/etc/zfs/zpool.cache vault
+	sudo systemctl enable --now zfs-import-cache.service zfs.target zfs-import.target zfs-mount.service
 }
 
 util.if_file_sourced || _setup "$@"

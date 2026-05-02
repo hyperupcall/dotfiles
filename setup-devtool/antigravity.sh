@@ -23,7 +23,7 @@ install.ubuntu() {
 	sudo apt-get install -y antigravity
 }
 
-installed() {
+install.installed() {
 	[ -f "$g_sources_file" ] && command -v antigravity &>/dev/null
 }
 

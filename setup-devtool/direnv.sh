@@ -8,11 +8,11 @@ install.any() {
 	mise use -g direnv@latest
 }
 
-installed() {
+install.installed() {
 	command -v direnv &>/dev/null
 }
 
-configure() {
+install.configure() {
 	util.write_shellfile 'direnv' \
 		--bash 'eval "$(direnv hook bash)"' \
 		--zsh 'eval "$(direnv hook bash)"' \

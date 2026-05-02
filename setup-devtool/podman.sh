@@ -25,7 +25,7 @@ install.opensuse() {
 	flatpak install -y --user flathub io.podman_desktop.PodmanDesktop
 }
 
-installed() {
+install.installed() {
 	command -v podman &>/dev/null
 }
 

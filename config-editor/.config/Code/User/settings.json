@@ -559,4 +559,5 @@
 	],
 	"workbench.iconTheme": "icons",
 	"window.autoDetectColorScheme": true,
+	"workbench.preferredLightColorTheme": "Quiet Light",
 }

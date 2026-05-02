@@ -50,7 +50,7 @@ install.arch() {
 	yay -S visual-studio-code-bin visual-studio-code-insiders-bin
 }
 
-installed() {
+install.installed() {
 	[ -f "$g_sources_file" ] && command -v code &>/dev/null && command -v code-insiders &>/dev/null
 }
 

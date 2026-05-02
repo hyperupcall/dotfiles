@@ -23,14 +23,14 @@ install.any() {
 
 	util.install_by_setup --fn-prefix=dependencies --no-confirm --no-install-check "$@"
 
-	util.clone "$g_dir" git@github.com:fox-incubating/d # TODO: names
+	util.clone "$g_dir" git@github.com:hyperupcall-projects/d
 	cd "$g_dir"
 	./bake build "$HOME/.dotfiles/data/dotfiles.c"
 	ln -fs "$PWD/d" ~/.local/bin/d
 	DEBUG= ~/.local/bin/d deploy
 }
 
-installed() {
+install.installed() {
 	[ -d "$g_dir" ] && command -v d &>/dev/null
 }
 

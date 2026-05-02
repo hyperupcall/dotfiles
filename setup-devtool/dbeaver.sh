@@ -9,11 +9,11 @@ install.ubuntu() {
 	sudo apt-get install -y dbeaver-ce
 }
 
-installed() {
+install.installed() {
 	command -v dbeaver &>/dev/null
 }
 
-caveats() {
+install.caveats() {
 	cat <<"EOF"
 To  fix the scollbar, write to `~/.config/gtk-4.0/settings.ini`:
 

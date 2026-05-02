@@ -11,7 +11,7 @@ pre-commit:
     check-spelling:
       run: cspell-cli lint .
     check-formatting:
-      run: ./node_modules/.bin/prettier --check .
+      run: ./node_modules/.bin/prettier --ignore-path <(printf '%s\n' './vendor') --check .
     check-linting:
       run: ./node_modules/.bin/eslint .
     check-shellscript-format:

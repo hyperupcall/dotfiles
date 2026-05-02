@@ -14,7 +14,7 @@ install.any() {
 	mv ./ls-lint-linux-amd64 ~/.local/bin/ls-lint
 }
 
-installed() {
+install.installed() {
 	command -v ls-lint &>/dev/null
 }
 

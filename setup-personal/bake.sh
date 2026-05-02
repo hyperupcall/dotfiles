@@ -13,7 +13,7 @@ install.any() {
 	mv ./bake ~/.local/bin/bake
 }
 
-installed() {
+install.installed() {
 	command -v bake &>/dev/null
 }
 

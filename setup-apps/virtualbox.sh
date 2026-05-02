@@ -48,13 +48,12 @@ install.ubuntu() {
 	sudo apt-get install -y virtualbox virtualbox-guest-additions-iso
 }
 
-installed() {
+install.installed() {
 	[ -f "$g_sources_file" ] && command -v VirtualBox &>/dev/null
 }
 
-configure() {
-	# VBoxManage setproperty machinefolder "$_private_virtualbox_dir"
-	:
+install.caveats() {
+	printf '%s\n' 'You may want to run VBoxManage setproperty machinefolder "$_private_virtualbox_dir"'
 }
 
 util.if_file_sourced || _setup "$@"

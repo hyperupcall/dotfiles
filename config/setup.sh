@@ -34,13 +34,14 @@ CURL_CONFIG="$HOME/.dotfiles/config/curl_config.conf"
 source ~/.dotfiles/config/setup-private.sh
 
 util.is_in_container_or_chroot() {
+	core.print_warn 'Detecting if running in a container or chroot.'
 	if command -v systemd-detect-virt &>/dev/null; then
-		systemd-detect-virt --quiet --container # TODO: chroot
+		systemd-detect-virt --quiet --container --chroot
 	else
 		local stat1= stat2=
 		stat1=$(stat -c %i /)
 		stat2=$(stat -c %i /proc/1/root)
 
-		[ -e /.dockerenv ] && (( stat1 != stat2 ))
+		[ -e /.dockerenv ] && ((stat1 != stat2))
 	fi
 }

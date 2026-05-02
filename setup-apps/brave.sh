@@ -83,7 +83,7 @@ install.arch() {
 	yay -S brave-bin brave-beta-bin
 }
 
-installed() {
+install.installed() {
 	[ -f "$g_sources_file_release" ] && [ -f "$g_sources_file_beta" ] && command -v brave-browser &>/dev/null && command -v brave-browser-beta &>/dev/null
 }
 

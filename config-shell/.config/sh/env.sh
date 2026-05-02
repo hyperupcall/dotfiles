@@ -44,21 +44,21 @@ export HSTR_CONFIG='hicolor'
 export LESSKEYIN="$XDG_CONFIG_HOME/less/lesskey"
 # shellcheck disable=SC3003
 if [ -n "${BASH_VERSION:-}" ] || [ -n "${ZSH_VERSION:-}" ] || [ -n "${KSH_VERSION:-}" ]; then
-    _tc_mb=$'\e[1;31m'
-    _tc_md=$'\e[1;36m'
-    _tc_me=$'\e[0m'
-    _tc_so=$'\e[01;44;33m'
-    _tc_se=$'\e[0m'
-    _tc_us=$'\e[1;32m'
-    _tc_ue=$'\e[0m'
+	_tc_mb=$'\e[1;31m'
+	_tc_md=$'\e[1;36m'
+	_tc_me=$'\e[0m'
+	_tc_so=$'\e[01;44;33m'
+	_tc_se=$'\e[0m'
+	_tc_us=$'\e[1;32m'
+	_tc_ue=$'\e[0m'
 else
-    _tc_mb=$(printf '\033[1;31m')
-    _tc_md=$(printf '\033[1;36m')
-    _tc_me=$(printf '\033[0m')
-    _tc_so=$(printf '\033[01;44;33m')
-    _tc_se=$(printf '\033[0m')
-    _tc_us=$(printf '\033[1;32m')
-    _tc_ue=$(printf '\033[0m')
+	_tc_mb=$(printf '\033[1;31m')
+	_tc_md=$(printf '\033[1;36m')
+	_tc_me=$(printf '\033[0m')
+	_tc_so=$(printf '\033[01;44;33m')
+	_tc_se=$(printf '\033[0m')
+	_tc_us=$(printf '\033[1;32m')
+	_tc_ue=$(printf '\033[0m')
 fi
 export LESS_TERMCAP_mb="$_tc_mb" # Start blink.
 export LESS_TERMCAP_md="$_tc_md" # Start bold.

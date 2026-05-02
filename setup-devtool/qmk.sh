@@ -7,7 +7,7 @@ install.any() {
 	curl -K "$CURL_CONFIG" https://install.qmk.fm | sh
 }
 
-installed() {
+install.installed() {
 	command -v qmk &>/dev/null
 }
 

@@ -11,7 +11,7 @@ install.any() {
 	sudo make install PREFIX=/usr/local
 }
 
-installed() {
+install.installed() {
 	command -v passage &>/dev/null
 }
 

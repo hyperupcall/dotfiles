@@ -20,7 +20,7 @@ main() {
 	# Install required dependencies.
 	if [ ! -f ~/.dotfiles/.data/finished_bootstrap ]; then
 		util.update_system
-		util.install_by_setup --fn-prefix=dependencies 'Bootstrap' # TODO
+		util.install_by_setup --fn-prefix=dependencies --no-install-check --force 'Bootstrap'
 		touch ~/.dotfiles/.data/finished_bootstrap
 		core.print_info "Installed required dependencies"
 	fi
@@ -131,7 +131,7 @@ main() {
 		core.print_info 'Already set computer profile'
 	else
 		local cur=
-		local options='desktop|laptop|other'
+		local options='desktop|laptop|juno-laptop|other'
 		while [[ $cur != @($options) ]]; do
 			printf '%s' "Computer profile? ($options): "
 			read -er cur
@@ -143,7 +143,7 @@ main() {
 	computer_profile=$(<~/.dotfiles/.data/profile)
 
 	# Set XDG user directories.
-	if [[ $computer_profile == @(desktop|laptop) ]]; then
+	if [[ $computer_profile == @(desktop|laptop|juno-laptop) ]]; then
 		must.dir ~/Other/{Desktop,Templates,Public}
 		xdg-user-dirs-update --set DESKTOP ~/Other/Desktop
 		xdg-user-dirs-update --set DOWNLOAD ~/Downloads
@@ -163,7 +163,7 @@ main() {
 		xdg-user-dirs-update --set PICTURES ~/Pictures
 		xdg-user-dirs-update --set VIDEOS ~/Videos
 	fi
-	if [[ $computer_profile == @(desktop|laptop) ]]; then
+	if [[ $computer_profile == @(desktop|laptop|juno-laptop) ]]; then
 		must.dir "$HOME/Other/AppImages"
 		must.link "$HOME/Other/AppImages" ~/.home/AppImages
 	else
@@ -220,7 +220,7 @@ main() {
 	must.user_in_group "$USER" 'input'
 
 	# Remove default dotfiles. These are customized with environment variables.
-	if [[ $computer_profile == @(desktop|laptop) ]]; then
+	if [[ $computer_profile == @(desktop|laptop|juno-laptop) ]]; then
 		must.rm ~/.bash_history
 		must.rm ~/.gitconfig
 		must.rm ~/.gmrun_history
@@ -274,7 +274,7 @@ main() {
 		fi
 		must.strict_permissions ~/.gnupg/ ~/.gnupg/*
 
-		if [[ $computer_profile == @(desktop|laptop) ]]; then
+		if [[ $computer_profile == @(desktop|laptop|juno-laptop) ]]; then
 			if gpg --list-keys "$_private_gpgkey1_id" &>/dev/null; then
 				core.print_info "Has gpg key \"$_private_gpgkey1_user\""
 			else
@@ -289,11 +289,13 @@ main() {
 	}
 
 	# Install necessary drivers.
-	~/scripts/setup/juno-computers.sh # TODO: read profile
+	if [ "$computer_profile" = juno-laptop ]; then
+		~/scripts/setup/juno-computers.sh
+	fi
 
 	# Install the most paramount tools.
 	~/scripts/setup/d.sh
-	# TOOD: Install prompt
+	~/scripts/setup/prompt-ksbp.sh
 	~/scripts/setup/zsh.sh
 	~/scripts/setup/ksh.sh
 	~/scripts/setup/rust.sh
@@ -305,23 +307,23 @@ main() {
 	# Install personal tools.
 	~/scripts/setup/pass.sh
 	~/scripts/setup/dev.sh
-	# ~/scripts/setup/sauerkraut.sh # TODO
 	~/scripts/setup/basalt.sh
 	~/scripts/setup/woof.sh
+	~/scripts/setup/bash-kpreexec.sh
 
 	# Install other important tools.
 	~/scripts/setup/npm.sh
 	~/scripts/setup/flatpak.sh
 	~/scripts/setup/notify-send.sh
 	~/scripts/setup/lefthook.sh
-	~/.dotfiles/bake init # Depends on mise and lefthook.
+	~/.dotfiles/bake init # Depends on mise, lefthook and pnpm.
 	~/scripts/setup/git.sh
 
 	# Install applications.
-	# ~/scripts/setup/appimagelauncher.sh # TODO
+	~/scripts/setup/appimagelauncher.sh
 	~/scripts/setup/librewolf.sh
 	~/scripts/setup/brave.sh
-	~/scripts/setup/remove-snap.sh # Remove snap after installing a
+	~/scripts/setup/remove-snap.sh # Remove snap after installing a browser.
 	~/scripts/setup/firefox.sh
 	~/scripts/setup/thunderbird.sh
 	~/scripts/setup/zed.sh
@@ -337,6 +339,7 @@ main() {
 	~/scripts/setup/fish.sh
 	~/scripts/setup/miscellaneous.sh
 	~/scripts/setup/direnv.sh
+	~/scripts/setup/garden.sh
 
 	~/scripts/setup/llvm.sh
 	~/scripts/setup/llvm-nightly.sh
@@ -344,22 +347,22 @@ main() {
 	~/scripts/setup/pre-commit.sh
 	~/scripts/setup/homebrew.sh
 	~/scripts/setup/nerdfonts.sh
-
-	# TODO:
 	~/scripts/setup/kwrite.sh
-	# ~/scripts/setup/blender.sh
 	~/scripts/setup/borg.sh
-	~/scripts/setup/darktable.sh
 	~/scripts/setup/anki.sh
-	~/scripts/setup/sqlitebrowser.sh
-	# ~/scripts/setup/virtualbox.sh
 	~/scripts/setup/syncthing.sh
-	~/scripts/setup/kdenlive.sh
 	~/scripts/setup/merkuro.sh
 	~/scripts/setup/bats.sh
 	~/scripts/setup/btrfs.sh
 	~/scripts/setup/zfs.sh
 	~/scripts/setup/yt-dlp.sh
+
+	# Do big, but optional applications last.
+	~/scripts/setup/blender.sh
+	~/scripts/setup/sqlitebrowser.sh
+	~/scripts/setup/darktable.sh
+	~/scripts/setup/kdenlive.sh
+	~/scripts/setup/virtualbox.sh
 
 	core.shopt_push -s nullglob
 	for file in "$XDG_CONFIG_HOME"/libreoffice/4/user/template/*; do
@@ -625,11 +628,6 @@ dependencies.arch() {
 	packages+=(base-devl lvm2 openssl yay)
 
 	sudo pacman -Syu --noconfirm "${packages[@]}"
-}
-installed() {
-	:
-	# TODO exit code when not installed
-	# TODO fix showing Info: File "" has not function "installed"
 }
 
 util.if_file_sourced || _main "$@"

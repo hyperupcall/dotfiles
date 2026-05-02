@@ -8,7 +8,7 @@ install.any() {
 	mise use -g lefthook@latest
 }
 
-installed() {
+install.installed() {
 	command -v lefthook &>/dev/null || [ -d "$XDG_DATA_HOME/mise/installs/lefthook" ]
 }
 

@@ -12,11 +12,11 @@ install.any() {
 	./miniforge.sh -p "$XDG_STATE_HOME/miniforge3"
 }
 
-installed() {
+install.installed() {
 	command -v mamba &>/dev/null
 }
 
-configure() {
+install.configure() {
 	util.write_shellfile 'conda' \
 		--bash 'eval "$("$XDG_STATE_HOME/miniforge3/bin/mamba" shell hook --shell bash --root-prefix "$XDG_STATE_HOME/miniforge3")"' \
 		--zsh 'eval "$("$XDG_STATE_HOME/miniforge3/bin/mamba" shell hook --shell zsh --root-prefix "$XDG_STATE_HOME/miniforge3")"' \

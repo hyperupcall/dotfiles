@@ -4,15 +4,9 @@ source ~/.dotfiles/config/setup.sh
 declare -g g_name='Surface Kernel'
 declare -g g_sources_file='/etc/apt/sources.list.d/linux-surface.sources'
 
-install.any() {
-	if ! util.confirm "Are all your kernel modules installed as DKMS?"; then
-		exit 0
-	fi
-
-	util.install_by_setup "$@" # TODO
-}
-
 install.debian() {
+	installation_assert
+
 	local gpg_file="/etc/apt/keyrings/linux-surface.asc"
 
 	pkg.add_apt_key \
@@ -38,8 +32,14 @@ install.ubuntu() {
 	install.debian "$@"
 }
 
-installed() {
+install.installed() {
 	[ -f "$g_sources_file" ] && command -v linux-surface &>/dev/null
+}
+
+installation_assert() {
+	if ! util.confirm "Are all your kernel modules installed as DKMS?"; then
+		exit 0
+	fi
 }
 
 util.if_file_sourced || _setup "$@"

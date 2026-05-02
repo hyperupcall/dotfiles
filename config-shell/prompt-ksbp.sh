@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 source ~/.dotfiles/config/setup.sh
 
-declare -g g_name='bash-sbp'
+declare -g g_name='bash-ksbp'
 declare -g g_dir="$HOME/.dotfiles/.data/repos/ksbp"
 
 install.any() {
 	util.clone "$g_dir" 'https://github.com/hyperupcall-projects/ksbp'
 }
 
-installed() {
+install.installed() {
 	[ -d "$g_dir" ]
 }
 
-configure() {
+install.configure() {
 	util.write_promptfile 'ksbp' \
 		--bash "
 			SBP_PATH=\"$g_dir\"

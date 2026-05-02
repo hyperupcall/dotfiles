@@ -23,7 +23,7 @@ install.ubuntu() {
 	sudo apt-get install -y postgresql_anonymizer_18
 }
 
-installed() {
+install.installed() {
 	[ -f "$g_sources_file" ] && [ -d /usr/lib/postgresql ]
 }
 

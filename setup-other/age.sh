@@ -14,7 +14,7 @@ install.any() {
 	mv './age/age-keygen' ~/.local/bin/
 }
 
-installed() {
+install.installed() {
 	command -v age &>/dev/null && command -v age-keygen &>/dev/null
 }
 

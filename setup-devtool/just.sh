@@ -7,7 +7,7 @@ install.any() {
 	cargo install --locked just
 }
 
-installed() {
+install.installed() {
 	command -v just &>/dev/null
 }
 

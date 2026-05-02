@@ -31,7 +31,7 @@ install.ubuntu() {
 	install.debian "$@"
 }
 
-installed() {
+install.installed() {
 	[ -f "$g_sources_file" ] && command -v mongod &>/dev/null
 }
 

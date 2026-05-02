@@ -67,14 +67,6 @@ trees:
     url: git@github.com:hyperupcall-projects/vscode-link-handler
     default-remote: 'me'
 
-  webext-old-reddit-redirect:
-    url: git@github.com:hyperupcall-projects/webext-old-reddit-redirect
-    default-remote: 'me'
-
-  webext-ublacklist-helper:
-    url: git@github.com:hyperupcall-projects/webext-ublacklist-helper
-    default-remote: 'me'
-
   xdgbasedirectoryspecification.com:
     url: git@github.com:hyperupcall-projects/xdgbasedirectoryspecification.com
     default-remote: 'me'

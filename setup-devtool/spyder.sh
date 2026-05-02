@@ -12,7 +12,7 @@ install.any() {
 	./Spyder-Linux-x86_64.sh -p "$XDG_STATE_HOME/spyder-6"
 }
 
-installed() {
+install.installed() {
 	[ -d "$XDG_STATE_HOME/spyder-6" ]
 }
 

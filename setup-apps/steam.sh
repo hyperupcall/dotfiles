@@ -10,11 +10,11 @@ install.debian() {
 }
 
 install.opensuse() {
-	flatpak install -y 'https://flathub.org/repo/appstream/com.valvesoftware.Steam.flatpakref'
+	flatpak install -y --user 'https://flathub.org/repo/appstream/com.valvesoftware.Steam.flatpakref'
 	sudo zypper -n install steam-devices
 }
 
-installed() {
+install.installed() {
 	command -v steam &>/dev/null
 }
 

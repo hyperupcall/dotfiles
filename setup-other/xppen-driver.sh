@@ -14,7 +14,7 @@ install.any() {
 	sudo ./XPPenLinux*/install.sh
 }
 
-installed() {
+install.installed() {
 	[ -d /usr/lib/pentablet ]
 }
 

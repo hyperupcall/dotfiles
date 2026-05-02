@@ -208,7 +208,7 @@ EOF
 EOF
 }
 
-installed() {
+install.installed() {
 	command -v godot &>/dev/null
 }
 

@@ -4,7 +4,42 @@ source ~/.dotfiles/config/setup.sh
 declare -g g_name='pass'
 declare -g g_password_store_dir="${PASSWORD_STORE_DIR:-"$HOME/.password-store"}"
 
-install.any() {
+install.debian() {
+	sudo apt-get -y update
+	sudo apt-get -y install pass
+
+	prompt_extra_installs
+}
+
+install.ubuntu() {
+	install.debian "$@"
+}
+
+install.fedora() {
+	sudo dnf -y update
+	sudo dnf -y install pass
+
+	prompt_extra_installs
+}
+
+install.opensuse() {
+	sudo zypper -n refresh
+	sudo zypper -n install password-store
+
+	prompt_extra_installs
+}
+
+install.arch() {
+	yay -Syu --noconfirm pass
+
+	prompt_extra_installs
+}
+
+install.installed() {
+	command -v pass &>/dev/null && [ -d "$g_password_store_dir" ]
+}
+
+prompt_extra_installs() {
 	if util.confirm 'Clone password repository?'; then
 		if [ -d "$g_password_store_dir" ]; then
 			if [ -d "$g_password_store_dir" ]; then
@@ -20,30 +55,6 @@ install.any() {
 	if util.confirm 'Install native extension?'; then
 		install_native_extension
 	fi
-}
-
-# TODO
-#install.debian() {
-#	sudo apt-get -y update
-#	sudo apt-get -y install pass
-#}
-
-#install.ubuntu() {
-#	install.debian "$@"
-#}
-
-install.fedora() {
-	sudo dnf -y update
-	sudo dnf -y install pass
-}
-
-install.opensuse() {
-	sudo zypper -n refresh
-	sudo zypper -n install password-store
-}
-
-install.arch() {
-	yay -Syu --noconfirm pass
 }
 
 install_native_extension() {
@@ -81,10 +92,6 @@ install_native_extension() {
 	ln -sfv "$install_dir/lib/browserpass/hosts/firefox/$app_id" "${HOME}/.mozilla/native-messaging-hosts/$app_id"
 
 	core.print_warn "Not installing browserpass-extension, only the native client"
-}
-
-installed() {
-	command -v pass &>/dev/null && [ -d "$g_password_store_dir" ]
 }
 
 util.if_file_sourced || _setup "$@"

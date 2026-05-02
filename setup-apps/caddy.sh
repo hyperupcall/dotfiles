@@ -25,7 +25,7 @@ install.debian() {
 	sudo apt-get install -y caddy
 }
 
-installed() {
+install.installed() {
 	[ -f "$g_sources_file" ] && command -v caddy &>/dev/null
 }
 

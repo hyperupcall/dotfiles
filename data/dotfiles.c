@@ -245,6 +245,7 @@ static Entry bash[] = {
 	Home(".bash_profile", CategoryShell),
 	Home(".bash_logout", CategoryShell),
 	Config("bash/", CategoryShell),
+	Config("blesh/", CategoryShell),
 	Done
 	// clang-format on
 };

@@ -10,7 +10,7 @@ install.ubuntu() {
 	sudo fc-cache -fv
 }
 
-installed() {
+install.installed() {
 	fc-list | grep -q 'Times New Roman'
 }
 

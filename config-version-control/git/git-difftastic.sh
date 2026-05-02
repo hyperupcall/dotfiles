@@ -7,7 +7,7 @@ install.any() {
 	cargo install --force difftastic
 }
 
-installed() {
+install.installed() {
 	command -v difft &>/dev/null
 }
 

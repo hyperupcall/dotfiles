@@ -10,7 +10,7 @@ install.any() {
 	sudo ./install.sh /usr/local
 }
 
-installed() {
+install.installed() {
 	command -v bats &>/dev/null
 }
 

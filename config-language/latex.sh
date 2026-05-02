@@ -12,7 +12,7 @@ install.ubuntu() {
 	install.debian "$@"
 }
 
-installed() {
+install.installed() {
 	command -v pdftex &>/dev/null && command -v tex-fmt &>/dev/null
 }
 

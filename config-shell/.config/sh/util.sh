@@ -54,9 +54,16 @@ _util_path_append() {
 }
 
 _util_source_file() {
-	. "$1"
+	# Software such as "ble.sh" will error since the "inherited"
+	# positional parameters are non-zero. So, ensure there isn't any.
+	_file=$1
+	shift
+
+	. "$_file"
+
 	# shellcheck disable=SC2181
-	[ $? -ne 0 ] && _util_print_source_error "$1"
+	[ $? -ne 0 ] && _util_print_source_error "$_file"
+	unset -v _file
 }
 
 _util_source_dir() {
@@ -127,7 +134,7 @@ _util_log_info() {
 }
 
 _util_print_source_error() {
-	_util_log_warn "Failed to source \"$1\" successfully"
+	_util_log_warn "Failed to source $1 successfully"
 }
 
 _util_ls() {

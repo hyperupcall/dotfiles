@@ -26,7 +26,7 @@ install.arch() {
 	yay -Syu --noconfirm btrfs-progs
 }
 
-installed() {
+install.installed() {
 	command -v btrfs &>/dev/null
 }
 

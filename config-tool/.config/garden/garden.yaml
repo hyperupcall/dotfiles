@@ -82,7 +82,6 @@ groups:
     - 'graft-hard-forks::kpublish-vscode-extension'
     - 'graft-hard-forks::kroofpig'
     - 'graft-hard-forks::knotie'
-    - 'graft-hard-forks::webextension-kjsonviewer'
     - 'graft-hard-forks::kpell'
 
   maintaining:
@@ -112,8 +111,6 @@ groups:
     - 'graft-nocategory::vscode-assorted-languages'
     - 'graft-nocategory::vscode-hyperupcall-packs'
     - 'graft-nocategory::vscode-link-handler'
-    - 'graft-nocategory::webext-old-reddit-redirect'
-    - 'graft-nocategory::webext-ublacklist-helper'
     - 'graft-nocategory::xdgbasedirectoryspecification.com'
 
   personal:
@@ -142,6 +139,8 @@ groups:
 
   thunderbird-addons:
     - 'graft-thunderbird-addons::thunderbird-quickmove'
+    - 'graft-thunderbird-addons::thunderbird-gmail-labels'
+    - 'graft-thunderbird-addons::thunderbird-cardbook'
 
   tree-sitter:
     - 'graft-tree-sitter::zed-assorted-languages'
@@ -158,3 +157,6 @@ groups:
 
   webextensions:
     - 'graft-webextensions::webextension-new-tab-override'
+    - 'graft-webextensions::webextension-kjsonviewer'
+    - 'graft-webextensions::webext-old-reddit-redirect'
+    - 'graft-webextensions::webext-ublacklist-helper'

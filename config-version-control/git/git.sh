@@ -13,8 +13,7 @@ install.ubuntu() {
 	install.debian
 }
 
-# TODO: Make "installed" good with versions and print version differences
-installed() {
+install.installed() {
 	# Version must be at least 2.37.0 to support "push.autoSetupRemote".
 	# Version must be at least 2.52.0 to support "git repo".
 	# Version must be at least 2.54.0 to support "git history".

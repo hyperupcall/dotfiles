@@ -7,7 +7,7 @@ install.any() {
 	curl -K "$CURL_CONFIG" https://zed.dev/install.sh | sh
 }
 
-installed() {
+install.installed() {
 	if command -v zed &>/dev/null && zed --version &>/dev/null; then
 		local output=
 		output=$(zed --version)

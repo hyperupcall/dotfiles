@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 docker run -it \
-  -v ~/.dotfiles:/home/username/.dotfiles \
-  -v /mnt2:/mnt2 \
-  fedora:latest \
-  /bin/bash < <(cat <<"EOF"
-if command -v apt &>/dev/null; then
-	apt install -y minimize
+	-v ~/.dotfiles:/home/username/.dotfiles \
+	-v /mnt2:/mnt2 \
+	fedora:latest \
+	/bin/bash < <(
+		cat <<"EOF"
+if command -v apt-get &>/dev/null; then
+	apt-get install -y minimize
 		unminimize
 	fi
 	username=username
@@ -15,9 +16,9 @@ if command -v apt &>/dev/null; then
 	chown -R "$username:$username" "/home/$username/.dotfiles
 	if ! command -v su &>/dev/null; then
 	   if command -v dnf &>/dev/null; then
-	  	dnf install su
+	  	dnf install -y su
 	   fi
 	fi
 	su - "$username"
 EOF
-)
+	)

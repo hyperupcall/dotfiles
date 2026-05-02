@@ -8,7 +8,7 @@ install.any() {
 	cargo binstall --strategies crate-meta-data jj-cli
 }
 
-installed() {
+install.installed() {
 	command -v jj &>/dev/null
 }
 

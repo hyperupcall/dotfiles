@@ -23,7 +23,7 @@ StartupNotify=false
 EOF
 }
 
-installed() {
+install.installed() {
 	command -v pgmodeler &>/dev/null
 }
 

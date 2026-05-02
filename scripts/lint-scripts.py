@@ -445,14 +445,13 @@ def main():
 	rules.append(
 		{
 			'name': 'install-check-function-exists',
-			'regex': '(?P<match>install\\.(?!any|source|arch|debian|cachyos|ubuntu|opensuse|fedora|pop|manjaro|neon))(.*?)\\(\\)',
+			'regex': '(?P<match>install\\.(?!any|source|arch|debian|cachyos|ubuntu|opensuse|fedora|pop|manjaro|neon|installed|configure|caveats))(.*?)\\(\\)',
 			'reason': 'Function must exist',
 			'fileTypes': ['bash', 'sh'],
 			'fixerFn': None,
 			'testPositiveMatches': ['install.not_exist()'],
 			'testNegativeMatches': [
 				'install.fedora()',
-				'curl https://mise.jdx.dev/install.sh | sh',
 			],
 		}
 	)

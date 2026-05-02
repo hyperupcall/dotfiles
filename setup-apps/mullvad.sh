@@ -35,7 +35,7 @@ install.fedora() {
 	sudo dnf -y install mullvad-vpn
 }
 
-installed() {
+install.installed() {
 	[ -f "$g_sources_file" ] && command -v mullvad &>/dev/null
 }
 

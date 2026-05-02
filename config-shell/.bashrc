@@ -101,13 +101,6 @@ fi
 _util_source_file "$XDG_CONFIG_HOME/sh/line-editing.sh"
 _util_source_dir "$XDG_CONFIG_HOME/bash/bash.d"
 
-# Load bash-preexec.
-if [ -d "$XDG_DATA_HOME/basalt/store/packages/github.com/rcaloras" ]; then
-	source "$XDG_DATA_HOME"/basalt/store/packages/github.com/rcaloras/bash-preexec\@*/bash-preexec.sh
-else
-	_util_log_warn 'Not sourcing rcaloras/bash-preexec'
-fi
-
 # Executes after command is read, but before command execution.
 preexec() {
 	:

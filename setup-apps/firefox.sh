@@ -9,8 +9,6 @@ install.debian() {
 }
 
 install.ubuntu() {
-	# TODO: xdg-desktop-portal-kde
-	# TODO: Should have a "cleanup" for distros that do this.
 	local gpg_file='/etc/apt/keyrings/mozilla.asc'
 
 	pkg.add_apt_key \
@@ -30,22 +28,22 @@ install.ubuntu() {
 Pin: origin packages.mozilla.org
 Pin-Priority: 1000' | sudo tee /etc/apt/preferences.d/mozilla >/dev/null
 	sudo apt-get -y update
-	sudo apt-get install -y firefox
+	sudo apt-get install -y firefox xdg-desktop-portal-kde
 }
 
 install.fedora() {
-	sudo dnf -y install firefox
+	sudo dnf -y install firefox xdg-desktop-portal-kde
 }
 
 install.opensuse() {
-	sudo zypper -n install firefox
+	sudo zypper -n install firefox xdg-desktop-portal-kde
 }
 
 install.arch() {
-	sudo pacman -Syu --noconfirm firefox
+	sudo pacman -Syu --noconfirm firefox xdg-desktop-portal-kde
 }
 
-installed() {
+install.installed() {
 	[ -f "$g_sources_file" ] && command -v firefox &>/dev/null
 }
 

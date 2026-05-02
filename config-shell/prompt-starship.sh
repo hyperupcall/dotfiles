@@ -7,11 +7,11 @@ install.any() {
 	cargo install starship
 }
 
-installed() {
+install.installed() {
 	command -v starship &>/dev/null
 }
 
-configure() {
+install.configure() {
 	util.write_promptfile 'starship' \
 		--bash "$(starship init bash --print-full-init)" \
 		--zsh "$(starship init zsh --print-full-init)"

@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
-# DO NOT source setup.sh here. Otherwise, "_private" variables
-# cannot be accessed. This needs to be standalone and work before
-# running "doctor.sh".
-source ~/.dotfiles/config/setup.sh # TODO
+source ~/.dotfiles/config/setup.sh
 
 main() {
 	local mode=
@@ -34,7 +31,7 @@ main() {
 	)
 
 	options+=('__manual__')
-	printf '#%d\n  MOUNTPOINT: (specify manually)\n' $((${#options[@]}-1))
+	printf '#%d\n  MOUNTPOINT: (specify manually)\n' $((${#options[@]} - 1))
 
 	local answer=
 	while :; do
@@ -51,10 +48,9 @@ main() {
 	fi
 	device_path=${device_path%/}
 
-	local tmp_gnupg_dir=$(mktemp -d --suffix='-gnupg')
-	gpg --homedir "$tmp_gnupg_dir" --no-keyring --batch --yes --pinentry-mode loopback --passphrase-fd 3 --no-symkey-cache --decrypt "$device_path/_data/setup_private_sh.asc" 3<<<$(cat "$device_path/_data/pw.txt") | tar -xO > "$HOME/.dotfiles/config/setup-private.sh"
-
-	source ~/.dotfiles/config/setup.sh
+	local tmp_gnupg_dir=
+	tmp_gnupg_dir=$(mktemp -d --suffix='-gnupg')
+	gpg --homedir "$tmp_gnupg_dir" --no-keyring --batch --yes --pinentry-mode loopback --passphrase-fd 3 --no-symkey-cache --decrypt "$device_path/_data/setup_private_sh.asc" 3<<<"$(cat "$device_path/_data/pw.txt")" | tar -xO >"$HOME/.dotfiles/config/setup-private.sh"
 
 	local -A paths_encrypt=(
 		[gnupg]="$HOME/.gnupg"

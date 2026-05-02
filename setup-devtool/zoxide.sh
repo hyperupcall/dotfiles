@@ -6,7 +6,7 @@ main() {
 	util.install_by_setup_distro_package 'Zoxide' 'zoxide' 'zoxide' "$@"
 }
 
-configure() {
+install.configure() {
 	util.write_shellfile 'zoxide' \
 		--bash 'eval "$(zoxide init bash)"' \
 		--zsh 'eval "$(zoxide init zsh)"' \

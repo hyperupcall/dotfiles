@@ -27,7 +27,7 @@ install.arch() {
 	yay -Syu --noconfirm notify-send
 }
 
-installed() {
+install.installed() {
 	command -v notify-send &>/dev/null
 }
 

@@ -37,7 +37,7 @@ install.any() {
 	# Download and install "dev".
 	local dir="$HOME/.dev"
 	if [ ! -d "$dir" ]; then
-		util.clone "$dir" git@github.com:fox-incubating/dev # TODO: Update references
+		util.clone "$dir" git@github.com:hyperupcall-projects/dev
 	fi
 	mkdir -p "$dir/.data"
 	if [ ! -f ~/.dotfiles/.data/bin/dev ]; then
@@ -64,7 +64,7 @@ install.any() {
 	fi
 }
 
-installed() {
+install.installed() {
 	[ -f "$XDG_DATA_HOME/systemd/user/dev.service" ] && [ -f ~/.dotfiles/.data/binexec/node ]
 }
 

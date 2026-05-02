@@ -7,7 +7,7 @@ install.any() {
 	cargo install garden-tools garden-gui
 }
 
-installed() {
+install.installed() {
 	command -v 'garden' &>/dev/null
 }
 

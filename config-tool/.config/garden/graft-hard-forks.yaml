@@ -1,5 +1,4 @@
 trees:
-  # TODO: create new graft or tag hard foks to include anki plugins and obsidians?
   kpublish-vscode-extension:
     url: 'git@github.com:hyperupcall-projects/kpublish-vscode-extension'
     default-remote: 'me'
@@ -10,10 +9,6 @@ trees:
 
   knotie:
     url: 'git@github.com:hyperupcall-projects/knotie'
-    default-remote: 'me'
-
-  webextension-kjsonviewer:
-    url: 'git@github.com:hyperupcall-projects/webextension-kjsonviewer'
     default-remote: 'me'
 
   kpell:

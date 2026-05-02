@@ -13,7 +13,7 @@ install.any() {
 	mv shellcheck ~/.local/bin/shellcheck
 }
 
-installed() {
+install.installed() {
 	command -v shellcheck &>/dev/null
 }
 

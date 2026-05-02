@@ -18,7 +18,7 @@ install.any() {
 	ln -sf ~/.home/Downloads/.dropbox-dist/dropboxd ~/.dotfiles/.data/bin/dropboxd
 }
 
-installed() {
+install.installed() {
 	[ -x ~/.dotfiles/.data/bin/dropboxd ]
 }
 

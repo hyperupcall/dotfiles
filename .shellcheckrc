@@ -9,3 +9,4 @@ disable=SC2164
 disable=SC1012
 disable=SC1007
 disable=SC2002
+disable=SC2329

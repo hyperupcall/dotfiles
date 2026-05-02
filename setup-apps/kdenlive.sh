@@ -8,7 +8,7 @@ install.any() {
 	flatpak install -y --user org.kde.kdenlive
 }
 
-installed() {
+install.installed() {
 	flatpak info org.kde.kdenlive &>/dev/null
 }
 

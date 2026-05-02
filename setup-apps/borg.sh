@@ -23,7 +23,7 @@ install.arch() {
 	sudo pacman -Syu --noconfirm borgbackup
 }
 
-installed() {
+install.installed() {
 	command -v borg &>/dev/null
 }
 

@@ -15,16 +15,16 @@ install.any() {
 		hyperupcall/bake
 
 	basalt global add \
-		cykerway/complete-alias \
-		rcaloras/bash-preexec \
-		reconquest/shdoc
+		hyperupcall-projects/kcomplete-alias \
+		hyperupcall-projects/kbash-preexec \
+		hyperupcall-projects/kshdoc
 }
 
-installed() {
+install.installed() {
 	command -v basalt &>/dev/null && command -v shdoc &>/dev/null
 }
 
-configure() {
+install.configure() {
 	util.write_shellfile 'basalt' \
 		--bash 'eval "$(basalt global init bash)"' \
 		--zsh 'eval "$(basalt global init zsh)"' \

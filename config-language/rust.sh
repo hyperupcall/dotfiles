@@ -18,11 +18,11 @@ install.any() {
 	cargo install --locked bat
 }
 
-installed() {
+install.installed() {
 	command -v rustup help &>/dev/null && command -v cargo &>/dev/null && command -v rustc &>/dev/null && command -v bat &>/dev/null
 }
 
-configure() {
+install.configure() {
 	util.write_shellfile 'rust' \
 		--sh '. "${CARGO_HOME:-"$HOME/.cargo"}/env"' \
 		--bash 'source "${CARGO_HOME:-"$HOME/.cargo"}/env"' \

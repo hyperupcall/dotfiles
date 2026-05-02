@@ -18,7 +18,7 @@ install.any() {
 	exec ./"$file"
 }
 
-installed() {
+install.installed() {
 	local dir=(~/.home/AppImages/Obsidian_*.AppImage)
 	((${#dir} > 0))
 }

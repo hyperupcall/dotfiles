@@ -36,7 +36,7 @@ Keywords=MySQL;MariaDB;PostgreSQL;CockroachDB;SQLite;SQL
 EOF
 }
 
-installed() {
+install.installed() {
 	[ -d ~/.dotfiles/.data/adminer ]
 }
 

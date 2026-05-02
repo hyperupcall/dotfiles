@@ -3,5 +3,6 @@ bake linguist-generated
 
 config-language/.npmrc filter=npmrc
 config-tools/.config/osc/oscrc filter=oscrc
-config-editor/.config/zed/settings.json filter=homedir
+config-editor/.config/zed/settings.json filter=homedir smudge=homedir
 config-editor/.config/kate/formatting/settings.json filter=homedir smudge=homedir
+.clangd filter=homedir smudge=homedir

@@ -11,7 +11,7 @@ install.ubuntu() {
 	install.debian "$@"
 }
 
-installed() {
+install.installed() {
 	command -v fish &>/dev/null && command -v fish_indent &>/dev/null
 }
 

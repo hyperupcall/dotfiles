@@ -23,7 +23,7 @@ install.arch() {
 	yay -Syu --noconfirm source-highlight
 }
 
-installed() {
+install.installed() {
 	command -v source-highlight &>/dev/null
 }
 

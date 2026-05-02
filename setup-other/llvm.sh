@@ -11,7 +11,7 @@ install.ubuntu() {
 	install.debian "$@"
 }
 
-installed() {
+install.installed() {
 	command -v clang &>/dev/null && command -v clangd &>/dev/null && command -v clang-format &>/dev/null && command -v clang-tidy &>/dev/null
 }
 

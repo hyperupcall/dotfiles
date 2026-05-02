@@ -4,9 +4,7 @@
 			"enabled": true,
 			"remote": false,
 			"command": "node",
-			"args": [
-				"/"
-			],
+			"args": [],
 			"env": {},
 		},
 	},
@@ -102,9 +100,10 @@
 		"default_profile": "write",
 		"play_sound_when_agent_done": true,
 		"default_model": {
+			"effort": "high",
 			"enable_thinking": true,
 			"provider": "copilot_chat",
-			"model": "claude-sonnet-4.5",
+			"model": "claude-sonnet-4.6",
 		},
 	},
 	"telemetry": {

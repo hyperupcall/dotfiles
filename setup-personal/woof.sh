@@ -18,11 +18,11 @@ install.source() {
 	ln -sf "$PWD/pkg/bin/woof" "$prefix/bin/woof"
 }
 
-installed() {
+install.installed() {
 	[ -L ~/.local/bin/woof ]
 }
 
-configure() {
+install.configure() {
 	util.write_shellfile 'woof' \
 		--sh 'eval "$(woof init --no-cd sh)"' \
 		--bash 'eval "$(woof init --no-cd bash)"' \

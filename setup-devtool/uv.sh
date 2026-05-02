@@ -7,7 +7,7 @@ install.any() {
 	curl -K "$CURL_CONFIG" https://astral.sh/uv/install.sh | sh
 }
 
-installed() {
+install.installed() {
 	command -v uv &>/dev/null
 }
 

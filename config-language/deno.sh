@@ -7,7 +7,7 @@ install.any() {
 	curl -K "$CURL_CONFIG" https://deno.land/install.sh | DENO_INSTALL="$PWD" sh
 }
 
-installed() {
+install.installed() {
 	command -v deno &>/dev/null
 }
 

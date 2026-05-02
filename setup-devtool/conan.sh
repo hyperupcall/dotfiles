@@ -8,7 +8,7 @@ install.any() {
 	pipx install conan
 }
 
-installed() {
+install.installed() {
 	command -v conan &>/dev/null
 }
 

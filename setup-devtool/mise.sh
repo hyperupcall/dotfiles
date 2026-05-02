@@ -12,26 +12,23 @@ install.any() {
 		fi
 	fi
 
-	# TODO: util.source_shellfile
+	eval "$("$HOME/.local/bin/mise" activate bash)"
 
-	# TODO: precompiled ruby will be the default in 2026.8.0.
+	# TODO(2026.8.0): precompiled ruby will be the default on this day
 	mise settings ruby.compile=false
 	mise -C ~/.dotfiles install
 	mise use -g node python cmake go
-
-	# sudo apt install pipx TODO
-	# python3 -m pipx ensurepath
 }
 
-installed() {
+install.installed() {
 	command -v mise &>/dev/null
 }
 
-configure() {
+install.configure() {
 	util.write_shellfile '10-mise' \
 		--bash 'eval "$("$HOME/.local/bin/mise" activate bash)"' \
 		--zsh 'eval "$("$HOME/.local/bin/mise" activate zsh)"' \
 		--fish 'eval "$("$HOME/.local/bin/mise" activate fish)"'
 }
 
-util.if_file_sourced || _setup "$@"ta
+util.if_file_sourced || _setup "$@"

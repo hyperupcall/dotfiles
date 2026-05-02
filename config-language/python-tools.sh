@@ -11,11 +11,11 @@ install.any() {
 	python3 -m pipx ensurepath
 }
 
-installed() {
+install.installed() {
 	[ -f "$XDG_CONFIG_HOME/bash/bash.d/_pipx.bash" ]
 }
 
-configure() {
+install.configure() {
 	util.write_shellfile 'pipx' \
 		--bash 'eval "$(register-python-argcomplete pipx)"' \
 		--zsh 'eval "$(register-python-argcomplete pipx)"' \

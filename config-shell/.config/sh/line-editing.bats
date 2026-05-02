@@ -1,7 +1,7 @@
 #!/usr/bin/env bats
 
 load ../../../vendor/bats-all/load.bash
-load ./modules/line-editing.sh
+load ./line-editing.sh
 set -o vi
 
 @test "_readline_util_get_line" {

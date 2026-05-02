@@ -18,7 +18,7 @@ install.any() {
 	rm -rf "gh_${version}_linux_amd64"
 }
 
-installed() {
+install.installed() {
 	command -v gh &>/dev/null
 }
 
