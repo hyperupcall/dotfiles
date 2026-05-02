@@ -9,13 +9,8 @@ install.any() {
 }
 
 install.configure() {
-	util.write_promptfile 'kbash-prexec' \
-		--bash "
-			if [ -d \"$g_dir\" ]; then
-					source \"$g_dir/bash-preexec.sh\"
-			else
-					_util_log_warn 'Not sourcing rcaloras/bash-preexec'
-			fi"
+	util.write_promptfile 'kbash-preexec' \
+		--bash "source \"$g_dir/bash-preexec.sh\""
 }
 
 install.installed() {

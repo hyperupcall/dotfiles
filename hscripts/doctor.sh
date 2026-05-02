@@ -299,6 +299,7 @@ main() {
 	~/scripts/setup/zsh.sh
 	~/scripts/setup/ksh.sh
 	~/scripts/setup/rust.sh
+	~/scripts/setup/usage.sh
 	~/scripts/setup/mise.sh
 	~/scripts/setup/neovim.sh
 	~/scripts/setup/less.sh
