@@ -82,8 +82,8 @@ import_vault() {
 	if ! sudo zpool status vault &>/dev/null; then
 		sudo zpool import -f vault
 	fi
+	# The service zfs-import-cache.service should be enabled already.
 	sudo zpool set cachefile=/etc/zfs/zpool.cache vault
-	sudo systemctl enable --now zfs-import-cache.service zfs.target zfs-import.target zfs-mount.service
 }
 
 util.if_file_sourced || _setup "$@"

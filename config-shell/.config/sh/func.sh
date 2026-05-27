@@ -61,6 +61,14 @@ cls() {
 	stty sane
 }
 
+copy() {
+	if [ "${XDG_SESSION_TYPE:-}" = 'wayland' ]; then
+		wl-copy
+	else
+		xclip -selection clipboard
+	fi
+}
+
 dataurl() {
 	mimeType=$(file -b --mime-type "$1")
 	case $mimeType in
@@ -383,6 +391,7 @@ print_shell_prompt_eval_string() {
 	_file="${XDG_STATE_HOME:-${HOME:?}/.local/state}/dotfiles-shell-prompts/${1:-bash}/_${2:-starship}.txt"
 
 	if [ ! -f "$_file" ]; then
+		printf '%s\n' "File not found: $_file" >&2
 		printf 'false\n'
 		return 1
 	fi

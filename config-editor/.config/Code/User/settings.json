@@ -366,7 +366,7 @@
 		"editor.tabSize": 3,
 	},
 	"latex-workshop.formatting.latex": "latexindent",
-	"latex-workshop.latex.outDir": "%WORKSPACE_FOLDER%/.hidden/.latex-workshop",
+	"latex-workshop.latex.outDir": "%WORKSPACE_FOLDER%/.hidden/latex-workshop",
 	"latex-utilities.message.update.show": false,
 
 	//
@@ -467,8 +467,24 @@
 	"cSpell.diagnosticLevel": "Information",
 	"cSpell.dictionaryDefinitions": [
 		{
-			"name": "Personal",
+			"name": "For Myself",
 			"path": "~/.devresources/dictionary-hyperupcall.txt",
+			"addWords": true,
+		},
+		{
+			"name": "People Names",
+			"path": "~/.devresources/dictionary-names.txt",
+			"addWords": true,
+			"supportNonStrictSearches": true,
+		},
+		{
+			"name": "General Words",
+			"path": "~/.devresources/dictionary-general.txt",
+			"addWords": true,
+		},
+		{
+			"name": "My Computer Science",
+			"path": "~/.devresources/dictionary-compsci.txt",
 			"addWords": true,
 		},
 		{
@@ -482,7 +498,7 @@
 			"addWords": true,
 		},
 	],
-	"cSpell.dictionaries": ["Personal", "My Bash", "My Linux"],
+	"cSpell.dictionaries": ["For Myself", "General Words", "My Computer Science", "My Bash", "My Linux", "People Names"],
 	"cSpell.ignorePaths": [
 		"package-lock.json",
 		"node_modules",
@@ -534,30 +550,30 @@
 	"githubPullRequests.queries": [
 		{
 			"label": "Copilot on My Behalf",
-			"query": "repo:${owner}/${repository} is:open author:copilot assignee:${user}",
+			"query": "repo:${owner}/${repository} is:open author:copilot assignee:${user}"
 		},
 		{
 			"label": "Local Pull Request Branches",
-			"query": "default",
+			"query": "default"
 		},
 		{
 			"label": "Waiting For My Review",
-			"query": "repo:${owner}/${repository} is:open review-requested:${user}",
+			"query": "repo:${owner}/${repository} is:open review-requested:${user}"
 		},
 		{
 			"label": "Created By Me",
-			"query": "repo:${owner}/${repository} is:open author:${user}",
+			"query": "repo:${owner}/${repository} is:open author:${user}"
 		},
 		{
 			"label": "Created By Me 2",
-			"query": "repo:SchemaStore/schemastore is:open",
+			"query": "repo:SchemaStore/schemastore is:open"
 		},
 		{
 			"label": "All Open",
-			"query": "default",
-		},
+			"query": "default"
+		}
 	],
 	"workbench.iconTheme": "icons",
 	"window.autoDetectColorScheme": true,
-	"workbench.preferredLightColorTheme": "Quiet Light",
+	"workbench.preferredLightColorTheme": "Bearded Theme Milkshake Raspberry",
 }

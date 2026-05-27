@@ -11,14 +11,14 @@
 (( $? != 0 )) && _util_print_source_error '~/.profile'
 
 # TODO
-ZSH_DISABLE_COMPFIX=true
-fpath=(
-  /usr/share/zsh/functions
-  /usr/share/zsh/site-functions
-  /usr/share/zsh/vendor-completions
-  /usr/local/share/zsh/site-functions
-  $fpath
-)
+# ZSH_DISABLE_COMPFIX=true
+# fpath=(
+#   /usr/share/zsh/functions
+#   /usr/share/zsh/site-functions
+#   /usr/share/zsh/vendor-completions
+#   /usr/local/share/zsh/site-functions
+#   $fpath
+# )
 
 # Use frameworks.
 # See performance: https://github.com/romkatv/zsh-bench
@@ -296,6 +296,6 @@ compinit -d ~/.cache/zcompdump
 
 # Modules.
 _util_source_file "$XDG_CONFIG_HOME/sh/line-editing.sh"
-_util_source_dir "$XDG_CONFIG_HOME/zsh/zsh.d"
+# _util_source_dir "$XDG_CONFIG_HOME/zsh/zsh.d"
 
 # ---

@@ -1011,9 +1011,6 @@ ble-face -s filename_warning none
 # ble-bind -m auto_complete -f C-i auto_complete/insert
 # ble-bind -m auto_complete -f TAB auto_complete/insert
 
-# Alt+Bakcspace should remove a word.
-ble-bind -f 'M-C-?' kill-backward-cword
-
 ##-----------------------------------------------------------------------------
 ## Settings for Emacs mode
 
@@ -1048,6 +1045,16 @@ function blerc/emacs-load-hook {
 	## With the following settings, M-backspace (whose actual key sequence
 	## depends on your terminal) will kill the backward word as in the default
 	## readline.
+
+	if [ "$TERM" = 'xterm-kitty' ]; then
+		ble-bind -f 'M-DEL' kill-backward-cword
+	elif [ "$TERM" = 'xterm-ghostty' ]; then
+		ble-bind -f 'M-DEL' kill-backward-cword
+	elif [ "$TERM" = 'foot' ]; then
+		ble-bind -f 'M-DEL' kill-backward-cword
+	else
+		ble-bind -f 'M-C-?' kill-backward-cword
+	fi
 
 	#ble-bind -f 'M-C-?' kill-backward-cword
 	#ble-bind -f 'M-DEL' kill-backward-cword

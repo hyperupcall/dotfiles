@@ -18,7 +18,6 @@
 # Set shell variables.
 # Exported variables are inherited in nested shells and virtual environments.
 # export CDPATH=':~:'
-# export CHILD_MAX='256'
 unset -v EXECIGNORE
 export FCEDIT="$EDITOR"
 unset -v FIGNORE
@@ -27,10 +26,10 @@ export HISTCONTROL='ignorespace' # Overriden by bash-preexec.
 export HISTFILE="$XDG_STATE_HOME/history/bash_history"
 export HISTSIZE='-1'
 export HISTFILESIZE='-1'
-export HISTIGNORE='ls:dir|vdir|[bf]g:pwd:clear*:exit*:mkcd*:mkt*: *'
-export HISTTIMEFORMAT='%F %T ' # ISO 8601
-export TIMEFORMAT=$'real    %3lR\nuser    %3lU\nsystem  %3lS\npercent %P'
-export PROMPT_DIRTRIM='6'
+HISTIGNORE='ls:dir|vdir|[bf]g:pwd:clear*:exit*:mkcd*:mkt*: *'
+HISTTIMEFORMAT='%F %T ' # ISO 8601.
+TIMEFORMAT=$'real    %3lR\nuser    %3lU\nsystem  %3lS\npercent %P'
+PROMPT_DIRTRIM='6'
 unset -v MAIL
 unset -v MAILCHECK
 unset -v MAILPATH

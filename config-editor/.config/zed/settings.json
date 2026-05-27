@@ -1,5 +1,6 @@
 {
-	"context_servers": {
+	"cli_default_open_behavior": "new_window",
+ "context_servers": {
 		"anki-mcp-server": {
 			"enabled": true,
 			"remote": false,

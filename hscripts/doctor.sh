@@ -357,6 +357,7 @@ main() {
 	~/scripts/setup/btrfs.sh
 	~/scripts/setup/zfs.sh
 	~/scripts/setup/yt-dlp.sh
+	~/scripts/setup/uv.sh
 
 	# Do big, but optional applications last.
 	~/scripts/setup/blender.sh
