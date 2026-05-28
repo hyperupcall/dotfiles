@@ -1,47 +1,28 @@
-#include <stdbool.h>
-#include <stddef.h>
+#include "d.h"
 
-#pragma clang diagnostic error "-Wunused-variable"
+#pragma clang diagnostic warning "-Wunused-variable"
 #pragma clang diagnostic push
 
-struct Entry {
-	char const *category;
-	char const *source;
-	char const *destination;
-};
-
-#define H "/home/" Username "/" // lint-ignore
-
-// clang-format off
-#define File(path) \
-	{ \
-		.category = "root", \
-		.source = H ".dotfiles/config-system/" path, \
-		.destination = "/" path \
-	}
-// clang-format on
-
-#define DefineEntry(name, obj) static struct Entry name[] = {obj, Done}
-
-#define Done \
-	{ .category = NULL, .source = NULL, .destination = NULL }
-
-// Macros
+// Macros.
 #define Username "edwin"
+#define Hme "/home/" Username "/"
+#define Src Hme ".dotfiles/config-system/root/"
+#define Dst "/root/"
 
-// Applications
-DefineEntry(bash, File("root/.bashrc"));
-DefineEntry(dircolors, File("root/.dir_colors"));
-DefineEntry(nano, File("root/.nanorc"));
+// Root.
+#define CategoryRoot ""
+static Item bash[] = HomeEntry(".bashrc", CategoryRoot);
+static Item dircolors[] = HomeEntry(".dir_colors", CategoryRoot);
+static Item nano[] = HomeEntry(".nanorc", CategoryRoot);
 
-static struct Entry *configuration[] = {
+static Item *configuration[] = {
 	bash,
 	dircolors,
 	nano,
 	NULL
 };
 
-struct Entry **getConfiguration() {
+Item **getConfiguration() {
 	return configuration;
 }
 

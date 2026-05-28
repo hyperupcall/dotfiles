@@ -83,11 +83,10 @@ export PASSWORD_STORE_ENABLE_EXTENSIONS='true'
 export PASSWORD_STORE_GENERATED_LENGTH='40'
 
 # Perl
-export PERL_LOCAL_LIB_ROOT="$XDG_DATA_HOME/perl5"
-export PERL_MB_OPT="--install_base \"$PERL_LOCAL_LIB_ROOT\""
-export PERL_MM_OPT="INSTALL_BASE=\"$PERL_LOCAL_LIB_ROOT\""
+_util_path_prepend PERL_LOCAL_LIB_ROOT "$XDG_DATA_HOME/perl5"
 _util_path_prepend "$PERL_LOCAL_LIB_ROOT/bin"
 _util_path_prepend PERL5LIB "$PERL_LOCAL_LIB_ROOT/lib/perl5"
+export PERL_LOCAL_LIB_ROOT PERL5LIB
 
 # Poetry
 _util_path_prepend "$XDG_DATA_HOME/pypoetry/bin"
@@ -120,9 +119,6 @@ _util_path_prepend "${CARGO_HOME:-$HOME/.cargo}/bin"
 #   export SSH_AUTH_SOCK=
 #   SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 # fi
-
-# sxhkd
-export SXHKD_SHELL='/bin/sh'
 
 # systemd
 export SYSTEMD_PAGER="env LESSKEYIN=$XDG_CONFIG_HOME/less/lesskey-systemd less"

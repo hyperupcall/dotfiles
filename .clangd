@@ -1,2 +1,2 @@
 CompileFlags:
-  Add: ['-DCONFIG_HOME=~~~']
+  Add: ['-DCONFIG_HOME="~~~"']

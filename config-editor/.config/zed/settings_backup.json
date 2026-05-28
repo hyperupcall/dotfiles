@@ -1,6 +1,6 @@
 {
 	"cli_default_open_behavior": "new_window",
-	"context_servers": {
+ "context_servers": {
 		"anki-mcp-server": {
 			"enabled": true,
 			"remote": false,
@@ -50,11 +50,6 @@
 		},
 		"TOML": {
 			"formatter": "language_server",
-		},
-		"Python": {
-			"format_on_save": "off",
-			"hard_tabs": false,
-			"tab_size": 4,
 		},
 	},
 	"lsp": {

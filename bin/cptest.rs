@@ -186,7 +186,7 @@ fn run_tests(filepath: &str) -> Result<(), String> {
 		if tests.len() == 1 { "test" } else { "tests" }
 	);
 	for (test_num, (input_file, output_file)) in tests.iter().enumerate() {
-		println!("--- \x1B[1mTEST {}\x1B[0m", test_num + 1);
+		println!("\x1B[1mTEST {}\x1B[0m", test_num + 1);
 
 		let input_data =
 			fs::read(&input_file).map_err(|e| format!("Failed to read {}: {}", input_file, e))?;
@@ -270,9 +270,9 @@ fn run_tests(filepath: &str) -> Result<(), String> {
 		io::stdout().flush().unwrap();
 
 		let trimmed_output = output.trim_end();
-		println!("---");
+		println!("--- \x1b[3mExpected\x1b[0m");
 		println!("{}", expected_output.trim_end());
-		println!("---");
+		println!("--- \x1b[3mActual\x1b[0m");
 		if trimmed_output.is_empty() {
 			println!("\x1b[3mN/A\x1b[0m");
 		} else {

@@ -210,6 +210,7 @@
 ## sequences.
 
 #bleopt prompt_eol_mark=$'\e[94m[ble: EOF]\e[m'
+bleopt prompt_eol_mark=$'\e[7m\e[1m%\e[22m\e[27m' # Show "%" in reverse video like Zsh.
 
 ## "prompt_ruler" specifies the ruler between the previous command and the
 ## prompt (like powerlevel10k

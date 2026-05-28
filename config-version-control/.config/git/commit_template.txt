@@ -1,2 +1,5 @@
 
-# Fix, Support, Implement
+#[Changelog Update] Fix, Support, Implement
+#[Changelog Update] docs, perf
+#[Changelog Ignore] Format, Refactor, Restructure, Revert, Upgrade
+#[Changelog Ignore] test, ci, build
