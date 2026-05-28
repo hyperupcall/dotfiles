@@ -5,17 +5,15 @@ typedef enum {
 	TYPE_ENTRY = 0,
 	TYPE_GROUP = 1,
 } ItemType;
-
 typedef struct Item {
 	int type;
-	// TYPE_ENTRY fields
+	// Entry.
 	char const *category;
 	char const *source;
 	char const *destination;
-	// TYPE_GROUP fields
+	// Group.
 	struct Item **entries;
 } Item;
-
 typedef struct Deployment {
 	char const *name;
 	Item **items;
@@ -38,6 +36,7 @@ typedef struct Deployment {
 	.destination = Dst ".local/share/" path \
 }
 #define Done { \
+	.type = TYPE_ENTRY, \
 	.source = NULL, \
 	.destination = NULL \
 }

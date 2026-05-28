@@ -91,19 +91,19 @@ static Item ossCode[] = {
 		.type = TYPE_ENTRY,
 		.category = CategoryEditor,
 		.source = Hme ".config/Code/User/keybindings.json",
-		.destination = Hme ".config/Code - OSS/User/keybindings.json"
+		.destination = Dst ".config/Code - OSS/User/keybindings.json"
 	},
 	{
 		.type = TYPE_ENTRY,
 		.category = CategoryEditor,
 		.source = Hme ".config/Code/User/settings.json",
-		.destination = Hme ".config/Code - OSS/User/settings.json"
+		.destination = Dst ".config/Code - OSS/User/settings.json"
 	},
 	{
 		.type = TYPE_ENTRY,
 		.category = CategoryEditor,
 		.source = Hme ".config/Code/User/snippets/",
-		.destination = Hme ".config/Code - OSS/User/snippets/"
+		.destination = Dst ".config/Code - OSS/User/snippets/"
 	},
 	Done
 	// clang-format on

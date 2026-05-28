@@ -36,7 +36,7 @@ install.ubuntu() {
 }
 
 install.installed() {
-	[ -f "$g_sources_file" ] && command -v clang &>/dev/null && command -v clangd &>/dev/null && command -v clang-format &>/dev/null && command -v clang-tidy &>/dev/null
+	[ -f "$g_sources_file" ] && command -v clang-22 &>/dev/null && command -v clangd-22 &>/dev/null && command -v clang-format-22 &>/dev/null && command -v clang-tidy-22 &>/dev/null
 }
 
 util.if_file_sourced || _setup "$@"
