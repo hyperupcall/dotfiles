@@ -91,6 +91,10 @@ install_native_extension() {
 	mkdir -p "${HOME}/.mozilla/native-messaging-hosts"
 	ln -sfv "$install_dir/lib/browserpass/hosts/firefox/$app_id" "${HOME}/.mozilla/native-messaging-hosts/$app_id"
 
+	# LibreWolf
+	mkdir -p "${HOME}/.config/librewolf/librewolf/native-messaging-hosts"
+	ln -sfv "$install_dir/lib/browserpass/hosts/firefox/$app_id" "${HOME}/.config/librewolf/librewolf/native-messaging-hosts/$app_id"
+
 	core.print_warn "Not installing browserpass-extension, only the native client"
 }
 

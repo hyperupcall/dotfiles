@@ -1,7 +1,8 @@
 // ==UserScript==
 // @name         Improved Kattis
-// @namespace    Violentmonkey Scripts
-// @version      0.5
+// @namespace    com.edwinkofler
+// @author       Edwin Kofler
+// @version      0.6.1
 // @match        https://open.kattis.com/problems/*
 // @match        https://open.kattis.com/challenge/*
 // @grant        GM_setClipboard
@@ -9,7 +10,12 @@
 // @grant        GM_unregisterMenuCommand
 // @grant        GM_getValue
 // @grant        GM_setValue
+// @run-at       document-end
+// @icon         data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABOBAMAAAAk+643AAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAB5QTFRFAAAAbjscNDEs3YYRFAwJnWkm5eXmp6GcCAgKBwYGGE+FKAAAAAp0Uk5TAP////3//vxOsJIGr5kAAARwSURBVHic7de9b+M2FADwDB7kkY7YoqN49AUdFcXoGumekHikJaboeAFCzfUh0uoCHpwtKVwg/m/7HinJUkJf0KXTMQiiD/74Hqkn2jk7+9F+tP+jBYfX3W7z7vJu57vq2gSwLXdvwJ6u3p4g/yRJomfwOrz2BKnGy5f+MMGnhNoiXA4FdxevvWR6nrjb8NyPAu21wp/ZhLOiNV0aeycWrPjFS7ZaM9dFtWM+pa3QxR9e8pdG4+KEG1rZ4G+XleJaX3nn/4JEu9mulgDZ8pD2Qq98JEiJqHNaMwGFLEI+SzHoItInSU63NEvirEhEUuJPEuOKxfayej5N1EJwXZRFmMwwqThN2MdE4nzUZVEmuV2tlH9IQk4LfXl+mWg7+Tj/iKhcuccdW4K/4UckLNoSsS1KOKb2faI+xQOBAfG0/D4pz/WAnB9nc5pESXEUXcDoJMGCUV8GMRLe/i1xnVc+QjVWDucedyeXGL/c+MiW1ouWVWub3aKwR0WyOE24xjKMC11Xj274RW0eY17g+6L9r9hkrnPaL2pjTNEKYySSUiv/izzNFRFhTGNsmIVZ12aND/OKnyDBy4pelp9NxW6+Evm9qoV5oJeUl94Fw8mUlM+duTfRgz2qjKyrIg6Bh97ZY2bhF05kbURlyddG1qaIAfJTu+UZ7qXnRGYtqUAaPLqC6ERemBntdD+Ze7h5sHMxMjcW2yC7A8Dh8Domk9R2NPKzm76papr+QlMQBJnMJBzGhEokxodh6IkQMOZPbUmwB864nis9G81rSoW4uHOdmwafj2lwM4zVc7CXrCV6OSQBp91UNE1jhanw6FsSAmymqXJktdK/jkiuiqSuqDeSxmZncFeHzSRSnAh/S85wkX8zrs2btSNVUsLrFImmHe0d2adJK8x6ftEefUvwky9ijqi3ZJt3QYxpgxjzqFMW4haqZx7yBPmdObZK2j/NVUvUexLAmAj3dJqQsTDjzEe2KYOm7sX9ZxekSZGkLPKQYI+3LpqePLrsmjXmBSl3RI/IBEdjWdOYUWsaGWJxOWInJI9lvUVBYeqxWGM5CjEgcN2TFyIpNMM4eAIghCPakawvsoDyYhBSibWRqMakFSLVUdSSvM+sJQwumkELnSCSWsL1jVyOCD4DmB/FqhVjApu3BEQnRCdEpsWRyPZtDuz0IcX1wfw5RpDQizERXWb7llAP+tqWRVIcCUfC7Qf6TSa6zCxh3cDA9So7EuC4YsySDNO47UuM6u+YyiAIEiwy9xWAnmyb2ZRqCXois0EQIfls3hEawWU2BduOA4sRCblyhEZyXwxxp3I9R117Msf3xSJFxBXAvusqfUbOOZIVVb8l1/YlPt7OPCSKmOL09q/s6S2l5UtnSIRS9FxEac+RPGXdnMEXBIuMKcXUjK/CjtggGZMXZp0Jn2nzZm1pL3GBKfiF3bzujPSIYcuIbO3Atd3y8VPYMxVbTUx3RbV0ed3gDk6beLV+lxnY/l1zxMXDmWNSIMHb+pD0P4sj/6Ut/wXk+F37+daYcAAAAABJRU5ErkJggg==
 // ==/UserScript==
+
+(function () {
+  'use strict';
 
 const isChallenge = location.pathname.includes("/challenge/");
 const slug = isChallenge ? "_challenge" : location.pathname.split("/problems/")[1]?.split("/")[0];
@@ -199,8 +205,7 @@ function buildScript(
 	}
 }
 
-function createButton() {
-	const wrapper = document.createElement("div");
+const wrapper = document.createElement("div");
 	wrapper.style.cssText = `
       position: absolute;
       top: 44px;
@@ -268,10 +273,4 @@ function createButton() {
 		"#problem-text, main, .problem-statement, article",
 	);
 	if (main) main.prepend(wrapper);
-}
-
-if (document.readyState === "loading") {
-	document.addEventListener("DOMContentLoaded", createButton);
-} else {
-	createButton();
-}
+})();

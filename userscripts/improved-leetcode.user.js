@@ -1,16 +1,20 @@
 // ==UserScript==
-// @name        Improved LeetCode Styles
-// @namespace   Violentmonkey Scripts
+// @name        Improved LeetCode
+// @namespace   com.edwinkofler
 // @match       https://leetcode.com/*
 // @grant       none
-// @version     0.2
+// @version     0.2.1
 // @author      Edwin Kofler
-// @description 7/17/2025, 5:12:51 PM
+// @icon        data:image/png;base64,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
 // ==/UserScript==
-const sheet = new CSSStyleSheet();
+(function () {
+  'use strict';
+
+  const sheet = new CSSStyleSheet();
 sheet.replaceSync(`
   .flex.flex-col.gap-1.overflow-x-hidden.p-4.pt-6.transition-all.px-4 {
 	 width: 325px !important;
   }
 `);
-document.adoptedStyleSheets.push(sheet);
+  document.adoptedStyleSheets.push(sheet);
+})();

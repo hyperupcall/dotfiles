@@ -12,7 +12,7 @@ install.any() {
 install.configure() {
 	util.write_shellfile 'ble' \
 		--bash "
-			source \"$g_dir/out/ble.sh\""
+			source \"$g_dir/out/ble.sh\" || :"
 }
 
 install.installed() {

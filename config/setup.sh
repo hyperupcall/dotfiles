@@ -5,9 +5,8 @@ fi
 
 # Source libraries.
 source ~/.dotfiles/config/xdg.sh
-for _f in \
-	~/.dotfiles/vendor/bash-core/pkg/**/*.sh \
-	~/.dotfiles/vendor/bash-term/pkg/**/*.sh; do
+SETUPSH_SKIP_VENDOR_SOURCE=1 # Use the versions vendored in this repository.
+for _f in ~/.dotfiles/vendor/bash-{core,term}/pkg/*.sh; do
 	source "$_f"
 done
 unset -v _f

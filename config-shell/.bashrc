@@ -9,6 +9,7 @@
 # Ensure ~/.profile is read for non-login shells.
 # Bash only reads ~/.profile on login shells when invoked as sh.
 [ -f ~/.profile ] && source ~/.profile
+# shellcheck disable=SC2181
 (( $? != 0 )) && _util_print_source_error '~/.profile'
 
 # Use frameworks.

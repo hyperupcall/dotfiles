@@ -1,0 +1,53 @@
+amends "package://github.com/jdx/hk/releases/download/v1.45.0/hk@1.45.0#/Config.pkl"
+
+hooks {
+  ["commit-msg"] {
+    steps {
+      ["commitlint"] {
+        check = "pnpx commitlint --edit {{commit_msg_file}}"
+      }
+    }
+  }
+  ["pre-commit"] {
+    fix = true
+    steps {
+      ["build-and-test"] {
+        check = "./bake build && ./bake test"
+      }
+      ["check-spelling"] {
+        check = "cspell-cli lint ."
+      }
+      ["check-formatting"] {
+        shell = "bash -o errexit -c"
+        check = #"./node_modules/.bin/prettier --ignore-path <(printf '%s\n' './vendor') --check ."#
+      }
+      ["check-linting"] {
+        check = "./node_modules/.bin/eslint ."
+      }
+      ["check-shellscript-format"] {
+        check = #"find . \( -name vendor -prune \) -o \( -name .git -prune \) -o \( -name .data -prune \) -o \( -name shell.d -prune \) -o -name '*.sh' -exec shfmt --diff --language-dialect bash --binary-next-line {} +"#
+        fix = #"find . \( -name vendor -prune \) -o \( -name .git -prune \) -o \( -name .data -prune \) -o \( -name shell.d -prune \) -o -name '*.sh' -exec shfmt --write --language-dialect bash --binary-next-line {} +"#
+      }
+      ["check-shellscript-lint"] {
+        check = #"find . \( -name vendor -prune \) -o \( -name .git -prune \) -o \( -name .data -prune \) -o \( -name shell.d -prune \) -o -name '*.sh' -exec shellcheck --format gcc {} + | grep -v '\(g_disable\|_shell_original_path\|_private\).*SC2154'"#
+      }
+      ["check-yaml-format"] {
+        check = #"find . \( -name vendor -prune \) -o \( -name .git -prune \) -o \( -name .data -prune \) -o \( -name shell.d -prune \) -o -name '*.yaml' -o -name '*.yml' -exec yamlfmt -lint {} +"#
+        fix = #"find . \( -name vendor -prune \) -o \( -name .git -prune \) -o \( -name .data -prune \) -o \( -name shell.d -prune \) -o -name '*.yaml' -o -name '*.yml' -exec yamlfmt {} +"#
+      }
+      ["check-yaml-lint"] {
+        check = #"find . \( -name vendor -prune \) -o \( -name .git -prune \) -o \( -name .data -prune \) -o \( -name shell.d -prune \) -o -name '*.yaml' -o -name '*.yml' -exec yamllint --strict {} +"#
+      }
+      ["check-github-actions-lint"] {
+        shell = "bash -o errexit -c"
+        check = #"zizmor --strict-collection --min-confidence=low --min-severity=informational --persona=pedantic --config <(printf "rules:\n  anonymous-definition:\n    disable: true\n  undocumented-permissions:\n    disable: true\n") .github"#
+      }
+      ["check-toml-format"] {
+        check = "tombi format --check"
+      }
+      ["check-toml-lint"] {
+        check = "tombi lint --error-on-warnings"
+      }
+    }
+  }
+}
