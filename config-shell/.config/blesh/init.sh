@@ -906,6 +906,7 @@ bleopt exec_errexit_mark=
 #ble-face -s syntax_escape             fg=magenta
 #ble-face -s syntax_expr               fg=63
 #ble-face -s syntax_error              bg=203,fg=231
+ble-face -s syntax_error               none
 #ble-face -s syntax_varname            fg=202
 #ble-face -s syntax_delimiter          bold
 #ble-face -s syntax_param_expansion    fg=133
@@ -942,7 +943,7 @@ bleopt exec_errexit_mark=
 #ble-face -s filename_character        underline,fg=231,bg=black
 #ble-face -s filename_block            underline,fg=yellow,bg=black
 #ble-face -s filename_warning          underline,fg=red
-ble-face -s filename_warning none
+ble-face -s filename_warning           none
 #ble-face -s filename_url              underline,fg=blue
 #ble-face -s filename_ls_colors        underline
 #ble-face -s varname_array             fg=orange,bold
@@ -1046,7 +1047,6 @@ function blerc/emacs-load-hook {
 	## With the following settings, M-backspace (whose actual key sequence
 	## depends on your terminal) will kill the backward word as in the default
 	## readline.
-
 	if [ "$TERM" = 'xterm-kitty' ]; then
 		ble-bind -f 'M-DEL' kill-backward-cword
 	elif [ "$TERM" = 'xterm-ghostty' ]; then
@@ -1056,11 +1056,41 @@ function blerc/emacs-load-hook {
 	else
 		ble-bind -f 'M-C-?' kill-backward-cword
 	fi
-
 	#ble-bind -f 'M-C-?' kill-backward-cword
 	#ble-bind -f 'M-DEL' kill-backward-cword
 	#ble-bind -f 'M-C-h' kill-backward-cword
 	#ble-bind -f 'M-BS'  kill-backward-cword
+
+	# Move up/down within multiline commands
+	ble-bind -f 'M-j' 'forward-line'
+	ble-bind -f 'M-k' 'backward-line'
+
+	# By default, Ctrl+p and Ctrl+n move both history and forward/backward line.
+	ble-bind -f C-n 'history-next'
+	ble-bind -f C-p 'history-prev'
+
+	# By default, Alt+Enter enters a newline, entering MULTILINE mode. Make
+	# Ctrl+Enter do the same. This only works if the current line buffer is empty.
+	ble-bind -f 'C-RET' 'newline'
+
+	# Shift+Enter always runs the command, even in multiline mode.
+	ble-bind -f 'S-RET' 'accept-line'
+
+	# Like readline and other shells, when pasting text that has a trailing
+	# newline, it is rendered. With ble.sh, this is a problem since pressing enter
+	# again edits the multiline buffer rather than submitting the command. This
+	# function removes the trailing newline to prevent that.
+	function ble/widget/bracketed-paste.proc {
+		local -a KEYS
+		KEYS=("$@")
+		local n=${#KEYS[@]}
+
+		# Remove trailing newline only if it's a single one (codepoint 10).
+		if ((n > 0 && KEYS[n-1] == 10)) && ((n == 1 || KEYS[n-2] != 10)); then
+			KEYS=("${KEYS[@]:0:n-1}")
+		fi
+		ble/widget/batch-insert
+	}
 
 	return 0
 }

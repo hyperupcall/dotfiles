@@ -163,4 +163,10 @@ bind -x '"\es": _readline_toggle_sudo'
 bind -x '"\ei": _readline_trim_whitespace'
 bind -x '"\el": _readline_ls'
 
+# TODO
+eval "$(prs internal completion bash --stdout 2>/dev/null)"
+alias pw='prs'
+complete -F _prs -o nosort -o bashdefault -o default pw
+pass() { printf '%s\n' 'Use prs or pw instead'; }
+
 # ---

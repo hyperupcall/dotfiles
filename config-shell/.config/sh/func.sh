@@ -70,17 +70,17 @@ copy() {
 }
 
 dataurl() {
-	mimeType=$(file -b --mime-type "$1")
-	case $mimeType in
+	_mimetype=$(file -b --mime-type "$1")
+	case $_mimetype in
 	text/*)
-		mimeType="${mimeType};charset=utf-8"
+		_mimetype="${_mimetype};charset=utf-8"
 		;;
 	esac
 
-	str="$(openssl base64 -in "$1" | tr -d '\n')"
-	printf "data:${mimeType};base64,%s\n" "$str"
+	_str="$(openssl base64 -in "$1" | tr -d '\n')"
+	printf "data:${_mimetype};base64,%s\n" "$_str"
 
-	unset -v mimeType str
+	unset -v _mimetype _str
 }
 
 del() {

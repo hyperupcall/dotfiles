@@ -2,14 +2,17 @@
 source ~/.dotfiles/config/setup.sh
 
 main() {
-	local save_dir="$_private_backup_home_source"
-	local backup_dir="$_private_backup_home_dest"
-
-	printf "Backing up\n  from: %s\n  to:   %s\n" "$save_dir" "$backup_dir"
+	printf "Backing up\n  from: %s\n  to:   %s\n" "$_private_backup_home_source" "$_private_backup_home_dest"
 	if util.confirm; then
-		if [ ! -d "$backup_dir" ]; then
+		if [ ! -d "$_private_backup_home_dest" ]; then
 			core.print_die "Backup directory does not exist"
 		fi
+
+		for dir in "$_private_backup_home_source" "$_private_backup_home_source2" "$_private_backup_home_source3"; do
+			if [ ! -d "$dir" ]; then
+				core.print_die "Directory must exist: $dir"
+			fi
+		done
 
 		borg create \
 			--show-version --show-rc --verbose --stats --progress \
@@ -34,12 +37,14 @@ main() {
 			--exclude '**/node_modules' \
 			--exclude '**/.npm/_cacache' \
 			--exclude '**/pnpm/store' \
+			--exclude '**/.venv*' \
 			--exclude '**/.rustup/toolchains' \
 			--exclude '**/rustup/toolchains' \
 			--exclude '**/.cargo/registry' \
 			--exclude '**/cargo/registry' \
 			--exclude "$HOME/go" \
 			--exclude "$HOME/.gopath" \
+			--exclude "$HOME/.opam" \
 			--exclude '**/mise/installs' \
 			--exclude '**/miniforge3/pkgs' \
 			--exclude '**/miniforge3/envs' \
@@ -74,8 +79,11 @@ main() {
 			--exclude '**/youtube-dl' \
 			--exclude '**/.cache' \
 			--exclude '**/*.iso' \
-			"$backup_dir"::'backup-{now:%Y-%m-%d_%H:%M:%S}-{hostname}' \
-			"$save_dir"
+			--exclude '**/.data/vscode-extensions' \
+			"$_private_backup_home_dest"::'backup-{now:%Y-%m-%d_%H:%M:%S}-{hostname}' \
+			"$_private_backup_home_source" \
+			"$_private_backup_home_source2" \
+			"$_private_backup_home_source3"
 	fi
 }
 

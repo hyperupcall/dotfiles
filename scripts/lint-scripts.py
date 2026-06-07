@@ -23,6 +23,7 @@ from typing import Callable, NotRequired, TypedDict
 # $ lint-scripts.py --internal-test-regex
 # TODO: zsh, ksh
 
+
 class Rule(TypedDict):
 	name: str
 	regex: str

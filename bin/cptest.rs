@@ -66,7 +66,7 @@ fn find_source_file() -> Result<String, String> {
 	Err("Error: No source file found".to_string())
 }
 
-fn compile_file(filepath: &str, debug: bool) -> Result<(), String> {
+fn compile_file(filepath: &str, contest_compilation: bool) -> Result<(), String> {
 	let path = Path::new(filepath);
 	let ext = path.extension().and_then(|s| s.to_str()).unwrap_or("");
 	let exe_name = path.file_stem().and_then(|s| s.to_str()).unwrap_or("a.out");
@@ -74,7 +74,7 @@ fn compile_file(filepath: &str, debug: bool) -> Result<(), String> {
 	match ext {
 		"ml" => {
 			let mut args = vec!["-o", exe_name, filepath];
-			if debug {
+			if !contest_compilation {
 				args.insert(0, "-g");
 			}
 			let status = Command::new("ocamlopt")
@@ -90,12 +90,17 @@ fn compile_file(filepath: &str, debug: bool) -> Result<(), String> {
 		}
 		"cpp" => {
 			let mut args = vec!["-x", "c++", "-std=gnu++20"];
-			if debug {
-				args.push("-g");
-				args.push("-fsanitize=address,undefined");
-			} else {
+			if contest_compilation {
 				args.push("-O2");
 				args.push("-static");
+			} else {
+				args.append(&mut vec!["-Wall", "-Wextra", "-Wshadow", "-Wfloat-equal", "-Wconversion", "-Wlogical-op", "-Wshift-overflow=2", "-Wduplicated-cond", "-Wfatal-errors"]);
+				args.append(&mut vec!["-DISDEBUG", "-D_GLIBCXX_DEBUG"]);
+				args.append(&mut vec!["-fsanitize=undefined,address",  "-fstack-protector", "-fno-sanitize-recover"]);
+				args.push("-g3");
+				args.push("-fsanitize=address,undefined");
+				args.push("-DISDEBUG");
+
 			}
 			args.push(filepath);
 			args.push("-o");
@@ -123,7 +128,7 @@ fn compile_file(filepath: &str, debug: bool) -> Result<(), String> {
 				"-d",
 				".",
 			];
-			if debug {
+			if !contest_compilation {
 				args.push("-g");
 			}
 			args.push(filepath);
@@ -144,23 +149,23 @@ fn compile_file(filepath: &str, debug: bool) -> Result<(), String> {
 	}
 }
 
-fn find_test_files() -> Vec<(String, String)> {
+fn find_test_files() -> Vec<(String, Option<String>)> {
 	let mut tests = Vec::new();
 
 	if let Ok(entries) = fs::read_dir(".") {
 		let mut inputs: Vec<String> = entries
 			.filter_map(|entry| entry.ok())
 			.map(|entry| entry.file_name().to_string_lossy().to_string())
-			.filter(|name| name.starts_with("~input") && name.ends_with(".txt"))
+			.filter(|name| name.starts_with("in") && name[2..].chars().next().map_or(false, |c| c.is_ascii_digit()))
 			.collect();
 
 		inputs.sort();
 
 		for input in inputs {
-			let output = input.replace("~input", "~output");
-			if Path::new(&output).exists() {
-				tests.push((input, output));
-			}
+			let suffix = &input[2..];
+			let output = format!("out{}", suffix);
+			let output_opt = if Path::new(&output).exists() { Some(output) } else { None };
+			tests.push((input, output_opt));
 		}
 	}
 
@@ -176,7 +181,7 @@ fn run_tests(filepath: &str) -> Result<(), String> {
 	let tests = find_test_files();
 
 	if tests.is_empty() {
-		println!("No test files found (looking for ~input*.txt and ~output*.txt)");
+		println!("No test files found (looking for in1, in2, ... files)");
 		return Ok(());
 	}
 
@@ -186,12 +191,14 @@ fn run_tests(filepath: &str) -> Result<(), String> {
 		if tests.len() == 1 { "test" } else { "tests" }
 	);
 	for (test_num, (input_file, output_file)) in tests.iter().enumerate() {
-		println!("\x1B[1mTEST {}\x1B[0m", test_num + 1);
+		println!("\x1B[1;4mTEST {}\x1B[0m", test_num + 1);
 
 		let input_data =
 			fs::read(&input_file).map_err(|e| format!("Failed to read {}: {}", input_file, e))?;
-		let expected_output = fs::read_to_string(&output_file)
-			.map_err(|e| format!("Failed to read {}: {}", output_file, e))?;
+		let expected_output: Option<String> = match output_file {
+			Some(f) => Some(fs::read_to_string(f).map_err(|e| format!("Failed to read {}: {}", f, e))?),
+			None => None,
+		};
 
 		let output = match ext {
 			"ml" | "cpp" => {
@@ -270,13 +277,16 @@ fn run_tests(filepath: &str) -> Result<(), String> {
 		io::stdout().flush().unwrap();
 
 		let trimmed_output = output.trim_end();
-		println!("--- \x1b[3mExpected\x1b[0m");
-		println!("{}", expected_output.trim_end());
 		println!("--- \x1b[3mActual\x1b[0m");
 		if trimmed_output.is_empty() {
 			println!("\x1b[3mN/A\x1b[0m");
 		} else {
 			println!("{}", trimmed_output);
+		}
+		println!("--- \x1b[3mExpected\x1b[0m");
+		match &expected_output {
+			Some(expected) => println!("{}", expected.trim_end()),
+			None => println!("\x1b[3mN/A\x1b[0m"),
 		}
 		println!("---");
 
@@ -292,7 +302,7 @@ fn main() {
 	let args: Vec<String> = env::args().collect();
 	let mut test = false;
 	let mut execute = false;
-	let mut debug = false;
+	let mut contest = false;
 	let mut filepath: Option<String> = None;
 	for arg in args.iter().skip(1) {
 		match arg.as_str() {
@@ -300,7 +310,7 @@ fn main() {
 				println!("Usage: cptest [OPTIONS] [FILE]");
 				println!();
 				println!("OPTIONS:");
-				println!("  -d    Compile with debug flags");
+				println!("  -c    Contest compilation");
 				println!("  -t    Run all tests");
 				println!("  -x    Execute the compiled program");
 				println!("  -h    Show this help message");
@@ -312,7 +322,7 @@ fn main() {
 			}
 			"-t" => test = true,
 			"-x" => execute = true,
-			"-d" => debug = true,
+			"-c" => contest = true,
 			s if !s.starts_with('-') => {
 				if filepath.is_none() {
 					filepath = Some(s.to_string());
@@ -348,7 +358,7 @@ fn main() {
 	}
 
 	println!("Compiling {}", filepath);
-	if let Err(e) = compile_file(&filepath, debug) {
+	if let Err(e) = compile_file(&filepath, contest) {
 		eprintln!("{}", e);
 		exit(1);
 	}

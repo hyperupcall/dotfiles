@@ -26,7 +26,7 @@
 	"editor.formatOnSave": true,
 	"editor.formatOnPaste": false,
 	"editor.formatOnType": false,
-	"editor.inlineSuggest.enabled": true,
+	"editor.inlineSuggest.enabled": false,
 	"editor.linkedEditing": true,
 	"editor.maxTokenizationLineLength": 5000,
 	"editor.minimap.maxColumn": 25,

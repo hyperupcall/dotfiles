@@ -2,15 +2,15 @@
 // @name         Improved Kattis
 // @namespace    com.edwinkofler
 // @author       Edwin Kofler
-// @version      0.6.1
+// @version      0.9.0
 // @match        https://open.kattis.com/problems/*
 // @match        https://open.kattis.com/challenge/*
 // @grant        GM_setClipboard
 // @grant        GM_registerMenuCommand
-// @grant        GM_unregisterMenuCommand
 // @grant        GM_getValue
 // @grant        GM_setValue
 // @run-at       document-end
+// @require      https://raw.githubusercontent.com/hyperupcall-projects/GM_config/refs/heads/main/gm_config.js
 // @icon         data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABOBAMAAAAk+643AAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAB5QTFRFAAAAbjscNDEs3YYRFAwJnWkm5eXmp6GcCAgKBwYGGE+FKAAAAAp0Uk5TAP////3//vxOsJIGr5kAAARwSURBVHic7de9b+M2FADwDB7kkY7YoqN49AUdFcXoGumekHikJaboeAFCzfUh0uoCHpwtKVwg/m/7HinJUkJf0KXTMQiiD/74Hqkn2jk7+9F+tP+jBYfX3W7z7vJu57vq2gSwLXdvwJ6u3p4g/yRJomfwOrz2BKnGy5f+MMGnhNoiXA4FdxevvWR6nrjb8NyPAu21wp/ZhLOiNV0aeycWrPjFS7ZaM9dFtWM+pa3QxR9e8pdG4+KEG1rZ4G+XleJaX3nn/4JEu9mulgDZ8pD2Qq98JEiJqHNaMwGFLEI+SzHoItInSU63NEvirEhEUuJPEuOKxfayej5N1EJwXZRFmMwwqThN2MdE4nzUZVEmuV2tlH9IQk4LfXl+mWg7+Tj/iKhcuccdW4K/4UckLNoSsS1KOKb2faI+xQOBAfG0/D4pz/WAnB9nc5pESXEUXcDoJMGCUV8GMRLe/i1xnVc+QjVWDucedyeXGL/c+MiW1ouWVWub3aKwR0WyOE24xjKMC11Xj274RW0eY17g+6L9r9hkrnPaL2pjTNEKYySSUiv/izzNFRFhTGNsmIVZ12aND/OKnyDBy4pelp9NxW6+Evm9qoV5oJeUl94Fw8mUlM+duTfRgz2qjKyrIg6Bh97ZY2bhF05kbURlyddG1qaIAfJTu+UZ7qXnRGYtqUAaPLqC6ERemBntdD+Ze7h5sHMxMjcW2yC7A8Dh8Domk9R2NPKzm76papr+QlMQBJnMJBzGhEokxodh6IkQMOZPbUmwB864nis9G81rSoW4uHOdmwafj2lwM4zVc7CXrCV6OSQBp91UNE1jhanw6FsSAmymqXJktdK/jkiuiqSuqDeSxmZncFeHzSRSnAh/S85wkX8zrs2btSNVUsLrFImmHe0d2adJK8x6ftEefUvwky9ijqi3ZJt3QYxpgxjzqFMW4haqZx7yBPmdObZK2j/NVUvUexLAmAj3dJqQsTDjzEe2KYOm7sX9ZxekSZGkLPKQYI+3LpqePLrsmjXmBSl3RI/IBEdjWdOYUWsaGWJxOWInJI9lvUVBYeqxWGM5CjEgcN2TFyIpNMM4eAIghCPakawvsoDyYhBSibWRqMakFSLVUdSSvM+sJQwumkELnSCSWsL1jVyOCD4DmB/FqhVjApu3BEQnRCdEpsWRyPZtDuz0IcX1wfw5RpDQizERXWb7llAP+tqWRVIcCUfC7Qf6TSa6zCxh3cDA9So7EuC4YsySDNO47UuM6u+YyiAIEiwy9xWAnmyb2ZRqCXois0EQIfls3hEawWU2BduOA4sRCblyhEZyXwxxp3I9R117Msf3xSJFxBXAvusqfUbOOZIVVb8l1/YlPt7OPCSKmOL09q/s6S2l5UtnSIRS9FxEac+RPGXdnMEXBIuMKcXUjK/CjtggGZMXZp0Jn2nzZm1pL3GBKfiF3bzujPSIYcuIbO3Atd3y8VPYMxVbTUx3RbV0ed3gDk6beLV+lxnY/l1zxMXDmWNSIMHb+pD0P4sj/6Ut/wXk+F37+daYcAAAAABJRU5ErkJggg==
 // ==/UserScript==
 
@@ -49,55 +49,41 @@ public class ${slug} {
 	},
 };
 
-const SHELLS = ["Bash or Zsh", "PowerShell Core"];
+const cfg = new GM_config({
+	id: "ImprovedKattisConfig",
+	title: "Improved Kattis Settings",
+	fields: {
+		language: {
+			label: "Language",
+			type: "select",
+			options: Object.keys(LANGUAGES),
+			"default": "C++",
+		},
+		shell: {
+			label: "Shell",
+			type: "select",
+			options: ["Bash or Zsh", "PowerShell Core"],
+			"default": "Bash or Zsh",
+		},
+		inputFilename: {
+			label: "Input filename pattern for test cases (use {n} for number)",
+			type: "text",
+			"default": "in{n}",
+		},
+		outputFilename: {
+			label: "Output filename pattern for test cases (use {n} for number)",
+			type: "text",
+			"default": "out{n}",
+		},
+		kattisDir: {
+			label: "Kattis directory name (case-insensitive)",
+			type: "text",
+			"default": "Kattis",
+		},
+	},
+});
 
-let currentLanguage = GM_getValue("kattis_language", "C++");
-let currentShell = GM_getValue("kattis_shell", "Bash or Zsh");
-
-let menuCommandIds = [];
-
-function setLanguage(/** @type {string} */ language) {
-	currentLanguage = language;
-	GM_setValue("kattis_language", language);
-	alert(`Language set to: ${language}`);
-	updateMenuCommands();
-}
-
-function setShell(/** @type {string} */ shell) {
-	currentShell = shell;
-	GM_setValue("kattis_shell", shell);
-	alert(`Shell set to: "${shell}"`);
-	updateMenuCommands();
-}
-
-function updateMenuCommands() {
-	for (let i = 0; i < menuCommandIds.length; i++) {
-		GM_unregisterMenuCommand(menuCommandIds[i]);
-	}
-	menuCommandIds = [];
-
-	for (let i = 0; i < Object.keys(LANGUAGES).length; i++) {
-		const lang = Object.keys(LANGUAGES)[i];
-		const prefix = lang === currentLanguage ? "✓ " : "  ";
-		const id = GM_registerMenuCommand(
-			`${prefix}Language: ${lang}`,
-			() => setLanguage(lang),
-		);
-		menuCommandIds.push(id);
-	}
-
-	for (let i = 0; i < SHELLS.length; i++) {
-		const shell = SHELLS[i];
-		const prefix = shell === currentShell ? "✓ " : "  ";
-		const id = GM_registerMenuCommand(
-			`${prefix}Shell: ${shell}`,
-			() => setShell(shell),
-		);
-		menuCommandIds.push(id);
-	}
-}
-
-updateMenuCommands();
+GM_registerMenuCommand("Settings/Preferences", () => cfg.open());
 
 function getSamples() {
 	const samples = [];
@@ -143,20 +129,21 @@ function getSamples() {
 function buildScript(
 	/** @type {Array<{input: string, output: string}>} */ samples,
 ) {
-	const langConfig = LANGUAGES[currentLanguage];
+	const langConfig = LANGUAGES[cfg.get("language")];
 	/** @type {string} */
 	const ext = langConfig.ext;
 	/** @type {string} */
 	const template = langConfig.template;
 
-	if (currentShell === "PowerShell Core") {
+	if (cfg.get("shell") === "PowerShell Core") {
 		const templateEscaped = template.replace(/\n/g, "\\n").replace(
 			/'/g,
 			"''",
 		);
 
+		const kattisDir = cfg.get("kattisDir") || "Kattis";
 		let script =
-			` & { $cur = Split-Path -Leaf (Get-Location); $par = Split-Path -Leaf (Split-Path -Parent (Get-Location)); if ($cur -match 'kattis') { } elseif ($par -match 'kattis') { cd .. } else { [Console]::Error.WriteLine("Not in kattis dir"); exit 1 }; if (Test-Path ${slug}) { [Console]::Error.WriteLine("Dir exists: ${slug}"); exit 1 }; `;
+			` & { $cur = Split-Path -Leaf (Get-Location); $par = Split-Path -Leaf (Split-Path -Parent (Get-Location)); if ($cur -like '*${kattisDir}*') { } elseif ($par -like '*${kattisDir}*') { cd .. } else { [Console]::Error.WriteLine("Error: Not in Kattis directory"); exit 1 }; if (Test-Path ${slug}) { [Console]::Error.WriteLine("Dir exists: ${slug}"); exit 1 }; `;
 
 		script +=
 			`New-Item -ItemType Directory -Path ${slug} | Out-Null; '${templateEscaped}' -replace '\\n', "\`n" | Out-File -FilePath ${slug}/${slug}.${ext} -Encoding utf8; `;
@@ -169,17 +156,21 @@ function buildScript(
 				.replace(/'/g, "''");
 			const outputContent = s.output.replace(/\n$/, "").replace(/\n/g, "\\n")
 				.replace(/'/g, "''");
+			const inFile = (cfg.get("inputFilename") || "in{n}").replaceAll("{n}", n);
+			const outFile = (cfg.get("outputFilename") || "out{n}").replaceAll("{n}", n);
 			script +=
-				`'${inputContent}' -replace '\\n', "\`n" | Out-File -FilePath ${slug}/~input${n}.txt -Encoding utf8; `;
+				`'${inputContent}' -replace '\\n', "\`n" | Out-File -FilePath ${slug}/${inFile} -Encoding utf8; `;
 			script +=
-				`'${outputContent}' -replace '\\n', "\`n" | Out-File -FilePath ${slug}/~output${n}.txt -Encoding utf8; `;
+				`'${outputContent}' -replace '\\n', "\`n" | Out-File -FilePath ${slug}/${outFile} -Encoding utf8; `;
 		}
 		script += `cd ${slug}; }`;
 
 		return script;
 	} else {
+		const kattisDir = cfg.get("kattisDir") || "Kattis";
+		const kattisPat = kattisDir.toLowerCase();
 		let script =
-			` { d=\$PWD; cur=\${d##*/}; par=\${d%/*}; par=\${par##*/}; if [[ \$cur == *kattis* ]]; then :; elif [[ \$par == *kattis* ]]; then cd ..; else echo "Not in kattis dir" >&2; fi; [[ -d ${slug} ]] && { echo "Directory already exists: ${slug}" >&2; }; `;
+			` { d=\$PWD; cur=\${d##*/}; par=\${d%/*}; par=\${par##*/}; cur=\$(tr '[:upper:]' '[:lower:]' <<< "\$cur"); par=\$(tr '[:upper:]' '[:lower:]' <<< "\$par"); if [[ \$cur == *${kattisPat}* ]]; then :; elif [[ \$par == *${kattisPat}* ]]; then cd ..; else echo "Error: Not in Kattis directory" >&2; false; fi && { [[ -d ${slug} ]] && { echo "Directory already exists: ${slug}" >&2; }; `;
 
 		const templateEscaped = template.replace(/\n/g, "\\n").replace(
 			/'/g,
@@ -196,10 +187,12 @@ function buildScript(
 				.replace(/'/g, "\\'");
 			const outputContent = s.output.replace(/\n$/, "").replace(/\n/g, "\\n")
 				.replace(/'/g, "\\'");
-			script += `cat > ${slug}/~input${n}.txt <<< $'${inputContent}'; `;
-			script += `cat > ${slug}/~output${n}.txt <<< $'${outputContent}'; `;
+			const inFile = (cfg.get("inputFilename") || "in{n}").replaceAll("{n}", n);
+			const outFile = (cfg.get("outputFilename") || "out{n}").replaceAll("{n}", n);
+			script += `cat > ${slug}/${inFile} <<< $'${inputContent}'; `;
+			script += `cat > ${slug}/${outFile} <<< $'${outputContent}'; `;
 		}
-		script += `cd ${slug}; }`;
+		script += `cd ${slug}; }; }`;
 
 		return script;
 	}

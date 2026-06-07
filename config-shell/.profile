@@ -38,4 +38,7 @@ _util_source_file "$XDG_CONFIG_HOME/sh/func-override.sh"
 if [ -z "${BASH_VERSION:-}" ] && [ -z "${ZSH_VERSION:-}" ] && [ -z "${KSH_VERSION:-}" ]; then
 	_util_source_dir "$XDG_CONFIG_HOME/sh/shell.d"
 fi
+
+# TODO
+PATH=$HOME/.opam/default/bin:$PATH
 # ---

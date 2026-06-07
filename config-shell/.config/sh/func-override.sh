@@ -7,6 +7,7 @@ bash() {
 		[ "$1" = --norc ] && [ "$2" = --noprofile ]
 	}; then
 		_util_log_info "Additionally resetting path to its initial value"
+		# shellcheck disable=SC2154
 		PATH="$_shell_original_path" command bash "$@"
 	else
 		command bash "$@"
@@ -127,12 +128,16 @@ lsblk() {
 	return $_exit_code
 }
 
-ping() {
-	if command -v prettyping >/dev/null 2>&1; then
-		prettyping "$@"
-	else
-		command ping "$@"
-	fi
+ssh() {
+	# Keep the asterisks to account for "tmux-xterm-kitty".
+	case $TERM in
+	*xterm-kitty)
+		kitty +kitten ssh "$@"
+		;;
+	*)
+		command ssh "$@"
+		;;
+	esac
 }
 
 # Save tty modifications that were made on shell startup. This assumes that the modifications

@@ -5,13 +5,14 @@ import os
 from albert import *
 from pathlib import Path
 
-md_iid = "2.1"
-md_version = "1.0"
+md_iid = '2.1'
+md_version = '1.0'
 md_name = "Edwin's Coding Start"
-md_description = "Start an IDE session for a coding project."
-md_bin_dependencies = ["code"]
-md_maintainers = ["@hyperupcall"]
-md_license = "MPL-2.0"
+md_description = 'Start an IDE session for a coding project.'
+md_bin_dependencies = ['code']
+md_maintainers = ['@hyperupcall']
+md_license = 'MPL-2.0'
+
 
 class Plugin(PluginInstance, TriggerQueryHandler):
 	def __init__(self):
@@ -20,12 +21,12 @@ class Plugin(PluginInstance, TriggerQueryHandler):
 			id=md_id,
 			name=md_name,
 			description=md_description,
-			synopsis="<project-name>",
-			defaultTrigger="code ",
+			synopsis='<project-name>',
+			defaultTrigger='code ',
 		)
 		PluginInstance.__init__(self, extensions=[self])
-		self.iconUrls = ["xdg:dialog-password"]
-		self._editor = self.readConfig("editor", str) or 'code'
+		self.iconUrls = ['xdg:dialog-password']
+		self._editor = self.readConfig('editor', str) or 'code'
 
 	@property
 	def editor(self):
@@ -33,32 +34,34 @@ class Plugin(PluginInstance, TriggerQueryHandler):
 
 	@editor.setter
 	def editor(self, value):
-		print(f"Setting _use_otp to {value}")
+		print(f'Setting _use_otp to {value}')
 		self._editor = value
-		self.writeConfig("use_otp", value)
+		self.writeConfig('use_otp', value)
 
 	def configWidget(self):
 		return [
 			{
-				"type": "lineedit",
-				"property": "editor",
-				"label": "Editor to execute.",
-				"widget_properties": {"placeholderText": "code"},
+				'type': 'lineedit',
+				'property': 'editor',
+				'label': 'Editor to execute.',
+				'widget_properties': {'placeholderText': 'code'},
 			},
 		]
 
 	def handleTriggerQuery(self, query):
-		org_dir = os.path.expanduser("~/.home/Documents/Projects/Programming/Organizations")
+		org_dir = os.path.expanduser(
+			'~/.home/Documents/Projects/Programming/Organizations'
+		)
 
 		paths = []
 		if query.string.strip():
-			for path in Path(org_dir).glob("*/*/"):
+			for path in Path(org_dir).glob('*/*/'):
 				owner = path.parts[-2]
 				project = path.parts[-1]
 				if (query.string in owner) or (query.string in project):
 					paths.append(f'{owner}/{project}')
 		else:
-			for path in Path(org_dir).glob("*/*/"):
+			for path in Path(org_dir).glob('*/*/'):
 				owner = path.parts[-2]
 				project = path.parts[-1]
 				paths.append(f'{owner}/{project}')
@@ -73,15 +76,17 @@ class Plugin(PluginInstance, TriggerQueryHandler):
 			full_dir = os.path.join(org_dir, dir)
 			results.append(
 				StandardItem(
-					id=f"{owner}_{project}",
+					id=f'{owner}_{project}',
 					iconUrls=self.iconUrls,
-					text=f"{owner}/{project}",
-					inputActionText=f"{owner}/{project}",
+					text=f'{owner}/{project}',
+					inputActionText=f'{owner}/{project}',
 					actions=[
 						Action(
 							'Launch',
 							'Do in launch',
-							lambda full_dir=str(full_dir): runDetachedProcess([self.editor, full_dir]),
+							lambda full_dir=str(full_dir): runDetachedProcess(
+								[self.editor, full_dir]
+							),
 						)
 					],
 				)
