@@ -14,7 +14,7 @@
 	"editor.bracketPairColorization.enabled": true,
 	"editor.codeActionsOnSave": {
 		"source.organizeImports": "never",
-		"source.fixAll": "explicit",
+		"source.fixAll": "explicit"
 	},
 	"editor.codeLens": true,
 	"editor.detectIndentation": true,
@@ -51,7 +51,7 @@
 	"terminal.integrated.commandsToSkipShell": [
 		"-workbench.action.terminal.focusFind",
 		"-workbench.action.quickOpen",
-		"language-julia.interrupt",
+		"language-julia.interrupt"
 	],
 	"terminal.integrated.allowChords": false,
 	"terminal.integrated.copyOnSelection": false,
@@ -71,13 +71,14 @@
 		"*.jscript": "java",
 		"*.sublime-snippet": "xml",
 		"*.ejs": "html",
+		".clangd": "yaml"
 	},
 	"files.exclude": {
 		"**/.git": false,
 		"**/.hg": false,
 		"**/.fossil": false,
 		"**/.svn": false,
-		"**/CVS": false,
+		"**/CVS": false
 	},
 	"files.insertFinalNewline": true,
 	"files.participants.timeout": 2000,
@@ -88,7 +89,7 @@
 		"**/jspm_modules/**": true,
 		"**/bower_components/**": true,
 		"**/linux/**": true,
-		"**/rootfs/**": true,
+		"**/rootfs/**": true
 	},
 
 	//
@@ -103,7 +104,7 @@
 		"**/yarn.lock": true,
 		"**/.hidden/": true,
 		"**/.hooks/.hookah": true,
-		"**/bake": true,
+		"**/bake": true
 	},
 	"search.searchOnTypeDebouncePeriod": 100,
 	"search.showLineNumbers": true,
@@ -149,23 +150,23 @@
 		"editor.codeActionsOnSave": {
 			"source.organizeImports": "never",
 			"source.fixAll": "never",
-			"source.fixAll.eslint": "always",
+			"source.fixAll.eslint": "always"
 		},
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.insertSpaces": false,
-		"editor.tabSize": 3,
+		"editor.tabSize": 3
 	},
 	"[typescript][typescriptreact]": {
 		"editor.codeActionsOnSave": {
 			"source.fixAll": "never",
-			"source.fixAll.eslint": "always",
+			"source.fixAll.eslint": "always"
 		},
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.insertSpaces": false,
-		"editor.tabSize": 3,
+		"editor.tabSize": 3
 	},
 	"[graphql]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
 	"js/ts.autoClosingTags.enabled": true,
 	"js/ts.format.indentSwitchCase": false,
@@ -190,13 +191,13 @@
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.insertSpaces": true,
 		"editor.tabSize": 3,
-		"editor.defaultFoldingRangeProvider": "esbenp.prettier-vscode",
+		"editor.defaultFoldingRangeProvider": "esbenp.prettier-vscode"
 	},
 	"[jsonnet]": {
 		"editor.defaultFormatter": "Sebbia.jsonnetng",
 		"editor.insertSpaces": true,
 		"editor.tabSize": 2,
-		"editor.defaultFoldingRangeProvider": "esbenp.prettier-vscode",
+		"editor.defaultFoldingRangeProvider": "esbenp.prettier-vscode"
 	},
 
 	//
@@ -204,7 +205,7 @@
 	"[toml]": {
 		"editor.defaultFormatter": "tombi-toml.tombi",
 		"editor.insertSpaces": false,
-		"editor.tabSize": 3,
+		"editor.tabSize": 3
 	},
 
 	//
@@ -212,7 +213,7 @@
 	"[yaml]": {
 		"editor.defaultFormatter": "redhat.vscode-yaml",
 		"editor.insertSpaces": true,
-		"editor.tabSize": 2,
+		"editor.tabSize": 2
 	},
 	"yaml.format.enable": false,
 	"yaml.format.singleQuote": true,
@@ -227,16 +228,16 @@
 	"[html]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.insertSpaces": false,
-		"editor.tabSize": 3,
+		"editor.tabSize": 3
 	},
 	"html.autoClosingTags": true,
 	"html.format.enable": false,
 	"html.format.wrapLineLength": 0,
 	"[vue]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
 	"[handlebars]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
 
 	//
@@ -244,11 +245,11 @@
 	"[css]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.insertSpaces": false,
-		"editor.tabSize": 3,
+		"editor.tabSize": 3
 	},
 	"css.validate": false,
 	"[scss]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
 	"scss.validate": false,
 
@@ -258,13 +259,13 @@
 		"editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
 		"editor.wordWrap": "on",
 		"editor.insertSpaces": true,
-		"editor.tabSize": 2,
+		"editor.tabSize": 2
 	},
 	"[juliamarkdown]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.wordWrap": "on",
 		"editor.insertSpaces": true,
-		"editor.tabSize": 2,
+		"editor.tabSize": 2
 	},
 	"markdownlint.run": "onSave",
 	"markdownlint.lintWorkspaceGlobs": [
@@ -276,7 +277,7 @@
 		"!**/.git",
 		// custom
 		"**/*LICENSE*",
-		"**/*license*",
+		"**/*license*"
 	],
 	"markdownlint.focusMode": true,
 	"markdownlint.config": {
@@ -286,7 +287,7 @@
 		"no-duplicate-header": false,
 		"no-hard-tabs": false,
 		"no-inline-html": false,
-		"ol-prefix": false,
+		"ol-prefix": false
 	},
 	"markdown.preview.doubleClickToSwitchToEditor": false,
 
@@ -295,11 +296,11 @@
 	"[python]": {
 		"editor.defaultFormatter": "charliermarsh.ruff",
 		"editor.codeActionsOnSave": {
-			"source.fixAll": "never",
+			"source.fixAll": "never"
 		},
 		"editor.insertSpaces": false,
 		"editor.formatOnSave": false,
-		"editor.tabSize": 4,
+		"editor.tabSize": 4
 	},
 	"python.globalModuleInstallation": false,
 	"python.venvPath": "~/.home/xdg_cache_dir/pypoetry/virtualenvs",
@@ -309,7 +310,7 @@
 	//
 	// GO
 	"[go]": {
-		"editor.defaultFormatter": "golang.go",
+		"editor.defaultFormatter": "golang.go"
 	},
 	"go.toolsManagement.autoUpdate": true,
 
@@ -318,15 +319,15 @@
 	"[java]": {
 		"editor.defaultFormatter": "redhat.java",
 		"editor.insertSpaces": false,
-		"editor.tabSize": 3,
+		"editor.tabSize": 3
 	},
 	"[kotlin]": {
 		"editor.insertSpaces": false,
-		"editor.tabSize": 3,
+		"editor.tabSize": 3
 	},
 	"[gradle]": {
 		"editor.insertSpaces": false,
-		"editor.tabSize": 3,
+		"editor.tabSize": 3
 	},
 	"java.project.importOnFirstTimeStartup": "automatic",
 	"java.format.onType.enabled": false,
@@ -340,20 +341,20 @@
 	//
 	// PERL
 	"[perl]": {
-		"editor.defaultFormatter": "bscan.perlnavigator",
+		"editor.defaultFormatter": "bscan.perlnavigator"
 	},
 
 	//
 	// DOCKER
 	"[dockerfile]": {
-		"editor.defaultFormatter": "ms-azuretools.vscode-docker",
+		"editor.defaultFormatter": "ms-azuretools.vscode-docker"
 	},
 	"vsdocker.imageUser": "docker.io/hyperupcall",
 
 	//
 	// RUST
 	"[rust]": {
-		"editor.defaultFormatter": "rust-lang.rust-analyzer",
+		"editor.defaultFormatter": "rust-lang.rust-analyzer"
 	},
 	"rust-analyzer.lens.enable": false,
 	"rust-analyzer.inlayHints.typeHints.enable": false,
@@ -363,7 +364,7 @@
 	"[latex]": {
 		"editor.defaultFormatter": "James-Yu.latex-workshop",
 		"editor.insertSpaces": false,
-		"editor.tabSize": 3,
+		"editor.tabSize": 3
 	},
 	"latex-workshop.formatting.latex": "latexindent",
 	"latex-workshop.latex.outDir": "%WORKSPACE_FOLDER%/.hidden/latex-workshop",
@@ -375,16 +376,16 @@
 	"shellcheck.customArgs": ["--external-sources"],
 	"[shellscript]": {
 		"editor.codeActionsOnSave": {
-			"source.fixAll": "never",
+			"source.fixAll": "never"
 		},
 		"editor.insertSpaces": false,
 		"editor.formatOnSave": false,
-		"editor.tabSize": 3,
+		"editor.tabSize": 3
 	},
 	"[fish]": {
 		"editor.defaultFormatter": "bmalehorn.vscode-fish",
 		"editor.insertSpaces": true,
-		"editor.tabSize": 4,
+		"editor.tabSize": 4
 	},
 
 	//
@@ -396,8 +397,8 @@
 		"editor.tabSize": 3,
 		"editor.codeActionsOnSave": {
 			"source.fixAll": "explicit",
-			"source.organizeImports": "explicit",
-		},
+			"source.organizeImports": "explicit"
+		}
 	},
 	"C_Cpp.intelliSenseEngine": "disabled",
 	"C_Cpp.default.cppStandard": "c++20",
@@ -417,7 +418,7 @@
 	"emmet.excludeLanguages": [],
 	"emmet.includeLanguages": {
 		"vue-html": "html",
-		"javascript": "javascriptreact",
+		"javascript": "javascriptreact"
 	},
 	"emmet.triggerExpansionOnTab": true,
 
@@ -461,44 +462,51 @@
 			"icon": "shell",
 			"extensions": ["bake"],
 			"filename": true,
-			"format": "svg",
-		},
+			"format": "svg"
+		}
 	],
 	"cSpell.diagnosticLevel": "Information",
 	"cSpell.dictionaryDefinitions": [
 		{
 			"name": "For Myself",
-			"path": "~/.devresources/dictionary-hyperupcall.txt",
-			"addWords": true,
+			"path": "~/.devhidden/dictionaries/dictionary-hyperupcall.txt",
+			"addWords": true
 		},
 		{
 			"name": "People Names",
-			"path": "~/.devresources/dictionary-names.txt",
+			"path": "~/.devhidden/dictionaries/dictionary-names.txt",
 			"addWords": true,
-			"supportNonStrictSearches": true,
+			"supportNonStrictSearches": true
 		},
 		{
 			"name": "General Words",
-			"path": "~/.devresources/dictionary-general.txt",
-			"addWords": true,
+			"path": "~/.devhidden/dictionaries/dictionary-general.txt",
+			"addWords": true
 		},
 		{
 			"name": "My Computer Science",
-			"path": "~/.devresources/dictionary-compsci.txt",
-			"addWords": true,
+			"path": "~/.devhidden/dictionaries/dictionary-compsci.txt",
+			"addWords": true
 		},
 		{
 			"name": "My Bash",
-			"path": "~/.devresources/dictionary-bash.txt",
-			"addWords": true,
+			"path": "~/.devhidden/dictionaries/dictionary-bash.txt",
+			"addWords": true
 		},
 		{
 			"name": "My Linux",
-			"path": "~/.devresources/dictionary-linux.txt",
-			"addWords": true,
-		},
+			"path": "~/.devhidden/dictionaries/dictionary-linux.txt",
+			"addWords": true
+		}
 	],
-	"cSpell.dictionaries": ["For Myself", "General Words", "My Computer Science", "My Bash", "My Linux", "People Names"],
+	"cSpell.dictionaries": [
+		"For Myself",
+		"General Words",
+		"My Computer Science",
+		"My Bash",
+		"My Linux",
+		"People Names"
+	],
 	"cSpell.ignorePaths": [
 		"package-lock.json",
 		"node_modules",
@@ -508,7 +516,7 @@
 		".vscode",
 		".vscode-insiders",
 		"dist/",
-		"target/",
+		"target/"
 	],
 	"svelte.enable-ts-plugin": true,
 
@@ -576,4 +584,5 @@
 	"workbench.iconTheme": "icons",
 	"window.autoDetectColorScheme": true,
 	"workbench.preferredLightColorTheme": "Bearded Theme Milkshake Raspberry",
+	"workbench.preferredDarkColorTheme": "Visual Studio Light"
 }

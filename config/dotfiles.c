@@ -459,6 +459,7 @@ static Deployment defaultDeployment = {
 		aria2,
 		firefox,
 		librewolf,
+		ripgrep,
 		NULL
 	}
 };

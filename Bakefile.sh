@@ -7,10 +7,10 @@ init() {
 
 # Ran in `bootstrap-linux.sh`.
 task.bootstrap() {
-	git config set --local filter.npmrc.clean './scripts/npmrc-clean.sh'
-	git config set --local filter.oscrc.clean './scripts/oscrc-clean.sh'
-	git config set --local filter.homedir.clean './scripts/homedir-clean.sh'
-	git config set --local filter.homedir.smudge './scripts/homedir-smudge.sh'
+	git config set --local filter.npmrc.clean './lscripts/npmrc-clean.sh'
+	git config set --local filter.oscrc.clean './lscripts/oscrc-clean.sh'
+	git config set --local filter.homedir.clean './lscripts/homedir-clean.sh'
+	git config set --local filter.homedir.smudge './lscripts/homedir-smudge.sh'
 	git config set --local filter.npmrc.required true
 	git config set --local filter.oscrc.required true
 	git config set --local filter.homedir.required true
@@ -25,7 +25,7 @@ task.init() {
 }
 
 task.build() {
-	./scripts/lint-scripts.py --internal-test-regex
+	./lscripts/lint-scripts.py --internal-test-regex
 
 	err=0
 	while read -r file; do
@@ -101,7 +101,7 @@ task.lint() {
 
 task.test() {
 	bats -p './config-shell/.config/sh'
-	./scripts/lint-scripts.py
+	./lscripts/lint-scripts.py
 }
 
 task.commit() {

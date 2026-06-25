@@ -72,7 +72,7 @@ main() {
 		[ankiuserdata]="$XDG_DATA_HOME/Anki2/Default User"
 		[ankiaddons]="$XDG_DATA_HOME/Anki2/addons21"
 		[applicationsdir]="$HOME/Other/Application Data"
-		[devresources]="$HOME/.devresources"
+		[devresources]="$HOME/.devhidden"
 	)
 
 	if [ "$mode" = save ]; then

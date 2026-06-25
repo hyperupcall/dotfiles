@@ -1,3 +1,0 @@
-#!/usr/bin/env sh
-set -eo pipefail
-yt-dlp -o '%(channel)s - %(title)s.%(ext)s' --embed-thumbnail --no-mtime --extract-audio --audio-format opus "$1"

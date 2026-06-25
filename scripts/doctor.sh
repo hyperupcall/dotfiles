@@ -66,7 +66,7 @@ main() {
 	# Create necessary symlinks in ~/scripts.
 	must.dir ~/.dotfiles/.data/scripts
 	must.link ~/.dotfiles/.data/scripts ~/scripts
-	for file in ~/.dotfiles/hscripts/*; do
+	for file in ~/.dotfiles/scripts/*; do
 		ln -sf "$file" ~/scripts
 	done
 	unset -v file
@@ -307,6 +307,33 @@ main() {
 
 	# Install personal tools.
 	~/scripts/setup/pass.sh
+	{
+		local password_store_dir="${PASSWORD_STORE_DIR:-"$XDG_DATA_HOME/password-store"}"
+		local gpg_path pass_name pass_output symlink_content maybe_file
+
+		if [ -d "$password_store_dir" ]; then
+			core.shopt_push -s globstar nullglob
+			for gpg_path in "$password_store_dir"/**/*.gpg; do
+				pass_name="${gpg_path#"$password_store_dir"/}"
+				pass_name="${pass_name%.gpg}"
+
+				pass_output=$(pass show "$pass_name" 2>&1) || :
+				if [[ "$pass_output" == *'gpg: no valid OpenPGP data found'* ]]; then
+					symlink_content=$(<"$gpg_path")
+					maybe_file="${gpg_path%/*}/$symlink_content"
+
+					if [ -f "$maybe_file" ]; then
+						core.print_info "File \"$gpg_path\" is supposed to be a symlink to \"$symlink_content\". Replacing."
+						rm -- "$gpg_path"
+						ln -sf "$symlink_content" "$gpg_path"
+					else
+						core.print_warn "No valid GPG data found: \"$gpg_path\""
+					fi
+				fi
+			done
+			core.shopt_pop
+		fi
+	}
 	~/scripts/setup/dev.sh
 	~/scripts/setup/basalt.sh
 	~/scripts/setup/woof.sh

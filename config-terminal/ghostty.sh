@@ -6,7 +6,7 @@ install.any() {
 }
 
 install.ubuntu() {
-	/bin/bash -c "$(curl -K "$CURL_CONFIG" https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh)"
+	/bin/bash -c "$(curl -K "$CURL_CONFIG" 'https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh')"
 }
 
 util.if_file_sourced || _setup "$@"

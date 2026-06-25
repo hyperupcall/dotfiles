@@ -29,7 +29,7 @@ jobs:
         with:
           deno-version: 'v2.x'
 
-      - run: './scripts/compile-blacklist.ts'
+      - run: './lscripts/compile-blacklist.ts'
 
       - uses: 'crazy-max/ghaction-import-gpg@2dc316deee8e90f13e1a351ab510b4d5bc0c82cd' # v7.0.0
         with:

@@ -54,7 +54,7 @@ Additional scripts should be executed. They include:
 
 - `. ~/.bootstrap/bootstrap-out.sh`
 - If on Ubuntu, run `sudo apt-get remove coreutils-from-uutils --allow-remove-essential`
-- `~/scripts/rare/transfer-secrets.sh`
+- `~/scripts/transfer-data.sh`
 - Setup ZFS, BTRFS
 - `~/scripts/doctor.sh`
   - Setup Browsers (Firefox, Brave)

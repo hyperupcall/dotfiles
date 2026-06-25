@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+set -e
+yt-dlp -o '[%(channel)s] - %(title)s.%(ext)s' --embed-thumbnail --no-mtime --extract-audio --audio-format opus "$@"

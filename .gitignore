@@ -3,13 +3,9 @@
 **/bash/bash.d/
 **/sh/shell.d/
 **/zsh/zsh.d/
+setup-private*
+*.env
 .zcompcache/
 .zcompdump
-
+__pycache__/
 node_modules/
-.venv/
-target/
-*.pyc
-
-**/cptest
-*.env

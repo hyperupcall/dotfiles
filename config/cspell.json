@@ -2,7 +2,7 @@
 	"dictionaryDefinitions": [
 		{
 			"name": "hyperupcall",
-			"path": "~/.devresources/dictionary-hyperupcall.txt",
+			"path": "~/.devhidden/dictionaries/dictionary-hyperupcall.txt",
 			"addWords": true
 		}
 	],

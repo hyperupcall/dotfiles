@@ -3,15 +3,15 @@ version: "0.2"
 language: "en"
 dictionaryDefinitions:
   - "name": "hyperupcall"
-    "path": "~/.devresources/dictionary-hyperupcall.txt"
+    "path": "~/.devhidden/dictionaries/dictionary-hyperupcall.txt"
     "addWords": true
   - "name": "My Bash"
-    "path": "~/.devresources/dictionary-bash.txt"
+    "path": "~/.devhidden/dictionaries/dictionary-bash.txt"
   - "name": "My Linux"
-    "path": "~/.devresources/dictionary-linux.txt"
+    "path": "~/.devhidden/dictionaries/dictionary-linux.txt"
     "addWords": true
   - "name": "My CSS"
-    "path": "~/.devresources/dictionary-css.txt"
+    "path": "~/.devhidden/dictionaries/dictionary-css.txt"
     "addWords": true
 dictionaries:
   - "hyperupcall"
