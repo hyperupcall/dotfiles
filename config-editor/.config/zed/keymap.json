@@ -2,8 +2,8 @@
 	{
 		"bindings": {
 			"ctrl-i": "file_finder::Toggle",
-			"ctrl-k": "command_palette::Toggle"
-		}
+			"ctrl-k": "command_palette::Toggle",
+		},
 	},
 	// {
 	//   "bindings": {
@@ -14,14 +14,14 @@
 	// },
 	{
 		"context": "Workspace",
-		"bindings": {}
+		"bindings": {},
 	},
 	{
 		"context": "Editor",
 		"bindings": {
 			"ctrl-tab": "pane::ActivateNextItem",
-			"ctrl-shift+tab": "pane::ActivatePreviousItem"
-		}
+			"ctrl-shift+tab": "pane::ActivatePreviousItem",
+		},
 	},
 	{
 		"context": "Terminal",
@@ -29,7 +29,10 @@
 			"ctrl-n": null,
 			"alt-f": null,
 			"ctrl-p": null,
-			"ctrl-b": null
-		}
-	}
+			"ctrl-b": null,
+			"ctrl-shift-t": "pane::SplitRight",
+			"ctrl-shift-h": "workspace::ActivatePaneLeft",
+			"ctrl-shift-l": "workspace::ActivatePaneRight",
+		},
+	},
 ]

@@ -13,8 +13,20 @@ dictionaryDefinitions:
   - "name": "My CSS"
     "path": "~/.devhidden/dictionaries/dictionary-css.txt"
     "addWords": true
+  - name: 'Comp Sci'
+    path: '~/.devhidden/dictionaries/dictionary-compsci.txt'
+    addWords: true
+  - name: 'General'
+    path: '~/.devhidden/dictionaries/dictionary-general.txt'
+    addWords: true
+  - name: 'Names'
+    path: '~/.devhidden/dictionaries/dictionary-names.txt'
+    addWords: true
 dictionaries:
   - "hyperupcall"
+  - 'Comp Sci'
+  - 'General'
+  - 'Names'
   - 'bash'
   - "My Bash"
   - 'My Linux'

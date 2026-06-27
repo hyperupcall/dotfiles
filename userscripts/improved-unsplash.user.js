@@ -475,7 +475,7 @@
       checkRouteChange();
     };
 
-    window.addEventListener('popstate', checkRouteChange);
+    globalThis.addEventListener('popstate', checkRouteChange);
   }
 
   function startInjectionObserver() {

@@ -18,7 +18,7 @@
   'use strict';
 
 const isChallenge = location.pathname.includes("/challenge/");
-const slug = isChallenge ? "_challenge" : location.pathname.split("/problems/")[1]?.split("/")[0];
+const slug = isChallenge ? "_challenge" : location.pathname.split("/problems/", 2)[1]?.split("/", 1)[0];
 if (!slug) return;
 
 const LANGUAGES = {

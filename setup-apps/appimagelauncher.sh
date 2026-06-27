@@ -54,7 +54,7 @@ get_appimagelauncher_release_file() {
 		curl -K "$CURL_CONFIG" \
 			-H "Accept: application/vnd.github+json" \
 			-H "Authorization: Bearer $token" \
-			-H "X-GitHub-Api-Version: 2022-11-28" \
+			-H "X-GitHub-Api-Version: 2026-03-10" \
 			"https://api.github.com/repos/TheAssassin/AppImageLauncher/releases/tags/$latest_tag" \
 			| jq -r '.assets[] | .name'
 	)

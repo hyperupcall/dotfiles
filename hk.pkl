@@ -1,0 +1,62 @@
+amends "package://github.com/jdx/hk/releases/download/v1.48.0/hk@1.48.0#/Config.pkl"
+
+exclude = List("**/vendor/**", "target")
+
+hooks {
+	 ["commit-msg"] {
+		  steps {
+				["checkcommitmsg"] {
+					 check = "pnpx commitlint --edit {{commit_msg_file}}"
+				}
+		  }
+	 }
+
+	 ["pre-commit"] {
+		  steps {
+				["build-and-test"] {
+					 check = "./bake build && ./bake test"
+					 exclusive = true
+				}
+				["check-spelling"] {
+					 check = "cspell-cli lint ."
+				}
+				["check-formatting"] {
+					 glob = List("**/*.{js,ts,css,html,json,md,yaml,yml}")
+					fix = "./node_modules/.bin/prettier --write {{files}}"
+				}
+				["check-linting"] {
+					 glob = List("**/*.{js,ts}")
+					 check = "./node_modules/.bin/eslint ."
+				}
+				["check-shellscript-format"] {
+					 glob = List("**/*.sh")
+					 check = "find . \\( -name vendor -prune \\) -o \\( -name .git -prune \\) -o \\( -name .data -prune \\) -o \\( -name shell.d -prune \\) -o -name '*.sh' -exec shfmt --write --language-dialect bash --binary-next-line {} +"
+				}
+				["check-shellscript-lint"] {
+					 glob = List("**/*.sh")
+					 check = "find . \\( -name vendor -prune \\) -o \\( -name .git -prune \\) -o \\( -name .data -prune \\) -o \\( -name shell.d -prune \\) -o -name '*.sh' -exec shellcheck --format gcc {} + | grep -v '\\(g_disable\\|_shell_original_path\\|_private\\).*SC2154'"
+				}
+				["check-yaml-format"] {
+					 glob = List("**/*.yaml", "**/*.yml")
+					 check = "find . \\( -name vendor -prune \\) -o \\( -name .git -prune \\) -o \\( -name .data -prune \\) -o \\( -name shell.d -prune \\) -o -name '*.yaml' -o -name '*.yml' -exec yamlfmt -lint {} +"
+				}
+				["check-yaml-lint"] {
+					 glob = List("**/*.yaml", "**/*.yml")
+					 check = "find . \\( -name vendor -prune \\) -o \\( -name .git -prune \\) -o \\( -name .data -prune \\) -o \\( -name shell.d -prune \\) -o -name '*.yaml' -o -name '*.yml' -exec yamllint --strict {} +"
+				}
+				["check-github-actions-lint"] {
+					 glob = List(".github/**/*.yaml", ".github/**/*.yml")
+					 check = "bash -c 'zizmor --strict-collection --min-confidence=low --min-severity=informational --persona=pedantic --config <(printf \"rules:\\n  anonymous-definition:\\n    disable: true\\n  undocumented-permissions:\\n    disable: true\\n\") .github'"
+				}
+				["check-toml-format"] {
+					 glob = List("**/*.toml")
+					 exclude = List("vendor")
+					 check = "tombi format --check {{files}}"
+				}
+				["check-toml-lint"] {
+					 glob = List("**/*.toml")
+					 check = "tombi lint --error-on-warnings"
+				}
+		  }
+	 }
+}

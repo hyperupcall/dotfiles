@@ -1,14 +1,27 @@
 {
-	"cli_default_open_behavior": "new_window",
+	"agent_servers": {
+  "cline": {
+   "type": "registry"
+  },
+  "mistral-vibe": {
+   "type": "registry"
+  },
+  "opencode": {
+   "type": "registry"
+  },
+  "github-copilot-cli": {
+   "type": "registry"
+  },
+  "cursor": {
+   "type": "registry"
+  },
+  "codex-acp": {
+   "type": "registry"
+  }
+ },
+ "cli_default_open_behavior": "new_window",
 	"context_servers": {
-		"anki-mcp-server": {
-			"enabled": true,
-			"remote": false,
-			"command": "node",
-			"args": [],
-			"env": {},
 		},
-	},
 	"edit_predictions": {
 		"provider": "zed",
 	},
@@ -119,10 +132,10 @@
 		"default_profile": "write",
 		"play_sound_when_agent_done": true,
 		"default_model": {
-			"effort": "low",
+			"effort": "high",
 			"enable_thinking": true,
-			"provider": "copilot_chat",
-			"model": "claude-sonnet-4.6",
+			"provider": "deepseek",
+			"model": "deepseek-v4-flash",
 		},
 	},
 	"telemetry": {

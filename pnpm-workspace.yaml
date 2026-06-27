@@ -1,4 +1,16 @@
+allowBuilds:
+  unrs-resolver: true
 onlyBuiltDependencies:
   - unrs-resolver
 publicHoistPattern:
   - prettier
+  - eslint
+  - eslint-plugin-unicorn
+overrides:
+  'eslint-plugin-unicorn': 'npm:eslint-plugin-unicorn@69.0.0'
+  "@hyperupcall/prettier-config": "link:/storage/extras/Documents/Computing/Programs/personal/prettier-config"
+minimumReleaseAgeExclude:
+  - eslint-plugin-unicorn@69.0.0
+  - '@hyperupcall/eslint-config@2.1.0'
+  - '@hyperupcall/scripts-nodejs@0.10.0'
+

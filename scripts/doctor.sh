@@ -351,7 +351,7 @@ main() {
 	~/scripts/setup/appimagelauncher.sh
 	~/scripts/setup/librewolf.sh
 	~/scripts/setup/brave.sh
-	~/scripts/setup/remove-snap.sh # Remove snap after installing a browser.
+	~/scripts/setup/remove-snap.sh # Remove only after installing a browser.
 	~/scripts/setup/firefox.sh
 	~/scripts/setup/thunderbird.sh
 	~/scripts/setup/zed.sh

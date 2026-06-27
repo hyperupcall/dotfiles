@@ -66,7 +66,7 @@ module.exports = {
 		quickEdit: false,
 		macOptionSelectionMode: 'vertical',
 
-		// bellSoundURL: 'http://example.com/bell.mp3',
+		// bellSoundURL: 'https://example.com/bell.mp3',
 		webGLRenderer: true,
 	},
 

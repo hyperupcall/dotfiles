@@ -906,7 +906,7 @@ bleopt exec_errexit_mark=
 #ble-face -s syntax_escape             fg=magenta
 #ble-face -s syntax_expr               fg=63
 #ble-face -s syntax_error              bg=203,fg=231
-ble-face -s syntax_error               none
+ble-face -s syntax_error none
 #ble-face -s syntax_varname            fg=202
 #ble-face -s syntax_delimiter          bold
 #ble-face -s syntax_param_expansion    fg=133
@@ -943,7 +943,7 @@ ble-face -s syntax_error               none
 #ble-face -s filename_character        underline,fg=231,bg=black
 #ble-face -s filename_block            underline,fg=yellow,bg=black
 #ble-face -s filename_warning          underline,fg=red
-ble-face -s filename_warning           none
+ble-face -s filename_warning none
 #ble-face -s filename_url              underline,fg=blue
 #ble-face -s filename_ls_colors        underline
 #ble-face -s varname_array             fg=orange,bold
@@ -1086,7 +1086,7 @@ function blerc/emacs-load-hook {
 		local n=${#KEYS[@]}
 
 		# Remove trailing newline only if it's a single one (codepoint 10).
-		if ((n > 0 && KEYS[n-1] == 10)) && ((n == 1 || KEYS[n-2] != 10)); then
+		if ((n > 0 && KEYS[n - 1] == 10)) && ((n == 1 || KEYS[n - 2] != 10)); then
 			KEYS=("${KEYS[@]:0:n-1}")
 		fi
 		ble/widget/batch-insert

@@ -5,7 +5,7 @@
 
 // Macros.
 #define Username "edwin"
-#define Hme "/home/" Username "/"
+#define Hme "/home/" Username "/" // lint-ignore
 #define Src Hme ".dotfiles/config-system/root/"
 #define Dst "/root/"
 
