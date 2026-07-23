@@ -131,7 +131,7 @@ main() {
 		core.print_info 'Already set computer profile'
 	else
 		local cur=
-		local options='desktop|laptop|juno-laptop|other'
+		local options='charizard|swampert|dragonfruit|juno-laptop|other'
 		while [[ $cur != @($options) ]]; do
 			printf '%s' "Computer profile? ($options): "
 			read -er cur
@@ -143,7 +143,7 @@ main() {
 	computer_profile=$(<~/.dotfiles/.data/profile)
 
 	# Set XDG user directories.
-	if [[ $computer_profile == @(desktop|laptop|juno-laptop) ]]; then
+	if [[ $computer_profile == @(dragonfruit) ]]; then
 		must.dir ~/Other/{Desktop,Templates,Public}
 		xdg-user-dirs-update --set DESKTOP ~/Other/Desktop
 		xdg-user-dirs-update --set DOWNLOAD ~/Downloads
@@ -163,7 +163,7 @@ main() {
 		xdg-user-dirs-update --set PICTURES ~/Pictures
 		xdg-user-dirs-update --set VIDEOS ~/Videos
 	fi
-	if [[ $computer_profile == @(desktop|laptop|juno-laptop) ]]; then
+	if [[ $computer_profile == @(dragonfruit) ]]; then
 		must.dir "$HOME/Other/AppImages"
 		must.link "$HOME/Other/AppImages" ~/.home/AppImages
 	else
@@ -220,7 +220,7 @@ main() {
 	must.user_in_group "$USER" 'input'
 
 	# Remove default dotfiles. These are customized with environment variables.
-	if [[ $computer_profile == @(desktop|laptop|juno-laptop) ]]; then
+	if [[ $computer_profile == @(charizard|swampert|dragonfruit|juno-laptop) ]]; then
 		must.rm ~/.bash_history
 		must.rm ~/.gitconfig
 		must.rm ~/.gmrun_history
@@ -274,7 +274,7 @@ main() {
 		fi
 		must.strict_permissions ~/.gnupg/ ~/.gnupg/*
 
-		if [[ $computer_profile == @(desktop|laptop|juno-laptop) ]]; then
+		if [[ $computer_profile == @(dragonfruit|juno-laptop) ]]; then
 			if gpg --list-keys "$_private_gpgkey1_id" &>/dev/null; then
 				core.print_info "Has gpg key \"$_private_gpgkey1_user\""
 			else
@@ -289,134 +289,139 @@ main() {
 	}
 
 	# Install necessary drivers.
-	if [ "$computer_profile" = juno-laptop ]; then
+	if [[ $computer_profile == @(juno-laptop) ]]; then
 		~/scripts/setup/juno-computers.sh
 	fi
 
 	# Install the most paramount tools.
-	~/scripts/setup/d.sh
-	~/scripts/setup/prompt-ksbp.sh
-	~/scripts/setup/zsh.sh
-	~/scripts/setup/ksh.sh
-	~/scripts/setup/rust.sh
-	~/scripts/setup/usage.sh
-	~/scripts/setup/mise.sh
-	~/scripts/setup/neovim.sh
-	~/scripts/setup/less.sh
-	~/scripts/setup/git-diff-so-fancy.sh
+	if [[ $computer_profile != @(charizard|swampert|dragonfruit|juno-laptop) ]]; then
+		~/scripts/setup/d.sh
+		~/scripts/setup/zsh.sh
+		~/scripts/setup/prompt-ksbp.sh
+		~/scripts/setup/ksh.sh
+		~/scripts/setup/rust.sh
+		~/scripts/setup/usage.sh
+		~/scripts/setup/mise.sh
+		~/scripts/setup/neovim.sh
+		~/scripts/setup/less.sh
+		~/scripts/setup/git-diff-so-fancy.sh
+	fi
 
-	# Install personal tools.
-	~/scripts/setup/pass.sh
-	{
-		local password_store_dir="${PASSWORD_STORE_DIR:-"$XDG_DATA_HOME/password-store"}"
-		local gpg_path pass_name pass_output symlink_content maybe_file
+	if [[ $computer_profile == @(dragonfruit|juno-laptop) ]]; then
+		# Install personal tools.
+		~/scripts/setup/pass.sh
+		{
+			local password_store_dir="${PASSWORD_STORE_DIR:-"$XDG_DATA_HOME/password-store"}"
+			local gpg_path pass_name pass_output symlink_content maybe_file
 
-		if [ -d "$password_store_dir" ]; then
-			core.shopt_push -s globstar nullglob
-			for gpg_path in "$password_store_dir"/**/*.gpg; do
-				pass_name="${gpg_path#"$password_store_dir"/}"
-				pass_name="${pass_name%.gpg}"
+			if [ -d "$password_store_dir" ]; then
+				core.shopt_push -s globstar nullglob
+				for gpg_path in "$password_store_dir"/**/*.gpg; do
+					pass_name="${gpg_path#"$password_store_dir"/}"
+					pass_name="${pass_name%.gpg}"
 
-				pass_output=$(pass show "$pass_name" 2>&1) || :
-				if [[ "$pass_output" == *'gpg: no valid OpenPGP data found'* ]]; then
-					symlink_content=$(<"$gpg_path")
-					maybe_file="${gpg_path%/*}/$symlink_content"
+					pass_output=$(pass show "$pass_name" 2>&1) || :
+					if [[ "$pass_output" == *'gpg: no valid OpenPGP data found'* ]]; then
+						symlink_content=$(<"$gpg_path")
+						maybe_file="${gpg_path%/*}/$symlink_content"
 
-					if [ -f "$maybe_file" ]; then
-						core.print_info "File \"$gpg_path\" is supposed to be a symlink to \"$symlink_content\". Replacing."
-						rm -- "$gpg_path"
-						ln -sf "$symlink_content" "$gpg_path"
-					else
-						core.print_warn "No valid GPG data found: \"$gpg_path\""
+						if [ -f "$maybe_file" ]; then
+							core.print_info "File \"$gpg_path\" is supposed to be a symlink to \"$symlink_content\". Replacing."
+							rm -- "$gpg_path"
+							ln -sf "$symlink_content" "$gpg_path"
+						else
+							core.print_warn "No valid GPG data found: \"$gpg_path\""
+						fi
 					fi
+				done
+				core.shopt_pop
+			fi
+		}
+		~/scripts/setup/dev.sh
+		~/scripts/setup/basalt.sh
+		~/scripts/setup/woof.sh
+		~/scripts/setup/bash-kpreexec.sh
+
+		# Install other important tools.
+		~/scripts/setup/npm.sh
+		~/scripts/setup/flatpak.sh
+		~/scripts/setup/notify-send.sh
+		~/scripts/setup/lefthook.sh
+		~/.dotfiles/bake init # Depends on mise, lefthook and pnpm.
+		~/scripts/setup/git.sh
+
+		# Install applications.
+		~/scripts/setup/appimagelauncher.sh
+		~/scripts/setup/librewolf.sh
+		~/scripts/setup/brave.sh
+		~/scripts/setup/remove-snap.sh # Remove only after installing a browser.
+		~/scripts/setup/firefox.sh
+		~/scripts/setup/thunderbird.sh
+		~/scripts/setup/zed.sh
+		~/scripts/setup/vscode.sh
+		~/scripts/setup/obsidian.sh
+		~/scripts/setup/kitty.sh
+		~/scripts/setup/yakuake.sh
+		~/scripts/setup/gh.sh
+		~/scripts/setup/shfmt.sh
+		~/scripts/setup/shellcheck.sh
+		~/scripts/setup/bats.sh
+		~/scripts/setup/latex.sh
+		~/scripts/setup/fish.sh
+		~/scripts/setup/miscellaneous.sh
+		~/scripts/setup/direnv.sh
+		~/scripts/setup/garden.sh
+
+		~/scripts/setup/llvm.sh
+		~/scripts/setup/llvm-nightly.sh
+		~/scripts/setup/bake.sh
+		~/scripts/setup/pre-commit.sh
+		~/scripts/setup/homebrew.sh
+		~/scripts/setup/nerdfonts.sh
+		~/scripts/setup/kwrite.sh
+		~/scripts/setup/borg.sh
+		~/scripts/setup/anki.sh
+		~/scripts/setup/syncthing.sh
+		~/scripts/setup/merkuro.sh
+		~/scripts/setup/bats.sh
+		~/scripts/setup/btrfs.sh
+		~/scripts/setup/zfs.sh
+		~/scripts/setup/yt-dlp.sh
+		~/scripts/setup/uv.sh
+		~/scripts/setup/hugo.sh
+
+		# Do big, but optional applications last.
+		~/scripts/setup/blender.sh
+		~/scripts/setup/sqlitebrowser.sh
+		~/scripts/setup/darktable.sh
+		~/scripts/setup/kdenlive.sh
+		~/scripts/setup/virtualbox.sh
+
+		core.shopt_push -s nullglob
+		for file in "$XDG_CONFIG_HOME"/libreoffice/4/user/template/*; do
+			local output=
+			case $file in
+			*.ott)
+				core.print_info "Creating instance of template \"${file##*/}\""
+				if ! output=$(libreoffice --headless --convert-to odt --outdir ~/Other/Templates "$file"); then
+					printf '%s\n' "$output"
 				fi
-			done
-			core.shopt_pop
-		fi
-	}
-	~/scripts/setup/dev.sh
-	~/scripts/setup/basalt.sh
-	~/scripts/setup/woof.sh
-	~/scripts/setup/bash-kpreexec.sh
-
-	# Install other important tools.
-	~/scripts/setup/npm.sh
-	~/scripts/setup/flatpak.sh
-	~/scripts/setup/notify-send.sh
-	~/scripts/setup/lefthook.sh
-	~/.dotfiles/bake init # Depends on mise, lefthook and pnpm.
-	~/scripts/setup/git.sh
-
-	# Install applications.
-	~/scripts/setup/appimagelauncher.sh
-	~/scripts/setup/librewolf.sh
-	~/scripts/setup/brave.sh
-	~/scripts/setup/remove-snap.sh # Remove only after installing a browser.
-	~/scripts/setup/firefox.sh
-	~/scripts/setup/thunderbird.sh
-	~/scripts/setup/zed.sh
-	~/scripts/setup/vscode.sh
-	~/scripts/setup/obsidian.sh
-	~/scripts/setup/kitty.sh
-	~/scripts/setup/yakuake.sh
-	~/scripts/setup/gh.sh
-	~/scripts/setup/shfmt.sh
-	~/scripts/setup/shellcheck.sh
-	~/scripts/setup/bats.sh
-	~/scripts/setup/latex.sh
-	~/scripts/setup/fish.sh
-	~/scripts/setup/miscellaneous.sh
-	~/scripts/setup/direnv.sh
-	~/scripts/setup/garden.sh
-
-	~/scripts/setup/llvm.sh
-	~/scripts/setup/llvm-nightly.sh
-	~/scripts/setup/bake.sh
-	~/scripts/setup/pre-commit.sh
-	~/scripts/setup/homebrew.sh
-	~/scripts/setup/nerdfonts.sh
-	~/scripts/setup/kwrite.sh
-	~/scripts/setup/borg.sh
-	~/scripts/setup/anki.sh
-	~/scripts/setup/syncthing.sh
-	~/scripts/setup/merkuro.sh
-	~/scripts/setup/bats.sh
-	~/scripts/setup/btrfs.sh
-	~/scripts/setup/zfs.sh
-	~/scripts/setup/yt-dlp.sh
-	~/scripts/setup/uv.sh
-
-	# Do big, but optional applications last.
-	~/scripts/setup/blender.sh
-	~/scripts/setup/sqlitebrowser.sh
-	~/scripts/setup/darktable.sh
-	~/scripts/setup/kdenlive.sh
-	~/scripts/setup/virtualbox.sh
-
-	core.shopt_push -s nullglob
-	for file in "$XDG_CONFIG_HOME"/libreoffice/4/user/template/*; do
-		local output=
-		case $file in
-		*.ott)
-			core.print_info "Creating instance of template \"${file##*/}\""
-			if ! output=$(libreoffice --headless --convert-to odt --outdir ~/Other/Templates "$file"); then
-				printf '%s\n' "$output"
-			fi
-			;;
-		*.ots)
-			core.print_info "Creating instance of template \"${file##*/}\""
-			if ! output=$(libreoffice --headless --convert-to ods --outdir ~/Other/Templates "$file"); then
-				printf '%s\n' "$output"
-			fi
-			;;
-		*)
-			core.print_info "Skipping template file \"${file##*/}\""
-			;;
-		esac
-		unset -v output
-	done
-	unset -v file
-	core.shopt_pop
+				;;
+			*.ots)
+				core.print_info "Creating instance of template \"${file##*/}\""
+				if ! output=$(libreoffice --headless --convert-to ods --outdir ~/Other/Templates "$file"); then
+					printf '%s\n' "$output"
+				fi
+				;;
+			*)
+				core.print_info "Skipping template file \"${file##*/}\""
+				;;
+			esac
+			unset -v output
+		done
+		unset -v file
+		core.shopt_pop
+	fi
 
 	echo 'Done.'
 }

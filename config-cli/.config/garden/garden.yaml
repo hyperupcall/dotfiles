@@ -43,6 +43,9 @@ grafts:
   graft-webextensions:
     config: './graft-webextensions.yaml'
     root: '${applicationsDir}/webextensions'
+  graft-obs-plugins:
+    config: '~/.devhidden/graft-obs-plugins-yaml'
+    root: '${applicationsDir}/obs-plugins'
 
 groups:
   anki-plugins:
@@ -55,6 +58,7 @@ groups:
   bash-bastion:
     - 'graft-bash-bastion::.github'
     - 'graft-bash-bastion::basalt'
+    - 'graft-bash-bastion::bake'
     - 'graft-bash-bastion::bash-term'
     - 'graft-bash-bastion::bash-object'
     - 'graft-bash-bastion::bash-json'
@@ -160,3 +164,37 @@ groups:
     - 'graft-webextensions::webextension-kjsonviewer'
     - 'graft-webextensions::webext-old-reddit-redirect'
     - 'graft-webextensions::webext-ublacklist-helper'
+
+  obs-plugins:
+    - 'graft-obs-plugins::obs-move-transition'
+    - 'graft-obs-plugins::obs-backgroundremoval'
+    - 'graft-obs-plugins::obs-chapter-marker-manager'
+    - 'graft-obs-plugins::obs-sceneswitcher'
+    - 'graft-obs-plugins::obs-input-overlay'
+    - 'graft-obs-plugins::obs-vertical-canvas'
+    - 'graft-obs-plugins::obs-stroke-glow-shadow'
+    - 'graft-obs-plugins::obs-tuna'
+    - 'graft-obs-plugins::obs-waveform'
+    - 'graft-obs-plugins::obs-source-clone'
+    - 'graft-obs-plugins::obs-advanced-masks'
+    - 'graft-obs-plugins::obs-composite-blur'
+    - 'graft-obs-plugins::obs-3d-effect'
+    - 'graft-obs-plugins::obs-downstream-keyer'
+    - 'graft-obs-plugins::obs-audio-monitor'
+    - 'graft-obs-plugins::obs-source-record'
+    - 'graft-obs-plugins::obs-markdown'
+    - 'graft-obs-plugins::obs-record-rename'
+    - 'graft-obs-plugins::obs-shaderfilter'
+    - 'graft-obs-plugins::obs-source-dock'
+    - 'graft-obs-plugins::obs-html-source'
+    - 'graft-obs-plugins::obs-scene-collection-manager'
+    - 'graft-obs-plugins::obs-source-switcher'
+    - 'graft-obs-plugins::obs-draw'
+    - 'graft-obs-plugins::obs-gradient-source'
+    - 'graft-obs-plugins::obs-dir-watch-media'
+    - 'graft-obs-plugins::obs-playout-source'
+    - 'graft-obs-plugins::obs-freeze-filter'
+    - 'graft-obs-plugins::obs-scene-notes-dock'
+    - 'graft-obs-plugins::obs-dynamic-delay'
+    - 'graft-obs-plugins::obs-media-controls'
+    - 'graft-obs-plugins::obs-infowriter'

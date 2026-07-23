@@ -9,6 +9,11 @@ trees:
     path: 'basalt'
     default-remote: 'me'
 
+  bake:
+    url: 'git@github.com:bash-bastion/bake'
+    path: 'bake'
+    default-remote: 'me'
+
   bash-term:
     url: 'git@github.com:bash-bastion/bash-term'
     path: 'bash-term'

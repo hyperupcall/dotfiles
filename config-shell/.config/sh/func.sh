@@ -508,6 +508,15 @@ unchr() {
 	umount "$1/dev"
 }
 
+upgrade() {
+	sudo apt update -y
+	apt list --upgradable
+	sudo apt upgrade -y
+	sudo apt autoremove -y
+	flatpak update -y
+	flatpak --system update -y
+}
+
 v() {
 	s=
 	if [ -e "$1" ] && [ "$(stat -c "%G" "$1")" = 'root' ]; then

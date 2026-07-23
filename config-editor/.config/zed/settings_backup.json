@@ -1,14 +1,27 @@
 {
-	"cli_default_open_behavior": "new_window",
- "context_servers": {
-		"anki-mcp-server": {
-			"enabled": true,
-			"remote": false,
-			"command": "node",
-			"args": [],
-			"env": {},
+	"agent_servers": {
+  "cline": {
+   "type": "registry"
+  },
+  "mistral-vibe": {
+   "type": "registry"
+  },
+  "opencode": {
+   "type": "registry"
+  },
+  "github-copilot-cli": {
+   "type": "registry"
+  },
+  "cursor": {
+   "type": "registry"
+  },
+  "codex-acp": {
+   "type": "registry"
+  }
+ },
+ "cli_default_open_behavior": "new_window",
+	"context_servers": {
 		},
-	},
 	"edit_predictions": {
 		"provider": "zed",
 	},
@@ -51,6 +64,11 @@
 		"TOML": {
 			"formatter": "language_server",
 		},
+		"Python": {
+			"format_on_save": "off",
+			"hard_tabs": false,
+			"tab_size": 4,
+		},
 	},
 	"lsp": {
 		"texlab": {
@@ -82,16 +100,66 @@
 				"enable": true,
 			},
 		},
+		"clangd": {
+			"binary": {
+				"path": "/usr/bin/clangd-22",
+			},
+		},
+	},
+	"jupyter": {
+		"enabled": true,
 	},
 	"terminal": {
 		// https://github.com/zed-industries/zed/issues/14543#issuecomment-2260593838
 		// https://github.com/zed-industries/zed/issues/21387
 		"dock": "bottom",
 		"option_as_meta": true,
+		"detect_venv": {
+			"on": {
+				"conda_manager": "mamba",
+			},
+		},
 	},
 	"soft_wrap": "editor_width",
 	"agent": {
-		"tool_permissions": {
+		"sandbox_permissions": {
+   "network_hosts": [
+    "jekyllrb.com",
+    "pages.github.com",
+    "rubygems.org",
+    "docs.github.com",
+    "api.rubyonrails.org",
+    "news.ycombinator.com",
+    "hacker-news.firebaseio.com",
+    "www.bitsgalore.org",
+    "web.eecs.utk.edu",
+    "nitrokit.dev",
+    "krasjet.com",
+    "htmldocs.com",
+    "blog.shipreq.com"
+   ]
+  },
+  "favorite_models": [
+   {
+    "provider": "deepseek",
+    "model": "deepseek-v4-flash",
+    "enable_thinking": true,
+    "effort": "high"
+   },
+   {
+    "provider": "deepseek",
+    "model": "deepseek-v4-pro",
+    "enable_thinking": true,
+    "effort": "high"
+   },
+   {
+    "provider": "copilot_chat",
+    "model": "gpt-5.4",
+    "enable_thinking": true,
+    "effort": "high"
+   }
+  ],
+  "tool_permissions": {
 			"default": "allow",
 		},
 		"inline_assistant_model": {
@@ -101,10 +169,10 @@
 		"default_profile": "write",
 		"play_sound_when_agent_done": true,
 		"default_model": {
-			"effort": "low",
+			"effort": "high",
 			"enable_thinking": true,
 			"provider": "copilot_chat",
-			"model": "claude-sonnet-4.6",
+			"model": "gpt-5.4",
 		},
 	},
 	"telemetry": {

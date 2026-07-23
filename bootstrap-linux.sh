@@ -72,7 +72,7 @@ main() {
 
 	# Symlink ~/scripts.
 	if [ ! -d ~/scripts ]; then
-		run ln -sf ~/.dotfiles/hscripts ~/scripts
+		run ln -sf ~/.dotfiles/scripts ~/scripts
 	fi
 
 	# Export variables.

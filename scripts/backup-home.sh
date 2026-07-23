@@ -59,6 +59,8 @@ main() {
 			--exclude '**/conan2/p' \
 			--exclude "$XDG_DATA_HOME/gradle/caches" \
 			--exclude "$XDG_DATA_HOME/gradle/jdks" \
+			--exclude "**/.gradle/caches" \
+			--exclude "**/.gradle/jdks" \
 			--exclude "$XDG_DATA_HOME/flatpak/repo/objects" \
 			--exclude "$XDG_DATA_HOME/flatpak/runtime" \
 			--exclude "$XDG_DATA_HOME/flatpak/appstream" \

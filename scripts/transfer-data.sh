@@ -46,11 +46,14 @@ main() {
 		device_path_is_manual=true
 		read -re -p 'Enter directory path: ' device_path
 	fi
-	device_path=${device_path%/}
+	local dirpath=${device_path%/}/_data
 
-	local tmp_gnupg_dir=
-	tmp_gnupg_dir=$(mktemp -d --suffix='-gnupg')
-	gpg --homedir "$tmp_gnupg_dir" --no-keyring --batch --yes --pinentry-mode loopback --passphrase-fd 3 --no-symkey-cache --decrypt "$device_path/_data/setup_private_sh.asc" 3<<<"$(cat "$device_path/_data/pw.txt")" | tar -xO >"$HOME/.dotfiles/config/setup-private.sh"
+	if [ ! -f "$HOME/.dotfiles/config/setup-private.sh" ]; then
+		local tmp_gnupg_dir=
+		tmp_gnupg_dir=$(mktemp -d --suffix='-gnupg')
+		gpg --homedir "$tmp_gnupg_dir" --no-keyring --batch --yes --pinentry-mode loopback --passphrase-fd 3 --no-symkey-cache --decrypt "$dirpath/setup_private_sh.asc" 3<<<"$(cat "$dirpath/pw.txt")" | tar -xO >"$HOME/.dotfiles/config/setup-private.sh"
+	fi
+	source "$HOME/.dotfiles/config/setup-private.sh"
 
 	local -A paths_encrypt=(
 		[gnupg]="$HOME/.gnupg"
@@ -76,11 +79,12 @@ main() {
 	)
 
 	if [ "$mode" = save ]; then
-		if [ "$device_path_is_manual" = true ]; then
-			sudo rm -rf "$device_path/_data"
-			sudo mkdir -p "$device_path/_data"
-			sudo chown "$USER:$USER" "$device_path/_data"
-		fi
+		sudo rm -rf "$dirpath"
+		sudo mkdir -p "$dirpath"
+		sudo chown "$USER:$USER" "$dirpath"
+
+		cp -f ~/.dotfiles/bootstrap-linux.sh "$dirpath/bootstrap.sh"
+		chmod +x "$dirpath/bootstrap.sh"
 
 		local password= temp_gnupg=
 		password=$(LC_ALL=C tr -dc '[:graph:]' </dev/urandom | head -c 14)
@@ -92,14 +96,14 @@ main() {
 		read -rN1 -p 'Save password to _data/pw.txt? [y/n] ' save_pw_answer
 		printf '\n'
 		if [[ $save_pw_answer =~ ^[Yy] ]]; then
-			mkdir -p "$device_path/_data"
-			printf '%s\n' "$password" >"$device_path/_data/pw.txt"
-			core.print_info "Password written to $device_path/_data/pw.txt"
+			mkdir -p "$dirpath"
+			printf '%s\n' "$password" >"$dirpath/pw.txt"
+			core.print_info "Password written to $dirpath/pw.txt"
 		fi
 
 		for name in "${!paths_encrypt[@]}"; do
 			local dir="${paths_encrypt[$name]}"
-			local encrypted_file="$device_path/_data/$name.asc"
+			local encrypted_file="$dirpath/$name.tar.gz.asc"
 
 			core.print_info "Encrypting $dir to $encrypted_file"
 			mkdir -p "${encrypted_file%/*}"
@@ -110,15 +114,16 @@ main() {
 
 		for name in "${!paths[@]}"; do
 			local dir="${paths[$name]}"
-			local dest="$device_path/_data/$name"
+			local src="$dirpath/$name.tar.gz"
 
-			core.print_info "Copying $dir to $dest"
-			mkdir -p "${dest%/*}"
-			cp -rT "$dir" "$dest"
+			core.print_info "Copying $dir to $src"
+			mkdir -p "${src%/*}"
+			# The directory may contain symlinks, so copy as tarball so it is always preserved, no matter the file system.
+			tar -C "$dir" -cf "$src" .
 		done
 
 	elif [ "$mode" = restore ]; then
-		local password= pw_file="$device_path/_data/pw.txt"
+		local password= pw_file="$dirpath/pw.txt"
 		if [ -f "$pw_file" ]; then
 			password=$(<"$pw_file")
 			core.print_info "Using password from $pw_file"
@@ -131,7 +136,7 @@ main() {
 
 		for name in "${!paths_encrypt[@]}"; do
 			local dir="${paths_encrypt[$name]}"
-			local encrypted_file="$device_path/_data/$name.asc"
+			local encrypted_file="$dirpath/$name.tar.gz.asc"
 
 			if [ -e "$dir" ]; then
 				core.print_warn "File or directory $dir already exists"
@@ -163,7 +168,7 @@ main() {
 
 		for name in "${!paths[@]}"; do
 			local dir="${paths[$name]}"
-			local src="$device_path/_data/$name"
+			local src="$dirpath/$name.tar.gz"
 
 			if [ -e "$dir" ]; then
 				core.print_warn "File or directory $dir already exists"
@@ -176,15 +181,16 @@ main() {
 				fi
 			fi
 
-			core.print_info "Copying $src to $dir"
-			mkdir -p "${dir%/*}"
-			cp -rT "$src" "$dir"
+			core.print_info "Extracting $src to $dir"
+			mkdir -p "$dir"
+			# The directory may contain symlinks, so copy as tarball so it is always preserved, no matter the file system.
+			tar -C "$dir" -xf "$src"
 		done
 	else
 		core.print_die "Invalid mode: $mode"
 	fi
 
-	core.print_info "Done! You may want to remove $device_path/_data"
+	core.print_info "Done! You may want to remove ${dirpath%/*}"
 }
 
 util.if_file_sourced || _main "$@"

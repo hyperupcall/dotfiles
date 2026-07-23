@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import argparse
+import importlib.util
 import re
 import shutil
 import subprocess
@@ -14,17 +15,14 @@ if shutil.which('VBoxManage') is None:
 	print("Must have command 'VBoxManage' installed", file=sys.stderr)
 	sys.exit(1)
 
-config_path = Path(__file__).resolve().parent.parent / 'config' / 'setup-private.pl'
-if not config_path.is_file():
-	print(f'Failed to load setup-private.pl: {config_path}', file=sys.stderr)
-	sys.exit(1)
+config_dir = Path(__file__).resolve().parent.parent / 'config'
 
-match = re.search(r"_private_virtualbox_dir\s*=>\s*'([^']+)'", config_path.read_text())
-if not match:
-	print('Failed to find _private_virtualbox_dir in setup-private.pl', file=sys.stderr)
-	sys.exit(1)
+config_py = config_dir / 'setup-private.py'
+spec = importlib.util.spec_from_file_location('setup_private', config_py)
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+virtualbox_dir = Path(module._private_virtualbox_dir)
 
-virtualbox_dir = Path(match.group(1))
 subprocess.run(['VBoxManage', 'setproperty', 'machinefolder', str(virtualbox_dir)], check=False)
 
 if args.unregister:
