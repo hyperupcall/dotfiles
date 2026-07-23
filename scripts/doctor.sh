@@ -294,6 +294,9 @@ main() {
 	fi
 
 	# Install the most paramount tools.
+	if [ "$XDG_SESSION_TYPE" = 'KDE' ]; then
+		~/scripts/setup/konsole.sh # For terminal integration with dolphin.
+	fi
 	if [[ $computer_profile != @(charizard|swampert|dragonfruit|juno-laptop) ]]; then
 		~/scripts/setup/d.sh
 		~/scripts/setup/zsh.sh

@@ -11,9 +11,18 @@ for _f in ~/.dotfiles/vendor/bash-{core,term}/pkg/*.sh; do
 done
 unset -v _f
 
-GITHUB_TOKEN="$(<~/.dotfiles/.data/github_token)"
+if [ -f ~/.dotfiles/.data/github_token ]; then
+	GITHUB_TOKEN="$(<~/.dotfiles/.data/github_token)"
+else
+	GITHUB_TOKEN=
+	core.print_warn "Failed to find file ~/.dotfiles/.data/github_token"
+fi
 
-source ~/.dotfiles/vendor/setup.sh/setup.sh
+if [ -f ~/.dotfiles/vendor/setup.sh/setup.sh ]; then
+	source ~/.dotfiles/vendor/setup.sh/setup.sh
+else
+	core.print_warn "Failed to find file ~/.dotfiles/vendor/setup.sh/setup.sh"
+fi
 
 if [ -z "$XDG_CONFIG_HOME" ]; then
 	printf '%s\n' 'Failed because $XDG_CONFIG_HOME is empty' >&2

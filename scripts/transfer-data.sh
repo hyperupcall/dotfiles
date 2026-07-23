@@ -51,7 +51,7 @@ main() {
 	if [ ! -f "$HOME/.dotfiles/config/setup-private.sh" ]; then
 		local tmp_gnupg_dir=
 		tmp_gnupg_dir=$(mktemp -d --suffix='-gnupg')
-		gpg --homedir "$tmp_gnupg_dir" --no-keyring --batch --yes --pinentry-mode loopback --passphrase-fd 3 --no-symkey-cache --decrypt "$dirpath/setup_private_sh.asc" 3<<<"$(cat "$dirpath/pw.txt")" | tar -xO >"$HOME/.dotfiles/config/setup-private.sh"
+		gpg --homedir "$tmp_gnupg_dir" --no-keyring --batch --yes --pinentry-mode loopback --passphrase-fd 3 --no-symkey-cache --decrypt "$dirpath/setup_private_sh.tar.gz.asc" 3<<<"$(cat "$dirpath/pw.txt")" | tar -xO >"$HOME/.dotfiles/config/setup-private.sh"
 	fi
 	source "$HOME/.dotfiles/config/setup-private.sh"
 
@@ -64,7 +64,7 @@ main() {
 		[woof_token]="$XDG_DATA_HOME/woof/token"
 		[scripts_hidden]="$_private_scripts_hidden"
 		[setup_private_exec_sh]="$HOME/.dotfiles/config/setup-private-exec.sh"
-		[setup_private_pl]="$HOME/.dotfiles/config/setup-private.pl"
+		[setup_private_py]="$HOME/.dotfiles/config/setup-private.py"
 		[setup_private_sh]="$HOME/.dotfiles/config/setup-private.sh"
 		[dotfiles_git_exclude]="$HOME/.dotfiles/.git/info/exclude"
 	)
@@ -83,8 +83,9 @@ main() {
 		sudo mkdir -p "$dirpath"
 		sudo chown "$USER:$USER" "$dirpath"
 
+		cp -f ~/.dotfiles/scripts/transfer-data.sh "$dirpath/transfer-data.sh"
 		cp -f ~/.dotfiles/bootstrap-linux.sh "$dirpath/bootstrap.sh"
-		chmod +x "$dirpath/bootstrap.sh"
+		chmod +x "$dirpath/transfer-data.sh" "$dirpath/bootstrap.sh"
 
 		local password= temp_gnupg=
 		password=$(LC_ALL=C tr -dc '[:graph:]' </dev/urandom | head -c 14)
@@ -138,6 +139,10 @@ main() {
 			local dir="${paths_encrypt[$name]}"
 			local encrypted_file="$dirpath/$name.tar.gz.asc"
 
+			if [ "$dir" = scripts_hidden ]; then
+				continue
+			fi
+
 			if [ -e "$dir" ]; then
 				core.print_warn "File or directory $dir already exists"
 				read -rN1 -p 'Remove? [y/n] ' answer
@@ -145,7 +150,15 @@ main() {
 				if [[ $answer =~ ^[Yy] ]]; then
 					rm -rf "$dir"
 				else
-					core.print_die "Directory must not exist"
+					core.print_warn "Skipping directory $dir"
+					continue
+				fi
+			else
+				read -rN1 -p "Copy to $dir? [y/n] " answer
+				printf '\n'
+				if ! [[ $answer =~ ^[Yy] ]]; then
+					core.print_warn "Skipping directory $dir"
+					continue
 				fi
 			fi
 
@@ -177,7 +190,15 @@ main() {
 				if [[ $answer =~ ^[Yy] ]]; then
 					rm -rf "$dir"
 				else
-					core.print_die "Directory must not exist"
+					core.print_warn "Skipping directory $dir"
+					continue
+				fi
+			else
+				read -rN1 -p "Copy to $dir? [y/n] " answer
+				printf '\n'
+				if ! [[ $answer =~ ^[Yy] ]]; then
+					core.print_warn "Skipping directory $dir"
+					continue
 				fi
 			fi
 
@@ -190,7 +211,13 @@ main() {
 		core.print_die "Invalid mode: $mode"
 	fi
 
-	core.print_info "Done! You may want to remove ${dirpath%/*}"
+	read -rN1 -p "Done! Would you like to unmount ${dirpath%/*} " answer
+	printf '\n'
+	if [[ $answer =~ ^[Yy] ]]; then
+		sudo umount "${dirpath%/*}"
+	fi
+
+	core.print_info "Exiting."
 }
 
 util.if_file_sourced || _main "$@"

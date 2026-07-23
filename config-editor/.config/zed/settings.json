@@ -219,8 +219,8 @@
 		"default_model": {
 			"effort": "high",
 			"enable_thinking": true,
-			"provider": "deepseek",
-			"model": "deepseek-v4-flash",
+			"provider": "copilot_chat",
+			"model": "gpt-5.4",
 		},
 	},
 	"telemetry": {
