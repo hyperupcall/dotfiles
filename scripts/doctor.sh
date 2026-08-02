@@ -133,8 +133,7 @@ main() {
 		local cur=
 		local options='charizard|swampert|dragonfruit|juno-laptop|other'
 		while [[ $cur != @($options) ]]; do
-			printf '%s' "Computer profile? ($options): "
-			read -er cur
+			read -er -p "Computer profile? ($options): " -i "$HOSTNAME" cur
 		done
 		must.dir ~/.dotfiles/.data
 		printf '%s\n' "$cur" >~/.dotfiles/.data/profile
@@ -290,7 +289,7 @@ main() {
 
 	# Install necessary drivers.
 	if [[ $computer_profile == @(juno-laptop) ]]; then
-		~/scripts/setup/juno-computers.sh
+		~/scripts/setup/juno-computer.sh
 	fi
 
 	# Install the most paramount tools.

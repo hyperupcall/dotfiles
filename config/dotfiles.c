@@ -1,5 +1,8 @@
 #include <stdbool.h>
 #include <stddef.h>
+#include <limits.h>
+#include <string.h>
+#include <unistd.h>
 #include "d.h"
 
 #pragma clang diagnostic warning "-Wunused-variable"
@@ -350,16 +353,6 @@ static Item kshrc[] = HomeEntry(".kshrc", CategoryShell);
 static Item login[] = HomeEntry(".login", CategoryShell);
 static Item mkshrc[] = HomeEntry(".mkshrc", CategoryShell);
 static Item tcshrc[] = HomeEntry(".tcshrc", CategoryShell);
-static Item basicShellGroup = {
-	.type = TYPE_GROUP,
-	.entries = (Item *[]){
-		sh,
-		bash,
-		readline,
-		zsh,
-		NULL
-	}
-};
 static Item defaultShellGroup = {
 	.type = TYPE_GROUP,
 	.entries = (Item *[]){
@@ -383,6 +376,7 @@ static Item serverShellGroup = {
 		sh,
 		bash,
 		readline,
+		zsh,
 		NULL
 	}
 };
@@ -466,6 +460,17 @@ static Deployment defaultDeployment = {
 
 static Deployment serverDeployment = {
 	.name = "Server",
+	.items = (Item *[]){
+		&serverLinuxCoreGroup,
+		&serverShellGroup,
+		&serverTerminalGroup,
+		&basicVersionControlGroup,
+		&serverEditorGroup,
+	}
+};
+
+static Deployment homeServerDeployment = {
+	.name = "Home Server",
 	.items = (Item *[]){
 		&serverLinuxCoreGroup,
 		&serverShellGroup,
@@ -623,6 +628,7 @@ static Deployment* deployments[] = {
 	&defaultDeployment,
 	&serverDeployment,
 	&riceDeployment,
+	&homeServerDeployment,
 	NULL
 };
 

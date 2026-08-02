@@ -3,8 +3,6 @@
 # GENERAL.
 # export NAME='Edwin Kofler'
 # export EMAIL='edwin@kofler.com'
-export BROWSER='librewolf'
-
 export LANG="${LANG:-en_US.UTF-8}"
 export LANGUAGE="${LANGUAGE:-"$LANG"}"
 export LC_ALL="${LC_ALL:-"$LANG"}"

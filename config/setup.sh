@@ -18,11 +18,7 @@ else
 	core.print_warn "Failed to find file ~/.dotfiles/.data/github_token"
 fi
 
-if [ -f ~/.dotfiles/vendor/setup.sh/setup.sh ]; then
-	source ~/.dotfiles/vendor/setup.sh/setup.sh
-else
-	core.print_warn "Failed to find file ~/.dotfiles/vendor/setup.sh/setup.sh"
-fi
+source ~/.dotfiles/vendor/setup.sh/setup.sh
 
 if [ -z "$XDG_CONFIG_HOME" ]; then
 	printf '%s\n' 'Failed because $XDG_CONFIG_HOME is empty' >&2
@@ -39,7 +35,11 @@ fi
 
 CURL_CONFIG="$HOME/.dotfiles/config/curl_config.conf"
 
-source ~/.dotfiles/config/setup-private.sh
+if [ -f ~/.dotfiles/config/setup-private.sh ]; then
+	source ~/.dotfiles/config/setup-private.sh
+else
+	core.print_warn "Failed to find file ~/.dotfiles/config/setup-private.sh"
+fi
 
 util.is_in_container_or_chroot() {
 	core.print_warn 'Detecting if running in a container or chroot.'

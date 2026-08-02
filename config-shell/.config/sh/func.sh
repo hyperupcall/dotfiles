@@ -103,10 +103,6 @@ del() {
 	fi
 }
 
-dg() {
-	dig +nocmd "$1" any +multiline +noall +answer
-}
-
 docker_nuke() {
 	docker ps -q | xargs docker stop
 	docker ps -aq | xargs docker rm
@@ -146,11 +142,6 @@ faketty() {
 gs() {
 	_util_log_warn "Correcting command to: 'g s'"
 	g s
-}
-
-isup() {
-	_util_log_warn "Executing: 'curl -sS --head -X GET \"$1\" | grep -q '200 OK'"
-	command curl -sS --head -X GET "$1" | grep -q '200 OK'
 }
 
 kkexec() {
@@ -342,10 +333,6 @@ _mkt_util_log() {
 	printf "%s\n" "$(date '+%Y.%m.%d - %I:%M:%S') | $_mkt_dir | $1" >>"${XDG_STATE_HOME:-$HOME/.local/state}/history/mkt_history"
 }
 
-nh() {
-	nohup "$@" >/dev/null 2>&1 &
-}
-
 o() {
 	if [ $# -eq 0 ]; then
 		xdg-open .
@@ -402,24 +389,25 @@ print_shell_prompt_eval_string() {
 }
 
 qe() {
-	filterList="BraveSoftware code tetrio-desktop obsidian discord sublime-text Ryujinx unity3d hmcl hdlauncher TabNine zettlr Zettlr Google lunarclient libreoffice VirtualBox configstore pulse obs-studio eDEX-UI 1Password kde.org sublime-text-3 gdlauncher gdlauncher_next launcher-main gitify QtProject GIMP r2modman r2modmanPlus-local Code plover GitKraken Electron bonsai-browser sidekick Insomnia Typora wavebox microsoft-edge evolution chromium"
+	_qe_list="BraveSoftware code tetrio-desktop obsidian discord sublime-text Ryujinx unity3d hmcl hdlauncher TabNine zettlr Zettlr Google lunarclient libreoffice VirtualBox configstore pulse obs-studio eDEX-UI 1Password kde.org sublime-text-3 gdlauncher gdlauncher_next launcher-main gitify QtProject GIMP Code plover GitKraken Electron bonsai-browser sidekick Insomnia Typora wavebox microsoft-edge evolution chromium Cursor librewolf vivaldi google-chrome mozilla go koodo-reader Devin VSCodium Antigravity devhub joplin-desktop Qoder ai.opencode.desktop Joplin akonadi JetBrains borg opencode"
 
 	_qe_file=$(
 		cd -- "$XDG_CONFIG_HOME" || {
 			_util_log_error "qe: Could not cd"
 			exit 1
 		}
-		filterArgs=
-		for file in $filterList; do
-			filterArgs="$filterArgs -o -name $file"
+		_qe_args=
+		for file in $_qe_list; do
+			_qe_args="$_qe_args -o -name $file"
 		done
 
 		# shellcheck disable=SC2086
 		find -L . -ignore_readdir_race \( \
 			-name 'Beaker Browser' \
-			$filterArgs \
+			$_qe_args \
 			-o -name 'Helios Launcher' \
 			-o -name 'Code - Insiders' \
+			-o -name 'Mullvad VPN' \
 			-o -path ./kak/plugins \
 			-o -path ./kak/autoload \
 			-o -path ./cookiecutter/cookiecutters \
@@ -434,7 +422,7 @@ qe() {
 	_qe_file="$XDG_CONFIG_HOME/$(printf "%s" "$_qe_file" | cut -c3-)"
 	v "$_qe_file"
 	history -s "v \"$_qe_file\""
-	unset -v _qe_file
+	unset -v _qe_list _qe_args _qe_file
 }
 
 r() {
@@ -446,11 +434,6 @@ r() {
 		fi
 	done
 	unset -v _file
-}
-
-# https://unix.stackexchange.com/a/123770
-see_old() {
-	sudo lsof +c 0 | grep 'DEL.*lib' | awk '1 { print $1 ": " $NF }' | sort -u
 }
 
 serv() {
@@ -533,19 +516,6 @@ v() {
 	unset -v _v_editor
 }
 
-vtraceroute() {
-	xdg-open "https://stefansundin.github.io/traceroute-mapper/?trace=$('traceroute' -q1 "$*" | sed ':a;N;$!ba;s/\n/%0A/g')"
-}
-
-wa() {
-	watch -cn.3 "$@"
-}
-
 waf() {
 	watch -cn.1 "$@"
-}
-
-# watch slow
-was() {
-	watch -cn1 "$@"
 }

@@ -9,3 +9,4 @@ setup-private*
 .zcompdump
 __pycache__/
 node_modules/
+target/
