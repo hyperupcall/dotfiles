@@ -491,9 +491,9 @@ unchr() {
 	umount "$1/dev"
 }
 
-upgrade() {
+updateupgrade() {
 	sudo apt update -y
-	apt list --upgradable
+	APT_PAGER=cat apt --color list --installed
 	sudo apt upgrade -y
 	sudo apt autoremove -y
 	flatpak update -y

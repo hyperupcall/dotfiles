@@ -224,7 +224,6 @@ static Item info[] = ConfigEntry("info/", CategoryLinuxCore);
 static Item less[] = ConfigEntry("less/", CategoryLinuxCore);
 static Item most[] = HomeEntry(".mostrc", CategoryLinuxCore);
 static Item readline[] = HomeEntry(".inputrc", CategoryLinuxCore);
-static Item userDirsConf[] = ConfigEntry("user-dirs.conf", CategoryLinuxCore);
 static Item gnupgDirmngr[] = HomeEntry(".gnupg/dirmngr.conf", CategoryLinuxCore);
 static Item gnupgGpg[] = HomeEntry(".gnupg/gpg.conf", CategoryLinuxCore);
 static Item gnupgGpgAgent[] = HomeEntry(".gnupg/gpg-agent.conf", CategoryLinuxCore);
@@ -252,7 +251,6 @@ static Item defaultLinuxCoreGroup = {
 		less,
 		most,
 		readline,
-		userDirsConf,
 		gnupgDirmngr,
 		gnupgGpg,
 		gnupgGpgAgent,

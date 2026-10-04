@@ -10,7 +10,8 @@ main() {
 
 		for dir in "$_private_backup_home_source" "$_private_backup_home_source2" "$_private_backup_home_source3"; do
 			if [ ! -d "$dir" ]; then
-				core.print_die "Directory must exist: $dir"
+				#core.print_die "Directory must exist: $dir"
+				:
 			fi
 		done
 

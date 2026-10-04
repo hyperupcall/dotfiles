@@ -63,6 +63,15 @@ main() {
 	unset -v file
 	core.print_info 'Cleaned shell dotfiles'
 
+	# Create necessary symlinks in ~/.local/bin.
+	must.dir ~/.local/bin
+	for file in ~/.dotfiles/bin/*; do
+		if [ -x "$file" ]; then
+			ln -sf "$file" ~/.local/bin
+		fi
+	done
+	unset -v file
+
 	# Create necessary symlinks in ~/scripts.
 	must.dir ~/.dotfiles/.data/scripts
 	must.link ~/.dotfiles/.data/scripts ~/scripts
@@ -76,16 +85,6 @@ main() {
 		done
 		unset -v file
 	fi
-
-	# Create necessary symlinks in ~/.local/bin.
-	must.dir ~/.local/bin
-	for file in ~/.dotfiles/bin/*; do
-		if [ -x "$file" ]; then
-			ln -sf "$file" ~/.local/bin
-		fi
-	done
-	unset -v file
-
 	for file in ~/scripts/*; do
 		if [ -L "$file" ] && [ ! -e "$file" ]; then
 			must.unlink "$file"
@@ -141,39 +140,13 @@ main() {
 	local computer_profile=
 	computer_profile=$(<~/.dotfiles/.data/profile)
 
-	# Set XDG user directories.
-	if [[ $computer_profile == @(dragonfruit) ]]; then
-		must.dir ~/Other/{Desktop,Templates,Public}
-		xdg-user-dirs-update --set DESKTOP ~/Other/Desktop
-		xdg-user-dirs-update --set DOWNLOAD ~/Downloads
-		xdg-user-dirs-update --set TEMPLATES ~/Other/Templates
-		xdg-user-dirs-update --set PUBLICSHARE ~/Other/Public
-		xdg-user-dirs-update --set DOCUMENTS ~/Documents
-		xdg-user-dirs-update --set MUSIC ~/Music
-		xdg-user-dirs-update --set PICTURES ~/Pictures
-		xdg-user-dirs-update --set VIDEOS ~/Videos
-	else
-		xdg-user-dirs-update --set DESKTOP ~/Desktop
-		xdg-user-dirs-update --set DOWNLOAD ~/Downloads
-		xdg-user-dirs-update --set TEMPLATES ~/Templates
-		xdg-user-dirs-update --set PUBLICSHARE ~/Public
-		xdg-user-dirs-update --set DOCUMENTS ~/Documents
-		xdg-user-dirs-update --set MUSIC ~/Music
-		xdg-user-dirs-update --set PICTURES ~/Pictures
-		xdg-user-dirs-update --set VIDEOS ~/Videos
-	fi
-	if [[ $computer_profile == @(dragonfruit) ]]; then
-		must.dir "$HOME/Other/AppImages"
-		must.link "$HOME/Other/AppImages" ~/.home/AppImages
-	else
-		must.dir "$HOME/AppImages"
-		must.link "$HOME/AppImages" ~/.home/AppImages
-	fi
-
 	# Symlink XDG base and user directories.
 	(
 		source "$XDG_CONFIG_HOME/user-dirs.dirs"
 		must.dir ~/.home
+
+		must.dir "$HOME/Other/AppImages"
+		must.link "$HOME/Other/AppImages" ~/.home/AppImages
 
 		must.link "$XDG_DESKTOP_DIR" ~/.home/Desktop
 		must.link "$XDG_DOWNLOAD_DIR" ~/.home/Downloads
@@ -249,7 +222,11 @@ main() {
 		read -erp "Paste token: "
 
 		local token="$REPLY"
-		printf '%s\n' "$token" >~/.dotfiles/.data/github_token
+		if [ -n "$token" ]; then
+			printf '%s\n' "$token" >~/.dotfiles/.data/github_token
+		else
+			core.print_warn 'Skipped saving GitHub token'
+		fi
 	fi
 
 	# Check SSH files.

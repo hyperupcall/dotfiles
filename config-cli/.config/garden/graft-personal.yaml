@@ -3,10 +3,6 @@ trees:
     url: git@github.com:hyperupcall/hyperupcall
     default-remote: 'me'
 
-  edwinkofler.com:
-    url: git@github.com:hyperupcall-projects/edwinkofler.com
-    default-remote: 'me'
-
   scripts-nodejs:
     url: git@github.com:hyperupcall-projects/scripts-nodejs
     default-remote: 'me'
@@ -85,4 +81,8 @@ trees:
 
   stars:
     url: git@github.com:hyperupcall-projects/stars
+    default-remote: 'me'
+
+  userscripts:
+    url: git@github.com:hyperupcall-projects/userscripts
     default-remote: 'me'

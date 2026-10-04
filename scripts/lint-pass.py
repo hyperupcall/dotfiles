@@ -146,6 +146,13 @@ def lint_password_store(
 		if 'old/' in pass_name:
 			continue
 
+		password = pass_content.split('\n', 1)[0]
+		if len(password) > 31:
+			print(
+				f'Password is longer than 31 characters: {pass_name}',
+				file=sys.stderr,
+			)
+
 		if not re.search(r'^login:', pass_content, flags=re.MULTILINE):
 			if pass_name not in ignore_list:
 				print(

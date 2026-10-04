@@ -1,238 +1,111 @@
 [
+	// Disabled keybindings when in the terminal.
 	{
 		"key": "ctrl+i",
 		"command": "workbench.action.quickOpen",
-		"when": "!terminalFocus"
-	},
-	{
-		"key": "ctrl+p",
-		"command": "-workbench.action.quickOpen"
+		"when": "!terminalFocus",
 	},
 	{
 		"key": "ctrl+f",
 		"command": "-workbench.action.terminal.focusFind",
-		"when": "terminalFindFocused || terminalFocus"
-	},
-	{
-		"key": "ctrl+shift+d",
-		"command": "-extension.fabric8AnalyticsWidgetFullStack"
-	},
-	{
-		"key": "ctrl+shift+d",
-		"command": "-svgDevElementCommand",
-		"when": "svgDevActive && !svgDevHostInput"
-	},
-	{
-		"key": "ctrl+k shift+enter",
-		"command": "-workbench.action.pinEditor",
-		"when": "config.workbench.editor.showTabs && !editorSticky"
-	},
-	{
-		"key": "ctrl+k shift+enter",
-		"command": "-workbench.action.unpinEditor",
-		"when": "config.workbench.editor.showTabs && editorSticky"
+		"when": "terminalFindFocused || terminalFocus",
 	},
 	{
 		"key": "alt+r",
 		"command": "-workbench.action.terminal.toggleFindRegex",
-		"when": "terminalFindFocused && terminalProcessSupported || terminalFocus && terminalProcessSupported"
+		"when": "terminalFindFocused && terminalProcessSupported || terminalFocus && terminalProcessSupported",
 	},
 	{
 		"key": "ctrl+f",
 		"command": "-workbench.action.terminal.focusFind",
-		"when": "terminalFindFocused && terminalProcessSupported || terminalFocus && terminalProcessSupported"
+		"when": "terminalFindFocused && terminalProcessSupported || terminalFocus && terminalProcessSupported",
 	},
 	{
 		"key": "ctrl+e",
 		"command": "workbench.action.quickOpen",
-		"when": "!terminalFocus"
+		"when": "!terminalFocus",
 	},
 	{
 		"key": "ctrl+e",
-		"command": "-workbench.action.quickOpen"
+		"command": "-workbench.action.quickOpen",
 	},
 	{
 		"key": "shift+backspace",
 		"command": "-deleteAllLeft",
-		"when": "editorTextFocus && !editorReadonly"
+		"when": "editorTextFocus && !editorReadonly",
 	},
 	{
 		"key": "ctrl+f",
 		"command": "-workbench.action.terminal.focusFind",
-		"when": "terminalFindFocused && terminalHasBeenCreated || terminalFindFocused && terminalProcessSupported || terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+		"when": "terminalFindFocused && terminalHasBeenCreated || terminalFindFocused && terminalProcessSupported || terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported",
 	},
 	{
 		"key": "ctrl+k",
-		"command": "workbench.action.showCommands"
-	},
-	{
-		"key": "ctrl+shift+p",
-		"command": "-workbench.action.showCommands"
+		"command": "workbench.action.showCommands",
 	},
 	{
 		"key": "ctrl+m d",
 		"command": "workbench.action.files.openFolder",
-		"when": "openFolderWorkspaceSupport"
+		"when": "openFolderWorkspaceSupport",
 	},
 	{
 		"key": "ctrl+k ctrl+o",
 		"command": "-workbench.action.files.openFolder",
-		"when": "openFolderWorkspaceSupport"
+		"when": "openFolderWorkspaceSupport",
 	},
 	{
 		"key": "ctrl+m d",
 		"command": "workbench.action.files.openLocalFolder",
-		"when": "remoteFileDialogVisible"
+		"when": "remoteFileDialogVisible",
 	},
 	{
 		"key": "ctrl+k ctrl+o",
 		"command": "-workbench.action.files.openLocalFolder",
-		"when": "remoteFileDialogVisible"
-	},
-	{
-		"key": "ctrl+u",
-		"command": "editor.action.triggerSuggest",
-		"when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
-	},
-	{
-		"key": "ctrl+i",
-		"command": "-editor.action.triggerSuggest",
-		"when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
-	},
-	{
-		"key": "ctrl+u",
-		"command": "toggleSuggestionDetails",
-		"when": "suggestWidgetVisible && textInputFocus"
-	},
-	{
-		"key": "ctrl+i",
-		"command": "-toggleSuggestionDetails",
-		"when": "suggestWidgetVisible && textInputFocus"
-	},
-	{
-		"key": "ctrl+u",
-		"command": "-cursorUndo",
-		"when": "textInputFocus"
-	},
-	{
-		"key": "ctrl+i ctrl+c",
-		"command": "-language-julia.clearAllInlineResultsInEditor",
-		"when": "editorLangId == 'juliamarkdown' || editorTextFocus && editorLangId == 'julia' && activeEditor != 'workbench.editor.notebook'"
-	},
-	{
-		"key": "ctrl+i ctrl+i",
-		"command": "-v.fmt"
-	},
-	{
-		"key": "ctrl+i",
-		"command": "workbench.action.quickOpenNavigateNextInFilePicker",
-		"when": "inFilesPicker && inQuickOpen"
-	},
-	{
-		"key": "ctrl+p",
-		"command": "-workbench.action.quickOpenNavigateNextInFilePicker",
-		"when": "inFilesPicker && inQuickOpen"
-	},
-	{
-		"key": "ctrl+k o",
-		"command": "-workbench.action.files.showOpenedFileInNewWindow",
-		"when": "emptyWorkspaceSupport"
+		"when": "remoteFileDialogVisible",
 	},
 	{
 		"key": "ctrl+l",
 		"command": "-notebook.centerActiveCell",
-		"when": "notebookEditorFocused"
+		"when": "notebookEditorFocused",
 	},
 	{
 		"key": "ctrl+l",
 		"command": "-expandLineSelection",
-		"when": "textInputFocus"
+		"when": "textInputFocus",
 	},
 	{
 		"key": "ctrl+l c",
-		"command": "-extension.copyGitHubLinkToClipboard"
+		"command": "-extension.copyGitHubLinkToClipboard",
 	},
 	{
 		"key": "ctrl+l g",
-		"command": "-extension.openInGitHub"
+		"command": "-extension.openInGitHub",
 	},
 	{
 		"key": "ctrl+l p",
-		"command": "-extension.openPrGitProvider"
-	},
-	{
-		"key": "ctrl+m f",
-		"command": "workbench.action.files.openFile",
-		"when": "true"
+		"command": "-extension.openPrGitProvider",
 	},
 	{
 		"key": "ctrl+o",
 		"command": "-workbench.action.files.openFile",
-		"when": "true"
-	},
-	{
-		"key": "ctrl+m r",
-		"command": "workbench.action.openRecent"
+		"when": "true",
 	},
 	{
 		"key": "ctrl+r",
-		"command": "-workbench.action.openRecent"
-	},
-	{
-		"key": "ctrl+m d",
-		"command": "workbench.action.files.openFolderViaWorkspace",
-		"when": "!openFolderWorkspaceSupport && workbenchState == 'workspace'"
+		"command": "-workbench.action.openRecent",
 	},
 	{
 		"key": "ctrl+o",
 		"command": "-workbench.action.files.openFolderViaWorkspace",
-		"when": "!openFolderWorkspaceSupport && workbenchState == 'workspace'"
-	},
-	{
-		"key": "ctrl+m",
-		"command": "-luna.layer.mergeLayerDown",
-		"when": "luna:focused && activeCustomEditorId == 'luna.editor' && focusedView == ''"
-	},
-	{
-		"key": "ctrl+m",
-		"command": "-editor.action.toggleTabFocusMode"
-	},
-	{
-		"key": "ctrl+m o",
-		"command": "workbench.action.files.openFileFolder",
-		"when": "false"
-	},
-	{
-		"key": "ctrl+o",
-		"command": "-workbench.action.files.openFileFolder",
-		"when": "isMacNative && openFolderWorkspaceSupport"
-	},
-	{
-		"key": "ctrl+m f",
-		"command": "workbench.action.files.openLocalFile",
-		"when": "remoteFileDialogVisible"
+		"when": "!openFolderWorkspaceSupport && workbenchState == 'workspace'",
 	},
 	{
 		"key": "ctrl+o",
 		"command": "-workbench.action.files.openLocalFile",
-		"when": "remoteFileDialogVisible"
-	},
-	{
-		"key": "ctrl+m c",
-		"command": "revealFileInOS",
-		"when": "!editorFocus"
-	},
-	{
-		"key": "ctrl+alt+r",
-		"command": "-revealFileInOS",
-		"when": "!editorFocus"
+		"when": "remoteFileDialogVisible",
 	},
 	{
 		"key": "ctrl+o",
-		"command": "workbench.action.gotoSymbol"
+		"command": "workbench.action.quickOpen",
 	},
-	{
-		"key": "ctrl+shift+o",
-		"command": "-workbench.action.gotoSymbol"
-	}
 ]

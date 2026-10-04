@@ -9,6 +9,7 @@ install.debian() {
 }
 
 install.ubuntu() {
+	sudo apt-get -y remove firefox
 	local gpg_file='/etc/apt/keyrings/mozilla.asc'
 
 	pkg.add_apt_key \

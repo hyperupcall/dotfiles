@@ -129,9 +129,12 @@ lsblk() {
 }
 
 ssh() {
-	# Keep the asterisks to account for "tmux-xterm-kitty".
 	case $TERM in
+	# Keep the asterisks to account for "tmux-xterm-kitty".
 	*xterm-kitty)
+		# Using kitty for this caused issues when passing -J (JumpHost) on the CLI. Print
+		# info to remind user that ssh is not ran directly.
+		_util_log_info 'Running as kitty +kitten ssh'
 		kitty +kitten ssh "$@"
 		;;
 	*)
@@ -220,4 +223,8 @@ less() {
 
 	unset -v _less_cmd
 	return $_exit_code
+}
+
+pass() {
+	prs "$@"
 }

@@ -140,7 +140,7 @@ _util_print_source_error() {
 _util_ls() {
 	printf '%s\n' '---'
 	if command -v eza >/dev/null 2>&1; then
-		eza -a --color=always
+		eza -lhA --group-directories-first --icons=auto
 	else
 		ls -A --color=always
 	fi

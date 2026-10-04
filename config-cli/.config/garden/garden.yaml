@@ -119,7 +119,6 @@ groups:
 
   personal:
     - 'graft-personal::hyperupcall'
-    - 'graft-personal::edwinkofler.com'
     - 'graft-personal::scripts-nodejs'
     - 'graft-personal::prettier-config'
     - 'graft-personal::eslint-config'
@@ -140,6 +139,7 @@ groups:
     - 'graft-personal::pkgbuilds'
     - 'graft-personal::slides'
     - 'graft-personal::stars'
+    - 'graft-personal::userscripts'
 
   thunderbird-addons:
     - 'graft-thunderbird-addons::thunderbird-quickmove'

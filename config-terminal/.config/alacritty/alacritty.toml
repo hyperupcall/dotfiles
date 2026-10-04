@@ -1,2 +1,13 @@
 [general]
-import = ['./themes/dracula.theme.toml']
+import = ['./themes/catppuccin_latte.toml']
+
+[window]
+#dimensions = { columns = 120, lines = 32 }
+#dimensions = { columns = 60, lines = 18 }
+dimensions = { columns = 30, lines = 23 }
+padding = { x = 10, y = 10 }
+
+
+[font]
+#size = 18.0
+size = 32

@@ -14,7 +14,6 @@
 	addIgnoredFile = false
 [cola]
 	startupmode = folder
-
 [hook "hk-commit-msg"]
 	command = test \"${HK:-1}\" = \"0\" || hk run commit-msg --from-hook \"$@\"
 	event = commit-msg
@@ -42,3 +41,7 @@
 [hook "hk-prepare-commit-msg"]
 	command = test \"${HK:-1}\" = \"0\" || hk run prepare-commit-msg --from-hook \"$@\"
 	event = prepare-commit-msg
+[url "https://invent.kde.org/"]
+	insteadOf = kde:
+[url "ssh://git@invent.kde.org/"]
+	pushInsteadOf = kde:

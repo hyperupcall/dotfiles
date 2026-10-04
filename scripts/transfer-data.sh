@@ -214,6 +214,7 @@ main() {
 	read -rN1 -p "Done! Would you like to unmount ${dirpath%/*} " answer
 	printf '\n'
 	if [[ $answer =~ ^[Yy] ]]; then
+		cd ~
 		sudo umount "${dirpath%/*}"
 	fi
 
