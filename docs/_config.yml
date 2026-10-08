@@ -1,11 +1,13 @@
-title: 'Dotfiles'
-description: 'Personal dotfiles and configuration management'
+title: "Edwin's dotfiles"
+description: "Edwin's personal dotfiles."
 baseurl: ''
 url: ''
 
 markdown: kramdown
 theme: minima
 permalink: /:basename:output_ext
+github_username: hyperupcall
+linkedin_username: edwinkofler
 
 plugins:
 - jekyll-feed

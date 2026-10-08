@@ -1,9 +1,7 @@
 ---
 layout: home
-title: Dotfiles
+title: Home
 ---
-
-# dotfiles
 
 My Dotfiles!
 

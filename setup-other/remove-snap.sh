@@ -13,11 +13,11 @@ install.ubuntu() {
 			sudo snap remove "$f" || : # lint-ignore
 		done
 
-		sudo apt-get -y remove snapd
+		# Purge removes everything in /snap.
+		sudo apt-get -y purge snapd
 	fi
 
 	rm -rf ~/snap
-	sudo rm -rf /snap
 }
 
 install.installed() {
