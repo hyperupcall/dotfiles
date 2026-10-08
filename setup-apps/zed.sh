@@ -8,11 +8,13 @@ install.any() {
 }
 
 install.installed() {
-	if command -v zed &>/dev/null && zed --version &>/dev/null; then
-		local output=
-		output=$(zed --version)
-		[[ $output == 'Zed '* ]]
+	if ! command -v zed &>/dev/null; then
+		return 1
 	fi
+
+	local output=
+	output=$(zed --version)
+	[[ $output == 'Zed '* ]]
 }
 
 util.if_file_sourced || _setup "$@"

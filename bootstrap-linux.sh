@@ -177,4 +177,14 @@ clonerepo() {
 	fi
 }
 
-main "$@"
+# Source guard: only run `main` when executed, not when sourced.
+# shellcheck disable=SC3028,SC3054,SC2039
+if [ -n "$BASH_VERSION" ]; then
+	if [ "${BASH_SOURCE[0]}" = "$0" ]; then
+		main "$@"
+	fi
+elif [ -n "$ZSH_VERSION" ]; then
+	case $ZSH_EVAL_CONTEXT in *:file*) ;; *) main "$@" ;; esac
+else
+	main "$@"
+fi

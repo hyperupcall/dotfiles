@@ -31,7 +31,7 @@ Pin-Priority: 990" | sudo tee "$dest_file" >/dev/null
 }
 
 install.ubuntu() {
-	:
+	sudo apt-get -y install zfsutils-linux
 }
 
 install.fedora() {

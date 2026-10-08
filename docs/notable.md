@@ -7,7 +7,7 @@ title: Notable
 
 The following scripts are notable and may be helpful to others:
 
-## [`readline.sh`](/config-shell/.config/bash/modules)
+## [`.bashrc`](/config-shell/.bashrc)
 
 Special Bash readline bindings that includes many convenient functionality that include:
 
@@ -21,7 +21,7 @@ Special Bash readline bindings that includes many convenient functionality that 
 
 It calls more general functions that can be found at [`line-editing.sh`](/config-shell/.config/sh/line-editing.sh).
 
-## [`mkt`](/config-shell/.config/sh/modules/func.sh)
+## [`mkt`](/config-shell/.config/sh/func.sh)
 
 Quick command to automatically do something in a temporary space. Based on the first argument, it will:
 

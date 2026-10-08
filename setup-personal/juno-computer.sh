@@ -12,7 +12,7 @@ install.ubuntu() {
 
 	juno-installer
 
-	sudo chown "$USER:$USER" "$XDG_DATA_HOME/share/icons"
+	sudo chown "$USER:$USER" "$XDG_DATA_HOME/icons"
 }
 
 install.installed() {

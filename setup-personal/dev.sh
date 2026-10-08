@@ -33,6 +33,7 @@ install.any() {
 	if [ ! -f ~/.dotfiles/.data/binexec/node ]; then
 		ln -sf ~/.dotfiles/.data/node-v*/bin/node ~/.dotfiles/.data/binexec/node
 	fi
+	PATH="$HOME/.dotfiles/.data/binexec:$PATH" ~/.dotfiles/.data/node-v*/bin/npm install -g pnpm
 
 	# Download and install "dev".
 	local dir="$HOME/.dev"
@@ -50,9 +51,9 @@ install.any() {
 	fi
 	mise trust ~/.dev
 	pushd ~/.dev
-	pnpm install
-	node --run build
-	popd ~/.dev
+	PATH="$HOME/.dotfiles/.data/binexec:$PATH" ~/.dotfiles/.data/node-v*/bin/pnpm approve-builds --all
+	PATH="$HOME/.dotfiles/.data/binexec:$PATH" ~/.dotfiles/.data/node-v*/bin/pnpm install
+	popd
 
 	if util.is_in_container_or_chroot; then
 		core.print_warn 'Skipping installing and running dev.service since in container or chroot'

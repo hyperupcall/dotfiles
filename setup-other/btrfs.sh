@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 source ~/.dotfiles/config/setup.sh
 
-declare -g g_name='btrfs'
+declare -g g_name='Btrfs'
 
 install.debian() {
 	sudo apt-get -y update

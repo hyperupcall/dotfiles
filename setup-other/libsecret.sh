@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 source ~/.dotfiles/config/setup.sh
 
-declare -g g_name='Blender'
+declare -g g_name='libsecret'
 
 install.debian() {
-	sudo apt-get install -y blender
+	sudo apt-get install -y libsecret-tools
 }
 
 install.ubuntu() {
@@ -12,19 +12,19 @@ install.ubuntu() {
 }
 
 install.fedora() {
-	sudo dnf install -y blender
+	sudo dnf install -y libsecret
 }
 
 install.opensuse() {
-	sudo zypper -n install blender
+	sudo zypper -n install libsecret-tools
 }
 
 install.arch() {
-	sudo pacman -Syu --noconfirm blender
+	yay -Syu --noconfirm libsecret
 }
 
 install.installed() {
-	command -v blender &>/dev/null
+	command -v secret-tool &>/dev/null
 }
 
 util.if_file_sourced || _setup "$@"

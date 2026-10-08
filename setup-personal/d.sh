@@ -25,7 +25,7 @@ install.any() {
 
 	util.clone "$g_dir" git@github.com:hyperupcall-projects/d
 	cd "$g_dir"
-	./bake build "$HOME/.dotfiles/data/dotfiles.c"
+	./bake build "$HOME/.dotfiles/config/dotfiles.c"
 	ln -fs "$PWD/d" ~/.local/bin/d
 	DEBUG= ~/.local/bin/d deploy
 }

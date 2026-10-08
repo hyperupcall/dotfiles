@@ -40,6 +40,8 @@ install.installed() {
 }
 
 prompt_extra_installs() {
+	cargo install --locked prs-cli
+
 	if util.confirm 'Clone password repository?'; then
 		if [ -d "$g_password_store_dir" ]; then
 			if [ -d "$g_password_store_dir" ]; then

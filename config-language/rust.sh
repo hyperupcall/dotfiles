@@ -4,17 +4,21 @@ source ~/.dotfiles/config/setup.sh
 declare -g g_name='Rust'
 
 install.any() {
-	if [ ! -d "${CARGO_HOME:-"$HOME/.rustup"}" ]; then
+	if [ ! -d "${RUSTUP_HOME:-"$HOME/.rustup"}" ]; then
 		core.print_info "Installing rustup"
 		curl -K "$CURL_CONFIG" https://sh.rustup.rs | sh -s -- --default-toolchain nightly -y
+	fi
+	source "${CARGO_HOME:-"$HOME/.cargo"}/env"
 
-		rustup default nightly
+	local output=
+	output=$(rustup default)
+	if [[ $output != stable* ]]; then
+		rustup default stable
 	fi
 
 	cargo install --locked starship
 	cargo install --locked cargo-binstall
 	cargo install --locked fd-find
-	cargo install --locked modenv
 	cargo install --locked bat
 }
 

@@ -140,6 +140,35 @@ main() {
 	local computer_profile=
 	computer_profile=$(<~/.dotfiles/.data/profile)
 
+	# Set XDG user directories.
+	# if [[ $computer_profile == @(dragonfruit) ]]; then
+	# 	must.dir ~/Other/{Desktop,Templates,Public}
+	# 	xdg-user-dirs-update --set DESKTOP ~/Other/Desktop
+	# 	xdg-user-dirs-update --set DOWNLOAD ~/Downloads
+	# 	xdg-user-dirs-update --set TEMPLATES ~/Other/Templates
+	# 	xdg-user-dirs-update --set PUBLICSHARE ~/Other/Public
+	# 	xdg-user-dirs-update --set DOCUMENTS ~/Documents
+	# 	xdg-user-dirs-update --set MUSIC ~/Music
+	# 	xdg-user-dirs-update --set PICTURES ~/Pictures
+	# 	xdg-user-dirs-update --set VIDEOS ~/Videos
+	# else
+	# 	xdg-user-dirs-update --set DESKTOP ~/Desktop
+	# 	xdg-user-dirs-update --set DOWNLOAD ~/Downloads
+	# 	xdg-user-dirs-update --set TEMPLATES ~/Templates
+	# 	xdg-user-dirs-update --set PUBLICSHARE ~/Public
+	# 	xdg-user-dirs-update --set DOCUMENTS ~/Documents
+	# 	xdg-user-dirs-update --set MUSIC ~/Music
+	# 	xdg-user-dirs-update --set PICTURES ~/Pictures
+	# 	xdg-user-dirs-update --set VIDEOS ~/Videos
+	# fi
+	if [[ $computer_profile == @(dragonfruit) ]]; then
+		must.dir "$HOME/Other/AppImages"
+		must.link "$HOME/Other/AppImages" ~/.home/AppImages
+	else
+		must.dir "$HOME/AppImages"
+		must.link "$HOME/AppImages" ~/.home/AppImages
+	fi
+
 	# Symlink XDG base and user directories.
 	(
 		source "$XDG_CONFIG_HOME/user-dirs.dirs"
@@ -264,7 +293,9 @@ main() {
 		fi
 	}
 
-	# Install necessary drivers.
+	# Install necessary packages and drivers.
+	~/scripts/setup/libfuse.sh
+	~/scripts/setup/libsecret.sh
 	if [[ $computer_profile == @(juno-laptop) ]]; then
 		~/scripts/setup/juno-computer.sh
 	fi
@@ -289,35 +320,36 @@ main() {
 	if [[ $computer_profile == @(dragonfruit|juno-laptop) ]]; then
 		# Install personal tools.
 		~/scripts/setup/pass.sh
-		{
-			local password_store_dir="${PASSWORD_STORE_DIR:-"$XDG_DATA_HOME/password-store"}"
-			local gpg_path pass_name pass_output symlink_content maybe_file
-
-			if [ -d "$password_store_dir" ]; then
-				core.shopt_push -s globstar nullglob
-				for gpg_path in "$password_store_dir"/**/*.gpg; do
-					pass_name="${gpg_path#"$password_store_dir"/}"
-					pass_name="${pass_name%.gpg}"
-
-					pass_output=$(pass show "$pass_name" 2>&1) || :
-					if [[ "$pass_output" == *'gpg: no valid OpenPGP data found'* ]]; then
-						symlink_content=$(<"$gpg_path")
-						maybe_file="${gpg_path%/*}/$symlink_content"
-
-						if [ -f "$maybe_file" ]; then
-							core.print_info "File \"$gpg_path\" is supposed to be a symlink to \"$symlink_content\". Replacing."
-							rm -- "$gpg_path"
-							ln -sf "$symlink_content" "$gpg_path"
-						else
-							core.print_warn "No valid GPG data found: \"$gpg_path\""
-						fi
-					fi
-				done
-				core.shopt_pop
-			fi
-		}
+		# TODO: Repairs broken symlink entries in my pass directory
+# 		{
+# 			local password_store_dir="${PASSWORD_STORE_DIR:-"$XDG_DATA_HOME/password-store"}"
+# 			local gpg_path pass_name pass_output symlink_content maybe_file
+#
+# 			if [ -d "$password_store_dir" ]; then
+# 				core.shopt_push -s globstar nullglob
+# 				for gpg_path in "$password_store_dir"/**/*.gpg; do
+# 					pass_name="${gpg_path#"$password_store_dir"/}"
+# 					pass_name="${pass_name%.gpg}"
+#
+# 					pass_output=$(pass show "$pass_name" 2>&1) || :
+# 					if [[ "$pass_output" == *'gpg: no valid OpenPGP data found'* ]]; then
+# 						symlink_content=$(<"$gpg_path")
+# 						maybe_file="${gpg_path%/*}/$symlink_content"
+#
+# 						if [ -f "$maybe_file" ]; then
+# 							core.print_info "File \"$gpg_path\" is supposed to be a symlink to \"$symlink_content\". Replacing."
+# 							rm -- "$gpg_path"
+# 							ln -sf "$symlink_content" "$gpg_path"
+# 						else
+# 							core.print_warn "No valid GPG data found: \"$gpg_path\""
+# 						fi
+# 					fi
+# 				done
+# 				core.shopt_pop
+# 			fi
+# 		}
 		~/scripts/setup/dev.sh
-		~/scripts/setup/basalt.sh
+		# ~/scripts/setup/basalt.sh
 		~/scripts/setup/woof.sh
 		~/scripts/setup/bash-kpreexec.sh
 
@@ -335,7 +367,6 @@ main() {
 		~/scripts/setup/brave.sh
 		~/scripts/setup/remove-snap.sh # Remove only after installing a browser.
 		~/scripts/setup/firefox.sh
-		~/scripts/setup/thunderbird.sh
 		~/scripts/setup/zed.sh
 		~/scripts/setup/vscode.sh
 		~/scripts/setup/obsidian.sh
@@ -352,7 +383,7 @@ main() {
 		~/scripts/setup/garden.sh
 
 		~/scripts/setup/llvm.sh
-		~/scripts/setup/llvm-nightly.sh
+		# ~/scripts/setup/llvm-nightly.sh
 		~/scripts/setup/bake.sh
 		~/scripts/setup/pre-commit.sh
 		~/scripts/setup/homebrew.sh
@@ -361,7 +392,6 @@ main() {
 		~/scripts/setup/borg.sh
 		~/scripts/setup/anki.sh
 		~/scripts/setup/syncthing.sh
-		~/scripts/setup/merkuro.sh
 		~/scripts/setup/bats.sh
 		~/scripts/setup/btrfs.sh
 		~/scripts/setup/zfs.sh
@@ -373,7 +403,7 @@ main() {
 		~/scripts/setup/blender.sh
 		~/scripts/setup/sqlitebrowser.sh
 		~/scripts/setup/darktable.sh
-		~/scripts/setup/kdenlive.sh
+		# ~/scripts/setup/kdenlive.sh
 		~/scripts/setup/virtualbox.sh
 
 		core.shopt_push -s nullglob

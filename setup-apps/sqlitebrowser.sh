@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 source ~/.dotfiles/config/setup.sh
 
-declare -g g_name='sqlitebrowser'
+declare -g g_name='DB Browser for SQLite (DB4S)'
 
 install.ubuntu() {
 	sudo add-apt-repository -y ppa:linuxgndu/sqlitebrowser

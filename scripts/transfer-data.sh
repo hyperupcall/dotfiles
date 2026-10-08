@@ -35,7 +35,7 @@ main() {
 
 	local answer=
 	while :; do
-		read -re -p 'Choose directory for temporary files: ' answer
+		read -re -p 'Choose location for temporary files: ' answer
 		if [[ $answer =~ ^[0-9]+$ ]] && ((answer >= 0)) && ((answer < ${#options[@]})); then
 			break
 		fi
@@ -62,7 +62,7 @@ main() {
 		[borgkeys]="$XDG_CONFIG_HOME/borg/keys"
 		[basalt_token]="$XDG_CONFIG_HOME/basalt/token"
 		[woof_token]="$XDG_DATA_HOME/woof/token"
-		[scripts_hidden]="$_private_scripts_hidden"
+		# [scripts_hidden]="$_private_scripts_hidden"
 		[setup_private_exec_sh]="$HOME/.dotfiles/config/setup-private-exec.sh"
 		[setup_private_py]="$HOME/.dotfiles/config/setup-private.py"
 		[setup_private_sh]="$HOME/.dotfiles/config/setup-private.sh"
@@ -106,6 +106,11 @@ main() {
 			local dir="${paths_encrypt[$name]}"
 			local encrypted_file="$dirpath/$name.tar.gz.asc"
 
+			if [ -z "$dir" ] || [ ! -e "$dir" ]; then
+				core.print_warn "Skipping $name: '$dir' does not exist"
+				continue
+			fi
+
 			core.print_info "Encrypting $dir to $encrypted_file"
 			mkdir -p "${encrypted_file%/*}"
 			tar -C "${dir%/*}" -c "./${dir##*/}" \
@@ -116,6 +121,11 @@ main() {
 		for name in "${!paths[@]}"; do
 			local dir="${paths[$name]}"
 			local src="$dirpath/$name.tar.gz"
+
+			if [ -z "$dir" ] || [ ! -e "$dir" ]; then
+				core.print_warn "Skipping $name: '$dir' does not exist"
+				continue
+			fi
 
 			core.print_info "Copying $dir to $src"
 			mkdir -p "${src%/*}"
@@ -211,7 +221,7 @@ main() {
 		core.print_die "Invalid mode: $mode"
 	fi
 
-	read -rN1 -p "Done! Would you like to unmount ${dirpath%/*} " answer
+	read -rN1 -p "Done! Would you like to unmount ${dirpath%/*}? " answer
 	printf '\n'
 	if [[ $answer =~ ^[Yy] ]]; then
 		cd ~

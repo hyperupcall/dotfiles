@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 source ~/.dotfiles/config/setup.sh
 
-declare -g g_name='Blender'
+declare -g g_name='libfuse'
 
 install.debian() {
-	sudo apt-get install -y blender
+	sudo apt-get install -y libfuse-dev
 }
 
 install.ubuntu() {
@@ -12,19 +12,19 @@ install.ubuntu() {
 }
 
 install.fedora() {
-	sudo dnf install -y blender
+	sudo dnf install -y fuse-devel
 }
 
 install.opensuse() {
-	sudo zypper -n install blender
+	sudo zypper -n install fuse-devel
 }
 
 install.arch() {
-	sudo pacman -Syu --noconfirm blender
+	yay -Syu --noconfirm fuse2
 }
 
 install.installed() {
-	command -v blender &>/dev/null
+	[ -f /usr/include/fuse.h ]
 }
 
 util.if_file_sourced || _setup "$@"
