@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Private variables are supplied by config/setup-private.sh via setup.sh.
+# shellcheck disable=SC2154
 source ~/.dotfiles/config/setup.sh
 
 main() {

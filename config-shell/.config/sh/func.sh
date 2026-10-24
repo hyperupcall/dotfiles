@@ -493,7 +493,7 @@ unchr() {
 
 updateupgrade() {
 	sudo apt update -y
-	APT_PAGER=cat apt --color list --installed
+	APT_PAGER='cat' apt --color list --installed
 	sudo apt upgrade -y
 	sudo apt autoremove -y
 	flatpak update -y

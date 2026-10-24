@@ -33,7 +33,7 @@ install.any() {
 	if [ ! -f ~/.dotfiles/.data/binexec/node ]; then
 		ln -sf ~/.dotfiles/.data/node-v*/bin/node ~/.dotfiles/.data/binexec/node
 	fi
-	PATH="$HOME/.dotfiles/.data/binexec:$PATH" ~/.dotfiles/.data/node-v*/bin/npm install -g pnpm
+	PATH="$HOME/.dotfiles/.data/binexec:$PATH" npm install -g pnpm
 
 	# Download and install "dev".
 	local dir="$HOME/.dev"
@@ -51,8 +51,8 @@ install.any() {
 	fi
 	mise trust ~/.dev
 	pushd ~/.dev
-	PATH="$HOME/.dotfiles/.data/binexec:$PATH" ~/.dotfiles/.data/node-v*/bin/pnpm approve-builds --all
-	PATH="$HOME/.dotfiles/.data/binexec:$PATH" ~/.dotfiles/.data/node-v*/bin/pnpm install
+	PATH="$HOME/.dotfiles/.data/binexec:$PATH" pnpm approve-builds --all
+	PATH="$HOME/.dotfiles/.data/binexec:$PATH" pnpm install
 	popd
 
 	if util.is_in_container_or_chroot; then

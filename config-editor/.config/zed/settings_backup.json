@@ -1,41 +1,40 @@
 {
 	"agent_servers": {
-  "cline": {
-   "type": "registry"
-  },
-  "mistral-vibe": {
-   "type": "registry"
-  },
-  "opencode": {
-   "type": "registry"
-  },
-  "github-copilot-cli": {
-   "type": "registry"
-  },
-  "cursor": {
-   "type": "registry"
-  },
-  "codex-acp": {
-   "type": "registry"
-  }
- },
- "cli_default_open_behavior": "new_window",
-	"context_servers": {
+		"cline": {
+			"type": "registry"
 		},
+		"mistral-vibe": {
+			"type": "registry"
+		},
+		"opencode": {
+			"type": "registry"
+		},
+		"github-copilot-cli": {
+			"type": "registry"
+		},
+		"cursor": {
+			"type": "registry"
+		},
+		"codex-acp": {
+			"type": "registry"
+		}
+	},
+	"cli_default_open_behavior": "new_window",
+	"context_servers": {},
 	"edit_predictions": {
-		"provider": "zed",
+		"provider": "zed"
 	},
 	"project_panel": {
 		"git_status": true,
 		"file_icons": true,
 		"hide_root": true,
 		"hide_gitignore": false,
-		"hide_hidden": false,
+		"hide_hidden": false
 	},
 	"file_types": {
 		"HTML": ["**/*.ejs"],
 		"JSONC": ["**/*.code-workspaces"],
-		"YAML": ["**/.clang-format"],
+		"YAML": ["**/.clang-format"]
 	},
 	"show_edit_predictions": false,
 	"hard_tabs": true,
@@ -43,42 +42,42 @@
 	"prettier": {
 		"allowed": true,
 		"singleQuote": true,
-		"semi": false,
+		"semi": false
 	},
 	"languages": {
 		"YAML": {
 			"formatter": "language_server",
 			"format_on_save": "on",
 			"hard_tabs": false,
-			"tab_size": 2,
+			"tab_size": 2
 		},
 		"C": {
 			"formatter": "language_server",
 			"format_on_save": "on",
-			"tab_size": 3,
+			"tab_size": 3
 		},
 		"C++": {
 			"formatter": "language_server",
-			"format_on_save": "on",
+			"format_on_save": "on"
 		},
 		"TOML": {
-			"formatter": "language_server",
+			"formatter": "language_server"
 		},
 		"Python": {
 			"format_on_save": "off",
 			"hard_tabs": false,
-			"tab_size": 4,
-		},
+			"tab_size": 4
+		}
 	},
 	"lsp": {
 		"texlab": {
 			"settings": {
 				"texlab": {
 					"build": {
-						"onSave": false,
-					},
-				},
-			},
+						"onSave": false
+					}
+				}
+			}
 		},
 		"yaml-language-server": {
 			"settings": {
@@ -86,28 +85,28 @@
 					"format": {
 						"enable": false,
 						"singleQuote": true,
-						"bracketSpacing": true,
+						"bracketSpacing": true
 					},
 					"validate": true,
 					"hover": true,
 					"completion": true,
-					"keyOrdering": false,
-				},
-			},
+					"keyOrdering": false
+				}
+			}
 		},
 		"ruff": {
 			"settings": {
-				"enable": true,
-			},
+				"enable": true
+			}
 		},
 		"clangd": {
 			"binary": {
-				"path": "/usr/bin/clangd-22",
-			},
-		},
+				"path": "/usr/bin/clangd-22"
+			}
+		}
 	},
 	"jupyter": {
-		"enabled": true,
+		"enabled": true
 	},
 	"terminal": {
 		// https://github.com/zed-industries/zed/issues/14543#issuecomment-2260593838
@@ -116,55 +115,55 @@
 		"option_as_meta": true,
 		"detect_venv": {
 			"on": {
-				"conda_manager": "mamba",
-			},
-		},
+				"conda_manager": "mamba"
+			}
+		}
 	},
 	"soft_wrap": "editor_width",
 	"agent": {
 		"sandbox_permissions": {
-   "network_hosts": [
-    "jekyllrb.com",
-    "pages.github.com",
-    "rubygems.org",
-    "docs.github.com",
-    "api.rubyonrails.org",
-    "news.ycombinator.com",
-    "hacker-news.firebaseio.com",
-    "www.bitsgalore.org",
-    "web.eecs.utk.edu",
-    "nitrokit.dev",
-    "krasjet.com",
-    "htmldocs.com",
-    "blog.shipreq.com"
-   ]
-  },
-  "favorite_models": [
-   {
-    "provider": "deepseek",
-    "model": "deepseek-v4-flash",
-    "enable_thinking": true,
-    "effort": "high"
-   },
-   {
-    "provider": "deepseek",
-    "model": "deepseek-v4-pro",
-    "enable_thinking": true,
-    "effort": "high"
-   },
-   {
-    "provider": "copilot_chat",
-    "model": "gpt-5.4",
-    "enable_thinking": true,
-    "effort": "high"
-   }
-  ],
-  "tool_permissions": {
-			"default": "allow",
+			"network_hosts": [
+				"jekyllrb.com",
+				"pages.github.com",
+				"rubygems.org",
+				"docs.github.com",
+				"api.rubyonrails.org",
+				"news.ycombinator.com",
+				"hacker-news.firebaseio.com",
+				"www.bitsgalore.org",
+				"web.eecs.utk.edu",
+				"nitrokit.dev",
+				"krasjet.com",
+				"htmldocs.com",
+				"blog.shipreq.com"
+			]
+		},
+		"favorite_models": [
+			{
+				"provider": "deepseek",
+				"model": "deepseek-v4-flash",
+				"enable_thinking": true,
+				"effort": "high"
+			},
+			{
+				"provider": "deepseek",
+				"model": "deepseek-v4-pro",
+				"enable_thinking": true,
+				"effort": "high"
+			},
+			{
+				"provider": "copilot_chat",
+				"model": "gpt-5.4",
+				"enable_thinking": true,
+				"effort": "high"
+			}
+		],
+		"tool_permissions": {
+			"default": "allow"
 		},
 		"inline_assistant_model": {
 			"provider": "copilot_chat",
-			"model": "claude-3.5-sonnet",
+			"model": "claude-3.5-sonnet"
 		},
 		"default_profile": "write",
 		"play_sound_when_agent_done": true,
@@ -172,12 +171,12 @@
 			"effort": "high",
 			"enable_thinking": true,
 			"provider": "copilot_chat",
-			"model": "gpt-5.4",
-		},
+			"model": "gpt-5.4"
+		}
 	},
 	"telemetry": {
 		"diagnostics": false,
-		"metrics": false,
+		"metrics": false
 	},
 	"buffer_font_family": "Hack",
 	"ui_font_size": 16,
@@ -185,6 +184,6 @@
 	"theme": {
 		"mode": "system",
 		"light": "Ayu Light",
-		"dark": "Ayu Dark",
-	},
+		"dark": "Ayu Dark"
+	}
 }

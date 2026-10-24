@@ -1,62 +1,82 @@
 amends "package://github.com/jdx/hk/releases/download/v1.48.0/hk@1.48.0#/Config.pkl"
 
-exclude = List("**/vendor/**", "target")
+exclude = List("vendor", "target", ".data", "node_modules", ".venv", ".lsp/.cache", ".clj-kondo", "docs/_site")
+fail_fast = false
+
+local linters = new Mapping<String, Step> {
+	["build-and-test"] {
+		check = "./bake build && ./bake test"
+		exclusive = true
+	}
+	["check-spelling"] {
+		check = "cspell lint --no-progress ."
+	}
+	["check-formatting"] {
+		glob = List("**/*.{js,mjs,ts,css,html,json,md}")
+		check = "./node_modules/.bin/prettier --check {{files}}"
+		fix = "./node_modules/.bin/prettier --write {{files}}"
+	}
+	["check-linting"] {
+		glob = List("**/*.{js,mjs,ts,json,css}")
+		exclude = List("package-lock.json")
+		check = "./node_modules/.bin/eslint {{files}}"
+		fix = "./node_modules/.bin/eslint --fix {{files}}"
+	}
+	["check-shellscript-format"] {
+		glob = List("**/*.sh")
+		exclude = List("**/shell.d/**")
+		check = "shfmt --diff --language-dialect bash --binary-next-line {{files}}"
+		fix = "shfmt --write --language-dialect bash --binary-next-line {{files}}"
+	}
+	["check-shellscript-lint"] {
+		glob = List("**/*.sh")
+		exclude = List("**/shell.d/**")
+		check = "shellcheck --format gcc {{files}}"
+	}
+	["check-yaml-format"] {
+		glob = List("**/*.yaml", "**/*.yml")
+		exclude = List("pnpm-lock.yaml")
+		check = "yamlfmt -lint {{files}}"
+		fix = "yamlfmt {{files}}"
+	}
+	["check-yaml-lint"] {
+		glob = List("**/*.yaml", "**/*.yml")
+		exclude = List("pnpm-lock.yaml")
+		check = "yamllint --strict -c .yamllint.yaml {{files}}"
+	}
+	["check-github-actions-lint"] {
+		glob = List(".github/**/*.yaml", ".github/**/*.yml")
+		check = "zizmor --strict-collection --min-confidence=low --min-severity=informational --persona=pedantic --config .zizmor.yml {{files}}"
+	}
+	["check-toml-format"] {
+		glob = List("**/*.toml")
+		check = "tombi format --check {{files}}"
+		fix = "tombi format {{files}}"
+	}
+	["check-toml-lint"] {
+		glob = List("**/*.toml")
+		check = "tombi lint --error-on-warnings {{files}}"
+	}
+}
 
 hooks {
-	 ["commit-msg"] {
-		  steps {
-				["checkcommitmsg"] {
-					 check = "pnpx commitlint --edit {{commit_msg_file}}"
-				}
-		  }
-	 }
-
-	 ["pre-commit"] {
-		  steps {
-				["build-and-test"] {
-					 check = "./bake build && ./bake test"
-					 exclusive = true
-				}
-				["check-spelling"] {
-					 check = "cspell-cli lint ."
-				}
-				["check-formatting"] {
-					 glob = List("**/*.{js,ts,css,html,json,md,yaml,yml}")
-					fix = "./node_modules/.bin/prettier --write {{files}}"
-				}
-				["check-linting"] {
-					 glob = List("**/*.{js,ts}")
-					 check = "./node_modules/.bin/eslint ."
-				}
-				["check-shellscript-format"] {
-					 glob = List("**/*.sh")
-					 check = "find . \\( -name vendor -prune \\) -o \\( -name .git -prune \\) -o \\( -name .data -prune \\) -o \\( -name shell.d -prune \\) -o -name '*.sh' -exec shfmt --write --language-dialect bash --binary-next-line {} +"
-				}
-				["check-shellscript-lint"] {
-					 glob = List("**/*.sh")
-					 check = "find . \\( -name vendor -prune \\) -o \\( -name .git -prune \\) -o \\( -name .data -prune \\) -o \\( -name shell.d -prune \\) -o -name '*.sh' -exec shellcheck --format gcc {} + | grep -v '\\(g_disable\\|_shell_original_path\\|_private\\).*SC2154'"
-				}
-				["check-yaml-format"] {
-					 glob = List("**/*.yaml", "**/*.yml")
-					 check = "find . \\( -name vendor -prune \\) -o \\( -name .git -prune \\) -o \\( -name .data -prune \\) -o \\( -name shell.d -prune \\) -o -name '*.yaml' -o -name '*.yml' -exec yamlfmt -lint {} +"
-				}
-				["check-yaml-lint"] {
-					 glob = List("**/*.yaml", "**/*.yml")
-					 check = "find . \\( -name vendor -prune \\) -o \\( -name .git -prune \\) -o \\( -name .data -prune \\) -o \\( -name shell.d -prune \\) -o -name '*.yaml' -o -name '*.yml' -exec yamllint --strict {} +"
-				}
-				["check-github-actions-lint"] {
-					 glob = List(".github/**/*.yaml", ".github/**/*.yml")
-					 check = "bash -c 'zizmor --strict-collection --min-confidence=low --min-severity=informational --persona=pedantic --config <(printf \"rules:\\n  anonymous-definition:\\n    disable: true\\n  undocumented-permissions:\\n    disable: true\\n\") .github'"
-				}
-				["check-toml-format"] {
-					 glob = List("**/*.toml")
-					 exclude = List("vendor")
-					 check = "tombi format --check {{files}}"
-				}
-				["check-toml-lint"] {
-					 glob = List("**/*.toml")
-					 check = "tombi lint --error-on-warnings"
-				}
-		  }
-	 }
+	["check"] {
+		fix = false
+		steps = linters
+	}
+	["fix"] {
+		fix = true
+		stage = false
+		steps = linters
+	}
+	["pre-commit"] {
+		steps = linters
+	}
+	["commit-msg"] {
+		steps {
+			["checkcommitmsg"] {
+				check = "./node_modules/.bin/commitlint --edit {{commit_msg_file}}"
+			}
+		}
+	}
 }

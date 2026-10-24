@@ -1,4 +1,6 @@
 # shellcheck shell=bash
+# Private variables are supplied by config/setup-private.sh in init().
+# shellcheck disable=SC2154
 init() {
 	if [ -f ~/.dotfiles/config/setup-private.sh ]; then
 		source ~/.dotfiles/config/setup-private.sh
@@ -18,10 +20,8 @@ task.bootstrap() {
 
 task.init() {
 	pnpm install
-
-	if [ ! -f ./.git/info/lefthook.checksum ]; then
-		lefthook install
-	fi
+	# TODO
+	hk install --mise --legacy
 }
 
 task.build() {
@@ -36,7 +36,7 @@ task.build() {
 	done < <(find . \( -name '*.sh' -not -name 'Bakefile.sh' \) -type f)
 
 	# Should have proper ordering of functions.
-	~/.dotfiles/.data/binexec/node --input-type=module <<'EOF'
+	if ! ~/.dotfiles/.data/binexec/node --input-type=module <<'EOF'; then
 	import { readFileSync } from 'fs'
 	import { glob } from 'fs/promises'
 
@@ -79,10 +79,12 @@ task.build() {
 	}
 	process.exit(err)
 EOF
+		err=1
+	fi
 
 	# grep '-P' not compatible with with multiple arguments using '-e'.
 	for pattern in "${_private_forbidden_patterns[@]}"; do
-		if grep -IPr --exclude 'setup-private.*' --exclude .clangd --exclude-dir .git --exclude-dir node_modules --exclude-dir .data --exclude-dir vendor --exclude-dir target --exclude-dir .jekyll-cache --exclude-dir shell.d --exclude-dir bash.d --exclude-dir zsh.d "${_private_forbidden_patterns_exclude[@]}" --color=always "$pattern" ./ | grep -Ev '(#|//|") lint-ignore' | grep -v ./config-editor/.config/kate/formatting/settings.json | grep -v pnpm-lock.yaml | grep -v pnpm-workspace.yaml; then
+		if grep -IPr --exclude 'setup-private.*' --exclude .clangd --exclude-dir .git --exclude-dir node_modules --exclude-dir .data --exclude-dir vendor --exclude-dir target --exclude-dir .venv --exclude-dir .cache --exclude-dir .clj-kondo --exclude-dir _site --exclude-dir .jekyll-cache --exclude-dir shell.d --exclude-dir bash.d --exclude-dir zsh.d "${_private_forbidden_patterns_exclude[@]}" --color=always "$pattern" ./ | grep -Ev '(#|//|") lint-ignore' | grep -v ./config-editor/.config/kate/formatting/settings.json | grep -v pnpm-lock.yaml | grep -v pnpm-workspace.yaml; then
 			printf 'Expected to find no matches for: %s\n' "$pattern"
 			err=1
 		fi

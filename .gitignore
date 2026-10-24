@@ -10,3 +10,7 @@ setup-private*
 __pycache__/
 node_modules/
 target/
+.clj-kondo/
+.venv/
+.lsp/.cache/
+docs/_site/

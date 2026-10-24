@@ -1,5 +1,5 @@
 name: 'Test'
-on:
+'on':
   push:
     branches: ['trunk']
 
@@ -15,17 +15,15 @@ jobs:
     permissions:
       contents: 'read'
     steps:
-      - uses: 'actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd' # v6.0.2
-        with:
-          submodules: 'recursive'
-          persist-credentials: false
-      - uses: 'bats-core/bats-action@77d6fb60505b4d0d1d73e48bd035b55074bbfb43' # 4.0.0
-        id: setup-bats
-        with:
-          persist-credentials: false
-      - run: './bake test'
-        with:
-          persistent-credentials: false
-        env:
-          BATS_LIB_PATH: '${{ steps.setup-bats.outputs.lib-path }}'
-          TERM: 'xterm'
+    - uses: 'actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd'  # v6.0.2
+      with:
+        submodules: 'recursive'
+        persist-credentials: false
+    - uses: 'bats-core/bats-action@77d6fb60505b4d0d1d73e48bd035b55074bbfb43'  # 4.0.0
+      id: setup-bats
+      with:
+        persist-credentials: false
+    - run: './bake test'
+      env:
+        BATS_LIB_PATH: '${{ steps.setup-bats.outputs.lib-path }}'
+        TERM: 'xterm'

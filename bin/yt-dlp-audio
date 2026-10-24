@@ -1,0 +1,86 @@
+#!/usr/bin/env zsh
+emulate -LR zsh
+setopt extendedglob
+
+mode=''
+typeset -a download_args
+for arg in "$@"; do
+  case $arg in
+    --title|--channel|--channelbrackets)
+      selected=${arg#--}
+      if [[ -n $mode && $mode != $selected ]]; then
+        print -ru2 -- 'yt-dlp-audio: choose only one of --title, --channel, or --channelbrackets'
+        exit 2
+      fi
+      mode=$selected
+      ;;
+    -h|--help)
+      print -r -- 'Usage: yt-dlp-audio [--title | --channel | --channelbrackets] [yt-dlp arguments...]
+
+Download Opus audio. Without a mode, choose a filename format interactively.
+
+  --title            Title
+  --channel          Channel - Title
+  --channelbrackets  [Channel] - Title
+  -h, --help         Show this help
+
+Other arguments are passed to yt-dlp. Use -- to stop parsing mode flags.'
+      exit 0
+      ;;
+    --)
+      download_args+=("$@")
+      break
+      ;;
+    *) download_args+=("$arg") ;;
+  esac
+  shift
+done
+
+if [[ -z $mode ]]; then
+  if [[ ! -t 0 ]]; then
+    print -ru2 -- 'yt-dlp-audio: select --title, --channel, or --channelbrackets when input is not a terminal'
+    exit 2
+  fi
+
+  trap 'print -ru2 -- "\nCancelled."; exit 130' INT
+  marker='?'
+  if [[ -t 2 && -z ${NO_COLOR+x} ]]; then
+    marker=$'\e[36m?\e[0m'
+  fi
+  print -ru2 -- "$marker Choose a filename format:"
+  print -ru2 -- '  1) Title
+  2) Channel - Title
+  3) [Channel] - Title'
+
+  while [[ -z $mode ]]; do
+    print -nru2 -- 'prompt: Filename format [1]: '
+    if ! IFS= read -r answer; then
+      print -ru2 -- $'\nCancelled.'
+      exit 130
+    fi
+    # Trim surrounding whitespace and accept mode names case-insensitively.
+    answer=${answer##[[:space:]]#}
+    answer=${answer%%[[:space:]]#}
+    case ${(L)answer} in
+      ''|1|title) mode=title ;;
+      2|channel) mode=channel ;;
+      3|channelbrackets) mode=channelbrackets ;;
+      *) print -ru2 -- 'Choose 1, 2, or 3 (or enter the mode name).' ;;
+    esac
+  done
+  trap - INT
+fi
+
+case $mode in
+  title) template='%(title)s.%(ext)s' ;;
+  channel) template='%(channel)s - %(title)s.%(ext)s' ;;
+  channelbrackets) template='[%(channel)s] - %(title)s.%(ext)s' ;;
+esac
+
+if (( ! $+commands[yt-dlp] )); then
+  print -ru2 -- 'yt-dlp-audio: yt-dlp was not found in PATH'
+  exit 127
+fi
+
+exec yt-dlp -o "$template" --embed-thumbnail --no-mtime \
+  --extract-audio --audio-format opus "${download_args[@]}"

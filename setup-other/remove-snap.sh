@@ -4,7 +4,7 @@ source ~/.dotfiles/config/setup.sh
 declare -g g_name='Remove Snap'
 
 install.ubuntu() {
-	if command -v snap &>/dev/null; then
+	if command -v snap &>/dev/null; then # lint-ignore:no-banned-commands
 		# When no snaps are installed, `snap list` prints a message to stderr and
 		# exits non-zero, so discard stderr and iterate directly over parsed names.
 		for f in $(
@@ -14,14 +14,14 @@ install.ubuntu() {
 		done
 
 		# Purge removes everything in /snap.
-		sudo apt-get -y purge snapd
+		sudo apt-get -y --allow-downgrades purge snapd
 	fi
 
 	rm -rf ~/snap
 }
 
 install.installed() {
-	! command -v snap &>/dev/null
+	! command -v snap &>/dev/null # lint-ignore:no-banned-commands
 }
 
 util.if_file_sourced || _setup "$@"

@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # Show "%" in reverse video like Zsh.
 bleopt prompt_eol_mark=$'\e[7m\e[1m%\e[22m\e[27m'
 bleopt exec_errexit_mark=
@@ -21,7 +22,6 @@ function blerc/emacs-load-hook {
 	#ble-bind -f 'M-C-h' kill-backward-cword
 	#ble-bind -f 'M-BS'  kill-backward-cword
 
-
 	# Fix multiline mode.
 	# Make Ctrl+p and Ctrl+n only move history. Instead of also forward/backward,
 	# line, leave that too M-{j,k}.
@@ -39,9 +39,12 @@ function blerc/emacs-load-hook {
 	bleopt keymap_emacs_mode_string_multiline=$'\e[1m-- MULTILINE --\e[m'
 	function ble/prompt/backslash:keymap:emacs/mode-indicator {
 		ble/prompt/unit/add-hash '$_ble_edit_str'
+		# ble.sh supplies the edit buffer and mode options.
+		# shellcheck disable=SC2154
 		[[ $_ble_edit_str == *$'\n'* ]] || return 0
 
 		ble/prompt/unit/add-hash '$bleopt_keymap_emacs_mode_string_multiline'
+		# shellcheck disable=SC2154
 		local str=$bleopt_keymap_emacs_mode_string_multiline
 
 		local key=$'\e[35m' rst=$'\e[m'

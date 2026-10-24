@@ -1,3 +1,5 @@
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":$HOME/.config/zsh/completions:"* ]]; then export FPATH="$HOME/.config/zsh/completions:$FPATH"; fi
 # Stop execution if Zsh is non-interactive.
 [[ $- != *i* ]] && [ ! -t 0 ] && return
 

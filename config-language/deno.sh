@@ -4,7 +4,7 @@ source ~/.dotfiles/config/setup.sh
 declare -g g_name='Deno'
 
 install.any() {
-	curl -K "$CURL_CONFIG" https://deno.land/install.sh | DENO_INSTALL="$PWD" sh
+	curl -K "$CURL_CONFIG" https://deno.land/install.sh | sh
 }
 
 install.installed() {

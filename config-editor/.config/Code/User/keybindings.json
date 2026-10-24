@@ -3,109 +3,109 @@
 	{
 		"key": "ctrl+i",
 		"command": "workbench.action.quickOpen",
-		"when": "!terminalFocus",
+		"when": "!terminalFocus"
 	},
 	{
 		"key": "ctrl+f",
 		"command": "-workbench.action.terminal.focusFind",
-		"when": "terminalFindFocused || terminalFocus",
+		"when": "terminalFindFocused || terminalFocus"
 	},
 	{
 		"key": "alt+r",
 		"command": "-workbench.action.terminal.toggleFindRegex",
-		"when": "terminalFindFocused && terminalProcessSupported || terminalFocus && terminalProcessSupported",
+		"when": "terminalFindFocused && terminalProcessSupported || terminalFocus && terminalProcessSupported"
 	},
 	{
 		"key": "ctrl+f",
 		"command": "-workbench.action.terminal.focusFind",
-		"when": "terminalFindFocused && terminalProcessSupported || terminalFocus && terminalProcessSupported",
+		"when": "terminalFindFocused && terminalProcessSupported || terminalFocus && terminalProcessSupported"
 	},
 	{
 		"key": "ctrl+e",
 		"command": "workbench.action.quickOpen",
-		"when": "!terminalFocus",
+		"when": "!terminalFocus"
 	},
 	{
 		"key": "ctrl+e",
-		"command": "-workbench.action.quickOpen",
+		"command": "-workbench.action.quickOpen"
 	},
 	{
 		"key": "shift+backspace",
 		"command": "-deleteAllLeft",
-		"when": "editorTextFocus && !editorReadonly",
+		"when": "editorTextFocus && !editorReadonly"
 	},
 	{
 		"key": "ctrl+f",
 		"command": "-workbench.action.terminal.focusFind",
-		"when": "terminalFindFocused && terminalHasBeenCreated || terminalFindFocused && terminalProcessSupported || terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported",
+		"when": "terminalFindFocused && terminalHasBeenCreated || terminalFindFocused && terminalProcessSupported || terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
 	},
 	{
 		"key": "ctrl+k",
-		"command": "workbench.action.showCommands",
+		"command": "workbench.action.showCommands"
 	},
 	{
 		"key": "ctrl+m d",
 		"command": "workbench.action.files.openFolder",
-		"when": "openFolderWorkspaceSupport",
+		"when": "openFolderWorkspaceSupport"
 	},
 	{
 		"key": "ctrl+k ctrl+o",
 		"command": "-workbench.action.files.openFolder",
-		"when": "openFolderWorkspaceSupport",
+		"when": "openFolderWorkspaceSupport"
 	},
 	{
 		"key": "ctrl+m d",
 		"command": "workbench.action.files.openLocalFolder",
-		"when": "remoteFileDialogVisible",
+		"when": "remoteFileDialogVisible"
 	},
 	{
 		"key": "ctrl+k ctrl+o",
 		"command": "-workbench.action.files.openLocalFolder",
-		"when": "remoteFileDialogVisible",
+		"when": "remoteFileDialogVisible"
 	},
 	{
 		"key": "ctrl+l",
 		"command": "-notebook.centerActiveCell",
-		"when": "notebookEditorFocused",
+		"when": "notebookEditorFocused"
 	},
 	{
 		"key": "ctrl+l",
 		"command": "-expandLineSelection",
-		"when": "textInputFocus",
+		"when": "textInputFocus"
 	},
 	{
 		"key": "ctrl+l c",
-		"command": "-extension.copyGitHubLinkToClipboard",
+		"command": "-extension.copyGitHubLinkToClipboard"
 	},
 	{
 		"key": "ctrl+l g",
-		"command": "-extension.openInGitHub",
+		"command": "-extension.openInGitHub"
 	},
 	{
 		"key": "ctrl+l p",
-		"command": "-extension.openPrGitProvider",
+		"command": "-extension.openPrGitProvider"
 	},
 	{
 		"key": "ctrl+o",
 		"command": "-workbench.action.files.openFile",
-		"when": "true",
+		"when": "true"
 	},
 	{
 		"key": "ctrl+r",
-		"command": "-workbench.action.openRecent",
+		"command": "-workbench.action.openRecent"
 	},
 	{
 		"key": "ctrl+o",
 		"command": "-workbench.action.files.openFolderViaWorkspace",
-		"when": "!openFolderWorkspaceSupport && workbenchState == 'workspace'",
+		"when": "!openFolderWorkspaceSupport && workbenchState == 'workspace'"
 	},
 	{
 		"key": "ctrl+o",
 		"command": "-workbench.action.files.openLocalFile",
-		"when": "remoteFileDialogVisible",
+		"when": "remoteFileDialogVisible"
 	},
 	{
 		"key": "ctrl+o",
-		"command": "workbench.action.quickOpen",
-	},
+		"command": "workbench.action.quickOpen"
+	}
 ]

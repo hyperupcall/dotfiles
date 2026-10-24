@@ -1,4 +1,4 @@
----
+# yamllint disable rule:line-length
 assert_lefthook_installed: true
 commit-msg:
   commands:
@@ -27,4 +27,4 @@ pre-commit:
     check-toml-format:
       run: 'tombi format --check'
     check-toml-lint:
-       run: 'tombi lint --error-on-warnings'
+      run: 'tombi lint --error-on-warnings'

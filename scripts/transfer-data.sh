@@ -59,6 +59,7 @@ main() {
 		[gnupg]="$HOME/.gnupg"
 		[ssh]="$HOME/.ssh"
 		[history]="$XDG_STATE_HOME/history"
+		[syncthing]="$XDG_STATE_HOME/syncthing"
 		[borgkeys]="$XDG_CONFIG_HOME/borg/keys"
 		[basalt_token]="$XDG_CONFIG_HOME/basalt/token"
 		[woof_token]="$XDG_DATA_HOME/woof/token"

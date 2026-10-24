@@ -165,6 +165,4 @@ bind -x '"\el": _readline_ls'
 
 # TODO
 eval "$(prs internal completion bash --stdout 2>/dev/null)"
-complete -F _prs -o nosort -o bashdefault -o default pw
-
 # ---

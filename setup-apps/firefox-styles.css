@@ -35,17 +35,13 @@
 	--lwt-tabs-border-color: rgba(0, 0, 0, 0.5) !important;
 	border-bottom-color: transparent !important;
 }
-[brighttext="true"]
-	.tab-background:is([selected], [multiselected]):-moz-lwtheme {
+[brighttext='true'] .tab-background:is([selected], [multiselected]):-moz-lwtheme {
 	--lwt-tabs-border-color: rgba(255, 255, 255, 0.5) !important;
 	border-bottom-color: transparent !important;
 }
 
 /* Container color bar visibility */
-.tabbrowser-tab[usercontextid]
-	> .tab-stack
-	> .tab-background
-	> .tab-context-line {
+.tabbrowser-tab[usercontextid] > .tab-stack > .tab-background > .tab-context-line {
 	margin: 0px max(calc(var(--user-tab-rounding) - 3px), 0px) !important;
 }
 
@@ -56,11 +52,9 @@
 	--tab-min-height: 29px !important;
 }
 /* Tweak for covering a line at the bottom of the active tab on some themes 8/11/2021 */
-#main-window[sizemode="normal"]
-	#toolbar-menubar[autohide="true"]
-	+ #TabsToolbar,
-#main-window[sizemode="normal"]
-	#toolbar-menubar[autohide="true"]
+#main-window[sizemode='normal'] #toolbar-menubar[autohide='true'] + #TabsToolbar,
+#main-window[sizemode='normal']
+	#toolbar-menubar[autohide='true']
 	+ #TabsToolbar
 	#tabbrowser-tabs {
 	--tab-min-height: 30px !important;
@@ -90,12 +84,10 @@
 /* [Connected Tabs] Make sure tab attention dot isn't too high - 10 Dec 2022 */
 .tabbrowser-tab:is([image], [pinned])
 	> .tab-stack
-	> .tab-content[attention]:not([selected="true"]),
-.tabbrowser-tab
-	> .tab-stack
-	> .tab-content[pinned][titlechanged]:not([selected="true"]),
+	> .tab-content[attention]:not([selected='true']),
+.tabbrowser-tab > .tab-stack > .tab-content[pinned][titlechanged]:not([selected='true']),
 #firefox-view-button[attention],
-.webextension-browser-action[attention="true"] {
+.webextension-browser-action[attention='true'] {
 	background-position-y: bottom 2px !important;
 }
 
@@ -105,19 +97,17 @@
 	--context-line-margin-adjust: 4px; /* 1/16/2022 */
 	--context-line-active-adjust: 0px; /* 1/16/2022 */
 }
-.tabbrowser-tab:not([selected="true"]):not([multiselected="true"])
-	.tab-background {
+.tabbrowser-tab:not([selected='true']):not([multiselected='true']) .tab-background {
 	border: 1px solid rgba(0, 0, 0, 0.2) !important;
 	/* To pick up a theme background tab separator color, un-comment the following line: */
 	/* border: 1px solid var(--lwt-background-tab-separator-color, rgba(0, 0, 0, .20)) !important; */
 	border-bottom-color: transparent !important;
 }
 /* For dark backgrounds */
-[brighttext="true"]
-	.tabbrowser-tab:not([selected="true"]):not([multiselected="true"])
+[brighttext='true']
+	.tabbrowser-tab:not([selected='true']):not([multiselected='true'])
 	.tab-background {
-	border: 1px solid
-		var(--lwt-selected-tab-background-color, rgba(255, 255, 255, 0.2)) !important;
+	border: 1px solid var(--lwt-selected-tab-background-color, rgba(255, 255, 255, 0.2)) !important;
 	/* To pick up a theme background tab separator color, un-comment the following line: */
 	/* border: 1px solid var(--lwt-background-tab-separator-color, var(--lwt-selected-tab-background-color, rgba(255, 255, 255, .20))) !important; */
 	border-bottom-color: transparent !important;
@@ -134,25 +124,20 @@
 	--context-line-active-adjust: 1px; /* 1/16/2022 */
 }
 .tabbrowser-tab[usercontextid]:is(
-		[selected="true"],
-		[visuallyselected="true"],
+		[selected='true'],
+		[visuallyselected='true'],
 		[multiselected]
 	)
 	.tab-background {
 	border-top: 1px solid transparent; /* 1/16/2022 Default border for consistency */
 }
 
-.tabbrowser-tab[usercontextid]
-	> .tab-stack
-	> .tab-background
-	> .tab-context-line {
-	margin-top: calc(
-		var(--tab-min-height) - var(--context-line-margin-adjust)
-	) !important;
+.tabbrowser-tab[usercontextid] > .tab-stack > .tab-background > .tab-context-line {
+	margin-top: calc(var(--tab-min-height) - var(--context-line-margin-adjust)) !important;
 }
 .tabbrowser-tab[usercontextid]:is(
-		[selected="true"],
-		[visuallyselected="true"],
+		[selected='true'],
+		[visuallyselected='true'],
 		[multiselected]
 	)
 	> .tab-stack

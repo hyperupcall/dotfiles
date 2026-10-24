@@ -22,6 +22,7 @@ install.debian() {
 
 	sudo apt-get update -y
 	sudo apt-get install -y syncthing
+	systemctl --user enable --now syncthing
 }
 
 install.ubuntu() {

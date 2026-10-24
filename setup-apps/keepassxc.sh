@@ -3,6 +3,7 @@ source ~/.dotfiles/config/setup.sh
 
 declare -g g_name='KeePassXC'
 
+# TODO: Prefer PPA on Ubuntu
 install.any() {
 	flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 	flatpak install -y --user flathub org.keepassxc.KeePassXC
