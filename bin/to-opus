@@ -1,25 +1,71 @@
 #!/usr/bin/env bash
-cleanup() { rm -f "$cover"; }
-trap cleanup EXIT
+set -o pipefail
 
+cover= encoded=
+cleanup() { rm -f -- "$cover" "$encoded"; }
+trap cleanup EXIT
+trap 'exit 130' INT
+trap 'exit 143' TERM
+
+# Writes the frame halfway through the video to $2. Returns non-zero on failure.
+midpoint_frame() {
+    local input=$1 out=$2 duration t
+    duration=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$input" 2>/dev/null)
+    [[ $duration =~ ^[0-9]+(\.[0-9]+)?$ ]] || return 1
+
+    t=$(awk -v d="$duration" 'BEGIN { printf "%.3f", d / 2 }')
+    ffmpeg -y -ss "$t" -i "$input" -map 0:V:0 -frames:v 1 -update 1 -f image2 "$out" 2>/dev/null
+}
+
+exit_status=0
 for input; do
     output=${input%.*}.opus
-    cover=$(mktemp --suffix=.jpg)
+    if [ -e "$output" ] || [ -L "$output" ]; then
+        printf 'Error: output already exists: %s\n' "$output" >&2
+        exit_status=1
+        continue
+    fi
+    if ! cover=$(mktemp --suffix=.jpg); then
+        exit_status=1
+        continue
+    fi
+    if ! encoded=$(mktemp -- "${output}.tmp.XXXXXX"); then
+        cleanup
+        cover= encoded=
+        exit_status=1
+        continue
+    fi
 
     # 1) Try the embedded cover art (attached_pic stream only)
     ffmpeg -y -i "$input" -map 0:v -map -0:V -c copy -frames:v 1 -update 1 -f image2 "$cover" 2>/dev/null
 
-    # 2) No cover art: grab the frame at 2 seconds, re-encoded as JPEG
+    # 2) No cover art: use the frame halfway through the video
+    if [ ! -s "$cover" ]; then
+        midpoint_frame "$input" "$cover" || : >"$cover"
+    fi
+
+    # 3) Midpoint failed: grab the frame at 2 seconds, re-encoded as JPEG
     if [ ! -s "$cover" ]; then
         ffmpeg -y -ss 2 -i "$input" -map 0:V:0 -frames:v 1 -update 1 -f image2 "$cover" 2>/dev/null
     fi
 
+    picture_args=()
     if [ -s "$cover" ]; then
-        ffmpeg -i "$input" -f wav - 2>/dev/null | opusenc --picture "$cover" --bitrate 128 - "$output"
-    else
-        ffmpeg -i "$input" -f wav - 2>/dev/null | opusenc --bitrate 128 - "$output"
+        picture_args=(--picture "$cover")
     fi
-
-    rm -f "$cover"
-    echo "Done: $output"
+    if ffmpeg -i "$input" -f wav - | opusenc "${picture_args[@]}" --bitrate 128 - "$encoded"; then
+        # Publish only a complete conversion, keeping partial files temporary.
+        if mv -T -- "$encoded" "$output"; then
+            printf 'Done: %s\n' "$output"
+        else
+            printf 'Error: could not save output: %s\n' "$output" >&2
+            exit_status=1
+        fi
+    else
+        printf 'Error: conversion failed: %s\n' "$input" >&2
+        exit_status=1
+    fi
+    cleanup
+    cover= encoded=
 done
+exit "$exit_status"

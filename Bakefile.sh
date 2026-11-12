@@ -102,7 +102,7 @@ task.lint() {
 }
 
 task.test() {
-	bats -p './config-shell/.config/sh'
+	bats -p './config-shell/.config/sh' './lscripts/to-opus.bats'
 	./lscripts/lint-scripts.py
 }
 

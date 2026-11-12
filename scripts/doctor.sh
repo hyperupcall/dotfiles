@@ -4,6 +4,10 @@
 source ~/.dotfiles/config/setup.sh
 
 main() {
+	if [[ ! -v _FROM_SYNC ]]; then
+		core.print_warn "Should be ran as ~/scripts/sync.sh"
+	fi
+
 	for arg; do case $arg in
 		*)
 			core.print_die "Invalid argument: \"$arg\""
@@ -12,12 +16,12 @@ main() {
 	unset -v arg
 
 	# Create necessary directories.
-	must.dir ~/.home
-	must.dir ~/.dotfiles/.data/{bin,repos}
-	must.dir ~/.local/bin
-	must.dir "$XDG_CONFIG_HOME/bash/bash.d"
-	must.dir "$XDG_CONFIG_HOME/zsh/zsh.d"
-	must.dir "$XDG_CONFIG_HOME/sh/shell.d"
+	should.dir ~/.home
+	should.dir ~/.dotfiles/.data/{bin,repos}
+	should.dir ~/.local/bin
+	should.dir "$XDG_CONFIG_HOME/bash/bash.d"
+	should.dir "$XDG_CONFIG_HOME/zsh/zsh.d"
+	should.dir "$XDG_CONFIG_HOME/sh/shell.d"
 
 	# Install required dependencies.
 	if [ ! -f ~/.dotfiles/.data/finished_bootstrap ]; then
@@ -30,13 +34,13 @@ main() {
 	# Remove broken symlinks.
 	for f in "$HOME"/*; do
 		if [ -L "$f" ] && [ ! -e "$f" ]; then
-			must.unlink "$f"
+			should.unlink "$f"
 		fi
 	done
 	core.print_info 'Removed broken symlinks'
 
 	# Remove distribution-specific dotfiles.
-	must.dir ~/.bootstrap/distro-dotfiles
+	should.dir ~/.bootstrap/distro-dotfiles
 	for file in ~/.bash_login ~/.bash_logout ~/.bash_profile ~/.bashrc ~/.profile .dir_colors .dircolors; do
 		if [[ ! -L "$file" && -f "$file" ]]; then
 			mv "$file" ~/.bootstrap/distro-dotfiles
@@ -66,7 +70,7 @@ main() {
 	core.print_info 'Cleaned shell dotfiles'
 
 	# Create necessary symlinks in ~/.local/bin.
-	must.dir ~/.local/bin
+	should.dir ~/.local/bin
 	for file in ~/.dotfiles/bin/*; do
 		if [ -x "$file" ]; then
 			ln -sf "$file" ~/.local/bin
@@ -75,8 +79,8 @@ main() {
 	unset -v file
 
 	# Create necessary symlinks in ~/scripts.
-	must.dir ~/.dotfiles/.data/scripts
-	must.link ~/.dotfiles/.data/scripts ~/scripts
+	should.dir ~/.dotfiles/.data/scripts
+	should.link ~/.dotfiles/.data/scripts ~/scripts
 	for file in ~/.dotfiles/scripts/*; do
 		ln -sf "$file" ~/scripts
 	done
@@ -89,7 +93,7 @@ main() {
 	fi
 	for file in ~/scripts/*; do
 		if [ -L "$file" ] && [ ! -e "$file" ]; then
-			must.unlink "$file"
+			should.unlink "$file"
 			continue
 		fi
 		if [ -d "$file" ]; then
@@ -104,7 +108,7 @@ main() {
 			chmod +x "$file"
 		fi
 	done
-	must.dir ~/scripts/setup
+	should.dir ~/scripts/setup
 	for file in ~/.dotfiles/{config,setup}-*/*; do
 		if [ -d "$file" ]; then
 			local dir="$file"
@@ -136,7 +140,7 @@ main() {
 		while [[ $cur != @($options) ]]; do
 			read -er -p "Computer profile? ($options): " -i "$HOSTNAME" cur
 		done
-		must.dir ~/.dotfiles/.data
+		should.dir ~/.dotfiles/.data
 		printf '%s\n' "$cur" >~/.dotfiles/.data/profile
 	fi
 	local computer_profile=
@@ -144,7 +148,7 @@ main() {
 
 	# Set XDG user directories.
 	# if [[ $computer_profile == @(dragonfruit) ]]; then
-	# 	must.dir ~/Other/{Desktop,Templates,Public}
+	# 	should.dir ~/Other/{Desktop,Templates,Public}
 	# 	xdg-user-dirs-update --set DESKTOP ~/Other/Desktop
 	# 	xdg-user-dirs-update --set DOWNLOAD ~/Downloads
 	# 	xdg-user-dirs-update --set TEMPLATES ~/Other/Templates
@@ -164,43 +168,43 @@ main() {
 	# 	xdg-user-dirs-update --set VIDEOS ~/Videos
 	# fi
 	if [[ $computer_profile == @(dragonfruit) ]]; then
-		must.dir "$HOME/Other/AppImages"
-		must.link "$HOME/Other/AppImages" ~/.home/AppImages
+		should.dir "$HOME/Other/AppImages"
+		should.link "$HOME/Other/AppImages" ~/.home/AppImages
 	else
-		must.dir "$HOME/AppImages"
-		must.link "$HOME/AppImages" ~/.home/AppImages
+		should.dir "$HOME/AppImages"
+		should.link "$HOME/AppImages" ~/.home/AppImages
 	fi
 
 	# Symlink XDG base and user directories.
 	(
 		source "$XDG_CONFIG_HOME/user-dirs.dirs"
-		must.dir ~/.home
+		should.dir ~/.home
 
-		must.dir "$HOME/Other/AppImages"
-		must.link "$HOME/Other/AppImages" ~/.home/AppImages
+		should.dir "$HOME/Other/AppImages"
+		should.link "$HOME/Other/AppImages" ~/.home/AppImages
 
-		must.link "$XDG_DESKTOP_DIR" ~/.home/Desktop
-		must.link "$XDG_DOWNLOAD_DIR" ~/.home/Downloads
-		must.link "$XDG_TEMPLATES_DIR" ~/.home/Templates
-		must.link "$XDG_PUBLICSHARE_DIR" ~/.home/Public
-		must.link "$XDG_DOCUMENTS_DIR" ~/.home/Documents
-		must.link "$XDG_MUSIC_DIR" ~/.home/Music
-		must.link "$XDG_PICTURES_DIR" ~/.home/Pictures
-		must.link "$XDG_VIDEOS_DIR" ~/.home/Videos
+		should.link "$XDG_DESKTOP_DIR" ~/.home/Desktop
+		should.link "$XDG_DOWNLOAD_DIR" ~/.home/Downloads
+		should.link "$XDG_TEMPLATES_DIR" ~/.home/Templates
+		should.link "$XDG_PUBLICSHARE_DIR" ~/.home/Public
+		should.link "$XDG_DOCUMENTS_DIR" ~/.home/Documents
+		should.link "$XDG_MUSIC_DIR" ~/.home/Music
+		should.link "$XDG_PICTURES_DIR" ~/.home/Pictures
+		should.link "$XDG_VIDEOS_DIR" ~/.home/Videos
 
-		must.link "$XDG_CACHE_HOME" ~/.home/xdg_cache_dir
-		must.link "$XDG_CONFIG_HOME" ~/.home/xdg_config_dir
-		must.link "$XDG_STATE_HOME" ~/.home/xdg_state_dir
-		must.link "$XDG_DATA_HOME" ~/.home/xdg_data_dir
+		should.link "$XDG_CACHE_HOME" ~/.home/xdg_cache_dir
+		should.link "$XDG_CONFIG_HOME" ~/.home/xdg_config_dir
+		should.link "$XDG_STATE_HOME" ~/.home/xdg_state_dir
+		should.link "$XDG_DATA_HOME" ~/.home/xdg_data_dir
 
-		must.dir "$XDG_CACHE_HOME"
-		must.dir "$XDG_CONFIG_HOME"
-		must.dir "$XDG_STATE_HOME"
-		must.dir "$XDG_DATA_HOME"
+		should.dir "$XDG_CACHE_HOME"
+		should.dir "$XDG_CONFIG_HOME"
+		should.dir "$XDG_STATE_HOME"
+		should.dir "$XDG_DATA_HOME"
 
 		for f in ~/.home/*; do
 			if [ -L "$f" ] && [ ! -e "$f" ]; then
-				must.unlink "$f"
+				should.unlink "$f"
 			fi
 		done
 		unset -v f
@@ -208,39 +212,39 @@ main() {
 	core.print_info 'Set and symlink XDG base and user directories'
 
 	# Create necessary directories, files, and groups.
-	must.dir "$XDG_STATE_HOME/Android/Sdk"
-	must.dir "$XDG_STATE_HOME/history"
-	must.dir "$XDG_STATE_HOME/nano/backups"
-	must.dir "$XDG_DATA_HOME/tig"
-	must.dir "$XDG_CONFIG_HOME/Code - OSS/User"
-	must.dir "$XDG_CONFIG_HOME/spacemacs"
-	must.file "$XDG_STATE_HOME/tig/history"
-	must.file "$XDG_STATE_HOME/history/zsh_history" For # For ZSH $HISTFILE.
-	must.user_in_group "$USER" 'docker'
-	must.user_in_group "$USER" 'vboxusers'
-	must.user_in_group "$USER" 'libvirt'
-	must.user_in_group "$USER" 'kvm'
-	must.user_in_group "$USER" 'input'
+	should.dir "$XDG_STATE_HOME/Android/Sdk"
+	should.dir "$XDG_STATE_HOME/history"
+	should.dir "$XDG_STATE_HOME/nano/backups"
+	should.dir "$XDG_DATA_HOME/tig"
+	should.dir "$XDG_CONFIG_HOME/Code - OSS/User"
+	should.dir "$XDG_CONFIG_HOME/spacemacs"
+	should.file "$XDG_STATE_HOME/tig/history"
+	should.file "$XDG_STATE_HOME/history/zsh_history" For # For ZSH $HISTFILE.
+	should.user_in_group "$USER" 'docker'
+	should.user_in_group "$USER" 'vboxusers'
+	should.user_in_group "$USER" 'libvirt'
+	should.user_in_group "$USER" 'kvm'
+	should.user_in_group "$USER" 'input'
 
 	# Remove default dotfiles. These are customized with environment variables.
 	if [[ $computer_profile == @(charizard|swampert|dragonfruit|juno-laptop) ]]; then
-		must.rm ~/.bash_history
-		must.rm ~/.gitconfig
-		must.rm ~/.gmrun_history
-		must.rm ~/.mkshrc
-		must.rm ~/.pythonhist
-		must.rm ~/.sh_history
-		must.rm ~/.sqlite_history
-		must.rm ~/.sudo_as_admin_successful
-		must.rm ~/.viminfo
-		must.rm ~/.wget-hsts
-		must.rm ~/.xsession-errors
-		must.rm ~/.zlogin
-		must.rm ~/.zshenv
-		must.rm ~/.zshrc
-		must.rm ~/.zprofile
-		must.rm ~/.zcompdump
-		must.rm "${ZDOTDIR-"$HOME"}/.zcompdump"
+		should.rm ~/.bash_history
+		should.rm ~/.gitconfig
+		should.rm ~/.gmrun_history
+		should.rm ~/.mkshrc
+		should.rm ~/.pythonhist
+		should.rm ~/.sh_history
+		should.rm ~/.sqlite_history
+		should.rm ~/.sudo_as_admin_successful
+		should.rm ~/.viminfo
+		should.rm ~/.wget-hsts
+		should.rm ~/.xsession-errors
+		should.rm ~/.zlogin
+		should.rm ~/.zshenv
+		should.rm ~/.zshrc
+		should.rm ~/.zprofile
+		should.rm ~/.zcompdump
+		should.rm "${ZDOTDIR-"$HOME"}/.zcompdump"
 	fi
 
 	# Fetch GithHub authorization tokens.
@@ -265,7 +269,7 @@ main() {
 		if [ ! -d ~/.ssh ]; then
 			core.print_die "Expected to find an ~/.ssh directory"
 		fi
-		must.strict_permissions ~/.ssh/ ~/.ssh/*
+		should.strict_permissions ~/.ssh/ ~/.ssh/*
 
 		if [ -f ~/.ssh/github ]; then
 			core.print_info "Has ssh key \"~/.ssh/github\""
@@ -279,7 +283,7 @@ main() {
 		if [ ! -d ~/.gnupg ]; then
 			core.print_die "Expected to find an ~/.gnupg directory"
 		fi
-		must.strict_permissions ~/.gnupg/ ~/.gnupg/*
+		should.strict_permissions ~/.gnupg/ ~/.gnupg/*
 
 		if [[ $computer_profile == @(dragonfruit|juno-laptop) ]]; then
 			if gpg --list-keys "$_private_gpgkey1_id" &>/dev/null; then
@@ -368,7 +372,6 @@ main() {
 
 		# Install applications.
 		~/scripts/setup/appimagelauncher.sh
-		~/scripts/setup/librewolf.sh
 		~/scripts/setup/brave.sh
 		~/scripts/setup/remove-snap.sh # Remove only after installing a browser.
 		~/scripts/setup/firefox.sh
@@ -440,7 +443,7 @@ main() {
 	echo 'Done.'
 }
 
-must.rm() {
+should.rm() {
 	local file="$1"
 
 	if [ -f "$file" ]; then
@@ -455,7 +458,7 @@ must.rm() {
 	fi
 }
 
-must.rmdir() {
+should.rmdir() {
 	local dir="$1"
 
 	if [ -d "$dir" ]; then
@@ -472,7 +475,7 @@ must.rmdir() {
 	fi
 }
 
-must.dir() {
+should.dir() {
 	local dir=
 	for dir; do
 		if [ ! -d "$dir" ]; then
@@ -489,7 +492,7 @@ must.dir() {
 	unset -v dir
 }
 
-must.file() {
+should.file() {
 	local file="$1"
 
 	if [ ! -f "$file" ]; then
@@ -504,7 +507,7 @@ must.file() {
 	fi
 }
 
-must.link() {
+should.link() {
 	local src="$1"
 	local target="$2"
 
@@ -521,21 +524,16 @@ must.link() {
 		return
 	fi
 
-	# If it is an empty directory and not a symlink, automatically remove it.
-	core.shopt_push -s nullglob
+	local output=
+	# rmdir only removes empty directories, including checking for hidden files.
 	if [ -d "$target" ] && [ ! -L "$target" ]; then
-		local children=
-		children=("$target"/*)
-		if ((${#children[@]} == 0)); then
-			rmdir "$target"
-		else
-			core.print_warn "Skipping symlink from '$src' to '$target' (target a non-empty directory)"
-			return
+		if ! output=$(rmdir -- "$target" 2>&1); then
+			core.print_warn "Skipping symlink from '$src' to '$target' (target directory could not be removed)"
+			printf '  -> %s\n' "$output"
+			return 0
 		fi
 	fi
-	core.shopt_pop
 
-	local output=
 	if output=$(ln -sfT "$src" "$target" 2>&1); then
 		core.print_info "Symlinking '$src' to $target"
 	else
@@ -545,7 +543,7 @@ must.link() {
 	unset -v output
 }
 
-must.unlink() {
+should.unlink() {
 	local file="$1"
 
 	if [ -e "$file" ] && [ ! -L "$file" ]; then
@@ -563,7 +561,7 @@ must.unlink() {
 	unset -v output
 }
 
-must.user_in_group() {
+should.user_in_group() {
 	local user="$1"
 	local group="$2"
 
@@ -590,7 +588,7 @@ must.user_in_group() {
 	fi
 }
 
-must.strict_permissions() {
+should.strict_permissions() {
 	local file= result= badfiles=()
 	for file; do
 		if [ -d "$file" ]; then

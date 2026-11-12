@@ -464,6 +464,7 @@ static Deployment serverDeployment = {
 		&serverTerminalGroup,
 		&basicVersionControlGroup,
 		&serverEditorGroup,
+		NULL
 	}
 };
 
@@ -475,6 +476,7 @@ static Deployment homeServerDeployment = {
 		&serverTerminalGroup,
 		&basicVersionControlGroup,
 		&serverEditorGroup,
+		NULL
 	}
 };
 

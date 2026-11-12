@@ -23,6 +23,8 @@ jobs:
       id: setup-bats
       with:
         persist-credentials: false
+    - name: 'Install Fish for native syntax checks'
+      run: sudo apt-get update && sudo apt-get install -y fish
     - run: './bake test'
       env:
         BATS_LIB_PATH: '${{ steps.setup-bats.outputs.lib-path }}'

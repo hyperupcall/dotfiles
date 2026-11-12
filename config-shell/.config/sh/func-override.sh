@@ -60,13 +60,12 @@ code() {
 	_code_flags=$(~/.dotfiles/.data/binexec/node -e "
 		import path from 'node:path'
 		import os from 'node:os'
-		import { getEcosystems } from '$HOME/.dev/devutils/index.ts'
 		const ecosystemsMap = {
 			'deno': 'web',
 			'nodejs': 'web',
 			'c': 'cpp',
 		}
-		const ecosystems = await getEcosystems('$_dir')
+		const ecosystems = process.argv[1].split('\\n').filter(Boolean)
 		const extdir = path.join(os.homedir(), '.dotfiles/.data/vscode-extensions')
 		const datadir = path.join(os.homedir(), '.dotfiles/.data/vscode-datadirs')
 		let id = ecosystems[0]
@@ -79,7 +78,7 @@ code() {
 		} else {
 			console.error('Not using an ecosystem')
 		}
-	")
+	" "$(dev call get-ecosystems "${_dir:-.}")")
 
 	# shellcheck disable=SC2086
 	command code $_code_flags "$@"

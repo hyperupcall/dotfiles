@@ -1,400 +1,529 @@
 {
-	"diff_view_style": "split",
-	"proxy": "",
-	"ssh_connections": [
-		{
-			"host": "dragonfruit",
-			"args": [],
-			"projects": []
-		},
-		{
-			"host": "dragonfruit-",
-			"args": [],
-			"projects": [
-				{
-					"paths": ["/home/user/Documents"]
-				}
-			]
-		},
-		{
-			"host": "swampert",
-			"args": [],
-			"projects": [
-				{
-					"paths": ["~"]
-				},
-				{
-					"paths": ["~/Documents"]
-				}
-			]
-		}
-	],
-	"agent_servers": {
-		"cline": {
-			"default_config_options": {
-				"auto_approve": true,
-				"model": "deepseek/deepseek-v4.1-flash"
-			},
-			"favorite_config_option_values": {
-				"model": ["deepseek/deepseek-v4.1-flash"]
-			},
-			"type": "registry"
-		},
-		"mistral-vibe": {
-			"type": "registry"
-		},
-		"opencode": {
-			"default_config_options": {
-				"mode": "plan",
-				"model": "opencode/deepseek-v4.1-flash-free"
-			},
-			"favorite_config_option_values": {
-				"model": ["opencode/mimo-v2.6-flash-free"]
-			},
-			"type": "registry"
-		},
-		"github-copilot-cli": {
-			"type": "registry"
-		},
-		"cursor": {
-			"favorite_config_option_values": {
-				"model": ["default", "composer-2.5", "gpt-5.6-luna"]
-			},
-			"default_config_options": {
-				"model": "default"
-			},
-			"type": "registry"
-		},
-		"codex-acp": {
-			"default_config_options": {
-				"collaboration_mode": "default",
-				"mode": "agent"
-			},
-			"type": "registry"
-		}
-	},
-	"cli_default_open_behavior": "new_window",
-	"context_servers": {},
-	"edit_predictions": {
-		"provider": "zed"
-	},
-	"project_panel": {
-		"git_status": true,
-		"file_icons": true,
-		"hide_root": true,
-		"hide_gitignore": false,
-		"hide_hidden": false
-	},
-	"file_types": {
-		"HTML": ["**/*.ejs"],
-		"JSONC": ["**/*.code-workspaces"],
-		"YAML": ["**/.clang-format"]
-	},
-	"show_edit_predictions": false,
-	"hard_tabs": true,
-	"tab_size": 3,
-	"prettier": {
-		"allowed": true,
-		"singleQuote": true,
-		"semi": false
-	},
-	"languages": {
-		"YAML": {
-			"formatter": "language_server",
-			"format_on_save": "on",
-			"hard_tabs": false,
-			"tab_size": 2
-		},
-		"C": {
-			"formatter": "language_server",
-			"format_on_save": "on",
-			"tab_size": 3
-		},
-		"C++": {
-			"formatter": "language_server",
-			"format_on_save": "on"
-		},
-		"TOML": {
-			"formatter": "language_server"
-		},
-		"Python": {
-			"format_on_save": "off",
-			"hard_tabs": false,
-			"tab_size": 4
-		}
-	},
-	"lsp": {
-		"texlab": {
-			"settings": {
-				"texlab": {
-					"build": {
-						"onSave": false
-					}
-				}
-			}
-		},
-		"yaml-language-server": {
-			"settings": {
-				"yaml": {
-					"format": {
-						"enable": false,
-						"singleQuote": true,
-						"bracketSpacing": true
-					},
-					"validate": true,
-					"hover": true,
-					"completion": true,
-					"keyOrdering": false
-				}
-			}
-		},
-		"ruff": {
-			"settings": {
-				"enable": true
-			}
-		},
-		"clangd": {
-			"binary": {
-				"path": "/usr/bin/clangd-22"
-			}
-		}
-	},
-	"jupyter": {
-		"enabled": true
-	},
-	"terminal": {
-		// https://github.com/zed-industries/zed/issues/14543#issuecomment-2260593838
-		// https://github.com/zed-industries/zed/issues/21387
-		"dock": "bottom",
-		"option_as_meta": true,
-		"detect_venv": {
-			"on": {
-				"conda_manager": "mamba"
-			}
-		}
-	},
-	"soft_wrap": "editor_width",
-	"agent": {
-		"sandbox_permissions": {
-			"allow_unsandboxed": true,
-			"write_paths": [
-				{
-					"requested": "~/.devhidden/configs",
-					"resolved": "~/.devhidden/configs"
-				}
-			],
-			"network_hosts": [
-				"jekyllrb.com",
-				"pages.github.com",
-				"rubygems.org",
-				"docs.github.com",
-				"api.rubyonrails.org",
-				"news.ycombinator.com",
-				"hacker-news.firebaseio.com",
-				"www.bitsgalore.org",
-				"web.eecs.utk.edu",
-				"nitrokit.dev",
-				"krasjet.com",
-				"htmldocs.com",
-				"blog.shipreq.com",
-				"duckduckgo.com",
-				"xcancel.com",
-				"apps.gnome.org",
-				"mupdf.com",
-				"xournalpp.github.io",
-				"www.lesli.dev",
-				"www.libreoffice.org",
-				"www.sumatrapdfreader.org",
-				"pdfsam.org",
-				"pdfarranger.readthedocs.io",
-				"github.com",
-				"news.radio-t.com",
-				"www.shipreq.com",
-				"ph1lter.bitbucket.io",
-				"papis.readthedocs.io",
-				"unpaywall.org",
-				"en.chessbase.com",
-				"www.gnu.org",
-				"arves.org",
-				"en.wikipedia.org",
-				"ipmanchess.yolasite.com",
-				"doc.qt.io",
-				"buildsome.github.io",
-				"build-system.fman.io",
-				"watercss.kognise.dev",
-				"newcss.net",
-				"andybrewer.github.io",
-				"yegor256.github.io",
-				"concrete.style",
-				"pure-css.github.io",
-				"dohliam.github.io",
-				"feathercss.dev",
-				"fox-css.com",
-				"feathercss.elishaterada.com",
-				"jenil.github.io",
-				"picnicss.com",
-				"oxal.org",
-				"milligram.io",
-				"blendful.com",
-				"basecoatui.com",
-				"zagjs.com",
-				"open-wc.org",
-				"simplecss.org",
-				"picocss.com",
-				"www.radix-ui.com",
-				"webcomponents.org",
-				"hn.algolia.com",
-				"gohugo.io",
-				"fermat.app",
-				"columns.app",
-				"innos.app",
-				"kanopi.app",
-				"wikilogging.com",
-				"withorbit.com",
-				"micro.com",
-				"napkin.io",
-				"napkin.ai",
-				"speare.app",
-				"infinitymaps.app",
-				"omni-app.com",
-				"pushpin.app",
-				"uiwtf.com",
-				"clover.app",
-				"openboard.ch",
-				"opmwiki.org",
-				"cron.com",
-				"ummm.co",
-				"nototo.app",
-				"routine.co",
-				"unigraph.dev",
-				"kosmik.app",
-				"height.app",
-				"amie.so",
-				"timehero.com",
-				"museapp.com",
-				"noteplan.co",
-				"www.napkin.io",
-				"www.napkin.ai",
-				"www.speare.com",
-				"omni.app",
-				"kanopi.io",
-				"innos.co",
-				"cloverapp.com",
-				"infinitymaps.io",
-				"pypi.org",
-				"files.pythonhosted.org",
-				"raw.githubusercontent.com"
-			]
-		},
-		"favorite_models": [
-			{
-				"provider": "deepseek",
-				"model": "deepseek-v4-flash",
-				"enable_thinking": true,
-				"effort": "high"
-			},
-			{
-				"provider": "openrouter",
-				"model": "xiaomi/mimo-v2.6-pro",
-				"enable_thinking": true
-			},
-			{
-				"provider": "openrouter",
-				"model": "xiaomi/mimo-v2.6-flash",
-				"enable_thinking": true
-			},
-			{
-				"provider": "openrouter",
-				"model": "tencent/hy4-preview",
-				"enable_thinking": true,
-				"effort": "high"
-			},
-			{
-				"provider": "openrouter",
-				"model": "z-ai/glm-5.3-flash",
-				"enable_thinking": true,
-				"effort": "max"
-			},
-			{
-				"provider": "openrouter",
-				"model": "qwen/qwen3.8-flash",
-				"enable_thinking": true,
-				"effort": "medium"
-			},
-			{
-				"provider": "copilot_chat",
-				"model": "gpt-6-luna",
-				"enable_thinking": true,
-				"effort": "high"
-			},
-			{
-				"provider": "openrouter",
-				"model": "meta/muse-spark-1.3",
-				"enable_thinking": true,
-				"effort": "medium"
-			},
-			{
-				"provider": "copilot_chat",
-				"model": "gemini-3.8-flash",
-				"enable_thinking": true,
-				"effort": "high"
-			},
-			{
-				"provider": "copilot_chat",
-				"model": "claude-sonnet-5.5",
-				"enable_thinking": true,
-				"effort": "high"
-			},
-			{
-				"provider": "openrouter",
-				"model": "deepseek/deepseek-v4.1-flash",
-				"enable_thinking": true,
-				"effort": "high"
-			},
-			{
-				"provider": "openrouter",
-				"model": "nvidia/nemotron-3.5-super-vl:free",
-				"enable_thinking": true
-			},
-			{
-				"provider": "openrouter",
-				"model": "minimax/minimax-m3.1-flash:free",
-				"enable_thinking": true,
-				"effort": "max"
-			},
-			{
-				"provider": "openrouter",
-				"model": "minimax/minimax-m3.1-flash",
-				"enable_thinking": true,
-				"effort": "max"
-			}
-		],
-		"tool_permissions": {
-			"default": "allow"
-		},
-		"inline_assistant_model": {
-			"provider": "copilot_chat",
-			"model": "claude-3.5-sonnet"
-		},
-		"default_profile": "write",
-		"play_sound_when_agent_done": "always",
-		"default_model": {
-			"effort": "max",
-			"enable_thinking": true,
-			"provider": "openrouter",
-			"model": "minimax/minimax-m3.1-flash"
-		}
-	},
-	"telemetry": {
-		"diagnostics": false,
-		"metrics": false
-	},
-	"buffer_font_family": "Hack",
-	"ui_font_size": 16,
-	"buffer_font_size": 16,
-	"theme": {
-		"mode": "light",
-		"light": "One Light",
-		"dark": "8008 Dark"
-	}
+  "diff_view_style": "split",
+  "proxy": "",
+  "ssh_connections": [
+    {
+      "host": "dragonfruit",
+      "args": [],
+      "projects": []
+    },
+    {
+      "host": "dragonfruit-",
+      "args": [],
+      "projects": [
+        {
+          "paths": [
+            "/home/user/Documents"
+          ]
+        }
+      ]
+    },
+    {
+      "host": "swampert",
+      "args": [],
+      "projects": [
+        {
+          "paths": [
+            "~"
+          ]
+        },
+        {
+          "paths": [
+            "~/Documents"
+          ]
+        }
+      ]
+    },
+    {
+      "host": "dragonfruit-",
+      "args": [],
+      "projects": []
+    }
+  ],
+  "agent_servers": {
+    "kilo": {
+      "type": "registry"
+    },
+    "opencode": {
+      "type": "registry"
+    },
+    "cline": {
+      "default_config_options": {
+        "model": "recursive/flint-v1.0:free",
+        "auto_approve": true
+      },
+      "type": "registry"
+    },
+    "junie": {
+      "default_config_options": {
+        "model": "mix.normal",
+        "effort": "high"
+      },
+      "type": "registry"
+    },
+    "pi-acp": {
+      "type": "registry"
+    },
+    "opencode-v2": {
+      "default_config_options": {
+        "effort": "default",
+        "model": "opencode/deepseek-v4.1-flash-free"
+      },
+      "favorite_config_option_values": {
+        "model": [
+          "opencode/mimo-v2.6-flash-free",
+          "opencode/deepseek-v4.1-flash-free",
+          "openrouter/deepseek/deepseek-v4.1-flash",
+          "openrouter/deepseek/deepseek-v4.1-flash-1017",
+          "openrouter/minimax/minimax-m3.1-flash",
+          "opencode/glm-5.3-flash-free",
+          "openrouter/z-ai/glm-5.3-flash",
+          "openrouter/z-ai/glm-5.3",
+          "opencode/minimax-m3.1-flash-free",
+          "openrouter/openai/gpt-6.1-terra"
+        ]
+      },
+      "type": "registry"
+    },
+    "antigravity-acp": {
+      "default_config_options": {
+        "model": "gemini-3.8-flash"
+      },
+      "type": "registry"
+    },
+    "devin": {
+      "type": "registry"
+    },
+    "claude-acp": {
+      "default_config_options": {
+        "effort": "high",
+        "model": "opus",
+        "mode": "auto"
+      },
+      "favorite_config_option_values": {
+        "model": [
+          "opus",
+          "sonnet",
+          "default"
+        ]
+      },
+      "type": "registry"
+    },
+    "Cursor (Custom)": {
+      "default_config_options": {
+        "model": "claude-opus-5-5[context=300k,effort=medium,fast=false]"
+      },
+      "favorite_config_option_values": {
+        "model": [
+          "claude-sonnet-5-5[context=300k,reasoning_effort=high]",
+          "claude-opus-5-5[context=300k,effort=medium,fast=false]",
+          "gemini-4-argon[reasoning_effort=medium]",
+          "gemini-3.8-flash[reasoning_effort=high]"
+        ]
+      },
+      "type": "custom",
+      "command": "~~~/.local/bin/agent",
+      "args": ["--force", "acp"],
+      "env": {}
+    },
+    "github-copilot-cli": {
+      "default_config_options": {
+        "reasoning_effort": "xhigh",
+        "model": "gpt-6.1-terra",
+        "mode": "https://agentclientprotocol.com/protocol/session-modes#autopilot"
+      },
+      "favorite_config_option_values": {
+        "model": ["claude-sonnet-5.5", "gpt-6.1-terra"]
+      },
+      "type": "registry"
+    },
+    "cursor": {
+      "favorite_config_option_values": {
+        "context": ["256k"],
+        "model": [
+          "default",
+          "composer-2.5",
+          "claude-sonnet-5-5",
+          "claude-opus-5-5",
+          "grok-4.7",
+          "gemini-4-argon"
+        ]
+      },
+      "default_config_options": {
+        "mode": "agent",
+        "context": "256k",
+        "model": "claude-sonnet-5-5"
+      },
+      "type": "registry"
+    },
+    "codex-acp": {
+      "default_config_options": {
+        "model": "gpt-6.1-sol",
+        "reasoning_effort": "high",
+        "collaboration_mode": "default",
+        "mode": "agent"
+      },
+      "type": "registry"
+    }
+  },
+  "cli_default_open_behavior": "new_window",
+  "context_servers": {},
+  "edit_predictions": {
+    "provider": "zed"
+  },
+  "project_panel": {
+    "git_status": true,
+    "file_icons": true,
+    "hide_root": true,
+    "hide_gitignore": false,
+    "hide_hidden": false
+  },
+  "file_types": {
+    "HTML": ["**/*.ejs"],
+    "JSONC": ["**/*.code-workspaces"],
+    "YAML": ["**/.clang-format"]
+  },
+  "show_edit_predictions": false,
+  "hard_tabs": true,
+  "tab_size": 3,
+  "prettier": {
+    "allowed": true,
+    "singleQuote": true,
+    "semi": false
+  },
+  "languages": {
+    "YAML": {
+      "formatter": "language_server",
+      "format_on_save": "on",
+      "hard_tabs": false,
+      "tab_size": 2
+    },
+    "C": {
+      "formatter": "language_server",
+      "format_on_save": "on",
+      "tab_size": 3
+    },
+    "C++": {
+      "formatter": "language_server",
+      "format_on_save": "on"
+    },
+    "TOML": {
+      "formatter": "language_server"
+    },
+    "Python": {
+      "format_on_save": "off",
+      "hard_tabs": false,
+      "tab_size": 4
+    }
+  },
+  "lsp": {
+    "texlab": {
+      "settings": {
+        "texlab": {
+          "build": {
+            "onSave": false
+          }
+        }
+      }
+    },
+    "yaml-language-server": {
+      "settings": {
+        "yaml": {
+          "format": {
+            "enable": false,
+            "singleQuote": true,
+            "bracketSpacing": true
+          },
+          "validate": true,
+          "hover": true,
+          "completion": true,
+          "keyOrdering": false
+        }
+      }
+    },
+    "ruff": {
+      "settings": {
+        "enable": true
+      }
+    },
+    "clangd": {
+      "binary": {
+        "path": "/usr/bin/clangd-22"
+      }
+    }
+  },
+  "jupyter": {
+    "enabled": true
+  },
+  "terminal": {
+    // https://github.com/zed-industries/zed/issues/14543#issuecomment-2260593838
+    // https://github.com/zed-industries/zed/issues/21387
+    "dock": "bottom",
+    "option_as_meta": true,
+    "detect_venv": {
+      "on": {
+        "conda_manager": "mamba"
+      }
+    }
+  },
+  "soft_wrap": "editor_width",
+  "agent": {
+    "sandbox_permissions": {
+      "allow_unsandboxed": true,
+      "write_paths": [
+        {
+          "requested": "~/.devhidden/configs",
+          "resolved": "~/.devhidden/configs"
+        }
+      ],
+      "network_hosts": [
+        "jekyllrb.com",
+        "pages.github.com",
+        "rubygems.org",
+        "docs.github.com",
+        "api.rubyonrails.org",
+        "news.ycombinator.com",
+        "hacker-news.firebaseio.com",
+        "www.bitsgalore.org",
+        "web.eecs.utk.edu",
+        "nitrokit.dev",
+        "krasjet.com",
+        "htmldocs.com",
+        "blog.shipreq.com",
+        "duckduckgo.com",
+        "xcancel.com",
+        "apps.gnome.org",
+        "mupdf.com",
+        "xournalpp.github.io",
+        "www.lesli.dev",
+        "www.libreoffice.org",
+        "www.sumatrapdfreader.org",
+        "pdfsam.org",
+        "pdfarranger.readthedocs.io",
+        "github.com",
+        "news.radio-t.com",
+        "www.shipreq.com",
+        "ph1lter.bitbucket.io",
+        "papis.readthedocs.io",
+        "unpaywall.org",
+        "en.chessbase.com",
+        "www.gnu.org",
+        "arves.org",
+        "en.wikipedia.org",
+        "ipmanchess.yolasite.com",
+        "doc.qt.io",
+        "buildsome.github.io",
+        "build-system.fman.io",
+        "watercss.kognise.dev",
+        "newcss.net",
+        "andybrewer.github.io",
+        "yegor256.github.io",
+        "concrete.style",
+        "pure-css.github.io",
+        "dohliam.github.io",
+        "feathercss.dev",
+        "fox-css.com",
+        "feathercss.elishaterada.com",
+        "jenil.github.io",
+        "picnicss.com",
+        "oxal.org",
+        "milligram.io",
+        "blendful.com",
+        "basecoatui.com",
+        "zagjs.com",
+        "open-wc.org",
+        "simplecss.org",
+        "picocss.com",
+        "www.radix-ui.com",
+        "webcomponents.org",
+        "hn.algolia.com",
+        "gohugo.io",
+        "fermat.app",
+        "columns.app",
+        "innos.app",
+        "kanopi.app",
+        "wikilogging.com",
+        "withorbit.com",
+        "micro.com",
+        "napkin.io",
+        "napkin.ai",
+        "speare.app",
+        "infinitymaps.app",
+        "omni-app.com",
+        "pushpin.app",
+        "uiwtf.com",
+        "clover.app",
+        "openboard.ch",
+        "opmwiki.org",
+        "cron.com",
+        "ummm.co",
+        "nototo.app",
+        "routine.co",
+        "unigraph.dev",
+        "kosmik.app",
+        "height.app",
+        "amie.so",
+        "timehero.com",
+        "museapp.com",
+        "noteplan.co",
+        "www.napkin.io",
+        "www.napkin.ai",
+        "www.speare.com",
+        "omni.app",
+        "kanopi.io",
+        "innos.co",
+        "cloverapp.com",
+        "infinitymaps.io",
+        "pypi.org",
+        "files.pythonhosted.org",
+        "raw.githubusercontent.com"
+      ]
+    },
+    "favorite_models": [
+      {
+        "provider": "deepseek",
+        "model": "deepseek-v4-flash",
+        "enable_thinking": true,
+        "effort": "high"
+      },
+      {
+        "provider": "openrouter",
+        "model": "xiaomi/mimo-v2.6-pro",
+        "enable_thinking": true
+      },
+      {
+        "provider": "openrouter",
+        "model": "xiaomi/mimo-v2.6-flash",
+        "enable_thinking": true
+      },
+      {
+        "provider": "openrouter",
+        "model": "tencent/hy4-preview",
+        "enable_thinking": true,
+        "effort": "high"
+      },
+      {
+        "provider": "openrouter",
+        "model": "z-ai/glm-5.3-flash",
+        "enable_thinking": true,
+        "effort": "max"
+      },
+      {
+        "provider": "openrouter",
+        "model": "qwen/qwen3.8-flash",
+        "enable_thinking": true,
+        "effort": "medium"
+      },
+      {
+        "provider": "copilot_chat",
+        "model": "gpt-6-luna",
+        "enable_thinking": true,
+        "effort": "high"
+      },
+      {
+        "provider": "openrouter",
+        "model": "meta/muse-spark-1.3",
+        "enable_thinking": true,
+        "effort": "medium"
+      },
+      {
+        "provider": "copilot_chat",
+        "model": "gemini-3.8-flash",
+        "enable_thinking": true,
+        "effort": "high"
+      },
+      {
+        "provider": "copilot_chat",
+        "model": "claude-sonnet-5.5",
+        "enable_thinking": true,
+        "effort": "high"
+      },
+      {
+        "provider": "openrouter",
+        "model": "deepseek/deepseek-v4.1-flash",
+        "enable_thinking": true,
+        "effort": "high"
+      },
+      {
+        "provider": "openrouter",
+        "model": "nvidia/nemotron-3.5-super-vl:free",
+        "enable_thinking": true
+      },
+      {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m3.1-flash:free",
+        "enable_thinking": true,
+        "effort": "max"
+      },
+      {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m3.1-flash",
+        "enable_thinking": true,
+        "effort": "max"
+      },
+      {
+        "provider": "zed.dev",
+        "model": "claude-sonnet-5-5",
+        "enable_thinking": true,
+        "effort": "high"
+      },
+      {
+        "provider": "zed.dev",
+        "model": "gpt-6.1-sol",
+        "enable_thinking": true,
+        "effort": "medium"
+      },
+      {
+        "provider": "zed.dev",
+        "model": "gpt-6-luna",
+        "enable_thinking": true,
+        "effort": "medium"
+      },
+      {
+        "provider": "zed.dev",
+        "model": "gemini-4-argon",
+        "enable_thinking": true,
+        "effort": "MEDIUM"
+      },
+      {
+        "provider": "zed.dev",
+        "model": "claude-haiku-5-5",
+        "enable_thinking": true,
+        "effort": "medium"
+      },
+      {
+        "provider": "deepseek",
+        "model": "deepseek-flash",
+        "enable_thinking": true,
+        "effort": "max"
+      }
+    ],
+    "tool_permissions": {
+      "default": "allow"
+    },
+    "inline_assistant_model": {
+      "provider": "zed.dev",
+      "model": "claude-haiku-5-5"
+    },
+    "default_profile": "write",
+    "play_sound_when_agent_done": "always",
+    "default_model": {
+      "effort": "max",
+      "enable_thinking": true,
+      "provider": "deepseek",
+      "model": "deepseek-flash"
+    }
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  "buffer_font_family": "Hack",
+  "ui_font_size": 16,
+  "buffer_font_size": 16,
+  "theme": {
+    "mode": "light",
+    "light": "8008 Light",
+    "dark": "8008 Dark"
+  }
 }

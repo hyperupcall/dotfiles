@@ -19,8 +19,13 @@ install.any() {
 }
 
 install.installed() {
-	local dir=(~/.home/AppImages/Obsidian_*.AppImage)
-	((${#dir} > 0))
+	# Isolate option changes from callers, including bash-core's option stack.
+	(
+		core.shopt_push -s nullglob
+		local -a files=(~/.home/AppImages/Obsidian_*.AppImage)
+		core.shopt_pop
+		((${#files[@]} > 0))
+	)
 }
 
 util.if_file_sourced || _setup "$@"

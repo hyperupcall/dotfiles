@@ -21,11 +21,16 @@ install.fedora() {
 	get_appimagelauncher_release_file 'rpm'
 
 	curl -K "$CURL_CONFIG" -o 'appimagelauncher.rpm' "$REPLY"
+	sudo dnf install -y './appimagelauncher.rpm'
 	rm -f './appimagelauncher.rpm'
 }
 
 install.opensuse() {
-	install.fedora "$@"
+	get_appimagelauncher_release_file 'rpm'
+
+	curl -K "$CURL_CONFIG" -o 'appimagelauncher.rpm' "$REPLY"
+	sudo zypper -n install './appimagelauncher.rpm'
+	rm -f './appimagelauncher.rpm'
 }
 
 install.arch() {

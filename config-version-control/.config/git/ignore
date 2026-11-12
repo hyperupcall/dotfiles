@@ -9,5 +9,6 @@
 # Custom ignores.
 .hidden/
 todo.txt
+TODO.txt
 .vscode/
 .zed/

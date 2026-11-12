@@ -18,6 +18,7 @@
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^21.2.4",
+		"@hyperupcall/prettier-config": "0.11.0",
 		"@hyperupcall/scripts-nodejs": "0.10.0",
 		"@typescript-eslint/parser": "^8.72.0",
 		"eslint-plugin-unicorn": "69.0.0",
@@ -26,5 +27,5 @@
 	"markdownlint-cli2": {
 		"extends": "./node_modules/@hyperupcall/markdownlint-config/.markdownlint.json"
 	},
-	"prettier": "./node_modules/@hyperupcall/scripts-nodejs/config-prettier.js"
+	"prettier": "./prettier.config.js"
 }

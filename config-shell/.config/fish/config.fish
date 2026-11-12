@@ -24,7 +24,7 @@ function bind_dollar
             commandline -f history-token-search-backward
         case "*"
             commandline -i '$'
-    endcase "
+    end
 end
 
 function fish_user_key_bindings

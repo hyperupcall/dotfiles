@@ -1,4 +1,4 @@
-import config from '@hyperupcall/scripts-nodejs/config-prettier.js'
+import config from '@hyperupcall/prettier-config'
 
 export default {
 	...config,

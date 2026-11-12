@@ -34,7 +34,7 @@ _util_path_append() {
 			local -n _path="$1"
 			case ":$_path:" in
 			*":$2:"*) : ;;
-			*) export "$1=${_path:+":$_path"}$2" ;;
+			*) export "$1=${_path:+"$_path:"}$2" ;;
 			esac
 			# shellcheck disable=SC3045
 			unset -vn _path
