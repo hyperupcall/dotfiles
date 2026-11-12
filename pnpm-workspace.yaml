@@ -1,7 +1,6 @@
 allowBuilds:
+  pnpm: true
   unrs-resolver: true
-onlyBuiltDependencies:
-- unrs-resolver
 publicHoistPattern:
 - prettier
 - eslint

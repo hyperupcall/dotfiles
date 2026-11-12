@@ -1,7 +1,7 @@
 {
 	"type": "module",
 	"private": true,
-	"packageManager": "pnpm@11.8.0",
+	"packageManager": "pnpm@12.18.0",
 	"engines": {
 		"node": ">=26.0.0"
 	},
@@ -11,17 +11,17 @@
 		"lint2": "eslint ."
 	},
 	"dependencies": {
-		"@types/node": "^25.9.3",
-		"globals": "^17.7.0",
-		"pnpm": "11.8.0",
+		"@types/node": "^26.6.6",
+		"globals": "^17.14.0",
+		"pnpm": "12.18.0",
 		"prettier-plugin-pkg": "^0.22.1"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^21.2.4",
-		"@hyperupcall/prettier-config": "0.11.0",
-		"@hyperupcall/scripts-nodejs": "0.10.0",
-		"@typescript-eslint/parser": "^8.72.0",
-		"eslint-plugin-unicorn": "69.0.0",
+		"@hyperupcall/prettier-config": "0.13.0",
+		"@hyperupcall/scripts-nodejs": "0.13.0",
+		"@typescript-eslint/parser": "^8.72.2",
+		"eslint-plugin-unicorn": "79.0.0",
 		"zx": "^8.8.5"
 	},
 	"markdownlint-cli2": {
