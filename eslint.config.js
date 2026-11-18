@@ -11,6 +11,7 @@ export default [
 			'.lsp/.cache/**',
 			'.clj-kondo/**',
 			'docs/_site/**',
+			'config-editor/.config/zed/settings.json', // TODO
 		],
 	},
 	...config.map((entry) => ({

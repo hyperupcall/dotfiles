@@ -19,11 +19,11 @@ require("lazy").setup({
 	},
 
 	{
-		'rose-pine/neovim',
-		config = function()
-			vim.cmd('colorscheme rose-pine')
-		end
+		'Paulo-Camacho/734',
+		lazy = false,
+		priority = 1000,
 	},
+	'rose-pine/neovim',
 
 	-- {
 	-- 	'nvim-treesitter/nvim-treesitter',

@@ -10,7 +10,7 @@ import { $, echo, fs, os, path, question } from 'zx'
 
 // Run commands with the terminal attached, so interactive commands (notably
 // `sudo`) can prompt and command warnings stay visible. Commands whose output
-// must be captured opt into `stdio: 'pipe'` explicitly.
+// must be captured opt into `stdio: 'pipe'` explicitly.`
 $.stdio = 'inherit'
 
 const home = os.homedir()

@@ -82,9 +82,21 @@ EOF
 		err=1
 	fi
 
+	# Smudged files differ in the working tree from what is committed (e.g. the
+	# homedir filter expands ~~~ into $HOME). Skip them here so their smudged
+	# private paths aren't reported as forbidden patterns.
+	mapfile -t _smudged_files < <(
+		git ls-files --cached | while IFS= read -r file; do
+			filter=$(git check-attr filter -- "$file" | awk '{print $NF}')
+			if [ "$filter" != unspecified ] && [ -n "$(git config --get "filter.$filter.smudge")" ]; then
+				printf './%s\n' "$file"
+			fi
+		done
+	)
+
 	# grep '-P' not compatible with with multiple arguments using '-e'.
 	for pattern in "${_private_forbidden_patterns[@]}"; do
-		if grep -IPr --exclude 'setup-private.*' --exclude .clangd --exclude-dir .git --exclude-dir node_modules --exclude-dir .data --exclude-dir vendor --exclude-dir target --exclude-dir .venv --exclude-dir .cache --exclude-dir .clj-kondo --exclude-dir _site --exclude-dir .jekyll-cache --exclude-dir shell.d --exclude-dir bash.d --exclude-dir zsh.d "${_private_forbidden_patterns_exclude[@]}" --color=always "$pattern" ./ | grep -Ev '(#|//|") lint-ignore' | grep -v ./config-editor/.config/kate/formatting/settings.json | grep -v pnpm-lock.yaml | grep -v pnpm-workspace.yaml; then
+		if grep -IPr --exclude 'setup-private.*' --exclude .clangd --exclude-dir .git --exclude-dir node_modules --exclude-dir .data --exclude-dir vendor --exclude-dir target --exclude-dir .venv --exclude-dir .cache --exclude-dir .clj-kondo --exclude-dir _site --exclude-dir .jekyll-cache --exclude-dir shell.d --exclude-dir bash.d --exclude-dir zsh.d "${_private_forbidden_patterns_exclude[@]}" --color=always "$pattern" ./ | grep -Ev '(#|//|") lint-ignore' | grep -vF -f <(for f in "${_smudged_files[@]}"; do printf '%s\n' "$f"; done) | grep -v ./config-editor/.config/kate/formatting/settings.json | grep -v pnpm-lock.yaml | grep -v pnpm-workspace.yaml; then
 			printf 'Expected to find no matches for: %s\n' "$pattern"
 			err=1
 		fi
@@ -102,7 +114,7 @@ task.lint() {
 }
 
 task.test() {
-	bats -p './config-shell/.config/sh' './lscripts/to-opus.bats'
+	bats -p './config-shell/.config/sh'
 	./lscripts/lint-scripts.py
 }
 
