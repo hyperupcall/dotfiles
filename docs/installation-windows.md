@@ -19,7 +19,7 @@ Then, download and execute `bootstrap-windows.ps1` to begin the bootstrap proces
 ```powershell
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 New-Item -Type Directory -Force ~/.bootstrap >$null
-Invoke-WebRequest -UseBasicParsing -Uri 'https://raw.githubusercontent.com/hyperupcall/dotfiles/main/bootstrap-windows.ps1' -OutFile ~/.bootstrap/bootstrap.ps1
+Invoke-WebRequest -UseBasicParsing -Uri 'https://raw.githubusercontent.com/hyperupcall/dotfiles/trunk/bootstrap-windows.ps1' -OutFile ~/.bootstrap/bootstrap.ps1
 ~/.bootstrap/bootstrap.ps1
 ```
 

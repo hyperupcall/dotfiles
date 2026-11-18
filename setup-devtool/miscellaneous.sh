@@ -14,7 +14,7 @@ install.any() {
 }
 
 install.installed() {
-	command -v lefthook &>/dev/null
+	command -v file_server &>/dev/null
 }
 
 util.if_file_sourced || _setup "$@"

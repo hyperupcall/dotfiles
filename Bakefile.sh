@@ -28,6 +28,37 @@ task.build() {
 	./lscripts/lint-scripts.py --internal-test-regex
 
 	err=0
+
+	# Every path carrying a git filter attribute must exist, together with the
+	# filter programs it depends on. This catches path drift such as a renamed
+	# config directory leaving a dead `filter=` rule in .gitattributes.
+	local -a _attrs=()
+	local _attr= _filter= _smudge=
+	while read -r -a _attrs; do
+		[ "${#_attrs[@]}" -gt 1 ] || continue
+		_filter=
+		_smudge=
+		for _attr in "${_attrs[@]:1}"; do
+			case $_attr in
+			filter=*) _filter=${_attr#filter=} ;;
+			smudge=*) _smudge=${_attr#smudge=} ;;
+			esac
+		done
+		[ -n "$_filter" ] || continue
+		if [ ! -f "${_attrs[0]}" ]; then
+			printf 'Git filter target does not exist: %s\n' "${_attrs[0]}"
+			err=1
+		fi
+		if [ ! -f "lscripts/$_filter-clean.sh" ]; then
+			printf 'Git filter program does not exist: lscripts/%s-clean.sh\n' "$_filter"
+			err=1
+		fi
+		if [ -n "$_smudge" ] && [ ! -f "lscripts/$_smudge-smudge.sh" ]; then
+			printf 'Git filter program does not exist: lscripts/%s-smudge.sh\n' "$_smudge"
+			err=1
+		fi
+	done <.gitattributes
+
 	while read -r file; do
 		if grep -q ' _setup ' "$file" && grep -q '^main()' "$file"; then
 			printf 'Should not call _setup but define main(): %s\n' "$file"
@@ -35,8 +66,13 @@ task.build() {
 		fi
 	done < <(find . \( -name '*.sh' -not -name 'Bakefile.sh' \) -type f)
 
-	# Should have proper ordering of functions.
-	if ! ~/.dotfiles/.data/binexec/node --input-type=module <<'EOF'; then
+	# Should have proper ordering of functions. Prefer the repo-local Node
+	# install, but fall back to whatever is on PATH (e.g. in CI).
+	local node_cmd=node
+	if [ -x ./.data/binexec/node ]; then
+		node_cmd=./.data/binexec/node
+	fi
+	if ! "$node_cmd" --input-type=module <<'EOF'; then
 	import { readFileSync } from 'fs'
 	import { glob } from 'fs/promises'
 

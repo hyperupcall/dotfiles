@@ -23,8 +23,15 @@ jobs:
       id: setup-bats
       with:
         persist-credentials: false
+    - uses: 'actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020'  # v4.4.0
+      with:
+        node-version: '24.7.0'
+    - name: 'Install yamllint'
+      run: pipx install 'yamllint==1.38.0'
     - name: 'Install Fish for native syntax checks'
       run: sudo apt-get update && sudo apt-get install -y fish
+    - run: './bake build'
+    - run: './bake lint'
     - run: './bake test'
       env:
         BATS_LIB_PATH: '${{ steps.setup-bats.outputs.lib-path }}'

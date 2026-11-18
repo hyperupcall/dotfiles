@@ -18,11 +18,15 @@ main() {
 		fi
 
 		local upstream_ref= unpushed_count=
-		upstream_ref=$(git rev-parse --abbrev-ref --symbolic-full-name '@{u}' 2>/dev/null)
-		unpushed_count=$(git rev-list --count "$upstream_ref..HEAD")
+		upstream_ref=$(git -C "$dir" rev-parse --abbrev-ref --symbolic-full-name '@{u}' 2>/dev/null)
+		if [ -z "$upstream_ref" ]; then
+			core.print_error "Expected an upstream branch for \"$dir\", but found none"
+			exit 1
+		fi
+		unpushed_count=$(git -C "$dir" rev-list --count "$upstream_ref..HEAD")
 		if ((unpushed_count)); then
-			core.print_error "Expected all commits to be be pushed, but found $unpushed_count extra local commits"
-			git log --oneline "$unpushed_count..HEAD" >&2
+			core.print_error "Expected all commits in \"$dir\" to be pushed, but found $unpushed_count extra local commits"
+			git -C "$dir" log --oneline "$upstream_ref..HEAD" >&2
 			exit 1
 		fi
 	done

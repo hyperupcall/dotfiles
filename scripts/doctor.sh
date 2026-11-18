@@ -366,8 +366,7 @@ main() {
 		~/scripts/setup/npm.sh
 		~/scripts/setup/flatpak.sh
 		~/scripts/setup/notify-send.sh
-		~/scripts/setup/lefthook.sh
-		~/.dotfiles/bake init # Depends on mise, lefthook and pnpm.
+		~/.dotfiles/bake init # Depends on mise, hk and pnpm.
 		~/scripts/setup/git.sh
 
 		# Install applications.
@@ -671,7 +670,7 @@ dependencies.opensuse() {
 dependencies.arch() {
 	local packages=()
 	packages+=(xdg-user-dirs)
-	packages+=(base-devl lvm2 openssl yay)
+	packages+=(base-devel lvm2 openssl yay)
 
 	sudo pacman -Syu --noconfirm "${packages[@]}"
 }

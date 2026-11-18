@@ -2,7 +2,7 @@
 source ~/.dotfiles/config/setup.sh
 
 declare -g g_name='d'
-declare -g g_dir="$HOME/.dotfiles/.data/repos/d"
+declare -g g_dir="$HOME/.dotfiles/vendor/d"
 
 install.any() {
 	dependencies.debian() {
@@ -23,7 +23,6 @@ install.any() {
 
 	util.install_by_setup --fn-prefix=dependencies --no-confirm --no-install-check "$@"
 
-	util.clone "$g_dir" git@github.com:hyperupcall-projects/d
 	cd "$g_dir"
 	./bake build "$HOME/.dotfiles/config/dotfiles.c"
 	ln -fs "$PWD/d" ~/.local/bin/d
