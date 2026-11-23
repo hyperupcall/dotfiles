@@ -425,17 +425,6 @@ qe() {
 	unset -v _qe_list _qe_args _qe_file
 }
 
-r() {
-	for _file; do
-		if [ -d "$_file" ]; then
-			command rmdir "$_file"
-		else
-			command rm "$_file"
-		fi
-	done
-	unset -v _file
-}
-
 serv() {
 	set -- "${1:-.}" "${2:-4000}"
 

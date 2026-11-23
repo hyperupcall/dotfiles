@@ -12,3 +12,6 @@ authors = ['Edwin Kofler <edwin@kofler.dev>']
 [tool.poetry.dependencies]
 python = '^3.12'
 yamllint = '^1.37.1'
+
+[tool.ruff]
+extend = ".config/ruff.toml"

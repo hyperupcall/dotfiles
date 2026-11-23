@@ -1,5 +1,5 @@
-title: 'Edwin''s dotfiles'
-description: 'Edwin''s personal dotfiles.'
+title: "Edwin's dotfiles"
+description: "Edwin's personal dotfiles."
 baseurl: ''
 url: ''
 
@@ -10,17 +10,17 @@ github_username: hyperupcall
 linkedin_username: edwinkofler
 
 plugins:
-- jekyll-feed
-- jekyll-seo-tag
-- jekyll-relative-links
-- jekyll-optional-front-matter
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-relative-links
+  - jekyll-optional-front-matter
 
 kramdown:
   input: GFM
   syntax_highlighter: rouge
 
 exclude:
-- Gemfile
-- Gemfile.lock
-- vendor/
-- .bundle/
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - .bundle/

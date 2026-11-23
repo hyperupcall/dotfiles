@@ -5,63 +5,63 @@
 		{
 			"host": "dragonfruit",
 			"args": [],
-			"projects": [],
+			"projects": []
 		},
 		{
 			"host": "dragonfruit-",
 			"args": [],
 			"projects": [
 				{
-					"paths": ["/home/user/Documents"],
-				},
-			],
+					"paths": ["/home/user/Documents"]
+				}
+			]
 		},
 		{
 			"host": "swampert",
 			"args": [],
 			"projects": [
 				{
-					"paths": ["~"],
+					"paths": ["~"]
 				},
 				{
-					"paths": ["~/Documents"],
-				},
-			],
+					"paths": ["~/Documents"]
+				}
+			]
 		},
 		{
 			"host": "dragonfruit-",
 			"args": [],
-			"projects": [],
-		},
+			"projects": []
+		}
 	],
 	"agent_servers": {
 		"kilo": {
-			"type": "registry",
+			"type": "registry"
 		},
 		"opencode": {
-			"type": "registry",
+			"type": "registry"
 		},
 		"cline": {
 			"default_config_options": {
 				"model": "recursive/flint-v1.0:free",
-				"auto_approve": true,
+				"auto_approve": true
 			},
-			"type": "registry",
+			"type": "registry"
 		},
 		"junie": {
 			"default_config_options": {
 				"model": "mix.normal",
-				"effort": "high",
+				"effort": "high"
 			},
-			"type": "registry",
+			"type": "registry"
 		},
 		"pi-acp": {
-			"type": "registry",
+			"type": "registry"
 		},
 		"opencode-v2": {
 			"default_config_options": {
 				"effort": "thinking",
-				"model": "opencode/hy4-flash-free",
+				"model": "opencode/hy4-flash-free"
 			},
 			"favorite_config_option_values": {
 				"model": [
@@ -76,58 +76,59 @@
 					"opencode/minimax-m3.1-flash-free",
 					"openrouter/openai/gpt-6.1-terra",
 					"openrouter/tencent/hy4-flash",
-					"opencode/hy4-flash-free",
-				],
+					"opencode/hy4-flash-free"
+				]
 			},
-			"type": "registry",
+			"type": "registry"
 		},
 		"antigravity-acp": {
 			"default_config_options": {
-				"model": "gemini-3.8-flash",
+				"model": "gemini-3.8-flash"
 			},
-			"type": "registry",
+			"type": "registry"
 		},
 		"devin": {
-			"type": "registry",
+			"type": "registry"
 		},
 		"claude-acp": {
 			"default_config_options": {
+				"fast": false,
 				"effort": "xhigh",
-				"model": "default",
-				"mode": "auto",
+				"model": "opus",
+				"mode": "auto"
 			},
 			"favorite_config_option_values": {
-				"model": ["opus", "sonnet", "default"],
+				"model": ["opus", "sonnet", "default"]
 			},
-			"type": "registry",
+			"type": "registry"
 		},
 		"Cursor (Custom)": {
 			"default_config_options": {
-				"model": "claude-opus-5-5[context=300k,effort=medium,fast=false]",
+				"model": "claude-opus-5-5[context=300k,effort=medium,fast=false]"
 			},
 			"favorite_config_option_values": {
 				"model": [
 					"claude-sonnet-5-5[context=300k,reasoning_effort=high]",
 					"claude-opus-5-5[context=300k,effort=medium,fast=false]",
 					"gemini-4-argon[reasoning_effort=medium]",
-					"gemini-3.8-flash[reasoning_effort=high]",
-				],
+					"gemini-3.8-flash[reasoning_effort=high]"
+				]
 			},
 			"type": "custom",
 			"command": "~~~/.local/bin/agent",
 			"args": ["--force", "acp"],
-			"env": {},
+			"env": {}
 		},
 		"github-copilot-cli": {
 			"default_config_options": {
 				"reasoning_effort": "xhigh",
 				"model": "gpt-6.1-terra",
-				"mode": "https://agentclientprotocol.com/protocol/session-modes#autopilot",
+				"mode": "https://agentclientprotocol.com/protocol/session-modes#autopilot"
 			},
 			"favorite_config_option_values": {
-				"model": ["claude-sonnet-5.5", "gpt-6.1-terra"],
+				"model": ["claude-sonnet-5.5", "gpt-6.1-terra"]
 			},
-			"type": "registry",
+			"type": "registry"
 		},
 		"cursor": {
 			"favorite_config_option_values": {
@@ -138,42 +139,42 @@
 					"claude-sonnet-5-5",
 					"claude-opus-5-5",
 					"grok-4.7",
-					"gemini-4-argon",
-				],
+					"gemini-4-argon"
+				]
 			},
 			"default_config_options": {
 				"mode": "agent",
 				"context": "256k",
-				"model": "claude-sonnet-5-5",
+				"model": "claude-sonnet-5-5"
 			},
-			"type": "registry",
+			"type": "registry"
 		},
 		"codex-acp": {
 			"default_config_options": {
 				"model": "gpt-6.1-sol",
 				"reasoning_effort": "xhigh",
 				"collaboration_mode": "default",
-				"mode": "agent",
+				"mode": "agent"
 			},
-			"type": "registry",
-		},
+			"type": "registry"
+		}
 	},
 	"cli_default_open_behavior": "new_window",
 	"context_servers": {},
 	"edit_predictions": {
-		"provider": "zed",
+		"provider": "zed"
 	},
 	"project_panel": {
 		"git_status": true,
 		"file_icons": true,
 		"hide_root": true,
 		"hide_gitignore": false,
-		"hide_hidden": false,
+		"hide_hidden": false
 	},
 	"file_types": {
 		"HTML": ["**/*.ejs"],
 		"JSONC": ["**/*.code-workspaces"],
-		"YAML": ["**/.clang-format"],
+		"YAML": ["**/.clang-format"]
 	},
 	"show_edit_predictions": false,
 	"hard_tabs": true,
@@ -181,42 +182,42 @@
 	"prettier": {
 		"allowed": true,
 		"singleQuote": true,
-		"semi": false,
+		"semi": false
 	},
 	"languages": {
 		"YAML": {
 			"formatter": "language_server",
 			"format_on_save": "on",
 			"hard_tabs": false,
-			"tab_size": 2,
+			"tab_size": 2
 		},
 		"C": {
 			"formatter": "language_server",
 			"format_on_save": "on",
-			"tab_size": 3,
+			"tab_size": 3
 		},
 		"C++": {
 			"formatter": "language_server",
-			"format_on_save": "on",
+			"format_on_save": "on"
 		},
 		"TOML": {
-			"formatter": "language_server",
+			"formatter": "language_server"
 		},
 		"Python": {
 			"format_on_save": "off",
 			"hard_tabs": false,
-			"tab_size": 4,
-		},
+			"tab_size": 4
+		}
 	},
 	"lsp": {
 		"texlab": {
 			"settings": {
 				"texlab": {
 					"build": {
-						"onSave": false,
-					},
-				},
-			},
+						"onSave": false
+					}
+				}
+			}
 		},
 		"yaml-language-server": {
 			"settings": {
@@ -224,28 +225,28 @@
 					"format": {
 						"enable": false,
 						"singleQuote": true,
-						"bracketSpacing": true,
+						"bracketSpacing": true
 					},
 					"validate": true,
 					"hover": true,
 					"completion": true,
-					"keyOrdering": false,
-				},
-			},
+					"keyOrdering": false
+				}
+			}
 		},
 		"ruff": {
 			"settings": {
-				"enable": true,
-			},
+				"enable": true
+			}
 		},
 		"clangd": {
 			"binary": {
-				"path": "/usr/bin/clangd-22",
-			},
-		},
+				"path": "/usr/bin/clangd-22"
+			}
+		}
 	},
 	"jupyter": {
-		"enabled": true,
+		"enabled": true
 	},
 	"terminal": {
 		// https://github.com/zed-industries/zed/issues/14543#issuecomment-2260593838
@@ -254,9 +255,9 @@
 		"option_as_meta": true,
 		"detect_venv": {
 			"on": {
-				"conda_manager": "mamba",
-			},
-		},
+				"conda_manager": "mamba"
+			}
+		}
 	},
 	"soft_wrap": "editor_width",
 	"agent": {
@@ -265,8 +266,8 @@
 			"write_paths": [
 				{
 					"requested": "~/.devhidden/configs",
-					"resolved": "~/.devhidden/configs",
-				},
+					"resolved": "~/.devhidden/configs"
+				}
 			],
 			"network_hosts": [
 				"jekyllrb.com",
@@ -368,116 +369,116 @@
 				"infinitymaps.io",
 				"pypi.org",
 				"files.pythonhosted.org",
-				"raw.githubusercontent.com",
-			],
+				"raw.githubusercontent.com"
+			]
 		},
 		"favorite_models": [
 			{
 				"provider": "deepseek",
 				"model": "deepseek-v4-flash",
 				"enable_thinking": true,
-				"effort": "high",
+				"effort": "high"
 			},
 			{
 				"provider": "openrouter",
 				"model": "xiaomi/mimo-v2.6-pro",
-				"enable_thinking": true,
+				"enable_thinking": true
 			},
 			{
 				"provider": "openrouter",
 				"model": "xiaomi/mimo-v2.6-flash",
-				"enable_thinking": true,
+				"enable_thinking": true
 			},
 			{
 				"provider": "openrouter",
 				"model": "z-ai/glm-5.3-flash",
 				"enable_thinking": true,
-				"effort": "max",
+				"effort": "max"
 			},
 			{
 				"provider": "copilot_chat",
 				"model": "gpt-6-luna",
 				"enable_thinking": true,
-				"effort": "high",
+				"effort": "high"
 			},
 			{
 				"provider": "copilot_chat",
 				"model": "gemini-3.8-flash",
 				"enable_thinking": true,
-				"effort": "high",
+				"effort": "high"
 			},
 			{
 				"provider": "copilot_chat",
 				"model": "claude-sonnet-5.5",
 				"enable_thinking": true,
-				"effort": "high",
+				"effort": "high"
 			},
 			{
 				"provider": "openrouter",
 				"model": "deepseek/deepseek-v4.1-flash",
 				"enable_thinking": true,
-				"effort": "high",
+				"effort": "high"
 			},
 			{
 				"provider": "openrouter",
 				"model": "nvidia/nemotron-3.5-super-vl:free",
-				"enable_thinking": true,
+				"enable_thinking": true
 			},
 			{
 				"provider": "openrouter",
 				"model": "minimax/minimax-m3.1-flash:free",
 				"enable_thinking": true,
-				"effort": "max",
+				"effort": "max"
 			},
 			{
 				"provider": "openrouter",
 				"model": "minimax/minimax-m3.1-flash",
 				"enable_thinking": true,
-				"effort": "max",
+				"effort": "max"
 			},
 			{
 				"provider": "zed.dev",
 				"model": "claude-sonnet-5-5",
 				"enable_thinking": true,
-				"effort": "high",
+				"effort": "high"
 			},
 			{
 				"provider": "zed.dev",
 				"model": "gpt-6.1-sol",
 				"enable_thinking": true,
-				"effort": "medium",
+				"effort": "medium"
 			},
 			{
 				"provider": "zed.dev",
 				"model": "gpt-6-luna",
 				"enable_thinking": true,
-				"effort": "medium",
+				"effort": "medium"
 			},
 			{
 				"provider": "zed.dev",
 				"model": "gemini-4-argon",
 				"enable_thinking": true,
-				"effort": "MEDIUM",
+				"effort": "MEDIUM"
 			},
 			{
 				"provider": "zed.dev",
 				"model": "claude-haiku-5-5",
 				"enable_thinking": true,
-				"effort": "medium",
+				"effort": "medium"
 			},
 			{
 				"provider": "deepseek",
 				"model": "deepseek-flash",
 				"enable_thinking": true,
-				"effort": "max",
-			},
+				"effort": "max"
+			}
 		],
 		"tool_permissions": {
-			"default": "allow",
+			"default": "allow"
 		},
 		"inline_assistant_model": {
 			"provider": "zed.dev",
-			"model": "claude-haiku-5-5",
+			"model": "claude-haiku-5-5"
 		},
 		"default_profile": "write",
 		"play_sound_when_agent_done": "always",
@@ -485,12 +486,12 @@
 			"effort": "medium",
 			"enable_thinking": true,
 			"provider": "zed.dev",
-			"model": "gpt-6.1-sol",
-		},
+			"model": "gpt-6.1-sol"
+		}
 	},
 	"telemetry": {
 		"diagnostics": false,
-		"metrics": false,
+		"metrics": false
 	},
 	"buffer_font_family": "Hack",
 	"ui_font_size": 16,
@@ -498,6 +499,6 @@
 	"theme": {
 		"mode": "light",
 		"light": "8008 Light",
-		"dark": "8008 Dark",
-	},
+		"dark": "8008 Dark"
+	}
 }

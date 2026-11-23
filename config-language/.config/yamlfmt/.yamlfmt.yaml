@@ -2,9 +2,9 @@ line_ending: 'lf'
 doublestar: true
 gitignore_excludes: false
 exclude:
-- '**/.data/**'
-- '**/node_modules/**'
-- '**/target/**'
+  - '**/.data/**'
+  - '**/node_modules/**'
+  - '**/target/**'
 formatter:
   type: 'basic'
   indent: 2

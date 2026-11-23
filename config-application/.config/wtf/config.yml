@@ -49,7 +49,7 @@ wtf:
     feedreader:
       enabled: true
       feeds:
-      - 'http://wtfutil.com/blog/index.xml'
+        - 'http://wtfutil.com/blog/index.xml'
       feedLimit: 10
       position:
         top: 1

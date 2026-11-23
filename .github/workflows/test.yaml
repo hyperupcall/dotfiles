@@ -15,24 +15,24 @@ jobs:
     permissions:
       contents: 'read'
     steps:
-    - uses: 'actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd'  # v6.0.2
-      with:
-        submodules: 'recursive'
-        persist-credentials: false
-    - uses: 'bats-core/bats-action@77d6fb60505b4d0d1d73e48bd035b55074bbfb43'  # 4.0.0
-      id: setup-bats
-      with:
-        persist-credentials: false
-    - uses: 'actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020'  # v4.4.0
-      with:
-        node-version: '24.7.0'
-    - name: 'Install yamllint'
-      run: pipx install 'yamllint==1.38.0'
-    - name: 'Install Fish for native syntax checks'
-      run: sudo apt-get update && sudo apt-get install -y fish
-    - run: './bake build'
-    - run: './bake lint'
-    - run: './bake test'
-      env:
-        BATS_LIB_PATH: '${{ steps.setup-bats.outputs.lib-path }}'
-        TERM: 'xterm'
+      - uses: 'actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd' # v6.0.2
+        with:
+          submodules: 'recursive'
+          persist-credentials: false
+      - uses: 'bats-core/bats-action@77d6fb60505b4d0d1d73e48bd035b55074bbfb43' # 4.0.0
+        id: setup-bats
+        with:
+          persist-credentials: false
+      - uses: 'actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020' # v4.4.0
+        with:
+          node-version: '24.7.0'
+      - name: 'Install yamllint'
+        run: pipx install 'yamllint==1.38.0'
+      - name: 'Install Fish for native syntax checks'
+        run: sudo apt-get update && sudo apt-get install -y fish
+      - run: './bake build'
+      - run: './bake lint'
+      - run: './bake test'
+        env:
+          BATS_LIB_PATH: '${{ steps.setup-bats.outputs.lib-path }}'
+          TERM: 'xterm'

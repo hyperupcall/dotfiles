@@ -7,25 +7,25 @@
 	},
 	"scripts": {
 		"format": "hyperupcall-scripts-nodejs format",
-		"lint": "hyperupcall-scripts-nodejs lint",
-		"lint2": "eslint ."
+		"lint": "hyperupcall-scripts-nodejs lint"
 	},
 	"dependencies": {
 		"@types/node": "^26.6.6",
 		"globals": "^17.14.0",
-		"pnpm": "12.21.0",
-		"prettier-plugin-pkg": "^0.22.1"
+		"pnpm": "12.21.0"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^21.2.4",
-		"@hyperupcall/prettier-config": "0.13.0",
-		"@hyperupcall/scripts-nodejs": "0.13.0",
+		"@hyperupcall/scripts-nodejs": "0.15.1",
 		"@typescript-eslint/parser": "^8.73.0",
 		"eslint-plugin-unicorn": "80.0.0",
 		"zx": "^8.8.5"
 	},
 	"markdownlint-cli2": {
-		"extends": "./node_modules/@hyperupcall/markdownlint-config/.markdownlint.json"
+		"extends": "./node_modules/@hyperupcall/scripts-nodejs/.markdownlint.mjs"
 	},
-	"prettier": "./prettier.config.js"
+	"npmpackagejsonlint": {
+		"extends": "@hyperupcall/scripts-nodejs/npmpackagejsonlint.config.js"
+	},
+	"prettier": "@hyperupcall/scripts-nodejs/config-prettier.js"
 }

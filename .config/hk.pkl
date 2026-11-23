@@ -1,0 +1,28 @@
+amends "package://github.com/jdx/hk/releases/download/v2.13.0/hk@2.13.0#/Config.pkl"
+import "package://github.com/jdx/hk/releases/download/v2.13.0/hk@2.13.0#/Builtins.pkl"
+
+env {
+    ["PATH"] = "\(read("env:PATH")):./node_modules/.bin"
+}
+
+// To override this, create a ".config/hk.local.pkl" file.
+// See: https://hk.jdx.dev/configuration.html#hk-local-pkl.
+local linters = new Mapping {
+    ["prettier"] = Builtins.prettier
+    ["eslint"] = Builtins.eslint
+    ["tsc"] = Builtins.tsc
+}
+
+steps = linters
+
+hooks {
+    ["commit-msg"] {
+        steps {
+            ["commitlint"] {
+                check = new Command {
+                    argv = List("commitlint", "--edit", "{{commit_msg_file}}")
+                }
+            }
+        }
+    }
+}

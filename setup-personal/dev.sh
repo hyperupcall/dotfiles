@@ -45,7 +45,7 @@ install.any() {
 		cat <<-EOF >~/.dotfiles/.data/bin/dev
 			#!/usr/bin/env sh
 			set -e
-			PATH="\$HOME/.dotfiles/.data/binexec:\$PATH" ~/.dev/bin/dev.ts "\$@"
+			PATH="\$HOME/.dotfiles/.data/binexec:\$PATH" ~/.dev/cli/dev.ts "\$@"
 		EOF
 		chmod +x ~/.dotfiles/.data/bin/dev
 	fi
