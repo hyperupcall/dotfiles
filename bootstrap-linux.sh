@@ -1,44 +1,6 @@
 #!/usr/bin/env sh
 set -e
 
-installcmd() {
-	if iscmd "$1"; then
-		log "Already installed $1"
-	else
-		log "Installing $1"
-
-		if iscmd 'pacman'; then
-			run sudo pacman -S --noconfirm "$2"
-		elif iscmd 'apt-get'; then
-			run sudo apt-get -y install "$2"
-		elif iscmd 'dnf'; then
-			run sudo dnf -y install "$2"
-		elif iscmd 'zypper'; then
-			run sudo zypper -n install "$2"
-		elif iscmd 'eopkg'; then
-			run sudo eopkg -y install "$2"
-		elif iscmd 'brew'; then
-			run brew install "$2"
-		else
-			die 'Failed to determine package manager'
-		fi
-
-		if ! iscmd "$1"; then
-			die "Automatic installation of $1 failed"
-		fi
-	fi
-}
-
-if [ -n "$FORCE_SOURCE" ]; then
-	return 0
-fi
-
-# shellcheck disable=SC3028,SC3054,SC2039
-if [ -n "$BASH" ] && [ "${BASH_SOURCE[0]}" != "$0" ]; then
-	printf '%s\n' "Error: This file should not be sourced"
-	return 1
-fi
-
 main() {
 	if ! iscmd 'sudo'; then
 		die "Please install 'sudo' before running this script"
@@ -92,6 +54,34 @@ else
 	return 1
 fi
 EOF
+}
+
+installcmd() {
+	if iscmd "$1"; then
+		log "Already installed $1"
+	else
+		log "Installing $1"
+
+		if iscmd 'pacman'; then
+			run sudo pacman -S --noconfirm "$2"
+		elif iscmd 'apt-get'; then
+			run sudo apt-get -y install "$2"
+		elif iscmd 'dnf'; then
+			run sudo dnf -y install "$2"
+		elif iscmd 'zypper'; then
+			run sudo zypper -n install "$2"
+		elif iscmd 'eopkg'; then
+			run sudo eopkg -y install "$2"
+		elif iscmd 'brew'; then
+			run brew install "$2"
+		else
+			die 'Failed to determine package manager'
+		fi
+
+		if ! iscmd "$1"; then
+			die "Automatic installation of $1 failed"
+		fi
+	fi
 }
 
 die() {
@@ -177,14 +167,22 @@ clonerepo() {
 	fi
 }
 
-# Source guard: only run `main` when executed, not when sourced.
-# shellcheck disable=SC3028,SC3054,SC2039
-if [ -n "$BASH_VERSION" ]; then
-	if [ "${BASH_SOURCE[0]}" = "$0" ]; then
-		main "$@"
-	fi
-elif [ -n "$ZSH_VERSION" ]; then
-	case $ZSH_EVAL_CONTEXT in *:file*) ;; *) main "$@" ;; esac
-else
-	main "$@"
+if [ -n "$FORCE_SOURCE" ]; then
+	return 0
 fi
+
+# shellcheck disable=SC3028,SC3054,SC2039
+if [ -n "$BASH" ] && [ "${BASH_SOURCE[0]}" != "$0" ]; then
+	printf '%s\n' "Error: This file should not be sourced"
+	return 1
+fi
+if [ -n "$ZSH_VERSION" ]; then
+	case $ZSH_EVAL_CONTEXT in
+		*:file*)
+			printf '%s\n' "Error: This file should not be sourced"
+			return 1
+			;;
+	esac
+fi
+
+main "$@"

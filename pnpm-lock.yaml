@@ -224,8 +224,8 @@ importers:
         specifier: ^21.2.4
         version: 21.2.4(conventional-commits-parser@7.1.4)(typescript@6.0.3)
       '@hyperupcall/scripts-nodejs':
-        specifier: 0.15.1
-        version: 0.15.1(@types/estree@1.0.10)(@typescript-eslint/utils@8.73.0(eslint@10.15.0(jiti@2.7.0)(supports-color@9.4.0))(supports-color@9.4.0)(typescript@6.0.3))(conventional-commits-parser@7.1.4)(jiti@2.7.0)(supports-color@9.4.0)(typescript@6.0.3)
+        specifier: 0.17.0
+        version: 0.17.0(@types/estree@1.0.10)(@typescript-eslint/utils@8.73.0(eslint@10.15.0(jiti@2.7.0)(supports-color@9.4.0))(supports-color@9.4.0)(typescript@6.0.3))(conventional-commits-parser@7.1.4)(jiti@2.7.0)(supports-color@9.4.0)(typescript@6.0.3)
       '@typescript-eslint/parser':
         specifier: ^8.73.0
         version: 8.73.0(eslint@10.15.0(jiti@2.7.0)(supports-color@9.4.0))(supports-color@9.4.0)(typescript@6.0.3)
@@ -553,6 +553,12 @@ packages:
       }
     engines: { node: '>=18.18' }
 
+  '@hyperupcall/commitlint-config@0.2.0':
+    resolution:
+      {
+        integrity: sha512-ALlQODxEy2wyjtU4/Jj75gBgNSDUDPTOQIYFKAFvf6rA89W5F6Kkq+U4DrGuQhvGPB7RDhEAXX72jWiqtoWauQ==,
+      }
+
   '@hyperupcall/config-utils@0.5.0':
     resolution:
       {
@@ -583,10 +589,10 @@ packages:
         integrity: sha512-rej+X8sfwUaptMODRw+nOwEkNRTBEvkGPs2Is2AAWJnU82X//ZnRA5Nipib063cmXuTWlsqkthfEvYN9uZSJEw==,
       }
 
-  '@hyperupcall/scripts-nodejs@0.15.1':
+  '@hyperupcall/scripts-nodejs@0.17.0':
     resolution:
       {
-        integrity: sha512-M8mYCcP3dKCvz6EN6jc1Z6/+FjK7Ohbh2YMMXTTNrdtCFNvDjFK/3MetVpHMG3RwHTid7EY9LCnIfCc8myFlTg==,
+        integrity: sha512-+2Sn7COYv+mxMSDJXDLPY8s/suFOOTCVa6+jukeBnYUT0y9DEMpGROhkmtXrdFt/DkxGmAD4V2B5aGbEmsuIdw==,
       }
     hasBin: true
 
@@ -3656,6 +3662,10 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.3': {}
 
+  '@hyperupcall/commitlint-config@0.2.0':
+    dependencies:
+      '@commitlint/types': 21.2.3
+
   '@hyperupcall/config-utils@0.5.0': {}
 
   '@hyperupcall/eslint-config@2.1.0(@types/estree@1.0.10)(@typescript-eslint/utils@8.73.0(eslint@10.15.0(jiti@2.7.0)(supports-color@9.4.0))(supports-color@9.4.0)(typescript@6.0.3))(eslint@10.15.0(jiti@2.7.0)(supports-color@9.4.0))(supports-color@9.4.0)(typescript@6.0.3)':
@@ -3698,9 +3708,10 @@ snapshots:
     transitivePeerDependencies:
       - prettier
 
-  '@hyperupcall/scripts-nodejs@0.15.1(@types/estree@1.0.10)(@typescript-eslint/utils@8.73.0(eslint@10.15.0(jiti@2.7.0)(supports-color@9.4.0))(supports-color@9.4.0)(typescript@6.0.3))(conventional-commits-parser@7.1.4)(jiti@2.7.0)(supports-color@9.4.0)(typescript@6.0.3)':
+  '@hyperupcall/scripts-nodejs@0.17.0(@types/estree@1.0.10)(@typescript-eslint/utils@8.73.0(eslint@10.15.0(jiti@2.7.0)(supports-color@9.4.0))(supports-color@9.4.0)(typescript@6.0.3))(conventional-commits-parser@7.1.4)(jiti@2.7.0)(supports-color@9.4.0)(typescript@6.0.3)':
     dependencies:
       '@commitlint/cli': 21.2.4(conventional-commits-parser@7.1.4)(typescript@6.0.3)
+      '@hyperupcall/commitlint-config': 0.2.0
       '@hyperupcall/eslint-config': 2.1.0(@types/estree@1.0.10)(@typescript-eslint/utils@8.73.0(eslint@10.15.0(jiti@2.7.0)(supports-color@9.4.0))(supports-color@9.4.0)(typescript@6.0.3))(eslint@10.15.0(jiti@2.7.0)(supports-color@9.4.0))(supports-color@9.4.0)(typescript@6.0.3)
       '@hyperupcall/markdownlint-config': 0.5.2
       '@hyperupcall/npm-package-json-lint-config': 0.2.0

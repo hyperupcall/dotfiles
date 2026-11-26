@@ -1,5 +1,5 @@
 [rules]
-'version-control/project-name/local-remote-name-mismatch' = 'off'
-'remote-url/remote-metadata/default-branch-main' = 'off'
+'vcs/project-name/local-remote-name-mismatch' = 'off'
+'remotevcs/remote-metadata/default-branch-main' = 'off'
 "nodejs/eslint/eslint-must-have-content" = "off"
 "nodejs/eslint/eslint-must-not-have-dependencies" = "off"

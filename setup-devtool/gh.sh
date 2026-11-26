@@ -16,6 +16,8 @@ install.any() {
 
 	rm 'gh.tar.gz'
 	rm -rf "gh_${version}_linux_amd64"
+
+	~/.local/bin/gh extension install github/gh-actions-lock
 }
 
 install.installed() {

@@ -16,7 +16,7 @@
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^21.2.4",
-		"@hyperupcall/scripts-nodejs": "0.15.1",
+		"@hyperupcall/scripts-nodejs": "0.17.0",
 		"@typescript-eslint/parser": "^8.73.0",
 		"eslint-plugin-unicorn": "80.0.0",
 		"zx": "^8.8.5"
@@ -25,7 +25,7 @@
 		"extends": "./node_modules/@hyperupcall/scripts-nodejs/.markdownlint.mjs"
 	},
 	"npmpackagejsonlint": {
-		"extends": "@hyperupcall/scripts-nodejs/npmpackagejsonlint.config.js"
+		"extends": "@hyperupcall/scripts-nodejs/config-npmpackagejsonlint.js"
 	},
 	"prettier": "@hyperupcall/scripts-nodejs/config-prettier.js"
 }

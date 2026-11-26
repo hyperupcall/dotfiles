@@ -1,5 +1,5 @@
 {
-	"diff_view_style": "split",
+	"diff_view_style": "unified",
 	"proxy": "",
 	"ssh_connections": [
 		{
@@ -39,6 +39,9 @@
 			"type": "registry"
 		},
 		"opencode": {
+			"default_config_options": {
+				"model": "opencode/deepseek-v4.1-flash-free"
+			},
 			"type": "registry"
 		},
 		"cline": {
@@ -58,29 +61,6 @@
 		"pi-acp": {
 			"type": "registry"
 		},
-		"opencode-v2": {
-			"default_config_options": {
-				"effort": "thinking",
-				"model": "opencode/hy4-flash-free"
-			},
-			"favorite_config_option_values": {
-				"model": [
-					"opencode/mimo-v2.6-flash-free",
-					"opencode/deepseek-v4.1-flash-free",
-					"openrouter/deepseek/deepseek-v4.1-flash",
-					"openrouter/deepseek/deepseek-v4.1-flash-1017",
-					"openrouter/minimax/minimax-m3.1-flash",
-					"opencode/glm-5.3-flash-free",
-					"openrouter/z-ai/glm-5.3-flash",
-					"openrouter/z-ai/glm-5.3",
-					"opencode/minimax-m3.1-flash-free",
-					"openrouter/openai/gpt-6.1-terra",
-					"openrouter/tencent/hy4-flash",
-					"opencode/hy4-flash-free"
-				]
-			},
-			"type": "registry"
-		},
 		"antigravity-acp": {
 			"default_config_options": {
 				"model": "gemini-3.8-flash"
@@ -93,7 +73,7 @@
 		"claude-acp": {
 			"default_config_options": {
 				"fast": false,
-				"effort": "xhigh",
+				"effort": "high",
 				"model": "opus",
 				"mode": "auto"
 			},
@@ -483,10 +463,10 @@
 		"default_profile": "write",
 		"play_sound_when_agent_done": "always",
 		"default_model": {
-			"effort": "medium",
+			"effort": "high",
 			"enable_thinking": true,
-			"provider": "zed.dev",
-			"model": "gpt-6.1-sol"
+			"provider": "copilot_chat",
+			"model": "claude-sonnet-5.5"
 		}
 	},
 	"telemetry": {

@@ -1,5 +1,6 @@
 
-#[Changelog Update] Fix, Support, Implement, Add, Show
-#[Changelog Update] docs, perf
-#[Changelog Ignore] Format, Refactor, Restructure, Move, Revert, Upgrade
-#[Changelog Ignore] test, ci, build
+#Update: Fix, Support, Implement, Add, Show
+#Update: docs, perf
+#Ignore: Format, Refactor, Restructure, Move, Revert, Upgrade
+#Ignore: [Test], [CI], [Legal], [DX], [Doc]
+

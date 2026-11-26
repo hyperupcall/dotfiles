@@ -1,0 +1,1 @@
+extends: ['@hyperupcall/scripts-nodejs/config-commitlint.js']

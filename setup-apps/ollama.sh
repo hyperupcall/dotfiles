@@ -4,7 +4,7 @@ source ~/.dotfiles/config/setup.sh
 declare -g g_name='Ollama'
 
 install.any() {
-	curl -K "$CURL_CONFIG" https://llama.app/install.sh | sh
+	curl -K "$CURL_CONFIG" https://ollama.com/install.sh | sh
 }
 
 install.installed() {
