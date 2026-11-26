@@ -8,8 +8,7 @@ install.any() {
 	local version="$REPLY"
 
 	curl -K "$CURL_CONFIG" -o ./shfmt "https://github.com/mvdan/sh/releases/download/$version/shfmt_${version}_linux_amd64"
-	chmod +x ./shfmt
-	mv ./shfmt ~/.local/bin/shfmt
+	install -Dm755 ./shfmt ~/.local/bin/shfmt
 }
 
 install.installed() {

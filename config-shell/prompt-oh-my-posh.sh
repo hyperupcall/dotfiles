@@ -7,9 +7,9 @@ install.any() {
 	util.get_latest_github_release 'JanDeDobbeleer/oh-my-posh'
 	local version="$REPLY"
 
-	curl -K "$CURL_CONFIG" -o ~/.local/bin/oh-my-posh \
+	curl -K "$CURL_CONFIG" -o ./oh-my-posh \
 		"https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/$version/posh-linux-amd64"
-	chmod +x ~/.local/bin/oh-my-posh
+	install -Dm755 ./oh-my-posh ~/.local/bin/oh-my-posh
 }
 
 install.installed() {

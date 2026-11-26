@@ -10,9 +10,8 @@ install.any() {
 
 	curl -K "$CURL_CONFIG" -o 'gh.tar.gz' "https://github.com/cli/cli/releases/download/v$version/gh_${version}_linux_amd64.tar.gz"
 	tar xf 'gh.tar.gz'
-	cp "gh_${version}_linux_amd64/bin/gh" ~/.local/bin
-	mkdir -p "$XDG_DATA_HOME/man/man1"
-	cp -f "gh_${version}_linux_amd64/share/man/man1"/* "$XDG_DATA_HOME/man/man1"
+	install -Dm755 "gh_${version}_linux_amd64/bin/gh" ~/.local/bin/gh
+	install -Dm644 "gh_${version}_linux_amd64/share/man/man1"/* -t "$XDG_DATA_HOME/man/man1"
 
 	rm 'gh.tar.gz'
 	rm -rf "gh_${version}_linux_amd64"

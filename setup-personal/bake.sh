@@ -9,8 +9,7 @@ install.any() {
 
 	curl -K "$CURL_CONFIG" -o ./bake https://raw.githubusercontent.com/hyperupcall/bake/main/bin/bake
 
-	chmod +x ./bake
-	mv ./bake ~/.local/bin/bake
+	install -Dm755 ./bake ~/.local/bin/bake
 }
 
 install.installed() {

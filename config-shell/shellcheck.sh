@@ -10,7 +10,7 @@ install.any() {
 	curl -K "$CURL_CONFIG" -o ./shellcheck.tar.xz "https://github.com/koalaman/shellcheck/releases/download/$version/shellcheck-$version.linux.x86_64.tar.xz"
 	tar xf ./shellcheck.tar.xz
 	cd ./shellcheck-v*/
-	mv shellcheck ~/.local/bin/shellcheck
+	install -Dm755 shellcheck ~/.local/bin/shellcheck
 }
 
 install.installed() {

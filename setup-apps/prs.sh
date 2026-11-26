@@ -8,8 +8,7 @@ install.any() {
 	local version="$REPLY"
 
 	curl -K "$CURL_CONFIG" -o ./prs "https://github.com/timvisee/prs/releases/download/$version/prs-${version}-linux-x64"
-	chmod +x ./prs
-	mv ./prs ~/.local/bin/prs
+	install -Dm755 ./prs ~/.local/bin/prs
 }
 
 install.installed() {

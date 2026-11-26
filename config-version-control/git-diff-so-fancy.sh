@@ -7,8 +7,8 @@ install.any() {
 	util.get_latest_github_release 'so-fancy/diff-so-fancy'
 	local latest_tag=$REPLY
 
-	curl -K "$CURL_CONFIG" -o ~/.local/bin/diff-so-fancy "https://github.com/so-fancy/diff-so-fancy/releases/download/$latest_tag/diff-so-fancy"
-	chmod +x ~/.local/bin/diff-so-fancy
+	curl -K "$CURL_CONFIG" -o ./diff-so-fancy "https://github.com/so-fancy/diff-so-fancy/releases/download/$latest_tag/diff-so-fancy"
+	install -Dm755 ./diff-so-fancy ~/.local/bin/diff-so-fancy
 }
 
 install.installed() {

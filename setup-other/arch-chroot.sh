@@ -10,7 +10,7 @@ install.any() {
 
 	sudo apt-get -y install m4 # TODO
 	make arch-chroot
-	cp ./arch-chroot ~/.local/bin
+	install -Dm755 ./arch-chroot ~/.local/bin/arch-chroot
 }
 
 install.installed() {

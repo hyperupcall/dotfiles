@@ -10,8 +10,8 @@ install.any() {
 	curl -K "$CURL_CONFIG" -o 'age.tar.gz' "https://github.com/FiloSottile/age/releases/download/$version/age-$version-linux-amd64.tar.gz"
 	tar xf './age.tar.gz'
 
-	mv './age/age' ~/.local/bin/
-	mv './age/age-keygen' ~/.local/bin/
+	install -Dm755 './age/age' ~/.local/bin/age
+	install -Dm755 './age/age-keygen' ~/.local/bin/age-keygen
 }
 
 install.installed() {

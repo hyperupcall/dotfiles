@@ -10,7 +10,7 @@ install.any() {
 
 	curl -K "$CURL_CONFIG" -o './godot.zip' "https://github.com/godotengine/godot/releases/download/${version}/Godot_v${version}_linux.x86_64.zip"
 	unzip './godot.zip'
-	mv ./Godot_* ~/.local/bin/godot
+	install -Dm755 ./Godot_* ~/.local/bin/godot
 	mkdir -p ~/.local/share/applications
 	cat >~/.local/share/applications/godot.desktop <<"EOF"
 [Desktop Entry]

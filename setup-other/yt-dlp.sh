@@ -7,8 +7,8 @@ install.any() {
 	util.get_latest_github_release 'yt-dlp/yt-dlp'
 	local version="$REPLY"
 
-	curl -K "$CURL_CONFIG" -o ~/.local/bin/yt-dlp "https://github.com/yt-dlp/yt-dlp/releases/download/$version/yt-dlp"
-	chmod +x ~/.local/bin/yt-dlp
+	curl -K "$CURL_CONFIG" -o ./yt-dlp "https://github.com/yt-dlp/yt-dlp/releases/download/$version/yt-dlp"
+	install -Dm755 ./yt-dlp ~/.local/bin/yt-dlp
 }
 
 install.installed() {

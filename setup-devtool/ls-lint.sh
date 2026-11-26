@@ -10,8 +10,7 @@ install.any() {
 	curl -K "$CURL_CONFIG" -o ./ls-lint.tar.gz "https://github.com/loeffel-io/ls-lint/releases/download/$version/ls-lint-linux-amd64.tar.gz"
 	tar xf ./ls-lint.tar.gz
 
-	chmod +x ./ls-lint-linux-amd64
-	mv ./ls-lint-linux-amd64 ~/.local/bin/ls-lint
+	install -Dm755 ./ls-lint-linux-amd64 ~/.local/bin/ls-lint
 }
 
 install.installed() {

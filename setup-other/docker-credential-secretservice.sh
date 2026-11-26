@@ -8,8 +8,7 @@ install.any() {
 	local version="$REPLY"
 	echo "$version"
 	curl -K "$CURL_CONFIG" -o 'docker-credential-secretservice' "https://github.com/docker/docker-credential-helpers/releases/download/$version/docker-credential-secretservice-$version.linux-amd64"
-	chmod +x './docker-credential-secretservice'
-	mv './docker-credential-secretservice' "$HOME/.local/bin"
+	install -Dm755 './docker-credential-secretservice' "$HOME/.local/bin/docker-credential-secretservice"
 
 	if [ ! -f "$XDG_CONFIG_HOME/docker/config.json" ]; then
 		mkdir -p "$XDG_CONFIG_HOME/docker"

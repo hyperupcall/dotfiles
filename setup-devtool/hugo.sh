@@ -10,7 +10,7 @@ install.any() {
 	curl -K "$CURL_CONFIG" -o ./hugo.tar.gz "https://github.com/gohugoio/hugo/releases/download/$version/hugo_${version#v}_linux-amd64.tar.gz"
 	tar xf ./hugo.tar.gz
 
-	mv ./hugo ~/.local/bin
+	install -Dm755 ./hugo ~/.local/bin/hugo
 }
 
 install.installed() {
